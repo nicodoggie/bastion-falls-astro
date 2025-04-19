@@ -1,0 +1,13 @@
+---
+interface Props {
+  name: string;
+  target: string;
+}
+
+const { name, target } = Astro.props;
+const url = `https://www.dndbeyond.com/spells/${target}`;
+---
+
+<a href={url} target="_blank">
+  {name}
+</a>
