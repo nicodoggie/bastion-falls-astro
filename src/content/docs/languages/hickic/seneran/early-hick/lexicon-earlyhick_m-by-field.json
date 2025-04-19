@@ -1,0 +1,5014 @@
+{
+  "id": "lexicon:EarlyHick_M",
+  "title": "Early Hick Lexicon - M entries",
+  "fields": {
+    "Action Terms": {
+      "uri": "action-terms",
+      "label": "Action Terms"
+    },
+    "Animals": {
+      "uri": "animals",
+      "label": "Animals"
+    },
+    "Basic Terms": {
+      "uri": "basic-terms",
+      "label": "Basic Terms"
+    },
+    "Bird Terms": {
+      "uri": "bird-terms",
+      "label": "Bird Terms"
+    },
+    "Bodily Functions": {
+      "uri": "bodily-functions",
+      "label": "Bodily Functions"
+    },
+    "Body Parts": {
+      "uri": "body-parts",
+      "label": "Body Parts"
+    },
+    "Body Terms": {
+      "uri": "body-terms",
+      "label": "Body Terms"
+    },
+    "Celestial Bodies": {
+      "uri": "celestial-bodies",
+      "label": "Celestial Bodies"
+    },
+    "Colors": {
+      "uri": "colors",
+      "label": "Colors"
+    },
+    "Cultivated Plants": {
+      "uri": "cultivated-plants",
+      "label": "Cultivated Plants"
+    },
+    "Eldrim Terms": {
+      "uri": "eldrim-terms",
+      "label": "Eldrim Terms"
+    },
+    "Emotional Terms": {
+      "uri": "emotional-terms",
+      "label": "Emotional Terms"
+    },
+    "Flora": {
+      "uri": "flora",
+      "label": "Flora"
+    },
+    "Food & Consumption Terms": {
+      "uri": "food-&-consumption-terms",
+      "label": "Food & Consumption Terms"
+    },
+    "Food Terms": {
+      "uri": "food-terms",
+      "label": "Food Terms"
+    },
+    "Kinship Terms": {
+      "uri": "kinship-terms",
+      "label": "Kinship Terms"
+    },
+    "Language Terms": {
+      "uri": "language-terms",
+      "label": "Language Terms"
+    },
+    "Magical Terms": {
+      "uri": "magical-terms",
+      "label": "Magical Terms"
+    },
+    "Maritime Terms": {
+      "uri": "maritime-terms",
+      "label": "Maritime Terms"
+    },
+    "Mental Terms": {
+      "uri": "mental-terms",
+      "label": "Mental Terms"
+    },
+    "Military Terms": {
+      "uri": "military-terms",
+      "label": "Military Terms"
+    },
+    "Motion Terms": {
+      "uri": "motion-terms",
+      "label": "Motion Terms"
+    },
+    "Music Terms": {
+      "uri": "music-terms",
+      "label": "Music Terms"
+    },
+    "Natural World": {
+      "uri": "natural-world",
+      "label": "Natural World"
+    },
+    "Nocturnal Animals": {
+      "uri": "nocturnal-animals",
+      "label": "Nocturnal Animals"
+    },
+    "Occupations": {
+      "uri": "occupations",
+      "label": "Occupations"
+    },
+    "Performance Terms": {
+      "uri": "performance-terms",
+      "label": "Performance Terms"
+    },
+    "Person Terms": {
+      "uri": "person-terms",
+      "label": "Person Terms"
+    },
+    "Plant Terms": {
+      "uri": "plant-terms",
+      "label": "Plant Terms"
+    },
+    "Political Terms": {
+      "uri": "political-terms",
+      "label": "Political Terms"
+    },
+    "Precipitation": {
+      "uri": "precipitation",
+      "label": "Precipitation"
+    },
+    "Preparation Terms": {
+      "uri": "preparation-terms",
+      "label": "Preparation Terms"
+    },
+    "Sacred Terms": {
+      "uri": "sacred-terms",
+      "label": "Sacred Terms"
+    },
+    "Scholarly Terms": {
+      "uri": "scholarly-terms",
+      "label": "Scholarly Terms"
+    },
+    "Sound Terms": {
+      "uri": "sound-terms",
+      "label": "Sound Terms"
+    },
+    "States of Matter": {
+      "uri": "states-of-matter",
+      "label": "States of Matter"
+    },
+    "Taste Terms": {
+      "uri": "taste-terms",
+      "label": "Taste Terms"
+    },
+    "Timber Terms": {
+      "uri": "timber-terms",
+      "label": "Timber Terms"
+    },
+    "Time Terms": {
+      "uri": "time-terms",
+      "label": "Time Terms"
+    },
+    "Tool Terms": {
+      "uri": "tool-terms",
+      "label": "Tool Terms"
+    },
+    "Water Features": {
+      "uri": "water-features",
+      "label": "Water Features"
+    },
+    "Weather Terms": {
+      "uri": "weather-terms",
+      "label": "Weather Terms"
+    }
+  },
+  "lexicon": {
+    "Action Terms": [
+      {
+        "id": "ehk:mabarak",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mabarak",
+        "phoneticForm": "ma.ba.rak",
+        "note": "Collective motion from plural marker",
+        "senses": [
+          {
+            "definition": "march, collective walking",
+            "semanticField": [
+              "Motion Terms",
+              "Action Terms",
+              "Military Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "mabarak'er",
+            "phoneticForm": "ma.ba.rak.ʔer",
+            "decomposition": "mabarak + -'er (verbalizer)",
+            "grammaticalMeaning": "to march"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:mabarak",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mabarak",
+            "phoneticRep": "ma.ba.rak"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "ma-barak",
+            "etymon:gloss": "PLU-walk",
+            "etymon:note": "Collective motion from plural marker"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "march, collective walking",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Motion Terms",
+                "Action Terms",
+                "Military Terms"
+              ]
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "mabarak'er",
+              "phoneticRep": "ma.ba.rak.ʔer",
+              "decomposition": "mabarak + -'er (verbalizer)",
+              "grammaticalMeaning": "to march"
+            }
+          ]
+        }
+      }
+    ],
+    "Animals": [
+      {
+        "id": "ehk:mer",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mer",
+        "phoneticForm": "mer",
+        "protoform": "Proto-Hick *meru",
+        "senses": [
+          {
+            "definition": "bird",
+            "semanticField": [
+              "Animals",
+              "Bird Terms"
+            ],
+            "usage": ""
+          },
+          {
+            "definition": "parent",
+            "semanticField": [
+              "Kinship Terms"
+            ],
+            "usage": "Extended meaning through cultural metaphor"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mer",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mer",
+            "phoneticRep": "mer"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *meru",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "bird",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Animals",
+                "Bird Terms"
+              ]
+            },
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "parent",
+                "@language": "en"
+              },
+              "usage": "Extended meaning through cultural metaphor",
+              "lexinfo:semanticField": [
+                "Kinship Terms"
+              ]
+            }
+          ],
+          "related": [
+            {
+              "@id": "ehk:thimer",
+              "type": "lexinfo:etymologicallyRelated"
+            },
+            {
+              "@id": "ehk:murmer",
+              "type": "lexinfo:semanticallyRelated"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:momer",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "momer",
+        "phoneticForm": "mo.mer",
+        "note": "Shows semantic development where negated 'bird' specifies flightless bird",
+        "senses": [
+          {
+            "definition": "chicken",
+            "semanticField": [
+              "Animals",
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:momer",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "momer",
+            "phoneticRep": "mo.mer"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mo"
+            },
+            {
+              "@id": "ehk:mer"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mo-mer",
+            "etymon:gloss": "NEG-bird",
+            "etymon:soundChange": "compound fusion",
+            "etymon:note": "Shows semantic development where negated 'bird' specifies flightless bird"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "chicken",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Animals",
+                "Basic Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Basic Terms": [
+      {
+        "id": "ehk:mirik",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mirik",
+        "phoneticForm": "mi.rik",
+        "protoform": "Proto-Hick *mirikrakhar",
+        "note": "Shows semantic development from 'biting cold' to 'ice'",
+        "senses": [
+          {
+            "definition": "ice",
+            "semanticField": [
+              "Weather Terms",
+              "Basic Terms",
+              "States of Matter"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mirik",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mirik",
+            "phoneticRep": "mi.rik"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *mirikrakhar",
+            "etymon:gloss": "cold-tooth-action",
+            "etymon:soundChange": [
+              "compound fusion",
+              "medial syllable loss",
+              "final vowel loss"
+            ],
+            "etymon:note": "Shows semantic development from 'biting cold' to 'ice'"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "ice",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Weather Terms",
+                "Basic Terms",
+                "States of Matter"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:momer",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "momer",
+        "phoneticForm": "mo.mer",
+        "note": "Shows semantic development where negated 'bird' specifies flightless bird",
+        "senses": [
+          {
+            "definition": "chicken",
+            "semanticField": [
+              "Animals",
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:momer",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "momer",
+            "phoneticRep": "mo.mer"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mo"
+            },
+            {
+              "@id": "ehk:mer"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mo-mer",
+            "etymon:gloss": "NEG-bird",
+            "etymon:soundChange": "compound fusion",
+            "etymon:note": "Shows semantic development where negated 'bird' specifies flightless bird"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "chicken",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Animals",
+                "Basic Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Bird Terms": [
+      {
+        "id": "ehk:mer",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mer",
+        "phoneticForm": "mer",
+        "protoform": "Proto-Hick *meru",
+        "senses": [
+          {
+            "definition": "bird",
+            "semanticField": [
+              "Animals",
+              "Bird Terms"
+            ],
+            "usage": ""
+          },
+          {
+            "definition": "parent",
+            "semanticField": [
+              "Kinship Terms"
+            ],
+            "usage": "Extended meaning through cultural metaphor"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mer",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mer",
+            "phoneticRep": "mer"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *meru",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "bird",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Animals",
+                "Bird Terms"
+              ]
+            },
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "parent",
+                "@language": "en"
+              },
+              "usage": "Extended meaning through cultural metaphor",
+              "lexinfo:semanticField": [
+                "Kinship Terms"
+              ]
+            }
+          ],
+          "related": [
+            {
+              "@id": "ehk:thimer",
+              "type": "lexinfo:etymologicallyRelated"
+            },
+            {
+              "@id": "ehk:murmer",
+              "type": "lexinfo:semanticallyRelated"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murmer",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murmer",
+        "phoneticForm": "mur.mer",
+        "senses": [
+          {
+            "definition": "night-bird, owl",
+            "semanticField": [
+              "Bird Terms",
+              "Nocturnal Animals"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murmer",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murmer",
+            "phoneticRep": "mur.mer"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mur"
+            },
+            {
+              "@id": "ehk:mer"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-mer",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "night-bird, owl",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Bird Terms",
+                "Nocturnal Animals"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Bodily Functions": [
+      {
+        "id": "ehk:murvinu",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murvinu",
+        "phoneticForm": "mur.vi.nu",
+        "note": "Uses mur- 'darkness' metaphorically for death",
+        "senses": [
+          {
+            "definition": "stillbirth",
+            "semanticField": [
+              "Body Terms",
+              "Bodily Functions",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murvinu",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murvinu",
+            "phoneticRep": "mur.vi.nu"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-vinu",
+            "etymon:gloss": "night-pregnancy",
+            "etymon:soundChange": "compound fusion",
+            "etymon:note": "Uses mur- 'darkness' metaphorically for death"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "stillbirth",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Terms",
+                "Bodily Functions",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murvinuiter",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murvinuiter",
+        "phoneticForm": "mur.vi.nu.i.ter",
+        "note": "Uses ellative case to indicate 'from/out of stillbirth'",
+        "senses": [
+          {
+            "definition": "abortion",
+            "semanticField": [
+              "Body Terms",
+              "Bodily Functions",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murvinuiter",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murvinuiter",
+            "phoneticRep": "mur.vi.nu.i.ter"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "murvinu-imris",
+            "etymon:gloss": "stillbirth-ELL",
+            "etymon:soundChange": "ellative case formation",
+            "etymon:note": "Uses ellative case to indicate 'from/out of stillbirth'"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "abortion",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Terms",
+                "Bodily Functions",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Body Parts": [
+      {
+        "id": "ehk:mar",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mar",
+        "phoneticForm": "mar",
+        "protoform": "Proto-Hick *maru",
+        "senses": [
+          {
+            "definition": "blood, life-fluid; red",
+            "semanticField": [
+              "Body Parts",
+              "Colors"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "mar-'er",
+            "phoneticForm": "mar.ʔer",
+            "decomposition": "mar + -'er (verbalizer)",
+            "grammaticalMeaning": "to be red (stative verbal form)"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:mar",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mar",
+            "phoneticRep": "mar"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *maru",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "blood, life-fluid; red",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Parts",
+                "Colors"
+              ]
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "mar-'er",
+              "phoneticRep": "mar.ʔer",
+              "decomposition": "mar + -'er (verbalizer)",
+              "grammaticalMeaning": "to be red (stative verbal form)"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mil",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mil",
+        "phoneticForm": "mil",
+        "protoform": "Proto-Hick *melu",
+        "senses": [
+          {
+            "definition": "tallow, animal fat",
+            "semanticField": [
+              "Body Parts",
+              "Food & Consumption Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mil",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mil",
+            "phoneticRep": "mil"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *melu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "tallow, animal fat",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Parts",
+                "Food & Consumption Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Body Terms": [
+      {
+        "id": "ehk:merkran",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "merkran",
+        "phoneticForm": "mer.kran",
+        "note": "Shows metaphorical conceptualization of emotional pain as heart-piercing",
+        "senses": [
+          {
+            "definition": "emotional pain, heartache",
+            "semanticField": [
+              "Emotional Terms",
+              "Body Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "merkran'er",
+            "phoneticForm": "mer.kran.ʔer",
+            "decomposition": "merkran + -'er (verbalizer)",
+            "grammaticalMeaning": "to feel emotional pain"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:merkran",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "merkran",
+            "phoneticRep": "mer.kran"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mer"
+            },
+            {
+              "@id": "ehk:krantak"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mer-krantak",
+            "etymon:gloss": "heart-pierce",
+            "etymon:soundChange": "compound reduction",
+            "etymon:note": "Shows metaphorical conceptualization of emotional pain as heart-piercing"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "emotional pain, heartache",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Emotional Terms",
+                "Body Terms"
+              ]
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "merkran'er",
+              "phoneticRep": "mer.kran.ʔer",
+              "decomposition": "merkran + -'er (verbalizer)",
+              "grammaticalMeaning": "to feel emotional pain"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mes",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mes",
+        "phoneticForm": "mes",
+        "protoform": "Proto-Hick *mesu",
+        "senses": [
+          {
+            "definition": "heart",
+            "semanticField": [
+              "Body Terms",
+              "Sacred Terms",
+              "Emotional Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mes",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mes",
+            "phoneticRep": "mes"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *mesu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "heart",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Terms",
+                "Sacred Terms",
+                "Emotional Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mes'er",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
+        "writtenForm": "mes'er",
+        "phoneticForm": "mes.ʔer",
+        "note": "Shows cultural distinction between heart-based emotions and liver-based deeper feelings",
+        "senses": [
+          {
+            "definition": "to feel (emotion), experience emotion",
+            "semanticField": [
+              "Emotional Terms",
+              "Body Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mes'er",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mes'er",
+            "phoneticRep": "mes.ʔer"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mes"
+            },
+            {
+              "@id": "ehk:er"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mes-'er",
+            "etymon:gloss": "heart-VERB",
+            "etymon:note": "Shows cultural distinction between heart-based emotions and liver-based deeper feelings"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "to feel (emotion), experience emotion",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Emotional Terms",
+                "Body Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murvinu",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murvinu",
+        "phoneticForm": "mur.vi.nu",
+        "note": "Uses mur- 'darkness' metaphorically for death",
+        "senses": [
+          {
+            "definition": "stillbirth",
+            "semanticField": [
+              "Body Terms",
+              "Bodily Functions",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murvinu",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murvinu",
+            "phoneticRep": "mur.vi.nu"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-vinu",
+            "etymon:gloss": "night-pregnancy",
+            "etymon:soundChange": "compound fusion",
+            "etymon:note": "Uses mur- 'darkness' metaphorically for death"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "stillbirth",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Terms",
+                "Bodily Functions",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murvinuiter",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murvinuiter",
+        "phoneticForm": "mur.vi.nu.i.ter",
+        "note": "Uses ellative case to indicate 'from/out of stillbirth'",
+        "senses": [
+          {
+            "definition": "abortion",
+            "semanticField": [
+              "Body Terms",
+              "Bodily Functions",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murvinuiter",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murvinuiter",
+            "phoneticRep": "mur.vi.nu.i.ter"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "murvinu-imris",
+            "etymon:gloss": "stillbirth-ELL",
+            "etymon:soundChange": "ellative case formation",
+            "etymon:note": "Uses ellative case to indicate 'from/out of stillbirth'"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "abortion",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Terms",
+                "Bodily Functions",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murlis",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murlis",
+        "phoneticForm": "mur.lis",
+        "senses": [
+          {
+            "definition": "night vision",
+            "semanticField": [
+              "Body Terms",
+              "Time Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murlis",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murlis",
+            "phoneticRep": "mur.lis"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-lis",
+            "etymon:gloss": "night-eye",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "night vision",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Terms",
+                "Time Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Celestial Bodies": [
+      {
+        "id": "ehk:murkel",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murkel",
+        "phoneticForm": "mur.kel",
+        "senses": [
+          {
+            "definition": "night sky",
+            "semanticField": [
+              "Time Terms",
+              "Celestial Bodies"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murkel",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murkel",
+            "phoneticRep": "mur.kel"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mur"
+            },
+            {
+              "@id": "ehk:kel"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-kel",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "night sky",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Celestial Bodies"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Colors": [
+      {
+        "id": "ehk:mar",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mar",
+        "phoneticForm": "mar",
+        "protoform": "Proto-Hick *maru",
+        "senses": [
+          {
+            "definition": "blood, life-fluid; red",
+            "semanticField": [
+              "Body Parts",
+              "Colors"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "mar-'er",
+            "phoneticForm": "mar.ʔer",
+            "decomposition": "mar + -'er (verbalizer)",
+            "grammaticalMeaning": "to be red (stative verbal form)"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:mar",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mar",
+            "phoneticRep": "mar"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *maru",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "blood, life-fluid; red",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Parts",
+                "Colors"
+              ]
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "mar-'er",
+              "phoneticRep": "mar.ʔer",
+              "decomposition": "mar + -'er (verbalizer)",
+              "grammaticalMeaning": "to be red (stative verbal form)"
+            }
+          ]
+        }
+      }
+    ],
+    "Cultivated Plants": [
+      {
+        "id": "ehk:malris",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "malris",
+        "phoneticForm": "mal.ris",
+        "senses": [
+          {
+            "definition": "water reed",
+            "semanticField": [
+              "Flora",
+              "Plant Terms",
+              "Cultivated Plants"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:malris",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "malris",
+            "phoneticRep": "mal.ris"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mal-ris",
+            "etymon:meaning": "pool-reed",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "water reed",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Plant Terms",
+                "Cultivated Plants"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:marwud",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "marwud",
+        "phoneticForm": "mar.wud",
+        "senses": [
+          {
+            "definition": "red wood",
+            "semanticField": [
+              "Flora",
+              "Plant Terms",
+              "Timber Terms",
+              "Cultivated Plants"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:marwud",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "marwud",
+            "phoneticRep": "mar.wud"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mar-wud",
+            "etymon:meaning": "red-wood",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "red wood",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Plant Terms",
+                "Timber Terms",
+                "Cultivated Plants"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Eldrim Terms": [
+      {
+        "id": "ehk:matakulambe",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "matakulambe",
+        "phoneticForm": "ma.ta.ku.lam.be",
+        "note": "Uses Eldrim's own term for their languages collectively. Shows typical compound reduction pattern.",
+        "senses": [
+          {
+            "definition": "Elven languages (collectively)",
+            "semanticField": [
+              "Language Terms",
+              "Eldrim Terms",
+              "Scholarly Terms"
+            ],
+            "usage": "Formal term for all Elven languages as a group"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:matakulambe",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "matakulambe",
+            "phoneticRep": "ma.ta.ku.lam.be"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:matakutakal"
+            },
+            {
+              "@id": "ehk:lambe"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "matakutakal-lambe",
+            "etymon:gloss": "people's.rhythm-tongue",
+            "etymon:soundChange": "compound reduction",
+            "etymon:note": "Uses Eldrim's own term for their languages collectively. Shows typical compound reduction pattern."
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "Elven languages (collectively)",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Language Terms",
+                "Eldrim Terms",
+                "Scholarly Terms"
+              ],
+              "usage": "Formal term for all Elven languages as a group",
+              "lexinfo:register": "formal"
+            }
+          ],
+          "related": [
+            {
+              "@id": "ehk:torlambe",
+              "relationshipType": "includes",
+              "note": "High Elven variety"
+            },
+            {
+              "@id": "ehk:wudlambe",
+              "relationshipType": "includes",
+              "note": "Wood Elven variety"
+            },
+            {
+              "@id": "ehk:takulambe",
+              "relationshipType": "includes",
+              "note": "Common Elven variety"
+            },
+            {
+              "@id": "ehk:murlambe",
+              "relationshipType": "includes",
+              "note": "Dark Elven variety"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murlambe",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murlambe",
+        "phoneticForm": "mur.lam.be",
+        "note": "Parallels ithiril 'Dark Elf', rarely encountered in Early Hick period",
+        "senses": [
+          {
+            "definition": "Dark Elven (Drow)",
+            "semanticField": [
+              "Language Terms",
+              "Eldrim Terms"
+            ],
+            "usage": "Rare term, mainly in historical or scholarly contexts"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murlambe",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murlambe",
+            "phoneticRep": "mur.lam.be"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mur"
+            },
+            {
+              "@id": "ehk:lambe"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-lambe",
+            "etymon:gloss": "dark-tongue",
+            "etymon:note": "Parallels ithiril 'Dark Elf', rarely encountered in Early Hick period"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "Dark Elven (Drow)",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Language Terms",
+                "Eldrim Terms"
+              ],
+              "usage": "Rare term, mainly in historical or scholarly contexts",
+              "lexinfo:register": "formal"
+            }
+          ]
+        }
+      }
+    ],
+    "Emotional Terms": [
+      {
+        "id": "ehk:merkran",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "merkran",
+        "phoneticForm": "mer.kran",
+        "note": "Shows metaphorical conceptualization of emotional pain as heart-piercing",
+        "senses": [
+          {
+            "definition": "emotional pain, heartache",
+            "semanticField": [
+              "Emotional Terms",
+              "Body Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "merkran'er",
+            "phoneticForm": "mer.kran.ʔer",
+            "decomposition": "merkran + -'er (verbalizer)",
+            "grammaticalMeaning": "to feel emotional pain"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:merkran",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "merkran",
+            "phoneticRep": "mer.kran"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mer"
+            },
+            {
+              "@id": "ehk:krantak"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mer-krantak",
+            "etymon:gloss": "heart-pierce",
+            "etymon:soundChange": "compound reduction",
+            "etymon:note": "Shows metaphorical conceptualization of emotional pain as heart-piercing"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "emotional pain, heartache",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Emotional Terms",
+                "Body Terms"
+              ]
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "merkran'er",
+              "phoneticRep": "mer.kran.ʔer",
+              "decomposition": "merkran + -'er (verbalizer)",
+              "grammaticalMeaning": "to feel emotional pain"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mes",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mes",
+        "phoneticForm": "mes",
+        "protoform": "Proto-Hick *mesu",
+        "senses": [
+          {
+            "definition": "heart",
+            "semanticField": [
+              "Body Terms",
+              "Sacred Terms",
+              "Emotional Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mes",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mes",
+            "phoneticRep": "mes"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *mesu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "heart",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Terms",
+                "Sacred Terms",
+                "Emotional Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mes'er",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
+        "writtenForm": "mes'er",
+        "phoneticForm": "mes.ʔer",
+        "note": "Shows cultural distinction between heart-based emotions and liver-based deeper feelings",
+        "senses": [
+          {
+            "definition": "to feel (emotion), experience emotion",
+            "semanticField": [
+              "Emotional Terms",
+              "Body Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mes'er",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mes'er",
+            "phoneticRep": "mes.ʔer"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mes"
+            },
+            {
+              "@id": "ehk:er"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mes-'er",
+            "etymon:gloss": "heart-VERB",
+            "etymon:note": "Shows cultural distinction between heart-based emotions and liver-based deeper feelings"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "to feel (emotion), experience emotion",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Emotional Terms",
+                "Body Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Flora": [
+      {
+        "id": "ehk:malris",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "malris",
+        "phoneticForm": "mal.ris",
+        "senses": [
+          {
+            "definition": "water reed",
+            "semanticField": [
+              "Flora",
+              "Plant Terms",
+              "Cultivated Plants"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:malris",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "malris",
+            "phoneticRep": "mal.ris"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mal-ris",
+            "etymon:meaning": "pool-reed",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "water reed",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Plant Terms",
+                "Cultivated Plants"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:marwud",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "marwud",
+        "phoneticForm": "mar.wud",
+        "senses": [
+          {
+            "definition": "red wood",
+            "semanticField": [
+              "Flora",
+              "Plant Terms",
+              "Timber Terms",
+              "Cultivated Plants"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:marwud",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "marwud",
+            "phoneticRep": "mar.wud"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mar-wud",
+            "etymon:meaning": "red-wood",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "red wood",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Plant Terms",
+                "Timber Terms",
+                "Cultivated Plants"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Food & Consumption Terms": [
+      {
+        "id": "ehk:mil",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mil",
+        "phoneticForm": "mil",
+        "protoform": "Proto-Hick *melu",
+        "senses": [
+          {
+            "definition": "tallow, animal fat",
+            "semanticField": [
+              "Body Parts",
+              "Food & Consumption Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mil",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mil",
+            "phoneticRep": "mil"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *melu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "tallow, animal fat",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Parts",
+                "Food & Consumption Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:milai",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "milai",
+        "phoneticForm": "mi.lai",
+        "senses": [
+          {
+            "definition": "rendered fat, oil",
+            "semanticField": [
+              "Food & Consumption Terms",
+              "Preparation Terms"
+            ],
+            "usage": "Shows parallel formation with tirai 'fermented drink'"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:milai",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "milai",
+            "phoneticRep": "mi.lai"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mil-ai",
+            "etymon:gloss": "fat-water",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "rendered fat, oil",
+                "@language": "en"
+              },
+              "usage": "Shows parallel formation with tirai 'fermented drink'",
+              "lexinfo:semanticField": [
+                "Food & Consumption Terms",
+                "Preparation Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Food Terms": [
+      {
+        "id": "ehk:murduwes",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murduwes",
+        "phoneticForm": "mur.du.wes",
+        "senses": [
+          {
+            "definition": "evening meal",
+            "semanticField": [
+              "Food Terms",
+              "Time Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murduwes",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murduwes",
+            "phoneticRep": "mur.du.wes"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-duwes",
+            "etymon:gloss": "night-eat",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "evening meal",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Food Terms",
+                "Time Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Kinship Terms": [
+      {
+        "id": "ehk:mer",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mer",
+        "phoneticForm": "mer",
+        "protoform": "Proto-Hick *meru",
+        "senses": [
+          {
+            "definition": "bird",
+            "semanticField": [
+              "Animals",
+              "Bird Terms"
+            ],
+            "usage": ""
+          },
+          {
+            "definition": "parent",
+            "semanticField": [
+              "Kinship Terms"
+            ],
+            "usage": "Extended meaning through cultural metaphor"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mer",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mer",
+            "phoneticRep": "mer"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *meru",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "bird",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Animals",
+                "Bird Terms"
+              ]
+            },
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "parent",
+                "@language": "en"
+              },
+              "usage": "Extended meaning through cultural metaphor",
+              "lexinfo:semanticField": [
+                "Kinship Terms"
+              ]
+            }
+          ],
+          "related": [
+            {
+              "@id": "ehk:thimer",
+              "type": "lexinfo:etymologicallyRelated"
+            },
+            {
+              "@id": "ehk:murmer",
+              "type": "lexinfo:semanticallyRelated"
+            }
+          ]
+        }
+      }
+    ],
+    "Language Terms": [
+      {
+        "id": "ehk:matakulambe",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "matakulambe",
+        "phoneticForm": "ma.ta.ku.lam.be",
+        "note": "Uses Eldrim's own term for their languages collectively. Shows typical compound reduction pattern.",
+        "senses": [
+          {
+            "definition": "Elven languages (collectively)",
+            "semanticField": [
+              "Language Terms",
+              "Eldrim Terms",
+              "Scholarly Terms"
+            ],
+            "usage": "Formal term for all Elven languages as a group"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:matakulambe",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "matakulambe",
+            "phoneticRep": "ma.ta.ku.lam.be"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:matakutakal"
+            },
+            {
+              "@id": "ehk:lambe"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "matakutakal-lambe",
+            "etymon:gloss": "people's.rhythm-tongue",
+            "etymon:soundChange": "compound reduction",
+            "etymon:note": "Uses Eldrim's own term for their languages collectively. Shows typical compound reduction pattern."
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "Elven languages (collectively)",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Language Terms",
+                "Eldrim Terms",
+                "Scholarly Terms"
+              ],
+              "usage": "Formal term for all Elven languages as a group",
+              "lexinfo:register": "formal"
+            }
+          ],
+          "related": [
+            {
+              "@id": "ehk:torlambe",
+              "relationshipType": "includes",
+              "note": "High Elven variety"
+            },
+            {
+              "@id": "ehk:wudlambe",
+              "relationshipType": "includes",
+              "note": "Wood Elven variety"
+            },
+            {
+              "@id": "ehk:takulambe",
+              "relationshipType": "includes",
+              "note": "Common Elven variety"
+            },
+            {
+              "@id": "ehk:murlambe",
+              "relationshipType": "includes",
+              "note": "Dark Elven variety"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murlambe",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murlambe",
+        "phoneticForm": "mur.lam.be",
+        "note": "Parallels ithiril 'Dark Elf', rarely encountered in Early Hick period",
+        "senses": [
+          {
+            "definition": "Dark Elven (Drow)",
+            "semanticField": [
+              "Language Terms",
+              "Eldrim Terms"
+            ],
+            "usage": "Rare term, mainly in historical or scholarly contexts"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murlambe",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murlambe",
+            "phoneticRep": "mur.lam.be"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mur"
+            },
+            {
+              "@id": "ehk:lambe"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-lambe",
+            "etymon:gloss": "dark-tongue",
+            "etymon:note": "Parallels ithiril 'Dark Elf', rarely encountered in Early Hick period"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "Dark Elven (Drow)",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Language Terms",
+                "Eldrim Terms"
+              ],
+              "usage": "Rare term, mainly in historical or scholarly contexts",
+              "lexinfo:register": "formal"
+            }
+          ]
+        }
+      }
+    ],
+    "Magical Terms": [
+      {
+        "id": "ehk:malthrenok",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "malthrenok",
+        "phoneticForm": "mal.θre.nok",
+        "senses": [
+          {
+            "definition": "pool-watcher, diviner",
+            "semanticField": [
+              "Magical Terms",
+              "Sacred Terms"
+            ],
+            "usage": "One who practices divination through watching pools/water"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:malthrenok",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "malthrenok",
+            "phoneticRep": "mal.θre.nok"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mal-thren-ok",
+            "etymon:components": [
+              "mal (pool)",
+              "thren (watch)",
+              "-ok (AGENT)"
+            ],
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "pool-watcher, diviner",
+                "@language": "en"
+              },
+              "usage": "One who practices divination through watching pools/water",
+              "lexinfo:semanticField": [
+                "Magical Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Maritime Terms": [
+      {
+        "id": "ehk:materok",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "materok",
+        "phoneticForm": "ma.te.rok",
+        "senses": [
+          {
+            "definition": "vessel-guide, boatman",
+            "semanticField": [
+              "Maritime Terms",
+              "Occupations"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:materok",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "materok",
+            "phoneticRep": "ma.te.rok"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mater"
+            },
+            {
+              "@id": "ehk:ok"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mater-ok",
+            "etymon:derivation": "agentive suffix"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "vessel-guide, boatman",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Maritime Terms",
+                "Occupations"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Mental Terms": [
+      {
+        "id": "ehk:mulis",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mulis",
+        "phoneticForm": "mu.lis",
+        "protoform": "Proto-Hick *muruhilisu",
+        "senses": [
+          {
+            "definition": "dream, vision",
+            "semanticField": [
+              "Mental Terms",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mulis",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mulis",
+            "phoneticRep": "mu.lis"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *muruhilisu",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "dream, vision",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mulisim",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mulisim",
+        "phoneticForm": "mu.li.sim",
+        "senses": [
+          {
+            "definition": "to enter a dream state",
+            "semanticField": [
+              "Mental Terms",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mulisim",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mulisim",
+            "phoneticRep": "mu.li.sim"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mulis-im",
+            "etymon:gloss": "dream-become",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "to enter a dream state",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mulisimris",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mulisimris",
+        "phoneticForm": "mu.li.sim.ris",
+        "senses": [
+          {
+            "definition": "to awaken from a dream",
+            "semanticField": [
+              "Mental Terms",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mulisimris",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mulisimris",
+            "phoneticRep": "mu.li.sim.ris"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mulis-im-ris",
+            "etymon:gloss": "dream-become-from",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "to awaken from a dream",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mulislas",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mulislas",
+        "phoneticForm": "mu.lis.las",
+        "senses": [
+          {
+            "definition": "to enter a dream",
+            "semanticField": [
+              "Mental Terms",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mulislas",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mulislas",
+            "phoneticRep": "mu.lis.las"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mulis-las",
+            "etymon:gloss": "dream-into",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "to enter a dream",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mulisthral",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mulisthral",
+        "phoneticForm": "mu.lis.θral",
+        "senses": [
+          {
+            "definition": "prophetic dream",
+            "semanticField": [
+              "Mental Terms",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mulisthral",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mulisthral",
+            "phoneticRep": "mu.lis.θral"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mulis-thral",
+            "etymon:gloss": "dream-sacred",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "prophetic dream",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Military Terms": [
+      {
+        "id": "ehk:mabarak",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mabarak",
+        "phoneticForm": "ma.ba.rak",
+        "note": "Collective motion from plural marker",
+        "senses": [
+          {
+            "definition": "march, collective walking",
+            "semanticField": [
+              "Motion Terms",
+              "Action Terms",
+              "Military Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "mabarak'er",
+            "phoneticForm": "ma.ba.rak.ʔer",
+            "decomposition": "mabarak + -'er (verbalizer)",
+            "grammaticalMeaning": "to march"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:mabarak",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mabarak",
+            "phoneticRep": "ma.ba.rak"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "ma-barak",
+            "etymon:gloss": "PLU-walk",
+            "etymon:note": "Collective motion from plural marker"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "march, collective walking",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Motion Terms",
+                "Action Terms",
+                "Military Terms"
+              ]
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "mabarak'er",
+              "phoneticRep": "ma.ba.rak.ʔer",
+              "decomposition": "mabarak + -'er (verbalizer)",
+              "grammaticalMeaning": "to march"
+            }
+          ]
+        }
+      }
+    ],
+    "Motion Terms": [
+      {
+        "id": "ehk:mabarak",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mabarak",
+        "phoneticForm": "ma.ba.rak",
+        "note": "Collective motion from plural marker",
+        "senses": [
+          {
+            "definition": "march, collective walking",
+            "semanticField": [
+              "Motion Terms",
+              "Action Terms",
+              "Military Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "mabarak'er",
+            "phoneticForm": "ma.ba.rak.ʔer",
+            "decomposition": "mabarak + -'er (verbalizer)",
+            "grammaticalMeaning": "to march"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:mabarak",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mabarak",
+            "phoneticRep": "ma.ba.rak"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "ma-barak",
+            "etymon:gloss": "PLU-walk",
+            "etymon:note": "Collective motion from plural marker"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "march, collective walking",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Motion Terms",
+                "Action Terms",
+                "Military Terms"
+              ]
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "mabarak'er",
+              "phoneticRep": "ma.ba.rak.ʔer",
+              "decomposition": "mabarak + -'er (verbalizer)",
+              "grammaticalMeaning": "to march"
+            }
+          ]
+        }
+      }
+    ],
+    "Music Terms": [
+      {
+        "id": "ehk:meltek",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "meltek",
+        "phoneticForm": "mel.tek",
+        "protoform": "Proto-Hick *melu-takutaku",
+        "note": "Shows preservation of first syllable of second element in compound reduction",
+        "senses": [
+          {
+            "definition": "song",
+            "semanticField": [
+              "Music Terms",
+              "Performance Terms"
+            ],
+            "usage": "Basic term for melodic vocal performance"
+          },
+          {
+            "definition": "melodic rhythm",
+            "semanticField": [
+              "Music Terms",
+              "Sound Terms"
+            ],
+            "usage": "Technical term for musical patterns"
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "meltek'er",
+            "phoneticForm": "mel.tek.ʔer",
+            "decomposition": "meltek + -'er (verbalizer)",
+            "grammaticalMeaning": "to sing"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:meltek",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "meltek",
+            "phoneticRep": "mel.tek"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *melu-takutaku",
+            "etymon:gloss": "sweet-rhythm",
+            "etymon:soundChange": [
+              "compound reduction",
+              "final vowel loss"
+            ],
+            "etymon:note": "Shows preservation of first syllable of second element in compound reduction"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "song",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Music Terms",
+                "Performance Terms"
+              ],
+              "usage": "Basic term for melodic vocal performance"
+            },
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "melodic rhythm",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Music Terms",
+                "Sound Terms"
+              ],
+              "usage": "Technical term for musical patterns"
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "meltek'er",
+              "phoneticRep": "mel.tek.ʔer",
+              "decomposition": "meltek + -'er (verbalizer)",
+              "grammaticalMeaning": "to sing"
+            }
+          ],
+          "related": [
+            {
+              "@id": "ehk:takal",
+              "relationshipType": "contrasts with",
+              "note": "speech rhythm vs. melodic rhythm"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:meltek",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "meltek",
+        "phoneticForm": "mel.tek",
+        "protoform": "Proto-Hick *melu-takutaku",
+        "note": "Shows preservation of first syllable of second element in compound reduction",
+        "senses": [
+          {
+            "definition": "song",
+            "semanticField": [
+              "Music Terms",
+              "Performance Terms"
+            ],
+            "usage": "Basic term for melodic vocal performance"
+          },
+          {
+            "definition": "melodic rhythm",
+            "semanticField": [
+              "Music Terms",
+              "Sound Terms"
+            ],
+            "usage": "Technical term for musical patterns"
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "meltek'er",
+            "phoneticForm": "mel.tek.ʔer",
+            "decomposition": "meltek + -'er (verbalizer)",
+            "grammaticalMeaning": "to sing"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:meltek",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "meltek",
+            "phoneticRep": "mel.tek"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *melu-takutaku",
+            "etymon:gloss": "sweet-rhythm",
+            "etymon:soundChange": [
+              "compound reduction",
+              "final vowel loss"
+            ],
+            "etymon:note": "Shows preservation of first syllable of second element in compound reduction"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "song",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Music Terms",
+                "Performance Terms"
+              ],
+              "usage": "Basic term for melodic vocal performance"
+            },
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "melodic rhythm",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Music Terms",
+                "Sound Terms"
+              ],
+              "usage": "Technical term for musical patterns"
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "meltek'er",
+              "phoneticRep": "mel.tek.ʔer",
+              "decomposition": "meltek + -'er (verbalizer)",
+              "grammaticalMeaning": "to sing"
+            }
+          ],
+          "related": [
+            {
+              "@id": "ehk:takal",
+              "relationshipType": "contrasts with",
+              "note": "speech rhythm vs. melodic rhythm"
+            }
+          ]
+        }
+      }
+    ],
+    "Natural World": [
+      {
+        "id": "ehk:mal",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mal",
+        "phoneticForm": "mal",
+        "protoform": "Proto-Hick *malu",
+        "senses": [
+          {
+            "definition": "pool, standing water",
+            "semanticField": [
+              "Natural World",
+              "Water Features"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mal",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mal",
+            "phoneticRep": "mal"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *malu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "pool, standing water",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Natural World",
+                "Water Features"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:miraitar",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "miraitar",
+        "phoneticForm": "mi.rai.tar",
+        "senses": [
+          {
+            "definition": "cold rain",
+            "semanticField": [
+              "Natural World",
+              "Precipitation"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:miraitar",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "miraitar",
+            "phoneticRep": "mi.rai.tar"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mir-aitar",
+            "etymon:meaning": "cold-rain",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "cold rain",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Natural World",
+                "Precipitation"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Nocturnal Animals": [
+      {
+        "id": "ehk:murmer",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murmer",
+        "phoneticForm": "mur.mer",
+        "senses": [
+          {
+            "definition": "night-bird, owl",
+            "semanticField": [
+              "Bird Terms",
+              "Nocturnal Animals"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murmer",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murmer",
+            "phoneticRep": "mur.mer"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mur"
+            },
+            {
+              "@id": "ehk:mer"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-mer",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "night-bird, owl",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Bird Terms",
+                "Nocturnal Animals"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Occupations": [
+      {
+        "id": "ehk:materok",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "materok",
+        "phoneticForm": "ma.te.rok",
+        "senses": [
+          {
+            "definition": "vessel-guide, boatman",
+            "semanticField": [
+              "Maritime Terms",
+              "Occupations"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:materok",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "materok",
+            "phoneticRep": "ma.te.rok"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mater"
+            },
+            {
+              "@id": "ehk:ok"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mater-ok",
+            "etymon:derivation": "agentive suffix"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "vessel-guide, boatman",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Maritime Terms",
+                "Occupations"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Performance Terms": [
+      {
+        "id": "ehk:meltek",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "meltek",
+        "phoneticForm": "mel.tek",
+        "protoform": "Proto-Hick *melu-takutaku",
+        "note": "Shows preservation of first syllable of second element in compound reduction",
+        "senses": [
+          {
+            "definition": "song",
+            "semanticField": [
+              "Music Terms",
+              "Performance Terms"
+            ],
+            "usage": "Basic term for melodic vocal performance"
+          },
+          {
+            "definition": "melodic rhythm",
+            "semanticField": [
+              "Music Terms",
+              "Sound Terms"
+            ],
+            "usage": "Technical term for musical patterns"
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "meltek'er",
+            "phoneticForm": "mel.tek.ʔer",
+            "decomposition": "meltek + -'er (verbalizer)",
+            "grammaticalMeaning": "to sing"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:meltek",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "meltek",
+            "phoneticRep": "mel.tek"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *melu-takutaku",
+            "etymon:gloss": "sweet-rhythm",
+            "etymon:soundChange": [
+              "compound reduction",
+              "final vowel loss"
+            ],
+            "etymon:note": "Shows preservation of first syllable of second element in compound reduction"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "song",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Music Terms",
+                "Performance Terms"
+              ],
+              "usage": "Basic term for melodic vocal performance"
+            },
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "melodic rhythm",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Music Terms",
+                "Sound Terms"
+              ],
+              "usage": "Technical term for musical patterns"
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "meltek'er",
+              "phoneticRep": "mel.tek.ʔer",
+              "decomposition": "meltek + -'er (verbalizer)",
+              "grammaticalMeaning": "to sing"
+            }
+          ],
+          "related": [
+            {
+              "@id": "ehk:takal",
+              "relationshipType": "contrasts with",
+              "note": "speech rhythm vs. melodic rhythm"
+            }
+          ]
+        }
+      }
+    ],
+    "Person Terms": [
+      {
+        "id": "ehk:maal",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "ma'al",
+        "phoneticForm": "ma.ʔal",
+        "senses": [
+          {
+            "definition": "community, tribe",
+            "semanticField": [
+              "Person Terms",
+              "Political Terms"
+            ],
+            "usage": "Collective term implying social/political unity"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:maal",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "ma'al",
+            "phoneticRep": "ma.ʔal"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "ma-'al",
+            "etymon:meaning": "COLL-person",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "community, tribe",
+                "@language": "en"
+              },
+              "usage": "Collective term implying social/political unity",
+              "lexinfo:semanticField": [
+                "Person Terms",
+                "Political Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Plant Terms": [
+      {
+        "id": "ehk:malris",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "malris",
+        "phoneticForm": "mal.ris",
+        "senses": [
+          {
+            "definition": "water reed",
+            "semanticField": [
+              "Flora",
+              "Plant Terms",
+              "Cultivated Plants"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:malris",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "malris",
+            "phoneticRep": "mal.ris"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mal-ris",
+            "etymon:meaning": "pool-reed",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "water reed",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Plant Terms",
+                "Cultivated Plants"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:marwud",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "marwud",
+        "phoneticForm": "mar.wud",
+        "senses": [
+          {
+            "definition": "red wood",
+            "semanticField": [
+              "Flora",
+              "Plant Terms",
+              "Timber Terms",
+              "Cultivated Plants"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:marwud",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "marwud",
+            "phoneticRep": "mar.wud"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mar-wud",
+            "etymon:meaning": "red-wood",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "red wood",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Plant Terms",
+                "Timber Terms",
+                "Cultivated Plants"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Political Terms": [
+      {
+        "id": "ehk:maal",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "ma'al",
+        "phoneticForm": "ma.ʔal",
+        "senses": [
+          {
+            "definition": "community, tribe",
+            "semanticField": [
+              "Person Terms",
+              "Political Terms"
+            ],
+            "usage": "Collective term implying social/political unity"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:maal",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "ma'al",
+            "phoneticRep": "ma.ʔal"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "ma-'al",
+            "etymon:meaning": "COLL-person",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "community, tribe",
+                "@language": "en"
+              },
+              "usage": "Collective term implying social/political unity",
+              "lexinfo:semanticField": [
+                "Person Terms",
+                "Political Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Precipitation": [
+      {
+        "id": "ehk:miraitar",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "miraitar",
+        "phoneticForm": "mi.rai.tar",
+        "senses": [
+          {
+            "definition": "cold rain",
+            "semanticField": [
+              "Natural World",
+              "Precipitation"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:miraitar",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "miraitar",
+            "phoneticRep": "mi.rai.tar"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mir-aitar",
+            "etymon:meaning": "cold-rain",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "cold rain",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Natural World",
+                "Precipitation"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Preparation Terms": [
+      {
+        "id": "ehk:milai",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "milai",
+        "phoneticForm": "mi.lai",
+        "senses": [
+          {
+            "definition": "rendered fat, oil",
+            "semanticField": [
+              "Food & Consumption Terms",
+              "Preparation Terms"
+            ],
+            "usage": "Shows parallel formation with tirai 'fermented drink'"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:milai",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "milai",
+            "phoneticRep": "mi.lai"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mil-ai",
+            "etymon:gloss": "fat-water",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "rendered fat, oil",
+                "@language": "en"
+              },
+              "usage": "Shows parallel formation with tirai 'fermented drink'",
+              "lexinfo:semanticField": [
+                "Food & Consumption Terms",
+                "Preparation Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Sacred Terms": [
+      {
+        "id": "ehk:malthrenok",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "malthrenok",
+        "phoneticForm": "mal.θre.nok",
+        "senses": [
+          {
+            "definition": "pool-watcher, diviner",
+            "semanticField": [
+              "Magical Terms",
+              "Sacred Terms"
+            ],
+            "usage": "One who practices divination through watching pools/water"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:malthrenok",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "malthrenok",
+            "phoneticRep": "mal.θre.nok"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mal-thren-ok",
+            "etymon:components": [
+              "mal (pool)",
+              "thren (watch)",
+              "-ok (AGENT)"
+            ],
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "pool-watcher, diviner",
+                "@language": "en"
+              },
+              "usage": "One who practices divination through watching pools/water",
+              "lexinfo:semanticField": [
+                "Magical Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mes",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mes",
+        "phoneticForm": "mes",
+        "protoform": "Proto-Hick *mesu",
+        "senses": [
+          {
+            "definition": "heart",
+            "semanticField": [
+              "Body Terms",
+              "Sacred Terms",
+              "Emotional Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mes",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mes",
+            "phoneticRep": "mes"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *mesu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "heart",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Terms",
+                "Sacred Terms",
+                "Emotional Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mur",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mur",
+        "phoneticForm": "mur",
+        "protoform": "Proto-Hick *muru",
+        "senses": [
+          {
+            "definition": "night, darkness",
+            "semanticField": [
+              "Time Terms",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mur",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mur",
+            "phoneticRep": "mur"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *muru",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "night, darkness",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murvinu",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murvinu",
+        "phoneticForm": "mur.vi.nu",
+        "note": "Uses mur- 'darkness' metaphorically for death",
+        "senses": [
+          {
+            "definition": "stillbirth",
+            "semanticField": [
+              "Body Terms",
+              "Bodily Functions",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murvinu",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murvinu",
+            "phoneticRep": "mur.vi.nu"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-vinu",
+            "etymon:gloss": "night-pregnancy",
+            "etymon:soundChange": "compound fusion",
+            "etymon:note": "Uses mur- 'darkness' metaphorically for death"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "stillbirth",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Terms",
+                "Bodily Functions",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murvinuiter",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murvinuiter",
+        "phoneticForm": "mur.vi.nu.i.ter",
+        "note": "Uses ellative case to indicate 'from/out of stillbirth'",
+        "senses": [
+          {
+            "definition": "abortion",
+            "semanticField": [
+              "Body Terms",
+              "Bodily Functions",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murvinuiter",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murvinuiter",
+            "phoneticRep": "mur.vi.nu.i.ter"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "murvinu-imris",
+            "etymon:gloss": "stillbirth-ELL",
+            "etymon:soundChange": "ellative case formation",
+            "etymon:note": "Uses ellative case to indicate 'from/out of stillbirth'"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "abortion",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Terms",
+                "Bodily Functions",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mulis",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mulis",
+        "phoneticForm": "mu.lis",
+        "protoform": "Proto-Hick *muruhilisu",
+        "senses": [
+          {
+            "definition": "dream, vision",
+            "semanticField": [
+              "Mental Terms",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mulis",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mulis",
+            "phoneticRep": "mu.lis"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *muruhilisu",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "dream, vision",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mulisim",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mulisim",
+        "phoneticForm": "mu.li.sim",
+        "senses": [
+          {
+            "definition": "to enter a dream state",
+            "semanticField": [
+              "Mental Terms",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mulisim",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mulisim",
+            "phoneticRep": "mu.li.sim"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mulis-im",
+            "etymon:gloss": "dream-become",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "to enter a dream state",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mulisimris",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mulisimris",
+        "phoneticForm": "mu.li.sim.ris",
+        "senses": [
+          {
+            "definition": "to awaken from a dream",
+            "semanticField": [
+              "Mental Terms",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mulisimris",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mulisimris",
+            "phoneticRep": "mu.li.sim.ris"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mulis-im-ris",
+            "etymon:gloss": "dream-become-from",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "to awaken from a dream",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mulislas",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mulislas",
+        "phoneticForm": "mu.lis.las",
+        "senses": [
+          {
+            "definition": "to enter a dream",
+            "semanticField": [
+              "Mental Terms",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mulislas",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mulislas",
+            "phoneticRep": "mu.lis.las"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mulis-las",
+            "etymon:gloss": "dream-into",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "to enter a dream",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:mulisthral",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mulisthral",
+        "phoneticForm": "mu.lis.θral",
+        "senses": [
+          {
+            "definition": "prophetic dream",
+            "semanticField": [
+              "Mental Terms",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mulisthral",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mulisthral",
+            "phoneticRep": "mu.lis.θral"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mulis-thral",
+            "etymon:gloss": "dream-sacred",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "prophetic dream",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Scholarly Terms": [
+      {
+        "id": "ehk:matakulambe",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "matakulambe",
+        "phoneticForm": "ma.ta.ku.lam.be",
+        "note": "Uses Eldrim's own term for their languages collectively. Shows typical compound reduction pattern.",
+        "senses": [
+          {
+            "definition": "Elven languages (collectively)",
+            "semanticField": [
+              "Language Terms",
+              "Eldrim Terms",
+              "Scholarly Terms"
+            ],
+            "usage": "Formal term for all Elven languages as a group"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:matakulambe",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "matakulambe",
+            "phoneticRep": "ma.ta.ku.lam.be"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:matakutakal"
+            },
+            {
+              "@id": "ehk:lambe"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "matakutakal-lambe",
+            "etymon:gloss": "people's.rhythm-tongue",
+            "etymon:soundChange": "compound reduction",
+            "etymon:note": "Uses Eldrim's own term for their languages collectively. Shows typical compound reduction pattern."
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "Elven languages (collectively)",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Language Terms",
+                "Eldrim Terms",
+                "Scholarly Terms"
+              ],
+              "usage": "Formal term for all Elven languages as a group",
+              "lexinfo:register": "formal"
+            }
+          ],
+          "related": [
+            {
+              "@id": "ehk:torlambe",
+              "relationshipType": "includes",
+              "note": "High Elven variety"
+            },
+            {
+              "@id": "ehk:wudlambe",
+              "relationshipType": "includes",
+              "note": "Wood Elven variety"
+            },
+            {
+              "@id": "ehk:takulambe",
+              "relationshipType": "includes",
+              "note": "Common Elven variety"
+            },
+            {
+              "@id": "ehk:murlambe",
+              "relationshipType": "includes",
+              "note": "Dark Elven variety"
+            }
+          ]
+        }
+      }
+    ],
+    "Sound Terms": [
+      {
+        "id": "ehk:meltek",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "meltek",
+        "phoneticForm": "mel.tek",
+        "protoform": "Proto-Hick *melu-takutaku",
+        "note": "Shows preservation of first syllable of second element in compound reduction",
+        "senses": [
+          {
+            "definition": "song",
+            "semanticField": [
+              "Music Terms",
+              "Performance Terms"
+            ],
+            "usage": "Basic term for melodic vocal performance"
+          },
+          {
+            "definition": "melodic rhythm",
+            "semanticField": [
+              "Music Terms",
+              "Sound Terms"
+            ],
+            "usage": "Technical term for musical patterns"
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "meltek'er",
+            "phoneticForm": "mel.tek.ʔer",
+            "decomposition": "meltek + -'er (verbalizer)",
+            "grammaticalMeaning": "to sing"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:meltek",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "meltek",
+            "phoneticRep": "mel.tek"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *melu-takutaku",
+            "etymon:gloss": "sweet-rhythm",
+            "etymon:soundChange": [
+              "compound reduction",
+              "final vowel loss"
+            ],
+            "etymon:note": "Shows preservation of first syllable of second element in compound reduction"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "song",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Music Terms",
+                "Performance Terms"
+              ],
+              "usage": "Basic term for melodic vocal performance"
+            },
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "melodic rhythm",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Music Terms",
+                "Sound Terms"
+              ],
+              "usage": "Technical term for musical patterns"
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "meltek'er",
+              "phoneticRep": "mel.tek.ʔer",
+              "decomposition": "meltek + -'er (verbalizer)",
+              "grammaticalMeaning": "to sing"
+            }
+          ],
+          "related": [
+            {
+              "@id": "ehk:takal",
+              "relationshipType": "contrasts with",
+              "note": "speech rhythm vs. melodic rhythm"
+            }
+          ]
+        }
+      }
+    ],
+    "States of Matter": [
+      {
+        "id": "ehk:mirik",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mirik",
+        "phoneticForm": "mi.rik",
+        "protoform": "Proto-Hick *mirikrakhar",
+        "note": "Shows semantic development from 'biting cold' to 'ice'",
+        "senses": [
+          {
+            "definition": "ice",
+            "semanticField": [
+              "Weather Terms",
+              "Basic Terms",
+              "States of Matter"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mirik",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mirik",
+            "phoneticRep": "mi.rik"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *mirikrakhar",
+            "etymon:gloss": "cold-tooth-action",
+            "etymon:soundChange": [
+              "compound fusion",
+              "medial syllable loss",
+              "final vowel loss"
+            ],
+            "etymon:note": "Shows semantic development from 'biting cold' to 'ice'"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "ice",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Weather Terms",
+                "Basic Terms",
+                "States of Matter"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Taste Terms": [
+      {
+        "id": "ehk:mel",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mel",
+        "phoneticForm": "mel",
+        "protoform": "Proto-Hick *melu",
+        "senses": [
+          {
+            "definition": "sweetness",
+            "semanticField": [
+              "Taste Terms"
+            ],
+            "usage": "Associated with ripeness and edibility"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mel",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mel",
+            "phoneticRep": "mel"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *melu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "sweetness",
+                "@language": "en"
+              },
+              "usage": "Associated with ripeness and edibility",
+              "lexinfo:semanticField": "Taste Terms"
+            }
+          ]
+        }
+      }
+    ],
+    "Timber Terms": [
+      {
+        "id": "ehk:marwud",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "marwud",
+        "phoneticForm": "mar.wud",
+        "senses": [
+          {
+            "definition": "red wood",
+            "semanticField": [
+              "Flora",
+              "Plant Terms",
+              "Timber Terms",
+              "Cultivated Plants"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:marwud",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "marwud",
+            "phoneticRep": "mar.wud"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mar-wud",
+            "etymon:meaning": "red-wood",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "red wood",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Plant Terms",
+                "Timber Terms",
+                "Cultivated Plants"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Time Terms": [
+      {
+        "id": "ehk:mur",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mur",
+        "phoneticForm": "mur",
+        "protoform": "Proto-Hick *muru",
+        "senses": [
+          {
+            "definition": "night, darkness",
+            "semanticField": [
+              "Time Terms",
+              "Sacred Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mur",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mur",
+            "phoneticRep": "mur"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *muru",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "night, darkness",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Sacred Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murkel",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murkel",
+        "phoneticForm": "mur.kel",
+        "senses": [
+          {
+            "definition": "night sky",
+            "semanticField": [
+              "Time Terms",
+              "Celestial Bodies"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murkel",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murkel",
+            "phoneticRep": "mur.kel"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:mur"
+            },
+            {
+              "@id": "ehk:kel"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-kel",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "night sky",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Celestial Bodies"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murduwes",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murduwes",
+        "phoneticForm": "mur.du.wes",
+        "senses": [
+          {
+            "definition": "evening meal",
+            "semanticField": [
+              "Food Terms",
+              "Time Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murduwes",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murduwes",
+            "phoneticRep": "mur.du.wes"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-duwes",
+            "etymon:gloss": "night-eat",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "evening meal",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Food Terms",
+                "Time Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murkran",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murkran",
+        "phoneticForm": "mur.kran",
+        "senses": [
+          {
+            "definition": "night watch horn",
+            "semanticField": [
+              "Tool Terms",
+              "Time Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murkran",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murkran",
+            "phoneticRep": "mur.kran"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-kran",
+            "etymon:gloss": "night-horn",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "night watch horn",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Tool Terms",
+                "Time Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:murlis",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murlis",
+        "phoneticForm": "mur.lis",
+        "senses": [
+          {
+            "definition": "night vision",
+            "semanticField": [
+              "Body Terms",
+              "Time Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murlis",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murlis",
+            "phoneticRep": "mur.lis"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-lis",
+            "etymon:gloss": "night-eye",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "night vision",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Body Terms",
+                "Time Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Tool Terms": [
+      {
+        "id": "ehk:murkran",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "murkran",
+        "phoneticForm": "mur.kran",
+        "senses": [
+          {
+            "definition": "night watch horn",
+            "semanticField": [
+              "Tool Terms",
+              "Time Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:murkran",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "murkran",
+            "phoneticRep": "mur.kran"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "mur-kran",
+            "etymon:gloss": "night-horn",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "night watch horn",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Tool Terms",
+                "Time Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Water Features": [
+      {
+        "id": "ehk:mal",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mal",
+        "phoneticForm": "mal",
+        "protoform": "Proto-Hick *malu",
+        "senses": [
+          {
+            "definition": "pool, standing water",
+            "semanticField": [
+              "Natural World",
+              "Water Features"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mal",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mal",
+            "phoneticRep": "mal"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *malu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "pool, standing water",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Natural World",
+                "Water Features"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Weather Terms": [
+      {
+        "id": "ehk:mirik",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "mirik",
+        "phoneticForm": "mi.rik",
+        "protoform": "Proto-Hick *mirikrakhar",
+        "note": "Shows semantic development from 'biting cold' to 'ice'",
+        "senses": [
+          {
+            "definition": "ice",
+            "semanticField": [
+              "Weather Terms",
+              "Basic Terms",
+              "States of Matter"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:mirik",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "mirik",
+            "phoneticRep": "mi.rik"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *mirikrakhar",
+            "etymon:gloss": "cold-tooth-action",
+            "etymon:soundChange": [
+              "compound fusion",
+              "medial syllable loss",
+              "final vowel loss"
+            ],
+            "etymon:note": "Shows semantic development from 'biting cold' to 'ice'"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "ice",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Weather Terms",
+                "Basic Terms",
+                "States of Matter"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

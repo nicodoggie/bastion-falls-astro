@@ -1,0 +1,466 @@
+{
+  "id": "lexicon:EarlyHick_-",
+  "title": "Early Hick Lexicon - - entries",
+  "lexicon": {
+    "ehk:-en": {
+      "id": "ehk:-en",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Suffix"
+      ],
+      "writtenForm": "-en",
+      "phoneticForm": "-en",
+      "protoform": "Proto-Hick *ena",
+      "senses": [
+        {
+          "definition": "that (inanimate, visible, medial)",
+          "semanticField": [
+            "Demonstratives",
+            "Grammatical Terms"
+          ],
+          "usage": ""
+        }
+      ],
+      "derivedForms": [],
+      "graphEntry": {
+        "@id": "ehk:-en",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Suffix"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "-en",
+          "phoneticRep": "-en"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *ena",
+          "etymon:soundChange": "final vowel loss"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "that (inanimate, visible, medial)",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Demonstratives",
+              "Grammatical Terms"
+            ]
+          }
+        ]
+      }
+    },
+    "ehk:-eth": {
+      "id": "ehk:-eth",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Suffix"
+      ],
+      "writtenForm": "-eth",
+      "phoneticForm": "-eθ",
+      "protoform": "Proto-Hick *etha",
+      "senses": [
+        {
+          "definition": "that (medial, inanimate, hidden, sensed)",
+          "semanticField": [
+            "Demonstratives",
+            "Grammatical Terms"
+          ],
+          "usage": ""
+        }
+      ],
+      "derivedForms": [],
+      "graphEntry": {
+        "@id": "ehk:-eth",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Suffix"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "-eth",
+          "phoneticRep": "-eθ"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *etha",
+          "etymon:soundChange": "final vowel loss"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "that (medial, inanimate, hidden, sensed)",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Demonstratives",
+              "Grammatical Terms"
+            ]
+          }
+        ]
+      }
+    },
+    "ehk:-is": {
+      "id": "ehk:-is",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Suffix"
+      ],
+      "writtenForm": "-is",
+      "phoneticForm": "-is",
+      "protoform": "Proto-Hick *isa",
+      "senses": [
+        {
+          "definition": "this (inanimate, sensed, proximal)",
+          "semanticField": [
+            "Demonstratives",
+            "Grammatical Terms"
+          ],
+          "usage": ""
+        }
+      ],
+      "derivedForms": [],
+      "graphEntry": {
+        "@id": "ehk:-is",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Suffix"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "-is",
+          "phoneticRep": "-is"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *isa",
+          "etymon:soundChange": "final vowel loss"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "this (inanimate, sensed, proximal)",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Demonstratives",
+              "Grammatical Terms"
+            ]
+          }
+        ]
+      }
+    },
+    "ehk:-nat": {
+      "id": "ehk:-nat",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Suffix"
+      ],
+      "writtenForm": "-nat",
+      "phoneticForm": "nat",
+      "note": "Grammaticalized from full verb 'desire' to desiderative suffix",
+      "senses": [
+        {
+          "definition": "want to, desire to (desiderative suffix)",
+          "semanticField": [
+            "Grammatical Terms",
+            "Verbal Morphology"
+          ],
+          "usage": ""
+        }
+      ],
+      "derivedForms": [],
+      "graphEntry": {
+        "@id": "ehk:-nat",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Suffix"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "-nat",
+          "phoneticRep": "nat"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:derivedFrom": "gnater",
+          "etymon:soundChange": "grammaticalization with phonological reduction",
+          "etymon:note": "Grammaticalized from full verb 'desire' to desiderative suffix"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "want to, desire to (desiderative suffix)",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Grammatical Terms",
+              "Verbal Morphology"
+            ]
+          }
+        ]
+      }
+    },
+    "ehk:-rum": {
+      "id": "ehk:-rum",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Suffix"
+      ],
+      "writtenForm": "-rum",
+      "phoneticForm": "-rum",
+      "protoform": "Proto-Hick *ruma",
+      "senses": [
+        {
+          "definition": "that (animate, distant)",
+          "semanticField": [
+            "Demonstratives",
+            "Grammatical Terms"
+          ],
+          "usage": ""
+        }
+      ],
+      "derivedForms": [],
+      "graphEntry": {
+        "@id": "ehk:-rum",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Suffix"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "-rum",
+          "phoneticRep": "-rum"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *ruma",
+          "etymon:soundChange": "final vowel loss"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "that (animate, distant)",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Demonstratives",
+              "Grammatical Terms"
+            ]
+          }
+        ]
+      }
+    },
+    "ehk:-tan": {
+      "id": "ehk:-tan",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Suffix"
+      ],
+      "writtenForm": "-tan",
+      "phoneticForm": "-tan",
+      "protoform": "Proto-Hick *tana",
+      "senses": [
+        {
+          "definition": "that (animate, visible, medial)",
+          "semanticField": [
+            "Demonstratives",
+            "Grammatical Terms"
+          ],
+          "usage": ""
+        }
+      ],
+      "derivedForms": [],
+      "graphEntry": {
+        "@id": "ehk:-tan",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Suffix"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "-tan",
+          "phoneticRep": "-tan"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *tana",
+          "etymon:soundChange": "final vowel loss"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "that (animate, visible, medial)",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Demonstratives",
+              "Grammatical Terms"
+            ]
+          }
+        ]
+      }
+    },
+    "ehk:-thir": {
+      "id": "ehk:-thir",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Suffix"
+      ],
+      "writtenForm": "-thir",
+      "phoneticForm": "-θir",
+      "protoform": "Proto-Hick *thira",
+      "senses": [
+        {
+          "definition": "that (medial, animate, sensed)",
+          "semanticField": [
+            "Demonstratives",
+            "Grammatical Terms"
+          ],
+          "usage": ""
+        }
+      ],
+      "derivedForms": [],
+      "graphEntry": {
+        "@id": "ehk:-thir",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Suffix"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "-thir",
+          "phoneticRep": "-θir"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *thira",
+          "etymon:soundChange": "final vowel loss"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "that (medial, animate, sensed)",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Demonstratives",
+              "Grammatical Terms"
+            ]
+          }
+        ]
+      }
+    },
+    "ehk:-um": {
+      "id": "ehk:-um",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Suffix"
+      ],
+      "writtenForm": "-um",
+      "phoneticForm": "-um",
+      "protoform": "Proto-Hick *uma",
+      "senses": [
+        {
+          "definition": "that (inanimate, distant)",
+          "semanticField": [
+            "Demonstratives",
+            "Grammatical Terms"
+          ],
+          "usage": ""
+        }
+      ],
+      "derivedForms": [],
+      "graphEntry": {
+        "@id": "ehk:-um",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Suffix"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "-um",
+          "phoneticRep": "-um"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *uma",
+          "etymon:soundChange": "final vowel loss"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "that (inanimate, distant)",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Demonstratives",
+              "Grammatical Terms"
+            ]
+          }
+        ]
+      }
+    },
+    "ehk:-ʔis": {
+      "id": "ehk:-ʔis",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Suffix"
+      ],
+      "writtenForm": "-ʔis",
+      "phoneticForm": "-ʔis",
+      "protoform": "Proto-Hick *ʔisa",
+      "senses": [
+        {
+          "definition": "this (animate, sensed, proximal)",
+          "semanticField": [
+            "Demonstratives",
+            "Grammatical Terms"
+          ],
+          "usage": ""
+        }
+      ],
+      "derivedForms": [],
+      "graphEntry": {
+        "@id": "ehk:-ʔis",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Suffix"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "-ʔis",
+          "phoneticRep": "-ʔis"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *ʔisa",
+          "etymon:soundChange": "final vowel loss"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "this (animate, sensed, proximal)",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Demonstratives",
+              "Grammatical Terms"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

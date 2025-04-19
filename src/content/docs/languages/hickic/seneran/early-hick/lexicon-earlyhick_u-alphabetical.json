@@ -1,0 +1,300 @@
+{
+  "id": "lexicon:EarlyHick_U",
+  "title": "Early Hick Lexicon - U entries",
+  "lexicon": {
+    "ehk:'u'u": {
+      "id": "ehk:'u'u",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Verb"
+      ],
+      "writtenForm": "'u'u",
+      "phoneticForm": "ʔu.ʔu",
+      "protoform": "Proto-Hick *'uhu-'uhu",
+      "note": "Onomatopoeic origin from crying/sobbing sound",
+      "senses": [
+        {
+          "definition": "cry, weep (in sorrow/pain)",
+          "semanticField": [
+            "Sound Terms",
+            "Emotion Terms",
+            "Body Terms"
+          ],
+          "usage": "Often reduplicated for continuous crying"
+        }
+      ],
+      "derivedForms": [
+        {
+          "writtenForm": "'u'u'er",
+          "phoneticForm": "ʔu.ʔu.ʔer",
+          "decomposition": "'u'u + -'er (verbalizer)",
+          "grammaticalMeaning": "to cry, to weep"
+        }
+      ],
+      "graphEntry": {
+        "@id": "ehk:'u'u",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "'u'u",
+          "phoneticRep": "ʔu.ʔu"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *'uhu-'uhu",
+          "etymon:soundChange": "medial h-loss",
+          "etymon:note": "Onomatopoeic origin from crying/sobbing sound"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "cry, weep (in sorrow/pain)",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Sound Terms",
+              "Emotion Terms",
+              "Body Terms"
+            ],
+            "usage": "Often reduplicated for continuous crying"
+          }
+        ],
+        "derivedForms": [
+          {
+            "@type": "ontolex:Form",
+            "writtenRep": "'u'u'er",
+            "phoneticRep": "ʔu.ʔu.ʔer",
+            "decomposition": "'u'u + -'er (verbalizer)",
+            "grammaticalMeaning": "to cry, to weep"
+          }
+        ]
+      }
+    },
+    "ehk:ul": {
+      "id": "ehk:ul",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
+      "writtenForm": "ul",
+      "phoneticForm": "ul",
+      "protoform": "Proto-Hick *ʔulu",
+      "note": "Original root (~800 PF) had meanings 'thumb/grasp/possession'. By Late Proto-Hick (~400 PF), bare form specialized to 'thumb/possession'. Source of possessive suffix -ul through grammaticalization.",
+      "senses": [
+        {
+          "definition": "thumb",
+          "semanticField": [
+            "Body Terms",
+            "Basic Terms"
+          ],
+          "usage": ""
+        }
+      ],
+      "derivedForms": [
+        {
+          "writtenForm": "-ul",
+          "phoneticForm": "ul",
+          "decomposition": "grammaticalized possessive suffix",
+          "grammaticalMeaning": "possessive marker"
+        },
+        {
+          "writtenForm": "ul'er",
+          "phoneticForm": "ul.ʔer",
+          "decomposition": "ul + -'er (verbalizer)",
+          "grammaticalMeaning": "to grasp"
+        }
+      ],
+      "graphEntry": {
+        "@id": "ehk:ul",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "ul",
+          "phoneticRep": "ul"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *ʔulu",
+          "etymon:meaning": "grasp",
+          "etymon:soundChange": [
+            "initial glottal loss",
+            "final vowel loss"
+          ],
+          "etymon:note": "Original root (~800 PF) had meanings 'thumb/grasp/possession'. By Late Proto-Hick (~400 PF), bare form specialized to 'thumb/possession'. Source of possessive suffix -ul through grammaticalization."
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "thumb",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Body Terms",
+              "Basic Terms"
+            ]
+          }
+        ],
+        "derivedForms": [
+          {
+            "@type": "ontolex:Form",
+            "writtenRep": "-ul",
+            "phoneticRep": "ul",
+            "decomposition": "grammaticalized possessive suffix",
+            "grammaticalMeaning": "possessive marker"
+          },
+          {
+            "@type": "ontolex:Form",
+            "writtenRep": "ul'er",
+            "phoneticRep": "ul.ʔer",
+            "decomposition": "ul + -'er (verbalizer)",
+            "grammaticalMeaning": "to grasp"
+          }
+        ]
+      }
+    },
+    "ehk:uran": {
+      "id": "ehk:uran",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
+      "writtenForm": "uran",
+      "phoneticForm": "u.rən",
+      "protoform": "Proto-Hick *ulu-haranu",
+      "note": "Shows development of measurement system from body parts",
+      "senses": [
+        {
+          "definition": "inch (unit of length, approximately thumb-width)",
+          "semanticField": [
+            "Measurement Terms",
+            "Basic Terms"
+          ],
+          "usage": ""
+        }
+      ],
+      "derivedForms": [],
+      "graphEntry": {
+        "@id": "ehk:uran",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "uran",
+          "phoneticRep": "u.rən"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *ulu-haranu",
+          "etymon:components": [
+            "*ulu (thumb)",
+            "*haranu (length)"
+          ],
+          "etymon:soundChange": [
+            "compound fusion",
+            "unstressed vowel reduction"
+          ],
+          "etymon:note": "Shows development of measurement system from body parts"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "inch (unit of length, approximately thumb-width)",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Measurement Terms",
+              "Basic Terms"
+            ]
+          }
+        ]
+      }
+    },
+    "ehk:us": {
+      "id": "ehk:us",
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
+      "writtenForm": "us",
+      "phoneticForm": "us",
+      "protoform": "Proto-Hick *ʔulu-isu",
+      "note": "Developed from locative form of *ʔulu (~400 PF) specializing in 'grasp' meaning",
+      "senses": [
+        {
+          "definition": "grasp, possession",
+          "semanticField": [
+            "Basic Terms",
+            "Action Terms"
+          ],
+          "usage": ""
+        }
+      ],
+      "derivedForms": [
+        {
+          "writtenForm": "us'er",
+          "phoneticForm": "us.ʔer",
+          "decomposition": "us + -'er (verbalizer)",
+          "grammaticalMeaning": "to possess,to own"
+        }
+      ],
+      "graphEntry": {
+        "@id": "ehk:us",
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "us",
+          "phoneticRep": "us"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *ʔulu-isu",
+          "etymon:components": [
+            "*ʔulu (thumb/grasp)",
+            "-isu (locative)"
+          ],
+          "etymon:soundChange": [
+            "vowel coalescence",
+            "final vowel loss"
+          ],
+          "etymon:note": "Developed from locative form of *ʔulu (~400 PF) specializing in 'grasp' meaning"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "grasp, possession",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": [
+              "Basic Terms",
+              "Action Terms"
+            ]
+          }
+        ],
+        "derivedForms": [
+          {
+            "@type": "ontolex:Form",
+            "writtenRep": "us'er",
+            "phoneticRep": "us.ʔer",
+            "decomposition": "us + -'er (verbalizer)",
+            "grammaticalMeaning": "to possess,to own"
+          }
+        ]
+      }
+    }
+  }
+}

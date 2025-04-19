@@ -1,0 +1,159 @@
+# Consonant Features
+Feature place (labial, palatal, dental, alveolar, velar, glottal)
+Feature manner (stop, fricative, nasal, liquid, glide)
+Feature voicing (voiced, unvoiced)
+
+# Vowel Features
+Feature low, mid, high
+Feature front, central, back
+
+# Stress
+Feature aspiration (*unaspirated, aspirated)
+Feature (syllable) stress (*unstressed, primary, secondary)
+
+Diacritic ˈ (before) [primary]
+Diacritic ˌ (before) [secondary]
+Diacritic ʰ [aspirated]
+
+# Consonants
+Symbol p [unvoiced labial stop]
+Symbol b [voiced labial stop]
+Symbol t [unvoiced alveolar stop]
+Symbol d [voiced alveolar stop]
+Symbol k [unvoiced velar stop]
+Symbol g [voiced velar stop]
+Symbol v [voiced labial fricative]
+Symbol θ [unvoiced dental fricative]
+Symbol ð [voiced dental fricative]
+Symbol s [unvoiced alveolar fricative]
+Symbol m [voiced labial nasal]
+Symbol n [unvoiced alveolar nasal]
+Symbol l [unvoiced alveolar liquid]
+Symbol r [voiced alveolar liquid]
+Symbol ʔ [unvoiced glottal stop]
+Symbol h [unvoiced glottal fricative]
+Symbol x [voiced glottal fricative]
+Symbol w [voiced labial glide]
+Symbol j [voiced palatal glide]
+
+
+# Vowels
+Symbol i [+high -mid -low +front -central -back]
+Symbol u [+high -mid -low -front -central +back]
+Symbol e [-high +mid -low +front -central -back]
+Symbol o [-high +mid -low -front -central +back]
+Symbol a [-high -mid +low -front +central -back]
+Symbol ə [+mid -high -low +central -front -back]
+
+Class consonant {p, b, t, d, k, g, v, θ, ð, s, m, n, l, r, ʔ, h, x, w, tʰ, dʰ, j}
+Class initialcluster {pr, br, kr, gr, sk, st, kn, gn, tr, θr}
+Class finalcluster {st, sk, sp, ks, ls, rs}
+Class vowel {i, e, o, a, u, ə}
+Class diphthong {ai, ae, ei}
+
+deromanizer:
+  ch => x
+  y => j
+
+# Sindarin comes by after Stage 2 of transition of Proto-Hick to Early Hick
+# Syllable structure is same as Stage 3, basically last stage til Early Hick
+
+Syllables:
+  @consonant @vowel @consonant? @consonant?
+  @consonant @vowel @vowel? @consonant?
+  @initialcluster? @vowel @vowel? @consonant?
+  {st,sk,sp,ks,ls,rs} / _ $
+
+compound-nasal-liquid-deletion:
+  {[nasal], [liquid]} => * / @consonant @vowel? $$ _ 
+  {[nasal], [liquid]} => * / _ $$ @consonant
+  Then: (
+    $$ => *
+    [glottal] => * / _ @vowel
+  )
+
+voiced-glottal-repair:
+  x => h / $ _ @vowel
+  x => k / _ $
+
+aspiration-repair:
+  tʰ => t / [fricative] _ $
+  tʰ => θ ə / [liquid] _ $
+  tʰ => θ / [liquid] _ @vowel
+  Then: θ [+low] => θ ə
+
+palatal-glide-repair:
+  j => i / _
+
+voiced-dental-repair:
+  ð => dʰ / _ 
+  Then: dʰ => d / @vowel _ @vowel
+
+initial-glottal-fricative-deletion:
+  [unvoiced glottal fricative] => * / $ _ @vowel&![+high]
+
+initial-glottal-stop-deletion:
+  [unvoiced glottal stop] => * / $ _ @vowel
+
+animacy-marker-change:
+  # Animacy marker reduction
+  # hi [unvoiced !glottal stop] => ʔi [stop] / $ _ @vowel
+  # Else: hi => ʔ / $ _ @vowel
+  # Else: hi => ʔi / $ _ 
+  hi => ʔi / $ _ {[+high], @consonant&![glottal stop]}
+  Else: hi => ʔ / $ _ [glottal stop]
+  Else: hi => ʔ / $ _ @vowel
+  # Sacred marker shift
+
+dental-fricative-cluster-formation:
+  θ @vowel => θ * / $ _ r @vowel // _ <syl> $
+
+vowel-coalescence cleanup:
+  @vowel {h,l} => @vowel * / _ @vowel // _ @vowel $
+  Then: @vowel @vowel => @vowel * / _ @consonant
+  {w} @vowel => * @vowel / [nasal] _ @consonant $
+  {w} ə => * ə / _ @consonant $
+  @vowel {h} => @vowel * / _ @vowel $
+  @vowel @vowel => @vowel * / _ @consonant
+
+initial-h-before-consonant-cleanup cleanup:
+  h => ʔ  / $ _ @consonant
+
+coda-simplification:
+  [liquid] [nasal] => [liquid] * 
+  [nasal] [liquid] => * [liquid] 
+
+metathesis-complex-cluster-simplification cleanup:
+  @vowel$1 @consonant$2 => $2 $1 / $ _ @finalcluster
+
+first-syllable-syncope:
+  {p,b,k,t,s,θ} @vowel => {p,b,k,t,s,θ} * / $ _ {k,t,n,r} <syl> // _ @consonant <syl> @consonant
+
+back-vowel-reduction-after-velar-stop:
+  [+back] => * / $ [velar stop] _ [nasal]
+
+cluster-resolution propagate:
+  # Case 1: CərC > CrəC when followed by another consonant
+  {b,t,θ,k}$1 a r =>  $1 r a / _ {s,t,k}
+
+  # Case 2: rəC > rC before another consonant
+  ə => * / r _ @consonant <syl>
+
+  # Case 3: CəC > CC before r
+  ə => * / @consonant _ @consonant r
+
+  # Case 4: Final schwa deletion
+  ə => * / {b,t,k} _ r [unstressed]  # For br,tr,kr clusters
+  ə => * / s _ {p,t,k} [unstressed] # For st,sk clusters
+
+final-vowel-transposition:
+  {p,b,k,r,t,θ}$1 {r,n,t,θ,k}$2 ə => $1 ə $2 / _ $
+  Then: ə => a / _ [fricative]&!{[alveolar],[dental]} $ 
+  Then: ə => e / [stop] _ @consonant
+
+final-vowel-reduction:
+  ə => * / _ $
+
+romanizer:
+  x => ch
+

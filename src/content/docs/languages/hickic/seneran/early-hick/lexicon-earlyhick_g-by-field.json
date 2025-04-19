@@ -1,0 +1,2380 @@
+{
+  "id": "lexicon:EarlyHick_G",
+  "title": "Early Hick Lexicon - G entries",
+  "fields": {
+    "Agricultural Terms": {
+      "uri": "agricultural-terms",
+      "label": "Agricultural Terms"
+    },
+    "Animals": {
+      "uri": "animals",
+      "label": "Animals"
+    },
+    "Basic Terms": {
+      "uri": "basic-terms",
+      "label": "Basic Terms"
+    },
+    "Body Terms": {
+      "uri": "body-terms",
+      "label": "Body Terms"
+    },
+    "Colors": {
+      "uri": "colors",
+      "label": "Colors"
+    },
+    "Cultivated Plants": {
+      "uri": "cultivated-plants",
+      "label": "Cultivated Plants"
+    },
+    "Earth Terms": {
+      "uri": "earth-terms",
+      "label": "Earth Terms"
+    },
+    "Elements": {
+      "uri": "elements",
+      "label": "Elements"
+    },
+    "Emotional Terms": {
+      "uri": "emotional-terms",
+      "label": "Emotional Terms"
+    },
+    "Flora Terms": {
+      "uri": "flora-terms",
+      "label": "Flora Terms"
+    },
+    "Flora": {
+      "uri": "flora",
+      "label": "Flora"
+    },
+    "Food Terms": {
+      "uri": "food-terms",
+      "label": "Food Terms"
+    },
+    "Gender Terms": {
+      "uri": "gender-terms",
+      "label": "Gender Terms"
+    },
+    "Landforms": {
+      "uri": "landforms",
+      "label": "Landforms"
+    },
+    "Material Culture": {
+      "uri": "material-culture",
+      "label": "Material Culture"
+    },
+    "Medical Terms": {
+      "uri": "medical-terms",
+      "label": "Medical Terms"
+    },
+    "Mental Terms": {
+      "uri": "mental-terms",
+      "label": "Mental Terms"
+    },
+    "Metals": {
+      "uri": "metals",
+      "label": "Metals"
+    },
+    "Natural World": {
+      "uri": "natural-world",
+      "label": "Natural World"
+    },
+    "Pastoral Terms": {
+      "uri": "pastoral-terms",
+      "label": "Pastoral Terms"
+    },
+    "Pasture Terms": {
+      "uri": "pasture-terms",
+      "label": "Pasture Terms"
+    },
+    "Person Terms": {
+      "uri": "person-terms",
+      "label": "Person Terms"
+    },
+    "Place Terms": {
+      "uri": "place-terms",
+      "label": "Place Terms"
+    },
+    "Plant Terms": {
+      "uri": "plant-terms",
+      "label": "Plant Terms"
+    },
+    "Storage Terms": {
+      "uri": "storage-terms",
+      "label": "Storage Terms"
+    },
+    "Tool Terms": {
+      "uri": "tool-terms",
+      "label": "Tool Terms"
+    }
+  },
+  "lexicon": {
+    "Agricultural Terms": [
+      {
+        "id": "ehk:granmal",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "granmal",
+        "phoneticForm": "gran.mal",
+        "senses": [
+          {
+            "definition": "grain storage",
+            "semanticField": [
+              "Agricultural Terms",
+              "Storage Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:granmal",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "granmal",
+            "phoneticRep": "gran.mal"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gran-mal",
+            "etymon:meaning": "grain-pool",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grain storage",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Agricultural Terms",
+                "Storage Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:graswad",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "graswad",
+        "phoneticForm": "gras.wad",
+        "senses": [
+          {
+            "definition": "pasture path",
+            "semanticField": [
+              "Pasture Terms",
+              "Agricultural Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:graswad",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "graswad",
+            "phoneticRep": "gras.wad"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gras-wad",
+            "etymon:meaning": "grass-path",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "pasture path",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Pasture Terms",
+                "Agricultural Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Animals": [
+      {
+        "id": "ehk:grapar",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "grapar",
+        "phoneticForm": "gra.par",
+        "note": "Shows descriptive compound formation based on movement",
+        "senses": [
+          {
+            "definition": "earthworm",
+            "semanticField": [
+              "Animals",
+              "Earth Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:grapar",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "grapar",
+            "phoneticRep": "gra.par"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:gral"
+            },
+            {
+              "@id": "ehk:par"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gral-par",
+            "etymon:gloss": "earth-crawl",
+            "etymon:soundChange": "liquid deletion",
+            "etymon:note": "Shows descriptive compound formation based on movement"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "earthworm",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Animals",
+                "Earth Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Basic Terms": [
+      {
+        "id": "ehk:ger",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "ger",
+        "phoneticForm": "ger",
+        "protoform": "Proto-Hick *kuru-garu",
+        "senses": [
+          {
+            "definition": "metal",
+            "semanticField": [
+              "Metals",
+              "Material Culture",
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:ger",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "ger",
+            "phoneticRep": "ger"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "kurger",
+            "etymon:gloss": "moss-stone",
+            "etymon:protoform": "Proto-Hick *kuru-garu",
+            "etymon:soundChange": "compound reduction"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "metal",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Metals",
+                "Material Culture",
+                "Basic Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:gnar",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gnar",
+        "phoneticForm": "gnar",
+        "protoform": "Proto-Hick *gnaru",
+        "senses": [
+          {
+            "definition": "correct",
+            "semanticField": [
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "gnar-'er",
+            "phoneticForm": "gnar.ʔer",
+            "decomposition": "gnar + -'er (verbalizer)",
+            "grammaticalMeaning": "to be correct"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:gnar",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gnar",
+            "phoneticRep": "gnar"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *gnaru",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "correct",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": "Basic Terms"
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "gnar-'er",
+              "phoneticRep": "gnar.ʔer",
+              "decomposition": "gnar + -'er (verbalizer)",
+              "grammaticalMeaning": "to be correct"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:gnater",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
+        "writtenForm": "gnater",
+        "phoneticForm": "gna.ter",
+        "senses": [
+          {
+            "definition": "desire",
+            "semanticField": [
+              "Mental Terms",
+              "Emotional Terms",
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gnater",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gnater",
+            "phoneticRep": "gna.ter"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:gnar"
+            },
+            {
+              "@id": "ehk:ter"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gnar-ter",
+            "etymon:meaning": "correct-flow",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "desire",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Emotional Terms",
+                "Basic Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:gras",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gras",
+        "phoneticForm": "gras",
+        "protoform": "Proto-Hick *grasu",
+        "senses": [
+          {
+            "definition": "grass",
+            "semanticField": [
+              "Plant Terms",
+              "Natural World",
+              "Pastoral Terms",
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "gras'er",
+            "phoneticForm": "gras.ʔer",
+            "decomposition": "gras + -'er (verbalizer)",
+            "grammaticalMeaning": "to graze"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:gras",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gras",
+            "phoneticRep": "gras"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *grasu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grass",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Plant Terms",
+                "Natural World",
+                "Pastoral Terms",
+                "Basic Terms"
+              ]
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "gras'er",
+              "phoneticRep": "gras.ʔer",
+              "decomposition": "gras + -'er (verbalizer)",
+              "grammaticalMeaning": "to graze"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:gasam",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gasam",
+        "phoneticForm": "ga.sam",
+        "note": "Literally \"under rock,\" referring to the action of grinding",
+        "senses": [
+          {
+            "definition": "grinding",
+            "semanticField": [
+              "Tool Terms",
+              "Basic Terms"
+            ],
+            "usage": "Forms the base for specialized grinding terms"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gasam",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gasam",
+            "phoneticRep": "ga.sam"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gar-asam",
+            "etymon:gloss": "rock-under",
+            "etymon:note": "Literally \"under rock,\" referring to the action of grinding"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grinding",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Tool Terms",
+                "Basic Terms"
+              ],
+              "usage": "Forms the base for specialized grinding terms"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:gra",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Adjective"
+        ],
+        "writtenForm": "gra",
+        "phoneticForm": "gra",
+        "protoform": "Proto-Hick *grau",
+        "note": "Shows vowel sequence simplification",
+        "senses": [
+          {
+            "definition": "grey",
+            "semanticField": [
+              "Colors",
+              "Basic Terms"
+            ],
+            "usage": "Lost other meanings by Early Hick, making ka- prefix unnecessary"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gra",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Adjective"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gra",
+            "phoneticRep": "gra"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *grau",
+            "etymon:note": "Shows vowel sequence simplification"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grey",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Colors",
+                "Basic Terms"
+              ],
+              "usage": "Lost other meanings by Early Hick, making ka- prefix unnecessary"
+            }
+          ]
+        }
+      }
+    ],
+    "Body Terms": [
+      {
+        "id": "ehk:gralimris",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gralimris",
+        "phoneticForm": "gra.lim.ris",
+        "senses": [
+          {
+            "definition": "excrement",
+            "semanticField": [
+              "Medical Terms",
+              "Body Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gralimris",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gralimris",
+            "phoneticRep": "gra.lim.ris"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:gral"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gral-imris",
+            "etymon:gloss": "soil-ELL",
+            "etymon:soundChange": "case lexicalization"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "excrement",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Medical Terms",
+                "Body Terms"
+              ],
+              "lexinfo:register": "lexinfo:formalRegister"
+            }
+          ]
+        }
+      }
+    ],
+    "Colors": [
+      {
+        "id": "ehk:gra",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Adjective"
+        ],
+        "writtenForm": "gra",
+        "phoneticForm": "gra",
+        "protoform": "Proto-Hick *grau",
+        "note": "Shows vowel sequence simplification",
+        "senses": [
+          {
+            "definition": "grey",
+            "semanticField": [
+              "Colors",
+              "Basic Terms"
+            ],
+            "usage": "Lost other meanings by Early Hick, making ka- prefix unnecessary"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gra",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Adjective"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gra",
+            "phoneticRep": "gra"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *grau",
+            "etymon:note": "Shows vowel sequence simplification"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grey",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Colors",
+                "Basic Terms"
+              ],
+              "usage": "Lost other meanings by Early Hick, making ka- prefix unnecessary"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:grakur",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "grakur",
+        "phoneticForm": "gra.kur",
+        "note": "Shows descriptive compound formation for metal types",
+        "senses": [
+          {
+            "definition": "grey copper",
+            "semanticField": [
+              "Metals",
+              "Colors"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:grakur",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "grakur",
+            "phoneticRep": "gra.kur"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gra-kur",
+            "etymon:gloss": "grey-copper",
+            "etymon:note": "Shows descriptive compound formation for metal types"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grey copper",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Metals",
+                "Colors"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Cultivated Plants": [
+      {
+        "id": "ehk:gransed",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gransed",
+        "phoneticForm": "gran.sed",
+        "senses": [
+          {
+            "definition": "grain",
+            "semanticField": [
+              "Flora",
+              "Place Terms",
+              "Cultivated Plants"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gransed",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gransed",
+            "phoneticRep": "gran.sed"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gras-sed",
+            "etymon:meaning": "grass-seed",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grain",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Place Terms",
+                "Cultivated Plants"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:grased",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "grased",
+        "phoneticForm": "gra.sed",
+        "note": "Shows typical compound formation for cultivated plants",
+        "senses": [
+          {
+            "definition": "grain",
+            "semanticField": [
+              "Flora Terms",
+              "Cultivated Plants",
+              "Food Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:grased",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "grased",
+            "phoneticRep": "gra.sed"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gras-sed",
+            "etymon:gloss": "grass-seed",
+            "etymon:note": "Shows typical compound formation for cultivated plants"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grain",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora Terms",
+                "Cultivated Plants",
+                "Food Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Earth Terms": [
+      {
+        "id": "ehk:grapar",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "grapar",
+        "phoneticForm": "gra.par",
+        "note": "Shows descriptive compound formation based on movement",
+        "senses": [
+          {
+            "definition": "earthworm",
+            "semanticField": [
+              "Animals",
+              "Earth Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:grapar",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "grapar",
+            "phoneticRep": "gra.par"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:gral"
+            },
+            {
+              "@id": "ehk:par"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gral-par",
+            "etymon:gloss": "earth-crawl",
+            "etymon:soundChange": "liquid deletion",
+            "etymon:note": "Shows descriptive compound formation based on movement"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "earthworm",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Animals",
+                "Earth Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Elements": [
+      {
+        "id": "ehk:gar",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gar",
+        "phoneticForm": "gar",
+        "protoform": "Proto-Hick *garu",
+        "senses": [
+          {
+            "definition": "stone",
+            "semanticField": [
+              "Natural World",
+              "Elements"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gar",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gar",
+            "phoneticRep": "gar"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *garu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "stone",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Natural World",
+                "Elements"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Emotional Terms": [
+      {
+        "id": "ehk:gnater",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
+        "writtenForm": "gnater",
+        "phoneticForm": "gna.ter",
+        "senses": [
+          {
+            "definition": "desire",
+            "semanticField": [
+              "Mental Terms",
+              "Emotional Terms",
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gnater",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gnater",
+            "phoneticRep": "gna.ter"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:gnar"
+            },
+            {
+              "@id": "ehk:ter"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gnar-ter",
+            "etymon:meaning": "correct-flow",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "desire",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Emotional Terms",
+                "Basic Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Flora Terms": [
+      {
+        "id": "ehk:grased",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "grased",
+        "phoneticForm": "gra.sed",
+        "note": "Shows typical compound formation for cultivated plants",
+        "senses": [
+          {
+            "definition": "grain",
+            "semanticField": [
+              "Flora Terms",
+              "Cultivated Plants",
+              "Food Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:grased",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "grased",
+            "phoneticRep": "gra.sed"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gras-sed",
+            "etymon:gloss": "grass-seed",
+            "etymon:note": "Shows typical compound formation for cultivated plants"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grain",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora Terms",
+                "Cultivated Plants",
+                "Food Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Flora": [
+      {
+        "id": "ehk:gransed",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gransed",
+        "phoneticForm": "gran.sed",
+        "senses": [
+          {
+            "definition": "grain",
+            "semanticField": [
+              "Flora",
+              "Place Terms",
+              "Cultivated Plants"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gransed",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gransed",
+            "phoneticRep": "gran.sed"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gras-sed",
+            "etymon:meaning": "grass-seed",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grain",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Place Terms",
+                "Cultivated Plants"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:grasgral",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "grasgral",
+        "phoneticForm": "gras.gral",
+        "senses": [
+          {
+            "definition": "meadow, grassland",
+            "semanticField": [
+              "Flora",
+              "Pastoral Terms",
+              "Landforms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:grasgral",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "grasgral",
+            "phoneticRep": "gras.gral"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:gras"
+            },
+            {
+              "@id": "ehk:gral"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gras-gral",
+            "etymon:meaning": "grass-earth",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "meadow, grassland",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Pastoral Terms",
+                "Landforms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Food Terms": [
+      {
+        "id": "ehk:grased",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "grased",
+        "phoneticForm": "gra.sed",
+        "note": "Shows typical compound formation for cultivated plants",
+        "senses": [
+          {
+            "definition": "grain",
+            "semanticField": [
+              "Flora Terms",
+              "Cultivated Plants",
+              "Food Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:grased",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "grased",
+            "phoneticRep": "gra.sed"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gras-sed",
+            "etymon:gloss": "grass-seed",
+            "etymon:note": "Shows typical compound formation for cultivated plants"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grain",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora Terms",
+                "Cultivated Plants",
+                "Food Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Gender Terms": [
+      {
+        "id": "ehk:gal",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gal",
+        "phoneticForm": "gal",
+        "note": "Shows metaphorical extension of hardness to masculinity",
+        "senses": [
+          {
+            "definition": "man",
+            "semanticField": [
+              "Person Terms",
+              "Gender Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gal",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gal",
+            "phoneticRep": "gal"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gar'el",
+            "etymon:gloss": "hard-person",
+            "etymon:components": [
+              "garu (hard)",
+              "ʔalu (person)"
+            ],
+            "etymon:note": "Shows metaphorical extension of hardness to masculinity"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "man",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Person Terms",
+                "Gender Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Landforms": [
+      {
+        "id": "ehk:grasgral",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "grasgral",
+        "phoneticForm": "gras.gral",
+        "senses": [
+          {
+            "definition": "meadow, grassland",
+            "semanticField": [
+              "Flora",
+              "Pastoral Terms",
+              "Landforms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:grasgral",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "grasgral",
+            "phoneticRep": "gras.gral"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:gras"
+            },
+            {
+              "@id": "ehk:gral"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gras-gral",
+            "etymon:meaning": "grass-earth",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "meadow, grassland",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Pastoral Terms",
+                "Landforms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Material Culture": [
+      {
+        "id": "ehk:ger",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "ger",
+        "phoneticForm": "ger",
+        "protoform": "Proto-Hick *kuru-garu",
+        "senses": [
+          {
+            "definition": "metal",
+            "semanticField": [
+              "Metals",
+              "Material Culture",
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:ger",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "ger",
+            "phoneticRep": "ger"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "kurger",
+            "etymon:gloss": "moss-stone",
+            "etymon:protoform": "Proto-Hick *kuru-garu",
+            "etymon:soundChange": "compound reduction"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "metal",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Metals",
+                "Material Culture",
+                "Basic Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Medical Terms": [
+      {
+        "id": "ehk:gralimris",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gralimris",
+        "phoneticForm": "gra.lim.ris",
+        "senses": [
+          {
+            "definition": "excrement",
+            "semanticField": [
+              "Medical Terms",
+              "Body Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gralimris",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gralimris",
+            "phoneticRep": "gra.lim.ris"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:gral"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gral-imris",
+            "etymon:gloss": "soil-ELL",
+            "etymon:soundChange": "case lexicalization"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "excrement",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Medical Terms",
+                "Body Terms"
+              ],
+              "lexinfo:register": "lexinfo:formalRegister"
+            }
+          ]
+        }
+      }
+    ],
+    "Mental Terms": [
+      {
+        "id": "ehk:gnater",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
+        "writtenForm": "gnater",
+        "phoneticForm": "gna.ter",
+        "senses": [
+          {
+            "definition": "desire",
+            "semanticField": [
+              "Mental Terms",
+              "Emotional Terms",
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gnater",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gnater",
+            "phoneticRep": "gna.ter"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:gnar"
+            },
+            {
+              "@id": "ehk:ter"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gnar-ter",
+            "etymon:meaning": "correct-flow",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "desire",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Mental Terms",
+                "Emotional Terms",
+                "Basic Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Metals": [
+      {
+        "id": "ehk:ger",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "ger",
+        "phoneticForm": "ger",
+        "protoform": "Proto-Hick *kuru-garu",
+        "senses": [
+          {
+            "definition": "metal",
+            "semanticField": [
+              "Metals",
+              "Material Culture",
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:ger",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "ger",
+            "phoneticRep": "ger"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "kurger",
+            "etymon:gloss": "moss-stone",
+            "etymon:protoform": "Proto-Hick *kuru-garu",
+            "etymon:soundChange": "compound reduction"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "metal",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Metals",
+                "Material Culture",
+                "Basic Terms"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:grakur",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "grakur",
+        "phoneticForm": "gra.kur",
+        "note": "Shows descriptive compound formation for metal types",
+        "senses": [
+          {
+            "definition": "grey copper",
+            "semanticField": [
+              "Metals",
+              "Colors"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:grakur",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "grakur",
+            "phoneticRep": "gra.kur"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gra-kur",
+            "etymon:gloss": "grey-copper",
+            "etymon:note": "Shows descriptive compound formation for metal types"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grey copper",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Metals",
+                "Colors"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Natural World": [
+      {
+        "id": "ehk:gar",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gar",
+        "phoneticForm": "gar",
+        "protoform": "Proto-Hick *garu",
+        "senses": [
+          {
+            "definition": "stone",
+            "semanticField": [
+              "Natural World",
+              "Elements"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gar",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gar",
+            "phoneticRep": "gar"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *garu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "stone",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Natural World",
+                "Elements"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:gral",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gral",
+        "phoneticForm": "gral",
+        "protoform": "Proto-Hick *gralu",
+        "senses": [
+          {
+            "definition": "earth, soil",
+            "semanticField": [
+              "Natural World"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gral",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gral",
+            "phoneticRep": "gral"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *gralu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "earth, soil",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": "Natural World"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:gras",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gras",
+        "phoneticForm": "gras",
+        "protoform": "Proto-Hick *grasu",
+        "senses": [
+          {
+            "definition": "grass",
+            "semanticField": [
+              "Plant Terms",
+              "Natural World",
+              "Pastoral Terms",
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "gras'er",
+            "phoneticForm": "gras.ʔer",
+            "decomposition": "gras + -'er (verbalizer)",
+            "grammaticalMeaning": "to graze"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:gras",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gras",
+            "phoneticRep": "gras"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *grasu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grass",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Plant Terms",
+                "Natural World",
+                "Pastoral Terms",
+                "Basic Terms"
+              ]
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "gras'er",
+              "phoneticRep": "gras.ʔer",
+              "decomposition": "gras + -'er (verbalizer)",
+              "grammaticalMeaning": "to graze"
+            }
+          ]
+        }
+      }
+    ],
+    "Pastoral Terms": [
+      {
+        "id": "ehk:gras",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gras",
+        "phoneticForm": "gras",
+        "protoform": "Proto-Hick *grasu",
+        "senses": [
+          {
+            "definition": "grass",
+            "semanticField": [
+              "Plant Terms",
+              "Natural World",
+              "Pastoral Terms",
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "gras'er",
+            "phoneticForm": "gras.ʔer",
+            "decomposition": "gras + -'er (verbalizer)",
+            "grammaticalMeaning": "to graze"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:gras",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gras",
+            "phoneticRep": "gras"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *grasu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grass",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Plant Terms",
+                "Natural World",
+                "Pastoral Terms",
+                "Basic Terms"
+              ]
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "gras'er",
+              "phoneticRep": "gras.ʔer",
+              "decomposition": "gras + -'er (verbalizer)",
+              "grammaticalMeaning": "to graze"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ehk:grasgral",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "grasgral",
+        "phoneticForm": "gras.gral",
+        "senses": [
+          {
+            "definition": "meadow, grassland",
+            "semanticField": [
+              "Flora",
+              "Pastoral Terms",
+              "Landforms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:grasgral",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "grasgral",
+            "phoneticRep": "gras.gral"
+          },
+          "decomp:subterm": [
+            {
+              "@id": "ehk:gras"
+            },
+            {
+              "@id": "ehk:gral"
+            }
+          ],
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gras-gral",
+            "etymon:meaning": "grass-earth",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "meadow, grassland",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Pastoral Terms",
+                "Landforms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Pasture Terms": [
+      {
+        "id": "ehk:graswad",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "graswad",
+        "phoneticForm": "gras.wad",
+        "senses": [
+          {
+            "definition": "pasture path",
+            "semanticField": [
+              "Pasture Terms",
+              "Agricultural Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:graswad",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "graswad",
+            "phoneticRep": "gras.wad"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gras-wad",
+            "etymon:meaning": "grass-path",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "pasture path",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Pasture Terms",
+                "Agricultural Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Person Terms": [
+      {
+        "id": "ehk:gal",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gal",
+        "phoneticForm": "gal",
+        "note": "Shows metaphorical extension of hardness to masculinity",
+        "senses": [
+          {
+            "definition": "man",
+            "semanticField": [
+              "Person Terms",
+              "Gender Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gal",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gal",
+            "phoneticRep": "gal"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gar'el",
+            "etymon:gloss": "hard-person",
+            "etymon:components": [
+              "garu (hard)",
+              "ʔalu (person)"
+            ],
+            "etymon:note": "Shows metaphorical extension of hardness to masculinity"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "man",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Person Terms",
+                "Gender Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Place Terms": [
+      {
+        "id": "ehk:gransed",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gransed",
+        "phoneticForm": "gran.sed",
+        "senses": [
+          {
+            "definition": "grain",
+            "semanticField": [
+              "Flora",
+              "Place Terms",
+              "Cultivated Plants"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gransed",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gransed",
+            "phoneticRep": "gran.sed"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gras-sed",
+            "etymon:meaning": "grass-seed",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grain",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Flora",
+                "Place Terms",
+                "Cultivated Plants"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Plant Terms": [
+      {
+        "id": "ehk:gras",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gras",
+        "phoneticForm": "gras",
+        "protoform": "Proto-Hick *grasu",
+        "senses": [
+          {
+            "definition": "grass",
+            "semanticField": [
+              "Plant Terms",
+              "Natural World",
+              "Pastoral Terms",
+              "Basic Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [
+          {
+            "writtenForm": "gras'er",
+            "phoneticForm": "gras.ʔer",
+            "decomposition": "gras + -'er (verbalizer)",
+            "grammaticalMeaning": "to graze"
+          }
+        ],
+        "graphEntry": {
+          "@id": "ehk:gras",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gras",
+            "phoneticRep": "gras"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:protoform": "Proto-Hick *grasu",
+            "etymon:soundChange": "final vowel loss"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grass",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Plant Terms",
+                "Natural World",
+                "Pastoral Terms",
+                "Basic Terms"
+              ]
+            }
+          ],
+          "derivedForms": [
+            {
+              "@type": "ontolex:Form",
+              "writtenRep": "gras'er",
+              "phoneticRep": "gras.ʔer",
+              "decomposition": "gras + -'er (verbalizer)",
+              "grammaticalMeaning": "to graze"
+            }
+          ]
+        }
+      }
+    ],
+    "Storage Terms": [
+      {
+        "id": "ehk:granmal",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "granmal",
+        "phoneticForm": "gran.mal",
+        "senses": [
+          {
+            "definition": "grain storage",
+            "semanticField": [
+              "Agricultural Terms",
+              "Storage Terms"
+            ],
+            "usage": ""
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:granmal",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "granmal",
+            "phoneticRep": "gran.mal"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gran-mal",
+            "etymon:meaning": "grain-pool",
+            "etymon:soundChange": "compound fusion"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grain storage",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Agricultural Terms",
+                "Storage Terms"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "Tool Terms": [
+      {
+        "id": "ehk:gasam",
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
+        "writtenForm": "gasam",
+        "phoneticForm": "ga.sam",
+        "note": "Literally \"under rock,\" referring to the action of grinding",
+        "senses": [
+          {
+            "definition": "grinding",
+            "semanticField": [
+              "Tool Terms",
+              "Basic Terms"
+            ],
+            "usage": "Forms the base for specialized grinding terms"
+          }
+        ],
+        "derivedForms": [],
+        "graphEntry": {
+          "@id": "ehk:gasam",
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
+          "canonicalForm": {
+            "@type": "ontolex:Form",
+            "writtenRep": "gasam",
+            "phoneticRep": "ga.sam"
+          },
+          "etymology": {
+            "@type": "etymon:Etymology",
+            "etymon:compound": "gar-asam",
+            "etymon:gloss": "rock-under",
+            "etymon:note": "Literally \"under rock,\" referring to the action of grinding"
+          },
+          "sense": [
+            {
+              "@type": "ontolex:LexicalSense",
+              "definition": {
+                "@value": "grinding",
+                "@language": "en"
+              },
+              "lexinfo:semanticField": [
+                "Tool Terms",
+                "Basic Terms"
+              ],
+              "usage": "Forms the base for specialized grinding terms"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
