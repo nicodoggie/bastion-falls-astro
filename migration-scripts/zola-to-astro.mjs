@@ -27,10 +27,10 @@ export const options = {
 // --- Configuration ---
 const sourceBaseDir = path.resolve("../bastion-falls/site/content"); // Adjust if your Zola project is elsewhere
 const targetDocsBaseDir = path.resolve(
-  "../bastion-falls-astro/src/content/docs"
+  "../bastion-falls-astro/src/content/docs",
 ); // Starlight docs directory
 const targetBlogBaseDir = path.resolve(
-  "../bastion-falls-astro/src/content/blog"
+  "../bastion-falls-astro/src/content/blog",
 ); // Blog collection directory
 // --- End Configuration ---
 
@@ -88,7 +88,7 @@ function migrateFile(sourceFilePath) {
   const targetFilePath = path.join(
     currentTargetBaseDir,
     parsedPath.dir,
-    targetFilename
+    targetFilename,
   );
 
   try {
@@ -99,7 +99,7 @@ function migrateFile(sourceFilePath) {
 
     if (!zolaFmData) {
       console.warn(
-        `  [Warning] No TOML frontmatter found in ${sourceFilePath}`
+        `  [Warning] No TOML frontmatter found in ${sourceFilePath}`,
       );
     }
 
@@ -139,7 +139,7 @@ function migrateFile(sourceFilePath) {
           // zolaFmData.taxonomies[taxType].forEach(val => astroFmData.tags.push(`${taxType}:${val}`));
           // Or just add the value directly:
           zolaFmData.taxonomies[taxType].forEach((val) =>
-            astroFmData.tags.push(val)
+            astroFmData.tags.push(val),
           );
         }
       }
@@ -165,16 +165,16 @@ function migrateFile(sourceFilePath) {
 
         const absoluteSourceLinkPath = path.resolve(
           sourceBaseDir,
-          `${linkPathBase}.md`
+          `${linkPathBase}.md`,
         );
         let relativeSourceLinkPath = path.relative(
           sourceBaseDir,
-          absoluteSourceLinkPath
+          absoluteSourceLinkPath,
         );
 
         // Determine if the *linked* file is blog or docs
         const isLinkToBlog = relativeSourceLinkPath.startsWith(
-          "blog" + path.sep
+          "blog" + path.sep,
         );
         let targetLinkCollectionBaseDir = isLinkToBlog
           ? targetBlogBaseDir
@@ -193,7 +193,7 @@ function migrateFile(sourceFilePath) {
         }
         const relativeTargetLinkPath = path.join(
           parsedSourceLinkPath.dir,
-          targetLinkFilename
+          targetLinkFilename,
         );
 
         // Calculate the relative path FROM the current file's TARGET location TO the linked file's TARGET location
@@ -201,12 +201,12 @@ function migrateFile(sourceFilePath) {
         // NOTE: We need the *absolute* path of the linked file in the target structure
         const linkedFileTargetAbsPath = path.join(
           targetLinkCollectionBaseDir, // Use the correct base dir (blog or docs)
-          relativeTargetLinkPath
+          relativeTargetLinkPath,
         );
 
         let relativeMdLink = path.relative(
           currentFileTargetDir,
-          linkedFileTargetAbsPath
+          linkedFileTargetAbsPath,
         );
 
         // Ensure relative paths start correctly for markdown
@@ -223,10 +223,10 @@ function migrateFile(sourceFilePath) {
         }
 
         console.log(
-          `    Rewriting link: @/${zolaLinkPath} -> ${relativeMdLink}`
+          `    Rewriting link: @/${zolaLinkPath} -> ${relativeMdLink}`,
         );
         return `(${relativeMdLink})`; // Return the updated link in markdown format
-      }
+      },
     );
 
     // Combine and Write Output
@@ -270,7 +270,7 @@ function walkDir(dir) {
           : relativePath;
         const targetAssetPath = path.join(
           currentTargetBaseDir,
-          relativeToCollectionDir
+          relativeToCollectionDir,
         );
         console.log(`Copying asset: ${fullPath}`);
         try {
@@ -293,23 +293,23 @@ if (!fs.existsSync(sourceBaseDir)) {
 // Ensure both target directories exist
 if (!fs.existsSync(targetDocsBaseDir)) {
   console.log(
-    `Target directory does not exist, creating: ${targetDocsBaseDir}`
+    `Target directory does not exist, creating: ${targetDocsBaseDir}`,
   );
   fs.mkdirSync(targetDocsBaseDir, { recursive: true });
 }
 if (!fs.existsSync(targetBlogBaseDir)) {
   console.log(
-    `Target directory does not exist, creating: ${targetBlogBaseDir}`
+    `Target directory does not exist, creating: ${targetBlogBaseDir}`,
   );
   fs.mkdirSync(targetBlogBaseDir, { recursive: true });
 }
 
 console.log(
-  `Starting migration from ${sourceBaseDir} to ${targetDocsBaseDir} and ${targetBlogBaseDir}`
+  `Starting migration from ${sourceBaseDir} to ${targetDocsBaseDir} and ${targetBlogBaseDir}`,
 );
 walkDir(sourceBaseDir);
 console.log("Migration complete.");
 console.log(
-  "Remember to install dependencies: npm install toml js-yaml (or pnpm/yarn)"
+  "Remember to install dependencies: npm install toml js-yaml (or pnpm/yarn)",
 );
 console.log("Run this script using: node migration-scripts/zola-to-astro.mjs");

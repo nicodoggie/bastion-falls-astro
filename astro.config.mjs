@@ -1,6 +1,6 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
+import { defineConfig } from "astro/config";
+import starlight from "@astrojs/starlight";
 import AstroBlog from "astro-blog";
 import deno from "@astrojs/deno";
 import AutoImport from "astro-auto-import";
@@ -24,6 +24,7 @@ export default defineConfig({
         Spell: "./src/components/Spell.astro",
         Stub: "./src/components/Stub.astro",
         Incomplete: "./src/components/Incomplete.astro",
+        OutOfDate: "./src/components/OutOfDate.astro",
       },
       social: [
         {

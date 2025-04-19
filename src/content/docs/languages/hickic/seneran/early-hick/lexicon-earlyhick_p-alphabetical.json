@@ -4,30 +4,21 @@
   "lexicon": {
     "ehk:pak": {
       "id": "ehk:pak",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "pak",
       "phoneticForm": "pak",
       "protoform": "Proto-Hick *paku",
       "senses": [
         {
           "definition": "poke",
-          "semanticField": [
-            "Tool Terms",
-            "Basic Terms"
-          ],
+          "semanticField": ["Tool Terms", "Basic Terms"],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:pak",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "pak",
@@ -45,20 +36,14 @@
               "@value": "poke",
               "@language": "en"
             },
-            "lexinfo:semanticField": [
-              "Tool Terms",
-              "Basic Terms"
-            ]
+            "lexinfo:semanticField": ["Tool Terms", "Basic Terms"]
           }
         ]
       }
     },
     "ehk:paket": {
       "id": "ehk:paket",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "paket",
       "phoneticForm": "pa.ket",
       "protoform": "Proto-Hick *pakata",
@@ -76,10 +61,7 @@
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:paket",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "paket",
@@ -88,10 +70,7 @@
         "etymology": {
           "@type": "etymon:Etymology",
           "etymon:protoform": "Proto-Hick *pakata",
-          "etymon:soundChange": [
-            "final vowel loss",
-            "vowel reduction"
-          ]
+          "etymon:soundChange": ["final vowel loss", "vowel reduction"]
         },
         "sense": [
           {
@@ -111,30 +90,21 @@
     },
     "ehk:pakupak": {
       "id": "ehk:pakupak",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "pakupak",
       "phoneticForm": "ˈpa.ku.pək",
       "protoform": "Proto-Hick *pakupaku",
       "senses": [
         {
           "definition": "tickle",
-          "semanticField": [
-            "Basic Terms",
-            "Physical Sensation"
-          ],
+          "semanticField": ["Basic Terms", "Physical Sensation"],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:pakupak",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "pakupak",
@@ -152,40 +122,28 @@
               "@value": "tickle",
               "@language": "en"
             },
-            "lexinfo:semanticField": [
-              "Basic Terms",
-              "Physical Sensation"
-            ]
+            "lexinfo:semanticField": ["Basic Terms", "Physical Sensation"]
           }
         ]
       }
     },
     "ehk:pal": {
       "id": "ehk:pal",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "pal",
       "phoneticForm": "pal",
       "protoform": "Proto-Hick *palu",
       "senses": [
         {
           "definition": "belly, center",
-          "semanticField": [
-            "Body Parts",
-            "Basic Terms"
-          ],
+          "semanticField": ["Body Parts", "Basic Terms"],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:pal",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "pal",
@@ -203,40 +161,27 @@
               "@value": "belly, center",
               "@language": "en"
             },
-            "lexinfo:semanticField": [
-              "Body Parts",
-              "Basic Terms"
-            ]
+            "lexinfo:semanticField": ["Body Parts", "Basic Terms"]
           }
         ]
       }
     },
     "ehk:palmal": {
       "id": "ehk:palmal",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "palmal",
       "phoneticForm": "pal.mal",
       "senses": [
         {
           "definition": "deep pool",
-          "semanticField": [
-            "Natural World",
-            "Landforms",
-            "Water Features"
-          ],
+          "semanticField": ["Natural World", "Landforms", "Water Features"],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:palmal",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "palmal",
@@ -274,29 +219,20 @@
     },
     "ehk:palmil": {
       "id": "ehk:palmil",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "palmil",
       "phoneticForm": "pal.mil",
       "senses": [
         {
           "definition": "belly fat",
-          "semanticField": [
-            "Food & Consumption Terms",
-            "Preparation Terms"
-          ],
+          "semanticField": ["Food & Consumption Terms", "Preparation Terms"],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:palmil",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "palmil",
@@ -333,10 +269,7 @@
     },
     "ehk:par": {
       "id": "ehk:par",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "writtenForm": "par",
       "phoneticForm": "par",
       "protoform": "*paru-heru",
@@ -344,20 +277,14 @@
       "senses": [
         {
           "definition": "crawl",
-          "semanticField": [
-            "Motion Terms",
-            "Body Terms"
-          ],
+          "semanticField": ["Motion Terms", "Body Terms"],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:par",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Verb"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "par",
@@ -377,30 +304,21 @@
               "@value": "crawl",
               "@language": "en"
             },
-            "lexinfo:semanticField": [
-              "Motion Terms",
-              "Body Terms"
-            ]
+            "lexinfo:semanticField": ["Motion Terms", "Body Terms"]
           }
         ]
       }
     },
     "ehk:parduwes": {
       "id": "ehk:parduwes",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "parduwes",
       "phoneticForm": "par.du.wes",
       "note": "Shows compound reduction of grapar-duwes to parduwes",
       "senses": [
         {
           "definition": "cavern, cave network",
-          "semanticField": [
-            "Landforms",
-            "Mythological Terms"
-          ],
+          "semanticField": ["Landforms", "Mythological Terms"],
           "usage": "Originally 'worm-eaten,' extended to mean cave networks"
         }
       ],
@@ -414,10 +332,7 @@
       ],
       "graphEntry": {
         "@id": "ehk:parduwes",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "parduwes",
@@ -445,10 +360,7 @@
               "@value": "cavern, cave network",
               "@language": "en"
             },
-            "lexinfo:semanticField": [
-              "Landforms",
-              "Mythological Terms"
-            ],
+            "lexinfo:semanticField": ["Landforms", "Mythological Terms"],
             "usage": "Originally 'worm-eaten,' extended to mean cave networks"
           }
         ],
@@ -473,30 +385,21 @@
     },
     "ehk:parmatal": {
       "id": "ehk:parmatal",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "parmatal",
       "phoneticForm": "par.ma.tal",
       "note": "Shows productive use of -tal for institutional locations",
       "senses": [
         {
           "definition": "library",
-          "semanticField": [
-            "Writing Terms",
-            "Building Terms"
-          ],
+          "semanticField": ["Writing Terms", "Building Terms"],
           "usage": "Institutional term for book repository"
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:parmatal",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "parmatal",
@@ -524,10 +427,7 @@
               "@value": "library",
               "@language": "en"
             },
-            "lexinfo:semanticField": [
-              "Writing Terms",
-              "Building Terms"
-            ],
+            "lexinfo:semanticField": ["Writing Terms", "Building Terms"],
             "usage": "Institutional term for book repository"
           }
         ]
@@ -535,30 +435,21 @@
     },
     "ehk:pel": {
       "id": "ehk:pel",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "pel",
       "phoneticForm": "pel",
       "protoform": "Proto-Hick *pelu",
       "senses": [
         {
           "definition": "bear",
-          "semanticField": [
-            "Animal Terms",
-            "Basic Terms"
-          ],
+          "semanticField": ["Animal Terms", "Basic Terms"],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:pel",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "pel",
@@ -576,20 +467,14 @@
               "@value": "bear",
               "@language": "en"
             },
-            "lexinfo:semanticField": [
-              "Animal Terms",
-              "Basic Terms"
-            ]
+            "lexinfo:semanticField": ["Animal Terms", "Basic Terms"]
           }
         ]
       }
     },
     "ehk:pil": {
       "id": "ehk:pil",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "pil",
       "phoneticForm": "pil",
       "protoform": "Proto-Hick *pilu",
@@ -597,20 +482,14 @@
       "senses": [
         {
           "definition": "five",
-          "semanticField": [
-            "Number Terms",
-            "Basic Terms"
-          ],
+          "semanticField": ["Number Terms", "Basic Terms"],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:pil",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "pil",
@@ -628,30 +507,21 @@
               "@value": "five",
               "@language": "en"
             },
-            "lexinfo:semanticField": [
-              "Number Terms",
-              "Basic Terms"
-            ]
+            "lexinfo:semanticField": ["Number Terms", "Basic Terms"]
           }
         ]
       }
     },
     "ehk:pir": {
       "id": "ehk:pir",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "pir",
       "phoneticForm": "pir",
       "protoform": "Proto-Hick *piru",
       "senses": [
         {
           "definition": "ear",
-          "semanticField": [
-            "Body Parts",
-            "Perception Terms"
-          ],
+          "semanticField": ["Body Parts", "Perception Terms"],
           "usage": ""
         }
       ],
@@ -665,10 +535,7 @@
       ],
       "graphEntry": {
         "@id": "ehk:pir",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "pir",
@@ -686,10 +553,7 @@
               "@value": "ear",
               "@language": "en"
             },
-            "lexinfo:semanticField": [
-              "Body Parts",
-              "Perception Terms"
-            ]
+            "lexinfo:semanticField": ["Body Parts", "Perception Terms"]
           }
         ],
         "derivedForms": [
@@ -705,29 +569,20 @@
     },
     "ehk:pirlas": {
       "id": "ehk:pirlas",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "pirlas",
       "phoneticForm": "pir.las",
       "senses": [
         {
           "definition": "hearing",
-          "semanticField": [
-            "Body Parts",
-            "Perception Terms"
-          ],
+          "semanticField": ["Body Parts", "Perception Terms"],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:pirlas",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "pirlas",
@@ -745,39 +600,27 @@
               "@value": "hearing",
               "@language": "en"
             },
-            "lexinfo:semanticField": [
-              "Body Parts",
-              "Perception Terms"
-            ]
+            "lexinfo:semanticField": ["Body Parts", "Perception Terms"]
           }
         ]
       }
     },
     "ehk:pirlas'er": {
       "id": "ehk:pirlas'er",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "writtenForm": "pirlas'er",
       "phoneticForm": "pir.las.ʔer",
       "senses": [
         {
           "definition": "to hear",
-          "semanticField": [
-            "Perception Terms",
-            "Basic Terms"
-          ],
+          "semanticField": ["Perception Terms", "Basic Terms"],
           "usage": "Passive perception verb using illative to mark reception of sound. Contrasts with active pir'er 'listen'"
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:pirlas'er",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Verb"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "pirlas'er",
@@ -795,10 +638,7 @@
               "@value": "to hear",
               "@language": "en"
             },
-            "lexinfo:semanticField": [
-              "Perception Terms",
-              "Basic Terms"
-            ],
+            "lexinfo:semanticField": ["Perception Terms", "Basic Terms"],
             "usage": "Passive perception verb using illative to mark reception of sound. Contrasts with active pir'er 'listen'"
           }
         ]
@@ -806,10 +646,7 @@
     },
     "ehk:pran": {
       "id": "ehk:pran",
-      "types": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "writtenForm": "pran",
       "phoneticForm": "pran",
       "protoform": "Proto-Hick *pran-inu",
@@ -817,20 +654,14 @@
       "senses": [
         {
           "definition": "seven",
-          "semanticField": [
-            "Number Terms",
-            "Basic Terms"
-          ],
+          "semanticField": ["Number Terms", "Basic Terms"],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:pran",
-        "@type": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "pran",
@@ -848,10 +679,7 @@
               "@value": "seven",
               "@language": "en"
             },
-            "lexinfo:semanticField": [
-              "Number Terms",
-              "Basic Terms"
-            ]
+            "lexinfo:semanticField": ["Number Terms", "Basic Terms"]
           }
         ]
       }

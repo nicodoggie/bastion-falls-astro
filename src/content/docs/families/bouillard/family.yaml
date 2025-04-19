@@ -27,7 +27,7 @@ people:
     class: [dead]
   Nicolette:
   Basillios:
-  Renault II:
+  ? Renault II
   Nathalie:
     fullname: Nathalie Bouillard
     born: "1151-01-12"
@@ -45,6 +45,3 @@ styles:
   unknown:
     color: gray
     penwidth: 0.25
-  
-
-

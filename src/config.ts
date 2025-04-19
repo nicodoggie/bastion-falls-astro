@@ -8,5 +8,5 @@ export const SITE = {
   title: "Bastion Falls",
   showBackButton: true,
   timezone: "Asia/Manila",
-  lang: "en"
+  lang: "en",
 } as const;

@@ -3,25 +3,25 @@ families:
     parents: [Valerian, Luwan]
     children: [Caleb, Castilla, Cabot]
     families:
-    - parents: [Caleb, Genevieve]
-      children: [Talsin]
-    - parents: [Talsin, Elaine]
-      children: [Brian, Llora]
-    - parents: [Brian, Selene]
-      children: [Ian]
-    - parents: [Castilla, Peregrine]
-      children: [Elara, Orion, Evander]
-    - parents: [Cabot, Yenna]
-      children: [Tedora, Thessaly MF]
+      - parents: [Caleb, Genevieve]
+        children: [Talsin]
+      - parents: [Talsin, Elaine]
+        children: [Brian, Llora]
+      - parents: [Brian, Selene]
+        children: [Ian]
+      - parents: [Castilla, Peregrine]
+        children: [Elara, Orion, Evander]
+      - parents: [Cabot, Yenna]
+        children: [Tedora, Thessaly MF]
   - house: Durant
     parents: [Tedora, Rogelio]
     children: [Degare, Dyson, Lyla]
     families:
-    - parents: [Degare, Elodie]
-      children: [Michael, Lyla II]
-    - parents2: [Degare, Sera]
-    - parents: [Dyson, Priscilla]
-      children: [Kimberly, Gregory, Yenna MF, Marion]
+      - parents: [Degare, Elodie]
+        children: [Michael, Lyla II]
+      - parents2: [Degare, Sera]
+      - parents: [Dyson, Priscilla]
+        children: [Kimberly, Gregory, Yenna MF, Marion]
   - house: Savoy
     parents: [Lyla, Percival]
   - parents: [Thessaly MF, Juliette]
@@ -191,10 +191,8 @@ people:
   Farrah:
     fullname: Farrah McFarland
     born: "1260-04-18"
-  
 
 styles:
   dead:
     color: red
     penwidth: 0.25
- 

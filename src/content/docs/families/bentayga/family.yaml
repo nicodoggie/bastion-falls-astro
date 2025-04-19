@@ -7,33 +7,33 @@ families:
       - parents: [Guillem, Julia]
         children: [Johanna, Alais, Eduard, Alba]
         families:
-        - parents: [Alais, Mariona]
-          children: [Marc, Adria]
-          families:
-          - parents: [Marc, Catherine]
-            children: [Portencia, Corrine, Hannah]
-          - parents: [Adria, Clarence]
-        - parents: [Eduard, Neus]
-          children: [Magnus, Sophitia, Domino]
-          families:
-          - parents: [Magnus, Colette]
-            children: [Aurica, Nausica, Abelline, Pauline, Selene] 
-        - parents: [Alba, Parker]
-          children: [Harry, Lauren, Eunice]
-          families:
-          - parents: [Harry, Elizabeth]
-            children: [Thomas, Elaine, Aaron, Maria]
+          - parents: [Alais, Mariona]
+            children: [Marc, Adria]
+            families:
+              - parents: [Marc, Catherine]
+                children: [Portencia, Corrine, Hannah]
+              - parents: [Adria, Clarence]
+          - parents: [Eduard, Neus]
+            children: [Magnus, Sophitia, Domino]
+            families:
+              - parents: [Magnus, Colette]
+                children: [Aurica, Nausica, Abelline, Pauline, Selene]
+          - parents: [Alba, Parker]
+            children: [Harry, Lauren, Eunice]
+            families:
+              - parents: [Harry, Elizabeth]
+                children: [Thomas, Elaine, Aaron, Maria]
       - parents: [Jordi, Ona]
         children: [Naomi, Luda, Corid, Theo]
         families:
-        - parents: [Corid, Talia]
-          children: [Morgan, Arthur]
-          families:
-          - parents: [Arthur, Hannah]
-            children: [Eponine, Gwendolin, Rhodia, Elodie]
+          - parents: [Corid, Talia]
+            children: [Morgan, Arthur]
             families:
-            - parents: [Gwendolin]
-              children: [Rhodia II]
+              - parents: [Arthur, Hannah]
+                children: [Eponine, Gwendolin, Rhodia, Elodie]
+                families:
+                  - parents: [Gwendolin]
+                    children: [Rhodia II]
       - parents: [Matteo, Nuria]
         children: [Aina]
   - house: Savoy
@@ -57,8 +57,8 @@ families:
     parents: [Elaine, Talsin]
     children: [Llora, Brian]
     families:
-    - parents: [Selene, Brian]
-      children: [Ian]
+      - parents: [Selene, Brian]
+        children: [Ian]
 
 people:
   Esteve:
@@ -274,7 +274,7 @@ people:
     died: "1270-02-01"
     class: [dead]
   Alba:
-    fullname: Alba Bentayga 
+    fullname: Alba Bentayga
     born: "1151-09-27"
     died: "1243-03-25"
     class: [dead]
@@ -414,7 +414,7 @@ people:
     fullname: Aina Bentayga
     born: "1119-12-22"
     died: "1191-05-22"
-  
+
 styles:
   Luda:
     fullname: Luda Bentayga
@@ -427,5 +427,3 @@ styles:
   unknown:
     color: gray
     penwidth: 0.25
-  
-

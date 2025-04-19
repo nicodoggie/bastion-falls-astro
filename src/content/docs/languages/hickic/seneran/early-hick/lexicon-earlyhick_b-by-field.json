@@ -183,30 +183,21 @@
     "Animal Terms": [
       {
         "id": "ehk:belnes",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "belnes",
         "phoneticForm": "bel.nes",
         "note": "Descriptive compound based on physical feature",
         "senses": [
           {
             "definition": "mouthed fish",
-            "semanticField": [
-              "Animal Terms",
-              "Fish Terms"
-            ],
+            "semanticField": ["Animal Terms", "Fish Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:belnes",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "belnes",
@@ -225,10 +216,7 @@
                 "@value": "mouthed fish",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Animal Terms",
-                "Fish Terms"
-              ]
+              "lexinfo:semanticField": ["Animal Terms", "Fish Terms"]
             }
           ]
         }
@@ -237,10 +225,7 @@
     "Architecture": [
       {
         "id": "ehk:bel",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bel",
         "phoneticForm": "bel",
         "protoform": "Proto-Hick *belu",
@@ -248,21 +233,14 @@
         "senses": [
           {
             "definition": "mouth, opening",
-            "semanticField": [
-              "Body Parts",
-              "Maritime Terms",
-              "Architecture"
-            ],
+            "semanticField": ["Body Parts", "Maritime Terms", "Architecture"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bel",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bel",
@@ -291,10 +269,7 @@
       },
       {
         "id": "ehk:branlir",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "branlir",
         "phoneticForm": "bran.lir",
         "protoform": "Proto-Hick *bran-lir",
@@ -302,20 +277,14 @@
         "senses": [
           {
             "definition": "watchtower",
-            "semanticField": [
-              "Architecture",
-              "Military"
-            ],
+            "semanticField": ["Architecture", "Military"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:branlir",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "branlir",
@@ -333,10 +302,7 @@
                 "@value": "watchtower",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Architecture",
-                "Military"
-              ]
+              "lexinfo:semanticField": ["Architecture", "Military"]
             }
           ]
         }
@@ -345,30 +311,21 @@
     "Basic Terms": [
       {
         "id": "ehk:brastran",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brastran",
         "phoneticForm": "bras.tran",
         "note": "Shows development of -ran as measurement suffix from *haranu 'length'",
         "senses": [
           {
             "definition": "foot (unit of length, approximately arm-length)",
-            "semanticField": [
-              "Measurement Terms",
-              "Basic Terms"
-            ],
+            "semanticField": ["Measurement Terms", "Basic Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brastran",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brastran",
@@ -396,40 +353,28 @@
                 "@value": "foot (unit of length, approximately arm-length)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Measurement Terms",
-                "Basic Terms"
-              ]
+              "lexinfo:semanticField": ["Measurement Terms", "Basic Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:bres",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bres",
         "phoneticForm": "bres",
         "protoform": "Proto-Hick *bresu",
         "senses": [
           {
             "definition": "wind",
-            "semanticField": [
-              "Weather Terms",
-              "Basic Terms"
-            ],
+            "semanticField": ["Weather Terms", "Basic Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bres",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bres",
@@ -447,40 +392,28 @@
                 "@value": "wind",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Weather Terms",
-                "Basic Terms"
-              ]
+              "lexinfo:semanticField": ["Weather Terms", "Basic Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:bedek",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bedek",
         "phoneticForm": "be.dek",
         "note": "Metaphorical compound",
         "senses": [
           {
             "definition": "tongue",
-            "semanticField": [
-              "Body Parts",
-              "Basic Terms"
-            ],
+            "semanticField": ["Body Parts", "Basic Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bedek",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bedek",
@@ -499,20 +432,14 @@
                 "@value": "tongue",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Body Parts",
-                "Basic Terms"
-              ]
+              "lexinfo:semanticField": ["Body Parts", "Basic Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:brast",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brast",
         "phoneticForm": "brast",
         "protoform": "Proto-Hick *bara-satu",
@@ -520,20 +447,14 @@
         "senses": [
           {
             "definition": "dominant arm",
-            "semanticField": [
-              "Body Parts",
-              "Basic Terms"
-            ],
+            "semanticField": ["Body Parts", "Basic Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brast",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brast",
@@ -553,20 +474,14 @@
                 "@value": "dominant arm",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Body Parts",
-                "Basic Terms"
-              ]
+              "lexinfo:semanticField": ["Body Parts", "Basic Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:bris",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bris",
         "phoneticForm": "bris",
         "protoform": "Proto-Hick *brisu",
@@ -574,20 +489,14 @@
         "senses": [
           {
             "definition": "heat",
-            "semanticField": [
-              "Elements",
-              "Basic Terms"
-            ],
+            "semanticField": ["Elements", "Basic Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bris",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bris",
@@ -605,10 +514,7 @@
                 "@value": "heat",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Elements",
-                "Basic Terms"
-              ]
+              "lexinfo:semanticField": ["Elements", "Basic Terms"]
             }
           ]
         }
@@ -617,29 +523,21 @@
     "Body Parts": [
       {
         "id": "ehk:brastok",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brastok",
         "phoneticForm": "bras.tok",
         "note": "Shows cultural importance of manual craft skills",
         "senses": [
           {
             "definition": "craftsman, artisan",
-            "semanticField": [
-              "Body Parts"
-            ],
+            "semanticField": ["Body Parts"],
             "usage": "General term for skilled manual craftworkers"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brastok",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brastok",
@@ -667,30 +565,21 @@
       },
       {
         "id": "ehk:bedek",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bedek",
         "phoneticForm": "be.dek",
         "note": "Metaphorical compound",
         "senses": [
           {
             "definition": "tongue",
-            "semanticField": [
-              "Body Parts",
-              "Basic Terms"
-            ],
+            "semanticField": ["Body Parts", "Basic Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bedek",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bedek",
@@ -709,20 +598,14 @@
                 "@value": "tongue",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Body Parts",
-                "Basic Terms"
-              ]
+              "lexinfo:semanticField": ["Body Parts", "Basic Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:bel",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bel",
         "phoneticForm": "bel",
         "protoform": "Proto-Hick *belu",
@@ -730,21 +613,14 @@
         "senses": [
           {
             "definition": "mouth, opening",
-            "semanticField": [
-              "Body Parts",
-              "Maritime Terms",
-              "Architecture"
-            ],
+            "semanticField": ["Body Parts", "Maritime Terms", "Architecture"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bel",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bel",
@@ -773,31 +649,21 @@
       },
       {
         "id": "ehk:belimris",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "belimris",
         "phoneticForm": "be.lim.ris",
         "note": "Shows productive use of ellative case for active tasting",
         "senses": [
           {
             "definition": "taste (active)",
-            "semanticField": [
-              "Body Parts",
-              "Case System",
-              "Sensory Terms"
-            ],
+            "semanticField": ["Body Parts", "Case System", "Sensory Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:belimris",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "belimris",
@@ -827,31 +693,21 @@
       },
       {
         "id": "ehk:bellas",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bellas",
         "phoneticForm": "bel.las",
         "note": "Shows productive use of illative case for reception of taste",
         "senses": [
           {
             "definition": "taste (reception)",
-            "semanticField": [
-              "Body Parts",
-              "Case System",
-              "Sensory Terms"
-            ],
+            "semanticField": ["Body Parts", "Case System", "Sensory Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bellas",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bellas",
@@ -881,10 +737,7 @@
       },
       {
         "id": "ehk:brast",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brast",
         "phoneticForm": "brast",
         "protoform": "Proto-Hick *bara-satu",
@@ -892,20 +745,14 @@
         "senses": [
           {
             "definition": "dominant arm",
-            "semanticField": [
-              "Body Parts",
-              "Basic Terms"
-            ],
+            "semanticField": ["Body Parts", "Basic Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brast",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brast",
@@ -925,10 +772,7 @@
                 "@value": "dominant arm",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Body Parts",
-                "Basic Terms"
-              ]
+              "lexinfo:semanticField": ["Body Parts", "Basic Terms"]
             }
           ]
         }
@@ -937,10 +781,7 @@
     "Body Terms": [
       {
         "id": "ehk:bresubel",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Verb"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
         "writtenForm": "bresubel",
         "phoneticForm": "bre.su.bel",
         "protoform": "Proto-Hick *bresu-belu",
@@ -966,10 +807,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:bresubel",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Verb"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bresubel",
@@ -988,10 +826,7 @@
             "etymon:compound": "bresu-bel",
             "etymon:gloss": "shout-mouth",
             "etymon:protoform": "Proto-Hick *bresu-belu",
-            "etymon:soundChange": [
-              "compound fusion",
-              "final vowel loss"
-            ],
+            "etymon:soundChange": ["compound fusion", "final vowel loss"],
             "etymon:note": "Shows typical compound formation with body part term"
           },
           "sense": [
@@ -1031,31 +866,21 @@
     "Case System": [
       {
         "id": "ehk:belimris",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "belimris",
         "phoneticForm": "be.lim.ris",
         "note": "Shows productive use of ellative case for active tasting",
         "senses": [
           {
             "definition": "taste (active)",
-            "semanticField": [
-              "Body Parts",
-              "Case System",
-              "Sensory Terms"
-            ],
+            "semanticField": ["Body Parts", "Case System", "Sensory Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:belimris",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "belimris",
@@ -1085,31 +910,21 @@
       },
       {
         "id": "ehk:bellas",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bellas",
         "phoneticForm": "bel.las",
         "note": "Shows productive use of illative case for reception of taste",
         "senses": [
           {
             "definition": "taste (reception)",
-            "semanticField": [
-              "Body Parts",
-              "Case System",
-              "Sensory Terms"
-            ],
+            "semanticField": ["Body Parts", "Case System", "Sensory Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bellas",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bellas",
@@ -1141,30 +956,21 @@
     "Climate Terms": [
       {
         "id": "ehk:bressim",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bressim",
         "phoneticForm": "bres.sim",
         "note": "Shows lexicalization of translative case marking, conceptualizing weather as \"becoming like wind\"",
         "senses": [
           {
             "definition": "weather (conditions)",
-            "semanticField": [
-              "Wind Terms",
-              "Climate Terms"
-            ],
+            "semanticField": ["Wind Terms", "Climate Terms"],
             "usage": "Forms verb bressim'er \"to change (of weather)\""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bressim",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bressim",
@@ -1183,10 +989,7 @@
                 "@value": "weather (conditions)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Wind Terms",
-                "Climate Terms"
-              ],
+              "lexinfo:semanticField": ["Wind Terms", "Climate Terms"],
               "usage": "Forms verb bressim'er \"to change (of weather)\""
             }
           ]
@@ -1196,10 +999,7 @@
     "Communication Terms": [
       {
         "id": "ehk:bresubel",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Verb"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
         "writtenForm": "bresubel",
         "phoneticForm": "bre.su.bel",
         "protoform": "Proto-Hick *bresu-belu",
@@ -1225,10 +1025,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:bresubel",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Verb"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bresubel",
@@ -1247,10 +1044,7 @@
             "etymon:compound": "bresu-bel",
             "etymon:gloss": "shout-mouth",
             "etymon:protoform": "Proto-Hick *bresu-belu",
-            "etymon:soundChange": [
-              "compound fusion",
-              "final vowel loss"
-            ],
+            "etymon:soundChange": ["compound fusion", "final vowel loss"],
             "etymon:note": "Shows typical compound formation with body part term"
           },
           "sense": [
@@ -1290,29 +1084,20 @@
     "Construction Terms": [
       {
         "id": "ehk:brismal",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brismal",
         "phoneticForm": "bris.mal",
         "senses": [
           {
             "definition": "forge (native term)",
-            "semanticField": [
-              "Construction Terms",
-              "Tool Terms"
-            ],
+            "semanticField": ["Construction Terms", "Tool Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brismal",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brismal",
@@ -1331,10 +1116,7 @@
                 "@value": "forge (native term)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Construction Terms",
-                "Tool Terms"
-              ]
+              "lexinfo:semanticField": ["Construction Terms", "Tool Terms"]
             }
           ]
         }
@@ -1343,10 +1125,7 @@
     "Distance Terms": [
       {
         "id": "ehk:barakter",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "barakter",
         "phoneticForm": "ba.rak.ter",
         "note": "Distance measure based on one hour's walking time. Shows temporal suffix used for distance measurement.",
@@ -1371,10 +1150,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:barakter",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "barakter",
@@ -1425,10 +1201,7 @@
     "Elements": [
       {
         "id": "ehk:bris",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bris",
         "phoneticForm": "bris",
         "protoform": "Proto-Hick *brisu",
@@ -1436,20 +1209,14 @@
         "senses": [
           {
             "definition": "heat",
-            "semanticField": [
-              "Elements",
-              "Basic Terms"
-            ],
+            "semanticField": ["Elements", "Basic Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bris",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bris",
@@ -1467,10 +1234,7 @@
                 "@value": "heat",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Elements",
-                "Basic Terms"
-              ]
+              "lexinfo:semanticField": ["Elements", "Basic Terms"]
             }
           ]
         }
@@ -1479,31 +1243,21 @@
     "Family Terms": [
       {
         "id": "ehk:brismer",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brismer",
         "phoneticForm": "bris.mer",
         "note": "Shows ambiguous compound analysis between 'passionate-parent' and 'fire-heart'",
         "senses": [
           {
             "definition": "passionate lover",
-            "semanticField": [
-              "Love Terms",
-              "Person Terms",
-              "Family Terms"
-            ],
+            "semanticField": ["Love Terms", "Person Terms", "Family Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brismer",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brismer",
@@ -1544,30 +1298,21 @@
     "Fish Terms": [
       {
         "id": "ehk:belnes",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "belnes",
         "phoneticForm": "bel.nes",
         "note": "Descriptive compound based on physical feature",
         "senses": [
           {
             "definition": "mouthed fish",
-            "semanticField": [
-              "Animal Terms",
-              "Fish Terms"
-            ],
+            "semanticField": ["Animal Terms", "Fish Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:belnes",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "belnes",
@@ -1586,10 +1331,7 @@
                 "@value": "mouthed fish",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Animal Terms",
-                "Fish Terms"
-              ]
+              "lexinfo:semanticField": ["Animal Terms", "Fish Terms"]
             }
           ]
         }
@@ -1598,30 +1340,21 @@
     "Flora Terms": [
       {
         "id": "ehk:branlis",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "branlis",
         "phoneticForm": "bran.lis",
         "note": "Metaphorical extension of \"child\" to \"berries\" and \"fruit,\" reflecting cultural view of trees as nurturing figures",
         "senses": [
           {
             "definition": "tree berries; fruit",
-            "semanticField": [
-              "Flora Terms",
-              "Food Terms"
-            ],
+            "semanticField": ["Flora Terms", "Food Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:branlis",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "branlis",
@@ -1640,10 +1373,7 @@
                 "@value": "tree berries; fruit",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Flora Terms",
-                "Food Terms"
-              ]
+              "lexinfo:semanticField": ["Flora Terms", "Food Terms"]
             }
           ]
         }
@@ -1652,29 +1382,20 @@
     "Flora": [
       {
         "id": "ehk:bran",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bran",
         "phoneticForm": "bran",
         "senses": [
           {
             "definition": "branch",
-            "semanticField": [
-              "Flora",
-              "Plant Terms"
-            ],
+            "semanticField": ["Flora", "Plant Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bran",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bran",
@@ -1692,10 +1413,7 @@
                 "@value": "branch",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Flora",
-                "Plant Terms"
-              ]
+              "lexinfo:semanticField": ["Flora", "Plant Terms"]
             }
           ]
         }
@@ -1704,30 +1422,21 @@
     "Food Terms": [
       {
         "id": "ehk:branlis",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "branlis",
         "phoneticForm": "bran.lis",
         "note": "Metaphorical extension of \"child\" to \"berries\" and \"fruit,\" reflecting cultural view of trees as nurturing figures",
         "senses": [
           {
             "definition": "tree berries; fruit",
-            "semanticField": [
-              "Flora Terms",
-              "Food Terms"
-            ],
+            "semanticField": ["Flora Terms", "Food Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:branlis",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "branlis",
@@ -1746,10 +1455,7 @@
                 "@value": "tree berries; fruit",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Flora Terms",
-                "Food Terms"
-              ]
+              "lexinfo:semanticField": ["Flora Terms", "Food Terms"]
             }
           ]
         }
@@ -1758,20 +1464,14 @@
     "Identity Terms": [
       {
         "id": "ehk:bar",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bar",
         "phoneticForm": "bar",
         "protoform": "Proto-Hick *baru",
         "senses": [
           {
             "definition": "name, mark of identity",
-            "semanticField": [
-              "Identity Terms",
-              "Social Terms"
-            ],
+            "semanticField": ["Identity Terms", "Social Terms"],
             "usage": ""
           }
         ],
@@ -1815,10 +1515,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:bar",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bar",
@@ -1836,10 +1533,7 @@
                 "@value": "name, mark of identity",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Identity Terms",
-                "Social Terms"
-              ]
+              "lexinfo:semanticField": ["Identity Terms", "Social Terms"]
             }
           ],
           "derivedForms": [
@@ -1890,30 +1584,21 @@
       },
       {
         "id": "ehk:barlas",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "barlas",
         "phoneticForm": "bar.las",
         "note": "Used for intimate/personal names",
         "senses": [
           {
             "definition": "personal name",
-            "semanticField": [
-              "Name Terms",
-              "Identity Terms"
-            ],
+            "semanticField": ["Name Terms", "Identity Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:barlas",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "barlas",
@@ -1932,10 +1617,7 @@
                 "@value": "personal name",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Name Terms",
-                "Identity Terms"
-              ]
+              "lexinfo:semanticField": ["Name Terms", "Identity Terms"]
             }
           ]
         }
@@ -1944,29 +1626,21 @@
     "Kinship Terms": [
       {
         "id": "ehk:ba",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "ba",
         "phoneticForm": "ba",
         "protoform": "Proto-Hick *bahu",
         "senses": [
           {
             "definition": "father",
-            "semanticField": [
-              "Kinship Terms"
-            ],
+            "semanticField": ["Kinship Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:ba",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "ba",
@@ -1993,31 +1667,21 @@
     "Love Terms": [
       {
         "id": "ehk:brismer",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brismer",
         "phoneticForm": "bris.mer",
         "note": "Shows ambiguous compound analysis between 'passionate-parent' and 'fire-heart'",
         "senses": [
           {
             "definition": "passionate lover",
-            "semanticField": [
-              "Love Terms",
-              "Person Terms",
-              "Family Terms"
-            ],
+            "semanticField": ["Love Terms", "Person Terms", "Family Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brismer",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brismer",
@@ -2058,10 +1722,7 @@
     "Maritime Terms": [
       {
         "id": "ehk:bramis",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bramis",
         "phoneticForm": "bra.mis",
         "senses": [
@@ -2078,10 +1739,7 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bramis",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bramis",
@@ -2111,10 +1769,7 @@
       },
       {
         "id": "ehk:bel",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bel",
         "phoneticForm": "bel",
         "protoform": "Proto-Hick *belu",
@@ -2122,21 +1777,14 @@
         "senses": [
           {
             "definition": "mouth, opening",
-            "semanticField": [
-              "Body Parts",
-              "Maritime Terms",
-              "Architecture"
-            ],
+            "semanticField": ["Body Parts", "Maritime Terms", "Architecture"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bel",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bel",
@@ -2165,10 +1813,7 @@
       },
       {
         "id": "ehk:bram",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bram",
         "phoneticForm": "bram",
         "protoform": "Proto-Hick *bramu",
@@ -2176,21 +1821,14 @@
         "senses": [
           {
             "definition": "tide, tidal water",
-            "semanticField": [
-              "Maritime Terms",
-              "Time Terms",
-              "Water Features"
-            ],
+            "semanticField": ["Maritime Terms", "Time Terms", "Water Features"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bram",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bram",
@@ -2219,30 +1857,21 @@
       },
       {
         "id": "ehk:bramal",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bramal",
         "phoneticForm": "bra.mal",
         "note": "Shows nasal deletion in compounds",
         "senses": [
           {
             "definition": "tidal pool",
-            "semanticField": [
-              "Maritime Terms",
-              "Water Features"
-            ],
+            "semanticField": ["Maritime Terms", "Water Features"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bramal",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bramal",
@@ -2261,40 +1890,28 @@
                 "@value": "tidal pool",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Maritime Terms",
-                "Water Features"
-              ]
+              "lexinfo:semanticField": ["Maritime Terms", "Water Features"]
             }
           ]
         }
       },
       {
         "id": "ehk:brammater",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brammater",
         "phoneticForm": "bram.ma.ter",
         "note": "Shows compound formation pattern for vessel types",
         "senses": [
           {
             "definition": "river-vessel",
-            "semanticField": [
-              "Maritime Terms",
-              "Vehicle Terms"
-            ],
+            "semanticField": ["Maritime Terms", "Vehicle Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brammater",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brammater",
@@ -2313,40 +1930,28 @@
                 "@value": "river-vessel",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Maritime Terms",
-                "Vehicle Terms"
-              ]
+              "lexinfo:semanticField": ["Maritime Terms", "Vehicle Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:bramulis",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bramulis",
         "phoneticForm": "bra.mu.lis",
         "note": "Literally \"tide's eye\". Shows coda simplification where final -l of bramul merges with initial l- of lis",
         "senses": [
           {
             "definition": "vortex, whirlpool",
-            "semanticField": [
-              "Maritime Terms",
-              "Water Features"
-            ],
+            "semanticField": ["Maritime Terms", "Water Features"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bramulis",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bramulis",
@@ -2365,10 +1970,7 @@
                 "@value": "vortex, whirlpool",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Maritime Terms",
-                "Water Features"
-              ]
+              "lexinfo:semanticField": ["Maritime Terms", "Water Features"]
             }
           ]
         }
@@ -2377,10 +1979,7 @@
     "Measurement Terms": [
       {
         "id": "ehk:barakter",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "barakter",
         "phoneticForm": "ba.rak.ter",
         "note": "Distance measure based on one hour's walking time. Shows temporal suffix used for distance measurement.",
@@ -2405,10 +2004,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:barakter",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "barakter",
@@ -2457,30 +2053,21 @@
       },
       {
         "id": "ehk:brastran",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brastran",
         "phoneticForm": "bras.tran",
         "note": "Shows development of -ran as measurement suffix from *haranu 'length'",
         "senses": [
           {
             "definition": "foot (unit of length, approximately arm-length)",
-            "semanticField": [
-              "Measurement Terms",
-              "Basic Terms"
-            ],
+            "semanticField": ["Measurement Terms", "Basic Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brastran",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brastran",
@@ -2508,10 +2095,7 @@
                 "@value": "foot (unit of length, approximately arm-length)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Measurement Terms",
-                "Basic Terms"
-              ]
+              "lexinfo:semanticField": ["Measurement Terms", "Basic Terms"]
             }
           ]
         }
@@ -2520,30 +2104,21 @@
     "Military Terms": [
       {
         "id": "ehk:brastak",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brastak",
         "phoneticForm": "bras.tak",
         "note": "Shows metonymic extension from action to implements",
         "senses": [
           {
             "definition": "weapons, armaments",
-            "semanticField": [
-              "Weapon Terms",
-              "Military Terms"
-            ],
+            "semanticField": ["Weapon Terms", "Military Terms"],
             "usage": "Often used collectively for military equipment"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brastak",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brastak",
@@ -2571,10 +2146,7 @@
                 "@value": "weapons, armaments",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Weapon Terms",
-                "Military Terms"
-              ],
+              "lexinfo:semanticField": ["Weapon Terms", "Military Terms"],
               "usage": "Often used collectively for military equipment"
             }
           ]
@@ -2584,10 +2156,7 @@
     "Military": [
       {
         "id": "ehk:branlir",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "branlir",
         "phoneticForm": "bran.lir",
         "protoform": "Proto-Hick *bran-lir",
@@ -2595,20 +2164,14 @@
         "senses": [
           {
             "definition": "watchtower",
-            "semanticField": [
-              "Architecture",
-              "Military"
-            ],
+            "semanticField": ["Architecture", "Military"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:branlir",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "branlir",
@@ -2626,10 +2189,7 @@
                 "@value": "watchtower",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Architecture",
-                "Military"
-              ]
+              "lexinfo:semanticField": ["Architecture", "Military"]
             }
           ]
         }
@@ -2638,10 +2198,7 @@
     "Motion Terms": [
       {
         "id": "ehk:barak",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "barak",
         "phoneticForm": "ba.rak",
         "protoform": "Proto-Hick *baraku",
@@ -2649,20 +2206,14 @@
         "senses": [
           {
             "definition": "walking, gait",
-            "semanticField": [
-              "Motion Terms",
-              "Movement Terms"
-            ],
+            "semanticField": ["Motion Terms", "Movement Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:barak",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "barak",
@@ -2680,10 +2231,7 @@
                 "@value": "walking, gait",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Motion Terms",
-                "Movement Terms"
-              ]
+              "lexinfo:semanticField": ["Motion Terms", "Movement Terms"]
             }
           ]
         }
@@ -2692,10 +2240,7 @@
     "Movement Terms": [
       {
         "id": "ehk:barak",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "barak",
         "phoneticForm": "ba.rak",
         "protoform": "Proto-Hick *baraku",
@@ -2703,20 +2248,14 @@
         "senses": [
           {
             "definition": "walking, gait",
-            "semanticField": [
-              "Motion Terms",
-              "Movement Terms"
-            ],
+            "semanticField": ["Motion Terms", "Movement Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:barak",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "barak",
@@ -2734,10 +2273,7 @@
                 "@value": "walking, gait",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Motion Terms",
-                "Movement Terms"
-              ]
+              "lexinfo:semanticField": ["Motion Terms", "Movement Terms"]
             }
           ]
         }
@@ -2746,30 +2282,21 @@
     "Name Terms": [
       {
         "id": "ehk:barlas",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "barlas",
         "phoneticForm": "bar.las",
         "note": "Used for intimate/personal names",
         "senses": [
           {
             "definition": "personal name",
-            "semanticField": [
-              "Name Terms",
-              "Identity Terms"
-            ],
+            "semanticField": ["Name Terms", "Identity Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:barlas",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "barlas",
@@ -2788,10 +2315,7 @@
                 "@value": "personal name",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Name Terms",
-                "Identity Terms"
-              ]
+              "lexinfo:semanticField": ["Name Terms", "Identity Terms"]
             }
           ]
         }
@@ -2800,10 +2324,7 @@
     "Natural Terms": [
       {
         "id": "ehk:brises",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brises",
         "phoneticForm": "bri.ses",
         "protoform": "Proto-Hick *brisu-wesu",
@@ -2811,20 +2332,14 @@
         "senses": [
           {
             "definition": "light, illumination; discover, explore",
-            "semanticField": [
-              "Natural Terms",
-              "Sacred Terms"
-            ],
+            "semanticField": ["Natural Terms", "Sacred Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brises",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brises",
@@ -2843,10 +2358,7 @@
                 "@value": "light, illumination; discover, explore",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Natural Terms",
-                "Sacred Terms"
-              ]
+              "lexinfo:semanticField": ["Natural Terms", "Sacred Terms"]
             }
           ]
         }
@@ -2855,10 +2367,7 @@
     "Natural World": [
       {
         "id": "ehk:bramis",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bramis",
         "phoneticForm": "bra.mis",
         "senses": [
@@ -2875,10 +2384,7 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bramis",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bramis",
@@ -2910,31 +2416,21 @@
     "Person Terms": [
       {
         "id": "ehk:brismer",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brismer",
         "phoneticForm": "bris.mer",
         "note": "Shows ambiguous compound analysis between 'passionate-parent' and 'fire-heart'",
         "senses": [
           {
             "definition": "passionate lover",
-            "semanticField": [
-              "Love Terms",
-              "Person Terms",
-              "Family Terms"
-            ],
+            "semanticField": ["Love Terms", "Person Terms", "Family Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brismer",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brismer",
@@ -2975,29 +2471,20 @@
     "Plant Terms": [
       {
         "id": "ehk:bran",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bran",
         "phoneticForm": "bran",
         "senses": [
           {
             "definition": "branch",
-            "semanticField": [
-              "Flora",
-              "Plant Terms"
-            ],
+            "semanticField": ["Flora", "Plant Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bran",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bran",
@@ -3015,10 +2502,7 @@
                 "@value": "branch",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Flora",
-                "Plant Terms"
-              ]
+              "lexinfo:semanticField": ["Flora", "Plant Terms"]
             }
           ]
         }
@@ -3027,10 +2511,7 @@
     "Precipitation": [
       {
         "id": "ehk:bramis",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bramis",
         "phoneticForm": "bra.mis",
         "senses": [
@@ -3047,10 +2528,7 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bramis",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bramis",
@@ -3082,10 +2560,7 @@
     "Sacred Terms": [
       {
         "id": "ehk:brises",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brises",
         "phoneticForm": "bri.ses",
         "protoform": "Proto-Hick *brisu-wesu",
@@ -3093,20 +2568,14 @@
         "senses": [
           {
             "definition": "light, illumination; discover, explore",
-            "semanticField": [
-              "Natural Terms",
-              "Sacred Terms"
-            ],
+            "semanticField": ["Natural Terms", "Sacred Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brises",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brises",
@@ -3125,10 +2594,7 @@
                 "@value": "light, illumination; discover, explore",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Natural Terms",
-                "Sacred Terms"
-              ]
+              "lexinfo:semanticField": ["Natural Terms", "Sacred Terms"]
             }
           ]
         }
@@ -3137,30 +2603,21 @@
     "Seasonal Terms": [
       {
         "id": "ehk:branthral",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "branthral",
         "phoneticForm": "bran.θral",
         "note": "Shows seasonal terminology pattern",
         "senses": [
           {
             "definition": "spring",
-            "semanticField": [
-              "Time Terms",
-              "Seasonal Terms"
-            ],
+            "semanticField": ["Time Terms", "Seasonal Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:branthral",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "branthral",
@@ -3179,10 +2636,7 @@
                 "@value": "spring",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Time Terms",
-                "Seasonal Terms"
-              ]
+              "lexinfo:semanticField": ["Time Terms", "Seasonal Terms"]
             }
           ]
         }
@@ -3191,31 +2645,21 @@
     "Sensory Terms": [
       {
         "id": "ehk:belimris",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "belimris",
         "phoneticForm": "be.lim.ris",
         "note": "Shows productive use of ellative case for active tasting",
         "senses": [
           {
             "definition": "taste (active)",
-            "semanticField": [
-              "Body Parts",
-              "Case System",
-              "Sensory Terms"
-            ],
+            "semanticField": ["Body Parts", "Case System", "Sensory Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:belimris",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "belimris",
@@ -3245,31 +2689,21 @@
       },
       {
         "id": "ehk:bellas",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bellas",
         "phoneticForm": "bel.las",
         "note": "Shows productive use of illative case for reception of taste",
         "senses": [
           {
             "definition": "taste (reception)",
-            "semanticField": [
-              "Body Parts",
-              "Case System",
-              "Sensory Terms"
-            ],
+            "semanticField": ["Body Parts", "Case System", "Sensory Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bellas",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bellas",
@@ -3301,30 +2735,21 @@
     "Sky Terms": [
       {
         "id": "ehk:brakel",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brakel",
         "phoneticForm": "bra.kel",
         "note": "Shows nasal deletion in compounds",
         "senses": [
           {
             "definition": "morning sky",
-            "semanticField": [
-              "Time Terms",
-              "Sky Terms"
-            ],
+            "semanticField": ["Time Terms", "Sky Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brakel",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brakel",
@@ -3343,10 +2768,7 @@
                 "@value": "morning sky",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Time Terms",
-                "Sky Terms"
-              ]
+              "lexinfo:semanticField": ["Time Terms", "Sky Terms"]
             }
           ]
         }
@@ -3355,20 +2777,14 @@
     "Social Terms": [
       {
         "id": "ehk:bar",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bar",
         "phoneticForm": "bar",
         "protoform": "Proto-Hick *baru",
         "senses": [
           {
             "definition": "name, mark of identity",
-            "semanticField": [
-              "Identity Terms",
-              "Social Terms"
-            ],
+            "semanticField": ["Identity Terms", "Social Terms"],
             "usage": ""
           }
         ],
@@ -3412,10 +2828,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:bar",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bar",
@@ -3433,10 +2846,7 @@
                 "@value": "name, mark of identity",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Identity Terms",
-                "Social Terms"
-              ]
+              "lexinfo:semanticField": ["Identity Terms", "Social Terms"]
             }
           ],
           "derivedForms": [
@@ -3489,10 +2899,7 @@
     "Sound Terms": [
       {
         "id": "ehk:bresubel",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Verb"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
         "writtenForm": "bresubel",
         "phoneticForm": "bre.su.bel",
         "protoform": "Proto-Hick *bresu-belu",
@@ -3518,10 +2925,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:bresubel",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Verb"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bresubel",
@@ -3540,10 +2944,7 @@
             "etymon:compound": "bresu-bel",
             "etymon:gloss": "shout-mouth",
             "etymon:protoform": "Proto-Hick *bresu-belu",
-            "etymon:soundChange": [
-              "compound fusion",
-              "final vowel loss"
-            ],
+            "etymon:soundChange": ["compound fusion", "final vowel loss"],
             "etymon:note": "Shows typical compound formation with body part term"
           },
           "sense": [
@@ -3583,10 +2984,7 @@
     "Time Terms": [
       {
         "id": "ehk:barakter",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "barakter",
         "phoneticForm": "ba.rak.ter",
         "note": "Distance measure based on one hour's walking time. Shows temporal suffix used for distance measurement.",
@@ -3611,10 +3009,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:barakter",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "barakter",
@@ -3663,30 +3058,21 @@
       },
       {
         "id": "ehk:brakel",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brakel",
         "phoneticForm": "bra.kel",
         "note": "Shows nasal deletion in compounds",
         "senses": [
           {
             "definition": "morning sky",
-            "semanticField": [
-              "Time Terms",
-              "Sky Terms"
-            ],
+            "semanticField": ["Time Terms", "Sky Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brakel",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brakel",
@@ -3705,20 +3091,14 @@
                 "@value": "morning sky",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Time Terms",
-                "Sky Terms"
-              ]
+              "lexinfo:semanticField": ["Time Terms", "Sky Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:bram",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bram",
         "phoneticForm": "bram",
         "protoform": "Proto-Hick *bramu",
@@ -3726,21 +3106,14 @@
         "senses": [
           {
             "definition": "tide, tidal water",
-            "semanticField": [
-              "Maritime Terms",
-              "Time Terms",
-              "Water Features"
-            ],
+            "semanticField": ["Maritime Terms", "Time Terms", "Water Features"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bram",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bram",
@@ -3769,30 +3142,21 @@
       },
       {
         "id": "ehk:branthral",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "branthral",
         "phoneticForm": "bran.θral",
         "note": "Shows seasonal terminology pattern",
         "senses": [
           {
             "definition": "spring",
-            "semanticField": [
-              "Time Terms",
-              "Seasonal Terms"
-            ],
+            "semanticField": ["Time Terms", "Seasonal Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:branthral",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "branthral",
@@ -3811,10 +3175,7 @@
                 "@value": "spring",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Time Terms",
-                "Seasonal Terms"
-              ]
+              "lexinfo:semanticField": ["Time Terms", "Seasonal Terms"]
             }
           ]
         }
@@ -3823,29 +3184,20 @@
     "Tool Terms": [
       {
         "id": "ehk:brismal",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brismal",
         "phoneticForm": "bris.mal",
         "senses": [
           {
             "definition": "forge (native term)",
-            "semanticField": [
-              "Construction Terms",
-              "Tool Terms"
-            ],
+            "semanticField": ["Construction Terms", "Tool Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brismal",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brismal",
@@ -3864,10 +3216,7 @@
                 "@value": "forge (native term)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Construction Terms",
-                "Tool Terms"
-              ]
+              "lexinfo:semanticField": ["Construction Terms", "Tool Terms"]
             }
           ]
         }
@@ -3876,30 +3225,21 @@
     "Vehicle Terms": [
       {
         "id": "ehk:brammater",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brammater",
         "phoneticForm": "bram.ma.ter",
         "note": "Shows compound formation pattern for vessel types",
         "senses": [
           {
             "definition": "river-vessel",
-            "semanticField": [
-              "Maritime Terms",
-              "Vehicle Terms"
-            ],
+            "semanticField": ["Maritime Terms", "Vehicle Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brammater",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brammater",
@@ -3918,10 +3258,7 @@
                 "@value": "river-vessel",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Maritime Terms",
-                "Vehicle Terms"
-              ]
+              "lexinfo:semanticField": ["Maritime Terms", "Vehicle Terms"]
             }
           ]
         }
@@ -3930,10 +3267,7 @@
     "Water Features": [
       {
         "id": "ehk:bram",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bram",
         "phoneticForm": "bram",
         "protoform": "Proto-Hick *bramu",
@@ -3941,21 +3275,14 @@
         "senses": [
           {
             "definition": "tide, tidal water",
-            "semanticField": [
-              "Maritime Terms",
-              "Time Terms",
-              "Water Features"
-            ],
+            "semanticField": ["Maritime Terms", "Time Terms", "Water Features"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bram",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bram",
@@ -3984,30 +3311,21 @@
       },
       {
         "id": "ehk:bramal",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bramal",
         "phoneticForm": "bra.mal",
         "note": "Shows nasal deletion in compounds",
         "senses": [
           {
             "definition": "tidal pool",
-            "semanticField": [
-              "Maritime Terms",
-              "Water Features"
-            ],
+            "semanticField": ["Maritime Terms", "Water Features"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bramal",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bramal",
@@ -4026,40 +3344,28 @@
                 "@value": "tidal pool",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Maritime Terms",
-                "Water Features"
-              ]
+              "lexinfo:semanticField": ["Maritime Terms", "Water Features"]
             }
           ]
         }
       },
       {
         "id": "ehk:bramulis",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bramulis",
         "phoneticForm": "bra.mu.lis",
         "note": "Literally \"tide's eye\". Shows coda simplification where final -l of bramul merges with initial l- of lis",
         "senses": [
           {
             "definition": "vortex, whirlpool",
-            "semanticField": [
-              "Maritime Terms",
-              "Water Features"
-            ],
+            "semanticField": ["Maritime Terms", "Water Features"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bramulis",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bramulis",
@@ -4078,10 +3384,7 @@
                 "@value": "vortex, whirlpool",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Maritime Terms",
-                "Water Features"
-              ]
+              "lexinfo:semanticField": ["Maritime Terms", "Water Features"]
             }
           ]
         }
@@ -4090,30 +3393,21 @@
     "Weapon Terms": [
       {
         "id": "ehk:brastak",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "brastak",
         "phoneticForm": "bras.tak",
         "note": "Shows metonymic extension from action to implements",
         "senses": [
           {
             "definition": "weapons, armaments",
-            "semanticField": [
-              "Weapon Terms",
-              "Military Terms"
-            ],
+            "semanticField": ["Weapon Terms", "Military Terms"],
             "usage": "Often used collectively for military equipment"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:brastak",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "brastak",
@@ -4141,10 +3435,7 @@
                 "@value": "weapons, armaments",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Weapon Terms",
-                "Military Terms"
-              ],
+              "lexinfo:semanticField": ["Weapon Terms", "Military Terms"],
               "usage": "Often used collectively for military equipment"
             }
           ]
@@ -4154,30 +3445,21 @@
     "Weather Terms": [
       {
         "id": "ehk:bres",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bres",
         "phoneticForm": "bres",
         "protoform": "Proto-Hick *bresu",
         "senses": [
           {
             "definition": "wind",
-            "semanticField": [
-              "Weather Terms",
-              "Basic Terms"
-            ],
+            "semanticField": ["Weather Terms", "Basic Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bres",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bres",
@@ -4195,10 +3477,7 @@
                 "@value": "wind",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Weather Terms",
-                "Basic Terms"
-              ]
+              "lexinfo:semanticField": ["Weather Terms", "Basic Terms"]
             }
           ]
         }
@@ -4207,30 +3486,21 @@
     "Wind Terms": [
       {
         "id": "ehk:bressim",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "bressim",
         "phoneticForm": "bres.sim",
         "note": "Shows lexicalization of translative case marking, conceptualizing weather as \"becoming like wind\"",
         "senses": [
           {
             "definition": "weather (conditions)",
-            "semanticField": [
-              "Wind Terms",
-              "Climate Terms"
-            ],
+            "semanticField": ["Wind Terms", "Climate Terms"],
             "usage": "Forms verb bressim'er \"to change (of weather)\""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:bressim",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "bressim",
@@ -4249,10 +3519,7 @@
                 "@value": "weather (conditions)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Wind Terms",
-                "Climate Terms"
-              ],
+              "lexinfo:semanticField": ["Wind Terms", "Climate Terms"],
               "usage": "Forms verb bressim'er \"to change (of weather)\""
             }
           ]

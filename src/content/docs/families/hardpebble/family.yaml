@@ -1,7 +1,7 @@
 families:
   - house: Hardpebble
     parents: [Hendrik I, Antonia]
-    children: 
+    children:
       - Hendrik II
       - Henrietta
       - Antonina
@@ -13,11 +13,11 @@ families:
             children: [Hank, Mary]
             families:
               - parents: [Hank, Alice]
-                children: [Henry, Ophelia, Patton, Bismuth, Dahlia, Robert, Petunia]
+                children:
+                  [Henry, Ophelia, Patton, Bismuth, Dahlia, Robert, Petunia]
           - parents: [Mary, Obel]
       - parents: [Antonina, Hunter]
         children: [Henry Solomon, Katalina]
-      
 
 people:
   [Hendrik I]:

@@ -83,29 +83,20 @@
     "Action Terms": [
       {
         "id": "ehk:ven'er",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Verb"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
         "writtenForm": "ven'er",
         "phoneticForm": "ven.ʔer",
         "senses": [
           {
             "definition": "to carry",
-            "semanticField": [
-              "Motion Terms",
-              "Action Terms"
-            ],
+            "semanticField": ["Motion Terms", "Action Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:ven'er",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Verb"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "ven'er",
@@ -123,10 +114,7 @@
                 "@value": "to carry",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Motion Terms",
-                "Action Terms"
-              ]
+              "lexinfo:semanticField": ["Motion Terms", "Action Terms"]
             }
           ]
         }
@@ -135,29 +123,20 @@
     "Animal Terms": [
       {
         "id": "ehk:venmer",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "venmer",
         "phoneticForm": "ven.mer",
         "senses": [
           {
             "definition": "wing bird",
-            "semanticField": [
-              "Bird Terms",
-              "Animal Terms"
-            ],
+            "semanticField": ["Bird Terms", "Animal Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:venmer",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "venmer",
@@ -175,10 +154,7 @@
                 "@value": "wing bird",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Bird Terms",
-                "Animal Terms"
-              ]
+              "lexinfo:semanticField": ["Bird Terms", "Animal Terms"]
             }
           ]
         }
@@ -187,28 +163,19 @@
     "Animals": [
       {
         "id": "ehk:vinusak",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinusak",
         "phoneticForm": "vi.nu.sak",
         "note": "Shows recognition of dogs as domesticated wolves through compound formation",
         "senses": [
           {
             "definition": "dog",
-            "semanticField": [
-              "Animals",
-              "Domestic Animals"
-            ],
+            "semanticField": ["Animals", "Domestic Animals"],
             "usage": "Basic term for domesticated canines"
           },
           {
             "definition": "domesticated wolf",
-            "semanticField": [
-              "Animals",
-              "Domestic Animals"
-            ],
+            "semanticField": ["Animals", "Domestic Animals"],
             "usage": "Technical/historical sense reflecting origin"
           }
         ],
@@ -222,10 +189,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:vinusak",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinusak",
@@ -253,10 +217,7 @@
                 "@value": "dog",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Animals",
-                "Domestic Animals"
-              ],
+              "lexinfo:semanticField": ["Animals", "Domestic Animals"],
               "usage": "Basic term for domesticated canines"
             },
             {
@@ -265,10 +226,7 @@
                 "@value": "domesticated wolf",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Animals",
-                "Domestic Animals"
-              ],
+              "lexinfo:semanticField": ["Animals", "Domestic Animals"],
               "usage": "Technical/historical sense reflecting origin"
             }
           ],
@@ -292,28 +250,19 @@
       },
       {
         "id": "ehk:vinusak",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinusak",
         "phoneticForm": "vi.nu.sak",
         "note": "Shows recognition of dogs as domesticated wolves through compound formation",
         "senses": [
           {
             "definition": "dog",
-            "semanticField": [
-              "Animals",
-              "Domestic Animals"
-            ],
+            "semanticField": ["Animals", "Domestic Animals"],
             "usage": "Basic term for domesticated canines"
           },
           {
             "definition": "domesticated wolf",
-            "semanticField": [
-              "Animals",
-              "Domestic Animals"
-            ],
+            "semanticField": ["Animals", "Domestic Animals"],
             "usage": "Technical/historical sense reflecting origin"
           }
         ],
@@ -327,10 +276,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:vinusak",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinusak",
@@ -358,10 +304,7 @@
                 "@value": "dog",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Animals",
-                "Domestic Animals"
-              ],
+              "lexinfo:semanticField": ["Animals", "Domestic Animals"],
               "usage": "Basic term for domesticated canines"
             },
             {
@@ -370,10 +313,7 @@
                 "@value": "domesticated wolf",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Animals",
-                "Domestic Animals"
-              ],
+              "lexinfo:semanticField": ["Animals", "Domestic Animals"],
               "usage": "Technical/historical sense reflecting origin"
             }
           ],
@@ -399,10 +339,7 @@
     "Basic Terms": [
       {
         "id": "ehk:ven",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "ven",
         "phoneticForm": "ven",
         "protoform": "Proto-Hick *venu",
@@ -410,20 +347,14 @@
         "senses": [
           {
             "definition": "yoke, burden",
-            "semanticField": [
-              "Basic Terms",
-              "Tool Terms"
-            ],
+            "semanticField": ["Basic Terms", "Tool Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:ven",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "ven",
@@ -442,20 +373,14 @@
                 "@value": "yoke, burden",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Basic Terms",
-                "Tool Terms"
-              ]
+              "lexinfo:semanticField": ["Basic Terms", "Tool Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:vinud",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinud",
         "phoneticForm": "vi.nud",
         "protoform": "Proto-Hick *venu-wudu",
@@ -481,10 +406,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:vinud",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinud",
@@ -493,14 +415,8 @@
           "etymology": {
             "@type": "etymon:Etymology",
             "etymon:protoform": "Proto-Hick *venu-wudu",
-            "etymon:components": [
-              "venu (burden)",
-              "wudu (wood)"
-            ],
-            "etymon:soundChange": [
-              "compound fusion",
-              "final vowel loss"
-            ],
+            "etymon:components": ["venu (burden)", "wudu (wood)"],
+            "etymon:soundChange": ["compound fusion", "final vowel loss"],
             "etymon:note": "Semantic shift from 'wood structure' to 'dwelling'"
           },
           "sense": [
@@ -532,29 +448,20 @@
     "Bird Terms": [
       {
         "id": "ehk:venmer",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "venmer",
         "phoneticForm": "ven.mer",
         "senses": [
           {
             "definition": "wing bird",
-            "semanticField": [
-              "Bird Terms",
-              "Animal Terms"
-            ],
+            "semanticField": ["Bird Terms", "Animal Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:venmer",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "venmer",
@@ -572,10 +479,7 @@
                 "@value": "wing bird",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Bird Terms",
-                "Animal Terms"
-              ]
+              "lexinfo:semanticField": ["Bird Terms", "Animal Terms"]
             }
           ]
         }
@@ -584,29 +488,21 @@
     "Body Parts": [
       {
         "id": "ehk:vinusam",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinusam",
         "phoneticForm": "vi.nu.sam",
         "protoform": "Proto-Hick *vinu xasamu",
         "senses": [
           {
             "definition": "shoulder",
-            "semanticField": [
-              "Body Parts"
-            ],
+            "semanticField": ["Body Parts"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vinusam",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinusam",
@@ -616,10 +512,7 @@
             "@type": "etymon:Etymology",
             "etymon:protoform": "Proto-Hick *vinu xasamu",
             "etymon:gloss": "yoke rest",
-            "etymon:soundChange": [
-              "initial fricative loss",
-              "compound fusion"
-            ]
+            "etymon:soundChange": ["initial fricative loss", "compound fusion"]
           },
           "sense": [
             {
@@ -637,10 +530,7 @@
     "Body Terms": [
       {
         "id": "ehk:vin",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vin",
         "phoneticForm": "vin",
         "protoform": "Proto-Hick *venu",
@@ -648,20 +538,14 @@
         "senses": [
           {
             "definition": "pregnancy",
-            "semanticField": [
-              "Body Terms",
-              "Sacred Terms"
-            ],
+            "semanticField": ["Body Terms", "Sacred Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vin",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vin",
@@ -670,10 +554,7 @@
           "etymology": {
             "@type": "etymon:Etymology",
             "etymon:protoform": "Proto-Hick *venu",
-            "etymon:soundChange": [
-              "vowel harmony",
-              "final vowel loss"
-            ],
+            "etymon:soundChange": ["vowel harmony", "final vowel loss"],
             "etymon:note": "Maritime standard form. Inland dialects preserve venu-sedu > vinused"
           },
           "sense": [
@@ -683,41 +564,28 @@
                 "@value": "pregnancy",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Body Terms",
-                "Sacred Terms"
-              ]
+              "lexinfo:semanticField": ["Body Terms", "Sacred Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:vinlas",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinlas",
         "phoneticForm": "vin.las",
         "note": "Shows lexicalization of case marking spatial relationship",
         "senses": [
           {
             "definition": "fetus, unborn child",
-            "semanticField": [
-              "Person Terms",
-              "Body Terms",
-              "Life Stages"
-            ],
+            "semanticField": ["Person Terms", "Body Terms", "Life Stages"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vinlas",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinlas",
@@ -727,10 +595,7 @@
             "@type": "etymon:Etymology",
             "etymon:compound": "vin-las",
             "etymon:gloss": "pregnancy-ILL",
-            "etymon:components": [
-              "vin (pregnancy)",
-              "-las (illative)"
-            ],
+            "etymon:components": ["vin (pregnancy)", "-las (illative)"],
             "etymon:soundChange": "compound fusion",
             "etymon:note": "Shows lexicalization of case marking spatial relationship"
           },
@@ -754,28 +619,19 @@
     "Domestic Animals": [
       {
         "id": "ehk:vinusak",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinusak",
         "phoneticForm": "vi.nu.sak",
         "note": "Shows recognition of dogs as domesticated wolves through compound formation",
         "senses": [
           {
             "definition": "dog",
-            "semanticField": [
-              "Animals",
-              "Domestic Animals"
-            ],
+            "semanticField": ["Animals", "Domestic Animals"],
             "usage": "Basic term for domesticated canines"
           },
           {
             "definition": "domesticated wolf",
-            "semanticField": [
-              "Animals",
-              "Domestic Animals"
-            ],
+            "semanticField": ["Animals", "Domestic Animals"],
             "usage": "Technical/historical sense reflecting origin"
           }
         ],
@@ -789,10 +645,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:vinusak",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinusak",
@@ -820,10 +673,7 @@
                 "@value": "dog",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Animals",
-                "Domestic Animals"
-              ],
+              "lexinfo:semanticField": ["Animals", "Domestic Animals"],
               "usage": "Basic term for domesticated canines"
             },
             {
@@ -832,10 +682,7 @@
                 "@value": "domesticated wolf",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Animals",
-                "Domestic Animals"
-              ],
+              "lexinfo:semanticField": ["Animals", "Domestic Animals"],
               "usage": "Technical/historical sense reflecting origin"
             }
           ],
@@ -859,28 +706,19 @@
       },
       {
         "id": "ehk:vinusak",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinusak",
         "phoneticForm": "vi.nu.sak",
         "note": "Shows recognition of dogs as domesticated wolves through compound formation",
         "senses": [
           {
             "definition": "dog",
-            "semanticField": [
-              "Animals",
-              "Domestic Animals"
-            ],
+            "semanticField": ["Animals", "Domestic Animals"],
             "usage": "Basic term for domesticated canines"
           },
           {
             "definition": "domesticated wolf",
-            "semanticField": [
-              "Animals",
-              "Domestic Animals"
-            ],
+            "semanticField": ["Animals", "Domestic Animals"],
             "usage": "Technical/historical sense reflecting origin"
           }
         ],
@@ -894,10 +732,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:vinusak",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinusak",
@@ -925,10 +760,7 @@
                 "@value": "dog",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Animals",
-                "Domestic Animals"
-              ],
+              "lexinfo:semanticField": ["Animals", "Domestic Animals"],
               "usage": "Basic term for domesticated canines"
             },
             {
@@ -937,10 +769,7 @@
                 "@value": "domesticated wolf",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Animals",
-                "Domestic Animals"
-              ],
+              "lexinfo:semanticField": ["Animals", "Domestic Animals"],
               "usage": "Technical/historical sense reflecting origin"
             }
           ],
@@ -966,31 +795,21 @@
     "Kinship Terms": [
       {
         "id": "ehk:vinok",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinok",
         "phoneticForm": "vi.nok",
         "note": "Shows semantic extension from agentive to resultative meaning",
         "senses": [
           {
             "definition": "baby, infant",
-            "semanticField": [
-              "Person Terms",
-              "Kinship Terms",
-              "Life Stages"
-            ],
+            "semanticField": ["Person Terms", "Kinship Terms", "Life Stages"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vinok",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinok",
@@ -1000,10 +819,7 @@
             "@type": "etymon:Etymology",
             "etymon:compound": "vin-ok",
             "etymon:gloss": "pregnancy-AGENT",
-            "etymon:components": [
-              "vin (pregnancy)",
-              "-ok (agentive)"
-            ],
+            "etymon:components": ["vin (pregnancy)", "-ok (agentive)"],
             "etymon:soundChange": "compound fusion",
             "etymon:note": "Shows semantic extension from agentive to resultative meaning"
           },
@@ -1027,30 +843,21 @@
     "Landforms": [
       {
         "id": "ehk:val",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "val",
         "phoneticForm": "val",
         "protoform": "Proto-Hick *valu",
         "senses": [
           {
             "definition": "valley, water-cut lowland",
-            "semanticField": [
-              "Natural World",
-              "Landforms"
-            ],
+            "semanticField": ["Natural World", "Landforms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:val",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "val",
@@ -1068,10 +875,7 @@
                 "@value": "valley, water-cut lowland",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Natural World",
-                "Landforms"
-              ]
+              "lexinfo:semanticField": ["Natural World", "Landforms"]
             }
           ]
         }
@@ -1080,31 +884,21 @@
     "Life Stages": [
       {
         "id": "ehk:vinlas",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinlas",
         "phoneticForm": "vin.las",
         "note": "Shows lexicalization of case marking spatial relationship",
         "senses": [
           {
             "definition": "fetus, unborn child",
-            "semanticField": [
-              "Person Terms",
-              "Body Terms",
-              "Life Stages"
-            ],
+            "semanticField": ["Person Terms", "Body Terms", "Life Stages"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vinlas",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinlas",
@@ -1114,10 +908,7 @@
             "@type": "etymon:Etymology",
             "etymon:compound": "vin-las",
             "etymon:gloss": "pregnancy-ILL",
-            "etymon:components": [
-              "vin (pregnancy)",
-              "-las (illative)"
-            ],
+            "etymon:components": ["vin (pregnancy)", "-las (illative)"],
             "etymon:soundChange": "compound fusion",
             "etymon:note": "Shows lexicalization of case marking spatial relationship"
           },
@@ -1139,31 +930,21 @@
       },
       {
         "id": "ehk:vinok",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinok",
         "phoneticForm": "vi.nok",
         "note": "Shows semantic extension from agentive to resultative meaning",
         "senses": [
           {
             "definition": "baby, infant",
-            "semanticField": [
-              "Person Terms",
-              "Kinship Terms",
-              "Life Stages"
-            ],
+            "semanticField": ["Person Terms", "Kinship Terms", "Life Stages"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vinok",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinok",
@@ -1173,10 +954,7 @@
             "@type": "etymon:Etymology",
             "etymon:compound": "vin-ok",
             "etymon:gloss": "pregnancy-AGENT",
-            "etymon:components": [
-              "vin (pregnancy)",
-              "-ok (agentive)"
-            ],
+            "etymon:components": ["vin (pregnancy)", "-ok (agentive)"],
             "etymon:soundChange": "compound fusion",
             "etymon:note": "Shows semantic extension from agentive to resultative meaning"
           },
@@ -1200,29 +978,20 @@
     "Motion Terms": [
       {
         "id": "ehk:ven'er",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Verb"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
         "writtenForm": "ven'er",
         "phoneticForm": "ven.ʔer",
         "senses": [
           {
             "definition": "to carry",
-            "semanticField": [
-              "Motion Terms",
-              "Action Terms"
-            ],
+            "semanticField": ["Motion Terms", "Action Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:ven'er",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Verb"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "ven'er",
@@ -1240,10 +1009,7 @@
                 "@value": "to carry",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Motion Terms",
-                "Action Terms"
-              ]
+              "lexinfo:semanticField": ["Motion Terms", "Action Terms"]
             }
           ]
         }
@@ -1252,30 +1018,21 @@
     "Natural World": [
       {
         "id": "ehk:val",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "val",
         "phoneticForm": "val",
         "protoform": "Proto-Hick *valu",
         "senses": [
           {
             "definition": "valley, water-cut lowland",
-            "semanticField": [
-              "Natural World",
-              "Landforms"
-            ],
+            "semanticField": ["Natural World", "Landforms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:val",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "val",
@@ -1293,10 +1050,7 @@
                 "@value": "valley, water-cut lowland",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Natural World",
-                "Landforms"
-              ]
+              "lexinfo:semanticField": ["Natural World", "Landforms"]
             }
           ]
         }
@@ -1305,31 +1059,21 @@
     "Person Terms": [
       {
         "id": "ehk:vinlas",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinlas",
         "phoneticForm": "vin.las",
         "note": "Shows lexicalization of case marking spatial relationship",
         "senses": [
           {
             "definition": "fetus, unborn child",
-            "semanticField": [
-              "Person Terms",
-              "Body Terms",
-              "Life Stages"
-            ],
+            "semanticField": ["Person Terms", "Body Terms", "Life Stages"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vinlas",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinlas",
@@ -1339,10 +1083,7 @@
             "@type": "etymon:Etymology",
             "etymon:compound": "vin-las",
             "etymon:gloss": "pregnancy-ILL",
-            "etymon:components": [
-              "vin (pregnancy)",
-              "-las (illative)"
-            ],
+            "etymon:components": ["vin (pregnancy)", "-las (illative)"],
             "etymon:soundChange": "compound fusion",
             "etymon:note": "Shows lexicalization of case marking spatial relationship"
           },
@@ -1364,31 +1105,21 @@
       },
       {
         "id": "ehk:vinok",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinok",
         "phoneticForm": "vi.nok",
         "note": "Shows semantic extension from agentive to resultative meaning",
         "senses": [
           {
             "definition": "baby, infant",
-            "semanticField": [
-              "Person Terms",
-              "Kinship Terms",
-              "Life Stages"
-            ],
+            "semanticField": ["Person Terms", "Kinship Terms", "Life Stages"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vinok",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinok",
@@ -1398,10 +1129,7 @@
             "@type": "etymon:Etymology",
             "etymon:compound": "vin-ok",
             "etymon:gloss": "pregnancy-AGENT",
-            "etymon:components": [
-              "vin (pregnancy)",
-              "-ok (agentive)"
-            ],
+            "etymon:components": ["vin (pregnancy)", "-ok (agentive)"],
             "etymon:soundChange": "compound fusion",
             "etymon:note": "Shows semantic extension from agentive to resultative meaning"
           },
@@ -1425,10 +1153,7 @@
     "Sacred Terms": [
       {
         "id": "ehk:vin",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vin",
         "phoneticForm": "vin",
         "protoform": "Proto-Hick *venu",
@@ -1436,20 +1161,14 @@
         "senses": [
           {
             "definition": "pregnancy",
-            "semanticField": [
-              "Body Terms",
-              "Sacred Terms"
-            ],
+            "semanticField": ["Body Terms", "Sacred Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vin",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vin",
@@ -1458,10 +1177,7 @@
           "etymology": {
             "@type": "etymon:Etymology",
             "etymon:protoform": "Proto-Hick *venu",
-            "etymon:soundChange": [
-              "vowel harmony",
-              "final vowel loss"
-            ],
+            "etymon:soundChange": ["vowel harmony", "final vowel loss"],
             "etymon:note": "Maritime standard form. Inland dialects preserve venu-sedu > vinused"
           },
           "sense": [
@@ -1471,40 +1187,28 @@
                 "@value": "pregnancy",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Body Terms",
-                "Sacred Terms"
-              ]
+              "lexinfo:semanticField": ["Body Terms", "Sacred Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:vinuiter",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinuiter",
         "phoneticForm": "vi.nu.i.ter",
         "note": "Lexicalized from ellative case",
         "senses": [
           {
             "definition": "to give birth",
-            "semanticField": [
-              "Verbal Terms",
-              "Sacred Terms"
-            ],
+            "semanticField": ["Verbal Terms", "Sacred Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vinuiter",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinuiter",
@@ -1512,10 +1216,7 @@
           },
           "etymology": {
             "@type": "etymon:Etymology",
-            "etymon:components": [
-              "vinu (pregnancy)",
-              "itar (ELL)"
-            ],
+            "etymon:components": ["vinu (pregnancy)", "itar (ELL)"],
             "etymon:note": "Lexicalized from ellative case",
             "etymon:soundChange": "case lexicalization"
           },
@@ -1526,40 +1227,28 @@
                 "@value": "to give birth",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Verbal Terms",
-                "Sacred Terms"
-              ]
+              "lexinfo:semanticField": ["Verbal Terms", "Sacred Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:venuiter",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Verb"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
         "writtenForm": "venuiter",
         "phoneticForm": "vi.nu.i.ter",
         "note": "Lexicalized from ellative case of 'pregnancy'",
         "senses": [
           {
             "definition": "to give birth",
-            "semanticField": [
-              "Verbal Terms",
-              "Sacred Terms"
-            ],
+            "semanticField": ["Verbal Terms", "Sacred Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:venuiter",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Verb"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "venuiter",
@@ -1578,40 +1267,28 @@
                 "@value": "to give birth",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Verbal Terms",
-                "Sacred Terms"
-              ]
+              "lexinfo:semanticField": ["Verbal Terms", "Sacred Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:vinuimris",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Verb"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
         "writtenForm": "vinuimris",
         "phoneticForm": "vi.nu.im.ris",
         "note": "Lexicalized from ellative case of pregnancy",
         "senses": [
           {
             "definition": "to give birth",
-            "semanticField": [
-              "Verbal Terms",
-              "Sacred Terms"
-            ],
+            "semanticField": ["Verbal Terms", "Sacred Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vinuimris",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Verb"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinuimris",
@@ -1630,10 +1307,7 @@
                 "@value": "to give birth",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Verbal Terms",
-                "Sacred Terms"
-              ]
+              "lexinfo:semanticField": ["Verbal Terms", "Sacred Terms"]
             }
           ]
         }
@@ -1642,10 +1316,7 @@
     "Settlement Terms": [
       {
         "id": "ehk:vinud",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinud",
         "phoneticForm": "vi.nud",
         "protoform": "Proto-Hick *venu-wudu",
@@ -1671,10 +1342,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:vinud",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinud",
@@ -1683,14 +1351,8 @@
           "etymology": {
             "@type": "etymon:Etymology",
             "etymon:protoform": "Proto-Hick *venu-wudu",
-            "etymon:components": [
-              "venu (burden)",
-              "wudu (wood)"
-            ],
-            "etymon:soundChange": [
-              "compound fusion",
-              "final vowel loss"
-            ],
+            "etymon:components": ["venu (burden)", "wudu (wood)"],
+            "etymon:soundChange": ["compound fusion", "final vowel loss"],
             "etymon:note": "Semantic shift from 'wood structure' to 'dwelling'"
           },
           "sense": [
@@ -1722,10 +1384,7 @@
     "Structure Terms": [
       {
         "id": "ehk:vinud",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinud",
         "phoneticForm": "vi.nud",
         "protoform": "Proto-Hick *venu-wudu",
@@ -1751,10 +1410,7 @@
         ],
         "graphEntry": {
           "@id": "ehk:vinud",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinud",
@@ -1763,14 +1419,8 @@
           "etymology": {
             "@type": "etymon:Etymology",
             "etymon:protoform": "Proto-Hick *venu-wudu",
-            "etymon:components": [
-              "venu (burden)",
-              "wudu (wood)"
-            ],
-            "etymon:soundChange": [
-              "compound fusion",
-              "final vowel loss"
-            ],
+            "etymon:components": ["venu (burden)", "wudu (wood)"],
+            "etymon:soundChange": ["compound fusion", "final vowel loss"],
             "etymon:note": "Semantic shift from 'wood structure' to 'dwelling'"
           },
           "sense": [
@@ -1802,10 +1452,7 @@
     "Tool Terms": [
       {
         "id": "ehk:ven",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "ven",
         "phoneticForm": "ven",
         "protoform": "Proto-Hick *venu",
@@ -1813,20 +1460,14 @@
         "senses": [
           {
             "definition": "yoke, burden",
-            "semanticField": [
-              "Basic Terms",
-              "Tool Terms"
-            ],
+            "semanticField": ["Basic Terms", "Tool Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:ven",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "ven",
@@ -1845,10 +1486,7 @@
                 "@value": "yoke, burden",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Basic Terms",
-                "Tool Terms"
-              ]
+              "lexinfo:semanticField": ["Basic Terms", "Tool Terms"]
             }
           ]
         }
@@ -1857,30 +1495,21 @@
     "Verbal Terms": [
       {
         "id": "ehk:vinuiter",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Noun"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
         "writtenForm": "vinuiter",
         "phoneticForm": "vi.nu.i.ter",
         "note": "Lexicalized from ellative case",
         "senses": [
           {
             "definition": "to give birth",
-            "semanticField": [
-              "Verbal Terms",
-              "Sacred Terms"
-            ],
+            "semanticField": ["Verbal Terms", "Sacred Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vinuiter",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Noun"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinuiter",
@@ -1888,10 +1517,7 @@
           },
           "etymology": {
             "@type": "etymon:Etymology",
-            "etymon:components": [
-              "vinu (pregnancy)",
-              "itar (ELL)"
-            ],
+            "etymon:components": ["vinu (pregnancy)", "itar (ELL)"],
             "etymon:note": "Lexicalized from ellative case",
             "etymon:soundChange": "case lexicalization"
           },
@@ -1902,40 +1528,28 @@
                 "@value": "to give birth",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Verbal Terms",
-                "Sacred Terms"
-              ]
+              "lexinfo:semanticField": ["Verbal Terms", "Sacred Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:venuiter",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Verb"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
         "writtenForm": "venuiter",
         "phoneticForm": "vi.nu.i.ter",
         "note": "Lexicalized from ellative case of 'pregnancy'",
         "senses": [
           {
             "definition": "to give birth",
-            "semanticField": [
-              "Verbal Terms",
-              "Sacred Terms"
-            ],
+            "semanticField": ["Verbal Terms", "Sacred Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:venuiter",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Verb"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "venuiter",
@@ -1954,39 +1568,28 @@
                 "@value": "to give birth",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Verbal Terms",
-                "Sacred Terms"
-              ]
+              "lexinfo:semanticField": ["Verbal Terms", "Sacred Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:venitar",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Verb"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
         "writtenForm": "venitar",
         "phoneticForm": "ve.ni.tar",
         "note": "Lexicalized from superessive case of 'yoke'",
         "senses": [
           {
             "definition": "to lift",
-            "semanticField": [
-              "Verbal Terms"
-            ],
+            "semanticField": ["Verbal Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:venitar",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Verb"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "venitar",
@@ -2005,39 +1608,28 @@
                 "@value": "to lift",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Verbal Terms"
-              ]
+              "lexinfo:semanticField": ["Verbal Terms"]
             }
           ]
         }
       },
       {
         "id": "ehk:vinuimris",
-        "types": [
-          "ontolex:LexicalEntry",
-          "lexinfo:Verb"
-        ],
+        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
         "writtenForm": "vinuimris",
         "phoneticForm": "vi.nu.im.ris",
         "note": "Lexicalized from ellative case of pregnancy",
         "senses": [
           {
             "definition": "to give birth",
-            "semanticField": [
-              "Verbal Terms",
-              "Sacred Terms"
-            ],
+            "semanticField": ["Verbal Terms", "Sacred Terms"],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:vinuimris",
-          "@type": [
-            "ontolex:LexicalEntry",
-            "lexinfo:Verb"
-          ],
+          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "vinuimris",
@@ -2056,10 +1648,7 @@
                 "@value": "to give birth",
                 "@language": "en"
               },
-              "lexinfo:semanticField": [
-                "Verbal Terms",
-                "Sacred Terms"
-              ]
+              "lexinfo:semanticField": ["Verbal Terms", "Sacred Terms"]
             }
           ]
         }

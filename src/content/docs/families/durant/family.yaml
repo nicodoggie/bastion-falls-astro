@@ -3,30 +3,29 @@ families:
     parents: [Pietro, Susanna]
     children: [Davide, Melchior, Lobelia]
     families:
-    - parents: [Davide, Sabine]
-      children: [Turmeric, Estelle]
-    - parents: [Turmeric, Nancy]
-    - parents: [Melchior, Odette]
-      children: [Armaund, Rogelio]
-    - parents: [Armaund, Tamara]
-      children: [Laurent, Adele]
-    - parents: [Rogelio, Tedora]
-      children: [Degare, Dyson, Lyla]
-    - parents: [Lyla, Percival]
-    - parents: [Degare, Elodie]
-      parents2: [Degare, Sera]
-      children: [Michael, Lyla II]
-    - parents: [Dyson, Priscilla]
-      children: [Kimberly, Gregory, Yenna MF, Marion]
+      - parents: [Davide, Sabine]
+        children: [Turmeric, Estelle]
+      - parents: [Turmeric, Nancy]
+      - parents: [Melchior, Odette]
+        children: [Armaund, Rogelio]
+      - parents: [Armaund, Tamara]
+        children: [Laurent, Adele]
+      - parents: [Rogelio, Tedora]
+        children: [Degare, Dyson, Lyla]
+      - parents: [Lyla, Percival]
+      - parents: [Degare, Elodie]
+        parents2: [Degare, Sera]
+        children: [Michael, Lyla II]
+      - parents: [Dyson, Priscilla]
+        children: [Kimberly, Gregory, Yenna MF, Marion]
   - house: "De Villa"
     parents: [Lobelia, Elias]
     children: [Taleisin, Regidor]
     families:
-    - parents: [Taleisin, Freja]
-      children: [Moulin, Talon]
-    - parents: [Regidor, Alicia]
-      children: [Reginald, Porticia]
-    
+      - parents: [Taleisin, Freja]
+        children: [Moulin, Talon]
+      - parents: [Regidor, Alicia]
+        children: [Reginald, Porticia]
 
 people:
   Pietro:
@@ -147,11 +146,11 @@ people:
     name: Yenna
     age: 9
     fullname: Yenna McFarland
-    born: '1265-12-19'
+    born: "1265-12-19"
   Marion:
     fullname: Marion McFarland
     age: 8
-    born: '1267-06-16'
+    born: "1267-06-16"
   Lyla:
     fullname: Lyla Durant
     born: "1236-11-03"
@@ -190,9 +189,8 @@ people:
   Talon:
     fullname: Talon de Villa
     born: "1222-09-16"
-  
+
 styles:
   dead:
     color: red
     penwidth: 0.25
- 

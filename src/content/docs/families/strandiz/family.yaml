@@ -3,26 +3,26 @@ families:
     parents: [Matt I, Peony]
     children: [Bart I, Rose]
     families:
-    - parents: [Bart I, Agnes]
-      children: [Telia, Matt II, Astrid]
-      families:
-      - parents: [Matt II, Marta]
-        children: [Bart II, Mark, Maria, Melissa]
+      - parents: [Bart I, Agnes]
+        children: [Telia, Matt II, Astrid]
         families:
-        - parents: [Bart II, Collette]
-          children: [Johanne, Matt III]
-          families:
-          - parents: [Matt III, Dorotea]
-            children: [Bart III]
+          - parents: [Matt II, Marta]
+            children: [Bart II, Mark, Maria, Melissa]
             families:
-            - parents: [Bart III, Petra]
-              children: [Corrine, Matt IV, Linnea]
-              families:
-              - parents: [Matt IV, Chance]
-                children: [Bart IV]
+              - parents: [Bart II, Collette]
+                children: [Johanne, Matt III]
                 families:
-                - parents: [Bart IV, Emma]
-                  children: [Matt V]
+                  - parents: [Matt III, Dorotea]
+                    children: [Bart III]
+                    families:
+                      - parents: [Bart III, Petra]
+                        children: [Corrine, Matt IV, Linnea]
+                        families:
+                          - parents: [Matt IV, Chance]
+                            children: [Bart IV]
+                            families:
+                              - parents: [Bart IV, Emma]
+                                children: [Matt V]
 
 people:
   Matt I:
@@ -34,7 +34,7 @@ people:
     fullname: Peony
     born: 855-09-30
     died: 911-04-10
-    class: [dead] 
+    class: [dead]
   Bart I:
     fullname: Bartholomew Strandiz I
     born: 885-11-04

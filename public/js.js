@@ -129,7 +129,7 @@ function formatSearchResultItem(item, terms) {
   li.innerHTML = `<a href="${item.ref}">${item.doc.title}</a>`;
   li.innerHTML += `<div class="search-results__teaser">${makeTeaser(
     item.doc.body,
-    terms
+    terms,
   )}</div>`;
   return li;
 }
@@ -205,10 +205,10 @@ function initSearch() {
         // item.innerHTML = formatSearchResultItem(results[i], term.split(" "));
         console.log(results[i]);
         $searchResultsItems.appendChild(
-          formatSearchResultItem(results[i], term.split(" "))
+          formatSearchResultItem(results[i], term.split(" ")),
         );
       }
-    }, 150)
+    }, 150),
   );
 }
 
@@ -221,7 +221,7 @@ if (
   document.addEventListener("DOMContentLoaded", initSearch);
 }
 
-// mobile 
+// mobile
 
 function burger() {
   let x = document.querySelector("#trees");
@@ -244,14 +244,13 @@ function createCopyButton(highlightDiv) {
   button.type = "button";
   button.innerHTML = "&#xE8C8;";
   button.addEventListener("click", () =>
-    copyCodeToClipboard(button, highlightDiv)
+    copyCodeToClipboard(button, highlightDiv),
   );
   addCopyButtonToDom(button, highlightDiv);
 }
 
 async function copyCodeToClipboard(button, highlightDiv) {
-  const codeToCopy = highlightDiv.querySelector(":last-child > code")
-    .innerText;
+  const codeToCopy = highlightDiv.querySelector(":last-child > code").innerText;
   try {
     result = await navigator.permissions.query({ name: "clipboard-write" });
     if (result.state == "granted" || result.state == "prompt") {
