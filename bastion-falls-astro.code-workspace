@@ -1,16 +1,28 @@
 {
   "folders": [
     {
-      "path": ".",
-    },
+      "path": "."
+    }
   ],
+  "extensions": {
+    "recommendations": ["unifiedjs.vscode-remark", "esbenp.prettier-vscode"],
+    "unwantedRecommendations": ["davidanson.vscode-markdownlint"]
+  },
   "settings": {
     "files.associations": {
-      "*.mdx": "markdown",
+      "*.mdx": "markdown"
+    },
+    "[ejs]": {
+      "editor.defaultFormatter": "ejs.ejs-language-support",
+      "editor.formatOnSave": true
     },
     "[markdown]": {
       "editor.defaultFormatter": "unifiedjs.vscode-remark",
       "editor.formatOnSave": true,
-    },
-  },
+      "path-autocomplete.triggerOutsideStrings": true,
+      "path-autocomplete.pathMappings": {
+        "$root": "${workspaceRoot}/src/content/docs"
+      }
+    }
+  }
 }
