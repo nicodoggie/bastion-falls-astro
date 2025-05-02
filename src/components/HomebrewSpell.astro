@@ -8,6 +8,6 @@ const { name, target } = Astro.props;
 const url = `https://www.dndbeyond.com/spells/${target}`;
 ---
 
-<a href={url} target="_blank">
+<a href={url} rel="noopener noreferrer" target="_blank">
   {name}
 </a>

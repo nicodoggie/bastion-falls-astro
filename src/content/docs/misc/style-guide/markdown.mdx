@@ -100,7 +100,7 @@ _emphasis_ and **strong**
 
 To result in:
 
-_emphasis_ and **strong**
+*emphasis* and **strong**
 
 But not:
 
@@ -116,14 +116,14 @@ used in the closing set as in the opening set.
 
 For consistency, we would like to use one backtick \` for consistency.
 
-### Use pairs of three backticks \``` for code blocks
+### Use pairs of three backticks \`\`\` for code blocks
 
 Code blocks may be defined by using indents, or fenced by either three backticks
-\``` or three tildas \~~~. Three backticks \``` are preferred.
+\`\`\` or three tildas \~\~\~. Three backticks \`\`\` are preferred.
 
 Use:
 
-<pre>``` code ```</pre>
+<pre>`code`</pre>
 
 To result in:
 
@@ -141,7 +141,9 @@ Nor:
 
 ```md
 ```
+
 code
+
 ```
 ```
 
@@ -163,7 +165,7 @@ To result in:
 
 > section 1
 >
-> ---
+> ***
 >
 > section 2
 
@@ -176,7 +178,7 @@ section 2
 ```
 
 This is to ensure that we don't accidentally make a heading, because using three
-hyphen-minuses \--- may trigger a second-level Setext heading, as can be seen
+hyphen-minuses --- may trigger a second-level Setext heading, as can be seen
 below:
 
 > ## section 1
@@ -212,7 +214,7 @@ Results in:
 
 | Header 1 | Left-aligned | Center-aligned | Right-aligned |
 | -------- | :----------- | :------------: | ------------: |
-| Cell 1   | Cell 2       |   Cell 3 \|    |        Cell 4 |
+| Cell 1   | Cell 2       |    Cell 3 \|   |        Cell 4 |
 
 Tables may bne used in the contents for any information that can be easily
 represented on a two-dimensional tabular format. Any alignment may be
@@ -243,6 +245,7 @@ Results in:
     <th>Header 1</th>
     <th>Header 2</th>
   </tr>
+
   <tr>
     <td>Cell 1</td>
     <td>Cell 2</td>
@@ -272,26 +275,24 @@ such as the many references on this document.
 
 Footnotes may also be used for references or quotations from content written as
 if it were created by an in-world source, such as the article
-[_On the Fall of the Western Kalassarian Empire_](../../world-novelties/on-the-fall-of-the-western-kalassarian-empire.mdx).
-It is, however, preferred to use an _inline link_ (`[title](url)`) when
+[*On the Fall of the Western Kalassarian Empire*](../../world-novelties/on-the-fall-of-the-western-kalassarian-empire.mdx).
+It is, however, preferred to use an *inline link* (`[title](url)`) when
 referring to the article as a whole, instead of a specific piece of information
 within it.
 
 ### Strikethrough
 
-Strikethroughs are made by wrapping text with a pair of two tildas(~)
+Strikethroughs are made by wrapping text with a pair of two tildas(\~)
 `~~like this~~`, which will result in ~~like this~~.
 
 Strikethroughs must be used sparingly in wiki articles, but may be used where it
 makes sense in in-world articles or letters where the in-world author might have
 used a strikethrough either stylistically, or to remove a word.
 
----
+***
 
-[^1]:
-    "CommonMark Spec", spec.commonmark.org,
-    \<https://spec.commonmark.org/current/\>
+[^1]: "CommonMark Spec", spec.commonmark.org,
+    \<[https://spec.commonmark.org/current/\\>](https://spec.commonmark.org/current/\\>)
 
-[^2]:
-    "Rust documentation for `pulldown_cmark` Options struct",
-    \<https://docs.rs/pulldown-cmark/latest/pulldown_cmark/struct.Options.html\>
+[^2]: "Rust documentation for `pulldown_cmark` Options struct",
+    \<[https://docs.rs/pulldown-cmark/latest/pulldown\_cmark/struct.Options.html\\>](https://docs.rs/pulldown-cmark/latest/pulldown_cmark/struct.Options.html\\>)
