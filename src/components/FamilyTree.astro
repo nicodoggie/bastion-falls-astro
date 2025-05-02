@@ -1,0 +1,22 @@
+---
+import PanZoom, { Element } from "@sasza/react-panzoom";
+import { getImage } from "astro:assets";
+
+interface Props {
+  asset: string;
+  alt: string;
+}
+
+const { asset, alt } = Astro.props as Props;
+const image = await getImage({ src: asset });
+---
+
+<>
+  <div style={{ height: "400px" }}>
+    <PanZoom zoomInitial={1} zoomMax={10} zoomMin={1} client:load>
+      <Element id="tree">
+        <img src={image.src} alt={alt} />
+      </Element>
+    </PanZoom>
+  </div>
+</>

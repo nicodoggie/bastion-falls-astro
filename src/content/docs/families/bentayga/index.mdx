@@ -4,6 +4,9 @@ tags:
   - bentayga
 ---
 
+import FamilyMap from "./family.svg"
+import FamilyTree from "../../../../components/FamilyTree.astro"
+
 The _Bentayga_ clan is a close-knit family of ethnically
 [Parpelissian](../../ethnicities/parpelissian.mdx) sailors who have come to
 spread across the islands on the
@@ -14,4 +17,4 @@ companies, smugglers, privateers and navies around the known world.
 A disproportionate number of them have moved into Raibon Island and intermarried
 with some of the prominent families on the island.
 
-{{ panzoom(id="tree", img="family.svg", target="family-tree", alt="Bentayga Family Tree") }}
+<FamilyTree asset={FamilyMap} alt="Bentayga Family Map" />

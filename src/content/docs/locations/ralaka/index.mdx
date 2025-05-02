@@ -4,10 +4,12 @@ tags:
   - ralaka
   - continent
 ---
+import Map from "../../../components/Map.astro"
+import MapImage from "./map-of-ralaka.png"
 
 # Ralaka
 
-{{ map(asset="locations/ralaka/map-of-ralaka.png", width=500) }}
+<Map asset={MapImage} width={500} height={500} alt="Map of Ralaka" />
 
 A continent that is mostly occupied by the
 [Ahurian Empire](countries/ahuria.md), with the notable exception of the

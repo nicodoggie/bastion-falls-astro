@@ -14,7 +14,10 @@ extraMetadata:
 
 # Raibon Island
 
-{{ map(asset="locations/raibon-island.png", width=500) }}
+import Map from "../../../components/Map.astro"
+import MapImage from "/public/locations/raibon-island.png"
+
+<Map asset={MapImage} width={500} height={500} alt="Map of Raibon Island" />
 
 _Raibon Island_ is the largest and most populous island in the
 [L' Illes Apgarie](./l-illes-apgarie.mdx) archipelago. Its governance,

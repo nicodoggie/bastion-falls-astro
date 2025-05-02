@@ -1,0 +1,18 @@
+---
+import "@/styles/global.css";
+import { ThemeModeScript } from "flowbite-react";
+---
+
+<html>
+  <head>
+    <ThemeModeScript />
+  </head>
+  <body>
+    <slot />
+
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"
+    ></script>
+  </body>
+</html>

@@ -4,4 +4,7 @@ tags:
   - caxton
 ---
 
-{{ panzoom(id="tree", img="family.svg", target="family-tree", alt="Caxton Family Tree") }}
+import FamilyMap from "./family.svg"
+import FamilyTree from "../../../../components/FamilyTree.astro"
+
+<FamilyTree asset={FamilyMap} alt="Caxton Family Tree" />

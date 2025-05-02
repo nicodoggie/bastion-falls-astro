@@ -31,7 +31,7 @@ the nature of planar connections.
 
 ### Extinction Mechanism
 
-```
+```python
 class FeyViability:
   def calculate_survival_chance(self, population, conditions):
     """
@@ -184,16 +184,20 @@ class FeyViability:
 - [Orbs and Planar Convergence](./orbs-and-planar-convergence.mdx)
 - [Planar Cycles and Magical Resonance](./planar-cycles-and-magic.mdx)
 
-class FeyViability: def calculate_survival_chance(self, population, conditions):
-""" Model fey population viability """ base_magic = conditions.ambient_magic
-orb_support = conditions.enhancer_proximity human_pressure =
-conditions.conflict_level
+```python
+class FeyViability:
+   def calculate_survival_chance(self, population, conditions):
+      """ Model fey population viability """ 
+      base_magic = conditions.ambient_magic
+      orb_support = conditions.enhancer_proximity human_pressure =
+      conditions.conflict_level
 
-        threshold = self.MINIMUM_MAGICAL_REQUIREMENT
-        current_level = (base_magic * orb_support) - human_pressure
+      threshold = self.MINIMUM_MAGICAL_REQUIREMENT
+      current_level = (base_magic * orb_support) - human_pressure
 
-        return {
+      return {
             'viable': current_level > threshold,
             'decline_rate': threshold - current_level,
             'estimated_survival_time': self.project_survival(current_level)
-        }
+      }
+```

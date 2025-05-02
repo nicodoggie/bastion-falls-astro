@@ -13,10 +13,15 @@ extraMetadata:
     int: 0
     cha: 0
 ---
+import Map from "../../../components/Map.astro"
+import Deck01Image from "/public/vehicles/rozenmaiden/01-deck.png"
+import Castle02Image from "/public/vehicles/rozenmaiden/02-castle.png"
+import LowerDeck03Image from "/public/vehicles/rozenmaiden/03-lower-deck.png"
+import Hold04Image from "/public/vehicles/rozenmaiden/04-hold.png" 
 
 ### Main Deck
 
-{{ map(asset="vehicles/rozenmaiden/01-deck.png", width=500) }}
+<Map asset={Deck01Image} width={500} height={500} alt="Rozenmaiden Main Deck" />
 
 - Forward
 
@@ -37,7 +42,8 @@ extraMetadata:
 
 ### Aft- and Forecastle
 
-{{ map(asset="vehicles/rozenmaiden/02-castle.png", width=500) }}
+
+<Map asset={Castle02Image} width={500} height={500} alt="Rozenmaiden Aft- and Forecastle" />
 
 - Forecastle
   - Hatch
@@ -52,7 +58,7 @@ extraMetadata:
 
 ### Lower Deck
 
-{{ map(asset="vehicles/rozenmaiden/03-lower-deck.png", width=500) }}
+<Map asset={LowerDeck03Image} width={500} height={500} alt="Rozenmaiden Lower Deck" />
 
 - Hatch
 - Kitchen
@@ -69,7 +75,7 @@ extraMetadata:
 
 ### Hold
 
-{{ map(asset="vehicles/rozenmaiden/04-hold.png", width=500) }}
+<Map asset={Hold04Image} width={500} height={500} alt="Rozenmaiden Hold" />
 
 - Siege Weapons and Equipment Storage
 - Ice Box

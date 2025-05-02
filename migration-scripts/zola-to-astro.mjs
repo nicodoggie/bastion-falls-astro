@@ -117,6 +117,7 @@ function migrateFile(sourceFilePath) {
     if (zolaFmData.updated) {
       astroFmData.updatedDate = String(zolaFmData.updated);
     }
+    ``;
 
     // Basic description (optional, customize as needed)
     if (zolaFmData.description) {

@@ -12,6 +12,7 @@ tags:
   - lexicon
   - vocabulary
 ---
+import SeeAlso from "../../../../../../components/SeeAlso.astro";
 
 The Early Hick lexicon, as attested, consists of mostly noun forms. These nouns
 can represent a wide range of meanings, including actions, properties, or
@@ -23,24 +24,32 @@ For grammatical information and language overview, see
 
 ## Historical Sound Changes
 
-For Proto-Hick vowel harmony and its development into Early Hick, : see:
-[Proto-Hick Phonological Processes](../../proto-hick/index.mdx#phonological-processes)
+For Proto-Hick vowel harmony and its development into Early Hick, :
+<SeeAlso href="../proto-hick/index.mdx#phonological-processes">
+  Proto-Hick Phonological Processes
+</SeeAlso>
 
-For stress-related vowel changes, : see:
-[Vowel Allophony](../../early-hick/index.mdx#vowel-allophony)
+For stress-related vowel changes, :
+<SeeAlso href="../../early-hick/index.mdx#vowel-allophony">
+  Vowel Allophony
+</SeeAlso>
 
 ## Usage Notes
 
 1. Cross-references are marked with →
 2. Etymologies are shown in parentheses
-3. Compound derivations are marked with <
+3. Compound derivations are marked with \<
 4. Example sentences show full morphological analysis
 5. Apostrophes (') are used to transcribe glottal stops in phonemic
    transcriptions
 
 # Lexicon, Sorted Alphabetically
 
-## Suffixes
+import Lexicon from "../../../../../../components/Lexicon.astro";
+
+<Lexicon directory='hickic/seneran/early-hick' client:load />
+
+{/* ## Suffixes
 
 {{
 lexicon(path="content/languages/hickic/seneran/early-hick/lexicon-earlyhick_--alphabetical.json", format="json") }}
@@ -150,4 +159,4 @@ format="json") }}
 
 {{
 lexicon(path="content/languages/hickic/seneran/early-hick/lexicon-earlyhick_w-alphabetical.json",
-format="json") }}
+format="json") }} */}

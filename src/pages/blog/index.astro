@@ -1,0 +1,27 @@
+---
+import BlogLayout from "@/layouts/blog/home.astro";
+import { getCollection } from "astro:content";
+import BlogCarousel from "@/components/BlogCarousel.tsx";
+import { CardGrid } from "@astrojs/starlight/components";
+import BlogCard from "@/components/BlogCard.tsx";
+
+const blogPosts = await getCollection("blog");
+const blogClass = "h-56 sm:h-64 xl:h-80 2xl:h-96";
+---
+
+<BlogLayout title="Blog">
+  <div class={blogClass}>
+    <BlogCarousel posts={blogPosts} client:load />
+  </div>
+  <div class={blogClass}>
+    <CardGrid client:load>
+      {
+        blogPosts.map((post, index) => {
+          const { data } = post;
+
+          return <BlogCard id={post.id} key={index} {...post.data} />;
+        })
+      }
+    </CardGrid>
+  </div>
+</BlogLayout>

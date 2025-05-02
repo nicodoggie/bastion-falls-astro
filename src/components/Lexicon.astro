@@ -1,0 +1,82 @@
+---
+import { Icon, LinkButton } from "@astrojs/starlight/components";
+import type { Lexicon } from "../types/Lexicon";
+import Promise from "bluebird";
+import { getLexicalCategory } from "../lib/lexicon";
+
+interface Props {
+  directory: string;
+  format?: "json" | "csv";
+}
+
+const { directory, format = "json" } = Astro.props;
+
+const globbed = import.meta.glob(
+  `/src/content/docs/languages/**/lexicon-*-alphabetical.json`
+);
+const filteredData = Object.entries(globbed).filter(([path]) =>
+  path.includes(directory)
+);
+
+const lexiconData = Promise.map(filteredData, async ([path, func]) => {
+  return func();
+});
+---
+
+<>
+  <h2 id="lex-index">Index</h2>
+  {
+    lexiconData.map((data: Lexicon) => {
+      const letter = data.id.split("_")[1];
+      return (
+        <span style="display: inline-block; padding: 0.2rem;">
+          <a href={`#${data.id}`}>{letter}</a>
+        </span>
+      );
+    })
+  }
+  {
+    lexiconData.map((data: Lexicon) => {
+      const letter = data.id.split("_")[1];
+
+
+      const lexItems = Object.values(data.lexicon).map((item) => {
+        const lexCategories = item.types
+          .filter((type) => type.includes("lexinfo:"))
+          .map((type) => getLexicalCategory(type))
+          .join(", ");
+        const sense = item.senses && Array.isArray(item.senses) ? item.senses.map((sense) => {
+          return (
+            <dd>{sense.definition}</dd>
+            <dd>{sense.usage}</dd>
+          );
+        }) : null;
+        const derivedForms = item.derivedForms && Array.isArray(item.derivedForms) ? item.derivedForms.map((derivedForm) => {
+          return (
+            <dd>{derivedForm.writtenForm} /{derivedForm.phoneticForm}/ ({derivedForm.grammaticalMeaning})</dd>
+          );
+        }) : null;
+        const protoform = item.protoform ? `${item.protoform}` : null;
+        const note = item.note ? `${item.note}` : null;
+        return (
+          <dl>
+            <dt>{item.writtenForm} /{item.phoneticForm}/ ({lexCategories})</dt>
+            {sense}
+            <dd>{protoform}</dd>
+            <dd>{note}</dd> 
+            {derivedForms}
+          </dl>
+        );
+      });
+
+      return (
+        <h2 id={data.id}>
+          <a href={`#lex-index`}>{letter}</a>
+        </h2>
+        <div class="lex-items">
+          {lexItems}
+        </div>
+      );
+    })
+  }
+</>

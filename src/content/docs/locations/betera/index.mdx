@@ -5,9 +5,17 @@ tags:
   - continent
 ---
 
+import Map from "../../../../components/Map.astro";
+import MapImage from "./map-of-betera.png";
+
 # Betera
 
-{{ map(asset="locations/betera/map-of-betera.png", width=500) }}
+<Map
+  asset={MapImage}
+  width={500}
+  height={500}
+  alt="Map of Betera"
+/>
 
 A continent that contains the following present-day countries:
 
