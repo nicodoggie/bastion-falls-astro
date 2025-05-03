@@ -48,7 +48,7 @@ export default defineConfig({
       imports: [
         "./src/components/Spell.astro",
         "./src/components/Stub.astro",
-        "./src/components/FamilyTree.astro",
+        "./src/components/FamilyTree.tsx",
         "./src/components/HomebrewSpell.astro",
         "./src/components/Incomplete.astro",
         "./src/components/Map.astro",

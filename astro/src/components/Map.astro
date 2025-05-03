@@ -14,7 +14,7 @@ const image = await getImage({ src: asset });
 ---
 
 <div style={{ width: "100%", height: "100%" }}>
-  <PanZoom client:load>
+  <PanZoom  client:load>
     <Element id="map" x={0} y={0}>
       <img src={image.src} alt={alt} width={width} height={height} />
     </Element>
