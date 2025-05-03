@@ -1,6 +1,5 @@
-import PanZoom, { Element, type API as PanZoomAPI } from "@sasza/react-panzoom";
-import type { GetImageResult, ImageMetadata } from "astro";
-import { useRef } from "react";
+import PanZoom, { Element } from "@sasza/react-panzoom";
+import type { GetImageResult } from "astro";
 
 interface Props {
   asset: GetImageResult;
