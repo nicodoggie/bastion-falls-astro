@@ -1,17 +1,18 @@
 import { buildApplication, buildRouteMap } from "@stricli/core";
 import { buildInstallCommand, buildUninstallCommand } from "@stricli/auto-complete";
-import { name, version, description } from "../package.json";
-import { subdirCommand } from "./commands/subdir/command";
-import { nestedRoutes } from "./commands/nested/commands";
-import { newCommandRoutes } from "./commands/new/commands";
+import * as packageJson from "../package.json" assert { type: "json" };
+
+import { newCommandRoutes } from "./commands/new/commands.js";
+import { scanStubCommand } from "./commands/scan/command.js";
+
+const { name, version, description } = packageJson as any;
 
 const routes = buildRouteMap({
   routes: {
-    subdir: subdirCommand,
-    nested: nestedRoutes,
     new: newCommandRoutes,
-    install: buildInstallCommand("cli", { bash: "__cli_bash_complete" }),
-    uninstall: buildUninstallCommand("cli", { bash: true }),
+    scan: scanStubCommand,
+    install: buildInstallCommand("bfcli", { bash: "__cli_bash_complete" }),
+    uninstall: buildUninstallCommand("bfcli", { bash: true }),
   },
   docs: {
     brief: description,
@@ -27,4 +28,13 @@ export const app = buildApplication(routes, {
   versionInfo: {
     currentVersion: version,
   },
+});
+
+process.on("unhandledRejection", (reason, promise) => {
+  console.error(reason);
+  console.error(promise);
+});
+
+process.on("uncaughtException", (error) => {
+  console.error(error);
 });

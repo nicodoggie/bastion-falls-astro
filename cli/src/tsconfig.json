@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"]
+    },
     "noEmit": true,
     "rootDir": "..",
     "types": ["node"],

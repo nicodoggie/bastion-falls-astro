@@ -8,14 +8,18 @@ export interface LocalContext
   extends CommandContext,
   StricliAutoCompleteContext {
   readonly process: NodeJS.Process;
+  readonly currentPath: string;
   readonly rootDir: string;
 }
 
 export function buildContext(process: NodeJS.Process): LocalContext {
   const fileUrl = new URL(import.meta.url);
-
+  const currentPath = process.env['INIT_CWD']
+    ?? process.env['PWD']
+    ?? process.cwd();
 
   return {
+    currentPath,
     rootDir: path.resolve(path.dirname(fileUrl.pathname), ".."),
     process,
     os,

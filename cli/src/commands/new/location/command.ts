@@ -1,9 +1,9 @@
 import { buildCommand, numberParser, type FlagParametersForType } from "@stricli/core";
-import { type NewCommandFlags } from "../commands";
+import { type NewCommandFlags } from "../commands.js";
 
 export const locationCommandBuilder = (parentFlags: FlagParametersForType<NewCommandFlags>) => buildCommand({
   loader: async () => {
-    return await import("./impl");
+    return await import("./impl.js");
   },
   parameters: {
     flags: {
@@ -51,7 +51,7 @@ export const locationCommandBuilder = (parentFlags: FlagParametersForType<NewCom
       kind: "tuple",
       parameters: [
         {
-          parse: (value: string) => value,
+          parse: String,
           brief: "Name of the location to create",
         },
       ],

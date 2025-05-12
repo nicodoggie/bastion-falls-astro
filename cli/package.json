@@ -9,17 +9,17 @@
     "dist"
   ],
   "bin": {
-    "cli": "dist/cli.js",
+    "bfcli": "dist/cli.js",
     "__cli_bash_complete": "dist/bash-complete.js"
   },
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "copy-templates": "copyfiles -u 2 src/templates/*.ejs dist/templates",
+    "copy-templates": "copyfiles -u templates/*.ejs dist/templates",
     "prebuild": "tsc -p src/tsconfig.json",
     "build": "pnpm run copy-templates && tsup",
-    "dev": "tsup --watch src --onSuccess 'pnpm run copy-templates'",
+    "dev": "tsx --tsconfig src/tsconfig.json src/bin/cli.ts",
     "postinstall": "cli install"
   },
   "tsup": {
@@ -36,19 +36,34 @@
     "minify": false
   },
   "dependencies": {
+    "@bastion-falls/types": "workspace:*",
     "@stricli/auto-complete": "^1.1.2",
     "@stricli/core": "^1.1.2",
-    "copyfiles": "^2.4.1",
     "ejs": "^3.1.10",
-    "eta": "^3.5.0",
+    "env-paths": "^3.0.0",
+    "esm-path": "^1.0.1",
     "github-slugger": "^2.0.0",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "remark": "^15.0.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-mdx": "^3.1.0",
+    "remark-stringify": "^11.0.0",
+    "tinyglobby": "^0.2.13",
+    "vfile": "^6.0.3",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@types/ejs": "^3.1.5",
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "20.x",
+    "@types/mdast": "^4.0.4",
+    "@types/node": "~20.17.46",
+    "copyfiles": "^2.4.1",
     "tsup": "^6.7.0",
-    "typescript": "5.6.3"
+    "tsx": "^4.19.4",
+    "typescript": "5.6.3",
+    "unist-util-visit": "^5.0.0"
+  },
+  "volta": {
+    "extends": "../package.json"
   }
 }

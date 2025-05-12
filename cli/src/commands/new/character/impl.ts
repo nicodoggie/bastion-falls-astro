@@ -1,8 +1,8 @@
-import type { LocalContext } from "../../../context";
+import type { LocalContext } from "@/context.js";
 import { resolve } from "path";
 import * as YAML from "js-yaml";
-import renderTemplate, { type TemplateData } from "../../../lib/template";
-import { type NewCommandFlags } from "../commands";
+import renderTemplate, { type TemplateData } from "@/lib/template.js";
+import { type NewCommandFlags } from "../commands.js";
 
 interface NewCharacterCommandFlags extends NewCommandFlags {
   ddb?: string;
@@ -86,10 +86,9 @@ export default async function character(this: LocalContext, flags: NewCharacterC
 
   try {
     const targetDir = resolve(this.rootDir, "../astro/src/content/docs/characters")
-    const template = resolve(this.rootDir, "dist/templates/character.ejs")
     await renderTemplate({
       name: articleName,
-      template,
+      template: "character",
       targetDir,
       extension: "mdx",
       data,

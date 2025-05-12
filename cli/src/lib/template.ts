@@ -1,4 +1,6 @@
 import * as ejs from "ejs";
+import * as YAML from "js-yaml";
+import { getAbsolutePath } from "esm-path";
 import { slug } from "github-slugger";
 import { writeFile, stat } from "node:fs/promises";
 import { resolve } from "node:path";
@@ -43,10 +45,36 @@ export default async function renderTemplate(options: RenderTemplateOptions) {
       finalSlug = slugger(data.title);
     }
 
-    const content = await ejs.renderFile(template, data);
+    const currentFile = getAbsolutePath(import.meta.url);
+    const buildtemplateFile = resolve(currentFile, `../templates/${template}.ejs`);
+    const devTemplateFile = resolve(currentFile, `../../templates/${template}.ejs`);
     const target = resolve(targetDir, `${finalSlug}.${extension}`);
 
-    const fileExists = stat(target)
+    const templateFileExists = await stat(buildtemplateFile)
+      .then((info) => {
+        return info.isFile();
+      })
+      .catch(() => {
+        return false;
+      });
+
+    const devTemplateFileExists = await stat(devTemplateFile)
+      .then((info) => {
+        return info.isFile();
+      })
+      .catch(() => {
+        return false;
+      });
+
+    const templateFile = templateFileExists ? buildtemplateFile : devTemplateFile;
+
+    if (!templateFileExists && !devTemplateFileExists) {
+      throw new Error(`Template file ${templateFile} does not exist`);
+    }
+
+    const content = await ejs.renderFile(templateFile, data);
+
+    const fileExists = await stat(target)
       .then((info) => {
         return info.isFile();
       })

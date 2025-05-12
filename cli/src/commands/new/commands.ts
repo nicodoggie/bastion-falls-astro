@@ -1,6 +1,7 @@
 import { buildRouteMap, type FlagParametersForType, } from "@stricli/core";
-import { locationCommandBuilder } from "./location/command";
-import { characterCommandBuilder } from "./character/command";
+import { locationCommandBuilder } from "./location/command.js";
+import { characterCommandBuilder } from "./character/command.js";
+import { eventCommandBuilder } from "./event/command.js";
 
 export interface NewCommandFlags {
   force?: boolean;
@@ -23,14 +24,19 @@ export const defaultFlags: FlagParametersForType<NewCommandFlags> = {
 
 const locationCommand = locationCommandBuilder(defaultFlags);
 const characterCommand = characterCommandBuilder(defaultFlags);
+const eventCommand = eventCommandBuilder(defaultFlags);
+
 export const newCommandRoutes = buildRouteMap({
   routes: {
     loc: locationCommand,
     location: locationCommand,
     locations: locationCommand,
-    char: characterCommand,
+    cha: characterCommand,
     character: characterCommand,
     characters: characterCommand,
+    event: eventCommand,
+    events: eventCommand,
+    evt: eventCommand,
   },
   docs: {
     brief: "Create a new article",

@@ -1,8 +1,7 @@
 import { resolve } from "node:path";
-import type { LocalContext } from "../../../context";
-import type { TemplateData } from "../../../lib/template";
-import type { NewCommandFlags } from "../commands";
-import renderTemplate from "../../../lib/template";
+import type { LocalContext } from "@/context.js";
+import renderTemplate, { type TemplateData } from "@/lib/template.js";
+import type { NewCommandFlags } from "../commands.js";
 
 interface NewLocationCommandFlags extends NewCommandFlags {
   area?: string;
@@ -35,15 +34,14 @@ export default async function location(this: LocalContext, flags: NewLocationCom
         details: { area, population, elevation },
       },
     },
-    tags,
+    tags: ["locations", ...(tags ?? [])],
   };
 
   try {
     const targetDir = resolve(this.rootDir, "../astro/src/content/docs/locations")
-    const template = resolve(this.rootDir, "dist/templates/location.ejs")
     await renderTemplate({
       name: articleName,
-      template,
+      template: "location",
       targetDir,
       extension: "mdx",
       data,
