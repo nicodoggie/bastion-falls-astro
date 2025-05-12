@@ -25,6 +25,11 @@ export default defineConfig({
     expressiveCode(),
     starlight({
       title: "Bastion Falls",
+      favicon: "/favicon.png",
+      logo: {
+        src: "/src/assets/orb-of-bastion.png",
+        alt: "Bastion Falls",
+      },
       social: [
         {
           icon: "laptop",
@@ -37,6 +42,9 @@ export default defineConfig({
           href: "https://github.com/nicodoggie/bastion-falls",
         },
       ],
+      components: {
+        PageSidebar: "./src/components/PageSidebar.astro",
+      },
       plugins: [
         starlightLinksValidator({
           components: [["SeeAlso", "href"]],
@@ -58,11 +66,6 @@ export default defineConfig({
       ],
     }),
   ],
-
-  vite: {
-    plugins: [tailwindcss(), flowbiteReact()],
-  },
   experimental: {
-    fonts: [],
   },
 });
