@@ -4,6 +4,11 @@ tags:
   - hardpebble
 ---
 
+import * as path from "node:path";
+import {getImage} from "astro:assets";
+import familyMap from "./family.svg";
+export const image = await getImage({src: familyMap})     
+
 The Hardpebble family is a prominent mercantile family in Northwestern Poasah.
 They are known to have a trade network that stretches down to Southern Poasah
 and Kolha Ahuria to Western Tanduaria.
@@ -17,6 +22,4 @@ In recent years, they have been linked to the
 [Reformed Church of the Divine Masochist](/religions/divine-masochism/reformist/)
 and illegal trafficking of magically-capable persons.
 
-import FamilyMap from "./family.svg"
-
-<FamilyTree asset={FamilyMap} alt="Hardpebble Family Tree" />
+<FamilyTree client:load asset={image} alt="Hardpebble Family Tree" />

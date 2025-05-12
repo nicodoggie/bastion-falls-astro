@@ -4,6 +4,11 @@ tags:
   - durant
 ---
 
+import * as path from "node:path";
+import {getImage} from "astro:assets";
+import familyMap from "./family.svg";
+export const image = await getImage({src: familyMap})     
+
 The Durant family originally hail from mainland
 [Sanery](/locations/sanery/) and were staunch anti-Masochist. During the
 [Battles for the Masochist](/events/battles-for-the-masochist/) in the
@@ -20,6 +25,4 @@ with notable exceptions being a branch who had married into the
 [McFarland](/families/mcfarland/) family, as they follow
 [Northern Paganist](/religions/paganism/northern/) traditions.
 
-import FamilyMap from "./family.svg"
-
-<FamilyTree asset={FamilyMap} alt="Durant Family Tree" />
+<FamilyTree client:load asset={image} alt="Durant Family Tree" />

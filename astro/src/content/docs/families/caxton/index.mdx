@@ -4,6 +4,9 @@ tags:
   - caxton
 ---
 
-import FamilyMap from "./family.svg"
+import * as path from "node:path";
+import {getImage} from "astro:assets";
+import familyMap from "./family.svg";
+export const image = await getImage({src: familyMap})     
 
-<FamilyTree asset={FamilyMap} alt="Caxton Family Tree" />
+<FamilyTree client:load asset={image} alt="Caxton Family Tree" />

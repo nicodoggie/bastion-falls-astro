@@ -6,12 +6,15 @@ extraMetadata:
   image: ""
 ---
 
+import * as path from "node:path";
+import {getImage} from "astro:assets";
+import familyMap from "./family.svg";
+export const image = await getImage({src: familyMap})     
+
 The Strandiz family is an [Anasaian](/locations/anasai/) family
 well-known for their long military tradition. Their progenitor,
 [Matthew I Strandiz](/characters/matthew-i-strandiz/), came to
 prominence by saving the life of then crown prince Hudor of Anasai. Since then,
 the Strandiz men have served in various militaries throughout Apgarian history.
 
-import FamilyMap from "./family.svg"
-
-<FamilyTree asset={FamilyMap} alt="Strandiz Family Tree" />
+<FamilyTree client:load asset={image} alt="Strandiz Family Tree" />
