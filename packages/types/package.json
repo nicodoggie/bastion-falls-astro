@@ -1,0 +1,38 @@
+{
+  "name": "@bastion-falls/types",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup --dts",
+    "dev": "tsup --dts --watch"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts",
+      "src/old/index.ts"
+    ],
+    "format": "esm",
+    "tsconfig": "tsconfig.json",
+    "clean": true,
+    "minify": false
+  },
+  "dependencies": {
+    "zod": "^3.24.3"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  }
+}
