@@ -24,9 +24,11 @@ const CharacterDetailsSchema = z.object({
   pronouns: z.string().optional(),
   height: z.string().optional(),
   weight: z.string().optional(),
+  origin: z.string().optional(),
 })
 
 const CharacterRelationshipsSchema = z.object({
+  organizations: z.array(z.string()).optional(),
   parents: z.array(z.string()).optional(),
   siblings: z.array(z.string()).optional(),
   children: z.array(z.string()).optional(),

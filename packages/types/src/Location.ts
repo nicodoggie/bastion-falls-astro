@@ -6,6 +6,17 @@ const LocationDetailsSchema = z.object({
   area: z.string().optional(),
 })
 
+const LocationType = z.enum([
+  'city',
+  'region',
+  'country',
+  'continent',
+  'world',
+  'state',
+  'freehold',
+  'province',
+]);
+
 const LocationSectionSchema = LocationDetailsSchema.extend({
   name: z.string(),
   description: z.string().optional(),
@@ -13,11 +24,12 @@ const LocationSectionSchema = LocationDetailsSchema.extend({
 
 export const LocationSchema = z.object({
   name: z.string(),
-  image: ImageSchema,
-  details: LocationDetailsSchema,
-  sections: z.array(LocationSectionSchema),
-  parents: z.array(z.string()),
-  related: z.array(z.string()),
+  type: LocationType.or(z.string()),
+  image: ImageSchema.optional(),
+  details: LocationDetailsSchema.optional(),
+  sections: z.array(LocationSectionSchema).optional(),
+  parents: z.array(z.string()).optional(),
+  related: z.array(z.string()).optional(),
 })
 
 export type Location = z.infer<typeof LocationSchema>;
