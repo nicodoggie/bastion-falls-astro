@@ -1,5 +1,24 @@
 import { z } from 'zod';
 
+const OrganizationTypeLegacyEnum = z.enum([
+  'revolutionary',
+  'political',
+  'religious',
+  'economic',
+  'cultural',
+  'social',
+  'Religion',
+  'Religious Society',
+  'Government',
+  'State Legislature',
+  'Mercenary Group',
+  'Guild',
+  'Gang',
+  'Society',
+  'Business Entity',
+  'Ship',
+]);
+
 const OrganizationFrontmatterSchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
