@@ -12,9 +12,6 @@
     "unwantedRecommendations": ["davidanson.vscode-markdownlint"]
   },
   "settings": {
-    "files.associations": {
-      "*.mdx": "markdown"
-    },
     "[ejs]": {
       "editor.formatOnSave": true
     },
@@ -24,6 +21,14 @@
       "path-autocomplete.triggerOutsideStrings": true,
       "path-autocomplete.pathMappings": {
         "$root": "${workspaceRoot}/astro"
+      }
+    },
+    "[mdx]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "path-autocomplete.triggerOutsideStrings": true,
+      "path-autocomplete.pathMappings": {
+        "/": "${workspaceRoot}/astro/src/content/docs"
       }
     }
   }

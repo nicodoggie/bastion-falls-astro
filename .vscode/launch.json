@@ -7,6 +7,13 @@
       "name": "Development server",
       "request": "launch",
       "type": "node-terminal"
+    },
+    {
+      "cwd": "${workspaceFolder}/cli",
+      "command": "./node_modules/.bin/tsx --tsconfig src/tsconfig.json src/bin/cli.ts",
+      "name": "Development CLI",
+      "request": "launch",
+      "type": "node-terminal"
     }
   ]
 }
