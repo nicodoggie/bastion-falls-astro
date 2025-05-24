@@ -1,0 +1,130 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+const { character } = Astro.props;
+
+const images = import.meta.glob<{default: ImageMetadata}>("/src/assets/**/*.{jpg,jpeg,png,webp}");
+const { image } = character;
+
+---
+
+<div class="sl-container">
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full">
+    {
+        character.name && (
+          <div class="flex justify-center items-center">
+            <a href={character.ddb} target="_blank" rel="noopener noreferrer">
+              <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
+                {character.name}
+              </h2>
+            </a>
+          </div>
+        )
+      } 
+    {
+      character.image && (
+        <div class="mb-4 w-full character-image-container">
+          <img 
+            src={image.url} 
+            alt={character.image.alt || character.name} 
+            title={character.image.attribution}
+            class="w-full h-auto max-h-48 rounded-lg object-cover block mx-auto character-image"
+          />
+          <p class="text-xs text-gray-500 mt-1 text-center">
+            <a href={character.image.attributionUrl} target="_blank" rel="noopener noreferrer">
+              {character.image.attribution}
+            </a>
+          </p>
+        </div>
+      )
+    }
+    
+    <div class="space-y-4">
+      <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+        
+        {
+          character.details?.age && (
+            <li class="py-2">
+              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                Age
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                {character.details.age}
+              </p>
+            </li>
+          )
+        }
+        {
+          character.details?.species && (
+            <li class="py-2">
+              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                Species
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                {character.details.species}
+              </p>
+            </li>
+          )
+        }
+        {
+          character.details?.origin && (
+            <li class="py-2">
+              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                Origin
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                {character.details.origin}
+              </p>
+            </li>
+          )
+        }
+        {
+          character.background?.alignment && (
+            <li class="py-2">
+              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                Alignment
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                {character.background.alignment.moral}{' '}
+                {character.background.alignment.law}
+              </p>
+            </li>
+          )
+        }
+        {
+          character.details?.aliases && (
+            <li class="py-2">
+              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                AKA
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                {character.details.aliases.join(', ')}
+              </p>
+            </li>
+          )
+        }
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+  @layer components {
+    .character-name {
+      text-align: center;
+    }
+    .character-image-container {
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    
+    .character-image {
+      max-width: 100% !important;
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+    }
+  }
+</style>

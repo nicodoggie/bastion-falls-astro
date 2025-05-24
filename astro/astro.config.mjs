@@ -30,6 +30,7 @@ export default defineConfig({
         src: "/src/assets/orb-of-bastion.png",
         alt: "Bastion Falls",
       },
+      customCss: ["/src/styles/global.css"],
       social: [
         {
           icon: "laptop",
@@ -68,5 +69,11 @@ export default defineConfig({
   ],
   experimental: {
     contentIntellisense: true,
+  },
+  vite: {
+    plugins: [
+      tailwindcss(),
+      flowbiteReact(),
+    ],
   },
 });
