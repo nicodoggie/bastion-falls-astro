@@ -4,15 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bfcli": "cli/dist/cli.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bfcli": "yarn workspace @bastion-falls/cli",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "yarn workspace @bastion-falls/astro dev",
+    "build": "yarn workspaces run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "workspaces": [
+    "astro",
+    "cli",
+    "packages/*"
+  ],
   "volta": {
-    "node": "22.15.0",
-    "pnpm": "9.15.9"
+    "node": "22.15.0"
   },
-  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
+  "packageManager": "yarn@4.9.1+sha512.f95ce356460e05be48d66401c1ae64ef84d163dd689964962c6888a9810865e39097a5e9de748876c2e0bf89b232d583c33982773e9903ae7a76257270986538"
 }

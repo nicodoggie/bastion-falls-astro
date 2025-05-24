@@ -1,7 +1,0 @@
-packages:
-  - astro/*
-  - cli/*
-  - packages/**
-ignoredBuiltDependencies:
-  - esbuild
-linkWorkspacePackages: true
