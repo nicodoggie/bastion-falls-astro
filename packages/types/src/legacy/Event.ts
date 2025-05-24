@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const EventFrontmatterSchema = z.object({
+export const EventSchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
   extraMetadata: z.object({
@@ -13,4 +13,4 @@ const EventFrontmatterSchema = z.object({
   }).optional(),
 });
 
-export type EventFrontmatter = z.infer<typeof EventFrontmatterSchema>;
+export type Event = z.infer<typeof EventSchema>;

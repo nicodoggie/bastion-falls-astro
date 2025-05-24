@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const LanguageFrontmatterSchema = z.object({
+export const LanguageSchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
   extraMetadata: z.object({
@@ -13,4 +13,4 @@ const LanguageFrontmatterSchema = z.object({
   }).optional(),
 });
 
-export type LanguageFrontmatter = z.infer<typeof LanguageFrontmatterSchema>;
+export type Language = z.infer<typeof LanguageSchema>;

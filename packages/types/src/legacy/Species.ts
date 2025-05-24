@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const SpeciesFrontmatterSchema = z.object({
+export const SpeciesSchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
   extraMetadata: z.object({
@@ -13,4 +13,4 @@ const SpeciesFrontmatterSchema = z.object({
   }).optional(),
 });
 
-export type SpeciesFrontmatter = z.infer<typeof SpeciesFrontmatterSchema>;
+export type Species = z.infer<typeof SpeciesSchema>;

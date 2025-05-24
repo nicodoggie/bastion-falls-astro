@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const ReligionFrontmatterSchema = z.object({
+export const ReligionSchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
   extraMetadata: z.object({
@@ -13,4 +13,4 @@ const ReligionFrontmatterSchema = z.object({
   }).optional(),
 });
 
-export type ReligionFrontmatter = z.infer<typeof ReligionFrontmatterSchema>;
+export type Religion = z.infer<typeof ReligionSchema>;

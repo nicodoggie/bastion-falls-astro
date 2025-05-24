@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const ConceptFrontmatterSchema = z.object({
+export const ConceptSchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
   extraMetadata: z.object({
@@ -11,4 +11,4 @@ const ConceptFrontmatterSchema = z.object({
   }).optional(),
 });
 
-export type ConceptFrontmatter = z.infer<typeof ConceptFrontmatterSchema>;
+export type Concept = z.infer<typeof ConceptSchema>;

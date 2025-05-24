@@ -9,8 +9,8 @@
     "dist"
   ],
   "bin": {
-    "bfcli": "dist/cli.js",
-    "__cli_bash_complete": "dist/bash-complete.js"
+    "__cli_bash_complete": "dist/bash-complete.js",
+    "bfcli": "dist/cli.js"
   },
   "engines": {
     "node": ">=20"
@@ -18,9 +18,9 @@
   "scripts": {
     "copy-templates": "copyfiles -u templates/*.ejs dist/templates",
     "prebuild": "tsc -p src/tsconfig.json",
-    "build": "pnpm run copy-templates && tsup",
+    "build": "yarn run copy-templates && tsup",
     "dev": "tsx --tsconfig src/tsconfig.json src/bin/cli.ts",
-    "postinstall": "cli install"
+    "postinstall": "bfcli install"
   },
   "tsup": {
     "entry": [
@@ -43,7 +43,9 @@
     "env-paths": "^3.0.0",
     "esm-path": "^1.0.1",
     "github-slugger": "^2.0.0",
+    "glob": "^11.0.2",
     "js-yaml": "^4.1.0",
+    "minimatch": "^10.0.1",
     "remark": "^15.0.1",
     "remark-frontmatter": "^5.0.0",
     "remark-mdx": "^3.1.0",

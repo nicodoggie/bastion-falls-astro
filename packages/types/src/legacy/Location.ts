@@ -1,16 +1,16 @@
 import { z } from 'zod';
 
-const LocationDetailsSchema = z.object({
+export const LocationDetailsSchema = z.object({
   population: z.string().optional(),
   area: z.string().optional(),
   notable: z.string().optional(),
 });
 
-const LocationMetadataSchema = z.object({
+export const LocationMetadataSchema = z.object({
   details: LocationDetailsSchema.optional(),
 });
 
-const LocationFrontmatterSchema = z.object({
+export const LocationSchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
   extraMetadata: z.object({
@@ -18,4 +18,4 @@ const LocationFrontmatterSchema = z.object({
   }).optional(),
 });
 
-export type LocationFrontmatter = z.infer<typeof LocationFrontmatterSchema>;
+export type Location = z.infer<typeof LocationSchema>;

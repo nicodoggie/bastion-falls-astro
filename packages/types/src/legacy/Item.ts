@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const ItemFrontmatterSchema = z.object({
+export const ItemSchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
   extraMetadata: z.object({
@@ -13,4 +13,4 @@ const ItemFrontmatterSchema = z.object({
   }).optional(),
 });
 
-export type ItemFrontmatter = z.infer<typeof ItemFrontmatterSchema>;
+export type Item = z.infer<typeof ItemSchema>;

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const FamilyFrontmatterSchema = z.object({
+export const FamilySchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
   extraMetadata: z.object({
@@ -14,4 +14,4 @@ const FamilyFrontmatterSchema = z.object({
   }).optional(),
 });
 
-export type FamilyFrontmatter = z.infer<typeof FamilyFrontmatterSchema>;
+export type Family = z.infer<typeof FamilySchema>;

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const VehicleFrontmatterSchema = z.object({
+export const VehicleSchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
   extraMetadata: z.object({
@@ -13,4 +13,4 @@ const VehicleFrontmatterSchema = z.object({
   }).optional(),
 });
 
-export type VehicleFrontmatter = z.infer<typeof VehicleFrontmatterSchema>;
+export type Vehicle = z.infer<typeof VehicleSchema>;

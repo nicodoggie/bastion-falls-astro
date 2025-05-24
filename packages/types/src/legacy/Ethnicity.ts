@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const EthnicityFrontmatterSchema = z.object({
+export const EthnicitySchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
   extraMetadata: z.object({
@@ -13,4 +13,4 @@ const EthnicityFrontmatterSchema = z.object({
   }).optional(),
 });
 
-export type EthnicityFrontmatter = z.infer<typeof EthnicityFrontmatterSchema>;
+export type Ethnicity = z.infer<typeof EthnicitySchema>;

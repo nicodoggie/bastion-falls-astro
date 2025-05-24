@@ -19,7 +19,7 @@ const OrganizationTypeLegacyEnum = z.enum([
   'Ship',
 ]);
 
-const OrganizationFrontmatterSchema = z.object({
+export const OrganizationSchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
   extraMetadata: z.object({
@@ -32,4 +32,4 @@ const OrganizationFrontmatterSchema = z.object({
   }).optional(),
 });
 
-export type OrganizationFrontmatter = z.infer<typeof OrganizationFrontmatterSchema>;
+export type Organization = z.infer<typeof OrganizationSchema>;

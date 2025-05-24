@@ -9,6 +9,18 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
+    },
+    "./legacy": {
+      "types": "./dist/legacy/index.d.ts",
+      "import": "./dist/legacy/index.js"
+    },
+    "./legacy/*": {
+      "types": "./dist/legacy/*.d.ts",
+      "import": "./dist/legacy/*.js"
     }
   },
   "scripts": {
@@ -18,7 +30,9 @@
   "tsup": {
     "entry": [
       "src/index.ts",
-      "src/old/index.ts"
+      "src/*.ts",
+      "src/legacy/index.ts",
+      "src/legacy/*.ts"
     ],
     "format": "esm",
     "tsconfig": "tsconfig.json",
