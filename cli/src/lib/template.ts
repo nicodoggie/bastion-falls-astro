@@ -15,12 +15,6 @@ interface RenderTemplateOptions {
   slugger?: (str: string) => string;
 }
 
-export interface TemplateData {
-  title?: string;
-  slug?: string;
-  [key: string]: any;
-}
-
 export default async function renderTemplate(options: RenderTemplateOptions) {
   const {
     name,

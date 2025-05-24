@@ -4,12 +4,14 @@ import * as packageJson from "../package.json" assert { type: "json" };
 
 import { newCommandRoutes } from "./commands/new/commands.js";
 import { scanStubCommand } from "./commands/scan/command.js";
+import { migrateCommand } from "./commands/migrate/command.js";
 
 const { name, version, description } = packageJson as any;
 
 const routes = buildRouteMap({
   routes: {
     new: newCommandRoutes,
+    migrate: migrateCommand,
     scan: scanStubCommand,
     install: buildInstallCommand("bfcli", { bash: "__cli_bash_complete" }),
     uninstall: buildUninstallCommand("bfcli", { bash: true }),

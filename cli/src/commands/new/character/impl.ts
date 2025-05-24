@@ -1,8 +1,10 @@
 import type { LocalContext } from "@/context.js";
 import { resolve } from "path";
-import * as YAML from "js-yaml";
 import renderTemplate, { type TemplateData } from "@/lib/template.js";
 import { type NewCommandFlags } from "../commands.js";
+import type { Character } from "@bastion-falls/types";
+import type { CharacterOrganization, CharacterRelative, CharacterReligion } from "@bastion-falls/types/Character";
+import type { ImageAttribution } from "@bastion-falls/types/Image";
 
 interface NewCharacterCommandFlags extends NewCommandFlags {
   ddb?: string;
@@ -11,8 +13,8 @@ interface NewCharacterCommandFlags extends NewCommandFlags {
   attributionUrl?: string;
   age?: number;
   aliases?: string[];
-  date_of_birth?: string;
-  date_of_death?: string;
+  dateOfBirth?: string;
+  dateOfDeath?: string;
   parents?: string[];
   sex?: string;
   pronouns?: string;
@@ -20,31 +22,10 @@ interface NewCharacterCommandFlags extends NewCommandFlags {
   weight?: string;
 }
 
-interface ImageDetails {
-  url?: string;
-  attribution?: string;
-  attribution_url?: string;
+interface CharacterTemplate extends TemplateData {
+  character: Omit<Character, "name">;
 }
 
-interface CharacterDetails {
-  age?: number;
-  aliases?: string[];
-  date_of_birth?: string;
-  date_of_death?: string;
-  sex?: string;
-  pronouns?: string;
-  height?: string;
-  weight?: string;
-}
-
-export interface NewCharacterData extends TemplateData {
-  extraMetadata: {
-    ddb?: string;
-    image?: ImageDetails;
-    character: CharacterDetails;
-    parents?: string[];
-  }
-}
 
 export default async function character(this: LocalContext, flags: NewCharacterCommandFlags, articleName: string): Promise<void> {
   const {
@@ -54,29 +35,45 @@ export default async function character(this: LocalContext, flags: NewCharacterC
     attributionUrl,
     age,
     aliases,
-    date_of_birth,
-    date_of_death,
-    parents,
+    dateOfBirth,
+    dateOfDeath,
+    parents = [],
     tags,
     force = false,
   } = flags;
 
-  const data: NewCharacterData = {
+  const image: ImageAttribution | undefined = imageUrl ? {
+    url: imageUrl,
+    attribution,
+    attributionUrl,
+  } : undefined;
+  
+  const relatives: CharacterRelative[] = [
+    ...(parents.map((parent): CharacterRelative => ({ name: parent, type: "parent" }))),
+  ];
+  const religions: CharacterReligion[] = [];
+  const organizations: CharacterOrganization[] = [];
+
+  const data: CharacterTemplate = {
     title: articleName,
-    extraMetadata: {
+    character: {
       ddb,
-      image: {
-        url: imageUrl,
-        attribution,
-        attribution_url: attributionUrl,
-      },
-      character: {
+      image,
+      details: {
         age,
         aliases: aliases ?? [],
-        date_of_birth,
-        date_of_death,
+        dateOfBirth,
+        dateOfDeath,
+        sex: undefined,
+        pronouns: undefined,
+        height: undefined,
+        weight: undefined,
       },
-      parents: parents ?? [],
+      relationships: {  
+        organizations,
+        relatives,
+        religions,
+      },
     },
     tags: [
       "characters",

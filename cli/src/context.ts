@@ -14,7 +14,8 @@ export interface LocalContext
 
 export function buildContext(process: NodeJS.Process): LocalContext {
   const fileUrl = new URL(import.meta.url);
-  const currentPath = process.env['INIT_CWD']
+  const currentPath = process.env['_REAL_CWD']
+    ??process.env['INIT_CWD']
     ?? process.env['PWD']
     ?? process.cwd();
 

@@ -49,13 +49,13 @@ export const characterCommandBuilder = (parentFlags: FlagParametersForType<NewCo
         brief: "Character's known aliases",
         optional: true,
       },
-      date_of_birth: {
+      dateOfBirth: {
         kind: "parsed",
         parse: String,
         brief: "Date of birth",
         optional: true,
       },
-      date_of_death: {
+      dateOfDeath: {
         kind: "parsed",
         parse: String,
         brief: "Date of death",

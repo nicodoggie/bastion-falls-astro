@@ -7,8 +7,9 @@ import renderTemplate from "@/lib/template.js";
 import type { NewEventCommandFlags } from "./command.js";
 import { resolve } from "node:path";
 import * as YAML from "js-yaml";
+import type { BaseFrontmatter } from "@bastion-falls/types/BaseFrontmatter";
 
-interface NewEventData extends TemplateData {
+interface NewEventData extends BaseFrontmatter {
   event: Event;
 }
 
