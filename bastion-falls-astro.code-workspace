@@ -1,35 +1,34 @@
 {
   "folders": [
     {
-      "path": "."
-    }
+      "path": ".",
+    },
   ],
   "extensions": {
     "recommendations": [
+      "unifiedjs.vscode-mdx",
       "unifiedjs.vscode-remark",
-      "esbenp.prettier-vscode"
+      "esbenp.prettier-vscode",
     ],
-    "unwantedRecommendations": ["davidanson.vscode-markdownlint"]
+    "unwantedRecommendations": ["davidanson.vscode-markdownlint"],
   },
   "settings": {
     "[ejs]": {
-      "editor.formatOnSave": true
+      "editor.formatOnSave": true,
     },
+
     "[markdown]": {
-      "editor.defaultFormatter": "unifiedjs.vscode-remark",
+      "editor.defaultFormatter": "astro-build.astro-vscode",
       "editor.formatOnSave": true,
       "path-autocomplete.triggerOutsideStrings": true,
       "path-autocomplete.pathMappings": {
-        "$root": "${workspaceRoot}/astro"
-      }
+        "$root": "${workspaceRoot}/astro",
+      },
     },
-    "[mdx]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true,
-      "path-autocomplete.triggerOutsideStrings": true,
-      "path-autocomplete.pathMappings": {
-        "/": "${workspaceRoot}/astro/src/content/docs"
-      }
-    }
-  }
+    "files.associations": {
+      "*.md": "markdown",
+    },
+    "astro.content-intellisense": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
 }

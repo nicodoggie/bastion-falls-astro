@@ -2,13 +2,11 @@
 import MobileTableOfContents from 'virtual:starlight/components/MobileTableOfContents';
 import TableOfContents from 'virtual:starlight/components/TableOfContents';
 import CharacterSidebarInfo from './CharacterSidebarInfo.astro';
+import OrganizationSidebarInfo from './OrganizationSidebarInfo.astro';
+import LocationSidebarInfo from './LocationSidebarInfo.astro';
 
 const { toc, entry } = Astro.locals.starlightRoute;
 ---
-
-{
-  
-}
 
 {
   toc && (
@@ -19,6 +17,8 @@ const { toc, entry } = Astro.locals.starlightRoute;
       <div class="right-sidebar-panel sl-hidden lg:sl-block">
         <div class="sl-container">
           {entry.data?.character && <CharacterSidebarInfo character={entry.data.character} />}
+          {entry.data?.organization && <OrganizationSidebarInfo organization={entry.data.organization} />}
+          {entry.data?.location && <LocationSidebarInfo location={entry.data.location} />}
           <TableOfContents />
         </div>
       </div>

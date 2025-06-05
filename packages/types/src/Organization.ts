@@ -16,9 +16,9 @@ const OrganizationTypeSchema = z.enum([
   'academic',
 ]);
 
-const OrganizationSchema = z.object({
-  name: z.string(),
-  type: OrganizationTypeSchema.or(z.string()),
+export const OrganizationSchema = z.object({
+  name: z.string().optional(),
+  type: OrganizationTypeSchema.or(z.string()).optional(),
   founded: z.string().optional(),
   dissolved: z.string().optional(),
   headquarters: z.string().optional(),

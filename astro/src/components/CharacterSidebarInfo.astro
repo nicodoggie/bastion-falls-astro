@@ -1,130 +1,377 @@
 ---
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
+import type { DataEntryMap } from 'astro:content';
+import type { CollectionKey } from 'astro:content';
+import { type CollectionEntry, getEntry, getCollection } from 'astro:content';
+import { slug } from 'github-slugger';
 
 const { character } = Astro.props;
 
-const images = import.meta.glob<{default: ImageMetadata}>("/src/assets/**/*.{jpg,jpeg,png,webp}");
-const { image } = character;
+let image;
+if(character?.image?.url) {
+  const images = import.meta.glob<{default: ImageMetadata}>("/src/assets/**/*.{jpg,jpeg,png,webp}");
+  image =  images[character.image.url]();
+}
+
+let mortalityIcon;
+switch(character.details.mortality) {
+  case 'dead':
+    mortalityIcon = '💀';
+    break;
+  case 'alive':
+    mortalityIcon = '';
+    break;
+  case 'undead':
+    mortalityIcon = '🧟';
+    break;
+  case 'unknown':
+    mortalityIcon = '�';
+    break;
+}
+
+let species;
+if(character?.details?.species) {
+  species = await getEntry('species', slug(character.details.species));
+}
+
+interface Relative {
+  type: string;
+  entry: CollectionEntry<"character">;
+}
+
+
+let relatives: Relative[] = [];
+if(character?.relationships?.relatives) {
+  relatives = await Promise.all(
+    character.relationships.relatives.map(
+      async ({name, type}: {name: string, type: string}) => {
+        const relativeEntry = await getEntry('character', slug(name));
+        return {type, entry: relativeEntry};
+      }
+    )
+  )
+}
+// Sort by relative type
+relatives.sort((a, b) => a.type.localeCompare(b.type));
+interface Organization {
+  name: string;
+  title: string;
+}
+let organizations: {title: string, entry: CollectionEntry<"organization">}[] = [];
+if(character?.relationships?.organizations) {
+  organizations = (await Promise.all(
+    character.relationships.organizations.map(
+      async (organization: Organization) => {
+        const sluggedName = slug(organization.name);
+        const organizationEntry = await getEntry('organization', sluggedName);
+        return {title: organization.title, entry: organizationEntry};
+      }
+    )
+  )).filter((organization) => organization && organization.entry);
+}
+
+let families: CollectionEntry<"family">[] = [];
+if(character?.relationships?.families) {
+  families = await Promise.all(
+    character.relationships.families.map(
+      async (family: string) => {
+        const familyEntry = await getEntry('family', slug(family));
+        return familyEntry;
+      }
+  ))
+}
 
 ---
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full">
+  {
+    character.name && (
+      <div class="flex justify-center items-center border-gray-600">
+        <a href={character.ddb} target="_blank" rel="noopener noreferrer">
+          <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white" style="display: inline-block;">
+            {character.name}<span class="mortality-icon p-1">{mortalityIcon}</span>
+          </h2>
+        </a>
+      </div>
+      <hr class="border-gray-600">
+    )
+  }
+  {
+    character.image && (
+      <div class="mb-4 w-full character-image-container bg-black">
+        <Image 
+          src={image} 
+          alt={character.image.alt || character.name} 
+          title={character.image.attribution}
+          class="w-full h-full max-h-48 rounded-lg object-scale-down block mx-auto"
+        />
+        <p class="text-xs text-gray-500 mt-1 text-center">
+          <a href={character.image.attributionUrl} target="_blank" rel="noopener noreferrer">
+            {character.image.attribution}
+          </a>
+        </p>
+      </div>
+    )
+  }
 
-<div class="sl-container">
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full">
-    {
-        character.name && (
-          <div class="flex justify-center items-center">
-            <a href={character.ddb} target="_blank" rel="noopener noreferrer">
-              <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
-                {character.name}
-              </h2>
-            </a>
-          </div>
+  <div class="space-y-4">
+    <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+      
+      {
+        character.details?.age && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Age
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {character.details.age}
+            </p>
+          </li>
         )
-      } 
-    {
-      character.image && (
-        <div class="mb-4 w-full character-image-container">
-          <img 
-            src={image.url} 
-            alt={character.image.alt || character.name} 
-            title={character.image.attribution}
-            class="w-full h-auto max-h-48 rounded-lg object-cover block mx-auto character-image"
-          />
-          <p class="text-xs text-gray-500 mt-1 text-center">
-            <a href={character.image.attributionUrl} target="_blank" rel="noopener noreferrer">
-              {character.image.attribution}
-            </a>
-          </p>
-        </div>
-      )
-    }
-    
-    <div class="space-y-4">
-      <ul class="divide-y divide-gray-200 dark:divide-gray-700">
-        
-        {
-          character.details?.age && (
-            <li class="py-2">
-              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Age
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400">
-                {character.details.age}
-              </p>
-            </li>
-          )
-        }
-        {
-          character.details?.species && (
-            <li class="py-2">
-              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Species
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400">
-                {character.details.species}
-              </p>
-            </li>
-          )
-        }
-        {
-          character.details?.origin && (
-            <li class="py-2">
-              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Origin
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400">
-                {character.details.origin}
-              </p>
-            </li>
-          )
-        }
-        {
-          character.background?.alignment && (
-            <li class="py-2">
-              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Alignment
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400">
-                {character.background.alignment.moral}{' '}
-                {character.background.alignment.law}
-              </p>
-            </li>
-          )
-        }
-        {
-          character.details?.aliases && (
-            <li class="py-2">
-              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                AKA
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400">
-                {character.details.aliases.join(', ')}
-              </p>
-            </li>
-          )
-        }
-      </ul>
-    </div>
+      }
+      {
+        character.details?.dateOfBirth && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Date of Birth
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {character.details.dateOfBirth}
+            </p>
+          </li>
+        )
+      }
+      {
+        character.details?.dateOfDeath && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Date of Death
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {character.details.dateOfDeath}
+            </p>
+          </li>
+        )
+      }
+      {
+        character?.details.sex && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Sex
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {character.details.sex}{character.details.pronouns && ` (${character.details.pronouns})`}
+            </p>
+          </li>
+        )
+      }
+      {
+        character?.details.sexOrgans && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Genitalia
+            </h3>
+            <dl class="text-gray-600 dark:text-gray-400">
+              {character.details.sexOrgans.map((organ) => (
+                <li>
+                  {organ.type === "penis" && (
+                    <>
+                      Penis
+                      <dl class="ml-4">
+                        {organ.length && <dt>Length</dt> && <dd>{organ.length}</dd>}
+                        {organ.girth && <dt>Girth</dt> && <dd>{organ.girth}</dd>}
+                        {organ.pubicHair && <dt>Pubic Hair</dt> && <dd>{organ.pubicHair}</dd>}
+                      </dl>
+                    </>
+                  )}
+                  {organ.type === "vagina" && (
+                    <>
+                      Vagina
+                      <dl class="ml-4">
+                        {organ.depth && <dt>Depth</dt> && <dd>{organ.depth}</dd>}
+                        {organ.width && <dt>Width</dt> && <dd>{organ.width}</dd>}
+                        {organ.pubicHair && <dt>Pubic Hair</dt> && <dd>{organ.pubicHair}</dd>}
+                      </dl>
+                    </>
+                  )}
+                  {organ.type === "breasts" && (
+                    <>
+                      Breasts
+                      <dl class="ml-4">
+                        {organ.size && <dt>Size</dt> && <dd>{organ.size}</dd>}
+                        {organ.nipples && <dt>Nipples</dt> && <dd>{organ.nipples}</dd>}
+                      </dl>
+                    </>
+                  )}
+                </li>
+              ))}
+            </dl>
+          </li>
+        )
+      }
+      {
+        character.details?.origin && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Origin
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {character.details.origin}
+            </p>
+          </li>
+        )
+      }
+      {
+        character.background?.alignment && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Alignment
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {character.background.alignment.moral}{' '}
+              {character.background.alignment.law}
+            </p>
+          </li>
+        )
+      }
+      {
+        character.details?.aliases && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Known Aliases
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {character.details.aliases.join(', ')}
+            </p>
+          </li>
+        )
+      }
+      {
+        organizations && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Organizations
+            </h3>
+            <ul class="text-gray-600 dark:text-gray-400">
+              {organizations.map(
+                ({title, entry}: {title: string, entry: CollectionEntry<"organization"> | undefined}) => (
+                  <li>
+                    <a href={`/organizations/${entry?.id}`}>{entry?.data.title} {title && `(${title})`}</a>
+                  </li>
+                )
+              )}
+            </ul>
+          </li>
+        )
+      }
+      {
+        relatives && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Relatives
+            </h3>
+          </li>
+          <ul class="text-gray-600 dark:text-gray-400">
+            {relatives.map(({entry, type}: Relative) => (
+              <li>
+                <a href={`/characters/${entry?.id}`}>
+                  {entry?.data.character.name}
+                  {type && ` (${type})`}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+      
+      {
+        families && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Families
+            </h3>
+            <ul class="text-gray-600 dark:text-gray-400">
+              {families.map((family: CollectionEntry<"family">) => (
+                <li>
+                  <a href={`/families/${family?.id}`}>{family?.data.family.name}</a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        )
+      }
+      {
+        character.details?.species && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Species
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              <a href={`/species/${species?.id}`}>{species?.data.title}</a>
+            </p>
+          </li>
+        )
+      }
+      {
+        character.details?.height && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Height
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {character.details.height}
+            </p>
+          </li>
+        )
+      }
+      {
+        character.details?.weight && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Weight
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {character.details.weight}
+            </p>
+          </li>
+        )
+      }
+      {
+        character.background?.goals && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Goals
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {character.background.goals}
+            </p>
+          </li>
+        )
+      }
+      {
+        character.background?.flaws && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Flaws
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {character.background.flaws}
+            </p>
+          </li>
+        )
+      }
+      {
+        character.background?.backstory && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Backstory
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {character.background.backstory}
+            </p>
+          </li>
+        )
+      }
+    </ul>
   </div>
 </div>
-
-<style>
-  @layer components {
-    .character-name {
-      text-align: center;
-    }
-    .character-image-container {
-      width: 100%;
-      max-width: 100%;
-      overflow: hidden;
-    }
-    
-    .character-image {
-      max-width: 100% !important;
-      width: 100% !important;
-      height: auto !important;
-      display: block !important;
-    }
-  }
-</style>

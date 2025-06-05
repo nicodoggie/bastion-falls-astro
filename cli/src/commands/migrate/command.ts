@@ -15,6 +15,10 @@ export interface MigrateCommandFlags {
 
 const mapping: Record<string, MigrateMapFunction<any, any, any>> = {
   character: (await import('./functions/character.js')).default,
+  family: (await import('./functions/family.js')).default,
+  location: (await import('./functions/location.js')).default,
+  organization: (await import('./functions/organization.js')).default,
+  species: (await import('./functions/species.js')).default,
 }
 
 export const migrateCommand = buildCommand({
@@ -47,6 +51,7 @@ export const migrateCommand = buildCommand({
           const targetPath = flags.target 
             ? resolve(this.currentPath, flags.target, fileName) 
             : resolve(this.currentPath, fileName);
+          console.log(targetPath, migratedFile);
           await fs.writeFile(targetPath, migratedFile, 'utf8');
         }
       } catch(e) {

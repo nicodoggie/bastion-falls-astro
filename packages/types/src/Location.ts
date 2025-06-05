@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ImageSchema } from './Image.js';
+import { BaseImageSchema } from './Image.js';
 
 const LocationDetailsSchema = z.object({
   population: z.string().optional(),
@@ -25,7 +25,7 @@ const LocationSectionSchema = LocationDetailsSchema.extend({
 export const LocationSchema = z.object({
   name: z.string(),
   type: LocationType.or(z.string()),
-  image: ImageSchema.optional(),
+  image: BaseImageSchema.optional(),
   details: LocationDetailsSchema.optional(),
   sections: z.array(LocationSectionSchema).optional(),
   parents: z.array(z.string()).optional(),

@@ -1,0 +1,110 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
+import { slug } from 'github-slugger';
+
+const { organization } = Astro.props;
+
+// Get member character entries if they exist
+let members: CollectionEntry<"character">[] = [];
+if(organization?.members) {
+  members = (await Promise.all(
+    organization.members.map(
+      async (memberName: string) => {
+        const memberEntry = await getEntry('character', slug(memberName));
+        return memberEntry;
+      }
+    )
+  )).filter((member) => member);
+}
+
+---
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full">
+  {
+    organization.name && (
+      <div class="flex justify-center items-center border-gray-600">
+        <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
+          {organization.name}
+        </h2>
+      </div>
+      <hr class="border-gray-600">
+    )
+  }
+
+  <div class="space-y-4">
+    <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+      
+      {
+        organization?.type && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Type
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {organization.type.charAt(0).toUpperCase() + organization.type.slice(1)}
+            </p>
+          </li>
+        )
+      }
+      
+      {
+        organization?.founded && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Founded
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {organization.founded}
+            </p>
+          </li>
+        )
+      }
+      
+      {
+        organization?.dissolved && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Dissolved
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {organization.dissolved}
+            </p>
+          </li>
+        )
+      }
+      
+      {
+        organization?.headquarters && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Headquarters
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {organization.headquarters}
+            </p>
+          </li>
+        )
+      }
+      
+      {
+        members && members.length > 0 && (
+          <li class="py-2">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Members
+            </h3>
+            <ul class="text-gray-600 dark:text-gray-400">
+              {members.map((member: CollectionEntry<"character">) => (
+                <li>
+                  <a href={`/characters/${member.id}`}>
+                    {member.data.character.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        )
+      }
+      
+    </ul>
+  </div>
+</div> 

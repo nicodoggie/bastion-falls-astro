@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { BaseStatsSchema } from "./BaseStats.js";
-import { ImageAttributionSchema, ImagePromptSchema } from "./Image.js";
+import { ImageSchema } from "./Image.js";
 
 const AlignmentSchema = z.object({
   moral: z.enum(["lawful", "neutral", "chaotic"]),
@@ -68,16 +68,23 @@ const CharacterOrganizationSchema = z.object({
 
 export const CharacterRelativeSchema = z.object({
   name: z.string(),
-  type: z.enum(["parent", "sibling", "child", "partner", "friend", "enemy", "ally", "other"]),
+  type: z.enum([
+    "parent", 
+    "sibling", 
+    "child", 
+    "partner", 
+    "spouse", 
+    "friend", 
+    "enemy", 
+    "ally", 
+    "associate",
+    "other",
+  ]),
 });
 
-export const CharacterReligionSchema = z.object({
-  name: z.string(),
-})
+export const CharacterReligionSchema = z.string();
 
-export const CharacterFamilySchema = z.object({
-  name: z.string(),
-})
+export const CharacterFamilySchema = z.string();
 
 export const CharacterRelationshipsSchema = z.object({
   organizations: z.array(CharacterOrganizationSchema).optional(),
@@ -89,7 +96,7 @@ export const CharacterRelationshipsSchema = z.object({
 export const CharacterSchema = z.object({
   name: z.string(),
   ddb: z.string().url().optional(),
-  image: ImageAttributionSchema.or(ImagePromptSchema).optional(),
+  image: ImageSchema.optional(),
   stats: BaseStatsSchema.optional(),
   background: CharacterBackgroundSchema.optional(),
   details: CharacterDetailsSchema.optional(),
