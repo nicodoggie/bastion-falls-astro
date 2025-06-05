@@ -2,8 +2,41 @@ import {
   LocationSchema as LegacyLocationSchema,
   type Location as LegacyLocation,
 } from '@bastion-falls/types/legacy';
-import type { Location } from '@bastion-falls/types';
+import { LocationSchema, type Location } from '@bastion-falls/types';
 import type { MigrateMapFunction } from '@/types/MigrateMapFunction';
+
+// Helper function to infer location type from tags
+function inferLocationTypeFromTags(tags: string[]): string {
+  // Define valid location types from the schema
+  const validTypes = LocationSchema.shape.type.options;
+
+  // Special mappings for compound tags or variations
+  const tagMappings: { [key: string]: string } = {
+    'port city': 'port',
+    'port town': 'port',
+    'fishing port': 'port',
+    'trading port': 'port',
+    'mountain range': 'mountain',
+  };
+
+  // Check for direct matches first
+  for (const tag of tags) {
+    const lowerTag = tag.toLowerCase().trim();
+
+    // Check special mappings
+    if (tagMappings[lowerTag]) {
+      return tagMappings[lowerTag];
+    }
+
+    // Check direct enum matches
+    if (validTypes.includes(lowerTag as any)) {
+      return lowerTag;
+    }
+  }
+
+  // Default fallback
+  return 'city';
+}
 
 const migrateLocation: MigrateMapFunction<
   'location',
@@ -15,12 +48,15 @@ const migrateLocation: MigrateMapFunction<
   const { location } = extraMetadata ?? {};
   const { details } = location ?? {};
 
+  // Infer type from tags
+  const type = inferLocationTypeFromTags(tags || []);
+
   return {
     title,
     tags,
     location: {
       name: title,
-      type: 'city', // Default type, may need to be inferred from tags or content
+      type,
       details: {
         population: details?.population,
         area: details?.area,
