@@ -22,7 +22,8 @@ interface LocationDetails {
 export interface NewLocationData extends TemplateData {
   extraMetadata: {
     location: LocationDetails;
-  }
+  };
+  tags: string[];
 }
 
 export default async function location(this: LocalContext, flags: NewLocationCommandFlags, articleName: string): Promise<void> {

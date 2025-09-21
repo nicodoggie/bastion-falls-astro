@@ -56,6 +56,7 @@ export const migrateCommand = buildCommand({
         }
       } catch(e) {
         console.error(`Error: ${e}`);
+        process.exit(1);
       }
     }
   },

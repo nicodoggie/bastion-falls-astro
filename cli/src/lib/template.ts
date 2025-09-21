@@ -5,6 +5,13 @@ import { slug } from "github-slugger";
 import { writeFile, stat } from "node:fs/promises";
 import { resolve } from "node:path";
 
+export interface TemplateData {
+  title?: string;
+  slug?: string;
+  tags?: string[];
+  [key: string]: any;
+}
+
 interface RenderTemplateOptions {
   name: string;
   template: string;
