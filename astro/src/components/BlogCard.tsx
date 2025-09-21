@@ -16,7 +16,7 @@ export default async function (props: BlogCardProps) {
   const link = `/blog/${id}`;
   const dateObj = new Date(date);
 
-  let renderImage: (() => JSX.Element) | undefined;
+  let renderImage: (() => React.JSX.Element) | undefined;
   if (image) {
     const imageResult = await getImage({ src: image, alt: title, width: 500, height: 500 });
     renderImage = () => <img 
@@ -29,7 +29,6 @@ export default async function (props: BlogCardProps) {
     <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
       <Card
         href={link}
-        renderImage={renderImage}
         imgAlt={title}
         horizontal={horizontal}
       >

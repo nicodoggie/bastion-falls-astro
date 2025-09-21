@@ -48,7 +48,7 @@ export const collections = {
     }),
     schema: docsSchema({
       extend: z.object({
-        location: LocationSchema,
+        location: LocationSchema.omit({ name: true }),
       })
     }),
   }),

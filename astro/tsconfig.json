@@ -4,16 +4,21 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "@mdx-js/typescript-plugin"
+      }
+    ],
     "paths": {
       "@/*": ["src/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "mdx": {
-      "checkMdx": true,
-      "plugins": [
-        ["remark-frontmatter", "yaml"]
-      ]
-    }
+  },
+  "mdx": {
+    "checkMdx": true,
+    "plugins": [
+      ["remark-frontmatter", "yaml"]
+    ]
   }
 }

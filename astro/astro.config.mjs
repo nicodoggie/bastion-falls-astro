@@ -10,6 +10,7 @@ import tailwindcss from "@tailwindcss/vite";
 import flowbiteReact from "flowbite-react/plugin/astro";
 import expressiveCode from "astro-expressive-code";
 import starlightLinksValidator from "starlight-links-validator";
+import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
   output: "static",
@@ -67,6 +68,12 @@ export default defineConfig({
       ],
     }),
   ],
+  adapter: cloudflare({
+    imageService: "cloudflare",
+    platformProxy: {
+      enabled: true,
+    },
+  }),
   experimental: {
     contentIntellisense: true,
     responsiveImages: true,
