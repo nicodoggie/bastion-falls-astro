@@ -43,7 +43,7 @@ export const collections = {
   }),
   location: defineCollection({
     loader: glob({
-      pattern: ["*.mdx"],
+      pattern: ["!index.mdx", "**/*.mdx", "**/index.mdx"],
       base: "./src/content/docs/locations"
     }),
     schema: docsSchema({
@@ -67,7 +67,7 @@ export const collections = {
     loader: glob({ pattern: "*.mdx", base: "./src/content/docs/species" }),
     schema: docsSchema({
       extend: z.object({
-        species: SpeciesSchema,
+        species: SpeciesSchema.omit({ name: true }),
       })
     }),
   }),

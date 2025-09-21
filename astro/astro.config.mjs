@@ -21,6 +21,9 @@ export default defineConfig({
       remarkDefinitionList,
     ],
   },
+  redirects: {
+    "/locations/confederation-of-apgarian-states": "/locations/apgar",
+  },
   integrations: [
     react(),
     expressiveCode(),
