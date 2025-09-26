@@ -10,6 +10,7 @@ import tailwindcss from "@tailwindcss/vite";
 import flowbiteReact from "flowbite-react/plugin/astro";
 import expressiveCode from "astro-expressive-code";
 import starlightLinksValidator from "starlight-links-validator";
+import { pagefindAliases } from "./src/integrations/pagefind-aliases.ts";
 
 export default defineConfig({
   output: "static",
@@ -27,6 +28,7 @@ export default defineConfig({
   integrations: [
     react(),
     expressiveCode(),
+    pagefindAliases(),
     starlight({
       title: "Bastion Falls",
       favicon: "/favicon.png",

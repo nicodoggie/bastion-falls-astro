@@ -110,7 +110,7 @@ if(character?.relationships?.families) {
       <div class="mb-4 w-full character-image-container bg-black">
         <Image 
           src={image} 
-          alt={character.image.alt || character.name} 
+          alt={character.image.alt || character.name || ""} 
           title={character.image.attribution}
           class="w-full h-full max-h-48 rounded-lg object-scale-down block mx-auto"
         />
@@ -175,7 +175,7 @@ if(character?.relationships?.families) {
         )
       }
       {
-        character?.details.sexOrgans && (
+        character?.details.sexOrgans && character.details.sexOrgans.length > 0 `&& (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Genitalia

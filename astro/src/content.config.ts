@@ -32,7 +32,7 @@ export const collections = {
     loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/characters' }),
     schema: docsSchema({
       extend: z.object({
-        character: CharacterSchema.optional(),
+        character: CharacterSchema.omit({ name: true }).optional(),
       })
     }),
   }),
