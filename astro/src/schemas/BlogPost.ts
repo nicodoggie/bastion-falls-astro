@@ -1,6 +1,6 @@
 import { z } from "astro:content";
 
-export const blogSchema = z.object({
+export const BlogSchema = z.object({
   title: z.string(),
   description: z.string().optional(),
   date: z.string(),
@@ -8,4 +8,4 @@ export const blogSchema = z.object({
   tags: z.array(z.string()).optional(),
 });
 
-export type BlogPost = z.infer<typeof blogSchema>;
+export type BlogPost = z.infer<typeof BlogSchema>;

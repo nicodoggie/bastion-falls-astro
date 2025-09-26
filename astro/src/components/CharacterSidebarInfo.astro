@@ -97,7 +97,7 @@ if(character?.relationships?.families) {
     )
   }
   {
-    character.image && (
+    image && (
       <div class="mb-4 w-full character-image-container bg-black">
         <Image 
           src={image} 
@@ -307,7 +307,7 @@ if(character?.relationships?.families) {
               Species
             </h3>
             <p class="text-gray-600 dark:text-gray-400">
-              <a href={`/species/${species?.id}`}>{species?.data.title}</a>
+              {character.details.species}
             </p>
           </li>
         )

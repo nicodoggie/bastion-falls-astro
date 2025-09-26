@@ -10,10 +10,10 @@ import tailwindcss from "@tailwindcss/vite";
 import flowbiteReact from "flowbite-react/plugin/astro";
 import expressiveCode from "astro-expressive-code";
 import starlightLinksValidator from "starlight-links-validator";
-import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
   output: "static",
+  site: "https://bastion-falls.thekennel.info",
   markdown: {
     remarkPlugins: [
       remarkCustomHeaderId,
@@ -50,12 +50,12 @@ export default defineConfig({
       components: {
         PageSidebar: "./src/components/PageSidebar.astro",
       },
-      plugins: [
-        starlightLinksValidator({
-          components: [["SeeAlso", "href"]],
-          errorOnInvalidHashes: false,
-        }),
-      ],
+      // plugins: [
+      //   starlightLinksValidator({
+      //     components: [["SeeAlso", "href"]],
+      //     errorOnInvalidHashes: false,
+      //   }),
+      // ],
     }),
     AutoImport({
       imports: [
@@ -71,19 +71,9 @@ export default defineConfig({
       ],
     }),
   ],
-  adapter: cloudflare({
-    imageService: "cloudflare",
-    platformProxy: {
-      enabled: true,
-    },
-  }),
-  experimental: {
-    contentIntellisense: true,
-    responsiveImages: true,
-  },
   vite: {
     plugins: [
-      tailwindcss(),
+      // tailwindcss(),
       flowbiteReact(),
     ],
   },

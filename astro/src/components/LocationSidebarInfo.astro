@@ -122,7 +122,7 @@ if(location?.related) {
               {parents.map((parent: CollectionEntry<"location">) => (
                 <li>
                   <a href={`/locations/${parent.id}`}>
-                    {parent.data.location.name}
+                    {parent.data.title}
                   </a>
                 </li>
               ))}
