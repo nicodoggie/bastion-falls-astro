@@ -57,7 +57,7 @@ const CharacterDetailsSchema = z.object({
   weight: z.string().optional(),
   origin: z.string().optional(),
   mortality: MortalityEnum.optional(),
-  species: z.string().optional(),
+  species: z.string().or(z.array(z.string())).optional(),
   sexOrgans: z.array(SexOrganSchema).optional(),
 })
 

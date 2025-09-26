@@ -29,37 +29,42 @@ export const collections = {
     }),
   }),
   character: defineCollection({
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/characters' }),
     schema: docsSchema({
       extend: z.object({
-        character: CharacterSchema,
+        character: CharacterSchema.optional(),
       })
     }),
   }),
   family: defineCollection({
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/families' }), 
     schema: docsSchema({
       extend: z.object({
-        family: FamilySchema,
+        family: FamilySchema.optional(),
       })
     }),
   }),
   location: defineCollection({
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/locations' }),
     schema: docsSchema({
       extend: z.object({
-        location: LocationSchema,
+        location: LocationSchema.optional(),
       })
     }),
   }),
   organization: defineCollection({
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/organizations' }),
     schema: docsSchema({
       extend: z.object({
-        organization: OrganizationSchema,
+        organization: OrganizationSchema.optional(),
       })
     }),
   }),
   species: defineCollection({
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/species' }),
     schema: docsSchema({
       extend: z.object({
-        species: SpeciesSchema.omit({ name: true }),
+        species: SpeciesSchema.omit({ name: true }).optional(),
       })
     }),
   }),

@@ -1,9 +1,10 @@
 ---
+import type { CharacterSexOrgan } from '@bastion-falls/types/Character';
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
-import type { DataEntryMap } from 'astro:content';
-import type { CollectionKey } from 'astro:content';
-import { type CollectionEntry, getEntry, getCollection } from 'astro:content';
+import { getEntries } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { type CollectionEntry, getEntry,  } from 'astro:content';
 import { slug } from 'github-slugger';
 
 const { character } = Astro.props;
@@ -32,7 +33,15 @@ switch(character.details.mortality) {
 
 let species;
 if(character?.details?.species) {
-  species = await getEntry('species', slug(character.details.species));
+  if(! Array.isArray(character.details.species)) {
+    species = [await getEntry('species', slug(character.details.species))];
+  } else {
+    species = await Promise.all(
+      character.details.species.map(
+        async (species: string) => await getEntry('species', slug(species))
+      )
+    );
+  }
 }
 
 interface Relative {
@@ -46,7 +55,7 @@ if(character?.relationships?.relatives) {
   relatives = await Promise.all(
     character.relationships.relatives.map(
       async ({name, type}: {name: string, type: string}) => {
-        const relativeEntry = await getEntry('character', slug(name));
+        const relativeEntry = await getEntry('character', slug(name)); 
         return {type, entry: relativeEntry};
       }
     )
@@ -115,263 +124,279 @@ if(character?.relationships?.families) {
   }
 
   <div class="space-y-4">
-    <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+    <dl class="divide-y divide-gray-200 dark:divide-gray-700">
       
       {
         character.details?.age && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Age
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
               {character.details.age}
-            </p>
-          </li>
+            </dd>
+          </div>
         )
       }
       {
         character.details?.dateOfBirth && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Date of Birth
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
               {character.details.dateOfBirth}
-            </p>
-          </li>
+            </dd>
+          </div>
         )
       }
       {
         character.details?.dateOfDeath && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Date of Death
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
               {character.details.dateOfDeath}
-            </p>
-          </li>
+            </dd>
+          </div>
         )
       }
       {
         character?.details.sex && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Sex
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
               {character.details.sex}{character.details.pronouns && ` (${character.details.pronouns})`}
-            </p>
-          </li>
+            </dd>
+          </div>
         )
       }
       {
         character?.details.sexOrgans && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Genitalia
-            </h3>
-            <dl class="text-gray-600 dark:text-gray-400">
-              {character.details.sexOrgans.map((organ) => (
-                <li>
-                  {organ.type === "penis" && (
-                    <>
-                      Penis
-                      <dl class="ml-4">
-                        {organ.length && <dt>Length</dt> && <dd>{organ.length}</dd>}
-                        {organ.girth && <dt>Girth</dt> && <dd>{organ.girth}</dd>}
-                        {organ.pubicHair && <dt>Pubic Hair</dt> && <dd>{organ.pubicHair}</dd>}
-                      </dl>
-                    </>
-                  )}
-                  {organ.type === "vagina" && (
-                    <>
-                      Vagina
-                      <dl class="ml-4">
-                        {organ.depth && <dt>Depth</dt> && <dd>{organ.depth}</dd>}
-                        {organ.width && <dt>Width</dt> && <dd>{organ.width}</dd>}
-                        {organ.pubicHair && <dt>Pubic Hair</dt> && <dd>{organ.pubicHair}</dd>}
-                      </dl>
-                    </>
-                  )}
-                  {organ.type === "breasts" && (
-                    <>
-                      Breasts
-                      <dl class="ml-4">
-                        {organ.size && <dt>Size</dt> && <dd>{organ.size}</dd>}
-                        {organ.nipples && <dt>Nipples</dt> && <dd>{organ.nipples}</dd>}
-                      </dl>
-                    </>
-                  )}
-                </li>
-              ))}
-            </dl>
-          </li>
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
+              <dl>
+                {character.details.sexOrgans.map((organ: CharacterSexOrgan) => (
+                  <div>
+                    {organ.type === "penis" && (
+                      <>
+                        Penis
+                        <dl class="ml-4">
+                          {organ.length && <dt>Length</dt> && <dd>{organ.length}</dd>}
+                          {organ.girth && <dt>Girth</dt> && <dd>{organ.girth}</dd>}
+                          {organ.pubicHair && <dt>Pubic Hair</dt> && <dd>{organ.pubicHair}</dd>}
+                        </dl>
+                      </>
+                    )}
+                    {organ.type === "vagina" && (
+                      <>
+                        Vagina
+                        <dl class="ml-4">
+                          {organ.depth && <dt>Depth</dt> && <dd>{organ.depth}</dd>}
+                          {organ.width && <dt>Width</dt> && <dd>{organ.width}</dd>}
+                          {organ.pubicHair && <dt>Pubic Hair</dt> && <dd>{organ.pubicHair}</dd>}
+                        </dl>
+                      </>
+                    )}
+                    {organ.type === "breasts" && (
+                      <>
+                        Breasts
+                        <dl class="ml-4">
+                          {organ.size && <dt>Size</dt> && <dd>{organ.size}</dd>}
+                          {organ.nipples && <dt>Nipples</dt> && <dd>{organ.nipples}</dd>}
+                        </dl>
+                      </>
+                    )}
+                  </div>
+                ))}
+              </dl>
+            </dd>
+          </div>
         )
       }
       {
         character.details?.origin && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Origin
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
               {character.details.origin}
-            </p>
-          </li>
+            </dd>
+          </div>
         )
       }
       {
         character.background?.alignment && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Alignment
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
               {character.background.alignment.moral}{' '}
               {character.background.alignment.law}
-            </p>
-          </li>
+            </dd>
+          </div>
         )
       }
       {
         character.details?.aliases && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Known Aliases
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
               {character.details.aliases.join(', ')}
-            </p>
-          </li>
+            </dd>
+          </div>
         )
       }
       {
         organizations && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Organizations
-            </h3>
-            <ul class="text-gray-600 dark:text-gray-400">
-              {organizations.map(
-                ({title, entry}: {title: string, entry: CollectionEntry<"organization"> | undefined}) => (
-                  <li>
-                    <a href={`/organizations/${entry?.id}`}>{entry?.data.title} {title && `(${title})`}</a>
-                  </li>
-                )
-              )}
-            </ul>
-          </li>
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
+              <ul>
+                {organizations.map(
+                  ({title, entry}: {title: string, entry: CollectionEntry<"organization"> | undefined}) => (
+                    <li>
+                      <a href={`/organizations/${entry?.id}`}>{entry?.data.title} {title && `(${title})`}</a>
+                    </li>
+                  )
+                )}
+              </ul>
+            </dd>
+          </div>
         )
       }
       {
         relatives && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Relatives
-            </h3>
-          </li>
-          <ul class="text-gray-600 dark:text-gray-400">
-            {relatives.map(({entry, type}: Relative) => (
-              <li>
-                <a href={`/characters/${entry?.id}`}>
-                  {entry?.data.character.name}
-                  {type && ` (${type})`}
-                </a>
-              </li>
-            ))}
-          </ul>
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
+              <ul>
+                {relatives.map((relative: Relative) => {
+                  return (
+                  <li>
+                    <a href={`/characters/${relative.entry?.id}`}>
+                      {relative.entry?.data.title}
+                      {relative.type && ` (${relative.type})`}
+                    </a>
+                  </li>
+                  );
+                })}
+              </ul>
+            </dd>
+          </div>
         )
       }
       
       {
         families && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Families
-            </h3>
-            <ul class="text-gray-600 dark:text-gray-400">
-              {families.map((family: CollectionEntry<"family">) => (
-                <li>
-                  <a href={`/families/${family?.id}`}>{family?.data.family.name}</a>
-                </li>
-              ))}
-            </ul>
-          </li>
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
+              <ul>
+                {families.map((family: CollectionEntry<"family">) => (
+                  <li>
+                    <a href={`/families/${family?.id}`}>{family?.data.family.name}</a>
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
         )
       }
       {
-        character.details?.species && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+        character.details?.species && species && (
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Species
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
-              {character.details.species}
-            </p>
-          </li>
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
+              <ul>
+                {species.map((species: CollectionEntry<"species">) => (
+                  <li>
+                    <a href={`/species/${species.id}`}>{species.data.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
         )
       }
       {
         character.details?.height && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Height
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
               {character.details.height}
-            </p>
-          </li>
+            </dd>
+          </div>
         )
       }
       {
         character.details?.weight && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Weight
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
               {character.details.weight}
-            </p>
-          </li>
+            </dd>
+          </div>
         )
       }
       {
         character.background?.goals && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Goals
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
               {character.background.goals}
-            </p>
-          </li>
+            </dd>
+          </div>
         )
       }
       {
         character.background?.flaws && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Flaws
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
               {character.background.flaws}
-            </p>
-          </li>
+            </dd>
+          </div>
         )
       }
       {
         character.background?.backstory && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Backstory
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
               {character.background.backstory}
-            </p>
-          </li>
+            </dd>
+          </div>
         )
       }
-    </ul>
+    </dl>
   </div>
 </div>
