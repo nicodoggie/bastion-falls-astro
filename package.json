@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "bfcli": "yarn workspace @bastion-falls/cli",
+    "astro": "yarn workspace @bastion-falls/astro",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "yarn workspace @bastion-falls/astro dev",
-    "build": "yarn workspaces run build"
+    "dev": "yarn astro dev",
+    "build": "yarn astro build",
+    "deploy": "yarn run build && yarn wrangler pages deploy"
   },
   "keywords": [],
   "author": "",
