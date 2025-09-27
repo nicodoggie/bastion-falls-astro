@@ -311,7 +311,7 @@ if(character?.relationships?.families) {
               <ul>
                 {families.map((family: CollectionEntry<"family">) => (
                   <li>
-                    <a href={`/families/${family?.id}`}>{family?.data.family.name}</a>
+                    <a href={`/world/families/${family?.id}`}>{family?.data.family.name}</a>
                   </li>
                 ))}
               </ul>
@@ -329,7 +329,7 @@ if(character?.relationships?.families) {
               <ul>
                 {species.map((species: CollectionEntry<"species">) => (
                   <li>
-                    <a href={`/species/${species.id}`}>{species.data.title}</a>
+                    <a href={`/world/species/${species.id}`}>{species.data.title}</a>
                   </li>
                 ))}
               </ul>

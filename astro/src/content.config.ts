@@ -1,7 +1,9 @@
 import { defineCollection, z } from "astro:content";
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
-import { BlogSchema } from "./schemas/BlogPost";
+import { autoSidebarLoader } from "starlight-auto-sidebar/loader";
+import { autoSidebarSchema } from "starlight-auto-sidebar/schema";
+
 import {
   CharacterSchema,
   ConceptSchema,
@@ -28,8 +30,12 @@ export const collections = {
       })
     }),
   }),
+  autoSidebar: defineCollection({
+    loader: autoSidebarLoader(),
+    schema: autoSidebarSchema(),
+  }),
   character: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/characters' }),
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/characters' }),
     schema: docsSchema({
       extend: z.object({
         character: CharacterSchema.omit({ name: true }).optional(),
@@ -37,7 +43,7 @@ export const collections = {
     }),
   }),
   family: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/families' }), 
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/families' }), 
     schema: docsSchema({
       extend: z.object({
         family: FamilySchema.optional(),
@@ -45,7 +51,7 @@ export const collections = {
     }),
   }),
   location: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/locations' }),
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/locations' }),
     schema: docsSchema({
       extend: z.object({
         location: LocationSchema.optional(),
@@ -53,7 +59,7 @@ export const collections = {
     }),
   }),
   organization: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/organizations' }),
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/organizations' }),
     schema: docsSchema({
       extend: z.object({
         organization: OrganizationSchema.optional(),
@@ -61,7 +67,7 @@ export const collections = {
     }),
   }),
   species: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/species' }),
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/species' }),
     schema: docsSchema({
       extend: z.object({
         species: SpeciesSchema.omit({ name: true }).optional(),

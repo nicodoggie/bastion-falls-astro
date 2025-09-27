@@ -1,1 +1,4 @@
 label: World
+collapsed: true
+cascade:
+  - collapsed

@@ -9,8 +9,8 @@ import remarkCustomHeaderId from "remark-custom-header-id";
 import tailwindcss from "@tailwindcss/vite";
 import flowbiteReact from "flowbite-react/plugin/astro";
 import expressiveCode from "astro-expressive-code";
-import starlightLinksValidator from "starlight-links-validator";
-import { pagefindAliases } from "./src/integrations/pagefind-aliases.ts";
+// import { rehypePagefindMetadata } from "@bastion-falls/rehype-pagefind-metadata";
+import starlightAutoSidebar from "starlight-auto-sidebar";
 
 export default defineConfig({
   output: "static",
@@ -21,6 +21,9 @@ export default defineConfig({
       remarkParse,
       remarkDefinitionList,
     ],
+    // rehypePlugins: [
+    //   rehypePagefindMetadata,
+    // ],
   },
   redirects: {
     "/locations/confederation-of-apgarian-states": "/locations/apgar",
@@ -28,10 +31,10 @@ export default defineConfig({
   integrations: [
     react(),
     expressiveCode(),
-    pagefindAliases(),
     starlight({
       title: "Bastion Falls",
       favicon: "/favicon.png",
+      
       logo: {
         src: "/src/assets/orb-of-bastion.png",
         alt: "Bastion Falls",
@@ -49,15 +52,31 @@ export default defineConfig({
           href: "https://github.com/nicodoggie/bastion-falls",
         },
       ],
+      sidebar: [
+        {
+          label: "World",
+          autogenerate: {
+            directory: "world",
+          },
+        },
+        {
+          label: "Blog",
+          autogenerate: {
+            directory: "blog",
+          },
+        }
+      ],
       components: {
         PageSidebar: "./src/components/PageSidebar.astro",
       },
-      // plugins: [
+      
+      plugins: [
+        starlightAutoSidebar(),
       //   starlightLinksValidator({
       //     components: [["SeeAlso", "href"]],
       //     errorOnInvalidHashes: false,
       //   }),
-      // ],
+      ],
     }),
     AutoImport({
       imports: [

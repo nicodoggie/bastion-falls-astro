@@ -1,0 +1,1 @@
+# remark-pagefind-metadata

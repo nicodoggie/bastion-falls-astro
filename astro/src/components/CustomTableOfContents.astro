@@ -1,0 +1,47 @@
+---
+import TableOfContents from 'virtual:starlight/components/TableOfContents';
+
+const { toc, entry } = Astro.locals.starlightRoute;
+
+// Start with static headings from MDX
+let allHeadings = toc?.items || [];
+
+// If this is a lexicon page, add dynamic headings
+if (entry.id.includes('lexicon-by-field')) {
+  // Lazy load the lexicon data only when needed
+  const lexiconData = await import(
+    '../content/docs/languages/hickic/seneran/early-hick/lexicon-earlyhick-by-field.json'
+  );
+
+  const dynamicHeadings = [
+    {
+      depth: 2,
+      slug: 'semantic-fields-ref',
+      text: 'Semantic Fields Reference',
+      children: [],
+    },
+    ...Object.entries(lexiconData.default.fields).map(
+      ([
+        _,
+        field,
+      ]: [
+        string,
+        any,
+      ]) => ({
+        depth: 2,
+        slug: field.uri,
+        text: field.label,
+        children: [],
+      }),
+    ),
+  ];
+
+  allHeadings = [
+    ...allHeadings,
+    ...dynamicHeadings,
+  ];
+}
+---
+
+<!-- Use Starlight's existing TOC component with merged headings -->
+<TableOfContents headings={allHeadings} />

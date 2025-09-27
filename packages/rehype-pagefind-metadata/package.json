@@ -1,0 +1,38 @@
+{
+  "name": "@bastion-falls/rehype-pagefind-metadata",
+  "packageManager": "yarn@4.3.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "hast": "^1.0.0",
+    "rehype": "^13.0.2",
+    "rehype-document": "^7.0.3",
+    "rehype-format": "^5.0.1",
+    "rehype-stringify": "^10.0.1",
+    "remark": "^15.0.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-mdx": "^3.1.1",
+    "remark-mdx-frontmatter": "^5.2.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "typescript": "^5.9.2",
+    "unified": "^11.0.5",
+    "vitest": "^3.2.4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@bastion-falls/types": "workspace:^",
+    "js-yaml": "^4.1.0",
+    "vfile": "^6.0.3"
+  }
+}

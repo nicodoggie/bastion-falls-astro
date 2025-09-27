@@ -25,7 +25,7 @@ import {
 const collectionSchemas = {
   character: CharacterSchema,
   family: FamilySchema,
-  location: LocationSchema.omit({ name: true }), // Location schema omits name in content config
+  location: LocationSchema,
   organization: OrganizationSchema,
   species: SpeciesSchema,
   event: EventSchema,
@@ -44,7 +44,7 @@ const blogSchema = z.object({
 const docsSchema = z.object({
   character: CharacterSchema.partial().optional(),
   event: EventSchema.partial().optional(),
-  location: LocationSchema.partial().optional(),
+  location: LocationSchema.optional(),
   organization: OrganizationSchema.partial().optional(),
 });
 
