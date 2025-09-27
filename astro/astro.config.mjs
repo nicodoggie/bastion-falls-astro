@@ -9,8 +9,8 @@ import remarkCustomHeaderId from "remark-custom-header-id";
 import tailwindcss from "@tailwindcss/vite";
 import flowbiteReact from "flowbite-react/plugin/astro";
 import expressiveCode from "astro-expressive-code";
-// import { rehypePagefindMetadata } from "@bastion-falls/rehype-pagefind-metadata";
 import starlightAutoSidebar from "starlight-auto-sidebar";
+import { pagefindAliases } from "./src/integrations/pagefind-aliases";
 
 export default defineConfig({
   output: "static",
@@ -20,10 +20,8 @@ export default defineConfig({
       remarkCustomHeaderId,
       remarkParse,
       remarkDefinitionList,
+      // pagefindAliases,
     ],
-    // rehypePlugins: [
-    //   rehypePagefindMetadata,
-    // ],
   },
   redirects: {
     "/locations/confederation-of-apgarian-states": "/locations/apgar",
@@ -68,8 +66,7 @@ export default defineConfig({
       ],
       components: {
         PageSidebar: "./src/components/PageSidebar.astro",
-      },
-      
+      },      
       plugins: [
         starlightAutoSidebar(),
       //   starlightLinksValidator({
@@ -91,6 +88,7 @@ export default defineConfig({
         "./src/components/SeeAlso.astro",
       ],
     }),
+    
   ],
   vite: {
     plugins: [

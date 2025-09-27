@@ -188,9 +188,9 @@ if(character?.relationships?.families) {
                       <>
                         Penis
                         <dl class="ml-4">
-                          {organ.length && <dt>Length</dt> && <dd>{organ.length}</dd>}
-                          {organ.girth && <dt>Girth</dt> && <dd>{organ.girth}</dd>}
-                          {organ.pubicHair && <dt>Pubic Hair</dt> && <dd>{organ.pubicHair}</dd>}
+                          {organ.length && <dt class="pl-2">Length</dt> <dd class="pl-4">{organ.length}</dd>}
+                          {organ.girth && <dt class="pl-2">Girth</dt> <dd class="pl-4">{organ.girth}</dd>}
+                          {organ.pubicHair && <dt class="pl-2">Pubic Hair</dt> <dd class="pl-4">{organ.pubicHair}</dd>}
                         </dl>
                       </>
                     )}
@@ -198,9 +198,9 @@ if(character?.relationships?.families) {
                       <>
                         Vagina
                         <dl class="ml-4">
-                          {organ.depth && <dt>Depth</dt> && <dd>{organ.depth}</dd>}
-                          {organ.width && <dt>Width</dt> && <dd>{organ.width}</dd>}
-                          {organ.pubicHair && <dt>Pubic Hair</dt> && <dd>{organ.pubicHair}</dd>}
+                          {organ.depth && <dt class="pl-2">Depth</dt> <dd class="pl-4">{organ.depth}</dd>}
+                          {organ.width && <dt class="pl-2">Width</dt> <dd class="pl-4">{organ.width}</dd>}
+                          {organ.pubicHair && <dt class="pl-2">Pubic Hair</dt> <dd class="pl-4">{organ.pubicHair}</dd>}
                         </dl>
                       </>
                     )}
@@ -208,8 +208,8 @@ if(character?.relationships?.families) {
                       <>
                         Breasts
                         <dl class="ml-4">
-                          {organ.size && <dt>Size</dt> && <dd>{organ.size}</dd>}
-                          {organ.nipples && <dt>Nipples</dt> && <dd>{organ.nipples}</dd>}
+                          {organ.size && <dt class="pl-2">Size</dt> <dd class="pl-4">{organ.size}</dd>}
+                          {organ.nipples && <dt class="pl-2">Nipples</dt> <dd class="pl-4">{organ.nipples}</dd>}
                         </dl>
                       </>
                     )}
@@ -251,9 +251,16 @@ if(character?.relationships?.families) {
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Known Aliases
             </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              {character.details.aliases.join(', ')}
-            </dd>
+            { 
+              character.details.aliases.length > 0 && character.details.aliases.map((alias: any) => {
+                return (
+                  <dd class="text-gray-600 dark:text-gray-400">
+                    <span data-pagefind-meta="alias">{alias}</span>
+                  </dd>
+                )
+              })
+            }
+            
           </div>
         )
       }
@@ -300,7 +307,29 @@ if(character?.relationships?.families) {
           </div>
         )
       }
-      
+      {
+        character.relationships?.other && (
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Relatives
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
+              <ul>
+                {relatives.map((relative: Relative) => {
+                  return (
+                  <li>
+                    <a href={`/characters/${relative.entry?.id}`}>
+                      {relative.entry?.data.title}
+                      {relative.type && ` (${relative.type})`}
+                    </a>
+                  </li>
+                  );
+                })}
+              </ul>
+            </dd>
+          </div>
+        )
+      }
       {
         families && (
           <div class="py-2">
@@ -311,7 +340,7 @@ if(character?.relationships?.families) {
               <ul>
                 {families.map((family: CollectionEntry<"family">) => (
                   <li>
-                    <a href={`/world/families/${family?.id}`}>{family?.data.family.name}</a>
+                    <a href={`/world/families/${family?.id}`}>{family?.data.title}</a>
                   </li>
                 ))}
               </ul>
