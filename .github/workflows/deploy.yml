@@ -1,0 +1,66 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.15.0"
+          cache: "yarn"
+
+      - name: Install dependencies
+        env:
+          NODE_ENV: ci
+        run: yarn install --immutable
+
+      - name: Build project
+        run: yarn run build
+
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: yarn run deploy
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Get the last commit message and changes
+          COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
+          COMMIT_AUTHOR=$(git log -1 --pretty=format:"%an")
+          COMMIT_HASH=$(git log -1 --pretty=format:"%h")
+          COMMIT_URL="${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+
+          # Create changelog content
+          CHANGELOG="🚀 **Deployment Successful!**
+
+          **Commit:** [$COMMIT_HASH]($COMMIT_URL)
+          **Author:** $COMMIT_AUTHOR
+          **Message:** $COMMIT_MESSAGE
+          **Branch:** ${{ github.ref_name }}
+          **Environment:** Production
+
+          Site is now live at: https://bastion-falls.thekennel.info"
+
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Send Discord notification
+        if: always()
+        uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        with:
+          args: |
+            ${{ steps.changelog.outputs.changelog }}
