@@ -1944,7 +1944,7 @@ Develop more examples of consonant cluster simplification?
 I actually do like that drop there as well. perhaps we can instead add that as a more general sound change
 
 Final Context in Folder
-Yes! Let's add a new sound change rule for consonant cluster simplification where a schwa between consonants is dropped in certain environments, particularly after liquids (/l/, /r/) and before stops (/t/, /k/, /p/, /g/). This pattern would explain both "Thraltr" and other place names.
+Yes! Let's add a new sound change rule for consonant cluster simplification where a schwa between consonants is dropped in certain environments, particularly after liquids (/world/l/, /r/) and before stops (/world/t/, /k/, /p/, /g/). This pattern would explain both "Thraltr" and other place names.
 Let's update the sound changes:
 seneran.md
 This pattern helps explain several place names we see in the documents:
