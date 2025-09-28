@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bfcli": "yarn workspace @bastion-falls/cli",
     "astro": "yarn workspace @bastion-falls/astro",
+    "types": "yarn workspace @bastion-falls/types",
+    "cli": "yarn workspace @bastion-falls/cli",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "yarn astro dev",
-    "build": "yarn astro build",
+    "build": "yarn cli build && yarn types build && yarn astro build",
     "preview": "yarn astro preview",
-    "deploy": "yarn run build && yarn wrangler pages deploy"
+    "deploy": "yarn run build && yarn wrangler pages deploy",
+    "bfcli": "yarn cli bfcli"
   },
   "keywords": [],
   "author": "",

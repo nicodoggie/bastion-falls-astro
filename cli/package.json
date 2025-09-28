@@ -19,8 +19,7 @@
     "copy-templates": "copyfiles -u templates/*.ejs dist/templates",
     "prebuild": "tsc -p src/tsconfig.json",
     "build": "yarn run copy-templates && tsup",
-    "dev": "tsx --tsconfig src/tsconfig.json src/bin/cli.ts",
-    "postinstall": "bfcli install"
+    "dev": "tsx --tsconfig src/tsconfig.json src/bin/cli.ts"
   },
   "tsup": {
     "entry": [
