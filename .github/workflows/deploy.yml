@@ -12,13 +12,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+      - name: Setup Corepack
+        run: |
+          npm install -g corepack
+          corepack enable
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "22.15.0"
           cache: "yarn"
-
       - name: Install dependencies
         env:
           NODE_ENV: ci
