@@ -20,7 +20,7 @@ export default defineConfig({
       remarkCustomHeaderId,
       remarkParse,
       remarkDefinitionList,
-      // pagefindAliases,
+      pagefindAliases,
     ],
   },
   redirects: {
@@ -47,7 +47,7 @@ export default defineConfig({
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/nicodoggie/bastion-falls",
+          href: "https://github.com/nicodoggie/bastion-falls-astro",
         },
       ],
       sidebar: [
@@ -69,10 +69,6 @@ export default defineConfig({
       },      
       plugins: [
         starlightAutoSidebar(),
-      //   starlightLinksValidator({
-      //     components: [["SeeAlso", "href"]],
-      //     errorOnInvalidHashes: false,
-      //   }),
       ],
     }),
     AutoImport({
