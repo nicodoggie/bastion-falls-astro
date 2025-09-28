@@ -11,7 +11,7 @@
     "dev": "yarn astro dev",
     "build": "yarn cli build && yarn types build && yarn astro build",
     "preview": "yarn astro preview",
-    "deploy": "yarn run build && yarn wrangler pages deploy",
+    "deploy": "yarn wrangler pages deploy",
     "bfcli": "yarn cli bfcli"
   },
   "keywords": [],
