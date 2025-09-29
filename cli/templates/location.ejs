@@ -2,18 +2,17 @@
 title: <%= title %>
 sidebar:
 badge: Stub
-extraMetadata:
-  location:
-    <%_ if (extraMetadata.location.parents) { _%>
-      parents:
-      <%_ extraMetadata.location.parents.forEach(function(parent) { _%>
-        - <%= parent %>
-          <%_ }) _%>
-    <%_ } _%>
-    details:
-      area: <%= extraMetadata.location.details.area %>
-      population: <%= extraMetadata.location.details.population %>
-      elevation: <%= extraMetadata.location.details.elevation %>
+location:
+  <%_ if (location.parents) { _%>
+    parents:
+    <%_ location.parents.forEach(function(parent) { _%>
+      - <%= parent %>
+        <%_ }) _%>
+  <%_ } _%>
+  details:
+    area: <%= location.details.area %>
+    population: <%= location.details.population %>
+    elevation: <%= location.details.elevation %>
       
 tags:
   <%_ if (tags) { _%>

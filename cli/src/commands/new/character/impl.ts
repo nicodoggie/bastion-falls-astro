@@ -26,7 +26,6 @@ interface CharacterTemplate extends TemplateData {
   character: Omit<Character, "name">;
 }
 
-
 export default async function character(this: LocalContext, flags: NewCharacterCommandFlags, articleName: string): Promise<void> {
   const {
     ddb,
@@ -82,7 +81,7 @@ export default async function character(this: LocalContext, flags: NewCharacterC
   };
 
   try {
-    const targetDir = resolve(this.rootDir, "../astro/src/content/docs/characters")
+    const targetDir = resolve(this.rootDir, "../astro/src/content/docs/world/characters")
     await renderTemplate({
       name: articleName,
       template: "character",

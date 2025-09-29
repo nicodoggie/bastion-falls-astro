@@ -39,7 +39,7 @@ export default async function location(this: LocalContext, flags: NewLocationCom
   };
 
   try {
-    const targetDir = resolve(this.rootDir, "../astro/src/content/docs/locations")
+    const targetDir = resolve(this.rootDir, "../astro/src/content/docs/world/locations")
     await renderTemplate({
       name: articleName,
       template: "location",

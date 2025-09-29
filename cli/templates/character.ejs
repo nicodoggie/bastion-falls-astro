@@ -1,25 +1,25 @@
 ---
 title: <%= title %>
-sidebar:
-  badge: Stub
-extraMetadata:
-  ddb: <%= extraMetadata.ddb %>
+character:
+  ddb: <%= character.ddb %>
+  <%_ if (character.image) { _%>
   image:
-    url: <%= extraMetadata.image.url %>
-    attribution: <%= extraMetadata.image.attribution %>
-    attribution_url: <%= extraMetadata.image.attribution_url %>
-  character:
+    url: <%= character.image.url %>
+    attribution: <%= character.image.attribution %>
+    attribution_url: <%= character.image.attribution_url %>
+  <%_ } _%>
+  details:
     aliases:
-    <%_ extraMetadata.character.aliases.forEach(function(alias){ _%>
-    - <%- alias %>
-    <%_ }) _%>
-    age: <%= extraMetadata.character.age %>
-    date_of_birth: <%= extraMetadata.character.date_of_birth %>
-    date_of_death: <%= extraMetadata.character.date_of_death %>
-    sex: <%= extraMetadata.character.sex %>
-    pronouns: <%= extraMetadata.character.pronouns %>
-    height: <%= extraMetadata.character.height %>
-    weight: <%= extraMetadata.character.weight %>
+      <%_ character.details.aliases.forEach(function(alias){ _%>
+      - <%- alias %>
+      <%_ }) _%>
+    age: <%= character.details.age %>
+    date_of_birth: <%= character.details.date_of_birth %>
+    date_of_death: <%= character.details.date_of_death %>
+    sex: <%= character.details.sex %>
+    pronouns: <%= character.details.pronouns %>
+    height: <%= character.details.height %>
+    weight: <%= character.details.weight %>
     
 tags:
   <%_ tags.forEach(function(tag){ _%>

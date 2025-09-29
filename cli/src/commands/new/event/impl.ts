@@ -34,7 +34,7 @@ export default async function event(
   };
 
   try {
-    const targetDir = resolve(this.rootDir, "../astro/src/content/docs/events")
+    const targetDir = resolve(this.rootDir, "../astro/src/content/docs/world/events")
     await renderTemplate({
       name: articleName,
       data: {
