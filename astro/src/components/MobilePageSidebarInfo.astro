@@ -1,0 +1,114 @@
+---
+import PageSidebarInfo from './PageSidebarInfo.astro';
+---
+
+<div class="mobile-dropdown">
+  <button class="dropdown-toggle" aria-expanded="false">
+    <span>Page Info</span>
+    <svg
+      class="dropdown-arrow"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+    >
+      <path
+        d="M4.427 9.573L8 6l3.573 3.573a.5.5 0 0 0 .707-.707l-4-4a.5.5 0 0 0-.707 0l-4 4a.5.5 0 1 0 .707.707z"
+      ></path>
+    </svg>
+  </button>
+  <div class="dropdown-content">
+    <PageSidebarInfo />
+  </div>
+</div>
+
+<style>
+  @layer starlight.core {
+    /* Mobile dropdown styles */
+    .mobile-dropdown {
+      position: static;
+      margin-bottom: 1rem;
+    }
+
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--sl-color-bg-sidebar);
+      border: 1px solid var(--sl-color-gray-5);
+      border-radius: 0.375rem;
+      color: var(--sl-color-white);
+      font-size: var(--sl-text-sm);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-toggle:hover {
+      background: var(--sl-color-gray-6);
+      border-color: var(--sl-color-gray-4);
+    }
+
+    .dropdown-arrow {
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+      margin-left: 0.5rem;
+    }
+
+    .dropdown-toggle[aria-expanded='true'] .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-content {
+      /* Use normal document flow on mobile so content below reflows */
+      position: static;
+      background: var(--sl-color-bg-sidebar);
+      border: 1px solid var(--sl-color-gray-5);
+      border-radius: 0.375rem;
+      margin-top: 0.25rem;
+      padding: 1rem;
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      display: none;
+    }
+
+    .dropdown-content.show {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  // Add dropdown functionality
+  document.addEventListener('DOMContentLoaded', function () {
+    const dropdownToggle = document.querySelector(
+      '.dropdown-toggle',
+    ) as HTMLButtonElement;
+    const dropdownContent = document.querySelector(
+      '.dropdown-content',
+    ) as HTMLDivElement;
+
+    if (dropdownToggle && dropdownContent) {
+      dropdownToggle.addEventListener('click', () => {
+        const isExpanded =
+          dropdownToggle.getAttribute('aria-expanded') === 'true';
+        dropdownToggle.setAttribute('aria-expanded', String(!isExpanded));
+        dropdownContent.classList.toggle('show');
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function (event) {
+        if (
+          !dropdownToggle.contains(event.target as Node) &&
+          !dropdownContent.contains(event.target as Node)
+        ) {
+          dropdownToggle.setAttribute('aria-expanded', 'false');
+          dropdownContent.classList.remove('show');
+        }
+      });
+    }
+  });
+</script>
