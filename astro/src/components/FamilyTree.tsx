@@ -12,6 +12,28 @@ export default function FamilyTree(props: Props) {
   const dialogId = `familytree-dialog`;
   const fullscreenTargetId = `familytree-dialog-target`;
   const inlineTargetId = `familytree-inline-${Math.random().toString(36).slice(2)}`;
+  const inlineModalBtnId = `familytree-inline-modal-btn-${Math.random()
+    .toString(36)
+    .slice(2)}`;
+
+  if (
+    typeof window !== 'undefined' &&
+    !(window as any).__bfFamilyTreeFSListener
+  ) {
+    (window as any).__bfFamilyTreeFSListener = true;
+    document.addEventListener('fullscreenchange', () => {
+      const btn = document.getElementById(
+        inlineModalBtnId,
+      ) as HTMLButtonElement | null;
+      const inlineEl = document.getElementById(inlineTargetId);
+      if (!btn || !inlineEl) return;
+      if (document.fullscreenElement === inlineEl) {
+        btn.style.display = 'none';
+      } else {
+        btn.style.display = 'grid';
+      }
+    });
+  }
 
   const setDialogSize = (dlg: HTMLDialogElement) => {
     dlg.style.width = '90vw';
@@ -52,14 +74,6 @@ export default function FamilyTree(props: Props) {
           if (target) void enterFullscreen(target);
         });
       }
-      const escHandler = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-          e.preventDefault();
-          closeDialog();
-          window.removeEventListener('keydown', escHandler);
-        }
-      };
-      window.addEventListener('keydown', escHandler);
     }
   };
 
@@ -129,6 +143,7 @@ export default function FamilyTree(props: Props) {
               height: '32px',
               lineHeight: 0,
             }}
+            id={inlineModalBtnId}
           >
             <svg
               style={{ display: 'block' }}
@@ -155,8 +170,16 @@ export default function FamilyTree(props: Props) {
               if (!target) return;
               if (document.fullscreenElement) {
                 void exitFullscreen();
+                const btn = document.getElementById(
+                  inlineModalBtnId,
+                ) as HTMLButtonElement | null;
+                if (btn) btn.style.display = 'grid';
               } else {
                 void enterFullscreen(target);
+                const btn = document.getElementById(
+                  inlineModalBtnId,
+                ) as HTMLButtonElement | null;
+                if (btn) btn.style.display = 'none';
               }
             }}
             style={{
@@ -239,6 +262,7 @@ export default function FamilyTree(props: Props) {
         onClick={(e) => {
           if (e.target === e.currentTarget) closeDialog();
         }}
+        // No Esc-to-close; click backdrop or press Close
       >
         <div
           style={{
