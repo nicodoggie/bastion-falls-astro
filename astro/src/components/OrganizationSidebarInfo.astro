@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getEntry, getCollection } from 'astro:content';
+import { getEntry} from 'astro:content';
 import { slug } from 'github-slugger';
 
 const { organization } = Astro.props;
@@ -96,7 +96,7 @@ if(organization?.members) {
               {members.map((member: CollectionEntry<"character">) => (
                 <li>
                   <a href={`/characters/${member.id}`}>
-                    {member.data.character.name}
+                    {member.data.title}
                   </a>
                 </li>
               ))}

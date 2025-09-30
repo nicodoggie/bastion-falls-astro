@@ -1,5 +1,5 @@
 ---
-import TableOfContents from 'virtual:starlight/components/TableOfContents';
+import TableOfContents from '@astrojs/starlight/components/TableOfContents.astro';
 
 const { toc, entry } = Astro.locals.starlightRoute;
 
@@ -10,7 +10,7 @@ let allHeadings = toc?.items || [];
 if (entry.id.includes('lexicon-by-field')) {
   // Lazy load the lexicon data only when needed
   const lexiconData = await import(
-    '../content/docs/languages/hickic/seneran/early-hick/lexicon-earlyhick-by-field.json'
+    '../content/docs/world/languages/hickic/seneran/early-hick/lexicon-earlyhick-by-field.json'
   );
 
   const dynamicHeadings = [

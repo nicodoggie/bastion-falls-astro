@@ -1,5 +1,4 @@
 ---
-import { Icon, LinkButton } from "@astrojs/starlight/components";
 import type { Lexicon } from "../types/Lexicon";
 import Promise from "bluebird";
 import { getLexicalCategory } from "../lib/lexicon";
@@ -9,7 +8,7 @@ interface Props {
   format?: "json" | "csv";
 }
 
-const { directory, format = "json" } = Astro.props;
+const { directory } = Astro.props;
 
 const globbed = import.meta.glob(
   `/src/content/docs/languages/**/lexicon-*-alphabetical.json`
@@ -18,9 +17,9 @@ const filteredData = Object.entries(globbed).filter(([path]) =>
   path.includes(directory)
 );
 
-const lexiconData = Promise.map(filteredData, async ([path, func]) => {
+const lexiconData = Promise.map(filteredData, async ([_, func]: [string, Function]) => {
   return func();
-});
+}) as Promise<Lexicon[]>;
 ---
 
 <>

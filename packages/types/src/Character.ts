@@ -36,7 +36,11 @@ const BreastSchema = SexOrganTypeSchema.extend({
   nipples: z.enum(["inverted", "normal", "outie"]).optional(),
 })
 
-const SexOrganSchema = z.discriminatedUnion("type", [PenisSchema, VaginaSchema, BreastSchema]);
+const SexOrganSchema = z.discriminatedUnion("type", [
+  PenisSchema,
+  VaginaSchema,
+  BreastSchema
+]);
 
 const CharacterBackgroundSchema = z.object({
   alignment: AlignmentSchema.optional(),
@@ -69,14 +73,14 @@ const CharacterOrganizationSchema = z.object({
 export const CharacterRelativeSchema = z.object({
   name: z.string(),
   type: z.enum([
-    "parent", 
-    "sibling", 
-    "child", 
-    "partner", 
-    "spouse", 
-    "friend", 
-    "enemy", 
-    "ally", 
+    "parent",
+    "sibling",
+    "child",
+    "partner",
+    "spouse",
+    "friend",
+    "enemy",
+    "ally",
     "associate",
     "other",
   ]),

@@ -160,7 +160,7 @@ function migrateFile(sourceFilePath) {
     // Transform Body Links
     const transformedBody = body.replace(
       ZOLA_LINK_REGEX,
-      (match, zolaLinkPath) => {
+      (_match, zolaLinkPath) => {
         const [linkPathOnly, anchor] = zolaLinkPath.split("#");
         const linkPathBase = linkPathOnly.replace(/\.md$/, "");
 

@@ -123,7 +123,14 @@ export const BaseLocationSchema = z.object({
   details: z.record(z.string(), z.string()).optional(),
 });
 
-const PoliticalLocationSchema = BaseLocationSchema.extend({
+export const PoliticalLocationSectionSchema = z.object({
+  name: z.string(),
+  description: z.string().optional(),
+  area: z.string().optional(),
+  population: z.string().optional(),
+});
+
+export const PoliticalLocationSchema = BaseLocationSchema.extend({
   type: PoliticalLocationTypeSchema,
   details: z.object({
     flag: BaseImageSchema.optional(),
@@ -142,16 +149,11 @@ const PoliticalLocationSchema = BaseLocationSchema.extend({
     area: z.string().optional(),
     elevation: z.string().optional(),
     climate: z.string().optional(),
-    sections: z.array(z.object({
-      name: z.string(),
-      description: z.string().optional(),
-      area: z.string().optional(),
-      population: z.string().optional(),
-    })).optional(),
+    sections: z.array(PoliticalLocationSectionSchema).optional(),
   }).optional(),
 })
 
-const HeritageLocationSchema = BaseLocationSchema.extend({
+export const HeritageLocationSchema = BaseLocationSchema.extend({
   type: HeritageLocationTypeSchema,
   details: z.object({
     timeline: z.object({
@@ -161,7 +163,7 @@ const HeritageLocationSchema = BaseLocationSchema.extend({
   }).optional(),
 });
 
-const NaturalLocationSchema = BaseLocationSchema.extend({
+export const NaturalLocationSchema = BaseLocationSchema.extend({
   type: NaturalLocationTypeSchema,
   details: z.object({
     area: z.string().optional(),
@@ -170,7 +172,7 @@ const NaturalLocationSchema = BaseLocationSchema.extend({
   }).optional(),
 });
 
-const BuildingLocationSchema = BaseLocationSchema.extend({
+export const BuildingLocationSchema = BaseLocationSchema.extend({
   type: BuildingLocationTypeSchema,
   details: z.object({
     owner: z.string().optional(),
@@ -215,6 +217,7 @@ export type NaturalWaterLocationType = z.infer<typeof NaturalWaterLocationTypeSc
 export type HeritageLocationType = z.infer<typeof HeritageLocationTypeSchema>;
 export type LocationType = z.infer<typeof LocationTypeSchema>;
 export type BuildingLocation = z.infer<typeof BuildingLocationSchema>;
+export type PoliticalLocationSection = z.infer<typeof PoliticalLocationSectionSchema>;
 export type PoliticalLocation = z.infer<typeof PoliticalLocationSchema>;
 export type NaturalLocation = z.infer<typeof NaturalLocationSchema>;
 export type NaturalWaterLocation = z.infer<typeof NaturalWaterLocationSchema>;

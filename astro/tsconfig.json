@@ -7,6 +7,9 @@
     "plugins": [
       {
         "name": "@mdx-js/typescript-plugin"
+      },
+      {
+        "name": "@astrojs/ts-plugin"
       }
     ],
     "paths": {

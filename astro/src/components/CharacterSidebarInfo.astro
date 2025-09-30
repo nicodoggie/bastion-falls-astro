@@ -2,9 +2,7 @@
 import type { CharacterSexOrgan } from '@bastion-falls/types/Character';
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
-import { getEntries } from 'astro:content';
-import { getCollection } from 'astro:content';
-import { type CollectionEntry, getEntry,  } from 'astro:content';
+import { type CollectionEntry, getEntry } from 'astro:content';
 import { slug } from 'github-slugger';
 
 const { character } = Astro.props;

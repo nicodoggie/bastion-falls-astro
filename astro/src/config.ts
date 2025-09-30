@@ -1,5 +1,3 @@
-import { profile } from "node:console";
-
 export const SITE = {
   website: "https://bastion-falls.thekennel.info",
   author: "Nico Suarez",
