@@ -61,6 +61,7 @@ const CharacterDetailsSchema = z.object({
   weight: z.string().optional(),
   origin: z.string().optional(),
   mortality: MortalityEnum.optional(),
+  ethnicities: z.array(z.string()).optional(),
   species: z.string().or(z.array(z.string())).optional(),
   sexOrgans: z.array(SexOrganSchema).optional(),
 })
@@ -98,11 +99,17 @@ export const CharacterOrganizationSchema = z.object({
   positionsHeld: z.array(CharacterOrganizationPositionsHeldSchema).optional(),
 });
 
+export const CharacterEthnicitySchema = z.object({
+  name: z.string(),
+  subgroup: z.string().optional(),
+})
+
 export const CharacterRelationshipsSchema = z.object({
   organizations: z.array(CharacterOrganizationSchema).optional(),
   relatives: z.array(CharacterRelativeSchema).optional(),
   religions: z.array(CharacterReligionSchema).optional(),
   families: z.array(CharacterFamilySchema).optional(),
+  ethnicities: z.array(CharacterEthnicitySchema).optional(),
 })
 
 export const CharacterSchema = z.object({
