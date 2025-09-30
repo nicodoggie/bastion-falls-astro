@@ -641,6 +641,7 @@ __metadata:
     "@astrojs/starlight": "npm:^0.36.0"
     "@astrojs/ts-plugin": "npm:^1.10.4"
     "@bastion-falls/rehype-pagefind-metadata": "workspace:^"
+    "@bastion-falls/starlight-flatten-index": "workspace:^"
     "@bastion-falls/types": "npm:*"
     "@mdx-js/typescript-plugin": "npm:^0.1.3"
     "@panzoom/panzoom": "npm:^4.6.0"
@@ -764,7 +765,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bastion-falls/starlight-flatten-index@workspace:packages/starlight-flatten-index":
+"@bastion-falls/starlight-flatten-index@workspace:^, @bastion-falls/starlight-flatten-index@workspace:packages/starlight-flatten-index":
   version: 0.0.0-use.local
   resolution: "@bastion-falls/starlight-flatten-index@workspace:packages/starlight-flatten-index"
   languageName: unknown
@@ -10885,11 +10886,11 @@ __metadata:
 
 "typescript@patch:typescript@npm%3A^5.9.2#optional!builtin<compat/typescript>":
   version: 5.9.2
-  resolution: "typescript@patch:typescript@npm%3A5.9.2#optional!builtin<compat/typescript>::version=5.9.2&hash=379a07"
+  resolution: "typescript@patch:typescript@npm%3A5.9.2#optional!builtin<compat/typescript>::version=5.9.2&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/66fc07779427a7c3fa97da0cf2e62595eaff2cea4594d45497d294bfa7cb514d164f0b6ce7a5121652cf44c0822af74e29ee579c771c405e002d1f23cf06bfde
+  checksum: 10c0/34d2a8e23eb8e0d1875072064d5e1d9c102e0bdce56a10a25c0b917b8aa9001a9cf5c225df12497e99da107dc379360bc138163c66b55b95f5b105b50578067e
   languageName: node
   linkType: hard
 

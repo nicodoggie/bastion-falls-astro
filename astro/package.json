@@ -20,6 +20,7 @@
     "@astrojs/react": "^4.4.0",
     "@astrojs/starlight": "^0.36.0",
     "@bastion-falls/rehype-pagefind-metadata": "workspace:^",
+    "@bastion-falls/starlight-flatten-index": "workspace:^",
     "@bastion-falls/types": "*",
     "@panzoom/panzoom": "^4.6.0",
     "@sasza/react-panzoom": "^1.19.0",
