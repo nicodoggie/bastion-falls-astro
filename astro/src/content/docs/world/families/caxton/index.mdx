@@ -12,4 +12,4 @@ import {getImage} from "astro:assets";
 import familyMap from "./family.svg";
 export const image = await getImage({src: familyMap})     
 
-<FamilyTree client:load asset={image} alt="Caxton Family Tree" />
+<FamilyTree client:only="react" src={image.src} width={image.options.width} height={image.options.height} alt="Caxton Family Tree" />
