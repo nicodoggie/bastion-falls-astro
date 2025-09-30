@@ -65,11 +65,6 @@ const CharacterDetailsSchema = z.object({
   sexOrgans: z.array(SexOrganSchema).optional(),
 })
 
-const CharacterOrganizationSchema = z.object({
-  name: z.string(),
-  title: z.string().optional(),
-})
-
 export const CharacterRelativeSchema = z.object({
   name: z.string(),
   type: z.enum([
@@ -89,6 +84,17 @@ export const CharacterRelativeSchema = z.object({
 export const CharacterReligionSchema = z.string();
 
 export const CharacterFamilySchema = z.string();
+
+export const CharacterOrganizationPositionsHeldSchema = z.object({
+  name: z.string(),
+  from: z.string().optional(),
+  to: z.string().optional(),
+});
+
+export const CharacterOrganizationSchema = z.object({
+  name: z.string(),
+  positionsHeld: z.array(CharacterOrganizationPositionsHeldSchema).optional(),
+});
 
 export const CharacterRelationshipsSchema = z.object({
   organizations: z.array(CharacterOrganizationSchema).optional(),

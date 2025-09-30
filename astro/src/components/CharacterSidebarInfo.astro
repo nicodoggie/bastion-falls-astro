@@ -1,9 +1,10 @@
 ---
-import type { CharacterSexOrgan } from '@bastion-falls/types/Character';
+import type { CharacterSexOrgan, CharacterOrganization } from '@bastion-falls/types/Character';
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import { type CollectionEntry, getEntry } from 'astro:content';
 import { slug } from 'github-slugger';
+import Bluebird from 'bluebird';
 
 const { character } = Astro.props;
 
@@ -61,21 +62,23 @@ if(character?.relationships?.relatives) {
 }
 // Sort by relative type
 relatives.sort((a, b) => a.type.localeCompare(b.type));
-interface Organization {
-  name: string;
-  title: string;
+
+interface OrganizationData {
+  positionsHeld: CharacterOrganization['positionsHeld'];
+  entry: CollectionEntry<"organization">;
 }
-let organizations: {title: string, entry: CollectionEntry<"organization">}[] = [];
+let organizations: OrganizationData[] = [];
 if(character?.relationships?.organizations) {
-  organizations = (await Promise.all(
-    character.relationships.organizations.map(
-      async (organization: Organization) => {
+  console.log(character.relationships.organizations);
+  organizations = await Bluebird.map(
+    character.relationships.organizations,
+      async (organization: CharacterOrganization) => {
         const sluggedName = slug(organization.name);
         const organizationEntry = await getEntry('organization', sluggedName);
-        return {title: organization.title, entry: organizationEntry};
+ 
+        return {positionsHeld: organization.positionsHeld, entry: organizationEntry};
       }
-    )
-  )).filter((organization) => organization && organization.entry);
+  ).filter((organization: OrganizationData) => organization && organization.entry);
 }
 
 let families: CollectionEntry<"family">[] = [];
@@ -269,15 +272,18 @@ if(character?.relationships?.families) {
               Organizations
             </dt>
             <dd class="text-gray-600 dark:text-gray-400">
-              <ul>
+              
+              
                 {organizations.map(
-                  ({title, entry}: {title: string, entry: CollectionEntry<"organization"> | undefined}) => (
-                    <li>
-                      <a href={`/organizations/${entry?.id}`}>{entry?.data.title} {title && `(${title})`}</a>
-                    </li>
+                  ({positionsHeld, entry}) => (
+                    <a class="text-gray-600 dark:text-gray-400" href={`/organizations/${entry?.id}`}>{entry?.data.title}</a>
+                    <ul class="ml-4 text-xs">
+                      {positionsHeld && positionsHeld.map((position) => (
+                        <li>{position.name} {position.from && `(${position.from}`} {position.to && ` - ${position.to})`}</li>
+                      ))}
+                    </ul>
                   )
                 )}
-              </ul>
             </dd>
           </div>
         )
