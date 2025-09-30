@@ -108,7 +108,7 @@ if(character?.relationships?.families) {
           const entry = await getEntry('family', sluggedName);
           return {name: family.name, entry};
         }
-        t
+        throw new Error(`Family ${family.name} has no slugged name`);
       }
     )
   ))
