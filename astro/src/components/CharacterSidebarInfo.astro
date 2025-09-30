@@ -44,6 +44,7 @@ if(character?.details?.species) {
 }
 
 interface Relative {
+  name: string;
   type: string;
   entry: CollectionEntry<"character">;
 }
@@ -55,7 +56,7 @@ if(character?.relationships?.relatives) {
     character.relationships.relatives.map(
       async ({name, type}: {name: string, type: string}) => {
         const relativeEntry = await getEntry('character', slug(name)); 
-        return {type, entry: relativeEntry};
+        return {name, type, entry: relativeEntry};
       }
     )
   )
@@ -299,8 +300,8 @@ if(character?.relationships?.families) {
                 {relatives.map((relative: Relative) => {
                   return (
                   <li>
-                    <a href={`/characters/${relative.entry?.id}`}>
-                      {relative.entry?.data.title}
+                    <a href={relative.entry && `/characters/${relative.entry?.id}`}>
+                      {relative.entry?.data.title || relative.name}
                       {relative.type && ` (${relative.type})`}
                     </a>
                   </li>
@@ -323,7 +324,7 @@ if(character?.relationships?.families) {
                   return (
                   <li>
                     <a href={`/characters/${relative.entry?.id}`}>
-                      {relative.entry?.data.title}
+                      {relative.entry?.data.title || relative.name}
                       {relative.type && ` (${relative.type})`}
                     </a>
                   </li>
