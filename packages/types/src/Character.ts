@@ -83,7 +83,9 @@ export const CharacterRelativeSchema = z.object({
 
 export const CharacterReligionSchema = z.string();
 
-export const CharacterFamilySchema = z.string();
+export const CharacterFamilySchema = z.array(z.object({
+  name: z.string(),
+}));
 
 export const CharacterOrganizationPositionsHeldSchema = z.object({
   name: z.string(),

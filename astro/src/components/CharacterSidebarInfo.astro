@@ -1,10 +1,9 @@
 ---
-import type { CharacterSexOrgan, CharacterOrganization } from '@bastion-falls/types/Character';
+import type { CharacterSexOrgan, CharacterOrganization, CharacterFamily } from '@bastion-falls/types/Character';
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import { type CollectionEntry, getEntry } from 'astro:content';
 import { slug } from 'github-slugger';
-import Bluebird from 'bluebird';
 
 const { character } = Astro.props;
 
@@ -52,15 +51,23 @@ interface Relative {
 
 let relatives: Relative[] = [];
 if(character?.relationships?.relatives) {
-  relatives = await Promise.all(
-    character.relationships.relatives.map(
-      async ({name, type}: {name: string, type: string}) => {
-        const relativeEntry = await getEntry('character', slug(name)); 
-        return {name, type, entry: relativeEntry};
-      }
-    )
-  )
+  relatives = (await Promise
+    .allSettled<Relative>(
+      character.relationships.relatives.map(
+        async ({name, type}: {name: string, type: string}) => {
+          const sluggedName = slug(name);
+          if(sluggedName) {
+            const entry = await getEntry('character', sluggedName); 
+            return {name, type, entry};
+          }
+          throw new Error(`Relative ${name} has no slugged name`);
+        }
+      )
+    ))
+    .map((settled) => settled.status === 'fulfilled' ? settled.value : null)
+    .filter((relative) => relative !== null);
 }
+
 // Sort by relative type
 relatives.sort((a, b) => a.type.localeCompare(b.type));
 
@@ -70,27 +77,43 @@ interface OrganizationData {
 }
 let organizations: OrganizationData[] = [];
 if(character?.relationships?.organizations) {
-  console.log(character.relationships.organizations);
-  organizations = await Bluebird.map(
-    character.relationships.organizations,
+  organizations = (await Promise.allSettled<OrganizationData>(
+    character.relationships.organizations.map(
       async (organization: CharacterOrganization) => {
         const sluggedName = slug(organization.name);
-        const organizationEntry = await getEntry('organization', sluggedName);
- 
-        return {positionsHeld: organization.positionsHeld, entry: organizationEntry};
+        if(sluggedName) {
+        const entry = await getEntry('organization', sluggedName);
+          return {positionsHeld: organization.positionsHeld, entry};
+        }
+        throw new Error(`Organization ${organization.name} has no slugged name`);
       }
-  ).filter((organization: OrganizationData) => organization && organization.entry);
+    )
+  ))
+    .map((settled) => settled.status === 'fulfilled' ? settled.value : null)
+    .filter((organization) => organization !== null);
 }
 
-let families: CollectionEntry<"family">[] = [];
+interface FamilyData {
+  name: string;
+  entry: CollectionEntry<"family">;
+}
+
+let families: FamilyData[] = [];
 if(character?.relationships?.families) {
-  families = await Promise.all(
+  families = (await Promise.allSettled<FamilyData>(
     character.relationships.families.map(
-      async (family: string) => {
-        const familyEntry = await getEntry('family', slug(family));
-        return familyEntry;
+      async (family: CharacterFamily) => {
+        const sluggedName = slug(family.name);
+        if(sluggedName) {
+          const entry = await getEntry('family', sluggedName);
+          return {name: family.name, entry};
+        }
+        t
       }
+    )
   ))
+    .map((settled) => settled.status === 'fulfilled' ? settled.value : null)
+    .filter((family) => family !== null);
 }
 
 ---
@@ -279,7 +302,7 @@ if(character?.relationships?.families) {
                   ({positionsHeld, entry}) => (
                     <a class="text-gray-600 dark:text-gray-400" href={`/organizations/${entry?.id}`}>{entry?.data.title}</a>
                     <ul class="ml-4 text-xs">
-                      {positionsHeld && positionsHeld.map((position) => (
+                      {positionsHeld && positionsHeld.map((position: any) => (
                         <li>{position.name} {position.from && `(${position.from}`} {position.to && ` - ${position.to})`}</li>
                       ))}
                     </ul>
@@ -343,9 +366,9 @@ if(character?.relationships?.families) {
             </dt>
             <dd class="text-gray-600 dark:text-gray-400">
               <ul>
-                {families.map((family: CollectionEntry<"family">) => (
+                {families.map((family: {name: string, entry: CollectionEntry<"family">}) => (
                   <li>
-                    <a href={`/world/families/${family?.id}`}>{family?.data.title}</a>
+                    <a href={family.entry && `/world/families/${family.entry?.id}`}>{family.name}</a>
                   </li>
                 ))}
               </ul>

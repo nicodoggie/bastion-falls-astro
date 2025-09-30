@@ -2,20 +2,34 @@
 import type { CollectionEntry } from 'astro:content';
 import { getEntry} from 'astro:content';
 import { slug } from 'github-slugger';
+import type { OrganizationMember } from '@bastion-falls/types/Organization';
 
 const { organization } = Astro.props;
 
 // Get member character entries if they exist
-let members: CollectionEntry<"character">[] = [];
+interface MemberData {
+  name: string;
+  type: string;
+  entry: CollectionEntry<"character">;
+}
+
+let members: MemberData[] = [];
 if(organization?.members) {
-  members = (await Promise.all(
+  members = (await Promise.allSettled<MemberData>(
     organization.members.map(
-      async (memberName: string) => {
-        const memberEntry = await getEntry('character', slug(memberName));
-        return memberEntry;
+      async (memberName: OrganizationMember) => {
+        const { name, type } = memberName;
+        const sluggedName = slug(name);
+        if(sluggedName) {
+          const entry = await getEntry('character', sluggedName);
+          return {name, type, entry};
+        }
+        throw new Error(`Member ${memberName.name} has no slugged name`);
       }
     )
-  )).filter((member) => member);
+  ))
+    .map((settled) => settled.status === 'fulfilled' ? settled.value : null)
+    .filter((member) => member !== null);
 }
 
 ---
@@ -93,10 +107,11 @@ if(organization?.members) {
               Members
             </h3>
             <ul class="text-gray-600 dark:text-gray-400">
-              {members.map((member: CollectionEntry<"character">) => (
+              {members.map((member: MemberData) => (
                 <li>
-                  <a href={`/characters/${member.id}`}>
-                    {member.data.title}
+                  <a href={`/characters/${member.entry?.id}`}>
+                    {member.entry?.data.title || member.name}
+                    {member.type && ` (${member.type})`}
                   </a>
                 </li>
               ))}
