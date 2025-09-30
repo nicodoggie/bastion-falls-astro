@@ -1,4 +1,5 @@
 ---
+import AnchorHeading from '@astrojs/starlight/components/AnchorHeading.astro';
 import type { LexiconByField } from "../types/LexiconByField";
 import { getLexicalCategory } from "../lib/lexicon";
 
@@ -28,7 +29,7 @@ const { data } = Astro.props;
     Object.entries(data.lexicon).map(([field, lexItems]) => {
       const { uri, label } = data.fields[field];
 
-      const fieldSet: HTMLHeadingElement = <h2 id={uri}>{label}</h2>;
+      const fieldSet: HTMLHeadingElement = <AnchorHeading level={2} id={uri}>{label}</AnchorHeading>;
 
       const definitions = lexItems.map((lexItem) => {
         const types = lexItem.types.filter(

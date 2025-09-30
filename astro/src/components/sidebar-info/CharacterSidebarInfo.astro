@@ -4,18 +4,11 @@ import type {
   CharacterOrganization, 
   CharacterFamily,
 } from '@bastion-falls/types/Character';
-import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
 import { type CollectionEntry, getEntry } from 'astro:content';
 import { slug } from 'github-slugger';
+import SidebarImage from './SidebarImage.astro';
 
 const { character } = Astro.props;
-
-let image;
-if(character?.image?.url) {
-  const images = import.meta.glob<{default: ImageMetadata}>("/src/assets/**/*.{jpg,jpeg,png,webp}");
-  image =  images[character.image.url]();
-}
 
 let mortalityIcon;
 switch(character.details.mortality) {
@@ -135,21 +128,7 @@ if(character?.relationships?.families) {
     )
   }
   {
-    image && (
-      <div class="mb-4 w-full character-image-container bg-black">
-        <Image 
-          src={image} 
-          alt={character.image.alt || character.name || ""} 
-          title={character.image.attribution}
-          class="w-full h-full max-h-48 rounded-lg object-scale-down block mx-auto"
-        />
-        <p class="text-xs text-gray-500 mt-1 text-center">
-          <a href={character.image.attributionUrl} target="_blank" rel="noopener noreferrer">
-            {character.image.attribution}
-          </a>
-        </p>
-      </div>
-    )
+    character.image && <SidebarImage {...character.image} />
   }
 
   <div class="space-y-4">

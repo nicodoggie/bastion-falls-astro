@@ -16,6 +16,7 @@ tags:
 
 import LexiconByField from "@/components/LexiconByField.astro";
 import lexiconData from "./lexicon-earlyhick-by-field.json";
+import type { LexiconByField as LexiconByFieldType } from "@/types/LexiconByField";
 
 The Early Hick lexicon, as attested, consists of mostly noun forms. These nouns
 can represent a wide range of meanings, including actions, properties, or
@@ -42,4 +43,4 @@ For stress-related vowel changes, : see:
 5. Apostrophes (') are used to transcribe glottal stops in phonemic
    transcriptions
 
-<LexiconByField data={lexiconData} />
+<LexiconByField data={lexiconData as LexiconByFieldType} />

@@ -1,7 +1,8 @@
 ---
-import CharacterSidebarInfo from './CharacterSidebarInfo.astro';
-import OrganizationSidebarInfo from './OrganizationSidebarInfo.astro';
-import LocationSidebarInfo from './LocationSidebarInfo.astro';
+import CharacterSidebarInfo from './sidebar-info/CharacterSidebarInfo.astro';
+import ItemSidebarInfo from './sidebar-info/ItemSidebarInfo.astro';
+import OrganizationSidebarInfo from './sidebar-info/OrganizationSidebarInfo.astro';
+import LocationSidebarInfo from './sidebar-info/LocationSidebarInfo.astro';
 
 const { entry } = Astro.locals.starlightRoute;
 ---
@@ -11,6 +12,9 @@ const { entry } = Astro.locals.starlightRoute;
     <>
       {entry.data?.character && (
         <CharacterSidebarInfo character={entry.data.character} />
+      )}
+      {entry.data?.item && (
+        <ItemSidebarInfo item={entry.data.item} />
       )}
       {entry.data?.organization && (
         <OrganizationSidebarInfo organization={entry.data.organization} />

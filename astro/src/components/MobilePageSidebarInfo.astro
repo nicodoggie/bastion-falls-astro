@@ -78,6 +78,21 @@ import PageSidebarInfo from './PageSidebarInfo.astro';
     .dropdown-content.show {
       display: block;
     }
+
+    /* On larger screens, overlay instead of reflow */
+    @media (min-width: 48rem) {
+      .mobile-dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 50;
+      }
+    }
   }
 </style>
 

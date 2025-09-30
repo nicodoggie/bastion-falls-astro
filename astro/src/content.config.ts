@@ -12,6 +12,7 @@ import {
   LocationSchema,
   SpeciesSchema,
   OrganizationSchema,
+  ItemSchema,
 } from '@bastion-falls/types';
 import { glob } from "astro/loaders";
 
@@ -24,6 +25,7 @@ export const collections = {
         concept: ConceptSchema.partial().optional(),
         event: EventSchema.partial().optional(),
         family: FamilySchema.partial().optional(),
+        item: ItemSchema.partial().optional(),
         location: LocationSchema.optional(),
         organization: OrganizationSchema.partial().optional(),
         species: SpeciesSchema.partial().optional(),
@@ -47,6 +49,14 @@ export const collections = {
     schema: docsSchema({
       extend: z.object({
         family: FamilySchema.optional(),
+      })
+    }),
+  }),
+  item: defineCollection({
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/items' }),
+    schema: docsSchema({
+      extend: z.object({
+        item: ItemSchema.optional(),
       })
     }),
   }),
