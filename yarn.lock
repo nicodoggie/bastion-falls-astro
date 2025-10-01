@@ -737,6 +737,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@bastion-falls/main@workspace:."
   dependencies:
+    micromark: "npm:^4.0.2"
     rimraf: "npm:^6.0.1"
     wrangler: "npm:^4.40.1"
   languageName: unknown
@@ -7933,7 +7934,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromark@npm:^4.0.0":
+"micromark@npm:^4.0.0, micromark@npm:^4.0.2":
   version: 4.0.2
   resolution: "micromark@npm:4.0.2"
   dependencies:

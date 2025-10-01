@@ -4,11 +4,11 @@ import type { LexiconByField } from "../types/LexiconByField";
 import { getLexicalCategory } from "../lib/lexicon";
 
 interface Props {
-  data: LexiconByField;
+  data: any;
   format?: "json" | "csv";
 }
 
-const { data } = Astro.props;
+const { data }: { data: LexiconByField } = Astro.props;
 ---
 
 <>
@@ -76,7 +76,7 @@ const { data } = Astro.props;
                 {lexItem.writtenForm}
               </span>
               &nbsp;
-              <span class="phonetic-form">/{lexItem.phoneticForm}/</span>&nbsp
+              <span class="phonetic-form">/{lexItem.phoneticForm}/</span>&nbsp;
               <span class="lexical-category">({lexCategories})</span>
             </dt>
             <dd>

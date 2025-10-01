@@ -33,7 +33,6 @@ export default defineConfig({
     starlight({
       title: 'Bastion Falls',
       favicon: '/favicon.png',
-
       logo: {
         src: '/src/assets/orb-of-bastion.png',
         alt: 'Bastion Falls',
