@@ -1,6 +1,8 @@
 ---
 title: A Workhorse
 published: 2024-04-19T16:11:45.000Z
+banner:
+  url: "/src/assets/posts/media/a-workhorse/banner.png"
 description: "Unappreciated workhorse, worked to death"
 tags:
   - blog

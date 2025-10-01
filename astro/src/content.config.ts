@@ -86,13 +86,17 @@ export const collections = {
   }),
   posts: defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts' }),
-    schema: z.object({
+    schema: ({ image }) => z.object({
       title: z.string(),
       description: z.string().optional(),
       published: z.date(),
       updated: z.date().optional(),
       tags: z.array(z.string()).optional(),
       draft: z.boolean().default(false),
+      banner: z.object({
+        url: image(),
+        alt: z.string().optional(),
+      }).optional(),
     }),
   }),
 };

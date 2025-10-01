@@ -1,5 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import ph1 from '@/assets/gen/placeholder-fantasy-1.png';
+import ph2 from '@/assets/gen/placeholder-fantasy-2.png';
+import ph3 from '@/assets/gen/placeholder-fantasy-3.png';
+import ph4 from '@/assets/gen/placeholder-fantasy-4.png';
 import '@/styles/global.css';
 
 const posts = await getCollection('posts');
@@ -76,12 +81,35 @@ const draftPosts = allPosts.filter((post) => post.data.draft);
       <div id="posts-container" class="space-y-8">
         <!-- Draft Posts (hidden by default, shown first when toggled) -->
         {
-          draftPosts.map((post) => (
+          draftPosts.map((post, i) => (
             <article
               data-draft="true"
-              class="draft-post border border-gray-800 rounded-lg p-6 bg-gray-900/30 hover:bg-gray-900/50 hover:border-gray-700 transition-all duration-200"
+              class="draft-post border border-gray-800 rounded-lg overflow-hidden bg-gray-900/30 hover:bg-gray-900/50 hover:border-gray-700 transition-all duration-200"
               style="display: none;"
             >
+              <div class={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-nowrap items-stretch`}>
+                {post.data.banner ? (
+                <div class="w-64 flex-shrink-0">
+                  <Image
+                    src={post.data.banner.url}
+                    alt={post.data.banner.alt || post.data.title}
+                    class="w-full h-full object-cover"
+                    width={256}
+                    height={256}
+                  />
+                </div>
+              ) : (
+                <div class="w-64 flex-shrink-0">
+                  <Image
+                    src={[ph1, ph2, ph3, ph4][i % 4]}
+                    alt="Placeholder banner"
+                    class="w-full h-full object-cover"
+                    width={256}
+                    height={256}
+                  />
+                </div>
+              )}
+                <div class={`flex-1 p-6 ${i % 2 === 1 ? 'md:text-right' : ''}`}>
               <h2 class="text-2xl font-semibold mb-3">
                 <a
                   href={`/blog/${post.id}`}
@@ -94,7 +122,7 @@ const draftPosts = allPosts.filter((post) => post.data.draft);
                 </span>
               </h2>
 
-              <div class="flex flex-wrap gap-3 items-center text-sm text-gray-400 mb-4">
+              <div class={`flex flex-wrap gap-3 items-center text-sm text-gray-400 mb-4 ${i % 2 === 1 ? 'md:justify-end' : ''}`}>
                 <time datetime={post.data.published.toISOString()}>
                   {post.data.published.toLocaleDateString('en-US', {
                     year: 'numeric',
@@ -123,14 +151,39 @@ const draftPosts = allPosts.filter((post) => post.data.draft);
               >
                 Read more →
               </a>
+              </div>
+              </div>
             </article>
           ))
         }
 
         <!-- Published Posts -->
         {
-          publishedPosts.map((post) => (
-            <article class="border border-gray-800 rounded-lg p-6 bg-gray-900/30 hover:bg-gray-900/50 hover:border-gray-700 transition-all duration-200">
+          publishedPosts.map((post, i) => (
+            <article class="border border-gray-800 rounded-lg overflow-hidden bg-gray-900/30 hover:bg-gray-900/50 hover:border-gray-700 transition-all duration-200">
+              <div class={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-nowrap items-stretch`}>
+                {post.data.banner ? (
+                <div class="w-64 flex-shrink-0">
+                  <Image
+                    src={post.data.banner.url}
+                    alt={post.data.banner.alt || post.data.title}
+                    class="w-full h-full object-cover"
+                    width={256}
+                    height={256}
+                  />
+                </div>
+              ) : (
+                <div class="w-64 flex-shrink-0">
+                  <Image
+                    src={[ph1, ph2, ph3, ph4][i % 4]}
+                    alt="Placeholder banner"
+                    class="w-full h-full object-cover"
+                    width={256}
+                    height={256}
+                  />
+                </div>
+              )}
+                <div class={`flex-1 p-6 ${i % 2 === 1 ? 'md:text-right' : ''}`}>
               <h2 class="text-2xl font-semibold mb-3">
                 <a
                   href={`/blog/${post.id}`}
@@ -140,7 +193,7 @@ const draftPosts = allPosts.filter((post) => post.data.draft);
                 </a>
               </h2>
 
-              <div class="flex flex-wrap gap-3 items-center text-sm text-gray-400 mb-4">
+              <div class={`flex flex-wrap gap-3 items-center text-sm text-gray-400 mb-4 ${i % 2 === 1 ? 'md:justify-end' : ''}`}>
                 <time datetime={post.data.published.toISOString()}>
                   {post.data.published.toLocaleDateString('en-US', {
                     year: 'numeric',
@@ -169,6 +222,8 @@ const draftPosts = allPosts.filter((post) => post.data.draft);
               >
                 Read more →
               </a>
+              </div>
+              </div>
             </article>
           ))
         }

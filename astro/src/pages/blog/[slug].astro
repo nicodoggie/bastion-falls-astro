@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 import '@/styles/global.css';
 
 export async function getStaticPaths() {
@@ -54,6 +55,28 @@ const { Content } = await render(post);
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-6 py-12">
       <article>
+        {post.data.banner && (
+          <div class="relative -mx-6 md:mx-0 mb-8">
+            <Image
+              src={post.data.banner.url}
+              alt={post.data.banner.alt || post.data.title}
+              class="w-full h-64 md:h-96 object-cover"
+              widths={[640, 896, 1280, 1600]}
+              sizes="(min-width: 896px) 896px, 100vw"
+              loading="eager"
+            />
+          </div>
+        )}
+        <nav class="not-content mb-6 text-sm text-gray-400">
+          <a href="/" class="inline-flex items-center gap-2 hover:text-gray-200">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+              <path d="M11.47 3.84a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 1-1.06 1.06l-.65-.65V20a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-3.5a1.5 1.5 0 0 0-3 0V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7.06l-.65.65a.75.75 0 1 1-1.06-1.06l8.69-8.69Z"/>
+            </svg>
+            Home
+          </a>
+          <span class="mx-2">→</span>
+          <span class="text-gray-300">{post.data.title}</span>
+        </nav>
         <header class="mb-8 pb-8 border-b border-gray-800">
           <h1 class="text-4xl font-bold text-white mb-4">
             {post.data.title}

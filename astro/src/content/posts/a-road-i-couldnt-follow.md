@@ -1,6 +1,8 @@
 ---
 title: A Road I Couldn't Follow
 published: 2024-05-08T05:31:11.783Z
+banner:
+  url: /src/assets/posts/media/a-road-i-couldnt-follow/banner.jpg
 description: ""
 tags:
   - blog
