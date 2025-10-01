@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import '@/styles/global.css';
 
 const posts = await getCollection('posts');
 
@@ -23,7 +24,6 @@ const draftPosts = allPosts.filter((post) => post.data.draft);
       content="Thoughts, poems, and other musings during the development of the Bastion Falls D&D campaign."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body class="bg-gray-950 text-gray-200">
     <!-- Simple Header -->
