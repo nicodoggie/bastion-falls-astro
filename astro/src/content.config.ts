@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
 import { autoSidebarLoader } from "starlight-auto-sidebar/loader";
@@ -14,7 +15,6 @@ import {
   OrganizationSchema,
   ItemSchema,
 } from '@bastion-falls/types';
-import { glob } from "astro/loaders";
 
 export const collections = {
   docs: defineCollection({
@@ -82,6 +82,17 @@ export const collections = {
       extend: z.object({
         species: SpeciesSchema.omit({ name: true }).optional(),
       })
+    }),
+  }),
+  posts: defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts' }),
+    schema: z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      published: z.date(),
+      updated: z.date().optional(),
+      tags: z.array(z.string()).optional(),
+      draft: z.boolean().default(false),
     }),
   }),
 };

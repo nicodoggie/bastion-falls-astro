@@ -1,6 +1,6 @@
 ---
 title: The Dad Who Left for Smokes
-date: "2024-04-19"
+published: 2024-04-19
 description: ""
 tags:
   - blog

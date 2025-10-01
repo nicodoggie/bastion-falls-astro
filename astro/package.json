@@ -22,6 +22,8 @@
     "@bastion-falls/rehype-pagefind-metadata": "workspace:^",
     "@bastion-falls/starlight-flatten-index": "workspace:^",
     "@bastion-falls/types": "*",
+    "@iconify-json/simple-icons": "^1.2.53",
+    "@iconify-json/solar": "^1.2.4",
     "@panzoom/panzoom": "^4.6.0",
     "@sasza/react-panzoom": "^1.19.0",
     "@tailwindcss/postcss": "^4.1.13",

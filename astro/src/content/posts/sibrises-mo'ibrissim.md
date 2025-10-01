@@ -1,6 +1,6 @@
 ---
 title: Sibrises Mo'ibrissim
-date: "2025-02-04T11:42:40.720Z"
+published: 2025-02-04T11:42:40.720Z
 description: ""
 tags:
   - blog

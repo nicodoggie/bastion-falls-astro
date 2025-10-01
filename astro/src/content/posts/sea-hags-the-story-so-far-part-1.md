@@ -1,6 +1,6 @@
 ---
 title: 'Sea Hags: The Story So Far Part 1'
-date: '2024-05-20T09:42:29.933Z'
+published: 2024-05-20T09:42:29.933Z
 description: ''
 tags:
   - blog
@@ -14,7 +14,7 @@ about what had happened than I've ever been able to transcribe in this site
 (since I only started this about a year ago). So in an effort to remember
 everything that's happened since, I've been trying to collate all of the
 disparate notes and pieces of information that I could collect. But I've been
-really sloppy with **mzy** notes, and it's become such a pain.
+really sloppy with my notes, and it's become such a pain.
 
 Starting with this post, I will be attempting to reconstruct the events that
 have happened so far, using EV's Google Docs notes as a base, then integrating

@@ -1,7 +1,6 @@
 ---
 title: Puddle
-date: "2024-04-19T10:28:04.509Z"
-description: ""
+published: 2024-04-19T10:28:04.509Z
 tags:
   - blog
 ---

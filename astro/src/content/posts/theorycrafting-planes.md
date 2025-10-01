@@ -1,6 +1,6 @@
 ---
 title: "Theorycrafting: Planes"
-date: "2024-04-19T01:56:20.909Z"
+published: 2024-04-19T01:56:20.909Z
 description: ""
 tags:
   - blog
@@ -58,7 +58,7 @@ difficult during an "influence minimum". If that plane is a *source*, then more
 magic flows into Thera during an increasing period, then the magic wanes during
 a decreasing period. If a plane is a *sink*, then the opposite is true.
 
-![Planar Influence Graph](media/planar-influence-graph.png)
+![Planar Influence Graph](../../assets/posts/media/planar-influence-graph.png)
 
 Now, since many of these planes are connected to Thera, depending on their
 varying periodicity, there would be times of **magical maximums** or **magical

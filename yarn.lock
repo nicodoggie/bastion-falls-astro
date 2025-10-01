@@ -643,6 +643,8 @@ __metadata:
     "@bastion-falls/rehype-pagefind-metadata": "workspace:^"
     "@bastion-falls/starlight-flatten-index": "workspace:^"
     "@bastion-falls/types": "npm:*"
+    "@iconify-json/simple-icons": "npm:^1.2.53"
+    "@iconify-json/solar": "npm:^1.2.4"
     "@mdx-js/typescript-plugin": "npm:^0.1.3"
     "@panzoom/panzoom": "npm:^4.6.0"
     "@sasza/react-panzoom": "npm:^1.19.0"
@@ -1329,6 +1331,31 @@ __metadata:
   version: 2.2.5
   resolution: "@iarna/toml@npm:2.2.5"
   checksum: 10c0/d095381ad4554aca233b7cf5a91f243ef619e5e15efd3157bc640feac320545450d14b394aebbf6f02a2047437ced778ae598d5879a995441ab7b6c0b2c2f201
+  languageName: node
+  linkType: hard
+
+"@iconify-json/simple-icons@npm:^1.2.53":
+  version: 1.2.53
+  resolution: "@iconify-json/simple-icons@npm:1.2.53"
+  dependencies:
+    "@iconify/types": "npm:*"
+  checksum: 10c0/67d02580e684519c3dc7b205ce63acac1e2bee9efa165f64a1c5bbb1da9e6e74b1ba786862ed5ca266f458baab003be65df460e98eb27ffbb32c9f997d7bc7ed
+  languageName: node
+  linkType: hard
+
+"@iconify-json/solar@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "@iconify-json/solar@npm:1.2.4"
+  dependencies:
+    "@iconify/types": "npm:*"
+  checksum: 10c0/32e66b525db5447fef44680c204dc2f6d18c2df24ecbea1bc8eeff8402275f19097704d2e82bbc64c77a6fbb104601621d33631cdd2bf8c4757a8ed9a295a1d4
+  languageName: node
+  linkType: hard
+
+"@iconify/types@npm:*":
+  version: 2.0.0
+  resolution: "@iconify/types@npm:2.0.0"
+  checksum: 10c0/65a3be43500c7ccacf360e136d00e1717f050b7b91da644e94370256ac66f582d59212bdb30d00788aab4fc078262e91c95b805d1808d654b72f6d2072a7e4b2
   languageName: node
   linkType: hard
 

@@ -1,6 +1,6 @@
 ---
 title: "Campaign Prep: Searching for a Body and a Soul"
-date: "2024-05-14T00:09:13.389Z"
+published: 2024-05-14T00:09:13.389Z
 description: ""
 tags:
   - blog

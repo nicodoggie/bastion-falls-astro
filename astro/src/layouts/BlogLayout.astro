@@ -1,0 +1,479 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Bastion Falls Blog - Thoughts, poems, and other musings during
+      the development of the Bastion Falls D&D campaign."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Bastion Falls Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Dark mode toggle
+      if (
+        localStorage.getItem('theme') === 'dark' ||
+        (!localStorage.getItem('theme') &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+    <style>
+      :root {
+        --color-text: #1a202c;
+        --color-text-secondary: #4a5568;
+        --color-bg: #ffffff;
+        --color-bg-secondary: #f7fafc;
+        --color-border: #e2e8f0;
+        --color-accent: #3182ce;
+        --color-accent-hover: #2c5282;
+        --spacing: clamp(1rem, 5vw, 3rem);
+      }
+
+      .dark {
+        --color-text: #f7fafc;
+        --color-text-secondary: #cbd5e0;
+        --color-bg: #1a202c;
+        --color-bg-secondary: #2d3748;
+        --color-border: #4a5568;
+        --color-accent: #63b3ed;
+        --color-accent-hover: #90cdf4;
+        color-scheme: dark;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+        background: var(--color-bg);
+        color: var(--color-text);
+        line-height: 1.6;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Header Styles */
+      header {
+        background: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+        background: var(--color-bg-secondary);
+      }
+
+      nav {
+        max-width: 72rem;
+        margin: 0 auto;
+        padding: 1rem var(--spacing);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--color-text);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .logo:hover {
+        color: var(--color-accent);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--color-text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--color-accent);
+      }
+
+      .theme-toggle {
+        background: none;
+        border: none;
+        font-size: 1.25rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: background-color 0.2s;
+      }
+
+      .theme-toggle:hover {
+        background: var(--color-border);
+      }
+
+      /* Main Content */
+      main {
+        flex: 1;
+        max-width: 72rem;
+        margin: 0 auto;
+        padding: var(--spacing);
+        width: 100%;
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--color-border);
+        background: var(--color-bg-secondary);
+        padding: 2rem var(--spacing);
+        margin-top: 4rem;
+      }
+
+      .footer-content {
+        max-width: 72rem;
+        margin: 0 auto;
+        text-align: center;
+        color: var(--color-text-secondary);
+      }
+
+      .footer-content a {
+        color: var(--color-accent);
+        text-decoration: none;
+      }
+
+      .footer-content a:hover {
+        text-decoration: underline;
+      }
+
+      /* Typography - Prose Styles */
+      .prose {
+        font-family: 'Merriweather', Georgia, serif;
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: var(--color-text);
+        max-width: 65ch;
+      }
+
+      .prose h1,
+      .prose h2,
+      .prose h3,
+      .prose h4,
+      .prose h5,
+      .prose h6 {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-top: 2em;
+        margin-bottom: 0.75em;
+        color: var(--color-text);
+      }
+
+      .prose h1 {
+        font-size: 2.5rem;
+        margin-top: 0;
+      }
+      .prose h2 {
+        font-size: 2rem;
+      }
+      .prose h3 {
+        font-size: 1.5rem;
+      }
+
+      .prose p {
+        margin-bottom: 1.5em;
+      }
+
+      .prose a {
+        color: var(--color-accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+        transition: color 0.2s;
+      }
+
+      .prose a:hover {
+        color: var(--color-accent-hover);
+      }
+
+      .prose ul,
+      .prose ol {
+        margin: 1.5em 0;
+        padding-left: 1.5em;
+      }
+
+      .prose li {
+        margin-bottom: 0.5em;
+      }
+
+      .prose blockquote {
+        border-left: 4px solid var(--color-accent);
+        padding-left: 1.5rem;
+        margin: 2em 0;
+        font-style: italic;
+        color: var(--color-text-secondary);
+      }
+
+      .prose code {
+        background: var(--color-bg-secondary);
+        padding: 0.2em 0.4em;
+        border-radius: 0.25rem;
+        font-size: 0.9em;
+        font-family:
+          'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+      }
+
+      .prose pre {
+        background: var(--color-bg-secondary);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin: 2em 0;
+      }
+
+      .prose pre code {
+        background: none;
+        padding: 0;
+      }
+
+      .prose img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        margin: 2em 0;
+      }
+
+      .prose hr {
+        border: none;
+        border-top: 2px solid var(--color-border);
+        margin: 3em 0;
+      }
+
+      /* Utility Classes */
+      .text-secondary {
+        color: var(--color-text-secondary);
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        color: var(--color-accent);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+
+      .back-link:hover {
+        color: var(--color-accent-hover);
+      }
+
+      .article-header {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .article-title {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: var(--color-text);
+      }
+
+      .article-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        color: var(--color-text-secondary);
+        font-size: 0.9375rem;
+      }
+
+      .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .article-footer {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--color-border);
+      }
+
+      /* Blog List Styles */
+      .blog-header {
+        margin-bottom: 4rem;
+      }
+
+      .blog-title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+      }
+
+      .blog-description {
+        font-size: 1.25rem;
+        color: var(--color-text-secondary);
+        max-width: 60ch;
+      }
+
+      .post-list {
+        display: grid;
+        gap: 3rem;
+      }
+
+      .post-card {
+        padding-bottom: 3rem;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .post-card:last-child {
+        border-bottom: none;
+      }
+
+      .post-title {
+        font-size: 1.875rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+      }
+
+      .post-title a {
+        color: var(--color-text);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .post-title a:hover {
+        color: var(--color-accent);
+      }
+
+      .post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1rem;
+        color: var(--color-text-secondary);
+        font-size: 0.9375rem;
+      }
+
+      .post-description {
+        color: var(--color-text-secondary);
+        line-height: 1.7;
+        margin-bottom: 1rem;
+      }
+
+      .read-more {
+        color: var(--color-accent);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+
+      .read-more:hover {
+        color: var(--color-accent-hover);
+        text-decoration: underline;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 4rem 1rem;
+        color: var(--color-text-secondary);
+      }
+
+      @media (max-width: 640px) {
+        .nav-links {
+          gap: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/blog" class="logo">Bastion Falls Blog</a>
+        <div class="nav-links">
+          <a href="/">Main Site</a>
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            aria-label="Toggle dark mode"
+          >
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2024 Bastion Falls. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+          <a href="/">Visit the main site</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Dark mode toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      themeToggle?.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+    </script>
+  </body>
+</html>

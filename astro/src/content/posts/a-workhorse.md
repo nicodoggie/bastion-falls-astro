@@ -1,7 +1,6 @@
 ---
 title: A Workhorse
-date: Fri Apr 19 2024 16:11:45 GMT+0800 (Philippine Standard Time)
-image: /src/content/blog/media/a-workhorse/banner.png
+published: 2024-04-19T16:11:45.000Z
 description: "Unappreciated workhorse, worked to death"
 tags:
   - blog

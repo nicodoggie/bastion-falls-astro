@@ -5,8 +5,14 @@
   "type": "module",
   "main": "./src/index.mjs",
   "exports": {
-    ".": "./src/index.mjs",
-    "./middleware": "./src/middleware.mjs"
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.mjs"
+    },
+    "./middleware": {
+      "types": "./src/middleware.d.ts",
+      "import": "./src/middleware.mjs"
+    }
   },
   "keywords": [
     "astro",

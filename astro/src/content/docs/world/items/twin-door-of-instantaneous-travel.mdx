@@ -2,15 +2,20 @@
 title: Twin Door of Instantaneous Travel
 tags:
   - items
-extraMetadata:
-  item:
-    requires_attunement: "false"
+item:
+  name: Twin Door of Instantaneous Travel
+  image:
+    url: /src/assets/items/twin-door-of-instantaneous-travel.jpg
+    alt: Twin Door of Instantaneous Travel
+  details:
+    attunement: false
     type: wondrous item
     rarity: very rare
+    weight: 100 lbs
+    value: 100,000 gp
 ---
 
 import { Image } from "astro:assets"
-import TwinDoorImage from "/public/items/twin-door-of-instantaneous-travel.jpg"
 
 The *Twin Door of Instantaneous Travel* are an identical pair of oak wood doors,
 with distinctively-grained olive wood inlaid into a two-panel design. Etruscan
@@ -23,7 +28,6 @@ the paired door. Any number of creatures may travel between the paired doors for
 as long as the door is open. Both doors close automatically if no creatures
 travel between them after 5 seconds.
 
-<Image src={TwinDoorImage} alt="Twin Door of Instantaneous Travel" width={200} />
 
 # Distance Cost
 
@@ -34,7 +38,7 @@ travel between them after 5 seconds.
 |   per 1 mi  | 3rd level       |
 | above 10 mi | 4th level       |
 
-# Special Examples
+# Examples
 
 ## Walburton Doorway
 

@@ -1,6 +1,6 @@
 ---
 title: "Theorycrafting: Ages"
-date: "2024-04-19T11:33:06.367Z"
+published: 2024-04-19T11:33:06.367Z
 description: ""
 tags:
   - blog

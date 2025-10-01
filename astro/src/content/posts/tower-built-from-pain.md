@@ -1,6 +1,6 @@
 ---
 title: Tower Built from Pain
-date: "2024-05-01T06:44:20.706Z"
+published: 2024-05-01T06:44:20.706Z
 description: ""
 tags:
   - blog

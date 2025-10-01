@@ -1,7 +1,6 @@
 ---
 title: A Road I Couldn't Follow
-date: "2024-05-08T05:31:11.783Z"
-image: /src/content/blog/media/a-road-i-couldnt-follow/banner.jpg
+published: 2024-05-08T05:31:11.783Z
 description: ""
 tags:
   - blog
