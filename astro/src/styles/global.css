@@ -1,2 +1,7 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "flowbite/src/themes/default";
+
+hr {
+  margin: 1rem 0 1rem 0;
+}

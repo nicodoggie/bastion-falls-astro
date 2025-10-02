@@ -4,6 +4,9 @@ published: 2025-02-11T06:33:28.609Z
 description: ""
 tags:
   - blog
+  - poetry
+  - conlang
+  - early-hick
 ---
 
 atales kaimtir asamgralel imwes'er\

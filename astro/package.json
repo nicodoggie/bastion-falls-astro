@@ -27,6 +27,7 @@
     "@panzoom/panzoom": "^4.6.0",
     "@sasza/react-panzoom": "^1.19.0",
     "@tailwindcss/postcss": "^4.1.13",
+    "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.14.0",
     "astro-auto-import": "^0.4.4",

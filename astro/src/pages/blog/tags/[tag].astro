@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogIndex from '@/components/blog/BlogIndex.astro';
+import { slug } from 'github-slugger';
 
 const posts = await getCollection('posts');
 
@@ -31,7 +32,7 @@ const allTags = Array.from(tagSet).sort((a, b) => a.localeCompare(b));
   title={`Tag: #${tag}`}
   breadcrumb={[
     { label: 'Blog', href: '/blog' },
-    { label: `#${tag}`, href: '' },
+    { label: `#${tag}`, href: `/blog/tags/${slug(tag)}` },
   ]}
   allTags={allTags}
   currentTag={tag}
