@@ -1,6 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "@tailwindcss/typography";
-@import "flowbite/src/themes/default";
+@import 'flowbite/src/themes/default';
 
 hr {
   margin: 1rem 0 1rem 0;
@@ -27,7 +27,11 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(20, 0, 40, 0.6) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(20, 0, 40, 0.6) 100%
+  );
   pointer-events: none;
   z-index: -1;
 }
