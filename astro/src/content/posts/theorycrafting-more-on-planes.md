@@ -1,6 +1,6 @@
 ---
 title: "Theorycrafting: More on Planes"
-draft: true
+published: 2025-10-02T21:58:09.070Z
 tags:
   - theorycrafting
   - world building
