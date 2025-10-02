@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, z, type SchemaContext, type BaseSchema } from "astro:content";
+import type { Image } from "astro:assets";
 import { glob } from "astro/loaders";
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
@@ -15,6 +16,47 @@ import {
   OrganizationSchema,
   ItemSchema,
 } from '@bastion-falls/types';
+
+const baseBlogSchema = z.object({
+  title: z.string(),
+  draft: z.boolean().optional(),
+  description: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+});
+
+const blogSchema = (context: SchemaContext) => {
+  const { image } = context;
+  return z.discriminatedUnion(
+    'draft',
+    [
+      baseBlogSchema.extend({
+        draft: z.literal(false),
+        published: z.date(),
+        updated: z.date().optional(),
+        banner: z.object({
+          url: image(),
+          alt: z.string().optional(),
+        }).optional(),
+      }),
+      baseBlogSchema.extend({
+        draft: z.undefined(),
+        published: z.date(),
+        updated: z.date().optional(),
+        banner: z.object({
+          url: image(),
+          alt: z.string().optional(),
+        }).optional(),
+      }),
+      baseBlogSchema.extend({
+        draft: z.literal(true),
+        banner: z.object({
+          url: image(),
+          alt: z.string().optional(),
+        }).optional(),
+      }),
+    ]
+  );
+};
 
 export const collections = {
   docs: defineCollection({
@@ -86,17 +128,6 @@ export const collections = {
   }),
   posts: defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts' }),
-    schema: ({ image }) => z.object({
-      title: z.string(),
-      description: z.string().optional(),
-      published: z.date(),
-      updated: z.date().optional(),
-      tags: z.array(z.string()).optional(),
-      draft: z.boolean().default(false),
-      banner: z.object({
-        url: image(),
-        alt: z.string().optional(),
-      }).optional(),
-    }),
+    schema: blogSchema,
   }),
 };

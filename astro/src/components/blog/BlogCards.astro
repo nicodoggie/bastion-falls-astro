@@ -59,13 +59,15 @@ const enc = encodeURIComponent;
             <div
               class={`flex flex-wrap gap-3 items-center text-sm text-gray-400 mb-4 ${i % 2 === 1 ? 'md:justify-end' : ''}`}
             >
+              {!post.data.draft && (
               <time datetime={post.data.published.toISOString()}>
                 {post.data.published.toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric',
-                })}
-              </time>
+                  })}
+                </time>
+              )}
               <div class="flex flex-wrap gap-2">
                 {post.data.draft && (
                   <span class="px-2.5 py-1 text-xs font-medium bg-yellow-900/50 text-yellow-300 border border-yellow-700 rounded-md">

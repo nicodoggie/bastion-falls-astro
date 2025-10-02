@@ -6,7 +6,18 @@ const posts = await getCollection('posts');
 
 // Sort all posts by date
 const allPosts = posts.sort(
-  (a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
+  (a, b) => {
+    if (a.data.draft == true && b.data.draft == false) {
+      return 1;
+    }
+    if (a.data.draft == false && b.data.draft == true) {
+      return -1;
+    }
+    if (a.data.draft === false && b.data.draft === false) {
+      return a.data.published.valueOf() - b.data.published.valueOf();
+    }
+    return 0;
+  },
 );
 
 // Tag list for sidebar/dropdown

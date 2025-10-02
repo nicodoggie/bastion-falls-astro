@@ -4,7 +4,7 @@ published: 2024-04-19T01:56:20.909Z
 description: ""
 tags:
   - theorycrafting
-  - blog
+  - planes
 ---
 
 I'm trying to reason about how magic actually works on Thera, and how it
@@ -21,8 +21,6 @@ There are some guidelines that I'm trying to put into place in this world. That 
 really directly empower the divine magic users. The planes where these gods
 reside might be sources of magic, but they aren't really a plane of these
 demiurges that forged the multiverse.
-
-<!-- more -->
 
 The nature of these beings and their planes of origin would inform the plane's
 classification.

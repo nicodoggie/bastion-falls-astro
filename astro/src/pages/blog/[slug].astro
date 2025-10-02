@@ -90,6 +90,7 @@ const { Content } = await render(post);
             }
           </h1>
           <div class="flex flex-wrap gap-3 items-center text-sm text-gray-400">
+            {!post.data.draft && (
             <time datetime={post.data.published.toISOString()}>
               {
                 post.data.published.toLocaleDateString('en-US', {
@@ -99,6 +100,7 @@ const { Content } = await render(post);
                 })
               }
             </time>
+            )}
             {
               post.data.tags && post.data.tags.length > 0 && (
                 <div class="flex flex-wrap gap-2">
