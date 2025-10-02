@@ -4,6 +4,7 @@ published: 2024-04-18
 description: ""
 tags:
   - blog
+  - poetry
 ---
 
 The edge of the desk beneath my shaky fingers\
@@ -14,15 +15,15 @@ Just trying my best to wing it
 But it all comes crashing\
 The interface keeps hanging\
 As the screen blares blue\
-Hexes dropping in the monotone hue\\
+Hexes dropping in the monotone hue
 
 Staying frozen past reboot\
 Can't even fix it as root
 
 It's time to shutdown\
 Sorry I let you down\
-Just going through a little meltdown\
-Playlist roaring some motown
+Going through a little meltdown\
+While the playlist blares some motown
 
 It's not that I want not\
 It's more like, I cannot\

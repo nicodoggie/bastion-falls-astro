@@ -1,0 +1,200 @@
+---
+import BlogCards from './BlogCards.astro';
+import '@/styles/global.css';
+
+export interface Props {
+  posts: any[];
+  title: string;
+  description?: string;
+  breadcrumb?: { label: string; href: string }[];
+  showDraftToggle?: boolean;
+  allTags: string[];
+  currentTag?: string;
+  backLink?: { href: string; text: string };
+}
+
+const { posts, title, description, breadcrumb, showDraftToggle = false, allTags, currentTag, backLink } = Astro.props;
+const enc = encodeURIComponent;
+
+// Split posts into drafts and published
+const publishedPosts = posts.filter((post) => !post.data.draft);
+const draftPosts = posts.filter((post) => post.data.draft);
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Bastion Falls</title>
+    <meta
+      name="description"
+      content={description || "Thoughts, poems, and other musings during the development of the Bastion Falls D&D campaign."}
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-gray-950 text-gray-200">
+    <!-- Simple Header -->
+    <header
+      class="border-b border-gray-800 bg-gray-900/50 backdrop-blur sticky top-0 z-50"
+    >
+      <div class="max-w-5xl mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <a
+            href="/blog"
+            class="flex items-center gap-3 text-xl font-semibold text-white hover:text-gray-300 transition-colors"
+          >
+            <img
+              src="/orb-of-bastion.png"
+              alt="Bastion Falls"
+              class="w-8 h-8"
+            />
+            <span>Bastion Falls Blog</span>
+          </a>
+          <a
+            href={backLink?.href || "/"}
+            class="text-sm text-gray-400 hover:text-white transition-colors"
+          >
+            {backLink?.text || "← Main Site"}
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6 py-12">
+      <div class="mb-12">
+        {breadcrumb && (
+          <nav class="not-content mb-3 text-sm text-gray-400">
+            {breadcrumb.map((item, i) => (
+              <>
+                <a href={item.href} class="hover:text-gray-200">{item.label}</a>
+                {i < breadcrumb.length - 1 && <span class="mx-2">→</span>}
+              </>
+            ))}
+          </nav>
+        )}
+        <div class="flex items-start justify-between mb-4">
+          <div class="flex-1">
+            <h1 class="text-4xl font-bold text-white mb-3">{title}</h1>
+            {description && (
+              <p class="text-lg text-gray-400">{description}</p>
+            )}
+          </div>
+          {showDraftToggle && (
+            <button
+              id="toggle-drafts"
+              class="px-4 py-2 text-sm font-medium rounded-lg border transition-colors bg-gray-800 text-gray-300 border-gray-700 hover:bg-gray-700 min-w-[140px]"
+            >
+              Show Drafts
+            </button>
+          )}
+        </div>
+      </div>
+
+      <!-- Mobile tag dropdown -->
+      <details class="md:hidden not-content mb-6 border border-gray-800 rounded-lg">
+        <summary class="cursor-pointer px-4 py-3 text-sm text-gray-300">Browse tags</summary>
+        <div class="px-4 py-3 flex flex-wrap gap-2">
+          {allTags.map((t) => (
+            <a 
+              href={`/blog/tags/${enc(t)}`} 
+              class={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${t === currentTag ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 hover:bg-blue-200 dark:hover:bg-blue-800'} transition-colors duration-200`}
+            >
+              {t}
+            </a>
+          ))}
+        </div>
+      </details>
+
+      <div class="md:grid md:grid-cols-[220px_1fr] md:gap-6">
+        <!-- Desktop sidebar -->
+        <aside class="not-content hidden md:block">
+          <div class="sticky top-20 border border-gray-800 rounded-lg p-4">
+            <h2 class="text-sm font-semibold text-gray-200 mb-3">Tags</h2>
+            <nav class="flex flex-col gap-2">
+              {allTags.map((t) => (
+                <a 
+                  href={`/blog/tags/${enc(t)}`} 
+                  class={`px-3 py-1 rounded text-sm ${t === currentTag ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-800'}`}
+                >
+                  {t}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </aside>
+
+        <section id="posts-container" class="space-y-8">
+          {showDraftToggle ? (
+            <>
+              <BlogCards posts={draftPosts} hideDraftsInitially={true} />
+              <BlogCards posts={publishedPosts} />
+            </>
+          ) : (
+            <BlogCards posts={posts} />
+          )}
+        </section>
+      </div>
+
+      {posts.length === 0 && (
+        <div class="text-center py-12">
+          <p class="text-lg text-gray-400">
+            No blog posts yet. Check back soon!
+          </p>
+        </div>
+      )}
+
+      <!-- Simple Footer -->
+      <footer class="border-t border-gray-800 mt-16 bg-gray-900/50">
+        <div
+          class="max-w-5xl mx-auto px-6 py-8 text-center text-sm text-gray-400"
+        >
+          <p>
+            &copy; {new Date().getFullYear()} Bastion Falls. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    {showDraftToggle && (
+      <script>
+        // Handle draft toggle
+        const toggleButton = document.getElementById('toggle-drafts');
+        const draftPosts = document.querySelectorAll(
+          '.draft-post',
+        ) as NodeListOf<HTMLElement>;
+        let showingDrafts = false;
+
+        console.log('Draft posts found:', draftPosts.length);
+
+        if (toggleButton) {
+          toggleButton.addEventListener('click', () => {
+            showingDrafts = !showingDrafts;
+
+            console.log('Toggling drafts. Showing:', showingDrafts);
+
+            draftPosts.forEach((post: HTMLElement) => {
+              if (showingDrafts) {
+                post.style.display = 'block';
+              } else {
+                post.style.display = 'none';
+              }
+            });
+
+            // Update button appearance
+            if (showingDrafts) {
+              toggleButton.textContent = '✓ Showing Drafts';
+              toggleButton.className =
+                'px-4 py-2 text-sm font-medium rounded-lg border transition-colors bg-yellow-900/50 text-yellow-300 border-yellow-700 hover:bg-yellow-900/70 min-w-[140px]';
+            } else {
+              toggleButton.textContent = 'Show Drafts';
+              toggleButton.className =
+                'px-4 py-2 text-sm font-medium rounded-lg border transition-colors bg-gray-800 text-gray-300 border-gray-700 hover:bg-gray-700 min-w-[140px]';
+            }
+          });
+        }
+      </script>
+    )}
+  </body>
+</html>

@@ -1,9 +1,13 @@
 ---
 title: The Dad Who Left for Smokes
+banner:
+  url: '/src/assets/posts/media/the-dad-who-left-for-smokes/banner.png'
+  alt: 'Somber brutalist watercolor of a father walking away at dusk'
 published: 2024-04-19
 description: ""
 tags:
   - blog
+  - poetry
 ---
 
 It's been told in every joke show\

@@ -6,6 +6,7 @@ banner:
 description: ""
 tags:
   - blog
+  - poetry
 ---
 
 I walked a road I couldn't follow\

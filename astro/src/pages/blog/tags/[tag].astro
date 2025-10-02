@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import BlogIndex from '@/components/blog/BlogIndex.astro';
+
+const posts = await getCollection('posts');
+
+// Build list of unique, normalized tags for static paths
+export async function getStaticPaths() {
+  const allPosts = await getCollection('posts');
+  const tags = new Set<string>();
+  for (const p of allPosts) {
+    (p.data.tags ?? []).forEach((t: string) => tags.add(t));
+  }
+  return Array.from(tags).map((t) => ({ params: { tag: t } }));
+}
+
+const tag = Astro.params.tag as string;
+const filtered = posts
+  .filter((p) => (p.data.tags ?? []).includes(tag))
+  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
+
+// All tags for sidebar/dropdown
+const tagSet = new Set<string>();
+for (const p of posts)
+  (p.data.tags ?? []).forEach((t: string) => tagSet.add(t));
+const allTags = Array.from(tagSet).sort((a, b) => a.localeCompare(b));
+---
+
+<BlogIndex
+  posts={filtered}
+  title={`Tag: #${tag}`}
+  breadcrumb={[
+    { label: 'Blog', href: '/blog' },
+    { label: `#${tag}`, href: '' },
+  ]}
+  allTags={allTags}
+  currentTag={tag}
+  showDraftToggle={true}
+  backLink={{ href: '/blog', text: '← Back to Blog' }}
+/>
