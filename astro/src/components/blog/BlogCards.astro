@@ -20,7 +20,7 @@ const enc = encodeURIComponent;
     posts.map((post, i) => (
       <article
         data-draft={post.data.draft ? 'true' : 'false'}
-        class={`border border-gray-800 rounded-lg overflow-hidden bg-gray-900/30 hover:bg-gray-900/50 hover:border-gray-700 transition-all duration-200 ${post.data.draft && hideDraftsInitially ? 'draft-post' : ''}`}
+        class={`border border-gray-800 rounded-lg overflow-hidden bg-gray-900/30 hover:bg-gray-900/50 hover:border-gray-700 transition-all duration-200 backdrop-blur ${post.data.draft && hideDraftsInitially ? 'draft-post' : ''}`}
         style={post.data.draft && hideDraftsInitially ? 'display: none;' : ''}
       >
         <div

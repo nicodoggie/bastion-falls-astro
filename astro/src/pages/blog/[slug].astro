@@ -25,7 +25,7 @@ const { Content } = await render(post);
     <meta name="description" content={post.data.description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="bg-gray-950 text-gray-200">
+  <body class="bg-gray-950 text-gray-200" style="background-image: url('/images/backgrounds/cavern-blog-background-wide.png'); background-size: cover; background-position: center; background-attachment: fixed;">
     <!-- Simple Header -->
     <header
       class="border-b border-gray-800 bg-gray-900/50 backdrop-blur sticky top-0 z-50"
@@ -54,7 +54,10 @@ const { Content } = await render(post);
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-6 py-12">
+    <main class="max-w-4xl mx-auto px-6 py-12 relative">
+      <!-- Background overlay for better text readability -->
+      <div class="absolute inset-0 bg-black/50 pointer-events-none"></div>
+      <div class="relative z-10">
       <article>
         {post.data.banner && (
           <div class="relative -mx-6 md:mx-0 mb-8">
@@ -79,7 +82,7 @@ const { Content } = await render(post);
           <span class="text-gray-300">{post.data.title}</span>
         </nav>
         <header class="mb-8 pb-8 border-b border-gray-800">
-          <h1 class="text-5xl font-bold text-white mb-4">
+          <h1 class="text-5xl font-bold text-white mb-4 cavern-text-shadow">
             {post.data.title}
             {
               post.data.draft && (
@@ -139,6 +142,7 @@ const { Content } = await render(post);
           </a>
         </footer>
       </article>
+      </div>
     </main>
 
     <!-- Simple Footer -->

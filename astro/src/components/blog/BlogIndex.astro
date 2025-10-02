@@ -34,7 +34,7 @@ const draftPosts = posts.filter((post) => post.data.draft);
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="bg-gray-950 text-gray-200">
+  <body class="bg-gray-950 text-gray-200" style="background-image: url('/images/backgrounds/cavern-blog-background-wide.png'); background-size: cover; background-position: center; background-attachment: fixed;">
     <!-- Simple Header -->
     <header
       class="border-b border-gray-800 bg-gray-900/50 backdrop-blur sticky top-0 z-50"
@@ -66,7 +66,10 @@ const draftPosts = posts.filter((post) => post.data.draft);
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-6 py-12">
+    <main class="max-w-5xl mx-auto px-6 py-12 relative">
+      <!-- Background overlay for better text readability -->
+      <div class="absolute inset-0 bg-black/80 lg:bg-black/60 pointer-events-none"></div>
+      <div class="relative z-10">
       <div class="mb-12">
         {breadcrumb && (
           <nav class="not-content mb-3 text-sm text-gray-400">
@@ -80,7 +83,7 @@ const draftPosts = posts.filter((post) => post.data.draft);
         )}
         <div class="flex items-start justify-between mb-4">
           <div class="flex-1">
-            <h1 class="text-4xl font-bold text-white mb-3">{title}</h1>
+            <h1 class="text-4xl font-bold text-white mb-3 cavern-text-shadow">{title}</h1>
             {description && (
               <p class="text-lg text-gray-400">{description}</p>
             )}
@@ -114,7 +117,7 @@ const draftPosts = posts.filter((post) => post.data.draft);
       <div class="md:grid md:grid-cols-[220px_1fr] md:gap-6">
         <!-- Desktop sidebar -->
         <aside class="not-content hidden md:block">
-          <div class="sticky top-20 border border-gray-800 rounded-lg p-4">
+          <div class="sticky top-20 border border-gray-800 rounded-lg p-4 bg-gray-900/50 backdrop-blur">
             <h2 class="text-sm font-semibold text-gray-200 mb-3">Tags</h2>
             <nav class="flex flex-col gap-2">
               {allTags.map((t) => (
@@ -148,18 +151,19 @@ const draftPosts = posts.filter((post) => post.data.draft);
           </p>
         </div>
       )}
-
-      <!-- Simple Footer -->
-      <footer class="border-t border-gray-800 mt-16 bg-gray-900/50">
-        <div
-          class="max-w-5xl mx-auto px-6 py-8 text-center text-sm text-gray-400"
-        >
-          <p>
-            &copy; {new Date().getFullYear()} Bastion Falls. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      </div>
     </main>
+
+    <!-- Simple Footer -->
+    <footer class="border-t border-gray-800 mt-16 bg-gray-900/50">
+      <div
+        class="max-w-5xl mx-auto px-6 py-8 text-center text-sm text-gray-400"
+      >
+        <p>
+          &copy; {new Date().getFullYear()} Bastion Falls. All rights reserved.
+        </p>
+      </div>
+    </footer>
 
     {showDraftToggle && (
       <script>
