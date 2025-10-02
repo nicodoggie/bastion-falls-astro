@@ -3,6 +3,7 @@ title: "Theorycrafting: Planes"
 published: 2024-04-19T01:56:20.909Z
 description: ""
 tags:
+  - theorycrafting
   - blog
 ---
 
@@ -16,11 +17,12 @@ also not have direct interactions with each other, if not for it.
 I've sort of initially devised a classification for the various planes that have
 already seen some screen time here.
 
-There are some guidelines that I'm trying to put into place in this world. That
-gods aren't omnipotent, omnipresent and omniscient beings. Their powers don't
+There are some guidelines that I'm trying to put into place in this world. That gods aren't omnipotent, omnipresent and omniscient beings. Their powers don't
 really directly empower the divine magic users. The planes where these gods
 reside might be sources of magic, but they aren't really a plane of these
 demiurges that forged the multiverse.
+
+<!-- more -->
 
 The nature of these beings and their planes of origin would inform the plane's
 classification.

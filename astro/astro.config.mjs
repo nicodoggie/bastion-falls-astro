@@ -10,7 +10,6 @@ import flowbiteReact from 'flowbite-react/plugin/astro';
 import expressiveCode from 'astro-expressive-code';
 import starlightAutoSidebar from 'starlight-auto-sidebar';
 import starlightFlattenIndex from '@bastion-falls/starlight-flatten-index';
-import { pagefindAliases } from './src/integrations/pagefind-aliases';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
@@ -21,7 +20,6 @@ export default defineConfig({
       remarkCustomHeaderId,
       remarkParse,
       remarkDefinitionList,
-      pagefindAliases,
     ],
   },
   redirects: {
@@ -51,6 +49,10 @@ export default defineConfig({
         },
       ],
       sidebar: [
+        {
+          label: 'Blog',
+          link: '/blog',
+        },
         {
           label: 'World',
           autogenerate: {
