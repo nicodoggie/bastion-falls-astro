@@ -18,7 +18,18 @@ export async function getStaticPaths() {
 const tag = Astro.params.tag as string;
 const filtered = posts
   .filter((p) => (p.data.tags ?? []).includes(tag))
-  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
+  .sort((a, b) => {
+    if (a.data.draft === true && b.data.draft === false) {
+      return 1;
+    }
+    if (a.data.draft === false && b.data.draft === true) {
+      return -1;
+    }
+    if (a.data.draft === false && b.data.draft === false) {
+      return b.data.published?.valueOf() - a.data.published?.valueOf();
+    }
+    return 0; 
+  });
 
 // All tags for sidebar/dropdown
 const tagSet = new Set<string>();
