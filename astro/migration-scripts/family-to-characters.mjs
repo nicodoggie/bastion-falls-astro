@@ -247,10 +247,20 @@ function main() {
     data,
   ] of rels.entries()) {
     const { primary, fallback, alt } = slugName(fullname);
+    const familyCandidates = Array.isArray(data?.families)
+      ? data.families.map((f) => f?.name).filter(Boolean)
+      : [];
+    const combinedCandidates = [];
+    if (familyCandidates.length > 0 && fullname.trim().split(/\s+/).length === 1) {
+      for (const fam of familyCandidates) {
+        combinedCandidates.push(slugger(`${fullname} ${fam}`));
+      }
+    }
     const loaded = loadCharacterFile([
       primary,
       fallback,
       alt,
+      ...combinedCandidates,
     ]);
     if (!loaded) {
       missing.push({
