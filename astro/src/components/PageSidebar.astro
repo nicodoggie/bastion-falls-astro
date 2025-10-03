@@ -3,6 +3,7 @@ import MobileTableOfContents from '@astrojs/starlight/components/MobileTableOfCo
 import TableOfContents from '@astrojs/starlight/components/TableOfContents.astro';
 import MobilePageSidebarInfo from './MobilePageSidebarInfo.astro';
 import PageSidebarInfo from './PageSidebarInfo.astro';
+import FantasyCalendar from './FantasyCalendar.astro';
 const { toc } = Astro.locals.starlightRoute;
 ---
 
@@ -15,6 +16,7 @@ const { toc } = Astro.locals.starlightRoute;
       </div>
       <div class="right-sidebar-panel sl-hidden lg:sl-block">
         <div class="sl-container">
+          <FantasyCalendar />
           <PageSidebarInfo />
           <TableOfContents />
         </div>
@@ -48,7 +50,7 @@ const { toc } = Astro.locals.starlightRoute;
     .right-sidebar-panel :global(:where(a):hover) {
       color: var(--sl-color-white);
     }
-    
+
     @media (min-width: 72rem) {
       .sl-container {
         max-width: calc(

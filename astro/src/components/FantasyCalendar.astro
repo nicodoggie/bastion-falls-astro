@@ -1,0 +1,46 @@
+---
+// Fantasy Calendar component to be placed in the sidebar
+---
+
+<div id="fantasy-calendar-widget">
+  <script>
+    // Initialize Fantasy Calendar when the component loads
+    function initFantasyCalendar() {
+      // @ts-ignore
+      if (typeof FantasyCalendar !== 'undefined') {
+        // @ts-ignore
+        FantasyCalendar({
+          hash: '089e518f9ea966373b1c71535c25b98a',
+          settings: {
+            theme: 'custom',
+            size: 'sm',
+            current_date_color: '#613583',
+          },
+        });
+      } else {
+        // If FantasyCalendar isn't loaded yet, wait for it
+        setTimeout(initFantasyCalendar, 100);
+      }
+    }
+
+    // Try to initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initFantasyCalendar);
+    } else {
+      initFantasyCalendar();
+    }
+  </script>
+</div>
+<style>
+  #fantasy-calendar-widget {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid var(--sl-color-accent-low);
+    border-radius: 0.375rem;
+    background: var(--sl-color-accent);
+  }
+
+  #fantasy-calendar-widget :global(*) {
+    max-width: 100%;
+  }
+</style>

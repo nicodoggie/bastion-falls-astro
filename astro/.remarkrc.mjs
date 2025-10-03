@@ -10,8 +10,6 @@ import remarkParse from "remark-parse";
 import remarkPrettier from "remark-prettier";
 import remarkCustomHeaderId from "remark-custom-header-id";
 
-import remarkWikiLink from "remark-wiki-link";
-
 // prettier-ignore
 const processor = unified()
   .use(remarkParse)

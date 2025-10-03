@@ -36,6 +36,31 @@ export default defineConfig({
         alt: 'Bastion Falls',
       },
       customCss: ['/src/styles/global.css'],
+      head: [
+        {
+          tag: 'script',
+          attrs: {
+            src: 'https://app.fantasy-calendar.com/js/embed.js'
+          }
+        },
+        {
+          tag: 'script',
+          children: `
+            window.addEventListener('load', function() {
+              if (typeof FantasyCalendar !== 'undefined') {
+                FantasyCalendar({
+                  hash: '089e518f9ea966373b1c71535c25b98a',
+                  settings: {
+                    theme: 'custom',
+                    size: 'sm',
+                    current_date_color: '#613583',
+                  },
+                });
+              }
+            });
+          `
+        }
+      ],
       social: [
         {
           icon: 'laptop',

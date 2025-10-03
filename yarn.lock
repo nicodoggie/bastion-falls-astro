@@ -7981,6 +7981,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"migration-scripts@workspace:astro/migration-scripts":
+  version: 0.0.0-use.local
+  resolution: "migration-scripts@workspace:astro/migration-scripts"
+  dependencies:
+    github-slugger: "npm:^2.0.0"
+    gray-matter: "npm:^4.0.3"
+    js-yaml: "npm:^4.1.0"
+    toml: "npm:^3.0.0"
+  languageName: unknown
+  linkType: soft
+
 "mime-db@npm:^1.54.0":
   version: 1.54.0
   resolution: "mime-db@npm:1.54.0"
