@@ -47,7 +47,9 @@ function slugName(name) {
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[’']/g, '');
   const fallback = slugger(deburred);
-  return { primary, fallback };
+  const romanMatch = deburred.match(/^(\w+)\s+(\w+)\s+(I|II|III|IV|V|VI|VII|VIII|IX|X)$/i);
+  const alt = romanMatch ? slugger(`${romanMatch[1]} ${romanMatch[3]} ${romanMatch[2]}`) : null;
+  return { primary, fallback, alt };
 }
 
 function addRelative(relativesMap, a, b, type) {
@@ -244,10 +246,11 @@ function main() {
     fullname,
     data,
   ] of rels.entries()) {
-    const { primary, fallback } = slugName(fullname);
+    const { primary, fallback, alt } = slugName(fullname);
     const loaded = loadCharacterFile([
       primary,
       fallback,
+      alt,
     ]);
     if (!loaded) {
       missing.push({
