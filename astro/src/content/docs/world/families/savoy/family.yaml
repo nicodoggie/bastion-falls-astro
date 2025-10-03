@@ -30,7 +30,7 @@ families:
     - house: Savoy-McFarland 
       parents: [Yenna, Cabot]
       children: [Tedora]
-      families:12
+      families:
       - parents: [Degare, Elodie]
         parents2: [Degare, Sera]
         children: [Michael, Lyla II]
@@ -51,7 +51,8 @@ people:
     class: [dead]
   Portia:
     fullname: Portia Savoy
-    born: "1129-07-02"12
+    born: "1129-07-02"
+  Lemuel:
     fullname: Lemuel Savoy
     born: "1123-06-26"
     died: "1195-05-01"
