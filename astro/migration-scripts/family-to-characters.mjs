@@ -49,7 +49,10 @@ function slugName(name) {
   const fallback = slugger(deburred);
   const romanMatch = deburred.match(/^(\w+)\s+(\w+)\s+(I|II|III|IV|V|VI|VII|VIII|IX|X)$/i);
   const alt = romanMatch ? slugger(`${romanMatch[1]} ${romanMatch[3]} ${romanMatch[2]}`) : null;
-  return { primary, fallback, alt };
+  // Also try first+last only, ignoring middle names
+  const parts = deburred.trim().split(/\s+/);
+  const firstLast = parts.length >= 2 ? slugger(`${parts[0]} ${parts[parts.length - 1]}`) : null;
+  return { primary, fallback, alt, firstLast };
 }
 
 function addRelative(relativesMap, a, b, type) {
@@ -246,20 +249,30 @@ function main() {
     fullname,
     data,
   ] of rels.entries()) {
-    const { primary, fallback, alt } = slugName(fullname);
+    const { primary, fallback, alt, firstLast } = slugName(fullname);
     const familyCandidates = Array.isArray(data?.families)
       ? data.families.map((f) => f?.name).filter(Boolean)
       : [];
     const combinedCandidates = [];
-    if (familyCandidates.length > 0 && fullname.trim().split(/\s+/).length === 1) {
+    const nameParts = fullname.trim().split(/\s+/);
+    // Single-word given names: try Given + Family (e.g., "Mark" + "Strandiz")
+    if (familyCandidates.length > 0 && nameParts.length === 1) {
       for (const fam of familyCandidates) {
         combinedCandidates.push(slugger(`${fullname} ${fam}`));
+      }
+    }
+    // Multi-word names with maiden names: try First + Family (e.g., "Nicolette" + "Bouillard")
+    if (familyCandidates.length > 0 && nameParts.length >= 2) {
+      const first = nameParts[0];
+      for (const fam of familyCandidates) {
+        combinedCandidates.push(slugger(`${first} ${fam}`));
       }
     }
     const loaded = loadCharacterFile([
       primary,
       fallback,
       alt,
+      firstLast,
       ...combinedCandidates,
     ]);
     if (!loaded) {

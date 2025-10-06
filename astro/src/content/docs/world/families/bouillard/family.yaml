@@ -4,36 +4,91 @@ families:
     children: [Rolaund, Renee, Calamut]
     families:
       - parents: [Rolaund, Evangeline]
-        children: []
-      - parents: [Calamut, Palmira]
-      - parents: [Renee, Henrique]
+        children: [Calamut II, Miriella]
+      - parents: [Calamut II, Palmira]
+        children: [Henrique, Sephora]
+      - parents: [Renee Coilette, Henrique]
+        children: [Timothee, Anastasia]
       - parents: [Timothee, Mattea]
+        children: [Romulus, Kalassa, Mariona]
       - parents: [Romulus, Anya]
-        children: []
+        children: [Nathalie, Yves Renault]
       - parents: [Yves Renault, Nicolette]
         children: [Basillios, Renault II]
 people:
   Bertrand:
     fullname: Bertrand Maximilian Théodore Bouillard
+  Geraldine: 
+    fullname: Geraldine Valoria
+    class: [dead]
+  Rolaund:
+    fullname: Rolaund Bouillard
+    class: [dead]
+  Evangeline:
+    fullname: Evangeline Carache
+    class: [dead]
+  Renee:
+    fullname: Renée Bouillard
+    class: [dead]
+  Calamut:
+    fullname: Calamut Bouillard
+    class: [dead]
+  Calamut II:
+    fullname: Calamut II Bouillard
+    class: [dead]
+  Palmira:
+    fullname: Palmira Coilette
+    class: [dead]
+  Miriella:
+    fullname: Miriella Causanne
+    class: [dead]
+  Renee Coilette:
+    fullname: Renée Coilette
+    class: [dead]
+  Henrique:
+    fullname: Henrique Bouillard
+    class: [dead]
+  Sephora:
+    fullname: Sephora Bouillard
+    class: [dead]
+  Timothee:
+    fullname: Timothee Bouillard
+    class: [dead]
+  Mattea:
+    fullname: Mattea Calico
+    class: [dead]
+  Anastasia:
+    fullname: Anastasia Bouillard
+    class: [dead]
   Romulus:
     fullname: Romulus Bouillard
-    born: "1109-12-02"
-    died: "1190-05-15"
-    class: [dead]
-  Yves Renault:
-    fullname: Yves Renault Bouillard
-    born: "1198-02-14"
     died: "1255-06-15"
     class: [dead]
-  Nicolette:
-  Basillios:
-  ? Renault II
+  Anya:
+    fullname: Anya Kalashnikova
+    class: [dead]
+  Kalassa:
+    fullname: Kalassa Bouillard
+    class: [dead]
+  Mariona:
+    fullname: Mariona Bouillard
+    class: [dead]
   Nathalie:
     fullname: Nathalie Bouillard
     born: "1151-01-12"
     died: "1232-05-12"
     class: [dead]
-  Mariona:
+  Yves Renault:
+    fullname: Yves Renault Bouillard
+    class: [dead]
+  Nicolette:
+    fullname: Nicolette Delloitte
+    class: [dead]
+  Basillios:
+    fullname: Basillios Bouillard
+    class: [dead]
+  Renault II:
+    fullname: Renault II Bouillard
 
 styles:
   undead:
@@ -45,3 +100,4 @@ styles:
   unknown:
     color: gray
     penwidth: 0.25
+     
