@@ -12,7 +12,6 @@
       FantasyCalendar({
         hash: '089e518f9ea966373b1c71535c25b98a',
         selector,
-        embedNow: true,
         settings: {
           theme: 'custom',
           current_date_color: '#613583',
@@ -32,12 +31,13 @@
   }
 </script>
 <style>
-  #fantasy-calendar-widget {
+
+  #fantasy-calendar-container {
     margin-bottom: 1rem;
-    padding: 0.5rem;
-    border: 1px solid var(--sl-color-accent-low);
-    border-radius: 0.375rem;
-    background: var(--sl-color-accent);
+  }
+
+  #fantasy-calendar-widget {
+    height: 13rem;
   }
 
   #fantasy-calendar-widget :global(*) {
