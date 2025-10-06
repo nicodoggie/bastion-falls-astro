@@ -27,6 +27,7 @@ const allTags = Array.from(tagSet).sort((a, b) => a.localeCompare(b));
 
 <BlogIndex
   posts={filtered}
+  postsForTagCounts={posts}
   title={`Tag: #${tag}`}
   breadcrumb={[
     { label: 'Blog', href: '/blog' },

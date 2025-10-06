@@ -6,6 +6,7 @@ tags:
   - poetry
   - conlang
   - early-hick
+  - in-world text
 ---
 
 atales kaimtir asamgralel imwes'er\

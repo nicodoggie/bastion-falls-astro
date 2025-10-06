@@ -1,0 +1,37 @@
+---
+export interface TagWithCount {
+  tag: string;
+  count: number;
+}
+
+export interface Props {
+  tagsWithCounts: TagWithCount[];
+  currentTag?: string;
+}
+
+const { tagsWithCounts, currentTag } = Astro.props;
+const enc = encodeURIComponent;
+---
+
+<aside class="not-content hidden md:block">
+  <div
+    class="sticky top-20 border border-gray-800 rounded-lg p-4 bg-gray-900/50 backdrop-blur"
+  >
+    <h2 class="text-sm font-semibold text-gray-200 mb-3">Tags</h2>
+    <nav class="flex flex-col gap-2">
+      {
+        tagsWithCounts.map(({ tag, count }) => (
+          <a
+            href={`/blog/tags/${enc(tag)}`}
+            class={`px-3 py-1 rounded text-sm ${tag === currentTag ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-800'}`}
+          >
+            <span class="inline-flex items-center gap-2">
+              <span>{tag}</span>
+              <span class="text-xs text-gray-400">({count})</span>
+            </span>
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</aside>

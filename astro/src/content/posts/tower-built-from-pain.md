@@ -9,17 +9,17 @@ tags:
 Measured to precision\
 Picking up each block\
 Done with indecision\
-On each drop, a pock\\
+On each drop, a pock
 
 Layered with derision\
 Constructed with elision\
 With bone as a foundation\
-Ground skulls to paste for adhesion\\
+Ground skulls to paste for adhesion
 
 Erecting a bold piece\
 The tower these words mold\
 Floors riddled with disease\
-Shaped by grief as scaffold\\
+Shaped by grief as scaffold
 
 A monumental masterpiece\
 Created to perfection\
