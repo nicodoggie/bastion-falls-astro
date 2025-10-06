@@ -6,7 +6,6 @@ banner:
 published: 2024-04-19
 description: ""
 tags:
-  - blog
   - poetry
 ---
 

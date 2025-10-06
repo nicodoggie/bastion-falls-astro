@@ -2,7 +2,7 @@
 title: Puddle
 published: 2024-04-19T10:28:04.509Z
 tags:
-  - blog
+  - poetry
 ---
 
 I dreamt that I was a puddle\

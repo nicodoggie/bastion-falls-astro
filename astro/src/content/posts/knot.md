@@ -3,7 +3,6 @@ title: Knot
 published: 2024-04-18
 description: ""
 tags:
-  - blog
   - poetry
 ---
 

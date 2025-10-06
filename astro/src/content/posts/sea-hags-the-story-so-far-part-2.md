@@ -3,7 +3,8 @@ title: "Sea Hags: The Story So Far Part 2"
 published: 2024-10-19T01:45:29.933Z
 description: ""
 tags:
-  - blog
+  - recap
+  - sea hags
 ---
 
 # Day 2

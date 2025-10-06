@@ -5,7 +5,6 @@ banner:
   url: /src/assets/posts/media/a-road-i-couldnt-follow/banner.jpg
 description: ""
 tags:
-  - blog
   - poetry
 ---
 

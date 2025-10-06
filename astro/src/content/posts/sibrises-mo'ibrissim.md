@@ -3,8 +3,8 @@ title: Sibrises Mo'ibrissim
 published: 2025-02-04T11:42:40.720Z
 description: ""
 tags:
-  - blog
   - conlang
+  - in-world text
   - early-hick
 ---
 

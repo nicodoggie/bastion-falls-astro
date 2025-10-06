@@ -3,7 +3,8 @@ title: 'Sea Hags: The Story So Far Part 1'
 published: 2024-05-20T09:42:29.933Z
 description: ''
 tags:
-  - blog
+  - recap
+  - sea hags
 ---
 
 import { Card } from '@astrojs/starlight/components';

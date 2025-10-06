@@ -3,7 +3,7 @@ title: Tower Built from Pain
 published: 2024-05-01T06:44:20.706Z
 description: ""
 tags:
-  - blog
+  - poetry
 ---
 
 Measured to precision\

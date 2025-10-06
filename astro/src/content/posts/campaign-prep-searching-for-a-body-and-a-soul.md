@@ -3,7 +3,7 @@ title: "Campaign Prep: Searching for a Body and a Soul"
 published: 2024-05-14T00:09:13.389Z
 description: ""
 tags:
-  - blog
+  - world building
 ---
 
 The first portion of this campaign would be in the
