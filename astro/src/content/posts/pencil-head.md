@@ -28,4 +28,3 @@ I wish to have still even an inch or two\
 That I can still draft a little bit more\
 'Til I have nothing more to hew.
 
-
