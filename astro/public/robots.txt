@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bastion-falls.thekennel.info/sitemap-index.xml

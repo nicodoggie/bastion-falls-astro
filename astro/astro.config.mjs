@@ -1,16 +1,17 @@
-import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
-import AutoImport from 'astro-auto-import';
-import react from '@astrojs/react';
-import remarkParse from 'remark-parse';
-import { remarkDefinitionList } from 'remark-definition-list';
-import remarkCustomHeaderId from 'remark-custom-header-id';
-import tailwindcss from '@tailwindcss/vite';
-import flowbiteReact from 'flowbite-react/plugin/astro';
-import expressiveCode from 'astro-expressive-code';
-import starlightAutoSidebar from 'starlight-auto-sidebar';
-import starlightFlattenIndex from '@bastion-falls/starlight-flatten-index';
 import mdx from '@astrojs/mdx';
+import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
+import starlight from '@astrojs/starlight';
+import starlightFlattenIndex from '@bastion-falls/starlight-flatten-index';
+import tailwindcss from '@tailwindcss/vite';
+import AutoImport from 'astro-auto-import';
+import expressiveCode from 'astro-expressive-code';
+import { defineConfig } from 'astro/config';
+import flowbiteReact from 'flowbite-react/plugin/astro';
+import remarkCustomHeaderId from 'remark-custom-header-id';
+import { remarkDefinitionList } from 'remark-definition-list';
+import remarkParse from 'remark-parse';
+import starlightAutoSidebar from 'starlight-auto-sidebar';
 
 export default defineConfig({
   output: 'static',
@@ -28,6 +29,7 @@ export default defineConfig({
   integrations: [
     react(),
     expressiveCode(),
+    sitemap(),
     starlight({
       title: 'Bastion Falls',
       favicon: '/favicon.png',
@@ -40,26 +42,26 @@ export default defineConfig({
         {
           tag: 'script',
           attrs: {
-            src: 'https://app.fantasy-calendar.com/js/embed.js'
-          }
+            src: 'https://app.fantasy-calendar.com/js/embed.js',
+          },
         },
         {
           tag: 'script',
           children: `
-            window.addEventListener('load', function() {
-              if (typeof FantasyCalendar !== 'undefined') {
-                FantasyCalendar({
-                  hash: '089e518f9ea966373b1c71535c25b98a',
-                  settings: {
-                    theme: 'custom',
-                    size: 'sm',
-                    current_date_color: '#613583',
-                  },
-                });
-              }
-            });
-          `
-        }
+          window.addEventListener('load', function() {
+            if (typeof FantasyCalendar !== 'undefined') {
+              FantasyCalendar({
+                hash: '089e518f9ea966373b1c71535c25b98a',
+                settings: {
+                  theme: 'custom',
+                  size: 'sm',
+                  current_date_color: '#613583',
+                },
+              });
+            }
+          });
+        `,
+        },
       ],
       social: [
         {
@@ -107,6 +109,7 @@ export default defineConfig({
       ],
     }),
     mdx(),
+    sitemap(),
   ],
   vite: {
     plugins: [
