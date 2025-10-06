@@ -4,22 +4,8 @@ import BlogIndex from '@/components/blog/BlogIndex.astro';
 
 const posts = await getCollection('posts');
 
-// Sort posts: published first, newest to oldest by published date
-const allPosts = posts.sort((a, b) => {
-  const aIsDraft = a.data.draft === true;
-  const bIsDraft = b.data.draft === true;
-
-  if (aIsDraft && !bIsDraft) return 1; // drafts after published
-  if (!aIsDraft && bIsDraft) return -1; // published before drafts
-
-  // Both published (draft false/undefined): sort by published desc (newest first)
-  if (a.data.draft === false && b.data.draft === false) {
-    return b.data.published.valueOf() - a.data.published.valueOf();
-  }
-
-  // Both drafts: keep relative order (or customize later if needed)
-  return 0;
-});
+// Sorting is handled inside BlogIndex; pass through as-is
+const allPosts = posts;
 
 // Tag list for sidebar/dropdown
 const tagSet = new Set<string>();

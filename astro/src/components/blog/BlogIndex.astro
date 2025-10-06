@@ -17,9 +17,26 @@ export interface Props {
 const { posts, title, description, breadcrumb, showDraftToggle = false, allTags, currentTag, backLink } = Astro.props;
 const enc = encodeURIComponent;
 
-// Split posts into drafts and published
-const publishedPosts = posts.filter((post) => !post.data.draft);
-const draftPosts = posts.filter((post) => post.data.draft);
+// Sort posts here: published first, newest to oldest by published date
+const sortedPosts = posts.slice().sort((a, b) => {
+  const aIsDraft = a.data.draft === true;
+  const bIsDraft = b.data.draft === true;
+
+  if (aIsDraft && !bIsDraft) return 1; // drafts after published
+  if (!aIsDraft && bIsDraft) return -1; // published before drafts
+
+  // Both published: sort by published desc (newest first)
+  if (!aIsDraft && !bIsDraft) {
+    return b.data.published.valueOf() - a.data.published.valueOf();
+  }
+
+  // Both drafts: keep relative order
+  return 0;
+});
+
+// Split posts into drafts and published (after sorting)
+const publishedPosts = sortedPosts.filter((post) => !post.data.draft);
+const draftPosts = sortedPosts.filter((post) => post.data.draft);
 ---
 
 <!doctype html>
