@@ -1,4 +1,4 @@
-import type { Ai, ExecutionContext } from '@cloudflare/workers-types';
+import type { Ai, ExecutionContext, RateLimit } from '@cloudflare/workers-types';
 import { verifyDiscordRequest, json, formatResults } from './discord';
 import { config as loadEnv } from "dotenv";
 
@@ -9,6 +9,7 @@ type Env = {
   DISCORD_APPLICATION_ID: string;
   DISCORD_BOT_TOKEN: string;
   AI_SEARCH_INDEX: string;
+  RATE_LIMITER: RateLimit; // Bound via [[ratelimits]] in wrangler.toml
   AI: Ai; // Bound via [ai] binding in wrangler.toml
 }
 
@@ -16,11 +17,16 @@ export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
+    if (!env.RATE_LIMITER.limit({ key: url.pathname })) {
+      return new Response(`Rate limit exceeded for ${url.pathname}`, { status: 429 });
+    }
+
     if (url.pathname === '/health') {
       return json({ ok: true });
     }
 
     if (url.pathname === '/interactions' && request.method === 'POST') {
+
       const ok = await verifyDiscordRequest(request, env.DISCORD_PUBLIC_KEY);
       if (!ok) return new Response('Bad signature', { status: 401 });
 
