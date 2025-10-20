@@ -1,0 +1,17 @@
+name = "zarifa-bot"
+main = "dist/worker.js"
+compatibility_date = "2025-03-25"
+compatibility_flags = ["nodejs_compat"]
+
+[ai]
+binding = "AI"
+
+[vars]
+DISCORD_APPLICATION_ID = "1429804530471534735"
+AI_SEARCH_INDEX = "bastion-falls-search"
+
+[observability]
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+invocation_logs = true
