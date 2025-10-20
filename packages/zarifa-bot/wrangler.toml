@@ -19,4 +19,4 @@ invocation_logs = true
 [[ratelimits]]
 name = "RATE_LIMITER"
 namespace_id = 6069
-simple = { limit = 10, interval = 10 }
+simple = { limit = 10, period = 10 }
