@@ -8,6 +8,7 @@ import { type Species, SpeciesSchema } from './Species.js';
 import { type Family, FamilySchema } from './Family.js';
 import { type Organization, OrganizationSchema } from './Organization.js';
 import { type Concept, ConceptSchema } from './Concept.js';
+import { type Vehicle, VehicleSchema } from './Vehicle.js';
 
 export type { 
   Character,
@@ -18,6 +19,7 @@ export type {
   Location,
   Organization,
   Species,
+  Vehicle,
 };
 export { 
   CharacterSchema,
@@ -29,4 +31,5 @@ export {
   LocationSchema,
   OrganizationSchema,
   SpeciesSchema,
+  VehicleSchema,
 };

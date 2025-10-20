@@ -15,6 +15,7 @@ import {
   SpeciesSchema,
   OrganizationSchema,
   ItemSchema,
+  VehicleSchema,
 } from '@bastion-falls/types';
 
 const baseBlogSchema = z.object({
@@ -71,6 +72,7 @@ export const collections = {
         location: LocationSchema.optional(),
         organization: OrganizationSchema.partial().optional(),
         species: SpeciesSchema.partial().optional(),
+        vehicle: VehicleSchema.partial().optional(),
       })
     }),
   }),
@@ -115,6 +117,14 @@ export const collections = {
     schema: docsSchema({
       extend: z.object({
         organization: OrganizationSchema.optional(),
+      })
+    }),
+  }),
+  vehicle: defineCollection({
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/vehicles' }),
+    schema: docsSchema({
+      extend: z.object({
+        vehicle: VehicleSchema.omit({ name: true }).optional(),
       })
     }),
   }),

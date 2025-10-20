@@ -2,16 +2,73 @@
 title: La Carnalis
 tags:
   - vehicles
-extraMetadata:
+vehicle:
+  type: galley
+  travelPace: 10
+  capacity:
+    crew: 80
+    passengers: 40
+    cargo: 150
+  crew:
+    - name: Jean Paul de la Fouet
+      position: Captain
+    - name: Cracoix
+      position: First Mate
+    - name: Mystine Nightingale
+      position: Medical Officer
+  sections:
+    - name: Hull
+      armorClass: 15
+      hitPoints:
+        base: 500
+        damageThreshold: 20
+    - name: Helm
+      armorClass: 16
+      hitPoints:
+        base: 50
+      description: |
+        Move up to the speed of one of the ship's movement components, with one
+        90-degree turn. If the helm is destroyed, the galley can't turn.
+    - name: Oar
+      armorClass: 12
+      hitPoints:
+        base: 100
+        special: |
+           -5 ft. speed per 25 damage taken
+      speed:
+        swim: 30
+    - name: Sails
+      armorClass: 12
+      hitPoints:
+        base: 100
+        special: |
+          -10 ft. speed per 25 damage taken
+      speed:
+        swim: 35
+        special: |
+          15 ft. while sailing into the wind; 50 ft. while sailing with the wind 
+    - name: "Weapon: Ballista"
+      count: 4
+      armorClass: 14
+      hitPoints:
+        base: 50
+      actions:
+        - type: ranged weapon attack
+          range:
+            min: 120
+            max: 480
+          damage:
+            type: piercing
+            toHit: 5
+            amount: 16 (3d10)
   stats:
     size: gargantuan
-    type: ship
-    str: 20
-    dex: 7
-    con: 17
-    wis: 0
-    int: 0
-    cha: 0
+    strength: 20
+    dexterity: 7
+    constitution: 17
+    wisdom: 0
+    intelligence: 0
+    charisma: 0
 ---
 
 <Stub />

@@ -2,53 +2,50 @@
 title: Souris Marine
 tags:
   - vehicles
-extraMetadata:
+vehicle:
+  type: caravel
+  travelPace: 4
+  capacity:
+    crew: 30
+    passengers: 70
+    cargo: 100
   stats:
     size: gargantuan
-    type: ship
-    speed: 20
-    str: 18
-    dex: 12
-    con: 14
-    wis: 0
-    int: 0
-    cha: 0
-  shipStats:
-    capacity: 30 crew, 70 passangers
-    travel pace: 4 mph
-    hull:
-      main:
-        ac: 15
-        hp: 200
-        dmgThreshold: 25
-    control: 
-      helm: 
-        ac: 16
-        hp: 50
-    movement: 
-      oars: 
-        ac: 12
-        hp: 100
-        dmgThreshold: 25
-        speed: 5
-      sails: 
-        ac: 12 
-        hp: 100
-        dmgThreshold: 25
-        speed: 5
-    officers:
-      captain: "/characters/auguste-lyonnaire"
-      first mate: "/characters/karzad-bin-pathad"
-      quartermaster: "/characters/anette-sotomayor"
-      bosun: "/characters/anouk-tarish"
-    crew:
-      - "/characters/jacques-dipardeau"
-      - "/characters/blaise-dpadua"
-      - "/characters/claude-stradivari"
-      - "/characters/antoinette-laforge"
-      - "/characters/pierre-dordoville"
-      - "/characters/pascal-kelvin"
-      - "/characters/gisele-dfantasia"
+    strength: 18
+    dexterity: 12
+    constitution: 14
+    wisdom: 0
+    intelligence: 0
+    charisma: 0
+  crew:
+    - name: Auguste Lyonnaire
+      position: Captain
+    - name: Karzad Bin Pathad
+      position: First Mate
+    - name: Anette Sotomayor
+      position: Quartermaster
+    - name: Anouk Tarish
+      position: Bosun
+    - name: Jacques Dipardeau
+      position: Crew
+    - name: Blaise Dpadua
+      position: Crew
+    - name: Claude Stradivari
+      position: Crew
+    - name: Antoinette Laforge
+      position: Crew
+    - name: Pierre Dordoville
+      position: Crew
+    - name: Pascal Kelvin
+      position: Crew
+    - name: Gisele Dfantasia
+      position: Crew
+  sections:
+    - name: Hull
+      armorClass: 15
+      hitPoints:
+        base: 200
+        damageThreshold: 25
 ---
 
 <Stub />

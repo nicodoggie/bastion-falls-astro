@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { BaseStatsSchema } from "./BaseStats.js";
 import { ImageSchema } from "./Image.js";
+import { SpeedSchema } from "./Speed.js";
 
 const AlignmentSchema = z.object({
   moral: z.enum(["lawful", "neutral", "chaotic"]),
@@ -125,6 +126,7 @@ export const CharacterSchema = z.object({
   ddb: z.string().url().optional(),
   image: ImageSchema.optional(),
   stats: BaseStatsSchema.optional(),
+  speed: SpeedSchema.optional(),
   background: CharacterBackgroundSchema.optional(),
   details: CharacterDetailsSchema.optional(),
   relationships: CharacterRelationshipsSchema.optional(),

@@ -20,7 +20,8 @@ import {
   ItemSchema,
   LocationSchema,
   OrganizationSchema,
-  SpeciesSchema
+  SpeciesSchema,
+  VehicleSchema
 } from '@bastion-falls/types';
 
 // Starlight base schema fields (common to all Starlight pages)
@@ -76,6 +77,10 @@ const collectionSchemas = {
     ...starlightBaseFields,
     species: SpeciesSchema.omit({ name: true }).optional(),
   }),
+  vehicle: z.object({
+    ...starlightBaseFields,
+    vehicle: VehicleSchema.optional(),
+  }),
   event: z.object({
     ...starlightBaseFields,
     event: EventSchema.optional(),
@@ -103,6 +108,7 @@ const docsSchema = z.object({
   location: LocationSchema.optional(),
   organization: OrganizationSchema.partial().optional(),
   species: SpeciesSchema.partial().optional(),
+  vehicle: VehicleSchema.partial().optional(),
 });
 
 interface ValidationResult {
