@@ -53,7 +53,7 @@ export const VehicleSchema = z.object({
   travelPace: z.number(), // miles per hour
   capacity: CapacitySchema,
   crew: z.array(VehicleCrewSchema),
-  sections: z.array(VehicleSectionSchema),
+  sections: z.array(VehicleSectionSchema).optional(),
 });
 
 export type Vehicle = z.infer<typeof VehicleSchema>;
