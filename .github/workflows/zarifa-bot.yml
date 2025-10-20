@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Setup Corepack
+        run: |
+          npm install -g corepack
+          corepack enable
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -26,9 +30,9 @@ jobs:
           DISCORD_PUBLIC_KEY: ${{ secrets.DISCORD_PUBLIC_KEY }}
           DISCORD_APPLICATION_ID: ${{ secrets.DISCORD_APPLICATION_ID }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
-          AI_SEARCH_INDEX: ${{ secrets.AI_SEARCH_INDEX }}
+          AI_SEARCH_INDEX: ${{ vars.AI_SEARCH_INDEX }}
       - name: Register Discord commands
         run: yarn --cwd packages/zarifa-bot register
         env:
-          DISCORD_APPLICATION_ID: ${{ secrets.DISCORD_APPLICATION_ID }}
+          DISCORD_APPLICATION_ID: ${{ vars.DISCORD_APPLICATION_ID }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
