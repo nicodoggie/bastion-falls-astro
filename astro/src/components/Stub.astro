@@ -1,7 +1,10 @@
 ---
 import { Aside } from '@astrojs/starlight/components';
+import { GITHUB_URL } from '../constants';
 ---
 
 <Aside type="caution">
-  This article or section is a stub. Poke the author to expand it!
+  This article or section is a stub. 
+  <a href={`${GITHUB_URL}/issues/new?labels=article%20update`} target="_blank">Poke the author</a>
+  to expand it!
 </Aside>

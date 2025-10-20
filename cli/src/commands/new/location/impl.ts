@@ -26,7 +26,11 @@ export interface NewLocationData extends TemplateData {
   tags: string[];
 }
 
-export default async function location(this: LocalContext, flags: NewLocationCommandFlags, articleName: string): Promise<void> {
+export default async function location(
+  this: LocalContext,
+  flags: NewLocationCommandFlags,
+  articleName: string
+): Promise<void> {
   const { parents, area, population, elevation, tags, force = false } = flags;
   const data: NewLocationData = {
     extraMetadata: {

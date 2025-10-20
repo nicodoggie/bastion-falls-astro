@@ -69,8 +69,9 @@ if(character?.relationships?.relatives) {
 relatives.sort((a, b) => a.type.localeCompare(b.type));
 
 interface OrganizationData {
+  name: string;
   positionsHeld: CharacterOrganization['positionsHeld'];
-  entry: CollectionEntry<"organization">;
+  entry?: CollectionEntry<"organization">;
 }
 let organizations: OrganizationData[] = [];
 if(character?.relationships?.organizations) {
@@ -78,11 +79,13 @@ if(character?.relationships?.organizations) {
     character.relationships.organizations.map(
       async (organization: CharacterOrganization) => {
         const sluggedName = slug(organization.name);
-        if(sluggedName) {
-        const entry = await getEntry('organization', sluggedName);
-          return {positionsHeld: organization.positionsHeld, entry};
-        }
-        throw new Error(`Organization ${organization.name} has no slugged name`);
+        const entry = sluggedName ? await getEntry('organization', sluggedName) : undefined;
+
+        return {
+          name: organization.name, 
+          positionsHeld: organization.positionsHeld, 
+          entry
+        };
       }
     )
   ))
@@ -282,8 +285,8 @@ if(character?.relationships?.families) {
               
               
                 {organizations.map(
-                  ({positionsHeld, entry}) => (
-                    <a class="text-gray-600 dark:text-gray-400" href={`/organizations/${entry?.id}`}>{entry?.data.title}</a>
+                  ({positionsHeld, entry, name}) => (
+                    <a class="text-gray-600 dark:text-gray-400" href={`/organizations/${entry?.id}`}>{name}</a>
                     <ul class="ml-4 text-xs">
                       {positionsHeld && positionsHeld.map((position: any) => (
                         <li>{position.name} {position.from && `(${position.from}`} {position.to && ` - ${position.to})`}</li>
