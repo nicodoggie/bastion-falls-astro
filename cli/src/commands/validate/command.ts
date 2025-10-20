@@ -14,21 +14,72 @@ import { z } from 'zod';
 // Import the schemas from the types package
 import {
   CharacterSchema,
+  ConceptSchema,
   EventSchema,
   FamilySchema,
+  ItemSchema,
   LocationSchema,
   OrganizationSchema,
   SpeciesSchema
 } from '@bastion-falls/types';
 
+// Starlight base schema fields (common to all Starlight pages)
+const starlightBaseFields = {
+  title: z.string(),
+  description: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+  sidebar: z.object({
+    order: z.number().optional(),
+    label: z.string().optional(),
+    hidden: z.boolean().optional(),
+    badge: z.union([z.string(), z.object({ text: z.string(), variant: z.string().optional() })]).optional(),
+  }).optional(),
+  pagefind: z.boolean().optional(),
+  draft: z.boolean().optional(),
+  editUrl: z.union([z.string(), z.boolean()]).optional(),
+  lastUpdated: z.union([z.date(), z.boolean()]).optional(),
+  prev: z.union([z.string(), z.boolean(), z.object({ link: z.string(), label: z.string().optional() })]).optional(),
+  next: z.union([z.string(), z.boolean(), z.object({ link: z.string(), label: z.string().optional() })]).optional(),
+  hero: z.object({
+    title: z.string().optional(),
+    tagline: z.string().optional(),
+    image: z.any().optional(),
+    actions: z.array(z.any()).optional(),
+  }).optional(),
+  banner: z.object({
+    content: z.string(),
+  }).optional(),
+  tableOfContents: z.union([z.boolean(), z.object({ minHeadingLevel: z.number(), maxHeadingLevel: z.number() })]).optional(),
+  template: z.string().optional(),
+};
+
 // Define the collection schemas based on content.config.ts
+// These match the actual structure in content.config.ts where schemas are nested under their collection name
 const collectionSchemas = {
-  character: CharacterSchema,
-  family: FamilySchema,
-  location: LocationSchema,
-  organization: OrganizationSchema,
-  species: SpeciesSchema,
-  event: EventSchema,
+  character: z.object({
+    ...starlightBaseFields,
+    character: CharacterSchema.omit({ name: true }).optional(),
+  }),
+  family: z.object({
+    ...starlightBaseFields,
+    family: FamilySchema.optional(),
+  }),
+  location: z.object({
+    ...starlightBaseFields,
+    location: LocationSchema.optional(),
+  }),
+  organization: z.object({
+    ...starlightBaseFields,
+    organization: OrganizationSchema.optional(),
+  }),
+  species: z.object({
+    ...starlightBaseFields,
+    species: SpeciesSchema.omit({ name: true }).optional(),
+  }),
+  event: z.object({
+    ...starlightBaseFields,
+    event: EventSchema.optional(),
+  }),
 };
 
 // Blog schema (defined locally in Astro)
@@ -40,12 +91,18 @@ const blogSchema = z.object({
   tags: z.array(z.string()).optional(),
 });
 
-// Docs schema (extends starlight schema with optional character, event, location, organization)
+// Docs schema (extends starlight schema with optional character, event, location, organization, etc.)
+// This matches the main docs collection in content.config.ts
 const docsSchema = z.object({
+  ...starlightBaseFields,
   character: CharacterSchema.partial().optional(),
+  concept: ConceptSchema.partial().optional(),
   event: EventSchema.partial().optional(),
+  family: FamilySchema.partial().optional(),
+  item: ItemSchema.partial().optional(),
   location: LocationSchema.optional(),
   organization: OrganizationSchema.partial().optional(),
+  species: SpeciesSchema.partial().optional(),
 });
 
 interface ValidationResult {
@@ -128,8 +185,41 @@ function determineCollection(filePath: string): string {
   if (filePath.includes('/organizations/')) return 'organization';
   if (filePath.includes('/species/')) return 'species';
   if (filePath.includes('/events/')) return 'event';
+  if (filePath.includes('/items/')) return 'item';
+  if (filePath.includes('/posts/')) return 'blog';
   if (filePath.includes('/blog/')) return 'blog';
   return 'docs';
+}
+
+/**
+ * Make a schema strict recursively to catch unknown keys
+ */
+function makeSchemaStrict(schema: z.ZodTypeAny): z.ZodTypeAny {
+  if (schema instanceof z.ZodObject) {
+    // Make the object strict and recursively make nested schemas strict
+    const shape = schema.shape;
+    const strictShape: Record<string, z.ZodTypeAny> = {};
+
+    for (const [key, value] of Object.entries(shape)) {
+      strictShape[key] = makeSchemaStrict(value as z.ZodTypeAny);
+    }
+
+    return z.object(strictShape).strict();
+  } else if (schema instanceof z.ZodArray) {
+    return z.array(makeSchemaStrict(schema.element));
+  } else if (schema instanceof z.ZodOptional) {
+    return makeSchemaStrict(schema.unwrap()).optional();
+  } else if (schema instanceof z.ZodDefault) {
+    const innerSchema = schema.removeDefault();
+    return makeSchemaStrict(innerSchema).default(schema._def.defaultValue());
+  } else if (schema instanceof z.ZodUnion) {
+    return z.union(schema.options.map((opt: z.ZodTypeAny) => makeSchemaStrict(opt)) as any);
+  } else if (schema instanceof z.ZodDiscriminatedUnion) {
+    const strictOptions = Array.from(schema.options.values()).map(opt => makeSchemaStrict(opt));
+    return z.discriminatedUnion(schema.discriminator as any, strictOptions as any);
+  }
+
+  return schema;
 }
 
 async function validateFile(filePath: string, collection: string): Promise<ValidationResult> {
@@ -144,7 +234,7 @@ async function validateFile(filePath: string, collection: string): Promise<Valid
   const warnings: string[] = [];
 
   // Get the appropriate schema
-  let schema: z.ZodSchema;
+  let schema: z.ZodTypeAny;
   if (collection === 'blog') {
     schema = blogSchema;
   } else if (collection === 'docs') {
@@ -158,20 +248,24 @@ async function validateFile(filePath: string, collection: string): Promise<Valid
     return { file: filePath, collection, errors, warnings };
   }
 
+  // Make the schema strict to catch unknown keys
+  const strictSchema = makeSchemaStrict(schema);
+
   // Validate the frontmatter against the schema
   try {
-    schema.parse(frontmatter);
+    strictSchema.parse(frontmatter);
   } catch (error) {
     if (error instanceof z.ZodError) {
       for (const issue of error.issues) {
-        errors.push(`${issue.path.join('.')}: ${issue.message}`);
+        const path = issue.path.length > 0 ? issue.path.join('.') : 'root';
+        errors.push(`${path}: ${issue.message}`);
       }
     } else {
       errors.push(`Validation error: ${error}`);
     }
   }
 
-  // Check for missing required fields
+  // Check for missing required fields (using original non-strict schema)
   const requiredFields = getRequiredFields(schema);
   const missingFields = checkMissingFields(frontmatter, requiredFields);
 

@@ -117,6 +117,7 @@ export const CharacterRelationshipsSchema = z.object({
   religions: z.array(CharacterReligionSchema).optional(),
   families: z.array(CharacterFamilySchema).optional(),
   ethnicities: z.array(CharacterEthnicitySchema).optional(),
+  other: z.array(CharacterRelativeSchema).optional(),
 })
 
 export const CharacterSchema = z.object({

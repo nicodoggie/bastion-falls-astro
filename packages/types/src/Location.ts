@@ -143,6 +143,8 @@ export const PoliticalLocationSchema = BaseLocationSchema.extend({
       structure: z.record(z.string(), z.string()).optional(),
     }).optional(),
     currency: z.string().optional(),
+    languages: z.array(z.string()).optional(),
+    ethnicities: z.array(z.string()).optional(),
     religions: z.array(z.string()).optional(),
     states: z.array(z.string()).optional(),
     population: z.string().optional(),
