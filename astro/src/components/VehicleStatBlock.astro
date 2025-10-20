@@ -1,0 +1,51 @@
+---
+/**
+ * VehicleStatBlock - A wrapper component for use in MDX files
+ * This component automatically fetches the current entry's vehicle data
+ *
+ * Usage in MDX:
+ * <VehicleStatBlock />
+ */
+
+import VehicleCard from './VehicleCard.astro';
+import { getEntry } from 'astro:content';
+
+interface Props {
+  /** Optional: override with a specific vehicle entry slug */
+  slug?: string;
+}
+
+const { slug } = Astro.props;
+
+// Get the current URL path to determine which vehicle page we're on
+const currentPath = Astro.url.pathname;
+
+// Extract slug from path: /world/vehicles/vehicle-name/ -> vehicle-name
+const pathParts = currentPath.split('/').filter(Boolean);
+const defaultSlug =
+  pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
+
+const vehicleSlug = slug || defaultSlug;
+
+// Fetch the vehicle entry
+const entry = await getEntry('vehicle', vehicleSlug);
+
+if (!entry) {
+  console.error(`Vehicle entry not found for slug: ${vehicleSlug}`);
+}
+
+const vehicleData = entry?.data.vehicle;
+const vehicleName = entry?.data.title;
+---
+
+{
+  vehicleData ? (
+    <VehicleCard vehicle={vehicleData} name={vehicleName} />
+  ) : (
+    <div class="p-4 border border-red-500 bg-red-50 dark:bg-red-900/20 rounded">
+      <p class="text-red-700 dark:text-red-300">
+        Vehicle data not found for: <code>{vehicleSlug}</code>
+      </p>
+    </div>
+  )
+}

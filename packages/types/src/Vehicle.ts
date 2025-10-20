@@ -19,9 +19,11 @@ export const VehicleCrewSchema = z.object({
 const RangeBoundsSchema = z.object({
   min: z.number(),
   max: z.number(),
+  special: z.string().optional(),
 })
 
 export const ActionSchema = z.object({
+  name: z.string().optional(),
   type: z.string(),
   range: z.number().or(RangeBoundsSchema),
   damage: z.object({
@@ -32,6 +34,12 @@ export const ActionSchema = z.object({
   description: z.string().optional(),
 })
 
+export const VehicleSpeedSchema = SpeedSchema.extend({
+  land: z.number().optional(),
+  air: z.number().optional(),
+  water: z.number().optional(),
+})
+
 export const VehicleSectionSchema = z.object({
   name: z.string(),
   armorClass: z.number(),
@@ -40,7 +48,7 @@ export const VehicleSectionSchema = z.object({
     damageThreshold: z.number().optional(),
     special: z.string().optional(),
   }),
-  speed: SpeedSchema.optional(),
+  speed: VehicleSpeedSchema.optional(),
   count: z.number().optional().default(1),
   description: z.string().optional(),
   actions: z.array(ActionSchema).optional(),
@@ -53,6 +61,7 @@ export const VehicleSchema = z.object({
   travelPace: z.number(), // miles per hour
   capacity: CapacitySchema,
   crew: z.array(VehicleCrewSchema),
+  actions: z.array(ActionSchema).optional(),
   sections: z.array(VehicleSectionSchema).optional(),
 });
 

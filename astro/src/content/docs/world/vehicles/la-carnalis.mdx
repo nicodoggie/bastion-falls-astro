@@ -36,7 +36,7 @@ vehicle:
         special: |
            -5 ft. speed per 25 damage taken
       speed:
-        swim: 30
+        water: 30
     - name: Sails
       armorClass: 12
       hitPoints:
@@ -44,8 +44,8 @@ vehicle:
         special: |
           -10 ft. speed per 25 damage taken
       speed:
-        swim: 35
-        special: |
+        water: 35
+        special: |-
           15 ft. while sailing into the wind; 50 ft. while sailing with the wind 
     - name: "Weapon: Ballista"
       count: 4
@@ -61,6 +61,23 @@ vehicle:
             type: piercing
             toHit: 5
             amount: 16 (3d10)
+      
+    - name: "Weapon: Mangonel"
+      count: 2
+      armorClass: 15
+      hitPoints:
+        base: 100
+      actions:
+        - type: ranged weapon attack
+          range:
+            min: 200
+            max: 800
+          special: |
+            can't hit targets within 60 ft. of it
+          damage:
+            type: bludgeoning
+            toHit: 5
+            amount: 27 (5d10)
   stats:
     size: gargantuan
     strength: 20
@@ -69,6 +86,7 @@ vehicle:
     wisdom: 0
     intelligence: 0
     charisma: 0
+
 ---
 
-<Stub />
+<VehicleStatBlock />

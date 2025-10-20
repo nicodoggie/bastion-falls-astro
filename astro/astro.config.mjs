@@ -89,6 +89,7 @@ export default defineConfig({
         './src/components/Monster.astro',
         './src/components/OutOfDate.astro',
         './src/components/SeeAlso.astro',
+        './src/components/VehicleStatBlock.astro',
       ],
     }),
     mdx(),
