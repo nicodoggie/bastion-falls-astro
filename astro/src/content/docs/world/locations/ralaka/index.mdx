@@ -16,11 +16,13 @@ location:
 
 ---
 
-import MapImage from "./map-of-ralaka.png"
+import MapImage from "./map-of-ralaka.png";
+import { getImage } from "astro:assets";
+export const processedImage = await getImage({ src: MapImage });
 
 # Ralaka
 
-<Map asset={MapImage} width={500} height={500} alt="Map of Ralaka" />
+<Map client:only="react" src={processedImage.src} width={processedImage.options.width} height={processedImage.options.height} alt="Map of Ralaka" />
 
 A continent that is mostly occupied by the
 [Ahurian Empire](/world/locations/ahuria), with the notable exception of the

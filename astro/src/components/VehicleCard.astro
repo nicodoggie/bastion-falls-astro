@@ -1,12 +1,15 @@
 ---
 import type { Vehicle } from '@bastion-falls/types';
+import { getEntry } from 'astro:content';
+import { slug } from 'github-slugger';
 
 interface Props {
   vehicle: Omit<Vehicle, 'name'> & { name?: string };
   name?: string;
+  link?: string;
 }
 
-const { vehicle, name } = Astro.props;
+const { vehicle, name, link } = Astro.props;
 const displayName = name || vehicle.name || 'Unknown Vehicle';
 
 // Calculate ability modifiers
@@ -17,7 +20,6 @@ function getModifier(score: number): string {
 
 // Format speed
 function formatSpeed(speed: any): string | null {
-  console.log(speed);
   if (!speed) return null;
   const parts = [];
   if (speed.base) parts.push(`${speed.base} ft.`);
@@ -42,6 +44,19 @@ function formatRange(range: number | { min: number; max: number }): string {
 function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+// Get character entries for crew members
+const crewWithEntries = vehicle.crew ? await Promise.all(
+  vehicle.crew.map(async (member) => {
+    const slugged = slug(member.name);
+    const entry = await getEntry('character', slugged);
+    return {
+      ...member,
+      entry,
+      link: entry ? `/world/characters/${entry.id}` : undefined,
+    };
+  })
+) : [];
 ---
 
 <div
@@ -51,12 +66,23 @@ function capitalize(str: string): string {
 >
   <!-- Header -->
   <div class="border-b-2 border-[#58180d] dark:border-[#9b8c7e] pb-2 mb-4">
-    <h2
-      class="text-3xl font-bold text-center mb-1 text-[#58180d]
-      dark:text-[#e8dcc4]"
-    >
-      {displayName}
-    </h2>
+    {link ? (
+      <a href={link} class="no-underline hover:opacity-80 transition-opacity">
+        <h2
+          class="text-3xl font-bold text-center mb-1 text-[#58180d]
+          dark:text-[#e8dcc4]"
+        >
+          {displayName}
+        </h2>
+      </a>
+    ) : (
+      <h2
+        class="text-3xl font-bold text-center mb-1 text-[#58180d]
+        dark:text-[#e8dcc4]"
+      >
+        {displayName}
+      </h2>
+    )}
     <p class="text-center italic text-sm text-[#7a271a] dark:text-[#c9b99a]">
       {capitalize(vehicle.stats.size)} vehicle ({vehicle.type})
     </p>
@@ -151,15 +177,21 @@ function capitalize(str: string): string {
 
   <!-- Crew -->
   {
-    vehicle.crew && vehicle.crew.length > 0 && (
+    crewWithEntries && crewWithEntries.length > 0 && (
       <div class="mb-4">
         <div class="font-bold text-[#58180d] dark:text-[#e8dcc4] mb-1">
           Crew
         </div>
         <ul class="list-none pl-4 space-y-1">
-          {vehicle.crew.map((member) => (
+          {crewWithEntries.map((member) => (
             <li class="text-[#58180d] dark:text-[#c9b99a]">
-              <span class="font-semibold">{member.name}</span>
+              {member.link ? (
+                <a href={member.link} class="font-semibold hover:underline">
+                  {member.name}
+                </a>
+              ) : (
+                <span class="font-semibold">{member.name}</span>
+              )}
               {' - '}
               <span class="italic">{member.position}</span>
             </li>

@@ -24,6 +24,7 @@ The component will automatically:
 - Detect which vehicle page it's on from the URL
 - Fetch the vehicle data from the content collection
 - Display the vehicle name from the `title` field
+- Create clickable links to the vehicle page and crew member character pages
 
 ## Advanced Usage
 
@@ -61,8 +62,15 @@ const customVehicle = {
 <VehicleCard vehicle={customVehicle} name="My Custom Vehicle" />
 ```
 
-## Styling
+## Features
 
+### Automatic Linking
+- **Vehicle Name**: If a `link` prop is provided, the vehicle name becomes
+  clickable
+- **Crew Members**: Crew member names automatically link to their character
+  pages if they exist in the character collection
+
+### Styling
 The stat block uses D&D Beyond-inspired styling:
 - Parchment-colored background in light mode
 - Dark mode support

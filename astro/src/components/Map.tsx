@@ -5,8 +5,9 @@ interface Props {
   width: number;
   height: number;
   alt: string;
+  inlineHeight?: string;
 }
 
-export default function FamilyTree(props: Props) {
-  return <PanZoomViewer {...props} inlineHeight="300px" />;
+export default function Map(props: Props) {
+  return <PanZoomViewer {...props} />;
 }

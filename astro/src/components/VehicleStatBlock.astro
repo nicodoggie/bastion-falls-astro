@@ -36,11 +36,12 @@ if (!entry) {
 
 const vehicleData = entry?.data.vehicle;
 const vehicleName = entry?.data.title;
+const vehicleLink = entry ? `/world/vehicles/${entry.id}` : undefined;
 ---
 
 {
   vehicleData ? (
-    <VehicleCard vehicle={vehicleData} name={vehicleName} />
+    <VehicleCard vehicle={vehicleData} name={vehicleName} link={vehicleLink} />
   ) : (
     <div class="p-4 border border-red-500 bg-red-50 dark:bg-red-900/20 rounded">
       <p class="text-red-700 dark:text-red-300">
