@@ -102,4 +102,7 @@ export default defineConfig({
       flowbiteReact(),
     ],
   },
+  experimental: {
+    rustCompiler: true,
+  },
 });

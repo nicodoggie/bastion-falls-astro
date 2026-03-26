@@ -39,42 +39,47 @@ const lexiconData = Promise.map(filteredData, async ([_, func]: [string, Functio
       const letter = data.id.split("_")[1];
 
 
-      const lexItems = Object.values(data.lexicon).map((item) => {
-        const lexCategories = item.types
-          .filter((type) => type.includes("lexinfo:"))
-          .map((type) => getLexicalCategory(type))
-          .join(", ");
-        const sense = item.senses && Array.isArray(item.senses) ? item.senses.map((sense) => {
-          return (
-            <dd>{sense.definition}</dd>
-            <dd>{sense.usage}</dd>
-          );
-        }) : null;
-        const derivedForms = item.derivedForms && Array.isArray(item.derivedForms) ? item.derivedForms.map((derivedForm) => {
-          return (
-            <dd>{derivedForm.writtenForm} /{derivedForm.phoneticForm}/ ({derivedForm.grammaticalMeaning})</dd>
-          );
-        }) : null;
-        const protoform = item.protoform ? `${item.protoform}` : null;
-        const note = item.note ? `${item.note}` : null;
-        return (
-          <dl>
-            <dt>{item.writtenForm} /{item.phoneticForm}/ ({lexCategories})</dt>
-            {sense}
-            <dd>{protoform}</dd>
-            <dd>{note}</dd> 
-            {derivedForms}
-          </dl>
-        );
-      });
-
       return (
-        <h2 id={data.id}>
-          <a href={`#lex-index`}>{letter}</a>
-        </h2>
-        <div class="lex-items">
-          {lexItems}
-        </div>
+        <>
+          <h2 id={data.id}>
+            <a href={`#lex-index`}>{letter}</a>
+          </h2>
+          <div class="lex-items">
+            {Object.values(data.lexicon).map((item) => {
+              const lexCategories = item.types
+                .filter((type) => type.includes("lexinfo:"))
+                .map((type) => getLexicalCategory(type))
+                .join(", ");
+              const protoform = item.protoform ? `${item.protoform}` : null;
+              const note = item.note ? `${item.note}` : null;
+              return (
+                <dl>
+                  <dt>
+                    {item.writtenForm} /{item.phoneticForm}/ ({lexCategories})
+                  </dt>
+                  {item.senses &&
+                    Array.isArray(item.senses) &&
+                    item.senses.map((sense) => (
+                      <>
+                        <dd>{sense.definition}</dd>
+                        <dd>{sense.usage}</dd>
+                      </>
+                    ))}
+                  <dd>{protoform}</dd>
+                  <dd>{note}</dd>
+                  {item.derivedForms &&
+                    Array.isArray(item.derivedForms) &&
+                    item.derivedForms.map((derivedForm) => (
+                      <dd>
+                        {derivedForm.writtenForm} /{derivedForm.phoneticForm}/ (
+                        {derivedForm.grammaticalMeaning})
+                      </dd>
+                    ))}
+                </dl>
+              );
+            })}
+          </div>
+        </>
       );
     })
   }
