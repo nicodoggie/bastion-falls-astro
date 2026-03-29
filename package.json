@@ -33,9 +33,6 @@
     "rimraf": "^6.0.1",
     "wrangler": "^4.42.0"
   },
-  "resolutions": {
-    "vite": "^6.3.5"
-  },
   "dependencies": {
     "micromark": "^4.0.2"
   }

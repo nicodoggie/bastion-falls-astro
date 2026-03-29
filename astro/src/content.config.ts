@@ -1,4 +1,5 @@
-import { defineCollection, z, type SchemaContext, type BaseSchema } from "astro:content";
+import { defineCollection, type SchemaContext, type BaseSchema } from "astro:content";
+import { z } from "astro/zod";
 import type { Image } from "astro:assets";
 import { glob } from "astro/loaders";
 import { docsLoader } from "@astrojs/starlight/loaders";

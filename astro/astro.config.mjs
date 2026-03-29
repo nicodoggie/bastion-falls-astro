@@ -87,7 +87,7 @@ export default defineConfig({
       },
       plugins: [
         starlightAutoSidebar(),
-        starlightFlattenIndex(),
+        // starlightFlattenIndex(),
       ],
     }),
     AutoImport({
