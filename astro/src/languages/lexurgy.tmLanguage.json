@@ -1,0 +1,392 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "lexurgy",
+  "scopeName": "source.lexurgy",
+  "fileTypes": ["lsc"],
+  "aliases": ["lsc"],
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#escape-sequence" },
+    { "include": "#feature-brackets" },
+    { "include": "#syllable-element" },
+    { "include": "#alternatives" },
+    { "include": "#declarations" },
+    { "include": "#block-keywords" },
+    { "include": "#block-headers" },
+    { "include": "#deferred-reference" },
+    { "include": "#operators" },
+    { "include": "#class-reference" },
+    { "include": "#capture-reference" },
+    { "include": "#word-boundary" },
+    { "include": "#special-keywords" },
+    { "include": "#anchor" },
+    { "include": "#complex-quantifier" },
+    { "include": "#simple-quantifier" },
+    { "include": "#negation" },
+    { "include": "#intersection" },
+    { "include": "#inexact" },
+    { "include": "#group" }
+  ],
+  "repository": {
+    "comment": {
+      "name": "comment.line.number-sign.lexurgy",
+      "match": "#.*$"
+    },
+    "escape-sequence": {
+      "name": "constant.character.escape.lexurgy",
+      "match": "\\\\."
+    },
+    "feature-brackets": {
+      "name": "meta.feature-matrix.lexurgy",
+      "begin": "\\[",
+      "end": "\\]",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.feature-matrix.begin.lexurgy"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.feature-matrix.end.lexurgy"
+        }
+      },
+      "patterns": [
+        {
+          "name": "keyword.operator.feature-modifier.lexurgy",
+          "match": "[+\\-$!*]"
+        },
+        {
+          "name": "variable.other.feature-value.lexurgy",
+          "match": "\\w+"
+        }
+      ]
+    },
+    "syllable-element": {
+      "name": "constant.other.syllable-element.lexurgy",
+      "match": "<syl>"
+    },
+    "alternatives": {
+      "name": "meta.alternatives.lexurgy",
+      "begin": "\\{",
+      "end": "\\}",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.alternatives.begin.lexurgy"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.alternatives.end.lexurgy"
+        }
+      },
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#escape-sequence" },
+        { "include": "#feature-brackets" },
+        { "include": "#class-reference" },
+        { "include": "#capture-reference" },
+        { "include": "#word-boundary" },
+        { "include": "#syllable-element" },
+        { "include": "#operators" },
+        { "include": "#anchor" },
+        { "include": "#negation" },
+        { "include": "#intersection" },
+        { "include": "#group" },
+        {
+          "name": "punctuation.separator.alternatives.lexurgy",
+          "match": ","
+        }
+      ]
+    },
+    "declarations": {
+      "patterns": [
+        {
+          "name": "meta.declaration.feature.lexurgy",
+          "match": "^\\s*(Feature)\\b(.*)",
+          "captures": {
+            "1": {
+              "name": "keyword.declaration.feature.lexurgy"
+            },
+            "2": {
+              "patterns": [
+                {
+                  "name": "storage.modifier.lexurgy",
+                  "match": "\\(syllable\\)"
+                },
+                {
+                  "name": "keyword.operator.feature-modifier.lexurgy",
+                  "match": "[+*](?=\\w)"
+                },
+                {
+                  "name": "punctuation.definition.lexurgy",
+                  "match": "[(),]"
+                },
+                {
+                  "name": "variable.other.feature.lexurgy",
+                  "match": "\\w+"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "meta.declaration.symbol.lexurgy",
+          "match": "^\\s*(Symbol)\\b(.*)",
+          "captures": {
+            "1": {
+              "name": "keyword.declaration.symbol.lexurgy"
+            },
+            "2": {
+              "patterns": [
+                { "include": "#feature-brackets" },
+                {
+                  "name": "punctuation.separator.lexurgy",
+                  "match": ","
+                },
+                {
+                  "name": "string.unquoted.symbol-name.lexurgy",
+                  "match": "[^\\[\\],\\s]+"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "meta.declaration.diacritic.lexurgy",
+          "match": "^\\s*(Diacritic)\\b(.*)",
+          "captures": {
+            "1": {
+              "name": "keyword.declaration.diacritic.lexurgy"
+            },
+            "2": {
+              "patterns": [
+                {
+                  "name": "storage.modifier.lexurgy",
+                  "match": "\\((?:before|first|floating)\\)"
+                },
+                { "include": "#feature-brackets" },
+                {
+                  "name": "string.unquoted.diacritic-char.lexurgy",
+                  "match": "[^\\[\\]()\\s]+"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "meta.declaration.class.lexurgy",
+          "match": "^\\s*(Class)\\s+(\\w+)(.*)",
+          "captures": {
+            "1": {
+              "name": "keyword.declaration.class.lexurgy"
+            },
+            "2": {
+              "name": "entity.name.type.class.lexurgy"
+            },
+            "3": {
+              "patterns": [
+                { "include": "#alternatives" },
+                { "include": "#feature-brackets" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "meta.declaration.element.lexurgy",
+          "match": "^\\s*(Element)\\s+(\\w+)(.*)",
+          "captures": {
+            "1": {
+              "name": "keyword.declaration.element.lexurgy"
+            },
+            "2": {
+              "name": "entity.name.type.element.lexurgy"
+            },
+            "3": {
+              "patterns": [
+                { "include": "$self" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "block-headers": {
+      "patterns": [
+        {
+          "name": "meta.block.syllables.lexurgy",
+          "match": "^\\s*(Syllables)\\s*(:)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.syllables.lexurgy"
+            },
+            "2": {
+              "name": "punctuation.definition.block.lexurgy"
+            }
+          }
+        },
+        {
+          "name": "meta.block.deromanizer.lexurgy",
+          "match": "^\\s*(deromanizer)(?:\\s+(literal))?\\s*(:)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.deromanizer.lexurgy"
+            },
+            "2": {
+              "name": "storage.modifier.literal.lexurgy"
+            },
+            "3": {
+              "name": "punctuation.definition.block.lexurgy"
+            }
+          }
+        },
+        {
+          "name": "meta.block.romanizer.lexurgy",
+          "match": "^\\s*(romanizer(?:-[\\w-]+)?)(?:\\s+(literal))?\\s*(:)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.romanizer.lexurgy"
+            },
+            "2": {
+              "name": "storage.modifier.literal.lexurgy"
+            },
+            "3": {
+              "name": "punctuation.definition.block.lexurgy"
+            }
+          }
+        },
+        {
+          "name": "meta.block.rule.lexurgy",
+          "match": "^\\s*([a-zA-Z][\\w-]*)(?:\\s+(propagate|ltr|rtl|defer|cleanup))?(?:\\s+(@\\w+))?\\s*(:)",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.rule.lexurgy"
+            },
+            "2": {
+              "name": "storage.modifier.rule.lexurgy"
+            },
+            "3": {
+              "name": "variable.other.class-reference.lexurgy"
+            },
+            "4": {
+              "name": "punctuation.definition.block.lexurgy"
+            }
+          }
+        }
+      ]
+    },
+    "block-keywords": {
+      "patterns": [
+        {
+          "match": "\\b(Then)\\s*(:)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.then.lexurgy"
+            },
+            "2": {
+              "name": "punctuation.definition.block.lexurgy"
+            }
+          }
+        },
+        {
+          "match": "\\b(Else)\\s*(:)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.else.lexurgy"
+            },
+            "2": {
+              "name": "punctuation.definition.block.lexurgy"
+            }
+          }
+        }
+      ]
+    },
+    "deferred-reference": {
+      "match": "(?<=^\\s|\\s\\s)(:)([a-zA-Z][\\w-]*)",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.deferred-reference.lexurgy"
+        },
+        "2": {
+          "name": "entity.name.function.rule-reference.lexurgy"
+        }
+      }
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arrow.lexurgy",
+          "match": "=>"
+        },
+        {
+          "name": "keyword.operator.exception.lexurgy",
+          "match": "//"
+        },
+        {
+          "name": "keyword.operator.condition.lexurgy",
+          "match": "(?<=\\s)/(?=\\s)"
+        },
+        {
+          "name": "keyword.operator.syllable-separator.lexurgy",
+          "match": "::"
+        }
+      ]
+    },
+    "class-reference": {
+      "name": "variable.other.class-reference.lexurgy",
+      "match": "@[a-zA-Z]\\w*"
+    },
+    "capture-reference": {
+      "name": "variable.other.capture.lexurgy",
+      "match": "\\$\\d+"
+    },
+    "word-boundary": {
+      "name": "constant.character.boundary.lexurgy",
+      "match": "\\$\\$|\\$(?!\\d)"
+    },
+    "special-keywords": {
+      "name": "constant.language.lexurgy",
+      "match": "\\b(unchanged|explicit|clear|off)\\b"
+    },
+    "anchor": {
+      "name": "variable.language.anchor.lexurgy",
+      "match": "(?<=\\s)_(?=\\s|$)"
+    },
+    "complex-quantifier": {
+      "name": "keyword.operator.quantifier.lexurgy",
+      "match": "\\*(?:\\d+|\\((?:\\d+-\\d*|-\\d+)\\))"
+    },
+    "simple-quantifier": {
+      "name": "keyword.operator.quantifier.lexurgy",
+      "match": "[*+?]"
+    },
+    "negation": {
+      "name": "keyword.operator.negation.lexurgy",
+      "match": "!"
+    },
+    "intersection": {
+      "name": "keyword.operator.intersection.lexurgy",
+      "match": "&"
+    },
+    "inexact": {
+      "name": "keyword.operator.inexact.lexurgy",
+      "match": "~"
+    },
+    "group": {
+      "begin": "\\(",
+      "end": "\\)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.group.begin.lexurgy"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.group.end.lexurgy"
+        }
+      },
+      "patterns": [
+        { "include": "$self" }
+      ]
+    }
+  }
+}

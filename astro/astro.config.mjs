@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
@@ -12,6 +13,13 @@ import remarkCustomHeaderId from 'remark-custom-header-id';
 import { remarkDefinitionList } from 'remark-definition-list';
 import remarkParse from 'remark-parse';
 import starlightAutoSidebar from 'starlight-auto-sidebar';
+
+const lexurgyLang = JSON.parse(
+  fs.readFileSync(
+    new URL('./src/languages/lexurgy.tmLanguage.json', import.meta.url),
+    'utf-8',
+  ),
+);
 
 export default defineConfig({
   output: 'static',
@@ -28,7 +36,11 @@ export default defineConfig({
   },
   integrations: [
     react(),
-    expressiveCode(),
+    expressiveCode({
+      shiki: {
+        langs: [lexurgyLang],
+      },
+    }),
     sitemap(),
     starlight({
       title: 'Bastion Falls',
