@@ -48,9 +48,10 @@ export default async function fromCharacters(
   patternArg?: string,
 ): Promise<void> {
   const contentDir = getContentDir();
-  const pattern = patternArg || join(contentDir, 'characters/**/*.mdx');
-  console.log(pattern);
-  const files = await glob(pattern as any, { cwd: contentDir, onlyFiles: true });
+  const characterDir = resolve(contentDir, 'characters');
+  const pattern = patternArg || '**/*.mdx';
+  console.log(characterDir, pattern);
+  const files = await glob(pattern as any, { cwd: characterDir, onlyFiles: true });
 
   // family name -> { families: Set, people: Map(key->fullname), edges collected }
   const familyToGraph: Map<string, {
@@ -62,7 +63,7 @@ export default async function fromCharacters(
   let scanned = 0;
 
   for (const rel of files) {
-    const abs = resolve(this.currentPath, rel);
+    const abs = resolve(characterDir, rel);
     const raw = await readFile(abs, 'utf8');
     if (flags?.verbose) console.log(`Scanning: ${rel}`);
     const processor = parseFrontmatter(raw);

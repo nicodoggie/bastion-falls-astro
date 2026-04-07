@@ -1,25 +1,33 @@
 ---
 title: <%= title %>
 sidebar:
-badge: Stub
+  badge: Stub
 location:
-  <%_ if (location.parents) { _%>
-    parents:
-    <%_ location.parents.forEach(function(parent) { _%>
-      - <%= parent %>
-        <%_ }) _%>
+  <%_ if (location.type) { _%>
+  type: <%= location.type %>
   <%_ } _%>
+  <%_ if (location.parents && location.parents.length > 0) { _%>
+  parents:
+  <%_ location.parents.forEach(function(parent) { _%>
+    - <%= parent %>
+  <%_ }) _%>
+  <%_ } _%>
+  <%_ if (location.related && location.related.length > 0) { _%>
+  related:
+  <%_ location.related.forEach(function(rel) { _%>
+    - <%= rel %>
+  <%_ }) _%>
+  <%_ } _%>
+  <%_ if (location.details && Object.keys(location.details).length > 0) { _%>
   details:
-    area: <%= location.details.area %>
-    population: <%= location.details.population %>
-    elevation: <%= location.details.elevation %>
-      
+  <%_ Object.entries(location.details).forEach(function([key, value]) { _%>
+    <%= key %>: <%= value %>
+  <%_ }) _%>
+  <%_ } _%>
 tags:
-  <%_ if (tags) { _%>
   <%_ tags.forEach(function(tag) { _%>
   - <%= tag %>
   <%_ }) _%>
-  <%_ } _%>
 ---
 
 <Stub />

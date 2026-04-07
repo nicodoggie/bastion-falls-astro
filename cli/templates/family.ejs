@@ -1,0 +1,26 @@
+---
+title: <%= title %>
+family:
+  name: <%= family.name %>
+  <%_ if (family.founded) { _%>
+  founded: <%= family.founded %>
+  <%_ } _%>
+  <%_ if (family.dissolved) { _%>
+  dissolved: <%= family.dissolved %>
+  <%_ } _%>
+  <%_ if (family.seat) { _%>
+  seat: <%= family.seat %>
+  <%_ } _%>
+  <%_ if (family.motto) { _%>
+  motto: <%= family.motto %>
+  <%_ } _%>
+  <%_ if (family.sigil) { _%>
+  sigil: <%= family.sigil %>
+  <%_ } _%>
+tags:
+  <%_ tags.forEach(function(tag){ _%>
+  - <%- tag %>
+  <%_ }) _%>
+---
+
+<Stub />
