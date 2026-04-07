@@ -1,0 +1,34 @@
+families:
+  - house: Malthrek
+    families:
+      - parents:
+          - Antoinette
+          - Ellington
+        children:
+          - Luke
+          - Mark
+          - John
+          - Matthew
+people:
+  Antoinette:
+    fullname: Antoinette Malthrek née Thralmal
+  Ellington:
+    fullname: Ellington Malthrek
+  Luke:
+    fullname: Luke Malthrek
+  Mark:
+    fullname: Mark Malthrek
+  John:
+    fullname: John Malthrek
+  Matthew:
+    fullname: Matthew Malthrek
+styles:
+  undead:
+    color: black
+    penwidth: 1
+  dead:
+    color: red
+    penwidth: 0.25
+  unknown:
+    color: gray
+    penwidth: 0.25

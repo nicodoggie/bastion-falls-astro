@@ -73,6 +73,7 @@ export default async function character(this: LocalContext, flags: NewCharacterC
         pronouns: undefined,
         height: undefined,
         weight: undefined,
+        sexOrgans: [],
       },
       relationships: {  
         organizations,

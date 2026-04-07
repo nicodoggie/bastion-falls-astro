@@ -1,0 +1,22 @@
+---
+title: Travertine
+tags:
+  - families
+family:
+  name: Travertine
+---
+
+import * as path from 'node:path';
+import { getImage } from 'astro:assets';
+import familyTree from './family.svg';
+export const image = await getImage({ src: familyTree });
+
+<Stub />
+
+<FamilyTree
+  client:only="react"
+  src={image.src}
+  width={image.options.width}
+  height={image.options.height}
+  alt="Travertine Family Tree"
+/>

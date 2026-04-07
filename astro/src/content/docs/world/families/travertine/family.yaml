@@ -1,0 +1,25 @@
+families:
+  - house: Travertine
+    families:
+      - parents:
+          - Elisolde
+          - Odgen
+        children:
+          - Pallia
+people:
+  Elisolde:
+    fullname: Elisolde Travertine
+  Odgen:
+    fullname: Odgen Travertine
+  Pallia:
+    fullname: Pallia Travertine
+styles:
+  undead:
+    color: black
+    penwidth: 1
+  dead:
+    color: red
+    penwidth: 0.25
+  unknown:
+    color: gray
+    penwidth: 0.25
