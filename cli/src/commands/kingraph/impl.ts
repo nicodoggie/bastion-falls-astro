@@ -1,6 +1,6 @@
 import type { LocalContext } from '@/context.js';
 import { glob } from 'tinyglobby';
-import { resolve, dirname } from 'node:path';
+import { resolve, join } from 'node:path';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { remark } from 'remark';
 import remarkFrontmatter from 'remark-frontmatter';
@@ -9,6 +9,7 @@ import type { Node, Root } from 'mdast';
 import yaml from 'js-yaml';
 import { slug as slugger } from 'github-slugger';
 import type { VFile } from 'vfile';
+import { getContentDir, getTargetPath } from '@/config';
 
 type Relative = { name: string; type: 'parent' | 'child' | 'sibling' | 'partner' | 'spouse' | 'friend' | 'enemy' | 'ally' | 'associate' | 'other' };
 
@@ -46,8 +47,10 @@ export default async function fromCharacters(
   flags?: { scaffoldMdx?: boolean; verbose?: boolean },
   patternArg?: string,
 ): Promise<void> {
-  const pattern = patternArg || 'astro/src/content/docs/world/characters/**/*.mdx';
-  const files = await glob(pattern as any, { cwd: this.currentPath, onlyFiles: true });
+  const contentDir = getContentDir();
+  const pattern = patternArg || join(contentDir, 'characters/**/*.mdx');
+  console.log(pattern);
+  const files = await glob(pattern as any, { cwd: contentDir, onlyFiles: true });
 
   // family name -> { families: Set, people: Map(key->fullname), edges collected }
   const familyToGraph: Map<string, {
@@ -145,7 +148,7 @@ export default async function fromCharacters(
     };
 
     const famSlug = slugger(famName);
-    const targetDir = resolve(this.currentPath, 'astro/src/content/docs/world/families', famSlug);
+    const targetDir = resolve(getTargetPath('families'), famSlug);
     await mkdir(targetDir, { recursive: true });
     const target = resolve(targetDir, 'family.yaml');
 

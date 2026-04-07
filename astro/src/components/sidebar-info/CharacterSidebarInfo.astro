@@ -209,9 +209,14 @@ if(character?.relationships?.families) {
                       <>
                         Vagina
                         <dl class="ml-4">
+                          {organ.profile && <dt class="pl-2">Profile</dt> <dd class="pl-4">{organ.profile.join(', ')}</dd>}
                           {organ.depth && <dt class="pl-2">Depth</dt> <dd class="pl-4">{organ.depth}</dd>}
-                          {organ.width && <dt class="pl-2">Width</dt> <dd class="pl-4">{organ.width}</dd>}
-                          {organ.pubicHair && <dt class="pl-2">Pubic Hair</dt> <dd class="pl-4">{organ.pubicHair}</dd>}
+                          {organ.elasticity && <dt class="pl-2">Elasticity</dt> <dd class="pl-4">{organ.elasticity}</dd>}
+                          {organ.pubicHair && <><dt class="pl-2">Pubic Hair</dt> 
+                            {organ.pubicHair?.length && <dd class="pl-4">Length: {organ.pubicHair.length}</dd>}
+                            {organ.pubicHair?.style && <dd class="pl-4">Style: {organ.pubicHair.style}</dd>}
+                            {organ.pubicHair?.color && <dd class="pl-4">Color: {organ.pubicHair.color}</dd>}
+                          </>}
                         </dl>
                       </>
                     )}

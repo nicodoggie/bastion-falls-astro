@@ -1,13 +1,10 @@
-import { z } from "zod";
-import type { TemplateData } from "@/lib/template.js";
-
-import { type Event, EventSchema } from "@bastion-falls/types";
+import { type Event } from "@bastion-falls/types";
 import type { LocalContext } from "@/context.js";
 import renderTemplate from "@/lib/template.js";
 import type { NewEventCommandFlags } from "./command.js";
-import { resolve } from "node:path";
 import * as YAML from "js-yaml";
 import type { BaseFrontmatter } from "@bastion-falls/types/BaseFrontmatter";
+import { getTargetPath } from "@/config.js";
 
 interface NewEventData extends BaseFrontmatter {
   event: Event;
@@ -34,7 +31,7 @@ export default async function event(
   };
 
   try {
-    const targetDir = resolve(this.rootDir, "../astro/src/content/docs/world/events")
+    const targetDir = getTargetPath("events")
     await renderTemplate({
       name: articleName,
       data: {

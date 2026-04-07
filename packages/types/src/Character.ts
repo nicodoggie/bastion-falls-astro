@@ -15,7 +15,11 @@ const SexOrganTypeSchema = z.object({
   type: z.enum(["penis", "vagina", "breasts", "unknown"]),
 })
 
-const PubicHairSchema = z.enum(["none", "trimmed", "full"]);
+const PubicHairSchema = z.object({
+  length: z.enum(["none", "trimmed", "full"]).optional(),
+  style: z.string().optional(),
+  color: z.string().optional(),
+})
 
 const PenisSchema = SexOrganTypeSchema.extend({
   type: z.literal("penis"),
@@ -26,8 +30,9 @@ const PenisSchema = SexOrganTypeSchema.extend({
 
 const VaginaSchema = SexOrganTypeSchema.extend({
   type: z.literal("vagina"),
-  depth: z.number().optional(),
-  width: z.number().optional(),
+  profile: z.array(z.string()).optional(),
+  depth: z.enum(["shallow", "medium", "deep"]).optional(),
+  elasticity: z.enum(["supple", "medium", "tight"]).optional(),
   pubicHair: PubicHairSchema.optional(),
 })
 
@@ -51,12 +56,29 @@ const CharacterBackgroundSchema = z.object({
   backstory: z.string().optional(),
 })
 
+
+export const CharacterTitleSchema = z.object({
+  title: z.string(),
+  from: z.string().optional(),
+  to: z.string().optional(),
+})
+
+export const CharacterTitlesSchema = z.array(CharacterTitleSchema);
+
+export const HairSchema = z.object({
+  color: z.string().optional(),
+  style: z.string().optional(),
+  length: z.enum(["none", "short", "medium", "long"]).optional(),
+})
+
 const CharacterDetailsSchema = z.object({
   age: z.number().optional(),
+  hair: HairSchema.optional(),
   aliases: z.array(z.string()).optional(),
   dateOfBirth: z.string().optional(),
   dateOfDeath: z.string().optional(),
   sex: z.string().optional(),
+  titles: CharacterTitlesSchema.optional(),
   pronouns: z.string().optional(),
   height: z.string().optional(),
   weight: z.string().optional(),
@@ -132,6 +154,7 @@ export const CharacterSchema = z.object({
   relationships: CharacterRelationshipsSchema.optional(),
 })
 
+
 export type CharacterRelative = z.infer<typeof CharacterRelativeSchema>;
 export type CharacterReligion = z.infer<typeof CharacterReligionSchema>;
 export type CharacterOrganization = z.infer<typeof CharacterOrganizationSchema>;
@@ -141,4 +164,6 @@ export type CharacterBackground = z.infer<typeof CharacterBackgroundSchema>;
 export type CharacterRelationships = z.infer<typeof CharacterRelationshipsSchema>;
 export type CharacterFamily = z.infer<typeof CharacterFamilySchema>;
 export type Character = z.infer<typeof CharacterSchema>;
+export type CharacterTitle = z.infer<typeof CharacterTitleSchema>;
+export type CharacterTitles = z.infer<typeof CharacterTitlesSchema>;
 export default CharacterSchema;

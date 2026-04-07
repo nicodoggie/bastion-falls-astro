@@ -1,10 +1,10 @@
 import type { LocalContext } from "@/context.js";
-import { resolve } from "path";
 import renderTemplate, { type TemplateData } from "@/lib/template.js";
 import { type NewCommandFlags } from "../commands.js";
 import type { Character } from "@bastion-falls/types";
 import type { CharacterOrganization, CharacterRelative, CharacterReligion } from "@bastion-falls/types/Character";
 import type { ImageAttribution } from "@bastion-falls/types/Image";
+import { getTargetPath } from "@/config.js";
 
 interface NewCharacterCommandFlags extends NewCommandFlags {
   ddb?: string;
@@ -27,6 +27,7 @@ interface CharacterTemplate extends TemplateData {
 }
 
 export default async function character(this: LocalContext, flags: NewCharacterCommandFlags, articleName: string): Promise<void> {
+  console.log("Creating character", articleName);
   const {
     ddb,
     imageUrl,
@@ -60,6 +61,11 @@ export default async function character(this: LocalContext, flags: NewCharacterC
       image,
       details: {
         age,
+        hair: {
+          color: undefined,
+          style: undefined,
+          length: undefined,
+        },
         aliases: aliases ?? [],
         dateOfBirth,
         dateOfDeath,
@@ -81,7 +87,8 @@ export default async function character(this: LocalContext, flags: NewCharacterC
   };
 
   try {
-    const targetDir = resolve(this.rootDir, "../astro/src/content/docs/world/characters")
+    const targetDir = getTargetPath("characters")
+    console.log(targetDir);
     await renderTemplate({
       name: articleName,
       template: "character",
@@ -92,7 +99,7 @@ export default async function character(this: LocalContext, flags: NewCharacterC
     })
     console.log(`Created ${articleName} at ${targetDir}`);
   } catch (e) {
-    console.log(e);
+    console.log("Error creating character", e);
     process.exit(1);
   }
 }

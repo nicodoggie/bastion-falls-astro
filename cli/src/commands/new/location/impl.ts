@@ -1,7 +1,7 @@
-import { resolve } from "node:path";
 import type { LocalContext } from "@/context.js";
 import renderTemplate, { type TemplateData } from "@/lib/template.js";
 import type { NewCommandFlags } from "../commands.js";
+import { getTargetPath } from "@/config.js";
 
 interface NewLocationCommandFlags extends NewCommandFlags {
   area?: string;
@@ -43,7 +43,7 @@ export default async function location(
   };
 
   try {
-    const targetDir = resolve(this.rootDir, "../astro/src/content/docs/world/locations")
+    const targetDir = getTargetPath("locations")
     await renderTemplate({
       name: articleName,
       template: "location",
