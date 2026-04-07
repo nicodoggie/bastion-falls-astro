@@ -1,0 +1,125 @@
+---
+/**
+ * Starlight Sidebar override.
+ *
+ * Identical to the stock Sidebar but adds per-group "collapse subtrees"
+ * buttons next to each top-level nav group that has collapsible children.
+ * The buttons are injected client-side so SSR output stays unchanged.
+ */
+import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
+import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+
+const { sidebar } = Astro.locals.starlightRoute;
+---
+
+<SidebarPersister>
+  <SidebarSublist sublist={sidebar} />
+</SidebarPersister>
+
+<div class="md:sl-hidden">
+  <MobileMenuFooter />
+</div>
+
+<script>
+  function setupCollapseButtons() {
+    const nav = document.querySelector('#starlight__sidebar');
+    if (!nav) return;
+
+    nav
+      .querySelectorAll<HTMLDetailsElement>('ul.top-level > li > details')
+      .forEach((details) => {
+        // Skip groups with no collapsible sub-trees.
+        if (!details.querySelector('details')) return;
+        // Skip if button already injected (e.g. re-run after hot reload).
+        if (details.querySelector('.sl-collapse-group')) return;
+
+        const summary = details.querySelector('summary');
+        const caret = summary?.querySelector<SVGElement>('.caret');
+        if (!summary || !caret) return;
+
+        const btn = document.createElement('button');
+        btn.className = 'sl-collapse-group';
+        btn.setAttribute('title', 'Collapse subtrees');
+        btn.setAttribute('aria-label', 'Collapse subtrees');
+        btn.innerHTML = `<span class="sl-collapse-badge">collapse</span>`;
+
+        // Place the button to the left of the toggle caret.
+        summary.insertBefore(btn, caret);
+
+        btn.addEventListener('click', (e) => {
+          // Prevent the click from reaching <summary>, which would
+          // otherwise toggle the parent <details> open/closed.
+          e.stopPropagation();
+          details
+            .querySelectorAll<HTMLDetailsElement>('details[open]')
+            .forEach((sub) => {
+              // Keep the sub-tree that contains the current page open.
+              if (!sub.querySelector('[aria-current="page"]')) {
+                sub.open = false;
+              }
+            });
+        });
+      });
+  }
+
+  // Run on initial page load and after Astro View Transition navigations.
+  setupCollapseButtons();
+  document.addEventListener('astro:page-load', setupCollapseButtons);
+</script>
+
+<style is:global>
+  /* Stop space-between from scattering three flex children.
+     Let the label grow instead so the badge + caret sit together. */
+  #starlight__sidebar details > summary:has(.sl-collapse-group) {
+    justify-content: flex-start;
+  }
+
+  #starlight__sidebar details > summary:has(.sl-collapse-group) .group-label {
+    flex: 1;
+  }
+
+  #starlight__sidebar .sl-collapse-group {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-inline-end: 0.25em;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  /* Only show the button while the group is expanded */
+  #starlight__sidebar details[open] > summary .sl-collapse-group {
+    display: inline-flex;
+  }
+
+  #starlight__sidebar .sl-collapse-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--sl-font-system-mono, monospace);
+    font-size: var(--sl-text-xs);
+    line-height: 1;
+    padding: 0.1em 0.4em;
+    border-radius: 9999px;
+    border: 1px solid var(--sl-color-gray-5);
+    color: var(--sl-color-gray-3);
+    background-color: transparent;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease,
+      background-color 0.15s ease;
+  }
+
+  #starlight__sidebar .sl-collapse-group:hover .sl-collapse-badge,
+  #starlight__sidebar .sl-collapse-group:focus-visible .sl-collapse-badge {
+    color: var(--sl-color-white);
+    border-color: var(--sl-color-gray-3);
+    background-color: var(--sl-color-gray-6, rgba(255, 255, 255, 0.08));
+    outline: none;
+  }
+</style>

@@ -84,6 +84,7 @@ export default defineConfig({
       ],
       components: {
         PageSidebar: './src/components/PageSidebar.astro',
+        Sidebar: './src/components/starlight/Sidebar.astro',
       },
       plugins: [
         starlightAutoSidebar(),
