@@ -3,14 +3,15 @@ import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
-import starlightFlattenIndex from '@bastion-falls/starlight-flatten-index';
 import tailwindcss from '@tailwindcss/vite';
 import AutoImport from 'astro-auto-import';
 import expressiveCode from 'astro-expressive-code';
 import { defineConfig } from 'astro/config';
 import flowbiteReact from 'flowbite-react/plugin/astro';
 import remarkCustomHeaderId from 'remark-custom-header-id';
+import remarkRewriteLinks from './src/plugins/remark-rewrite-links.mjs';
 import { remarkDefinitionList } from 'remark-definition-list';
+import remarkMarkmap from 'remark-markmap';
 import remarkParse from 'remark-parse';
 import starlightAutoSidebar from 'starlight-auto-sidebar';
 
@@ -29,6 +30,9 @@ export default defineConfig({
       remarkCustomHeaderId,
       remarkParse,
       remarkDefinitionList,
+      [remarkRewriteLinks],
+      [remarkMarkmap, { darkThemeSelector: () => '[data-theme="dark"]' }],
+
     ],
   },
   redirects: {

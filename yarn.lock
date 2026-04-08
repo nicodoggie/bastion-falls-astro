@@ -789,6 +789,7 @@ __metadata:
     remark-gfm: "npm:^4.0.1"
     remark-lint: "npm:^10.0.1"
     remark-lint-maximum-line-length: "npm:^4.1.1"
+    remark-markmap: "npm:^1.1.5"
     remark-mdx: "npm:^3.1.1"
     remark-parse: "npm:^11.0.0"
     remark-rehype: "npm:^11.1.2"
@@ -801,6 +802,7 @@ __metadata:
     tailwindcss: "npm:^4.1.14"
     typescript: "npm:^5.9.3"
     unified: "npm:^11.0.5"
+    unist-util-visit: "npm:^5.1.0"
     vite: "npm:^7.1.9"
   languageName: unknown
   linkType: soft
@@ -8252,7 +8254,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"markmap-lib@npm:^0.18.12":
+"markmap-lib@npm:^0.18.11, markmap-lib@npm:^0.18.12":
   version: 0.18.12
   resolution: "markmap-lib@npm:0.18.12"
   dependencies:
@@ -10964,6 +10966,18 @@ __metadata:
     remark-message-control: "npm:^8.0.0"
     unified: "npm:^11.0.0"
   checksum: 10c0/7f68419b9f5a0a5685d4fc062afe48d00c7e717403c72215219e8e0733582e38fa7f981aa6d0c59de6ab0a4b5fc072768f327fbbe856076a3ceacbc2500ddecc
+  languageName: node
+  linkType: hard
+
+"remark-markmap@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "remark-markmap@npm:1.1.5"
+  dependencies:
+    gray-matter: "npm:^4.0.3"
+    markmap-common: "npm:^0.18.9"
+    markmap-lib: "npm:^0.18.11"
+    unist-util-visit: "npm:^5.0.0"
+  checksum: 10c0/f95f9cb071b346b312a685a9c9032a07abd26059555ecb4d47614a0beed78859509136be0882e7177bdf273ce98c69758b46249c5bc2b61940d7d7873fb80a4d
   languageName: node
   linkType: hard
 
