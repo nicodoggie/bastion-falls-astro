@@ -71,9 +71,24 @@ export const HairSchema = z.object({
   length: z.enum(["none", "short", "medium", "long"]).optional(),
 })
 
+// Allow for dichromia by supporting either a single color or an object specifying separate colors for each eye
+const EyeColorSchema = z.union([
+  z.string(),
+  z.object({
+    left: z.string(),
+    right: z.string(),
+  })
+]);
+
+const EyesSchema = z.object({
+  color: EyeColorSchema.optional(),
+  style: z.string().optional(),
+})
+
 const CharacterDetailsSchema = z.object({
   age: z.number().optional(),
   hair: HairSchema.optional(),
+  eyes: EyesSchema.optional(),
   aliases: z.array(z.string()).optional(),
   dateOfBirth: z.string().optional(),
   dateOfDeath: z.string().optional(),
@@ -146,7 +161,7 @@ export const CharacterRelationshipsSchema = z.object({
 
 export const CharacterSchema = z.object({
   name: z.string(),
-  ddb: z.string().url().optional(),
+  ddb: z.url().optional(),
   image: ImageSchema.optional(),
   stats: BaseStatsSchema.optional(),
   speed: SpeedSchema.optional(),
