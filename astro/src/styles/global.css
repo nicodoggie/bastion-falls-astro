@@ -15,6 +15,16 @@ hr {
   text-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
 }
 
+/* Markmap overrides */
+.markmap-wrap {
+  width: 100%;
+}
+
+.markmap-wrap > svg {
+  width: 100%;
+  min-height: 50vh;
+}
+
 /* Darker tint for cavern backgrounds */
 body {
   position: relative;
