@@ -13,6 +13,14 @@ import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
 const { sidebar } = Astro.locals.starlightRoute;
 ---
 
+<script is:inline>
+  try {
+    document.documentElement.classList.add('sl-sidebar-collapse-pending');
+  } catch {
+    // Ignore environments where document is unavailable.
+  }
+</script>
+
 <SidebarPersister>
   <SidebarSublist sublist={sidebar} />
 </SidebarPersister>
@@ -22,6 +30,101 @@ const { sidebar } = Astro.locals.starlightRoute;
 </div>
 
 <script>
+  const SIDEBAR_COLLAPSE_STORAGE_KEY = 'starlight:sidebar-collapsed:v1';
+
+  function readCollapsedSections(): Set<string> {
+    try {
+      const raw = localStorage.getItem(SIDEBAR_COLLAPSE_STORAGE_KEY);
+      if (!raw) return new Set<string>();
+      const parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed)) return new Set<string>();
+      return new Set<string>(
+        parsed.filter((value) => typeof value === 'string'),
+      );
+    } catch {
+      return new Set<string>();
+    }
+  }
+
+  function writeCollapsedSections(collapsedSections: Set<string>) {
+    try {
+      localStorage.setItem(
+        SIDEBAR_COLLAPSE_STORAGE_KEY,
+        JSON.stringify([...collapsedSections]),
+      );
+    } catch {
+      // Ignore storage failures (privacy mode, blocked storage, etc.).
+    }
+  }
+
+  function getSummary(details: HTMLDetailsElement) {
+    return details.querySelector<HTMLElement>(':scope > summary');
+  }
+
+  function getDetailsIdentity(details: HTMLDetailsElement) {
+    const summary = getSummary(details);
+    if (!summary) return null;
+
+    const label =
+      summary
+        .querySelector('.group-label')
+        ?.textContent?.trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ') ||
+      summary.textContent?.trim().toLowerCase().replace(/\s+/g, ' ') ||
+      null;
+
+    const href = summary.querySelector<HTMLAnchorElement>('a[href]')?.href;
+    const pathname = href ? new URL(href, location.href).pathname : null;
+
+    if (pathname) return `href:${pathname}`;
+    if (label) return `label:${label}`;
+    return null;
+  }
+
+  function getDetailsStorageKey(details: HTMLDetailsElement) {
+    const chain: string[] = [];
+    let current: HTMLDetailsElement | null = details;
+
+    while (current) {
+      const identity = getDetailsIdentity(current);
+      if (!identity) return null;
+      chain.unshift(identity);
+      current = current.parentElement?.closest('details') ?? null;
+    }
+
+    return chain.join('>');
+  }
+
+  function setupCollapsePersistence() {
+    const nav = document.querySelector('#starlight__sidebar');
+    if (!nav) return;
+
+    const collapsedSections = readCollapsedSections();
+
+    nav.querySelectorAll<HTMLDetailsElement>('details').forEach((details) => {
+      const storageKey = getDetailsStorageKey(details);
+      if (!storageKey) return;
+
+      if (collapsedSections.has(storageKey)) details.open = false;
+
+      if (details.dataset.slCollapseBound === 'true') return;
+      details.dataset.slCollapseBound = 'true';
+
+      details.addEventListener('toggle', () => {
+        const nextCollapsedSections = readCollapsedSections();
+
+        if (details.open) {
+          nextCollapsedSections.delete(storageKey);
+        } else {
+          nextCollapsedSections.add(storageKey);
+        }
+
+        writeCollapsedSections(nextCollapsedSections);
+      });
+    });
+  }
+
   function setupCollapseButtons() {
     const nav = document.querySelector('#starlight__sidebar');
     if (!nav) return;
@@ -42,7 +145,7 @@ const { sidebar } = Astro.locals.starlightRoute;
         btn.className = 'sl-collapse-group';
         btn.setAttribute('title', 'Collapse subtrees');
         btn.setAttribute('aria-label', 'Collapse subtrees');
-        btn.innerHTML = `<span class="sl-collapse-badge">collapse</span>`;
+        btn.innerHTML = `<span class="sl-collapse-badge">collapse all</span>`;
 
         // Place the button to the left of the toggle caret.
         summary.insertBefore(btn, caret);
@@ -63,12 +166,22 @@ const { sidebar } = Astro.locals.starlightRoute;
       });
   }
 
+  function initializeSidebar() {
+    setupCollapsePersistence();
+    setupCollapseButtons();
+    document.documentElement.classList.remove('sl-sidebar-collapse-pending');
+  }
+
   // Run on initial page load and after Astro View Transition navigations.
-  setupCollapseButtons();
-  document.addEventListener('astro:page-load', setupCollapseButtons);
+  initializeSidebar();
+  document.addEventListener('astro:page-load', initializeSidebar);
 </script>
 
 <style is:global>
+  html.sl-sidebar-collapse-pending #starlight__sidebar {
+    visibility: hidden;
+  }
+
   /* Stop space-between from scattering three flex children.
      Let the label grow instead so the badge + caret sit together. */
   #starlight__sidebar details > summary:has(.sl-collapse-group) {
