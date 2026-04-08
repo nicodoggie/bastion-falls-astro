@@ -14,8 +14,14 @@ const { sidebar } = Astro.locals.starlightRoute;
 ---
 
 <script is:inline>
+  const SIDEBAR_VISIBILITY_STORAGE_KEY = 'starlight:sidebar-hidden:v1';
+
   try {
     document.documentElement.classList.add('sl-sidebar-collapse-pending');
+    if (localStorage.getItem(SIDEBAR_VISIBILITY_STORAGE_KEY) === '1') {
+      document.documentElement.classList.add('sl-sidebar-hidden');
+      document.documentElement.removeAttribute('data-has-sidebar');
+    }
   } catch {
     // Ignore environments where document is unavailable.
   }
@@ -31,6 +37,8 @@ const { sidebar } = Astro.locals.starlightRoute;
 
 <script>
   const SIDEBAR_COLLAPSE_STORAGE_KEY = 'starlight:sidebar-collapsed:v1';
+  const SIDEBAR_VISIBILITY_STORAGE_KEY = 'starlight:sidebar-hidden:v1';
+  const SIDEBAR_HIDDEN_CLASS = 'sl-sidebar-hidden';
 
   function readCollapsedSections(): Set<string> {
     try {
@@ -166,9 +174,77 @@ const { sidebar } = Astro.locals.starlightRoute;
       });
   }
 
+  function readSidebarHidden() {
+    try {
+      return localStorage.getItem(SIDEBAR_VISIBILITY_STORAGE_KEY) === '1';
+    } catch {
+      return false;
+    }
+  }
+
+  function writeSidebarHidden(hidden: boolean) {
+    try {
+      localStorage.setItem(SIDEBAR_VISIBILITY_STORAGE_KEY, hidden ? '1' : '0');
+    } catch {
+      // Ignore storage failures (privacy mode, blocked storage, etc.).
+    }
+  }
+
+  function setSidebarHidden(hidden: boolean) {
+    document.documentElement.classList.toggle(SIDEBAR_HIDDEN_CLASS, hidden);
+    if (hidden) {
+      document.documentElement.removeAttribute('data-has-sidebar');
+    } else {
+      document.documentElement.setAttribute('data-has-sidebar', '');
+    }
+    writeSidebarHidden(hidden);
+  }
+
+  function ensureSidebarVisibilityToggle() {
+    let btn = document.getElementById(
+      'sl-sidebar-visibility-toggle',
+    ) as HTMLButtonElement | null;
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'sl-sidebar-visibility-toggle';
+      btn.className = 'sl-sidebar-visibility-toggle';
+      btn.type = 'button';
+      document.body.append(btn);
+    }
+
+    const hidden = document.documentElement.classList.contains(
+      SIDEBAR_HIDDEN_CLASS,
+    );
+    btn.textContent = hidden ? 'show sidebar' : 'hide sidebar';
+    btn.setAttribute(
+      'aria-label',
+      hidden ? 'Show sidebar' : 'Hide sidebar',
+    );
+    btn.setAttribute('title', hidden ? 'Show sidebar' : 'Hide sidebar');
+
+    if (btn.dataset.slSidebarVisibilityBound === 'true') return;
+    btn.dataset.slSidebarVisibilityBound = 'true';
+    btn.addEventListener('click', () => {
+      const nextHidden = !document.documentElement.classList.contains(
+        SIDEBAR_HIDDEN_CLASS,
+      );
+      setSidebarHidden(nextHidden);
+      if (btn) {
+        btn.textContent = nextHidden ? 'show sidebar' : 'hide sidebar';
+        btn.setAttribute(
+          'aria-label',
+          nextHidden ? 'Show sidebar' : 'Hide sidebar',
+        );
+        btn.setAttribute('title', nextHidden ? 'Show sidebar' : 'Hide sidebar');
+      }
+    });
+  }
+
   function initializeSidebar() {
+    setSidebarHidden(readSidebarHidden());
     setupCollapsePersistence();
     setupCollapseButtons();
+    ensureSidebarVisibilityToggle();
     document.documentElement.classList.remove('sl-sidebar-collapse-pending');
   }
 
@@ -180,6 +256,50 @@ const { sidebar } = Astro.locals.starlightRoute;
 <style is:global>
   html.sl-sidebar-collapse-pending #starlight__sidebar {
     visibility: hidden;
+  }
+
+  @media (min-width: 50rem) {
+    html.sl-sidebar-hidden #starlight__sidebar {
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+
+  .sl-sidebar-visibility-toggle {
+    position: fixed;
+    inset-block-start: calc(var(--sl-nav-height) + 0.75rem);
+    inset-inline-start: 0.5rem;
+    z-index: calc(var(--sl-z-index-navbar) + 1);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--sl-font-system-mono, monospace);
+    font-size: var(--sl-text-xs);
+    line-height: 1;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--sl-color-gray-5);
+    color: var(--sl-color-gray-2);
+    background-color: var(--sl-color-bg-nav);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+    cursor: pointer;
+  }
+
+  html:not(.sl-sidebar-hidden) .sl-sidebar-visibility-toggle {
+    inset-inline-start: max(0.5rem, calc(var(--sl-sidebar-width) - 6.75rem));
+  }
+
+  .sl-sidebar-visibility-toggle:hover,
+  .sl-sidebar-visibility-toggle:focus-visible {
+    color: var(--sl-color-white);
+    border-color: var(--sl-color-gray-3);
+    outline: none;
+  }
+
+  @media (min-width: 50rem) {
+    .sl-sidebar-visibility-toggle {
+      display: inline-flex;
+    }
   }
 
   /* Stop space-between from scattering three flex children.
