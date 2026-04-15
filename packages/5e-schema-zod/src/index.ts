@@ -1,0 +1,13 @@
+/**
+ * @bastion-falls/5e-schema-zod
+ *
+ * Zod 4 schemas generated from the 5etools-utils JSON Schema files.
+ * Run `yarn generate` (or `yarn build`) to regenerate src/generated/.
+ */
+
+export * from './generated/shared.js'
+export * from './generated/entry.js'
+export * from './generated/creature.js'
+export * from './generated/spell.js'
+export * from './generated/item.js'
+export * from './generated/race.js'

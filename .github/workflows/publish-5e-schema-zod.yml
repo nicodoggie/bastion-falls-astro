@@ -1,0 +1,60 @@
+# Publish @bastion-falls/5e-schema-zod to npm.
+#
+# DISABLED — trigger is workflow_dispatch only (manual).
+# Before enabling an automatic trigger:
+#   1. Set "private": false in packages/5e-schema-zod/package.json
+#   2. Ensure the package name is correct for your npm org
+#   3. Add an NPM_TOKEN secret to the repository
+#   4. Replace the `workflow_dispatch` trigger with push/release as desired
+
+name: Publish 5e-schema-zod
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (skip actual publish)'
+        type: boolean
+        default: true
+
+jobs:
+  publish:
+    name: Build and publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write  # for npm provenance
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          registry-url: https://registry.npmjs.org
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build package
+        run: yarn workspace @bastion-falls/5e-schema-zod build
+
+      - name: Publish to npm
+        if: ${{ !inputs.dry_run }}
+        run: |
+          cd packages/5e-schema-zod
+          npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Dry-run summary
+        if: ${{ inputs.dry_run }}
+        run: |
+          echo "Dry run — skipping publish."
+          echo "Built dist/:"
+          ls -la packages/5e-schema-zod/dist/

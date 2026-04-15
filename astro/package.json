@@ -21,6 +21,7 @@
     "@astrojs/react": "5.0.1",
     "@astrojs/sitemap": "3.7.1",
     "@astrojs/starlight": "0.38.2",
+    "@bastion-falls/5e-schema-zod": "workspace:^",
     "@bastion-falls/types": "workspace:^",
     "@iconify-json/simple-icons": "^1.2.54",
     "@iconify-json/solar": "^1.2.4",

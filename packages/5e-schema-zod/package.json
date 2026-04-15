@@ -1,0 +1,44 @@
+{
+  "name": "@bastion-falls/5e-schema-zod",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
+    }
+  },
+  "scripts": {
+    "build": "tsx scripts/generate.ts && tsup --dts",
+    "dev": "tsx scripts/generate.ts && tsup --dts --watch",
+    "generate": "tsx scripts/generate.ts"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": "esm",
+    "tsconfig": "tsconfig.json",
+    "clean": true,
+    "minify": false
+  },
+  "dependencies": {
+    "5etools-utils": "latest",
+    "zod": "4"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
