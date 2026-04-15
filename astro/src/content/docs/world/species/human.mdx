@@ -3,9 +3,115 @@ title: Human
 tags:
   - species
 species:
-  name: Human
-  image: {}
+  type: humanoid
+  origin: Various
+  lifespan: "Up to 100 years"
+  biomes:
+    - urban
+    - grassland
+    - coastal
+    - forest
+    - hill
+    - mountain
+creatureStats:
+  - name: Guard
+    size:
+      - M
+    type: humanoid
+    alignment:
+      - L
+      - N
+    ac:
+      - ac: 16
+        from:
+          - chain mail
+          - shield
+    hp:
+      average: 11
+      formula: 2d8+2
+    speed:
+      walk: 30
+    str: 13
+    dex: 12
+    con: 12
+    int: 10
+    wis: 11
+    cha: 10
+    skill:
+      perception: "+2"
+    passive: 12
+    languages:
+      - any one language (usually Common)
+    cr: "1/8"
+    action:
+      - name: Spear
+        entries:
+          - "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range\
+            \ 20/60 ft., one target. Hit: 4 (1d6 + 2) piercing damage, or\
+            \ 5 (1d8 + 2) piercing damage if used with two hands to make a\
+            \ melee attack."
 
+  - name: Veteran
+    size:
+      - M
+    type: humanoid
+    alignment:
+      - A
+    ac:
+      - ac: 17
+        from:
+          - splint armor
+    hp:
+      average: 58
+      formula: 9d8+18
+    speed:
+      walk: 30
+    str: 16
+    dex: 13
+    con: 14
+    int: 10
+    wis: 11
+    cha: 10
+    save:
+      str: "+5"
+      con: "+4"
+    skill:
+      athletics: "+5"
+      perception: "+2"
+    passive: 12
+    languages:
+      - any one language (usually Common)
+    cr: "3"
+    trait:
+      - name: Multiattack
+        entries:
+          - "The veteran makes two longsword attacks. If it has a shortsword\
+            \ drawn, it can also make a shortsword attack."
+    action:
+      - name: Longsword
+        entries:
+          - "Melee Weapon Attack: +5 to hit, reach 5 ft., one target.\
+            \ Hit: 7 (1d8 + 3) slashing damage, or 8 (1d10 + 3) slashing\
+            \ damage if used with two hands."
+      - name: Shortsword
+        entries:
+          - "Melee Weapon Attack: +5 to hit, reach 5 ft., one target.\
+            \ Hit: 6 (1d6 + 3) piercing damage."
+      - name: Heavy Crossbow
+        entries:
+          - "Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target.\
+            \ Hit: 6 (1d10 + 1) piercing damage."
 ---
 
-<Stub />
+import StatBlock from '../../../../components/StatBlock.astro'
+
+Humans are the most adaptable and ambitious of the common races. Whatever
+drives them — ambition, idealism, wanderlust — humans are the innovators,
+the achievers, and the pioneers of the world. Their drive and diversity
+allow them to spread across nearly every corner of the world.
+
+## Stat Blocks
+
+{Object.entries(frontmatter.creatureStats).map(([name, creature]) => (
+  <StatBlock creature={creature} />
+))}

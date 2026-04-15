@@ -5,6 +5,7 @@ import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
 import { autoSidebarLoader } from "starlight-auto-sidebar/loader";
 import { autoSidebarSchema } from "starlight-auto-sidebar/schema";
+import { CreatureDataSchema } from '@bastion-falls/5e-schema-zod';
 
 import {
   CharacterSchema,
@@ -133,6 +134,7 @@ export const collections = {
     schema: docsSchema({
       extend: z.object({
         species: SpeciesSchema.omit({ name: true }).optional(),
+        creatureStats: z.record(z.string(), CreatureDataSchema).optional(),
       })
     }),
   }),

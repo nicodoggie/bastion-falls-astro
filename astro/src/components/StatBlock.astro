@@ -405,7 +405,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
 </div>
 
 <style>
-  /* ─── Tokens ─────────────────────────────────────────────────────────── */
+  /* ─── Light mode tokens ─────────────────────────────────────────────── */
   .sb {
     --sb-bg:        #fdf6e3;
     --sb-bg-alt:    #f3e8c8;
@@ -429,6 +429,18 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
     /* Full page width — let the container decide */
     width: 100%;
     overflow: hidden;
+  }
+
+  /* ─── Dark mode tokens ───────────────────────────────────────────────── */
+  :global([data-theme='dark']) .sb {
+    /* Cool indigo/amethyst palette to match the site's cavern theme */
+    --sb-bg:        #0e0e1c;
+    --sb-bg-alt:    #16162a;
+    --sb-red:       #a882d8;   /* amethyst — replaces maroon for headings  */
+    --sb-divider:   #5a3f7a;   /* deep purple divider                       */
+    --sb-gold:      #3a2e68;   /* indigo border — replaces gold             */
+    --sb-text:      #ccd0ea;   /* cool lavender-white                       */
+    box-shadow: 0 2px 20px rgba(100, 50, 180, 0.45);
   }
 
   /* ─── Header ─────────────────────────────────────────────────────────── */
@@ -500,7 +512,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   }
 
   .sb__stat-card-note {
-    color: #555;
+    color: color-mix(in srgb, var(--sb-text) 65%, transparent);
     font-size: 0.75rem;
     margin-top: 0.1rem;
   }
@@ -551,7 +563,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
 
   .sb__ability-mod {
     font-size: 0.8rem;
-    color: #444;
+    color: color-mix(in srgb, var(--sb-text) 70%, transparent);
   }
 
   /* ─── Properties ─────────────────────────────────────────────────────── */
