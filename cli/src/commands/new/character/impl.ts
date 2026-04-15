@@ -57,7 +57,7 @@ export default async function character(this: LocalContext, flags: NewCharacterC
   const data: CharacterTemplate = {
     title: articleName,
     character: {
-      ddb,
+      ddb: ddb ?? "",
       image,
       details: {
         age,

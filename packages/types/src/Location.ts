@@ -44,6 +44,7 @@ export const HeritageLocationTypeSchema = z.enum([
 ]);
 
 export const NaturalLocationTypeSchema = z.enum([
+  'delta',
   'feature',
   'mountain',
   'forest',

@@ -3,6 +3,8 @@ import { locationCommandBuilder } from "./location/command.js";
 import { characterCommandBuilder } from "./character/command.js";
 import { eventCommandBuilder } from "./event/command.js";
 import { familyCommandBuilder } from "./family/command.js";
+import { vehicleCommandBuilder } from "./vehicle/command.js";
+import { speciesCommandBuilder } from "./species/command.js";
 
 export interface NewCommandFlags {
   force?: boolean;
@@ -27,6 +29,8 @@ const locationCommand = locationCommandBuilder(defaultFlags);
 const characterCommand = characterCommandBuilder(defaultFlags);
 const eventCommand = eventCommandBuilder(defaultFlags);
 const familyCommand = familyCommandBuilder(defaultFlags);
+const vehicleCommand = vehicleCommandBuilder(defaultFlags);
+const speciesCommand = speciesCommandBuilder(defaultFlags);
 
 export const newCommandRoutes = buildRouteMap({
   routes: {
@@ -42,6 +46,11 @@ export const newCommandRoutes = buildRouteMap({
     fam: familyCommand,
     family: familyCommand,
     families: familyCommand,
+    veh: vehicleCommand,
+    vehicle: vehicleCommand,
+    vehicles: vehicleCommand,
+    spe: speciesCommand,
+    species: speciesCommand,
   },
   docs: {
     brief: "Create a new article",

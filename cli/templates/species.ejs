@@ -1,0 +1,43 @@
+---
+title: <%= title %>
+tags:
+  <%_ tags.forEach(function(tag){ _%>
+  - <%- tag %>
+  <%_ }) _%>
+species:
+  <%_ if (species.type) { _%>
+  type: <%= species.type %>
+  <%_ } _%>
+  <%_ if (species.origin) { _%>
+  origin: <%= species.origin %>
+  <%_ } _%>
+  <%_ if (species.lifespan) { _%>
+  lifespan: <%= species.lifespan %>
+  <%_ } _%>
+  <%_ if (species.locations && species.locations.length > 0) { _%>
+  locations:
+    <%_ species.locations.forEach(function(loc){ _%>
+    - <%- loc %>
+    <%_ }) _%>
+  <%_ } _%>
+  <%_ if (species.biomes && species.biomes.length > 0) { _%>
+  biomes:
+    <%_ species.biomes.forEach(function(biome){ _%>
+    - <%- biome %>
+    <%_ }) _%>
+  <%_ } _%>
+  <%_ if (species.traits && species.traits.length > 0) { _%>
+  traits:
+    <%_ species.traits.forEach(function(trait){ _%>
+    - <%- trait %>
+    <%_ }) _%>
+  <%_ } _%>
+  <%_ if (species.diet && species.diet.length > 0) { _%>
+  diet:
+    <%_ species.diet.forEach(function(item){ _%>
+    - <%- item %>
+    <%_ }) _%>
+  <%_ } _%>
+---
+
+<Stub />

@@ -8,7 +8,7 @@
     "types": "yarn workspace @bastion-falls/types",
     "cli": "yarn workspace @bastion-falls/cli",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"yarn astro dev\" \"yarn types dev\"",
+    "dev": "concurrently \"yarn astro dev\" \"yarn types dev\" \"yarn cli dev\"",
     "build": "yarn cli build && yarn types build && yarn astro build",
     "preview": "yarn astro preview",
     "deploy": "yarn wrangler pages deploy",

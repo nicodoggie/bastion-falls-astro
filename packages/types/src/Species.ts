@@ -8,7 +8,19 @@ export const SpeciesSchema = z.object({
   origin: z.string().optional(),
   locations: z.array(z.string()).optional(),
   lifespan: z.string().optional(),
-  biomes: z.array(z.string()).optional(),
+  biomes: z.array(z.enum([
+    'arctic',
+    'coastal',
+    'desert',
+    'forest',
+    'grassland',
+    'hill',
+    'mountain',
+    'swamp',
+    'underdark',
+    'underwater',
+    'urban'
+  ])).optional(),
   traits: z.array(z.string()).optional(),
   diet: z.array(z.string()).optional(),
 });

@@ -1,0 +1,29 @@
+---
+title: <%= title %>
+tags:
+  <%_ tags.forEach(function(tag){ _%>
+  - <%- tag %>
+  <%_ }) _%>
+vehicle:
+  type: <%= vehicle.type %>
+  travelPace: <%= vehicle.travelPace %>
+  capacity:
+    crew: <%= vehicle.capacity.crew %>
+    <%_ if (vehicle.capacity.passengers != null) { _%>
+    passengers: <%= vehicle.capacity.passengers %>
+    <%_ } _%>
+    <%_ if (vehicle.capacity.cargo != null) { _%>
+    cargo: <%= vehicle.capacity.cargo %>
+    <%_ } _%>
+  stats:
+    size: <%= vehicle.stats.size %>
+    strength: <%= vehicle.stats.strength %>
+    dexterity: <%= vehicle.stats.dexterity %>
+    constitution: <%= vehicle.stats.constitution %>
+    intelligence: <%= vehicle.stats.intelligence %>
+    wisdom: <%= vehicle.stats.wisdom %>
+    charisma: <%= vehicle.stats.charisma %>
+  crew: []
+---
+
+<Stub />

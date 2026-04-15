@@ -16,7 +16,7 @@ const SexOrganTypeSchema = z.object({
 })
 
 const PubicHairSchema = z.object({
-  length: z.enum(["none", "trimmed", "full"]).optional(),
+  length: z.enum(["none", "thin", "trimmed", "full"]).optional(),
   style: z.string().optional(),
   color: z.string().optional(),
 })

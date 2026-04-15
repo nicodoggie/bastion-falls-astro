@@ -22,6 +22,7 @@ const lexurgyLang = JSON.parse(
   ),
 );
 
+
 export default defineConfig({
   output: 'static',
   site: 'https://bastion-falls.thekennel.info',
@@ -60,6 +61,10 @@ export default defineConfig({
           attrs: {
             src: 'https://app.fantasy-calendar.com/js/embed.js',
           },
+        },
+        {
+          tag: 'script',
+          attrs: { src: '/scripts/markmap-modal.js' },
         },
       ],
       social: [
