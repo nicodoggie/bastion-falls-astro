@@ -6,10 +6,11 @@
   "scripts": {
     "astro": "yarn workspace @bastion-falls/astro",
     "types": "yarn workspace @bastion-falls/types",
+    "5e-schema": "yarn workspace @bastion-falls/5e-schema-zod",
     "cli": "yarn workspace @bastion-falls/cli",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"yarn astro dev\" \"yarn types dev\" \"yarn cli dev\"",
-    "build": "yarn cli build && yarn types build && yarn astro build",
+    "dev": "concurrently \"yarn astro dev\" \"yarn types dev\" \"yarn cli dev\" \"yarn 5e-schema dev\"",
+    "build": "yarn cli build && yarn types build && yarn 5e-schema build && yarn astro build",
     "preview": "yarn astro preview",
     "deploy": "yarn wrangler pages deploy",
     "bfcli": "yarn cli bfcli"
