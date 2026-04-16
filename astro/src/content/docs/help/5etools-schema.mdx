@@ -1,0 +1,600 @@
+---
+title: Creature Stats Frontmatter Reference
+description: |
+  How to populate the creatureStats field in species pages to render D&D 5e stat
+  blocks.
+---
+
+import StatBlock from '../../../components/StatBlock.astro';
+
+The `creatureStats` frontmatter field on species pages lets you embed one or
+more D&D 5e stat blocks directly in an article. Each key is an arbitrary
+identifier you choose; the value is a creature object following the
+[5etools bestiary schema](https://github.com/TheGiddyLimit/5etools-utils).
+
+```yaml
+# in a species page's frontmatter
+creatureStats:
+  my-creature-key:
+    name: My Creature
+    # … fields described below
+```
+
+To render a stat block in the body of the page use the `StatBlock` component:
+
+```mdx
+import StatBlock from '../../../../components/StatBlock.astro';
+
+{ // @ts-expect-error -- frontmatter is injected at runtime
+frontmatter.creatureStats['my-creature-key'] && <StatBlock
+creature={frontmatter.creatureStats['my-creature-key']} /> }
+```
+
+---
+
+## Minimal example
+
+The smallest valid stat block needs a name, size, type, AC, HP, speed, the six
+ability scores, and a CR.
+
+```yaml
+creatureStats:
+  goblin:
+    name: Goblin
+    size:
+      - S
+    type: humanoid
+    alignment:
+      - C
+      - E
+    ac:
+      - ac: 15
+        from:
+          - leather armor
+          - shield
+    hp:
+      average: 7
+      formula: 2d6
+    speed:
+      walk: 30
+    str: 8
+    dex: 14
+    con: 10
+    int: 10
+    wis: 8
+    cha: 8
+    passive: 9
+    languages:
+      - Common
+      - Goblin
+    cr: '1/4'
+```
+
+---
+
+## Field reference
+
+### `name`
+
+`string` — The creature's display name shown in the stat block header.
+
+---
+
+### `size`
+
+`string[]` — One or more size codes:
+
+| Code | Size       |
+| ---- | ---------- |
+| `T`  | Tiny       |
+| `S`  | Small      |
+| `M`  | Medium     |
+| `L`  | Large      |
+| `H`  | Huge       |
+| `G`  | Gargantuan |
+| `V`  | Varies     |
+
+Multiple codes render as "Small or Medium", etc.
+
+---
+
+### `type`
+
+`string | object` — The creature type. Can be a plain string:
+
+```yaml
+type: undead
+```
+
+Or an object for subtypes:
+
+```yaml
+type:
+  type: humanoid
+  tags:
+    - human
+    - shapechanger
+```
+
+Common types: `aberration`, `beast`, `celestial`, `construct`, `dragon`,
+`elemental`, `fey`, `fiend`, `giant`, `humanoid`, `monstrosity`, `ooze`,
+`plant`, `undead`.
+
+---
+
+### `alignment`
+
+`string[]` — Alignment tokens combined left-to-right:
+
+| Code | Meaning       |
+| ---- | ------------- |
+| `L`  | Lawful        |
+| `C`  | Chaotic       |
+| `N`  | Neutral       |
+| `G`  | Good          |
+| `E`  | Evil          |
+| `U`  | Unaligned     |
+| `A`  | Any alignment |
+
+`["N", "N"]` renders as "True Neutral". `["A"]` renders as "Any alignment".
+
+For creatures with a special alignment note use:
+
+```yaml
+alignment:
+  - special: 'as summoner'
+```
+
+---
+
+### `ac`
+
+`array` — Armor class. Each element is either a plain number or an object:
+
+```yaml
+ac:
+  - ac: 17
+    from:
+      - splint armor
+```
+
+Multiple entries cover conditional AC values:
+
+```yaml
+ac:
+  - ac: 13
+  - ac: 16
+    condition: with mage armor
+    from:
+      - natural armor
+```
+
+For unusual AC values use the `special` form:
+
+```yaml
+ac:
+  - special: 'equal to the number of souls consumed'
+```
+
+---
+
+### `hp`
+
+`object` — Hit points. Provide both `average` and `formula`:
+
+```yaml
+hp:
+  average: 58
+  formula: 9d8+18
+```
+
+For creatures with unusual HP use `special`:
+
+```yaml
+hp:
+  special: "equal to its master's HP"
+```
+
+---
+
+### `speed`
+
+`object` — Movement speeds in feet:
+
+```yaml
+speed:
+  walk: 30
+  fly: 60
+  swim: 30
+  climb: 20
+  burrow: 10
+```
+
+Add `canHover: true` alongside `fly` for hovering creatures. Omit any speed type
+the creature lacks.
+
+---
+
+### Ability scores (`str`, `dex`, `con`, `int`, `wis`, `cha`)
+
+`number` — The raw score (not the modifier). Modifiers and saving throw bonuses
+are computed automatically.
+
+```yaml
+str: 20
+dex: 14
+con: 16
+int: 10
+wis: 12
+cha: 8
+```
+
+For creatures with a special score note use:
+
+```yaml
+str:
+  special: 'see Essence Drain'
+```
+
+---
+
+### `save`
+
+`object` — Saving throw bonuses for proficient saves. Only include the saves
+where the creature has proficiency (or expertise). Values are formatted strings
+including the sign:
+
+```yaml
+save:
+  str: '+5'
+  con: '+4'
+  wis: '+3'
+```
+
+Saves not listed here default to the raw ability modifier in the stat block.
+
+---
+
+### `skill`
+
+`object` — Skill bonuses. Same format as `save`: only list skills where the
+creature has proficiency or expertise:
+
+```yaml
+skill:
+  perception: '+5'
+  stealth: '+4'
+  athletics: '+3'
+```
+
+All 18 skills are supported. Multi-word skill names are quoted:
+
+```yaml
+skill:
+  'animal handling': '+3'
+  'sleight of hand': '+2'
+```
+
+---
+
+### `senses`
+
+`string[]` — Sense lines rendered verbatim:
+
+```yaml
+senses:
+  - darkvision 60 ft.
+  - tremorsense 30 ft.
+```
+
+---
+
+### `passive`
+
+`number` — Passive Wisdom (Perception). Usually `10 + Perception modifier`:
+
+```yaml
+passive: 15
+```
+
+---
+
+### `languages`
+
+`string[]` — Languages known:
+
+```yaml
+languages:
+  - Common
+  - Elvish
+  - telepathy 60 ft.
+```
+
+---
+
+### `cr`
+
+`string` — Challenge rating. Use fractional strings for sub-1 CRs:
+
+```yaml
+cr: "1/8"   # 25 XP
+cr: "1/4"   # 50 XP
+cr: "1/2"   # 100 XP
+cr: "5"     # 1,800 XP
+```
+
+For creatures with a lair CR use the object form:
+
+```yaml
+cr:
+  cr: '14'
+  lair: '15'
+```
+
+---
+
+### `resist`, `immune`, `vulnerable`
+
+Damage resistances, immunities, and vulnerabilities. Accepts an array of damage
+type strings or condition objects:
+
+```yaml
+immune:
+  - fire
+  - poison
+  - bludgeoning, piercing, and slashing from nonmagical attacks
+resist:
+  - cold
+  - lightning
+vulnerable:
+  - radiant
+```
+
+---
+
+### `conditionImmune`
+
+`string[]` — Condition immunities:
+
+```yaml
+conditionImmune:
+  - charmed
+  - exhaustion
+  - frightened
+  - poisoned
+```
+
+---
+
+### `trait`
+
+`array` — Passive features. Each entry needs a `name` and `entries` (a list of
+description strings):
+
+```yaml
+trait:
+  - name: Pack Tactics
+    entries:
+      - >
+        The wolf has advantage on an attack roll against a creature if at least
+        one of the wolf's allies is within 5 feet of the creature and the ally
+        isn't incapacitated.
+  - name: Keen Hearing and Smell
+    entries:
+      - The wolf has advantage on Wisdom (Perception) checks that rely on
+        hearing or smell.
+```
+
+---
+
+### `action`
+
+`array` — Actions. Same shape as `trait`:
+
+```yaml
+action:
+  - name: Bite
+    entries:
+      - >
+        Melee Weapon Attack: +4 to hit, reach 5 ft., one target.
+        Hit: 7 (2d4 + 2) piercing damage. If the target is a creature,
+        it must succeed on a DC 11 Strength saving throw or be knocked
+        prone.
+  - name: Multiattack
+    entries:
+      - The creature makes two Claw attacks.
+```
+
+**Recharge mechanic** — there is no separate `recharge` field in the
+schema. Embed the recharge note directly in the action `name`, exactly
+as it appears in print:
+
+```yaml
+action:
+  - name: "Fire Breath (Recharge 5–6)"
+    entries:
+      - >
+        The dragon exhales fire in a 60-foot cone. Each creature in that
+        area must make a DC 18 Dexterity saving throw, taking 56 (16d6)
+        fire damage on a failed save, or half on a success.
+  - name: "Poison Breath (Recharge 6)"
+    entries:
+      - The dragon exhales poisonous gas in a 30-foot cone.
+  - name: "Breath Weapon (Recharges after a Short or Long Rest)"
+    entries:
+      - The creature exhales a blast of energy.
+```
+
+---
+
+### `bonus`
+
+`array` — Bonus actions. Same shape as `action`:
+
+```yaml
+bonus:
+  - name: Nimble Escape
+    entries:
+      - >
+        The goblin takes the Disengage or Hide action.
+```
+
+---
+
+### `reaction`
+
+`array` — Reactions. Same shape as `action`:
+
+```yaml
+reaction:
+  - name: Parry
+    entries:
+      - >
+        The knight adds 2 to its AC against one melee attack that would hit it.
+        To do so, the knight must see the attacker and be wielding a melee
+        weapon.
+```
+
+---
+
+### `legendary`
+
+`array` — Legendary actions. Same shape as `action`. Add `legendaryHeader` for
+the introductory paragraph:
+
+```yaml
+legendaryHeader:
+  - >
+    The dragon can take 3 legendary actions, choosing from the options below.
+    Only one legendary action option can be used at a time, and only at the end
+    of another creature's turn.
+legendary:
+  - name: Detect
+    entries:
+      - The dragon makes a Wisdom (Perception) check.
+  - name: Tail Attack
+    entries:
+      - The dragon makes a tail attack.
+  - name: Wing Attack (Costs 2 Actions)
+    entries:
+      - >
+        The dragon beats its wings. Each creature within 10 feet of the dragon
+        must succeed on a DC 19 Dexterity saving throw or take 13 (2d6 + 6)
+        bludgeoning damage and be knocked prone.
+```
+
+---
+
+## Full example
+
+export const exampleCreature = {
+  name: 'Veteran',
+  size: ['M'],
+  type: 'humanoid',
+  alignment: ['A'],
+  ac: [{ ac: 17, from: ['splint armor'] }],
+  hp: { average: 58, formula: '9d8+18' },
+  speed: { walk: 30 },
+  str: 16,
+  dex: 13,
+  con: 14,
+  int: 10,
+  wis: 11,
+  cha: 10,
+  save: { str: '+5', con: '+4' },
+  skill: { athletics: '+5', perception: '+2' },
+  passive: 12,
+  languages: ['any one language (usually Common)'],
+  cr: '3',
+  trait: [
+    {
+      name: 'Multiattack',
+      entries: [
+        'The veteran makes two longsword attacks. If it has a shortsword drawn, it can also make a shortsword attack.',
+      ],
+    },
+  ],
+  action: [
+    {
+      name: 'Longsword',
+      entries: [
+        'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) slashing damage, or 8 (1d10 + 3) slashing damage if used with two hands.',
+      ],
+    },
+    {
+      name: 'Shortsword',
+      entries: [
+        'Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage.',
+      ],
+    },
+    {
+      name: 'Heavy Crossbow',
+      entries: [
+        'Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target. Hit: 6 (1d10 + 1) piercing damage.',
+      ],
+    },
+  ],
+};
+
+<StatBlock creature={exampleCreature} />
+
+The YAML for the veteran above:
+
+```yaml
+creatureStats:
+  veteran:
+    name: Veteran
+    size:
+      - M
+    type: humanoid
+    alignment:
+      - A
+    ac:
+      - ac: 17
+        from:
+          - splint armor
+    hp:
+      average: 58
+      formula: 9d8+18
+    speed:
+      walk: 30
+    str: 16
+    dex: 13
+    con: 14
+    int: 10
+    wis: 11
+    cha: 10
+    save:
+      str: '+5'
+      con: '+4'
+    skill:
+      athletics: '+5'
+      perception: '+2'
+    passive: 12
+    languages:
+      - any one language (usually Common)
+    cr: '3'
+    trait:
+      - name: Multiattack
+        entries:
+          - >
+            The veteran makes two longsword attacks. If it has a shortsword
+            drawn, it can also make a shortsword attack.
+    action:
+      - name: Longsword
+        entries:
+          - >
+            Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8
+            + 3) slashing damage, or 8 (1d10 + 3) slashing damage if used with
+            two hands.
+      - name: Shortsword
+        entries:
+          - >
+            Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6
+            + 3) piercing damage.
+      - name: Heavy Crossbow
+        entries:
+          - >
+            Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target. Hit:
+            6 (1d10 + 1) piercing damage.
+```

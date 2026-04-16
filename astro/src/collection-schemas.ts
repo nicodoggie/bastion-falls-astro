@@ -40,6 +40,7 @@ export const collectionExtensions = {
     schema:
       z.object({
         character: CharacterSchema.omit({ name: true }).optional(),
+        creatureStats: z.record(z.string(), CreatureDataSchema).optional(),
       }),
   },
 

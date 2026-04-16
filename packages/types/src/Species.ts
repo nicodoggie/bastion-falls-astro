@@ -16,7 +16,7 @@ export const SpeciesSchema = z.object({
     'grassland',
     'hill',
     'mountain',
-    'swamp',
+    'swamp',    
     'underdark',
     'underwater',
     'urban'

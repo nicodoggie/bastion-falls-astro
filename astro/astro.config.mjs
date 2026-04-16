@@ -91,6 +91,12 @@ export default defineConfig({
             directory: 'world',
           },
         },
+        {
+          label: 'Help',
+          autogenerate: {
+            directory: 'help',
+          },
+        }
       ],
       components: {
         PageSidebar: './src/components/PageSidebar.astro',

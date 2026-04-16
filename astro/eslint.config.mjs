@@ -17,6 +17,8 @@ export default [
     },
     rules: {
       ...flat.rules,
+      'no-unused-expressions': 'off',
+      
       'mdx/remark': 'warn',
     },
   },

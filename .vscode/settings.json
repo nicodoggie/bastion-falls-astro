@@ -11,6 +11,12 @@
     ]
   ],
   "terminal.integrated.defaultProfile.linux": "zsh",
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "eslint.workingDirectories": [
     { "directory": "astro", "changeProcessCWD": true }
   ],

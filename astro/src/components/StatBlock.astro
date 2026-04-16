@@ -20,10 +20,16 @@ function modifier(score: number): string {
 
 function abilityDisplay(
   score: number | null | { special: string } | undefined,
-): { score: string; mod: string } {
-  if (score === null || score === undefined) return { score: '—', mod: '—' }
-  if (typeof score === 'object') return { score: score.special, mod: '' }
-  return { score: String(score), mod: modifier(score) }
+  saveOverride?: string | null,
+): { score: string; mod: string; save: string } {
+  if (score === null || score === undefined)
+    return { score: '—', mod: '—', save: '—' }
+  if (typeof score === 'object')
+    return { score: score.special, mod: '', save: '' }
+  const mod = modifier(score)
+  // 5etools stores save bonuses as strings like "+5" already
+  const save = saveOverride != null ? String(saveOverride) : mod
+  return { score: String(score), mod, save }
 }
 
 const SIZE_NAMES: Record<string, string> = {
@@ -255,10 +261,12 @@ const meta = [sizePart, typePart].filter(Boolean).join(' ')
 
 // Pre-compute ability display values so we avoid TypeScript generics in JSX
 const rawCreature = c as Record<string, unknown>
+const rawSaves = (c.save ?? {}) as Record<string, string | null | undefined>
 const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   label,
   ...abilityDisplay(
     rawCreature[key] as number | null | { special: string } | undefined,
+    rawSaves[key],
   ),
 }))
 ---
@@ -302,24 +310,30 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
       ))}
     </div>
     <div class="sb__abilities-row">
-      {abilityDisplays.map(({ score, mod }) => (
+      {abilityDisplays.map(({ score, mod, save }) => (
         <div class="sb__ability-cell">
           <span class="sb__ability-score">{score}</span>
-          <span class="sb__ability-mod">{mod}</span>
+          <div class="sb__ability-stats">
+            <span class="sb__ability-stat">
+              <span class="sb__ability-stat-label">MOD</span>
+              <span class="sb__ability-mod">{mod}</span>
+            </span>
+            <span class="sb__ability-stat">
+              <span class="sb__ability-stat-label">SAVE</span>
+              <span class="sb__ability-save" data-proficient={save !== mod}>
+                {save}
+              </span>
+            </span>
+          </div>
         </div>
       ))}
     </div>
   </div>
 
   {/* ── Properties ── */}
-  {(saves.length > 0 || skills.length > 0 || senses.length > 0 || languages.length > 0) && (
+  {/* Saving Throws are now inline in the ability score grid above */}
+  {(skills.length > 0 || senses.length > 0 || languages.length > 0) && (
     <div class="sb__properties">
-      {saves.length > 0 && (
-        <div class="sb__prop">
-          <span class="sb__prop-name">Saving Throws</span>
-          <span class="sb__prop-value">{saves.join(', ')}</span>
-        </div>
-      )}
       {skills.length > 0 && (
         <div class="sb__prop">
           <span class="sb__prop-name">Skills</span>
@@ -551,19 +565,53 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0;
+    gap: 0.15rem;
+    padding-block: 0.5rem;
   }
 
   .sb__ability-score {
     font-family: var(--sb-font-head);
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1;
   }
 
-  .sb__ability-mod {
+  /* Row containing MOD and SAVE side-by-side */
+  .sb__ability-stats {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+  }
+
+  .sb__ability-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .sb__ability-stat-label {
+    color: var(--sb-red);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    opacity: 0.75;
+    text-transform: uppercase;
+  }
+
+  .sb__ability-mod,
+  .sb__ability-save {
     font-size: 0.8rem;
-    color: color-mix(in srgb, var(--sb-text) 70%, transparent);
+    font-weight: 600;
+    line-height: 1.2;
+    color: color-mix(in srgb, var(--sb-text) 75%, transparent);
+  }
+
+  /* Highlight saves where proficiency applies (save ≠ raw modifier) */
+  .sb__ability-save[data-proficient='true'] {
+    color: var(--sb-text);
+    font-weight: 700;
   }
 
   /* ─── Properties ─────────────────────────────────────────────────────── */
