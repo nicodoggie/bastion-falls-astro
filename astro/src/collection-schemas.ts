@@ -9,7 +9,7 @@
  */
 import { z } from 'astro/zod';
 
-import { CreatureDataSchema } from '@bastion-falls/5e-schema-zod';
+import { CreatureDataSchema, VehicleShipDataSchema } from '@bastion-falls/5e-schema-zod';
 import {
   CharacterSchema,
   ConceptSchema,
@@ -19,7 +19,6 @@ import {
   LocationSchema,
   OrganizationSchema,
   SpeciesSchema,
-  VehicleSchema,
 } from '@bastion-falls/types';
 
 /**
@@ -121,7 +120,7 @@ export const collectionExtensions = {
       base: './src/content/docs/world/vehicles',
     },
     schema: z.object({
-      vehicle: VehicleSchema.omit({ name: true }).optional(),
+      vehicle: VehicleShipDataSchema.optional(),
     }),
   },
 } as const;

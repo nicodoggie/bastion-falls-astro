@@ -12,12 +12,95 @@ species:
     - mountain
   traits:
     - darkvision
+creatureStats:
+  drekavac:
+    cr: '1/4'
+    name: Drekavac
+    size: ['T']
+    type: undead
+    alignment:
+      - E
+      - N
+    ac:
+      - ac: 12
+        from:
+          - natural armor
+    hp:
+      average: 16
+      formula: 2d6 + 4
+    speed:
+      walk: 30
+    str: 13
+    dex: 16
+    con: 12
+    int: 8
+    wis: 11
+    cha: 10
+    senses:
+      - darkvision 60 ft.
+    passive: 11
+    trait:
+      - name: Undead Fortitude
+        entries:
+          - |
+            If the drekavac has 0 hit points, it must succeed on a DC 10 Wisdom 
+            saving throw or be forced to stabilize. The drekavac can't be raised 
+            if it has 0 hit points.
+      - name: Sunlight Sensitivity
+        entries:
+          - |
+            While in sunlight, the drekavac has disadvantage on attack rolls, 
+            as well as on Wisdom (Perception) checks that rely on sight.
+      - name: Summoner's Link
+        entries:
+          - If a drekavac is summoned, it has a telepathic link to the summoner.
+            The summoner can issue commands to the drekavac through this link.
+            The drekavac must obey all the summoner's commands, including ones
+            that could be harmful to the drekavac.
+      - name: Animal Speech
+        entries:
+          - A
+      - name: Death Screech
+        entries:
+          - |
+            When the drekavac drops to 0 hit points, it emits a deathly screech.
+            All creatures within 30 feet of the drekavac must succeed on a 
+            DC 10 Wisdom saving throw or be frightened of the drekavac until the
+            start of their next turn.
+          - |
+            If the drekavac was summoned, the summoner instantly knows the 
+            circumstances in which the drekavac was killed, such as the manner 
+            of death, the location of the drekavac, and the face of the killer.
+    action:
+      - name: Bite
+        entries:
+          - |
+            Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) piercing damage.
+      - name: Screech
+        entries:
+          - |
+            The drekavac emits a deathly screech. All creatures within 30 feet of the drekavac must 
+            succeed on a DC 10 Wisdom saving throw or be frightened of the drekavac until the
+            start of their next turn.
+      - name: Invisibility (1/day)
+        entries:
+          - The drekavac can cast the invisibility spell on itself, requiring
+            no material components and no concentration.
 ---
 
-The _Drekavac_ are undead creatures made from aborted fetuses or the bodies of
-dead infants. They are created by Hags of the 
-[Children of the Coven](../../../organizations/children-of-the-coven.mdx)
-by covering the cadavers in a special dough, then baking them in a special oven.
+import StatBlock from '../../../../components/StatBlock.astro'
 
-The Drekavac are used as servants by the Hags, to gather raw materials, 
-information, or perform assassinations on moonless nights.
+The _drekavac_ are shadow-bound undead creatures that resemble small children, but with limbs and
+heads shaped like rotting animals like chickens, dogs and cats.
+
+They are said to be made by hags from aborted fetuses or the bodies of dead infants.
+They replace the most decayed parts of the body with various animal parts and cover them with a
+special dough. After baking in a hag's oven, the grotesque creature is brought to unlife as servants
+of the night. They're often given unsavory tasks by their masters, such as gathering rotten meat and
+ingredients from noxious swamps and graveyards.
+
+{
+// @ts-expect-error -- frontmatter is injected by Astro's MDX runtime,
+// not visible to @mdx-js/typescript-plugin at check time.
+frontmatter.creatureStats.drekavac && <StatBlock creature={frontmatter.creatureStats.drekavac} />
+}

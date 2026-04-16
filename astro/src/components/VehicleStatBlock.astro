@@ -1,52 +1,568 @@
 ---
 /**
- * VehicleStatBlock - A wrapper component for use in MDX files
- * This component automatically fetches the current entry's vehicle data
- *
- * Usage in MDX:
- * <VehicleStatBlock />
+ * D&D 5e vehicle stat block for MDX — ship data matching the 5etools
+ * `vehicleShipData` shape (`VehicleShipData` from `VehicleShipDataSchema` in
+ * `@bastion-falls/5e-schema-zod`). Same usage pattern as `StatBlock.astro`
+ * (typed `vehicle` prop, optional display `name` / `link`).
  */
-
-import VehicleCard from './VehicleCard.astro';
-import { getEntry } from 'astro:content';
+import type { VehicleShipData } from '@bastion-falls/5e-schema-zod'
 
 interface Props {
-  /** Optional: override with a specific vehicle entry slug */
-  slug?: string;
+  vehicle: VehicleShipData
+  /** Overrides `vehicle.name` in the header (e.g. Starlight `title`). */
+  name?: string
+  link?: string
 }
 
-const { slug } = Astro.props;
+const { vehicle, name, link } = Astro.props
+const displayName = name ?? vehicle.name ?? 'Unknown Vehicle'
 
-// Get the current URL path to determine which vehicle page we're on
-const currentPath = Astro.url.pathname;
+// ─── Helpers ───────────────────────────────────────────────────────────────
 
-// Extract slug from path: /world/vehicles/vehicle-name/ -> vehicle-name
-const pathParts = currentPath.split('/').filter(Boolean);
-const defaultSlug =
-  pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
-
-const vehicleSlug = slug || defaultSlug;
-
-// Fetch the vehicle entry
-const entry = await getEntry('vehicle', vehicleSlug);
-
-if (!entry) {
-  console.error(`Vehicle entry not found for slug: ${vehicleSlug}`);
+function mod(score: number | null | undefined): string {
+  if (score == null) return '—'
+  const m = Math.floor((score - 10) / 2)
+  return m >= 0 ? `+${m}` : `${m}`
 }
 
-const vehicleData = entry?.data.vehicle;
-const vehicleName = entry?.data.title;
-const vehicleLink = entry ? `/world/vehicles/${entry.id}` : undefined;
+const SIZE_NAMES: Record<string, string> = {
+  F: 'Fine', D: 'Diminutive', T: 'Tiny', S: 'Small',
+  M: 'Medium', L: 'Large', H: 'Huge', G: 'Gargantuan', C: 'Colossal',
+}
+
+function formatSize(s: string | undefined): string {
+  return s ? (SIZE_NAMES[s] ?? s) : '—'
+}
+
+function formatTerrain(terrain: string[] | undefined): string {
+  if (!terrain?.length) return '—'
+  return terrain.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(', ')
+}
+
+function formatEntries(entries: unknown[]): string {
+  return entries
+    .map(e => {
+      if (typeof e === 'string') return e
+      if (typeof e === 'object' && e !== null) {
+        const o = e as Record<string, unknown>
+        if (Array.isArray(o['entries'])) return formatEntries(o['entries'] as unknown[])
+        if (o['text']) return String(o['text'])
+      }
+      return ''
+    })
+    .filter(Boolean)
+    .join(' ')
+}
+
+/** Flatten 5etools damageImmunity / damageResist / damageVulnerability arrays. */
+function formatDamageList(val: unknown): string | null {
+  if (val == null) return null
+  if (Array.isArray(val)) {
+    const parts = val.map((item) => {
+      if (typeof item === 'string') return item
+      if (typeof item === 'object' && item !== null) {
+        const o = item as Record<string, unknown>
+        if (typeof o.special === 'string') return o.special
+        for (const k of ['immune', 'resist', 'vulnerable'] as const) {
+          if (o[k] != null) {
+            const inner = formatDamageList(o[k])
+            return [o.preNote, inner, o.note].filter(Boolean).join(' ')
+          }
+        }
+      }
+      return ''
+    }).filter(Boolean)
+    return parts.length ? parts.join(', ') : null
+  }
+  return null
+}
+
+/** Flatten 5etools conditionImmunityArray (mirrors damage list nesting). */
+function formatConditionList(val: unknown): string | null {
+  if (val == null) return null
+  if (Array.isArray(val)) {
+    const parts = val.map((item) => {
+      if (typeof item === 'string') return item
+      if (typeof item === 'object' && item !== null) {
+        const o = item as Record<string, unknown>
+        if (typeof o.special === 'string') return o.special
+        if (o.conditionImmune != null) {
+          const inner = formatConditionList(o.conditionImmune)
+          return [o.preNote, inner, o.note].filter(Boolean).join(' ')
+        }
+      }
+      return ''
+    }).filter(Boolean)
+    return parts.length ? parts.join(', ') : null
+  }
+  return null
+}
+
+const ABILITIES = [
+  { key: 'str', label: 'STR' },
+  { key: 'dex', label: 'DEX' },
+  { key: 'con', label: 'CON' },
+  { key: 'int', label: 'INT' },
+  { key: 'wis', label: 'WIS' },
+  { key: 'cha', label: 'CHA' },
+] as const
+
+const raw = vehicle as Record<string, unknown>
+const abilityDisplays = ABILITIES.map(({ key, label }) => {
+  const score = raw[key] as number | null | undefined
+  return {
+    label,
+    score: score != null ? String(score) : '—',
+    mod: mod(score),
+  }
+})
 ---
 
-{
-  vehicleData ? (
-    <VehicleCard vehicle={vehicleData} name={vehicleName} link={vehicleLink} />
-  ) : (
-    <div class="p-4 border border-red-500 bg-red-50 dark:bg-red-900/20 rounded">
-      <p class="text-red-700 dark:text-red-300">
-        Vehicle data not found for: <code>{vehicleSlug}</code>
-      </p>
+<div class="vc not-content">
+
+  {/* ── Name bar ── */}
+  <div class="vc__header">
+    {link
+      ? <a href={link} class="vc__name-link"><h2 class="vc__name">{displayName}</h2></a>
+      : <h2 class="vc__name">{displayName}</h2>
+    }
+    <p class="vc__meta">
+      {formatSize(vehicle.size)} vehicle
+      {vehicle.terrain?.length ? ` · ${formatTerrain(vehicle.terrain)}` : ''}
+      {vehicle.dimensions?.length ? ` · ${vehicle.dimensions.join(', ')}` : ''}
+    </p>
+  </div>
+
+  {/* ── Key stats row ── */}
+  <div class="vc__key-stats">
+    {vehicle.pace != null && (
+      <div class="vc__stat-card">
+        <div class="vc__stat-card-label">Travel Pace</div>
+        <div class="vc__stat-card-value">{vehicle.pace}</div>
+        <div class="vc__stat-card-note">mph</div>
+      </div>
+    )}
+    {(vehicle.capCrew != null || vehicle.capPassenger != null) && (
+      <div class="vc__stat-card">
+        <div class="vc__stat-card-label">Crew / Passengers</div>
+        <div class="vc__stat-card-value">
+          {vehicle.capCrew ?? '—'} / {vehicle.capPassenger ?? '—'}
+        </div>
+      </div>
+    )}
+    {vehicle.capCargo != null && (
+      <div class="vc__stat-card">
+        <div class="vc__stat-card-label">Cargo</div>
+        <div class="vc__stat-card-value">{vehicle.capCargo}</div>
+        <div class="vc__stat-card-note">tons</div>
+      </div>
+    )}
+    {vehicle.hull && (
+      <div class="vc__stat-card">
+        <div class="vc__stat-card-label">Hull AC / HP</div>
+        <div class="vc__stat-card-value">{vehicle.hull.ac} / {vehicle.hull.hp}</div>
+        {vehicle.hull.dt && <div class="vc__stat-card-note">Damage threshold {vehicle.hull.dt}</div>}
+      </div>
+    )}
+  </div>
+
+  {/* ── Ability scores ── */}
+  <div class="vc__abilities">
+    <div class="vc__abilities-header">
+      {abilityDisplays.map(({ label }) => (
+        <div class="vc__ability-col-head">{label}</div>
+      ))}
     </div>
-  )
-}
+    <div class="vc__abilities-row">
+      {abilityDisplays.map(({ score, mod: m }) => (
+        <div class="vc__ability-cell">
+          <span class="vc__ability-score">{score}</span>
+          <span class="vc__ability-mod">{m}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* ── Resist / vulnerable / condition / damage (5etools util array shapes) ── */}
+  {(() => {
+    const resistStr = formatDamageList(vehicle.resist)
+    const vulnStr = formatDamageList(vehicle.vulnerable)
+    const ciStr = formatConditionList(vehicle.conditionImmune)
+    const diStr = formatDamageList(vehicle.immune)
+    if (!resistStr && !vulnStr && !ciStr && !diStr) return null
+    return (
+      <div class="vc__properties">
+        {resistStr && (
+          <div class="vc__prop">
+            <span class="vc__prop-name">Damage Resistances</span>
+            <span class="vc__prop-value">{resistStr}</span>
+          </div>
+        )}
+        {vulnStr && (
+          <div class="vc__prop">
+            <span class="vc__prop-name">Damage Vulnerabilities</span>
+            <span class="vc__prop-value">{vulnStr}</span>
+          </div>
+        )}
+        {ciStr && (
+          <div class="vc__prop">
+            <span class="vc__prop-name">Condition Immunities</span>
+            <span class="vc__prop-value">{ciStr}</span>
+          </div>
+        )}
+        {diStr && (
+          <div class="vc__prop">
+            <span class="vc__prop-name">Damage Immunities</span>
+            <span class="vc__prop-value">{diStr}</span>
+          </div>
+        )}
+      </div>
+    )
+  })()}
+
+  {/* ── Traits ── */}
+  {Array.isArray(vehicle.trait) && vehicle.trait.length > 0 && (
+    <div class="vc__features">
+      {(vehicle.trait as { name: string; entries: unknown[] }[]).map(t => (
+        <p class="vc__feature">
+          <em><strong>{t.name}.</strong></em>
+          {' '}{formatEntries(t.entries)}
+        </p>
+      ))}
+    </div>
+  )}
+
+  {/* ── Control ── */}
+  {vehicle.control?.length && (
+    <div class="vc__section">
+      <h3 class="vc__section-title">Control</h3>
+      <div class="vc__components">
+        {vehicle.control.map(c => (
+          <div class="vc__component">
+            {c.name && <div class="vc__component-name">{c.name}</div>}
+            <div class="vc__component-stats">
+              <span><strong>AC</strong> {c.ac}</span>
+              <span><strong>HP</strong> {c.hp}</span>
+              {c.dt && <span><strong>Damage Threshold</strong> {c.dt}</span>}
+            </div>
+            {Array.isArray(c.entries) && c.entries.length > 0 && (
+              <p class="vc__component-desc">{formatEntries(c.entries as unknown[])}</p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* ── Movement ── */}
+  {vehicle.movement?.length && (
+    <div class="vc__section">
+      <h3 class="vc__section-title">Movement</h3>
+      <div class="vc__components">
+        {vehicle.movement.map(m => (
+          <div class="vc__component">
+            {m.name && <div class="vc__component-name">{m.name}</div>}
+            <div class="vc__component-stats">
+              <span><strong>AC</strong> {m.ac}</span>
+              <span><strong>HP</strong> {m.hp}</span>
+              {m.dt != null && <span><strong>Damage Threshold</strong> {m.dt}</span>}
+            </div>
+            {m.speed?.map(s => (
+              <p class="vc__component-desc">
+                <strong>{s.mode}:</strong>{' '}
+                {Array.isArray(s.entries) ? formatEntries(s.entries as unknown[]) : ''}
+              </p>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* ── Weapons ── */}
+  {vehicle.weapon?.length && (
+    <div class="vc__section">
+      <h3 class="vc__section-title">Weapons</h3>
+      <div class="vc__components">
+        {vehicle.weapon.map(w => (
+          <div class="vc__component">
+            <div class="vc__component-name">
+              {w.name}{w.count && w.count > 1 ? ` (×${w.count})` : ''}
+            </div>
+            <div class="vc__component-stats">
+              <span><strong>AC</strong> {w.ac}</span>
+              <span><strong>HP</strong> {w.hp}</span>
+              {w.dt && <span><strong>Damage Threshold</strong> {w.dt}</span>}
+            </div>
+            {Array.isArray(w.entries) && w.entries.length > 0 && (
+              <p class="vc__component-desc">{formatEntries(w.entries as unknown[])}</p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* ── Other ── */}
+  {vehicle.other?.length && (
+    <div class="vc__section">
+      <h3 class="vc__section-title">Other Components</h3>
+      <div class="vc__features">
+        {vehicle.other.map(o => (
+          <p class="vc__feature">
+            <em><strong>{o.name}.</strong></em>
+            {' '}{Array.isArray(o.entries) ? formatEntries(o.entries as unknown[]) : ''}
+          </p>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* ── Actions ── */}
+  {Array.isArray(vehicle.action) && vehicle.action.length > 0 && (
+    <div class="vc__section">
+      <h3 class="vc__section-title">Actions</h3>
+      <div class="vc__features">
+        {(vehicle.action as { name?: string; entries: unknown[] }[]).map(a => (
+          <p class="vc__feature">
+            {a.name && <em><strong>{a.name}.</strong></em>}
+            {' '}{Array.isArray(a.entries) ? formatEntries(a.entries) : ''}
+          </p>
+        ))}
+      </div>
+    </div>
+  )}
+
+</div>
+
+<style>
+  .vc {
+    --vc-bg:        #fdf6e3;
+    --vc-bg-alt:    #f3e8c8;
+    --vc-red:       #7a200d;
+    --vc-divider:   #9c2b1b;
+    --vc-gold:      #c9a14a;
+    --vc-text:      #212121;
+    --vc-radius:    6px;
+    --vc-font-body: 'Scala Sans Pro', 'Myriad Pro', Calibri, 'Trebuchet MS', sans-serif;
+    --vc-font-head: 'Mrs Eaves', Palatino, 'Palatino Linotype', 'Book Antiqua', serif;
+
+    background-color: var(--vc-bg);
+    border: 2px solid var(--vc-gold);
+    border-radius: var(--vc-radius);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+    color: var(--vc-text);
+    font-family: var(--vc-font-body);
+    font-size: 0.9rem;
+    line-height: 1.45;
+    margin-block: 1.75rem;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  :global([data-theme='dark']) .vc {
+    --vc-bg:        #0e0e1c;
+    --vc-bg-alt:    #16162a;
+    --vc-red:       #a882d8;
+    --vc-divider:   #5a3f7a;
+    --vc-gold:      #3a2e68;
+    --vc-text:      #ccd0ea;
+    box-shadow: 0 2px 20px rgba(100,50,180,0.45);
+  }
+
+  /* ── Header ── */
+  .vc__header {
+    background-color: var(--vc-bg-alt);
+    border-bottom: 3px solid var(--vc-divider);
+    padding: 0.75rem 1.25rem 0.5rem;
+  }
+
+  .vc__name-link { text-decoration: none; }
+
+  .vc__name {
+    all: unset;
+    color: var(--vc-red);
+    display: block;
+    font-family: var(--vc-font-head);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+
+  .vc__meta {
+    all: unset;
+    color: var(--vc-red);
+    display: block;
+    font-size: 0.875rem;
+    font-style: italic;
+    margin-top: 0.2rem;
+    opacity: 0.85;
+  }
+
+  /* ── Key stats row ── */
+  .vc__key-stats {
+    border-bottom: 2px solid var(--vc-gold);
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .vc__stat-card {
+    border-right: 1px solid var(--vc-gold);
+    flex: 1 1 120px;
+    padding: 0.625rem 1rem;
+    text-align: center;
+  }
+  .vc__stat-card:last-child { border-right: none; }
+
+  .vc__stat-card-label {
+    color: var(--vc-red);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .vc__stat-card-value {
+    font-family: var(--vc-font-head);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-top: 0.1rem;
+  }
+
+  .vc__stat-card-note {
+    color: color-mix(in srgb, var(--vc-text) 65%, transparent);
+    font-size: 0.75rem;
+    margin-top: 0.1rem;
+  }
+
+  /* ── Ability scores ── */
+  .vc__abilities {
+    border-bottom: 2px solid var(--vc-gold);
+  }
+
+  .vc__abilities-header,
+  .vc__abilities-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    text-align: center;
+  }
+
+  .vc__abilities-header {
+    background-color: var(--vc-bg-alt);
+    padding: 0.35rem 0 0.2rem;
+  }
+
+  .vc__ability-col-head {
+    color: var(--vc-red);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .vc__abilities-row { padding: 0.4rem 0 0.5rem; }
+
+  .vc__ability-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .vc__ability-score {
+    font-family: var(--vc-font-head);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .vc__ability-mod {
+    font-size: 0.8rem;
+    color: color-mix(in srgb, var(--vc-text) 70%, transparent);
+  }
+
+  /* ── Properties ── */
+  .vc__properties {
+    border-bottom: 1px solid var(--vc-gold);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.15rem 1.5rem;
+    padding: 0.6rem 1.25rem;
+  }
+
+  .vc__prop {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  .vc__prop-name {
+    color: var(--vc-red);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ── Sections ── */
+  .vc__section { border-top: 2px solid var(--vc-divider); }
+
+  .vc__section-title {
+    all: unset;
+    background-color: var(--vc-bg-alt);
+    border-bottom: 1px solid var(--vc-gold);
+    color: var(--vc-red);
+    display: block;
+    font-family: var(--vc-font-head);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 0.35rem 1.25rem;
+  }
+
+  /* ── Component blocks (hull / control / movement / weapon) ── */
+  .vc__components {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.3rem 2rem;
+    padding: 0.6rem 1.25rem;
+  }
+
+  .vc__component { font-size: 0.875rem; }
+
+  .vc__component-name {
+    color: var(--vc-red);
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+  }
+
+  .vc__component-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: color-mix(in srgb, var(--vc-text) 80%, transparent);
+    margin-bottom: 0.25rem;
+  }
+
+  .vc__component-desc {
+    all: unset;
+    display: block;
+    line-height: 1.45;
+  }
+
+  /* ── Features ── */
+  .vc__features {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 0.3rem 2rem;
+    padding: 0.6rem 1.25rem;
+  }
+
+  .vc__feature {
+    all: unset;
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+</style>

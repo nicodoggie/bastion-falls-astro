@@ -3,33 +3,81 @@ title: Rozenmaiden
 tags:
   - vehicles
 vehicle:
-  type: sailing ship
-  travelPace: 10
-  capacity:
-    crew: 30
-    passengers: 40
-    cargo: 100
-  crew:
-    - name: Somme Privatea
-      position: Captain
-    - name: Hedwig Rosenkrantz
-      position: First Mate
-    - name: Dominguez Tailleur
-      position: Quartermaster
-  stats:
-    size: gargantuan
-    strength: 20
-    dexterity: 7
-    constitution: 17
-    wisdom: 0
-    intelligence: 0
-    charisma: 0
+  name: Rozenmaiden
+  vehicleType: SHIP
+  terrain:
+    - sea
+  size: G
+  dimensions:
+    - "130 ft. long, 30 ft. wide"
+  capCrew: 30
+  capPassenger: 40
+  capCargo: 100
+  pace: 10
+  str: 20
+  dex: 7
+  con: 17
+  int: 0
+  wis: 0
+  cha: 0
+  conditionImmune:
+    - blinded
+    - charmed
+    - deafened
+    - exhaustion
+    - frightened
+    - incapacitated
+    - paralyzed
+    - petrified
+    - poisoned
+    - prone
+    - stunned
+    - unconscious
+  hull:
+    ac: 15
+    hp: 300
+    dt: 20
+  control:
+    - name: Helm
+      ac: 18
+      hp: 50
+      dt: 10
+      entries:
+        - >
+          Move up to the speed of one of the ship's movement components,
+          with one 90-degree turn. If the helm is destroyed, the ship can't
+          turn.
+  movement:
+    - name: Sails (3)
+      ac: 12
+      hp: 100
+      dt: 0
+      speed:
+        - mode: wind
+          entries:
+            - >
+              Speed 35 ft. (4 mph); 15 ft. while sailing into the wind;
+              50 ft. while sailing with the wind.
+  weapon:
+    - name: Ballista (6)
+      ac: 15
+      hp: 50
+      count: 6
+      entries:
+        - >
+          Ranged Weapon Attack: +6 to hit, range 120/480 ft., one target.
+          Hit: 16 (3d10) piercing damage.
 ---
 
 import Deck01Image from "/public/vehicles/rozenmaiden/01-deck.png"
 import Castle02Image from "/public/vehicles/rozenmaiden/02-castle.png"
 import LowerDeck03Image from "/public/vehicles/rozenmaiden/03-lower-deck.png"
 import Hold04Image from "/public/vehicles/rozenmaiden/04-hold.png" 
+
+{ 
+// @ts-expect-error -- frontmatter is injected at runtime
+frontmatter.vehicle && ( <VehicleStatBlock vehicle={frontmatter.vehicle} />) }
+}
 
 ### Main Deck
 

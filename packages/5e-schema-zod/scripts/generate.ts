@@ -57,6 +57,8 @@ const TARGETS = [
       'sourceJson',
       'page',
       'damageImmunityArray',
+      'damageResistArray',
+      'damageVulnerabilityArray',
       'conditionImmunityArray',
       'alias',
       'group',
@@ -125,6 +127,19 @@ const TARGETS = [
       'age',
       'race',
       'subrace',
+    ],
+  },
+  {
+    schemaPath: 'brew/vehicles.json',
+    module: 'vehicle',
+    defs: [
+      'vehicleTerrain',
+      'vehicleShipData',
+      'vehicleSpelljammerData',
+      'vehicleElementalAirshipData',
+      'vehicleInfernalWarMachineData',
+      'vehicleCreatureData',
+      'vehicleObjectData',
     ],
   },
 ] as const

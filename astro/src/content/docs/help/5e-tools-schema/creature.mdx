@@ -5,7 +5,7 @@ description: |
   blocks.
 ---
 
-import StatBlock from '../../../components/StatBlock.astro';
+import StatBlock from '../../../../components/StatBlock.astro';
 
 The `creatureStats` frontmatter field on species pages lets you embed one or
 more D&D 5e stat blocks directly in an article. Each key is an arbitrary
@@ -396,31 +396,30 @@ action:
   - name: Bite
     entries:
       - >
-        Melee Weapon Attack: +4 to hit, reach 5 ft., one target.
-        Hit: 7 (2d4 + 2) piercing damage. If the target is a creature,
-        it must succeed on a DC 11 Strength saving throw or be knocked
-        prone.
+        Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4 +
+        2) piercing damage. If the target is a creature, it must succeed on a DC
+        11 Strength saving throw or be knocked prone.
   - name: Multiattack
     entries:
       - The creature makes two Claw attacks.
 ```
 
-**Recharge mechanic** — there is no separate `recharge` field in the
-schema. Embed the recharge note directly in the action `name`, exactly
-as it appears in print:
+**Recharge mechanic** — there is no separate `recharge` field in the schema.
+Embed the recharge note directly in the action `name`, exactly as it appears in
+print:
 
 ```yaml
 action:
-  - name: "Fire Breath (Recharge 5–6)"
+  - name: 'Fire Breath (Recharge 5–6)'
     entries:
       - >
-        The dragon exhales fire in a 60-foot cone. Each creature in that
-        area must make a DC 18 Dexterity saving throw, taking 56 (16d6)
-        fire damage on a failed save, or half on a success.
-  - name: "Poison Breath (Recharge 6)"
+        The dragon exhales fire in a 60-foot cone. Each creature in that area
+        must make a DC 18 Dexterity saving throw, taking 56 (16d6) fire damage
+        on a failed save, or half on a success.
+  - name: 'Poison Breath (Recharge 6)'
     entries:
       - The dragon exhales poisonous gas in a 30-foot cone.
-  - name: "Breath Weapon (Recharges after a Short or Long Rest)"
+  - name: 'Breath Weapon (Recharges after a Short or Long Rest)'
     entries:
       - The creature exhales a blast of energy.
 ```

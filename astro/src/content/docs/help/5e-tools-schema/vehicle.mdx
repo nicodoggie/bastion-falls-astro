@@ -1,0 +1,393 @@
+---
+title: Vehicle Stats Frontmatter Reference
+description: |
+  How to populate the vehicle field on vehicle pages using the 5etools ship
+  schema and the VehicleStatBlock component.
+---
+
+On vehicle collection pages, the `vehicle` frontmatter key holds a single object
+that follows the
+[5etools vehicles schema](https://github.com/TheGiddyLimit/5etools-utils) (ship
+data: `vehicleShipData` in the JSON Schema). In this repo it is validated as
+`VehicleShipData` from `@bastion-falls/5e-schema-zod`.
+
+```yaml
+# in a vehicle page's frontmatter (astro/src/content/docs/world/vehicles/…)
+vehicle:
+  name: My Ship
+  vehicleType: SHIP
+  # … fields described below
+```
+
+The page title comes from Starlight's `title` field; `vehicle.name` can match it
+or add a shorter display name for stat blocks.
+
+To render the stat-style card in the body, use `VehicleStatBlock` (same pattern
+as `StatBlock` on species pages — pass typed ship data from frontmatter):
+
+```mdx
+{ // @ts-expect-error -- frontmatter is injected at runtime
+frontmatter.vehicle && (
+  <VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
+) }
+```
+
+`VehicleStatBlock` is registered for MDX via `astro-auto-import` in
+`astro.config.mjs` (same pattern as other shared components). Species pages still
+import `StatBlock` explicitly because it is not auto-imported.
+
+`VehicleStatBlock` mirrors the `StatBlock` / `CreatureData` pattern: one
+component, typed ship data from `@bastion-falls/5e-schema-zod`.
+
+---
+
+## Minimal example (ship)
+
+A usable ship block needs hull AC/HP, the six object ability scores, and enough
+identity fields for your layout. Pace and capacities match the Ghosts of
+Saltmarsh style tables.
+
+```yaml
+vehicle:
+  name: Example Skiff
+  vehicleType: SHIP
+  terrain:
+    - sea
+  size: L
+  capCrew: 2
+  capPassenger: 4
+  capCargo: 0.5
+  pace: 3
+  str: 12
+  dex: 8
+  con: 13
+  int: 0
+  wis: 0
+  cha: 0
+  hull:
+    ac: 11
+    hp: 50
+    dt: 5
+```
+
+---
+
+## Field reference (ships — `VehicleShipData`)
+
+### `name`
+
+`string` — Display name in the card header. Optional if you pass a `name` prop
+to `VehicleStatBlock`.
+
+---
+
+### `vehicleType`
+
+`"SHIP"` — Literal constant in 5etools data. Including it documents intent and
+matches official ship JSON.
+
+---
+
+### `terrain`
+
+`string[]` — Where the vehicle operates (free-form strings, lower case is fine).
+Examples: `sea`, `air`, `land`, `underwater`, `space`.
+
+---
+
+### `size`
+
+`string` — One-letter size code (same idea as creature size codes):
+
+| Code | Size       |
+| ---- | ---------- |
+| `T`  | Tiny       |
+| `S`  | Small      |
+| `M`  | Medium     |
+| `L`  | Large      |
+| `H`  | Huge       |
+| `G`  | Gargantuan |
+
+---
+
+### `dimensions`
+
+`string[]` — Human-readable dimensions, one string per line of detail.
+
+```yaml
+dimensions:
+  - '130 ft. long, 30 ft. wide'
+```
+
+---
+
+### `capCrew` / `capPassenger` / `capCargo`
+
+- `capCrew`, `capPassenger`: `integer` — crew and passenger limits.
+- `capCargo`: `number | string` — cargo tons (string allowed for notes like
+  `"100 or 200 when ballasted"`).
+
+---
+
+### `pace`
+
+`number` — Travel pace in **miles per hour** (printed as "mph" in the card).
+
+---
+
+### `str` / `dex` / `con` / `int` / `wis` / `cha`
+
+`integer` — The vehicle object's ability scores (not modifiers). Use `0` for
+mindless objects, same as many official stat blocks.
+
+---
+
+### `conditionImmune` / `immune` / `resist` / `vulnerable`
+
+These use the same util definitions as creatures: `ConditionImmunityArraySchema`,
+`DamageImmunityArraySchema`, `DamageResistArraySchema`, and
+`DamageVulnerabilityArraySchema` in `shared.ts` (arrays of damage types,
+`special` strings, or nested objects with `preNote` / `note` / nested lists).
+YAML can mirror 5etools JSON; simple cases are plain string arrays.
+
+---
+
+### `actionThresholds`
+
+`Record<string, unknown>` — Optional map of crew thresholds to action counts
+(5etools uses string keys for numbers). Rare in homebrew; omit unless you need
+it.
+
+---
+
+### `hull`
+
+`object` — The main body of the ship.
+
+| Field    | Type      | Notes                        |
+| -------- | --------- | ---------------------------- |
+| `ac`     | `integer` | Required when `hull` is set. |
+| `hp`     | `integer` | Required when `hull` is set. |
+| `hpNote` | `string`  | Optional note under HP.      |
+| `dt`     | `integer` | Damage threshold (optional). |
+
+---
+
+### `control`
+
+`array` — Steering, helm, bridge, etc. Each item:
+
+| Field     | Type        | Notes                             |
+| --------- | ----------- | --------------------------------- |
+| `name`    | `string`    | Optional label (e.g. `Helm`).     |
+| `ac`      | `integer`   | Required.                         |
+| `hp`      | `integer`   | Required.                         |
+| `dt`      | `integer`   | Optional damage threshold.        |
+| `entries` | `unknown[]` | Rich text; use strings for prose. |
+
+---
+
+### `movement`
+
+`array` — Sails, oars, propulsion. Each item includes `ac`, `hp`, optional `dt`,
+optional `name`, optional `isControl`, and **either**:
+
+- `speed`: array of `{ mode: string, entries: unknown[] }` (preferred for ships
+  — see Rozenmaiden), or
+- `locomotion`: legacy UA shape, same inner `{ mode, entries }`.
+
+---
+
+### `weapon`
+
+`array` — Ballistae, mangonels, etc.
+
+| Field     | Type        | Notes                          |
+| --------- | ----------- | ------------------------------ |
+| `name`    | `string`    | Required.                      |
+| `ac`      | `integer`   | Optional.                      |
+| `hp`      | `integer`   | Optional.                      |
+| `count`   | `integer`   | Optional (e.g. six ballistae). |
+| `dt`      | `integer`   | Optional.                      |
+| `entries` | `unknown[]` | Attack / trait text.           |
+
+---
+
+### `other`
+
+`array` — Named components that are not weapons or movement (each has `name` and
+`entries`).
+
+---
+
+### `trait`
+
+`array | null` — Named passive features (`name` + `entries`), same spirit as
+creature traits.
+
+---
+
+### `action`
+
+`unknown[]` — Ship-wide actions (strings or entry objects). Optional.
+
+---
+
+### Source / meta (optional)
+
+Fields like `source`, `page`, `token`, `fluff`, and Foundry exports exist in the
+full 5etools schema. You can omit them for wiki-style frontmatter; add them when
+copying raw data from 5etools.
+
+---
+
+## Other vehicle kinds (reference only)
+
+`@bastion-falls/5e-schema-zod` also exports Zod schemas for
+`VehicleSpelljammerData`, `VehicleElementalAirshipData`,
+`VehicleInfernalWarMachineData`, `VehicleCreatureData`, and `VehicleObjectData`.
+The **vehicle** content collection in this project validates **`VehicleShipData`
+only** (ships). Use the same YAML patterns as 5etools site JSON when you adopt
+another subtype later.
+
+---
+
+## Full example (rendered)
+
+export const exampleShip = {
+  name: 'Sea Dart',
+  vehicleType: 'SHIP',
+  terrain: ['sea'],
+  size: 'L',
+  dimensions: ['60 ft. long, 18 ft. wide'],
+  capCrew: 6,
+  capPassenger: 10,
+  capCargo: 5,
+  pace: 5,
+  str: 15,
+  dex: 6,
+  con: 13,
+  int: 0,
+  wis: 0,
+  cha: 0,
+  conditionImmune: [
+    'blinded',
+    'charmed',
+    'deafened',
+    'exhaustion',
+    'frightened',
+    'incapacitated',
+    'paralyzed',
+    'petrified',
+    'poisoned',
+    'prone',
+    'stunned',
+    'unconscious',
+  ],
+  hull: { ac: 13, hp: 100, dt: 10 },
+  control: [
+    {
+      name: 'Helm',
+      ac: 16,
+      hp: 25,
+      entries: [
+        'Move the ship up to its sails speed, with one 90-degree turn. If the helm is destroyed, the ship cannot turn.',
+      ],
+    },
+  ],
+  movement: [
+    {
+      name: 'Sails',
+      ac: 11,
+      hp: 40,
+      speed: [
+        {
+          mode: 'wind',
+          entries: [
+            'Speed 30 ft. (3 mph); 10 ft. when sailing into the wind; 40 ft. with the wind.',
+          ],
+        },
+      ],
+    },
+  ],
+  weapon: [
+    {
+      name: 'Ballista',
+      ac: 15,
+      hp: 25,
+      count: 2,
+      entries: [
+        'Ranged Weapon Attack: +5 to hit, range 120/480 ft., one target. Hit: 10 (3d6) piercing damage.',
+      ],
+    },
+  ],
+};
+
+<VehicleStatBlock vehicle={exampleShip} />
+
+The same ship in YAML:
+
+```yaml
+vehicle:
+  name: Sea Dart
+  vehicleType: SHIP
+  terrain:
+    - sea
+  size: L
+  dimensions:
+    - '60 ft. long, 18 ft. wide'
+  capCrew: 6
+  capPassenger: 10
+  capCargo: 5
+  pace: 5
+  str: 15
+  dex: 6
+  con: 13
+  int: 0
+  wis: 0
+  cha: 0
+  conditionImmune:
+    - blinded
+    - charmed
+    - deafened
+    - exhaustion
+    - frightened
+    - incapacitated
+    - paralyzed
+    - petrified
+    - poisoned
+    - prone
+    - stunned
+    - unconscious
+  hull:
+    ac: 13
+    hp: 100
+    dt: 10
+  control:
+    - name: Helm
+      ac: 16
+      hp: 25
+      entries:
+        - >
+          Move the ship up to its sails speed, with one 90-degree turn. If the
+          helm is destroyed, the ship cannot turn.
+  movement:
+    - name: Sails
+      ac: 11
+      hp: 40
+      speed:
+        - mode: wind
+          entries:
+            - >
+              Speed 30 ft. (3 mph); 10 ft. when sailing into the wind; 40 ft.
+              with the wind.
+  weapon:
+    - name: Ballista
+      ac: 15
+      hp: 25
+      count: 2
+      entries:
+        - >
+          Ranged Weapon Attack: +5 to hit, range 120/480 ft., one target. Hit:
+          10 (3d6) piercing damage.
+```
