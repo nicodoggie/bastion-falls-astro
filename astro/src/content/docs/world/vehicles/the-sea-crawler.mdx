@@ -3,19 +3,84 @@ title: The Sea Crawler
 tags:
   - vehicles
 vehicle:
-  type: caravel
-  travelPace: 5
-  capacity:
-    crew: 10
-  stats:
-    size: huge
-    strength: 0
-    dexterity: 0
-    constitution: 0
-    intelligence: 0
-    wisdom: 0
-    charisma: 0
-  crew: []
+  name: The Sea Crawler
+  vehicleType: SHIP
+  terrain:
+    - sea
+  size: G
+  dimensions:
+    - "70 ft. long, 20 ft. wide"
+  capCrew: 40
+  capPassenger: 100
+  capCargo: 10
+  pace: 5
+  str: 20
+  dex: 6
+  con: 17
+  int: 0
+  wis: 0
+  cha: 0
+  immune:
+    - poison
+    - psychic
+  conditionImmune:
+    - blinded
+    - charmed
+    - deafened
+    - exhaustion
+    - frightened
+    - incapacitated
+    - paralyzed
+    - petrified
+    - poisoned
+    - prone
+    - stunned
+    - unconscious
+  action:
+    - name: Move
+      entries:
+        - >
+          On its turn, the longship can use its helm to move with its oars or
+          sails. It can't take this action if it has no crew.
+  hull:
+    ac: 15
+    hp: 300
+    dt: 15
+  control:
+    - name: Helm
+      ac: 16
+      hp: 50
+      entries:
+        - >
+          Move up to the speed of one of the ship's movement components, with
+          one 90-degree turn. If the helm is destroyed, the longship can't turn.
+  movement:
+    - name: Oars
+      ac: 12
+      hp: 100
+      speed:
+        - mode: oar
+          entries:
+            - >
+              Speed 20 ft. in water (requires at least 20 crew). −5 ft. speed
+              per 25 damage taken to this component.
+    - name: Sails
+      ac: 12
+      hp: 100
+      speed:
+        - mode: wind
+          entries:
+            - >
+              Speed 45 ft. in water; 15 ft. while sailing into the wind; 60 ft.
+              while sailing with the wind. −10 ft. speed per 25 damage taken to
+              this component.
 ---
 
-<Stub />
+{
+// @ts-expect-error -- frontmatter is injected at runtime
+frontmatter.vehicle && (
+  <VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
+) }
+
+Longships rely on oars and sails. They are built to carry soldiers into combat
+and to embark or disembark troops quickly.

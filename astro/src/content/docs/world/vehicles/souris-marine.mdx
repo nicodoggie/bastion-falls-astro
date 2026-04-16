@@ -3,49 +3,88 @@ title: Souris Marine
 tags:
   - vehicles
 vehicle:
-  type: caravel
-  travelPace: 4
-  capacity:
-    crew: 30
-    passengers: 70
-    cargo: 100
-  stats:
-    size: gargantuan
-    strength: 18
-    dexterity: 12
-    constitution: 14
-    wisdom: 0
-    intelligence: 0
-    charisma: 0
-  crew:
-    - name: Auguste Lyonnaire
-      position: Captain
-    - name: Karzad Bin Pathad
-      position: First Mate
-    - name: Anette Sotomayor
-      position: Quartermaster
-    - name: Anouk Tarish
-      position: Bosun
-    - name: Jacques Dipardeau
-      position: Crew
-    - name: Blaise Dpadua
-      position: Crew
-    - name: Claude Stradivari
-      position: Crew
-    - name: Antoinette Laforge
-      position: Crew
-    - name: Pierre Dordoville
-      position: Crew
-    - name: Pascal Kelvin
-      position: Crew
-    - name: Gisele Dfantasia
-      position: Crew
-  sections:
-    - name: Hull
-      armorClass: 15
-      hitPoints:
-        base: 200
-        damageThreshold: 25
+  name: Souris Marine
+  vehicleType: SHIP
+  terrain:
+    - sea
+  size: G
+  dimensions:
+    - "70 ft. long, 20 ft. wide (lateen-rigged caravel)"
+  capCrew: 30
+  capPassenger: 70
+  capCargo: 100
+  pace: 4
+  str: 18
+  dex: 12
+  con: 14
+  int: 0
+  wis: 0
+  cha: 0
+  immune:
+    - poison
+    - psychic
+  conditionImmune:
+    - blinded
+    - charmed
+    - deafened
+    - exhaustion
+    - frightened
+    - incapacitated
+    - paralyzed
+    - petrified
+    - poisoned
+    - prone
+    - stunned
+    - unconscious
+  action:
+    - name: Move
+      entries:
+        - >
+          On its turn, the caravel can use its helm to move with its sails. It
+          can't take this action if it has no crew.
+  hull:
+    ac: 15
+    hp: 200
+    dt: 15
+  control:
+    - name: Helm
+      ac: 17
+      hp: 50
+      entries:
+        - >
+          Move up to the speed of the ship's sails, with one 90-degree turn. If
+          the helm is destroyed, the caravel can't turn.
+  movement:
+    - name: Sails
+      ac: 12
+      hp: 80
+      speed:
+        - mode: wind
+          entries:
+            - >
+              Speed 42 ft. in water; 12 ft. while sailing into the wind; 58 ft.
+              while sailing with the wind. −5 ft. speed per 25 damage taken to
+              this component.
 ---
 
-<Stub />
+{
+// @ts-expect-error -- frontmatter is injected at runtime
+frontmatter.vehicle && (
+  <VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
+) }
+
+## Crew
+
+| Name                 | Position     |
+| -------------------- | ------------ |
+| Auguste Lyonnaire    | Captain      |
+| Karzad Bin Pathad    | First Mate   |
+| Anette Sotomayor     | Quartermaster |
+| Anouk Tarish         | Bosun        |
+| Jacques Dipardeau    | Crew         |
+| Blaise Dpadua        | Crew         |
+| Claude Stradivari    | Crew         |
+| Antoinette Laforge   | Crew         |
+| Pierre Dordoville    | Crew         |
+| Pascal Kelvin        | Crew         |
+| Gisele Dfantasia     | Crew         |

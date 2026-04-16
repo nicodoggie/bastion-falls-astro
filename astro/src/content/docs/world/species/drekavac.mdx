@@ -31,7 +31,7 @@ creatureStats:
     speed:
       walk: 30
     str: 13
-    dex: 16
+    dex: 14
     con: 12
     int: 8
     wis: 11
@@ -39,6 +39,14 @@ creatureStats:
     senses:
       - darkvision 60 ft.
     passive: 11
+    immune:
+      - poison
+    conditionImmune:
+      - poisoned
+      - exhaustion
+    languages:
+      - Common
+      - Understands languages that the summoner knows.
     trait:
       - name: Undead Fortitude
         entries:
@@ -59,7 +67,9 @@ creatureStats:
             that could be harmful to the drekavac.
       - name: Animal Speech
         entries:
-          - A
+          - The drekavac can speak with animals. If the drekavac is summoned,
+            the summoner can understand the animals' speech through the drekavac,
+            but cannot directly speak with them.
       - name: Death Screech
         entries:
           - |

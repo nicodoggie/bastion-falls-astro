@@ -2,7 +2,94 @@
 title: Principium
 tags:
   - vehicles
+vehicle:
+  name: Principium
+  vehicleType: SHIP
+  terrain:
+    - sea
+  size: G
+  dimensions:
+    - "Galley — long hull with ram and two masts"
+  capCrew: 80
+  capPassenger: 40
+  capCargo: 150
+  pace: 10
+  str: 20
+  dex: 7
+  con: 17
+  int: 0
+  wis: 0
+  cha: 0
+  conditionImmune:
+    - blinded
+    - charmed
+    - deafened
+    - exhaustion
+    - frightened
+    - incapacitated
+    - paralyzed
+    - petrified
+    - poisoned
+    - prone
+    - stunned
+    - unconscious
+  hull:
+    ac: 15
+    hp: 500
+    dt: 20
+  control:
+    - name: Helm
+      ac: 16
+      hp: 50
+      entries:
+        - >
+          Move up to the speed of one of the ship's movement components, with
+          one 90-degree turn. If the helm is destroyed, the galley can't turn.
+  movement:
+    - name: Oar
+      ac: 12
+      hp: 100
+      speed:
+        - mode: oar
+          entries:
+            - >
+              Speed 30 ft. in water. −5 ft. speed per 25 damage taken to this
+              component.
+    - name: Sails
+      ac: 12
+      hp: 100
+      speed:
+        - mode: wind
+          entries:
+            - >
+              Speed 35 ft. in water. 15 ft. while sailing into the wind; 50 ft.
+              while sailing with the wind. −10 ft. speed per 25 damage taken to
+              this component.
+  weapon:
+    - name: Ballista
+      ac: 14
+      hp: 50
+      count: 4
+      entries:
+        - >
+          Ranged Weapon Attack: +5 to hit, range 120/480 ft., one target. Hit:
+          16 (3d10) piercing damage.
+    - name: Mangonel
+      ac: 15
+      hp: 100
+      count: 2
+      entries:
+        - >
+          Ranged Weapon Attack: +5 to hit, range 200/800 ft., one target. This
+          weapon can't hit targets within 60 ft. of it. Hit: 27 (5d10)
+          bludgeoning damage.
 ---
+
+{
+// @ts-expect-error -- frontmatter is injected at runtime
+frontmatter.vehicle && (
+  <VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
+) }
 
 The *Principium* was a galley working under
 [La Camaraderie de la Mer](/world/organizations/la-camaraderie/), and was its
