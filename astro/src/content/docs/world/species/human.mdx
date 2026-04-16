@@ -14,7 +14,8 @@ species:
     - hill
     - mountain
 creatureStats:
-  - name: Guard
+  guard:
+    name: Guard
     size:
       - M
     type: humanoid
@@ -51,7 +52,8 @@ creatureStats:
             \ 5 (1d8 + 2) piercing damage if used with two hands to make a\
             \ melee attack."
 
-  - name: Veteran
+  veteran:
+    name: Veteran
     size:
       - M
     type: humanoid
@@ -110,8 +112,23 @@ drives them — ambition, idealism, wanderlust — humans are the innovators,
 the achievers, and the pioneers of the world. Their drive and diversity
 allow them to spread across nearly every corner of the world.
 
-## Stat Blocks
 
-{Object.entries(frontmatter.creatureStats).map(([name, creature]) => (
-  <StatBlock creature={creature} />
-))}
+## Common Human Stats
+
+Guards are the most common armed humans encountered in settlements, posted
+at gates, patrolling streets, or protecting merchants.
+
+{
+  // @ts-expect-error -- frontmatter is injected by Astro's MDX runtime,
+  // not visible to @mdx-js/typescript-plugin at check time.
+  frontmatter.creatureStats.guard && <StatBlock creature={frontmatter.creatureStats.guard} />
+}
+
+Veterans are seasoned warriors who have survived many campaigns. They are
+often hired as bodyguards, mercenaries, or city watch captains.
+
+{
+  // @ts-expect-error -- frontmatter is injected by Astro's MDX runtime,
+  // not visible to @mdx-js/typescript-plugin at check time.
+  frontmatter.creatureStats.veteran && <StatBlock creature={frontmatter.creatureStats.veteran} />
+}

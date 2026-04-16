@@ -14,6 +14,7 @@ import { remarkDefinitionList } from 'remark-definition-list';
 import remarkMarkmap from 'remark-markmap';
 import remarkParse from 'remark-parse';
 import starlightAutoSidebar from 'starlight-auto-sidebar';
+import { vscodeFrontmatterSchemas } from './src/integrations/vscode-frontmatter-schemas.ts';
 
 const lexurgyLang = JSON.parse(
   fs.readFileSync(
@@ -117,6 +118,7 @@ export default defineConfig({
     }),
     mdx(),
     sitemap(),
+    vscodeFrontmatterSchemas(),
   ],
   vite: {
     plugins: [

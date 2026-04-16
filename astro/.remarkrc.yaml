@@ -1,0 +1,22 @@
+plugins:
+  - remark-frontmatter
+  - - remark-lint-frontmatter-schema
+    - schemas:
+        ../.vscode/schemas/frontmatter/character.json:
+          - src/content/docs/world/characters/**/*.{md,mdx}
+        ../.vscode/schemas/frontmatter/concept.json:
+          - src/content/docs/world/concepts/**/*.{md,mdx}
+        ../.vscode/schemas/frontmatter/event.json:
+          - src/content/docs/world/events/**/*.{md,mdx}
+        ../.vscode/schemas/frontmatter/family.json:
+          - src/content/docs/world/families/**/*.{md,mdx}
+        ../.vscode/schemas/frontmatter/item.json:
+          - src/content/docs/world/items/**/*.{md,mdx}
+        ../.vscode/schemas/frontmatter/location.json:
+          - src/content/docs/world/locations/**/*.{md,mdx}
+        ../.vscode/schemas/frontmatter/organization.json:
+          - src/content/docs/world/organizations/**/*.{md,mdx}
+        ../.vscode/schemas/frontmatter/species.json:
+          - src/content/docs/world/species/**/*.{md,mdx}
+        ../.vscode/schemas/frontmatter/vehicle.json:
+          - src/content/docs/world/vehicles/**/*.{md,mdx}

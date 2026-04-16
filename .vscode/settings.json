@@ -10,5 +10,37 @@
       "{?\\s?[\\w].*:\\s*?[\"'`]([^\"'`]*).*?,?\\s?}?"
     ]
   ],
-  "terminal.integrated.defaultProfile.linux": "zsh"
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "eslint.workingDirectories": [
+    { "directory": "astro", "changeProcessCWD": true }
+  ],
+  "yaml.schemas": {
+    "${workspaceFolder}/.vscode/schemas/frontmatter/character.json": [
+      "astro/src/content/docs/world/characters/**/*.{md,mdx}"
+    ],
+    "${workspaceFolder}/.vscode/schemas/frontmatter/concept.json": [
+      "astro/src/content/docs/world/concepts/**/*.{md,mdx}"
+    ],
+    "${workspaceFolder}/.vscode/schemas/frontmatter/event.json": [
+      "astro/src/content/docs/world/events/**/*.{md,mdx}"
+    ],
+    "${workspaceFolder}/.vscode/schemas/frontmatter/family.json": [
+      "astro/src/content/docs/world/families/**/*.{md,mdx}"
+    ],
+    "${workspaceFolder}/.vscode/schemas/frontmatter/item.json": [
+      "astro/src/content/docs/world/items/**/*.{md,mdx}"
+    ],
+    "${workspaceFolder}/.vscode/schemas/frontmatter/location.json": [
+      "astro/src/content/docs/world/locations/**/*.{md,mdx}"
+    ],
+    "${workspaceFolder}/.vscode/schemas/frontmatter/organization.json": [
+      "astro/src/content/docs/world/organizations/**/*.{md,mdx}"
+    ],
+    "${workspaceFolder}/.vscode/schemas/frontmatter/species.json": [
+      "astro/src/content/docs/world/species/**/*.{md,mdx}"
+    ],
+    "${workspaceFolder}/.vscode/schemas/frontmatter/vehicle.json": [
+      "astro/src/content/docs/world/vehicles/**/*.{md,mdx}"
+    ]
+  }
 }

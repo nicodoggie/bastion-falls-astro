@@ -5,19 +5,8 @@ import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
 import { autoSidebarLoader } from "starlight-auto-sidebar/loader";
 import { autoSidebarSchema } from "starlight-auto-sidebar/schema";
-import { CreatureDataSchema } from '@bastion-falls/5e-schema-zod';
 
-import {
-  CharacterSchema,
-  ConceptSchema,
-  EventSchema,
-  FamilySchema,
-  LocationSchema,
-  SpeciesSchema,
-  OrganizationSchema,
-  ItemSchema,
-  VehicleSchema,
-} from '@bastion-falls/types';
+import { collectionExtensions, docsExtension } from './collection-schemas.js';
 
 const baseBlogSchema = z.object({
   title: z.string(),
@@ -60,86 +49,28 @@ const blogSchema = (context: SchemaContext) => {
   );
 };
 
+const extensions = Object.fromEntries(
+  Object.entries(collectionExtensions).map(([key, value]) => [
+    key,
+    defineCollection({
+      loader: glob(value.loader),
+      schema: docsSchema({ extend: value.schema }),
+    }),
+  ])
+);
+
 export const collections = {
   docs: defineCollection({
     loader: docsLoader(),
-    schema: docsSchema({
-      extend: z.object({
-        character: CharacterSchema.partial().optional(),
-        concept: ConceptSchema.partial().optional(),
-        event: EventSchema.partial().optional(),
-        family: FamilySchema.partial().optional(),
-        item: ItemSchema.partial().optional(),
-        location: LocationSchema.optional(),
-        organization: OrganizationSchema.partial().optional(),
-        species: SpeciesSchema.partial().optional(),
-        vehicle: VehicleSchema.partial().optional(),
-      })
-    }),
+    schema: docsSchema({ extend: docsExtension }),
   }),
   autoSidebar: defineCollection({
     loader: autoSidebarLoader(),
     schema: autoSidebarSchema(),
   }),
-  character: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/characters' }),
-    schema: docsSchema({
-      extend: z.object({
-        character: CharacterSchema.omit({ name: true }).optional(),
-      })
-    }),
-  }),
-  family: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/families' }), 
-    schema: docsSchema({
-      extend: z.object({
-        family: FamilySchema.optional(),
-      })
-    }),
-  }),
-  item: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/items' }),
-    schema: docsSchema({
-      extend: z.object({
-        item: ItemSchema.optional(),
-      })
-    }),
-  }),
-  location: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/locations' }),
-    schema: docsSchema({
-      extend: z.object({
-        location: LocationSchema.optional(),
-      })
-    }),
-  }),
-  organization: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/organizations' }),
-    schema: docsSchema({
-      extend: z.object({
-        organization: OrganizationSchema.optional(),
-      })
-    }),
-  }),
-  vehicle: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/vehicles' }),
-    schema: docsSchema({
-      extend: z.object({
-        vehicle: VehicleSchema.omit({ name: true }).optional(),
-      })
-    }),
-  }),
-  species: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/docs/world/species' }),
-    schema: docsSchema({
-      extend: z.object({
-        species: SpeciesSchema.omit({ name: true }).optional(),
-        creatureStats: z.record(z.string(), CreatureDataSchema).optional(),
-      })
-    }),
-  }),
   posts: defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts' }),
     schema: blogSchema,
   }),
+  ...extensions,
 };
