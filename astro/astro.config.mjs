@@ -75,6 +75,11 @@ export default defineConfig({
           href: '/blog',
         },
         {
+          icon: 'open-book',
+          label: '5e.tools Homebrew Bestiary',
+          href: '/homebrew/bastion-falls-bestiary.json',
+        },
+        {
           icon: 'github',
           label: 'GitHub',
           href: 'https://github.com/nicodoggie/bastion-falls-astro',

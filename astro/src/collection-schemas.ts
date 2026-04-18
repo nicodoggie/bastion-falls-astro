@@ -111,6 +111,7 @@ export const collectionExtensions = {
     schema: z.object({
       species: SpeciesSchema.omit({ name: true }).optional(),
       creatureStats: z.record(z.string(), CreatureDataSchema).optional(),
+      creatureStatsJson: z.record(z.string(), z.string()).optional(),
     }),
   },
 
