@@ -5,6 +5,7 @@ import { eventCommandBuilder } from "./event/command.js";
 import { familyCommandBuilder } from "./family/command.js";
 import { vehicleCommandBuilder } from "./vehicle/command.js";
 import { speciesCommandBuilder } from "./species/command.js";
+import { organizationCommandBuilder } from "./organization/command.js";
 
 export interface NewCommandFlags {
   force?: boolean;
@@ -31,6 +32,7 @@ const eventCommand = eventCommandBuilder(defaultFlags);
 const familyCommand = familyCommandBuilder(defaultFlags);
 const vehicleCommand = vehicleCommandBuilder(defaultFlags);
 const speciesCommand = speciesCommandBuilder(defaultFlags);
+const organizationCommand = organizationCommandBuilder(defaultFlags);
 
 export const newCommandRoutes = buildRouteMap({
   routes: {
@@ -51,6 +53,9 @@ export const newCommandRoutes = buildRouteMap({
     vehicles: vehicleCommand,
     spe: speciesCommand,
     species: speciesCommand,
+    org: organizationCommand,
+    organization: organizationCommand,
+    organizations: organizationCommand,
   },
   docs: {
     brief: "Create a new article",

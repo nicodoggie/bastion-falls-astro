@@ -1,0 +1,28 @@
+---
+title: <%= title %>
+tags:
+  <%_ tags.forEach(function(tag){ _%>
+  - <%- tag %>
+  <%_ }) _%>
+organization:
+  <%_ if (organization.type) { _%>
+  type: <%= organization.type %>
+  <%_ } _%>
+  <%_ if (organization.founded) { _%>
+  founded: <%= organization.founded %>
+  <%_ } _%>
+  <%_ if (organization.dissolved) { _%>
+  dissolved: <%= organization.dissolved %>
+  <%_ } _%>
+  <%_ if (organization.headquarters) { _%>
+  headquarters: <%= organization.headquarters %>
+  <%_ } _%>
+  <%_ if (organization.members && organization.members.length > 0) { _%>
+  members:
+    <%_ organization.members.forEach(function(m){ _%>
+    - name: <%- m.name %>
+    <%_ }) _%>
+  <%_ } _%>
+---
+
+<Stub />
