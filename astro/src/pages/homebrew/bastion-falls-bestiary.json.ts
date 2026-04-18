@@ -11,6 +11,9 @@
 import type { APIRoute } from 'astro'
 import { CreatureDataSchema } from '@bastion-falls/5e-schema-zod'
 
+const SOURCE_JSON = 'BastionFalls'
+const SOURCE_VERSION = '1.0.0'
+
 // Vite resolves this glob relative to this file at build time.
 // Each module's `.default` is the parsed JSON object.
 const creatureModules = import.meta.glob<{ default: unknown }>(
@@ -23,7 +26,11 @@ export const GET: APIRoute = () => {
   const errors: string[] = []
 
   for (const [filePath, mod] of Object.entries(creatureModules)) {
-    const result = CreatureDataSchema.safeParse(mod.default)
+    // Inject the source key so 5e.tools can associate the entry with our _meta.
+    const raw = typeof mod.default === 'object' && mod.default !== null
+      ? { source: SOURCE_JSON, ...mod.default as object }
+      : mod.default
+    const result = CreatureDataSchema.safeParse(raw)
     if (result.success) {
       monsters.push(result.data)
     } else {
@@ -43,16 +50,17 @@ export const GET: APIRoute = () => {
     _meta: {
       sources: [
         {
-          json: 'BastionFalls',
+          json: SOURCE_JSON,
           abbreviation: 'BF',
           full: 'Bastion Falls',
+          version: SOURCE_VERSION,
           url: 'https://bastion-falls.thekennel.info',
           authors: ['nicodoggie'],
-          convertedBy: [],
         },
       ],
       dateAdded: now,
       dateLastModified: now,
+      edition: 'classic',
     },
     monster: monsters,
   }

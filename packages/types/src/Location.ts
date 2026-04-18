@@ -28,6 +28,7 @@ export const PoliticalLocationTypeSchema = z.enum([
   'town',
   'township',
   'village',
+  'viscounty',
   'world',
   'corridor',
   'fort',
@@ -121,6 +122,7 @@ export const BaseLocationSchema = z.object({
   image: BaseImageSchema.optional(),
   parents: z.array(z.string()).optional(),
   related: z.array(z.string()).optional(),
+  aliases: z.array(z.string()).optional(),
   details: z.record(z.string(), z.string()).optional(),
 });
 
