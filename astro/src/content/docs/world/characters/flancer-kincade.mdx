@@ -1,0 +1,31 @@
+---
+title: Flancer Kincade
+character:
+  details:
+    # aliases:
+    # age: 
+    # dateOfBirth: 
+    # dateOfDeath: 
+    sex: Male
+    pronouns: He/Him 
+    # height: 
+    # weight: 
+    # origin: 
+    mortality: alive 
+    # ethnicities: 
+    species: human
+    sexOrgans: 
+      - type: penis
+        length: 6
+        girth: 4
+creatureStats:
+  flancer: "characters/flancer-kincade.creature"
+tags:
+  - characters
+---
+
+import StatBlock from '../../../../components/StatBlock.astro'
+
+<StatBlock creature={frontmatter.creatureStats.flancer} />
+
+<Stub />

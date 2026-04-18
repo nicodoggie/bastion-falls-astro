@@ -1,0 +1,23 @@
+---
+title: Finrod Kincade
+character:
+  details:
+    sex: Male
+    pronouns: He/Him 
+    origin: Port Tressemer, Raibon Island
+    mortality: alive
+    species: human
+    sexOrgans: 
+      - type: penis
+        length: 8
+        girth: 2
+creatureStats:
+  finrod: "characters/finrod-kincade.creature"
+    
+tags:
+  - characters
+---
+
+import StatBlock from '../../../../components/StatBlock.astro'
+
+<StatBlock creature={frontmatter.creatureStats.finrod} />

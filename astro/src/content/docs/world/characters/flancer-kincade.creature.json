@@ -1,0 +1,81 @@
+{
+  "name": "Flancer Kincade",
+  "size": ["M"],
+  "type": "humanoid",
+  "alignment": ["L", "G"],
+  "ac": [{ "ac": 16, "from": ["chain mail"] }],
+  "hp": { "average": 52, "formula": "6d10 + 18" },
+  "speed": { "walk": 30 },
+  "str": 18,
+  "dex": 14,
+  "con": 16,
+  "int": 10,
+  "wis": 12,
+  "cha": 8,
+  "save": {
+    "str": "+7",
+    "con": "+6"
+  },
+  "skill": {
+    "athletics": "+7",
+    "perception": "+4",
+    "survival": "+4"
+  },
+  "passive": 14,
+  "languages": ["Common"],
+  "cr": "5",
+  "trait": [
+    {
+      "name": "Action Surge (1/Short Rest)",
+      "entries": [
+        "Once per short or long rest, Flancer can take one additional action on his turn. If he uses this to attack, he makes four longsword attacks total that turn instead of two."
+      ]
+    },
+    {
+      "name": "Improved Critical",
+      "entries": [
+        "Flancer's weapon attacks score a critical hit on a roll of 19 or 20."
+      ]
+    },
+    {
+      "name": "Great Weapon Fighting",
+      "entries": [
+        "When Flancer rolls a 1 or 2 on a damage die for an attack made with a weapon wielded in two hands, he rerolls that die and must use the new roll."
+      ]
+    },
+    {
+      "name": "Remarkable Athlete",
+      "entries": [
+        "Flancer adds +3 to any Strength, Dexterity, or Constitution check that doesn't already use his proficiency bonus. In addition, when he makes a running long jump, the distance he can cover increases by 4 feet."
+      ]
+    }
+  ],
+  "action": [
+    {
+      "name": "Multiattack",
+      "entries": [
+        "Flancer makes two greatsword attacks. If he uses Action Surge, he makes two additional greatsword attacks as part of that additional action, for a total of four attacks."
+      ]
+    },
+    {
+      "name": "Greatsword",
+      "entries": [
+        "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) slashing damage. Great Weapon Fighting: Flancer rerolls any 1 or 2 on either damage die."
+      ]
+    },
+    {
+      "name": "Shortbow",
+      "entries": [
+        "Ranged Weapon Attack: +5 to hit, range 80/320 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+      ]
+    }
+  ],
+  "bonus": [
+    {
+      "name": "Second Wind (1/Short Rest)",
+      "entries": [
+        "Flancer regains 1d10 + 6 hit points as a bonus action. Once per short or long rest."
+      ]
+    }
+  ]
+}
