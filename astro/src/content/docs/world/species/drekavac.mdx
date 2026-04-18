@@ -31,11 +31,5 @@ ingredients from noxious swamps and graveyards.
 While typically solitary, drekavacs can congregate into ravenous swarms that overwhelm their prey
 with sheer numbers, acting as a single monstrous entity driven by a collective hunger.
 
-{
-  // @ts-expect-error -- frontmatter is injected by Astro's MDX runtime,
-  // not visible to @mdx-js/typescript-plugin at check time.
-  (frontmatter.creatureStats.drekavac && <StatBlock creature={frontmatter.creatureStats.drekavac} /> )
-  // @ts-expect-error -- frontmatter is injected by Astro's MDX runtime,
-  // not visible to @mdx-js/typescript-plugin at check time.
-  (frontmatter.creatureStats.drekavacSwarm && <StatBlock creature={frontmatter.creatureStats.drekavacSwarm} />)
-}
+<StatBlock creature={frontmatter.creatureStats.drekavac} />
+<StatBlock creature={frontmatter.creatureStats.drekavacSwarm} />
