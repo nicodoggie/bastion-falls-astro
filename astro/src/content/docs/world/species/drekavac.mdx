@@ -15,6 +15,8 @@ species:
 ---
 
 import StatBlock from '../../../../components/StatBlock.astro'
+import drekavac from './drekavac.creature.json'
+import drekavacSwarm from './drekavac-swarm.creature.json'
 
 The _drekavac_ are shadow-bound undead creatures that resemble small children, but with limbs and
 heads shaped like rotting animals like chickens, dogs and cats.
@@ -28,6 +30,6 @@ ingredients from noxious swamps and graveyards.
 While typically solitary, drekavacs can congregate into ravenous swarms that overwhelm their prey
 with sheer numbers, acting as a single monstrous entity driven by a collective hunger.
 
-<StatBlock creaturePath={new URL('./drekavac.creature.json', import.meta.url).pathname} />
+<StatBlock creature={drekavac} />
 
-<StatBlock creaturePath={new URL('./drekavac-swarm.creature.json', import.meta.url).pathname} />
+<StatBlock creature={drekavacSwarm} />

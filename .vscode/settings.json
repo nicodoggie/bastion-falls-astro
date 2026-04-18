@@ -48,5 +48,7 @@
     "${workspaceFolder}/.vscode/schemas/frontmatter/vehicle.json": [
       "astro/src/content/docs/world/vehicles/**/*.{md,mdx}"
     ]
-  }
+  },
+  "snyk.advanced.organization": "3f272c09-68a2-499f-bc2c-9ee0e601292d",
+  "snyk.advanced.autoSelectOrganization": true
 }

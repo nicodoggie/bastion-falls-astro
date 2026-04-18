@@ -2,41 +2,20 @@
 /**
  * D&D 5e stat block component — full-width layout inspired by D&D Beyond.
  *
- * Accepts either:
- *   - `creature`     — a CreatureData object (5etools schema)
- *   - `creaturePath` — an absolute path to a JSON file containing a single
- *                      creature object (same schema). Resolve the path in the
- *                      calling file with:
- *                        new URL('./my-creature.json', import.meta.url).pathname
+ * Accepts a creature object matching the 5etools CreatureData format.
+ * Import *.creature.json files directly in the calling MDX and pass as the
+ * `creature` prop — Vite handles the JSON import at build time:
+ *
+ *   import drekavac from './drekavac.creature.json'
+ *   <StatBlock creature={drekavac} />
  */
-import { readFileSync } from 'node:fs'
-import { CreatureDataSchema } from '@bastion-falls/5e-schema-zod'
 import type { CreatureData } from '@bastion-falls/5e-schema-zod'
 
-type Props =
-  | { creature: CreatureData; creaturePath?: never }
-  | { creature?: never; creaturePath: string }
-
-const { creature: creatureProp, creaturePath } = Astro.props
-
-let c: CreatureData
-if (creaturePath) {
-  let raw: unknown
-  try {
-    raw = JSON.parse(readFileSync(creaturePath, 'utf-8'))
-  } catch (err) {
-    throw new Error(`StatBlock: could not read creature file at "${creaturePath}": ${err}`)
-  }
-  const result = CreatureDataSchema.safeParse(raw)
-  if (!result.success) {
-    throw new Error(
-      `StatBlock: invalid creature data at "${creaturePath}":\n${result.error.message}`,
-    )
-  }
-  c = result.data
-} else {
-  c = creatureProp!
+interface Props {
+  creature: CreatureData
 }
+
+const { creature: c } = Astro.props
 
 // ─── Display helpers ──────────────────────────────────────────────────────────
 
