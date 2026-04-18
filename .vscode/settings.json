@@ -1,6 +1,6 @@
 {
   "files.associations": {
-    "*.css": "tailwindcss"
+    "*.css": "tailwindcss",
   },
   "tailwindCSS.classAttributes": ["class", "className", "theme"],
   "tailwindCSS.experimental.classRegex": [
@@ -50,5 +50,11 @@
     ]
   },
   "snyk.advanced.organization": "3f272c09-68a2-499f-bc2c-9ee0e601292d",
-  "snyk.advanced.autoSelectOrganization": true
+  "snyk.advanced.autoSelectOrganization": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["**/*.creature.json"],
+      "url": "https://raw.githack.com/TheGiddyLimit/5etools-utils/master/schema/brew-fast/homebrew.json"
+    }
+  ]
 }

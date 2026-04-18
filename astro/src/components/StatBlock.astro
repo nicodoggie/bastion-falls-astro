@@ -1,21 +1,32 @@
 ---
+import { getEntry } from 'astro:content'
 /**
  * D&D 5e stat block component — full-width layout inspired by D&D Beyond.
  *
- * Accepts a creature object matching the 5etools CreatureData format.
- * Import *.creature.json files directly in the calling MDX and pass as the
- * `creature` prop — Vite handles the JSON import at build time:
+ * Accepts either a creature object (direct JSON import) or a creatures
+ * collection entry ID (e.g. from frontmatter creatureStats).
  *
  *   import drekavac from './drekavac.creature.json'
  *   <StatBlock creature={drekavac} />
+ *
+ *   <StatBlock creature="species/drekavac.creature" />
  */
-import type { CreatureData } from '@bastion-falls/5e-schema-zod'
-
 interface Props {
-  creature: CreatureData
+  creature: Record<string, unknown> | string
 }
 
-const { creature: c } = Astro.props
+const { creature: raw } = Astro.props
+let c: Record<string, unknown>
+
+if (typeof raw === 'string') {
+  const entry = await getEntry('creatures', raw as Parameters<typeof getEntry<'creatures', string>>[1])
+  if (!entry) throw new Error(`[StatBlock] Creature entry not found: "${raw}"`)
+
+  c = entry.data as Record<string, unknown>
+} else {
+  c = raw
+}
+
 
 // ─── Display helpers ──────────────────────────────────────────────────────────
 

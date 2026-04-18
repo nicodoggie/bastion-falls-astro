@@ -31,5 +31,10 @@
     "astro.content-intellisense": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "specstory.cloudSync.enabled": "never",
+    "cSpell.words": [
+      "finrod",
+      "Flancer",
+      "Kincade"
+    ],
   },
 }

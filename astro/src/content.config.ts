@@ -8,6 +8,7 @@ import { autoSidebarSchema } from "starlight-auto-sidebar/schema";
 
 import { collectionExtensions, docsExtension } from './collection-schemas.js';
 
+
 const baseBlogSchema = z.object({
   title: z.string(),
   draft: z.boolean().optional(),
@@ -71,6 +72,14 @@ export const collections = {
   posts: defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts' }),
     schema: blogSchema,
+  }),
+  creatures: defineCollection({
+    loader: glob({
+      pattern: '**/*.creature.json',
+      base: './src/content/docs/world',
+      generateId: ({ entry }) => entry.replace(/\.json$/, ''),
+    }),
+    schema: z.record(z.string(), z.unknown()),
   }),
   ...extensions,
 };
