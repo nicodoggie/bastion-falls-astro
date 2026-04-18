@@ -20,7 +20,7 @@
     "@astrojs/mdx": "5.0.2",
     "@astrojs/node": "10.0.3",
     "@astrojs/react": "5.0.1",
-    "@astrojs/sitemap": "3.7.1",
+    "@astrojs/sitemap": "^3.7.2",
     "@astrojs/starlight": "0.38.2",
     "@bastion-falls/5e-schema-zod": "workspace:^",
     "@bastion-falls/types": "workspace:^",
