@@ -5,7 +5,7 @@ tags:
 species:
   type: humanoid
   origin: Various
-  lifespan: "Up to 100 years"
+  lifespan: 'Up to 100 years'
   biomes:
     - urban
     - grassland
@@ -39,11 +39,11 @@ creatureStats:
     wis: 11
     cha: 10
     skill:
-      perception: "+2"
+      perception: '+2'
     passive: 12
     languages:
       - any one language (usually Common)
-    cr: "1/8"
+    cr: '1/8'
     action:
       - name: Spear
         entries:
@@ -75,15 +75,15 @@ creatureStats:
     wis: 11
     cha: 10
     save:
-      str: "+5"
-      con: "+4"
+      str: '+5'
+      con: '+4'
     skill:
-      athletics: "+5"
-      perception: "+2"
+      athletics: '+5'
+      perception: '+2'
     passive: 12
     languages:
       - any one language (usually Common)
-    cr: "3"
+    cr: '3'
     trait:
       - name: Multiattack
         entries:
@@ -107,28 +107,25 @@ creatureStats:
 
 import StatBlock from '../../../../components/StatBlock.astro';
 
-Humans are the most adaptable and ambitious of the common races. Whatever
-drives them — ambition, idealism, wanderlust — humans are the innovators,
-the achievers, and the pioneers of the world. Their drive and diversity
-allow them to spread across nearly every corner of the world.
-
+Humans are the most adaptable and ambitious of the common races. Whatever drives
+them — ambition, idealism, wanderlust — humans are the innovators, the
+achievers, and the pioneers of the world. Their drive and diversity allow them
+to spread across nearly every corner of the world.
 
 ## Common Human Stats
 
-Guards are the most common armed humans encountered in settlements, posted
-at gates, patrolling streets, or protecting merchants.
+Guards are the most common armed humans encountered in settlements, posted at
+gates, patrolling streets, or protecting merchants.
 
-{
-  // @ts-expect-error -- frontmatter is injected by Astro's MDX runtime,
-  // not visible to @mdx-js/typescript-plugin at check time.
-  frontmatter.creatureStats.guard && <StatBlock creature={frontmatter.creatureStats.guard} />
-}
+{ // @ts-expect-error -- frontmatter is injected by Astro's MDX runtime, // not
+visible to @mdx-js/typescript-plugin at check time.
+frontmatter.creatureStats.guard &&
+<StatBlock creature={frontmatter.creatureStats.guard} /> }
 
-Veterans are seasoned warriors who have survived many campaigns. They are
-often hired as bodyguards, mercenaries, or city watch captains.
+Veterans are seasoned warriors who have survived many campaigns. They are often
+hired as bodyguards, mercenaries, or city watch captains.
 
-{
-  // @ts-expect-error -- frontmatter is injected by Astro's MDX runtime,
-  // not visible to @mdx-js/typescript-plugin at check time.
-  frontmatter.creatureStats.veteran && <StatBlock creature={frontmatter.creatureStats.veteran} />
-}
+{ // @ts-expect-error -- frontmatter is injected by Astro's MDX runtime, // not
+visible to @mdx-js/typescript-plugin at check time.
+frontmatter.creatureStats.veteran &&
+<StatBlock creature={frontmatter.creatureStats.veteran} /> }

@@ -94,6 +94,10 @@ export default defineConfig({
       ],
       sidebar: [
         {
+          label: 'Timeline',
+          link: '/timeline'
+        },
+        {
           label: 'Blog',
           link: '/blog',
         },

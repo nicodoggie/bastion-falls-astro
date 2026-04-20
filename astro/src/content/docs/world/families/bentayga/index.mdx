@@ -4,22 +4,27 @@ family:
   name: Bentayga
 tags:
   - bentayga
-
 ---
 
-import * as path from "node:path";
-import {getImage} from "astro:assets";
-import familyTree from "./family.svg";
-export const image = await getImage({src: familyTree})     
+import * as path from 'node:path';
+import { getImage } from 'astro:assets';
+import familyTree from './family.svg';
+export const image = await getImage({ src: familyTree });
 
-The *Bentayga* clan is a close-knit family of ethnically\
-[Parpelissian](/world/ethnicities/parpelissian/) sailors who have come to
-spread across the islands on the
-[Sarmatian Sea](/world/locations/sarmatian-sea/). They are renowned to be
-natural seafarers and navigators that they are highly sought after by shipping
-companies, smugglers, privateers and navies around the known world.
+The _Bentayga_ clan is a close-knit family of ethnically\
+[Parpelissian](/world/ethnicities/parpelissian/) sailors who have come to spread
+across the islands on the [Sarmatian Sea](/world/locations/sarmatian-sea/). They
+are renowned to be natural seafarers and navigators that they are highly sought
+after by shipping companies, smugglers, privateers and navies around the known
+world.
 
 A disproportionate number of them have moved into Raibon Island and intermarried
 with some of the prominent families on the island.
 
-<FamilyTree client:only="react" src={image.src} width={image.options.width} height={image.options.height} alt="Bentayga Family Map" />
+<FamilyTree
+  client:only="react"
+  src={image.src}
+  width={image.options.width}
+  height={image.options.height}
+  alt="Bentayga Family Map"
+/>

@@ -4,13 +4,12 @@ family:
   name: McFarland
 tags:
   - mcfarland
-
 ---
 
-import * as path from "node:path";
-import {getImage} from "astro:assets";
-import familyMap from "./family.svg";
-export const image = await getImage({src: familyMap})     
+import * as path from 'node:path';
+import { getImage } from 'astro:assets';
+import familyMap from './family.svg';
+export const image = await getImage({ src: familyMap });
 
 The McFarland family has roots in the northern island kingdom of
 [Iutland](/world/locations/iutland/). A branch of the family had migrated
@@ -20,4 +19,10 @@ Some of them have intermarried with the [Savoy](/world/families/savoy/) of
 [Port Rainoso](/world/locations/port-rainoso/). The branch of the family is
 well-known for being competent lawyers or accountants.
 
-<FamilyTree client:only="react" src={image.src} width={image.options.width} height={image.options.height} alt="McFarland Family Tree" />
+<FamilyTree
+  client:only="react"
+  src={image.src}
+  width={image.options.width}
+  height={image.options.height}
+  alt="McFarland Family Tree"
+/>

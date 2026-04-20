@@ -4,12 +4,17 @@ family:
   name: Caxton
 tags:
   - caxton
-
 ---
 
-import * as path from "node:path";
-import {getImage} from "astro:assets";
-import familyMap from "./family.svg";
-export const image = await getImage({src: familyMap})     
+import * as path from 'node:path';
+import { getImage } from 'astro:assets';
+import familyMap from './family.svg';
+export const image = await getImage({ src: familyMap });
 
-<FamilyTree client:only="react" src={image.src} width={image.options.width} height={image.options.height} alt="Caxton Family Tree" />
+<FamilyTree
+  client:only="react"
+  src={image.src}
+  width={image.options.width}
+  height={image.options.height}
+  alt="Caxton Family Tree"
+/>

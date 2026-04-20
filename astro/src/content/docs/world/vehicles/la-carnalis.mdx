@@ -9,7 +9,7 @@ vehicle:
     - sea
   size: G
   dimensions:
-    - "Galley — long hull with ram and two masts"
+    - 'Galley — long hull with ram and two masts'
   capCrew: 80
   capPassenger: 40
   capCargo: 150
@@ -85,16 +85,15 @@ vehicle:
           bludgeoning damage.
 ---
 
-{
-// @ts-expect-error -- frontmatter is injected at runtime
-frontmatter.vehicle && (
-  <VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
-) }
+{ // @ts-expect-error -- frontmatter is injected at runtime frontmatter.vehicle
+&& (
+
+<VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />) }
 
 ## Crew
 
-| Name                 | Position        |
-| -------------------- | --------------- |
-| Jean Paul de la Fouet | Captain      |
-| Craçoix              | First Mate      |
-| Mystine Nightingale  | Medical Officer |
+| Name                  | Position        |
+| --------------------- | --------------- |
+| Jean Paul de la Fouet | Captain         |
+| Craçoix               | First Mate      |
+| Mystine Nightingale   | Medical Officer |

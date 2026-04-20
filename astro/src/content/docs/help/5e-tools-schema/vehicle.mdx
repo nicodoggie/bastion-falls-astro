@@ -26,15 +26,15 @@ To render the stat-style card in the body, use `VehicleStatBlock` (same pattern
 as `StatBlock` on species pages — pass typed ship data from frontmatter):
 
 ```mdx
-{ // @ts-expect-error -- frontmatter is injected at runtime
-frontmatter.vehicle && (
-  <VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
-) }
+{ // @ts-expect-error -- frontmatter is injected at runtime frontmatter.vehicle
+&& (
+
+<VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />) }
 ```
 
 `VehicleStatBlock` is registered for MDX via `astro-auto-import` in
-`astro.config.mjs` (same pattern as other shared components). Species pages still
-import `StatBlock` explicitly because it is not auto-imported.
+`astro.config.mjs` (same pattern as other shared components). Species pages
+still import `StatBlock` explicitly because it is not auto-imported.
 
 `VehicleStatBlock` mirrors the `StatBlock` / `CreatureData` pattern: one
 component, typed ship data from `@bastion-falls/5e-schema-zod`.
@@ -144,11 +144,12 @@ mindless objects, same as many official stat blocks.
 
 ### `conditionImmune` / `immune` / `resist` / `vulnerable`
 
-These use the same util definitions as creatures: `ConditionImmunityArraySchema`,
-`DamageImmunityArraySchema`, `DamageResistArraySchema`, and
-`DamageVulnerabilityArraySchema` in `shared.ts` (arrays of damage types,
-`special` strings, or nested objects with `preNote` / `note` / nested lists).
-YAML can mirror 5etools JSON; simple cases are plain string arrays.
+These use the same util definitions as creatures:
+`ConditionImmunityArraySchema`, `DamageImmunityArraySchema`,
+`DamageResistArraySchema`, and `DamageVulnerabilityArraySchema` in `shared.ts`
+(arrays of damage types, `special` strings, or nested objects with `preNote` /
+`note` / nested lists). YAML can mirror 5etools JSON; simple cases are plain
+string arrays.
 
 ---
 

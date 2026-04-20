@@ -9,7 +9,7 @@ vehicle:
     - sea
   size: G
   dimensions:
-    - "70 ft. long, 20 ft. wide (lateen-rigged caravel)"
+    - '70 ft. long, 20 ft. wide (lateen-rigged caravel)'
   capCrew: 30
   capPassenger: 70
   capCargo: 100
@@ -67,24 +67,23 @@ vehicle:
               this component.
 ---
 
-{
-// @ts-expect-error -- frontmatter is injected at runtime
-frontmatter.vehicle && (
-  <VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
-) }
+{ // @ts-expect-error -- frontmatter is injected at runtime frontmatter.vehicle
+&& (
+
+<VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />) }
 
 ## Crew
 
-| Name                 | Position     |
-| -------------------- | ------------ |
-| Auguste Lyonnaire    | Captain      |
-| Karzad Bin Pathad    | First Mate   |
-| Anette Sotomayor     | Quartermaster |
-| Anouk Tarish         | Bosun        |
-| Jacques Dipardeau    | Crew         |
-| Blaise Dpadua        | Crew         |
-| Claude Stradivari    | Crew         |
-| Antoinette Laforge   | Crew         |
-| Pierre Dordoville    | Crew         |
-| Pascal Kelvin        | Crew         |
-| Gisele Dfantasia     | Crew         |
+| Name               | Position      |
+| ------------------ | ------------- |
+| Auguste Lyonnaire  | Captain       |
+| Karzad Bin Pathad  | First Mate    |
+| Anette Sotomayor   | Quartermaster |
+| Anouk Tarish       | Bosun         |
+| Jacques Dipardeau  | Crew          |
+| Blaise Dpadua      | Crew          |
+| Claude Stradivari  | Crew          |
+| Antoinette Laforge | Crew          |
+| Pierre Dordoville  | Crew          |
+| Pascal Kelvin      | Crew          |
+| Gisele Dfantasia   | Crew          |

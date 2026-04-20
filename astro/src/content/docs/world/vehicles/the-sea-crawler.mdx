@@ -9,7 +9,7 @@ vehicle:
     - sea
   size: G
   dimensions:
-    - "70 ft. long, 20 ft. wide"
+    - '70 ft. long, 20 ft. wide'
   capCrew: 40
   capPassenger: 100
   capCargo: 10
@@ -76,11 +76,10 @@ vehicle:
               this component.
 ---
 
-{
-// @ts-expect-error -- frontmatter is injected at runtime
-frontmatter.vehicle && (
-  <VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
-) }
+{ // @ts-expect-error -- frontmatter is injected at runtime frontmatter.vehicle
+&& (
+
+<VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />) }
 
 Longships rely on oars and sails. They are built to carry soldiers into combat
 and to embark or disembark troops quickly.
