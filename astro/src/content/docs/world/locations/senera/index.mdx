@@ -8,6 +8,12 @@ location:
     - Betera
 ---
 
+import MapImage from "../../../../assets/maps/senera.jpg";
+import { getImage } from "astro:assets";
+export const processedImage = await getImage({ src: MapImage });
+
+<Map client:only="react" src={processedImage.src} width={processedImage.options.width} height={processedImage.options.height} alt="Map of Senera" />
+
 *Senera* is a large island kingdom to the northwest of the
 [Beteran Continent](/world/locations/betera/). Culturally, it is closely integrated into
 the rest of the continent, due to its joint history, and its involvement with a

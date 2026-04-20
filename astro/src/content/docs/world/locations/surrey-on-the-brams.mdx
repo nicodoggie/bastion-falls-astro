@@ -16,6 +16,12 @@ location:
    - "Senera"
 ---
 
+import MapImage from "../../../../assets/maps/surrey-on-the-brams.jpg";
+import { getImage } from "astro:assets";
+export const processedImage = await getImage({ src: MapImage });
+
+<Map client:only="react" src={processedImage.src} width={processedImage.options.width} height={processedImage.options.height} alt="Map of Surrey-on-the-Brams" />
+
 **Surrey-on-the-Brams** is a large island situated where the
 [Brams River](/world/locations/brams-river) meets the
 [Gulf of Inespell](/world/locations/gulf-of-inespell). The island's strategic position has

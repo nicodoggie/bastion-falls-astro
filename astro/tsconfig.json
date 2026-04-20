@@ -19,6 +19,9 @@
   },
   "mdx": {
     "checkMdx": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "plugins": [
       ["remark-frontmatter", "yaml"],
       ["remark-mdx-frontmatter", { "name": "frontmatter" }]

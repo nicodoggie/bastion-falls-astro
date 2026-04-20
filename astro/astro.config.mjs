@@ -1,4 +1,7 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
+
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
@@ -14,7 +17,10 @@ import { remarkDefinitionList } from 'remark-definition-list';
 import remarkMarkmap from 'remark-markmap';
 import remarkParse from 'remark-parse';
 import starlightAutoSidebar from 'starlight-auto-sidebar';
+import mermaid from 'astro-mermaid'
 import { vscodeFrontmatterSchemas } from './src/integrations/vscode-frontmatter-schemas.ts';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const lexurgyLang = JSON.parse(
   fs.readFileSync(
@@ -42,6 +48,7 @@ export default defineConfig({
   },
   integrations: [
     react(),
+    mermaid(),
     expressiveCode({
       shiki: {
         langs: [lexurgyLang],
@@ -136,6 +143,11 @@ export default defineConfig({
       tailwindcss(),
       flowbiteReact(),
     ],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      }
+    }
   },
   experimental: {
     rustCompiler: true,
