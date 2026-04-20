@@ -314,7 +314,7 @@ if(character?.relationships?.families) {
                 {relatives.map((relative: Relative) => {
                   return (
                   <li>
-                    <a href={relative.entry && `/characters/${relative.entry?.id}`}>
+                    <a href={relative.entry && `/world/characters/${relative.entry?.id}`}>
                       {relative.entry?.data.title || relative.name}
                       {relative.type && ` (${relative.type})`}
                     </a>
@@ -337,7 +337,7 @@ if(character?.relationships?.families) {
                 {relatives.map((relative: Relative) => {
                   return (
                   <li>
-                    <a href={`/characters/${relative.entry?.id}`}>
+                    <a href={`/world/characters/${relative.entry?.id}`}>
                       {relative.entry?.data.title || relative.name}
                       {relative.type && ` (${relative.type})`}
                     </a>

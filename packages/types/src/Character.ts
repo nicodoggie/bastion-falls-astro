@@ -71,6 +71,18 @@ export const HairSchema = z.object({
   length: z.enum(["none", "short", "medium", "long"]).optional(),
 })
 
+export const FacialHairSchema = z.object({
+  color: z.string().optional(),
+  style: z.enum(["none", "stubble", "short", "medium", "long", "goatee", "mustache", "van-dyke", "full", "chinstrap", "soul-patch"]).optional(),
+  location: z.enum(["beard", "mustache", "sideburns", "full"]).optional(),
+})
+
+export const BodyHairSchema = z.object({
+  location: z.enum(["chest", "arms", "legs", "back", "pubic", "full"]).optional(),
+  density: z.enum(["none", "light", "moderate", "heavy", "very-heavy"]).optional(),
+  color: z.string().optional(),
+})
+
 // Allow for dichromia by supporting either a single color or an object specifying separate colors for each eye
 const EyeColorSchema = z.union([
   z.string(),
@@ -88,6 +100,8 @@ const EyesSchema = z.object({
 const CharacterDetailsSchema = z.object({
   age: z.number().optional(),
   hair: HairSchema.optional(),
+  facialHair: FacialHairSchema.optional(),
+  bodyHair: BodyHairSchema.optional(),
   eyes: EyesSchema.optional(),
   aliases: z.array(z.string()).optional(),
   dateOfBirth: z.string().optional(),
@@ -182,4 +196,6 @@ export type CharacterFamily = z.infer<typeof CharacterFamilySchema>;
 export type Character = z.infer<typeof CharacterSchema>;
 export type CharacterTitle = z.infer<typeof CharacterTitleSchema>;
 export type CharacterTitles = z.infer<typeof CharacterTitlesSchema>;
+export type FacialHair = z.infer<typeof FacialHairSchema>;
+export type BodyHair = z.infer<typeof BodyHairSchema>;
 export default CharacterSchema;
