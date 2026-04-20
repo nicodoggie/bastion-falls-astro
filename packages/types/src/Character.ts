@@ -134,6 +134,7 @@ export const CharacterRelativeSchema = z.object({
     "cousin",
     "nephew",
     "niece",
+    "nibling",
     "friend",
     "enemy",
     "ally",
