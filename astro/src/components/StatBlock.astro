@@ -258,11 +258,11 @@ const actions = asFeatures(c.action)
 const reactions = asFeatures(c.reaction)
 const legendary = asFeatures(c.legendary)
 
-const saves = c.save
-  ? Object.entries(c.save)
-      .filter(([, v]) => v !== undefined && v !== null)
-      .map(([k, v]) => `${SAVE_NAMES[k] ?? k} ${v}`)
-  : []
+// const saves = c.save
+//   ? Object.entries(c.save)
+//       .filter(([, v]) => v !== undefined && v !== null)
+//       .map(([k, v]) => `${SAVE_NAMES[k] ?? k} ${v}`)
+//   : []
 
 const skills = c.skill
   ? Object.entries(c.skill)

@@ -9,7 +9,7 @@
     "build": "yarn run clean && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "astro lint",
+    "lint": "astro check",
     "lint:mdx": "eslint src/content",
     "postinstall": "flowbite-react install",
     "bfcli": "_REAL_CWD=$INIT_CWD yarn workspace @bastion-falls/cli run exec"
