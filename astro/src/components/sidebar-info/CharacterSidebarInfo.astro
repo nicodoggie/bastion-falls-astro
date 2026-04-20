@@ -26,17 +26,31 @@ switch(character.details.mortality) {
     break;
 }
 
-let species;
+interface SpeciesData {
+  name: string;
+  entry?: CollectionEntry<"species">;
+}
+
+let species: SpeciesData[] = [];
 if(character?.details?.species) {
-  if(! Array.isArray(character.details.species)) {
-    species = [await getEntry('species', slug(character.details.species))];
-  } else {
-    species = await Promise.all(
-      character.details.species.map(
-        async (species: string) => await getEntry('species', slug(species))
-      )
-    );
-  }
+  const speciesNames = Array.isArray(character.details.species) 
+    ? character.details.species 
+    : [character.details.species];
+  
+  species = (await Promise.allSettled<SpeciesData>(
+    speciesNames.map(
+      async (name: string) => {
+        const sluggedName = slug(name);
+        if(sluggedName) {
+          const entry = await getEntry('species', sluggedName);
+          return { name, entry };
+        }
+        throw new Error(`Species ${name} has no slugged name`);
+      }
+    )
+  ))
+  .map((settled) => settled.status === 'fulfilled' ? settled.value : null)
+  .filter((s): s is SpeciesData => s !== null && s.entry !== undefined);
 }
 
 interface Relative {
@@ -375,9 +389,9 @@ if(character?.relationships?.families) {
             </dt>
             <dd class="text-gray-600 dark:text-gray-400">
               <ul>
-                {species.map((species: CollectionEntry<"species">) => (
+                {species.map((s: SpeciesData) => s.entry && (
                   <li>
-                    <a href={`/world/species/${species.id}`}>{species.data.title}</a>
+                    <a href={`/world/species/${s.entry.id}`}>{s.entry.data.title}</a>
                   </li>
                 ))}
               </ul>

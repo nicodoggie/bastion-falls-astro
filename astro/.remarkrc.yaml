@@ -4,7 +4,6 @@ plugins:
   - remark-definition-list
   - remark-lint
   - - remark-lint-maximum-line-length
-    - warning
     - 80
   - - remark-lint-frontmatter-schema
     - schemas:
