@@ -120,10 +120,10 @@ if(location?.related) {
               Parent Locations
             </h3>
             <ul class="text-gray-600 dark:text-gray-400">
-              {parents.map((parent: CollectionEntry<"location">) => (
+                {parents.map((parent: CollectionEntry<"location">) => (
                 <li>
                   <a href={`/world/locations/${parent.id}`}>
-                    {parent.data.title}
+                    {(parent as any).data.title}
                   </a>
                 </li>
               ))}
@@ -142,9 +142,9 @@ if(location?.related) {
               {related.map((relatedLocation: CollectionEntry<"location">) => (
                 <li>
                   <a href={`/world/locations/${relatedLocation.id}`}>
-                    {relatedLocation.data.title}
+                    {(relatedLocation as any).data.title}
                   </a>
-                  
+                   
                 </li>
               ))}
             </ul>

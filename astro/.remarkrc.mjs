@@ -40,7 +40,6 @@ const remarkConfig = {
     [
       remarkLintMaximumLineLength,
       [
-        "warning",
         80,
       ],
     ],

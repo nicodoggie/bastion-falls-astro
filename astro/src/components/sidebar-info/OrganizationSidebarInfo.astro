@@ -110,7 +110,7 @@ if(organization?.members) {
               {members.map((member: MemberData) => (
                 <li>
                   <a href={`/characters/${member.entry?.id}`}>
-                    {member.entry?.data.title || member.name}
+                    {(member.entry as any)?.data?.title || member.name}
                     {member.type && ` (${member.type})`}
                   </a>
                 </li>

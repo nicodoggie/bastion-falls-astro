@@ -329,7 +329,7 @@ if(character?.relationships?.families) {
                   return (
                   <li>
                     <a href={relative.entry && `/world/characters/${relative.entry?.id}`}>
-                      {relative.entry?.data.title || relative.name}
+                      {(relative.entry as any)?.data?.title || relative.name}
                       {relative.type && ` (${relative.type})`}
                     </a>
                   </li>
@@ -352,7 +352,7 @@ if(character?.relationships?.families) {
                   return (
                   <li>
                     <a href={`/world/characters/${relative.entry?.id}`}>
-                      {relative.entry?.data.title || relative.name}
+                      {(relative.entry as any)?.data?.title || relative.name}
                       {relative.type && ` (${relative.type})`}
                     </a>
                   </li>
@@ -391,7 +391,7 @@ if(character?.relationships?.families) {
               <ul>
                 {species.map((s: SpeciesData) => s.entry && (
                   <li>
-                    <a href={`/world/species/${s.entry.id}`}>{s.entry.data.title}</a>
+                    <a href={`/world/species/${s.entry.id}`}>{(s.entry as any).data.title}</a>
                   </li>
                 ))}
               </ul>
