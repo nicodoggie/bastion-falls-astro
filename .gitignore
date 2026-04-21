@@ -26,3 +26,5 @@ public/processed_images/
 .specstory/.what-is-this.md
 
 *.bak
+
+astro/src/content/docs/world/timeline/timeline-generated.mdx
