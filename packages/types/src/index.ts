@@ -9,6 +9,7 @@ import { type Family, FamilySchema } from './Family.js';
 import { type Organization, OrganizationSchema } from './Organization.js';
 import { type Concept, ConceptSchema } from './Concept.js';
 import { type Vehicle, VehicleSchema } from './Vehicle.js';
+import { type Religion, ReligionSchema } from './Religion.js';
 
 export type { 
   Character,
@@ -20,6 +21,7 @@ export type {
   Organization,
   Species,
   Vehicle,
+  Religion,
 };
 export { 
   CharacterSchema,
@@ -29,6 +31,7 @@ export {
   ImageSchema,
   ItemSchema,
   LocationSchema,
+  ReligionSchema,
   OrganizationSchema,
   SpeciesSchema,
   VehicleSchema,

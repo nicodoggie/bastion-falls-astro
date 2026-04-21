@@ -19,6 +19,8 @@ import remarkParse from 'remark-parse';
 import starlightAutoSidebar from 'starlight-auto-sidebar';
 import mermaid from 'astro-mermaid'
 import { vscodeFrontmatterSchemas } from './src/integrations/vscode-frontmatter-schemas.ts';
+import { timelineGenerator } from './src/integrations/timeline-generator.ts';
+
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -95,7 +97,7 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Timeline',
-          link: '/timeline'
+          link: '/world/timeline/timeline-generated'
         },
         {
           label: 'Blog',
@@ -141,6 +143,7 @@ export default defineConfig({
     mdx(),
     sitemap(),
     vscodeFrontmatterSchemas(),
+    timelineGenerator(),
   ],
   vite: {
     plugins: [

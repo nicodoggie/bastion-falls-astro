@@ -117,15 +117,9 @@ to spread across nearly every corner of the world.
 Guards are the most common armed humans encountered in settlements, posted at
 gates, patrolling streets, or protecting merchants.
 
-{ // @ts-expect-error -- frontmatter is injected by Astro's MDX runtime, // not
-visible to @mdx-js/typescript-plugin at check time.
-frontmatter.creatureStats.guard &&
-<StatBlock creature={frontmatter.creatureStats.guard} /> }
+<StatBlock creature={frontmatter.creatureStats.guard} />
 
 Veterans are seasoned warriors who have survived many campaigns. They are often
 hired as bodyguards, mercenaries, or city watch captains.
 
-{ // @ts-expect-error -- frontmatter is injected by Astro's MDX runtime, // not
-visible to @mdx-js/typescript-plugin at check time.
-frontmatter.creatureStats.veteran &&
-<StatBlock creature={frontmatter.creatureStats.veteran} /> }
+<StatBlock creature={frontmatter.creatureStats.veteran} />

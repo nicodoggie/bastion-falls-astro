@@ -67,10 +67,7 @@ vehicle:
               this component.
 ---
 
-{ // @ts-expect-error -- frontmatter is injected at runtime frontmatter.vehicle
-&& (
-
-<VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />) }
+<VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
 
 ## Crew
 

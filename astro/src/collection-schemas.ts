@@ -18,6 +18,7 @@ import {
   ItemSchema,
   LocationSchema,
   OrganizationSchema,
+  ReligionSchema,
   SpeciesSchema,
 } from '@bastion-falls/types';
 
@@ -106,6 +107,16 @@ export const collectionExtensions = {
     }),
   },
 
+  religion: {
+    loader: {
+      pattern: '**/*.mdx',
+      base: './src/content/docs/world/organizations',
+    },
+    schema: z.object({
+      religion: ReligionSchema.optional(),
+    }),
+  },
+
   species: {
     loader: {
       pattern: '**/*.mdx',
@@ -138,10 +149,26 @@ export type CollectionName = keyof typeof collectionExtensions;
  * Every field from every per-collection schema, all optional, so any page
  * can carry any custom field without being in a specific sub-collection.
  */
+const TimelineOverrideSchema = z.object({
+  label: z.string().optional(),
+  year: z.string().optional(),
+  type: z.enum(['birth', 'death', 'start', 'end', 'discover']).optional(),
+  priority: z.number().optional(),
+  order: z.number().optional(),
+});
+
+const TimelineFieldSchema = z.union([
+  z.boolean(),
+  TimelineOverrideSchema,
+  z.array(TimelineOverrideSchema),
+]);
+
 export const docsExtension = z.object(
   Object.fromEntries(
     Object.values(collectionExtensions).flatMap(({ schema }) =>
       Object.entries(schema.shape as Record<string, z.ZodTypeAny>)
     )
   )
-);
+).extend({
+  timeline: TimelineFieldSchema.optional(),
+});

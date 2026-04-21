@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { date, z } from 'zod';
 import { BaseImageSchema } from './Image.js';
 
 
@@ -136,6 +136,8 @@ export const PoliticalLocationSectionSchema = z.object({
 
 export const PoliticalLocationSchema = BaseLocationSchema.extend({
   type: PoliticalLocationTypeSchema,
+  dateFounded: z.string().optional(),
+  dateDissolved: z.string().optional(),
   details: z.object({
     flag: BaseImageSchema.optional(),
     map: BaseImageSchema.optional(),
@@ -171,6 +173,7 @@ export const HeritageLocationSchema = BaseLocationSchema.extend({
 
 export const NaturalLocationSchema = BaseLocationSchema.extend({
   type: NaturalLocationTypeSchema,
+  discovered: z.string().optional(),
   details: z.object({
     area: z.string().optional(),
     elevation: z.string().optional(),

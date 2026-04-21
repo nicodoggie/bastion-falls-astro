@@ -73,8 +73,7 @@ import Castle02Image from '/public/vehicles/rozenmaiden/02-castle.png';
 import LowerDeck03Image from '/public/vehicles/rozenmaiden/03-lower-deck.png';
 import Hold04Image from '/public/vehicles/rozenmaiden/04-hold.png';
 
-{ // @ts-expect-error -- frontmatter is injected at runtime frontmatter.vehicle
-&& ( <VehicleStatBlock vehicle={frontmatter.vehicle} />) } }
+<VehicleStatBlock vehicle={frontmatter.vehicle} />
 
 ### Main Deck
 

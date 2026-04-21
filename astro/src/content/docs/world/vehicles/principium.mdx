@@ -85,10 +85,7 @@ vehicle:
           bludgeoning damage.
 ---
 
-{ // @ts-expect-error -- frontmatter is injected at runtime frontmatter.vehicle
-&& (
-
-<VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />) }
+<VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
 
 The _Principium_ was a galley working under
 [La Camaraderie de la Mer](/world/organizations/la-camaraderie/), and was its

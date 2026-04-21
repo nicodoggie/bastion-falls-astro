@@ -76,10 +76,7 @@ vehicle:
               this component.
 ---
 
-{ // @ts-expect-error -- frontmatter is injected at runtime frontmatter.vehicle
-&& (
-
-<VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />) }
+<VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
 
 Longships rely on oars and sails. They are built to carry soldiers into combat
 and to embark or disembark troops quickly.
