@@ -1,0 +1,115 @@
+---
+title: The Scarlet
+tags:
+  - vehicles
+vehicle:
+  name: The Scarlet
+  vehicleType: SHIP
+  terrain:
+    - air
+  size: G
+  dimensions:
+    - '80 ft. x 20 ft.'
+  capCrew: 15
+  capPassenger: 10
+  capCargo: 20
+  pace: 20
+  str: 18
+  dex: 17
+  con: 20
+  int: 0
+  wis: 0
+  cha: 0
+  immune:
+    - poison
+    - psychic
+  conditionImmune:
+    - blinded
+    - charmed
+    - deafened
+    - exhaustion
+    - frightened
+    - incapacitated
+    - paralyzed
+    - petrified
+    - poisoned
+    - prone
+    - stunned
+    - unconscious
+  hull:
+    ac: 16
+    hp: 200
+    dt: 15
+  control:
+    - name: Wheelhouse
+      ac: 18
+      hp: 50
+      entries:
+        - >
+          Speed is up to the speed of the airship, with one 90-degree turn. If
+          the wheelhouse is destroyed, the airship cannot turn.
+  movement:
+    - name: Elemental Ring (Brigit)
+      ac: 12
+      hp: 100
+      speed:
+        - mode: air
+          entries:
+            - >
+              Movement (air) 180 ft.; increases to 220 ft. while a creature with
+              the Mark of the Storm is in control of the wheelhouse. The airship
+              loses 20 ft. of speed for each 25 damage taken by this component.
+              If this component is destroyed, speed becomes 0.
+            - >
+              Includes a wheel of wind and water that allows a creature with the
+              Mark of the Storm to telepathically communicate with the fire
+              elemental, Brigit.
+  weapon:
+    - name: Harpoon Gun
+      ac: 15
+      hp: 50
+      count: 3
+      entries:
+        - >
+          Ranged Weapon Attack: +8 to hit, range 120/480 ft., one target. Hit:
+          11 (2d10) piercing damage, and the target is grappled (escape DC 16).
+          While grappled, the target's speed is halved and it can't move farther
+          away from The Scarlet. Each gun can grapple one target. The Scarlet's
+          speed is not halved while grappling.
+    - name: Thundercannon
+      ac: 15
+      hp: 75
+      count: 2
+      entries:
+        - >
+          Ranged Weapon Attack: +8 to hit, range 200/800 ft., one target. Hit:
+          36 (8d8) thunder damage. On a hit or a miss, each creature within 10
+          feet of the impact spot must succeed on a DC 15 Dexterity saving throw
+          or take 9 (2d8) thunder damage.
+  action:
+    - entries:
+        - >
+          On its turn, The Scarlet can take 3 actions if it has 15 or more crew,
+          or 1 action if it has fewer than 10 crew. It can take no actions if it
+          has no remaining crew.
+    - name: Fire Ballista
+      entries:
+        - The Scarlet fires its harpoon guns.
+    - name: Fire Thundercannon
+      entries:
+        - The Scarlet fires its thundercannons.
+    - name: Move
+      entries:
+        - >
+          Uses the wheelhouse and elemental ring. If it enters a Large or
+          smaller creature's space, that creature is pushed to the edge of the
+          ship's space and must succeed on a DC 15 Dexterity saving throw or
+          take 5 (1d10) bludgeoning damage.
+    - name: Harpoon Haul
+      entries:
+        - Pulls each grappled target up to 30 feet toward the airship.
+---
+
+<VehicleStatBlock vehicle={frontmatter.vehicle} />
+
+<Stub />

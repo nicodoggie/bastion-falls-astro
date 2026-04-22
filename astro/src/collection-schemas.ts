@@ -63,7 +63,7 @@ export const collectionExtensions = {
       base: './src/content/docs/world/events',
     },
     schema: z.object({
-      event: EventSchema.omit({ name: true }).optional(),
+      event: EventSchema.partial({ name: true }).optional(),
     }),
   },
 
@@ -73,7 +73,8 @@ export const collectionExtensions = {
       base: './src/content/docs/world/families',
     },
     schema: z.object({
-      family: FamilySchema.optional(),
+      family: FamilySchema.partial({ name: true }).optional(),
+
     }),
   },
 

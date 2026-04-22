@@ -90,6 +90,7 @@ export const BuildingLocationTypeSchema = z.enum([
   'shack',
   'mine',
   'inn',
+  'tavern',
   'brothel',
   'restaurant',
   'academy',
