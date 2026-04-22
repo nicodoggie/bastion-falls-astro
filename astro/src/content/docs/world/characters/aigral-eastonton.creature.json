@@ -1,7 +1,7 @@
 {
   "name": "Aigral, Giant of Inespell",
   "size": ["H"],
-  "type": "fiend",
+  "type": "giant",
   "alignment": ["C", "E"],
   "ac": [{ "ac": 15, "from": ["natural armor"] }],
   "hp": { "average": 255, "formula": "85 + 45 + 45 + 40 + 40 (paragon pools)" },
@@ -17,7 +17,9 @@
     "wis": "+4"
   },
   "passive": 11,
-  "languages": ["Common", "Infernal"],
+  "languages": [
+    "Common"
+  ],
   "cr": "5",
   "trait": [
     {
