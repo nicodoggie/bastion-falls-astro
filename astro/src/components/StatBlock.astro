@@ -234,11 +234,7 @@ const SKILL_NAMES: Record<string, string> = {
   perception: 'Perception', performance: 'Performance', persuasion: 'Persuasion',
   religion: 'Religion', 'sleight of hand': 'Sleight of Hand',
   stealth: 'Stealth', survival: 'Survival',
-}
-
-const SAVE_NAMES: Record<string, string> = {
-  str: 'Str', dex: 'Dex', con: 'Con', int: 'Int', wis: 'Wis', cha: 'Cha',
-}
+};
 
 type AnyFeature = { name: string; entries: unknown[] }
 function asFeatures(val: unknown): AnyFeature[] {

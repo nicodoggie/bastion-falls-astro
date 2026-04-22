@@ -164,7 +164,6 @@ function filePathToSlug(baseDir: string, filePath: string): string {
 }
 
 function getCollectionEntries(
-  collection: CollectionName,
   baseDir: string,
 ): Array<{ slug: string; id: string; data: Frontmatter }> {
   const files = walkMdxFiles(baseDir);
@@ -243,7 +242,7 @@ async function getTimelineEntries(): Promise<TimelineEntry[]> {
   const entries: TimelineEntry[] = [];
 
   for (const [coll, baseDir] of Object.entries(ALL_WORLD_COLLECTION_DIRS)) {
-    const collEntries = getCollectionEntries(coll, baseDir);
+    const collEntries = getCollectionEntries(baseDir);
 
     for (const entry of collEntries) {
       const timeline = entry.data.timeline;
