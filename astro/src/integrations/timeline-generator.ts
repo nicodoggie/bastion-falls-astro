@@ -43,7 +43,7 @@ export function timelineGenerator(): AstroIntegration {
       'astro:config:setup': ({ config }) => {
         astroRoot = fileURLToPath(config.root);
       },
-      'astro:build:start': async ({ logger }) => {
+      'astro:route:setup': async ({ logger }) => {
         await generateTimeline(logger);
       },
       'astro:server:setup': async ({ server, logger }) => {
