@@ -2,3 +2,5 @@ pre-commit:
   parallel: true
   jobs:
     - run: yarn astro lint
+      env:
+        PATH: "${HOME}/.volta/bin:${PATH}"

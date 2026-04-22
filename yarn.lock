@@ -830,7 +830,6 @@ __metadata:
     gray-matter: "npm:^4.0.3"
     json2toml: "npm:^6.1.1"
     kingraph: "npm:^0.3.2"
-    lefthook: "npm:^2.1.6"
     markmap-common: "npm:^0.18.9"
     markmap-lib: "npm:^0.18.12"
     markmap-render: "npm:^0.18.12"
@@ -912,6 +911,7 @@ __metadata:
   resolution: "@bastion-falls/main@workspace:."
   dependencies:
     concurrently: "npm:^9.2.1"
+    lefthook: "npm:^2.1.6"
     micromark: "npm:^4.0.2"
     rimraf: "npm:^6.0.1"
     wrangler: "npm:^4.42.0"
