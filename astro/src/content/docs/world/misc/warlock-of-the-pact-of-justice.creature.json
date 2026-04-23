@@ -1,0 +1,115 @@
+{
+  "name": "Warlock of the Pact of Justice",
+  "size": ["M"],
+  "type": {
+    "type": "humanoid",
+    "tags": ["any race"]
+  },
+  "alignment": ["L", "G"],
+  "ac": [
+    {
+      "ac": 15,
+      "from": ["leather armor"]
+    }
+  ],
+  "hp": {
+    "average": 60,
+    "formula": "8d8 + 24"
+  },
+  "speed": {
+    "walk": 30
+  },
+  "str": 10,
+  "dex": 14,
+  "con": 16,
+  "int": 12,
+  "wis": 14,
+  "cha": 18,
+  "save": {
+    "wis": "+4",
+    "cha": "+6"
+  },
+  "skill": {
+    "deception": "+6",
+    "insight": "+4",
+    "persuasion": "+6"
+  },
+  "resist": ["radiant"],
+  "conditionImmune": ["charmed"],
+  "passive": 12,
+  "languages": ["any two languages"],
+  "cr": "4",
+  "trait": [
+    {
+      "name": "Pact Magic",
+      "entries": [
+        "The Warlock of the Pact of Justice is a 4th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). The Warlock has the following warlock spells prepared:",
+        "Cantrips (at will): eldritch blast, light, sacred flame, thaumaturgy",
+        "1st level (3 slots): command, divine favor, protection from evil and good, shield of faith",
+        "2nd level (2 slots): aid, branding smite, lesser restoration, magic weapon"
+      ]
+    },
+    {
+      "name": "Eldritch Invocations",
+      "entries": [
+        "The Warlock of the Pact of Justice has the following invocations:",
+        "Eyes of the Runekeeper. The Warlock can read all writing.",
+        "Radiant Soul. The Warlock's eldritch blast deals radiant damage instead of force damage."
+      ]
+    },
+    {
+      "name": "Divine Sense",
+      "entries": [
+        "The Warlock of the Pact of Justice can use its action to detect the presence of celestial, fiendish, or undead creatures within 60 feet that are not behind total cover."
+      ]
+    },
+    {
+      "name": "Mystic Arcanum (1/long rest)",
+      "entries": [
+        "The Warlock of the Pact of Justice can cast a 3rd-level spell it knows as a 4th-level spell once per long rest."
+      ]
+    },
+    {
+      "name": "Spellcasting Focus",
+      "entries": [
+        "The Warlock of the Pact of Justice can use a holy symbol as a spellcasting focus."
+      ]
+    }
+  ],
+  "action": [
+    {
+      "name": "Dagger",
+      "entries": [
+        "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4 + 2) piercing damage."
+      ]
+    },
+    {
+      "name": "Eldritch Blast",
+      "entries": [
+        "Ranged Spell Attack: +6 to hit, range 120 ft., one target. Hit: 8 (1d10 + 3) radiant damage."
+      ]
+    }
+  ],
+  "bonus": [
+    {
+      "name": "Hexblade's Curse (1/short rest)",
+      "entries": [
+        "As a bonus action, the Warlock of the Pact of Justice can choose a creature it can see within 30 feet and curse it. The curse lasts until the target dies or the Warlock finishes a short or long rest. The Warlock gains a bonus to damage rolls against the cursed target equal to its proficiency bonus. Additionally, if the cursed target dies, the Warlock regains hit points equal to its warlock level + its Charisma modifier (minimum of 1 hit point)."
+      ]
+    }
+  ],
+  "reaction": [
+    {
+      "name": "Radiant Deflection",
+      "entries": [
+        "When the Warlock of the Pact of Justice is hit by an attack, it can use its reaction to gain a +3 bonus to its AC against that attack, potentially causing the attack to miss."
+      ]
+    },
+    {
+      "name": "Aura of Radiance",
+      "entries": [
+        "When the Warlock of the Pact of Justice is hit by a melee attack, it can use its reaction to impose disadvantage on the attack roll."
+      ]
+    }
+  ]
+}

@@ -22,6 +22,11 @@ import {
   SpeciesSchema,
 } from '@bastion-falls/types';
 
+const CreatureStatsSchema = z.record(
+  z.string(),
+  CreatureDataSchema.or(z.string())
+);
+
 /**
  * Extension schemas for each dedicated world collection.
  * Each value is the object passed as `extend:` inside `docsSchema()`.
@@ -40,10 +45,7 @@ export const collectionExtensions = {
     schema:
       z.object({
         character: CharacterSchema.omit({ name: true }).optional(),
-        creatureStats: z.record(
-          z.string(), 
-          CreatureDataSchema.or(z.string())
-        ).optional()
+        creatureStats: CreatureStatsSchema.optional()
       }),
   },
 
@@ -141,6 +143,16 @@ export const collectionExtensions = {
       vehicle: VehicleShipDataSchema.optional(),
     }),
   },
+
+  misc: {
+    loader: {
+      pattern: '**/*.mdx',
+      base: './src/content/docs/world/misc',
+    },
+    schema: z.object({
+      creatureStats: CreatureStatsSchema.optional()
+    }),
+  }
 } as const;
 
 export type CollectionName = keyof typeof collectionExtensions;

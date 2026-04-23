@@ -215,6 +215,87 @@ function formatEntries(entries: unknown[]): string {
     .join(' ')
 }
 
+function joinConjunction(items: string[]): string {
+  if (items.length === 0) return ''
+  if (items.length === 1) return items[0]!
+  if (items.length === 2) return `${items[0]} and ${items[1]}`
+  return `${items.slice(0, -1).join(', ')}, and ${items[items.length - 1]!}`
+}
+
+function titleCaseDamageType(s: string): string {
+  if (!s) return s
+  return s.replace(/\w+/g, (w) => w[0]!.toUpperCase() + w.slice(1).toLowerCase())
+}
+
+function titleCaseCondition(s: string): string {
+  if (!s) return s
+  return s
+    .split(/[\s_-]+/)
+    .map((p) => p[0]!.toUpperCase() + p.slice(1).toLowerCase())
+    .join(' ')
+}
+
+type DamageArrayKey = 'resist' | 'immune' | 'vulnerable'
+
+function formatOneDamage(
+  item: unknown,
+  key: DamageArrayKey,
+): string {
+  if (typeof item === 'string') return titleCaseDamageType(item)
+  if (item == null || typeof item !== 'object') return ''
+  const o = item as Record<string, unknown>
+  if (typeof o.special === 'string') return o.special
+  const child = o[key] as unknown[] | undefined
+  if (Array.isArray(child) && child.length) {
+    const parts = child.map((x) => formatOneDamage(x, key)).filter(Boolean)
+    if (parts.length === 0) return ''
+    const list = joinConjunction(parts)
+    const pre =
+      typeof o.preNote === 'string' && o.preNote.trim() ? o.preNote.trim() + ' '
+      : ''
+    const post = typeof o.note === 'string' && o.note.trim() ? o.note.trim() : ''
+    return (pre + list + (post ? (post[0] === '.' ? post : ' ' + post) : '')).trim()
+  }
+  return ''
+}
+
+/** Format creature vulnerable / resist / immune arrays (5e-tools JSON). */
+function formatDamageArray(
+  val: unknown,
+  key: DamageArrayKey,
+): string {
+  if (val == null) return ''
+  if (!Array.isArray(val) || val.length === 0) return ''
+  const parts = val.map((x) => formatOneDamage(x, key)).filter(Boolean)
+  return parts.join('; ')
+}
+
+function formatOneConditionImmunity(item: unknown): string {
+  if (typeof item === 'string') return titleCaseCondition(item)
+  if (item == null || typeof item !== 'object') return ''
+  const o = item as Record<string, unknown>
+  if (typeof o.special === 'string') return o.special
+  const child = o.conditionImmune
+  if (Array.isArray(child) && child.length) {
+    const parts = child.map((x) => formatOneConditionImmunity(x)).filter(Boolean)
+    if (parts.length === 0) return ''
+    const list = joinConjunction(parts)
+    const pre =
+      typeof o.preNote === 'string' && o.preNote.trim() ? o.preNote.trim() + ' '
+      : ''
+    const post = typeof o.note === 'string' && o.note.trim() ? o.note.trim() : ''
+    return (pre + list + (post ? (post[0] === '.' ? post : ' ' + post) : '')).trim()
+  }
+  return ''
+}
+
+function formatConditionImmuneArray(val: unknown): string {
+  if (val == null) return ''
+  if (!Array.isArray(val) || val.length === 0) return ''
+  const parts = val.map((x) => formatOneConditionImmunity(x)).filter(Boolean)
+  return joinConjunction(parts)
+}
+
 // ─── Data preparation ─────────────────────────────────────────────────────────
 
 const ABILITIES = [
@@ -251,6 +332,7 @@ const crInfo = formatCR(c.cr)
 
 const traits = asFeatures(c.trait)
 const actions = asFeatures(c.action)
+const bonusActions = asFeatures(c.bonus)
 const reactions = asFeatures(c.reaction)
 const legendary = asFeatures(c.legendary)
 
@@ -272,6 +354,11 @@ const senses: string[] = [
 ].filter(Boolean)
 
 const languages = Array.isArray(c.languages) ? (c.languages as string[]) : []
+
+const damageVulnerabilities = formatDamageArray(c.vulnerable, 'vulnerable')
+const damageResistances = formatDamageArray(c.resist, 'resist')
+const damageImmunities = formatDamageArray(c.immune, 'immune')
+const conditionImmunities = formatConditionImmuneArray(c.conditionImmune)
 
 const sizePart = formatSize(c.size as string[])
 const typePart = formatType(c.type)
@@ -351,12 +438,42 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
 
   {/* ── Properties ── */}
   {/* Saving Throws are now inline in the ability score grid above */}
-  {(skills.length > 0 || senses.length > 0 || languages.length > 0) && (
+  {(skills.length > 0
+    || damageVulnerabilities
+    || damageResistances
+    || damageImmunities
+    || conditionImmunities
+    || senses.length > 0
+    || languages.length > 0) && (
     <div class="sb__properties">
       {skills.length > 0 && (
         <div class="sb__prop">
           <span class="sb__prop-name">Skills</span>
           <span class="sb__prop-value">{skills.join(', ')}</span>
+        </div>
+      )}
+      {damageVulnerabilities && (
+        <div class="sb__prop">
+          <span class="sb__prop-name">Damage Vulnerabilities</span>
+          <span class="sb__prop-value">{damageVulnerabilities}</span>
+        </div>
+      )}
+      {damageResistances && (
+        <div class="sb__prop">
+          <span class="sb__prop-name">Damage Resistances</span>
+          <span class="sb__prop-value">{damageResistances}</span>
+        </div>
+      )}
+      {damageImmunities && (
+        <div class="sb__prop">
+          <span class="sb__prop-name">Damage Immunities</span>
+          <span class="sb__prop-value">{damageImmunities}</span>
+        </div>
+      )}
+      {conditionImmunities && (
+        <div class="sb__prop">
+          <span class="sb__prop-name">Condition Immunities</span>
+          <span class="sb__prop-value">{conditionImmunities}</span>
         </div>
       )}
       {senses.length > 0 && (
@@ -395,6 +512,28 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
           <p class="sb__feature">
             <em><strong>{a.name}.</strong></em>
             {' '}{formatEntries(a.entries)}
+          </p>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* ── Bonus Actions ── */}
+  {bonusActions.length > 0 && (
+    <div class="sb__section">
+      <h3 class="sb__section-title">Bonus Actions</h3>
+      <div class="sb__features">
+        {typeof c.bonusNote === 'string' && c.bonusNote.trim() && (
+          <p class="sb__feature">{c.bonusNote}</p>
+        )}
+        {Array.isArray(c.bonusHeader) &&
+          (c.bonusHeader as unknown[]).map((h) => (
+            <p class="sb__feature">{String(h)}</p>
+          ))}
+        {bonusActions.map((b) => (
+          <p class="sb__feature">
+            <em><strong>{b.name}.</strong></em>
+            {' '}{formatEntries(b.entries)}
           </p>
         ))}
       </div>

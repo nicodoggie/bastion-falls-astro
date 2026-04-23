@@ -14,7 +14,13 @@ character:
     relatives: []
     religions: []
     families: []
+creatureStats:
+  deathengel: 'characters/deathengel.creature'
 ---
+
+import StatBlock from '../../../../components/StatBlock.astro';
+
+<StatBlock creature={frontmatter.creatureStats.deathengel} />
 
 Deathengel is a [Planetar](/world/species/angel#planetar) living in a host th
 help them survive. The host is a human male, born about 500 years ago. It is
