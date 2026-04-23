@@ -1,0 +1,21 @@
+---
+title: The Narrows Smuggler's Guild
+tags:
+  - organizations
+organization:
+  type: criminal
+creatureStats:
+  smugglersGuildEnforcer: organizations/smugglers-guild-enforcer.creature
+  docksideBruiser: organizations/dockside-bruiser.creature
+  smugglerCrossbowman: organizations/smuggler-crossbowman.creature
+---
+
+import StatBlock from '../../../../components/StatBlock.astro';
+
+
+
+<StatBlock creature={frontmatter.creatureStats.smugglersGuildEnforcer} />
+
+<StatBlock creature={frontmatter.creatureStats.docksideBruiser} />
+
+<StatBlock creature={frontmatter.creatureStats.smugglerCrossbowman} />

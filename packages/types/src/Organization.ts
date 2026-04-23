@@ -14,6 +14,7 @@ const OrganizationTypeSchema = z.enum([
   'mercantile',
   'maritime',
   'academic',
+  'criminal',
 ]);
 
 const OrganizationMemberPositionsHeldSchema = z.object({

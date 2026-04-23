@@ -45,7 +45,6 @@ export const collectionExtensions = {
     schema:
       z.object({
         character: CharacterSchema.omit({ name: true }).optional(),
-        creatureStats: CreatureStatsSchema.optional()
       }),
   },
 
@@ -127,10 +126,6 @@ export const collectionExtensions = {
     },
     schema: z.object({
       species: SpeciesSchema.omit({ name: true }).optional(),
-      creatureStats: z.record(
-        z.string(), 
-        CreatureDataSchema.or(z.string())
-      ).optional(),
     }),
   },
 
@@ -143,16 +138,6 @@ export const collectionExtensions = {
       vehicle: VehicleShipDataSchema.optional(),
     }),
   },
-
-  misc: {
-    loader: {
-      pattern: '**/*.mdx',
-      base: './src/content/docs/world/misc',
-    },
-    schema: z.object({
-      creatureStats: CreatureStatsSchema.optional()
-    }),
-  }
 } as const;
 
 export type CollectionName = keyof typeof collectionExtensions;
@@ -184,4 +169,5 @@ export const docsExtension = z.object(
   )
 ).extend({
   timeline: TimelineFieldSchema.optional(),
+  creatureStats: CreatureStatsSchema.optional(),
 });

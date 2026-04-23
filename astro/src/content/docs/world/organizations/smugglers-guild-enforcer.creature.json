@@ -1,0 +1,74 @@
+{
+  "name": "Smuggler's Guild Enforcer",
+  "size": ["M"],
+  "type": {
+    "type": "humanoid",
+    "tags": ["any race"]
+  },
+  "alignment": ["N", "E"],
+  "ac": [
+    {
+      "ac": 15,
+      "from": ["studded leather"]
+    }
+  ],
+  "hp": {
+    "average": 58,
+    "formula": "9d8 + 18"
+  },
+  "speed": {
+    "walk": 30
+  },
+  "str": 10,
+  "dex": 14,
+  "con": 14,
+  "int": 12,
+  "wis": 10,
+  "cha": 18,
+  "save": {
+    "wis": "+3",
+    "cha": "+7"
+  },
+  "skill": {
+    "arcana": "+4",
+    "deception": "+7",
+    "intimidation": "+7"
+  },
+  "languages": ["Common", "Infernal"],
+  "passive": 10,
+  "cr": "5",
+  "trait": [
+    {
+      "name": "Pact Magic",
+      "entries": [
+        "The enforcer is a 5th-level warlock of the Fiend. Its spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). It regains all expended spell slots when it finishes a short or long rest. It knows the following spells:",
+        "Cantrips (at will): eldritch blast, mage hand, minor illusion",
+        "Warlock spells known: armor of Agathys, counterspell, fireball, hellish rebuke, hex, hold person",
+        "Spell Slots: two 3rd-level slots. It typically casts armor of Agathys at 3rd level (15 temporary hit points; while any remain, a creature that hits the enforcer with a melee attack takes 15 cold damage) and reserves fireball (8d6 fire damage, Dexterity save DC 15) for clustered foes."
+      ]
+    },
+    {
+      "name": "Dark One's Blessing",
+      "entries": [
+        "When the enforcer reduces a hostile creature to 0 hit points, it gains temporary hit points equal to its Charisma modifier + its warlock level (minimum 1)."
+      ]
+    }
+  ],
+  "action": [
+    {
+      "name": "Eldritch Blast",
+      "entries": [
+        "The enforcer makes two eldritch blast attacks.",
+        "Ranged Spell Attack: +7 to hit, range 120 ft., one target. Hit: 9 (1d10 + 4) force damage."
+      ]
+    }
+  ],
+  "reaction": [
+    {
+      "name": "Hellish Rebuke",
+      "entries": [
+        "In response to taking damage from a creature within 60 feet of it that it can see, the enforcer can cast hellish rebuke (at 2nd level) on that creature. The target must make a DC 15 Dexterity saving throw, taking 16 (3d10) fire damage on a failed save, or half as much damage on a successful one."
+      ]
+    }
+  ]
+}
