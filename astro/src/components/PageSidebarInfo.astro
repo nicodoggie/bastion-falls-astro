@@ -3,6 +3,7 @@ import CharacterSidebarInfo from './sidebar-info/CharacterSidebarInfo.astro';
 import ItemSidebarInfo from './sidebar-info/ItemSidebarInfo.astro';
 import OrganizationSidebarInfo from './sidebar-info/OrganizationSidebarInfo.astro';
 import LocationSidebarInfo from './sidebar-info/LocationSidebarInfo.astro';
+import FamilySidebarInfo from './sidebar-info/FamilySidebarInfo.astro';
 
 const { entry } = Astro.locals.starlightRoute;
 ---
@@ -21,6 +22,9 @@ const { entry } = Astro.locals.starlightRoute;
       )}
       {entry.data?.location && (
         <LocationSidebarInfo location={entry.data.location} />
+      )}
+      {entry.data?.family && (
+        <FamilySidebarInfo family={entry.data.family} title={entry.data.title} />
       )}
     </>
   )

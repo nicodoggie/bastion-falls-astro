@@ -1,0 +1,127 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { slug } from 'github-slugger';
+import type { Character, CharacterFamily } from '@bastion-falls/types/Character';
+import type { Family } from '@bastion-falls/types/Family';
+import SidebarImage from './SidebarImage.astro';
+
+interface Props {
+  /** Family frontmatter; `name` may be omitted when the page title is canonical. */
+  family: Partial<Family>;
+  title: string;
+}
+
+interface CharacterDocData {
+  title: string;
+  character?: Character;
+}
+
+const { family, title } = Astro.props;
+
+const displayName = family.name ?? title;
+const familySlug = slug(family.name ?? title);
+
+let members: CollectionEntry<'character'>[] = [];
+if (familySlug) {
+  const allCharacters = await getCollection('character');
+  members = allCharacters.filter((c) => {
+    const data = c.data as CharacterDocData;
+    return data.character?.relationships?.families?.some(
+      (f: CharacterFamily) => slug(f.name) === familySlug,
+    );
+  });
+  members.sort((a, b) => {
+    const da = a.data as CharacterDocData;
+    const db = b.data as CharacterDocData;
+    return (da.title ?? '').localeCompare(db.title ?? '', undefined, {
+      sensitivity: 'base',
+    });
+  });
+}
+---
+
+<div
+  class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
+>
+  {
+    displayName && (
+      <>
+        <div class="flex justify-center items-center border-gray-600">
+          <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
+            {displayName}
+          </h2>
+        </div>
+        <hr class="border-gray-600" />
+      </>
+    )
+  }
+  {family.sigil != null && <SidebarImage {...family.sigil} />}
+  <div class="space-y-4">
+    <dl class="divide-y divide-gray-200 dark:divide-gray-700">
+      {
+        family.founded && (
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Founded
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">{family.founded}</dd>
+          </div>
+        )
+      }
+      {
+        family.dissolved && (
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Dissolved
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">{family.dissolved}</dd>
+          </div>
+        )
+      }
+      {
+        family.seat && (
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Seat
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">{family.seat}</dd>
+          </div>
+        )
+      }
+      {
+        family.motto && (
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Motto
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">{family.motto}</dd>
+          </div>
+        )
+      }
+      {
+        members.length > 0 && (
+          <div class="py-2">
+            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+              Members
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
+              <ul>
+                {members.map((member) => {
+                  const md = member.data as CharacterDocData;
+                  return (
+                    <li>
+                      <a href={`/world/characters/${member.id}`}>
+                        {md.title}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </dd>
+          </div>
+        )
+      }
+    </dl>
+  </div>
+</div>

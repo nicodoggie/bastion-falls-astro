@@ -4,6 +4,13 @@ tags:
   - organizations
 organization:
   type: religious
+  headquarters: Eastonton
+  members:
+    - name: Garward Eastonton
+      type: Head Paladin
+    - name: Aigral Eastonton
+      type: Paladin
+
 creatureStats:
   divineInquisitor: organizations/eastonton-brigade-divine-inquisitor.creature
   evokerAdept: organizations/eastonton-brigade-evoker-adept.creature
@@ -14,24 +21,26 @@ creatureStats:
 
 import StatBlock from '../../../../components/StatBlock.astro';
 
-#### Divine Inquisitor (CR 6 paladin)
+<Stub />
+
+The Eastonton Brigade of the
+[Knightly Order of the Angel of Justice](/world/organizations/the-knightly-order-of-the-angel-of-justice/)
+is a branch of the Holy Paladinate based in
+[Eastonton](/world/locations/eastonton/). of [Senera](/world/locations/senera/).
+
+The brigade is notable for its part in the
+[Poasan-Apgarian Conflict](/world/events/poasan-apgarian-conflict/), where they
+held firm against Apgarian forces as the Senerans were forced to withdraw from
+[Sanery](/world/locations/sanery).
+
+
 
 <StatBlock creature={frontmatter.creatureStats.divineInquisitor} />
 
-#### Evoker Adept (CR 3)
-
 <StatBlock creature={frontmatter.creatureStats.evokerAdept} />
-
-#### Charmweaver (CR 3 enchanter)
 
 <StatBlock creature={frontmatter.creatureStats.charmweaver} />
 
-#### Squire (CR 1)
-
-Use this block for **each** of the two squires.
-
 <StatBlock creature={frontmatter.creatureStats.squire} />
-
-#### Bardic Berserker (CR 7)
 
 <StatBlock creature={frontmatter.creatureStats.bardicBerserker} />
