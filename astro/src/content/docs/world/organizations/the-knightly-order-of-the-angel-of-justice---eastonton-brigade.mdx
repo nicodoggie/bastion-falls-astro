@@ -1,0 +1,37 @@
+---
+title: The Knightly Order of the Angel of Justice - Eastonton Brigade
+tags:
+  - organizations
+organization:
+  type: religious
+creatureStats:
+  divineInquisitor: organizations/eastonton-brigade-divine-inquisitor.creature
+  evokerAdept: organizations/eastonton-brigade-evoker-adept.creature
+  charmweaver: organizations/eastonton-brigade-charmweaver.creature
+  squire: organizations/eastonton-brigade-squire.creature
+  bardicBerserker: organizations/eastonton-brigade-bardic-berserker.creature
+---
+
+import StatBlock from '../../../../components/StatBlock.astro';
+
+#### Divine Inquisitor (CR 6 paladin)
+
+<StatBlock creature={frontmatter.creatureStats.divineInquisitor} />
+
+#### Evoker Adept (CR 3)
+
+<StatBlock creature={frontmatter.creatureStats.evokerAdept} />
+
+#### Charmweaver (CR 3 enchanter)
+
+<StatBlock creature={frontmatter.creatureStats.charmweaver} />
+
+#### Squire (CR 1)
+
+Use this block for **each** of the two squires.
+
+<StatBlock creature={frontmatter.creatureStats.squire} />
+
+#### Bardic Berserker (CR 7)
+
+<StatBlock creature={frontmatter.creatureStats.bardicBerserker} />

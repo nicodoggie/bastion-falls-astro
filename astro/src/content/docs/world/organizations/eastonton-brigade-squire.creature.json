@@ -1,0 +1,48 @@
+{
+  "name": "Squire",
+  "size": ["M"],
+  "type": {
+    "type": "humanoid",
+    "tags": ["any race"]
+  },
+  "alignment": ["N", "E"],
+  "ac": [
+    {
+      "ac": 16,
+      "from": ["chain shirt", "shield"]
+    }
+  ],
+  "hp": {
+    "average": 22,
+    "formula": "4d8 + 4"
+  },
+  "speed": {
+    "walk": 30
+  },
+  "str": 14,
+  "dex": 12,
+  "con": 12,
+  "int": 10,
+  "wis": 10,
+  "cha": 10,
+  "skill": {
+    "athletics": "+4"
+  },
+  "passive": 10,
+  "languages": ["Common"],
+  "cr": "1",
+  "action": [
+    {
+      "name": "Longsword",
+      "entries": [
+        "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 2) slashing damage."
+      ]
+    },
+    {
+      "name": "Shield Bash",
+      "entries": [
+        "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) bludgeoning damage, and the target must succeed on a DC 12 Strength saving throw or be knocked prone."
+      ]
+    }
+  ]
+}
