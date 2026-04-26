@@ -44,7 +44,7 @@ export const collectionExtensions = {
     },
     schema:
       z.object({
-        character: CharacterSchema.omit({ name: true }).optional(),
+        character: CharacterSchema.partial({ name: true }).optional(),
       }),
   },
 
@@ -125,7 +125,7 @@ export const collectionExtensions = {
       base: './src/content/docs/world/species',
     },
     schema: z.object({
-      species: SpeciesSchema.omit({ name: true }).optional(),
+      species: SpeciesSchema.partial({ name: true }).optional(),
     }),
   },
 
