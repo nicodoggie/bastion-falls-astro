@@ -17,6 +17,7 @@ export const PoliticalLocationTypeSchema = z.enum([
   'marquessate',
   'county',
   'earldom',
+  'viscounty',
   'port',
   'principality',
   'protectorate',

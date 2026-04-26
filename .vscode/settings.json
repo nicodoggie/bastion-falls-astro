@@ -1,6 +1,6 @@
 {
   "files.associations": {
-    "*.css": "tailwindcss",
+    "*.css": "tailwindcss"
   },
   "tailwindCSS.classAttributes": ["class", "className", "theme"],
   "tailwindCSS.experimental.classRegex": [
@@ -11,12 +11,6 @@
     ]
   ],
   "terminal.integrated.defaultProfile.linux": "zsh",
-  "[mdx]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "eslint.workingDirectories": [
     { "directory": "astro", "changeProcessCWD": true }
   ],

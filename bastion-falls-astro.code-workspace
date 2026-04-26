@@ -18,7 +18,7 @@
     },
 
     "[markdown]": {
-      "editor.defaultFormatter": "astro-build.astro-vscode",
+      "editor.defaultFormatter": "unifiedjs.vscode-remark",
       "editor.formatOnSave": true,
       "path-autocomplete.triggerOutsideStrings": true,
       "path-autocomplete.pathMappings": {
