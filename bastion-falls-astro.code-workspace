@@ -13,6 +13,7 @@
     "unwantedRecommendations": ["davidanson.vscode-markdownlint"],
   },
   "settings": {
+    "eslint.codeActionsOnSave.mode": "problems",
     "[ejs]": {
       "editor.formatOnSave": true,
     },
@@ -20,6 +21,9 @@
     "[markdown]": {
       "editor.defaultFormatter": "unifiedjs.vscode-remark",
       "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "never",
+      },
       "path-autocomplete.triggerOutsideStrings": true,
       "path-autocomplete.pathMappings": {
         "$root": "${workspaceRoot}/astro",
@@ -38,5 +42,18 @@
       "Kincade",
       "Torwud"
     ],
+    "[mdx]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "never",
+      },
+    },
+    "[astro]": {
+      "editor.defaultFormatter": "astro-build.astro-vscode"
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
   },
 }

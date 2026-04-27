@@ -21,7 +21,6 @@ import mermaid from 'astro-mermaid'
 import { vscodeFrontmatterSchemas } from './src/integrations/vscode-frontmatter-schemas.ts';
 import { timelineGenerator } from './src/integrations/timeline-generator.ts';
 
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const lexurgyLang = JSON.parse(

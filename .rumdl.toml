@@ -1,0 +1,17 @@
+[global]
+flavor = "mdx"
+# Exclude files/directories
+exclude = ["node_modules", ".git", ".astro", "dist"]
+
+# Set line length limit
+line-length = 80
+
+[MD013]  # Line length
+line_length = 80
+code_blocks = false  # Don't check code blocks
+
+[MD033]
+enabled = false
+
+[MD041]  # First line heading
+enabled = false  # Disable this rule
