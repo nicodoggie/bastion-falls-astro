@@ -4,7 +4,10 @@
   "lexicon": {
     "ehk:dak": {
       "id": "ehk:dak",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "dak",
       "phoneticForm": "dak",
       "protoform": "Proto-Hick *daluku",
@@ -12,14 +15,20 @@
       "senses": [
         {
           "definition": "snake",
-          "semanticField": ["Animal Terms", "Basic Terms"],
+          "semanticField": [
+            "Animal Terms",
+            "Basic Terms"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:dak",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "dak",
@@ -37,14 +46,20 @@
               "@value": "snake",
               "@language": "en"
             },
-            "lexinfo:semanticField": ["Animal Terms", "Basic Terms"]
+            "lexinfo:semanticField": [
+              "Animal Terms",
+              "Basic Terms"
+            ]
           }
         ]
       }
     },
     "ehk:dakisa": {
       "id": "ehk:dakisa",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "dakisa",
       "phoneticForm": "da.ki.sa",
       "protoform": "Proto-Hick *daluku-isa-hihasa",
@@ -52,14 +67,21 @@
       "senses": [
         {
           "definition": "infatuation",
-          "semanticField": ["Body Parts", "Bodily Functions", "Sacred Terms"],
+          "semanticField": [
+            "Body Parts",
+            "Bodily Functions",
+            "Sacred Terms"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:dakisa",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "dakisa",
@@ -88,7 +110,10 @@
     },
     "ehk:dor": {
       "id": "ehk:dor",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "dor",
       "phoneticForm": "dor",
       "protoform": "Proto-Hick *doru",
@@ -96,14 +121,21 @@
       "senses": [
         {
           "definition": "back, behind",
-          "semanticField": ["Landscape Terms", "Maritime Terms", "Body Parts"],
+          "semanticField": [
+            "Landscape Terms",
+            "Maritime Terms",
+            "Body Parts"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:dor",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "dor",
@@ -132,7 +164,10 @@
     },
     "ehk:dorgar": {
       "id": "ehk:dorgar",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "dorgar",
       "phoneticForm": "dor.gər",
       "senses": [
@@ -145,7 +180,10 @@
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:dorgar",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "dorgar",
@@ -182,21 +220,30 @@
     },
     "ehk:dorren": {
       "id": "ehk:dorren",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "dorren",
       "phoneticForm": "dor.ren",
       "note": "Descriptive compound based on behavior",
       "senses": [
         {
           "definition": "pack deer",
-          "semanticField": ["Animal Terms", "Basic Terms"],
+          "semanticField": [
+            "Animal Terms",
+            "Basic Terms"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:dorren",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "dorren",
@@ -215,20 +262,29 @@
               "@value": "pack deer",
               "@language": "en"
             },
-            "lexinfo:semanticField": ["Animal Terms", "Basic Terms"]
+            "lexinfo:semanticField": [
+              "Animal Terms",
+              "Basic Terms"
+            ]
           }
         ]
       }
     },
     "ehk:dortor": {
       "id": "ehk:dortor",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "dortor",
       "phoneticForm": "dor.tor",
       "senses": [
         {
           "definition": "back slope",
-          "semanticField": ["Natural World", "Landforms"],
+          "semanticField": [
+            "Natural World",
+            "Landforms"
+          ],
           "usage": ""
         }
       ],
@@ -242,7 +298,10 @@
       ],
       "graphEntry": {
         "@id": "ehk:dortor",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "dortor",
@@ -269,7 +328,10 @@
               "@value": "back slope",
               "@language": "en"
             },
-            "lexinfo:semanticField": ["Natural World", "Landforms"]
+            "lexinfo:semanticField": [
+              "Natural World",
+              "Landforms"
+            ]
           }
         ],
         "derivedForms": [
@@ -285,7 +347,10 @@
     },
     "ehk:du": {
       "id": "ehk:du",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "du",
       "phoneticForm": "du",
       "protoform": "Proto-Hick *duha",
@@ -299,7 +364,10 @@
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:du",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "du",
@@ -324,20 +392,29 @@
     },
     "ehk:dudup": {
       "id": "ehk:dudup",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "dudup",
       "phoneticForm": "du.dup",
       "senses": [
         {
           "definition": "swollen muscle",
-          "semanticField": ["Body Terms", "Medical Terms"],
+          "semanticField": [
+            "Body Terms",
+            "Medical Terms"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:dudup",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "dudup",
@@ -364,14 +441,20 @@
               "@value": "swollen muscle",
               "@language": "en"
             },
-            "lexinfo:semanticField": ["Body Terms", "Medical Terms"]
+            "lexinfo:semanticField": [
+              "Body Terms",
+              "Medical Terms"
+            ]
           }
         ]
       }
     },
     "ehk:dup": {
       "id": "ehk:dup",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "dup",
       "phoneticForm": "dup",
       "protoform": "Proto-Hick *dupu",
@@ -379,14 +462,20 @@
       "senses": [
         {
           "definition": "pearl; lump, mass",
-          "semanticField": ["Natural Terms", "Medical Terms"],
+          "semanticField": [
+            "Natural Terms",
+            "Medical Terms"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:dup",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "dup",
@@ -406,28 +495,40 @@
               "@value": "pearl; lump, mass",
               "@language": "en"
             },
-            "lexinfo:semanticField": ["Natural Terms", "Medical Terms"]
+            "lexinfo:semanticField": [
+              "Natural Terms",
+              "Medical Terms"
+            ]
           }
         ]
       }
     },
     "ehk:dupgral": {
       "id": "ehk:dupgral",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "dupgral",
       "phoneticForm": "dup.gral",
       "note": "Shows typical landform compound formation. Contrasts with tor \"peak\" and gral \"flat land\"",
       "senses": [
         {
           "definition": "hills, hilly terrain",
-          "semanticField": ["Landforms", "Geographic Terms"],
+          "semanticField": [
+            "Landforms",
+            "Geographic Terms"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:dupgral",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "dupgral",
@@ -446,21 +547,30 @@
               "@value": "hills, hilly terrain",
               "@language": "en"
             },
-            "lexinfo:semanticField": ["Landforms", "Geographic Terms"]
+            "lexinfo:semanticField": [
+              "Landforms",
+              "Geographic Terms"
+            ]
           }
         ]
       }
     },
     "ehk:duwes": {
       "id": "ehk:duwes",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "duwes",
       "phoneticForm": "du.wes",
       "note": "Semantic extension from 'meat-container' to general 'food'",
       "senses": [
         {
           "definition": "food, nourishment",
-          "semanticField": ["Food & Consumption Terms", "Basic Terms"],
+          "semanticField": [
+            "Food & Consumption Terms",
+            "Basic Terms"
+          ],
           "usage": "Basic term for both food and eating"
         }
       ],
@@ -474,7 +584,10 @@
       ],
       "graphEntry": {
         "@id": "ehk:duwes",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "duwes",
@@ -484,7 +597,10 @@
           "@type": "etymon:Etymology",
           "etymon:compound": "duha-wesu",
           "etymon:gloss": "meat-cover",
-          "etymon:soundChange": ["compound fusion", "final vowel loss"],
+          "etymon:soundChange": [
+            "compound fusion",
+            "final vowel loss"
+          ],
           "etymon:note": "Semantic extension from 'meat-container' to general 'food'"
         },
         "sense": [
@@ -495,7 +611,10 @@
               "@language": "en"
             },
             "usage": "Basic term for both food and eating",
-            "lexinfo:semanticField": ["Food & Consumption Terms", "Basic Terms"]
+            "lexinfo:semanticField": [
+              "Food & Consumption Terms",
+              "Basic Terms"
+            ]
           }
         ],
         "derivedForms": [
@@ -511,21 +630,30 @@
     },
     "ehk:duwesimris": {
       "id": "ehk:duwesimris",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Verb"
+      ],
       "writtenForm": "duwesimris",
       "phoneticForm": "du.we.sim.ris",
       "note": "Derived from \"duwes\" (food) with the ellative case, indicating the act of providing food",
       "senses": [
         {
           "definition": "feed",
-          "semanticField": ["Food Terms", "Basic Terms"],
+          "semanticField": [
+            "Food Terms",
+            "Basic Terms"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:duwesimris",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "duwesimris",
@@ -544,28 +672,40 @@
               "@value": "feed",
               "@language": "en"
             },
-            "lexinfo:semanticField": ["Food Terms", "Basic Terms"]
+            "lexinfo:semanticField": [
+              "Food Terms",
+              "Basic Terms"
+            ]
           }
         ]
       }
     },
     "ehk:duwesok": {
       "id": "ehk:duwesok",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "duwesok",
       "phoneticForm": "du.we.sok",
       "note": "Shows agentive marking",
       "senses": [
         {
           "definition": "eater, consumer",
-          "semanticField": ["Food Terms", "Person Terms"],
+          "semanticField": [
+            "Food Terms",
+            "Person Terms"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:duwesok",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "duwesok",
@@ -584,28 +724,40 @@
               "@value": "eater, consumer",
               "@language": "en"
             },
-            "lexinfo:semanticField": ["Food Terms", "Person Terms"]
+            "lexinfo:semanticField": [
+              "Food Terms",
+              "Person Terms"
+            ]
           }
         ]
       }
     },
     "ehk:duwester": {
       "id": "ehk:duwester",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "duwester",
       "phoneticForm": "du.wes.ter",
       "note": "Shows temporal extension of eating",
       "senses": [
         {
           "definition": "meal time",
-          "semanticField": ["Food Terms", "Time Terms"],
+          "semanticField": [
+            "Food Terms",
+            "Time Terms"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:duwester",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "duwester",
@@ -624,28 +776,40 @@
               "@value": "meal time",
               "@language": "en"
             },
-            "lexinfo:semanticField": ["Food Terms", "Time Terms"]
+            "lexinfo:semanticField": [
+              "Food Terms",
+              "Time Terms"
+            ]
           }
         ]
       }
     },
     "ehk:duwesthral": {
       "id": "ehk:duwesthral",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "duwesthral",
       "phoneticForm": "du.wes.θral",
       "note": "Shows ritual significance of communal eating",
       "senses": [
         {
           "definition": "ritual feast",
-          "semanticField": ["Food Terms", "Sacred Terms"],
+          "semanticField": [
+            "Food Terms",
+            "Sacred Terms"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:duwesthral",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "duwesthral",
@@ -664,7 +828,10 @@
               "@value": "ritual feast",
               "@language": "en"
             },
-            "lexinfo:semanticField": ["Food Terms", "Sacred Terms"]
+            "lexinfo:semanticField": [
+              "Food Terms",
+              "Sacred Terms"
+            ]
           }
         ]
       }

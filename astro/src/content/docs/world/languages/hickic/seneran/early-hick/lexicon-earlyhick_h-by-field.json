@@ -43,7 +43,10 @@
     "Action Terms": [
       {
         "id": "ehk:haran",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "haran",
         "phoneticForm": "ha.ran",
         "protoform": "Proto-Hick *haranu",
@@ -62,7 +65,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:haran",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "haran",
@@ -103,21 +109,30 @@
       },
       {
         "id": "ehk:hisimris",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "hisimris",
         "phoneticForm": "hi.sim.ris",
         "note": "Shows productive use of ellative case for causative meanings",
         "senses": [
           {
             "definition": "show",
-            "semanticField": ["Perception Terms", "Action Terms"],
+            "semanticField": [
+              "Perception Terms",
+              "Action Terms"
+            ],
             "usage": "Contrasts with hilis'er 'to look'"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:hisimris",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "hisimris",
@@ -146,7 +161,10 @@
                 "@language": "en"
               },
               "usage": "Contrasts with hilis'er 'to look'",
-              "lexinfo:semanticField": ["Perception Terms", "Action Terms"]
+              "lexinfo:semanticField": [
+                "Perception Terms",
+                "Action Terms"
+              ]
             }
           ],
           "derivation": {
@@ -163,7 +181,10 @@
     "Basic Terms": [
       {
         "id": "ehk:hilis",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "hilis",
         "phoneticForm": "hi.lis",
         "protoform": "Proto-Hick *hilisu",
@@ -171,14 +192,20 @@
         "senses": [
           {
             "definition": "sight, active vision",
-            "semanticField": ["Perception Terms", "Basic Terms"],
+            "semanticField": [
+              "Perception Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:hilis",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "hilis",
@@ -197,14 +224,20 @@
                 "@value": "sight, active vision",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Perception Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Perception Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:his",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "his",
         "phoneticForm": "his",
         "protoform": "Proto-Hick *hisu",
@@ -212,14 +245,20 @@
         "senses": [
           {
             "definition": "to see (passive/unintentional perception)",
-            "semanticField": ["Perception Terms", "Basic Terms"],
+            "semanticField": [
+              "Perception Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:his",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "his",
@@ -238,7 +277,10 @@
                 "@value": "to see (passive/unintentional perception)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Perception Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Perception Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
@@ -247,7 +289,10 @@
     "Body Terms": [
       {
         "id": "ehk:hahu",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "hahu",
         "phoneticForm": "ha.hu",
         "protoform": "Proto-Hick *hahu",
@@ -255,7 +300,11 @@
         "senses": [
           {
             "definition": "laugh, laughter",
-            "semanticField": ["Sound Terms", "Emotion Terms", "Body Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Emotion Terms",
+              "Body Terms"
+            ],
             "usage": "Preserves original meaning through irregular sound change"
           }
         ],
@@ -269,7 +318,10 @@
         ],
         "graphEntry": {
           "@id": "ehk:hahu",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "hahu",
@@ -324,21 +376,30 @@
     "Conflict Terms": [
       {
         "id": "ehk:harabran",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "harabran",
         "phoneticForm": "ha.ra.bran",
         "note": "Shows cultural conceptualization of conflict as family/clan division",
         "senses": [
           {
             "definition": "conflict, grievance (especially between families/clans)",
-            "semanticField": ["Social Terms", "Conflict Terms"],
+            "semanticField": [
+              "Social Terms",
+              "Conflict Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:harabran",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "harabran",
@@ -366,7 +427,10 @@
                 "@value": "conflict, grievance (especially between families/clans)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Social Terms", "Conflict Terms"]
+              "lexinfo:semanticField": [
+                "Social Terms",
+                "Conflict Terms"
+              ]
             }
           ]
         }
@@ -375,7 +439,10 @@
     "Emotion Terms": [
       {
         "id": "ehk:hahu",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "hahu",
         "phoneticForm": "ha.hu",
         "protoform": "Proto-Hick *hahu",
@@ -383,7 +450,11 @@
         "senses": [
           {
             "definition": "laugh, laughter",
-            "semanticField": ["Sound Terms", "Emotion Terms", "Body Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Emotion Terms",
+              "Body Terms"
+            ],
             "usage": "Preserves original meaning through irregular sound change"
           }
         ],
@@ -397,7 +468,10 @@
         ],
         "graphEntry": {
           "@id": "ehk:hahu",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "hahu",
@@ -452,7 +526,10 @@
     "Number System": [
       {
         "id": "ehk:haran",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "haran",
         "phoneticForm": "ha.ran",
         "protoform": "Proto-Hick *haranu",
@@ -471,7 +548,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:haran",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "haran",
@@ -514,7 +594,10 @@
     "Perception Terms": [
       {
         "id": "ehk:hilis",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "hilis",
         "phoneticForm": "hi.lis",
         "protoform": "Proto-Hick *hilisu",
@@ -522,14 +605,20 @@
         "senses": [
           {
             "definition": "sight, active vision",
-            "semanticField": ["Perception Terms", "Basic Terms"],
+            "semanticField": [
+              "Perception Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:hilis",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "hilis",
@@ -548,14 +637,20 @@
                 "@value": "sight, active vision",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Perception Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Perception Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:his",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "his",
         "phoneticForm": "his",
         "protoform": "Proto-Hick *hisu",
@@ -563,14 +658,20 @@
         "senses": [
           {
             "definition": "to see (passive/unintentional perception)",
-            "semanticField": ["Perception Terms", "Basic Terms"],
+            "semanticField": [
+              "Perception Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:his",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "his",
@@ -589,28 +690,40 @@
                 "@value": "to see (passive/unintentional perception)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Perception Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Perception Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:hisimris",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "hisimris",
         "phoneticForm": "hi.sim.ris",
         "note": "Shows productive use of ellative case for causative meanings",
         "senses": [
           {
             "definition": "show",
-            "semanticField": ["Perception Terms", "Action Terms"],
+            "semanticField": [
+              "Perception Terms",
+              "Action Terms"
+            ],
             "usage": "Contrasts with hilis'er 'to look'"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:hisimris",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "hisimris",
@@ -639,7 +752,10 @@
                 "@language": "en"
               },
               "usage": "Contrasts with hilis'er 'to look'",
-              "lexinfo:semanticField": ["Perception Terms", "Action Terms"]
+              "lexinfo:semanticField": [
+                "Perception Terms",
+                "Action Terms"
+              ]
             }
           ],
           "derivation": {
@@ -656,21 +772,30 @@
     "Social Terms": [
       {
         "id": "ehk:harabran",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "harabran",
         "phoneticForm": "ha.ra.bran",
         "note": "Shows cultural conceptualization of conflict as family/clan division",
         "senses": [
           {
             "definition": "conflict, grievance (especially between families/clans)",
-            "semanticField": ["Social Terms", "Conflict Terms"],
+            "semanticField": [
+              "Social Terms",
+              "Conflict Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:harabran",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "harabran",
@@ -698,7 +823,10 @@
                 "@value": "conflict, grievance (especially between families/clans)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Social Terms", "Conflict Terms"]
+              "lexinfo:semanticField": [
+                "Social Terms",
+                "Conflict Terms"
+              ]
             }
           ]
         }
@@ -707,7 +835,10 @@
     "Sound Terms": [
       {
         "id": "ehk:hahu",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "hahu",
         "phoneticForm": "ha.hu",
         "protoform": "Proto-Hick *hahu",
@@ -715,7 +846,11 @@
         "senses": [
           {
             "definition": "laugh, laughter",
-            "semanticField": ["Sound Terms", "Emotion Terms", "Body Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Emotion Terms",
+              "Body Terms"
+            ],
             "usage": "Preserves original meaning through irregular sound change"
           }
         ],
@@ -729,7 +864,10 @@
         ],
         "graphEntry": {
           "@id": "ehk:hahu",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "hahu",

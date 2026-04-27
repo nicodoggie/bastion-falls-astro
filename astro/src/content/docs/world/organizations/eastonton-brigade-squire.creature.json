@@ -5,11 +5,17 @@
     "type": "humanoid",
     "tags": ["any race"]
   },
-  "alignment": ["N", "E"],
+  "alignment": [
+    "N",
+    "E"
+  ],
   "ac": [
     {
       "ac": 16,
-      "from": ["chain shirt", "shield"]
+      "from": [
+        "chain shirt",
+        "shield"
+      ]
     }
   ],
   "hp": {

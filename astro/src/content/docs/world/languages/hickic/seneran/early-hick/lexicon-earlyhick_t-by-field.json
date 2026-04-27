@@ -219,21 +219,30 @@
     "Abstract Concepts": [
       {
         "id": "ehk:thid",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thid",
         "phoneticForm": "θid",
         "protoform": "Proto-Hick *hawadu",
         "senses": [
           {
             "definition": "truth",
-            "semanticField": ["Sacred Terms", "Abstract Concepts"],
+            "semanticField": [
+              "Sacred Terms",
+              "Abstract Concepts"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thid",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thid",
@@ -255,14 +264,20 @@
                 "@value": "truth",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sacred Terms", "Abstract Concepts"]
+              "lexinfo:semanticField": [
+                "Sacred Terms",
+                "Abstract Concepts"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:thil",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thil",
         "phoneticForm": "θil",
         "protoform": "Proto-Hick *halu",
@@ -281,7 +296,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thil",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thil",
@@ -311,21 +329,30 @@
       },
       {
         "id": "ehk:torthil",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torthil",
         "phoneticForm": "tor.θil",
         "note": "Shows ironic compound formation - excessive virtue becoming a flaw",
         "senses": [
           {
             "definition": "arrogance, haughtiness",
-            "semanticField": ["Abstract Concepts", "Emotional Terms"],
+            "semanticField": [
+              "Abstract Concepts",
+              "Emotional Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torthil",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torthil",
@@ -353,7 +380,10 @@
                 "@value": "arrogance, haughtiness",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Abstract Concepts", "Emotional Terms"]
+              "lexinfo:semanticField": [
+                "Abstract Concepts",
+                "Emotional Terms"
+              ]
             }
           ],
           "derivation": {
@@ -370,21 +400,30 @@
     "Action Terms": [
       {
         "id": "ehk:takimris",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "takimris",
         "phoneticForm": "ta.kim.ris",
         "note": "Shows development of aggressive meaning through ellative case",
         "senses": [
           {
             "definition": "to attack, to oppose",
-            "semanticField": ["Action Terms", "Conflict Terms"],
+            "semanticField": [
+              "Action Terms",
+              "Conflict Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takimris",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takimris",
@@ -403,28 +442,40 @@
                 "@value": "to attack, to oppose",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Action Terms", "Conflict Terms"]
+              "lexinfo:semanticField": [
+                "Action Terms",
+                "Conflict Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:trask'er",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "trask'er",
         "phoneticForm": "tras.kʔer",
         "note": "Shows semantic extension from body part to motion",
         "senses": [
           {
             "definition": "to run",
-            "semanticField": ["Motion Terms", "Action Terms"],
+            "semanticField": [
+              "Motion Terms",
+              "Action Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:trask'er",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "trask'er",
@@ -443,7 +494,10 @@
                 "@value": "to run",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Motion Terms", "Action Terms"]
+              "lexinfo:semanticField": [
+                "Motion Terms",
+                "Action Terms"
+              ]
             }
           ]
         }
@@ -452,26 +506,38 @@
     "Animal Terms": [
       {
         "id": "ehk:temerok",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "temerok",
         "phoneticForm": "te.me.rok",
         "note": "Shows metaphorical formation 'death-bringer' for both human killers and predatory animals",
         "senses": [
           {
             "definition": "killer, murderer",
-            "semanticField": ["Basic Terms", "Social Terms"],
+            "semanticField": [
+              "Basic Terms",
+              "Social Terms"
+            ],
             "usage": ""
           },
           {
             "definition": "predator",
-            "semanticField": ["Animal Terms", "Basic Terms"],
+            "semanticField": [
+              "Animal Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:temerok",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "temerok",
@@ -499,7 +565,10 @@
                 "@value": "killer, murderer",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Basic Terms", "Social Terms"]
+              "lexinfo:semanticField": [
+                "Basic Terms",
+                "Social Terms"
+              ]
             },
             {
               "@type": "ontolex:LexicalSense",
@@ -507,14 +576,20 @@
                 "@value": "predator",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Animal Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Animal Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:thirpel",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thirpel",
         "phoneticForm": "θir.pel",
         "senses": [
@@ -527,7 +602,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thirpel",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thirpel",
@@ -552,7 +630,10 @@
       },
       {
         "id": "ehk:thirren",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thirren",
         "phoneticForm": "θir.ren",
         "senses": [
@@ -565,7 +646,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thirren",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thirren",
@@ -592,20 +676,30 @@
     "Animals": [
       {
         "id": "ehk:torba",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torba",
         "phoneticForm": "tor.ba",
         "senses": [
           {
             "definition": "goat",
-            "semanticField": ["Fauna", "Animals", "Pastoral Terms"],
+            "semanticField": [
+              "Fauna",
+              "Animals",
+              "Pastoral Terms"
+            ],
             "usage": "Shows metaphorical extension linking goats to mountains and paternal authority"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torba",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torba",
@@ -633,14 +727,21 @@
                 "@language": "en"
               },
               "usage": "Shows metaphorical extension linking goats to mountains and paternal authority",
-              "lexinfo:semanticField": ["Fauna", "Animals", "Pastoral Terms"]
+              "lexinfo:semanticField": [
+                "Fauna",
+                "Animals",
+                "Pastoral Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:toren",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "toren",
         "phoneticForm": "to.ren",
         "senses": [
@@ -653,7 +754,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:toren",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "toren",
@@ -680,7 +784,10 @@
       },
       {
         "id": "ehk:tornes",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tornes",
         "phoneticForm": "tor.nes",
         "protoform": "tor-nes",
@@ -694,7 +801,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tornes",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tornes",
@@ -729,7 +839,10 @@
     "Basic Actions": [
       {
         "id": "ehk:tag",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tag",
         "phoneticForm": "tag",
         "protoform": "Proto-Hick *tagu",
@@ -737,14 +850,20 @@
         "senses": [
           {
             "definition": "hand",
-            "semanticField": ["Body Parts", "Basic Actions"],
+            "semanticField": [
+              "Body Parts",
+              "Basic Actions"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tag",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tag",
@@ -762,28 +881,40 @@
                 "@value": "hand",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Body Parts", "Basic Actions"]
+              "lexinfo:semanticField": [
+                "Body Parts",
+                "Basic Actions"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:tag'er",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "tag'er",
         "phoneticForm": "tag.ʔer",
         "note": "Shows concrete development from manual action to general creation. Contrasts with abstract 'ir'er 'to do'.",
         "senses": [
           {
             "definition": "to make, to craft",
-            "semanticField": ["Basic Actions", "Body Parts"],
+            "semanticField": [
+              "Basic Actions",
+              "Body Parts"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tag'er",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tag'er",
@@ -802,7 +933,10 @@
                 "@value": "to make, to craft",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Basic Actions", "Body Parts"]
+              "lexinfo:semanticField": [
+                "Basic Actions",
+                "Body Parts"
+              ]
             }
           ]
         }
@@ -811,7 +945,10 @@
     "Basic Terms": [
       {
         "id": "ehk:tak",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tak",
         "phoneticForm": "tak",
         "protoform": "Proto-Hick *taku",
@@ -831,7 +968,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tak",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tak",
@@ -864,7 +1004,10 @@
       },
       {
         "id": "ehk:tak",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tak",
         "phoneticForm": "tak",
         "protoform": "Proto-Hick *taku",
@@ -884,7 +1027,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tak",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tak",
@@ -917,7 +1063,10 @@
       },
       {
         "id": "ehk:tal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tal",
         "phoneticForm": "tal",
         "protoform": "Proto-Hick *halu",
@@ -925,14 +1074,20 @@
         "senses": [
           {
             "definition": "place, location",
-            "semanticField": ["Spatial Terms", "Basic Terms"],
+            "semanticField": [
+              "Spatial Terms",
+              "Basic Terms"
+            ],
             "usage": "Forms many location compounds"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tal",
@@ -952,7 +1107,10 @@
                 "@value": "place, location",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Spatial Terms", "Basic Terms"],
+              "lexinfo:semanticField": [
+                "Spatial Terms",
+                "Basic Terms"
+              ],
               "usage": "Forms many location compounds"
             }
           ]
@@ -960,26 +1118,38 @@
       },
       {
         "id": "ehk:temerok",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "temerok",
         "phoneticForm": "te.me.rok",
         "note": "Shows metaphorical formation 'death-bringer' for both human killers and predatory animals",
         "senses": [
           {
             "definition": "killer, murderer",
-            "semanticField": ["Basic Terms", "Social Terms"],
+            "semanticField": [
+              "Basic Terms",
+              "Social Terms"
+            ],
             "usage": ""
           },
           {
             "definition": "predator",
-            "semanticField": ["Animal Terms", "Basic Terms"],
+            "semanticField": [
+              "Animal Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:temerok",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "temerok",
@@ -1007,7 +1177,10 @@
                 "@value": "killer, murderer",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Basic Terms", "Social Terms"]
+              "lexinfo:semanticField": [
+                "Basic Terms",
+                "Social Terms"
+              ]
             },
             {
               "@type": "ontolex:LexicalSense",
@@ -1015,33 +1188,48 @@
                 "@value": "predator",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Animal Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Animal Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:temerok",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "temerok",
         "phoneticForm": "te.me.rok",
         "note": "Shows metaphorical formation 'death-bringer' for both human killers and predatory animals",
         "senses": [
           {
             "definition": "killer, murderer",
-            "semanticField": ["Basic Terms", "Social Terms"],
+            "semanticField": [
+              "Basic Terms",
+              "Social Terms"
+            ],
             "usage": ""
           },
           {
             "definition": "predator",
-            "semanticField": ["Animal Terms", "Basic Terms"],
+            "semanticField": [
+              "Animal Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:temerok",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "temerok",
@@ -1069,7 +1257,10 @@
                 "@value": "killer, murderer",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Basic Terms", "Social Terms"]
+              "lexinfo:semanticField": [
+                "Basic Terms",
+                "Social Terms"
+              ]
             },
             {
               "@type": "ontolex:LexicalSense",
@@ -1077,21 +1268,30 @@
                 "@value": "predator",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Animal Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Animal Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:ter",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "ter",
         "phoneticForm": "ter",
         "protoform": "Proto-Hick *teru",
         "senses": [
           {
             "definition": "flow, fluid motion",
-            "semanticField": ["Basic Terms", "Motion Terms"],
+            "semanticField": [
+              "Basic Terms",
+              "Motion Terms"
+            ],
             "usage": ""
           }
         ],
@@ -1105,7 +1305,10 @@
         ],
         "graphEntry": {
           "@id": "ehk:ter",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "ter",
@@ -1123,7 +1326,10 @@
                 "@value": "flow, fluid motion",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Basic Terms", "Motion Terms"]
+              "lexinfo:semanticField": [
+                "Basic Terms",
+                "Motion Terms"
+              ]
             }
           ],
           "derivedForms": [
@@ -1139,21 +1345,30 @@
       },
       {
         "id": "ehk:takuter",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takuter",
         "phoneticForm": "ta.ku.ter",
         "note": "Shows reduction of reduplicated base through compound simplification",
         "senses": [
           {
             "definition": "harmony, attunement",
-            "semanticField": ["Basic Terms", "Sacred Terms"],
+            "semanticField": [
+              "Basic Terms",
+              "Sacred Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takuter",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takuter",
@@ -1172,7 +1387,10 @@
                 "@value": "harmony, attunement",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Basic Terms", "Sacred Terms"]
+              "lexinfo:semanticField": [
+                "Basic Terms",
+                "Sacred Terms"
+              ]
             }
           ]
         }
@@ -1181,7 +1399,10 @@
     "Bird Terms": [
       {
         "id": "ehk:thurmur",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thurmur",
         "phoneticForm": "θur.mur",
         "protoform": "Proto-Hick *thuru-muru-meru",
@@ -1189,14 +1410,20 @@
         "senses": [
           {
             "definition": "dusk owl",
-            "semanticField": ["Bird Terms", "Nocturnal Terms"],
+            "semanticField": [
+              "Bird Terms",
+              "Nocturnal Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thurmur",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thurmur",
@@ -1215,28 +1442,40 @@
                 "@value": "dusk owl",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Bird Terms", "Nocturnal Terms"]
+              "lexinfo:semanticField": [
+                "Bird Terms",
+                "Nocturnal Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:tomur",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tomur",
         "phoneticForm": "to.mur",
         "note": "Shows liquid deletion and vowel reduction",
         "senses": [
           {
             "definition": "great owl",
-            "semanticField": ["Bird Terms", "Nocturnal Terms"],
+            "semanticField": [
+              "Bird Terms",
+              "Nocturnal Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tomur",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tomur",
@@ -1256,7 +1495,10 @@
                 "@value": "great owl",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Bird Terms", "Nocturnal Terms"]
+              "lexinfo:semanticField": [
+                "Bird Terms",
+                "Nocturnal Terms"
+              ]
             }
           ]
         }
@@ -1265,7 +1507,10 @@
     "Body Parts": [
       {
         "id": "ehk:tag",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tag",
         "phoneticForm": "tag",
         "protoform": "Proto-Hick *tagu",
@@ -1273,14 +1518,20 @@
         "senses": [
           {
             "definition": "hand",
-            "semanticField": ["Body Parts", "Basic Actions"],
+            "semanticField": [
+              "Body Parts",
+              "Basic Actions"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tag",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tag",
@@ -1298,14 +1549,20 @@
                 "@value": "hand",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Body Parts", "Basic Actions"]
+              "lexinfo:semanticField": [
+                "Body Parts",
+                "Basic Actions"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:trask",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "trask",
         "phoneticForm": "trask",
         "protoform": "Proto-Hick *tarasaku",
@@ -1319,7 +1576,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:trask",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "trask",
@@ -1328,7 +1588,10 @@
           "etymology": {
             "@type": "etymon:Etymology",
             "etymon:protoform": "Proto-Hick *tarasaku",
-            "etymon:soundChange": ["syncope", "final vowel loss"]
+            "etymon:soundChange": [
+              "syncope",
+              "final vowel loss"
+            ]
           },
           "sense": [
             {
@@ -1344,21 +1607,30 @@
       },
       {
         "id": "ehk:tag'er",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "tag'er",
         "phoneticForm": "tag.ʔer",
         "note": "Shows concrete development from manual action to general creation. Contrasts with abstract 'ir'er 'to do'.",
         "senses": [
           {
             "definition": "to make, to craft",
-            "semanticField": ["Basic Actions", "Body Parts"],
+            "semanticField": [
+              "Basic Actions",
+              "Body Parts"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tag'er",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tag'er",
@@ -1377,28 +1649,40 @@
                 "@value": "to make, to craft",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Basic Actions", "Body Parts"]
+              "lexinfo:semanticField": [
+                "Basic Actions",
+                "Body Parts"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:tagimris",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "tagimris",
         "phoneticForm": "tag.im.ris",
         "note": "Shows common pattern of ellative case marking motion from hand. Contrasts with taglas 'take'.",
         "senses": [
           {
             "definition": "give",
-            "semanticField": ["Motion Terms", "Body Parts"],
+            "semanticField": [
+              "Motion Terms",
+              "Body Parts"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tagimris",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tagimris",
@@ -1417,28 +1701,40 @@
                 "@value": "give",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Motion Terms", "Body Parts"]
+              "lexinfo:semanticField": [
+                "Motion Terms",
+                "Body Parts"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:taglas",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "taglas",
         "phoneticForm": "tag.las",
         "note": "Shows common pattern of illative case marking motion into hand. Contrasts with tagimris 'give'.",
         "senses": [
           {
             "definition": "take, receive",
-            "semanticField": ["Motion Terms", "Body Parts"],
+            "semanticField": [
+              "Motion Terms",
+              "Body Parts"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:taglas",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "taglas",
@@ -1457,28 +1753,40 @@
                 "@value": "take, receive",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Motion Terms", "Body Parts"]
+              "lexinfo:semanticField": [
+                "Motion Terms",
+                "Body Parts"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:tel",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tel",
         "phoneticForm": "tel",
         "protoform": "Proto-Hick *telu",
         "senses": [
           {
             "definition": "tail, end",
-            "semanticField": ["Body Parts", "Landscape Terms"],
+            "semanticField": [
+              "Body Parts",
+              "Landscape Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tel",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tel",
@@ -1496,28 +1804,40 @@
                 "@value": "tail, end",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Body Parts", "Landscape Terms"]
+              "lexinfo:semanticField": [
+                "Body Parts",
+                "Landscape Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:thal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thal",
         "phoneticForm": "θal",
         "protoform": "Proto-Hick *thalu",
         "senses": [
           {
             "definition": "side, flank",
-            "semanticField": ["Body Parts", "Landscape Terms"],
+            "semanticField": [
+              "Body Parts",
+              "Landscape Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thal",
@@ -1535,7 +1855,10 @@
                 "@value": "side, flank",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Body Parts", "Landscape Terms"]
+              "lexinfo:semanticField": [
+                "Body Parts",
+                "Landscape Terms"
+              ]
             }
           ]
         }
@@ -1544,7 +1867,10 @@
     "Borrowed Terms": [
       {
         "id": "ehk:tamin",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tamin",
         "phoneticForm": "ta.min",
         "note": "Direct borrowing of Quenya technical term for forge/smithy",
@@ -1562,7 +1888,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tamin",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tamin",
@@ -1597,20 +1926,29 @@
     "Celestial Terms": [
       {
         "id": "ehk:thurkel",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thurkel",
         "phoneticForm": "θur.kel",
         "senses": [
           {
             "definition": "evening sky",
-            "semanticField": ["Time Terms", "Celestial Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Celestial Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thurkel",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thurkel",
@@ -1628,7 +1966,10 @@
                 "@value": "evening sky",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Celestial Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Celestial Terms"
+              ]
             }
           ]
         }
@@ -1637,21 +1978,30 @@
     "Colors": [
       {
         "id": "ehk:thir",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thir",
         "phoneticForm": "θir",
         "protoform": "Proto-Hick *haru",
         "senses": [
           {
             "definition": "air, wind; white",
-            "semanticField": ["Elements", "Colors"],
+            "semanticField": [
+              "Elements",
+              "Colors"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thir",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thir",
@@ -1669,7 +2019,10 @@
                 "@value": "air, wind; white",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Elements", "Colors"]
+              "lexinfo:semanticField": [
+                "Elements",
+                "Colors"
+              ]
             }
           ]
         }
@@ -1678,7 +2031,10 @@
     "Communication Terms": [
       {
         "id": "ehk:tenwa",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tenwa",
         "phoneticForm": "ten.wa",
         "protoform": "Eldrim tengwa",
@@ -1704,7 +2060,10 @@
         ],
         "graphEntry": {
           "@id": "ehk:tenwa",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tenwa",
@@ -1746,21 +2105,30 @@
     "Conflict Terms": [
       {
         "id": "ehk:takimris",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "takimris",
         "phoneticForm": "ta.kim.ris",
         "note": "Shows development of aggressive meaning through ellative case",
         "senses": [
           {
             "definition": "to attack, to oppose",
-            "semanticField": ["Action Terms", "Conflict Terms"],
+            "semanticField": [
+              "Action Terms",
+              "Conflict Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takimris",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takimris",
@@ -1779,7 +2147,10 @@
                 "@value": "to attack, to oppose",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Action Terms", "Conflict Terms"]
+              "lexinfo:semanticField": [
+                "Action Terms",
+                "Conflict Terms"
+              ]
             }
           ]
         }
@@ -1788,7 +2159,10 @@
     "Construction Terms": [
       {
         "id": "ehk:tamin",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tamin",
         "phoneticForm": "ta.min",
         "note": "Direct borrowing of Quenya technical term for forge/smithy",
@@ -1806,7 +2180,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tamin",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tamin",
@@ -1841,21 +2218,31 @@
     "Cultural Terms": [
       {
         "id": "ehk:toreldal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "toreldal",
         "phoneticForm": "to.rel.dal",
         "note": "From first elven migration period, uses native augmentative to distinguish High Elves",
         "senses": [
           {
             "definition": "High Elf",
-            "semanticField": ["Peoples", "Cultural Terms", "Sacred Terms"],
+            "semanticField": [
+              "Peoples",
+              "Cultural Terms",
+              "Sacred Terms"
+            ],
             "usage": "Shows cultural perception of High Elves through augmentative prefix"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:toreldal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "toreldal",
@@ -1898,21 +2285,30 @@
     "Directional Terms": [
       {
         "id": "ehk:tarul",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tarul",
         "phoneticForm": "ta.rul",
         "note": "Shows climatic influence on directional terms",
         "senses": [
           {
             "definition": "west",
-            "semanticField": ["Directional Terms", "Weather Terms"],
+            "semanticField": [
+              "Directional Terms",
+              "Weather Terms"
+            ],
             "usage": "Derived from term for west wind"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tarul",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tarul",
@@ -1932,7 +2328,10 @@
                 "@value": "west",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Directional Terms", "Weather Terms"],
+              "lexinfo:semanticField": [
+                "Directional Terms",
+                "Weather Terms"
+              ],
               "usage": "Derived from term for west wind"
             }
           ]
@@ -1940,21 +2339,30 @@
       },
       {
         "id": "ehk:thilul",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thilul",
         "phoneticForm": "θi.lul",
         "note": "Shows cultural association of south with favorable omens",
         "senses": [
           {
             "definition": "south",
-            "semanticField": ["Directional Terms", "Sacred Terms"],
+            "semanticField": [
+              "Directional Terms",
+              "Sacred Terms"
+            ],
             "usage": "Derived from term for south wind"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thilul",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thilul",
@@ -1974,7 +2382,10 @@
                 "@value": "south",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Directional Terms", "Sacred Terms"],
+              "lexinfo:semanticField": [
+                "Directional Terms",
+                "Sacred Terms"
+              ],
               "usage": "Derived from term for south wind"
             }
           ]
@@ -1982,7 +2393,10 @@
       },
       {
         "id": "ehk:thilulbres",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thilulbres",
         "phoneticForm": "θi.lul.bres",
         "senses": [
@@ -1999,7 +2413,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thilulbres",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thilulbres",
@@ -2038,20 +2455,29 @@
       },
       {
         "id": "ehk:torulbres",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torulbres",
         "phoneticForm": "to.rul.bres",
         "senses": [
           {
             "definition": "north wind",
-            "semanticField": ["Weather Terms", "Directional Terms"],
+            "semanticField": [
+              "Weather Terms",
+              "Directional Terms"
+            ],
             "usage": "Original term for north wind, later often replaced by eldalulbres"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torulbres",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torulbres",
@@ -2079,7 +2505,10 @@
                 "@language": "en"
               },
               "usage": "Original term for north wind, later often replaced by eldalulbres",
-              "lexinfo:semanticField": ["Weather Terms", "Directional Terms"]
+              "lexinfo:semanticField": [
+                "Weather Terms",
+                "Directional Terms"
+              ]
             }
           ]
         }
@@ -2088,21 +2517,31 @@
     "Drink Terms": [
       {
         "id": "ehk:tirai",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tirai",
         "phoneticForm": "ti.rai",
         "note": "Shows cultural knowledge of fermentation process",
         "senses": [
           {
             "definition": "fermented drink",
-            "semanticField": ["Food Terms", "Drink Terms", "Taste Terms"],
+            "semanticField": [
+              "Food Terms",
+              "Drink Terms",
+              "Taste Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tirai",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tirai",
@@ -2134,21 +2573,30 @@
     "Eldrim Terms": [
       {
         "id": "ehk:torlambe",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torlambe",
         "phoneticForm": "tor.lam.be",
         "note": "Shows parallel formation to toreldal 'High Elf'",
         "senses": [
           {
             "definition": "High Elven (Quenya)",
-            "semanticField": ["Language Terms", "Eldrim Terms"],
+            "semanticField": [
+              "Language Terms",
+              "Eldrim Terms"
+            ],
             "usage": "Formal term for High Elven language"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torlambe",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torlambe",
@@ -2175,7 +2623,10 @@
                 "@value": "High Elven (Quenya)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Language Terms", "Eldrim Terms"],
+              "lexinfo:semanticField": [
+                "Language Terms",
+                "Eldrim Terms"
+              ],
               "usage": "Formal term for High Elven language"
             }
           ]
@@ -2185,21 +2636,30 @@
     "Elements": [
       {
         "id": "ehk:thir",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thir",
         "phoneticForm": "θir",
         "protoform": "Proto-Hick *haru",
         "senses": [
           {
             "definition": "air, wind; white",
-            "semanticField": ["Elements", "Colors"],
+            "semanticField": [
+              "Elements",
+              "Colors"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thir",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thir",
@@ -2217,7 +2677,10 @@
                 "@value": "air, wind; white",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Elements", "Colors"]
+              "lexinfo:semanticField": [
+                "Elements",
+                "Colors"
+              ]
             }
           ]
         }
@@ -2226,21 +2689,30 @@
     "Emotional Terms": [
       {
         "id": "ehk:torthil",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torthil",
         "phoneticForm": "tor.θil",
         "note": "Shows ironic compound formation - excessive virtue becoming a flaw",
         "senses": [
           {
             "definition": "arrogance, haughtiness",
-            "semanticField": ["Abstract Concepts", "Emotional Terms"],
+            "semanticField": [
+              "Abstract Concepts",
+              "Emotional Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torthil",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torthil",
@@ -2268,7 +2740,10 @@
                 "@value": "arrogance, haughtiness",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Abstract Concepts", "Emotional Terms"]
+              "lexinfo:semanticField": [
+                "Abstract Concepts",
+                "Emotional Terms"
+              ]
             }
           ],
           "derivation": {
@@ -2285,20 +2760,30 @@
     "Fauna": [
       {
         "id": "ehk:torba",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torba",
         "phoneticForm": "tor.ba",
         "senses": [
           {
             "definition": "goat",
-            "semanticField": ["Fauna", "Animals", "Pastoral Terms"],
+            "semanticField": [
+              "Fauna",
+              "Animals",
+              "Pastoral Terms"
+            ],
             "usage": "Shows metaphorical extension linking goats to mountains and paternal authority"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torba",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torba",
@@ -2326,7 +2811,11 @@
                 "@language": "en"
               },
               "usage": "Shows metaphorical extension linking goats to mountains and paternal authority",
-              "lexinfo:semanticField": ["Fauna", "Animals", "Pastoral Terms"]
+              "lexinfo:semanticField": [
+                "Fauna",
+                "Animals",
+                "Pastoral Terms"
+              ]
             }
           ]
         }
@@ -2335,21 +2824,30 @@
     "Food Terms": [
       {
         "id": "ehk:terok",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "terok",
         "phoneticForm": "te.rok",
         "note": "One who drinks (professionally or habitually)",
         "senses": [
           {
             "definition": "drinker; drunkard",
-            "semanticField": ["Person Terms", "Food Terms"],
+            "semanticField": [
+              "Person Terms",
+              "Food Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:terok",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "terok",
@@ -2368,28 +2866,41 @@
                 "@value": "drinker; drunkard",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Person Terms", "Food Terms"]
+              "lexinfo:semanticField": [
+                "Person Terms",
+                "Food Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:tirai",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tirai",
         "phoneticForm": "ti.rai",
         "note": "Shows cultural knowledge of fermentation process",
         "senses": [
           {
             "definition": "fermented drink",
-            "semanticField": ["Food Terms", "Drink Terms", "Taste Terms"],
+            "semanticField": [
+              "Food Terms",
+              "Drink Terms",
+              "Taste Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tirai",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tirai",
@@ -2419,20 +2930,29 @@
       },
       {
         "id": "ehk:torduwes",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torduwes",
         "phoneticForm": "tor.du.wes",
         "senses": [
           {
             "definition": "feast, great eating",
-            "semanticField": ["Food Terms", "Social Terms"],
+            "semanticField": [
+              "Food Terms",
+              "Social Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torduwes",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torduwes",
@@ -2451,27 +2971,39 @@
                 "@value": "feast, great eating",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Food Terms", "Social Terms"]
+              "lexinfo:semanticField": [
+                "Food Terms",
+                "Social Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:tormel",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tormel",
         "phoneticForm": "tor.mel",
         "senses": [
           {
             "definition": "great fat, tallow",
-            "semanticField": ["Food Terms", "Material Terms"],
+            "semanticField": [
+              "Food Terms",
+              "Material Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tormel",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tormel",
@@ -2490,7 +3022,10 @@
                 "@value": "great fat, tallow",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Food Terms", "Material Terms"]
+              "lexinfo:semanticField": [
+                "Food Terms",
+                "Material Terms"
+              ]
             }
           ]
         }
@@ -2499,20 +3034,29 @@
     "Garden Terms": [
       {
         "id": "ehk:thragral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thragral",
         "phoneticForm": "θra.gral",
         "senses": [
           {
             "definition": "garden",
-            "semanticField": ["Landforms", "Garden Terms"],
+            "semanticField": [
+              "Landforms",
+              "Garden Terms"
+            ],
             "usage": "The dual meaning reflects the sacred nature of cultivated land in Hick culture, where gardens were seen as sanctified spaces"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thragral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thragral",
@@ -2530,7 +3074,10 @@
                 "@value": "garden",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Landforms", "Garden Terms"],
+              "lexinfo:semanticField": [
+                "Landforms",
+                "Garden Terms"
+              ],
               "usage": "The dual meaning reflects the sacred nature of cultivated land in Hick culture, where gardens were seen as sanctified spaces"
             }
           ]
@@ -2540,7 +3087,10 @@
     "Kinship Terms": [
       {
         "id": "ehk:thirlis",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thirlis",
         "phoneticForm": "θir.lis",
         "senses": [
@@ -2553,7 +3103,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thirlis",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thirlis",
@@ -2578,7 +3131,10 @@
       },
       {
         "id": "ehk:thirmer",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thirmer",
         "phoneticForm": "θir.mer",
         "senses": [
@@ -2591,7 +3147,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thirmer",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thirmer",
@@ -2616,7 +3175,10 @@
       },
       {
         "id": "ehk:tormer",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tormer",
         "phoneticForm": "tor.mer",
         "senses": [
@@ -2629,7 +3191,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tormer",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tormer",
@@ -2655,7 +3220,10 @@
       },
       {
         "id": "ehk:tornai",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tornai",
         "phoneticForm": "tor.nai",
         "senses": [
@@ -2668,7 +3236,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tornai",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tornai",
@@ -2696,20 +3267,29 @@
     "Landforms": [
       {
         "id": "ehk:thalgral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thalgral",
         "phoneticForm": "θal.gral",
         "senses": [
           {
             "definition": "hillside",
-            "semanticField": ["Natural World", "Landforms"],
+            "semanticField": [
+              "Natural World",
+              "Landforms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thalgral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thalgral",
@@ -2736,28 +3316,40 @@
                 "@value": "hillside",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Natural World", "Landforms"]
+              "lexinfo:semanticField": [
+                "Natural World",
+                "Landforms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:tor",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tor",
         "phoneticForm": "tor",
         "protoform": "Proto-Hick *toru",
         "senses": [
           {
             "definition": "height, peak",
-            "semanticField": ["Natural World", "Landforms"],
+            "semanticField": [
+              "Natural World",
+              "Landforms"
+            ],
             "usage": "See Augmentative Prefix"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tor",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tor",
@@ -2776,27 +3368,39 @@
                 "@language": "en"
               },
               "usage": "See Augmentative Prefix",
-              "lexinfo:semanticField": ["Natural World", "Landforms"]
+              "lexinfo:semanticField": [
+                "Natural World",
+                "Landforms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:torken",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torken",
         "phoneticForm": "tor.ken",
         "senses": [
           {
             "definition": "snow-peak, snow-capped mountain",
-            "semanticField": ["Landforms", "Weather Terms"],
+            "semanticField": [
+              "Landforms",
+              "Weather Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torken",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torken",
@@ -2823,27 +3427,39 @@
                 "@value": "snow-peak, snow-capped mountain",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Landforms", "Weather Terms"]
+              "lexinfo:semanticField": [
+                "Landforms",
+                "Weather Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:thragral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thragral",
         "phoneticForm": "θra.gral",
         "senses": [
           {
             "definition": "garden",
-            "semanticField": ["Landforms", "Garden Terms"],
+            "semanticField": [
+              "Landforms",
+              "Garden Terms"
+            ],
             "usage": "The dual meaning reflects the sacred nature of cultivated land in Hick culture, where gardens were seen as sanctified spaces"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thragral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thragral",
@@ -2861,7 +3477,10 @@
                 "@value": "garden",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Landforms", "Garden Terms"],
+              "lexinfo:semanticField": [
+                "Landforms",
+                "Garden Terms"
+              ],
               "usage": "The dual meaning reflects the sacred nature of cultivated land in Hick culture, where gardens were seen as sanctified spaces"
             }
           ]
@@ -2869,21 +3488,30 @@
       },
       {
         "id": "ehk:togar",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "togar",
         "phoneticForm": "to.gar",
         "note": "Shows semantic extension from visual similarity between bone and limestone",
         "senses": [
           {
             "definition": "limestone, mountain rock",
-            "semanticField": ["Material Terms", "Landforms"],
+            "semanticField": [
+              "Material Terms",
+              "Landforms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:togar",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "togar",
@@ -2902,27 +3530,39 @@
                 "@value": "limestone, mountain rock",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Material Terms", "Landforms"]
+              "lexinfo:semanticField": [
+                "Material Terms",
+                "Landforms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:tomal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tomal",
         "phoneticForm": "to.mal",
         "senses": [
           {
             "definition": "lake",
-            "semanticField": ["Water Features", "Landforms"],
+            "semanticField": [
+              "Water Features",
+              "Landforms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tomal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tomal",
@@ -2941,7 +3581,10 @@
                 "@value": "lake",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Water Features", "Landforms"]
+              "lexinfo:semanticField": [
+                "Water Features",
+                "Landforms"
+              ]
             }
           ]
         }
@@ -2950,21 +3593,30 @@
     "Landscape Terms": [
       {
         "id": "ehk:tel",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tel",
         "phoneticForm": "tel",
         "protoform": "Proto-Hick *telu",
         "senses": [
           {
             "definition": "tail, end",
-            "semanticField": ["Body Parts", "Landscape Terms"],
+            "semanticField": [
+              "Body Parts",
+              "Landscape Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tel",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tel",
@@ -2982,28 +3634,40 @@
                 "@value": "tail, end",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Body Parts", "Landscape Terms"]
+              "lexinfo:semanticField": [
+                "Body Parts",
+                "Landscape Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:thal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thal",
         "phoneticForm": "θal",
         "protoform": "Proto-Hick *thalu",
         "senses": [
           {
             "definition": "side, flank",
-            "semanticField": ["Body Parts", "Landscape Terms"],
+            "semanticField": [
+              "Body Parts",
+              "Landscape Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thal",
@@ -3021,7 +3685,10 @@
                 "@value": "side, flank",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Body Parts", "Landscape Terms"]
+              "lexinfo:semanticField": [
+                "Body Parts",
+                "Landscape Terms"
+              ]
             }
           ]
         }
@@ -3030,7 +3697,10 @@
     "Language Terms": [
       {
         "id": "ehk:takulambe",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takulambe",
         "phoneticForm": "ta.ku.lam.be",
         "note": "Early Hick term for simplified Elven trade language. Shows development of inter-cultural communication",
@@ -3044,7 +3714,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takulambe",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takulambe",
@@ -3070,21 +3743,30 @@
       },
       {
         "id": "ehk:takutakal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takutakal",
         "phoneticForm": "ta.ku.ta.kal",
         "note": "Shows conceptual link between rhythm and language",
         "senses": [
           {
             "definition": "language",
-            "semanticField": ["Language Terms", "Sound Terms"],
+            "semanticField": [
+              "Language Terms",
+              "Sound Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takutakal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takutakal",
@@ -3112,28 +3794,40 @@
                 "@value": "language",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Language Terms", "Sound Terms"]
+              "lexinfo:semanticField": [
+                "Language Terms",
+                "Sound Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:torlambe",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torlambe",
         "phoneticForm": "tor.lam.be",
         "note": "Shows parallel formation to toreldal 'High Elf'",
         "senses": [
           {
             "definition": "High Elven (Quenya)",
-            "semanticField": ["Language Terms", "Eldrim Terms"],
+            "semanticField": [
+              "Language Terms",
+              "Eldrim Terms"
+            ],
             "usage": "Formal term for High Elven language"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torlambe",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torlambe",
@@ -3160,7 +3854,10 @@
                 "@value": "High Elven (Quenya)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Language Terms", "Eldrim Terms"],
+              "lexinfo:semanticField": [
+                "Language Terms",
+                "Eldrim Terms"
+              ],
               "usage": "Formal term for High Elven language"
             }
           ]
@@ -3168,7 +3865,10 @@
       },
       {
         "id": "ehk:takal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takal",
         "phoneticForm": "ta.kal",
         "note": "Metaphorical extension from takutakal, conceptualizing word as single unit of language rhythm.",
@@ -3182,7 +3882,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takal",
@@ -3210,7 +3913,10 @@
     "Magical Terms": [
       {
         "id": "ehk:tenwa",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tenwa",
         "phoneticForm": "ten.wa",
         "protoform": "Eldrim tengwa",
@@ -3236,7 +3942,10 @@
         ],
         "graphEntry": {
           "@id": "ehk:tenwa",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tenwa",
@@ -3278,21 +3987,30 @@
     "Material Terms": [
       {
         "id": "ehk:tin",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tin",
         "phoneticForm": "tin",
         "protoform": "Proto-Hick *tinu",
         "senses": [
           {
             "definition": "tin",
-            "semanticField": ["Metal Terms", "Material Terms"],
+            "semanticField": [
+              "Metal Terms",
+              "Material Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tin",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tin",
@@ -3310,28 +4028,40 @@
                 "@value": "tin",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Metal Terms", "Material Terms"]
+              "lexinfo:semanticField": [
+                "Metal Terms",
+                "Material Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:togar",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "togar",
         "phoneticForm": "to.gar",
         "note": "Shows semantic extension from visual similarity between bone and limestone",
         "senses": [
           {
             "definition": "limestone, mountain rock",
-            "semanticField": ["Material Terms", "Landforms"],
+            "semanticField": [
+              "Material Terms",
+              "Landforms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:togar",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "togar",
@@ -3350,27 +4080,39 @@
                 "@value": "limestone, mountain rock",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Material Terms", "Landforms"]
+              "lexinfo:semanticField": [
+                "Material Terms",
+                "Landforms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:tormel",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tormel",
         "phoneticForm": "tor.mel",
         "senses": [
           {
             "definition": "great fat, tallow",
-            "semanticField": ["Food Terms", "Material Terms"],
+            "semanticField": [
+              "Food Terms",
+              "Material Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tormel",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tormel",
@@ -3389,7 +4131,10 @@
                 "@value": "great fat, tallow",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Food Terms", "Material Terms"]
+              "lexinfo:semanticField": [
+                "Food Terms",
+                "Material Terms"
+              ]
             }
           ]
         }
@@ -3398,21 +4143,30 @@
     "Metal Terms": [
       {
         "id": "ehk:tin",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tin",
         "phoneticForm": "tin",
         "protoform": "Proto-Hick *tinu",
         "senses": [
           {
             "definition": "tin",
-            "semanticField": ["Metal Terms", "Material Terms"],
+            "semanticField": [
+              "Metal Terms",
+              "Material Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tin",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tin",
@@ -3430,7 +4184,10 @@
                 "@value": "tin",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Metal Terms", "Material Terms"]
+              "lexinfo:semanticField": [
+                "Metal Terms",
+                "Material Terms"
+              ]
             }
           ]
         }
@@ -3439,7 +4196,10 @@
     "Moral Terms": [
       {
         "id": "ehk:thil",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thil",
         "phoneticForm": "θil",
         "protoform": "Proto-Hick *halu",
@@ -3458,7 +4218,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thil",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thil",
@@ -3490,14 +4253,20 @@
     "Motion Terms": [
       {
         "id": "ehk:ter",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "ter",
         "phoneticForm": "ter",
         "protoform": "Proto-Hick *teru",
         "senses": [
           {
             "definition": "flow, fluid motion",
-            "semanticField": ["Basic Terms", "Motion Terms"],
+            "semanticField": [
+              "Basic Terms",
+              "Motion Terms"
+            ],
             "usage": ""
           }
         ],
@@ -3511,7 +4280,10 @@
         ],
         "graphEntry": {
           "@id": "ehk:ter",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "ter",
@@ -3529,7 +4301,10 @@
                 "@value": "flow, fluid motion",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Basic Terms", "Motion Terms"]
+              "lexinfo:semanticField": [
+                "Basic Terms",
+                "Motion Terms"
+              ]
             }
           ],
           "derivedForms": [
@@ -3545,21 +4320,30 @@
       },
       {
         "id": "ehk:tagimris",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "tagimris",
         "phoneticForm": "tag.im.ris",
         "note": "Shows common pattern of ellative case marking motion from hand. Contrasts with taglas 'take'.",
         "senses": [
           {
             "definition": "give",
-            "semanticField": ["Motion Terms", "Body Parts"],
+            "semanticField": [
+              "Motion Terms",
+              "Body Parts"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tagimris",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tagimris",
@@ -3578,28 +4362,40 @@
                 "@value": "give",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Motion Terms", "Body Parts"]
+              "lexinfo:semanticField": [
+                "Motion Terms",
+                "Body Parts"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:taglas",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "taglas",
         "phoneticForm": "tag.las",
         "note": "Shows common pattern of illative case marking motion into hand. Contrasts with tagimris 'give'.",
         "senses": [
           {
             "definition": "take, receive",
-            "semanticField": ["Motion Terms", "Body Parts"],
+            "semanticField": [
+              "Motion Terms",
+              "Body Parts"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:taglas",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "taglas",
@@ -3618,28 +4414,40 @@
                 "@value": "take, receive",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Motion Terms", "Body Parts"]
+              "lexinfo:semanticField": [
+                "Motion Terms",
+                "Body Parts"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:terimris",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "terimris",
         "phoneticForm": "te.rim.ris",
         "note": "Shows conceptualization of future as flow outward. Contrasts with terlas.",
         "senses": [
           {
             "definition": "next",
-            "semanticField": ["Time Terms", "Motion Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Motion Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:terimris",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "terimris",
@@ -3658,28 +4466,40 @@
                 "@value": "next",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Motion Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Motion Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:terlas",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "terlas",
         "phoneticForm": "ter.las",
         "note": "Shows conceptualization of past as flow inward. Contrasts with terimris.",
         "senses": [
           {
             "definition": "previous",
-            "semanticField": ["Time Terms", "Motion Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Motion Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:terlas",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "terlas",
@@ -3698,28 +4518,40 @@
                 "@value": "previous",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Motion Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Motion Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:trask'er",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "trask'er",
         "phoneticForm": "tras.kʔer",
         "note": "Shows semantic extension from body part to motion",
         "senses": [
           {
             "definition": "to run",
-            "semanticField": ["Motion Terms", "Action Terms"],
+            "semanticField": [
+              "Motion Terms",
+              "Action Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:trask'er",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "trask'er",
@@ -3738,7 +4570,10 @@
                 "@value": "to run",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Motion Terms", "Action Terms"]
+              "lexinfo:semanticField": [
+                "Motion Terms",
+                "Action Terms"
+              ]
             }
           ]
         }
@@ -3747,7 +4582,10 @@
     "Musical Terms": [
       {
         "id": "ehk:takutak",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takutak",
         "phoneticForm": "ta.ku.tak",
         "protoform": "Proto-Hick *takutaku",
@@ -3755,14 +4593,20 @@
         "senses": [
           {
             "definition": "rhythm",
-            "semanticField": ["Sound Terms", "Musical Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Musical Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takutak",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takutak",
@@ -3780,14 +4624,20 @@
                 "@value": "rhythm",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sound Terms", "Musical Terms"]
+              "lexinfo:semanticField": [
+                "Sound Terms",
+                "Musical Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:takutek",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takutek",
         "phoneticForm": "ta.ku.tek",
         "protoform": "Proto-Hick *takutaku",
@@ -3795,14 +4645,20 @@
         "senses": [
           {
             "definition": "rhythm",
-            "semanticField": ["Musical Terms", "Sound Terms"],
+            "semanticField": [
+              "Musical Terms",
+              "Sound Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takutek",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takutek",
@@ -3820,7 +4676,10 @@
                 "@value": "rhythm",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Musical Terms", "Sound Terms"]
+              "lexinfo:semanticField": [
+                "Musical Terms",
+                "Sound Terms"
+              ]
             }
           ]
         }
@@ -3829,20 +4688,29 @@
     "Name Terms": [
       {
         "id": "ehk:thralbar",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thralbar",
         "phoneticForm": "θral.bar",
         "senses": [
           {
             "definition": "sacred name",
-            "semanticField": ["Sacred Terms", "Name Terms"],
+            "semanticField": [
+              "Sacred Terms",
+              "Name Terms"
+            ],
             "usage": "Used in ritual contexts"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thralbar",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thralbar",
@@ -3860,7 +4728,10 @@
                 "@value": "sacred name",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sacred Terms", "Name Terms"],
+              "lexinfo:semanticField": [
+                "Sacred Terms",
+                "Name Terms"
+              ],
               "usage": "Used in ritual contexts"
             }
           ]
@@ -3870,20 +4741,29 @@
     "Natural World": [
       {
         "id": "ehk:thalgral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thalgral",
         "phoneticForm": "θal.gral",
         "senses": [
           {
             "definition": "hillside",
-            "semanticField": ["Natural World", "Landforms"],
+            "semanticField": [
+              "Natural World",
+              "Landforms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thalgral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thalgral",
@@ -3910,28 +4790,40 @@
                 "@value": "hillside",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Natural World", "Landforms"]
+              "lexinfo:semanticField": [
+                "Natural World",
+                "Landforms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:tor",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tor",
         "phoneticForm": "tor",
         "protoform": "Proto-Hick *toru",
         "senses": [
           {
             "definition": "height, peak",
-            "semanticField": ["Natural World", "Landforms"],
+            "semanticField": [
+              "Natural World",
+              "Landforms"
+            ],
             "usage": "See Augmentative Prefix"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tor",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tor",
@@ -3950,28 +4842,40 @@
                 "@language": "en"
               },
               "usage": "See Augmentative Prefix",
-              "lexinfo:semanticField": ["Natural World", "Landforms"]
+              "lexinfo:semanticField": [
+                "Natural World",
+                "Landforms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:toran",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "toran",
         "phoneticForm": "to.ran",
         "protoform": "Proto-Hick *ranu",
         "senses": [
           {
             "definition": "river, flowing water",
-            "semanticField": ["Natural World", "Water Features"],
+            "semanticField": [
+              "Natural World",
+              "Water Features"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:toran",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "toran",
@@ -3989,7 +4893,10 @@
                 "@value": "river, flowing water",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Natural World", "Water Features"]
+              "lexinfo:semanticField": [
+                "Natural World",
+                "Water Features"
+              ]
             }
           ]
         }
@@ -3998,7 +4905,10 @@
     "Nocturnal Terms": [
       {
         "id": "ehk:thurmur",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thurmur",
         "phoneticForm": "θur.mur",
         "protoform": "Proto-Hick *thuru-muru-meru",
@@ -4006,14 +4916,20 @@
         "senses": [
           {
             "definition": "dusk owl",
-            "semanticField": ["Bird Terms", "Nocturnal Terms"],
+            "semanticField": [
+              "Bird Terms",
+              "Nocturnal Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thurmur",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thurmur",
@@ -4032,28 +4948,40 @@
                 "@value": "dusk owl",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Bird Terms", "Nocturnal Terms"]
+              "lexinfo:semanticField": [
+                "Bird Terms",
+                "Nocturnal Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:tomur",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tomur",
         "phoneticForm": "to.mur",
         "note": "Shows liquid deletion and vowel reduction",
         "senses": [
           {
             "definition": "great owl",
-            "semanticField": ["Bird Terms", "Nocturnal Terms"],
+            "semanticField": [
+              "Bird Terms",
+              "Nocturnal Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tomur",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tomur",
@@ -4073,7 +5001,10 @@
                 "@value": "great owl",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Bird Terms", "Nocturnal Terms"]
+              "lexinfo:semanticField": [
+                "Bird Terms",
+                "Nocturnal Terms"
+              ]
             }
           ]
         }
@@ -4082,7 +5013,10 @@
     "Number Terms": [
       {
         "id": "ehk:thran",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Numeral"
+        ],
         "writtenForm": "thran",
         "phoneticForm": "θran",
         "protoform": "Proto-Hick *thran-inu",
@@ -4097,7 +5031,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thran",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Numeral"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thran",
@@ -4122,7 +5059,10 @@
       },
       {
         "id": "ehk:tirkres",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Numeral"
+        ],
         "writtenForm": "tirkres",
         "phoneticForm": "tir.kres",
         "senses": [
@@ -4135,7 +5075,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tirkres",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Numeral"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tirkres",
@@ -4163,20 +5106,30 @@
     "Pastoral Terms": [
       {
         "id": "ehk:torba",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torba",
         "phoneticForm": "tor.ba",
         "senses": [
           {
             "definition": "goat",
-            "semanticField": ["Fauna", "Animals", "Pastoral Terms"],
+            "semanticField": [
+              "Fauna",
+              "Animals",
+              "Pastoral Terms"
+            ],
             "usage": "Shows metaphorical extension linking goats to mountains and paternal authority"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torba",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torba",
@@ -4204,7 +5157,11 @@
                 "@language": "en"
               },
               "usage": "Shows metaphorical extension linking goats to mountains and paternal authority",
-              "lexinfo:semanticField": ["Fauna", "Animals", "Pastoral Terms"]
+              "lexinfo:semanticField": [
+                "Fauna",
+                "Animals",
+                "Pastoral Terms"
+              ]
             }
           ]
         }
@@ -4213,21 +5170,31 @@
     "Peoples": [
       {
         "id": "ehk:toreldal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "toreldal",
         "phoneticForm": "to.rel.dal",
         "note": "From first elven migration period, uses native augmentative to distinguish High Elves",
         "senses": [
           {
             "definition": "High Elf",
-            "semanticField": ["Peoples", "Cultural Terms", "Sacred Terms"],
+            "semanticField": [
+              "Peoples",
+              "Cultural Terms",
+              "Sacred Terms"
+            ],
             "usage": "Shows cultural perception of High Elves through augmentative prefix"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:toreldal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "toreldal",
@@ -4270,21 +5237,30 @@
     "Person Terms": [
       {
         "id": "ehk:terok",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "terok",
         "phoneticForm": "te.rok",
         "note": "One who drinks (professionally or habitually)",
         "senses": [
           {
             "definition": "drinker; drunkard",
-            "semanticField": ["Person Terms", "Food Terms"],
+            "semanticField": [
+              "Person Terms",
+              "Food Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:terok",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "terok",
@@ -4303,7 +5279,10 @@
                 "@value": "drinker; drunkard",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Person Terms", "Food Terms"]
+              "lexinfo:semanticField": [
+                "Person Terms",
+                "Food Terms"
+              ]
             }
           ]
         }
@@ -4312,7 +5291,10 @@
     "Religious Terms": [
       {
         "id": "ehk:tharala",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tharala",
         "phoneticForm": "θa.ra.la",
         "protoform": "Proto-Hick *harala",
@@ -4320,14 +5302,20 @@
         "senses": [
           {
             "definition": "deity",
-            "semanticField": ["Sacred Terms", "Religious Terms"],
+            "semanticField": [
+              "Sacred Terms",
+              "Religious Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tharala",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tharala",
@@ -4347,7 +5335,10 @@
                 "@value": "deity",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sacred Terms", "Religious Terms"],
+              "lexinfo:semanticField": [
+                "Sacred Terms",
+                "Religious Terms"
+              ],
               "lexinfo:register": "lexinfo:formalRegister"
             }
           ]
@@ -4357,7 +5348,10 @@
     "Sacred Terms": [
       {
         "id": "ehk:temer",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "temer",
         "phoneticForm": "te.mer",
         "protoform": "Proto-Hick *telu-himeru",
@@ -4365,14 +5359,20 @@
         "senses": [
           {
             "definition": "death",
-            "semanticField": ["Spirit Terms", "Sacred Terms"],
+            "semanticField": [
+              "Spirit Terms",
+              "Sacred Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:temer",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "temer",
@@ -4381,7 +5381,10 @@
           "etymology": {
             "@type": "etymon:Etymology",
             "etymon:protoform": "Proto-Hick *telu-himeru",
-            "etymon:components": ["telu (end)", "himeru (life)"],
+            "etymon:components": [
+              "telu (end)",
+              "himeru (life)"
+            ],
             "etymon:soundChange": "compound reduction",
             "etymon:note": "Literally 'end of life'"
           },
@@ -4392,14 +5395,20 @@
                 "@value": "death",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Spirit Terms", "Sacred Terms"]
+              "lexinfo:semanticField": [
+                "Spirit Terms",
+                "Sacred Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:tenwa",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tenwa",
         "phoneticForm": "ten.wa",
         "protoform": "Eldrim tengwa",
@@ -4425,7 +5434,10 @@
         ],
         "graphEntry": {
           "@id": "ehk:tenwa",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tenwa",
@@ -4465,7 +5477,10 @@
       },
       {
         "id": "ehk:tharala",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tharala",
         "phoneticForm": "θa.ra.la",
         "protoform": "Proto-Hick *harala",
@@ -4473,14 +5488,20 @@
         "senses": [
           {
             "definition": "deity",
-            "semanticField": ["Sacred Terms", "Religious Terms"],
+            "semanticField": [
+              "Sacred Terms",
+              "Religious Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tharala",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tharala",
@@ -4500,7 +5521,10 @@
                 "@value": "deity",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sacred Terms", "Religious Terms"],
+              "lexinfo:semanticField": [
+                "Sacred Terms",
+                "Religious Terms"
+              ],
               "lexinfo:register": "lexinfo:formalRegister"
             }
           ]
@@ -4508,21 +5532,30 @@
       },
       {
         "id": "ehk:thid",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thid",
         "phoneticForm": "θid",
         "protoform": "Proto-Hick *hawadu",
         "senses": [
           {
             "definition": "truth",
-            "semanticField": ["Sacred Terms", "Abstract Concepts"],
+            "semanticField": [
+              "Sacred Terms",
+              "Abstract Concepts"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thid",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thid",
@@ -4544,14 +5577,20 @@
                 "@value": "truth",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sacred Terms", "Abstract Concepts"]
+              "lexinfo:semanticField": [
+                "Sacred Terms",
+                "Abstract Concepts"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:thil",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thil",
         "phoneticForm": "θil",
         "protoform": "Proto-Hick *halu",
@@ -4570,7 +5609,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thil",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thil",
@@ -4600,21 +5642,30 @@
       },
       {
         "id": "ehk:thilul",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thilul",
         "phoneticForm": "θi.lul",
         "note": "Shows cultural association of south with favorable omens",
         "senses": [
           {
             "definition": "south",
-            "semanticField": ["Directional Terms", "Sacred Terms"],
+            "semanticField": [
+              "Directional Terms",
+              "Sacred Terms"
+            ],
             "usage": "Derived from term for south wind"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thilul",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thilul",
@@ -4634,7 +5685,10 @@
                 "@value": "south",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Directional Terms", "Sacred Terms"],
+              "lexinfo:semanticField": [
+                "Directional Terms",
+                "Sacred Terms"
+              ],
               "usage": "Derived from term for south wind"
             }
           ]
@@ -4642,7 +5696,10 @@
       },
       {
         "id": "ehk:thilulbres",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thilulbres",
         "phoneticForm": "θi.lul.bres",
         "senses": [
@@ -4659,7 +5716,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thilulbres",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thilulbres",
@@ -4698,21 +5758,31 @@
       },
       {
         "id": "ehk:toreldal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "toreldal",
         "phoneticForm": "to.rel.dal",
         "note": "From first elven migration period, uses native augmentative to distinguish High Elves",
         "senses": [
           {
             "definition": "High Elf",
-            "semanticField": ["Peoples", "Cultural Terms", "Sacred Terms"],
+            "semanticField": [
+              "Peoples",
+              "Cultural Terms",
+              "Sacred Terms"
+            ],
             "usage": "Shows cultural perception of High Elves through augmentative prefix"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:toreldal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "toreldal",
@@ -4753,21 +5823,30 @@
       },
       {
         "id": "ehk:takuter",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takuter",
         "phoneticForm": "ta.ku.ter",
         "note": "Shows reduction of reduplicated base through compound simplification",
         "senses": [
           {
             "definition": "harmony, attunement",
-            "semanticField": ["Basic Terms", "Sacred Terms"],
+            "semanticField": [
+              "Basic Terms",
+              "Sacred Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takuter",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takuter",
@@ -4786,27 +5865,39 @@
                 "@value": "harmony, attunement",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Basic Terms", "Sacred Terms"]
+              "lexinfo:semanticField": [
+                "Basic Terms",
+                "Sacred Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:thralbar",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thralbar",
         "phoneticForm": "θral.bar",
         "senses": [
           {
             "definition": "sacred name",
-            "semanticField": ["Sacred Terms", "Name Terms"],
+            "semanticField": [
+              "Sacred Terms",
+              "Name Terms"
+            ],
             "usage": "Used in ritual contexts"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thralbar",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thralbar",
@@ -4824,7 +5915,10 @@
                 "@value": "sacred name",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sacred Terms", "Name Terms"],
+              "lexinfo:semanticField": [
+                "Sacred Terms",
+                "Name Terms"
+              ],
               "usage": "Used in ritual contexts"
             }
           ]
@@ -4832,25 +5926,37 @@
       },
       {
         "id": "ehk:thurthral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thurthral",
         "phoneticForm": "θur.θral",
         "senses": [
           {
             "definition": "sacred dusk",
-            "semanticField": ["Time Terms", "Sacred Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Sacred Terms"
+            ],
             "usage": ""
           },
           {
             "definition": "autumn",
-            "semanticField": ["Time Terms", "Seasonal Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Seasonal Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thurthral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thurthral",
@@ -4869,7 +5975,10 @@
                 "@value": "sacred dusk",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Sacred Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Sacred Terms"
+              ]
             },
             {
               "@type": "ontolex:LexicalSense",
@@ -4877,7 +5986,10 @@
                 "@value": "autumn",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Seasonal Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Seasonal Terms"
+              ]
             }
           ]
         }
@@ -4886,25 +5998,37 @@
     "Seasonal Terms": [
       {
         "id": "ehk:thurthral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thurthral",
         "phoneticForm": "θur.θral",
         "senses": [
           {
             "definition": "sacred dusk",
-            "semanticField": ["Time Terms", "Sacred Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Sacred Terms"
+            ],
             "usage": ""
           },
           {
             "definition": "autumn",
-            "semanticField": ["Time Terms", "Seasonal Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Seasonal Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thurthral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thurthral",
@@ -4923,7 +6047,10 @@
                 "@value": "sacred dusk",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Sacred Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Sacred Terms"
+              ]
             },
             {
               "@type": "ontolex:LexicalSense",
@@ -4931,7 +6058,10 @@
                 "@value": "autumn",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Seasonal Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Seasonal Terms"
+              ]
             }
           ]
         }
@@ -4940,26 +6070,38 @@
     "Social Terms": [
       {
         "id": "ehk:temerok",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "temerok",
         "phoneticForm": "te.me.rok",
         "note": "Shows metaphorical formation 'death-bringer' for both human killers and predatory animals",
         "senses": [
           {
             "definition": "killer, murderer",
-            "semanticField": ["Basic Terms", "Social Terms"],
+            "semanticField": [
+              "Basic Terms",
+              "Social Terms"
+            ],
             "usage": ""
           },
           {
             "definition": "predator",
-            "semanticField": ["Animal Terms", "Basic Terms"],
+            "semanticField": [
+              "Animal Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:temerok",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "temerok",
@@ -4987,7 +6129,10 @@
                 "@value": "killer, murderer",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Basic Terms", "Social Terms"]
+              "lexinfo:semanticField": [
+                "Basic Terms",
+                "Social Terms"
+              ]
             },
             {
               "@type": "ontolex:LexicalSense",
@@ -4995,27 +6140,39 @@
                 "@value": "predator",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Animal Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Animal Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:torduwes",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torduwes",
         "phoneticForm": "tor.du.wes",
         "senses": [
           {
             "definition": "feast, great eating",
-            "semanticField": ["Food Terms", "Social Terms"],
+            "semanticField": [
+              "Food Terms",
+              "Social Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torduwes",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torduwes",
@@ -5034,7 +6191,10 @@
                 "@value": "feast, great eating",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Food Terms", "Social Terms"]
+              "lexinfo:semanticField": [
+                "Food Terms",
+                "Social Terms"
+              ]
             }
           ]
         }
@@ -5043,26 +6203,38 @@
     "Sound Terms": [
       {
         "id": "ehk:takimer",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takimer",
         "phoneticForm": "ˈta.ki.mɛr",
         "note": "Reflects early animistic understanding of sound phenomena",
         "senses": [
           {
             "definition": "echo",
-            "semanticField": ["Sound Terms", "Spirit Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Spirit Terms"
+            ],
             "usage": ""
           },
           {
             "definition": "sound spirit",
-            "semanticField": ["Sound Terms", "Spirit Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Spirit Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takimer",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takimer",
@@ -5081,7 +6253,10 @@
                 "@value": "echo",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sound Terms", "Spirit Terms"]
+              "lexinfo:semanticField": [
+                "Sound Terms",
+                "Spirit Terms"
+              ]
             },
             {
               "@type": "ontolex:LexicalSense",
@@ -5089,33 +6264,48 @@
                 "@value": "sound spirit",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sound Terms", "Spirit Terms"]
+              "lexinfo:semanticField": [
+                "Sound Terms",
+                "Spirit Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:takimer",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takimer",
         "phoneticForm": "ˈta.ki.mɛr",
         "note": "Reflects early animistic understanding of sound phenomena",
         "senses": [
           {
             "definition": "echo",
-            "semanticField": ["Sound Terms", "Spirit Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Spirit Terms"
+            ],
             "usage": ""
           },
           {
             "definition": "sound spirit",
-            "semanticField": ["Sound Terms", "Spirit Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Spirit Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takimer",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takimer",
@@ -5134,7 +6324,10 @@
                 "@value": "echo",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sound Terms", "Spirit Terms"]
+              "lexinfo:semanticField": [
+                "Sound Terms",
+                "Spirit Terms"
+              ]
             },
             {
               "@type": "ontolex:LexicalSense",
@@ -5142,28 +6335,40 @@
                 "@value": "sound spirit",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sound Terms", "Spirit Terms"]
+              "lexinfo:semanticField": [
+                "Sound Terms",
+                "Spirit Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:takutakal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takutakal",
         "phoneticForm": "ta.ku.ta.kal",
         "note": "Shows conceptual link between rhythm and language",
         "senses": [
           {
             "definition": "language",
-            "semanticField": ["Language Terms", "Sound Terms"],
+            "semanticField": [
+              "Language Terms",
+              "Sound Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takutakal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takutakal",
@@ -5191,14 +6396,20 @@
                 "@value": "language",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Language Terms", "Sound Terms"]
+              "lexinfo:semanticField": [
+                "Language Terms",
+                "Sound Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:takutak",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takutak",
         "phoneticForm": "ta.ku.tak",
         "protoform": "Proto-Hick *takutaku",
@@ -5206,14 +6417,20 @@
         "senses": [
           {
             "definition": "rhythm",
-            "semanticField": ["Sound Terms", "Musical Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Musical Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takutak",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takutak",
@@ -5231,14 +6448,20 @@
                 "@value": "rhythm",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sound Terms", "Musical Terms"]
+              "lexinfo:semanticField": [
+                "Sound Terms",
+                "Musical Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:takutek",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takutek",
         "phoneticForm": "ta.ku.tek",
         "protoform": "Proto-Hick *takutaku",
@@ -5246,14 +6469,20 @@
         "senses": [
           {
             "definition": "rhythm",
-            "semanticField": ["Musical Terms", "Sound Terms"],
+            "semanticField": [
+              "Musical Terms",
+              "Sound Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takutek",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takutek",
@@ -5271,7 +6500,10 @@
                 "@value": "rhythm",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Musical Terms", "Sound Terms"]
+              "lexinfo:semanticField": [
+                "Musical Terms",
+                "Sound Terms"
+              ]
             }
           ]
         }
@@ -5280,7 +6512,10 @@
     "Spatial Terms": [
       {
         "id": "ehk:tal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tal",
         "phoneticForm": "tal",
         "protoform": "Proto-Hick *halu",
@@ -5288,14 +6523,20 @@
         "senses": [
           {
             "definition": "place, location",
-            "semanticField": ["Spatial Terms", "Basic Terms"],
+            "semanticField": [
+              "Spatial Terms",
+              "Basic Terms"
+            ],
             "usage": "Forms many location compounds"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tal",
@@ -5315,7 +6556,10 @@
                 "@value": "place, location",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Spatial Terms", "Basic Terms"],
+              "lexinfo:semanticField": [
+                "Spatial Terms",
+                "Basic Terms"
+              ],
               "usage": "Forms many location compounds"
             }
           ]
@@ -5325,26 +6569,38 @@
     "Spirit Terms": [
       {
         "id": "ehk:takimer",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takimer",
         "phoneticForm": "ˈta.ki.mɛr",
         "note": "Reflects early animistic understanding of sound phenomena",
         "senses": [
           {
             "definition": "echo",
-            "semanticField": ["Sound Terms", "Spirit Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Spirit Terms"
+            ],
             "usage": ""
           },
           {
             "definition": "sound spirit",
-            "semanticField": ["Sound Terms", "Spirit Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Spirit Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takimer",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takimer",
@@ -5363,7 +6619,10 @@
                 "@value": "echo",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sound Terms", "Spirit Terms"]
+              "lexinfo:semanticField": [
+                "Sound Terms",
+                "Spirit Terms"
+              ]
             },
             {
               "@type": "ontolex:LexicalSense",
@@ -5371,33 +6630,48 @@
                 "@value": "sound spirit",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sound Terms", "Spirit Terms"]
+              "lexinfo:semanticField": [
+                "Sound Terms",
+                "Spirit Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:takimer",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "takimer",
         "phoneticForm": "ˈta.ki.mɛr",
         "note": "Reflects early animistic understanding of sound phenomena",
         "senses": [
           {
             "definition": "echo",
-            "semanticField": ["Sound Terms", "Spirit Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Spirit Terms"
+            ],
             "usage": ""
           },
           {
             "definition": "sound spirit",
-            "semanticField": ["Sound Terms", "Spirit Terms"],
+            "semanticField": [
+              "Sound Terms",
+              "Spirit Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:takimer",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "takimer",
@@ -5416,7 +6690,10 @@
                 "@value": "echo",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sound Terms", "Spirit Terms"]
+              "lexinfo:semanticField": [
+                "Sound Terms",
+                "Spirit Terms"
+              ]
             },
             {
               "@type": "ontolex:LexicalSense",
@@ -5424,14 +6701,20 @@
                 "@value": "sound spirit",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sound Terms", "Spirit Terms"]
+              "lexinfo:semanticField": [
+                "Sound Terms",
+                "Spirit Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:temer",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "temer",
         "phoneticForm": "te.mer",
         "protoform": "Proto-Hick *telu-himeru",
@@ -5439,14 +6722,20 @@
         "senses": [
           {
             "definition": "death",
-            "semanticField": ["Spirit Terms", "Sacred Terms"],
+            "semanticField": [
+              "Spirit Terms",
+              "Sacred Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:temer",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "temer",
@@ -5455,7 +6744,10 @@
           "etymology": {
             "@type": "etymon:Etymology",
             "etymon:protoform": "Proto-Hick *telu-himeru",
-            "etymon:components": ["telu (end)", "himeru (life)"],
+            "etymon:components": [
+              "telu (end)",
+              "himeru (life)"
+            ],
             "etymon:soundChange": "compound reduction",
             "etymon:note": "Literally 'end of life'"
           },
@@ -5466,7 +6758,10 @@
                 "@value": "death",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Spirit Terms", "Sacred Terms"]
+              "lexinfo:semanticField": [
+                "Spirit Terms",
+                "Sacred Terms"
+              ]
             }
           ]
         }
@@ -5475,21 +6770,31 @@
     "Taste Terms": [
       {
         "id": "ehk:tirai",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tirai",
         "phoneticForm": "ti.rai",
         "note": "Shows cultural knowledge of fermentation process",
         "senses": [
           {
             "definition": "fermented drink",
-            "semanticField": ["Food Terms", "Drink Terms", "Taste Terms"],
+            "semanticField": [
+              "Food Terms",
+              "Drink Terms",
+              "Taste Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tirai",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tirai",
@@ -5521,21 +6826,30 @@
     "Time Terms": [
       {
         "id": "ehk:terimris",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "terimris",
         "phoneticForm": "te.rim.ris",
         "note": "Shows conceptualization of future as flow outward. Contrasts with terlas.",
         "senses": [
           {
             "definition": "next",
-            "semanticField": ["Time Terms", "Motion Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Motion Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:terimris",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "terimris",
@@ -5554,28 +6868,40 @@
                 "@value": "next",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Motion Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Motion Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:terlas",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "terlas",
         "phoneticForm": "ter.las",
         "note": "Shows conceptualization of past as flow inward. Contrasts with terimris.",
         "senses": [
           {
             "definition": "previous",
-            "semanticField": ["Time Terms", "Motion Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Motion Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:terlas",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "terlas",
@@ -5594,14 +6920,20 @@
                 "@value": "previous",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Motion Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Motion Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:thirthral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thirthral",
         "phoneticForm": "θir.θral",
         "senses": [
@@ -5614,7 +6946,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thirthral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thirthral",
@@ -5639,7 +6974,10 @@
       },
       {
         "id": "ehk:thur",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thur",
         "phoneticForm": "θur",
         "protoform": "Proto-Hick *thuru",
@@ -5653,7 +6991,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thur",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thur",
@@ -5678,20 +7019,29 @@
       },
       {
         "id": "ehk:thurkel",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thurkel",
         "phoneticForm": "θur.kel",
         "senses": [
           {
             "definition": "evening sky",
-            "semanticField": ["Time Terms", "Celestial Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Celestial Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thurkel",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thurkel",
@@ -5709,32 +7059,47 @@
                 "@value": "evening sky",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Celestial Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Celestial Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:thurthral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thurthral",
         "phoneticForm": "θur.θral",
         "senses": [
           {
             "definition": "sacred dusk",
-            "semanticField": ["Time Terms", "Sacred Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Sacred Terms"
+            ],
             "usage": ""
           },
           {
             "definition": "autumn",
-            "semanticField": ["Time Terms", "Seasonal Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Seasonal Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thurthral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thurthral",
@@ -5753,7 +7118,10 @@
                 "@value": "sacred dusk",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Sacred Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Sacred Terms"
+              ]
             },
             {
               "@type": "ontolex:LexicalSense",
@@ -5761,32 +7129,47 @@
                 "@value": "autumn",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Seasonal Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Seasonal Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:thurthral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thurthral",
         "phoneticForm": "θur.θral",
         "senses": [
           {
             "definition": "sacred dusk",
-            "semanticField": ["Time Terms", "Sacred Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Sacred Terms"
+            ],
             "usage": ""
           },
           {
             "definition": "autumn",
-            "semanticField": ["Time Terms", "Seasonal Terms"],
+            "semanticField": [
+              "Time Terms",
+              "Seasonal Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thurthral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thurthral",
@@ -5805,7 +7188,10 @@
                 "@value": "sacred dusk",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Sacred Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Sacred Terms"
+              ]
             },
             {
               "@type": "ontolex:LexicalSense",
@@ -5813,7 +7199,10 @@
                 "@value": "autumn",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Time Terms", "Seasonal Terms"]
+              "lexinfo:semanticField": [
+                "Time Terms",
+                "Seasonal Terms"
+              ]
             }
           ]
         }
@@ -5822,7 +7211,10 @@
     "Tool Terms": [
       {
         "id": "ehk:tamin",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tamin",
         "phoneticForm": "ta.min",
         "note": "Direct borrowing of Quenya technical term for forge/smithy",
@@ -5840,7 +7232,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tamin",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tamin",
@@ -5875,7 +7270,10 @@
     "Vehicle Terms": [
       {
         "id": "ehk:tre",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tre",
         "phoneticForm": "tre",
         "protoform": "Proto-Hick *mataru",
@@ -5890,7 +7288,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tre",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tre",
@@ -5919,21 +7320,30 @@
     "Water Features": [
       {
         "id": "ehk:toran",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "toran",
         "phoneticForm": "to.ran",
         "protoform": "Proto-Hick *ranu",
         "senses": [
           {
             "definition": "river, flowing water",
-            "semanticField": ["Natural World", "Water Features"],
+            "semanticField": [
+              "Natural World",
+              "Water Features"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:toran",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "toran",
@@ -5951,14 +7361,20 @@
                 "@value": "river, flowing water",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Natural World", "Water Features"]
+              "lexinfo:semanticField": [
+                "Natural World",
+                "Water Features"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:thiral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thiral",
         "phoneticForm": "θi.ral",
         "note": "Shows liquid deletion in compound",
@@ -5972,7 +7388,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thiral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thiral",
@@ -5998,20 +7417,29 @@
       },
       {
         "id": "ehk:tomal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tomal",
         "phoneticForm": "to.mal",
         "senses": [
           {
             "definition": "lake",
-            "semanticField": ["Water Features", "Landforms"],
+            "semanticField": [
+              "Water Features",
+              "Landforms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tomal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tomal",
@@ -6030,7 +7458,10 @@
                 "@value": "lake",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Water Features", "Landforms"]
+              "lexinfo:semanticField": [
+                "Water Features",
+                "Landforms"
+              ]
             }
           ]
         }
@@ -6039,21 +7470,30 @@
     "Weather Terms": [
       {
         "id": "ehk:tarul",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "tarul",
         "phoneticForm": "ta.rul",
         "note": "Shows climatic influence on directional terms",
         "senses": [
           {
             "definition": "west",
-            "semanticField": ["Directional Terms", "Weather Terms"],
+            "semanticField": [
+              "Directional Terms",
+              "Weather Terms"
+            ],
             "usage": "Derived from term for west wind"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:tarul",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "tarul",
@@ -6073,7 +7513,10 @@
                 "@value": "west",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Directional Terms", "Weather Terms"],
+              "lexinfo:semanticField": [
+                "Directional Terms",
+                "Weather Terms"
+              ],
               "usage": "Derived from term for west wind"
             }
           ]
@@ -6081,7 +7524,10 @@
       },
       {
         "id": "ehk:thilulbres",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "thilulbres",
         "phoneticForm": "θi.lul.bres",
         "senses": [
@@ -6098,7 +7544,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:thilulbres",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "thilulbres",
@@ -6137,20 +7586,29 @@
       },
       {
         "id": "ehk:torken",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torken",
         "phoneticForm": "tor.ken",
         "senses": [
           {
             "definition": "snow-peak, snow-capped mountain",
-            "semanticField": ["Landforms", "Weather Terms"],
+            "semanticField": [
+              "Landforms",
+              "Weather Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torken",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torken",
@@ -6177,27 +7635,39 @@
                 "@value": "snow-peak, snow-capped mountain",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Landforms", "Weather Terms"]
+              "lexinfo:semanticField": [
+                "Landforms",
+                "Weather Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:torulbres",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "torulbres",
         "phoneticForm": "to.rul.bres",
         "senses": [
           {
             "definition": "north wind",
-            "semanticField": ["Weather Terms", "Directional Terms"],
+            "semanticField": [
+              "Weather Terms",
+              "Directional Terms"
+            ],
             "usage": "Original term for north wind, later often replaced by eldalulbres"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:torulbres",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "torulbres",
@@ -6225,7 +7695,10 @@
                 "@language": "en"
               },
               "usage": "Original term for north wind, later often replaced by eldalulbres",
-              "lexinfo:semanticField": ["Weather Terms", "Directional Terms"]
+              "lexinfo:semanticField": [
+                "Weather Terms",
+                "Directional Terms"
+              ]
             }
           ]
         }

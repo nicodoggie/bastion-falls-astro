@@ -2,7 +2,10 @@
   "name": "Deathengel, the Celestial Avenger",
   "size": ["L"],
   "type": "celestial",
-  "alignment": ["L", "G"],
+  "alignment": [
+    "L",
+    "G"
+  ],
   "ac": [{ "ac": 19, "from": ["natural armor"] }],
   "hp": { "average": 240, "formula": "20d10 + 120" },
   "speed": { "walk": 40, "fly": 120 },
@@ -17,14 +20,25 @@
   "resist": [
     "radiant",
     {
-      "resist": ["bludgeoning", "piercing", "slashing"],
+      "resist": [
+        "bludgeoning",
+        "piercing",
+        "slashing"
+      ],
       "note": "from nonmagical attacks"
     }
   ],
-  "conditionImmune": ["charmed", "exhaustion", "frightened"],
+  "conditionImmune": [
+    "charmed",
+    "exhaustion",
+    "frightened"
+  ],
   "senses": ["truesight 120 ft."],
   "passive": 23,
-  "languages": ["all", "telepathy 120 ft."],
+  "languages": [
+    "all",
+    "telepathy 120 ft."
+  ],
   "cr": "19",
   "traitTags": ["Magic Resistance"],
   "trait": [

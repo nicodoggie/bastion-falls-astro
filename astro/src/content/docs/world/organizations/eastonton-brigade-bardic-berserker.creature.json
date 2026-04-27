@@ -5,7 +5,10 @@
     "type": "humanoid",
     "tags": ["any race"]
   },
-  "alignment": ["C", "N"],
+  "alignment": [
+    "C",
+    "N"
+  ],
   "ac": [
     {
       "ac": 15,
@@ -36,7 +39,10 @@
     "intimidation": "+6"
   },
   "passive": 10,
-  "languages": ["Common", "plus two other languages of your choice"],
+  "languages": [
+    "Common",
+    "plus two other languages of your choice"
+  ],
   "cr": "7",
   "trait": [
     {

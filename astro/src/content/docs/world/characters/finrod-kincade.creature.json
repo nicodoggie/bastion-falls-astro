@@ -2,8 +2,15 @@
   "name": "Finrod Kincade",
   "size": ["M"],
   "type": "humanoid",
-  "alignment": ["L", "G"],
-  "ac": [{ "ac": 17, "from": ["chain mail", "shield", "Defense fighting style"] }],
+  "alignment": [
+    "L",
+    "G"
+  ],
+  "ac": [{ "ac": 17, "from": [
+        "chain mail",
+        "shield",
+        "Defense fighting style"
+      ] }],
   "hp": { "average": 52, "formula": "6d10 + 12" },
   "speed": { "walk": 30 },
   "str": 16,

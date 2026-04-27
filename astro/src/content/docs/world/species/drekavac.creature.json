@@ -3,7 +3,10 @@
   "name": "Drekavac",
   "size": ["T"],
   "type": "undead",
-  "alignment": ["E", "N"],
+  "alignment": [
+    "E",
+    "N"
+  ],
   "ac": [{ "ac": 12, "from": ["natural armor"] }],
   "hp": { "average": 16, "formula": "2d6 + 4" },
   "speed": { "walk": 30 },
@@ -16,8 +19,14 @@
   "senses": ["darkvision 60 ft."],
   "passive": 11,
   "immune": ["poison"],
-  "conditionImmune": ["poisoned", "exhaustion"],
-  "languages": ["Common", "Understands languages that the summoner knows."],
+  "conditionImmune": [
+    "poisoned",
+    "exhaustion"
+  ],
+  "languages": [
+    "Common",
+    "Understands languages that the summoner knows."
+  ],
   "trait": [
     {
       "name": "Undead Fortitude",

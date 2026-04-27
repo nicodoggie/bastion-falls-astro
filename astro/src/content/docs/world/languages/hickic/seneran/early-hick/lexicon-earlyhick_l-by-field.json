@@ -91,21 +91,30 @@
     "Animal Terms": [
       {
         "id": "ehk:limur",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "limur",
         "phoneticForm": "li.mur",
         "note": "Triggers reduction in following syllables",
         "senses": [
           {
             "definition": "small owl",
-            "semanticField": ["Bird Terms", "Animal Terms"],
+            "semanticField": [
+              "Bird Terms",
+              "Animal Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:limur",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "limur",
@@ -125,7 +134,10 @@
                 "@value": "small owl",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Bird Terms", "Animal Terms"]
+              "lexinfo:semanticField": [
+                "Bird Terms",
+                "Animal Terms"
+              ]
             }
           ]
         }
@@ -134,20 +146,29 @@
     "Basic Terms": [
       {
         "id": "ehk:limel",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Adjective"
+        ],
         "writtenForm": "limel",
         "phoneticForm": "li.mel",
         "senses": [
           {
             "definition": "slightly sweet",
-            "semanticField": ["Taste Terms", "Basic Terms"],
+            "semanticField": [
+              "Taste Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:limel",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Adjective"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "limel",
@@ -166,27 +187,39 @@
                 "@value": "slightly sweet",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Taste Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Taste Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:litil",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "litil",
         "phoneticForm": "li.til",
         "senses": [
           {
             "definition": "small thing",
-            "semanticField": ["Size Terms", "Basic Terms"],
+            "semanticField": [
+              "Size Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:litil",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "litil",
@@ -205,14 +238,20 @@
                 "@value": "small thing",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Size Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Size Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:li",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Prefix"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Prefix"
+        ],
         "writtenForm": "li",
         "phoneticForm": "li",
         "protoform": "Proto-Hick *li",
@@ -231,7 +270,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:li",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Prefix"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Prefix"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "li",
@@ -268,20 +310,29 @@
       },
       {
         "id": "ehk:mel'er",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "mel'er",
         "phoneticForm": "mel.ʔer",
         "senses": [
           {
             "definition": "to be sweet",
-            "semanticField": ["Taste Terms", "Basic Terms"],
+            "semanticField": [
+              "Taste Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:mel'er",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "mel'er",
@@ -300,28 +351,40 @@
                 "@value": "to be sweet",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Taste Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Taste Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:meris",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "meris",
         "phoneticForm": "me.ris",
         "protoform": "Proto-Hick *meru-risu",
         "senses": [
           {
             "definition": "enduring love",
-            "semanticField": ["Emotional Terms", "Basic Terms"],
+            "semanticField": [
+              "Emotional Terms",
+              "Basic Terms"
+            ],
             "usage": "Contrasts with fleeting emotions"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:meris",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "meris",
@@ -339,7 +402,10 @@
                 "@value": "enduring love",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Emotional Terms", "Basic Terms"],
+              "lexinfo:semanticField": [
+                "Emotional Terms",
+                "Basic Terms"
+              ],
               "usage": "Contrasts with fleeting emotions"
             }
           ]
@@ -347,21 +413,30 @@
       },
       {
         "id": "ehk:mir",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "mir",
         "phoneticForm": "mir",
         "protoform": "Proto-Hick *miru",
         "senses": [
           {
             "definition": "cold",
-            "semanticField": ["Weather Terms", "Basic Terms"],
+            "semanticField": [
+              "Weather Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:mir",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "mir",
@@ -379,7 +454,10 @@
                 "@value": "cold",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Weather Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Weather Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
@@ -388,21 +466,30 @@
     "Bird Terms": [
       {
         "id": "ehk:limur",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "limur",
         "phoneticForm": "li.mur",
         "note": "Triggers reduction in following syllables",
         "senses": [
           {
             "definition": "small owl",
-            "semanticField": ["Bird Terms", "Animal Terms"],
+            "semanticField": [
+              "Bird Terms",
+              "Animal Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:limur",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "limur",
@@ -422,7 +509,10 @@
                 "@value": "small owl",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Bird Terms", "Animal Terms"]
+              "lexinfo:semanticField": [
+                "Bird Terms",
+                "Animal Terms"
+              ]
             }
           ]
         }
@@ -431,7 +521,10 @@
     "Body Parts": [
       {
         "id": "ehk:lisbel",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "lisbel",
         "phoneticForm": "lis.bel",
         "senses": [
@@ -444,7 +537,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:lisbel",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "lisbel",
@@ -472,21 +568,30 @@
     "Borrowed Terms": [
       {
         "id": "ehk:lik",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "lik",
         "phoneticForm": "lik",
         "note": "Shows semantic narrowing from general serpentine being to specific dragon concept",
         "senses": [
           {
             "definition": "dragon",
-            "semanticField": ["Mythological Terms", "Borrowed Terms"],
+            "semanticField": [
+              "Mythological Terms",
+              "Borrowed Terms"
+            ],
             "usage": "Cultural borrowing showing Eldrim mythological influence"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:lik",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "lik",
@@ -509,7 +614,10 @@
                 "@value": "dragon",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Mythological Terms", "Borrowed Terms"],
+              "lexinfo:semanticField": [
+                "Mythological Terms",
+                "Borrowed Terms"
+              ],
               "usage": "Cultural borrowing showing Eldrim mythological influence"
             }
           ]
@@ -519,7 +627,10 @@
     "Derivational Morphology": [
       {
         "id": "ehk:li",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Prefix"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Prefix"
+        ],
         "writtenForm": "li",
         "phoneticForm": "li",
         "protoform": "Proto-Hick *li",
@@ -538,7 +649,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:li",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Prefix"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Prefix"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "li",
@@ -577,20 +691,29 @@
     "Drink Terms": [
       {
         "id": "ehk:melterai",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "melterai",
         "phoneticForm": "mel.te.rai",
         "senses": [
           {
             "definition": "mead",
-            "semanticField": ["Food Terms", "Drink Terms"],
+            "semanticField": [
+              "Food Terms",
+              "Drink Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:melterai",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "melterai",
@@ -609,7 +732,10 @@
                 "@value": "mead",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Food Terms", "Drink Terms"]
+              "lexinfo:semanticField": [
+                "Food Terms",
+                "Drink Terms"
+              ]
             }
           ]
         }
@@ -618,21 +744,30 @@
     "Emotional Terms": [
       {
         "id": "ehk:meris",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "meris",
         "phoneticForm": "me.ris",
         "protoform": "Proto-Hick *meru-risu",
         "senses": [
           {
             "definition": "enduring love",
-            "semanticField": ["Emotional Terms", "Basic Terms"],
+            "semanticField": [
+              "Emotional Terms",
+              "Basic Terms"
+            ],
             "usage": "Contrasts with fleeting emotions"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:meris",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "meris",
@@ -650,7 +785,10 @@
                 "@value": "enduring love",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Emotional Terms", "Basic Terms"],
+              "lexinfo:semanticField": [
+                "Emotional Terms",
+                "Basic Terms"
+              ],
               "usage": "Contrasts with fleeting emotions"
             }
           ]
@@ -660,20 +798,29 @@
     "Food Terms": [
       {
         "id": "ehk:melter",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "melter",
         "phoneticForm": "mel.ter",
         "senses": [
           {
             "definition": "honey",
-            "semanticField": ["Food Terms", "Natural World"],
+            "semanticField": [
+              "Food Terms",
+              "Natural World"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:melter",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "melter",
@@ -692,27 +839,39 @@
                 "@value": "honey",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Food Terms", "Natural World"]
+              "lexinfo:semanticField": [
+                "Food Terms",
+                "Natural World"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:melterai",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "melterai",
         "phoneticForm": "mel.te.rai",
         "senses": [
           {
             "definition": "mead",
-            "semanticField": ["Food Terms", "Drink Terms"],
+            "semanticField": [
+              "Food Terms",
+              "Drink Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:melterai",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "melterai",
@@ -731,7 +890,10 @@
                 "@value": "mead",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Food Terms", "Drink Terms"]
+              "lexinfo:semanticField": [
+                "Food Terms",
+                "Drink Terms"
+              ]
             }
           ]
         }
@@ -740,7 +902,10 @@
     "Kinship Terms": [
       {
         "id": "ehk:lis",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "lis",
         "phoneticForm": "lis",
         "protoform": "Proto-Hick *li-su",
@@ -755,7 +920,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:lis",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "lis",
@@ -786,20 +954,29 @@
       },
       {
         "id": "ehk:liba",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "liba",
         "phoneticForm": "li.ba",
         "senses": [
           {
             "definition": "uncle (paternal)",
-            "semanticField": ["Kinship Terms", "Person Terms"],
+            "semanticField": [
+              "Kinship Terms",
+              "Person Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:liba",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "liba",
@@ -818,27 +995,39 @@
                 "@value": "uncle (paternal)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Kinship Terms", "Person Terms"]
+              "lexinfo:semanticField": [
+                "Kinship Terms",
+                "Person Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:limer",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "limer",
         "phoneticForm": "li.mer",
         "senses": [
           {
             "definition": "younger parent/aunt/uncle",
-            "semanticField": ["Kinship Terms", "Person Terms"],
+            "semanticField": [
+              "Kinship Terms",
+              "Person Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:limer",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "limer",
@@ -857,27 +1046,39 @@
                 "@value": "younger parent/aunt/uncle",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Kinship Terms", "Person Terms"]
+              "lexinfo:semanticField": [
+                "Kinship Terms",
+                "Person Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:linai",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "linai",
         "phoneticForm": "li.nai",
         "senses": [
           {
             "definition": "aunt (maternal)",
-            "semanticField": ["Kinship Terms", "Person Terms"],
+            "semanticField": [
+              "Kinship Terms",
+              "Person Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:linai",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "linai",
@@ -896,27 +1097,39 @@
                 "@value": "aunt (maternal)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Kinship Terms", "Person Terms"]
+              "lexinfo:semanticField": [
+                "Kinship Terms",
+                "Person Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:merlis",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "merlis",
         "phoneticForm": "mer.lis",
         "senses": [
           {
             "definition": "family line, lineage",
-            "semanticField": ["Kinship Terms", "Social Terms"],
+            "semanticField": [
+              "Kinship Terms",
+              "Social Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:merlis",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "merlis",
@@ -935,7 +1148,10 @@
                 "@value": "family line, lineage",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Kinship Terms", "Social Terms"]
+              "lexinfo:semanticField": [
+                "Kinship Terms",
+                "Social Terms"
+              ]
             }
           ]
         }
@@ -944,21 +1160,30 @@
     "Mythological Terms": [
       {
         "id": "ehk:lik",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "lik",
         "phoneticForm": "lik",
         "note": "Shows semantic narrowing from general serpentine being to specific dragon concept",
         "senses": [
           {
             "definition": "dragon",
-            "semanticField": ["Mythological Terms", "Borrowed Terms"],
+            "semanticField": [
+              "Mythological Terms",
+              "Borrowed Terms"
+            ],
             "usage": "Cultural borrowing showing Eldrim mythological influence"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:lik",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "lik",
@@ -981,7 +1206,10 @@
                 "@value": "dragon",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Mythological Terms", "Borrowed Terms"],
+              "lexinfo:semanticField": [
+                "Mythological Terms",
+                "Borrowed Terms"
+              ],
               "usage": "Cultural borrowing showing Eldrim mythological influence"
             }
           ]
@@ -991,20 +1219,29 @@
     "Natural World": [
       {
         "id": "ehk:limal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "limal",
         "phoneticForm": "li.mal",
         "senses": [
           {
             "definition": "pond",
-            "semanticField": ["Water Features", "Natural World"],
+            "semanticField": [
+              "Water Features",
+              "Natural World"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:limal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "limal",
@@ -1023,27 +1260,39 @@
                 "@value": "pond",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Water Features", "Natural World"]
+              "lexinfo:semanticField": [
+                "Water Features",
+                "Natural World"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:melter",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "melter",
         "phoneticForm": "mel.ter",
         "senses": [
           {
             "definition": "honey",
-            "semanticField": ["Food Terms", "Natural World"],
+            "semanticField": [
+              "Food Terms",
+              "Natural World"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:melter",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "melter",
@@ -1062,27 +1311,39 @@
                 "@value": "honey",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Food Terms", "Natural World"]
+              "lexinfo:semanticField": [
+                "Food Terms",
+                "Natural World"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:miral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "miral",
         "phoneticForm": "mi.ral",
         "senses": [
           {
             "definition": "cold pool, spring",
-            "semanticField": ["Water Features", "Natural World"],
+            "semanticField": [
+              "Water Features",
+              "Natural World"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:miral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "miral",
@@ -1101,7 +1362,10 @@
                 "@value": "cold pool, spring",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Water Features", "Natural World"]
+              "lexinfo:semanticField": [
+                "Water Features",
+                "Natural World"
+              ]
             }
           ]
         }
@@ -1110,20 +1374,29 @@
     "Person Terms": [
       {
         "id": "ehk:liba",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "liba",
         "phoneticForm": "li.ba",
         "senses": [
           {
             "definition": "uncle (paternal)",
-            "semanticField": ["Kinship Terms", "Person Terms"],
+            "semanticField": [
+              "Kinship Terms",
+              "Person Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:liba",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "liba",
@@ -1142,27 +1415,39 @@
                 "@value": "uncle (paternal)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Kinship Terms", "Person Terms"]
+              "lexinfo:semanticField": [
+                "Kinship Terms",
+                "Person Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:limer",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "limer",
         "phoneticForm": "li.mer",
         "senses": [
           {
             "definition": "younger parent/aunt/uncle",
-            "semanticField": ["Kinship Terms", "Person Terms"],
+            "semanticField": [
+              "Kinship Terms",
+              "Person Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:limer",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "limer",
@@ -1181,27 +1466,39 @@
                 "@value": "younger parent/aunt/uncle",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Kinship Terms", "Person Terms"]
+              "lexinfo:semanticField": [
+                "Kinship Terms",
+                "Person Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:linai",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "linai",
         "phoneticForm": "li.nai",
         "senses": [
           {
             "definition": "aunt (maternal)",
-            "semanticField": ["Kinship Terms", "Person Terms"],
+            "semanticField": [
+              "Kinship Terms",
+              "Person Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:linai",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "linai",
@@ -1220,27 +1517,39 @@
                 "@value": "aunt (maternal)",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Kinship Terms", "Person Terms"]
+              "lexinfo:semanticField": [
+                "Kinship Terms",
+                "Person Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:mobar",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "mobar",
         "phoneticForm": "mo.bar",
         "senses": [
           {
             "definition": "nameless one",
-            "semanticField": ["Person Terms", "Sacred Terms"],
+            "semanticField": [
+              "Person Terms",
+              "Sacred Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:mobar",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "mobar",
@@ -1259,7 +1568,10 @@
                 "@value": "nameless one",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Person Terms", "Sacred Terms"]
+              "lexinfo:semanticField": [
+                "Person Terms",
+                "Sacred Terms"
+              ]
             }
           ]
         }
@@ -1268,20 +1580,29 @@
     "Regional Terms": [
       {
         "id": "ehk:libres",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "libres",
         "phoneticForm": "li.bres",
         "senses": [
           {
             "definition": "gentle wind",
-            "semanticField": ["Weather Terms", "Regional Terms"],
+            "semanticField": [
+              "Weather Terms",
+              "Regional Terms"
+            ],
             "usage": "Used primarily inland for weakened western winds after mountain crossing"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:libres",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "libres",
@@ -1309,7 +1630,10 @@
                 "@language": "en"
               },
               "usage": "Used primarily inland for weakened western winds after mountain crossing",
-              "lexinfo:semanticField": ["Weather Terms", "Regional Terms"]
+              "lexinfo:semanticField": [
+                "Weather Terms",
+                "Regional Terms"
+              ]
             }
           ]
         }
@@ -1318,7 +1642,10 @@
     "Sacred Terms": [
       {
         "id": "ehk:lithar",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "lithar",
         "phoneticForm": "li.θar",
         "note": "Stars conceptualized as lesser deities",
@@ -1332,7 +1659,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:lithar",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "lithar",
@@ -1364,20 +1694,29 @@
       },
       {
         "id": "ehk:mirthral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "mirthral",
         "phoneticForm": "mir.θral",
         "senses": [
           {
             "definition": "winter solstice",
-            "semanticField": ["Sacred Terms", "Time Terms"],
+            "semanticField": [
+              "Sacred Terms",
+              "Time Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:mirthral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "mirthral",
@@ -1396,27 +1735,39 @@
                 "@value": "winter solstice",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sacred Terms", "Time Terms"]
+              "lexinfo:semanticField": [
+                "Sacred Terms",
+                "Time Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:mobar",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "mobar",
         "phoneticForm": "mo.bar",
         "senses": [
           {
             "definition": "nameless one",
-            "semanticField": ["Person Terms", "Sacred Terms"],
+            "semanticField": [
+              "Person Terms",
+              "Sacred Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:mobar",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "mobar",
@@ -1435,7 +1786,10 @@
                 "@value": "nameless one",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Person Terms", "Sacred Terms"]
+              "lexinfo:semanticField": [
+                "Person Terms",
+                "Sacred Terms"
+              ]
             }
           ]
         }
@@ -1444,20 +1798,29 @@
     "Size Terms": [
       {
         "id": "ehk:litil",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "litil",
         "phoneticForm": "li.til",
         "senses": [
           {
             "definition": "small thing",
-            "semanticField": ["Size Terms", "Basic Terms"],
+            "semanticField": [
+              "Size Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:litil",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "litil",
@@ -1476,14 +1839,20 @@
                 "@value": "small thing",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Size Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Size Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:li",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Prefix"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Prefix"
+        ],
         "writtenForm": "li",
         "phoneticForm": "li",
         "protoform": "Proto-Hick *li",
@@ -1502,7 +1871,10 @@
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:li",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Prefix"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Prefix"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "li",
@@ -1541,20 +1913,29 @@
     "Social Terms": [
       {
         "id": "ehk:merlis",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "merlis",
         "phoneticForm": "mer.lis",
         "senses": [
           {
             "definition": "family line, lineage",
-            "semanticField": ["Kinship Terms", "Social Terms"],
+            "semanticField": [
+              "Kinship Terms",
+              "Social Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:merlis",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "merlis",
@@ -1573,7 +1954,10 @@
                 "@value": "family line, lineage",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Kinship Terms", "Social Terms"]
+              "lexinfo:semanticField": [
+                "Kinship Terms",
+                "Social Terms"
+              ]
             }
           ]
         }
@@ -1582,20 +1966,29 @@
     "Taste Terms": [
       {
         "id": "ehk:limel",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Adjective"
+        ],
         "writtenForm": "limel",
         "phoneticForm": "li.mel",
         "senses": [
           {
             "definition": "slightly sweet",
-            "semanticField": ["Taste Terms", "Basic Terms"],
+            "semanticField": [
+              "Taste Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:limel",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Adjective"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "limel",
@@ -1614,27 +2007,39 @@
                 "@value": "slightly sweet",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Taste Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Taste Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:mel'er",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Verb"
+        ],
         "writtenForm": "mel'er",
         "phoneticForm": "mel.ʔer",
         "senses": [
           {
             "definition": "to be sweet",
-            "semanticField": ["Taste Terms", "Basic Terms"],
+            "semanticField": [
+              "Taste Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:mel'er",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Verb"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "mel'er",
@@ -1653,7 +2058,10 @@
                 "@value": "to be sweet",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Taste Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Taste Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }
@@ -1662,20 +2070,29 @@
     "Time Terms": [
       {
         "id": "ehk:mirthral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "mirthral",
         "phoneticForm": "mir.θral",
         "senses": [
           {
             "definition": "winter solstice",
-            "semanticField": ["Sacred Terms", "Time Terms"],
+            "semanticField": [
+              "Sacred Terms",
+              "Time Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:mirthral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "mirthral",
@@ -1694,7 +2111,10 @@
                 "@value": "winter solstice",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Sacred Terms", "Time Terms"]
+              "lexinfo:semanticField": [
+                "Sacred Terms",
+                "Time Terms"
+              ]
             }
           ]
         }
@@ -1703,20 +2123,29 @@
     "Water Features": [
       {
         "id": "ehk:limal",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "limal",
         "phoneticForm": "li.mal",
         "senses": [
           {
             "definition": "pond",
-            "semanticField": ["Water Features", "Natural World"],
+            "semanticField": [
+              "Water Features",
+              "Natural World"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:limal",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "limal",
@@ -1735,27 +2164,39 @@
                 "@value": "pond",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Water Features", "Natural World"]
+              "lexinfo:semanticField": [
+                "Water Features",
+                "Natural World"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:miral",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "miral",
         "phoneticForm": "mi.ral",
         "senses": [
           {
             "definition": "cold pool, spring",
-            "semanticField": ["Water Features", "Natural World"],
+            "semanticField": [
+              "Water Features",
+              "Natural World"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:miral",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "miral",
@@ -1774,7 +2215,10 @@
                 "@value": "cold pool, spring",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Water Features", "Natural World"]
+              "lexinfo:semanticField": [
+                "Water Features",
+                "Natural World"
+              ]
             }
           ]
         }
@@ -1783,20 +2227,29 @@
     "Weather Terms": [
       {
         "id": "ehk:libres",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "libres",
         "phoneticForm": "li.bres",
         "senses": [
           {
             "definition": "gentle wind",
-            "semanticField": ["Weather Terms", "Regional Terms"],
+            "semanticField": [
+              "Weather Terms",
+              "Regional Terms"
+            ],
             "usage": "Used primarily inland for weakened western winds after mountain crossing"
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:libres",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "libres",
@@ -1824,28 +2277,40 @@
                 "@language": "en"
               },
               "usage": "Used primarily inland for weakened western winds after mountain crossing",
-              "lexinfo:semanticField": ["Weather Terms", "Regional Terms"]
+              "lexinfo:semanticField": [
+                "Weather Terms",
+                "Regional Terms"
+              ]
             }
           ]
         }
       },
       {
         "id": "ehk:mir",
-        "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "types": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "writtenForm": "mir",
         "phoneticForm": "mir",
         "protoform": "Proto-Hick *miru",
         "senses": [
           {
             "definition": "cold",
-            "semanticField": ["Weather Terms", "Basic Terms"],
+            "semanticField": [
+              "Weather Terms",
+              "Basic Terms"
+            ],
             "usage": ""
           }
         ],
         "derivedForms": [],
         "graphEntry": {
           "@id": "ehk:mir",
-          "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          "@type": [
+            "ontolex:LexicalEntry",
+            "lexinfo:Noun"
+          ],
           "canonicalForm": {
             "@type": "ontolex:Form",
             "writtenRep": "mir",
@@ -1863,7 +2328,10 @@
                 "@value": "cold",
                 "@language": "en"
               },
-              "lexinfo:semanticField": ["Weather Terms", "Basic Terms"]
+              "lexinfo:semanticField": [
+                "Weather Terms",
+                "Basic Terms"
+              ]
             }
           ]
         }

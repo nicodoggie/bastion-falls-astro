@@ -3,7 +3,10 @@
   "name": "Cordyceps-Infected Chuul Spawn",
   "size": ["M"],
   "type": "aberration",
-  "alignment": ["N", "E"],
+  "alignment": [
+    "N",
+    "E"
+  ],
   "ac": [{ "ac": 16, "from": ["natural armor"] }],
   "hp": { "average": 45, "formula": "7d8 + 14" },
   "speed": { "walk": 30, "swim": 30 },

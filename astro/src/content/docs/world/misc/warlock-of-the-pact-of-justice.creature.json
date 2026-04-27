@@ -5,7 +5,10 @@
     "type": "humanoid",
     "tags": ["any race"]
   },
-  "alignment": ["L", "G"],
+  "alignment": [
+    "L",
+    "G"
+  ],
   "ac": [
     {
       "ac": 15,

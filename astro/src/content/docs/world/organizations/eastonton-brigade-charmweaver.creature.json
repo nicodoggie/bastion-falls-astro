@@ -5,7 +5,10 @@
     "type": "humanoid",
     "tags": ["any race"]
   },
-  "alignment": ["N", "E"],
+  "alignment": [
+    "N",
+    "E"
+  ],
   "ac": [
     {
       "ac": 12,
@@ -35,7 +38,10 @@
     "insight": "+3"
   },
   "passive": 11,
-  "languages": ["Common", "plus two other languages of your choice"],
+  "languages": [
+    "Common",
+    "plus two other languages of your choice"
+  ],
   "cr": "3",
   "trait": [
     {

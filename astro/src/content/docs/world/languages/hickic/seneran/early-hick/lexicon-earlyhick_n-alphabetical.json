@@ -4,20 +4,29 @@
   "lexicon": {
     "ehk:nagral": {
       "id": "ehk:nagral",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "nagral",
       "phoneticForm": "na.gral",
       "senses": [
         {
           "definition": "black earth",
-          "semanticField": ["Natural World", "Landforms"],
+          "semanticField": [
+            "Natural World",
+            "Landforms"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:nagral",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "nagral",
@@ -44,14 +53,20 @@
               "@value": "black earth",
               "@language": "en"
             },
-            "lexinfo:semanticField": ["Natural World", "Landforms"]
+            "lexinfo:semanticField": [
+              "Natural World",
+              "Landforms"
+            ]
           }
         ]
       }
     },
     "ehk:nai": {
       "id": "ehk:nai",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "nai",
       "phoneticForm": "nai",
       "protoform": "Proto-Hick *nahi",
@@ -65,7 +80,10 @@
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:nai",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "nai",
@@ -90,21 +108,30 @@
     },
     "ehk:natlas": {
       "id": "ehk:natlas",
-      "types": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "types": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
       "writtenForm": "natlas",
       "phoneticForm": "nat.las",
       "note": "Shows cluster simplification and case lexicalization. From 'one in a state of desire/affection' to 'friend'",
       "senses": [
         {
           "definition": "friend",
-          "semanticField": ["Person Terms", "Social Terms"],
+          "semanticField": [
+            "Person Terms",
+            "Social Terms"
+          ],
           "usage": ""
         }
       ],
       "derivedForms": [],
       "graphEntry": {
         "@id": "ehk:natlas",
-        "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+        "@type": [
+          "ontolex:LexicalEntry",
+          "lexinfo:Noun"
+        ],
         "canonicalForm": {
           "@type": "ontolex:Form",
           "writtenRep": "natlas",
@@ -114,7 +141,10 @@
           "@type": "etymon:Etymology",
           "etymon:compound": "gnater-las",
           "etymon:gloss": "desire-ILL",
-          "etymon:soundChange": ["compound fusion", "cluster simplification"],
+          "etymon:soundChange": [
+            "compound fusion",
+            "cluster simplification"
+          ],
           "etymon:note": "Shows cluster simplification and case lexicalization. From 'one in a state of desire/affection' to 'friend'"
         },
         "sense": [
@@ -124,7 +154,10 @@
               "@value": "friend",
               "@language": "en"
             },
-            "lexinfo:semanticField": ["Person Terms", "Social Terms"]
+            "lexinfo:semanticField": [
+              "Person Terms",
+              "Social Terms"
+            ]
           }
         ]
       }

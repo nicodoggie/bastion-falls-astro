@@ -5,7 +5,10 @@
     "type": "humanoid",
     "tags": ["any race"]
   },
-  "alignment": ["L", "E"],
+  "alignment": [
+    "L",
+    "E"
+  ],
   "ac": [
     {
       "ac": 18,
@@ -36,7 +39,10 @@
   },
   "resist": ["radiant"],
   "passive": 12,
-  "languages": ["Common", "Celestial"],
+  "languages": [
+    "Common",
+    "Celestial"
+  ],
   "cr": "6",
   "trait": [
     {
