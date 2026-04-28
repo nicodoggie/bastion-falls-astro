@@ -15,7 +15,7 @@
     { "directory": "astro", "changeProcessCWD": true }
   ],
   "[mdx]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "rvben.rumdl",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "never"
