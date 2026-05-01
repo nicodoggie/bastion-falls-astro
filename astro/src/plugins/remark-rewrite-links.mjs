@@ -136,7 +136,7 @@ function isRelative(url) {
 
 function visit(node, visitor) {
   visitor(node);
-  if (!node || !node.children) return;
+  if (!node?.children) return;
   for (const child of node.children) {
     visit(child, visitor);
   }

@@ -8,6 +8,6 @@ interface Props {
   inlineHeight?: string;
 }
 
-export default function Map(props: Props) {
+export default function MapViewer(props: Props) {
   return <PanZoomViewer {...props} />;
 }

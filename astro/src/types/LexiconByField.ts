@@ -1,4 +1,4 @@
-import { type LexItem } from "./Lexicon";
+import type { LexItem } from "./Lexicon";
 
 export interface LexiconByField {
   id: string;

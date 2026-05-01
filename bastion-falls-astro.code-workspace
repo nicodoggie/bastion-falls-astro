@@ -37,7 +37,7 @@
       "editor.defaultFormatter": "astro-build.astro-vscode"
     },
     "[jsonc]": {
-      "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+      "editor.defaultFormatter": "biomejs.biome"
     },
   },
 }

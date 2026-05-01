@@ -1,13 +1,12 @@
 import type { Root } from 'mdast';
-
+import type { VFile } from 'vfile';
 /**
  * Remark plugin that injects character aliases into page content for Pagefind indexing
  */
 export function pagefindAliases() {
-  return function (tree: Root, file: any) {
+  return (tree: Root, file: VFile) => {
     // Get frontmatter from the file
-    const frontmatter = (file.data as any)?.astro?.frontmatter;
-    debugger;
+    const frontmatter = file.data?.astro?.frontmatter;
     if (!frontmatter) return;
 
     // Check if this is a character page with aliases

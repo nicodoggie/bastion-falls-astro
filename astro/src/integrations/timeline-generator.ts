@@ -1,36 +1,43 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-import type { AstroIntegration } from 'astro';
+import type { AstroIntegration } from "astro";
 
-import { generateTimelineMDX, getTimelineEntries } from '../lib/timeline';
+import { generateTimelineMDX, getTimelineEntries } from "../lib/timeline";
 
 const SOURCE_DIR_SEGMENTS = [
-  'src/content/docs/world/events/',
-  'src/content/docs/world/characters/',
-  'src/content/docs/world/organizations/',
-  'src/content/docs/world/locations/',
+  "src/content/docs/world/events/",
+  "src/content/docs/world/characters/",
+  "src/content/docs/world/organizations/",
+  "src/content/docs/world/locations/",
 ] as const;
 
 function isTimelineSourcePath(path: string): boolean {
-  const normalized = path.replace(/\\/g, '/');
-  return SOURCE_DIR_SEGMENTS.some((segment) => normalized.includes(segment)) && normalized.endsWith('.mdx');
+  const normalized = path.replace(/\\/g, "/");
+  return (
+    SOURCE_DIR_SEGMENTS.some((segment) => normalized.includes(segment)) &&
+    normalized.endsWith(".mdx")
+  );
 }
 
 export function timelineGenerator(): AstroIntegration {
   let astroRoot = process.cwd();
 
-  const generateTimeline = async (logger: { info: (message: string) => void }) => {
-    const outputDir = resolve(astroRoot, 'src/content/docs/world/timeline');
-    const outputFile = resolve(outputDir, 'timeline-generated.mdx');
+  const generateTimeline = async (logger: {
+    info: (message: string) => void;
+  }) => {
+    const outputDir = resolve(astroRoot, "src/content/docs/world/timeline");
+    const outputFile = resolve(outputDir, "timeline-generated.mdx");
 
     const entries = await getTimelineEntries();
     const mdx = generateTimelineMDX(entries);
 
     mkdirSync(outputDir, { recursive: true });
 
-    const existing = existsSync(outputFile) ? readFileSync(outputFile, 'utf-8') : null;
+    const existing = existsSync(outputFile)
+      ? readFileSync(outputFile, "utf-8")
+      : null;
     if (existing === mdx) return;
 
     writeFileSync(outputFile, mdx);
@@ -38,28 +45,28 @@ export function timelineGenerator(): AstroIntegration {
   };
 
   return {
-    name: 'timeline-generator',
+    name: "timeline-generator",
     hooks: {
-      'astro:config:setup': ({ config }) => {
+      "astro:config:setup": ({ config }) => {
         astroRoot = fileURLToPath(config.root);
       },
-      'astro:route:setup': async ({ logger }) => {
+      "astro:route:setup": async ({ logger }) => {
         await generateTimeline(logger);
       },
-      'astro:server:setup': async ({ server, logger }) => {
+      "astro:server:setup": async ({ server, logger }) => {
         await generateTimeline(logger);
 
-        server.watcher.on('add', async (path) => {
+        server.watcher.on("add", async (path) => {
           if (!isTimelineSourcePath(path)) return;
           await generateTimeline(logger);
         });
 
-        server.watcher.on('change', async (path) => {
+        server.watcher.on("change", async (path) => {
           if (!isTimelineSourcePath(path)) return;
           await generateTimeline(logger);
         });
 
-        server.watcher.on('unlink', async (path) => {
+        server.watcher.on("unlink", async (path) => {
           if (!isTimelineSourcePath(path)) return;
           await generateTimeline(logger);
         });
