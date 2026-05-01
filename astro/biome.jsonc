@@ -1,7 +1,13 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"root": "../"
+	},
 	"files": {
-		"includes": ["src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,jsonc,mdastro}"]
+		"includes": ["src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,jsonc,mdastro}"],
+		"maxSize": 2097152 // 2MiB
 	},
 	"formatter": {
 		"indentStyle": "space",

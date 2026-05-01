@@ -4,23 +4,23 @@ tags:
   - style-guide
 ---
 
-# Markdown
+## Markdown
 
-This site is built using Zola as a static site generator, and thus this site
-uses the CommonMark\[^1] flavor of Markdown, with some extensions implemented by
-the `pulldown_cmark`\[^2] Rust library.
+This site is built using Astro as a static site generator,
+and thus this site uses the CommonMark[^1] flavor of Markdown.
 
-## Preferred syntax
+### Preferred syntax
 
-### Spaces over tabs
+#### Spaces over tabs
 
-A linter from the text editor of choice may force the choice in this regard, but
-two spaces are preferred over tabs for indentation.
+A linter from the text editor of choice may force the choice in this regard,
+but two spaces are preferred over tabs for indentation.
 
-### `-` for Unordered List Markers
+#### `-` for Unordered List Markers
 
-The hyphen-minus `-` character (minus character on the typical US keyboard
-layout) is preferred over other variants when defining list items.
+The hyphen-minus `-` character
+(minus character on the typical US keyboard layout)
+is preferred over other variants when defining list items.
 
 Use:
 
@@ -36,13 +36,12 @@ Not:
 - Item 1
 - Item 2
 - Item 3
-
-* Item 1
-* Item 2
-* Item 3
+- Item 1
+- Item 2
+- Item 3
 ```
 
-### `int.` instead of `int)` for order lists
+#### `int.` instead of `int)` for order lists
 
 Use:
 
@@ -63,7 +62,7 @@ Not:
 2. Item 2
 ```
 
-### Use ATX headings, never Setext headings
+#### Use ATX headings, never Setext headings
 
 ATX Headings are of the form
 
@@ -75,8 +74,9 @@ ATX Headings are of the form
 ### Header 3
 ```
 
-These are the preferred way of defining headings. It makes it easier to make a
-hierarchy of headings, and also would use fewer characters to type.
+These are the preferred way of defining headings.
+It makes it easier to make a hierarchy of headings,
+and also would use fewer characters to type.
 
 Do not use Setext Headings:
 
@@ -86,11 +86,11 @@ Do not use Setext Headings:
 ## Header 2
 ```
 
-### Use `*` for emphasis and strong emphasis
+#### Use `*` for emphasis and strong emphasis
 
-CommonMark allows for both asterisks `*` and underscores `_` for emphasis and
-strong emphasis. It is preferred to use `*` unless the text makes it more
-complicated to do so.
+CommonMark allows for both asterisks `*` and underscores `_` for emphasis
+and strong emphasis.
+It is preferred to use `*` unless the text makes it more complicated to do so.
 
 Use:
 
@@ -108,17 +108,19 @@ But not:
 _emphasis_ and **strong**
 ```
 
-### Use a single backtick \` for code spans
+#### Use a single backtick \` for code spans
 
-The CommonMark spec allows for arbitrary number of backticks (except three,
-which are used for code blocks), as long as the same number of backticks are
-used in the closing set as in the opening set.
+The CommonMark spec allows for arbitrary number of backticks
+(except three, which are used for code blocks),
+as long as the same number of backticks are used in the closing set
+as in the opening set.
 
 For consistency, we would like to use one backtick \` for consistency.
 
-### Use pairs of three backticks \`\`\` for code blocks
+#### Use pairs of three backticks \`\`\` for code blocks
 
-Code blocks may be defined by using indents, or fenced by either three backticks
+Code blocks may be defined by using indents,
+or fenced by either three backticks
 \`\`\` or three tildas ~~~. Three backticks \`\`\` are preferred.
 
 Use:
@@ -127,7 +129,7 @@ Use:
 
 To result in:
 
-```
+```text
 code
 ```
 
@@ -145,11 +147,11 @@ Nor:
 
 code
 
-```
+```text
 
 ```
 
-### Use three underscores \_\_\_ for thematic breaks
+#### Use three underscores \_\_\_ for thematic breaks
 
 Thematic breaks are usually represented by a horizontal line (html `<hr />`).
 
@@ -179,34 +181,35 @@ Not:
 section 2
 ```
 
-This is to ensure that we don't accidentally make a heading, because using three
-hyphen-minuses --- may trigger a second-level Setext heading, as can be seen
-below:
+This is to ensure that we don't accidentally make a heading,
+because using three hyphen-minuses --- may trigger a second-level Setext
+heading, as can be seen below:
 
 > ## section 1
 >
 > section 2
 
-Thematic breaks should not be used on wiki articles, with the exception of
-separating the footnotes section. Headings and paragraphs are preferred when
-managing thematic shifts within a wiki article. In-world articles may use
-thematic breaks when necessary.
+Thematic breaks should not be used on wiki articles,
+with the exception of separating the footnotes section.
+Headings and paragraphs are preferred
+when managing thematic shifts within a wiki article.
+In-world articles may use thematic breaks when necessary.
 
-## Non-CommonMark Extensions
+### Non-CommonMark Extensions
 
-Certain markdown extensions that are implemented by `pulldown_cmark` but are not
-defined in the reference CommonMark spec.
+Certain markdown extensions that are implemented by `pulldown_cmark`
+but are not defined in the reference CommonMark spec.
 
-Below is a non-exhaustive list of available extensions, but those that would
-most likely see use on this site:
+Below is a non-exhaustive list of available extensions,
+but those that would most likely see use on this site:
 
-### Tables
+#### Tables
 
 Tables in Zola are compatible with the Github implementation.
 
 The following markdown:
 
-```
+```text
 | Header 1 | Left-aligned | Center-aligned | Right-aligned |
 | -------- | :----------- | :------------: | ------------: |
 | Cell 1   | Cell 2       |   Cell 3 \|    |        Cell 4 |
@@ -215,15 +218,16 @@ The following markdown:
 Results in:
 
 | Header 1 | Left-aligned | Center-aligned | Right-aligned |
-| -------- | :----------- | :------------: | ------------: | ------ |
-| Cell 1   | Cell 2       |     Cell 3     |               | Cell 4 |
+| -------- | :----------- | :------------: | ------------: |
+| Cell 1 | Cell 2 | Cell 3 |  |
 
-Tables may bne used in the contents for any information that can be easily
-represented on a two-dimensional tabular format. Any alignment may be
-acceptable, as long as they make sense, and are aesthetically pleasing.
+Tables may bne used in the contents for any information
+that can be easily represented on a two-dimensional tabular format.
+Any alignment may be acceptable, as long as they make sense,
+and are aesthetically pleasing.
 
-HTML-style tables are also supported, and may be sparingly used for more
-complicated layouts.
+HTML-style tables are also supported,
+and may be sparingly used for more complicated layouts.
 
 The following code:
 
@@ -254,11 +258,11 @@ Results in:
   </tr>
 </table>
 
-### Footnotes
+#### Footnotes
 
 Footnotes in Zola are also in the newer version of the Github-compatible format:
 
-```
+```text
 [^1]: In new syntax, this is two footnote definitions.
 [^2]: In old syntax, this is a single footnote definition with two lines.
 
@@ -282,19 +286,17 @@ It is, however, preferred to use an _inline link_ (`[title](url)`) when
 referring to the article as a whole, instead of a specific piece of information
 within it.
 
-### Strikethrough
+#### Strikethrough
 
 Strikethroughs are made by wrapping text with a pair of two tildas(~)
 `~~like this~~`, which will result in ~~like this~~.
 
-Strikethroughs must be used sparingly in wiki articles, but may be used where it
-makes sense in in-world articles or letters where the in-world author might have
-used a strikethrough either stylistically, or to remove a word.
+Strikethroughs must be used sparingly in wiki articles,
+but may be used where it makes sense in in-world articles or letters
+where the in-world author might have used a strikethrough either stylistically,
+or to remove a word.
 
 ---
 
-\[^1]: "CommonMark Spec", spec.commonmark.org,
+[^1]: "CommonMark Spec", spec.commonmark.org,
 \<[https://spec.commonmark.org/current/\\>](https://spec.commonmark.org/current/>)
-
-\[^2]: "Rust documentation for `pulldown_cmark` Options struct",
-\<[https://docs.rs/pulldown-cmark/latest/pulldown_cmark/struct.Options.html\\>](https://docs.rs/pulldown-cmark/latest/pulldown_cmark/struct.Options.html>)

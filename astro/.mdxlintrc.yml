@@ -1,0 +1,6 @@
+plugins:
+  - remark-definition-list
+  - remark-custom-header-id
+  - remark-stringify
+  - [ remark-frontmatter, [ yaml ] ]
+  - [ remark-lint-maximum-line-length, [ 1, 80 ] ]

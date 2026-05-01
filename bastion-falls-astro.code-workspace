@@ -1,43 +1,46 @@
 {
-  "folders": [
-    {
-      "path": ".",
-    },
-  ],
-  "extensions": {
-    "recommendations": [
-      "unifiedjs.vscode-mdx",
-      "unifiedjs.vscode-remark",
-      "esbenp.prettier-vscode",
-    ],
-    "unwantedRecommendations": ["davidanson.vscode-markdownlint"],
-  },
-  "settings": {
-    "eslint.codeActionsOnSave.mode": "problems",
-    "[ejs]": {
-      "editor.formatOnSave": true,
-    },
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"unifiedjs.vscode-mdx",
+			"unifiedjs.vscode-remark",
+			"esbenp.prettier-vscode"
+		],
+		"unwantedRecommendations": ["davidanson.vscode-markdownlint"]
+	},
+	"settings": {
+		"eslint.codeActionsOnSave.mode": "problems",
+		"[ejs]": {
+			"editor.formatOnSave": true
+		},
 
-    "[markdown]": {
-      "editor.defaultFormatter": "unifiedjs.vscode-remark",
-      "editor.formatOnSave": true,
-      "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "never",
-      },
-    },
-    "files.associations": {
-      "*.md": "markdown",
-    },
-    "astro.content-intellisense": true,
-    "[mdx]": {
-      "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-      "editor.formatOnSave": true,
-    },
-    "[astro]": {
-      "editor.defaultFormatter": "astro-build.astro-vscode"
-    },
-    "[jsonc]": {
-      "editor.defaultFormatter": "biomejs.biome"
-    },
-  },
+		"[markdown]": {
+			"editor.defaultFormatter": "rvben.rumdl",
+			"editor.formatOnSave": true
+		},
+		"files.associations": {
+			"*.md": "markdown"
+		},
+		"astro.content-intellisense": true,
+		"[mdx]": {
+			"editor.defaultFormatter": "rvben.rumdl",
+			"editor.formatOnSave": true,
+			"editor.codeActionsOnSave": {
+				"source.fixAll.rumdl": "never"
+			}
+		},
+		"[astro]": {
+			"editor.defaultFormatter": "astro-build.astro-vscode"
+		},
+		"[jsonc]": {
+			"editor.defaultFormatter": "biomejs.biome"
+		},
+		"rumdl.configPath": "astro/rumdl.toml",
+		"rumdl.fixOnSave": true,
+		"rumdl.diagnostics.deduplicate": false
+	}
 }

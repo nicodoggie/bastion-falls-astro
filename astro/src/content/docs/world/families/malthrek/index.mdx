@@ -13,10 +13,8 @@ export const image = await getImage({ src: familyTree });
 
 <Stub />
 
-<FamilyTree
-  client:only="react"
+<FamilyTree client:only="react"
   src={image.src}
   width={image.options.width}
   height={image.options.height}
-  alt="Malthrek Family Tree"
-/>
+alt="Malthrek Family Tree" />

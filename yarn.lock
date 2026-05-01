@@ -835,6 +835,7 @@ __metadata:
     markmap-lib: "npm:^0.18.12"
     markmap-render: "npm:^0.18.12"
     markmap-view: "npm:^0.18.12"
+    mdxlint: "npm:^1.0.0"
     mermaid: "npm:^11.14.0"
     prettier: "npm:^3.6.2"
     prettier-plugin-astro: "npm:^0.14.1"
@@ -10431,6 +10432,22 @@ __metadata:
   version: 2.0.0
   resolution: "mdurl@npm:2.0.0"
   checksum: 10c0/633db522272f75ce4788440669137c77540d74a83e9015666a9557a152c02e245b192edc20bc90ae953bbab727503994a53b236b4d9c99bdaee594d0e7dd2ce0
+  languageName: node
+  linkType: hard
+
+"mdxlint@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "mdxlint@npm:1.0.0"
+  dependencies:
+    "@types/mdast": "npm:^4.0.0"
+    remark-mdx: "npm:^3.0.0"
+    remark-parse: "npm:^11.0.0"
+    remark-stringify: "npm:^11.0.0"
+    unified: "npm:^11.0.0"
+    unified-args: "npm:^11.0.0"
+  bin:
+    mdxlint: lib/bin.js
+  checksum: 10c0/5092853434356385c6e0c6f2e95059fd713a4facf6ad2b6c46f55a32b8efff5c203c178a211c44efbbfce44f6f428cf296fb1ce7915e1e5b4b526d08d8b27282
   languageName: node
   linkType: hard
 

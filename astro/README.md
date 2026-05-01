@@ -2,7 +2,7 @@
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
-```
+```text
 pnpm create astro@latest -- --template starlight
 ```
 
@@ -11,14 +11,15 @@ pnpm create astro@latest -- --template starlight
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/withastro/starlight&create_from_path=examples/basics)
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwithastro%2Fstarlight%2Ftree%2Fmain%2Fexamples%2Fbasics&project-name=my-starlight-docs&repository-name=my-starlight-docs)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file.
+> Have fun!
 
 ## 🚀 Project Structure
 
-Inside of your Astro + Starlight project, you'll see the following folders and
-files:
+Inside of your Astro + Starlight project,
+you'll see the following folders and files:
 
-```
+```text
 .
 ├── public/
 ├── src/
@@ -34,8 +35,8 @@ files:
 Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory.
 Each file is exposed as a route based on its file name.
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative
-link.
+Images can be added to `src/assets/`
+and embedded in Markdown with a relative link.
 
 Static assets, like favicons, can be placed in the `public/` directory.
 
@@ -54,6 +55,6 @@ All commands are run from the root of the project, from a terminal:
 
 ## 👀 Want to learn more?
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read
-[the Astro documentation](https://docs.astro.build), or jump into the
-[Astro Discord server](https://astro.build/chat).
+Check out [Starlight’s docs](https://starlight.astro.build/),
+read [the Astro documentation](https://docs.astro.build),
+or jump into the [Astro Discord server](https://astro.build/chat).

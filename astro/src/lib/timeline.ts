@@ -169,14 +169,22 @@ function getCollectionEntries(
   const files = walkMdxFiles(baseDir);
 
   return files.map((filePath) => {
-    const source = readFileSync(filePath, 'utf-8');
-    const parsed = matter(source);
-    const slug = filePathToSlug(baseDir, filePath);
-    return {
-      slug,
-      id: slug,
-      data: parsed.data as Frontmatter,
-    };
+    try {
+      const source = readFileSync(filePath, 'utf-8');
+      const parsed = matter(source);
+      const slug = filePathToSlug(baseDir, filePath);
+      return {
+        slug,
+        id: slug,
+        data: parsed.data as Frontmatter,
+      };
+    } catch (err) {
+      const detail = err instanceof Error ? err.message : String(err);
+      throw new Error(
+        `Timeline: failed reading or parsing frontmatter in ${filePath}: ${detail}`,
+        { cause: err },
+      );
+    }
   });
 }
 

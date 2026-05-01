@@ -1,14 +1,16 @@
 # Vehicle stat block (`VehicleStatBlock`)
 
-Use `VehicleStatBlock` in MDX (and `.astro`) with ship data that matches
-`VehicleShipData` from `@bastion-falls/5e-schema-zod` (5etools
-`vehicleShipData`).
+Use `VehicleStatBlock` in MDX
+(and `.astro`)
+with ship data that matches `VehicleShipData` from
+`@bastion-falls/5e-schema-zod` (5etools `vehicleShipData`).
 
 ## MDX usage
 
-`VehicleStatBlock` is auto-imported for MDX (see `astro-auto-import` in
-`astro.config.mjs`). Pass `vehicle` from frontmatter; optional `name` overrides
-the header (e.g. Starlight `title`).
+`VehicleStatBlock` is auto-imported for MDX
+(see `astro-auto-import` in `astro.config.mjs`).
+Pass `vehicle` from frontmatter; optional `name` overrides the header
+(e.g. Starlight `title`).
 
 ```mdx
 ---
@@ -44,5 +46,5 @@ const vehicle = entry?.data.vehicle;
 
 ## Styling
 
-Parchment-style card, dark mode tokens, layout aligned with the site’s
-`StatBlock` presentation.
+Parchment-style card, dark mode tokens,
+layout aligned with the site’s `StatBlock` presentation.

@@ -7,8 +7,11 @@ exclude = ["node_modules", ".git", ".astro", "dist"]
 line_length = 80
 
 [MD013]
-line_length = 80
-code_blocks = false
+line-length = 80
+code-blocks = false
+tables = false
+reflow = true
+reflow-mode = "default"
 
 [MD025]
 front-matter-title = "title"
