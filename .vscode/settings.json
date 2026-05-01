@@ -14,13 +14,6 @@
   "eslint.workingDirectories": [
     { "directory": "astro", "changeProcessCWD": true }
   ],
-  "[mdx]": {
-    "editor.defaultFormatter": "rvben.rumdl",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "never"
-    }
-  },
   "yaml.schemas": {
     "${workspaceFolder}/.vscode/schemas/frontmatter/character.json": [
       "astro/src/content/docs/world/characters/**/*.{md,mdx}"
@@ -57,5 +50,6 @@
       "fileMatch": ["**/*.creature.json"],
       "url": "https://raw.githack.com/TheGiddyLimit/5etools-utils/master/schema/brew-fast/homebrew.json"
     }
-  ]
+  ],
+  "astro.content-intellisense": true
 }

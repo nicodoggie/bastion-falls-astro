@@ -4,14 +4,17 @@ flavor = "mdx"
 exclude = ["node_modules", ".git", ".astro", "dist"]
 
 # Set line length limit
-line-length = 80
-
-[MD013]  # Line length
 line_length = 80
-code_blocks = false  # Don't check code blocks
+
+[MD013]
+line_length = 80
+code_blocks = false
+
+[MD025]
+front-matter-title = "title"
 
 [MD033]
 enabled = false
 
-[MD041]  # First line heading
-enabled = false  # Disable this rule
+[MD041]
+enabled = false

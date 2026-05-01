@@ -24,30 +24,14 @@
       "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "never",
       },
-      "path-autocomplete.triggerOutsideStrings": true,
-      "path-autocomplete.pathMappings": {
-        "$root": "${workspaceRoot}/astro",
-      },
     },
     "files.associations": {
       "*.md": "markdown",
     },
     "astro.content-intellisense": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "specstory.cloudSync.enabled": "never",
-    "cSpell.words": [
-      "finrod",
-      "Flancer",
-      "Jonjon",
-      "Kincade",
-      "Torwud"
-    ],
     "[mdx]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
       "editor.formatOnSave": true,
-      "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "never",
-      },
     },
     "[astro]": {
       "editor.defaultFormatter": "astro-build.astro-vscode"
