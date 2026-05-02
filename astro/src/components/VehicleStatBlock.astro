@@ -5,129 +5,140 @@
  * `@bastion-falls/5e-schema-zod`). Same usage pattern as `StatBlock.astro`
  * (typed `vehicle` prop, optional display `name` / `link`).
  */
-import type { VehicleShipData } from '@bastion-falls/5e-schema-zod'
+import type { VehicleShipData } from "@bastion-falls/5e-schema-zod";
 
 interface Props {
-  vehicle: VehicleShipData
+  vehicle: VehicleShipData;
   /** Overrides `vehicle.name` in the header (e.g. Starlight `title`). */
-  name?: string
-  link?: string
+  name?: string;
+  link?: string;
 }
 
-const { vehicle, name, link } = Astro.props
-const displayName = name ?? vehicle.name ?? 'Unknown Vehicle'
+const { vehicle, name, link } = Astro.props;
+const displayName = name ?? vehicle.name ?? "Unknown Vehicle";
 
 // ─── Helpers ───────────────────────────────────────────────────────────────
 
 function mod(score: number | null | undefined): string {
-  if (score == null) return '—'
-  const m = Math.floor((score - 10) / 2)
-  return m >= 0 ? `+${m}` : `${m}`
+  if (score == null) return "—";
+  const m = Math.floor((score - 10) / 2);
+  return m >= 0 ? `+${m}` : `${m}`;
 }
 
 const SIZE_NAMES: Record<string, string> = {
-  F: 'Fine', D: 'Diminutive', T: 'Tiny', S: 'Small',
-  M: 'Medium', L: 'Large', H: 'Huge', G: 'Gargantuan', C: 'Colossal',
-}
+  F: "Fine",
+  D: "Diminutive",
+  T: "Tiny",
+  S: "Small",
+  M: "Medium",
+  L: "Large",
+  H: "Huge",
+  G: "Gargantuan",
+  C: "Colossal",
+};
 
 function formatSize(s: string | undefined): string {
-  return s ? (SIZE_NAMES[s] ?? s) : '—'
+  return s ? (SIZE_NAMES[s] ?? s) : "—";
 }
 
 function formatTerrain(terrain: string[] | undefined): string {
-  if (!terrain?.length) return '—'
-  return terrain.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(', ')
+  if (!terrain?.length) return "—";
+  return terrain.map((t) => t.charAt(0).toUpperCase() + t.slice(1)).join(", ");
 }
 
 function formatEntries(entries: unknown[]): string {
   return entries
-    .map(e => {
-      if (typeof e === 'string') return e
-      if (typeof e === 'object' && e !== null) {
-        const o = e as Record<string, unknown>
-        if (Array.isArray(o['entries'])) return formatEntries(o['entries'] as unknown[])
-        if (o['text']) return String(o['text'])
+    .map((e) => {
+      if (typeof e === "string") return e;
+      if (typeof e === "object" && e !== null) {
+        const o = e as Record<string, unknown>;
+        if (Array.isArray(o["entries"]))
+          return formatEntries(o["entries"] as unknown[]);
+        if (o["text"]) return String(o["text"]);
       }
-      return ''
+      return "";
     })
     .filter(Boolean)
-    .join(' ')
+    .join(" ");
 }
 
 /** Flatten 5etools damageImmunity / damageResist / damageVulnerability arrays. */
 function formatDamageList(val: unknown): string | null {
-  if (val == null) return null
+  if (val == null) return null;
   if (Array.isArray(val)) {
-    const parts = val.map((item) => {
-      if (typeof item === 'string') return item
-      if (typeof item === 'object' && item !== null) {
-        const o = item as Record<string, unknown>
-        if (typeof o.special === 'string') return o.special
-        for (const k of ['immune', 'resist', 'vulnerable'] as const) {
-          if (o[k] != null) {
-            const inner = formatDamageList(o[k])
-            return [o.preNote, inner, o.note].filter(Boolean).join(' ')
+    const parts = val
+      .map((item) => {
+        if (typeof item === "string") return item;
+        if (typeof item === "object" && item !== null) {
+          const o = item as Record<string, unknown>;
+          if (typeof o.special === "string") return o.special;
+          for (const k of ["immune", "resist", "vulnerable"] as const) {
+            if (o[k] != null) {
+              const inner = formatDamageList(o[k]);
+              return [o.preNote, inner, o.note].filter(Boolean).join(" ");
+            }
           }
         }
-      }
-      return ''
-    }).filter(Boolean)
-    return parts.length ? parts.join(', ') : null
+        return "";
+      })
+      .filter(Boolean);
+    return parts.length ? parts.join(", ") : null;
   }
-  return null
+  return null;
 }
 
 /** Flatten 5etools conditionImmunityArray (mirrors damage list nesting). */
 function formatConditionList(val: unknown): string | null {
-  if (val == null) return null
+  if (val == null) return null;
   if (Array.isArray(val)) {
-    const parts = val.map((item) => {
-      if (typeof item === 'string') return item
-      if (typeof item === 'object' && item !== null) {
-        const o = item as Record<string, unknown>
-        if (typeof o.special === 'string') return o.special
-        if (o.conditionImmune != null) {
-          const inner = formatConditionList(o.conditionImmune)
-          return [o.preNote, inner, o.note].filter(Boolean).join(' ')
+    const parts = val
+      .map((item) => {
+        if (typeof item === "string") return item;
+        if (typeof item === "object" && item !== null) {
+          const o = item as Record<string, unknown>;
+          if (typeof o.special === "string") return o.special;
+          if (o.conditionImmune != null) {
+            const inner = formatConditionList(o.conditionImmune);
+            return [o.preNote, inner, o.note].filter(Boolean).join(" ");
+          }
         }
-      }
-      return ''
-    }).filter(Boolean)
-    return parts.length ? parts.join(', ') : null
+        return "";
+      })
+      .filter(Boolean);
+    return parts.length ? parts.join(", ") : null;
   }
-  return null
+  return null;
 }
 
 const ABILITIES = [
-  { key: 'str', label: 'STR' },
-  { key: 'dex', label: 'DEX' },
-  { key: 'con', label: 'CON' },
-  { key: 'int', label: 'INT' },
-  { key: 'wis', label: 'WIS' },
-  { key: 'cha', label: 'CHA' },
-] as const
+  { key: "str", label: "STR" },
+  { key: "dex", label: "DEX" },
+  { key: "con", label: "CON" },
+  { key: "int", label: "INT" },
+  { key: "wis", label: "WIS" },
+  { key: "cha", label: "CHA" },
+] as const;
 
-const raw = vehicle as Record<string, unknown>
+const raw = vehicle as Record<string, unknown>;
 const abilityDisplays = ABILITIES.map(({ key, label }) => {
-  const score = raw[key] as number | null | undefined
+  const score = raw[key] as number | null | undefined;
   return {
     label,
-    score: score != null ? String(score) : '—',
+    score: score != null ? String(score) : "—",
     mod: mod(score),
-  }
-})
+  };
+});
 ---
 
 <div class="vc not-content">
-
   {/* ── Name bar ── */}
   <div class="vc__header">
     {link
       ? <a href={link} class="vc__name-link"><h2 class="vc__name">{displayName}</h2></a>
-      : <h2 class="vc__name">{displayName}</h2>
-    }
+      : <h2 class="vc__name">{displayName}</h2>}
     <p class="vc__meta">
-      {formatSize(vehicle.size)} vehicle
+      {formatSize(vehicle.size)}
+      vehicle
       {vehicle.terrain?.length ? ` · ${formatTerrain(vehicle.terrain)}` : ''}
       {vehicle.dimensions?.length ? ` · ${vehicle.dimensions.join(', ')}` : ''}
     </p>
@@ -191,53 +202,52 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
     const diStr = formatDamageList(vehicle.immune)
     if (!resistStr && !vulnStr && !ciStr && !diStr) return null
     return (
-      <div class="vc__properties">
-        {resistStr && (
+  <div class="vc__properties">
+    {resistStr && (
           <div class="vc__prop">
             <span class="vc__prop-name">Damage Resistances</span>
             <span class="vc__prop-value">{resistStr}</span>
           </div>
         )}
-        {vulnStr && (
+    {vulnStr && (
           <div class="vc__prop">
             <span class="vc__prop-name">Damage Vulnerabilities</span>
             <span class="vc__prop-value">{vulnStr}</span>
           </div>
         )}
-        {ciStr && (
+    {ciStr && (
           <div class="vc__prop">
             <span class="vc__prop-name">Condition Immunities</span>
             <span class="vc__prop-value">{ciStr}</span>
           </div>
         )}
-        {diStr && (
+    {diStr && (
           <div class="vc__prop">
             <span class="vc__prop-name">Damage Immunities</span>
             <span class="vc__prop-value">{diStr}</span>
           </div>
         )}
-      </div>
-    )
-  })()}
+  </div>
+  ) } )()}
 
   {/* ── Traits ── */}
   {Array.isArray(vehicle.trait) && vehicle.trait.length > 0 && (
-    <div class="vc__features">
-      {(vehicle.trait as { name: string; entries: unknown[] }[]).map(t => (
+  <div class="vc__features">
+    {(vehicle.trait as { name: string; entries: unknown[] }[]).map(t => (
         <p class="vc__feature">
           <em><strong>{t.name}.</strong></em>
           {' '}{formatEntries(t.entries)}
         </p>
       ))}
-    </div>
+  </div>
   )}
 
   {/* ── Control ── */}
   {vehicle.control?.length && (
-    <div class="vc__section">
-      <h3 class="vc__section-title">Control</h3>
-      <div class="vc__components">
-        {vehicle.control.map(c => (
+  <div class="vc__section">
+    <h3 class="vc__section-title">Control</h3>
+    <div class="vc__components">
+      {vehicle.control.map(c => (
           <div class="vc__component">
             {c.name && <div class="vc__component-name">{c.name}</div>}
             <div class="vc__component-stats">
@@ -250,16 +260,16 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
             )}
           </div>
         ))}
-      </div>
     </div>
+  </div>
   )}
 
   {/* ── Movement ── */}
   {vehicle.movement?.length && (
-    <div class="vc__section">
-      <h3 class="vc__section-title">Movement</h3>
-      <div class="vc__components">
-        {vehicle.movement.map(m => (
+  <div class="vc__section">
+    <h3 class="vc__section-title">Movement</h3>
+    <div class="vc__components">
+      {vehicle.movement.map(m => (
           <div class="vc__component">
             {m.name && <div class="vc__component-name">{m.name}</div>}
             <div class="vc__component-stats">
@@ -275,16 +285,16 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
             ))}
           </div>
         ))}
-      </div>
     </div>
+  </div>
   )}
 
   {/* ── Weapons ── */}
   {vehicle.weapon?.length && (
-    <div class="vc__section">
-      <h3 class="vc__section-title">Weapons</h3>
-      <div class="vc__components">
-        {vehicle.weapon.map(w => (
+  <div class="vc__section">
+    <h3 class="vc__section-title">Weapons</h3>
+    <div class="vc__components">
+      {vehicle.weapon.map(w => (
           <div class="vc__component">
             <div class="vc__component-name">
               {w.name}{w.count && w.count > 1 ? ` (×${w.count})` : ''}
@@ -299,58 +309,59 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
             )}
           </div>
         ))}
-      </div>
     </div>
+  </div>
   )}
 
   {/* ── Other ── */}
   {vehicle.other?.length && (
-    <div class="vc__section">
-      <h3 class="vc__section-title">Other Components</h3>
-      <div class="vc__features">
-        {vehicle.other.map(o => (
+  <div class="vc__section">
+    <h3 class="vc__section-title">Other Components</h3>
+    <div class="vc__features">
+      {vehicle.other.map(o => (
           <p class="vc__feature">
             <em><strong>{o.name}.</strong></em>
             {' '}{Array.isArray(o.entries) ? formatEntries(o.entries as unknown[]) : ''}
           </p>
         ))}
-      </div>
     </div>
+  </div>
   )}
 
   {/* ── Actions ── */}
   {Array.isArray(vehicle.action) && vehicle.action.length > 0 && (
-    <div class="vc__section">
-      <h3 class="vc__section-title">Actions</h3>
-      <div class="vc__features">
-        {(vehicle.action as { name?: string; entries: unknown[] }[]).map(a => (
+  <div class="vc__section">
+    <h3 class="vc__section-title">Actions</h3>
+    <div class="vc__features">
+      {(vehicle.action as { name?: string; entries: unknown[] }[]).map(a => (
           <p class="vc__feature">
             {a.name && <em><strong>{a.name}.</strong></em>}
             {' '}{Array.isArray(a.entries) ? formatEntries(a.entries) : ''}
           </p>
         ))}
-      </div>
     </div>
+  </div>
   )}
-
 </div>
 
 <style>
   .vc {
-    --vc-bg:        #fdf6e3;
-    --vc-bg-alt:    #f3e8c8;
-    --vc-red:       #7a200d;
-    --vc-divider:   #9c2b1b;
-    --vc-gold:      #c9a14a;
-    --vc-text:      #212121;
-    --vc-radius:    6px;
-    --vc-font-body: 'Scala Sans Pro', 'Myriad Pro', Calibri, 'Trebuchet MS', sans-serif;
-    --vc-font-head: 'Mrs Eaves', Palatino, 'Palatino Linotype', 'Book Antiqua', serif;
+    --vc-bg: #fdf6e3;
+    --vc-bg-alt: #f3e8c8;
+    --vc-red: #7a200d;
+    --vc-divider: #9c2b1b;
+    --vc-gold: #c9a14a;
+    --vc-text: #212121;
+    --vc-radius: 6px;
+    --vc-font-body:
+      "Scala Sans Pro", "Myriad Pro", Calibri, "Trebuchet MS", sans-serif;
+    --vc-font-head:
+      "Mrs Eaves", Palatino, "Palatino Linotype", "Book Antiqua", serif;
 
     background-color: var(--vc-bg);
     border: 2px solid var(--vc-gold);
     border-radius: var(--vc-radius);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
     color: var(--vc-text);
     font-family: var(--vc-font-body);
     font-size: 0.9rem;
@@ -360,14 +371,14 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
     overflow: hidden;
   }
 
-  :global([data-theme='dark']) .vc {
-    --vc-bg:        #0e0e1c;
-    --vc-bg-alt:    #16162a;
-    --vc-red:       #a882d8;
-    --vc-divider:   #5a3f7a;
-    --vc-gold:      #3a2e68;
-    --vc-text:      #ccd0ea;
-    box-shadow: 0 2px 20px rgba(100,50,180,0.45);
+  :global([data-theme="dark"]) .vc {
+    --vc-bg: #0e0e1c;
+    --vc-bg-alt: #16162a;
+    --vc-red: #a882d8;
+    --vc-divider: #5a3f7a;
+    --vc-gold: #3a2e68;
+    --vc-text: #ccd0ea;
+    box-shadow: 0 2px 20px rgba(100, 50, 180, 0.45);
   }
 
   /* ── Header ── */
@@ -377,7 +388,9 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
     padding: 0.75rem 1.25rem 0.5rem;
   }
 
-  .vc__name-link { text-decoration: none; }
+  .vc__name-link {
+    text-decoration: none;
+  }
 
   .vc__name {
     all: unset;
@@ -413,7 +426,9 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
     padding: 0.625rem 1rem;
     text-align: center;
   }
-  .vc__stat-card:last-child { border-right: none; }
+  .vc__stat-card:last-child {
+    border-right: none;
+  }
 
   .vc__stat-card-label {
     color: var(--vc-red);
@@ -462,7 +477,9 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
     text-transform: uppercase;
   }
 
-  .vc__abilities-row { padding: 0.4rem 0 0.5rem; }
+  .vc__abilities-row {
+    padding: 0.4rem 0 0.5rem;
+  }
 
   .vc__ability-cell {
     display: flex;
@@ -506,7 +523,9 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
   }
 
   /* ── Sections ── */
-  .vc__section { border-top: 2px solid var(--vc-divider); }
+  .vc__section {
+    border-top: 2px solid var(--vc-divider);
+  }
 
   .vc__section-title {
     all: unset;
@@ -529,7 +548,9 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
     padding: 0.6rem 1.25rem;
   }
 
-  .vc__component { font-size: 0.875rem; }
+  .vc__component {
+    font-size: 0.875rem;
+  }
 
   .vc__component-name {
     color: var(--vc-red);

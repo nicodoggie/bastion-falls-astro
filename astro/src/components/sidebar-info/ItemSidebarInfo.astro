@@ -1,5 +1,5 @@
 ---
-import SidebarImage from './SidebarImage.astro';
+import SidebarImage from "./SidebarImage.astro";
 
 const { item } = Astro.props;
 ---
@@ -7,8 +7,7 @@ const { item } = Astro.props;
 <div
   class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
 >
-  {
-    item.name && (
+  {item.name && (
       <div class="flex justify-center items-center border-gray-600">
         <a href={item?.ddb} target="_blank" rel="noopener noreferrer">
           <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
@@ -17,13 +16,11 @@ const { item } = Astro.props;
         </a>
       </div>
       <hr class="border-gray-600">
-    )
-  }
+    )}
   {item.image && <SidebarImage {...item.image} />}
   <div class="space-y-4">
     <dl class="divide-y divide-gray-200 dark:divide-gray-700">
-      {
-        item.details?.attunement !== undefined && (
+      {item.details?.attunement !== undefined && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Attunement
@@ -32,10 +29,8 @@ const { item } = Astro.props;
               {item.details.attunement ? 'Yes' : 'No'}
             </dd>
           </div>
-        )
-      }
-      {
-        item.details?.type !== undefined && (
+        )}
+      {item.details?.type !== undefined && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Type
@@ -44,10 +39,8 @@ const { item } = Astro.props;
               {item.details.type}
             </dd>
           </div>
-        )
-      }
-      {
-        item.details?.rarity !== undefined && (
+        )}
+      {item.details?.rarity !== undefined && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Rarity
@@ -56,10 +49,8 @@ const { item } = Astro.props;
               {item.details.rarity}
             </dd>
           </div>
-        )
-      }
-      { 
-        item.details?.weight !== undefined && (
+        )}
+      {item.details?.weight !== undefined && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Weight
@@ -68,10 +59,8 @@ const { item } = Astro.props;
               {item.details.weight}
             </dd>
           </div>
-        )
-      }
-      {
-        item.details?.value !== undefined && (
+        )}
+      {item.details?.value !== undefined && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Value
@@ -80,10 +69,7 @@ const { item } = Astro.props;
               {item.details.value}
             </dd>
           </div>
-        )
-      }
+        )}
     </dl>
   </div>
-
-
 </div>

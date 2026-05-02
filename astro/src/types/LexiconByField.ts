@@ -11,4 +11,3 @@ interface Field {
   label: string;
   uri: string;
 }
-

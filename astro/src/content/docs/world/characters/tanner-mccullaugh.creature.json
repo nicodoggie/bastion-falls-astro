@@ -2,10 +2,7 @@
   "name": "Tanner McCullaugh",
   "size": ["M"],
   "type": "humanoid",
-  "alignment": [
-    "L",
-    "N"
-  ],
+  "alignment": ["L", "N"],
   "ac": [{ "ac": 15, "from": ["mage armor"] }],
   "hp": { "average": 22, "formula": "5d6 + 5" },
   "speed": { "walk": 30 },
@@ -24,10 +21,7 @@
     "perception": "+3"
   },
   "passive": 13,
-  "languages": [
-    "Common",
-    "two additional languages (Sage background)"
-  ],
+  "languages": ["Common", "two additional languages (Sage background)"],
   "cr": "3",
   "trait": [
     {

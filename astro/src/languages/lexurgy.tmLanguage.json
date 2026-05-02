@@ -202,9 +202,7 @@
               "name": "entity.name.type.element.lexurgy"
             },
             "3": {
-              "patterns": [
-                { "include": "$self" }
-              ]
+              "patterns": [{ "include": "$self" }]
             }
           }
         }
@@ -384,9 +382,7 @@
           "name": "punctuation.definition.group.end.lexurgy"
         }
       },
-      "patterns": [
-        { "include": "$self" }
-      ]
+      "patterns": [{ "include": "$self" }]
     }
   }
 }

@@ -6,353 +6,342 @@
  * buttons next to each top-level nav group that has collapsible children.
  * The buttons are injected client-side so SSR output stays unchanged.
  */
-import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
-import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
-import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+import MobileMenuFooter from "@astrojs/starlight/components/MobileMenuFooter.astro";
+import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
+import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
 
 const { sidebar } = Astro.locals.starlightRoute;
 ---
 
 <script is:inline>
-  const SIDEBAR_VISIBILITY_STORAGE_KEY = 'starlight:sidebar-hidden:v1';
+const SIDEBAR_VISIBILITY_STORAGE_KEY = "starlight:sidebar-hidden:v1";
 
-  try {
-    document.documentElement.classList.add('sl-sidebar-collapse-pending');
-    if (localStorage.getItem(SIDEBAR_VISIBILITY_STORAGE_KEY) === '1') {
-      document.documentElement.classList.add('sl-sidebar-hidden');
-      document.documentElement.removeAttribute('data-has-sidebar');
-    }
-  } catch {
-    // Ignore environments where document is unavailable.
+try {
+  document.documentElement.classList.add("sl-sidebar-collapse-pending");
+  if (localStorage.getItem(SIDEBAR_VISIBILITY_STORAGE_KEY) === "1") {
+    document.documentElement.classList.add("sl-sidebar-hidden");
+    document.documentElement.removeAttribute("data-has-sidebar");
   }
+} catch {
+  // Ignore environments where document is unavailable.
+}
 </script>
 
-<SidebarPersister>
-  <SidebarSublist sublist={sidebar} />
-</SidebarPersister>
+<SidebarPersister> <SidebarSublist sublist={sidebar} /> </SidebarPersister>
 
-<div class="md:sl-hidden">
-  <MobileMenuFooter />
-</div>
+<div class="md:sl-hidden"><MobileMenuFooter /></div>
 
 <script>
-  const SIDEBAR_COLLAPSE_STORAGE_KEY = 'starlight:sidebar-collapsed:v1';
-  const SIDEBAR_VISIBILITY_STORAGE_KEY = 'starlight:sidebar-hidden:v1';
-  const SIDEBAR_HIDDEN_CLASS = 'sl-sidebar-hidden';
+const SIDEBAR_COLLAPSE_STORAGE_KEY = "starlight:sidebar-collapsed:v1";
+const SIDEBAR_VISIBILITY_STORAGE_KEY = "starlight:sidebar-hidden:v1";
+const SIDEBAR_HIDDEN_CLASS = "sl-sidebar-hidden";
 
-  function readCollapsedSections(): Set<string> {
-    try {
-      const raw = localStorage.getItem(SIDEBAR_COLLAPSE_STORAGE_KEY);
-      if (!raw) return new Set<string>();
-      const parsed = JSON.parse(raw);
-      if (!Array.isArray(parsed)) return new Set<string>();
-      return new Set<string>(
-        parsed.filter((value) => typeof value === 'string'),
-      );
-    } catch {
-      return new Set<string>();
-    }
+function readCollapsedSections(): Set<string> {
+  try {
+    const raw = localStorage.getItem(SIDEBAR_COLLAPSE_STORAGE_KEY);
+    if (!raw) return new Set<string>();
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return new Set<string>();
+    return new Set<string>(parsed.filter((value) => typeof value === "string"));
+  } catch {
+    return new Set<string>();
   }
+}
 
-  function writeCollapsedSections(collapsedSections: Set<string>) {
-    try {
-      localStorage.setItem(
-        SIDEBAR_COLLAPSE_STORAGE_KEY,
-        JSON.stringify([...collapsedSections]),
-      );
-    } catch {
-      // Ignore storage failures (privacy mode, blocked storage, etc.).
-    }
-  }
-
-  function getSummary(details: HTMLDetailsElement) {
-    return details.querySelector<HTMLElement>(':scope > summary');
-  }
-
-  function getDetailsIdentity(details: HTMLDetailsElement) {
-    const summary = getSummary(details);
-    if (!summary) return null;
-
-    const label =
-      summary
-        .querySelector('.group-label')
-        ?.textContent?.trim()
-        .toLowerCase()
-        .replace(/\s+/g, ' ') ||
-      summary.textContent?.trim().toLowerCase().replace(/\s+/g, ' ') ||
-      null;
-
-    const href = summary.querySelector<HTMLAnchorElement>('a[href]')?.href;
-    const pathname = href ? new URL(href, location.href).pathname : null;
-
-    if (pathname) return `href:${pathname}`;
-    if (label) return `label:${label}`;
-    return null;
-  }
-
-  function getDetailsStorageKey(details: HTMLDetailsElement) {
-    const chain: string[] = [];
-    let current: HTMLDetailsElement | null = details;
-
-    while (current) {
-      const identity = getDetailsIdentity(current);
-      if (!identity) return null;
-      chain.unshift(identity);
-      current = current.parentElement?.closest('details') ?? null;
-    }
-
-    return chain.join('>');
-  }
-
-  function setupCollapsePersistence() {
-    const nav = document.querySelector('#starlight__sidebar');
-    if (!nav) return;
-
-    const collapsedSections = readCollapsedSections();
-
-    nav.querySelectorAll<HTMLDetailsElement>('details').forEach((details) => {
-      const storageKey = getDetailsStorageKey(details);
-      if (!storageKey) return;
-
-      if (collapsedSections.has(storageKey)) details.open = false;
-
-      if (details.dataset.slCollapseBound === 'true') return;
-      details.dataset.slCollapseBound = 'true';
-
-      details.addEventListener('toggle', () => {
-        const nextCollapsedSections = readCollapsedSections();
-
-        if (details.open) {
-          nextCollapsedSections.delete(storageKey);
-        } else {
-          nextCollapsedSections.add(storageKey);
-        }
-
-        writeCollapsedSections(nextCollapsedSections);
-      });
-    });
-  }
-
-  function setupCollapseButtons() {
-    const nav = document.querySelector('#starlight__sidebar');
-    if (!nav) return;
-
-    nav
-      .querySelectorAll<HTMLDetailsElement>('ul.top-level > li > details')
-      .forEach((details) => {
-        // Skip groups with no collapsible sub-trees.
-        if (!details.querySelector('details')) return;
-        // Skip if button already injected (e.g. re-run after hot reload).
-        if (details.querySelector('.sl-collapse-group')) return;
-
-        const summary = details.querySelector('summary');
-        const caret = summary?.querySelector<SVGElement>('.caret');
-        if (!summary || !caret) return;
-
-        const btn = document.createElement('button');
-        btn.className = 'sl-collapse-group';
-        btn.setAttribute('title', 'Collapse subtrees');
-        btn.setAttribute('aria-label', 'Collapse subtrees');
-        btn.innerHTML = `<span class="sl-collapse-badge">collapse all</span>`;
-
-        // Place the button to the left of the toggle caret.
-        summary.insertBefore(btn, caret);
-
-        btn.addEventListener('click', (e) => {
-          // Prevent the click from reaching <summary>, which would
-          // otherwise toggle the parent <details> open/closed.
-          e.stopPropagation();
-          details
-            .querySelectorAll<HTMLDetailsElement>('details[open]')
-            .forEach((sub) => {
-              // Keep the sub-tree that contains the current page open.
-              if (!sub.querySelector('[aria-current="page"]')) {
-                sub.open = false;
-              }
-            });
-        });
-      });
-  }
-
-  function readSidebarHidden() {
-    try {
-      return localStorage.getItem(SIDEBAR_VISIBILITY_STORAGE_KEY) === '1';
-    } catch {
-      return false;
-    }
-  }
-
-  function writeSidebarHidden(hidden: boolean) {
-    try {
-      localStorage.setItem(SIDEBAR_VISIBILITY_STORAGE_KEY, hidden ? '1' : '0');
-    } catch {
-      // Ignore storage failures (privacy mode, blocked storage, etc.).
-    }
-  }
-
-  function setSidebarHidden(hidden: boolean) {
-    document.documentElement.classList.toggle(SIDEBAR_HIDDEN_CLASS, hidden);
-    if (hidden) {
-      document.documentElement.removeAttribute('data-has-sidebar');
-    } else {
-      document.documentElement.setAttribute('data-has-sidebar', '');
-    }
-    writeSidebarHidden(hidden);
-  }
-
-  function ensureSidebarVisibilityToggle() {
-    let btn = document.getElementById(
-      'sl-sidebar-visibility-toggle',
-    ) as HTMLButtonElement | null;
-    if (!btn) {
-      btn = document.createElement('button');
-      btn.id = 'sl-sidebar-visibility-toggle';
-      btn.className = 'sl-sidebar-visibility-toggle';
-      btn.type = 'button';
-      document.body.append(btn);
-    }
-
-    const hidden = document.documentElement.classList.contains(
-      SIDEBAR_HIDDEN_CLASS,
+function writeCollapsedSections(collapsedSections: Set<string>) {
+  try {
+    localStorage.setItem(
+      SIDEBAR_COLLAPSE_STORAGE_KEY,
+      JSON.stringify([...collapsedSections]),
     );
-    btn.textContent = hidden ? 'show sidebar' : 'hide sidebar';
-    btn.setAttribute(
-      'aria-label',
-      hidden ? 'Show sidebar' : 'Hide sidebar',
-    );
-    btn.setAttribute('title', hidden ? 'Show sidebar' : 'Hide sidebar');
+  } catch {
+    // Ignore storage failures (privacy mode, blocked storage, etc.).
+  }
+}
 
-    if (btn.dataset.slSidebarVisibilityBound === 'true') return;
-    btn.dataset.slSidebarVisibilityBound = 'true';
-    btn.addEventListener('click', () => {
-      const nextHidden = !document.documentElement.classList.contains(
-        SIDEBAR_HIDDEN_CLASS,
-      );
-      setSidebarHidden(nextHidden);
-      if (btn) {
-        btn.textContent = nextHidden ? 'show sidebar' : 'hide sidebar';
-        btn.setAttribute(
-          'aria-label',
-          nextHidden ? 'Show sidebar' : 'Hide sidebar',
-        );
-        btn.setAttribute('title', nextHidden ? 'Show sidebar' : 'Hide sidebar');
+function getSummary(details: HTMLDetailsElement) {
+  return details.querySelector<HTMLElement>(":scope > summary");
+}
+
+function getDetailsIdentity(details: HTMLDetailsElement) {
+  const summary = getSummary(details);
+  if (!summary) return null;
+
+  const label =
+    summary
+      .querySelector(".group-label")
+      ?.textContent?.trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ") ||
+    summary.textContent?.trim().toLowerCase().replace(/\s+/g, " ") ||
+    null;
+
+  const href = summary.querySelector<HTMLAnchorElement>("a[href]")?.href;
+  const pathname = href ? new URL(href, location.href).pathname : null;
+
+  if (pathname) return `href:${pathname}`;
+  if (label) return `label:${label}`;
+  return null;
+}
+
+function getDetailsStorageKey(details: HTMLDetailsElement) {
+  const chain: string[] = [];
+  let current: HTMLDetailsElement | null = details;
+
+  while (current) {
+    const identity = getDetailsIdentity(current);
+    if (!identity) return null;
+    chain.unshift(identity);
+    current = current.parentElement?.closest("details") ?? null;
+  }
+
+  return chain.join(">");
+}
+
+function setupCollapsePersistence() {
+  const nav = document.querySelector("#starlight__sidebar");
+  if (!nav) return;
+
+  const collapsedSections = readCollapsedSections();
+
+  nav.querySelectorAll<HTMLDetailsElement>("details").forEach((details) => {
+    const storageKey = getDetailsStorageKey(details);
+    if (!storageKey) return;
+
+    if (collapsedSections.has(storageKey)) details.open = false;
+
+    if (details.dataset.slCollapseBound === "true") return;
+    details.dataset.slCollapseBound = "true";
+
+    details.addEventListener("toggle", () => {
+      const nextCollapsedSections = readCollapsedSections();
+
+      if (details.open) {
+        nextCollapsedSections.delete(storageKey);
+      } else {
+        nextCollapsedSections.add(storageKey);
       }
+
+      writeCollapsedSections(nextCollapsedSections);
     });
+  });
+}
+
+function setupCollapseButtons() {
+  const nav = document.querySelector("#starlight__sidebar");
+  if (!nav) return;
+
+  nav
+    .querySelectorAll<HTMLDetailsElement>("ul.top-level > li > details")
+    .forEach((details) => {
+      // Skip groups with no collapsible sub-trees.
+      if (!details.querySelector("details")) return;
+      // Skip if button already injected (e.g. re-run after hot reload).
+      if (details.querySelector(".sl-collapse-group")) return;
+
+      const summary = details.querySelector("summary");
+      const caret = summary?.querySelector<SVGElement>(".caret");
+      if (!summary || !caret) return;
+
+      const btn = document.createElement("button");
+      btn.className = "sl-collapse-group";
+      btn.setAttribute("title", "Collapse subtrees");
+      btn.setAttribute("aria-label", "Collapse subtrees");
+      btn.innerHTML = `<span class="sl-collapse-badge">collapse all</span>`;
+
+      // Place the button to the left of the toggle caret.
+      summary.insertBefore(btn, caret);
+
+      btn.addEventListener("click", (e) => {
+        // Prevent the click from reaching <summary>, which would
+        // otherwise toggle the parent <details> open/closed.
+        e.stopPropagation();
+        details
+          .querySelectorAll<HTMLDetailsElement>("details[open]")
+          .forEach((sub) => {
+            // Keep the sub-tree that contains the current page open.
+            if (!sub.querySelector('[aria-current="page"]')) {
+              sub.open = false;
+            }
+          });
+      });
+    });
+}
+
+function readSidebarHidden() {
+  try {
+    return localStorage.getItem(SIDEBAR_VISIBILITY_STORAGE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function writeSidebarHidden(hidden: boolean) {
+  try {
+    localStorage.setItem(SIDEBAR_VISIBILITY_STORAGE_KEY, hidden ? "1" : "0");
+  } catch {
+    // Ignore storage failures (privacy mode, blocked storage, etc.).
+  }
+}
+
+function setSidebarHidden(hidden: boolean) {
+  document.documentElement.classList.toggle(SIDEBAR_HIDDEN_CLASS, hidden);
+  if (hidden) {
+    document.documentElement.removeAttribute("data-has-sidebar");
+  } else {
+    document.documentElement.setAttribute("data-has-sidebar", "");
+  }
+  writeSidebarHidden(hidden);
+}
+
+function ensureSidebarVisibilityToggle() {
+  let btn = document.getElementById(
+    "sl-sidebar-visibility-toggle",
+  ) as HTMLButtonElement | null;
+  if (!btn) {
+    btn = document.createElement("button");
+    btn.id = "sl-sidebar-visibility-toggle";
+    btn.className = "sl-sidebar-visibility-toggle";
+    btn.type = "button";
+    document.body.append(btn);
   }
 
-  function initializeSidebar() {
-    setSidebarHidden(readSidebarHidden());
-    setupCollapsePersistence();
-    setupCollapseButtons();
-    ensureSidebarVisibilityToggle();
-    document.documentElement.classList.remove('sl-sidebar-collapse-pending');
-  }
+  const hidden =
+    document.documentElement.classList.contains(SIDEBAR_HIDDEN_CLASS);
+  btn.textContent = hidden ? "show sidebar" : "hide sidebar";
+  btn.setAttribute("aria-label", hidden ? "Show sidebar" : "Hide sidebar");
+  btn.setAttribute("title", hidden ? "Show sidebar" : "Hide sidebar");
 
-  // Run on initial page load and after Astro View Transition navigations.
-  initializeSidebar();
-  document.addEventListener('astro:page-load', initializeSidebar);
+  if (btn.dataset.slSidebarVisibilityBound === "true") return;
+  btn.dataset.slSidebarVisibilityBound = "true";
+  btn.addEventListener("click", () => {
+    const nextHidden =
+      !document.documentElement.classList.contains(SIDEBAR_HIDDEN_CLASS);
+    setSidebarHidden(nextHidden);
+    if (btn) {
+      btn.textContent = nextHidden ? "show sidebar" : "hide sidebar";
+      btn.setAttribute(
+        "aria-label",
+        nextHidden ? "Show sidebar" : "Hide sidebar",
+      );
+      btn.setAttribute("title", nextHidden ? "Show sidebar" : "Hide sidebar");
+    }
+  });
+}
+
+function initializeSidebar() {
+  setSidebarHidden(readSidebarHidden());
+  setupCollapsePersistence();
+  setupCollapseButtons();
+  ensureSidebarVisibilityToggle();
+  document.documentElement.classList.remove("sl-sidebar-collapse-pending");
+}
+
+// Run on initial page load and after Astro View Transition navigations.
+initializeSidebar();
+document.addEventListener("astro:page-load", initializeSidebar);
 </script>
 
 <style is:global>
-  html.sl-sidebar-collapse-pending #starlight__sidebar {
+html.sl-sidebar-collapse-pending #starlight__sidebar {
+  visibility: hidden;
+}
+
+@media (min-width: 50rem) {
+  html.sl-sidebar-hidden #starlight__sidebar {
     visibility: hidden;
+    pointer-events: none;
   }
+}
 
-  @media (min-width: 50rem) {
-    html.sl-sidebar-hidden #starlight__sidebar {
-      visibility: hidden;
-      pointer-events: none;
-    }
-  }
+.sl-sidebar-visibility-toggle {
+  position: fixed;
+  inset-block-start: calc(var(--sl-nav-height) + 0.75rem);
+  inset-inline-start: 0.5rem;
+  z-index: calc(var(--sl-z-index-navbar) + 1);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sl-font-system-mono, monospace);
+  font-size: var(--sl-text-xs);
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--sl-color-gray-5);
+  color: var(--sl-color-gray-2);
+  background-color: var(--sl-color-bg-nav);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+}
 
+html:not(.sl-sidebar-hidden) .sl-sidebar-visibility-toggle {
+  inset-inline-start: max(0.5rem, calc(var(--sl-sidebar-width) - 6.75rem));
+}
+
+.sl-sidebar-visibility-toggle:hover,
+.sl-sidebar-visibility-toggle:focus-visible {
+  color: var(--sl-color-white);
+  border-color: var(--sl-color-gray-3);
+  outline: none;
+}
+
+@media (min-width: 50rem) {
   .sl-sidebar-visibility-toggle {
-    position: fixed;
-    inset-block-start: calc(var(--sl-nav-height) + 0.75rem);
-    inset-inline-start: 0.5rem;
-    z-index: calc(var(--sl-z-index-navbar) + 1);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--sl-font-system-mono, monospace);
-    font-size: var(--sl-text-xs);
-    line-height: 1;
-    padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
-    border: 1px solid var(--sl-color-gray-5);
-    color: var(--sl-color-gray-2);
-    background-color: var(--sl-color-bg-nav);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
-    cursor: pointer;
-  }
-
-  html:not(.sl-sidebar-hidden) .sl-sidebar-visibility-toggle {
-    inset-inline-start: max(0.5rem, calc(var(--sl-sidebar-width) - 6.75rem));
-  }
-
-  .sl-sidebar-visibility-toggle:hover,
-  .sl-sidebar-visibility-toggle:focus-visible {
-    color: var(--sl-color-white);
-    border-color: var(--sl-color-gray-3);
-    outline: none;
-  }
-
-  @media (min-width: 50rem) {
-    .sl-sidebar-visibility-toggle {
-      display: inline-flex;
-    }
-  }
-
-  /* Stop space-between from scattering three flex children.
-     Let the label grow instead so the badge + caret sit together. */
-  #starlight__sidebar details > summary:has(.sl-collapse-group) {
-    justify-content: flex-start;
-  }
-
-  #starlight__sidebar details > summary:has(.sl-collapse-group) .group-label {
-    flex: 1;
-  }
-
-  #starlight__sidebar .sl-collapse-group {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    background: none;
-    border: none;
-    padding: 0;
-    margin-inline-end: 0.25em;
-    cursor: pointer;
-    line-height: 1;
-  }
-
-  /* Only show the button while the group is expanded */
-  #starlight__sidebar details[open] > summary .sl-collapse-group {
     display: inline-flex;
   }
+}
 
-  #starlight__sidebar .sl-collapse-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--sl-font-system-mono, monospace);
-    font-size: var(--sl-text-xs);
-    line-height: 1;
-    padding: 0.1em 0.4em;
-    border-radius: 9999px;
-    border: 1px solid var(--sl-color-gray-5);
-    color: var(--sl-color-gray-3);
-    background-color: transparent;
-    transition:
-      color 0.15s ease,
-      border-color 0.15s ease,
-      background-color 0.15s ease;
-  }
+/* Stop space-between from scattering three flex children.
+       Let the label grow instead so the badge + caret sit together. */
+#starlight__sidebar details > summary:has(.sl-collapse-group) {
+  justify-content: flex-start;
+}
 
-  #starlight__sidebar .sl-collapse-group:hover .sl-collapse-badge,
-  #starlight__sidebar .sl-collapse-group:focus-visible .sl-collapse-badge {
-    color: var(--sl-color-white);
-    border-color: var(--sl-color-gray-3);
-    background-color: var(--sl-color-gray-6, rgba(255, 255, 255, 0.08));
-    outline: none;
-  }
+#starlight__sidebar details > summary:has(.sl-collapse-group) .group-label {
+  flex: 1;
+}
+
+#starlight__sidebar .sl-collapse-group {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-inline-end: 0.25em;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Only show the button while the group is expanded */
+#starlight__sidebar details[open] > summary .sl-collapse-group {
+  display: inline-flex;
+}
+
+#starlight__sidebar .sl-collapse-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sl-font-system-mono, monospace);
+  font-size: var(--sl-text-xs);
+  line-height: 1;
+  padding: 0.1em 0.4em;
+  border-radius: 9999px;
+  border: 1px solid var(--sl-color-gray-5);
+  color: var(--sl-color-gray-3);
+  background-color: transparent;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+#starlight__sidebar .sl-collapse-group:hover .sl-collapse-badge,
+#starlight__sidebar .sl-collapse-group:focus-visible .sl-collapse-badge {
+  color: var(--sl-color-white);
+  border-color: var(--sl-color-gray-3);
+  background-color: var(--sl-color-gray-6, rgba(255, 255, 255, 0.08));
+  outline: none;
+}
 </style>

@@ -5,10 +5,7 @@
     "type": "humanoid",
     "tags": ["any race"]
   },
-  "alignment": [
-    "C",
-    "N"
-  ],
+  "alignment": ["C", "N"],
   "ac": [
     {
       "ac": 15,
@@ -39,10 +36,7 @@
     "intimidation": "+6"
   },
   "passive": 10,
-  "languages": [
-    "Common",
-    "plus two other languages of your choice"
-  ],
+  "languages": ["Common", "plus two other languages of your choice"],
   "cr": "7",
   "trait": [
     {
@@ -97,9 +91,7 @@
   "action": [
     {
       "name": "Multiattack",
-      "entries": [
-        "The Bardic Berserker makes two melee weapon attacks."
-      ]
+      "entries": ["The Bardic Berserker makes two melee weapon attacks."]
     },
     {
       "name": "Greataxe",

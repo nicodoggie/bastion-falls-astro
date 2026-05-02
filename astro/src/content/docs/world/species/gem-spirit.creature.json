@@ -15,15 +15,8 @@
   "cha": 14,
   "save": { "dex": "+5", "cha": "+4" },
   "skill": { "stealth": "+5", "perception": "+3" },
-  "dr": [
-    "bludgeoning",
-    "piercing",
-    "slashing"
-  ],
-  "di": [
-    "poison",
-    "psychic"
-  ],
+  "dr": ["bludgeoning", "piercing", "slashing"],
+  "di": ["poison", "psychic"],
   "conditionImmune": [
     "charmed",
     "exhaustion",
@@ -33,10 +26,7 @@
   ],
   "senses": ["darkvision 60 ft."],
   "passive": 13,
-  "languages": [
-    "Primordial",
-    "Understands Common but cannot speak"
-  ],
+  "languages": ["Primordial", "Understands Common but cannot speak"],
   "trait": [
     {
       "name": "Gem Passage",

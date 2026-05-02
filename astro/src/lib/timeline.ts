@@ -1,11 +1,16 @@
-import { readFileSync, readdirSync } from 'node:fs';
-import { join, relative, sep } from 'node:path';
+import { readdirSync, readFileSync } from "node:fs";
+import { join, relative, sep } from "node:path";
 
-import matter from 'gray-matter';
+import matter from "gray-matter";
 
 type CollectionName = string;
-type TimelineType = 'birth' | 'death' | 'start' | 'end' | 'discover';
-type DefaultDatedCollection = 'events' | 'characters' | 'organizations' | 'locations' | 'religions';
+type TimelineType = "birth" | "death" | "start" | "end" | "discover";
+type DefaultDatedCollection =
+  | "events"
+  | "characters"
+  | "organizations"
+  | "locations"
+  | "religions";
 
 interface TimelineEntry {
   year: string;
@@ -61,24 +66,24 @@ type Frontmatter = {
 };
 
 const DEFAULT_DATED_COLLECTION_DIRS: Record<DefaultDatedCollection, string> = {
-  events: 'src/content/docs/world/events',
-  characters: 'src/content/docs/world/characters',
-  organizations: 'src/content/docs/world/organizations',
-  locations: 'src/content/docs/world/locations',
-  religions: 'src/content/docs/world/religions',
+  events: "src/content/docs/world/events",
+  characters: "src/content/docs/world/characters",
+  organizations: "src/content/docs/world/organizations",
+  locations: "src/content/docs/world/locations",
+  religions: "src/content/docs/world/religions",
 };
 
 const ALL_WORLD_COLLECTION_DIRS = {
-  events: 'src/content/docs/world/events',
-  characters: 'src/content/docs/world/characters',
-  organizations: 'src/content/docs/world/organizations',
-  locations: 'src/content/docs/world/locations',
-  concepts: 'src/content/docs/world/concepts',
-  families: 'src/content/docs/world/families',
-  items: 'src/content/docs/world/items',
-  species: 'src/content/docs/world/species',
-  vehicles: 'src/content/docs/world/vehicles',
-  religions: 'src/content/docs/world/religions',
+  events: "src/content/docs/world/events",
+  characters: "src/content/docs/world/characters",
+  organizations: "src/content/docs/world/organizations",
+  locations: "src/content/docs/world/locations",
+  concepts: "src/content/docs/world/concepts",
+  families: "src/content/docs/world/families",
+  items: "src/content/docs/world/items",
+  species: "src/content/docs/world/species",
+  vehicles: "src/content/docs/world/vehicles",
+  religions: "src/content/docs/world/religions",
 } as const;
 
 function parseYear(dateStr: string): { display: string; sort: number } {
@@ -92,7 +97,7 @@ function parseYear(dateStr: string): { display: string; sort: number } {
 
   return {
     display: `${normalizedYear} ${normalizedEra}`,
-    sort: normalizedEra === 'PF' ? -sortYear : sortYear,
+    sort: normalizedEra === "PF" ? -sortYear : sortYear,
   };
 }
 
@@ -101,39 +106,39 @@ function getDefaultDateField(
   data: Frontmatter,
 ): { date: string; type: TimelineType } | null {
   switch (collection) {
-    case 'events':
+    case "events":
       return data.event?.dateStarted
-        ? { date: data.event.dateStarted, type: 'start' }
+        ? { date: data.event.dateStarted, type: "start" }
         : data.event?.dateEnded
-          ? { date: data.event.dateEnded, type: 'end' }
+          ? { date: data.event.dateEnded, type: "end" }
           : null;
-    case 'characters':
+    case "characters":
       return data.character?.details?.dateOfBirth
-        ? { date: data.character.details.dateOfBirth, type: 'birth' }
+        ? { date: data.character.details.dateOfBirth, type: "birth" }
         : data.character?.details?.dateOfDeath
-          ? { date: data.character.details.dateOfDeath, type: 'death' }
+          ? { date: data.character.details.dateOfDeath, type: "death" }
           : null;
-    case 'organizations':
+    case "organizations":
       return data.organization?.founded
-        ? { date: data.organization.founded, type: 'start' }
+        ? { date: data.organization.founded, type: "start" }
         : data.organization?.dissolved
-          ? { date: data.organization.dissolved, type: 'end' }
+          ? { date: data.organization.dissolved, type: "end" }
           : null;
-    case 'locations':
+    case "locations":
       return data.location?.dateFounded
-        ? { date: data.location.dateFounded, type: 'start' }
+        ? { date: data.location.dateFounded, type: "start" }
         : data.location?.dateDissolved
-          ? { date: data.location.dateDissolved, type: 'end' }
+          ? { date: data.location.dateDissolved, type: "end" }
           : data.location?.details?.timeline?.start
-            ? { date: data.location.details.timeline.start, type: 'start' }
+            ? { date: data.location.details.timeline.start, type: "start" }
             : data.location?.details?.timeline?.end
-              ? { date: data.location.details.timeline.end, type: 'end' }
+              ? { date: data.location.details.timeline.end, type: "end" }
               : data.location?.discovered
-                ? { date: data.location.discovered, type: 'discover' }
+                ? { date: data.location.discovered, type: "discover" }
                 : null;
-    case 'religions':
+    case "religions":
       return data.religion?.founded
-        ? { date: data.religion.founded, type: 'start' }
+        ? { date: data.religion.founded, type: "start" }
         : null;
   }
 }
@@ -148,7 +153,7 @@ function walkMdxFiles(dir: string): string[] {
       files.push(...walkMdxFiles(fullPath));
       continue;
     }
-    if (entry.isFile() && fullPath.endsWith('.mdx')) {
+    if (entry.isFile() && fullPath.endsWith(".mdx")) {
       files.push(fullPath);
     }
   }
@@ -157,9 +162,9 @@ function walkMdxFiles(dir: string): string[] {
 }
 
 function filePathToSlug(baseDir: string, filePath: string): string {
-  const rel = relative(baseDir, filePath).split(sep).join('/');
-  if (rel.endsWith('/index.mdx')) return rel.slice(0, -'/index.mdx'.length);
-  if (rel.endsWith('.mdx')) return rel.slice(0, -'.mdx'.length);
+  const rel = relative(baseDir, filePath).split(sep).join("/");
+  if (rel.endsWith("/index.mdx")) return rel.slice(0, -"/index.mdx".length);
+  if (rel.endsWith(".mdx")) return rel.slice(0, -".mdx".length);
   return rel;
 }
 
@@ -170,7 +175,7 @@ function getCollectionEntries(
 
   return files.map((filePath) => {
     try {
-      const source = readFileSync(filePath, 'utf-8');
+      const source = readFileSync(filePath, "utf-8");
       const parsed = matter(source);
       const slug = filePathToSlug(baseDir, filePath);
       return {
@@ -193,23 +198,23 @@ function formatTimelineLabel(
   type: TimelineType,
   baseLabel: string,
 ): string {
-  if (collection === 'characters') {
-    if (type === 'birth') return `${baseLabel} was born`;
-    if (type === 'death') return `${baseLabel} died`;
+  if (collection === "characters") {
+    if (type === "birth") return `${baseLabel} was born`;
+    if (type === "death") return `${baseLabel} died`;
   }
 
-  if (collection === 'organizations') {
-    if (type === 'start') return `${baseLabel} was founded`;
-    if (type === 'end') return `${baseLabel} was dissolved`;
+  if (collection === "organizations") {
+    if (type === "start") return `${baseLabel} was founded`;
+    if (type === "end") return `${baseLabel} was dissolved`;
   }
 
-  if (collection === 'religions') {
-    if (type === 'start') return `${baseLabel} was founded`;
+  if (collection === "religions") {
+    if (type === "start") return `${baseLabel} was founded`;
   }
 
-  if (collection === 'locations') {
-    if (type === 'start') return `${baseLabel} was founded`;
-    if (type === 'discover') return `${baseLabel} was discovered`;
+  if (collection === "locations") {
+    if (type === "start") return `${baseLabel} was founded`;
+    if (type === "discover") return `${baseLabel} was discovered`;
   }
 
   return baseLabel;
@@ -260,7 +265,7 @@ async function getTimelineEntries(): Promise<TimelineEntry[]> {
         : null;
 
       if (timeline === false) continue;
-      if (timeline === undefined && coll !== 'events') continue;
+      if (timeline === undefined && coll !== "events") continue;
 
       if (Array.isArray(timeline)) {
         for (const override of timeline) {
@@ -269,7 +274,7 @@ async function getTimelineEntries(): Promise<TimelineEntry[]> {
             slug: entry.slug,
             id: entry.id,
             title: entry.data.title,
-            baseType: defaultDateInfo?.type || 'start',
+            baseType: defaultDateInfo?.type || "start",
             baseDate: defaultDateInfo?.date,
             override,
           });
@@ -278,7 +283,7 @@ async function getTimelineEntries(): Promise<TimelineEntry[]> {
         continue;
       }
 
-      if (coll === 'events' && (timeline === undefined || timeline === true)) {
+      if (coll === "events" && (timeline === undefined || timeline === true)) {
         const baseLabel = entry.data.title || entry.id;
         const started = entry.data.event?.dateStarted;
         const ended = entry.data.event?.dateEnded;
@@ -289,11 +294,11 @@ async function getTimelineEntries(): Promise<TimelineEntry[]> {
             slug: entry.slug,
             id: entry.id,
             title: entry.data.title,
-            baseType: 'start',
+            baseType: "start",
             baseDate: started,
             override: {
               year: started,
-              type: 'start',
+              type: "start",
               label: `${baseLabel} started`,
             },
           });
@@ -304,11 +309,11 @@ async function getTimelineEntries(): Promise<TimelineEntry[]> {
             slug: entry.slug,
             id: entry.id,
             title: entry.data.title,
-            baseType: 'end',
+            baseType: "end",
             baseDate: ended,
             override: {
               year: ended,
-              type: 'end',
+              type: "end",
               label: `${baseLabel} ended`,
             },
           });
@@ -352,7 +357,7 @@ async function getTimelineEntries(): Promise<TimelineEntry[]> {
         slug: entry.slug,
         id: entry.id,
         title: entry.data.title,
-        baseType: defaultDateInfo?.type || timeline.type || 'start',
+        baseType: defaultDateInfo?.type || timeline.type || "start",
         baseDate: defaultDateInfo?.date,
         override: timeline,
       });
@@ -371,16 +376,16 @@ async function getTimelineEntries(): Promise<TimelineEntry[]> {
 
 function generateTimelineMDX(entries: TimelineEntry[]): string {
   const pathMap: Record<string, string> = {
-    events: 'world/events',
-    characters: 'world/characters',
-    organizations: 'world/organizations',
-    locations: 'world/locations',
-    concepts: 'world/concepts',
-    families: 'world/families',
-    items: 'world/items',
-    species: 'world/species',
-    vehicles: 'world/vehicles',
-    religions: 'world/religions',
+    events: "world/events",
+    characters: "world/characters",
+    organizations: "world/organizations",
+    locations: "world/locations",
+    concepts: "world/concepts",
+    families: "world/families",
+    items: "world/items",
+    species: "world/species",
+    vehicles: "world/vehicles",
+    religions: "world/religions",
   };
 
   const grouped = new Map<string, TimelineEntry[]>();
@@ -397,15 +402,16 @@ function generateTimelineMDX(entries: TimelineEntry[]): string {
     .map(([year, yearEntries]) => {
       const events = yearEntries
         .map((entry) => {
-          const basePath = pathMap[entry.collection] || `world/${entry.collection}`;
+          const basePath =
+            pathMap[entry.collection] || `world/${entry.collection}`;
           const href = `/${basePath}/${entry.slug}/`;
           return `        <li>[${entry.label}](${href})</li>`;
         })
-        .join('\n');
+        .join("\n");
 
       return `    <tr>\n      <td>${year}</td>\n      <td>\n        <ul>\n${events}\n        </ul>\n      </td>\n    </tr>`;
     })
-    .join('\n');
+    .join("\n");
 
   return `---
 title: Timeline Generated
@@ -425,4 +431,4 @@ ${rows}
 `;
 }
 
-export { type TimelineEntry, generateTimelineMDX, getTimelineEntries };
+export { generateTimelineMDX, getTimelineEntries, type TimelineEntry };

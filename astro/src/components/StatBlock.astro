@@ -1,5 +1,6 @@
 ---
-import { getEntry } from 'astro:content'
+import { getEntry } from "astro:content";
+
 /**
  * D&D 5e stat block component — full-width layout inspired by D&D Beyond.
  *
@@ -12,27 +13,29 @@ import { getEntry } from 'astro:content'
  *   <StatBlock creature="species/drekavac.creature" />
  */
 interface Props {
-  creature: Record<string, unknown> | string
+  creature: Record<string, unknown> | string;
 }
 
-const { creature: raw } = Astro.props
-let c: Record<string, unknown>
+const { creature: raw } = Astro.props;
+let c: Record<string, unknown>;
 
-if (typeof raw === 'string') {
-  const entry = await getEntry('creatures', raw as Parameters<typeof getEntry<'creatures', string>>[1])
-  if (!entry) throw new Error(`[StatBlock] Creature entry not found: "${raw}"`)
+if (typeof raw === "string") {
+  const entry = await getEntry(
+    "creatures",
+    raw as Parameters<typeof getEntry<"creatures", string>>[1],
+  );
+  if (!entry) throw new Error(`[StatBlock] Creature entry not found: "${raw}"`);
 
-  c = entry.data as Record<string, unknown>
+  c = entry.data as Record<string, unknown>;
 } else {
-  c = raw
+  c = raw;
 }
-
 
 // ─── Display helpers ──────────────────────────────────────────────────────────
 
 function modifier(score: number): string {
-  const m = Math.floor((score - 10) / 2)
-  return m >= 0 ? `+${m}` : `${m}`
+  const m = Math.floor((score - 10) / 2);
+  return m >= 0 ? `+${m}` : `${m}`;
 }
 
 function abilityDisplay(
@@ -40,301 +43,370 @@ function abilityDisplay(
   saveOverride?: string | null,
 ): { score: string; mod: string; save: string } {
   if (score === null || score === undefined)
-    return { score: '—', mod: '—', save: '—' }
-  if (typeof score === 'object')
-    return { score: score.special, mod: '', save: '' }
-  const mod = modifier(score)
+    return { score: "—", mod: "—", save: "—" };
+  if (typeof score === "object")
+    return { score: score.special, mod: "", save: "" };
+  const mod = modifier(score);
   // 5etools stores save bonuses as strings like "+5" already
-  const save = saveOverride != null ? String(saveOverride) : mod
-  return { score: String(score), mod, save }
+  const save = saveOverride != null ? String(saveOverride) : mod;
+  return { score: String(score), mod, save };
 }
 
 const SIZE_NAMES: Record<string, string> = {
-  F: 'Fine', D: 'Diminutive', T: 'Tiny', S: 'Small',
-  M: 'Medium', L: 'Large', H: 'Huge', G: 'Gargantuan',
-  C: 'Colossal', V: 'Varies',
-}
+  F: "Fine",
+  D: "Diminutive",
+  T: "Tiny",
+  S: "Small",
+  M: "Medium",
+  L: "Large",
+  H: "Huge",
+  G: "Gargantuan",
+  C: "Colossal",
+  V: "Varies",
+};
 
 const ALIGN_MAP: Record<string, string> = {
-  L: 'Lawful', C: 'Chaotic', N: 'Neutral', NX: 'Neutral', NY: 'Neutral',
-  G: 'Good', E: 'Evil', U: 'Unaligned', A: 'Any alignment',
-}
+  L: "Lawful",
+  C: "Chaotic",
+  N: "Neutral",
+  NX: "Neutral",
+  NY: "Neutral",
+  G: "Good",
+  E: "Evil",
+  U: "Unaligned",
+  A: "Any alignment",
+};
 
 function formatSize(sizes: string[] | null | undefined): string {
-  if (!sizes?.length) return ''
-  return sizes.map((s) => SIZE_NAMES[s] ?? s).join(' or ')
+  if (!sizes?.length) return "";
+  return sizes.map((s) => SIZE_NAMES[s] ?? s).join(" or ");
 }
 
 function formatAlignment(alignment: unknown[] | null | undefined): string {
-  if (!alignment?.length) return '—'
+  if (!alignment?.length) return "—";
   const parts = alignment.flatMap((a) => {
-    if (typeof a === 'string') {
-      if (a === 'A') return ['Any alignment']
-      if (a === 'U') return ['Unaligned']
-      return [ALIGN_MAP[a] ?? a]
+    if (typeof a === "string") {
+      if (a === "A") return ["Any alignment"];
+      if (a === "U") return ["Unaligned"];
+      return [ALIGN_MAP[a] ?? a];
     }
-    if (a && typeof a === 'object') {
-      if ('special' in a) return [(a as { special: string }).special]
-      if ('alignment' in a)
-        return [formatAlignment((a as { alignment: unknown[] }).alignment)]
+    if (a && typeof a === "object") {
+      if ("special" in a) return [(a as { special: string }).special];
+      if ("alignment" in a)
+        return [formatAlignment((a as { alignment: unknown[] }).alignment)];
     }
-    return []
-  })
-  if (parts.join(' ') === 'Neutral Neutral') return 'True Neutral'
-  if (parts.includes('Any alignment')) return 'Any alignment'
-  return parts.join(' ')
+    return [];
+  });
+  if (parts.join(" ") === "Neutral Neutral") return "True Neutral";
+  if (parts.includes("Any alignment")) return "Any alignment";
+  return parts.join(" ");
 }
 
 function formatType(type: unknown): string {
-  if (!type) return '—'
-  if (typeof type === 'string') return type
-  if (typeof type === 'object' && type !== null) {
-    const t = type as Record<string, unknown>
-    const inner = t['type']
+  if (!type) return "—";
+  if (typeof type === "string") return type;
+  if (typeof type === "object" && type !== null) {
+    const t = type as Record<string, unknown>;
+    const inner = t["type"];
     const base =
-      typeof inner === 'string'
+      typeof inner === "string"
         ? inner
-        : typeof inner === 'object' && inner !== null && 'choose' in inner
-          ? (inner as { choose: string[] }).choose.join(' or ')
-          : '—'
-    const swarmSize = t['swarmSize']
+        : typeof inner === "object" && inner !== null && "choose" in inner
+          ? (inner as { choose: string[] }).choose.join(" or ")
+          : "—";
+    const swarmSize = t["swarmSize"];
     const swarmPrefix =
-      typeof swarmSize === 'string'
+      typeof swarmSize === "string"
         ? `swarm of ${SIZE_NAMES[swarmSize] ?? swarmSize} `
-        : ''
-    const rawTags = t['tags'] as unknown[] | undefined
+        : "";
+    const rawTags = t["tags"] as unknown[] | undefined;
     const tags = rawTags
       ?.map((tg) =>
-        typeof tg === 'string'
+        typeof tg === "string"
           ? tg
-          : typeof tg === 'object' && tg !== null
-            ? `${(tg as Record<string, string>)['prefix'] ?? ''}${(tg as Record<string, string>)['tag'] ?? ''}`
-            : '',
+          : typeof tg === "object" && tg !== null
+            ? `${(tg as Record<string, string>)["prefix"] ?? ""}${(tg as Record<string, string>)["tag"] ?? ""}`
+            : "",
       )
       .filter(Boolean)
-      .join(', ')
-    const tagPart = tags ? ` (${tags})` : ''
-    return `${swarmPrefix}${base}${tagPart}`
+      .join(", ");
+    const tagPart = tags ? ` (${tags})` : "";
+    return `${swarmPrefix}${base}${tagPart}`;
   }
-  return '—'
+  return "—";
 }
 
-function formatAC(ac: unknown[] | null | undefined): { value: string; note: string } {
-  if (!ac?.length) return { value: '—', note: '' }
+function formatAC(ac: unknown[] | null | undefined): {
+  value: string;
+  note: string;
+} {
+  if (!ac?.length) return { value: "—", note: "" };
   const parts = ac.map((a) => {
-    if (typeof a === 'number') return { value: String(a), note: '' }
-    if (typeof a === 'object' && a !== null) {
-      const item = a as Record<string, unknown>
-      if ('special' in item) return { value: item['special'] as string, note: '' }
-      const from = Array.isArray(item['from']) && item['from'].length
-        ? (item['from'] as string[]).join(', ')
-        : ''
-      return { value: String(item['ac']), note: from }
+    if (typeof a === "number") return { value: String(a), note: "" };
+    if (typeof a === "object" && a !== null) {
+      const item = a as Record<string, unknown>;
+      if ("special" in item)
+        return { value: item["special"] as string, note: "" };
+      const from =
+        Array.isArray(item["from"]) && item["from"].length
+          ? (item["from"] as string[]).join(", ")
+          : "";
+      return { value: String(item["ac"]), note: from };
     }
-    return { value: '—', note: '' }
-  })
+    return { value: "—", note: "" };
+  });
   return {
-    value: parts.map((p) => p.value).join(', '),
-    note: parts.map((p) => p.note).filter(Boolean).join('; '),
-  }
+    value: parts.map((p) => p.value).join(", "),
+    note: parts
+      .map((p) => p.note)
+      .filter(Boolean)
+      .join("; "),
+  };
 }
 
 function formatHP(hp: unknown): { value: string; note: string } {
-  if (!hp) return { value: '—', note: '' }
-  if (typeof hp === 'object' && hp !== null) {
-    const h = hp as Record<string, unknown>
-    if (h['special']) return { value: h['special'] as string, note: '' }
-    const avg = h['average'] as number | undefined
-    const formula = h['formula'] as string | undefined
+  if (!hp) return { value: "—", note: "" };
+  if (typeof hp === "object" && hp !== null) {
+    const h = hp as Record<string, unknown>;
+    if (h["special"]) return { value: h["special"] as string, note: "" };
+    const avg = h["average"] as number | undefined;
+    const formula = h["formula"] as string | undefined;
     return {
-      value: avg !== undefined ? String(avg) : '—',
-      note: formula ?? '',
-    }
+      value: avg !== undefined ? String(avg) : "—",
+      note: formula ?? "",
+    };
   }
-  return { value: '—', note: '' }
+  return { value: "—", note: "" };
 }
 
 function formatSpeed(speed: unknown): string {
-  if (!speed) return '—'
-  if (typeof speed === 'number') return `${speed} ft.`
-  if (typeof speed === 'string') return speed
-  if (typeof speed === 'object' && speed !== null) {
-    const s = speed as Record<string, unknown>
+  if (!speed) return "—";
+  if (typeof speed === "number") return `${speed} ft.`;
+  if (typeof speed === "string") return speed;
+  if (typeof speed === "object" && speed !== null) {
+    const s = speed as Record<string, unknown>;
     const ft = (v: unknown) =>
-      typeof v === 'number' ? v
-      : typeof v === 'object' && v !== null
-        ? (v as Record<string, number>)['number']
-        : undefined
-    const parts: string[] = []
-    if (s['walk'] != null) parts.push(`${ft(s['walk'])} ft.`)
-    if (s['fly'] != null)
-      parts.push(`fly ${ft(s['fly'])} ft.${s['canHover'] ? ' (hover)' : ''}`)
-    if (s['swim'] != null) parts.push(`swim ${ft(s['swim'])} ft.`)
-    if (s['burrow'] != null) parts.push(`burrow ${ft(s['burrow'])} ft.`)
-    if (s['climb'] != null) parts.push(`climb ${ft(s['climb'])} ft.`)
-    return parts.join(', ') || '—'
+      typeof v === "number"
+        ? v
+        : typeof v === "object" && v !== null
+          ? (v as Record<string, number>)["number"]
+          : undefined;
+    const parts: string[] = [];
+    if (s["walk"] != null) parts.push(`${ft(s["walk"])} ft.`);
+    if (s["fly"] != null)
+      parts.push(`fly ${ft(s["fly"])} ft.${s["canHover"] ? " (hover)" : ""}`);
+    if (s["swim"] != null) parts.push(`swim ${ft(s["swim"])} ft.`);
+    if (s["burrow"] != null) parts.push(`burrow ${ft(s["burrow"])} ft.`);
+    if (s["climb"] != null) parts.push(`climb ${ft(s["climb"])} ft.`);
+    return parts.join(", ") || "—";
   }
-  return '—'
+  return "—";
 }
 
 const CR_XP: Record<string, number> = {
-  '0': 10, '1/8': 25, '1/4': 50, '1/2': 100,
-  '1': 200, '2': 450, '3': 700, '4': 1100, '5': 1800,
-  '6': 2300, '7': 2900, '8': 3900, '9': 5000, '10': 5900,
-  '11': 7200, '12': 8400, '13': 10000, '14': 11500, '15': 13000,
-  '16': 15000, '17': 18000, '18': 20000, '19': 22000, '20': 25000,
-  '21': 33000, '22': 41000, '23': 50000, '24': 62000, '25': 75000,
-}
+  "0": 10,
+  "1/8": 25,
+  "1/4": 50,
+  "1/2": 100,
+  "1": 200,
+  "2": 450,
+  "3": 700,
+  "4": 1100,
+  "5": 1800,
+  "6": 2300,
+  "7": 2900,
+  "8": 3900,
+  "9": 5000,
+  "10": 5900,
+  "11": 7200,
+  "12": 8400,
+  "13": 10000,
+  "14": 11500,
+  "15": 13000,
+  "16": 15000,
+  "17": 18000,
+  "18": 20000,
+  "19": 22000,
+  "20": 25000,
+  "21": 33000,
+  "22": 41000,
+  "23": 50000,
+  "24": 62000,
+  "25": 75000,
+};
 
 function formatCR(cr: unknown): { value: string; xp: string } {
-  if (!cr) return { value: '—', xp: '' }
+  if (!cr) return { value: "—", xp: "" };
   const crStr =
-    typeof cr === 'string' ? cr
-    : typeof cr === 'object' && cr !== null
-      ? (cr as Record<string, string>)['cr'] ?? '—'
-      : '—'
-  const xp = CR_XP[crStr]
+    typeof cr === "string"
+      ? cr
+      : typeof cr === "object" && cr !== null
+        ? ((cr as Record<string, string>)["cr"] ?? "—")
+        : "—";
+  const xp = CR_XP[crStr];
   return {
     value: crStr,
-    xp: xp !== undefined ? `${xp.toLocaleString()} XP` : '',
-  }
+    xp: xp !== undefined ? `${xp.toLocaleString()} XP` : "",
+  };
 }
 
 function formatEntries(entries: unknown[]): string {
   return entries
     .map((e) => {
-      if (typeof e === 'string') return e
-      if (typeof e === 'object' && e !== null) {
-        const obj = e as Record<string, unknown>
-        if (Array.isArray(obj['entries'])) return formatEntries(obj['entries'])
-        if (obj['text']) return obj['text'] as string
+      if (typeof e === "string") return e;
+      if (typeof e === "object" && e !== null) {
+        const obj = e as Record<string, unknown>;
+        if (Array.isArray(obj["entries"])) return formatEntries(obj["entries"]);
+        if (obj["text"]) return obj["text"] as string;
       }
-      return ''
+      return "";
     })
     .filter(Boolean)
-    .join(' ')
+    .join(" ");
 }
 
 function joinConjunction(items: string[]): string {
-  if (items.length === 0) return ''
-  if (items.length === 1) return items[0]!
-  if (items.length === 2) return `${items[0]} and ${items[1]}`
-  return `${items.slice(0, -1).join(', ')}, and ${items[items.length - 1]!}`
+  if (items.length === 0) return "";
+  if (items.length === 1) return items[0]!;
+  if (items.length === 2) return `${items[0]} and ${items[1]}`;
+  return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]!}`;
 }
 
 function titleCaseDamageType(s: string): string {
-  if (!s) return s
-  return s.replace(/\w+/g, (w) => w[0]!.toUpperCase() + w.slice(1).toLowerCase())
+  if (!s) return s;
+  return s.replace(
+    /\w+/g,
+    (w) => w[0]!.toUpperCase() + w.slice(1).toLowerCase(),
+  );
 }
 
 function titleCaseCondition(s: string): string {
-  if (!s) return s
+  if (!s) return s;
   return s
     .split(/[\s_-]+/)
     .map((p) => p[0]!.toUpperCase() + p.slice(1).toLowerCase())
-    .join(' ')
+    .join(" ");
 }
 
-type DamageArrayKey = 'resist' | 'immune' | 'vulnerable'
+type DamageArrayKey = "resist" | "immune" | "vulnerable";
 
-function formatOneDamage(
-  item: unknown,
-  key: DamageArrayKey,
-): string {
-  if (typeof item === 'string') return titleCaseDamageType(item)
-  if (item == null || typeof item !== 'object') return ''
-  const o = item as Record<string, unknown>
-  if (typeof o.special === 'string') return o.special
-  const child = o[key] as unknown[] | undefined
+function formatOneDamage(item: unknown, key: DamageArrayKey): string {
+  if (typeof item === "string") return titleCaseDamageType(item);
+  if (item == null || typeof item !== "object") return "";
+  const o = item as Record<string, unknown>;
+  if (typeof o.special === "string") return o.special;
+  const child = o[key] as unknown[] | undefined;
   if (Array.isArray(child) && child.length) {
-    const parts = child.map((x) => formatOneDamage(x, key)).filter(Boolean)
-    if (parts.length === 0) return ''
-    const list = joinConjunction(parts)
+    const parts = child.map((x) => formatOneDamage(x, key)).filter(Boolean);
+    if (parts.length === 0) return "";
+    const list = joinConjunction(parts);
     const pre =
-      typeof o.preNote === 'string' && o.preNote.trim() ? o.preNote.trim() + ' '
-      : ''
-    const post = typeof o.note === 'string' && o.note.trim() ? o.note.trim() : ''
-    return (pre + list + (post ? (post[0] === '.' ? post : ' ' + post) : '')).trim()
+      typeof o.preNote === "string" && o.preNote.trim()
+        ? o.preNote.trim() + " "
+        : "";
+    const post =
+      typeof o.note === "string" && o.note.trim() ? o.note.trim() : "";
+    return (
+      pre +
+      list +
+      (post ? (post[0] === "." ? post : " " + post) : "")
+    ).trim();
   }
-  return ''
+  return "";
 }
 
 /** Format creature vulnerable / resist / immune arrays (5e-tools JSON). */
-function formatDamageArray(
-  val: unknown,
-  key: DamageArrayKey,
-): string {
-  if (val == null) return ''
-  if (!Array.isArray(val) || val.length === 0) return ''
-  const parts = val.map((x) => formatOneDamage(x, key)).filter(Boolean)
-  return parts.join('; ')
+function formatDamageArray(val: unknown, key: DamageArrayKey): string {
+  if (val == null) return "";
+  if (!Array.isArray(val) || val.length === 0) return "";
+  const parts = val.map((x) => formatOneDamage(x, key)).filter(Boolean);
+  return parts.join("; ");
 }
 
 function formatOneConditionImmunity(item: unknown): string {
-  if (typeof item === 'string') return titleCaseCondition(item)
-  if (item == null || typeof item !== 'object') return ''
-  const o = item as Record<string, unknown>
-  if (typeof o.special === 'string') return o.special
-  const child = o.conditionImmune
+  if (typeof item === "string") return titleCaseCondition(item);
+  if (item == null || typeof item !== "object") return "";
+  const o = item as Record<string, unknown>;
+  if (typeof o.special === "string") return o.special;
+  const child = o.conditionImmune;
   if (Array.isArray(child) && child.length) {
-    const parts = child.map((x) => formatOneConditionImmunity(x)).filter(Boolean)
-    if (parts.length === 0) return ''
-    const list = joinConjunction(parts)
+    const parts = child
+      .map((x) => formatOneConditionImmunity(x))
+      .filter(Boolean);
+    if (parts.length === 0) return "";
+    const list = joinConjunction(parts);
     const pre =
-      typeof o.preNote === 'string' && o.preNote.trim() ? o.preNote.trim() + ' '
-      : ''
-    const post = typeof o.note === 'string' && o.note.trim() ? o.note.trim() : ''
-    return (pre + list + (post ? (post[0] === '.' ? post : ' ' + post) : '')).trim()
+      typeof o.preNote === "string" && o.preNote.trim()
+        ? o.preNote.trim() + " "
+        : "";
+    const post =
+      typeof o.note === "string" && o.note.trim() ? o.note.trim() : "";
+    return (
+      pre +
+      list +
+      (post ? (post[0] === "." ? post : " " + post) : "")
+    ).trim();
   }
-  return ''
+  return "";
 }
 
 function formatConditionImmuneArray(val: unknown): string {
-  if (val == null) return ''
-  if (!Array.isArray(val) || val.length === 0) return ''
-  const parts = val.map((x) => formatOneConditionImmunity(x)).filter(Boolean)
-  return joinConjunction(parts)
+  if (val == null) return "";
+  if (!Array.isArray(val) || val.length === 0) return "";
+  const parts = val.map((x) => formatOneConditionImmunity(x)).filter(Boolean);
+  return joinConjunction(parts);
 }
 
 // ─── Data preparation ─────────────────────────────────────────────────────────
 
 const ABILITIES = [
-  { key: 'str', label: 'STR' },
-  { key: 'dex', label: 'DEX' },
-  { key: 'con', label: 'CON' },
-  { key: 'int', label: 'INT' },
-  { key: 'wis', label: 'WIS' },
-  { key: 'cha', label: 'CHA' },
-] as const
+  { key: "str", label: "STR" },
+  { key: "dex", label: "DEX" },
+  { key: "con", label: "CON" },
+  { key: "int", label: "INT" },
+  { key: "wis", label: "WIS" },
+  { key: "cha", label: "CHA" },
+] as const;
 
 const SKILL_NAMES: Record<string, string> = {
-  acrobatics: 'Acrobatics', 'animal handling': 'Animal Handling',
-  arcana: 'Arcana', athletics: 'Athletics', deception: 'Deception',
-  history: 'History', insight: 'Insight', intimidation: 'Intimidation',
-  investigation: 'Investigation', medicine: 'Medicine', nature: 'Nature',
-  perception: 'Perception', performance: 'Performance', persuasion: 'Persuasion',
-  religion: 'Religion', 'sleight of hand': 'Sleight of Hand',
-  stealth: 'Stealth', survival: 'Survival',
+  acrobatics: "Acrobatics",
+  "animal handling": "Animal Handling",
+  arcana: "Arcana",
+  athletics: "Athletics",
+  deception: "Deception",
+  history: "History",
+  insight: "Insight",
+  intimidation: "Intimidation",
+  investigation: "Investigation",
+  medicine: "Medicine",
+  nature: "Nature",
+  perception: "Perception",
+  performance: "Performance",
+  persuasion: "Persuasion",
+  religion: "Religion",
+  "sleight of hand": "Sleight of Hand",
+  stealth: "Stealth",
+  survival: "Survival",
 };
 
-type AnyFeature = { name: string; entries: unknown[] }
+type AnyFeature = { name: string; entries: unknown[] };
 function asFeatures(val: unknown): AnyFeature[] {
-  if (!Array.isArray(val)) return []
+  if (!Array.isArray(val)) return [];
   return val.filter(
     (v): v is AnyFeature =>
-      typeof v === 'object' && v !== null && 'name' in v && 'entries' in v,
-  )
+      typeof v === "object" && v !== null && "name" in v && "entries" in v,
+  );
 }
 
-const acInfo = formatAC(c.ac as unknown[])
-const hpInfo = formatHP(c.hp)
-const crInfo = formatCR(c.cr)
+const acInfo = formatAC(c.ac as unknown[]);
+const hpInfo = formatHP(c.hp);
+const crInfo = formatCR(c.cr);
 
-const traits = asFeatures(c.trait)
-const actions = asFeatures(c.action)
-const bonusActions = asFeatures(c.bonus)
-const reactions = asFeatures(c.reaction)
-const legendary = asFeatures(c.legendary)
+const traits = asFeatures(c.trait);
+const actions = asFeatures(c.action);
+const bonusActions = asFeatures(c.bonus);
+const reactions = asFeatures(c.reaction);
+const legendary = asFeatures(c.legendary);
 
 // const saves = c.save
 //   ? Object.entries(c.save)
@@ -346,39 +418,38 @@ const skills = c.skill
   ? Object.entries(c.skill)
       .filter(([, v]) => v !== undefined && v !== null)
       .map(([k, v]) => `${SKILL_NAMES[k] ?? k} ${v}`)
-  : []
+  : [];
 
 const senses: string[] = [
   ...(Array.isArray(c.senses) ? (c.senses as string[]) : []),
-  c.passive != null ? `passive Perception ${c.passive}` : '',
-].filter(Boolean)
+  c.passive != null ? `passive Perception ${c.passive}` : "",
+].filter(Boolean);
 
-const languages = Array.isArray(c.languages) ? (c.languages as string[]) : []
+const languages = Array.isArray(c.languages) ? (c.languages as string[]) : [];
 
-const damageVulnerabilities = formatDamageArray(c.vulnerable, 'vulnerable')
-const damageResistances = formatDamageArray(c.resist, 'resist')
-const damageImmunities = formatDamageArray(c.immune, 'immune')
-const conditionImmunities = formatConditionImmuneArray(c.conditionImmune)
+const damageVulnerabilities = formatDamageArray(c.vulnerable, "vulnerable");
+const damageResistances = formatDamageArray(c.resist, "resist");
+const damageImmunities = formatDamageArray(c.immune, "immune");
+const conditionImmunities = formatConditionImmuneArray(c.conditionImmune);
 
-const sizePart = formatSize(c.size as string[])
-const typePart = formatType(c.type)
-const alignPart = formatAlignment(c.alignment as unknown[])
-const meta = [sizePart, typePart].filter(Boolean).join(' ')
+const sizePart = formatSize(c.size as string[]);
+const typePart = formatType(c.type);
+const alignPart = formatAlignment(c.alignment as unknown[]);
+const meta = [sizePart, typePart].filter(Boolean).join(" ");
 
 // Pre-compute ability display values so we avoid TypeScript generics in JSX
-const rawCreature = c as Record<string, unknown>
-const rawSaves = (c.save ?? {}) as Record<string, string | null | undefined>
+const rawCreature = c as Record<string, unknown>;
+const rawSaves = (c.save ?? {}) as Record<string, string | null | undefined>;
 const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   label,
   ...abilityDisplay(
     rawCreature[key] as number | null | { special: string } | undefined,
     rawSaves[key],
   ),
-}))
+}));
 ---
 
 <div class="sb not-content">
-
   {/* ── Name bar ── */}
   <div class="sb__header">
     <h2 class="sb__name">{c.name ?? 'Unknown Creature'}</h2>
@@ -445,149 +516,150 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
     || conditionImmunities
     || senses.length > 0
     || languages.length > 0) && (
-    <div class="sb__properties">
-      {skills.length > 0 && (
+  <div class="sb__properties">
+    {skills.length > 0 && (
         <div class="sb__prop">
           <span class="sb__prop-name">Skills</span>
           <span class="sb__prop-value">{skills.join(', ')}</span>
         </div>
       )}
-      {damageVulnerabilities && (
+    {damageVulnerabilities && (
         <div class="sb__prop">
           <span class="sb__prop-name">Damage Vulnerabilities</span>
           <span class="sb__prop-value">{damageVulnerabilities}</span>
         </div>
       )}
-      {damageResistances && (
+    {damageResistances && (
         <div class="sb__prop">
           <span class="sb__prop-name">Damage Resistances</span>
           <span class="sb__prop-value">{damageResistances}</span>
         </div>
       )}
-      {damageImmunities && (
+    {damageImmunities && (
         <div class="sb__prop">
           <span class="sb__prop-name">Damage Immunities</span>
           <span class="sb__prop-value">{damageImmunities}</span>
         </div>
       )}
-      {conditionImmunities && (
+    {conditionImmunities && (
         <div class="sb__prop">
           <span class="sb__prop-name">Condition Immunities</span>
           <span class="sb__prop-value">{conditionImmunities}</span>
         </div>
       )}
-      {senses.length > 0 && (
+    {senses.length > 0 && (
         <div class="sb__prop">
           <span class="sb__prop-name">Senses</span>
           <span class="sb__prop-value">{senses.join(', ')}</span>
         </div>
       )}
-      {languages.length > 0 && (
+    {languages.length > 0 && (
         <div class="sb__prop">
           <span class="sb__prop-name">Languages</span>
           <span class="sb__prop-value">{languages.join(', ')}</span>
         </div>
       )}
-    </div>
+  </div>
   )}
 
   {/* ── Traits ── */}
   {traits.length > 0 && (
-    <div class="sb__features">
-      {traits.map((t) => (
+  <div class="sb__features">
+    {traits.map((t) => (
         <p class="sb__feature">
           <em><strong>{t.name}.</strong></em>
           {' '}{formatEntries(t.entries)}
         </p>
       ))}
-    </div>
+  </div>
   )}
 
   {/* ── Actions ── */}
   {actions.length > 0 && (
-    <div class="sb__section">
-      <h3 class="sb__section-title">Actions</h3>
-      <div class="sb__features">
-        {actions.map((a) => (
+  <div class="sb__section">
+    <h3 class="sb__section-title">Actions</h3>
+    <div class="sb__features">
+      {actions.map((a) => (
           <p class="sb__feature">
             <em><strong>{a.name}.</strong></em>
             {' '}{formatEntries(a.entries)}
           </p>
         ))}
-      </div>
     </div>
+  </div>
   )}
 
   {/* ── Bonus Actions ── */}
   {bonusActions.length > 0 && (
-    <div class="sb__section">
-      <h3 class="sb__section-title">Bonus Actions</h3>
-      <div class="sb__features">
-        {typeof c.bonusNote === 'string' && c.bonusNote.trim() && (
+  <div class="sb__section">
+    <h3 class="sb__section-title">Bonus Actions</h3>
+    <div class="sb__features">
+      {typeof c.bonusNote === 'string' && c.bonusNote.trim() && (
           <p class="sb__feature">{c.bonusNote}</p>
         )}
-        {Array.isArray(c.bonusHeader) &&
+      {Array.isArray(c.bonusHeader) &&
           (c.bonusHeader as unknown[]).map((h) => (
             <p class="sb__feature">{String(h)}</p>
           ))}
-        {bonusActions.map((b) => (
+      {bonusActions.map((b) => (
           <p class="sb__feature">
             <em><strong>{b.name}.</strong></em>
             {' '}{formatEntries(b.entries)}
           </p>
         ))}
-      </div>
     </div>
+  </div>
   )}
 
   {/* ── Reactions ── */}
   {reactions.length > 0 && (
-    <div class="sb__section">
-      <h3 class="sb__section-title">Reactions</h3>
-      <div class="sb__features">
-        {reactions.map((r) => (
+  <div class="sb__section">
+    <h3 class="sb__section-title">Reactions</h3>
+    <div class="sb__features">
+      {reactions.map((r) => (
           <p class="sb__feature">
             <em><strong>{r.name}.</strong></em>
             {' '}{formatEntries(r.entries)}
           </p>
         ))}
-      </div>
     </div>
+  </div>
   )}
 
   {/* ── Legendary Actions ── */}
   {legendary.length > 0 && (
-    <div class="sb__section">
-      <h3 class="sb__section-title">Legendary Actions</h3>
-      <div class="sb__features">
-        {Array.isArray(c.legendaryHeader) &&
+  <div class="sb__section">
+    <h3 class="sb__section-title">Legendary Actions</h3>
+    <div class="sb__features">
+      {Array.isArray(c.legendaryHeader) &&
           (c.legendaryHeader as string[]).map((h) => (
             <p class="sb__feature">{h}</p>
           ))}
-        {legendary.map((la) => (
+      {legendary.map((la) => (
           <p class="sb__feature">
             <em><strong>{la.name}.</strong></em>
             {' '}{formatEntries(la.entries)}
           </p>
         ))}
-      </div>
     </div>
+  </div>
   )}
-
 </div>
 
 <style>
   /* ─── Light mode tokens ─────────────────────────────────────────────── */
   .sb {
-    --sb-bg:        #fdf6e3;
-    --sb-bg-alt:    #f3e8c8;
-    --sb-red:       #7a200d;
-    --sb-divider:   #9c2b1b;
-    --sb-gold:      #c9a14a;
-    --sb-text:      #212121;
-    --sb-radius:    6px;
-    --sb-font-body: 'Scala Sans Pro', 'Myriad Pro', Calibri, 'Trebuchet MS', sans-serif;
-    --sb-font-head: 'Mrs Eaves', Palatino, 'Palatino Linotype', 'Book Antiqua', serif;
+    --sb-bg: #fdf6e3;
+    --sb-bg-alt: #f3e8c8;
+    --sb-red: #7a200d;
+    --sb-divider: #9c2b1b;
+    --sb-gold: #c9a14a;
+    --sb-text: #212121;
+    --sb-radius: 6px;
+    --sb-font-body:
+      "Scala Sans Pro", "Myriad Pro", Calibri, "Trebuchet MS", sans-serif;
+    --sb-font-head:
+      "Mrs Eaves", Palatino, "Palatino Linotype", "Book Antiqua", serif;
 
     background-color: var(--sb-bg);
     border: 2px solid var(--sb-gold);
@@ -604,14 +676,14 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   }
 
   /* ─── Dark mode tokens ───────────────────────────────────────────────── */
-  :global([data-theme='dark']) .sb {
+  :global([data-theme="dark"]) .sb {
     /* Cool indigo/amethyst palette to match the site's cavern theme */
-    --sb-bg:        #0e0e1c;
-    --sb-bg-alt:    #16162a;
-    --sb-red:       #a882d8;   /* amethyst — replaces maroon for headings  */
-    --sb-divider:   #5a3f7a;   /* deep purple divider                       */
-    --sb-gold:      #3a2e68;   /* indigo border — replaces gold             */
-    --sb-text:      #ccd0ea;   /* cool lavender-white                       */
+    --sb-bg: #0e0e1c;
+    --sb-bg-alt: #16162a;
+    --sb-red: #a882d8; /* amethyst — replaces maroon for headings  */
+    --sb-divider: #5a3f7a; /* deep purple divider                       */
+    --sb-gold: #3a2e68; /* indigo border — replaces gold             */
+    --sb-text: #ccd0ea; /* cool lavender-white                       */
     box-shadow: 0 2px 20px rgba(100, 50, 180, 0.45);
   }
 
@@ -767,7 +839,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   }
 
   /* Highlight saves where proficiency applies (save ≠ raw modifier) */
-  .sb__ability-save[data-proficient='true'] {
+  .sb__ability-save[data-proficient="true"] {
     color: var(--sb-text);
     font-weight: 700;
   }

@@ -5,10 +5,7 @@
     "type": "humanoid",
     "tags": ["any race"]
   },
-  "alignment": [
-    "N",
-    "E"
-  ],
+  "alignment": ["N", "E"],
   "ac": [
     {
       "ac": 15,
@@ -37,10 +34,7 @@
     "deception": "+7",
     "intimidation": "+7"
   },
-  "languages": [
-    "Common",
-    "Infernal"
-  ],
+  "languages": ["Common", "Infernal"],
   "passive": 10,
   "cr": "5",
   "trait": [

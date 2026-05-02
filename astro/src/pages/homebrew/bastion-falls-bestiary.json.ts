@@ -8,64 +8,66 @@
  * Served at:  /homebrew/bastion-falls-bestiary.json
  * Load on 5e.tools via: Tools → Homebrew Manager → Import from URL
  */
-import type { APIRoute } from 'astro'
-import { CreatureDataSchema } from '@bastion-falls/5e-schema-zod'
 
-const SOURCE_JSON = 'BastionFalls'
-const SOURCE_VERSION = '1.0.0'
+import { CreatureDataSchema } from "@bastion-falls/5e-schema-zod";
+import type { APIRoute } from "astro";
+
+const SOURCE_JSON = "BastionFalls";
+const SOURCE_VERSION = "1.0.0";
 
 // Vite resolves this glob relative to this file at build time.
 // Each module's `.default` is the parsed JSON object.
 const creatureModules = import.meta.glob<{ default: unknown }>(
-  '../../content/**/*.creature.json',
+  "../../content/**/*.creature.json",
   { eager: true },
-)
+);
 
 export const GET: APIRoute = () => {
-  const monsters = []
-  const errors: string[] = []
+  const monsters = [];
+  const errors: string[] = [];
 
   for (const [filePath, mod] of Object.entries(creatureModules)) {
     // Inject the source key so 5e.tools can associate the entry with our _meta.
-    const raw = typeof mod.default === 'object' && mod.default !== null
-      ? { source: SOURCE_JSON, ...mod.default as object }
-      : mod.default
-    const result = CreatureDataSchema.safeParse(raw)
+    const raw =
+      typeof mod.default === "object" && mod.default !== null
+        ? { source: SOURCE_JSON, ...(mod.default as object) }
+        : mod.default;
+    const result = CreatureDataSchema.safeParse(raw);
     if (result.success) {
-      monsters.push(result.data)
+      monsters.push(result.data);
     } else {
-      errors.push(`${filePath}: ${result.error.message}`)
+      errors.push(`${filePath}: ${result.error.message}`);
     }
   }
 
   if (errors.length) {
     console.warn(
-      `[bestiary] Skipped ${errors.length} invalid creature file(s):\n${errors.join('\n')}`,
-    )
+      `[bestiary] Skipped ${errors.length} invalid creature file(s):\n${errors.join("\n")}`,
+    );
   }
 
-  const now = Math.floor(Date.now() / 1000)
+  const now = Math.floor(Date.now() / 1000);
 
   const homebrew = {
     _meta: {
       sources: [
         {
           json: SOURCE_JSON,
-          abbreviation: 'BF',
-          full: 'Bastion Falls',
+          abbreviation: "BF",
+          full: "Bastion Falls",
           version: SOURCE_VERSION,
-          url: 'https://bastion-falls.thekennel.info',
-          authors: ['nicodoggie'],
+          url: "https://bastion-falls.thekennel.info",
+          authors: ["nicodoggie"],
         },
       ],
       dateAdded: now,
       dateLastModified: now,
-      edition: 'classic',
+      edition: "classic",
     },
     monster: monsters,
-  }
+  };
 
   return new Response(JSON.stringify(homebrew, null, 2), {
-    headers: { 'Content-Type': 'application/json' },
-  })
-}
+    headers: { "Content-Type": "application/json" },
+  });
+};

@@ -10,6 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint:astro": "astro check",
+    "lint:biome": "biome check .",
     "lint:mdx": "rumdl check src/**/*.{md,mdx}",
     "lint": "yarn lint:astro && yarn lint:mdx",
     "postinstall": "flowbite-react install",

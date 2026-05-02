@@ -2,10 +2,7 @@
   "name": "Flancer Kincade",
   "size": ["M"],
   "type": "humanoid",
-  "alignment": [
-    "L",
-    "G"
-  ],
+  "alignment": ["L", "G"],
   "ac": [{ "ac": 16, "from": ["chain mail"] }],
   "hp": { "average": 52, "formula": "6d10 + 18" },
   "speed": { "walk": 30 },

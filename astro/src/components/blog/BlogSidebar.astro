@@ -19,8 +19,7 @@ const enc = encodeURIComponent;
   >
     <h2 class="text-sm font-semibold text-gray-200 mb-3">Tags</h2>
     <nav class="flex flex-col gap-2">
-      {
-        tagsWithCounts.map(({ tag, count }) => (
+      {tagsWithCounts.map(({ tag, count }) => (
           <a
             href={`/blog/tags/${enc(tag)}`}
             class={`px-3 py-1 rounded text-sm ${tag === currentTag ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-800'}`}
@@ -30,8 +29,7 @@ const enc = encodeURIComponent;
               <span class="text-xs text-gray-400">({count})</span>
             </span>
           </a>
-        ))
-      }
+        ))}
     </nav>
   </div>
 </aside>

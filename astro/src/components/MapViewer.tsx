@@ -1,4 +1,4 @@
-import PanZoomViewer from './PanZoomViewer';
+import PanZoomViewer from "./PanZoomViewer";
 
 interface Props {
   src: string;

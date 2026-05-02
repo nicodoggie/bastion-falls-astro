@@ -1,13 +1,12 @@
 import { defineCollection, type SchemaContext } from "astro:content";
-import { z } from "astro/zod";
-import { glob } from "astro/loaders";
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 import { autoSidebarLoader } from "starlight-auto-sidebar/loader";
 import { autoSidebarSchema } from "starlight-auto-sidebar/schema";
 
-import { collectionExtensions, docsExtension } from './collection-schemas.js';
-
+import { collectionExtensions, docsExtension } from "./collection-schemas.js";
 
 const baseBlogSchema = z.object({
   title: z.string(),
@@ -18,36 +17,39 @@ const baseBlogSchema = z.object({
 
 const blogSchema = (context: SchemaContext) => {
   const { image } = context;
-  return z.discriminatedUnion(
-    'draft',
-    [
-      baseBlogSchema.extend({
-        draft: z.literal(false),
-        published: z.date(),
-        updated: z.date().optional(),
-        banner: z.object({
+  return z.discriminatedUnion("draft", [
+    baseBlogSchema.extend({
+      draft: z.literal(false),
+      published: z.date(),
+      updated: z.date().optional(),
+      banner: z
+        .object({
           url: image(),
           alt: z.string().optional(),
-        }).optional(),
-      }),
-      baseBlogSchema.extend({
-        draft: z.undefined(),
-        published: z.date(),
-        updated: z.date().optional(),
-        banner: z.object({
+        })
+        .optional(),
+    }),
+    baseBlogSchema.extend({
+      draft: z.undefined(),
+      published: z.date(),
+      updated: z.date().optional(),
+      banner: z
+        .object({
           url: image(),
           alt: z.string().optional(),
-        }).optional(),
-      }),
-      baseBlogSchema.extend({
-        draft: z.literal(true),
-        banner: z.object({
+        })
+        .optional(),
+    }),
+    baseBlogSchema.extend({
+      draft: z.literal(true),
+      banner: z
+        .object({
           url: image(),
           alt: z.string().optional(),
-        }).optional(),
-      }),
-    ]
-  );
+        })
+        .optional(),
+    }),
+  ]);
 };
 
 const extensions = Object.fromEntries(
@@ -57,7 +59,7 @@ const extensions = Object.fromEntries(
       loader: glob(value.loader),
       schema: docsSchema({ extend: value.schema }),
     }),
-  ])
+  ]),
 );
 
 export const collections = {
@@ -70,14 +72,14 @@ export const collections = {
     schema: autoSidebarSchema(),
   }),
   posts: defineCollection({
-    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts' }),
+    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts" }),
     schema: blogSchema,
   }),
   creatures: defineCollection({
     loader: glob({
-      pattern: '**/*.creature.json',
-      base: './src/content/docs/world',
-      generateId: ({ entry }) => entry.replace(/\.json$/, ''),
+      pattern: "**/*.creature.json",
+      base: "./src/content/docs/world",
+      generateId: ({ entry }) => entry.replace(/\.json$/, ""),
     }),
     schema: z.record(z.string(), z.unknown()),
   }),

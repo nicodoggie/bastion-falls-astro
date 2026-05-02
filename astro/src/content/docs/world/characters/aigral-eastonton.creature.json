@@ -2,10 +2,7 @@
   "name": "Aigral, Giant of Inespell",
   "size": ["H"],
   "type": "giant",
-  "alignment": [
-    "C",
-    "E"
-  ],
+  "alignment": ["C", "E"],
   "ac": [{ "ac": 15, "from": ["natural armor"] }],
   "hp": { "average": 255, "formula": "85 + 45 + 45 + 40 + 40 (paragon pools)" },
   "speed": { "walk": 40 },
@@ -20,9 +17,7 @@
     "wis": "+4"
   },
   "passive": 11,
-  "languages": [
-    "Common"
-  ],
+  "languages": ["Common"],
   "cr": "5",
   "trait": [
     {

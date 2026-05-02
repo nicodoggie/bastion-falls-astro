@@ -7,9 +7,11 @@
  *   - astro/src/integrations/vscode-frontmatter-schemas.ts
  *     (called with .toJSONSchema() to generate YAML IntelliSense schemas)
  */
-import { z } from 'astro/zod';
 
-import { CreatureDataSchema, VehicleShipDataSchema } from '@bastion-falls/5e-schema-zod';
+import {
+  CreatureDataSchema,
+  VehicleShipDataSchema,
+} from "@bastion-falls/5e-schema-zod";
 import {
   CharacterSchema,
   ConceptSchema,
@@ -20,11 +22,12 @@ import {
   OrganizationSchema,
   ReligionSchema,
   SpeciesSchema,
-} from '@bastion-falls/types';
+} from "@bastion-falls/types";
+import { z } from "astro/zod";
 
 const CreatureStatsSchema = z.record(
   z.string(),
-  CreatureDataSchema.or(z.string())
+  CreatureDataSchema.or(z.string()),
 );
 
 /**
@@ -39,19 +42,18 @@ const CreatureStatsSchema = z.record(
 export const collectionExtensions = {
   character: {
     loader: {
-      pattern: '**/*.mdx',
-      base: './src/content/docs/world/characters',
+      pattern: "**/*.mdx",
+      base: "./src/content/docs/world/characters",
     },
-    schema:
-      z.object({
-        character: CharacterSchema.partial({ name: true }).optional(),
-      }),
+    schema: z.object({
+      character: CharacterSchema.partial({ name: true }).optional(),
+    }),
   },
 
   concept: {
     loader: {
-      pattern: '**/*.mdx',
-      base: './src/content/docs/world/concepts',
+      pattern: "**/*.mdx",
+      base: "./src/content/docs/world/concepts",
     },
     schema: z.object({
       concept: ConceptSchema.optional(),
@@ -60,8 +62,8 @@ export const collectionExtensions = {
 
   event: {
     loader: {
-      pattern: '**/*.mdx',
-      base: './src/content/docs/world/events',
+      pattern: "**/*.mdx",
+      base: "./src/content/docs/world/events",
     },
     schema: z.object({
       event: EventSchema.partial({ name: true }).optional(),
@@ -70,19 +72,18 @@ export const collectionExtensions = {
 
   family: {
     loader: {
-      pattern: '**/*.mdx',
-      base: './src/content/docs/world/families',
+      pattern: "**/*.mdx",
+      base: "./src/content/docs/world/families",
     },
     schema: z.object({
       family: FamilySchema.partial({ name: true }).optional(),
-
     }),
   },
 
   item: {
     loader: {
-      pattern: '**/*.mdx',
-      base: './src/content/docs/world/items',
+      pattern: "**/*.mdx",
+      base: "./src/content/docs/world/items",
     },
     schema: z.object({
       item: ItemSchema.optional(),
@@ -91,8 +92,8 @@ export const collectionExtensions = {
 
   location: {
     loader: {
-      pattern: '**/*.mdx',
-      base: './src/content/docs/world/locations',
+      pattern: "**/*.mdx",
+      base: "./src/content/docs/world/locations",
     },
     schema: z.object({
       location: LocationSchema.optional(),
@@ -101,8 +102,8 @@ export const collectionExtensions = {
 
   organization: {
     loader: {
-      pattern: '**/*.mdx',
-      base: './src/content/docs/world/organizations',
+      pattern: "**/*.mdx",
+      base: "./src/content/docs/world/organizations",
     },
     schema: z.object({
       organization: OrganizationSchema.optional(),
@@ -111,8 +112,8 @@ export const collectionExtensions = {
 
   religion: {
     loader: {
-      pattern: '**/*.mdx',
-      base: './src/content/docs/world/organizations',
+      pattern: "**/*.mdx",
+      base: "./src/content/docs/world/organizations",
     },
     schema: z.object({
       religion: ReligionSchema.optional(),
@@ -121,8 +122,8 @@ export const collectionExtensions = {
 
   species: {
     loader: {
-      pattern: '**/*.mdx',
-      base: './src/content/docs/world/species',
+      pattern: "**/*.mdx",
+      base: "./src/content/docs/world/species",
     },
     schema: z.object({
       species: SpeciesSchema.partial({ name: true }).optional(),
@@ -131,8 +132,8 @@ export const collectionExtensions = {
 
   vehicle: {
     loader: {
-      pattern: '**/*.mdx',
-      base: './src/content/docs/world/vehicles',
+      pattern: "**/*.mdx",
+      base: "./src/content/docs/world/vehicles",
     },
     schema: z.object({
       vehicle: VehicleShipDataSchema.optional(),
@@ -150,7 +151,7 @@ export type CollectionName = keyof typeof collectionExtensions;
 const TimelineOverrideSchema = z.object({
   label: z.string().optional(),
   year: z.string().optional(),
-  type: z.enum(['birth', 'death', 'start', 'end', 'discover']).optional(),
+  type: z.enum(["birth", "death", "start", "end", "discover"]).optional(),
   priority: z.number().optional(),
   order: z.number().optional(),
 });
@@ -161,13 +162,15 @@ const TimelineFieldSchema = z.union([
   z.array(TimelineOverrideSchema),
 ]);
 
-export const docsExtension = z.object(
-  Object.fromEntries(
-    Object.values(collectionExtensions).flatMap(({ schema }) =>
-      Object.entries(schema.shape as Record<string, z.ZodTypeAny>)
-    )
+export const docsExtension = z
+  .object(
+    Object.fromEntries(
+      Object.values(collectionExtensions).flatMap(({ schema }) =>
+        Object.entries(schema.shape as Record<string, z.ZodTypeAny>),
+      ),
+    ),
   )
-).extend({
-  timeline: TimelineFieldSchema.optional(),
-  creatureStats: CreatureStatsSchema.optional(),
-});
+  .extend({
+    timeline: TimelineFieldSchema.optional(),
+    creatureStats: CreatureStatsSchema.optional(),
+  });

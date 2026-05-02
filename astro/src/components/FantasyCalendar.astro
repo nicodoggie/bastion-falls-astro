@@ -2,45 +2,50 @@
 // Fantasy Calendar component to be placed in the sidebar
 ---
 
-<div id="fantasy-calendar-container"><div id="fantasy-calendar-widget"></div></div>
+<div id="fantasy-calendar-container">
+  <div id="fantasy-calendar-widget"></div>
+</div>
 <script>
-  // Initialize Fantasy Calendar when the component loads
-  function initFantasyCalendar(selector: string) {
-    // @ts-ignore
-    if (typeof FantasyCalendar !== 'undefined') {
-      // @ts-ignore
-      FantasyCalendar({
-        hash: '089e518f9ea966373b1c71535c25b98a',
-        selector,
-        settings: {
-          theme: 'custom',
-          current_date_color: '#613583',
-        },
-      });
-    } else {
-      // If FantasyCalendar isn't loaded yet, wait for it
-      setTimeout(initFantasyCalendar, 100);
-    }
-  }
-
-  // Try to initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.getElementById('fantasy-calendar-widget')?.addEventListener('DOMContentLoaded', () => initFantasyCalendar("#fantasy-calendar-widget > div"));
+// Initialize Fantasy Calendar when the component loads
+function initFantasyCalendar(selector: string) {
+  // @ts-expect-error
+  if (typeof FantasyCalendar !== "undefined") {
+    // @ts-expect-error
+    FantasyCalendar({
+      hash: "089e518f9ea966373b1c71535c25b98a",
+      selector,
+      settings: {
+        theme: "custom",
+        current_date_color: "#613583",
+      },
+    });
   } else {
-    initFantasyCalendar("#fantasy-calendar-widget");
+    // If FantasyCalendar isn't loaded yet, wait for it
+    setTimeout(initFantasyCalendar, 100);
   }
+}
+
+// Try to initialize when DOM is ready
+if (document.readyState === "loading") {
+  document
+    .getElementById("fantasy-calendar-widget")
+    ?.addEventListener("DOMContentLoaded", () =>
+      initFantasyCalendar("#fantasy-calendar-widget > div"),
+    );
+} else {
+  initFantasyCalendar("#fantasy-calendar-widget");
+}
 </script>
 <style>
+#fantasy-calendar-container {
+  margin-bottom: 1rem;
+}
 
-  #fantasy-calendar-container {
-    margin-bottom: 1rem;
-  }
+#fantasy-calendar-widget {
+  height: 13rem;
+}
 
-  #fantasy-calendar-widget {
-    height: 13rem;
-  }
-
-  #fantasy-calendar-widget :global(*) {
-    max-width: 100%;
-  }
+#fantasy-calendar-widget :global(*) {
+  max-width: 100%;
+}
 </style>

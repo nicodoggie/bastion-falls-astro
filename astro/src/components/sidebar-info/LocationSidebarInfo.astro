@@ -1,60 +1,61 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import { getEntry } from 'astro:content';
-import { slug } from 'github-slugger';
-import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
-import type { PoliticalLocationSection } from '@bastion-falls/types/Location';
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+import type { PoliticalLocationSection } from "@bastion-falls/types/Location";
+import type { ImageMetadata } from "astro";
+import { slug } from "github-slugger";
 
 const { title, location } = Astro.props;
 
 let image;
-if(location?.image?.url) {
-  const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*.{jpg,jpeg,png,webp}");
+if (location?.image?.url) {
+  const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/**/*.{jpg,jpeg,png,webp}",
+  );
   image = images[location.image.url]();
 }
 
 // Get parent location entries if they exist
 let parents: CollectionEntry<"location">[] = [];
-if(location?.parents) {
-  parents = (await Promise.all(
-    location.parents.map(
-      async (parentName: string) => {
-        const parentEntry = await getEntry('location', slug(parentName));
+if (location?.parents) {
+  parents = (
+    await Promise.all(
+      location.parents.map(async (parentName: string) => {
+        const parentEntry = await getEntry("location", slug(parentName));
         return parentEntry;
-      }
+      }),
     )
-  )).filter((parent) => parent);
+  ).filter((parent) => parent);
 }
 
 // Get related location entries if they exist
 let related: CollectionEntry<"location">[] = [];
-if(location?.related) {
-  related = (await Promise.all(
-    location.related.map(
-      async (relatedName: string) => {
-        const relatedEntry = await getEntry('location', slug(relatedName));
+if (location?.related) {
+  related = (
+    await Promise.all(
+      location.related.map(async (relatedName: string) => {
+        const relatedEntry = await getEntry("location", slug(relatedName));
         return relatedEntry;
-      }
+      }),
     )
-  )).filter((rel) => rel);
+  ).filter((rel) => rel);
 }
-
 ---
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full">
-  {
-    title && (
+
+<div
+  class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
+>
+  {title && (
       <div class="flex justify-center items-center border-gray-600">
         <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
           {location.name}
         </h2>
       </div>
       <hr class="border-gray-600">
-    )
-  }
-  
-  {
-    image && (
+    )}
+
+  {image && (
       <div class="mb-4 w-full character-image-container bg-black">
         <Image 
           src={image} 
@@ -68,14 +69,11 @@ if(location?.related) {
           </a>
         </p>
       </div>
-    )
-  }
+    )}
 
   <div class="space-y-4">
     <ul class="divide-y divide-gray-200 dark:divide-gray-700">
-      
-      {
-        location?.type && (
+      {location?.type && (
           <li class="py-2">
             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Type
@@ -84,11 +82,9 @@ if(location?.related) {
               {location.type.charAt(0).toUpperCase() + location.type.slice(1)}
             </p>
           </li>
-        )
-      }
-      
-      {
-        location.details?.population && (
+        )}
+
+      {location.details?.population && (
           <li class="py-2">
             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Population
@@ -97,11 +93,9 @@ if(location?.related) {
               {location.details.population}
             </p>
           </li>
-        )
-      }
-      
-      {
-        location.details?.area && (
+        )}
+
+      {location.details?.area && (
           <li class="py-2">
             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Area
@@ -110,11 +104,9 @@ if(location?.related) {
               {location.details.area}
             </p>
           </li>
-        )
-      }
-      
-      {
-        parents && parents.length > 0 && (
+        )}
+
+      {parents && parents.length > 0 && (
           <li class="py-2">
             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Parent Locations
@@ -129,11 +121,9 @@ if(location?.related) {
               ))}
             </ul>
           </li>
-        )
-      }
-      
-      {
-        related && related.length > 0 && (
+        )}
+
+      {related && related.length > 0 && (
           <li class="py-2">
             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Related Locations
@@ -149,11 +139,9 @@ if(location?.related) {
               ))}
             </ul>
           </li>
-        )
-      }
-      
-      {
-        location.sections && location.sections.length > 0 && (
+        )}
+
+      {location.sections && location.sections.length > 0 && (
           <li class="py-2">
             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Sections
@@ -175,9 +163,7 @@ if(location?.related) {
               ))}
             </ul>
           </li>
-        )
-      }
-      
+        )}
     </ul>
   </div>
-</div> 
+</div>

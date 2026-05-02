@@ -1,8 +1,8 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import { getEntry} from 'astro:content';
-import { slug } from 'github-slugger';
-import type { OrganizationMember } from '@bastion-falls/types/Organization';
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+import type { OrganizationMember } from "@bastion-falls/types/Organization";
+import { slug } from "github-slugger";
 
 const { organization } = Astro.props;
 
@@ -14,42 +14,40 @@ interface MemberData {
 }
 
 let members: MemberData[] = [];
-if(organization?.members) {
-  members = (await Promise.allSettled<MemberData>(
-    organization.members.map(
-      async (memberName: OrganizationMember) => {
+if (organization?.members) {
+  members = (
+    await Promise.allSettled<MemberData>(
+      organization.members.map(async (memberName: OrganizationMember) => {
         const { name, type } = memberName;
         const sluggedName = slug(name);
-        if(sluggedName) {
-          const entry = await getEntry('character', sluggedName);
-          return {name, type, entry};
+        if (sluggedName) {
+          const entry = await getEntry("character", sluggedName);
+          return { name, type, entry };
         }
         throw new Error(`Member ${memberName.name} has no slugged name`);
-      }
+      }),
     )
-  ))
-    .map((settled) => settled.status === 'fulfilled' ? settled.value : null)
+  )
+    .map((settled) => (settled.status === "fulfilled" ? settled.value : null))
     .filter((member) => member !== null);
 }
-
 ---
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full">
-  {
-    organization.name && (
+
+<div
+  class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
+>
+  {organization.name && (
       <div class="flex justify-center items-center border-gray-600">
         <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
           {organization.name}
         </h2>
       </div>
       <hr class="border-gray-600">
-    )
-  }
+    )}
 
   <div class="space-y-4">
     <ul class="divide-y divide-gray-200 dark:divide-gray-700">
-      
-      {
-        organization?.type && (
+      {organization?.type && (
           <li class="py-2">
             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Type
@@ -58,11 +56,9 @@ if(organization?.members) {
               {organization.type.charAt(0).toUpperCase() + organization.type.slice(1)}
             </p>
           </li>
-        )
-      }
-      
-      {
-        organization?.founded && (
+        )}
+
+      {organization?.founded && (
           <li class="py-2">
             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Founded
@@ -71,11 +67,9 @@ if(organization?.members) {
               {organization.founded}
             </p>
           </li>
-        )
-      }
-      
-      {
-        organization?.dissolved && (
+        )}
+
+      {organization?.dissolved && (
           <li class="py-2">
             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Dissolved
@@ -84,11 +78,9 @@ if(organization?.members) {
               {organization.dissolved}
             </p>
           </li>
-        )
-      }
-      
-      {
-        organization?.headquarters && (
+        )}
+
+      {organization?.headquarters && (
           <li class="py-2">
             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Headquarters
@@ -97,11 +89,9 @@ if(organization?.members) {
               {organization.headquarters}
             </p>
           </li>
-        )
-      }
-      
-      {
-        members && members.length > 0 && (
+        )}
+
+      {members && members.length > 0 && (
           <li class="py-2">
             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Members
@@ -117,9 +107,7 @@ if(organization?.members) {
               ))}
             </ul>
           </li>
-        )
-      }
-      
+        )}
     </ul>
   </div>
-</div> 
+</div>

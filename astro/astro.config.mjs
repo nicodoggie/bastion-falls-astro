@@ -1,6 +1,6 @@
+import fs from "node:fs";
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import fs from 'node:fs';
+import { fileURLToPath } from "node:url";
 
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
@@ -9,17 +9,17 @@ import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
 import AutoImport from 'astro-auto-import';
 import expressiveCode from 'astro-expressive-code';
+import mermaid from "astro-mermaid";
 import { defineConfig } from 'astro/config';
 import flowbiteReact from 'flowbite-react/plugin/astro';
-import remarkCustomHeaderId from 'remark-custom-header-id';
-import remarkRewriteLinks from './src/plugins/remark-rewrite-links.mjs';
+import remarkCustomHeaderId from "remark-custom-header-id";
 import { remarkDefinitionList } from 'remark-definition-list';
 import remarkMarkmap from 'remark-markmap';
 import remarkParse from 'remark-parse';
 import starlightAutoSidebar from 'starlight-auto-sidebar';
-import mermaid from 'astro-mermaid'
+import { timelineGenerator } from "./src/integrations/timeline-generator.ts";
 import { vscodeFrontmatterSchemas } from './src/integrations/vscode-frontmatter-schemas.ts';
-import { timelineGenerator } from './src/integrations/timeline-generator.ts';
+import remarkRewriteLinks from "./src/plugins/remark-rewrite-links.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -29,7 +29,6 @@ const lexurgyLang = JSON.parse(
     'utf-8',
   ),
 );
-
 
 export default defineConfig({
 	output: "static",

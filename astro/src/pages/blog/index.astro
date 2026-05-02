@@ -1,19 +1,20 @@
 ---
-import { getCollection } from 'astro:content';
-import BlogIndex from '@/components/blog/BlogIndex.astro';
+import { getCollection } from "astro:content";
+import BlogIndex from "@/components/blog/BlogIndex.astro";
 
-const posts = await getCollection('posts');
+const posts = await getCollection("posts");
 
 // Sorting is handled inside BlogIndex; pass through as-is
 const allPosts = posts;
 
 // Tag list for sidebar/dropdown
 const tagSet = new Set<string>();
-for (const p of allPosts) (p.data.tags ?? []).forEach((t: string) => tagSet.add(t));
+for (const p of allPosts)
+  (p.data.tags ?? []).forEach((t: string) => tagSet.add(t));
 const allTags = Array.from(tagSet).sort((a, b) => a.localeCompare(b));
 ---
 
-<BlogIndex 
+<BlogIndex
   posts={allPosts}
   title="Blog"
   description="Thoughts, poems, and other musings during the development of the Bastion Falls D&D campaign."

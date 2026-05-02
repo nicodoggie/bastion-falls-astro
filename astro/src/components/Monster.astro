@@ -7,6 +7,4 @@ const { name } = Astro.props;
 const url = `https://www.dndbeyond.com/monsters/filter-search=${name}`;
 ---
 
-<a href={url} rel="external,noopener,noreferrer" target="_blank">
-  {name}
-</a>
+<a href={url} rel="external,noopener,noreferrer" target="_blank"> {name} </a>

@@ -3,10 +3,7 @@
   "name": "Drekavac Swarm",
   "size": ["M"],
   "type": { "type": "undead", "swarmSize": "T" },
-  "alignment": [
-    "E",
-    "N"
-  ],
+  "alignment": ["E", "N"],
   "ac": [{ "ac": 12, "from": ["natural armor"] }],
   "hp": { "average": 36, "formula": "8d8" },
   "speed": { "walk": 30 },
@@ -19,11 +16,7 @@
   "senses": ["darkvision 60 ft."],
   "passive": 10,
   "immune": ["poison"],
-  "resist": [
-    "bludgeoning",
-    "piercing",
-    "slashing"
-  ],
+  "resist": ["bludgeoning", "piercing", "slashing"],
   "conditionImmune": [
     "poisoned",
     "exhaustion",

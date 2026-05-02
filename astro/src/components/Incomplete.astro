@@ -1,15 +1,17 @@
 ---
-import { Card } from 'flowbite-react';
-import { GITHUB_URL } from '../constants';
+import { Card } from "flowbite-react";
+import { GITHUB_URL } from "../constants";
 ---
 
 <Card title="Incomplete">
-  <p>This article is incomplete!
-  <a
-    href={`${GITHUB_URL}/issues/new?labels=article%20update`}
-    target="_blank"
-  >
-    Poke the author
-  </a>
-  to expand it!</p>
+  <p>
+    This article is incomplete!
+    <a
+      href={`${GITHUB_URL}/issues/new?labels=article%20update`}
+      target="_blank"
+    >
+      Poke the author
+    </a>
+    to expand it!
+  </p>
 </Card>

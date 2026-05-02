@@ -25,4 +25,14 @@ export const SpeciesSchema = z.object({
   diet: z.array(z.string()).optional(),
 });
 
+export const SubspeciesSchema = SpeciesSchema.extend({
+  parent: z.string().or(z.array(z.string())),
+});
+
+export const SpeciesGroupSchema = SpeciesSchema.extend({
+  subspecies: z.array(SubspeciesSchema),
+});
+
 export type Species = z.infer<typeof SpeciesSchema>;
+export type Subspecies = z.infer<typeof SubspeciesSchema>;
+export type SpeciesGroup = z.infer<typeof SpeciesGroupSchema>;

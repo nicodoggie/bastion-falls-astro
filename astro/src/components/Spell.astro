@@ -10,6 +10,4 @@ const slugger = new GitHubSlugger();
 const url = `https://www.dndbeyond.com/spells/${slugger.slug(name)}`;
 ---
 
-<a href={url} target="_blank">
-  {name}
-</a>
+<a href={url} target="_blank"> {name} </a>

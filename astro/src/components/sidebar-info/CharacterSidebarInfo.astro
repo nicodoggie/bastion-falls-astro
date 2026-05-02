@@ -1,28 +1,28 @@
 ---
-import type { 
-  CharacterSexOrgan, 
-  CharacterOrganization, 
+import type {
+  CharacterSexOrgan,
+  CharacterOrganization,
   CharacterFamily,
-} from '@bastion-falls/types/Character';
-import { type CollectionEntry, getEntry } from 'astro:content';
-import { slug } from 'github-slugger';
-import SidebarImage from './SidebarImage.astro';
+} from "@bastion-falls/types/Character";
+import { type CollectionEntry, getEntry } from "astro:content";
+import { slug } from "github-slugger";
+import SidebarImage from "./SidebarImage.astro";
 
 const { character } = Astro.props;
 
 let mortalityIcon;
-switch(character.details.mortality) {
-  case 'dead':
-    mortalityIcon = '💀';
+switch (character.details.mortality) {
+  case "dead":
+    mortalityIcon = "💀";
     break;
-  case 'alive':
-    mortalityIcon = '';
+  case "alive":
+    mortalityIcon = "";
     break;
-  case 'undead':
-    mortalityIcon = '🧟';
+  case "undead":
+    mortalityIcon = "🧟";
     break;
-  case 'unknown':
-    mortalityIcon = '�';
+  case "unknown":
+    mortalityIcon = "�";
     break;
 }
 
@@ -32,25 +32,25 @@ interface SpeciesData {
 }
 
 let species: SpeciesData[] = [];
-if(character?.details?.species) {
-  const speciesNames = Array.isArray(character.details.species) 
-    ? character.details.species 
+if (character?.details?.species) {
+  const speciesNames = Array.isArray(character.details.species)
+    ? character.details.species
     : [character.details.species];
-  
-  species = (await Promise.allSettled<SpeciesData>(
-    speciesNames.map(
-      async (name: string) => {
+
+  species = (
+    await Promise.allSettled<SpeciesData>(
+      speciesNames.map(async (name: string) => {
         const sluggedName = slug(name);
-        if(sluggedName) {
-          const entry = await getEntry('species', sluggedName);
+        if (sluggedName) {
+          const entry = await getEntry("species", sluggedName);
           return { name, entry };
         }
         throw new Error(`Species ${name} has no slugged name`);
-      }
+      }),
     )
-  ))
-  .map((settled) => settled.status === 'fulfilled' ? settled.value : null)
-  .filter((s): s is SpeciesData => s !== null && s.entry !== undefined);
+  )
+    .map((settled) => (settled.status === "fulfilled" ? settled.value : null))
+    .filter((s): s is SpeciesData => s !== null && s.entry !== undefined);
 }
 
 interface Relative {
@@ -59,23 +59,23 @@ interface Relative {
   entry: CollectionEntry<"character">;
 }
 
-
 let relatives: Relative[] = [];
-if(character?.relationships?.relatives) {
-  relatives = (await Promise
-    .allSettled<Relative>(
+if (character?.relationships?.relatives) {
+  relatives = (
+    await Promise.allSettled<Relative>(
       character.relationships.relatives.map(
-        async ({name, type}: {name: string, type: string}) => {
+        async ({ name, type }: { name: string; type: string }) => {
           const sluggedName = slug(name);
-          if(sluggedName) {
-            const entry = await getEntry('character', sluggedName); 
-            return {name, type, entry};
+          if (sluggedName) {
+            const entry = await getEntry("character", sluggedName);
+            return { name, type, entry };
           }
           throw new Error(`Relative ${name} has no slugged name`);
-        }
-      )
-    ))
-    .map((settled) => settled.status === 'fulfilled' ? settled.value : null)
+        },
+      ),
+    )
+  )
+    .map((settled) => (settled.status === "fulfilled" ? settled.value : null))
     .filter((relative) => relative !== null);
 }
 
@@ -84,26 +84,30 @@ relatives.sort((a, b) => a.type.localeCompare(b.type));
 
 interface OrganizationData {
   name: string;
-  positionsHeld: CharacterOrganization['positionsHeld'];
+  positionsHeld: CharacterOrganization["positionsHeld"];
   entry?: CollectionEntry<"organization">;
 }
 let organizations: OrganizationData[] = [];
-if(character?.relationships?.organizations) {
-  organizations = (await Promise.allSettled<OrganizationData>(
-    character.relationships.organizations.map(
-      async (organization: CharacterOrganization) => {
-        const sluggedName = slug(organization.name);
-        const entry = sluggedName ? await getEntry('organization', sluggedName) : undefined;
+if (character?.relationships?.organizations) {
+  organizations = (
+    await Promise.allSettled<OrganizationData>(
+      character.relationships.organizations.map(
+        async (organization: CharacterOrganization) => {
+          const sluggedName = slug(organization.name);
+          const entry = sluggedName
+            ? await getEntry("organization", sluggedName)
+            : undefined;
 
-        return {
-          name: organization.name, 
-          positionsHeld: organization.positionsHeld, 
-          entry
-        };
-      }
+          return {
+            name: organization.name,
+            positionsHeld: organization.positionsHeld,
+            entry,
+          };
+        },
+      ),
     )
-  ))
-    .map((settled) => settled.status === 'fulfilled' ? settled.value : null)
+  )
+    .map((settled) => (settled.status === "fulfilled" ? settled.value : null))
     .filter((organization) => organization !== null);
 }
 
@@ -113,27 +117,28 @@ interface FamilyData {
 }
 
 let families: FamilyData[] = [];
-if(character?.relationships?.families) {
-  families = (await Promise.allSettled<FamilyData>(
-    character.relationships.families.map(
-      async (family: CharacterFamily) => {
+if (character?.relationships?.families) {
+  families = (
+    await Promise.allSettled<FamilyData>(
+      character.relationships.families.map(async (family: CharacterFamily) => {
         const sluggedName = slug(family.name);
-        if(sluggedName) {
-          const entry = await getEntry('family', sluggedName);
-          return {name: family.name, entry};
+        if (sluggedName) {
+          const entry = await getEntry("family", sluggedName);
+          return { name: family.name, entry };
         }
         throw new Error(`Family ${family.name} has no slugged name`);
-      }
+      }),
     )
-  ))
-    .map((settled) => settled.status === 'fulfilled' ? settled.value : null)
+  )
+    .map((settled) => (settled.status === "fulfilled" ? settled.value : null))
     .filter((family) => family !== null);
 }
-
 ---
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full">
-  {
-    character.name && (
+
+<div
+  class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
+>
+  {character.name && (
       <div class="flex justify-center items-center border-gray-600">
         <a href={character.ddb} target="_blank" rel="noopener noreferrer">
           <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white" style="display: inline-block;">
@@ -142,17 +147,12 @@ if(character?.relationships?.families) {
         </a>
       </div>
       <hr class="border-gray-600">
-    )
-  }
-  {
-    character.image && <SidebarImage {...character.image} />
-  }
+    )}
+  {character.image && <SidebarImage {...character.image} />}
 
   <div class="space-y-4">
     <dl class="divide-y divide-gray-200 dark:divide-gray-700">
-      
-      {
-        character.details?.age && (
+      {character.details?.age && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Age
@@ -161,10 +161,8 @@ if(character?.relationships?.families) {
               {character.details.age}
             </dd>
           </div>
-        )
-      }
-      {
-        character.details?.dateOfBirth && (
+        )}
+      {character.details?.dateOfBirth && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Date of Birth
@@ -173,10 +171,8 @@ if(character?.relationships?.families) {
               {character.details.dateOfBirth}
             </dd>
           </div>
-        )
-      }
-      {
-        character.details?.dateOfDeath && (
+        )}
+      {character.details?.dateOfDeath && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Date of Death
@@ -185,10 +181,8 @@ if(character?.relationships?.families) {
               {character.details.dateOfDeath}
             </dd>
           </div>
-        )
-      }
-      {
-        character?.details.sex && (
+        )}
+      {character?.details.sex && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Sex
@@ -197,10 +191,8 @@ if(character?.relationships?.families) {
               {character.details.sex}{character.details.pronouns && ` (${character.details.pronouns})`}
             </dd>
           </div>
-        )
-      }
-      {
-        character?.details.sexOrgans && character.details.sexOrgans.length > 0 && (
+        )}
+      {character?.details.sexOrgans && character.details.sexOrgans.length > 0 && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Genitalia
@@ -248,10 +240,8 @@ if(character?.relationships?.families) {
               </dl>
             </dd>
           </div>
-        )
-      }
-      {
-        character.details?.origin && (
+        )}
+      {character.details?.origin && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Origin
@@ -260,10 +250,8 @@ if(character?.relationships?.families) {
               {character.details.origin}
             </dd>
           </div>
-        )
-      }
-      {
-        character.background?.alignment && (
+        )}
+      {character.background?.alignment && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Alignment
@@ -273,10 +261,8 @@ if(character?.relationships?.families) {
               {character.background.alignment.law}
             </dd>
           </div>
-        )
-      }
-      {
-        character.details?.aliases && (
+        )}
+      {character.details?.aliases && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Known Aliases
@@ -292,10 +278,8 @@ if(character?.relationships?.families) {
             }
             
           </div>
-        )
-      }
-      {
-        organizations && (
+        )}
+      {organizations && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Organizations
@@ -315,10 +299,8 @@ if(character?.relationships?.families) {
                 )}
             </dd>
           </div>
-        )
-      }
-      {
-        relatives && (
+        )}
+      {relatives && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Relatives
@@ -338,10 +320,8 @@ if(character?.relationships?.families) {
               </ul>
             </dd>
           </div>
-        )
-      }
-      {
-        character.relationships?.other && (
+        )}
+      {character.relationships?.other && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Relatives
@@ -361,10 +341,8 @@ if(character?.relationships?.families) {
               </ul>
             </dd>
           </div>
-        )
-      }
-      {
-        families && (
+        )}
+      {families && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Families
@@ -379,10 +357,8 @@ if(character?.relationships?.families) {
               </ul>
             </dd>
           </div>
-        )
-      }
-      {
-        character.details?.species && species && (
+        )}
+      {character.details?.species && species && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Species
@@ -397,10 +373,8 @@ if(character?.relationships?.families) {
               </ul>
             </dd>
           </div>
-        )
-      }
-      {
-        character.details?.height && (
+        )}
+      {character.details?.height && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Height
@@ -409,10 +383,8 @@ if(character?.relationships?.families) {
               {character.details.height}
             </dd>
           </div>
-        )
-      }
-      {
-        character.details?.weight && (
+        )}
+      {character.details?.weight && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Weight
@@ -421,10 +393,8 @@ if(character?.relationships?.families) {
               {character.details.weight}
             </dd>
           </div>
-        )
-      }
-      {
-        character.background?.goals && (
+        )}
+      {character.background?.goals && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Goals
@@ -433,10 +403,8 @@ if(character?.relationships?.families) {
               {character.background.goals}
             </dd>
           </div>
-        )
-      }
-      {
-        character.background?.flaws && (
+        )}
+      {character.background?.flaws && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Flaws
@@ -445,10 +413,8 @@ if(character?.relationships?.families) {
               {character.background.flaws}
             </dd>
           </div>
-        )
-      }
-      {
-        character.background?.backstory && (
+        )}
+      {character.background?.backstory && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Backstory
@@ -457,8 +423,7 @@ if(character?.relationships?.families) {
               {character.background.backstory}
             </dd>
           </div>
-        )
-      }
+        )}
     </dl>
   </div>
 </div>

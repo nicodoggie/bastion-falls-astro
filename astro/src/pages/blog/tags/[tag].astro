@@ -1,13 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
-import BlogIndex from '@/components/blog/BlogIndex.astro';
-import { slug } from 'github-slugger';
+import { getCollection } from "astro:content";
+import { slug } from "github-slugger";
+import BlogIndex from "@/components/blog/BlogIndex.astro";
 
-const posts = await getCollection('posts');
+const posts = await getCollection("posts");
 
 // Build list of unique, normalized tags for static paths
 export async function getStaticPaths() {
-  const allPosts = await getCollection('posts');
+  const allPosts = await getCollection("posts");
   const tags = new Set<string>();
   for (const p of allPosts) {
     (p.data.tags ?? []).forEach((t: string) => tags.add(t));

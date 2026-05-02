@@ -1,24 +1,15 @@
 {
   "name": "Monk of the Deathengel",
-  "size": [
-    "M"
-  ],
+  "size": ["M"],
   "type": {
     "type": "humanoid",
-    "tags": [
-      "any race"
-    ]
+    "tags": ["any race"]
   },
-  "alignment": [
-    "L",
-    "G"
-  ],
+  "alignment": ["L", "G"],
   "ac": [
     {
       "ac": 16,
-      "from": [
-        "unarmored defense"
-      ]
+      "from": ["unarmored defense"]
     }
   ],
   "hp": {
@@ -45,18 +36,10 @@
     "perception": "+6",
     "stealth": "+6"
   },
-  "resist": [
-    "radiant"
-  ],
-  "conditionImmune": [
-    "charmed",
-    "exhaustion",
-    "frightened"
-  ],
+  "resist": ["radiant"],
+  "conditionImmune": ["charmed", "exhaustion", "frightened"],
   "passive": 16,
-  "languages": [
-    "any two languages"
-  ],
+  "languages": ["any two languages"],
   "cr": "5",
   "trait": [
     {
@@ -103,9 +86,7 @@
   "action": [
     {
       "name": "Multiattack",
-      "entries": [
-        "The Monk of the Deathengel makes two unarmed strikes."
-      ]
+      "entries": ["The Monk of the Deathengel makes two unarmed strikes."]
     },
     {
       "name": "Unarmed Strike",

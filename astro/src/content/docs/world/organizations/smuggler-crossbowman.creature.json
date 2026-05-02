@@ -5,10 +5,7 @@
     "type": "humanoid",
     "tags": ["any race"]
   },
-  "alignment": [
-    "N",
-    "E"
-  ],
+  "alignment": ["N", "E"],
   "ac": [
     {
       "ac": 14,

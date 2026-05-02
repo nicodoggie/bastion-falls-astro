@@ -13,38 +13,38 @@
  * in .vscode/settings.json to provide autocomplete and validation while
  * editing MDX frontmatter.
  */
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { mkdirSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-import type { AstroIntegration } from 'astro';
+import type { AstroIntegration } from "astro";
 
-import { collectionExtensions } from '../collection-schemas.js';
+import { collectionExtensions } from "../collection-schemas.js";
 
 // Zod v4 exposes .toJSONSchema() on every schema instance but has not yet
 // re-exported it from the package's public index.d.ts.
 type JsonSchema = Record<string, unknown>;
 type ZodWithJson = { toJSONSchema(params?: { target?: string }): JsonSchema };
-const json = (s: unknown, target = 'draft-07') =>
+const json = (s: unknown, target = "draft-07") =>
   (s as ZodWithJson).toJSONSchema({ target });
 
 // Starlight fields present on every docs page — merged into every wrapper.
 const STARLIGHT_BASE: JsonSchema = {
-  title: { type: 'string', description: 'Page title (required by Starlight)' },
-  description: { type: 'string' },
-  tags: { type: 'array', items: { type: 'string' } },
-  draft: { type: 'boolean' },
-  sidebar: { type: 'object' },
+  title: { type: "string", description: "Page title (required by Starlight)" },
+  description: { type: "string" },
+  tags: { type: "array", items: { type: "string" } },
+  draft: { type: "boolean" },
+  sidebar: { type: "object" },
 };
 
 export function vscodeFrontmatterSchemas(): AstroIntegration {
   return {
-    name: 'vscode-frontmatter-schemas',
+    name: "vscode-frontmatter-schemas",
     hooks: {
-      'astro:config:setup': ({ config, logger }) => {
+      "astro:config:setup": ({ config, logger }) => {
         // config.root is the astro/ sub-directory; go up one to reach repo root.
-        const repoRoot = resolve(fileURLToPath(config.root), '..');
-        const fmDir = resolve(repoRoot, '.vscode/schemas/frontmatter');
+        const repoRoot = resolve(fileURLToPath(config.root), "..");
+        const fmDir = resolve(repoRoot, ".vscode/schemas/frontmatter");
         mkdirSync(fmDir, { recursive: true });
 
         for (const [name, { schema }] of Object.entries(collectionExtensions)) {
@@ -56,14 +56,16 @@ export function vscodeFrontmatterSchemas(): AstroIntegration {
             (extensionJson.properties as JsonSchema | undefined) ?? {};
 
           const frontmatterSchema: JsonSchema = {
-            $schema: 'http://json-schema.org/draft-07/schema#',
+            $schema: "http://json-schema.org/draft-07/schema#",
             title: `${name} page frontmatter`,
-            type: 'object',
+            type: "object",
             properties: { ...STARLIGHT_BASE, ...extensionProps },
             // draft-07 serialiser uses "definitions"; newer drafts use "$defs".
             // Carry over whichever key was emitted so that internal $refs resolve.
             ...(extensionJson.$defs ? { $defs: extensionJson.$defs } : {}),
-            ...(extensionJson.definitions ? { definitions: extensionJson.definitions } : {}),
+            ...(extensionJson.definitions
+              ? { definitions: extensionJson.definitions }
+              : {}),
           };
 
           writeFileSync(

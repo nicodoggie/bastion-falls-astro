@@ -16,21 +16,14 @@
   "skill": { "perception": "+3" },
   "resist": [
     {
-      "resist": [
-        "bludgeoning",
-        "piercing",
-        "slashing"
-      ],
+      "resist": ["bludgeoning", "piercing", "slashing"],
       "note": "from nonmagical weapons"
     }
   ],
   "immune": ["poison"],
   "passive": 13,
   "languages": ["Sylvan (understands only)"],
-  "traitTags": [
-    "Magic Resistance",
-    "Tree Stride"
-  ],
+  "traitTags": ["Magic Resistance", "Tree Stride"],
   "trait": [
     {
       "name": "Magic Resistance",
