@@ -1,14 +1,14 @@
 ---
-import { Image } from 'astro:assets';
-import type { ImageAttribution, ImagePrompt } from '@bastion-falls/types/Image';
+import { Image } from "astro:assets";
+import type { ImageAttribution, ImagePrompt } from "@bastion-falls/types/Image";
 
 const props: ImageAttribution | ImagePrompt = Astro.props;
 
-let url;
-let imageObject;
+let url: string | undefined;
+let imageObject: any;
 if (props.url) {
   const images = import.meta.glob<{ default: ImageMetadata }>(
-    '/src/assets/**/*.{jpg,jpeg,png,webp}',
+    "/src/assets/**/*.{jpg,jpeg,png,webp}",
   );
 
   url = props.url;
@@ -17,22 +17,21 @@ if (props.url) {
   imageObject = imageItem();
 }
 
-let title;
-let attributionUrl;
-if ('attribution' in props) {
+let title: string | undefined;
+let attributionUrl: string | undefined;
+if ("attribution" in props) {
   title = props.attribution;
   attributionUrl = props.attributionUrl;
-} else if ('prompt' in props) {
+} else if ("prompt" in props) {
   title = props.prompt;
   attributionUrl = props.generatorUrl;
 } else {
   attributionUrl = props.url;
-  title = props.alt ?? '';
+  title = props.alt ?? "";
 }
 ---
 
-{
-  imageObject && (
+{imageObject && (
     <div class="mb-4 w-full character-image-container bg-black">
       <Image
         src={imageObject}
@@ -49,5 +48,4 @@ if ('attribution' in props) {
         </a>
       </p>
     </div>
-  )
-}
+  )}
