@@ -6,6 +6,18 @@ exclude = ["node_modules", ".git", ".astro", "dist"]
 # Set line length limit
 line_length = 80
 
+# Unordered list style
+[MD004]
+style = "dash"
+
+# List indentation
+[MD007]
+style = "text-aligned"
+
+# Ordered list style
+[MD029]
+style = "one-one"
+
 [MD013]
 line-length = 80
 code-blocks = false

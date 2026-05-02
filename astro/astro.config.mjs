@@ -32,131 +32,127 @@ const lexurgyLang = JSON.parse(
 
 
 export default defineConfig({
-  output: 'static',
-  site: 'https://bastion-falls.thekennel.info',
-  markdown: {
-    remarkPlugins: [
-      remarkCustomHeaderId,
-      remarkParse,
-      remarkDefinitionList,
-      [remarkRewriteLinks],
-      [remarkMarkmap, { darkThemeSelector: () => '[data-theme="dark"]' }],
-
-    ],
-  },
-  redirects: {
-    '/locations/confederation-of-apgarian-states': '/locations/apgar',
-  },
-  integrations: [
-    react(),
-    mermaid(),
-    expressiveCode({
-      shiki: {
-        langs: [lexurgyLang],
-      },
-    }),
-    sitemap(),
-    starlight({
-      title: 'Bastion Falls',
-      favicon: '/favicon.png',
-      logo: {
-        src: '/src/assets/orb-of-bastion.png',
-        alt: 'Bastion Falls',
-      },
-      customCss: ['/src/styles/global.css'],
-      head: [
-        {
-          tag: 'script',
-          attrs: {
-            src: 'https://app.fantasy-calendar.com/js/embed.js',
-          },
-        },
-        {
-          tag: 'script',
-          attrs: { src: '/scripts/markmap-modal.js' },
-        },
-      ],
-      social: [
-        {
-          icon: 'laptop',
-          label: 'Blog',
-          href: '/blog',
-        },
-        {
-          icon: 'open-book',
-          label: '5e.tools Homebrew Bestiary',
-          href: '/homebrew/bastion-falls-bestiary.json',
-        },
-        {
-          icon: 'github',
-          label: 'GitHub',
-          href: 'https://github.com/nicodoggie/bastion-falls-astro',
-        },
-      ],
-      sidebar: [
-        {
-          label: 'Timeline',
-          link: '/world/timeline/timeline-generated'
-        },
-        {
-          label: 'Blog',
-          link: '/blog',
-        },
-        {
-          label: 'World',
-          autogenerate: {
-            directory: 'world',
-          },
-        },
-        {
-          label: 'Help',
-          autogenerate: {
-            directory: 'help',
-          },
-        }
-      ],
-      components: {
-        PageSidebar: './src/components/PageSidebar.astro',
-        Sidebar: './src/components/starlight/Sidebar.astro',
-      },
-      plugins: [
-        starlightAutoSidebar(),
-        // starlightFlattenIndex(),
-      ],
-    }),
-    AutoImport({
-      imports: [
-        './src/components/Spell.astro',
-        './src/components/Stub.astro',
-        './src/components/FamilyTree.tsx',
-        './src/components/HomebrewSpell.astro',
-        './src/components/Incomplete.astro',
-        './src/components/Map.tsx',
-        './src/components/Monster.astro',
-        './src/components/OutOfDate.astro',
-        './src/components/SeeAlso.astro',
-        './src/components/VehicleStatBlock.astro',
-        './src/components/Redirect.astro',
-      ],
-    }),
-    mdx(),
-    sitemap(),
-    vscodeFrontmatterSchemas(),
-    timelineGenerator(),
-  ],
-  vite: {
-    plugins: [
-      tailwindcss(),
-      flowbiteReact(),
-    ],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, './src'),
-      }
-    }
-  },
-  experimental: {
-    rustCompiler: true,
-    contentIntellisense: true,
-  },
+	output: "static",
+	site: "https://bastion-falls.thekennel.info",
+	markdown: {
+		remarkPlugins: [
+			remarkCustomHeaderId,
+			remarkParse,
+			remarkDefinitionList,
+			[remarkRewriteLinks],
+			[remarkMarkmap, { darkThemeSelector: () => '[data-theme="dark"]' }],
+		],
+	},
+	redirects: {
+		"/locations/confederation-of-apgarian-states": "/locations/apgar",
+	},
+	integrations: [
+		react(),
+		mermaid(),
+		expressiveCode({
+			shiki: {
+				langs: [lexurgyLang],
+			},
+		}),
+		sitemap(),
+		starlight({
+			title: "Bastion Falls",
+			favicon: "/favicon.png",
+			logo: {
+				src: "/src/assets/orb-of-bastion.png",
+				alt: "Bastion Falls",
+			},
+			customCss: ["/src/styles/global.css"],
+			head: [
+				{
+					tag: "script",
+					attrs: {
+						src: "https://app.fantasy-calendar.com/js/embed.js",
+					},
+				},
+				{
+					tag: "script",
+					attrs: { src: "/scripts/markmap-modal.js" },
+				},
+			],
+			social: [
+				{
+					icon: "laptop",
+					label: "Blog",
+					href: "/blog",
+				},
+				{
+					icon: "open-book",
+					label: "5e.tools Homebrew Bestiary",
+					href: "/homebrew/bastion-falls-bestiary.json",
+				},
+				{
+					icon: "github",
+					label: "GitHub",
+					href: "https://github.com/nicodoggie/bastion-falls-astro",
+				},
+			],
+			sidebar: [
+				{
+					label: "Timeline",
+					link: "/world/timeline/timeline-generated",
+				},
+				{
+					label: "Blog",
+					link: "/blog",
+				},
+				{
+					label: "World",
+					autogenerate: {
+						directory: "world",
+					},
+				},
+				{
+					label: "Help",
+					autogenerate: {
+						directory: "help",
+					},
+				},
+			],
+			components: {
+				PageSidebar: "./src/components/PageSidebar.astro",
+				Sidebar: "./src/components/starlight/Sidebar.astro",
+			},
+			plugins: [
+				starlightAutoSidebar(),
+				// starlightFlattenIndex(),
+			],
+		}),
+		AutoImport({
+			imports: [
+				"./src/components/Spell.astro",
+				"./src/components/Stub.astro",
+				"./src/components/FamilyTree.tsx",
+				"./src/components/HomebrewSpell.astro",
+				"./src/components/Incomplete.astro",
+				"./src/components/MapViewer.tsx",
+				"./src/components/Monster.astro",
+				"./src/components/OutOfDate.astro",
+				"./src/components/SeeAlso.astro",
+				"./src/components/VehicleStatBlock.astro",
+				"./src/components/Redirect.astro",
+			],
+		}),
+		mdx(),
+		sitemap(),
+		vscodeFrontmatterSchemas(),
+		timelineGenerator(),
+	],
+	vite: {
+		plugins: [tailwindcss(), flowbiteReact()],
+		resolve: {
+			alias: {
+				"@": path.resolve(__dirname, "./src"),
+			},
+		},
+	},
+	experimental: {
+		rustCompiler: true,
+		contentIntellisense: true,
+	},
 });

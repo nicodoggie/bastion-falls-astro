@@ -20,11 +20,12 @@ import MapImage from '../../../../assets/maps/surrey-on-the-brams.jpg';
 import { getImage } from 'astro:assets';
 export const processedImage = await getImage({ src: MapImage });
 
-<Map client:only="react"
+<MapViewer
   src={processedImage.src}
   width={processedImage.options.width}
   height={processedImage.options.height}
-alt="Map of Surrey-on-the-Brams" />
+  alt="Map of Surrey-on-the-Brams"
+/>
 
 **Surrey-on-the-Brams** is a large island situated
 where the [Brams River](/world/locations/brams-river) meets the
@@ -445,7 +446,7 @@ and support the island's agricultural activities:
    - Traditional water sharing
    - Market gardens
 
-2. Stream Settlements
+1. Stream Settlements
    - Water-powered mills
    - Agricultural communes
    - Fishing communities
