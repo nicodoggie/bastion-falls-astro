@@ -7,6 +7,9 @@
  * .md, or <slug>/index.mdx|md (first match). Skips non-world absolute
  * URLs, mailto, and http(s). Preserves #hash and ?query on the new URL.
  *
+ * Links whose URL contains `lexicon-by-field` are left unchanged (generated
+ * Early Hick lexicon cross-links); they do not count toward “still broken”.
+ *
  * Usage (from repo root or astro/):
  *   node astro/migration-scripts/world-astro-urls-to-relative.mjs --dry-run
  *   node astro/migration-scripts/world-astro-urls-to-relative.mjs --write
@@ -20,6 +23,21 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const WORLD_ROOT = path.resolve(__dirname, "../src/content/docs/world");
 
 const MD_LINK_RE = /\[([^\]]*)\]\((\/world[^)\s]+)\)/g;
+
+/** Leave Starlight URLs as-is; generated lexicon pages use these targets. */
+function isLexiconByFieldUrl(url) {
+  return url.includes("lexicon-by-field");
+}
+
+/** True if any markdown link still uses /world/... except lexicon-by-field. */
+function hasReportableAbsoluteWorldLinks(content) {
+  const re = new RegExp(MD_LINK_RE.source, "g");
+  for (const m of content.matchAll(re)) {
+    const url = m[2];
+    if (!isLexiconByFieldUrl(url)) return true;
+  }
+  return false;
+}
 
 function parseArgs() {
   const write = process.argv.includes("--write");
@@ -121,14 +139,19 @@ function relFromTo(fromFile, toFile) {
 /**
  * @param {string} content
  * @param {string} filePath abs path to current mdx
- * @returns {{ next: string, rewritten: number, skippedParse: number, unresolvedUrls: string[] }}
+ * @returns {{ next: string, rewritten: number, skippedParse: number, unresolvedUrls: string[], ignoredLexiconByField: number }}
  */
 function replaceContent(content, filePath) {
   let rewritten = 0;
   let skippedParse = 0;
+  let ignoredLexiconByField = 0;
   /** @type {string[]} */
   const unresolvedUrls = [];
   const next = content.replace(MD_LINK_RE, (full, label, url) => {
+    if (isLexiconByFieldUrl(url)) {
+      ignoredLexiconByField += 1;
+      return full;
+    }
     const parsed = parseWorldPath(url);
     if (!parsed) {
       skippedParse += 1;
@@ -144,7 +167,7 @@ function replaceContent(content, filePath) {
     rewritten += 1;
     return `[${label}](${rel})`;
   });
-  return { next, rewritten, skippedParse, unresolvedUrls };
+  return { next, rewritten, skippedParse, unresolvedUrls, ignoredLexiconByField };
 }
 
 function relWorldPath(absPath) {
@@ -163,17 +186,16 @@ function main() {
 
   let totalRewritten = 0;
   let filesWithRewrites = 0;
+  let totalIgnoredLexiconByField = 0;
   /** @type {Array<{ path: string, rewritten: number, skippedParse: number, unresolvedUrls: string[] }>} */
   const filesStillWithWorldLinks = [];
 
   for (const file of files) {
     const before = fs.readFileSync(file, "utf8");
-    const { next, rewritten, skippedParse, unresolvedUrls } = replaceContent(
-      before,
-      file,
-    );
-    const stillHasWorld =
-      skippedParse > 0 || unresolvedUrls.length > 0;
+    const { next, rewritten, skippedParse, unresolvedUrls, ignoredLexiconByField } =
+      replaceContent(before, file);
+    totalIgnoredLexiconByField += ignoredLexiconByField;
+    const stillHasWorld = hasReportableAbsoluteWorldLinks(next);
     if (stillHasWorld) {
       filesStillWithWorldLinks.push({
         path: file,
@@ -209,6 +231,10 @@ function main() {
   console.log("Files scanned:", files.length);
   console.log("Files with at least one rewritten link:", filesWithRewrites);
   console.log("Link targets rewritten:", totalRewritten);
+  console.log(
+    "Lexicon-by-field links left unchanged (ignored):",
+    totalIgnoredLexiconByField,
+  );
   console.log("");
   console.log(
     "Files still containing absolute /world/... links (unchanged in those spots):",
@@ -249,6 +275,7 @@ function main() {
       totals: {
         unresolvedUrlCount: totalUnresolvedUrls,
         skippedParseCount: totalSkippedParse,
+        ignoredLexiconByFieldLinkCount: totalIgnoredLexiconByField,
       },
     };
     fs.writeFileSync(reportPath, JSON.stringify(payload, null, 2), "utf8");
