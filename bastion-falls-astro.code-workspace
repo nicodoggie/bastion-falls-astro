@@ -39,7 +39,7 @@
 		"[jsonc]": {
 			"editor.defaultFormatter": "biomejs.biome"
 		},
-		"rumdl.configPath": "astro/rumdl.toml",
+		"rumdl.configPath": "",
 		"rumdl.fixOnSave": true,
 		"rumdl.diagnostics.deduplicate": false
 	}

@@ -7,10 +7,10 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from "astro/config";
 import AutoImport from 'astro-auto-import';
 import expressiveCode from 'astro-expressive-code';
 import mermaid from "astro-mermaid";
-import { defineConfig } from 'astro/config';
 import flowbiteReact from 'flowbite-react/plugin/astro';
 import remarkCustomHeaderId from "remark-custom-header-id";
 import { remarkDefinitionList } from 'remark-definition-list';
@@ -117,10 +117,11 @@ export default defineConfig({
 				PageSidebar: "./src/components/PageSidebar.astro",
 				Sidebar: "./src/components/starlight/Sidebar.astro",
 			},
-			plugins: [
-				starlightAutoSidebar(),
-				// starlightFlattenIndex(),
-			],
+			plugins: [starlightAutoSidebar()],
+		}),
+
+		mdx({
+			extendMarkdownConfig: true,
 		}),
 		AutoImport({
 			imports: [
@@ -137,7 +138,6 @@ export default defineConfig({
 				"./src/components/Redirect.astro",
 			],
 		}),
-		mdx(),
 		sitemap(),
 		vscodeFrontmatterSchemas(),
 		timelineGenerator(),

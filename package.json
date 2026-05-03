@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "rumdl": "RUMDL_BINARY=\"$PWD/node_modules/@rumdl/cli-linux-x64/rumdl\" rumdl",
     "astro": "yarn workspace @bastion-falls/astro",
     "types": "yarn workspace @bastion-falls/types",
     "5e-schema": "yarn workspace @bastion-falls/5e-schema-zod",
@@ -25,14 +26,16 @@
     "packages/*"
   ],
   "volta": {
-    "node": "22.15.0",
-    "yarn": "4.10.3"
+    "node": "24.15.0",
+    "yarn": "4.14.1"
   },
-  "packageManager": "yarn@4.10.3+sha512.c38cafb5c7bb273f3926d04e55e1d8c9dfa7d9c3ea1f36a4868fa028b9e5f72298f0b7f401ad5eb921749eb012eb1c3bb74bf7503df3ee43fd600d14a018266f",
+  "packageManager": "yarn@4.14.1+sha512.64df448055b2d37ba269d7db535a469b8da93f8ef1140c25fd7a83c00a8fbaacb214ca0e02553b92a2c54cef78bb67d0b4817fab02001df0e24fac0faccc3b42",
   "devDependencies": {
     "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
     "lefthook": "^2.1.6",
     "rimraf": "^6.0.1",
+    "rumdl": "^0.1.87",
     "wrangler": "^4.42.0"
   },
   "dependencies": {

@@ -414,7 +414,7 @@ function generateTimelineMDX(entries: TimelineEntry[]): string {
     .join("\n");
 
   return `---
-title: Timeline Generated
+title: Timeline of Events
 ---
 
 <table>
