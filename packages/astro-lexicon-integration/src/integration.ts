@@ -213,13 +213,21 @@ export function lexiconIntegration(
         astroRoot = fileURLToPath(config.root);
       },
       /**
+       * Emit Starlight MDX and JSON chunks **before** Astro’s content sync runs.
+       * `astro:build:start` is too late: in production, `syncInternal` (which
+       * indexes Starlight docs) already ran during `setup()` before `build()`.
+       * `astro:config:done` runs before both dev and build content sync.
+       */
+      "astro:config:done": async ({ config, logger }) => {
+        astroRoot = fileURLToPath(config.root);
+        await run(logger);
+      },
+      /**
        * Do not use `astro:route:setup` for lexicon work: Astro invokes it once
        * per route while building the dev module graph, which would re-run
        * generation hundreds of times and block startup.
        */
       "astro:server:setup": async ({ server, logger }) => {
-        await run(logger);
-
         const scheduleShardRegen = () => {
           if (shardRegenTimer !== undefined) {
             clearTimeout(shardRegenTimer);
@@ -238,9 +246,6 @@ export function lexiconIntegration(
         server.watcher.on("add", regen);
         server.watcher.on("change", regen);
         server.watcher.on("unlink", regen);
-      },
-      "astro:build:start": async ({ logger }) => {
-        await run(logger);
       },
     },
   };
