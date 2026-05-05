@@ -11,7 +11,8 @@
   "bin": "./dist/cli.js",
   "files": [
     "dist",
-    "shapes"
+    "shapes",
+    "AGENTS.md"
   ],
   "exports": {
     ".": {

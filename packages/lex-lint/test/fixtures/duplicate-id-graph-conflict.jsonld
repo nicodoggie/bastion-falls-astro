@@ -1,0 +1,34 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "ehk": "#"
+  },
+  "@id": "lexicon:FixtureDupConflict",
+  "@type": "lime:Lexicon",
+  "dc:title": "duplicate @id conflicting canonicalForm",
+  "@graph": [
+    {
+      "@id": "ehk:x",
+      "@type": "ontolex:LexicalEntry",
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "writtenRep": "one",
+        "phoneticRep": "one"
+      },
+      "sense": []
+    },
+    {
+      "@id": "ehk:x",
+      "@type": "ontolex:LexicalEntry",
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "writtenRep": "two",
+        "phoneticRep": "two"
+      },
+      "sense": []
+    }
+  ]
+}

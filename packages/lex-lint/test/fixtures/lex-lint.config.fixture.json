@@ -1,0 +1,10 @@
+{
+  "files": {
+    "include": ["test/fixtures/minimal.json"],
+    "exclude": []
+  },
+  "rules": {
+    "duplicate-jsonld-id": "error"
+  },
+  "shacl": false
+}

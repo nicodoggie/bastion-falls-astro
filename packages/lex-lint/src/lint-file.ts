@@ -11,7 +11,17 @@ import {
 import { isJsonLdGraphLexicon, isLexiconWrapper } from "./detect-format.js";
 import { lintGraphEntry } from "./lint-graph-entry.js";
 import { lintJsonLdGraphDocument } from "./lint-jsonld-graph.js";
-import type { LintDiagnostic, LintOptions, LintReport, LexiconFileShape } from "./types.js";
+import { applyRuleSeverities } from "./rules/apply-severities.js";
+import {
+  collectRegistryLexiconWrapperDiagnostics,
+} from "./rules/registry.js";
+import type { LintContext } from "./rules/types.js";
+import type {
+  LintDiagnostic,
+  LintOptions,
+  LintReport,
+  LexiconFileShape,
+} from "./types.js";
 
 function describeErr(e: unknown): string {
   return e instanceof Error ? e.message : String(e);
@@ -23,6 +33,11 @@ async function lintLexiconDocument(
   options: Omit<LintOptions, "file">,
 ): Promise<LintDiagnostic[]> {
   const diagnostics: LintDiagnostic[] = [];
+
+  const ctx: LintContext = {
+    filePath,
+    ruleSettings: options.ruleSettings ?? {},
+  };
 
   if (!doc || typeof doc !== "object") {
     return [
@@ -78,7 +93,58 @@ async function lintLexiconDocument(
     );
   }
 
+  diagnostics.push(
+    ...collectRegistryLexiconWrapperDiagnostics(
+      doc as Record<string, unknown> & { lexicon: Record<string, unknown> },
+      ctx,
+    ),
+  );
+
   return diagnostics;
+}
+
+/**
+ * Lint an already-parsed lexicon document (JSON string used only for locations).
+ */
+export async function lintLexiconParsed(
+  doc: unknown,
+  raw: string,
+  filePath: string,
+  options: Omit<LintOptions, "file"> = {},
+): Promise<LintReport> {
+  let rawDiagnostics: LintDiagnostic[];
+  if (isLexiconWrapper(doc)) {
+    rawDiagnostics = await lintLexiconDocument(
+      doc as LexiconFileShape & { lexicon: Record<string, unknown> },
+      filePath,
+      options,
+    );
+  } else if (isJsonLdGraphLexicon(doc)) {
+    rawDiagnostics = await lintJsonLdGraphDocument(
+      doc as Record<string, unknown>,
+      filePath,
+      options,
+    );
+  } else {
+    rawDiagnostics = [
+      {
+        severity: "error",
+        code: "LEXICON_SHAPE",
+        message:
+          "Expected a content lexicon wrapper with a `lexicon` object, or " +
+          "JSON-LD with `@context` and `@graph` (e.g. `.jsonld` under assets).",
+        file: filePath,
+      },
+    ];
+  }
+
+  rawDiagnostics = applyRuleSeverities(
+    rawDiagnostics,
+    options.ruleSettings ?? {},
+  );
+  const diagnostics = enrichDiagnosticsWithLocations(rawDiagnostics, raw);
+  const ok = !diagnostics.some((d) => d.severity === "error");
+  return { ok, diagnostics };
 }
 
 /**
@@ -129,25 +195,5 @@ export async function lintLexiconFile(
     };
   }
 
-  let rawDiagnostics: LintDiagnostic[];
-  if (isLexiconWrapper(doc)) {
-    rawDiagnostics = await lintLexiconDocument(doc, filePath, options);
-  } else if (isJsonLdGraphLexicon(doc)) {
-    rawDiagnostics = await lintJsonLdGraphDocument(doc, filePath, options);
-  } else {
-    rawDiagnostics = [
-      {
-        severity: "error",
-        code: "LEXICON_SHAPE",
-        message:
-          "Expected a content lexicon wrapper with a `lexicon` object, or " +
-          "JSON-LD with `@context` and `@graph` (e.g. `.jsonld` under assets).",
-        file: filePath,
-      },
-    ];
-  }
-
-  const diagnostics = enrichDiagnosticsWithLocations(rawDiagnostics, raw);
-  const ok = !diagnostics.some((d) => d.severity === "error");
-  return { ok, diagnostics };
+  return lintLexiconParsed(doc, raw, filePath, options);
 }

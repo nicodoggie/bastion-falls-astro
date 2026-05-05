@@ -1,0 +1,45 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "ehk": "#"
+  },
+  "@id": "lexicon:FixtureDupId",
+  "@type": "lime:Lexicon",
+  "dc:title": "duplicate @id fixture",
+  "@graph": [
+    {
+      "@id": "ehk:dup",
+      "@type": "ontolex:LexicalEntry",
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "writtenRep": "dup",
+        "phoneticRep": "dup"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": { "@value": "one", "@language": "en" }
+        }
+      ]
+    },
+    {
+      "@id": "ehk:dup",
+      "@type": "ontolex:LexicalEntry",
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "writtenRep": "dup",
+        "phoneticRep": "dup"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": { "@value": "two", "@language": "en" }
+        }
+      ]
+    }
+  ]
+}

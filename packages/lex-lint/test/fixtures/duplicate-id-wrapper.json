@@ -1,0 +1,42 @@
+{
+  "id": "lexicon:FixtureDupWrapper",
+  "title": "duplicate graphEntry @id",
+  "lexicon": {
+    "ehk:a": {
+      "id": "ehk:a",
+      "graphEntry": {
+        "@id": "ehk:shared",
+        "@type": ["ontolex:LexicalEntry"],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "a",
+          "phoneticRep": "a"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": { "@value": "from a", "@language": "en" }
+          }
+        ]
+      }
+    },
+    "ehk:b": {
+      "id": "ehk:b",
+      "graphEntry": {
+        "@id": "ehk:shared",
+        "@type": ["ontolex:LexicalEntry"],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "a",
+          "phoneticRep": "a"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": { "@value": "from b", "@language": "en" }
+          }
+        ]
+      }
+    }
+  }
+}

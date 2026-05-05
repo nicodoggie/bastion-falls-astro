@@ -1,5 +1,7 @@
 import { defaultBaseIriFromLexicon } from "./base-iri.js";
 import { lintGraphEntry } from "./lint-graph-entry.js";
+import { collectRegistryJsonLdGraphDiagnostics } from "./rules/registry.js";
+import type { LintContext } from "./rules/types.js";
 import type { LintDiagnostic, LintOptions } from "./types.js";
 
 /**
@@ -11,8 +13,13 @@ export async function lintJsonLdGraphDocument(
   filePath: string,
   options: Omit<LintOptions, "file" | "jsonLdDocumentContext">,
 ): Promise<LintDiagnostic[]> {
-  const ctx = doc["@context"];
-  if (ctx === null || ctx === undefined || typeof ctx !== "object") {
+  const ctx: LintContext = {
+    filePath,
+    ruleSettings: options.ruleSettings ?? {},
+  };
+
+  const ctxField = doc["@context"];
+  if (ctxField === null || ctxField === undefined || typeof ctxField !== "object") {
     return [
       {
         severity: "error",
@@ -36,6 +43,8 @@ export async function lintJsonLdGraphDocument(
     });
     return diagnostics;
   }
+
+  diagnostics.push(...collectRegistryJsonLdGraphDiagnostics(doc, ctx));
 
   const baseIri =
     options.baseIri ??
@@ -66,7 +75,7 @@ export async function lintJsonLdGraphDocument(
         ...options,
         baseIri,
         file: filePath,
-        jsonLdDocumentContext: ctx,
+        jsonLdDocumentContext: ctxField,
       })),
     );
     idx++;

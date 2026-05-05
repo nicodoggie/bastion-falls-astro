@@ -1,22 +1,5 @@
 export type LintSeverity = "error" | "warning";
 
-export type LintDiagnostic = {
-  severity: LintSeverity;
-  code: string;
-  message: string;
-  file?: string;
-  entryKey?: string;
-  /** 1-based line in `file` (VS Code–style terminal links when paired with column). */
-  line?: number;
-  /** 1-based column in `file`. */
-  column?: number;
-};
-
-export type LintReport = {
-  ok: boolean;
-  diagnostics: LintDiagnostic[];
-};
-
 export type LintOptions = {
   /** Base IRI for relative `@id` in `graphEntry`. */
   baseIri?: string;
@@ -35,6 +18,30 @@ export type LintOptions = {
    * their own vocabulary map.
    */
   jsonLdDocumentContext?: unknown;
+  /**
+   * Per-rule overrides from `lex-lint.config.json` `rules` map; keys are rule
+   * ids (kebab-case).
+   */
+  ruleSettings?: Partial<Record<string, "off" | "warn" | "error">>;
+};
+
+export type LintDiagnostic = {
+  severity: LintSeverity;
+  code: string;
+  message: string;
+  /** When set, `applyRuleSeverities` respects config `rules.<ruleId>`. */
+  ruleId?: string;
+  file?: string;
+  entryKey?: string;
+  /** 1-based line in `file` (VS Code–style terminal links when paired with column). */
+  line?: number;
+  /** 1-based column in `file`. */
+  column?: number;
+};
+
+export type LintReport = {
+  ok: boolean;
+  diagnostics: LintDiagnostic[];
 };
 
 export type LexiconFileShape = {
