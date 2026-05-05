@@ -144,7 +144,7 @@ export async function lintLexiconParsed(
   );
   const diagnostics = enrichDiagnosticsWithLocations(rawDiagnostics, raw);
   const ok = !diagnostics.some((d) => d.severity === "error");
-  return { ok, diagnostics };
+  return { ok, diagnostics, filesScanned: 1 };
 }
 
 /**
@@ -169,6 +169,7 @@ export async function lintLexiconFile(
           file: filePath,
         },
       ],
+      filesScanned: 1,
     };
   }
 
@@ -192,6 +193,7 @@ export async function lintLexiconFile(
           column: pos.column,
         },
       ],
+      filesScanned: 1,
     };
   }
 

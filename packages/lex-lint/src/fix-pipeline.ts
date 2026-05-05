@@ -22,6 +22,7 @@ export async function runFixPipeline(
 ): Promise<LintReport & { dryRunNotes?: string[] }> {
   const diagnostics: LintDiagnostic[] = [];
   const dryRunNotes: string[] = [];
+  let filesUpdated = 0;
 
   for (const filePath of paths) {
     let raw: string;
@@ -97,6 +98,11 @@ export async function runFixPipeline(
       continue;
     }
 
+    if (newRaw === raw) {
+      continue;
+    }
+
+    filesUpdated += 1;
     if (options.dryRun) {
       dryRunNotes.push(`would write: ${filePath}`);
     } else {
@@ -108,6 +114,8 @@ export async function runFixPipeline(
   return {
     ok,
     diagnostics,
+    filesScanned: paths.length,
+    filesUpdated,
     ...(options.dryRun ? { dryRunNotes } : {}),
   };
 }

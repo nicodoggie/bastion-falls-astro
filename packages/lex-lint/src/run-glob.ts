@@ -38,5 +38,5 @@ export async function lintGlobPatterns(
   }
 
   const ok = !diagnostics.some((d) => d.severity === "error");
-  return { ok, diagnostics };
+  return { ok, diagnostics, filesScanned: paths.length };
 }

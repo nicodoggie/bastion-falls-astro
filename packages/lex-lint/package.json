@@ -23,6 +23,7 @@
   "scripts": {
     "build": "tsup",
     "cli": "node ./dist/cli.js",
+    "lint": "node ./dist/cli.js",
     "test": "vitest run",
     "test:watch": "vitest"
   },

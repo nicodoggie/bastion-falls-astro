@@ -47,6 +47,13 @@ export type LintDiagnostic = {
 export type LintReport = {
   ok: boolean;
   diagnostics: LintDiagnostic[];
+  /** Files matched and attempted this run. */
+  filesScanned: number;
+  /**
+   * Fix / fix-dry-run only: files where serialized output would differ from disk
+   * (verify passed). Real `--fix` writes only these files.
+   */
+  filesUpdated?: number;
 };
 
 export type LexiconFileShape = {

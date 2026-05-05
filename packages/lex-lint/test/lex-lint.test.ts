@@ -90,6 +90,7 @@ describe("lex-lint", () => {
   it("lintGlobPatterns accepts a file path", async () => {
     const r = await lintGlobPatterns([fx("minimal.json")]);
     expect(r.ok).toBe(true);
+    expect(r.filesScanned).toBe(1);
   });
 
   it("reports duplicate @id in @graph lexicons", async () => {
@@ -176,6 +177,8 @@ describe("lex-lint", () => {
 
     const report = await runFixPipeline([target], { dryRun: false });
     expect(report.ok).toBe(true);
+    expect(report.filesScanned).toBe(1);
+    expect(report.filesUpdated).toBe(1);
     const rawAfter = await readFile(target, "utf8");
     const keysAfter = Object.keys(JSON.parse(rawAfter) as object);
     expect(keysAfter).toEqual(keysBefore);
@@ -185,6 +188,40 @@ describe("lex-lint", () => {
     expect(after["@graph"].length).toBe(1);
     const senses = after["@graph"][0]?.sense;
     expect(Array.isArray(senses) ? senses.length : 0).toBe(2);
+
+    await rm(dir, { recursive: true });
+  });
+
+  it("fix dry-run counts files that would change without writing", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "lex-lint-fix-dry-"));
+    const target = join(dir, "dup.jsonld");
+    await copyFile(fx("duplicate-id-graph.jsonld"), target);
+
+    const report = await runFixPipeline([target], { dryRun: true });
+    expect(report.ok).toBe(true);
+    expect(report.filesScanned).toBe(1);
+    expect(report.filesUpdated).toBe(1);
+    expect(report.dryRunNotes).toEqual([`would write: ${target}`]);
+
+    const rawUnchanged = await readFile(target, "utf8");
+    const before = JSON.parse(rawUnchanged) as { "@graph": unknown[] };
+    expect(before["@graph"].length).toBe(2);
+
+    await rm(dir, { recursive: true });
+  });
+
+  it("fix skips write when serialized form is unchanged", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "lex-lint-fix-unchanged-"));
+    const target = join(dir, "ok.jsonld");
+    await copyFile(fx("graph-minimal.jsonld"), target);
+
+    const first = await runFixPipeline([target], { dryRun: false });
+    expect(first.ok).toBe(true);
+    expect(first.filesUpdated).toBe(1);
+
+    const second = await runFixPipeline([target], { dryRun: false });
+    expect(second.ok).toBe(true);
+    expect(second.filesUpdated).toBe(0);
 
     await rm(dir, { recursive: true });
   });
@@ -222,6 +259,8 @@ describe("lex-lint", () => {
     await copyFile(fx("duplicate-id-graph-conflict.jsonld"), target);
     const report = await runFixPipeline([target], { dryRun: false });
     expect(report.ok).toBe(false);
+    expect(report.filesScanned).toBe(1);
+    expect(report.filesUpdated).toBe(0);
     const conflict = report.diagnostics.find(
       (x) => x.code === "FIX_SKIPPED_CONFLICT",
     );

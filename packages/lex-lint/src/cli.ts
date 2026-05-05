@@ -135,6 +135,16 @@ async function main(): Promise<void> {
     process.stderr.write(`${loc}: [${d.severity}] ${d.code}: ${d.message}\n`);
   }
 
+  process.stderr.write(`\nSummary: scanned ${report.filesScanned} file(s).\n`);
+  if (doFix) {
+    const n = report.filesUpdated ?? 0;
+    if (values.fixDryRun === true) {
+      process.stderr.write(`${n} file(s) would be updated.\n`);
+    } else {
+      process.stderr.write(`${n} file(s) updated.\n`);
+    }
+  }
+
   process.exit(report.ok ? 0 : 1);
 }
 

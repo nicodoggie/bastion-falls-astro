@@ -1,0 +1,11 @@
+{
+  "files": {
+    "include": [ "astro/src/assets/languages/**/*.jsonld" ],
+    "exclude": [ "astro/src/assets/languages/**/lexicon.jsonld" ]
+  },
+  "rules": {
+    "jsonld/duplicate-graph-id": "error",
+    "jsonld/root-key-order": "warn"
+  },
+  "shacl": true
+}
