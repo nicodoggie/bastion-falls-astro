@@ -1,0 +1,14 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+
+<#LexicalEntryShape> a sh:NodeShape ;
+  sh:targetClass ontolex:LexicalEntry ;
+  sh:property [
+    sh:path ontolex:canonicalForm ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path ontolex:sense ;
+    sh:minCount 1 ;
+  ] .

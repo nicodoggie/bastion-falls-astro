@@ -1,0 +1,51 @@
+{
+  "name": "lex-lint",
+  "version": "0.1.0",
+  "description": "OntoLex-oriented JSON-LD linter for lexicon JSON with embedded graphEntry fragments.",
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": "./dist/cli.js",
+  "files": [
+    "dist",
+    "shapes"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "cli": "node ./dist/cli.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@rdfjs/data-model": "^2.1.0",
+    "@rdfjs/dataset": "^2.0.2",
+    "@rdfjs/environment": "^1.0.0",
+    "@rdfjs/namespace": "^2.0.1",
+    "@rdfjs/term-map": "^2.0.2",
+    "clownface": "^2.0.3",
+    "glob": "^11.0.3",
+    "jsonc-parser": "^3.3.1",
+    "jsonld": "^9.0.0",
+    "n3": "^1.26.0",
+    "rdf-validate-shacl": "^0.6.5"
+  },
+  "devDependencies": {
+    "@types/jsonld": "^1.5.15",
+    "@types/node": "^22.15.29",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

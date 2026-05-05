@@ -1,0 +1,39 @@
+{
+  "id": "lexicon:TestMinimal",
+  "title": "Minimal fixture",
+  "lexicon": {
+    "ehk:-en": {
+      "id": "ehk:-en",
+      "types": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
+      "writtenForm": "-en",
+      "phoneticForm": "-en",
+      "protoform": "Proto-Hick *ena",
+      "senses": [],
+      "derivedForms": [],
+      "graphEntry": {
+        "@id": "ehk:-en",
+        "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "-en",
+          "phoneticRep": "-en"
+        },
+        "etymology": {
+          "@type": "etymon:Etymology",
+          "etymon:protoform": "Proto-Hick *ena",
+          "etymon:soundChange": "final vowel loss"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@value": "that (inanimate, visible, medial)",
+              "@language": "en"
+            },
+            "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
+          }
+        ]
+      }
+    }
+  }
+}

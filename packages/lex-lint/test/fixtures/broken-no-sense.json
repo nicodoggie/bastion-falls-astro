@@ -1,0 +1,20 @@
+{
+  "id": "lexicon:TestBrokenSense",
+  "title": "SHACL-breaking fixture (no senses)",
+  "lexicon": {
+    "ehk:x": {
+      "id": "ehk:x",
+      "types": ["ontolex:LexicalEntry"],
+      "graphEntry": {
+        "@id": "ehk:x",
+        "@type": ["ontolex:LexicalEntry"],
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "writtenRep": "x",
+          "phoneticRep": "x"
+        },
+        "sense": []
+      }
+    }
+  }
+}

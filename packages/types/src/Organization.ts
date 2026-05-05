@@ -26,6 +26,7 @@ const OrganizationMemberPositionsHeldSchema = z.object({
 export const OrganizationMemberSchema = z.object({
   name: z.string(),
   type: z.string().optional(),
+  positionsHeld: z.array(OrganizationMemberPositionsHeldSchema).optional(),
 });
 
 export const OrganizationSchema = z.object({
