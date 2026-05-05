@@ -28,8 +28,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ran",
-        "phoneticRep": "ran"
+        "phoneticRep": "ran",
+        "writtenRep": "ran"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -40,8 +40,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "stream, flowing water",
-            "@language": "en"
+            "@language": "en",
+            "@value": "stream, flowing water"
           },
           "lexinfo:semanticField": [
             "Natural World",
@@ -58,8 +58,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ranris",
-        "phoneticRep": "ran.ris"
+        "phoneticRep": "ran.ris",
+        "writtenRep": "ranris"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -71,8 +71,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "river reed",
-            "@language": "en"
+            "@language": "en",
+            "@value": "river reed"
           },
           "lexinfo:semanticField": [
             "Flora",
@@ -90,55 +90,55 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "rek",
-        "phoneticRep": "rek"
+        "phoneticRep": "rek",
+        "writtenRep": "rek"
       },
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "rek + -'er (verbalizer)",
+          "grammaticalMeaning": "to bark",
+          "phoneticRep": "rek.ʔer",
+          "writtenRep": "rek'er"
+        },
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "rek + rek (reduplication)",
+          "grammaticalMeaning": "repeated barking",
+          "phoneticRep": "rek.rek",
+          "writtenRep": "rekrek"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:note": "Shows onomatopoeic origin from sound of canine bark",
         "etymon:protoform": "Proto-Hick *reku",
-        "etymon:soundChange": "final vowel loss",
-        "etymon:note": "Shows onomatopoeic origin from sound of canine bark"
+        "etymon:soundChange": "final vowel loss"
       },
+      "related": [
+        {
+          "@id": "ehk:vinusak",
+          "note": "typical producer of sound",
+          "relationshipType": "domain"
+        },
+        {
+          "@id": "ehk:sak",
+          "note": "typical producer of sound",
+          "relationshipType": "domain"
+        }
+      ],
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "bark (of dog/wolf)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "bark (of dog/wolf)"
           },
           "lexinfo:semanticField": [
             "Sound Terms",
             "Animal Terms"
           ],
           "usage": "Basic term for canine vocalization"
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "rek'er",
-          "phoneticRep": "rek.ʔer",
-          "decomposition": "rek + -'er (verbalizer)",
-          "grammaticalMeaning": "to bark"
-        },
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "rekrek",
-          "phoneticRep": "rek.rek",
-          "decomposition": "rek + rek (reduplication)",
-          "grammaticalMeaning": "repeated barking"
-        }
-      ],
-      "related": [
-        {
-          "@id": "ehk:vinusak",
-          "relationshipType": "domain",
-          "note": "typical producer of sound"
-        },
-        {
-          "@id": "ehk:sak",
-          "relationshipType": "domain",
-          "note": "typical producer of sound"
         }
       ]
     },
@@ -150,8 +150,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ret",
-        "phoneticRep": "ret"
+        "phoneticRep": "ret",
+        "writtenRep": "ret"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -162,8 +162,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "arm",
-            "@language": "en"
+            "@language": "en",
+            "@value": "arm"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -177,8 +177,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ris",
-        "phoneticRep": "ris"
+        "phoneticRep": "ris",
+        "writtenRep": "ris"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -189,8 +189,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "reed",
-            "@language": "en"
+            "@language": "en",
+            "@value": "reed"
           },
           "lexinfo:semanticField": [
             "Flora",
@@ -207,8 +207,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "rok",
-        "phoneticRep": "rok"
+        "phoneticRep": "rok",
+        "writtenRep": "rok"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -220,14 +220,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "horse",
-            "@language": "en"
+            "@language": "en",
+            "@value": "horse"
           },
-          "usage": "Shows elvish introduction of horses",
           "lexinfo:semanticField": [
             "Animals",
             "Pastoral Terms"
-          ]
+          ],
+          "usage": "Shows elvish introduction of horses"
         }
       ]
     },
@@ -239,15 +239,15 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ru",
-        "phoneticRep": "ru"
+        "phoneticRep": "ru",
+        "writtenRep": "ru"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "and",
-            "@language": "en"
+            "@language": "en",
+            "@value": "and"
           },
           "lexinfo:semanticField": "Conjunction"
         }
@@ -261,27 +261,27 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "rak",
-        "phoneticRep": "rak"
+        "phoneticRep": "rak",
+        "writtenRep": "rak"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *raku",
+        "etymon:soundChange": "final vowel loss"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to break, shatter",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to break, shatter"
           },
           "lexinfo:semanticField": [
             "Action Verbs",
             "Destructive Actions"
           ]
         }
-      ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *raku",
-        "etymon:soundChange": "final vowel loss"
-      }
+      ]
     },
     {
       "@id": "ehk:ranes",
@@ -291,28 +291,28 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ranes",
-        "phoneticRep": "ra.nes"
+        "phoneticRep": "ra.nes",
+        "writtenRep": "ranes"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "ran-nes",
+        "etymon:gloss": "stream-fish",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "river fish",
-            "@language": "en"
+            "@language": "en",
+            "@value": "river fish"
           },
           "lexinfo:semanticField": [
             "Animal Terms",
             "Maritime Terms"
           ]
         }
-      ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:compound": "ran-nes",
-        "etymon:gloss": "stream-fish",
-        "etymon:soundChange": "compound fusion"
-      }
+      ]
     },
     {
       "@id": "ehk:rantirdu",
@@ -322,26 +322,26 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "rantirdu",
-        "phoneticRep": "ran.tir.du"
+        "phoneticRep": "ran.tir.du",
+        "writtenRep": "rantirdu"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:note": "Reanalyzed from rantirduok without agentive -ok"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "piracy, maritime raiding",
-            "@language": "en"
+            "@language": "en",
+            "@value": "piracy, maritime raiding"
           },
           "lexinfo:semanticField": [
             "Maritime Terms",
             "Criminal Terms"
           ]
         }
-      ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:note": "Reanalyzed from rantirduok without agentive -ok"
-      }
+      ]
     },
     {
       "@id": "ehk:rantirduok",
@@ -351,31 +351,31 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "rantirduok",
-        "phoneticRep": "ran.tir.du.ok"
+        "phoneticRep": "ran.tir.du.ok",
+        "writtenRep": "rantirduok"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": {
+          "first": "ran",
+          "gloss": "river-scavenger",
+          "second": "imtirduok"
+        },
+        "etymon:note": "Originally 'river raider', extended to all maritime thieves. Shows compound reduction of imtirduok."
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "pirate, maritime raider",
-            "@language": "en"
+            "@language": "en",
+            "@value": "pirate, maritime raider"
           },
           "lexinfo:semanticField": [
             "Maritime Terms",
             "Professional Terms"
           ]
         }
-      ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:compound": {
-          "first": "ran",
-          "second": "imtirduok",
-          "gloss": "river-scavenger"
-        },
-        "etymon:note": "Originally 'river raider', extended to all maritime thieves. Shows compound reduction of imtirduok."
-      }
+      ]
     },
     {
       "@id": "ehk:ren",
@@ -385,26 +385,26 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ren",
-        "phoneticRep": "ren"
+        "phoneticRep": "ren",
+        "writtenRep": "ren"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *renu",
+        "etymon:soundChange": "final vowel loss"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "deer",
-            "@language": "en"
+            "@language": "en",
+            "@value": "deer"
           },
           "lexinfo:semanticField": [
             "Animal Terms"
           ]
         }
-      ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *renu",
-        "etymon:soundChange": "final vowel loss"
-      }
+      ]
     },
     {
       "@id": "ehk:rismater",
@@ -414,29 +414,29 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "rismater",
-        "phoneticRep": "ris.ma.ter"
+        "phoneticRep": "ris.ma.ter",
+        "writtenRep": "rismater"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": {
+          "first": "ris",
+          "gloss": "reed-vessel",
+          "second": "mater"
+        }
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "reed-vessel",
-            "@language": "en"
+            "@language": "en",
+            "@value": "reed-vessel"
           },
           "lexinfo:semanticField": [
             "Maritime Terms"
           ]
         }
-      ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:compound": {
-          "first": "ris",
-          "second": "mater",
-          "gloss": "reed-vessel"
-        }
-      }
+      ]
     },
     {
       "@id": "ehk:riswad",
@@ -446,30 +446,30 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "riswad",
-        "phoneticRep": "ris.wad"
+        "phoneticRep": "ris.wad",
+        "writtenRep": "riswad"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": {
+          "first": "ris",
+          "gloss": "reed-path",
+          "second": "wad"
+        }
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "garden path",
-            "@language": "en"
+            "@language": "en",
+            "@value": "garden path"
           },
           "lexinfo:semanticField": [
             "Path Terms",
             "Garden Terms"
           ]
         }
-      ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:compound": {
-          "first": "ris",
-          "second": "wad",
-          "gloss": "reed-path"
-        }
-      }
+      ]
     }
   ]
 }

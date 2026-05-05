@@ -28,8 +28,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "val",
-        "phoneticRep": "val"
+        "phoneticRep": "val",
+        "writtenRep": "val"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -40,98 +40,41 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "valley, water-cut lowland",
-            "@language": "en"
+            "@language": "en",
+            "@value": "valley, water-cut lowland"
           },
           "lexinfo:semanticField": [
             "Natural World",
             "Landforms"
           ]
-        }
-      ]
-    },
-    {
-      "@id": "ehk:val",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "val",
-        "phoneticRep": "val"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *valu",
-        "etymon:soundChange": "final vowel loss"
-      },
-      "sense": [
+        },
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "valley, water-cut lowland",
-            "@language": "en"
+            "@language": "en",
+            "@value": "valley, water-cut lowland"
           },
           "lexinfo:semanticField": [
             "Natural World",
             "Landforms"
           ]
-        }
-      ]
-    },
-    {
-      "@id": "ehk:val",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "val",
-        "phoneticRep": "val"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *valu",
-        "etymon:soundChange": "final vowel loss"
-      },
-      "sense": [
+        },
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "valley, water-cut lowland",
-            "@language": "en"
+            "@language": "en",
+            "@value": "valley, water-cut lowland"
           },
           "lexinfo:semanticField": [
             "Natural World",
             "Landforms"
           ]
-        }
-      ]
-    },
-    {
-      "@id": "ehk:val",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "val",
-        "phoneticRep": "val"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *valu",
-        "etymon:soundChange": "final vowel loss"
-      },
-      "sense": [
+        },
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "valley, water-cut lowland",
-            "@language": "en"
+            "@language": "en",
+            "@value": "valley, water-cut lowland"
           },
           "lexinfo:semanticField": [
             "Natural World",
@@ -148,21 +91,21 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ven",
-        "phoneticRep": "ven"
+        "phoneticRep": "ven",
+        "writtenRep": "ven"
       },
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:note": "Reintroduced from dialect after original *venu developed into vin",
         "etymon:protoform": "Proto-Hick *venu",
-        "etymon:soundChange": "final vowel loss",
-        "etymon:note": "Reintroduced from dialect after original *venu developed into vin"
+        "etymon:soundChange": "final vowel loss"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "yoke, burden",
-            "@language": "en"
+            "@language": "en",
+            "@value": "yoke, burden"
           },
           "lexinfo:semanticField": [
             "Basic Terms",
@@ -179,24 +122,24 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "vin",
-        "phoneticRep": "vin"
+        "phoneticRep": "vin",
+        "writtenRep": "vin"
       },
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:note": "Maritime standard form. Inland dialects preserve venu-sedu > vinused",
         "etymon:protoform": "Proto-Hick *venu",
         "etymon:soundChange": [
           "vowel harmony",
           "final vowel loss"
-        ],
-        "etymon:note": "Maritime standard form. Inland dialects preserve venu-sedu > vinused"
+        ]
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "pregnancy",
-            "@language": "en"
+            "@language": "en",
+            "@value": "pregnancy"
           },
           "lexinfo:semanticField": [
             "Body Terms",
@@ -213,26 +156,26 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "vinlas",
-        "phoneticRep": "vin.las"
+        "phoneticRep": "vin.las",
+        "writtenRep": "vinlas"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:compound": "vin-las",
-        "etymon:gloss": "pregnancy-ILL",
         "etymon:components": [
           "vin (pregnancy)",
           "-las (illative)"
         ],
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows lexicalization of case marking spatial relationship"
+        "etymon:compound": "vin-las",
+        "etymon:gloss": "pregnancy-ILL",
+        "etymon:note": "Shows lexicalization of case marking spatial relationship",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "fetus, unborn child",
-            "@language": "en"
+            "@language": "en",
+            "@value": "fetus, unborn child"
           },
           "lexinfo:semanticField": [
             "Person Terms",
@@ -250,26 +193,26 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "vinok",
-        "phoneticRep": "vi.nok"
+        "phoneticRep": "vi.nok",
+        "writtenRep": "vinok"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:compound": "vin-ok",
-        "etymon:gloss": "pregnancy-AGENT",
         "etymon:components": [
           "vin (pregnancy)",
           "-ok (agentive)"
         ],
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows semantic extension from agentive to resultative meaning"
+        "etymon:compound": "vin-ok",
+        "etymon:gloss": "pregnancy-AGENT",
+        "etymon:note": "Shows semantic extension from agentive to resultative meaning",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "baby, infant",
-            "@language": "en"
+            "@language": "en",
+            "@value": "baby, infant"
           },
           "lexinfo:semanticField": [
             "Person Terms",
@@ -287,43 +230,43 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "vinud",
-        "phoneticRep": "vi.nud"
+        "phoneticRep": "vi.nud",
+        "writtenRep": "vinud"
       },
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "vinud + -'er (verbalizer)",
+          "grammaticalMeaning": "to build, to dwell",
+          "phoneticRep": "vi.nu.dʔer",
+          "writtenRep": "vinud'er"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *venu-wudu",
         "etymon:components": [
           "venu (burden)",
           "wudu (wood)"
         ],
+        "etymon:note": "Semantic shift from 'wood structure' to 'dwelling'",
+        "etymon:protoform": "Proto-Hick *venu-wudu",
         "etymon:soundChange": [
           "compound fusion",
           "final vowel loss"
-        ],
-        "etymon:note": "Semantic shift from 'wood structure' to 'dwelling'"
+        ]
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "building, dwelling",
-            "@language": "en"
+            "@language": "en",
+            "@value": "building, dwelling"
           },
           "lexinfo:semanticField": [
             "Structure Terms",
             "Settlement Terms",
             "Basic Terms"
           ]
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "vinud'er",
-          "phoneticRep": "vi.nu.dʔer",
-          "decomposition": "vinud + -'er (verbalizer)",
-          "grammaticalMeaning": "to build, to dwell"
         }
       ]
     },
@@ -335,8 +278,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "vinuiter",
-        "phoneticRep": "vi.nu.i.ter"
+        "phoneticRep": "vi.nu.i.ter",
+        "writtenRep": "vinuiter"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -351,8 +294,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to give birth",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to give birth"
           },
           "lexinfo:semanticField": [
             "Verbal Terms",
@@ -369,8 +312,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "vinusak",
-        "phoneticRep": "vi.nu.sak"
+        "phoneticRep": "vi.nu.sak",
+        "writtenRep": "vinusak"
       },
       "decomp:subterm": [
         {
@@ -380,19 +323,35 @@
           "@id": "ehk:sak"
         }
       ],
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "vinusak + -'er (verbalizer)",
+          "grammaticalMeaning": "to hunt with dogs",
+          "phoneticRep": "vi.nu.sak.ʔer",
+          "writtenRep": "vinusak'er"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "vinud-sak",
         "etymon:gloss": "home-wolf",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows recognition of dogs as domesticated wolves through compound formation"
+        "etymon:note": "Shows recognition of dogs as domesticated wolves through compound formation",
+        "etymon:soundChange": "compound fusion"
       },
+      "related": [
+        {
+          "@id": "ehk:sak",
+          "note": "wild vs. domesticated canine",
+          "relationshipType": "contrasts with"
+        }
+      ],
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "dog",
-            "@language": "en"
+            "@language": "en",
+            "@value": "dog"
           },
           "lexinfo:semanticField": [
             "Animals",
@@ -403,30 +362,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "domesticated wolf",
-            "@language": "en"
+            "@language": "en",
+            "@value": "domesticated wolf"
           },
           "lexinfo:semanticField": [
             "Animals",
             "Domestic Animals"
           ],
           "usage": "Technical/historical sense reflecting origin"
-        }
-      ],
-      "related": [
-        {
-          "@id": "ehk:sak",
-          "relationshipType": "contrasts with",
-          "note": "wild vs. domesticated canine"
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "vinusak'er",
-          "phoneticRep": "vi.nu.sak.ʔer",
-          "decomposition": "vinusak + -'er (verbalizer)",
-          "grammaticalMeaning": "to hunt with dogs"
         }
       ]
     },
@@ -438,13 +381,13 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "vinusam",
-        "phoneticRep": "vi.nu.sam"
+        "phoneticRep": "vi.nu.sam",
+        "writtenRep": "vinusam"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *vinu xasamu",
         "etymon:gloss": "yoke rest",
+        "etymon:protoform": "Proto-Hick *vinu xasamu",
         "etymon:soundChange": [
           "initial fricative loss",
           "compound fusion"
@@ -454,8 +397,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "shoulder",
-            "@language": "en"
+            "@language": "en",
+            "@value": "shoulder"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -469,8 +412,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "venuiter",
-        "phoneticRep": "vi.nu.i.ter"
+        "phoneticRep": "vi.nu.i.ter",
+        "writtenRep": "venuiter"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -482,8 +425,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to give birth",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to give birth"
           },
           "lexinfo:semanticField": [
             "Verbal Terms",
@@ -500,8 +443,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ven'er",
-        "phoneticRep": "ven.ʔer"
+        "phoneticRep": "ven.ʔer",
+        "writtenRep": "ven'er"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -512,8 +455,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to carry",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to carry"
           },
           "lexinfo:semanticField": [
             "Motion Terms",
@@ -530,8 +473,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "venitar",
-        "phoneticRep": "ve.ni.tar"
+        "phoneticRep": "ve.ni.tar",
+        "writtenRep": "venitar"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -543,8 +486,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to lift",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to lift"
           },
           "lexinfo:semanticField": [
             "Verbal Terms"
@@ -560,8 +503,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "venmer",
-        "phoneticRep": "ven.mer"
+        "phoneticRep": "ven.mer",
+        "writtenRep": "venmer"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -572,8 +515,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "wing bird",
-            "@language": "en"
+            "@language": "en",
+            "@value": "wing bird"
           },
           "lexinfo:semanticField": [
             "Bird Terms",
@@ -590,8 +533,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "vinuimris",
-        "phoneticRep": "vi.nu.im.ris"
+        "phoneticRep": "vi.nu.im.ris",
+        "writtenRep": "vinuimris"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -603,8 +546,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to give birth",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to give birth"
           },
           "lexinfo:semanticField": [
             "Verbal Terms",

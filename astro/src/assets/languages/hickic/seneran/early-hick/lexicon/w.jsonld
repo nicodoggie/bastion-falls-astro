@@ -28,8 +28,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wad",
-        "phoneticRep": "wad"
+        "phoneticRep": "wad",
+        "writtenRep": "wad"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -40,8 +40,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "path",
-            "@language": "en"
+            "@language": "en",
+            "@value": "path"
           },
           "lexinfo:semanticField": [
             "Basic Terms"
@@ -50,15 +50,15 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "way, manner",
-            "@language": "en"
+            "@language": "en",
+            "@value": "way, manner"
           },
-          "usage": "Extended metaphorical meaning",
           "lexinfo:semanticField": [
             "Sacred",
             "Philosophical Terms",
             "Abstract Concepts"
-          ]
+          ],
+          "usage": "Extended metaphorical meaning"
         }
       ]
     },
@@ -70,8 +70,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wak",
-        "phoneticRep": "wak"
+        "phoneticRep": "wak",
+        "writtenRep": "wak"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -82,8 +82,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "breast",
-            "@language": "en"
+            "@language": "en",
+            "@value": "breast"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -97,8 +97,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wak'ai",
-        "phoneticRep": "wak.ʔai"
+        "phoneticRep": "wak.ʔai",
+        "writtenRep": "wak'ai"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -110,8 +110,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "milk",
-            "@language": "en"
+            "@language": "en",
+            "@value": "milk"
           },
           "lexinfo:semanticField": [
             "Body Parts",
@@ -128,8 +128,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wak'eth",
-        "phoneticRep": "wak.ʔeθ"
+        "phoneticRep": "wak.ʔeθ",
+        "writtenRep": "wak'eth"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -145,8 +145,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to nurse",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to nurse"
           },
           "lexinfo:semanticField": [
             "Body Parts",
@@ -163,8 +163,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wakat",
-        "phoneticRep": "wa.kət"
+        "phoneticRep": "wa.kət",
+        "writtenRep": "wakat"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -179,8 +179,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "nipple",
-            "@language": "en"
+            "@language": "en",
+            "@value": "nipple"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -194,9 +194,18 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ward",
-        "phoneticRep": "ward"
+        "phoneticRep": "ward",
+        "writtenRep": "ward"
       },
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "ward + -'er (verbalizer)",
+          "grammaticalMeaning": "to guide/direct (verbal form)",
+          "phoneticRep": "war.dʔer",
+          "writtenRep": "ward-'er"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:protoform": "Proto-Hick *wardu",
@@ -206,23 +215,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "direction, guidance",
-            "@language": "en"
+            "@language": "en",
+            "@value": "direction, guidance"
           },
-          "usage": "Base nominal form",
           "lexinfo:semanticField": [
             "Basic Terms",
             "Sacred"
-          ]
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "ward-'er",
-          "phoneticRep": "war.dʔer",
-          "decomposition": "ward + -'er (verbalizer)",
-          "grammaticalMeaning": "to guide/direct (verbal form)"
+          ],
+          "usage": "Base nominal form"
         }
       ]
     },
@@ -234,8 +234,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wen",
-        "phoneticRep": "wen"
+        "phoneticRep": "wen",
+        "writtenRep": "wen"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -246,8 +246,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "flower",
-            "@language": "en"
+            "@language": "en",
+            "@value": "flower"
           },
           "lexinfo:semanticField": [
             "Flora",
@@ -264,8 +264,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wenkulok",
-        "phoneticRep": "wen.ku.lok"
+        "phoneticRep": "wen.ku.lok",
+        "writtenRep": "wenkulok"
       },
       "decomp:subterm": [
         {
@@ -279,22 +279,22 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "wen'al-kulok",
         "etymon:gloss": "woman-sorcerer",
-        "etymon:soundChange": "compound reduction",
-        "etymon:note": "Shows regularization of gender marking in professional terms"
+        "etymon:note": "Shows regularization of gender marking in professional terms",
+        "etymon:soundChange": "compound reduction"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sorceress",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sorceress"
           },
+          "lexinfo:register": "formal",
           "lexinfo:semanticField": [
             "Magic Terms",
             "Professional Terms"
           ],
-          "usage": "Neutral/respectful term for female magic user",
-          "lexinfo:register": "formal"
+          "usage": "Neutral/respectful term for female magic user"
         }
       ]
     },
@@ -306,8 +306,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wes",
-        "phoneticRep": "wes"
+        "phoneticRep": "wes",
+        "writtenRep": "wes"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -318,8 +318,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "cover, enclose",
-            "@language": "en"
+            "@language": "en",
+            "@value": "cover, enclose"
           },
           "lexinfo:semanticField": "Basic Terms"
         }
@@ -333,8 +333,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wud",
-        "phoneticRep": "wud"
+        "phoneticRep": "wud",
+        "writtenRep": "wud"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -345,8 +345,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "wood, tree",
-            "@language": "en"
+            "@language": "en",
+            "@value": "wood, tree"
           },
           "lexinfo:semanticField": [
             "Flora",
@@ -364,8 +364,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wudlambe",
-        "phoneticRep": "wud.lam.be"
+        "phoneticRep": "wud.lam.be",
+        "writtenRep": "wudlambe"
       },
       "decomp:subterm": [
         {
@@ -385,8 +385,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "Wood Elven (Sindarin)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "Wood Elven (Sindarin)"
           },
           "lexinfo:semanticField": [
             "Language Terms",
@@ -404,8 +404,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wen'al",
-        "phoneticRep": "wen.ʔal"
+        "phoneticRep": "wen.ʔal",
+        "writtenRep": "wen'al"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -416,8 +416,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "woman",
-            "@language": "en"
+            "@language": "en",
+            "@value": "woman"
           },
           "lexinfo:semanticField": [
             "Person Terms",
@@ -434,8 +434,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wudgral",
-        "phoneticRep": "wud.gral"
+        "phoneticRep": "wud.gral",
+        "writtenRep": "wudgral"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -447,8 +447,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "orchard",
-            "@language": "en"
+            "@language": "en",
+            "@value": "orchard"
           },
           "lexinfo:semanticField": [
             "Horticulture Terms",
@@ -465,8 +465,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "wudmater",
-        "phoneticRep": "wud.ma.ter"
+        "phoneticRep": "wud.ma.ter",
+        "writtenRep": "wudmater"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -477,8 +477,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "wood-vessel",
-            "@language": "en"
+            "@language": "en",
+            "@value": "wood-vessel"
           },
           "lexinfo:semanticField": [
             "Maritime Terms",

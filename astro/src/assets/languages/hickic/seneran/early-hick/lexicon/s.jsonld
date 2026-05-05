@@ -28,21 +28,21 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sai",
-        "phoneticRep": "sai"
+        "phoneticRep": "sai",
+        "writtenRep": "sai"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:derivation": "Back-formation from kasai",
-        "etymon:reanalysis": "ka-sai interpreted as ADJ-self",
-        "etymon:note": "Shows folk etymology where kasai 'introspection' (< kasu-ai 'reflection-water') was reanalyzed as ka-sai leading to extraction of sai as independent term"
+        "etymon:note": "Shows folk etymology where kasai 'introspection' (< kasu-ai 'reflection-water') was reanalyzed as ka-sai leading to extraction of sai as independent term",
+        "etymon:reanalysis": "ka-sai interpreted as ADJ-self"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sense of self",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sense of self"
           },
           "lexinfo:semanticField": [
             "Mental Terms",
@@ -52,8 +52,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "inner voice",
-            "@language": "en"
+            "@language": "en",
+            "@value": "inner voice"
           },
           "lexinfo:semanticField": [
             "Mental Terms",
@@ -70,8 +70,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "saw",
-        "phoneticRep": "saw"
+        "phoneticRep": "saw",
+        "writtenRep": "saw"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -83,14 +83,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "shit",
-            "@language": "en"
+            "@language": "en",
+            "@value": "shit"
           },
+          "lexinfo:register": "lexinfo:vulgarRegister",
           "lexinfo:semanticField": [
             "Taboo Terms",
             "Body Terms"
-          ],
-          "lexinfo:register": "lexinfo:vulgarRegister"
+          ]
         }
       ]
     },
@@ -102,8 +102,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sed",
-        "phoneticRep": "sed"
+        "phoneticRep": "sed",
+        "writtenRep": "sed"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -114,8 +114,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "seed",
-            "@language": "en"
+            "@language": "en",
+            "@value": "seed"
           },
           "lexinfo:semanticField": [
             "Flora",
@@ -132,8 +132,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sedgral",
-        "phoneticRep": "sed.gral"
+        "phoneticRep": "sed.gral",
+        "writtenRep": "sedgral"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -145,8 +145,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "field",
-            "@language": "en"
+            "@language": "en",
+            "@value": "field"
           },
           "lexinfo:semanticField": [
             "Plant Terms",
@@ -163,8 +163,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sedok",
-        "phoneticRep": "se.dok"
+        "phoneticRep": "se.dok",
+        "writtenRep": "sedok"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -176,8 +176,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "planter, farmer",
-            "@language": "en"
+            "@language": "en",
+            "@value": "planter, farmer"
           },
           "lexinfo:semanticField": [
             "Agricultural Terms",
@@ -194,8 +194,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sedter",
-        "phoneticRep": "sed.ter"
+        "phoneticRep": "sed.ter",
+        "writtenRep": "sedter"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -207,8 +207,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "planting time",
-            "@language": "en"
+            "@language": "en",
+            "@value": "planting time"
           },
           "lexinfo:semanticField": [
             "Flora",
@@ -228,8 +228,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sibar",
-        "phoneticRep": "si.bar"
+        "phoneticRep": "si.bar",
+        "writtenRep": "sibar"
       },
       "decomp:subterm": [
         {
@@ -243,22 +243,22 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "sin-bar",
         "etymon:gloss": "one-name",
-        "etymon:soundChange": "compound fusion, liquid deletion",
-        "etymon:note": "Shows development of honorific from concept of unique naming"
+        "etymon:note": "Shows development of honorific from concept of unique naming",
+        "etymon:soundChange": "compound fusion, liquid deletion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "distinguished one, unique person",
-            "@language": "en"
+            "@language": "en",
+            "@value": "distinguished one, unique person"
           },
+          "lexinfo:register": "formal",
           "lexinfo:semanticField": [
             "Person Terms",
             "Honor Terms",
             "Social Terms"
-          ],
-          "lexinfo:register": "formal"
+          ]
         }
       ]
     },
@@ -270,24 +270,24 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sibris",
-        "phoneticRep": "si.bris"
+        "phoneticRep": "si.bris",
+        "writtenRep": "sibris"
       },
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:note": "Metaphorical extension from 'fire' to 'passion/love'",
         "etymon:protoform": "Proto-Hick *hibrisu",
         "etymon:soundChange": [
           "initial fricative change",
           "final vowel loss"
-        ],
-        "etymon:note": "Metaphorical extension from 'fire' to 'passion/love'"
+        ]
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "love",
-            "@language": "en"
+            "@language": "en",
+            "@value": "love"
           },
           "lexinfo:semanticField": [
             "Abstract Concepts",
@@ -305,29 +305,29 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sin",
-        "phoneticRep": "sin"
+        "phoneticRep": "sin",
+        "writtenRep": "sin"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *su-inu",
         "etymon:note": "From counting form with *-inu suffix",
+        "etymon:protoform": "Proto-Hick *su-inu",
         "etymon:soundChange": "final vowel loss"
       },
-      "sense": [
-        {
-          "@type": "ontolex:LexicalSense",
-          "definition": {
-            "@value": "one",
-            "@language": "en"
-          },
-          "lexinfo:semanticField": "Number System"
-        }
-      ],
       "related": [
         {
           "@id": "ehk:sin_float",
           "type": "lexinfo:homonym"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "one"
+          },
+          "lexinfo:semanticField": "Number System"
         }
       ]
     },
@@ -339,32 +339,32 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sin",
-        "phoneticRep": "sin"
+        "phoneticRep": "sin",
+        "writtenRep": "sin"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:protoform": "Proto-Hick *senu",
         "etymon:soundChange": "final vowel loss"
       },
+      "related": [
+        {
+          "@id": "ehk:sin_num",
+          "type": "lexinfo:homonym"
+        }
+      ],
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "floating",
-            "@language": "en"
+            "@language": "en",
+            "@value": "floating"
           },
           "lexinfo:semanticField": [
             "Motion Terms",
             "Maritime Terms",
             "Action Terms"
           ]
-        }
-      ],
-      "related": [
-        {
-          "@id": "ehk:sin_num",
-          "type": "lexinfo:homonym"
         }
       ]
     },
@@ -376,29 +376,29 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sinas",
-        "phoneticRep": "si.nas"
+        "phoneticRep": "si.nas",
+        "writtenRep": "sinas"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *senu-asa-u",
         "etymon:components": [
           "senu (float)",
           "asa (PERL)",
           "u (NOM)"
         ],
+        "etymon:note": "Literally 'floating through', shows typical compound reduction",
+        "etymon:protoform": "Proto-Hick *senu-asa-u",
         "etymon:soundChange": [
           "final vowel loss",
           "compound fusion"
-        ],
-        "etymon:note": "Literally 'floating through', shows typical compound reduction"
+        ]
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "drift, passage",
-            "@language": "en"
+            "@language": "en",
+            "@value": "drift, passage"
           },
           "lexinfo:semanticField": [
             "Motion Terms",
@@ -416,8 +416,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sinibel",
-        "phoneticRep": "si.ni.bel"
+        "phoneticRep": "si.ni.bel",
+        "writtenRep": "sinibel"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -429,14 +429,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "taste",
-            "@language": "en"
+            "@language": "en",
+            "@value": "taste"
           },
-          "usage": "Shows metaphorical extension of floating motion to sensory perception",
           "lexinfo:semanticField": [
             "Taste Terms",
             "Body Terms"
-          ]
+          ],
+          "usage": "Shows metaphorical extension of floating motion to sensory perception"
         }
       ]
     },
@@ -448,41 +448,41 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "stor",
-        "phoneticRep": "stor"
+        "phoneticRep": "stor",
+        "writtenRep": "stor"
       },
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "stor + -'er (verbalizer)",
+          "grammaticalMeaning": "to grow, to increase",
+          "phoneticRep": "stor.ʔer",
+          "writtenRep": "stor-'er"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:note": "Base form preserved in sacred terms",
         "etymon:protoform": "Proto-Hick *storu",
-        "etymon:soundChange": "final vowel loss",
-        "etymon:note": "Base form preserved in sacred terms"
+        "etymon:soundChange": "final vowel loss"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "growth",
-            "@language": "en"
+            "@language": "en",
+            "@value": "growth"
           },
           "lexinfo:semanticField": "Basic Terms"
         },
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "addition, increment",
-            "@language": "en"
+            "@language": "en",
+            "@value": "addition, increment"
           },
-          "usage": "Mathematical sense developed from basic meaning 'growth'",
-          "lexinfo:semanticField": "Basic Terms"
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "stor-'er",
-          "phoneticRep": "stor.ʔer",
-          "decomposition": "stor + -'er (verbalizer)",
-          "grammaticalMeaning": "to grow, to increase"
+          "lexinfo:semanticField": "Basic Terms",
+          "usage": "Mathematical sense developed from basic meaning 'growth'"
         }
       ]
     },
@@ -494,8 +494,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "storbran",
-        "phoneticRep": "stor.bran"
+        "phoneticRep": "stor.bran",
+        "writtenRep": "storbran"
       },
       "decomp:subterm": [
         {
@@ -505,19 +505,36 @@
           "@id": "ehk:bran"
         }
       ],
+      "derivation": {
+        "@type": "ontolex:LexicalEntry",
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "phoneticRep": "stor.bran.ʔer",
+          "writtenRep": "storbran'er"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@language": "en",
+              "@value": "to marry"
+            }
+          }
+        ]
+      },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "stor-bran",
         "etymon:gloss": "join-lineage",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows formalization of marriage as union between family lines"
+        "etymon:note": "Shows formalization of marriage as union between family lines",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "marriage, family union",
-            "@language": "en"
+            "@language": "en",
+            "@value": "marriage, family union"
           },
           "lexinfo:semanticField": [
             "Family Terms",
@@ -525,24 +542,7 @@
             "Sacred Terms"
           ]
         }
-      ],
-      "derivation": {
-        "@type": "ontolex:LexicalEntry",
-        "canonicalForm": {
-          "@type": "ontolex:Form",
-          "writtenRep": "storbran'er",
-          "phoneticRep": "stor.bran.ʔer"
-        },
-        "sense": [
-          {
-            "@type": "ontolex:LexicalSense",
-            "definition": {
-              "@value": "to marry",
-              "@language": "en"
-            }
-          }
-        ]
-      }
+      ]
     },
     {
       "@id": "ehk:sul",
@@ -552,8 +552,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sul",
-        "phoneticRep": "sul"
+        "phoneticRep": "sul",
+        "writtenRep": "sul"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -564,8 +564,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "liver",
-            "@language": "en"
+            "@language": "en",
+            "@value": "liver"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -579,8 +579,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sulmil",
-        "phoneticRep": "sul.mil"
+        "phoneticRep": "sul.mil",
+        "writtenRep": "sulmil"
       },
       "decomp:subterm": [
         {
@@ -600,8 +600,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "liver fat",
-            "@language": "en"
+            "@language": "en",
+            "@value": "liver fat"
           },
           "lexinfo:semanticField": [
             "Food & Consumption Terms",
@@ -618,8 +618,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sumerok",
-        "phoneticRep": "su.me.rok"
+        "phoneticRep": "su.me.rok",
+        "writtenRep": "sumerok"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -631,11 +631,11 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "goat",
-            "@language": "en"
+            "@language": "en",
+            "@value": "goat"
           },
-          "usage": "Shows compound reduction and metaphorical extension through agentive marking",
-          "lexinfo:semanticField": "Animals"
+          "lexinfo:semanticField": "Animals",
+          "usage": "Shows compound reduction and metaphorical extension through agentive marking"
         }
       ]
     },
@@ -647,8 +647,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sak",
-        "phoneticRep": "sak"
+        "phoneticRep": "sak",
+        "writtenRep": "sak"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -659,8 +659,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "wolf",
-            "@language": "en"
+            "@language": "en",
+            "@value": "wolf"
           },
           "lexinfo:semanticField": "Animal Terms"
         }
@@ -674,8 +674,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sar",
-        "phoneticRep": "sar"
+        "phoneticRep": "sar",
+        "writtenRep": "sar"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -686,8 +686,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "leaf",
-            "@language": "en"
+            "@language": "en",
+            "@value": "leaf"
           },
           "lexinfo:semanticField": "Flora Terms"
         }
@@ -701,8 +701,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "saresp",
-        "phoneticRep": "sa.resp"
+        "phoneticRep": "sa.resp",
+        "writtenRep": "saresp"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -714,8 +714,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sprout",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sprout"
           },
           "lexinfo:semanticField": [
             "Flora Terms",
@@ -732,20 +732,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sat",
-        "phoneticRep": "sat"
+        "phoneticRep": "sat",
+        "writtenRep": "sat"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *satu",
-        "etymon:note": "Basic term for appendages, with anatomical extension. Forms compounds for specific body parts."
+        "etymon:note": "Basic term for appendages, with anatomical extension. Forms compounds for specific body parts.",
+        "etymon:protoform": "Proto-Hick *satu"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "appendage; penis",
-            "@language": "en"
+            "@language": "en",
+            "@value": "appendage; penis"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -759,8 +759,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sedthral",
-        "phoneticRep": "sed.θral"
+        "phoneticRep": "sed.θral",
+        "writtenRep": "sedthral"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -771,8 +771,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "planting day",
-            "@language": "en"
+            "@language": "en",
+            "@value": "planting day"
           },
           "lexinfo:semanticField": [
             "Time Terms",
@@ -789,20 +789,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sek",
-        "phoneticRep": "sek"
+        "phoneticRep": "sek",
+        "writtenRep": "sek"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *seku",
-        "etymon:note": "Basic form"
+        "etymon:note": "Basic form",
+        "etymon:protoform": "Proto-Hick *seku"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "six",
-            "@language": "en"
+            "@language": "en",
+            "@value": "six"
           },
           "lexinfo:semanticField": "Number Terms"
         }
@@ -816,8 +816,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sil",
-        "phoneticRep": "sil"
+        "phoneticRep": "sil",
+        "writtenRep": "sil"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -828,8 +828,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "hide, skin",
-            "@language": "en"
+            "@language": "en",
+            "@value": "hide, skin"
           },
           "lexinfo:semanticField": [
             "Body Parts",
@@ -846,8 +846,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "silpel",
-        "phoneticRep": "sil.pel"
+        "phoneticRep": "sil.pel",
+        "writtenRep": "silpel"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -858,8 +858,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "hide bear",
-            "@language": "en"
+            "@language": "en",
+            "@value": "hide bear"
           },
           "lexinfo:semanticField": "Animal Terms"
         }
@@ -873,8 +873,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "siltak",
-        "phoneticRep": "sil.tak"
+        "phoneticRep": "sil.tak",
+        "writtenRep": "siltak"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -885,8 +885,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "physical pain",
-            "@language": "en"
+            "@language": "en",
+            "@value": "physical pain"
           },
           "lexinfo:semanticField": [
             "Body Terms",
@@ -903,14 +903,14 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "siltak'er",
-        "phoneticRep": "sil.tak.ʔer"
+        "phoneticRep": "sil.tak.ʔer",
+        "writtenRep": "siltak'er"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:derivation": {
-          "base": "siltak",
           "affix": "-'er",
+          "base": "siltak",
           "gloss": "physical.pain-VERB"
         }
       },
@@ -918,8 +918,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to touch",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to touch"
           },
           "lexinfo:semanticField": [
             "Action Verbs",
@@ -936,8 +936,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sim",
-        "phoneticRep": "sim"
+        "phoneticRep": "sim",
+        "writtenRep": "sim"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -948,8 +948,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "fine hair, lash",
-            "@language": "en"
+            "@language": "en",
+            "@value": "fine hair, lash"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -963,8 +963,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sinkres",
-        "phoneticRep": "sin.kres"
+        "phoneticRep": "sin.kres",
+        "writtenRep": "sinkres"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -975,8 +975,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "nine",
-            "@language": "en"
+            "@language": "en",
+            "@value": "nine"
           },
           "lexinfo:semanticField": "Number Terms"
         }
@@ -990,8 +990,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "sinthir",
-        "phoneticRep": "sin.θir"
+        "phoneticRep": "sin.θir",
+        "writtenRep": "sinthir"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1002,8 +1002,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "fly",
-            "@language": "en"
+            "@language": "en",
+            "@value": "fly"
           },
           "lexinfo:semanticField": [
             "Animal Terms",

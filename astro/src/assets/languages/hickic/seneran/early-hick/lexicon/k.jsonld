@@ -28,25 +28,25 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kabrast",
-        "phoneticRep": "ka.brast"
+        "phoneticRep": "ka.brast",
+        "writtenRep": "kabrast"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "ka-brast",
         "etymon:gloss": "like-dominant.arm",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows metaphorical extension to manual craft skills"
+        "etymon:note": "Shows metaphorical extension to manual craft skills",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "skilled with hands, manually dexterous",
-            "@language": "en"
+            "@language": "en",
+            "@value": "skilled with hands, manually dexterous"
           },
-          "usage": "Specifically for craft skills requiring hand coordination; does not extend to martial or athletic dexterity",
-          "lexinfo:semanticField": "Body Parts"
+          "lexinfo:semanticField": "Body Parts",
+          "usage": "Specifically for craft skills requiring hand coordination; does not extend to martial or athletic dexterity"
         }
       ]
     },
@@ -58,8 +58,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kaduwes",
-        "phoneticRep": "ka.du.wes"
+        "phoneticRep": "ka.du.wes",
+        "writtenRep": "kaduwes"
       },
       "decomp:subterm": [
         {
@@ -79,11 +79,11 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "edible",
-            "@language": "en"
+            "@language": "en",
+            "@value": "edible"
           },
-          "usage": "Shows productive use of ka- prefix for potential/capability",
-          "lexinfo:semanticField": "Food & Consumption Terms"
+          "lexinfo:semanticField": "Food & Consumption Terms",
+          "usage": "Shows productive use of ka- prefix for potential/capability"
         }
       ]
     },
@@ -95,8 +95,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kaken",
-        "phoneticRep": "ka.ken"
+        "phoneticRep": "ka.ken",
+        "writtenRep": "kaken"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -107,8 +107,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "snowy, snow-covered",
-            "@language": "en"
+            "@language": "en",
+            "@value": "snowy, snow-covered"
           },
           "lexinfo:semanticField": [
             "Weather Terms",
@@ -125,8 +125,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kaketh",
-        "phoneticRep": "ka.keθ"
+        "phoneticRep": "ka.keθ",
+        "writtenRep": "kaketh"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -138,14 +138,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "salty",
-            "@language": "en"
+            "@language": "en",
+            "@value": "salty"
           },
-          "usage": "Literally 'sea-like', shows maritime influence on taste terminology",
           "lexinfo:semanticField": [
             "Taste Terms",
             "Maritime Terms"
-          ]
+          ],
+          "usage": "Literally 'sea-like', shows maritime influence on taste terminology"
         }
       ]
     },
@@ -157,8 +157,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kandup",
-        "phoneticRep": "kan.dup"
+        "phoneticRep": "kan.dup",
+        "writtenRep": "kandup"
       },
       "decomp:subterm": [
         {
@@ -178,8 +178,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "head lump, bump on head",
-            "@language": "en"
+            "@language": "en",
+            "@value": "head lump, bump on head"
           },
           "lexinfo:semanticField": [
             "Body Terms",
@@ -197,8 +197,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kanmil",
-        "phoneticRep": "kan.mil"
+        "phoneticRep": "kan.mil",
+        "writtenRep": "kanmil"
       },
       "decomp:subterm": [
         {
@@ -218,8 +218,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "brain",
-            "@language": "en"
+            "@language": "en",
+            "@value": "brain"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -233,9 +233,18 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kar",
-        "phoneticRep": "kar"
+        "phoneticRep": "kar",
+        "writtenRep": "kar"
       },
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "kar + -'er (verbalizer)",
+          "grammaticalMeaning": "to smell",
+          "phoneticRep": "kar.ʔer",
+          "writtenRep": "kar'er"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:protoform": "Proto-Hick *karu",
@@ -245,19 +254,10 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "nose",
-            "@language": "en"
+            "@language": "en",
+            "@value": "nose"
           },
           "lexinfo:semanticField": "Body Parts"
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "kar'er",
-          "phoneticRep": "kar.ʔer",
-          "decomposition": "kar + -'er (verbalizer)",
-          "grammaticalMeaning": "to smell"
         }
       ]
     },
@@ -269,8 +269,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kasai",
-        "phoneticRep": "kas.əi"
+        "phoneticRep": "kas.əi",
+        "writtenRep": "kasai"
       },
       "decomp:subterm": [
         {
@@ -284,15 +284,15 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "kasu-ai",
         "etymon:gloss": "reflection-water",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "From ancient practice of water-gazing meditation. Shows metaphorical extension from physical reflection to mental contemplation"
+        "etymon:note": "From ancient practice of water-gazing meditation. Shows metaphorical extension from physical reflection to mental contemplation",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "introspection, self-reflection",
-            "@language": "en"
+            "@language": "en",
+            "@value": "introspection, self-reflection"
           },
           "lexinfo:semanticField": [
             "Mental Terms",
@@ -309,8 +309,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kasger",
-        "phoneticRep": "kas.ger"
+        "phoneticRep": "kas.ger",
+        "writtenRep": "kasger"
       },
       "decomp:subterm": [
         {
@@ -324,18 +324,18 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "kasu-garu",
         "etymon:gloss": "reflection-stone",
+        "etymon:note": "Shows technological origin in polished stone mirrors",
         "etymon:soundChange": [
           "compound fusion",
           "final vowel loss"
-        ],
-        "etymon:note": "Shows technological origin in polished stone mirrors"
+        ]
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "mirror (especially polished stone mirror)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "mirror (especially polished stone mirror)"
           },
           "lexinfo:semanticField": [
             "Tool Terms",
@@ -352,8 +352,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kawak",
-        "phoneticRep": "ka.wak"
+        "phoneticRep": "ka.wak",
+        "writtenRep": "kawak"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -365,14 +365,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "soft",
-            "@language": "en"
+            "@language": "en",
+            "@value": "soft"
           },
-          "usage": "Shows cultural association between softness and nurturing",
           "lexinfo:semanticField": [
             "Tactile Properties",
             "Body Terms"
-          ]
+          ],
+          "usage": "Shows cultural association between softness and nurturing"
         }
       ]
     },
@@ -384,21 +384,33 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kel",
-        "phoneticRep": "kel"
+        "phoneticRep": "kel",
+        "writtenRep": "kel"
       },
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:note": "Shows semantic extension from 'leaf' to 'sky', possibly through metaphor of canopy",
         "etymon:protoform": "Proto-Hick *kelu",
-        "etymon:soundChange": "final vowel loss",
-        "etymon:note": "Shows semantic extension from 'leaf' to 'sky', possibly through metaphor of canopy"
+        "etymon:soundChange": "final vowel loss"
       },
+      "related": [
+        {
+          "@id": "ehk:kelwud",
+          "note": "orchard (lit. leaf-wood)",
+          "relationshipType": "has compound"
+        },
+        {
+          "@id": "ehk:thrakel",
+          "note": "sun (lit. sacred-sky)",
+          "relationshipType": "has compound"
+        }
+      ],
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sky",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sky"
           },
           "lexinfo:semanticField": [
             "Celestial Terms",
@@ -409,8 +421,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "blue",
-            "@language": "en"
+            "@language": "en",
+            "@value": "blue"
           },
           "lexinfo:semanticField": "Colors",
           "usage": "Derived from association with sky color"
@@ -418,26 +430,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "leaf",
-            "@language": "en"
+            "@language": "en",
+            "@value": "leaf"
           },
           "lexinfo:semanticField": [
             "Flora",
             "Plant Terms"
           ],
           "usage": "Productive in botanical compounds"
-        }
-      ],
-      "related": [
-        {
-          "@id": "ehk:kelwud",
-          "relationshipType": "has compound",
-          "note": "orchard (lit. leaf-wood)"
-        },
-        {
-          "@id": "ehk:thrakel",
-          "relationshipType": "has compound",
-          "note": "sun (lit. sacred-sky)"
         }
       ]
     },
@@ -449,8 +449,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kelwud",
-        "phoneticRep": "kel.wud"
+        "phoneticRep": "kel.wud",
+        "writtenRep": "kelwud"
       },
       "decomp:subterm": [
         {
@@ -470,8 +470,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "orchard",
-            "@language": "en"
+            "@language": "en",
+            "@value": "orchard"
           },
           "lexinfo:semanticField": [
             "Garden Terms",
@@ -488,8 +488,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ken",
-        "phoneticRep": "ken"
+        "phoneticRep": "ken",
+        "writtenRep": "ken"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -500,8 +500,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "snow",
-            "@language": "en"
+            "@language": "en",
+            "@value": "snow"
           },
           "lexinfo:semanticField": [
             "Weather Terms",
@@ -518,22 +518,22 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kethul",
-        "phoneticRep": "ke.θul"
+        "phoneticRep": "ke.θul",
+        "writtenRep": "kethul"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "kethulbres",
         "etymon:gloss": "sea-wind",
-        "etymon:soundChange": "compound reduction",
-        "etymon:note": "Shows maritime influence on eastern regions"
+        "etymon:note": "Shows maritime influence on eastern regions",
+        "etymon:soundChange": "compound reduction"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "east",
-            "@language": "en"
+            "@language": "en",
+            "@value": "east"
           },
           "lexinfo:semanticField": [
             "Directional Terms",
@@ -551,8 +551,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kethulbres",
-        "phoneticRep": "ke.θul.bres"
+        "phoneticRep": "ke.θul.bres",
+        "writtenRep": "kethulbres"
       },
       "decomp:subterm": [
         {
@@ -572,15 +572,15 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "east wind",
-            "@language": "en"
+            "@language": "en",
+            "@value": "east wind"
           },
-          "usage": "Common in eastern coastal regions",
           "lexinfo:semanticField": [
             "Weather Terms",
             "Directional Terms",
             "Maritime Terms"
-          ]
+          ],
+          "usage": "Common in eastern coastal regions"
         }
       ]
     },
@@ -592,8 +592,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kir'irur",
-        "phoneticRep": "kir.ʔi.rur"
+        "phoneticRep": "kir.ʔi.rur",
+        "writtenRep": "kir'irur"
       },
       "decomp:subterm": [
         {
@@ -613,11 +613,11 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "ribcage",
-            "@language": "en"
+            "@language": "en",
+            "@value": "ribcage"
           },
-          "usage": "Shows parallel metaphorical extension with 'irurlis 'gourd/container'",
-          "lexinfo:semanticField": "Body Parts"
+          "lexinfo:semanticField": "Body Parts",
+          "usage": "Shows parallel metaphorical extension with 'irurlis 'gourd/container'"
         }
       ]
     },
@@ -629,8 +629,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kirgar",
-        "phoneticRep": "kir.gər"
+        "phoneticRep": "kir.gər",
+        "writtenRep": "kirgar"
       },
       "decomp:subterm": [
         {
@@ -653,11 +653,11 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "rib",
-            "@language": "en"
+            "@language": "en",
+            "@value": "rib"
           },
-          "usage": "Plural makirgar refers to full set of ribs",
-          "lexinfo:semanticField": "Body Parts"
+          "lexinfo:semanticField": "Body Parts",
+          "usage": "Plural makirgar refers to full set of ribs"
         }
       ]
     },
@@ -669,28 +669,28 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kiris",
-        "phoneticRep": "ki.ris"
+        "phoneticRep": "ki.ris",
+        "writtenRep": "kiris"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *kiru-ʔisu",
         "etymon:components": [
           "kiru (body)",
           "ʔisu (out)"
         ],
+        "etymon:note": "Shows archaic directional suffix",
+        "etymon:protoform": "Proto-Hick *kiru-ʔisu",
         "etymon:soundChange": [
           "compound fusion",
           "final vowel loss"
-        ],
-        "etymon:note": "Shows archaic directional suffix"
+        ]
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "outsider",
-            "@language": "en"
+            "@language": "en",
+            "@value": "outsider"
           },
           "lexinfo:semanticField": [
             "Person Terms",
@@ -707,8 +707,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kiriter",
-        "phoneticRep": "ki.ri.ter"
+        "phoneticRep": "ki.ri.ter",
+        "writtenRep": "kiriter"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -720,8 +720,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "foreigner, stranger",
-            "@language": "en"
+            "@language": "en",
+            "@value": "foreigner, stranger"
           },
           "lexinfo:semanticField": [
             "Person Terms",
@@ -738,8 +738,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kirmil",
-        "phoneticRep": "kir.mil"
+        "phoneticRep": "kir.mil",
+        "writtenRep": "kirmil"
       },
       "decomp:subterm": [
         {
@@ -759,8 +759,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "chest/organ fat",
-            "@language": "en"
+            "@language": "en",
+            "@value": "chest/organ fat"
           },
           "lexinfo:semanticField": [
             "Food & Consumption Terms",
@@ -777,8 +777,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kirtor",
-        "phoneticRep": "kir.tor"
+        "phoneticRep": "kir.tor",
+        "writtenRep": "kirtor"
       },
       "decomp:subterm": [
         {
@@ -798,52 +798,19 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "cliff face",
-            "@language": "en"
+            "@language": "en",
+            "@value": "cliff face"
           },
           "lexinfo:semanticField": [
             "Natural World",
             "Landforms"
           ]
-        }
-      ]
-    },
-    {
-      "@id": "ehk:kirtor",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "@id": "ehk:kirtor",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "kirtor",
-        "phoneticRep": "kir.tor"
-      },
-      "decomp:subterm": [
-        {
-          "@id": "ehk:kir"
         },
-        {
-          "@id": "ehk:tor"
-        }
-      ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:compound": "kir-tor",
-        "etymon:meaning": "chest-height",
-        "etymon:soundChange": "compound fusion"
-      },
-      "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "cliff face",
-            "@language": "en"
+            "@language": "en",
+            "@value": "cliff face"
           },
           "lexinfo:semanticField": [
             "Natural World",
@@ -860,8 +827,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kol",
-        "phoneticRep": "kol"
+        "phoneticRep": "kol",
+        "writtenRep": "kol"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -872,8 +839,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "neck",
-            "@language": "en"
+            "@language": "en",
+            "@value": "neck"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -887,8 +854,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kor",
-        "phoneticRep": "kor"
+        "phoneticRep": "kor",
+        "writtenRep": "kor"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -899,11 +866,11 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "cow",
-            "@language": "en"
+            "@language": "en",
+            "@value": "cow"
           },
-          "usage": "Early borrowing showing cultural contact with Iutlandish herders",
-          "lexinfo:semanticField": "Animals"
+          "lexinfo:semanticField": "Animals",
+          "usage": "Early borrowing showing cultural contact with Iutlandish herders"
         }
       ]
     },
@@ -915,8 +882,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kost",
-        "phoneticRep": "kost"
+        "phoneticRep": "kost",
+        "writtenRep": "kost"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -927,8 +894,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "foot",
-            "@language": "en"
+            "@language": "en",
+            "@value": "foot"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -942,8 +909,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "krakesi",
-        "phoneticRep": "kra.ke.si"
+        "phoneticRep": "kra.ke.si",
+        "writtenRep": "krakesi"
       },
       "decomp:subterm": [
         {
@@ -957,16 +924,16 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "krak-kasigaru",
         "etymon:gloss": "tooth-obsidian",
+        "etymon:note": "Shows semantic extension from wooden paddle with obsidian teeth to any long bladed weapon",
         "etymon:protoform": "Proto-Hick *krak-kasigaru",
-        "etymon:soundChange": "compound reduction, vowel loss",
-        "etymon:note": "Shows semantic extension from wooden paddle with obsidian teeth to any long bladed weapon"
+        "etymon:soundChange": "compound reduction, vowel loss"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sword, long bladed weapon",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sword, long bladed weapon"
           },
           "lexinfo:semanticField": [
             "Weapon Terms",
@@ -984,17 +951,17 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "krakiger",
-        "phoneticRep": "krak.i.ger"
+        "phoneticRep": "krak.i.ger",
+        "writtenRep": "krakiger"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *kraku-garu",
-        "etymon:gloss": "tooth-rock",
         "etymon:components": [
           "*kraku (tooth)",
           "*garu (rock)"
         ],
+        "etymon:gloss": "tooth-rock",
+        "etymon:protoform": "Proto-Hick *kraku-garu",
         "etymon:soundChange": [
           "compound fusion",
           "epenthetic -i-",
@@ -1005,8 +972,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "flint, chert",
-            "@language": "en"
+            "@language": "en",
+            "@value": "flint, chert"
           },
           "lexinfo:semanticField": [
             "Material Terms",
@@ -1023,8 +990,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "krakrak",
-        "phoneticRep": "kra.krak"
+        "phoneticRep": "kra.krak",
+        "writtenRep": "krakrak"
       },
       "decomp:subterm": [
         {
@@ -1038,15 +1005,15 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "kran-krak",
         "etymon:gloss": "horn-tooth",
-        "etymon:soundChange": "nasal deletion",
-        "etymon:note": "Shows nasal deletion in compound. Forms specialized term contrasting with general krak 'tooth'"
+        "etymon:note": "Shows nasal deletion in compound. Forms specialized term contrasting with general krak 'tooth'",
+        "etymon:soundChange": "nasal deletion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "fang",
-            "@language": "en"
+            "@language": "en",
+            "@value": "fang"
           },
           "lexinfo:semanticField": [
             "Body Terms",
@@ -1059,12 +1026,13 @@
       "@id": "ehk:krantak",
       "@type": [
         "ontolex:LexicalEntry",
-        "lexinfo:Verb"
+        "lexinfo:Verb",
+        "lexinfo:Noun"
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "krantak",
-        "phoneticRep": "kran.tak"
+        "phoneticRep": "kran.tak",
+        "writtenRep": "krantak"
       },
       "decomp:subterm": [
         {
@@ -1072,75 +1040,46 @@
         },
         {
           "@id": "ehk:tak"
+        }
+      ],
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "siltak + -'er (verbalizer)",
+          "grammaticalMeaning": "to feel physical pain",
+          "phoneticRep": "sil.tak.ʔer",
+          "writtenRep": "siltak'er"
         }
       ],
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "kran-tak",
         "etymon:gloss": "spike-strike",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows instrumental compound formation - striking with a spike"
+        "etymon:note": "Shows instrumental compound formation - striking with a spike",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to pierce, stab",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to pierce, stab"
           },
           "lexinfo:semanticField": [
             "Basic Actions",
             "Weapon Terms"
           ]
-        }
-      ]
-    },
-    {
-      "@id": "ehk:krantak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "krantak",
-        "phoneticRep": "kran.tak"
-      },
-      "decomp:subterm": [
-        {
-          "@id": "ehk:kran"
         },
-        {
-          "@id": "ehk:tak"
-        }
-      ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:compound": "kran-tak",
-        "etymon:gloss": "pierce-hit",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows cultural distinction between physical and emotional pain"
-      },
-      "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "physical pain",
-            "@language": "en"
+            "@language": "en",
+            "@value": "physical pain"
           },
           "lexinfo:semanticField": [
             "Body Terms",
             "Physical States"
           ]
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "siltak'er",
-          "phoneticRep": "sil.tak.ʔer",
-          "decomposition": "siltak + -'er (verbalizer)",
-          "grammaticalMeaning": "to feel physical pain"
         }
       ]
     },
@@ -1152,8 +1091,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kras",
-        "phoneticRep": "kras"
+        "phoneticRep": "kras",
+        "writtenRep": "kras"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1164,11 +1103,11 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "bitter",
-            "@language": "en"
+            "@language": "en",
+            "@value": "bitter"
           },
-          "usage": "Used for both taste and metaphorical bitterness",
-          "lexinfo:semanticField": "Taste Terms"
+          "lexinfo:semanticField": "Taste Terms",
+          "usage": "Used for both taste and metaphorical bitterness"
         }
       ]
     },
@@ -1180,9 +1119,25 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kul",
-        "phoneticRep": "kul"
+        "phoneticRep": "kul",
+        "writtenRep": "kul"
       },
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "kul + -'er (verbalizer)",
+          "grammaticalMeaning": "to perform magic",
+          "phoneticRep": "kul.ʔer",
+          "writtenRep": "kul-'er"
+        },
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "kul + -ok (agentive)",
+          "grammaticalMeaning": "sorcerer",
+          "phoneticRep": "ku.lok",
+          "writtenRep": "kulok"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:protoform": "Proto-Hick *kulu",
@@ -1192,29 +1147,13 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "magic, sorcery",
-            "@language": "en"
+            "@language": "en",
+            "@value": "magic, sorcery"
           },
           "lexinfo:semanticField": [
             "Magical Terms",
             "Sacred Terms"
           ]
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "kul-'er",
-          "phoneticRep": "kul.ʔer",
-          "decomposition": "kul + -'er (verbalizer)",
-          "grammaticalMeaning": "to perform magic"
-        },
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "kulok",
-          "phoneticRep": "ku.lok",
-          "decomposition": "kul + -ok (agentive)",
-          "grammaticalMeaning": "sorcerer"
         }
       ]
     },
@@ -1226,8 +1165,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kun",
-        "phoneticRep": "kun"
+        "phoneticRep": "kun",
+        "writtenRep": "kun"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1238,8 +1177,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "knee",
-            "@language": "en"
+            "@language": "en",
+            "@value": "knee"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -1253,8 +1192,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kur",
-        "phoneticRep": "kur"
+        "phoneticRep": "kur",
+        "writtenRep": "kur"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1265,8 +1204,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "moss",
-            "@language": "en"
+            "@language": "en",
+            "@value": "moss"
           },
           "lexinfo:semanticField": [
             "Flora",
@@ -1276,8 +1215,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "copper",
-            "@language": "en"
+            "@language": "en",
+            "@value": "copper"
           },
           "lexinfo:semanticField": [
             "Metals",
@@ -1294,8 +1233,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kabran",
-        "phoneticRep": "ka.bran"
+        "phoneticRep": "ka.bran",
+        "writtenRep": "kabran"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1307,14 +1246,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "crooked, leaning",
-            "@language": "en"
+            "@language": "en",
+            "@value": "crooked, leaning"
           },
-          "usage": "Forms common expression kabran 'irek'er 'to lean' (lit. 'stand crookedly')",
           "lexinfo:semanticField": [
             "Position Terms",
             "Basic Terms"
-          ]
+          ],
+          "usage": "Forms common expression kabran 'irek'er 'to lean' (lit. 'stand crookedly')"
         }
       ]
     },
@@ -1326,8 +1265,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kagar",
-        "phoneticRep": "ka.gar"
+        "phoneticRep": "ka.gar",
+        "writtenRep": "kagar"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1339,8 +1278,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "hard",
-            "@language": "en"
+            "@language": "en",
+            "@value": "hard"
           },
           "lexinfo:semanticField": [
             "Tactile Properties",
@@ -1357,8 +1296,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kagral",
-        "phoneticRep": "ka.gral"
+        "phoneticRep": "ka.gral",
+        "writtenRep": "kagral"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1370,8 +1309,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "earthy, brown",
-            "@language": "en"
+            "@language": "en",
+            "@value": "earthy, brown"
           },
           "lexinfo:semanticField": [
             "Colors",
@@ -1388,22 +1327,22 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kaimpal",
-        "phoneticRep": "ka.im.pal"
+        "phoneticRep": "ka.im.pal",
+        "writtenRep": "kaimpal"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "ka-im-pal",
         "etymon:gloss": "like-ill-belly",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows metaphorical extension of belly/gut health to general strength"
+        "etymon:note": "Shows metaphorical extension of belly/gut health to general strength",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "weak, feeble",
-            "@language": "en"
+            "@language": "en",
+            "@value": "weak, feeble"
           },
           "lexinfo:semanticField": [
             "Physical States",
@@ -1420,8 +1359,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kakethmal",
-        "phoneticRep": "ka.keθ.mal"
+        "phoneticRep": "ka.keθ.mal",
+        "writtenRep": "kakethmal"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1433,8 +1372,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "brine pool",
-            "@language": "en"
+            "@language": "en",
+            "@value": "brine pool"
           },
           "lexinfo:semanticField": [
             "Water Features",
@@ -1451,8 +1390,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kames",
-        "phoneticRep": "ka.mes"
+        "phoneticRep": "ka.mes",
+        "writtenRep": "kames"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1464,8 +1403,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "emotional",
-            "@language": "en"
+            "@language": "en",
+            "@value": "emotional"
           },
           "lexinfo:semanticField": [
             "Emotional Terms",
@@ -1482,8 +1421,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kan",
-        "phoneticRep": "kan"
+        "phoneticRep": "kan",
+        "writtenRep": "kan"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1494,8 +1433,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "head",
-            "@language": "en"
+            "@language": "en",
+            "@value": "head"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -1509,28 +1448,28 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kapal",
-        "phoneticRep": "ka.pal"
+        "phoneticRep": "ka.pal",
+        "writtenRep": "kapal"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "ka-pal",
         "etymon:gloss": "like-belly",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows metaphorical extension of belly/gut health to general strength"
+        "etymon:note": "Shows metaphorical extension of belly/gut health to general strength",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "strong, vigorous",
-            "@language": "en"
+            "@language": "en",
+            "@value": "strong, vigorous"
           },
-          "usage": "Contrasts with kaimpal 'weak'. Forms compounds like kapaltak 'strong-strike'",
           "lexinfo:semanticField": [
             "Physical States",
             "Basic Terms"
-          ]
+          ],
+          "usage": "Contrasts with kaimpal 'weak'. Forms compounds like kapaltak 'strong-strike'"
         }
       ]
     },
@@ -1542,8 +1481,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kasak",
-        "phoneticRep": "ka.sak"
+        "phoneticRep": "ka.sak",
+        "writtenRep": "kasak"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1555,8 +1494,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "wolf-like howl",
-            "@language": "en"
+            "@language": "en",
+            "@value": "wolf-like howl"
           },
           "lexinfo:semanticField": [
             "Sound Terms",
@@ -1573,22 +1512,22 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kasgasam",
-        "phoneticRep": "kas.ga.sam"
+        "phoneticRep": "kas.ga.sam",
+        "writtenRep": "kasgasam"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "kasger-gasam",
         "etymon:gloss": "mirror-grinding",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Refers to the final lapping stage to achieve a reflective surface"
+        "etymon:note": "Refers to the final lapping stage to achieve a reflective surface",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "polishing, lapping",
-            "@language": "en"
+            "@language": "en",
+            "@value": "polishing, lapping"
           },
           "lexinfo:semanticField": [
             "Tool Terms",
@@ -1605,8 +1544,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kasul",
-        "phoneticRep": "ka.sul"
+        "phoneticRep": "ka.sul",
+        "writtenRep": "kasul"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1618,8 +1557,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "energetic",
-            "@language": "en"
+            "@language": "en",
+            "@value": "energetic"
           },
           "lexinfo:semanticField": [
             "Physical States",
@@ -1636,8 +1575,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kathrakel",
-        "phoneticRep": "ka.θra.kel"
+        "phoneticRep": "ka.θra.kel",
+        "writtenRep": "kathrakel"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1649,8 +1588,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "bright, shining",
-            "@language": "en"
+            "@language": "en",
+            "@value": "bright, shining"
           },
           "lexinfo:semanticField": [
             "Light Terms",
@@ -1667,8 +1606,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kator",
-        "phoneticRep": "ka.tor"
+        "phoneticRep": "ka.tor",
+        "writtenRep": "kator"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1680,8 +1619,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "massive, heavy",
-            "@language": "en"
+            "@language": "en",
+            "@value": "massive, heavy"
           },
           "lexinfo:semanticField": [
             "Size Terms",
@@ -1698,8 +1637,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "keth",
-        "phoneticRep": "keθ"
+        "phoneticRep": "keθ",
+        "writtenRep": "keth"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1710,8 +1649,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "hundred",
-            "@language": "en"
+            "@language": "en",
+            "@value": "hundred"
           },
           "lexinfo:semanticField": "Number System"
         }
@@ -1725,8 +1664,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kethbran",
-        "phoneticRep": "keθ.bran"
+        "phoneticRep": "keθ.bran",
+        "writtenRep": "kethbran"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1738,8 +1677,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "kin, extended family",
-            "@language": "en"
+            "@language": "en",
+            "@value": "kin, extended family"
           },
           "lexinfo:semanticField": [
             "Kinship Terms",
@@ -1756,8 +1695,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kethmater",
-        "phoneticRep": "keθ.ma.ter"
+        "phoneticRep": "keθ.ma.ter",
+        "writtenRep": "kethmater"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1769,8 +1708,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sea vessel",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sea vessel"
           },
           "lexinfo:semanticField": [
             "Maritime Terms",
@@ -1787,8 +1726,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ketnes",
-        "phoneticRep": "ket.nes"
+        "phoneticRep": "ket.nes",
+        "writtenRep": "ketnes"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1800,8 +1739,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sea fish",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sea fish"
           },
           "lexinfo:semanticField": [
             "Maritime Terms",
@@ -1818,8 +1757,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kir",
-        "phoneticRep": "kir"
+        "phoneticRep": "kir",
+        "writtenRep": "kir"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1830,8 +1769,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "chest, body",
-            "@language": "en"
+            "@language": "en",
+            "@value": "chest, body"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -1845,8 +1784,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kirmel",
-        "phoneticRep": "kir.mel"
+        "phoneticRep": "kir.mel",
+        "writtenRep": "kirmel"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1858,8 +1797,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "chest fat",
-            "@language": "en"
+            "@language": "en",
+            "@value": "chest fat"
           },
           "lexinfo:semanticField": [
             "Body Parts",
@@ -1876,8 +1815,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kirpel",
-        "phoneticRep": "kir.pel"
+        "phoneticRep": "kir.pel",
+        "writtenRep": "kirpel"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1889,8 +1828,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "chest hair",
-            "@language": "en"
+            "@language": "en",
+            "@value": "chest hair"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -1904,8 +1843,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "krak",
-        "phoneticRep": "krak"
+        "phoneticRep": "krak",
+        "writtenRep": "krak"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1916,11 +1855,11 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "tooth",
-            "@language": "en"
+            "@language": "en",
+            "@value": "tooth"
           },
-          "usage": "Forms verb krak'er 'to bite'",
-          "lexinfo:semanticField": "Body Parts"
+          "lexinfo:semanticField": "Body Parts",
+          "usage": "Forms verb krak'er 'to bite'"
         }
       ]
     },
@@ -1932,8 +1871,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "krak'er",
-        "phoneticRep": "krak.ʔer"
+        "phoneticRep": "krak.ʔer",
+        "writtenRep": "krak'er"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1945,8 +1884,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to bite",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to bite"
           },
           "lexinfo:semanticField": [
             "Action Terms",
@@ -1963,8 +1902,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kran",
-        "phoneticRep": "kran"
+        "phoneticRep": "kran",
+        "writtenRep": "kran"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1975,8 +1914,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "horn, spike",
-            "@language": "en"
+            "@language": "en",
+            "@value": "horn, spike"
           },
           "lexinfo:semanticField": [
             "Body Parts",
@@ -1993,8 +1932,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kranren",
-        "phoneticRep": "kran.ren"
+        "phoneticRep": "kran.ren",
+        "writtenRep": "kranren"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2006,8 +1945,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "antlered deer",
-            "@language": "en"
+            "@language": "en",
+            "@value": "antlered deer"
           },
           "lexinfo:semanticField": [
             "Animals",
@@ -2024,8 +1963,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kras'er",
-        "phoneticRep": "kras.ʔer"
+        "phoneticRep": "kras.ʔer",
+        "writtenRep": "kras'er"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2037,8 +1976,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to be bitter",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to be bitter"
           },
           "lexinfo:semanticField": [
             "Taste Terms",
@@ -2055,8 +1994,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "krasim",
-        "phoneticRep": "kra.sim"
+        "phoneticRep": "kra.sim",
+        "writtenRep": "krasim"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2068,8 +2007,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "hatred",
-            "@language": "en"
+            "@language": "en",
+            "@value": "hatred"
           },
           "lexinfo:semanticField": [
             "Emotional Terms",
@@ -2086,8 +2025,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kres",
-        "phoneticRep": "kres"
+        "phoneticRep": "kres",
+        "writtenRep": "kres"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2098,8 +2037,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "eight",
-            "@language": "en"
+            "@language": "en",
+            "@value": "eight"
           },
           "lexinfo:semanticField": "Number System"
         }
@@ -2113,8 +2052,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kul'er",
-        "phoneticRep": "kul.ʔer"
+        "phoneticRep": "kul.ʔer",
+        "writtenRep": "kul'er"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2126,8 +2065,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to perform magic",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to perform magic"
           },
           "lexinfo:semanticField": [
             "Magical Terms",
@@ -2144,8 +2083,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "kurtin",
-        "phoneticRep": "kur.tin"
+        "phoneticRep": "kur.tin",
+        "writtenRep": "kurtin"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2157,8 +2096,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "bronze",
-            "@language": "en"
+            "@language": "en",
+            "@value": "bronze"
           },
           "lexinfo:semanticField": [
             "Metal Terms",

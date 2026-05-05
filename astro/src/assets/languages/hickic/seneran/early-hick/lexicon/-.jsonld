@@ -28,8 +28,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "-en",
-        "phoneticRep": "-en"
+        "phoneticRep": "-en",
+        "writtenRep": "-en"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -40,8 +40,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "that (inanimate, visible, medial)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "that (inanimate, visible, medial)"
           },
           "lexinfo:semanticField": [
             "Demonstratives",
@@ -58,8 +58,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "-eth",
-        "phoneticRep": "-eθ"
+        "phoneticRep": "-eθ",
+        "writtenRep": "-eth"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -70,8 +70,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "that (medial, inanimate, hidden, sensed)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "that (medial, inanimate, hidden, sensed)"
           },
           "lexinfo:semanticField": [
             "Demonstratives",
@@ -88,8 +88,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "-is",
-        "phoneticRep": "-is"
+        "phoneticRep": "-is",
+        "writtenRep": "-is"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -100,8 +100,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "this (inanimate, sensed, proximal)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "this (inanimate, sensed, proximal)"
           },
           "lexinfo:semanticField": [
             "Demonstratives",
@@ -118,21 +118,21 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "-nat",
-        "phoneticRep": "nat"
+        "phoneticRep": "nat",
+        "writtenRep": "-nat"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:derivedFrom": "gnater",
-        "etymon:soundChange": "grammaticalization with phonological reduction",
-        "etymon:note": "Grammaticalized from full verb 'desire' to desiderative suffix"
+        "etymon:note": "Grammaticalized from full verb 'desire' to desiderative suffix",
+        "etymon:soundChange": "grammaticalization with phonological reduction"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "want to, desire to (desiderative suffix)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "want to, desire to (desiderative suffix)"
           },
           "lexinfo:semanticField": [
             "Grammatical Terms",
@@ -149,8 +149,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "-rum",
-        "phoneticRep": "-rum"
+        "phoneticRep": "-rum",
+        "writtenRep": "-rum"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -161,8 +161,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "that (animate, distant)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "that (animate, distant)"
           },
           "lexinfo:semanticField": [
             "Demonstratives",
@@ -179,8 +179,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "-tan",
-        "phoneticRep": "-tan"
+        "phoneticRep": "-tan",
+        "writtenRep": "-tan"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -191,8 +191,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "that (animate, visible, medial)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "that (animate, visible, medial)"
           },
           "lexinfo:semanticField": [
             "Demonstratives",
@@ -209,8 +209,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "-thir",
-        "phoneticRep": "-θir"
+        "phoneticRep": "-θir",
+        "writtenRep": "-thir"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -221,8 +221,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "that (medial, animate, sensed)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "that (medial, animate, sensed)"
           },
           "lexinfo:semanticField": [
             "Demonstratives",
@@ -239,8 +239,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "-um",
-        "phoneticRep": "-um"
+        "phoneticRep": "-um",
+        "writtenRep": "-um"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -251,8 +251,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "that (inanimate, distant)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "that (inanimate, distant)"
           },
           "lexinfo:semanticField": [
             "Demonstratives",
@@ -269,8 +269,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "-ʔis",
-        "phoneticRep": "-ʔis"
+        "phoneticRep": "-ʔis",
+        "writtenRep": "-ʔis"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -281,8 +281,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "this (animate, sensed, proximal)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "this (animate, sensed, proximal)"
           },
           "lexinfo:semanticField": [
             "Demonstratives",

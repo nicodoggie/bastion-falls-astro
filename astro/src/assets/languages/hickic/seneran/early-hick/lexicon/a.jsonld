@@ -24,12 +24,13 @@
       "@id": "ehk:ai",
       "@type": [
         "ontolex:LexicalEntry",
-        "lexinfo:CommonNoun"
+        "lexinfo:CommonNoun",
+        "lexinfo:Noun"
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ai",
-        "phoneticRep": "ai"
+        "phoneticRep": "ai",
+        "writtenRep": "ai"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -40,98 +41,41 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "water",
-            "@language": "en"
+            "@language": "en",
+            "@value": "water"
           },
-          "usage": "See Maritime Terms, Water Features",
           "lexinfo:semanticField": [
             "Natural World",
             "Elements"
-          ]
-        }
-      ]
-    },
-    {
-      "@id": "ehk:ai",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "ai",
-        "phoneticRep": "ai"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *ahi",
-        "etymon:soundChange": "vowel sequences"
-      },
-      "sense": [
+          ],
+          "usage": "See Maritime Terms, Water Features"
+        },
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "water",
-            "@language": "en"
+            "@language": "en",
+            "@value": "water"
           },
-          "usage": "See Maritime Terms, Water Features",
-          "lexinfo:semanticField": "Natural World"
-        }
-      ]
-    },
-    {
-      "@id": "ehk:ai",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "ai",
-        "phoneticRep": "ai"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *ahi",
-        "etymon:soundChange": "vowel sequences"
-      },
-      "sense": [
+          "lexinfo:semanticField": "Natural World",
+          "usage": "See Maritime Terms, Water Features"
+        },
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "water",
-            "@language": "en"
+            "@language": "en",
+            "@value": "water"
           },
-          "usage": "See Maritime Terms, Water Features",
-          "lexinfo:semanticField": "Natural World"
-        }
-      ]
-    },
-    {
-      "@id": "ehk:ai",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "ai",
-        "phoneticRep": "ai"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *ahi",
-        "etymon:soundChange": "vowel sequences"
-      },
-      "sense": [
+          "lexinfo:semanticField": "Natural World",
+          "usage": "See Maritime Terms, Water Features"
+        },
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "water",
-            "@language": "en"
+            "@language": "en",
+            "@value": "water"
           },
-          "usage": "See Maritime Terms, Water Features",
-          "lexinfo:semanticField": "Natural World"
+          "lexinfo:semanticField": "Natural World",
+          "usage": "See Maritime Terms, Water Features"
         }
       ]
     },
@@ -143,8 +87,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "aiesp",
-        "phoneticRep": "ai.esp"
+        "phoneticRep": "ai.esp",
+        "writtenRep": "aiesp"
       },
       "decomp:subterm": [
         {
@@ -154,19 +98,40 @@
           "@id": "ehk:esp"
         }
       ],
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "aiesp + -'er (verbalizer)",
+          "grammaticalMeaning": "to bathe, to immerse in water",
+          "phoneticRep": "ai.esp.ʔer",
+          "writtenRep": "aiesp'er"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "ai-esp",
         "etymon:gloss": "water-under",
-        "etymon:soundChange": "case lexicalization",
-        "etymon:note": "Shows lexicalization of subessive case into basic verb stem"
+        "etymon:note": "Shows lexicalization of subessive case into basic verb stem",
+        "etymon:soundChange": "case lexicalization"
       },
+      "related": [
+        {
+          "@id": "ehk:ailas",
+          "note": "enter water (illative case)",
+          "relationshipType": "contrasts with"
+        },
+        {
+          "@id": "ehk:aiimris",
+          "note": "exit water (ellative case)",
+          "relationshipType": "contrasts with"
+        }
+      ],
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "bathe",
-            "@language": "en"
+            "@language": "en",
+            "@value": "bathe"
           },
           "lexinfo:semanticField": [
             "Water Terms",
@@ -174,27 +139,6 @@
             "Body Terms"
           ],
           "usage": "Basic term for immersion in water"
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "aiesp'er",
-          "phoneticRep": "ai.esp.ʔer",
-          "decomposition": "aiesp + -'er (verbalizer)",
-          "grammaticalMeaning": "to bathe, to immerse in water"
-        }
-      ],
-      "related": [
-        {
-          "@id": "ehk:ailas",
-          "relationshipType": "contrasts with",
-          "note": "enter water (illative case)"
-        },
-        {
-          "@id": "ehk:aiimris",
-          "relationshipType": "contrasts with",
-          "note": "exit water (ellative case)"
         }
       ]
     },
@@ -206,8 +150,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "aimirik",
-        "phoneticRep": "ai.mi.rik"
+        "phoneticRep": "ai.mi.rik",
+        "writtenRep": "aimirik"
       },
       "decomp:subterm": [
         {
@@ -221,15 +165,15 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "ai-mirik",
         "etymon:gloss": "water-ice",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Describes mixture state between water and ice"
+        "etymon:note": "Describes mixture state between water and ice",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "slush, partially melted snow/ice",
-            "@language": "en"
+            "@language": "en",
+            "@value": "slush, partially melted snow/ice"
           },
           "lexinfo:semanticField": [
             "Weather Terms",
@@ -246,8 +190,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "airur",
-        "phoneticRep": "ai.rur"
+        "phoneticRep": "ai.rur",
+        "writtenRep": "airur"
       },
       "decomp:subterm": [
         {
@@ -261,15 +205,15 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "ai-'irur",
         "etymon:gloss": "water-hollow",
-        "etymon:soundChange": "glottal stop loss in compounds",
-        "etymon:note": "Shows water-landform compound pattern common in geographic terms"
+        "etymon:note": "Shows water-landform compound pattern common in geographic terms",
+        "etymon:soundChange": "glottal stop loss in compounds"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "karst, water-carved limestone terrain",
-            "@language": "en"
+            "@language": "en",
+            "@value": "karst, water-carved limestone terrain"
           },
           "lexinfo:semanticField": [
             "Landforms",
@@ -277,41 +221,12 @@
             "Geographic Terms"
           ],
           "usage": "Describes limestone regions shaped by water erosion"
-        }
-      ]
-    },
-    {
-      "@id": "ehk:airur",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "airur",
-        "phoneticRep": "ai.rur"
-      },
-      "decomp:subterm": [
-        {
-          "@id": "ehk:ai"
         },
-        {
-          "@id": "ehk:'irur"
-        }
-      ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:compound": "ai-'irur",
-        "etymon:gloss": "water-hollow",
-        "etymon:soundChange": "glottal stop loss in compounds",
-        "etymon:note": "Shows water-landform compound pattern common in geographic terms"
-      },
-      "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "karst, water-carved limestone terrain",
-            "@language": "en"
+            "@language": "en",
+            "@value": "karst, water-carved limestone terrain"
           },
           "lexinfo:semanticField": [
             "Landforms",
@@ -330,8 +245,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "aitar",
-        "phoneticRep": "ai.tar"
+        "phoneticRep": "ai.tar",
+        "writtenRep": "aitar"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -343,8 +258,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "rain",
-            "@language": "en"
+            "@language": "en",
+            "@value": "rain"
           },
           "lexinfo:semanticField": [
             "Natural World",
@@ -361,8 +276,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "aitarulbres",
-        "phoneticRep": "ai.ta.rul.bres"
+        "phoneticRep": "ai.ta.rul.bres",
+        "writtenRep": "aitarulbres"
       },
       "decomp:subterm": [
         {
@@ -382,15 +297,15 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "west wind",
-            "@language": "en"
+            "@language": "en",
+            "@value": "west wind"
           },
-          "usage": "Primary term in coastal regions, associated with rainfall patterns",
           "lexinfo:semanticField": [
             "Weather Terms",
             "Directional Terms",
             "Maritime Terms"
-          ]
+          ],
+          "usage": "Primary term in coastal regions, associated with rainfall patterns"
         }
       ]
     },
@@ -402,21 +317,21 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'aka",
-        "phoneticRep": "ʔa.ka"
+        "phoneticRep": "ʔa.ka",
+        "writtenRep": "'aka"
       },
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:note": "Basic question root with archaic animacy marking",
         "etymon:protoform": "Proto-Hick *haka",
-        "etymon:soundChange": "initial fricative change",
-        "etymon:note": "Basic question root with archaic animacy marking"
+        "etymon:soundChange": "initial fricative change"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "what",
-            "@language": "en"
+            "@language": "en",
+            "@value": "what"
           },
           "lexinfo:semanticField": "Interrogatives"
         }
@@ -430,20 +345,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'aker",
-        "phoneticRep": "ʔa.ker"
+        "phoneticRep": "ʔa.ker",
+        "writtenRep": "'aker"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haka-er-is",
-        "etymon:gloss": "what-VERB-PROX.INAN"
+        "etymon:gloss": "what-VERB-PROX.INAN",
+        "etymon:protoform": "Proto-Hick *haka-er-is"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "how (visible/known manner)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "how (visible/known manner)"
           },
           "lexinfo:semanticField": [
             "Interrogatives",
@@ -461,20 +376,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'akereth",
-        "phoneticRep": "ʔa.ke.reθ"
+        "phoneticRep": "ʔa.ke.reθ",
+        "writtenRep": "'akereth"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haka-er-eth",
-        "etymon:gloss": "what-VERB-MED"
+        "etymon:gloss": "what-VERB-MED",
+        "etymon:protoform": "Proto-Hick *haka-er-eth"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "how (sensed manner)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "how (sensed manner)"
           },
           "lexinfo:semanticField": [
             "Interrogatives",
@@ -492,20 +407,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'akerum",
-        "phoneticRep": "ʔa.ke.rum"
+        "phoneticRep": "ʔa.ke.rum",
+        "writtenRep": "'akerum"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haka-er-um",
-        "etymon:gloss": "what-VERB-DIST"
+        "etymon:gloss": "what-VERB-DIST",
+        "etymon:protoform": "Proto-Hick *haka-er-um"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "how (unknown manner)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "how (unknown manner)"
           },
           "lexinfo:semanticField": [
             "Interrogatives",
@@ -523,13 +438,13 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "al",
-        "phoneticRep": "al"
+        "phoneticRep": "al",
+        "writtenRep": "al"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *xalu",
         "etymon:intermediateForm": "halu",
+        "etymon:protoform": "Proto-Hick *xalu",
         "etymon:soundChange": [
           "initial fricative loss",
           "final vowel loss"
@@ -539,110 +454,41 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "natural rock",
-            "@language": "en"
+            "@language": "en",
+            "@value": "natural rock"
           },
           "lexinfo:semanticField": [
             "Natural World",
             "Elements"
           ]
-        }
-      ]
-    },
-    {
-      "@id": "ehk:al",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "al",
-        "phoneticRep": "al"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *xalu",
-        "etymon:intermediateForm": "halu",
-        "etymon:soundChange": [
-          "initial fricative loss",
-          "final vowel loss"
-        ]
-      },
-      "sense": [
+        },
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "natural rock",
-            "@language": "en"
+            "@language": "en",
+            "@value": "natural rock"
           },
           "lexinfo:semanticField": [
             "Natural World",
             "Elements"
           ]
-        }
-      ]
-    },
-    {
-      "@id": "ehk:al",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "al",
-        "phoneticRep": "al"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *xalu",
-        "etymon:intermediateForm": "halu",
-        "etymon:soundChange": [
-          "initial fricative loss",
-          "final vowel loss"
-        ]
-      },
-      "sense": [
+        },
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "natural rock",
-            "@language": "en"
+            "@language": "en",
+            "@value": "natural rock"
           },
           "lexinfo:semanticField": [
             "Natural World",
             "Elements"
           ]
-        }
-      ]
-    },
-    {
-      "@id": "ehk:al",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "al",
-        "phoneticRep": "al"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *xalu",
-        "etymon:intermediateForm": "halu",
-        "etymon:soundChange": [
-          "initial fricative loss",
-          "final vowel loss"
-        ]
-      },
-      "sense": [
+        },
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "natural rock",
-            "@language": "en"
+            "@language": "en",
+            "@value": "natural rock"
           },
           "lexinfo:semanticField": [
             "Natural World",
@@ -659,20 +505,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'alis",
-        "phoneticRep": "ʔa.lis"
+        "phoneticRep": "ʔa.lis",
+        "writtenRep": "'alis"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haka-lis",
-        "etymon:gloss": "what-person-PROX.ANIM"
+        "etymon:gloss": "what-person-PROX.ANIM",
+        "etymon:protoform": "Proto-Hick *haka-lis"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "who (visible/known person)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "who (visible/known person)"
           },
           "lexinfo:semanticField": [
             "Interrogatives",
@@ -690,20 +536,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'alum",
-        "phoneticRep": "ʔa.lum"
+        "phoneticRep": "ʔa.lum",
+        "writtenRep": "'alum"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haka-al-um",
-        "etymon:gloss": "what-person-DIST"
+        "etymon:gloss": "what-person-DIST",
+        "etymon:protoform": "Proto-Hick *haka-al-um"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "who (unknown person)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "who (unknown person)"
           },
           "lexinfo:semanticField": [
             "Interrogatives",
@@ -721,29 +567,29 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "aniko",
-        "phoneticRep": "a.ni.ko"
+        "phoneticRep": "a.ni.ko",
+        "writtenRep": "aniko"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *xani-kostu",
         "etymon:components": [
           "*xani (four)",
           "*kostu (leg)"
         ],
+        "etymon:note": "Shows semantic extension from descriptive 'four-legged' to general term for animal",
+        "etymon:protoform": "Proto-Hick *xani-kostu",
         "etymon:soundChange": [
           "initial fricative loss",
           "compound fusion",
           "final syllable reduction"
-        ],
-        "etymon:note": "Shows semantic extension from descriptive 'four-legged' to general term for animal"
+        ]
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "animal (general term)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "animal (general term)"
           },
           "lexinfo:semanticField": [
             "Animals",
@@ -760,13 +606,22 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ar",
-        "phoneticRep": "ar"
+        "phoneticRep": "ar",
+        "writtenRep": "ar"
       },
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "ar + -'er (verbalizer)",
+          "grammaticalMeaning": "to cut",
+          "phoneticRep": "ar.ʔer",
+          "writtenRep": "ar'er"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *xaru",
         "etymon:intermediateForm": "haru",
+        "etymon:protoform": "Proto-Hick *xaru",
         "etymon:soundChange": [
           "initial fricative loss",
           "final vowel loss"
@@ -776,23 +631,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "cut, cutting action",
-            "@language": "en"
+            "@language": "en",
+            "@value": "cut, cutting action"
           },
           "lexinfo:semanticField": [
             "Action Terms",
             "Tool Terms",
             "Basic Terms"
           ]
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "ar'er",
-          "phoneticRep": "ar.ʔer",
-          "decomposition": "ar + -'er (verbalizer)",
-          "grammaticalMeaning": "to cut"
         }
       ]
     },
@@ -804,8 +650,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "arsil",
-        "phoneticRep": "ar.sil"
+        "phoneticRep": "ar.sil",
+        "writtenRep": "arsil"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -817,8 +663,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "open wound, cut",
-            "@language": "en"
+            "@language": "en",
+            "@value": "open wound, cut"
           },
           "lexinfo:semanticField": [
             "Medical Terms",
@@ -836,25 +682,25 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "arum",
-        "phoneticRep": "a.rum"
+        "phoneticRep": "a.rum",
+        "writtenRep": "arum"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "xaru-uma",
         "etymon:gloss": "cut-ALL",
+        "etymon:note": "Shows semantic extension from physical cutting to artistic marking",
         "etymon:soundChange": [
           "initial fricative loss",
           "compound fusion"
-        ],
-        "etymon:note": "Shows semantic extension from physical cutting to artistic marking"
+        ]
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sketch; draw",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sketch; draw"
           },
           "lexinfo:semanticField": [
             "Tool/Craft Terms",
@@ -871,14 +717,14 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "asad",
-        "phoneticRep": "a.sad"
+        "phoneticRep": "a.sad",
+        "writtenRep": "asad"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "asa-wad",
-        "etymon:protoform": "Proto-Hick *hasa-wadu",
         "etymon:gloss": "vine-path",
+        "etymon:protoform": "Proto-Hick *hasa-wadu",
         "etymon:soundChange": [
           "initial h-loss (non-sacred)",
           "final vowel loss",
@@ -889,14 +735,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "bridge",
-            "@language": "en"
+            "@language": "en",
+            "@value": "bridge"
           },
-          "usage": "Shows typical development of infrastructure terms from natural materials",
           "lexinfo:semanticField": [
             "Infrastructure",
             "Construction Terms"
-          ]
+          ],
+          "usage": "Shows typical development of infrastructure terms from natural materials"
         }
       ]
     },
@@ -908,8 +754,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "asam",
-        "phoneticRep": "a.səm"
+        "phoneticRep": "a.səm",
+        "writtenRep": "asam"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -924,11 +770,11 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "rest, resting place",
-            "@language": "en"
+            "@language": "en",
+            "@value": "rest, resting place"
           },
-          "usage": "Source of subessive case marker -asam through grammaticalization",
-          "lexinfo:semanticField": "Basic Terms"
+          "lexinfo:semanticField": "Basic Terms",
+          "usage": "Source of subessive case marker -asam through grammaticalization"
         }
       ]
     },
@@ -940,8 +786,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "asamgral",
-        "phoneticRep": "a.sam.gral"
+        "phoneticRep": "a.sam.gral",
+        "writtenRep": "asamgral"
       },
       "decomp:subterm": [
         {
@@ -961,8 +807,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "flatlands, plains",
-            "@language": "en"
+            "@language": "en",
+            "@value": "flatlands, plains"
           },
           "lexinfo:semanticField": [
             "Landscape Terms",
@@ -979,8 +825,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "asamwen",
-        "phoneticRep": "a.sam.wen"
+        "phoneticRep": "a.sam.wen",
+        "writtenRep": "asamwen"
       },
       "decomp:subterm": [
         {
@@ -994,15 +840,27 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "asam-wen",
         "etymon:gloss": "rest-flower",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Named for characteristic drooping posture of flower head"
+        "etymon:note": "Named for characteristic drooping posture of flower head",
+        "etymon:soundChange": "compound fusion"
       },
+      "related": [
+        {
+          "@id": "ehk:sarespul",
+          "note": "early spring blooming",
+          "relationshipType": "temporal association"
+        },
+        {
+          "@id": "ehk:wenthral",
+          "note": "sacred/ritual flowers",
+          "relationshipType": "broader term"
+        }
+      ],
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "daffodil",
-            "@language": "en"
+            "@language": "en",
+            "@value": "daffodil"
           },
           "lexinfo:semanticField": [
             "Flora",
@@ -1010,18 +868,6 @@
             "Spring Terms"
           ],
           "usage": "Common spring flower, Narcissus species"
-        }
-      ],
-      "related": [
-        {
-          "@id": "ehk:sarespul",
-          "relationshipType": "temporal association",
-          "note": "early spring blooming"
-        },
-        {
-          "@id": "ehk:wenthral",
-          "relationshipType": "broader term",
-          "note": "sacred/ritual flowers"
         }
       ]
     },
@@ -1033,20 +879,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'atal",
-        "phoneticRep": "ʔa.tal"
+        "phoneticRep": "ʔa.tal",
+        "writtenRep": "'atal"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haka-tal-is",
-        "etymon:gloss": "what-place-PROX.INAN"
+        "etymon:gloss": "what-place-PROX.INAN",
+        "etymon:protoform": "Proto-Hick *haka-tal-is"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "where (what-place-PROX.INAN)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "where (what-place-PROX.INAN)"
           },
           "lexinfo:semanticField": [
             "Interrogatives",
@@ -1064,20 +910,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'ater",
-        "phoneticRep": "ʔa.ter"
+        "phoneticRep": "ʔa.ter",
+        "writtenRep": "'ater"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haka-ter-is",
-        "etymon:gloss": "what-time-PROX.INAN"
+        "etymon:gloss": "what-time-PROX.INAN",
+        "etymon:protoform": "Proto-Hick *haka-ter-is"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "when (visible/known time)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "when (visible/known time)"
           },
           "lexinfo:semanticField": [
             "Interrogatives",
@@ -1095,28 +941,28 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'aterbran",
-        "phoneticRep": "ʔa.ter.bran"
+        "phoneticRep": "ʔa.ter.bran",
+        "writtenRep": "'aterbran"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "'aka-ter-bran",
-        "etymon:intermediateForm": "'akaterbran",
         "etymon:gloss": "what-time-dawn",
+        "etymon:intermediateForm": "'akaterbran",
         "etymon:soundChange": "compound reduction"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "before",
-            "@language": "en"
+            "@language": "en",
+            "@value": "before"
           },
-          "usage": "Temporal metaphor using interrogative 'when' + 'dawn'",
           "lexinfo:semanticField": [
             "Time Terms",
             "Interrogatives"
-          ]
+          ],
+          "usage": "Temporal metaphor using interrogative 'when' + 'dawn'"
         }
       ]
     },
@@ -1128,20 +974,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'atereth",
-        "phoneticRep": "ʔa.te.reθ"
+        "phoneticRep": "ʔa.te.reθ",
+        "writtenRep": "'atereth"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haka-ter-eth",
-        "etymon:gloss": "what-time-MED"
+        "etymon:gloss": "what-time-MED",
+        "etymon:protoform": "Proto-Hick *haka-ter-eth"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "when (sensed time)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "when (sensed time)"
           },
           "lexinfo:semanticField": [
             "Interrogatives",
@@ -1159,20 +1005,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'aterum",
-        "phoneticRep": "ʔa.te.rum"
+        "phoneticRep": "ʔa.te.rum",
+        "writtenRep": "'aterum"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haka-ter-um",
-        "etymon:gloss": "what-time-DIST"
+        "etymon:gloss": "what-time-DIST",
+        "etymon:protoform": "Proto-Hick *haka-ter-um"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "when (unknown time)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "when (unknown time)"
           },
           "lexinfo:semanticField": [
             "Interrogatives",
@@ -1190,20 +1036,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'ateth",
-        "phoneticRep": "ʔa.teθ"
+        "phoneticRep": "ʔa.teθ",
+        "writtenRep": "'ateth"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haka-tal-eth",
-        "etymon:gloss": "what-place-MED"
+        "etymon:gloss": "what-place-MED",
+        "etymon:protoform": "Proto-Hick *haka-tal-eth"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "where (sensed location)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "where (sensed location)"
           },
           "lexinfo:semanticField": [
             "Interrogatives",
@@ -1221,20 +1067,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'atum",
-        "phoneticRep": "ʔa.tum"
+        "phoneticRep": "ʔa.tum",
+        "writtenRep": "'atum"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haka-tal-um",
-        "etymon:gloss": "what-place-DIST"
+        "etymon:gloss": "what-place-DIST",
+        "etymon:protoform": "Proto-Hick *haka-tal-um"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "where (unknown location)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "where (unknown location)"
           },
           "lexinfo:semanticField": [
             "Interrogatives",
@@ -1252,20 +1098,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'al",
-        "phoneticRep": "ʔal"
+        "phoneticRep": "ʔal",
+        "writtenRep": "'al"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick hi- + *ʔalu",
-        "etymon:note": "From animacy marker + basic person term"
+        "etymon:note": "From animacy marker + basic person term",
+        "etymon:protoform": "Proto-Hick hi- + *ʔalu"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "person",
-            "@language": "en"
+            "@language": "en",
+            "@value": "person"
           },
           "lexinfo:semanticField": [
             "Person Terms",
@@ -1282,21 +1128,21 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "'aleth",
-        "phoneticRep": "ʔa.leθ"
+        "phoneticRep": "ʔa.leθ",
+        "writtenRep": "'aleth"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "'aka-'al-eth",
         "etymon:meaning": "who (sensed person)",
-        "etymon:note": "Used for heard/sensed but not seen referents"
+        "etymon:note": "Used for heard/sensed but not seen referents",
+        "etymon:protoform": "'aka-'al-eth"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "who (sensed but not seen)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "who (sensed but not seen)"
           },
           "lexinfo:semanticField": [
             "Interrogatives",
@@ -1314,8 +1160,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "aigasam",
-        "phoneticRep": "ai.ga.sam"
+        "phoneticRep": "ai.ga.sam",
+        "writtenRep": "aigasam"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1327,8 +1173,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "wet grinding",
-            "@language": "en"
+            "@language": "en",
+            "@value": "wet grinding"
           },
           "lexinfo:semanticField": [
             "Tool Terms",
@@ -1345,20 +1191,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "anin",
-        "phoneticRep": "a.nin"
+        "phoneticRep": "a.nin",
+        "writtenRep": "anin"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *xanu-inu",
-        "etymon:note": "Counting form"
+        "etymon:note": "Counting form",
+        "etymon:protoform": "Proto-Hick *xanu-inu"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "four",
-            "@language": "en"
+            "@language": "en",
+            "@value": "four"
           },
           "lexinfo:semanticField": "Number Terms"
         }
@@ -1372,21 +1218,21 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "arak",
-        "phoneticRep": "a.rak"
+        "phoneticRep": "a.rak",
+        "writtenRep": "arak"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *ʔaraku",
         "etymon:meaning": "light (animate)",
-        "etymon:note": "Shows semantic shift from animate light to color"
+        "etymon:note": "Shows semantic shift from animate light to color",
+        "etymon:protoform": "Proto-Hick *ʔaraku"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "color",
-            "@language": "en"
+            "@language": "en",
+            "@value": "color"
           },
           "lexinfo:semanticField": [
             "Color Terms",
@@ -1404,8 +1250,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "arasaditar",
-        "phoneticRep": "a.ra.sa.di.tar"
+        "phoneticRep": "a.ra.sa.di.tar",
+        "writtenRep": "arasaditar"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1417,8 +1263,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "table",
-            "@language": "en"
+            "@language": "en",
+            "@value": "table"
           },
           "lexinfo:semanticField": [
             "Household Terms",
@@ -1435,25 +1281,25 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "arasud",
-        "phoneticRep": "a.ra.sud"
+        "phoneticRep": "a.ra.sud",
+        "writtenRep": "arasud"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *xarasa-wudu",
         "etymon:components": [
           "*xaru (cut)",
           "*asa (PERL)",
           "*wudu (wood)"
         ],
-        "etymon:note": "Literally \"cut-through wood\""
+        "etymon:note": "Literally \"cut-through wood\"",
+        "etymon:protoform": "Proto-Hick *xarasa-wudu"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "plank, cut timber",
-            "@language": "en"
+            "@language": "en",
+            "@value": "plank, cut timber"
           },
           "lexinfo:semanticField": [
             "Construction Terms",
@@ -1470,20 +1316,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "asa",
-        "phoneticRep": "a.sa"
+        "phoneticRep": "a.sa",
+        "writtenRep": "asa"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *hasa",
-        "etymon:note": "Shows regular loss of initial h-"
+        "etymon:note": "Shows regular loss of initial h-",
+        "etymon:protoform": "Proto-Hick *hasa"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "vine",
-            "@language": "en"
+            "@language": "en",
+            "@value": "vine"
           },
           "lexinfo:semanticField": [
             "Plant Terms"
@@ -1499,8 +1345,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "asamasam",
-        "phoneticRep": "a.sa.ma.sam"
+        "phoneticRep": "a.sa.ma.sam",
+        "writtenRep": "asamasam"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1512,8 +1358,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to lie down",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to lie down"
           },
           "lexinfo:semanticField": [
             "Position Terms",
@@ -1530,8 +1376,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "asamgasam",
-        "phoneticRep": "a.sam.ga.sam"
+        "phoneticRep": "a.sam.ga.sam",
+        "writtenRep": "asamgasam"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1543,8 +1389,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "flattening (initial grinding)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "flattening (initial grinding)"
           },
           "lexinfo:semanticField": [
             "Tool Terms",
@@ -1561,8 +1407,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "asamitar",
-        "phoneticRep": "a.sa.mi.tar"
+        "phoneticRep": "a.sa.mi.tar",
+        "writtenRep": "asamitar"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1574,8 +1420,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to sit, rest upon",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to sit, rest upon"
           },
           "lexinfo:semanticField": [
             "Position Terms",
@@ -1593,8 +1439,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "asatogar",
-        "phoneticRep": "a.sa.to.gar"
+        "phoneticRep": "a.sa.to.gar",
+        "writtenRep": "asatogar"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1606,14 +1452,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "travertine",
-            "@language": "en"
+            "@language": "en",
+            "@value": "travertine"
           },
-          "literalMeaning": "vine limestone",
           "lexinfo:semanticField": [
             "Material Terms",
             "Natural World"
-          ]
+          ],
+          "literalMeaning": "vine limestone"
         }
       ]
     }

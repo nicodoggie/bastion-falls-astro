@@ -28,8 +28,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "harabran",
-        "phoneticRep": "ha.ra.bran"
+        "phoneticRep": "ha.ra.bran",
+        "writtenRep": "harabran"
       },
       "decomp:subterm": [
         {
@@ -43,15 +43,15 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "haran-bran",
         "etymon:gloss": "divide-lineage",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows cultural conceptualization of conflict as family/clan division"
+        "etymon:note": "Shows cultural conceptualization of conflict as family/clan division",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "conflict, grievance (especially between families/clans)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "conflict, grievance (especially between families/clans)"
           },
           "lexinfo:semanticField": [
             "Social Terms",
@@ -68,85 +68,38 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "haran",
-        "phoneticRep": "ha.ran"
+        "phoneticRep": "ha.ran",
+        "writtenRep": "haran"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *haranu",
+        "etymon:reference": [
+          "@/languages/hickic/proto-hick.md#phonological-processes",
+          "@/languages/hickic/seneran/early-hick/_index.md#vowel-allophony"
+        ],
+        "etymon:soundChange": [
+          "final vowel loss",
+          "stress shift to initial syllable",
+          "unstressed vowel reduction"
+        ]
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "split, separate",
-            "@language": "en"
+            "@language": "en",
+            "@value": "split, separate"
           },
           "lexinfo:semanticField": "Action Terms"
         },
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "divide (numbers)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "divide (numbers)"
           },
           "lexinfo:semanticField": "Number System"
-        }
-      ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haranu",
-        "etymon:soundChange": [
-          "final vowel loss",
-          "stress shift to initial syllable",
-          "unstressed vowel reduction"
-        ],
-        "etymon:reference": [
-          "@/languages/hickic/proto-hick.md#phonological-processes",
-          "@/languages/hickic/seneran/early-hick/_index.md#vowel-allophony"
-        ]
-      }
-    },
-    {
-      "@id": "ehk:hilis",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "hilis",
-        "phoneticRep": "hi.lis"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *hilisu",
-        "etymon:soundChange": "final vowel loss"
-      },
-      "sense": [
-        {
-          "@type": "ontolex:LexicalSense",
-          "definition": {
-            "@value": "sight, active vision",
-            "@language": "en"
-          },
-          "lexinfo:semanticField": [
-            "Perception Terms",
-            "Action Terms",
-            "Basic Terms"
-          ]
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "hilis'er",
-          "phoneticRep": "hi.lis.ʔer",
-          "decomposition": "hilis + -'er (verbalizer)",
-          "grammaticalMeaning": "to look (active/intentional seeing)"
-        },
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "his'er",
-          "phoneticRep": "his.ʔer",
-          "decomposition": "his (reduced form) + -'er (verbalizer)",
-          "grammaticalMeaning": "to see (passive/unintentional perception)"
         }
       ]
     },
@@ -158,21 +111,49 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "hilis",
-        "phoneticRep": "hi.lis"
+        "phoneticRep": "hi.lis",
+        "writtenRep": "hilis"
       },
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "hilis + -'er (verbalizer)",
+          "grammaticalMeaning": "to look (active/intentional seeing)",
+          "phoneticRep": "hi.lis.ʔer",
+          "writtenRep": "hilis'er"
+        },
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "his (reduced form) + -'er (verbalizer)",
+          "grammaticalMeaning": "to see (passive/unintentional perception)",
+          "phoneticRep": "his.ʔer",
+          "writtenRep": "his'er"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:note": "Forms two contrasting verbs: hilis'er (active looking) vs his'er (passive seeing)",
         "etymon:protoform": "Proto-Hick *hilisu",
-        "etymon:soundChange": "final vowel loss",
-        "etymon:note": "Forms two contrasting verbs: hilis'er (active looking) vs his'er (passive seeing)"
+        "etymon:soundChange": "final vowel loss"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sight, active vision",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sight, active vision"
+          },
+          "lexinfo:semanticField": [
+            "Perception Terms",
+            "Action Terms",
+            "Basic Terms"
+          ]
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "sight, active vision"
           },
           "lexinfo:semanticField": [
             "Perception Terms",
@@ -185,12 +166,13 @@
       "@id": "ehk:his",
       "@type": [
         "ontolex:LexicalEntry",
-        "lexinfo:Noun"
+        "lexinfo:Noun",
+        "lexinfo:Verb"
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "his",
-        "phoneticRep": "his"
+        "phoneticRep": "his",
+        "writtenRep": "his"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -205,40 +187,20 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sight (animate/conscious perception)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sight (animate/conscious perception)"
           },
           "lexinfo:semanticField": [
             "Perception",
             "Sacred",
             "Abstract Concepts"
           ]
-        }
-      ]
-    },
-    {
-      "@id": "ehk:his",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "writtenRep": "his",
-        "phoneticRep": "his"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *hisu",
-        "etymon:note": "Reintroduced from dialect to maintain distinction from demonstrative -is",
-        "etymon:soundChange": "final vowel loss"
-      },
-      "sense": [
+        },
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to see (passive/unintentional perception)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to see (passive/unintentional perception)"
           },
           "lexinfo:semanticField": [
             "Perception Terms",
@@ -255,8 +217,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "hisimris",
-        "phoneticRep": "hi.sim.ris"
+        "phoneticRep": "hi.sim.ris",
+        "writtenRep": "hisimris"
       },
       "decomp:subterm": [
         {
@@ -266,44 +228,44 @@
           "@id": "ehk:imris"
         }
       ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:compound": "his-imris",
-        "etymon:gloss": "sight-ELL",
-        "etymon:soundChange": "case lexicalization",
-        "etymon:note": "Shows productive use of ellative case for causative meanings"
-      },
-      "sense": [
-        {
-          "@type": "ontolex:LexicalSense",
-          "definition": {
-            "@value": "show",
-            "@language": "en"
-          },
-          "usage": "Contrasts with hilis'er 'to look'",
-          "lexinfo:semanticField": [
-            "Perception Terms",
-            "Action Terms"
-          ]
-        }
-      ],
       "derivation": {
         "@type": "ontolex:LexicalEntry",
         "canonicalForm": {
           "@type": "ontolex:Form",
-          "writtenRep": "hisimris'er",
-          "phoneticRep": "hi.sim.ris.ʔer"
+          "phoneticRep": "hi.sim.ris.ʔer",
+          "writtenRep": "hisimris'er"
         },
         "sense": [
           {
             "@type": "ontolex:LexicalSense",
             "definition": {
-              "@value": "to show",
-              "@language": "en"
+              "@language": "en",
+              "@value": "to show"
             }
           }
         ]
-      }
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "his-imris",
+        "etymon:gloss": "sight-ELL",
+        "etymon:note": "Shows productive use of ellative case for causative meanings",
+        "etymon:soundChange": "case lexicalization"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "show"
+          },
+          "lexinfo:semanticField": [
+            "Perception Terms",
+            "Action Terms"
+          ],
+          "usage": "Contrasts with hilis'er 'to look'"
+        }
+      ]
     },
     {
       "@id": "ehk:hahu",
@@ -313,22 +275,43 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "hahu",
-        "phoneticRep": "ha.hu"
+        "phoneticRep": "ha.hu",
+        "writtenRep": "hahu"
       },
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "hahu + -'er (verbalizer)",
+          "grammaticalMeaning": "to laugh",
+          "phoneticRep": "ha.hu.ʔer",
+          "writtenRep": "hahu'er"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *hahu",
         "etymon:intermediateForm": "Pre-Proto-Hick *halu",
-        "etymon:soundChange": "irregular l → h change",
-        "etymon:note": "Shows irregular sound change preserving original 'laugh' meaning while regular form *halu developed into 'good' (via hi-halu > 'il)"
+        "etymon:note": "Shows irregular sound change preserving original 'laugh' meaning while regular form *halu developed into 'good' (via hi-halu > 'il)",
+        "etymon:protoform": "Proto-Hick *hahu",
+        "etymon:soundChange": "irregular l → h change"
       },
+      "related": [
+        {
+          "@id": "ehk:'il",
+          "note": "from regular development of *halu",
+          "relationshipType": "etymologically related to"
+        },
+        {
+          "@id": "ehk:'ilsul",
+          "note": "joy, happiness",
+          "relationshipType": "semantically related to"
+        }
+      ],
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "laugh, laughter",
-            "@language": "en"
+            "@language": "en",
+            "@value": "laugh, laughter"
           },
           "lexinfo:semanticField": [
             "Sound Terms",
@@ -336,27 +319,6 @@
             "Body Terms"
           ],
           "usage": "Preserves original meaning through irregular sound change"
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "hahu'er",
-          "phoneticRep": "ha.hu.ʔer",
-          "decomposition": "hahu + -'er (verbalizer)",
-          "grammaticalMeaning": "to laugh"
-        }
-      ],
-      "related": [
-        {
-          "@id": "ehk:'il",
-          "relationshipType": "etymologically related to",
-          "note": "from regular development of *halu"
-        },
-        {
-          "@id": "ehk:'ilsul",
-          "relationshipType": "semantically related to",
-          "note": "joy, happiness"
         }
       ]
     }

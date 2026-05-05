@@ -28,20 +28,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tag",
-        "phoneticRep": "tag"
+        "phoneticRep": "tag",
+        "writtenRep": "tag"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *tagu",
-        "etymon:note": "Forms verb tag'er 'to make'"
+        "etymon:note": "Forms verb tag'er 'to make'",
+        "etymon:protoform": "Proto-Hick *tagu"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "hand",
-            "@language": "en"
+            "@language": "en",
+            "@value": "hand"
           },
           "lexinfo:semanticField": [
             "Body Parts",
@@ -58,20 +58,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tak",
-        "phoneticRep": "tak"
+        "phoneticRep": "tak",
+        "writtenRep": "tak"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *taku",
-        "etymon:note": "Onomatopoeic origin"
+        "etymon:note": "Onomatopoeic origin",
+        "etymon:protoform": "Proto-Hick *taku"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "strike, impact",
-            "@language": "en"
+            "@language": "en",
+            "@value": "strike, impact"
           },
           "lexinfo:semanticField": [
             "Basic Terms"
@@ -80,8 +80,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "touch, contact",
-            "@language": "en"
+            "@language": "en",
+            "@value": "touch, contact"
           },
           "lexinfo:semanticField": [
             "Basic Terms"
@@ -97,8 +97,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "takimer",
-        "phoneticRep": "ˈta.ki.mɛr"
+        "phoneticRep": "ˈta.ki.mɛr",
+        "writtenRep": "takimer"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -110,8 +110,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "echo",
-            "@language": "en"
+            "@language": "en",
+            "@value": "echo"
           },
           "lexinfo:semanticField": [
             "Sound Terms",
@@ -121,8 +121,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sound spirit",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sound spirit"
           },
           "lexinfo:semanticField": [
             "Sound Terms",
@@ -139,8 +139,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "takimris",
-        "phoneticRep": "ta.kim.ris"
+        "phoneticRep": "ta.kim.ris",
+        "writtenRep": "takimris"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -152,8 +152,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to attack, to oppose",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to attack, to oppose"
           },
           "lexinfo:semanticField": [
             "Action Terms",
@@ -170,8 +170,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "takulambe",
-        "phoneticRep": "ta.ku.lam.be"
+        "phoneticRep": "ta.ku.lam.be",
+        "writtenRep": "takulambe"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -183,8 +183,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "Common Elven (Sindarin-based lingua franca)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "Common Elven (Sindarin-based lingua franca)"
           },
           "lexinfo:semanticField": [
             "Language Terms"
@@ -200,8 +200,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "takutakal",
-        "phoneticRep": "ta.ku.ta.kal"
+        "phoneticRep": "ta.ku.ta.kal",
+        "writtenRep": "takutakal"
       },
       "decomp:subterm": [
         {
@@ -215,15 +215,15 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "takutak-'al",
         "etymon:gloss": "rhythm-person",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows conceptual link between rhythm and language"
+        "etymon:note": "Shows conceptual link between rhythm and language",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "language",
-            "@language": "en"
+            "@language": "en",
+            "@value": "language"
           },
           "lexinfo:semanticField": [
             "Language Terms",
@@ -240,22 +240,22 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tal",
-        "phoneticRep": "tal"
+        "phoneticRep": "tal",
+        "writtenRep": "tal"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *halu",
-        "etymon:protoMeaning": "place of cleansing",
         "etymon:intermediateForm": "Pre-Hick *tal",
-        "etymon:note": "Borrowed from Pre-Hick dialect where spatial meaning developed"
+        "etymon:note": "Borrowed from Pre-Hick dialect where spatial meaning developed",
+        "etymon:protoMeaning": "place of cleansing",
+        "etymon:protoform": "Proto-Hick *halu"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "place, location",
-            "@language": "en"
+            "@language": "en",
+            "@value": "place, location"
           },
           "lexinfo:semanticField": [
             "Spatial Terms",
@@ -273,30 +273,30 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tamin",
-        "phoneticRep": "ta.min"
+        "phoneticRep": "ta.min",
+        "writtenRep": "tamin"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:borrowedFrom": "Quenya tamin",
         "etymon:gloss": "forge",
-        "etymon:soundChange": "direct borrowing",
-        "etymon:note": "Direct borrowing of Quenya technical term for forge/smithy"
+        "etymon:note": "Direct borrowing of Quenya technical term for forge/smithy",
+        "etymon:soundChange": "direct borrowing"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "forge, smithy",
-            "@language": "en"
+            "@language": "en",
+            "@value": "forge, smithy"
           },
-          "usage": "Borrowed technical term from Eldrim metalworking traditions",
+          "lexinfo:register": "lexinfo:technicalRegister",
           "lexinfo:semanticField": [
             "Construction Terms",
             "Tool Terms",
             "Borrowed Terms"
           ],
-          "lexinfo:register": "lexinfo:technicalRegister"
+          "usage": "Borrowed technical term from Eldrim metalworking traditions"
         }
       ]
     },
@@ -308,22 +308,22 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tarul",
-        "phoneticRep": "ta.rul"
+        "phoneticRep": "ta.rul",
+        "writtenRep": "tarul"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "aitarulbres",
         "etymon:gloss": "rainy-wind",
-        "etymon:soundChange": "compound reduction",
-        "etymon:note": "Shows climatic influence on directional terms"
+        "etymon:note": "Shows climatic influence on directional terms",
+        "etymon:soundChange": "compound reduction"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "west",
-            "@language": "en"
+            "@language": "en",
+            "@value": "west"
           },
           "lexinfo:semanticField": [
             "Directional Terms",
@@ -341,25 +341,25 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "temer",
-        "phoneticRep": "te.mer"
+        "phoneticRep": "te.mer",
+        "writtenRep": "temer"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *telu-himeru",
         "etymon:components": [
           "telu (end)",
           "himeru (life)"
         ],
-        "etymon:soundChange": "compound reduction",
-        "etymon:note": "Literally 'end of life'"
+        "etymon:note": "Literally 'end of life'",
+        "etymon:protoform": "Proto-Hick *telu-himeru",
+        "etymon:soundChange": "compound reduction"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "death",
-            "@language": "en"
+            "@language": "en",
+            "@value": "death"
           },
           "lexinfo:semanticField": [
             "Spirit Terms",
@@ -376,8 +376,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "temerok",
-        "phoneticRep": "te.me.rok"
+        "phoneticRep": "te.me.rok",
+        "writtenRep": "temerok"
       },
       "decomp:subterm": [
         {
@@ -391,15 +391,15 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "temer-ok",
         "etymon:gloss": "death-AGENT",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows metaphorical formation 'death-bringer' for both human killers and predatory animals"
+        "etymon:note": "Shows metaphorical formation 'death-bringer' for both human killers and predatory animals",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "killer, murderer",
-            "@language": "en"
+            "@language": "en",
+            "@value": "killer, murderer"
           },
           "lexinfo:semanticField": [
             "Basic Terms",
@@ -409,8 +409,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "predator",
-            "@language": "en"
+            "@language": "en",
+            "@value": "predator"
           },
           "lexinfo:semanticField": [
             "Animal Terms",
@@ -427,37 +427,37 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tenwa",
-        "phoneticRep": "ten.wa"
+        "phoneticRep": "ten.wa",
+        "writtenRep": "tenwa"
       },
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "tenwa + -'er (verbalizer)",
+          "grammaticalMeaning": "to write; to make spells",
+          "phoneticRep": "ten.wa.ʔer",
+          "writtenRep": "tenwa'er"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Eldrim tengwa",
         "etymon:gloss": "letter",
-        "etymon:soundChange": "final vowel loss",
-        "etymon:note": "Shows semantic extension from basic writing to magical inscription"
+        "etymon:note": "Shows semantic extension from basic writing to magical inscription",
+        "etymon:protoform": "Eldrim tengwa",
+        "etymon:soundChange": "final vowel loss"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "writing; spellcraft",
-            "@language": "en"
+            "@language": "en",
+            "@value": "writing; spellcraft"
           },
           "lexinfo:semanticField": [
             "Communication Terms",
             "Sacred Terms",
             "Magical Terms"
           ]
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "tenwa'er",
-          "phoneticRep": "ten.wa.ʔer",
-          "decomposition": "tenwa + -'er (verbalizer)",
-          "grammaticalMeaning": "to write; to make spells"
         }
       ]
     },
@@ -469,9 +469,18 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "ter",
-        "phoneticRep": "ter"
+        "phoneticRep": "ter",
+        "writtenRep": "ter"
       },
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "decomposition": "ter + -'er (verbalizer)",
+          "grammaticalMeaning": "to drink",
+          "phoneticRep": "ter.ʔer",
+          "writtenRep": "ter'er"
+        }
+      ],
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:protoform": "Proto-Hick *teru",
@@ -481,22 +490,13 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "flow, fluid motion",
-            "@language": "en"
+            "@language": "en",
+            "@value": "flow, fluid motion"
           },
           "lexinfo:semanticField": [
             "Basic Terms",
             "Motion Terms"
           ]
-        }
-      ],
-      "derivedForms": [
-        {
-          "@type": "ontolex:Form",
-          "writtenRep": "ter'er",
-          "phoneticRep": "ter.ʔer",
-          "decomposition": "ter + -'er (verbalizer)",
-          "grammaticalMeaning": "to drink"
         }
       ]
     },
@@ -508,8 +508,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thalgral",
-        "phoneticRep": "θal.gral"
+        "phoneticRep": "θal.gral",
+        "writtenRep": "thalgral"
       },
       "decomp:subterm": [
         {
@@ -529,8 +529,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "hillside",
-            "@language": "en"
+            "@language": "en",
+            "@value": "hillside"
           },
           "lexinfo:semanticField": [
             "Natural World",
@@ -547,28 +547,28 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tharala",
-        "phoneticRep": "θa.ra.la"
+        "phoneticRep": "θa.ra.la",
+        "writtenRep": "tharala"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *harala",
         "etymon:gloss": "deity",
-        "etymon:soundChange": "partial (ha- → tha-)",
-        "etymon:note": "Religious term showing resistance to regular sound changes"
+        "etymon:note": "Religious term showing resistance to regular sound changes",
+        "etymon:protoform": "Proto-Hick *harala",
+        "etymon:soundChange": "partial (ha- → tha-)"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "deity",
-            "@language": "en"
+            "@language": "en",
+            "@value": "deity"
           },
+          "lexinfo:register": "lexinfo:formalRegister",
           "lexinfo:semanticField": [
             "Sacred Terms",
             "Religious Terms"
-          ],
-          "lexinfo:register": "lexinfo:formalRegister"
+          ]
         }
       ]
     },
@@ -580,13 +580,13 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thid",
-        "phoneticRep": "θid"
+        "phoneticRep": "θid",
+        "writtenRep": "thid"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *hawadu",
         "etymon:gloss": "sacred way",
+        "etymon:protoform": "Proto-Hick *hawadu",
         "etymon:soundChange": [
           "initial fricativization",
           "medial glide loss"
@@ -596,8 +596,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "truth",
-            "@language": "en"
+            "@language": "en",
+            "@value": "truth"
           },
           "lexinfo:semanticField": [
             "Sacred Terms",
@@ -614,21 +614,21 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thil",
-        "phoneticRep": "θil"
+        "phoneticRep": "θil",
+        "writtenRep": "thil"
       },
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:note": "Abstract sense developed from basic meaning",
         "etymon:protoform": "Proto-Hick *halu",
-        "etymon:soundChange": "initial fricative change",
-        "etymon:note": "Abstract sense developed from basic meaning"
+        "etymon:soundChange": "initial fricative change"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "virtue, moral",
-            "@language": "en"
+            "@language": "en",
+            "@value": "virtue, moral"
           },
           "lexinfo:semanticField": [
             "Abstract Concepts",
@@ -646,22 +646,22 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thilul",
-        "phoneticRep": "θi.lul"
+        "phoneticRep": "θi.lul",
+        "writtenRep": "thilul"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "thilulbres",
         "etymon:gloss": "sacred-wind",
-        "etymon:soundChange": "compound reduction",
-        "etymon:note": "Shows cultural association of south with favorable omens"
+        "etymon:note": "Shows cultural association of south with favorable omens",
+        "etymon:soundChange": "compound reduction"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "south",
-            "@language": "en"
+            "@language": "en",
+            "@value": "south"
           },
           "lexinfo:semanticField": [
             "Directional Terms",
@@ -679,8 +679,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thilulbres",
-        "phoneticRep": "θi.lul.bres"
+        "phoneticRep": "θi.lul.bres",
+        "writtenRep": "thilulbres"
       },
       "decomp:subterm": [
         {
@@ -700,15 +700,15 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "south wind",
-            "@language": "en"
+            "@language": "en",
+            "@value": "south wind"
           },
-          "usage": "Associated with favorable weather and good fortune",
           "lexinfo:semanticField": [
             "Weather Terms",
             "Directional Terms",
             "Sacred Terms"
-          ]
+          ],
+          "usage": "Associated with favorable weather and good fortune"
         }
       ]
     },
@@ -720,8 +720,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tor",
-        "phoneticRep": "tor"
+        "phoneticRep": "tor",
+        "writtenRep": "tor"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -732,14 +732,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "height, peak",
-            "@language": "en"
+            "@language": "en",
+            "@value": "height, peak"
           },
-          "usage": "See Augmentative Prefix",
           "lexinfo:semanticField": [
             "Natural World",
             "Landforms"
-          ]
+          ],
+          "usage": "See Augmentative Prefix"
         }
       ]
     },
@@ -751,8 +751,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "toran",
-        "phoneticRep": "to.ran"
+        "phoneticRep": "to.ran",
+        "writtenRep": "toran"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -763,8 +763,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "river, flowing water",
-            "@language": "en"
+            "@language": "en",
+            "@value": "river, flowing water"
           },
           "lexinfo:semanticField": [
             "Natural World",
@@ -781,8 +781,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "torba",
-        "phoneticRep": "tor.ba"
+        "phoneticRep": "tor.ba",
+        "writtenRep": "torba"
       },
       "decomp:subterm": [
         {
@@ -802,15 +802,15 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "goat",
-            "@language": "en"
+            "@language": "en",
+            "@value": "goat"
           },
-          "usage": "Shows metaphorical extension linking goats to mountains and paternal authority",
           "lexinfo:semanticField": [
             "Fauna",
             "Animals",
             "Pastoral Terms"
-          ]
+          ],
+          "usage": "Shows metaphorical extension linking goats to mountains and paternal authority"
         }
       ]
     },
@@ -822,8 +822,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "toreldal",
-        "phoneticRep": "to.rel.dal"
+        "phoneticRep": "to.rel.dal",
+        "writtenRep": "toreldal"
       },
       "decomp:subterm": [
         {
@@ -837,23 +837,23 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "tor-eldal",
         "etymon:meaning": "AUG-elf",
-        "etymon:soundChange": "compound fusion",
         "etymon:note": "From first elven migration period, uses native augmentative to distinguish High Elves",
-        "etymon:period": "pre-Early Hick"
+        "etymon:period": "pre-Early Hick",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "High Elf",
-            "@language": "en"
+            "@language": "en",
+            "@value": "High Elf"
           },
-          "usage": "Shows cultural perception of High Elves through augmentative prefix",
           "lexinfo:semanticField": [
             "Peoples",
             "Cultural Terms",
             "Sacred Terms"
-          ]
+          ],
+          "usage": "Shows cultural perception of High Elves through augmentative prefix"
         }
       ]
     },
@@ -865,8 +865,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "toren",
-        "phoneticRep": "to.ren"
+        "phoneticRep": "to.ren",
+        "writtenRep": "toren"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -878,11 +878,11 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "horse",
-            "@language": "en"
+            "@language": "en",
+            "@value": "horse"
           },
-          "usage": "Shows semantic extension through size metaphor",
-          "lexinfo:semanticField": "Animals"
+          "lexinfo:semanticField": "Animals",
+          "usage": "Shows semantic extension through size metaphor"
         }
       ]
     },
@@ -894,8 +894,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "torken",
-        "phoneticRep": "tor.ken"
+        "phoneticRep": "tor.ken",
+        "writtenRep": "torken"
       },
       "decomp:subterm": [
         {
@@ -915,8 +915,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "snow-peak, snow-capped mountain",
-            "@language": "en"
+            "@language": "en",
+            "@value": "snow-peak, snow-capped mountain"
           },
           "lexinfo:semanticField": [
             "Landforms",
@@ -933,8 +933,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "torlambe",
-        "phoneticRep": "tor.lam.be"
+        "phoneticRep": "tor.lam.be",
+        "writtenRep": "torlambe"
       },
       "decomp:subterm": [
         {
@@ -954,8 +954,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "High Elven (Quenya)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "High Elven (Quenya)"
           },
           "lexinfo:semanticField": [
             "Language Terms",
@@ -973,32 +973,32 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tornes",
-        "phoneticRep": "tor.nes"
+        "phoneticRep": "tor.nes",
+        "writtenRep": "tornes"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "tor-nes",
+        "etymon:reference": [
+          "@/languages/hickic/seneran/early-hick/_index.md#stress-dependent-reduction",
+          "@/languages/hickic/seneran/early-hick/_index.md#exceptions"
+        ],
+        "etymon:soundChange": [
+          "compound fusion",
+          "stress shift to initial syllable",
+          "resistance to vowel reduction (maritime term)"
+        ]
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "whale",
-            "@language": "en"
+            "@language": "en",
+            "@value": "whale"
           },
           "lexinfo:semanticField": "Animals"
         }
-      ],
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:protoform": "tor-nes",
-        "etymon:soundChange": [
-          "compound fusion",
-          "stress shift to initial syllable",
-          "resistance to vowel reduction (maritime term)"
-        ],
-        "etymon:reference": [
-          "@/languages/hickic/seneran/early-hick/_index.md#stress-dependent-reduction",
-          "@/languages/hickic/seneran/early-hick/_index.md#exceptions"
-        ]
-      }
+      ]
     },
     {
       "@id": "ehk:torthil",
@@ -1008,8 +1008,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "torthil",
-        "phoneticRep": "tor.θil"
+        "phoneticRep": "tor.θil",
+        "writtenRep": "torthil"
       },
       "decomp:subterm": [
         {
@@ -1019,43 +1019,43 @@
           "@id": "ehk:thil"
         }
       ],
+      "derivation": {
+        "@type": "ontolex:LexicalEntry",
+        "canonicalForm": {
+          "@type": "ontolex:Form",
+          "phoneticRep": "tor.θil.ʔer",
+          "writtenRep": "torthil'er"
+        },
+        "sense": [
+          {
+            "@type": "ontolex:LexicalSense",
+            "definition": {
+              "@language": "en",
+              "@value": "to be arrogant"
+            }
+          }
+        ]
+      },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "tor-thil",
         "etymon:meaning": "great-virtue",
-        "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows ironic compound formation - excessive virtue becoming a flaw"
+        "etymon:note": "Shows ironic compound formation - excessive virtue becoming a flaw",
+        "etymon:soundChange": "compound fusion"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "arrogance, haughtiness",
-            "@language": "en"
+            "@language": "en",
+            "@value": "arrogance, haughtiness"
           },
           "lexinfo:semanticField": [
             "Abstract Concepts",
             "Emotional Terms"
           ]
         }
-      ],
-      "derivation": {
-        "@type": "ontolex:LexicalEntry",
-        "canonicalForm": {
-          "@type": "ontolex:Form",
-          "writtenRep": "torthil'er",
-          "phoneticRep": "tor.θil.ʔer"
-        },
-        "sense": [
-          {
-            "@type": "ontolex:LexicalSense",
-            "definition": {
-              "@value": "to be arrogant",
-              "@language": "en"
-            }
-          }
-        ]
-      }
+      ]
     },
     {
       "@id": "ehk:torulbres",
@@ -1065,8 +1065,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "torulbres",
-        "phoneticRep": "to.rul.bres"
+        "phoneticRep": "to.rul.bres",
+        "writtenRep": "torulbres"
       },
       "decomp:subterm": [
         {
@@ -1086,14 +1086,14 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "north wind",
-            "@language": "en"
+            "@language": "en",
+            "@value": "north wind"
           },
-          "usage": "Original term for north wind, later often replaced by eldalulbres",
           "lexinfo:semanticField": [
             "Weather Terms",
             "Directional Terms"
-          ]
+          ],
+          "usage": "Original term for north wind, later often replaced by eldalulbres"
         }
       ]
     },
@@ -1105,8 +1105,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "trask",
-        "phoneticRep": "trask"
+        "phoneticRep": "trask",
+        "writtenRep": "trask"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1120,8 +1120,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "leg",
-            "@language": "en"
+            "@language": "en",
+            "@value": "leg"
           },
           "lexinfo:semanticField": "Body Parts"
         }
@@ -1135,22 +1135,22 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tre",
-        "phoneticRep": "tre"
+        "phoneticRep": "tre",
+        "writtenRep": "tre"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *mataru",
         "etymon:intermediateForm": "matre",
-        "etymon:soundChange": "final vowel loss",
-        "etymon:note": "Back-formed through reanalysis of ma- as plural prefix"
+        "etymon:note": "Back-formed through reanalysis of ma- as plural prefix",
+        "etymon:protoform": "Proto-Hick *mataru",
+        "etymon:soundChange": "final vowel loss"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "wagon, cart",
-            "@language": "en"
+            "@language": "en",
+            "@value": "wagon, cart"
           },
           "lexinfo:semanticField": "Vehicle Terms"
         }
@@ -1164,8 +1164,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tag'er",
-        "phoneticRep": "tag.ʔer"
+        "phoneticRep": "tag.ʔer",
+        "writtenRep": "tag'er"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1177,8 +1177,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to make, to craft",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to make, to craft"
           },
           "lexinfo:semanticField": [
             "Basic Actions",
@@ -1195,8 +1195,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tagimris",
-        "phoneticRep": "tag.im.ris"
+        "phoneticRep": "tag.im.ris",
+        "writtenRep": "tagimris"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1208,8 +1208,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "give",
-            "@language": "en"
+            "@language": "en",
+            "@value": "give"
           },
           "lexinfo:semanticField": [
             "Motion Terms",
@@ -1226,8 +1226,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "taglas",
-        "phoneticRep": "tag.las"
+        "phoneticRep": "tag.las",
+        "writtenRep": "taglas"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1239,8 +1239,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "take, receive",
-            "@language": "en"
+            "@language": "en",
+            "@value": "take, receive"
           },
           "lexinfo:semanticField": [
             "Motion Terms",
@@ -1257,8 +1257,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "takal",
-        "phoneticRep": "ta.kal"
+        "phoneticRep": "ta.kal",
+        "writtenRep": "takal"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1270,8 +1270,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "word",
-            "@language": "en"
+            "@language": "en",
+            "@value": "word"
           },
           "lexinfo:semanticField": [
             "Language Terms"
@@ -1287,20 +1287,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "takutak",
-        "phoneticRep": "ta.ku.tak"
+        "phoneticRep": "ta.ku.tak",
+        "writtenRep": "takutak"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *takutaku",
-        "etymon:note": "Preserves onomatopoeic reduplication"
+        "etymon:note": "Preserves onomatopoeic reduplication",
+        "etymon:protoform": "Proto-Hick *takutaku"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "rhythm",
-            "@language": "en"
+            "@language": "en",
+            "@value": "rhythm"
           },
           "lexinfo:semanticField": [
             "Sound Terms",
@@ -1317,20 +1317,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "takutek",
-        "phoneticRep": "ta.ku.tek"
+        "phoneticRep": "ta.ku.tek",
+        "writtenRep": "takutek"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *takutaku",
-        "etymon:note": "Preserves onomatopoeic reduplication"
+        "etymon:note": "Preserves onomatopoeic reduplication",
+        "etymon:protoform": "Proto-Hick *takutaku"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "rhythm",
-            "@language": "en"
+            "@language": "en",
+            "@value": "rhythm"
           },
           "lexinfo:semanticField": [
             "Musical Terms",
@@ -1347,8 +1347,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "takuter",
-        "phoneticRep": "ta.ku.ter"
+        "phoneticRep": "ta.ku.ter",
+        "writtenRep": "takuter"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1360,8 +1360,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "harmony, attunement",
-            "@language": "en"
+            "@language": "en",
+            "@value": "harmony, attunement"
           },
           "lexinfo:semanticField": [
             "Basic Terms",
@@ -1378,8 +1378,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tel",
-        "phoneticRep": "tel"
+        "phoneticRep": "tel",
+        "writtenRep": "tel"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1390,8 +1390,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "tail, end",
-            "@language": "en"
+            "@language": "en",
+            "@value": "tail, end"
           },
           "lexinfo:semanticField": [
             "Body Parts",
@@ -1408,8 +1408,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "terimris",
-        "phoneticRep": "te.rim.ris"
+        "phoneticRep": "te.rim.ris",
+        "writtenRep": "terimris"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1421,8 +1421,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "next",
-            "@language": "en"
+            "@language": "en",
+            "@value": "next"
           },
           "lexinfo:semanticField": [
             "Time Terms",
@@ -1439,8 +1439,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "terlas",
-        "phoneticRep": "ter.las"
+        "phoneticRep": "ter.las",
+        "writtenRep": "terlas"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1452,8 +1452,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "previous",
-            "@language": "en"
+            "@language": "en",
+            "@value": "previous"
           },
           "lexinfo:semanticField": [
             "Time Terms",
@@ -1470,8 +1470,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "terok",
-        "phoneticRep": "te.rok"
+        "phoneticRep": "te.rok",
+        "writtenRep": "terok"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1483,8 +1483,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "drinker; drunkard",
-            "@language": "en"
+            "@language": "en",
+            "@value": "drinker; drunkard"
           },
           "lexinfo:semanticField": [
             "Person Terms",
@@ -1501,8 +1501,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thal",
-        "phoneticRep": "θal"
+        "phoneticRep": "θal",
+        "writtenRep": "thal"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1513,8 +1513,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "side, flank",
-            "@language": "en"
+            "@language": "en",
+            "@value": "side, flank"
           },
           "lexinfo:semanticField": [
             "Body Parts",
@@ -1531,8 +1531,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thir",
-        "phoneticRep": "θir"
+        "phoneticRep": "θir",
+        "writtenRep": "thir"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1543,8 +1543,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "air, wind; white",
-            "@language": "en"
+            "@language": "en",
+            "@value": "air, wind; white"
           },
           "lexinfo:semanticField": [
             "Elements",
@@ -1561,8 +1561,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thiral",
-        "phoneticRep": "θi.ral"
+        "phoneticRep": "θi.ral",
+        "writtenRep": "thiral"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1574,8 +1574,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "warm water, summer pool",
-            "@language": "en"
+            "@language": "en",
+            "@value": "warm water, summer pool"
           },
           "lexinfo:semanticField": [
             "Water Features"
@@ -1591,8 +1591,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thirlis",
-        "phoneticRep": "θir.lis"
+        "phoneticRep": "θir.lis",
+        "writtenRep": "thirlis"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1603,8 +1603,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "grandchild",
-            "@language": "en"
+            "@language": "en",
+            "@value": "grandchild"
           },
           "lexinfo:semanticField": [
             "Kinship Terms"
@@ -1620,8 +1620,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thirmer",
-        "phoneticRep": "θir.mer"
+        "phoneticRep": "θir.mer",
+        "writtenRep": "thirmer"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1632,8 +1632,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "grandparent",
-            "@language": "en"
+            "@language": "en",
+            "@value": "grandparent"
           },
           "lexinfo:semanticField": [
             "Kinship Terms"
@@ -1649,8 +1649,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thirpel",
-        "phoneticRep": "θir.pel"
+        "phoneticRep": "θir.pel",
+        "writtenRep": "thirpel"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1661,8 +1661,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "fur-bear",
-            "@language": "en"
+            "@language": "en",
+            "@value": "fur-bear"
           },
           "lexinfo:semanticField": [
             "Animal Terms"
@@ -1678,8 +1678,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thirren",
-        "phoneticRep": "θir.ren"
+        "phoneticRep": "θir.ren",
+        "writtenRep": "thirren"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1690,8 +1690,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "winter coat deer",
-            "@language": "en"
+            "@language": "en",
+            "@value": "winter coat deer"
           },
           "lexinfo:semanticField": [
             "Animal Terms"
@@ -1707,8 +1707,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thirthral",
-        "phoneticRep": "θir.θral"
+        "phoneticRep": "θir.θral",
+        "writtenRep": "thirthral"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1719,8 +1719,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "summer",
-            "@language": "en"
+            "@language": "en",
+            "@value": "summer"
           },
           "lexinfo:semanticField": [
             "Time Terms"
@@ -1736,8 +1736,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thragral",
-        "phoneticRep": "θra.gral"
+        "phoneticRep": "θra.gral",
+        "writtenRep": "thragral"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1748,8 +1748,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "garden",
-            "@language": "en"
+            "@language": "en",
+            "@value": "garden"
           },
           "lexinfo:semanticField": [
             "Landforms",
@@ -1767,8 +1767,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thralbar",
-        "phoneticRep": "θral.bar"
+        "phoneticRep": "θral.bar",
+        "writtenRep": "thralbar"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1779,8 +1779,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sacred name",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sacred name"
           },
           "lexinfo:semanticField": [
             "Sacred Terms",
@@ -1798,20 +1798,20 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thran",
-        "phoneticRep": "θran"
+        "phoneticRep": "θran",
+        "writtenRep": "thran"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *thran-inu",
-        "etymon:note": "From counting form"
+        "etymon:note": "From counting form",
+        "etymon:protoform": "Proto-Hick *thran-inu"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "thousand",
-            "@language": "en"
+            "@language": "en",
+            "@value": "thousand"
           },
           "lexinfo:semanticField": [
             "Number Terms"
@@ -1827,8 +1827,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thur",
-        "phoneticRep": "θur"
+        "phoneticRep": "θur",
+        "writtenRep": "thur"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1839,8 +1839,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "dusk",
-            "@language": "en"
+            "@language": "en",
+            "@value": "dusk"
           },
           "lexinfo:semanticField": [
             "Time Terms"
@@ -1856,8 +1856,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thurkel",
-        "phoneticRep": "θur.kel"
+        "phoneticRep": "θur.kel",
+        "writtenRep": "thurkel"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1868,8 +1868,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "evening sky",
-            "@language": "en"
+            "@language": "en",
+            "@value": "evening sky"
           },
           "lexinfo:semanticField": [
             "Time Terms",
@@ -1886,21 +1886,21 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thurmur",
-        "phoneticRep": "θur.mur"
+        "phoneticRep": "θur.mur",
+        "writtenRep": "thurmur"
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *thuru-muru-meru",
         "etymon:gloss": "dusk-night-bird",
-        "etymon:note": "Shows compound reduction"
+        "etymon:note": "Shows compound reduction",
+        "etymon:protoform": "Proto-Hick *thuru-muru-meru"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "dusk owl",
-            "@language": "en"
+            "@language": "en",
+            "@value": "dusk owl"
           },
           "lexinfo:semanticField": [
             "Bird Terms",
@@ -1917,8 +1917,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "thurthral",
-        "phoneticRep": "θur.θral"
+        "phoneticRep": "θur.θral",
+        "writtenRep": "thurthral"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1930,8 +1930,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "sacred dusk",
-            "@language": "en"
+            "@language": "en",
+            "@value": "sacred dusk"
           },
           "lexinfo:semanticField": [
             "Time Terms",
@@ -1941,8 +1941,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "autumn",
-            "@language": "en"
+            "@language": "en",
+            "@value": "autumn"
           },
           "lexinfo:semanticField": [
             "Time Terms",
@@ -1959,8 +1959,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tin",
-        "phoneticRep": "tin"
+        "phoneticRep": "tin",
+        "writtenRep": "tin"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -1971,8 +1971,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "tin",
-            "@language": "en"
+            "@language": "en",
+            "@value": "tin"
           },
           "lexinfo:semanticField": [
             "Metal Terms",
@@ -1989,8 +1989,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tirai",
-        "phoneticRep": "ti.rai"
+        "phoneticRep": "ti.rai",
+        "writtenRep": "tirai"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2002,8 +2002,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "fermented drink",
-            "@language": "en"
+            "@language": "en",
+            "@value": "fermented drink"
           },
           "lexinfo:semanticField": [
             "Food Terms",
@@ -2021,8 +2021,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tirkres",
-        "phoneticRep": "tir.kres"
+        "phoneticRep": "tir.kres",
+        "writtenRep": "tirkres"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2034,8 +2034,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "ten",
-            "@language": "en"
+            "@language": "en",
+            "@value": "ten"
           },
           "lexinfo:semanticField": "Number Terms"
         }
@@ -2049,8 +2049,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "togar",
-        "phoneticRep": "to.gar"
+        "phoneticRep": "to.gar",
+        "writtenRep": "togar"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2062,8 +2062,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "limestone, mountain rock",
-            "@language": "en"
+            "@language": "en",
+            "@value": "limestone, mountain rock"
           },
           "lexinfo:semanticField": [
             "Material Terms",
@@ -2080,8 +2080,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tomal",
-        "phoneticRep": "to.mal"
+        "phoneticRep": "to.mal",
+        "writtenRep": "tomal"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2093,8 +2093,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "lake",
-            "@language": "en"
+            "@language": "en",
+            "@value": "lake"
           },
           "lexinfo:semanticField": [
             "Water Features",
@@ -2111,22 +2111,22 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tomur",
-        "phoneticRep": "to.mur"
+        "phoneticRep": "to.mur",
+        "writtenRep": "tomur"
       },
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "tor-mur-mer",
         "etymon:gloss": "great-night-bird",
-        "etymon:soundChange": "compound reduction",
-        "etymon:note": "Shows liquid deletion and vowel reduction"
+        "etymon:note": "Shows liquid deletion and vowel reduction",
+        "etymon:soundChange": "compound reduction"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "great owl",
-            "@language": "en"
+            "@language": "en",
+            "@value": "great owl"
           },
           "lexinfo:semanticField": [
             "Bird Terms",
@@ -2143,8 +2143,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "torduwes",
-        "phoneticRep": "tor.du.wes"
+        "phoneticRep": "tor.du.wes",
+        "writtenRep": "torduwes"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2156,8 +2156,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "feast, great eating",
-            "@language": "en"
+            "@language": "en",
+            "@value": "feast, great eating"
           },
           "lexinfo:semanticField": [
             "Food Terms",
@@ -2174,8 +2174,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tormel",
-        "phoneticRep": "tor.mel"
+        "phoneticRep": "tor.mel",
+        "writtenRep": "tormel"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2187,8 +2187,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "great fat, tallow",
-            "@language": "en"
+            "@language": "en",
+            "@value": "great fat, tallow"
           },
           "lexinfo:semanticField": [
             "Food Terms",
@@ -2205,8 +2205,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tormer",
-        "phoneticRep": "tor.mer"
+        "phoneticRep": "tor.mer",
+        "writtenRep": "tormer"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2218,8 +2218,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "ancestor",
-            "@language": "en"
+            "@language": "en",
+            "@value": "ancestor"
           },
           "lexinfo:semanticField": "Kinship Terms"
         }
@@ -2233,8 +2233,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "tornai",
-        "phoneticRep": "tor.nai"
+        "phoneticRep": "tor.nai",
+        "writtenRep": "tornai"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2246,8 +2246,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "ancestor (maternal)",
-            "@language": "en"
+            "@language": "en",
+            "@value": "ancestor (maternal)"
           },
           "lexinfo:semanticField": "Kinship Terms"
         }
@@ -2261,8 +2261,8 @@
       ],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "writtenRep": "trask'er",
-        "phoneticRep": "tras.kʔer"
+        "phoneticRep": "tras.kʔer",
+        "writtenRep": "trask'er"
       },
       "etymology": {
         "@type": "etymon:Etymology",
@@ -2274,8 +2274,8 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "to run",
-            "@language": "en"
+            "@language": "en",
+            "@value": "to run"
           },
           "lexinfo:semanticField": [
             "Motion Terms",
