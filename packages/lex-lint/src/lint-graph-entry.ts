@@ -23,6 +23,7 @@ export function mergeGraphEntryDocument(
   graphEntry: Record<string, unknown>,
   baseIri: string,
   mergeContext: boolean,
+  documentContext?: unknown,
 ): Record<string, unknown> {
   if (!mergeContext) {
     return {
@@ -31,8 +32,13 @@ export function mergeGraphEntryDocument(
     };
   }
 
+  const ctx =
+    documentContext !== undefined
+      ? documentContext
+      : createLexiconJsonLdContext();
+
   return {
-    "@context": createLexiconJsonLdContext(),
+    "@context": ctx,
     "@base": baseIri,
     ...graphEntry,
   };
@@ -52,7 +58,12 @@ export async function lintGraphEntry(
     options.baseIri ??
     "https://w3id.org/lex-lint/lexicon/fallback/unset-base/";
 
-  const merged = mergeGraphEntryDocument(graphEntry, baseIri, mergeContext);
+  const merged = mergeGraphEntryDocument(
+    graphEntry,
+    baseIri,
+    mergeContext,
+    options.jsonLdDocumentContext,
+  );
   const inputHadCanonicalForm = Object.hasOwn(graphEntry, "canonicalForm");
 
   try {

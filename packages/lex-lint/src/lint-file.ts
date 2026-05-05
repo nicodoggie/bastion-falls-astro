@@ -8,7 +8,9 @@ import {
   enrichDiagnosticsWithLocations,
   offsetToLineColumn,
 } from "./json-location.js";
+import { isJsonLdGraphLexicon, isLexiconWrapper } from "./detect-format.js";
 import { lintGraphEntry } from "./lint-graph-entry.js";
+import { lintJsonLdGraphDocument } from "./lint-jsonld-graph.js";
 import type { LintDiagnostic, LintOptions, LintReport, LexiconFileShape } from "./types.js";
 
 function describeErr(e: unknown): string {
@@ -16,7 +18,7 @@ function describeErr(e: unknown): string {
 }
 
 async function lintLexiconDocument(
-  doc: LexiconFileShape,
+  doc: LexiconFileShape & { lexicon: Record<string, unknown> },
   filePath: string,
   options: Omit<LintOptions, "file">,
 ): Promise<LintDiagnostic[]> {
@@ -34,21 +36,11 @@ async function lintLexiconDocument(
   }
 
   const lex = doc.lexicon;
-  if (!lex || typeof lex !== "object" || Array.isArray(lex)) {
-    return [
-      {
-        severity: "error",
-        code: "LEXICON_SHAPE",
-        message: "Missing or invalid `lexicon` object.",
-        file: filePath,
-      },
-    ];
-  }
+  const entries = lex;
 
   const baseIri =
     options.baseIri ?? defaultBaseIriFromLexicon(doc, filePath);
 
-  const entries = lex as Record<string, unknown>;
   for (const [entryKey, entry] of Object.entries(entries)) {
     if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
       diagnostics.push({
@@ -90,7 +82,8 @@ async function lintLexiconDocument(
 }
 
 /**
- * Lint a lexicon JSON file (`lexicon` map of entries with `graphEntry`).
+ * Lint a lexicon source file: either the content-wrapper shape (`lexicon` map +
+ * `graphEntry`) or standalone JSON-LD (`@context` + `@graph`).
  */
 export async function lintLexiconFile(
   filePath: string,
@@ -136,14 +129,25 @@ export async function lintLexiconFile(
     };
   }
 
-  const diagnostics = enrichDiagnosticsWithLocations(
-    await lintLexiconDocument(
-      doc as LexiconFileShape,
-      filePath,
-      options,
-    ),
-    raw,
-  );
+  let rawDiagnostics: LintDiagnostic[];
+  if (isLexiconWrapper(doc)) {
+    rawDiagnostics = await lintLexiconDocument(doc, filePath, options);
+  } else if (isJsonLdGraphLexicon(doc)) {
+    rawDiagnostics = await lintJsonLdGraphDocument(doc, filePath, options);
+  } else {
+    rawDiagnostics = [
+      {
+        severity: "error",
+        code: "LEXICON_SHAPE",
+        message:
+          "Expected a content lexicon wrapper with a `lexicon` object, or " +
+          "JSON-LD with `@context` and `@graph` (e.g. `.jsonld` under assets).",
+        file: filePath,
+      },
+    ];
+  }
+
+  const diagnostics = enrichDiagnosticsWithLocations(rawDiagnostics, raw);
   const ok = !diagnostics.some((d) => d.severity === "error");
   return { ok, diagnostics };
 }

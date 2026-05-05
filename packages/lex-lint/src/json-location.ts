@@ -63,12 +63,30 @@ function enrichDiagnostic(
 
   if (d.code === "LEXICON_SHAPE") {
     loc = { line: 1, column: 1 };
+  } else if (
+    d.code === "JSON_LD_CONTEXT_SHAPE" ||
+    d.code === "JSON_LD_GRAPH_SHAPE"
+  ) {
+    loc = { line: 1, column: 1 };
   } else if (d.entryKey) {
-    const segments =
-      d.code === "LEXICON_ENTRY_SHAPE" || d.code === "MISSING_GRAPH_ENTRY"
-        ? (["lexicon", d.entryKey] as const)
-        : (["lexicon", d.entryKey, "graphEntry"] as const);
-    loc = locationAtJsonPath(sourceText, [...segments]);
+    const graphIdx = /^@graph\[(\d+)\]$/.exec(d.entryKey);
+    if (graphIdx) {
+      loc = locationAtJsonPath(sourceText, [
+        "@graph",
+        Number(graphIdx[1]),
+      ]);
+    } else if (
+      d.code === "LEXICON_ENTRY_SHAPE" ||
+      d.code === "MISSING_GRAPH_ENTRY"
+    ) {
+      loc = locationAtJsonPath(sourceText, ["lexicon", d.entryKey]);
+    } else {
+      loc = locationAtJsonPath(sourceText, [
+        "lexicon",
+        d.entryKey,
+        "graphEntry",
+      ]);
+    }
   }
 
   if (!loc) return { ...d };

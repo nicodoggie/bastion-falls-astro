@@ -29,6 +29,12 @@ export type LintOptions = {
   /** Turtle / TriG shapes file; defaults to bundled `shapes/lexicon-core.ttl`. */
   shaclShapesPath?: string;
   file?: string;
+  /**
+   * When set (with `mergeContext` not false), used as `@context` instead of the
+   * built-in lex-lint OntoLex context — for standalone `.jsonld` assets that ship
+   * their own vocabulary map.
+   */
+  jsonLdDocumentContext?: unknown;
 };
 
 export type LexiconFileShape = {

@@ -1,0 +1,36 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "etymon": "http://www.lexinfo.net/lemon/etymon#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "bf": "https://bastion-falls.thekennel.info/languages/",
+    "ehk": "#"
+  },
+  "@id": "lexicon:FixtureGraphMinimal",
+  "@type": "lime:Lexicon",
+  "dc:title": "Fixture graph lexicon",
+  "@graph": [
+    {
+      "@id": "ehk:test",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "writtenRep": "test",
+        "phoneticRep": "test"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@value": "fixture",
+            "@language": "en"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -2,9 +2,10 @@ import { readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
-import type { DatasetCore } from "@rdfjs/types";
+import type { DatasetCore, Literal, Term } from "@rdfjs/types";
 import N3 from "n3";
 import SHACLValidator from "rdf-validate-shacl";
+import type { ValidationResult } from "rdf-validate-shacl/src/validation-report.js";
 
 import { rdfEnv } from "./rdf-env.js";
 import type { LintDiagnostic } from "./types.js";
@@ -41,6 +42,110 @@ function termLabel(term: unknown): string {
   return String(term);
 }
 
+/** Last URI fragment after `#` or `/`. */
+function iriTail(iri: string): string {
+  const hash = iri.lastIndexOf("#");
+  const base = hash >= 0 ? iri.slice(hash + 1) : iri.slice(iri.lastIndexOf("/") + 1);
+  return base || iri;
+}
+
+/** Readable RDF term for diagnostics (compact where helpful). */
+function formatRdfTerm(term: Term | null | undefined): string {
+  if (term == null) {
+    return "?";
+  }
+  switch (term.termType) {
+    case "NamedNode":
+      return `<${term.value}>`;
+    case "Literal": {
+      const lit = term as Literal;
+      if (lit.language && lit.language.length > 0) {
+        return `${JSON.stringify(lit.value)}@${lit.language}`;
+      }
+      const dt = lit.datatype?.value;
+      if (
+        dt &&
+        dt !== "http://www.w3.org/2001/XMLSchema#string" &&
+        dt !== "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+      ) {
+        return `${JSON.stringify(lit.value)}^^${iriTail(dt)}`;
+      }
+      return JSON.stringify(lit.value);
+    }
+    case "BlankNode":
+      return "_:" + term.value;
+    default:
+      return termLabel(term);
+  }
+}
+
+/** Stable SHACL diagnostic code from `sh:sourceConstraintComponent`. */
+export function shaclViolationCode(component: Term | null | undefined): string {
+  if (!component || component.termType !== "NamedNode") {
+    return "SHACL_VIOLATION";
+  }
+  const tail = iriTail(component.value);
+  const withoutSuffix = tail.replace(/ConstraintComponent$/u, "");
+  const snake = withoutSuffix
+    .replace(/([a-z\d])([A-Z])/gu, "$1_$2")
+    .replace(/-/gu, "_")
+    .toUpperCase();
+  return `SHACL_${snake}`;
+}
+
+const MAX_DETAIL_DEPTH = 8;
+
+function formatShaclViolationMessage(
+  result: ValidationResult,
+  depth = 0,
+): string {
+  const messages = (result.message ?? []).map(termLabel).filter(Boolean);
+  const constraint = result.sourceConstraintComponent ?? undefined;
+  const shape = result.sourceShape ?? undefined;
+  const path = result.path ?? undefined;
+  const focus = result.focusNode ?? undefined;
+  const value = result.value ?? undefined;
+
+  const metaParts: string[] = [];
+  if (constraint?.termType === "NamedNode") {
+    metaParts.push(`constraint ${iriTail(constraint.value)}`);
+  } else if (constraint) {
+    metaParts.push(`constraint ${formatRdfTerm(constraint)}`);
+  }
+  if (path) {
+    metaParts.push(`path ${formatRdfTerm(path)}`);
+  }
+  if (focus) {
+    metaParts.push(`focus ${formatRdfTerm(focus)}`);
+  }
+  if (shape && shape.termType === "NamedNode") {
+    metaParts.push(`shape <${shape.value}>`);
+  } else if (shape) {
+    metaParts.push(`shape ${formatRdfTerm(shape)}`);
+  }
+  if (value) {
+    metaParts.push(`value ${formatRdfTerm(value)}`);
+  }
+
+  let text =
+    messages.length > 0 ? messages.join("; ") : "SHACL constraint violated.";
+  if (metaParts.length > 0) {
+    text += ` (${metaParts.join("; ")})`;
+  }
+
+  const prefix = depth > 0 ? `${"  ".repeat(depth)}└─ ` : "";
+  const lines = [prefix + text];
+
+  const details = result.detail ?? [];
+  if (details.length > 0 && depth < MAX_DETAIL_DEPTH) {
+    for (const child of details) {
+      lines.push(formatShaclViolationMessage(child, depth + 1));
+    }
+  }
+
+  return lines.join("\n");
+}
+
 export async function lintWithShacl(
   data: DatasetCore,
   shapes: DatasetCore,
@@ -54,11 +159,8 @@ export async function lintWithShacl(
 
   const diagnostics: LintDiagnostic[] = [];
   for (const result of report.results) {
-    const messages = result.message.map(termLabel).filter(Boolean);
-    const msg =
-      messages.length > 0
-        ? messages.join("; ")
-        : `SHACL violation at focus ${termLabel(result.focusNode)} path ${termLabel(result.path)}`;
+    const msg = formatShaclViolationMessage(result);
+    const code = shaclViolationCode(result.sourceConstraintComponent ?? undefined);
 
     const sevTerm = result.severity?.value ?? "";
     const severity =
@@ -68,7 +170,7 @@ export async function lintWithShacl(
 
     diagnostics.push({
       severity,
-      code: "SHACL_VIOLATION",
+      code,
       message: msg,
       file: ctx.file,
       entryKey: ctx.entryKey,

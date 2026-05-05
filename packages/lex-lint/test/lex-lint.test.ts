@@ -22,6 +22,19 @@ describe("lex-lint", () => {
     expect(r.diagnostics).toHaveLength(0);
   });
 
+  it("accepts standalone JSON-LD (@context + @graph) lexicons", async () => {
+    const r = await lintLexiconFile(fx("graph-minimal.jsonld"));
+    expect(r.ok).toBe(true);
+    expect(r.diagnostics).toHaveLength(0);
+  });
+
+  it("supports SHACL on standalone JSON-LD lexicons", async () => {
+    const r = await lintLexiconFile(fx("graph-minimal.jsonld"), {
+      shacl: true,
+    });
+    expect(r.ok).toBe(true);
+  });
+
   it("flags bare graphEntry without lex-lint context merge", async () => {
     const doc = JSON.parse(await readFile(fx("minimal.json"), "utf8")) as {
       lexicon: Record<string, LexEntry>;
@@ -48,7 +61,11 @@ describe("lex-lint", () => {
     });
 
     expect(d.filter((x) => x.code === "SHACL_SETUP_FAILED")).toHaveLength(0);
-    expect(d.some((x) => x.code === "SHACL_VIOLATION")).toBe(true);
+    const shaclDiag = d.find(
+      (x) => x.code.startsWith("SHACL_") && x.code !== "SHACL_SETUP_FAILED",
+    );
+    expect(shaclDiag).toBeDefined();
+    expect(shaclDiag?.message).toMatch(/sense|ontolex|constraint|path|focus/i);
   });
 
   it("includes graphEntry line/column for file-backed diagnostics", async () => {
@@ -56,7 +73,9 @@ describe("lex-lint", () => {
       shacl: true,
     });
     expect(r.ok).toBe(false);
-    const violation = r.diagnostics.find((x) => x.code === "SHACL_VIOLATION");
+    const violation = r.diagnostics.find(
+      (x) => x.code.startsWith("SHACL_") && x.code !== "SHACL_SETUP_FAILED",
+    );
     expect(violation?.line).toBeGreaterThan(0);
     expect(violation?.column).toBeGreaterThan(0);
     expect(violation?.file).toBeDefined();
