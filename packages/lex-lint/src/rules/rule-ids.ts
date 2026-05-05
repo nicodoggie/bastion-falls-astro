@@ -1,4 +1,10 @@
-/** Kebab-case rule IDs matching `lex-lint.config.json` → `rules`. */
-export const RULE_DUPLICATE_JSONLD_ID = "duplicate-jsonld-id" as const;
+/** Duplicate `@id` among `@graph` nodes or wrapper `graphEntry` maps. */
+export const RULE_JSONLD_DUPLICATE_GRAPH_ID =
+  "jsonld/duplicate-graph-id" as const;
 
-export type BuiltinRuleId = typeof RULE_DUPLICATE_JSONLD_ID;
+/** Opinionated JSON-LD root object key order (human editors). */
+export const RULE_JSONLD_ROOT_KEY_ORDER = "jsonld/root-key-order" as const;
+
+export type BuiltinRuleId =
+  | typeof RULE_JSONLD_DUPLICATE_GRAPH_ID
+  | typeof RULE_JSONLD_ROOT_KEY_ORDER;

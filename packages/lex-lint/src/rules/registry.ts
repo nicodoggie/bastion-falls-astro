@@ -1,8 +1,12 @@
 import type { LintDiagnostic } from "../types.js";
-import { duplicateJsonLdIdRule } from "./implementations/duplicate-jsonld-id.js";
+import { jsonldDuplicateGraphIdRule } from "./implementations/jsonld-duplicate-graph-id.js";
+import { jsonldRootKeyOrderRule } from "./implementations/jsonld-root-key-order.js";
 import type { LintContext, LintRuleModule } from "./types.js";
 
-export const RULE_MODULES: readonly LintRuleModule[] = [duplicateJsonLdIdRule];
+export const RULE_MODULES: readonly LintRuleModule[] = [
+  jsonldDuplicateGraphIdRule,
+  jsonldRootKeyOrderRule,
+];
 
 const RULE_ID_SET = new Set(RULE_MODULES.map((m) => m.ruleId));
 

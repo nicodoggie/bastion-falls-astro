@@ -1,9 +1,13 @@
-import { RULE_DUPLICATE_JSONLD_ID } from "./rule-ids.js";
+import {
+  RULE_JSONLD_DUPLICATE_GRAPH_ID,
+  RULE_JSONLD_ROOT_KEY_ORDER,
+} from "./rule-ids.js";
 import type { RuleSeveritySetting } from "./types.js";
 
 /** Must stay aligned with each rule module's `defaultSeverity`. */
 const RULE_DEFAULT_SEVERITIES: Record<string, RuleSeveritySetting> = {
-  [RULE_DUPLICATE_JSONLD_ID]: "error",
+  [RULE_JSONLD_DUPLICATE_GRAPH_ID]: "error",
+  [RULE_JSONLD_ROOT_KEY_ORDER]: "warn",
 };
 
 export function effectiveRuleSeverity(

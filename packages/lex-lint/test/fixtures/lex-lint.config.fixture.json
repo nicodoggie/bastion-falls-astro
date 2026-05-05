@@ -4,7 +4,7 @@
     "exclude": []
   },
   "rules": {
-    "duplicate-jsonld-id": "error"
+    "jsonld/duplicate-graph-id": "error"
   },
   "shacl": false
 }

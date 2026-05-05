@@ -61,6 +61,14 @@ function enrichDiagnostic(
 
   let loc: { line: number; column: number } | undefined;
 
+  const locationPath =
+    d.jsonLocationPath !== undefined && d.jsonLocationPath.length > 0
+      ? [...d.jsonLocationPath]
+      : undefined;
+  if (locationPath) {
+    loc = locationAtJsonPath(sourceText, locationPath);
+  }
+
   if (d.code === "LEXICON_SHAPE") {
     loc = { line: 1, column: 1 };
   } else if (
@@ -68,7 +76,12 @@ function enrichDiagnostic(
     d.code === "JSON_LD_GRAPH_SHAPE"
   ) {
     loc = { line: 1, column: 1 };
-  } else if (d.entryKey) {
+  } else if (
+    d.code === "JSONLD_ROOT_CONTEXT_NOT_FIRST" ||
+    d.code === "JSONLD_ROOT_GRAPH_NOT_LAST"
+  ) {
+    loc = { line: 1, column: 1 };
+  } else if (!loc && d.entryKey) {
     const graphIdx = /^@graph\[(\d+)\]$/.exec(d.entryKey);
     if (graphIdx) {
       loc = locationAtJsonPath(sourceText, [

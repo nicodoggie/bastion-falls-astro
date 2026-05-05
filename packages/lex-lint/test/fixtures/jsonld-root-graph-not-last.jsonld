@@ -1,0 +1,28 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "ehk": "#"
+  },
+  "@graph": [
+    {
+      "@id": "ehk:z",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "writtenRep": "z",
+        "phoneticRep": "z"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": { "@value": "fixture", "@language": "en" }
+        }
+      ]
+    }
+  ],
+  "@id": "lexicon:FixtureBadGraphPosition",
+  "@type": "lime:Lexicon",
+  "dc:title": "graph should be last"
+}

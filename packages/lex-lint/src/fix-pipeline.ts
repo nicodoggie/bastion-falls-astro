@@ -1,6 +1,13 @@
 import { readFile, writeFile } from "node:fs/promises";
 
-import { stringifyLexiconDoc } from "./rules/implementations/duplicate-jsonld-id.js";
+import { parse } from "jsonc-parser";
+import type { ParseError } from "jsonc-parser";
+
+import {
+  enrichDiagnosticsWithLocations,
+  offsetToLineColumn,
+} from "./json-location.js";
+import { stringifyLexiconDoc } from "./rules/implementations/jsonld-duplicate-graph-id.js";
 import { RULE_MODULES } from "./rules/registry.js";
 import { lintLexiconParsed } from "./lint-file.js";
 import type { LintDiagnostic, LintOptions, LintReport } from "./types.js";
@@ -34,11 +41,17 @@ export async function runFixPipeline(
     try {
       doc = JSON.parse(raw) as unknown;
     } catch (e) {
+      const errors: ParseError[] = [];
+      parse(raw, errors, { disallowComments: true });
+      const off = errors[0]?.offset ?? 0;
+      const pos = offsetToLineColumn(raw, off);
       diagnostics.push({
         severity: "error",
         code: "JSON_PARSE_FAILED",
         message: e instanceof Error ? e.message : String(e),
         file: filePath,
+        line: pos.line,
+        column: pos.column,
       });
       continue;
     }
@@ -49,6 +62,7 @@ export async function runFixPipeline(
       dryRun: options.dryRun,
     };
 
+    const fixDiagnosticsWithFile: LintDiagnostic[] = [];
     let fixOk = true;
     for (const mod of RULE_MODULES) {
       if (!mod.fix) {
@@ -58,7 +72,7 @@ export async function runFixPipeline(
       doc = res.doc;
       if (res.diagnostics) {
         for (const d of res.diagnostics) {
-          diagnostics.push({ ...d, file: filePath });
+          fixDiagnosticsWithFile.push({ ...d, file: filePath });
         }
       }
       if (!res.ok) {
@@ -66,6 +80,10 @@ export async function runFixPipeline(
         break;
       }
     }
+
+    diagnostics.push(
+      ...enrichDiagnosticsWithLocations(fixDiagnosticsWithFile, raw),
+    );
 
     if (!fixOk) {
       continue;

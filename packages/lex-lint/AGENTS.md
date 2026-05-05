@@ -18,8 +18,11 @@ in `lex-lint.config.json` under `rules`.
 6. **`enrichDiagnosticsWithLocations`** for line/column from `entryKey`.
 
 **Fix mode** (`--fix` / `--fix-dry-run`): run each module’s optional `fix` in
-registry order, serialize with sorted keys, **re-lint in memory**, then write (or
-print dry-run notes).
+registry order, serialize JSON-LD **preserving root key order**, with
+deterministic sorting **only inside each top-level `@graph` node**, **re-lint in
+memory**, then write (or print dry-run notes). Fix-time diagnostics use the
+same **1-based line/column** enrichment as lint (terminal
+`relativePath:line:column`, clickable in VS Code / Cursor).
 
 ## Add a lint-only rule
 
@@ -45,9 +48,15 @@ registry.
 
 ## Conventions
 
-- **Config / API rule ids:** kebab-case (`duplicate-jsonld-id`).
+- **Rule ids:** slash-namespaced JSON-LD surface rules
+  (`jsonld/duplicate-graph-id`, `jsonld/root-key-order`).
+  `jsonld/duplicate-graph-id` covers duplicate `@id` in `@graph` arrays and in
+  wrapper `graphEntry` maps (same `@id`, different fragments).
 - **Diagnostic `code`:** `SCREAMING_SNAKE`.
 - **Rule-owned diagnostics:** set **`ruleId`** to the rule id string.
+- **Locations:** Prefer **`jsonLocationPath`** (JSON path segments for
+  `jsonc-parser`) for a precise property; otherwise **`entryKey`** heuristics.
+  Enrichment fills **1-based `line` / `column`** for IDE-friendly CLI output.
 - **Glob config:** `files.include` / `files.exclude` (exclude maps to `glob`
   `ignore`).
 

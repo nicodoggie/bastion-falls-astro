@@ -97,12 +97,14 @@ describe("lex-lint", () => {
     expect(r.ok).toBe(false);
     const dups = r.diagnostics.filter((x) => x.code === "DUPLICATE_JSON_LD_ID");
     expect(dups.length).toBeGreaterThanOrEqual(2);
-    expect(dups.every((x) => x.ruleId === "duplicate-jsonld-id")).toBe(true);
+    expect(dups.every((x) => x.ruleId === "jsonld/duplicate-graph-id")).toBe(
+      true,
+    );
   });
 
-  it("respects duplicate-jsonld-id off", async () => {
+  it("respects jsonld/duplicate-graph-id off", async () => {
     const r = await lintLexiconFile(fx("duplicate-id-graph.jsonld"), {
-      ruleSettings: { "duplicate-jsonld-id": "off" },
+      ruleSettings: { "jsonld/duplicate-graph-id": "off" },
     });
     expect(r.ok).toBe(true);
     expect(
@@ -110,9 +112,9 @@ describe("lex-lint", () => {
     ).toBe(false);
   });
 
-  it("maps duplicate-jsonld-id warn to warning severity", async () => {
+  it("maps jsonld/duplicate-graph-id warn to warning severity", async () => {
     const r = await lintLexiconFile(fx("duplicate-id-graph.jsonld"), {
-      ruleSettings: { "duplicate-jsonld-id": "warn" },
+      ruleSettings: { "jsonld/duplicate-graph-id": "warn" },
     });
     expect(r.ok).toBe(true);
     const w = r.diagnostics.filter((x) => x.code === "DUPLICATE_JSON_LD_ID");
@@ -158,21 +160,26 @@ describe("lex-lint", () => {
   it("loads config fixture fields", () => {
     const cfg = loadLexLintConfigFile(fx("lex-lint.config.fixture.json"));
     expect(cfg.files.include).toContain("test/fixtures/minimal.json");
-    expect(cfg.rules["duplicate-jsonld-id"]).toBe("error");
+    expect(cfg.rules["jsonld/duplicate-graph-id"]).toBe("error");
   });
 
   it("merges duplicate @graph nodes on fix", async () => {
     const dir = await mkdtemp(join(tmpdir(), "lex-lint-fix-"));
     const target = join(dir, "dup.jsonld");
     await copyFile(fx("duplicate-id-graph.jsonld"), target);
-    const before = JSON.parse(await readFile(target, "utf8")) as {
+    const rawBefore = await readFile(target, "utf8");
+    const keysBefore = Object.keys(JSON.parse(rawBefore) as object);
+    const before = JSON.parse(rawBefore) as {
       "@graph": unknown[];
     };
     expect(before["@graph"].length).toBe(2);
 
     const report = await runFixPipeline([target], { dryRun: false });
     expect(report.ok).toBe(true);
-    const after = JSON.parse(await readFile(target, "utf8")) as {
+    const rawAfter = await readFile(target, "utf8");
+    const keysAfter = Object.keys(JSON.parse(rawAfter) as object);
+    expect(keysAfter).toEqual(keysBefore);
+    const after = JSON.parse(rawAfter) as {
       "@graph": Array<{ sense?: unknown[] }>;
     };
     expect(after["@graph"].length).toBe(1);
@@ -182,15 +189,48 @@ describe("lex-lint", () => {
     await rm(dir, { recursive: true });
   });
 
+  it("warns jsonld/root-key-order when @graph is not last", async () => {
+    const r = await lintLexiconFile(fx("jsonld-root-graph-not-last.jsonld"));
+    expect(r.ok).toBe(true);
+    const w = r.diagnostics.filter(
+      (x) => x.ruleId === "jsonld/root-key-order",
+    );
+    expect(w.some((x) => x.code === "JSONLD_ROOT_GRAPH_NOT_LAST")).toBe(true);
+    expect(w.every((x) => x.severity === "warning")).toBe(true);
+  });
+
+  it("warns jsonld/root-key-order when @context is not first", async () => {
+    const r = await lintLexiconFile(fx("jsonld-root-context-not-first.jsonld"));
+    expect(r.ok).toBe(true);
+    expect(
+      r.diagnostics.some((x) => x.code === "JSONLD_ROOT_CONTEXT_NOT_FIRST"),
+    ).toBe(true);
+  });
+
+  it("respects jsonld/root-key-order off", async () => {
+    const r = await lintLexiconFile(fx("jsonld-root-graph-not-last.jsonld"), {
+      ruleSettings: { "jsonld/root-key-order": "off" },
+    });
+    expect(
+      r.diagnostics.some((x) => x.ruleId === "jsonld/root-key-order"),
+    ).toBe(false);
+  });
+
   it("aborts fix when canonicalForm conflicts", async () => {
     const dir = await mkdtemp(join(tmpdir(), "lex-lint-fix2-"));
     const target = join(dir, "x.jsonld");
     await copyFile(fx("duplicate-id-graph-conflict.jsonld"), target);
     const report = await runFixPipeline([target], { dryRun: false });
     expect(report.ok).toBe(false);
-    expect(report.diagnostics.some((x) => x.code === "FIX_SKIPPED_CONFLICT")).toBe(
-      true,
+    const conflict = report.diagnostics.find(
+      (x) => x.code === "FIX_SKIPPED_CONFLICT",
     );
+    expect(conflict).toBeDefined();
+    expect(conflict!.message).toMatch(/@graph\[0\]/);
+    expect(conflict!.message).toMatch(/@graph\[1\]/);
+    expect(conflict!.message).toContain("ehk:x");
+    expect(conflict!.line).toBeGreaterThanOrEqual(1);
+    expect(conflict!.column).toBeGreaterThanOrEqual(1);
     const doc = JSON.parse(await readFile(target, "utf8")) as {
       "@graph": unknown[];
     };

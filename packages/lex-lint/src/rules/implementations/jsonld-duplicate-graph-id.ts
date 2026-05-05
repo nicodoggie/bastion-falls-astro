@@ -1,13 +1,45 @@
 import type { LintDiagnostic } from "../../types.js";
 import { effectiveRuleSeverity } from "../effective-severity.js";
 import type { FixContext, FixResult, LintContext, LintRuleModule } from "../types.js";
-import { RULE_DUPLICATE_JSONLD_ID } from "../rule-ids.js";
+import { RULE_JSONLD_DUPLICATE_GRAPH_ID } from "../rule-ids.js";
 
 export const CODE_DUPLICATE_JSON_LD_ID = "DUPLICATE_JSON_LD_ID";
 export const CODE_FIX_SKIPPED_CONFLICT = "FIX_SKIPPED_CONFLICT";
 
 /** Keys merged by concatenating arrays (sense-like). */
 const MERGE_ARRAY_KEYS = new Set(["sense", "ontolex:sense"]);
+
+/** Where the duplicate fragment sits (used for IDE-friendly locations). */
+type DupMergeLocation =
+  | { shape: "graph"; dupIndex: number }
+  | { shape: "wrapper"; dupLexKey: string };
+
+type MergeParticipants = {
+  /** Shared lexical entry `@id`. */
+  duplicateEntryId: string;
+  survivorLabel: string;
+  duplicateLabel: string;
+};
+
+function summarizeValue(v: unknown, maxLen = 96): string {
+  let s: string;
+  try {
+    s = JSON.stringify(v);
+  } catch {
+    return "<non-JSON>";
+  }
+  return s.length > maxLen ? `${s.slice(0, maxLen)}…` : s;
+}
+
+function dupConflictJsonPath(
+  loc: DupMergeLocation,
+  propKey: string,
+): (string | number)[] {
+  if (loc.shape === "graph") {
+    return ["@graph", loc.dupIndex, propKey];
+  }
+  return ["lexicon", loc.dupLexKey, "graphEntry", propKey];
+}
 
 function deepEqual(a: unknown, b: unknown): boolean {
   try {
@@ -32,8 +64,31 @@ function sortKeysDeep(value: unknown): unknown {
   return sorted;
 }
 
+/**
+ * Serialize after autofix: preserve root key order and all non-graph nesting;
+ * apply deterministic key sorting only to each **top-level `@graph` element**.
+ */
 export function stringifyLexiconDoc(doc: unknown): string {
-  return `${JSON.stringify(sortKeysDeep(doc), null, 2)}\n`;
+  if (!doc || typeof doc !== "object" || Array.isArray(doc)) {
+    return `${JSON.stringify(doc, null, 2)}\n`;
+  }
+  const o = doc as Record<string, unknown>;
+  const rebuilt: Record<string, unknown> = {};
+  for (const key of Object.keys(o)) {
+    const val = o[key];
+    if (key === "@graph" && Array.isArray(val)) {
+      rebuilt[key] = val.map((node) =>
+        node !== null &&
+        typeof node === "object" &&
+        !Array.isArray(node)
+          ? sortKeysDeep(node)
+          : node,
+      );
+    } else {
+      rebuilt[key] = val;
+    }
+  }
+  return `${JSON.stringify(rebuilt, null, 2)}\n`;
 }
 
 function normalizeTypeArray(v: unknown): unknown[] {
@@ -86,6 +141,8 @@ function mergeSenseLike(a: unknown, b: unknown): unknown {
 function mergeLexicalObjects(
   survivor: Record<string, unknown>,
   dup: Record<string, unknown>,
+  participants: MergeParticipants,
+  dupLoc: DupMergeLocation,
 ): { ok: true } | { ok: false; diagnostic: LintDiagnostic } {
   const skipKeys = new Set(["@id", "@context"]);
 
@@ -102,9 +159,13 @@ function mergeLexicalObjects(
         diagnostic: {
           severity: "error",
           code: CODE_FIX_SKIPPED_CONFLICT,
-          ruleId: RULE_DUPLICATE_JSONLD_ID,
+          ruleId: RULE_JSONLD_DUPLICATE_GRAPH_ID,
           message:
-            "Cannot merge duplicate @id: conflicting canonicalForm values.",
+            `Cannot merge duplicate @id "${participants.duplicateEntryId}": ` +
+            `conflicting canonicalForm between ${participants.survivorLabel} ` +
+            `(${summarizeValue(sc)}) and ${participants.duplicateLabel} ` +
+            `(${summarizeValue(dc)}).`,
+          jsonLocationPath: dupConflictJsonPath(dupLoc, "canonicalForm"),
         },
       };
     }
@@ -144,8 +205,13 @@ function mergeLexicalObjects(
       diagnostic: {
         severity: "error",
         code: CODE_FIX_SKIPPED_CONFLICT,
-        ruleId: RULE_DUPLICATE_JSONLD_ID,
-        message: `Cannot merge duplicate @id: conflicting property "${key}".`,
+        ruleId: RULE_JSONLD_DUPLICATE_GRAPH_ID,
+        message:
+          `Cannot merge duplicate @id "${participants.duplicateEntryId}": ` +
+          `property "${key}" differs between ${participants.survivorLabel} ` +
+          `(${summarizeValue(survivor[key])}) and ${participants.duplicateLabel} ` +
+          `(${summarizeValue(dup[key])}).`,
+        jsonLocationPath: dupConflictJsonPath(dupLoc, key),
       },
     };
   }
@@ -190,10 +256,11 @@ export function lintDuplicateIdsJsonLdGraph(
       out.push({
         severity: "error",
         code: CODE_DUPLICATE_JSON_LD_ID,
-        ruleId: RULE_DUPLICATE_JSONLD_ID,
+        ruleId: RULE_JSONLD_DUPLICATE_GRAPH_ID,
         message: `Duplicate @id "${id}" (${idxLabel}).`,
         file: ctx.filePath,
         entryKey: `@graph[${idx}]`,
+        jsonLocationPath: ["@graph", idx, "@id"],
       });
     }
   }
@@ -240,10 +307,11 @@ export function lintDuplicateIdsLexiconWrapper(
       out.push({
         severity: "error",
         code: CODE_DUPLICATE_JSON_LD_ID,
-        ruleId: RULE_DUPLICATE_JSONLD_ID,
+        ruleId: RULE_JSONLD_DUPLICATE_GRAPH_ID,
         message: `Duplicate graphEntry @id "${id}" (lexicon keys: ${label}).`,
         file: ctx.filePath,
         entryKey: lexKey,
+        jsonLocationPath: ["lexicon", lexKey, "graphEntry", "@id"],
       });
     }
   }
@@ -290,13 +358,23 @@ function fixDuplicatesJsonLdGraphDoc(
       continue;
     }
     const survivor = graph[survivorIdx] as Record<string, unknown>;
+    const dupEntryIdRaw = survivor["@id"];
+    const duplicateEntryId =
+      typeof dupEntryIdRaw === "string"
+        ? dupEntryIdRaw.trim()
+        : String(dupEntryIdRaw);
+
     for (let i = 1; i < sorted.length; i++) {
       const di = sorted[i];
       if (di === undefined) {
         continue;
       }
       const dup = graph[di] as Record<string, unknown>;
-      const merged = mergeLexicalObjects(survivor, dup);
+      const merged = mergeLexicalObjects(survivor, dup, {
+        duplicateEntryId,
+        survivorLabel: `@graph[${survivorIdx}]`,
+        duplicateLabel: `@graph[${di}]`,
+      }, { shape: "graph", dupIndex: di });
       if (!merged.ok) {
         diagnostics.push({
           ...merged.diagnostic,
@@ -361,6 +439,9 @@ function fixDuplicatesWrapperDoc(
     }
     const survivorEntry = lex[survivorKey] as Record<string, unknown>;
     const survivorGe = survivorEntry["graphEntry"] as Record<string, unknown>;
+    const idRaw = survivorGe["@id"];
+    const duplicateEntryId =
+      typeof idRaw === "string" ? idRaw.trim() : String(idRaw);
 
     for (let i = 1; i < keys.length; i++) {
       const dk = keys[i];
@@ -369,7 +450,11 @@ function fixDuplicatesWrapperDoc(
       }
       const dupEntry = lex[dk] as Record<string, unknown>;
       const dupGe = dupEntry["graphEntry"] as Record<string, unknown>;
-      const merged = mergeLexicalObjects(survivorGe, dupGe);
+      const merged = mergeLexicalObjects(survivorGe, dupGe, {
+        duplicateEntryId,
+        survivorLabel: `lexicon entry "${survivorKey}"`,
+        duplicateLabel: `lexicon entry "${dk}"`,
+      }, { shape: "wrapper", dupLexKey: dk });
       if (!merged.ok) {
         diagnostics.push({
           ...merged.diagnostic,
@@ -388,7 +473,7 @@ function fixDuplicatesWrapperDoc(
 
 function fixDuplicateJsonLdId(doc: unknown, ctx: FixContext): FixResult {
   if (
-    effectiveRuleSeverity(RULE_DUPLICATE_JSONLD_ID, ctx.ruleSettings) === "off"
+    effectiveRuleSeverity(RULE_JSONLD_DUPLICATE_GRAPH_ID, ctx.ruleSettings) === "off"
   ) {
     return { doc, ok: true };
   }
@@ -417,8 +502,8 @@ function fixDuplicateJsonLdId(doc: unknown, ctx: FixContext): FixResult {
   return { doc, ok: true };
 }
 
-export const duplicateJsonLdIdRule: LintRuleModule = {
-  ruleId: RULE_DUPLICATE_JSONLD_ID,
+export const jsonldDuplicateGraphIdRule: LintRuleModule = {
+  ruleId: RULE_JSONLD_DUPLICATE_GRAPH_ID,
   defaultSeverity: "error",
   codes: [CODE_DUPLICATE_JSON_LD_ID, CODE_FIX_SKIPPED_CONFLICT],
   lintJsonLdGraph: lintDuplicateIdsJsonLdGraph,

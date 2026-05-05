@@ -43,7 +43,7 @@ function printUsage(out: typeof process.stderr): void {
   out.write(`  --config <path>   Config file (default: search cwd upward for ${CONFIG_FILENAME})\n`);
   out.write(`  --base <iri>      Override default base IRI for relative @id values.\n`);
   out.write(`  --shacl           Run bundled minimal OntoLex SHACL shapes.\n`);
-  out.write(`  --fix             Apply autofixes (duplicate-jsonld-id merge) then verify.\n`);
+  out.write(`  --fix             Apply autofixes (jsonld/duplicate-graph-id merge) then verify.\n`);
   out.write(`  --fix-dry-run     Report autofix targets without writing files.\n`);
   out.write(`  -h, --help        Show help.\n`);
   out.write(`\n`);
