@@ -12,7 +12,7 @@
     "lex": "yarn workspace lex-lint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"yarn astro dev\" \"yarn types dev\" \"yarn cli dev\" \"yarn 5e-schema dev\"",
-    "build": "yarn cli build && yarn types build && yarn 5e-schema build && yarn astro build",
+    "build": "yarn cli build && yarn types build && yarn workspace @bastion-falls/astro-lexicon-integration build && yarn 5e-schema build && yarn astro build",
     "preview": "yarn astro preview",
     "deploy": "yarn wrangler pages deploy",
     "bfcli": "yarn cli bfcli",

@@ -1,0 +1,27 @@
+{
+  "name": "@bastion-falls/lexicon-components",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Astro UI for static lexicon pages (Early Hick and similar).",
+  "devDependencies": {
+    "astro": "6.0.8"
+  },
+  "peerDependencies": {
+    "@astrojs/starlight": ">=0.30.0",
+    "astro": "^4.0.0 || ^5.0.0 || ^6.0.0"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "0.38.2",
+    "@bastion-falls/types": "workspace:^"
+  },
+  "exports": {
+    "./LexiconEntryBlock.astro": "./src/LexiconEntryBlock.astro",
+    "./LexiconAlphaPage.astro": "./src/LexiconAlphaPage.astro",
+    "./LexiconByFieldPage.astro": "./src/LexiconByFieldPage.astro",
+    "./LexPagination.astro": "./src/LexPagination.astro"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

@@ -29,3 +29,6 @@ public/processed_images/
 *.bak
 
 astro/src/content/docs/world/timeline/timeline-generated.mdx
+astro/src/generated/lexicon/
+astro/src/content/docs/world/languages/hickic/seneran/early-hick/lexicon/alpha/
+astro/src/content/docs/world/languages/hickic/seneran/early-hick/lexicon/by-field/

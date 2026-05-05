@@ -1,8 +1,9 @@
 ---
-title: Early Hick Lexicon, Alphabetical
+title: Early Hick Lexicon
 description: >-
   Comprehensive vocabulary of Early Hick, with etymologies and semantic
-  relationships
+  relationships. Browse alphabetically or by semantic field, and link directly
+  to individual lemmas.
 tags:
   - early-hick
   - Proto-Hick
@@ -13,7 +14,7 @@ tags:
   - vocabulary
 ---
 
-import Lexicon from '@/components/Lexicon.astro';
+<h2 id="lexicon-top">Overview</h2>
 
 The Early Hick lexicon, as attested, consists of mostly noun forms.
 These nouns can represent a wide range of meanings, including actions,
@@ -46,6 +47,37 @@ For stress-related vowel changes, :
 1. Apostrophes (') are used to transcribe glottal stops in phonemic
    transcriptions
 
-## Lexicon, Sorted Alphabetically
+## Linking to entries
 
-<Lexicon directory="hickic/seneran/early-hick" />
+Each lemma is wrapped in a definition list with `id` equal to its lexicon id
+(for example `ehk:ai` for _ai_ “water”). You can deep-link from anywhere on
+the site to a headword **on the paginated page that contains it**:
+
+`/world/languages/hickic/seneran/early-hick/lexicon/alpha/3#ehk:ai`
+
+Use the alphabetical index below, then jump by page (or search in the page)
+until you find the word. The same `id` appears on both alphabetical and
+by-field pages, so either browse mode works for fragment links.
+
+An **up-chevron** (always visible) and a **link** icon (shown when you hover
+the entry or focus it with the keyboard) sit to the right of the headword; the
+link jumps to this lemma’s URL fragment on the current page (`#` plus the entry
+id). To return here, use [Overview](#lexicon-top) or your theme’s page top
+control when available.
+
+## Browse alphabetically
+
+The full lexicon is split into static pages (generated from JSON-LD shards):
+
+[**Alphabetical lexicon, page 1 →**](/world/languages/hickic/seneran/early-hick/lexicon/alpha/1)
+
+## Browse by semantic field
+
+The same lemmas are listed under semantic field headings (with a field index
+on page 1):
+
+[**By semantic field, page 1 →**](/world/languages/hickic/seneran/early-hick/lexicon/by-field/1)
+
+Field sections use stable anchors such as `#basic-terms` or `#sacred`. The
+[Early Hick](index.mdx) article links into these sections on the
+appropriate pagination pages.

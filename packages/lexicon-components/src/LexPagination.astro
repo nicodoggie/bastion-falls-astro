@@ -1,0 +1,22 @@
+---
+interface Props {
+  basePath: string;
+  page: number;
+  pageCount: number;
+}
+
+const { basePath, page, pageCount } = Astro.props;
+
+const prev = page > 1 ? `${basePath}/${page - 1}` : null;
+const next = page < pageCount ? `${basePath}/${page + 1}` : null;
+---
+
+<nav class="lex-pagination" aria-label="Lexicon pages">
+  <p>
+    {prev ? <a href={prev}>Previous</a> : <span class="lex-pagination-disabled">Previous</span>}
+    {" · "}
+    Page {page} of {pageCount}
+    {" · "}
+    {next ? <a href={next}>Next</a> : <span class="lex-pagination-disabled">Next</span>}
+  </p>
+</nav>

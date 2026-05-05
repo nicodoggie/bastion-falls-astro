@@ -17,6 +17,7 @@ import { remarkDefinitionList } from 'remark-definition-list';
 import remarkMarkmap from 'remark-markmap';
 import remarkParse from 'remark-parse';
 import starlightAutoSidebar from 'starlight-auto-sidebar';
+import { lexiconIntegration } from "@bastion-falls/astro-lexicon-integration";
 import { timelineGenerator } from "./src/integrations/timeline-generator.ts";
 import { vscodeFrontmatterSchemas } from './src/integrations/vscode-frontmatter-schemas.ts';
 import remarkRewriteLinks from "./src/plugins/remark-rewrite-links.mjs";
@@ -141,6 +142,18 @@ export default defineConfig({
 		sitemap(),
 		vscodeFrontmatterSchemas(),
 		timelineGenerator(),
+		lexiconIntegration({
+			localeId: "early-hick",
+			title: "Early Hick Lexicon",
+			lexiconGlob:
+				"src/assets/languages/hickic/seneran/early-hick/lexicon/*.jsonld",
+			outputDir: "src/generated/lexicon/early-hick",
+			pageSize: 80,
+			starlightMdx: {
+				contentLexiconDirRelative:
+					"src/content/docs/world/languages/hickic/seneran/early-hick/lexicon",
+			},
+		}),
 	],
 	vite: {
 		plugins: [tailwindcss(), flowbiteReact()],

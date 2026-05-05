@@ -1,0 +1,179 @@
+---
+import type { LexItem } from "@bastion-falls/types";
+import { formatLexicalCategories } from "@bastion-falls/types";
+
+interface Props {
+  item: LexItem;
+  /** In-page anchor for the head-line “up” control (default `#lex-page-top`). */
+  backToTopHref?: string;
+}
+
+const { item, backToTopHref = "#lex-page-top" }: Props = Astro.props;
+const pos = formatLexicalCategories(item.types);
+---
+
+<dl id={item.id} class="lexical-item">
+  <dt class="lexical-item-head">
+    <span class="lexical-item-headwords">
+      <span class="lexical-item-word written-form">{item.writtenForm}</span>
+      {" "}
+      <span class="phonetic-form">/{item.phoneticForm}/</span>
+    </span>
+    <span class="lexical-item-head-actions">
+      <a
+        class="lex-permalink"
+        href={`#${item.id}`}
+        aria-label={`Permalink to this entry (${item.writtenForm})`}
+      >
+        <svg
+          class="lex-permalink-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+        </svg>
+      </a>
+      <a
+        class="lex-to-top"
+        href={backToTopHref}
+        aria-label="Back to top of page"
+      >
+        <svg
+          class="lex-to-top-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M18 15l-6-6-6 6" />
+        </svg>
+      </a>
+    </span>
+  </dt>
+  {
+    item.senses?.map((sense) => (
+      <dd class="lexical-sense">
+        <span class="lexical-sense-def">{sense.definition}</span>
+        {pos ? (
+          <>
+            {" "}
+            <span class="lexical-category">({pos})</span>
+          </>
+        ) : null}
+        {sense.usage ? (
+          <span class="lexical-sense-usage"> — {sense.usage}</span>
+        ) : null}
+        {sense.semanticField?.length ? (
+          <span class="lexical-sense-fields">
+            {" "}
+            [{sense.semanticField.join(", ")}]
+          </span>
+        ) : null}
+      </dd>
+    ))
+  }
+  {item.protoform ? <dd class="etymology-protoform">{item.protoform}</dd> : null}
+  {item.note ? <dd class="etymology-note">{item.note}</dd> : null}
+  {
+    item.derivedForms?.length ? (
+      <dd>
+        Derived forms:{" "}
+        {item.derivedForms.map((derivedForm) => (
+          <dl class="lexical-item-derived-form">
+            <dt class="lexical-item-word derived-form-word">
+              {derivedForm.writtenForm} /{derivedForm.phoneticForm}/
+            </dt>
+            <dd class="lexical-item-grammatical-meaning">
+              {derivedForm.grammaticalMeaning}
+            </dd>
+            <dd class="lexical-item-decomposition">
+              {derivedForm.decomposition}
+            </dd>
+          </dl>
+        ))}
+      </dd>
+    ) : null
+  }
+</dl>
+
+<style>
+  .lexical-item-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.5rem;
+  }
+
+  .lexical-item-head-actions {
+    margin-inline-start: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    flex-shrink: 0;
+  }
+
+  .lex-permalink {
+    flex-shrink: 0;
+    color: var(--sl-color-gray-3, #64748b);
+    line-height: 0;
+    text-decoration: none;
+    border-radius: 0.2em;
+    padding: 0.15em;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.12s ease,
+      color 0.12s ease,
+      background 0.12s ease;
+  }
+
+  .lexical-item:hover .lex-permalink,
+  .lexical-item:focus-within .lex-permalink,
+  .lex-permalink:focus-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lex-permalink:hover,
+  .lex-permalink:focus-visible {
+    color: var(--sl-color-accent, currentColor);
+    background: var(--sl-color-gray-6, rgb(0 0 0 / 0.06));
+  }
+
+  .lex-permalink-icon {
+    display: block;
+    width: 1.05em;
+    height: 1.05em;
+  }
+
+  .lex-to-top {
+    flex-shrink: 0;
+    color: var(--sl-color-gray-3, #64748b);
+    line-height: 0;
+    text-decoration: none;
+    border-radius: 0.2em;
+    padding: 0.15em;
+  }
+
+  .lex-to-top:hover {
+    color: var(--sl-color-accent, currentColor);
+    background: var(--sl-color-gray-6, rgb(0 0 0 / 0.06));
+  }
+
+  .lex-to-top-icon {
+    display: block;
+    width: 1.15em;
+    height: 1.15em;
+  }
+</style>

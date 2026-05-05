@@ -792,6 +792,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@bastion-falls/astro-lexicon-integration@workspace:^, @bastion-falls/astro-lexicon-integration@workspace:packages/astro-lexicon-integration":
+  version: 0.0.0-use.local
+  resolution: "@bastion-falls/astro-lexicon-integration@workspace:packages/astro-lexicon-integration"
+  dependencies:
+    "@bastion-falls/types": "workspace:^"
+    "@types/jsonld": "npm:^1.5.15"
+    "@types/node": "npm:^22.15.29"
+    astro: "npm:6.0.8"
+    glob: "npm:^11.0.3"
+    jsonld: "npm:^9.0.0"
+    tsup: "npm:^8.5.0"
+    typescript: "npm:^5.9.3"
+    vitest: "npm:^3.2.4"
+  peerDependencies:
+    astro: ^4.0.0 || ^5.0.0 || ^6.0.0
+  languageName: unknown
+  linkType: soft
+
 "@bastion-falls/astro@workspace:astro":
   version: 0.0.0-use.local
   resolution: "@bastion-falls/astro@workspace:astro"
@@ -805,6 +823,8 @@ __metadata:
     "@astrojs/starlight": "npm:0.38.2"
     "@astrojs/ts-plugin": "npm:1.10.7"
     "@bastion-falls/5e-schema-zod": "workspace:^"
+    "@bastion-falls/astro-lexicon-integration": "workspace:^"
+    "@bastion-falls/lexicon-components": "workspace:^"
     "@bastion-falls/types": "workspace:^"
     "@biomejs/biome": "npm:^2.4.13"
     "@iconify-json/simple-icons": "npm:^1.2.54"
@@ -907,6 +927,19 @@ __metadata:
   bin:
     __cli_bash_complete: dist/bash-complete.js
     bfcli: node dist/cli.js
+  languageName: unknown
+  linkType: soft
+
+"@bastion-falls/lexicon-components@workspace:^, @bastion-falls/lexicon-components@workspace:packages/lexicon-components":
+  version: 0.0.0-use.local
+  resolution: "@bastion-falls/lexicon-components@workspace:packages/lexicon-components"
+  dependencies:
+    "@astrojs/starlight": "npm:0.38.2"
+    "@bastion-falls/types": "workspace:^"
+    astro: "npm:6.0.8"
+  peerDependencies:
+    "@astrojs/starlight": ">=0.30.0"
+    astro: ^4.0.0 || ^5.0.0 || ^6.0.0
   languageName: unknown
   linkType: soft
 

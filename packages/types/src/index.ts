@@ -10,6 +10,15 @@ import { type Organization, OrganizationSchema } from './Organization.js';
 import { type Concept, ConceptSchema } from './Concept.js';
 import { type Vehicle, VehicleSchema } from './Vehicle.js';
 import { type Religion, ReligionSchema } from './Religion.js';
+import type {
+  DerivedForm,
+  Lexicon,
+  LexiconByField,
+  LexiconFieldMeta,
+  LexItem,
+  Sense,
+} from "./lexicon.js";
+import { formatLexicalCategories, getLexicalCategory } from "./lexicon.js";
 
 export type { 
   Character,
@@ -22,6 +31,16 @@ export type {
   Species,
   Vehicle,
   Religion,
+  LexItem,
+  Sense,
+  DerivedForm,
+  Lexicon,
+  LexiconByField,
+  LexiconFieldMeta,
+};
+export {
+  getLexicalCategory,
+  formatLexicalCategories,
 };
 export { 
   CharacterSchema,

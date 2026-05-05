@@ -11,7 +11,7 @@ interface Props {
 const { directory } = Astro.props;
 
 const globbed = import.meta.glob(
-  `/src/content/docs/languages/**/lexicon-*-alphabetical.json`
+  "/src/content/docs/world/languages/**/lexicon-*-alphabetical.json",
 );
 const filteredData = Object.entries(globbed).filter(([path]) =>
   path.includes(directory)

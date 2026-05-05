@@ -1,0 +1,23 @@
+---
+import type { LexItem } from "@bastion-falls/types";
+import LexiconEntryBlock from "./LexiconEntryBlock.astro";
+import LexPagination from "./LexPagination.astro";
+
+interface Props {
+  items: LexItem[];
+  basePath: string;
+  page: number;
+  pageCount: number;
+}
+
+const { items, basePath, page, pageCount } = Astro.props;
+---
+
+<div id="lex-page-top" aria-hidden="true" class="lex-page-top-anchor"></div>
+<div class="lex-alpha-page">
+  <LexPagination basePath={basePath} page={page} pageCount={pageCount} />
+  <div class="lex-items">
+    {items.map((item) => <LexiconEntryBlock item={item} />)}
+  </div>
+  <LexPagination basePath={basePath} page={page} pageCount={pageCount} />
+</div>

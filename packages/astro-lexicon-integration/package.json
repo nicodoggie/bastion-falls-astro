@@ -1,0 +1,39 @@
+{
+  "name": "@bastion-falls/astro-lexicon-integration",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Compile lexicon JSON-LD shards into static chunks and Astro integration.",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@bastion-falls/types": "workspace:^",
+    "glob": "^11.0.3",
+    "jsonld": "^9.0.0"
+  },
+  "peerDependencies": {
+    "astro": "^4.0.0 || ^5.0.0 || ^6.0.0"
+  },
+  "devDependencies": {
+    "@types/jsonld": "^1.5.15",
+    "@types/node": "^22.15.29",
+    "astro": "6.0.8",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
