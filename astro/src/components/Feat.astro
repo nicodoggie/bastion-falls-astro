@@ -1,0 +1,40 @@
+---
+import InlineReferenceTooltip from "./InlineReferenceTooltip.astro";
+import {
+  assert5etoolsDataPresent,
+  loadFeat,
+  truncatePlain,
+} from "@/lib/5etools/index";
+import { stripHtmlToText } from "@/lib/strip-html";
+
+interface Props {
+  name: string;
+  src: string;
+}
+
+assert5etoolsDataPresent();
+
+const { name, src } = Astro.props as Props;
+
+const resolved = loadFeat(name, src);
+
+const rendered = Astro.slots.has("default")
+  ? await Astro.slots.render("default")
+  : "";
+
+const label = rendered.trim()
+  ? stripHtmlToText(rendered)
+  : (resolved?.record.name ?? name);
+const heading = resolved?.record.name ?? name;
+const summaryLines = resolved?.summaryLines ?? [];
+const body = resolved ? truncatePlain(resolved.body, 1200) : "";
+const missing = resolved == null;
+---
+
+<InlineReferenceTooltip
+  label={label}
+  heading={heading}
+  summaryLines={summaryLines}
+  body={body}
+  missing={missing}
+/>

@@ -1,0 +1,235 @@
+---
+import { getEntry } from "astro:content";
+import { entriesToDisplayParagraphs } from "../lib/5etools/entries-display";
+import {
+  formatSpellComponents,
+  formatSpellDuration,
+  formatSpellLevelSchoolLine,
+  formatSpellRange,
+  formatSpellTime,
+} from "../lib/5etools/spell-format";
+
+/**
+ * Renders 5etools-style spell data (SpellData) from JSON or the `spells`
+ * content collection.
+ *
+ *   <SpellBlock spell={frontmatter.spellStats.fireBolt} />
+ *
+ *   <SpellBlock spell="misc/examples/fire-bolt.spell" />
+ */
+interface Props {
+  spell: Record<string, unknown> | string;
+}
+
+const { spell: raw } = Astro.props;
+let s: Record<string, unknown>;
+
+if (typeof raw === "string") {
+  const entry = await getEntry("spells", raw);
+  if (!entry) throw new Error(`[SpellBlock] Spell entry not found: "${raw}"`);
+  s = entry.data as Record<string, unknown>;
+} else {
+  s = raw;
+}
+
+const name = (s.name as string) ?? "Unknown spell";
+const school = s.school;
+const meta = s.meta as { ritual?: boolean } | undefined;
+const subtitle = formatSpellLevelSchoolLine(
+  s.level as number | undefined,
+  school,
+  meta,
+);
+const subschools = Array.isArray(s.subschools)
+  ? (s.subschools as unknown[]).filter((x) => typeof x === "string").join(", ")
+  : "";
+
+const timeStr = formatSpellTime(s.time);
+const rangeStr = formatSpellRange(s.range);
+const comps = s.components as Record<string, unknown> | undefined;
+const compStr = formatSpellComponents(comps);
+const durationStr = formatSpellDuration(s.duration);
+
+const bodyParas = entriesToDisplayParagraphs(
+  Array.isArray(s.entries) ? (s.entries as unknown[]) : [],
+);
+const higherParas = entriesToDisplayParagraphs(
+  Array.isArray(s.entriesHigherLevel)
+    ? (s.entriesHigherLevel as unknown[])
+    : [],
+);
+---
+
+<div class="sb sb--spell not-content">
+  <div class="sb__header">
+    <h2 class="sb__name">{name}</h2>
+    <p class="sb__meta">
+      {subtitle}
+      {subschools && ` (${subschools})`}
+    </p>
+  </div>
+
+  <div class="sb__properties sb__properties--grid">
+    <div class="sb__prop">
+      <span class="sb__prop-name">Casting Time</span>
+      <span class="sb__prop-value">{timeStr}</span>
+    </div>
+    <div class="sb__prop">
+      <span class="sb__prop-name">Range</span>
+      <span class="sb__prop-value">{rangeStr}</span>
+    </div>
+    <div class="sb__prop">
+      <span class="sb__prop-name">Components</span>
+      <span class="sb__prop-value">{compStr}</span>
+    </div>
+    <div class="sb__prop">
+      <span class="sb__prop-name">Duration</span>
+      <span class="sb__prop-value">{durationStr}</span>
+    </div>
+  </div>
+
+  {bodyParas.length > 0 && (
+      <div class="sb__features">
+        {bodyParas.map((para) => (
+          <p class="sb__feature">{para}</p>
+        ))}
+      </div>
+    )}
+
+  {higherParas.length > 0 && (
+      <div class="sb__section">
+        <h3 class="sb__section-title">At Higher Levels</h3>
+        <div class="sb__features">
+          {higherParas.map((para) => (
+            <p class="sb__feature">{para}</p>
+          ))}
+        </div>
+      </div>
+    )}
+</div>
+
+<style>
+.sb.sb--spell {
+  --sb-bg: #fdf6e3;
+  --sb-bg-alt: #f3e8c8;
+  --sb-red: #7a200d;
+  --sb-divider: #9c2b1b;
+  --sb-gold: #c9a14a;
+  --sb-text: #212121;
+  --sb-radius: 6px;
+  --sb-font-body:
+    "Scala Sans Pro", "Myriad Pro", Calibri, "Trebuchet MS", sans-serif;
+  --sb-font-head:
+    "Mrs Eaves", Palatino, "Palatino Linotype", "Book Antiqua", serif;
+
+  background-color: var(--sb-bg);
+  border: 2px solid var(--sb-gold);
+  border-radius: var(--sb-radius);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  color: var(--sb-text);
+  font-family: var(--sb-font-body);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin-block: 1.75rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+:global([data-theme="dark"]) .sb.sb--spell {
+  --sb-bg: #0e0e1c;
+  --sb-bg-alt: #16162a;
+  --sb-red: #a882d8;
+  --sb-divider: #5a3f7a;
+  --sb-gold: #3a2e68;
+  --sb-text: #ccd0ea;
+  box-shadow: 0 2px 20px rgba(100, 50, 180, 0.45);
+}
+
+.sb--spell .sb__header {
+  background-color: var(--sb-bg-alt);
+  border-bottom: 3px solid var(--sb-divider);
+  padding: 0.75rem 1.25rem 0.5rem;
+}
+
+.sb--spell .sb__name {
+  all: unset;
+  color: var(--sb-red);
+  display: block;
+  font-family: var(--sb-font-head);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.sb--spell .sb__meta {
+  all: unset;
+  color: var(--sb-red);
+  display: block;
+  font-size: 0.875rem;
+  font-style: italic;
+  margin-top: 0.2rem;
+  opacity: 0.85;
+}
+
+.sb--spell .sb__properties--grid {
+  padding: 0.75rem 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 1rem;
+  border-bottom: 1px solid var(--sb-gold);
+}
+
+@media (max-width: 520px) {
+  .sb--spell .sb__properties--grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sb--spell .sb__prop {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.sb--spell .sb__prop-name {
+  color: var(--sb-red);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sb--spell .sb__prop-value {
+  font-size: 0.9rem;
+}
+
+.sb--spell .sb__features {
+  padding: 0.75rem 1.25rem 1rem;
+}
+
+.sb--spell .sb__feature {
+  margin: 0 0 0.65rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.sb--spell .sb__section {
+  border-top: 2px solid var(--sb-gold);
+}
+
+.sb--spell .sb__section-title {
+  all: unset;
+  color: var(--sb-red);
+  display: block;
+  font-family: var(--sb-font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sb--spell .sb__section .sb__features {
+  padding-top: 0.35rem;
+}
+</style>

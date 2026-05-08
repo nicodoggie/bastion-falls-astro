@@ -7,6 +7,10 @@ import { autoSidebarLoader } from "starlight-auto-sidebar/loader";
 import { autoSidebarSchema } from "starlight-auto-sidebar/schema";
 
 import { collectionExtensions, docsExtension } from "./collection-schemas.js";
+import {
+  ItemDataSchema,
+  SpellDataSchema,
+} from "@bastion-falls/5e-schema-zod";
 
 const baseBlogSchema = z.object({
   title: z.string(),
@@ -82,6 +86,22 @@ export const collections = {
       generateId: ({ entry }) => entry.replace(/\.json$/, ""),
     }),
     schema: z.record(z.string(), z.unknown()),
+  }),
+  spells: defineCollection({
+    loader: glob({
+      pattern: "**/*.spell.json",
+      base: "./src/content/docs/world",
+      generateId: ({ entry }) => entry.replace(/\.json$/, ""),
+    }),
+    schema: SpellDataSchema,
+  }),
+  itemData: defineCollection({
+    loader: glob({
+      pattern: "**/*.item.json",
+      base: "./src/content/docs/world",
+      generateId: ({ entry }) => entry.replace(/\.json$/, ""),
+    }),
+    schema: ItemDataSchema,
   }),
   ...extensions,
 };

@@ -1,0 +1,228 @@
+---
+import { getEntry } from "astro:content";
+import { entriesToDisplayParagraphs } from "../lib/5etools/entries-display";
+import {
+  formatAttunement,
+  formatItemRarity,
+  formatItemType,
+} from "../lib/5etools/item-format";
+
+/**
+ * Renders 5etools-style magic item data (ItemData) from JSON or the `itemData`
+ * content collection.
+ *
+ *   <ItemBlock item={frontmatter.itemDataStats.healingPotion} />
+ *
+ *   <ItemBlock item="misc/examples/potion-of-healing.item" />
+ */
+interface Props {
+  item: Record<string, unknown> | string;
+}
+
+const { item: raw } = Astro.props;
+let it: Record<string, unknown>;
+
+if (typeof raw === "string") {
+  const entry = await getEntry("itemData", raw);
+  if (!entry) throw new Error(`[ItemBlock] Item entry not found: "${raw}"`);
+  it = entry.data as Record<string, unknown>;
+} else {
+  it = raw;
+}
+
+const name = (it.name as string) ?? "Unknown item";
+const typeStr = formatItemType(it.type);
+const rarityStr = formatItemRarity(it.rarity);
+const attuneStr = formatAttunement(it.reqAttune);
+const weight = it.weight as number | undefined;
+const value = it.value as number | null | undefined;
+const dmg1 = it.dmg1 as string | undefined;
+const dmg2 = it.dmg2 as string | undefined;
+const range = it.range as string | undefined;
+const ac = it.ac as number | undefined;
+const bonusAc = it.bonusAc as string | undefined;
+
+function formatCoin(n: number): string {
+  const gp = n / 100;
+  if (gp >= 1) return `${gp % 1 === 0 ? gp : gp.toFixed(2)} gp`;
+  const sp = n / 10;
+  if (sp >= 1) return `${sp % 1 === 0 ? sp : sp.toFixed(1)} sp`;
+  return `${n} cp`;
+}
+
+const priceStr =
+  typeof value === "number" && Number.isFinite(value) ? formatCoin(value) : "";
+const weightStr =
+  weight != null && Number.isFinite(weight) ? `${weight} lb.` : "";
+
+const propBits: string[] = [];
+if (typeStr) propBits.push(typeStr);
+if (rarityStr) propBits.push(rarityStr);
+if (attuneStr) propBits.push(attuneStr);
+const metaLine = propBits.join(", ");
+
+const statBits: string[] = [];
+if (ac != null) statBits.push(`AC ${ac}`);
+if (bonusAc) statBits.push(`Bonus AC ${bonusAc}`);
+if (dmg1) {
+  let w = dmg1;
+  if (it.dmgType != null) w += ` ${String(it.dmgType)}`;
+  statBits.push(w);
+  if (dmg2) statBits.push(`Versatile ${dmg2}`);
+}
+if (range) statBits.push(`Range ${range}`);
+if (weightStr) statBits.push(weightStr);
+if (priceStr) statBits.push(priceStr);
+
+const paragraphs = entriesToDisplayParagraphs(
+  Array.isArray(it.entries) ? (it.entries as unknown[]) : [],
+);
+const moreParagraphs = entriesToDisplayParagraphs(
+  Array.isArray(it.additionalEntries)
+    ? (it.additionalEntries as unknown[])
+    : [],
+);
+---
+
+<div class="sb sb--item not-content">
+  <div class="sb__header">
+    <h2 class="sb__name">{name}</h2>
+    {metaLine && <p class="sb__meta">{metaLine}</p>}
+  </div>
+
+  {statBits.length > 0 && (
+      <div class="sb__facts">
+        {statBits.map((line) => (
+          <span class="sb__fact">{line}</span>
+        ))}
+      </div>
+    )}
+
+  {paragraphs.length > 0 && (
+      <div class="sb__features">
+        {paragraphs.map((p) => (
+          <p class="sb__feature">{p}</p>
+        ))}
+      </div>
+    )}
+
+  {moreParagraphs.length > 0 && (
+      <div class="sb__section">
+        <h3 class="sb__section-title">Additional</h3>
+        <div class="sb__features">
+          {moreParagraphs.map((p) => (
+            <p class="sb__feature">{p}</p>
+          ))}
+        </div>
+      </div>
+    )}
+</div>
+
+<style>
+.sb.sb--item {
+  --sb-bg: #fdf6e3;
+  --sb-bg-alt: #f3e8c8;
+  --sb-red: #7a200d;
+  --sb-divider: #9c2b1b;
+  --sb-gold: #c9a14a;
+  --sb-text: #212121;
+  --sb-radius: 6px;
+  --sb-font-body:
+    "Scala Sans Pro", "Myriad Pro", Calibri, "Trebuchet MS", sans-serif;
+  --sb-font-head:
+    "Mrs Eaves", Palatino, "Palatino Linotype", "Book Antiqua", serif;
+
+  background-color: var(--sb-bg);
+  border: 2px solid var(--sb-gold);
+  border-radius: var(--sb-radius);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  color: var(--sb-text);
+  font-family: var(--sb-font-body);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin-block: 1.75rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+:global([data-theme="dark"]) .sb.sb--item {
+  --sb-bg: #0e0e1c;
+  --sb-bg-alt: #16162a;
+  --sb-red: #a882d8;
+  --sb-divider: #5a3f7a;
+  --sb-gold: #3a2e68;
+  --sb-text: #ccd0ea;
+  box-shadow: 0 2px 20px rgba(100, 50, 180, 0.45);
+}
+
+.sb--item .sb__header {
+  background-color: var(--sb-bg-alt);
+  border-bottom: 3px solid var(--sb-divider);
+  padding: 0.75rem 1.25rem 0.5rem;
+}
+
+.sb--item .sb__name {
+  all: unset;
+  color: var(--sb-red);
+  display: block;
+  font-family: var(--sb-font-head);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.sb--item .sb__meta {
+  all: unset;
+  color: var(--sb-red);
+  display: block;
+  font-size: 0.875rem;
+  font-style: italic;
+  margin-top: 0.2rem;
+  opacity: 0.85;
+}
+
+.sb--item .sb__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.65rem;
+  padding: 0.6rem 1.25rem;
+  border-bottom: 1px solid var(--sb-gold);
+  font-size: 0.82rem;
+}
+
+.sb--item .sb__fact {
+  background: color-mix(in srgb, var(--sb-text) 8%, transparent);
+  border-radius: 4px;
+  padding: 0.15rem 0.45rem;
+}
+
+.sb--item .sb__features {
+  padding: 0.75rem 1.25rem 1rem;
+}
+
+.sb--item .sb__feature {
+  margin: 0 0 0.65rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.sb--item .sb__section {
+  border-top: 2px solid var(--sb-gold);
+}
+
+.sb--item .sb__section-title {
+  all: unset;
+  color: var(--sb-red);
+  display: block;
+  font-family: var(--sb-font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sb--item .sb__section .sb__features {
+  padding-top: 0.35rem;
+}
+</style>

@@ -1,13 +1,62 @@
 ---
-import GitHubSlugger from "github-slugger";
+import InlineReferenceTooltip from "./InlineReferenceTooltip.astro";
+import {
+  assert5etoolsDataPresent,
+  loadSpell,
+  loadSpellFromContentJson,
+  resolveSpellFromData,
+  truncatePlain,
+  type ResolvedSpell,
+} from "@/lib/5etools/index";
+import { stripHtmlToText } from "@/lib/strip-html";
 
 interface Props {
-  name: string;
+  /** Lookup in bundled 5etools data (requires submodule). */
+  name?: string;
+  /** Book key from spells index (e.g. phb, xphb). Omit to resolve across books (XPHB preferred). */
+  src?: string;
+  /**
+   * Spell JSON under `src/content/docs/`, e.g. `world/misc/examples/foo.spell.json`.
+   * When the file is `{ "spell": [...] }`, pass `name` to pick a row.
+   */
+  json?: string;
+  /**
+   * Inline spell object (e.g. `import x from './x.spell.json'`). Validated with
+   * `SpellDataSchema`. Takes precedence over `json` and `name`.
+   */
+  spell?: Record<string, unknown>;
 }
 
-const { name } = Astro.props;
-const slugger = new GitHubSlugger();
-const url = `https://www.dndbeyond.com/spells/${slugger.slug(name)}`;
+const props = Astro.props as Props;
+const { name, src, json, spell: spellProp } = props;
+
+let resolved: ResolvedSpell | null = null;
+if (spellProp != null && typeof spellProp === "object") {
+  resolved = resolveSpellFromData(spellProp, "Spell spell={...}");
+} else if (json?.trim()) {
+  resolved = loadSpellFromContentJson(json.trim(), name);
+} else if (name?.trim()) {
+  assert5etoolsDataPresent();
+  resolved = loadSpell(name, src);
+}
+
+const rendered = Astro.slots.has("default")
+  ? await Astro.slots.render("default")
+  : "";
+
+const label = rendered.trim()
+  ? stripHtmlToText(rendered)
+  : (resolved?.record.name ?? name ?? "Unknown spell");
+const heading = resolved?.record.name ?? name ?? "Unknown spell";
+const summaryLines = resolved?.summaryLines ?? [];
+const body = resolved ? truncatePlain(resolved.body, 1200) : "";
+const missing = resolved == null;
 ---
 
-<a href={url} target="_blank"> {name} </a>
+<InlineReferenceTooltip
+  label={label}
+  heading={heading}
+  summaryLines={summaryLines}
+  body={body}
+  missing={missing}
+/>

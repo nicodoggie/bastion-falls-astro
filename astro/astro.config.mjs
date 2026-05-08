@@ -121,12 +121,11 @@ export default defineConfig({
 			plugins: [starlightAutoSidebar()],
 		}),
 
-		mdx({
-			extendMarkdownConfig: true,
-		}),
 		AutoImport({
 			imports: [
 				"./src/components/Spell.astro",
+				"./src/components/Feat.astro",
+				"./src/components/ConditionDisease.astro",
 				"./src/components/Stub.astro",
 				"./src/components/FamilyTree.tsx",
 				"./src/components/HomebrewSpell.astro",
@@ -138,6 +137,9 @@ export default defineConfig({
 				"./src/components/VehicleStatBlock.astro",
 				"./src/components/Redirect.astro",
 			],
+		}),
+		mdx({
+			extendMarkdownConfig: true,
 		}),
 		sitemap(),
 		vscodeFrontmatterSchemas(),

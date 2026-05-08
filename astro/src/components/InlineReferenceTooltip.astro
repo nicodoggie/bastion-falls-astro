@@ -1,0 +1,59 @@
+---
+import { randomUUID } from "node:crypto";
+
+export interface Props {
+  label: string;
+  heading: string;
+  summaryLines: string[];
+  body: string;
+  missing?: boolean;
+}
+
+const { label, heading, summaryLines, body, missing } = Astro.props;
+
+const tipId = `bf5e-tip-${randomUUID().replace(/-/g, "").slice(0, 16)}`;
+---
+
+{
+  missing ? (
+    <span class="bf5e-ref bf5e-ref--missing" title={heading}>
+      {label}
+    </span>
+  ) : (
+    <span class="group/bf5e relative inline max-w-full align-baseline">
+      <button
+        type="button"
+        class="bf5e-ref inline cursor-help border-0 border-b border-dotted border-current bg-transparent p-0 font-inherit text-inherit underline decoration-dotted underline-offset-2"
+        aria-describedby={tipId}
+      >
+        {label}
+      </button>
+      <span
+        id={tipId}
+        role="tooltip"
+        class:list={[
+          "bf5e-tip pointer-events-none absolute left-0 top-full z-[100] mt-2 block w-[min(24rem,calc(100vw-2rem))] max-w-[min(24rem,calc(100vw-2rem))] rounded-md border border-violet-700/40 bg-[#fdf6e3] p-3 text-left text-sm text-stone-900 shadow-lg dark:border-violet-500/35 dark:bg-[#16162a] dark:text-[#ccd0ea]",
+          "invisible opacity-0 transition-opacity duration-100",
+          "group-hover/bf5e:visible group-hover/bf5e:opacity-100",
+          "group-focus-within/bf5e:visible group-focus-within/bf5e:opacity-100",
+        ]}
+      >
+        <span class="block font-semibold tracking-tight text-violet-900 dark:text-violet-200">
+          {heading}
+        </span>
+        {summaryLines.length > 0 ? (
+          <span class="mt-1 block text-xs leading-snug text-stone-700 dark:text-stone-300">
+            {summaryLines.map((line) => (
+              <span class="block">{line}</span>
+            ))}
+          </span>
+        ) : null}
+        {body ? (
+          <span class="mt-2 block max-h-60 overflow-y-auto whitespace-pre-wrap border-t border-violet-700/20 pt-2 text-xs leading-snug text-stone-800 dark:border-violet-500/25 dark:text-stone-200">
+            {body}
+          </span>
+        ) : null}
+      </span>
+    </span>
+  )
+}

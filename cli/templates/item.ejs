@@ -1,0 +1,34 @@
+---
+title: <%= title %>
+sidebar:
+  badge: Stub
+item:
+  name: <%= item.name %>
+  <%_ if (item.ddb) { _%>
+  ddb: <%= item.ddb %>
+  <%_ } _%>
+  <%_ if (item.details && Object.keys(item.details).length > 0) { _%>
+  details:
+  <%_ if (item.details.attunement !== undefined) { _%>
+    attunement: <%= item.details.attunement %>
+  <%_ } _%>
+  <%_ if (item.details.type) { _%>
+    type: <%= item.details.type %>
+  <%_ } _%>
+  <%_ if (item.details.rarity) { _%>
+    rarity: <%= item.details.rarity %>
+  <%_ } _%>
+  <%_ if (item.details.weight) { _%>
+    weight: <%= item.details.weight %>
+  <%_ } _%>
+  <%_ if (item.details.value) { _%>
+    value: <%= item.details.value %>
+  <%_ } _%>
+  <%_ } _%>
+tags:
+  <%_ tags.forEach(function(tag) { _%>
+  - <%= tag %>
+  <%_ }) _%>
+---
+
+<Stub />

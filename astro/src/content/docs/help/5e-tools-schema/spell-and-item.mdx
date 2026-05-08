@@ -1,0 +1,74 @@
+---
+title: Spell and Magic Item JSON (5etools)
+description: |
+  Use spellStats and itemDataStats in frontmatter with SpellBlock and ItemBlock
+  components, backed by SpellData and ItemData JSON files.
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+import SpellBlock from '../../../../components/SpellBlock.astro';
+
+Structured **spells** and **magic items** follow the same idea as
+`creatureStats`:
+
+- Data files live under `src/content/docs/world/**` with suffixes
+  **`.spell.json`** and **`.item.json`**.
+- Astro collections **`spells`** and **`itemData`** load them; each file’s
+  **collection id** is the path relative to `world` **without** `.json` (same
+  rule as creatures).
+- Docs frontmatter may reference them with **`spellStats`** and
+  **`itemDataStats`** (validated with `SpellDataSchema` and `ItemDataSchema`
+  from `@bastion-falls/5e-schema-zod`).
+
+## Spells (`*.spell.json`)
+
+The same files can drive **inline** `<Spell />` tooltips in prose via the
+`json` or `spell` props; see
+[5etools: Inline spell, feat, and condition references](./inline-references).
+
+YAML example:
+
+```yaml
+spellStats:
+  demoFireBolt: misc/examples/fire-bolt.spell
+```
+
+```mdx
+import SpellBlock from '../../../../components/SpellBlock.astro';
+
+<SpellBlock spell={frontmatter.spellStats.demoFireBolt} />
+```
+
+## Magic items (`*.item.json`)
+
+The collection is named **`itemData`** so it does not collide with the
+existing MDX **`item`** collection (`src/content/docs/world/items`).
+Frontmatter uses **`itemDataStats`**:
+
+```yaml
+itemDataStats:
+  demoPotion: misc/examples/potion-of-healing.item
+```
+
+```mdx
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+<ItemBlock item={frontmatter.itemDataStats.demoPotion} />
+```
+
+## Live samples (collection entries)
+
+<SpellBlock spell="misc/examples/fire-bolt.spell" />
+
+<ItemBlock item="misc/examples/potion-of-healing.item" />
+
+## Notes
+
+- **`entries`** and **`entriesHigherLevel`** use the same mixed 5etools shapes
+  as the bestiary; the UI flattens them to plain text (including stripping
+  `{@...}` tags to readable text where possible).
+- Item **`value`** in 5etools is typically in **copper pieces**; the block
+  displays a simple **gp / sp / cp** conversion.
+- Do **not** register `*.spell.json` or `*.item.json` as a separate Starlight
+  doc glob with `docsSchema` — only this project’s collections + frontmatter
+  extension, matching the `creatureStats` pattern.

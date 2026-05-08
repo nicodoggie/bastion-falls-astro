@@ -175,3 +175,16 @@ bonus) in a **`trait`** so it appears in the stat block.
   `astro/src/content/docs/world/organizations/eastonton-brigade-charmweaver.creature.json`
 - Paladin-style leader:  
   `astro/src/content/docs/world/organizations/eastonton-brigade-divine-inquisitor.creature.json`
+
+## Related: spells and magic items (same workflow)
+
+The repo also supports **5etools `SpellData`** and **`ItemData`** as JSON with
+**`SpellBlock.astro`** and **`ItemBlock.astro`**:
+
+| Kind | Suffix | Astro collection | Frontmatter | Component |
+|------|--------|------------------|-------------|-----------|
+| Spell | `.spell.json` | `spells` | `spellStats` | `<SpellBlock spell={...} />` |
+| Item | `.item.json` | `itemData` | `itemDataStats` | `<ItemBlock item={...} />` |
+
+Schemas: **`SpellDataSchema`**, **`ItemDataSchema`** (`@bastion-falls/5e-schema-zod`).
+Help page: `astro/src/content/docs/help/5e-tools-schema/spell-and-item.mdx`.

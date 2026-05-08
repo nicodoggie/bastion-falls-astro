@@ -10,6 +10,8 @@
 
 import {
   CreatureDataSchema,
+  ItemDataSchema,
+  SpellDataSchema,
   VehicleShipDataSchema,
 } from "@bastion-falls/5e-schema-zod";
 import {
@@ -28,6 +30,16 @@ import { z } from "astro/zod";
 const CreatureStatsSchema = z.record(
   z.string(),
   CreatureDataSchema.or(z.string()),
+);
+
+const SpellStatsSchema = z.record(
+  z.string(),
+  SpellDataSchema.or(z.string()),
+);
+
+const ItemDataStatsSchema = z.record(
+  z.string(),
+  ItemDataSchema.or(z.string()),
 );
 
 /**
@@ -173,4 +185,6 @@ export const docsExtension = z
   .extend({
     timeline: TimelineFieldSchema.optional(),
     creatureStats: CreatureStatsSchema.optional(),
+    spellStats: SpellStatsSchema.optional(),
+    itemDataStats: ItemDataStatsSchema.optional(),
   });
