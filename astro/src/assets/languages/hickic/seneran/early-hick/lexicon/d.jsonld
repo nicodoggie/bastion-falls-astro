@@ -22,10 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:dorgar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "dor.gər",
@@ -43,10 +40,7 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "dor-gar",
         "etymon:gloss": "back-bone",
-        "etymon:soundChange": [
-          "compound fusion",
-          "unstressed vowel reduction"
-        ]
+        "etymon:soundChange": ["compound fusion", "unstressed vowel reduction"]
       },
       "sense": [
         {
@@ -61,10 +55,7 @@
     },
     {
       "@id": "ehk:dortor",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "dor.tor",
@@ -100,19 +91,13 @@
             "@language": "en",
             "@value": "back slope"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Landforms"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Landforms"]
         }
       ]
     },
     {
       "@id": "ehk:du",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "du",
@@ -136,10 +121,7 @@
     },
     {
       "@id": "ehk:dudup",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "du.dup",
@@ -166,19 +148,13 @@
             "@language": "en",
             "@value": "swollen muscle"
           },
-          "lexinfo:semanticField": [
-            "Body Terms",
-            "Medical Terms"
-          ]
+          "lexinfo:semanticField": ["Body Terms", "Medical Terms"]
         }
       ]
     },
     {
       "@id": "ehk:dup",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "dup",
@@ -198,19 +174,13 @@
             "@language": "en",
             "@value": "pearl; lump, mass"
           },
-          "lexinfo:semanticField": [
-            "Natural Terms",
-            "Medical Terms"
-          ]
+          "lexinfo:semanticField": ["Natural Terms", "Medical Terms"]
         }
       ]
     },
     {
       "@id": "ehk:duwes",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "du.wes",
@@ -230,10 +200,7 @@
         "etymon:compound": "duha-wesu",
         "etymon:gloss": "meat-cover",
         "etymon:note": "Semantic extension from 'meat-container' to general 'food'",
-        "etymon:soundChange": [
-          "compound fusion",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["compound fusion", "final vowel loss"]
       },
       "sense": [
         {
@@ -242,20 +209,14 @@
             "@language": "en",
             "@value": "food, nourishment"
           },
-          "lexinfo:semanticField": [
-            "Food & Consumption Terms",
-            "Basic Terms"
-          ],
+          "lexinfo:semanticField": ["Food & Consumption Terms", "Basic Terms"],
           "usage": "Basic term for both food and eating"
         }
       ]
     },
     {
       "@id": "ehk:dak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "dak",
@@ -273,19 +234,13 @@
             "@language": "en",
             "@value": "snake"
           },
-          "lexinfo:semanticField": [
-            "Animal Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Animal Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:dakisa",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "da.ki.sa",
@@ -313,10 +268,7 @@
     },
     {
       "@id": "ehk:dor",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "dor",
@@ -344,10 +296,7 @@
     },
     {
       "@id": "ehk:dorren",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "dor.ren",
@@ -366,19 +315,13 @@
             "@language": "en",
             "@value": "pack deer"
           },
-          "lexinfo:semanticField": [
-            "Animal Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Animal Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:dupgral",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "dup.gral",
@@ -397,19 +340,13 @@
             "@language": "en",
             "@value": "hills, hilly terrain"
           },
-          "lexinfo:semanticField": [
-            "Landforms",
-            "Geographic Terms"
-          ]
+          "lexinfo:semanticField": ["Landforms", "Geographic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:duwesimris",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "du.we.sim.ris",
@@ -428,19 +365,13 @@
             "@language": "en",
             "@value": "feed"
           },
-          "lexinfo:semanticField": [
-            "Food Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Food Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:duwesok",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "du.we.sok",
@@ -459,19 +390,13 @@
             "@language": "en",
             "@value": "eater, consumer"
           },
-          "lexinfo:semanticField": [
-            "Food Terms",
-            "Person Terms"
-          ]
+          "lexinfo:semanticField": ["Food Terms", "Person Terms"]
         }
       ]
     },
     {
       "@id": "ehk:duwester",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "du.wes.ter",
@@ -490,19 +415,13 @@
             "@language": "en",
             "@value": "meal time"
           },
-          "lexinfo:semanticField": [
-            "Food Terms",
-            "Time Terms"
-          ]
+          "lexinfo:semanticField": ["Food Terms", "Time Terms"]
         }
       ]
     },
     {
       "@id": "ehk:duwesthral",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "du.wes.θral",
@@ -521,10 +440,7 @@
             "@language": "en",
             "@value": "ritual feast"
           },
-          "lexinfo:semanticField": [
-            "Food Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Food Terms", "Sacred Terms"]
         }
       ]
     }

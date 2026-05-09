@@ -22,10 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:eldalulbres",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "el.da.lul.bres",
@@ -64,10 +61,7 @@
     },
     {
       "@id": "ehk:eldegralen_asadimris",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:ProperNoun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:ProperNoun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔel.də.gra.len a.sa.dim.ris",
@@ -98,10 +92,7 @@
     },
     {
       "@id": "ehk:eldul",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "el.dul",
@@ -121,20 +112,14 @@
             "@language": "en",
             "@value": "north"
           },
-          "lexinfo:semanticField": [
-            "Directional Terms",
-            "Wind Terms"
-          ],
+          "lexinfo:semanticField": ["Directional Terms", "Wind Terms"],
           "usage": "Derived from term for north wind"
         }
       ]
     },
     {
       "@id": "ehk:eltek",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "el.tek",
@@ -142,16 +127,10 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:components": [
-          "*ʔelu (INST)",
-          "*taku (strike)"
-        ],
+        "etymon:components": ["*ʔelu (INST)", "*taku (strike)"],
         "etymon:note": "From phrase 'grale ʔelu taku' (soil together hit). Shows development from physical action to resultant state",
         "etymon:protoform": "Proto-Hick *ʔelu-taku",
-        "etymon:soundChange": [
-          "compound fusion",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["compound fusion", "final vowel loss"]
       },
       "sense": [
         {
@@ -160,10 +139,7 @@
             "@language": "en",
             "@value": "compacted, condensed (especially of soil)"
           },
-          "lexinfo:semanticField": [
-            "Basic Terms",
-            "Earth Terms"
-          ]
+          "lexinfo:semanticField": ["Basic Terms", "Earth Terms"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -171,19 +147,13 @@
             "@language": "en",
             "@value": "shaped from loose material"
           },
-          "lexinfo:semanticField": [
-            "Basic Terms",
-            "Earth Terms"
-          ]
+          "lexinfo:semanticField": ["Basic Terms", "Earth Terms"]
         }
       ]
     },
     {
       "@id": "ehk:-'er",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Suffix"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔer",
@@ -193,10 +163,7 @@
         "@type": "etymon:Etymology",
         "etymon:gloss": "motion",
         "etymon:protoform": "Proto-Hick *heru",
-        "etymon:soundChange": [
-          "initial h > ʔ",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["initial h > ʔ", "final vowel loss"]
       },
       "sense": [
         {
@@ -213,10 +180,7 @@
     },
     {
       "@id": "ehk:'eteleth",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔe.te.leθ",
@@ -234,20 +198,13 @@
             "@language": "en",
             "@value": "when (sensed time)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Medial",
-            "Temporal"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Medial", "Temporal"]
         }
       ]
     },
     {
       "@id": "ehk:'etelum",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔe.te.lum",
@@ -265,20 +222,13 @@
             "@language": "en",
             "@value": "when (unknown time)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Distal",
-            "Temporal"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Distal", "Temporal"]
         }
       ]
     },
     {
       "@id": "ehk:etil",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "e.til",
@@ -302,10 +252,7 @@
     },
     {
       "@id": "ehk:'etil",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔe.til",
@@ -313,10 +260,7 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:components": [
-          "hi (animacy marker)",
-          "etilu (thing)"
-        ],
+        "etymon:components": ["hi (animacy marker)", "etilu (thing)"],
         "etymon:protoform": "Proto-Hick *hi-etilu",
         "etymon:soundChange": "animacy prefix"
       },
@@ -327,19 +271,13 @@
             "@language": "en",
             "@value": "living thing"
           },
-          "lexinfo:semanticField": [
-            "Spirit Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Spirit Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:etilsim",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adverb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adverb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "e.til.sim",
@@ -368,20 +306,14 @@
             "@value": "everything changes/transforms (with implications of resignation/indifference)"
           },
           "lexinfo:register": "philosophical-colloquial",
-          "lexinfo:semanticField": [
-            "Abstract Concepts",
-            "Philosophical Terms"
-          ],
+          "lexinfo:semanticField": ["Abstract Concepts", "Philosophical Terms"],
           "usage": "Often used as resigned response to change or loss"
         }
       ]
     },
     {
       "@id": "ehk:edel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "e.del",
@@ -399,20 +331,14 @@
             "@language": "en",
             "@value": "Wood Elf"
           },
-          "lexinfo:semanticField": [
-            "Person Terms",
-            "Borrowed Terms"
-          ],
+          "lexinfo:semanticField": ["Person Terms", "Borrowed Terms"],
           "usage": "Used to refer to Wood Elves, showing early contact with Elvish peoples"
         }
       ]
     },
     {
       "@id": "ehk:eter",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "e.ter",
@@ -431,20 +357,14 @@
             "@language": "en",
             "@value": "flow of things; correct ordering, sorting"
           },
-          "lexinfo:semanticField": [
-            "Abstract Terms",
-            "Motion Terms"
-          ],
+          "lexinfo:semanticField": ["Abstract Terms", "Motion Terms"],
           "usage": "Forms verb eter'er \"to sort, arrange\""
         }
       ]
     },
     {
       "@id": "ehk:ewes",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adposition"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adposition"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "e.wes",
@@ -462,20 +382,14 @@
             "@language": "en",
             "@value": "together with; together"
           },
-          "lexinfo:semanticField": [
-            "Basic Terms",
-            "Grammatical Terms"
-          ],
+          "lexinfo:semanticField": ["Basic Terms", "Grammatical Terms"],
           "usage": "Functions both as pre-absolutive adverbial marker and independent lexical item"
         }
       ]
     },
     {
       "@id": "ehk:'eldal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔel.dal",
@@ -494,19 +408,13 @@
             "@language": "en",
             "@value": "elf (individual)"
           },
-          "lexinfo:semanticField": [
-            "Person Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Person Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:'eldalok",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔel.da.lok",
@@ -533,19 +441,13 @@
             "@language": "en",
             "@value": "elven people"
           },
-          "lexinfo:semanticField": [
-            "Person Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Person Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:'eldegral",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔel.də.gral",
@@ -572,10 +474,7 @@
             "@language": "en",
             "@value": "Feywild"
           },
-          "lexinfo:semanticField": [
-            "Sacred Terms",
-            "Landforms"
-          ]
+          "lexinfo:semanticField": ["Sacred Terms", "Landforms"]
         }
       ]
     }

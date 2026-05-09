@@ -7,5 +7,6 @@ const { href } = Astro.props as Props;
 ---
 
 <sub>
-  See also: <a href={href}><slot /></a>
+  See also:{" "}
+  <a href={href} aria-label={`See also (${href})`}> <slot /> </a>
 </sub>

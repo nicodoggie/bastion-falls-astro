@@ -1,11 +1,12 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import BlogCards from "./BlogCards.astro";
 import BlogSidebar from "./BlogSidebar.astro";
 import "@/styles/global.css";
 import { Image } from "astro:assets";
 
 export interface Props {
-  posts: any[];
+  posts: CollectionEntry<"posts">[];
   title: string;
   description?: string;
   breadcrumb?: { label: string; href: string }[];
@@ -13,7 +14,7 @@ export interface Props {
   allTags: string[];
   currentTag?: string;
   backLink?: { href: string; text: string };
-  postsForTagCounts?: any[];
+  postsForTagCounts?: CollectionEntry<"posts">[];
 }
 
 const {
@@ -39,7 +40,14 @@ const sortedPosts = posts.slice().sort((a, b) => {
 
   // Both published: sort by published desc (newest first)
   if (!aIsDraft && !bIsDraft) {
-    return b.data.published.valueOf() - a.data.published.valueOf();
+    if (
+      "published" in a.data &&
+      "published" in b.data &&
+      a.data.published instanceof Date &&
+      b.data.published instanceof Date
+    ) {
+      return b.data.published.valueOf() - a.data.published.valueOf();
+    }
   }
 
   // Both drafts: keep relative order
@@ -122,10 +130,10 @@ const tagsWithCounts = tagCounts.sort(
           {breadcrumb && (
           <nav class="not-content mb-3 text-sm text-gray-400">
             {breadcrumb.map((item, i) => (
-              <>
+              <span class="inline-flex items-center">
                 <a href={item.href} class="hover:text-gray-200">{item.label}</a>
                 {i < breadcrumb.length - 1 && <span class="mx-2">→</span>}
-              </>
+              </span>
             ))}
           </nav>
         )}
@@ -140,6 +148,7 @@ const tagsWithCounts = tagCounts.sort(
             </div>
             {showDraftToggle && (
             <button
+              type="button"
               id="toggle-drafts"
               class="px-4 py-2 text-sm font-medium rounded-lg border transition-colors bg-gray-800 text-gray-300 border-gray-700 hover:bg-gray-700 min-w-[140px]"
             >
@@ -159,6 +168,7 @@ const tagsWithCounts = tagCounts.sort(
           <div class="px-4 py-3 flex flex-wrap gap-2">
             {tagsWithCounts.map(({ tag, count }) => (
             <a 
+             
               href={`/blog/tags/${enc(tag)}`} 
               class={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${tag === currentTag ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 hover:bg-blue-200 dark:hover:bg-blue-800'} transition-colors duration-200`}
             >
@@ -180,10 +190,10 @@ const tagsWithCounts = tagCounts.sort(
 
           <section id="posts-container" class="space-y-8">
             {showDraftToggle ? (
-            <>
+            <div class="space-y-8">
               <BlogCards posts={draftPosts} hideDraftsInitially={true} />
               <BlogCards posts={publishedPosts} />
-            </>
+            </div>
           ) : (
             <BlogCards posts={posts} />
           )}
@@ -212,43 +222,7 @@ const tagsWithCounts = tagCounts.sort(
     </footer>
 
     {showDraftToggle && (
-      <script>
-        // Handle draft toggle
-        const toggleButton = document.getElementById('toggle-drafts');
-        const draftPosts = document.querySelectorAll(
-          '.draft-post',
-        ) as NodeListOf<HTMLElement>;
-        let showingDrafts = false;
-
-        console.log('Draft posts found:', draftPosts.length);
-
-        if (toggleButton) {
-          toggleButton.addEventListener('click', () => {
-            showingDrafts = !showingDrafts;
-
-            console.log('Toggling drafts. Showing:', showingDrafts);
-
-            draftPosts.forEach((post: HTMLElement) => {
-              if (showingDrafts) {
-                post.style.display = 'block';
-              } else {
-                post.style.display = 'none';
-              }
-            });
-
-            // Update button appearance
-            if (showingDrafts) {
-              toggleButton.textContent = '✓ Showing Drafts';
-              toggleButton.className =
-                'px-4 py-2 text-sm font-medium rounded-lg border transition-colors bg-yellow-900/50 text-yellow-300 border-yellow-700 hover:bg-yellow-900/70 min-w-[140px]';
-            } else {
-              toggleButton.textContent = 'Show Drafts';
-              toggleButton.className =
-                'px-4 py-2 text-sm font-medium rounded-lg border transition-colors bg-gray-800 text-gray-300 border-gray-700 hover:bg-gray-700 min-w-[140px]';
-            }
-          });
-        }
-      </script>
+      <script is:inline src="/toggle-drafts.js" defer />
     )}
   </body>
 </html>

@@ -22,11 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:ai",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:CommonNoun",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:CommonNoun", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ai",
@@ -44,10 +40,7 @@
             "@language": "en",
             "@value": "water"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Elements"
-          ],
+          "lexinfo:semanticField": ["Natural World", "Elements"],
           "usage": "See Maritime Terms, Water Features"
         },
         {
@@ -81,10 +74,7 @@
     },
     {
       "@id": "ehk:aiesp",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ai.esp",
@@ -144,10 +134,7 @@
     },
     {
       "@id": "ehk:aimirik",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ai.mi.rik",
@@ -175,19 +162,13 @@
             "@language": "en",
             "@value": "slush, partially melted snow/ice"
           },
-          "lexinfo:semanticField": [
-            "Weather Terms",
-            "States of Matter"
-          ]
+          "lexinfo:semanticField": ["Weather Terms", "States of Matter"]
         }
       ]
     },
     {
       "@id": "ehk:airur",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ai.rur",
@@ -239,10 +220,7 @@
     },
     {
       "@id": "ehk:aitar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ai.tar",
@@ -261,19 +239,13 @@
             "@language": "en",
             "@value": "rain"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Precipitation"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Precipitation"]
         }
       ]
     },
     {
       "@id": "ehk:aitarulbres",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ai.ta.rul.bres",
@@ -311,10 +283,7 @@
     },
     {
       "@id": "ehk:'aka",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.ka",
@@ -339,10 +308,7 @@
     },
     {
       "@id": "ehk:'aker",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.ker",
@@ -360,20 +326,13 @@
             "@language": "en",
             "@value": "how (visible/known manner)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Proximal",
-            "Manner"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Proximal", "Manner"]
         }
       ]
     },
     {
       "@id": "ehk:'akereth",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.ke.reθ",
@@ -391,20 +350,13 @@
             "@language": "en",
             "@value": "how (sensed manner)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Medial",
-            "Manner"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Medial", "Manner"]
         }
       ]
     },
     {
       "@id": "ehk:'akerum",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.ke.rum",
@@ -422,20 +374,13 @@
             "@language": "en",
             "@value": "how (unknown manner)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Distal",
-            "Manner"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Distal", "Manner"]
         }
       ]
     },
     {
       "@id": "ehk:al",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "al",
@@ -445,10 +390,7 @@
         "@type": "etymon:Etymology",
         "etymon:intermediateForm": "halu",
         "etymon:protoform": "Proto-Hick *xalu",
-        "etymon:soundChange": [
-          "initial fricative loss",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["initial fricative loss", "final vowel loss"]
       },
       "sense": [
         {
@@ -457,10 +399,7 @@
             "@language": "en",
             "@value": "natural rock"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Elements"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Elements"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -468,10 +407,7 @@
             "@language": "en",
             "@value": "natural rock"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Elements"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Elements"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -479,10 +415,7 @@
             "@language": "en",
             "@value": "natural rock"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Elements"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Elements"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -490,19 +423,13 @@
             "@language": "en",
             "@value": "natural rock"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Elements"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Elements"]
         }
       ]
     },
     {
       "@id": "ehk:'alis",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.lis",
@@ -520,20 +447,13 @@
             "@language": "en",
             "@value": "who (visible/known person)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Proximal",
-            "Personal"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Proximal", "Personal"]
         }
       ]
     },
     {
       "@id": "ehk:'alum",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.lum",
@@ -551,20 +471,13 @@
             "@language": "en",
             "@value": "who (unknown person)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Distal",
-            "Personal"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Distal", "Personal"]
         }
       ]
     },
     {
       "@id": "ehk:aniko",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.ni.ko",
@@ -572,10 +485,7 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:components": [
-          "*xani (four)",
-          "*kostu (leg)"
-        ],
+        "etymon:components": ["*xani (four)", "*kostu (leg)"],
         "etymon:note": "Shows semantic extension from descriptive 'four-legged' to general term for animal",
         "etymon:protoform": "Proto-Hick *xani-kostu",
         "etymon:soundChange": [
@@ -591,19 +501,13 @@
             "@language": "en",
             "@value": "animal (general term)"
           },
-          "lexinfo:semanticField": [
-            "Animals",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Animals", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:ar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ar",
@@ -622,10 +526,7 @@
         "@type": "etymon:Etymology",
         "etymon:intermediateForm": "haru",
         "etymon:protoform": "Proto-Hick *xaru",
-        "etymon:soundChange": [
-          "initial fricative loss",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["initial fricative loss", "final vowel loss"]
       },
       "sense": [
         {
@@ -634,20 +535,13 @@
             "@language": "en",
             "@value": "cut, cutting action"
           },
-          "lexinfo:semanticField": [
-            "Action Terms",
-            "Tool Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Action Terms", "Tool Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:arsil",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ar.sil",
@@ -676,10 +570,7 @@
     },
     {
       "@id": "ehk:arum",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.rum",
@@ -690,10 +581,7 @@
         "etymon:compound": "xaru-uma",
         "etymon:gloss": "cut-ALL",
         "etymon:note": "Shows semantic extension from physical cutting to artistic marking",
-        "etymon:soundChange": [
-          "initial fricative loss",
-          "compound fusion"
-        ]
+        "etymon:soundChange": ["initial fricative loss", "compound fusion"]
       },
       "sense": [
         {
@@ -702,19 +590,13 @@
             "@language": "en",
             "@value": "sketch; draw"
           },
-          "lexinfo:semanticField": [
-            "Tool/Craft Terms",
-            "Artistic Terms"
-          ]
+          "lexinfo:semanticField": ["Tool/Craft Terms", "Artistic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:asad",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.sad",
@@ -738,20 +620,14 @@
             "@language": "en",
             "@value": "bridge"
           },
-          "lexinfo:semanticField": [
-            "Infrastructure",
-            "Construction Terms"
-          ],
+          "lexinfo:semanticField": ["Infrastructure", "Construction Terms"],
           "usage": "Shows typical development of infrastructure terms from natural materials"
         }
       ]
     },
     {
       "@id": "ehk:asam",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.səm",
@@ -780,10 +656,7 @@
     },
     {
       "@id": "ehk:asamgral",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.sam.gral",
@@ -810,19 +683,13 @@
             "@language": "en",
             "@value": "flatlands, plains"
           },
-          "lexinfo:semanticField": [
-            "Landscape Terms",
-            "Geographic Terms"
-          ]
+          "lexinfo:semanticField": ["Landscape Terms", "Geographic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:asamwen",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.sam.wen",
@@ -862,21 +729,14 @@
             "@language": "en",
             "@value": "daffodil"
           },
-          "lexinfo:semanticField": [
-            "Flora",
-            "Flower Names",
-            "Spring Terms"
-          ],
+          "lexinfo:semanticField": ["Flora", "Flower Names", "Spring Terms"],
           "usage": "Common spring flower, Narcissus species"
         }
       ]
     },
     {
       "@id": "ehk:'atal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.tal",
@@ -894,20 +754,13 @@
             "@language": "en",
             "@value": "where (what-place-PROX.INAN)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Proximal",
-            "Spatial"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Proximal", "Spatial"]
         }
       ]
     },
     {
       "@id": "ehk:'ater",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.ter",
@@ -925,20 +778,13 @@
             "@language": "en",
             "@value": "when (visible/known time)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Proximal",
-            "Temporal"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Proximal", "Temporal"]
         }
       ]
     },
     {
       "@id": "ehk:aterbran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:SubordinatingConjunction"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:SubordinatingConjunction"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.ter.bran",
@@ -958,20 +804,14 @@
             "@language": "en",
             "@value": "before"
           },
-          "lexinfo:semanticField": [
-            "Time Terms",
-            "Interrogatives"
-          ],
+          "lexinfo:semanticField": ["Time Terms", "Interrogatives"],
           "usage": "Temporal metaphor using interrogative 'when' + 'dawn'"
         }
       ]
     },
     {
       "@id": "ehk:'atereth",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.te.reθ",
@@ -989,20 +829,13 @@
             "@language": "en",
             "@value": "when (sensed time)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Medial",
-            "Temporal"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Medial", "Temporal"]
         }
       ]
     },
     {
       "@id": "ehk:'aterum",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.te.rum",
@@ -1020,20 +853,13 @@
             "@language": "en",
             "@value": "when (unknown time)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Distal",
-            "Temporal"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Distal", "Temporal"]
         }
       ]
     },
     {
       "@id": "ehk:'ateth",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.teθ",
@@ -1051,20 +877,13 @@
             "@language": "en",
             "@value": "where (sensed location)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Medial",
-            "Spatial"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Medial", "Spatial"]
         }
       ]
     },
     {
       "@id": "ehk:'atum",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.tum",
@@ -1082,20 +901,13 @@
             "@language": "en",
             "@value": "where (unknown location)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Distal",
-            "Spatial"
-          ]
+          "lexinfo:semanticField": ["Interrogatives", "Distal", "Spatial"]
         }
       ]
     },
     {
       "@id": "ehk:'al",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔal",
@@ -1113,19 +925,13 @@
             "@language": "en",
             "@value": "person"
           },
-          "lexinfo:semanticField": [
-            "Person Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Person Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:'aleth",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Pronoun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Pronoun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔa.leθ",
@@ -1144,20 +950,14 @@
             "@language": "en",
             "@value": "who (sensed but not seen)"
           },
-          "lexinfo:semanticField": [
-            "Interrogatives",
-            "Medial Forms"
-          ],
+          "lexinfo:semanticField": ["Interrogatives", "Medial Forms"],
           "usage": "Used for referents that are heard or sensed but not visually perceived"
         }
       ]
     },
     {
       "@id": "ehk:aigasam",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ai.ga.sam",
@@ -1176,19 +976,13 @@
             "@language": "en",
             "@value": "wet grinding"
           },
-          "lexinfo:semanticField": [
-            "Tool Terms",
-            "Technical Terms"
-          ]
+          "lexinfo:semanticField": ["Tool Terms", "Technical Terms"]
         }
       ]
     },
     {
       "@id": "ehk:anin",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Numeral"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.nin",
@@ -1212,10 +1006,7 @@
     },
     {
       "@id": "ehk:arak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.rak",
@@ -1234,20 +1025,14 @@
             "@language": "en",
             "@value": "color"
           },
-          "lexinfo:semanticField": [
-            "Color Terms",
-            "Visual Terms"
-          ],
+          "lexinfo:semanticField": ["Color Terms", "Visual Terms"],
           "usage": "Forms compounds for specific colors"
         }
       ]
     },
     {
       "@id": "ehk:arasaditar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.ra.sa.di.tar",
@@ -1266,19 +1051,13 @@
             "@language": "en",
             "@value": "table"
           },
-          "lexinfo:semanticField": [
-            "Household Terms",
-            "Construction Terms"
-          ]
+          "lexinfo:semanticField": ["Household Terms", "Construction Terms"]
         }
       ]
     },
     {
       "@id": "ehk:arasud",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.ra.sud",
@@ -1286,11 +1065,7 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:components": [
-          "*xaru (cut)",
-          "*asa (PERL)",
-          "*wudu (wood)"
-        ],
+        "etymon:components": ["*xaru (cut)", "*asa (PERL)", "*wudu (wood)"],
         "etymon:note": "Literally \"cut-through wood\"",
         "etymon:protoform": "Proto-Hick *xarasa-wudu"
       },
@@ -1301,19 +1076,13 @@
             "@language": "en",
             "@value": "plank, cut timber"
           },
-          "lexinfo:semanticField": [
-            "Construction Terms",
-            "Wood Terms"
-          ]
+          "lexinfo:semanticField": ["Construction Terms", "Wood Terms"]
         }
       ]
     },
     {
       "@id": "ehk:asa",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.sa",
@@ -1331,18 +1100,13 @@
             "@language": "en",
             "@value": "vine"
           },
-          "lexinfo:semanticField": [
-            "Plant Terms"
-          ]
+          "lexinfo:semanticField": ["Plant Terms"]
         }
       ]
     },
     {
       "@id": "ehk:asamasam",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.sa.ma.sam",
@@ -1361,19 +1125,13 @@
             "@language": "en",
             "@value": "to lie down"
           },
-          "lexinfo:semanticField": [
-            "Position Terms",
-            "Stance Actions"
-          ]
+          "lexinfo:semanticField": ["Position Terms", "Stance Actions"]
         }
       ]
     },
     {
       "@id": "ehk:asamgasam",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.sam.ga.sam",
@@ -1392,19 +1150,13 @@
             "@language": "en",
             "@value": "flattening (initial grinding)"
           },
-          "lexinfo:semanticField": [
-            "Tool Terms",
-            "Technical Terms"
-          ]
+          "lexinfo:semanticField": ["Tool Terms", "Technical Terms"]
         }
       ]
     },
     {
       "@id": "ehk:asamitar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.sa.mi.tar",
@@ -1433,10 +1185,7 @@
     },
     {
       "@id": "ehk:asatogar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "a.sa.to.gar",
@@ -1455,10 +1204,7 @@
             "@language": "en",
             "@value": "travertine"
           },
-          "lexinfo:semanticField": [
-            "Material Terms",
-            "Natural World"
-          ],
+          "lexinfo:semanticField": ["Material Terms", "Natural World"],
           "literalMeaning": "vine limestone"
         }
       ]

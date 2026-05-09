@@ -1,11 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageAttribution, ImagePrompt } from "@bastion-falls/types/Image";
+import type { ImageMetadata } from "astro";
 
 const props: ImageAttribution | ImagePrompt = Astro.props;
 
 let url: string | undefined;
-let imageObject: any;
+let imageObject: ImageMetadata | undefined;
 if (props.url) {
   const images = import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/**/*.{jpg,jpeg,png,webp}",
@@ -14,7 +15,10 @@ if (props.url) {
   url = props.url;
   const imageItem = images[url];
   console.log(url, imageItem);
-  imageObject = imageItem();
+  if (imageItem) {
+    const mod = await imageItem();
+    imageObject = mod.default;
+  }
 }
 
 let title: string | undefined;

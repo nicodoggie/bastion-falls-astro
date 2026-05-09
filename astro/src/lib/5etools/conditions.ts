@@ -60,7 +60,9 @@ export function loadConditionDisease(
   ];
 
   const targetName = normalizeLookup(name);
-  const matches = rows.filter((x) => normalizeLookup(x.r.name ?? "") === targetName);
+  const matches = rows.filter(
+    (x) => normalizeLookup(x.r.name ?? "") === targetName,
+  );
 
   if (matches.length === 0) {
     warnOnce(
@@ -74,7 +76,9 @@ export function loadConditionDisease(
 
   if (src?.trim()) {
     const targetSrc = src.trim().toUpperCase();
-    const exact = matches.filter((x) => (x.r.source ?? "").toUpperCase() === targetSrc);
+    const exact = matches.filter(
+      (x) => (x.r.source ?? "").toUpperCase() === targetSrc,
+    );
     if (exact.length === 0) {
       warnOnce(
         `cond-bad-src:${targetName}:${targetSrc}`,
@@ -98,7 +102,9 @@ export function loadConditionDisease(
     const head = sorted[0];
     if (!head) return null;
     chosen = head;
-    const sources = [...new Set(matches.map((m) => m.r.source).filter(Boolean))];
+    const sources = [
+      ...new Set(matches.map((m) => m.r.source).filter(Boolean)),
+    ];
     if (sources.length > 1) {
       warnOnce(
         `cond-ambiguous:${targetName}`,

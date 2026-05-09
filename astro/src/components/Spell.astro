@@ -1,14 +1,14 @@
 ---
-import InlineReferenceTooltip from "./InlineReferenceTooltip.astro";
 import {
   assert5etoolsDataPresent,
   loadSpell,
   loadSpellFromContentJson,
+  type ResolvedSpell,
   resolveSpellFromData,
   truncatePlain,
-  type ResolvedSpell,
 } from "@/lib/5etools/index";
 import { stripHtmlToText } from "@/lib/strip-html";
+import InlineReferenceTooltip from "./InlineReferenceTooltip.astro";
 
 interface Props {
   /** Lookup in bundled 5etools data (requires submodule). */

@@ -47,7 +47,7 @@
       "@id": "Dissimilation",
       "@type": "owl:Class",
       "rdfs:subClassOf": "SoundChange",
-      "rdfs:label": "Dissimilation", 
+      "rdfs:label": "Dissimilation",
       "rdfs:comment": "A sound becoming less similar to a neighboring sound"
     },
     {

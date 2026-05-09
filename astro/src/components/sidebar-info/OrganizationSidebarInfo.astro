@@ -37,12 +37,14 @@ if (organization?.members) {
   class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
 >
   {organization.name && (
-      <div class="flex justify-center items-center border-gray-600">
-        <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
-          {organization.name}
-        </h2>
+      <div class="mb-2">
+        <div class="flex justify-center items-center border-gray-600">
+          <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
+            {organization.name}
+          </h2>
+        </div>
+        <hr class="border-gray-600" />
       </div>
-      <hr class="border-gray-600">
     )}
 
   <div class="space-y-4">
@@ -100,7 +102,8 @@ if (organization?.members) {
               {members.map((member: MemberData) => (
                 <li>
                   <a href={`/characters/${member.entry?.id}`}>
-                    {(member.entry as any)?.data?.title || member.name}
+                    {(member.entry?.data as { title?: string } | undefined)?.title ||
+                      member.name}
                     {member.type && ` (${member.type})`}
                   </a>
                 </li>

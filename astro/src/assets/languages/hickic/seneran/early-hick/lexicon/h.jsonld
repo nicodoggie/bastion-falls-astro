@@ -22,10 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:harabran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ha.ra.bran",
@@ -53,19 +50,13 @@
             "@language": "en",
             "@value": "conflict, grievance (especially between families/clans)"
           },
-          "lexinfo:semanticField": [
-            "Social Terms",
-            "Conflict Terms"
-          ]
+          "lexinfo:semanticField": ["Social Terms", "Conflict Terms"]
         }
       ]
     },
     {
       "@id": "ehk:haran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ha.ran",
@@ -105,10 +96,7 @@
     },
     {
       "@id": "ehk:hilis",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "hi.lis",
@@ -155,20 +143,13 @@
             "@language": "en",
             "@value": "sight, active vision"
           },
-          "lexinfo:semanticField": [
-            "Perception Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Perception Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:his",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "his",
@@ -190,11 +171,7 @@
             "@language": "en",
             "@value": "sight (animate/conscious perception)"
           },
-          "lexinfo:semanticField": [
-            "Perception",
-            "Sacred",
-            "Abstract Concepts"
-          ]
+          "lexinfo:semanticField": ["Perception", "Sacred", "Abstract Concepts"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -202,19 +179,13 @@
             "@language": "en",
             "@value": "to see (passive/unintentional perception)"
           },
-          "lexinfo:semanticField": [
-            "Perception Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Perception Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:hisimris",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "hi.sim.ris",
@@ -259,20 +230,14 @@
             "@language": "en",
             "@value": "show"
           },
-          "lexinfo:semanticField": [
-            "Perception Terms",
-            "Action Terms"
-          ],
+          "lexinfo:semanticField": ["Perception Terms", "Action Terms"],
           "usage": "Contrasts with hilis'er 'to look'"
         }
       ]
     },
     {
       "@id": "ehk:hahu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ha.hu",

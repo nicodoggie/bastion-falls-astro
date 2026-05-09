@@ -1,6 +1,6 @@
 export type {
   DerivedForm,
-  Lexicon,
   LexItem,
+  Lexicon,
   Sense,
 } from "@bastion-falls/types";

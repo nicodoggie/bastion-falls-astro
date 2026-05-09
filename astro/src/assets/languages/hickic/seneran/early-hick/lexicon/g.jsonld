@@ -22,10 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:gar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gar",
@@ -43,10 +40,7 @@
             "@language": "en",
             "@value": "stone"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Elements"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Elements"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -54,10 +48,7 @@
             "@language": "en",
             "@value": "stone"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Elements"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Elements"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -65,10 +56,7 @@
             "@language": "en",
             "@value": "stone"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Elements"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Elements"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -76,19 +64,13 @@
             "@language": "en",
             "@value": "stone"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Elements"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Elements"]
         }
       ]
     },
     {
       "@id": "ehk:ger",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ger",
@@ -108,20 +90,13 @@
             "@language": "en",
             "@value": "metal"
           },
-          "lexinfo:semanticField": [
-            "Metals",
-            "Material Culture",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Metals", "Material Culture", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:gnar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gnar",
@@ -154,10 +129,7 @@
     },
     {
       "@id": "ehk:gnater",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gna.ter",
@@ -194,10 +166,7 @@
     },
     {
       "@id": "ehk:gral",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gral",
@@ -215,10 +184,7 @@
             "@language": "en",
             "@value": "earth, soil"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Elements"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Elements"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -248,10 +214,7 @@
     },
     {
       "@id": "ehk:gralimris",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gra.lim.ris",
@@ -276,19 +239,13 @@
             "@value": "excrement"
           },
           "lexinfo:register": "lexinfo:formalRegister",
-          "lexinfo:semanticField": [
-            "Medical Terms",
-            "Body Terms"
-          ]
+          "lexinfo:semanticField": ["Medical Terms", "Body Terms"]
         }
       ]
     },
     {
       "@id": "ehk:granmal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gran.mal",
@@ -307,19 +264,13 @@
             "@language": "en",
             "@value": "grain storage"
           },
-          "lexinfo:semanticField": [
-            "Agricultural Terms",
-            "Storage Terms"
-          ]
+          "lexinfo:semanticField": ["Agricultural Terms", "Storage Terms"]
         }
       ]
     },
     {
       "@id": "ehk:gransed",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gran.sed",
@@ -338,19 +289,13 @@
             "@language": "en",
             "@value": "grain"
           },
-          "lexinfo:semanticField": [
-            "Plant Terms",
-            "Place Terms"
-          ]
+          "lexinfo:semanticField": ["Plant Terms", "Place Terms"]
         }
       ]
     },
     {
       "@id": "ehk:grapar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gra.par",
@@ -378,19 +323,13 @@
             "@language": "en",
             "@value": "earthworm"
           },
-          "lexinfo:semanticField": [
-            "Animals",
-            "Earth Terms"
-          ]
+          "lexinfo:semanticField": ["Animals", "Earth Terms"]
         }
       ]
     },
     {
       "@id": "ehk:gras",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gras",
@@ -417,9 +356,7 @@
             "@language": "en",
             "@value": "grass"
           },
-          "lexinfo:semanticField": [
-            "Plant Terms"
-          ]
+          "lexinfo:semanticField": ["Plant Terms"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -438,10 +375,7 @@
     },
     {
       "@id": "ehk:grasgral",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gras.gral",
@@ -478,10 +412,7 @@
     },
     {
       "@id": "ehk:graswad",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gras.wad",
@@ -500,19 +431,13 @@
             "@language": "en",
             "@value": "pasture path"
           },
-          "lexinfo:semanticField": [
-            "Pasture Terms",
-            "Agricultural Terms"
-          ]
+          "lexinfo:semanticField": ["Pasture Terms", "Agricultural Terms"]
         }
       ]
     },
     {
       "@id": "ehk:gal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gal",
@@ -520,10 +445,7 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:components": [
-          "garu (hard)",
-          "ʔalu (person)"
-        ],
+        "etymon:components": ["garu (hard)", "ʔalu (person)"],
         "etymon:compound": "gar'el",
         "etymon:gloss": "hard-person",
         "etymon:note": "Shows metaphorical extension of hardness to masculinity"
@@ -535,19 +457,13 @@
             "@language": "en",
             "@value": "man"
           },
-          "lexinfo:semanticField": [
-            "Person Terms",
-            "Gender Terms"
-          ]
+          "lexinfo:semanticField": ["Person Terms", "Gender Terms"]
         }
       ]
     },
     {
       "@id": "ehk:gasam",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ga.sam",
@@ -566,20 +482,14 @@
             "@language": "en",
             "@value": "grinding"
           },
-          "lexinfo:semanticField": [
-            "Tool Terms",
-            "Basic Terms"
-          ],
+          "lexinfo:semanticField": ["Tool Terms", "Basic Terms"],
           "usage": "Forms the base for specialized grinding terms"
         }
       ]
     },
     {
       "@id": "ehk:gra",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gra",
@@ -597,20 +507,14 @@
             "@language": "en",
             "@value": "grey"
           },
-          "lexinfo:semanticField": [
-            "Colors",
-            "Basic Terms"
-          ],
+          "lexinfo:semanticField": ["Colors", "Basic Terms"],
           "usage": "Lost other meanings by Early Hick, making ka- prefix unnecessary"
         }
       ]
     },
     {
       "@id": "ehk:grakur",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gra.kur",
@@ -629,19 +533,13 @@
             "@language": "en",
             "@value": "grey copper"
           },
-          "lexinfo:semanticField": [
-            "Metals",
-            "Colors"
-          ]
+          "lexinfo:semanticField": ["Metals", "Colors"]
         }
       ]
     },
     {
       "@id": "ehk:grased",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gra.sed",
@@ -660,10 +558,7 @@
             "@language": "en",
             "@value": "grain"
           },
-          "lexinfo:semanticField": [
-            "Plant Terms",
-            "Food Terms"
-          ]
+          "lexinfo:semanticField": ["Plant Terms", "Food Terms"]
         }
       ]
     }

@@ -76,9 +76,7 @@
       "baety:sourceForm": {
         "@id": "pshk:tak"
       },
-      "baety:soundChangeApplied": [
-        "No change: No initial [h] to drop"
-      ],
+      "baety:soundChangeApplied": ["No change: No initial [h] to drop"],
       "baety:hasPeriod": "c. 600-700 AI"
     },
     {
@@ -104,9 +102,7 @@
       "baety:sourceForm": {
         "@id": "pshk:baʔ"
       },
-      "baety:soundChangeApplied": [
-        "No change: No initial [h] to drop"
-      ],
+      "baety:soundChangeApplied": ["No change: No initial [h] to drop"],
       "baety:hasPeriod": "c. 600-700 AI"
     },
     {
@@ -118,9 +114,7 @@
       "baety:sourceForm": {
         "@id": "pshk:hak"
       },
-      "baety:soundChangeApplied": [
-        "Initial h-dropping: ˈhak → ˈak (h → *)"
-      ],
+      "baety:soundChangeApplied": ["Initial h-dropping: ˈhak → ˈak (h → *)"],
       "baety:hasPeriod": "c. 600-700 AI"
     },
     {
@@ -147,9 +141,7 @@
       "baety:sourceForm": {
         "@id": "pshk:ven"
       },
-      "baety:soundChangeApplied": [
-        "No change: No initial [h] to drop"
-      ],
+      "baety:soundChangeApplied": ["No change: No initial [h] to drop"],
       "baety:hasPeriod": "c. 600-700 AI"
     },
     {
@@ -161,9 +153,7 @@
       "baety:sourceForm": {
         "@id": "pshk:stor"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 600-700 AI"
     },
     {
@@ -175,9 +165,7 @@
       "baety:sourceForm": {
         "@id": "pshk:baʔəʔaran"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 600-700 AI"
     },
     {
@@ -189,9 +177,7 @@
       "baety:sourceForm": {
         "@id": "pshk:melis"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 600-700 AI"
     },
     {
@@ -203,9 +189,7 @@
       "baety:sourceForm": {
         "@id": "pshk:dalug"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 600-700 AI"
     },
     {
@@ -217,9 +201,7 @@
       "baety:sourceForm": {
         "@id": "pshk:aʔi"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 600-700 AI"
     },
     {
@@ -231,9 +213,7 @@
       "baety:sourceForm": {
         "@id": "pshk:θiven"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 600-700 AI"
     },
     {
@@ -245,9 +225,7 @@
       "baety:sourceForm": {
         "@id": "pshk:hau"
       },
-      "baety:soundChangeApplied": [
-        "Initial h-dropping: ˈhau → ˈau (h → *)"
-      ],
+      "baety:soundChangeApplied": ["Initial h-dropping: ˈhau → ˈau (h → *)"],
       "baety:hasPeriod": "c. 600-700 AI",
       "baety:hasEtymologicalNote": "The [h] is dropped because [a] is a low vowel"
     },
@@ -260,9 +238,7 @@
       "baety:sourceForm": {
         "@id": "pshk:sin"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 600-700 AI"
     },
     {
@@ -481,9 +457,7 @@
       "baety:sourceForm": {
         "@id": "pshk:havu"
       },
-      "baety:soundChangeApplied": [
-        "Initial h-dropping: ˈhavu → ˈavu (h → *)"
-      ],
+      "baety:soundChangeApplied": ["Initial h-dropping: ˈhavu → ˈavu (h → *)"],
       "baety:hasPeriod": "c. 600-700 AI",
       "baety:hasEtymologicalNote": "The [a] is a low vowel, triggering h-dropping"
     },
@@ -518,4 +492,4 @@
       "baety:hasPeriod": "c. 600-700 AI"
     }
   ]
-} 
+}

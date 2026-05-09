@@ -6,7 +6,8 @@
 		"source.fixAll.rumdl": "always"
 	},
 	"files.associations": {
-		"*.css": "tailwindcss"
+		"*.css": "tailwindcss",
+		"*.jsonld": "json"
 	},
 	"tailwindCSS.classAttributes": ["class", "className", "theme"],
 	"tailwindCSS.experimental.classRegex": [

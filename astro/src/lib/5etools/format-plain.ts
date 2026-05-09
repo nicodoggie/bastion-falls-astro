@@ -20,7 +20,10 @@ function stringifyEntryFragment(e: unknown): string {
   if (Array.isArray(o.entries)) return entriesToPlain(o.entries as unknown[]);
   if (typeof o.text === "string") return strip5eTags(o.text);
   if (Array.isArray(o.items)) {
-    return (o.items as unknown[]).map(stringifyEntryFragment).filter(Boolean).join(" ");
+    return (o.items as unknown[])
+      .map(stringifyEntryFragment)
+      .filter(Boolean)
+      .join(" ");
   }
   return "";
 }

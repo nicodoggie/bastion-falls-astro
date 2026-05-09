@@ -32,15 +32,9 @@ const CreatureStatsSchema = z.record(
   CreatureDataSchema.or(z.string()),
 );
 
-const SpellStatsSchema = z.record(
-  z.string(),
-  SpellDataSchema.or(z.string()),
-);
+const SpellStatsSchema = z.record(z.string(), SpellDataSchema.or(z.string()));
 
-const ItemDataStatsSchema = z.record(
-  z.string(),
-  ItemDataSchema.or(z.string()),
-);
+const ItemDataStatsSchema = z.record(z.string(), ItemDataSchema.or(z.string()));
 
 /**
  * Extension schemas for each dedicated world collection.

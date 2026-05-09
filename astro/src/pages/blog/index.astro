@@ -9,8 +9,11 @@ const allPosts = posts;
 
 // Tag list for sidebar/dropdown
 const tagSet = new Set<string>();
-for (const p of allPosts)
-  (p.data.tags ?? []).forEach((t: string) => tagSet.add(t));
+for (const p of allPosts) {
+  for (const t of p.data.tags ?? []) {
+    tagSet.add(t);
+  }
+}
 const allTags = Array.from(tagSet).sort((a, b) => a.localeCompare(b));
 ---
 

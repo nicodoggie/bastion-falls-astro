@@ -21,6 +21,7 @@ const enc = encodeURIComponent;
     <nav class="flex flex-col gap-2">
       {tagsWithCounts.map(({ tag, count }) => (
           <a
+           
             href={`/blog/tags/${enc(tag)}`}
             class={`px-3 py-1 rounded text-sm ${tag === currentTag ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-800'}`}
           >

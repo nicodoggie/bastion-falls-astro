@@ -14,8 +14,7 @@ const { label, heading, summaryLines, body, missing } = Astro.props;
 const tipId = `bf5e-tip-${randomUUID().replace(/-/g, "").slice(0, 16)}`;
 ---
 
-{
-  missing ? (
+{missing ? (
     <span class="bf5e-ref bf5e-ref--missing" title={heading}>
       {label}
     </span>
@@ -55,5 +54,4 @@ const tipId = `bf5e-tip-${randomUUID().replace(/-/g, "").slice(0, 16)}`;
         ) : null}
       </span>
     </span>
-  )
-}
+  )}

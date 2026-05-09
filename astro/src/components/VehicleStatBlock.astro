@@ -52,9 +52,9 @@ function formatEntries(entries: unknown[]): string {
       if (typeof e === "string") return e;
       if (typeof e === "object" && e !== null) {
         const o = e as Record<string, unknown>;
-        if (Array.isArray(o["entries"]))
-          return formatEntries(o["entries"] as unknown[]);
-        if (o["text"]) return String(o["text"]);
+        if (Array.isArray(o.entries))
+          return formatEntries(o.entries as unknown[]);
+        if (o.text) return String(o.text);
       }
       return "";
     })
@@ -131,7 +131,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
 ---
 
 <div class="vc not-content">
-  {/* ── Name bar ── */}
+  <!-- Name bar -->
   <div class="vc__header">
     {link
       ? <a href={link} class="vc__name-link"><h2 class="vc__name">{displayName}</h2></a>
@@ -144,7 +144,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
     </p>
   </div>
 
-  {/* ── Key stats row ── */}
+  <!-- Key stats row -->
   <div class="vc__key-stats">
     {vehicle.pace != null && (
       <div class="vc__stat-card">
@@ -177,7 +177,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
     )}
   </div>
 
-  {/* ── Ability scores ── */}
+  <!-- Ability scores -->
   <div class="vc__abilities">
     <div class="vc__abilities-header">
       {abilityDisplays.map(({ label }) => (
@@ -194,7 +194,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
     </div>
   </div>
 
-  {/* ── Resist / vulnerable / condition / damage (5etools util array shapes) ── */}
+  <!-- Resist / vulnerable / condition / damage (5etools shapes) -->
   {(() => {
     const resistStr = formatDamageList(vehicle.resist)
     const vulnStr = formatDamageList(vehicle.vulnerable)
@@ -230,7 +230,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
   </div>
   ) } )()}
 
-  {/* ── Traits ── */}
+  <!-- Traits -->
   {Array.isArray(vehicle.trait) && vehicle.trait.length > 0 && (
   <div class="vc__features">
     {(vehicle.trait as { name: string; entries: unknown[] }[]).map(t => (
@@ -242,12 +242,12 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
   </div>
   )}
 
-  {/* ── Control ── */}
+  <!-- Control -->
   {vehicle.control?.length && (
   <div class="vc__section">
     <h3 class="vc__section-title">Control</h3>
     <div class="vc__components">
-      {vehicle.control.map(c => (
+      {vehicle.control.map((c) => (
           <div class="vc__component">
             {c.name && <div class="vc__component-name">{c.name}</div>}
             <div class="vc__component-stats">
@@ -264,12 +264,12 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
   </div>
   )}
 
-  {/* ── Movement ── */}
+  <!-- Movement -->
   {vehicle.movement?.length && (
   <div class="vc__section">
     <h3 class="vc__section-title">Movement</h3>
     <div class="vc__components">
-      {vehicle.movement.map(m => (
+      {vehicle.movement.map((m) => (
           <div class="vc__component">
             {m.name && <div class="vc__component-name">{m.name}</div>}
             <div class="vc__component-stats">
@@ -277,7 +277,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
               <span><strong>HP</strong> {m.hp}</span>
               {m.dt != null && <span><strong>Damage Threshold</strong> {m.dt}</span>}
             </div>
-            {m.speed?.map(s => (
+            {m.speed?.map((s) => (
               <p class="vc__component-desc">
                 <strong>{s.mode}:</strong>{' '}
                 {Array.isArray(s.entries) ? formatEntries(s.entries as unknown[]) : ''}
@@ -289,12 +289,12 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
   </div>
   )}
 
-  {/* ── Weapons ── */}
+  <!-- Weapons -->
   {vehicle.weapon?.length && (
   <div class="vc__section">
     <h3 class="vc__section-title">Weapons</h3>
     <div class="vc__components">
-      {vehicle.weapon.map(w => (
+      {vehicle.weapon.map((w) => (
           <div class="vc__component">
             <div class="vc__component-name">
               {w.name}{w.count && w.count > 1 ? ` (×${w.count})` : ''}
@@ -313,12 +313,12 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
   </div>
   )}
 
-  {/* ── Other ── */}
+  <!-- Other -->
   {vehicle.other?.length && (
   <div class="vc__section">
     <h3 class="vc__section-title">Other Components</h3>
     <div class="vc__features">
-      {vehicle.other.map(o => (
+      {vehicle.other.map((o) => (
           <p class="vc__feature">
             <em><strong>{o.name}.</strong></em>
             {' '}{Array.isArray(o.entries) ? formatEntries(o.entries as unknown[]) : ''}
@@ -328,12 +328,12 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
   </div>
   )}
 
-  {/* ── Actions ── */}
+  <!-- Actions -->
   {Array.isArray(vehicle.action) && vehicle.action.length > 0 && (
   <div class="vc__section">
     <h3 class="vc__section-title">Actions</h3>
     <div class="vc__features">
-      {(vehicle.action as { name?: string; entries: unknown[] }[]).map(a => (
+      {(vehicle.action as { name?: string; entries: unknown[] }[]).map((a) => (
           <p class="vc__feature">
             {a.name && <em><strong>{a.name}.</strong></em>}
             {' '}{Array.isArray(a.entries) ? formatEntries(a.entries) : ''}
@@ -345,245 +345,245 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
 </div>
 
 <style>
-  .vc {
-    --vc-bg: #fdf6e3;
-    --vc-bg-alt: #f3e8c8;
-    --vc-red: #7a200d;
-    --vc-divider: #9c2b1b;
-    --vc-gold: #c9a14a;
-    --vc-text: #212121;
-    --vc-radius: 6px;
-    --vc-font-body:
-      "Scala Sans Pro", "Myriad Pro", Calibri, "Trebuchet MS", sans-serif;
-    --vc-font-head:
-      "Mrs Eaves", Palatino, "Palatino Linotype", "Book Antiqua", serif;
+.vc {
+  --vc-bg: #fdf6e3;
+  --vc-bg-alt: #f3e8c8;
+  --vc-red: #7a200d;
+  --vc-divider: #9c2b1b;
+  --vc-gold: #c9a14a;
+  --vc-text: #212121;
+  --vc-radius: 6px;
+  --vc-font-body:
+    "Scala Sans Pro", "Myriad Pro", Calibri, "Trebuchet MS", sans-serif;
+  --vc-font-head:
+    "Mrs Eaves", Palatino, "Palatino Linotype", "Book Antiqua", serif;
 
-    background-color: var(--vc-bg);
-    border: 2px solid var(--vc-gold);
-    border-radius: var(--vc-radius);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
-    color: var(--vc-text);
-    font-family: var(--vc-font-body);
-    font-size: 0.9rem;
-    line-height: 1.45;
-    margin-block: 1.75rem;
-    width: 100%;
-    overflow: hidden;
-  }
+  background-color: var(--vc-bg);
+  border: 2px solid var(--vc-gold);
+  border-radius: var(--vc-radius);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  color: var(--vc-text);
+  font-family: var(--vc-font-body);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin-block: 1.75rem;
+  width: 100%;
+  overflow: hidden;
+}
 
-  :global([data-theme="dark"]) .vc {
-    --vc-bg: #0e0e1c;
-    --vc-bg-alt: #16162a;
-    --vc-red: #a882d8;
-    --vc-divider: #5a3f7a;
-    --vc-gold: #3a2e68;
-    --vc-text: #ccd0ea;
-    box-shadow: 0 2px 20px rgba(100, 50, 180, 0.45);
-  }
+:global([data-theme="dark"]) .vc {
+  --vc-bg: #0e0e1c;
+  --vc-bg-alt: #16162a;
+  --vc-red: #a882d8;
+  --vc-divider: #5a3f7a;
+  --vc-gold: #3a2e68;
+  --vc-text: #ccd0ea;
+  box-shadow: 0 2px 20px rgba(100, 50, 180, 0.45);
+}
 
-  /* ── Header ── */
-  .vc__header {
-    background-color: var(--vc-bg-alt);
-    border-bottom: 3px solid var(--vc-divider);
-    padding: 0.75rem 1.25rem 0.5rem;
-  }
+/* ── Header ── */
+.vc__header {
+  background-color: var(--vc-bg-alt);
+  border-bottom: 3px solid var(--vc-divider);
+  padding: 0.75rem 1.25rem 0.5rem;
+}
 
-  .vc__name-link {
-    text-decoration: none;
-  }
+.vc__name-link {
+  text-decoration: none;
+}
 
-  .vc__name {
-    all: unset;
-    color: var(--vc-red);
-    display: block;
-    font-family: var(--vc-font-head);
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    line-height: 1.1;
-  }
+.vc__name {
+  all: unset;
+  color: var(--vc-red);
+  display: block;
+  font-family: var(--vc-font-head);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
 
-  .vc__meta {
-    all: unset;
-    color: var(--vc-red);
-    display: block;
-    font-size: 0.875rem;
-    font-style: italic;
-    margin-top: 0.2rem;
-    opacity: 0.85;
-  }
+.vc__meta {
+  all: unset;
+  color: var(--vc-red);
+  display: block;
+  font-size: 0.875rem;
+  font-style: italic;
+  margin-top: 0.2rem;
+  opacity: 0.85;
+}
 
-  /* ── Key stats row ── */
-  .vc__key-stats {
-    border-bottom: 2px solid var(--vc-gold);
-    display: flex;
-    flex-wrap: wrap;
-  }
+/* ── Key stats row ── */
+.vc__key-stats {
+  border-bottom: 2px solid var(--vc-gold);
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .vc__stat-card {
-    border-right: 1px solid var(--vc-gold);
-    flex: 1 1 120px;
-    padding: 0.625rem 1rem;
-    text-align: center;
-  }
-  .vc__stat-card:last-child {
-    border-right: none;
-  }
+.vc__stat-card {
+  border-right: 1px solid var(--vc-gold);
+  flex: 1 1 120px;
+  padding: 0.625rem 1rem;
+  text-align: center;
+}
+.vc__stat-card:last-child {
+  border-right: none;
+}
 
-  .vc__stat-card-label {
-    color: var(--vc-red);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+.vc__stat-card-label {
+  color: var(--vc-red);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
-  .vc__stat-card-value {
-    font-family: var(--vc-font-head);
-    font-size: 1.4rem;
-    font-weight: 700;
-    line-height: 1.1;
-    margin-top: 0.1rem;
-  }
+.vc__stat-card-value {
+  font-family: var(--vc-font-head);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 0.1rem;
+}
 
-  .vc__stat-card-note {
-    color: color-mix(in srgb, var(--vc-text) 65%, transparent);
-    font-size: 0.75rem;
-    margin-top: 0.1rem;
-  }
+.vc__stat-card-note {
+  color: color-mix(in srgb, var(--vc-text) 65%, transparent);
+  font-size: 0.75rem;
+  margin-top: 0.1rem;
+}
 
-  /* ── Ability scores ── */
-  .vc__abilities {
-    border-bottom: 2px solid var(--vc-gold);
-  }
+/* ── Ability scores ── */
+.vc__abilities {
+  border-bottom: 2px solid var(--vc-gold);
+}
 
-  .vc__abilities-header,
-  .vc__abilities-row {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    text-align: center;
-  }
+.vc__abilities-header,
+.vc__abilities-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  text-align: center;
+}
 
-  .vc__abilities-header {
-    background-color: var(--vc-bg-alt);
-    padding: 0.35rem 0 0.2rem;
-  }
+.vc__abilities-header {
+  background-color: var(--vc-bg-alt);
+  padding: 0.35rem 0 0.2rem;
+}
 
-  .vc__ability-col-head {
-    color: var(--vc-red);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+.vc__ability-col-head {
+  color: var(--vc-red);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
-  .vc__abilities-row {
-    padding: 0.4rem 0 0.5rem;
-  }
+.vc__abilities-row {
+  padding: 0.4rem 0 0.5rem;
+}
 
-  .vc__ability-cell {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
+.vc__ability-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
 
-  .vc__ability-score {
-    font-family: var(--vc-font-head);
-    font-size: 1.2rem;
-    font-weight: 700;
-    line-height: 1.1;
-  }
+.vc__ability-score {
+  font-family: var(--vc-font-head);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
 
-  .vc__ability-mod {
-    font-size: 0.8rem;
-    color: color-mix(in srgb, var(--vc-text) 70%, transparent);
-  }
+.vc__ability-mod {
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--vc-text) 70%, transparent);
+}
 
-  /* ── Properties ── */
-  .vc__properties {
-    border-bottom: 1px solid var(--vc-gold);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 0.15rem 1.5rem;
-    padding: 0.6rem 1.25rem;
-  }
+/* ── Properties ── */
+.vc__properties {
+  border-bottom: 1px solid var(--vc-gold);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.15rem 1.5rem;
+  padding: 0.6rem 1.25rem;
+}
 
-  .vc__prop {
-    display: flex;
-    gap: 0.35rem;
-    flex-wrap: wrap;
-    align-items: baseline;
-  }
+.vc__prop {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
 
-  .vc__prop-name {
-    color: var(--vc-red);
-    font-weight: 700;
-    white-space: nowrap;
-  }
+.vc__prop-name {
+  color: var(--vc-red);
+  font-weight: 700;
+  white-space: nowrap;
+}
 
-  /* ── Sections ── */
-  .vc__section {
-    border-top: 2px solid var(--vc-divider);
-  }
+/* ── Sections ── */
+.vc__section {
+  border-top: 2px solid var(--vc-divider);
+}
 
-  .vc__section-title {
-    all: unset;
-    background-color: var(--vc-bg-alt);
-    border-bottom: 1px solid var(--vc-gold);
-    color: var(--vc-red);
-    display: block;
-    font-family: var(--vc-font-head);
-    font-size: 1.15rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    padding: 0.35rem 1.25rem;
-  }
+.vc__section-title {
+  all: unset;
+  background-color: var(--vc-bg-alt);
+  border-bottom: 1px solid var(--vc-gold);
+  color: var(--vc-red);
+  display: block;
+  font-family: var(--vc-font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.35rem 1.25rem;
+}
 
-  /* ── Component blocks (hull / control / movement / weapon) ── */
-  .vc__components {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 0.3rem 2rem;
-    padding: 0.6rem 1.25rem;
-  }
+/* ── Component blocks (hull / control / movement / weapon) ── */
+.vc__components {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.3rem 2rem;
+  padding: 0.6rem 1.25rem;
+}
 
-  .vc__component {
-    font-size: 0.875rem;
-  }
+.vc__component {
+  font-size: 0.875rem;
+}
 
-  .vc__component-name {
-    color: var(--vc-red);
-    font-weight: 700;
-    margin-bottom: 0.1rem;
-  }
+.vc__component-name {
+  color: var(--vc-red);
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
 
-  .vc__component-stats {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.8rem;
-    color: color-mix(in srgb, var(--vc-text) 80%, transparent);
-    margin-bottom: 0.25rem;
-  }
+.vc__component-stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--vc-text) 80%, transparent);
+  margin-bottom: 0.25rem;
+}
 
-  .vc__component-desc {
-    all: unset;
-    display: block;
-    line-height: 1.45;
-  }
+.vc__component-desc {
+  all: unset;
+  display: block;
+  line-height: 1.45;
+}
 
-  /* ── Features ── */
-  .vc__features {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 0.3rem 2rem;
-    padding: 0.6rem 1.25rem;
-  }
+/* ── Features ── */
+.vc__features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 0.3rem 2rem;
+  padding: 0.6rem 1.25rem;
+}
 
-  .vc__feature {
-    all: unset;
-    display: block;
-    font-size: 0.875rem;
-    line-height: 1.5;
-  }
+.vc__feature {
+  all: unset;
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
 </style>

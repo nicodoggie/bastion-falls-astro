@@ -8,12 +8,16 @@ import { slug } from "github-slugger";
 
 const { title, location } = Astro.props;
 
-let image;
+let image: ImageMetadata | undefined;
 if (location?.image?.url) {
   const images = import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/**/*.{jpg,jpeg,png,webp}",
   );
-  image = images[location.image.url]();
+  const loader = images[location.image.url];
+  if (loader) {
+    const mod = await loader();
+    image = mod.default;
+  }
 }
 
 // Get parent location entries if they exist
@@ -47,12 +51,14 @@ if (location?.related) {
   class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
 >
   {title && (
-      <div class="flex justify-center items-center border-gray-600">
-        <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
-          {location.name}
-        </h2>
+      <div class="mb-2">
+        <div class="flex justify-center items-center border-gray-600">
+          <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
+            {location.name}
+          </h2>
+        </div>
+        <hr class="border-gray-600" />
       </div>
-      <hr class="border-gray-600">
     )}
 
   {image && (
@@ -115,7 +121,7 @@ if (location?.related) {
                 {parents.map((parent: CollectionEntry<"location">) => (
                 <li>
                   <a href={`/world/locations/${parent.id}`}>
-                    {(parent as any).data.title}
+                    {(parent.data as { title: string }).title}
                   </a>
                 </li>
               ))}
@@ -132,9 +138,8 @@ if (location?.related) {
               {related.map((relatedLocation: CollectionEntry<"location">) => (
                 <li>
                   <a href={`/world/locations/${relatedLocation.id}`}>
-                    {(relatedLocation as any).data.title}
+                    {(relatedLocation.data as { title: string }).title}
                   </a>
-                   
                 </li>
               ))}
             </ul>

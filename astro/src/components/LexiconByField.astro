@@ -1,94 +1,91 @@
 ---
-import AnchorHeading from '@astrojs/starlight/components/AnchorHeading.astro';
-import type { LexiconByField } from "../types/LexiconByField";
+import AnchorHeading from "@astrojs/starlight/components/AnchorHeading.astro";
 import { getLexicalCategory } from "../lib/lexicon";
+import type { LexiconByField } from "../types/LexiconByField";
 
 interface Props {
-  data: any;
+  data: LexiconByField;
   format?: "json" | "csv";
 }
 
-const { data }: { data: LexiconByField } = Astro.props;
+const { data } = Astro.props;
 ---
 
-<>
-  <h2 id="semantic-fields-ref">Semantic Fields Reference</h2>
-  <ul>
-    {
-      Object.entries(data.fields).map(([_, field]) => {
-        return (
-          <li>
-            <a href={`#${field.uri}`}>{field.label}</a>
-          </li>
-        );
-      })
-    }
-  </ul>
-
-  {
-    Object.entries(data.lexicon).map(([field, lexItems]) => {
-      const { uri, label } = data.fields[field];
-
+<h2 id="semantic-fields-ref">Semantic Fields Reference</h2>
+<ul>
+  {Object.entries(data.fields).map(([_key, field]) => {
       return (
-        <>
-          <AnchorHeading level={2} id={uri}>
-            {label}
-          </AnchorHeading>
-          {lexItems.map((lexItem) => {
-            const types = lexItem.types.filter(
-              (type) => type !== "ontolex:LexicalEntry"
-            );
-
-            const lexCategories = types
-              .map((type) => getLexicalCategory(type))
-              .join(", ");
-
-            return (
-              <dl id={lexItem.id} class="lexical-item">
-                <dt>
-                  <span class="lexical-item-word written-form">
-                    {lexItem.writtenForm}
-                  </span>
-                  &nbsp;
-                  <span class="phonetic-form">/{lexItem.phoneticForm}/</span>
-                  &nbsp;
-                  <span class="lexical-category">({lexCategories})</span>
-                </dt>
-                <dd>
-                  <p>
-                    {lexItem.senses
-                      .map((sense) => sense.definition)
-                      .join(", ")}
-                  </p>
-                </dd>
-                {lexItem.protoform && (
-                  <dd class="etymology-protoform">{lexItem.protoform}</dd>
-                )}
-                {lexItem.note && (
-                  <dd class="etymology-note">{lexItem.note}</dd>
-                )}
-                <dd>
-                  Derived Forms:{" "}
-                  {lexItem.derivedForms?.map((derivedForm) => (
-                    <dl class="lexical-item-derived-form">
-                      <dt class="lexical-item-word derived-form-word">
-                        {derivedForm.writtenForm} /{derivedForm.phoneticForm}/
-                      </dt>
-                      <dd class="lexical-item-phonetic-form" />
-                      <dd class="lexical-item-grammatical-meaning">
-                        {derivedForm.grammaticalMeaning}
-                      </dd>
-                      <dd class="lexical-item-decomposition">
-                        {derivedForm.decomposition}
-                      </dd>
-                    </dl>
-                  ))}
-                </dd>
-              </dl>
-            );
-          })}
-        </>
+        <li>
+          <a href={`#${field.uri}`}>{field.label}</a>
+        </li>
       );
-    })
-  }
-</>
+    })}
+</ul>
+
+{Object.entries(data.lexicon).map(([field, lexItems]) => {
+    const { uri, label } = data.fields[field];
+
+    return (
+      <div>
+        <AnchorHeading level={2} id={uri}>
+          {label}
+        </AnchorHeading>
+        {lexItems.map((lexItem) => {
+          const types = lexItem.types.filter(
+            (type) => type !== "ontolex:LexicalEntry",
+          );
+
+          const lexCategories = types
+            .map((type) => getLexicalCategory(type))
+            .join(", ");
+
+          return (
+            <dl id={lexItem.id} class="lexical-item">
+              <dt>
+                <span class="lexical-item-word written-form">
+                  {lexItem.writtenForm}
+                </span>
+                &nbsp;
+                <span class="phonetic-form">/{lexItem.phoneticForm}/</span>
+                &nbsp;
+                <span class="lexical-category">({lexCategories})</span>
+              </dt>
+              <dd>
+                <p>
+                  {lexItem.senses
+                    .map((sense) => sense.definition)
+                    .join(", ")}
+                </p>
+              </dd>
+              {lexItem.protoform && (
+                <dd class="etymology-protoform">{lexItem.protoform}</dd>
+              )}
+              {lexItem.note && (
+                <dd class="etymology-note">{lexItem.note}</dd>
+              )}
+              <dd>
+                Derived Forms:{" "}
+                {lexItem.derivedForms?.map((derivedForm) => (
+                  <dl
+                    class="lexical-item-derived-form"
+                   
+                  >
+                    <dt class="lexical-item-word derived-form-word">
+                      {derivedForm.writtenForm} /{derivedForm.phoneticForm}/
+                    </dt>
+                    <dd class="lexical-item-phonetic-form" />
+                    <dd class="lexical-item-grammatical-meaning">
+                      {derivedForm.grammaticalMeaning}
+                    </dd>
+                    <dd class="lexical-item-decomposition">
+                      {derivedForm.decomposition}
+                    </dd>
+                  </dl>
+                ))}
+              </dd>
+            </dl>
+          );
+        })}
+      </div>
+    );
+  })}

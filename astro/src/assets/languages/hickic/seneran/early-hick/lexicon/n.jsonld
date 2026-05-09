@@ -22,10 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:nagral",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "na.gral",
@@ -52,10 +49,7 @@
             "@language": "en",
             "@value": "black earth"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Landforms"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Landforms"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -63,10 +57,7 @@
             "@language": "en",
             "@value": "black earth"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Landforms"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Landforms"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -74,10 +65,7 @@
             "@language": "en",
             "@value": "black earth"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Landforms"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Landforms"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -85,19 +73,13 @@
             "@language": "en",
             "@value": "black earth"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Landforms"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Landforms"]
         }
       ]
     },
     {
       "@id": "ehk:nai",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "nai",
@@ -145,10 +127,7 @@
     },
     {
       "@id": "ehk:natlas",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "nat.las",
@@ -159,10 +138,7 @@
         "etymon:compound": "gnater-las",
         "etymon:gloss": "desire-ILL",
         "etymon:note": "Shows cluster simplification and case lexicalization. From 'one in a state of desire/affection' to 'friend'",
-        "etymon:soundChange": [
-          "compound fusion",
-          "cluster simplification"
-        ]
+        "etymon:soundChange": ["compound fusion", "cluster simplification"]
       },
       "sense": [
         {
@@ -171,10 +147,7 @@
             "@language": "en",
             "@value": "friend"
           },
-          "lexinfo:semanticField": [
-            "Person Terms",
-            "Social Terms"
-          ]
+          "lexinfo:semanticField": ["Person Terms", "Social Terms"]
         }
       ]
     }

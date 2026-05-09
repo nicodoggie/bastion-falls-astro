@@ -3,6 +3,8 @@
     "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
     "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
     "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "lexicog": "https://www.lexicographic.org/ontology/1.0/lexicog#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "decomp": "http://www.w3.org/ns/lemon/decomp#",
     "etymon": "http://www.lexinfo.net/lemon/etymon#",
     "skos": "http://www.w3.org/2004/02/skos/core#",
@@ -22,10 +24,7 @@
   "@graph": [
     {
       "@id": "ehk:ba",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ba",
@@ -73,10 +72,7 @@
     },
     {
       "@id": "ehk:bar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bar",
@@ -138,19 +134,13 @@
             "@language": "en",
             "@value": "name, mark of identity"
           },
-          "lexinfo:semanticField": [
-            "Identity Terms",
-            "Social Terms"
-          ]
+          "lexinfo:semanticField": ["Identity Terms", "Social Terms"]
         }
       ]
     },
     {
       "@id": "ehk:barakter",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ba.rak.ter",
@@ -198,10 +188,7 @@
     },
     {
       "@id": "ehk:bramis",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bra.mis",
@@ -230,10 +217,7 @@
     },
     {
       "@id": "ehk:bran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bran",
@@ -251,19 +235,79 @@
             "@language": "en",
             "@value": "branch"
           },
-          "lexinfo:semanticField": [
-            "Flora Terms",
-            "Food Terms"
-          ]
+          "lexinfo:semanticField": ["Flora Terms", "Food Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:branrum",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Particle"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "bran.rum",
+        "writtenRep": "branrum"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "bran-rum",
+        "etymon:soundChange": "compound fusion"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "distant past, typically on the order of hundreds of years ago and older. Often used in religious or epic poetry."
+          },
+          "lexinfo:tense": {
+            "@id": "lexinfo:past"
+          },
+          "lexinfo:semanticField": ["Temporal Terms", "Tense Terms"],
+          "lexicog:usageExample": {
+            "rdf:value": [
+              {
+                "@language": "ehk",
+                "@value": "branrum 'ales venitar"
+              },
+              {
+                "@language": "en",
+                "@value": "The person lifted long ago"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "@id": "ehk:branum",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Particle"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "branum",
+        "writtenRep": "branum"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "bran-um",
+        "etymon:soundChange": "compound fusion"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "past"
+          },
+          "lexinfo:tense": {
+            "@id": "lexinfo:past"
+          },
+          "lexinfo:semanticField": ["Temporal Terms", "Tense Terms"]
         }
       ]
     },
     {
       "@id": "ehk:brastak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bras.tak",
@@ -291,20 +335,14 @@
             "@language": "en",
             "@value": "weapons, armaments"
           },
-          "lexinfo:semanticField": [
-            "Weapon Terms",
-            "Military Terms"
-          ],
+          "lexinfo:semanticField": ["Weapon Terms", "Military Terms"],
           "usage": "Often used collectively for military equipment"
         }
       ]
     },
     {
       "@id": "ehk:brastok",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bras.tok",
@@ -331,10 +369,7 @@
     },
     {
       "@id": "ehk:brastran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bras.tran",
@@ -362,19 +397,13 @@
             "@language": "en",
             "@value": "foot (unit of length, approximately arm-length)"
           },
-          "lexinfo:semanticField": [
-            "Measurement Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Measurement Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:bres",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bres",
@@ -392,19 +421,13 @@
             "@language": "en",
             "@value": "wind"
           },
-          "lexinfo:semanticField": [
-            "Weather Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Weather Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:bresubel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bre.su.bel",
@@ -433,10 +456,7 @@
         "etymon:gloss": "shout-mouth",
         "etymon:note": "Shows typical compound formation with body part term",
         "etymon:protoform": "Proto-Hick *bresu-belu",
-        "etymon:soundChange": [
-          "compound fusion",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["compound fusion", "final vowel loss"]
       },
       "related": [
         {
@@ -463,10 +483,7 @@
     },
     {
       "@id": "ehk:brismal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bris.mal",
@@ -485,19 +502,13 @@
             "@language": "en",
             "@value": "forge (native term)"
           },
-          "lexinfo:semanticField": [
-            "Construction Terms",
-            "Tool Terms"
-          ]
+          "lexinfo:semanticField": ["Construction Terms", "Tool Terms"]
         }
       ]
     },
     {
       "@id": "ehk:brismer",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bris.mer",
@@ -535,10 +546,7 @@
     },
     {
       "@id": "ehk:barak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ba.rak",
@@ -556,19 +564,13 @@
             "@language": "en",
             "@value": "walking, gait"
           },
-          "lexinfo:semanticField": [
-            "Motion Terms",
-            "Movement Terms"
-          ]
+          "lexinfo:semanticField": ["Motion Terms", "Movement Terms"]
         }
       ]
     },
     {
       "@id": "ehk:barlas",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bar.las",
@@ -587,19 +589,13 @@
             "@language": "en",
             "@value": "personal name"
           },
-          "lexinfo:semanticField": [
-            "Name Terms",
-            "Identity Terms"
-          ]
+          "lexinfo:semanticField": ["Name Terms", "Identity Terms"]
         }
       ]
     },
     {
       "@id": "ehk:bedek",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "be.dek",
@@ -618,19 +614,13 @@
             "@language": "en",
             "@value": "tongue"
           },
-          "lexinfo:semanticField": [
-            "Body Parts",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Body Parts", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:bel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bel",
@@ -658,10 +648,7 @@
     },
     {
       "@id": "ehk:belimris",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "be.lim.ris",
@@ -690,10 +677,7 @@
     },
     {
       "@id": "ehk:bellas",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bel.las",
@@ -722,10 +706,7 @@
     },
     {
       "@id": "ehk:belnes",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bel.nes",
@@ -744,19 +725,13 @@
             "@language": "en",
             "@value": "mouthed fish"
           },
-          "lexinfo:semanticField": [
-            "Animal Terms",
-            "Fish Terms"
-          ]
+          "lexinfo:semanticField": ["Animal Terms", "Fish Terms"]
         }
       ]
     },
     {
       "@id": "ehk:brakel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bra.kel",
@@ -775,19 +750,13 @@
             "@language": "en",
             "@value": "morning sky"
           },
-          "lexinfo:semanticField": [
-            "Time Terms",
-            "Sky Terms"
-          ]
+          "lexinfo:semanticField": ["Time Terms", "Sky Terms"]
         }
       ]
     },
     {
       "@id": "ehk:bram",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bram",
@@ -815,10 +784,7 @@
     },
     {
       "@id": "ehk:bramal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bra.mal",
@@ -837,19 +803,13 @@
             "@language": "en",
             "@value": "tidal pool"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms",
-            "Water Features"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms", "Water Features"]
         }
       ]
     },
     {
       "@id": "ehk:brammater",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bram.ma.ter",
@@ -868,19 +828,13 @@
             "@language": "en",
             "@value": "river-vessel"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms",
-            "Vehicle Terms"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms", "Vehicle Terms"]
         }
       ]
     },
     {
       "@id": "ehk:bramulis",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bra.mu.lis",
@@ -899,19 +853,13 @@
             "@language": "en",
             "@value": "vortex, whirlpool"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms",
-            "Water Features"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms", "Water Features"]
         }
       ]
     },
     {
       "@id": "ehk:branlir",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bran.lir",
@@ -929,19 +877,13 @@
             "@language": "en",
             "@value": "watchtower"
           },
-          "lexinfo:semanticField": [
-            "Architecture",
-            "Military"
-          ]
+          "lexinfo:semanticField": ["Architecture", "Military"]
         }
       ]
     },
     {
       "@id": "ehk:branlis",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bran.lis",
@@ -960,19 +902,13 @@
             "@language": "en",
             "@value": "tree berries; fruit"
           },
-          "lexinfo:semanticField": [
-            "Flora Terms",
-            "Food Terms"
-          ]
+          "lexinfo:semanticField": ["Flora Terms", "Food Terms"]
         }
       ]
     },
     {
       "@id": "ehk:branthral",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bran.θral",
@@ -991,19 +927,13 @@
             "@language": "en",
             "@value": "spring"
           },
-          "lexinfo:semanticField": [
-            "Time Terms",
-            "Seasonal Terms"
-          ]
+          "lexinfo:semanticField": ["Time Terms", "Seasonal Terms"]
         }
       ]
     },
     {
       "@id": "ehk:brast",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "brast",
@@ -1023,19 +953,13 @@
             "@language": "en",
             "@value": "dominant arm"
           },
-          "lexinfo:semanticField": [
-            "Body Parts",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Body Parts", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:bressim",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bres.sim",
@@ -1054,20 +978,14 @@
             "@language": "en",
             "@value": "weather (conditions)"
           },
-          "lexinfo:semanticField": [
-            "Wind Terms",
-            "Climate Terms"
-          ],
+          "lexinfo:semanticField": ["Wind Terms", "Climate Terms"],
           "usage": "Forms verb bressim'er \"to change (of weather)\""
         }
       ]
     },
     {
       "@id": "ehk:bris",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bris",
@@ -1085,19 +1003,13 @@
             "@language": "en",
             "@value": "heat"
           },
-          "lexinfo:semanticField": [
-            "Elements",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Elements", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:brises",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "bri.ses",
@@ -1116,10 +1028,7 @@
             "@language": "en",
             "@value": "light, illumination; discover, explore"
           },
-          "lexinfo:semanticField": [
-            "Natural Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Natural Terms", "Sacred Terms"]
         }
       ]
     }

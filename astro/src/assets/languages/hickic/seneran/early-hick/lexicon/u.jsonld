@@ -22,10 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:'u'u",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ʔu.ʔu",
@@ -64,10 +61,7 @@
     },
     {
       "@id": "ehk:ul",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ul",
@@ -94,10 +88,7 @@
         "etymon:meaning": "grasp",
         "etymon:note": "Original root (~800 PF) had meanings 'thumb/grasp/possession'. By Late Proto-Hick (~400 PF), bare form specialized to 'thumb/possession'. Source of possessive suffix -ul through grammaticalization.",
         "etymon:protoform": "Proto-Hick *ʔulu",
-        "etymon:soundChange": [
-          "initial glottal loss",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["initial glottal loss", "final vowel loss"]
       },
       "sense": [
         {
@@ -106,19 +97,13 @@
             "@language": "en",
             "@value": "thumb"
           },
-          "lexinfo:semanticField": [
-            "Body Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Body Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:uran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "u.rən",
@@ -126,16 +111,10 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:components": [
-          "*ulu (thumb)",
-          "*haranu (length)"
-        ],
+        "etymon:components": ["*ulu (thumb)", "*haranu (length)"],
         "etymon:note": "Shows development of measurement system from body parts",
         "etymon:protoform": "Proto-Hick *ulu-haranu",
-        "etymon:soundChange": [
-          "compound fusion",
-          "unstressed vowel reduction"
-        ]
+        "etymon:soundChange": ["compound fusion", "unstressed vowel reduction"]
       },
       "sense": [
         {
@@ -144,19 +123,13 @@
             "@language": "en",
             "@value": "inch (unit of length, approximately thumb-width)"
           },
-          "lexinfo:semanticField": [
-            "Measurement Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Measurement Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:us",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "us",
@@ -173,16 +146,10 @@
       ],
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:components": [
-          "*ʔulu (thumb/grasp)",
-          "-isu (locative)"
-        ],
+        "etymon:components": ["*ʔulu (thumb/grasp)", "-isu (locative)"],
         "etymon:note": "Developed from locative form of *ʔulu (~400 PF) specializing in 'grasp' meaning",
         "etymon:protoform": "Proto-Hick *ʔulu-isu",
-        "etymon:soundChange": [
-          "vowel coalescence",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["vowel coalescence", "final vowel loss"]
       },
       "sense": [
         {
@@ -191,10 +158,7 @@
             "@language": "en",
             "@value": "grasp, possession"
           },
-          "lexinfo:semanticField": [
-            "Basic Terms",
-            "Action Terms"
-          ]
+          "lexinfo:semanticField": ["Basic Terms", "Action Terms"]
         }
       ]
     }

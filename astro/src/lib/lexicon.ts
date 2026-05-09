@@ -1,1 +1,4 @@
-export { formatLexicalCategories, getLexicalCategory } from "@bastion-falls/types";
+export {
+  formatLexicalCategories,
+  getLexicalCategory,
+} from "@bastion-falls/types";

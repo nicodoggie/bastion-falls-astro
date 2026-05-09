@@ -5,7 +5,11 @@ import { SpellDataSchema } from "@bastion-falls/5e-schema-zod";
 import type { z } from "zod";
 
 import { getContentDocsDir } from "./paths";
-import { buildResolvedSpell, type ResolvedSpell, type SpellJson } from "./spells";
+import {
+  buildResolvedSpell,
+  type ResolvedSpell,
+  type SpellJson,
+} from "./spells";
 import { warnOnce } from "./warn";
 
 type SpellData = z.infer<typeof SpellDataSchema>;
@@ -105,7 +109,8 @@ function spellDataToSpellJson(parsed: SpellData): SpellJson {
     duration,
     components: normalizeComponents(parsed.components),
     entries: parsed.entries as SpellJson["entries"],
-    entriesHigherLevel: parsed.entriesHigherLevel as SpellJson["entriesHigherLevel"],
+    entriesHigherLevel:
+      parsed.entriesHigherLevel as SpellJson["entriesHigherLevel"],
   };
 }
 
@@ -151,7 +156,10 @@ export function loadSpellFromContentJson(
   try {
     raw = JSON.parse(fs.readFileSync(abs, "utf8")) as unknown;
   } catch (e) {
-    warnOnce(`spell-json-read:${abs}`, `Could not read spell JSON ${abs}: ${String(e)}`);
+    warnOnce(
+      `spell-json-read:${abs}`,
+      `Could not read spell JSON ${abs}: ${String(e)}`,
+    );
     return null;
   }
   const row = extractSpellRecord(raw, pickName, abs);

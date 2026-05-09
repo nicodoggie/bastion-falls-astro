@@ -85,7 +85,6 @@ const { title } = Astro.props;
 
     /* Header Styles */
     header {
-      background: var(--color-bg);
       border-bottom: 1px solid var(--color-border);
       position: sticky;
       top: 0;
@@ -433,6 +432,7 @@ const { title } = Astro.props;
         <div class="nav-links">
           <a href="/">Main Site</a>
           <button
+            type="button"
             id="theme-toggle"
             class="theme-toggle"
             aria-label="Toggle dark mode"

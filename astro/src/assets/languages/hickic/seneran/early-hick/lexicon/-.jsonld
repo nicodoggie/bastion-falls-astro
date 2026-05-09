@@ -22,10 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:suffixes-en",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Suffix"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "-en",
@@ -43,19 +40,13 @@
             "@language": "en",
             "@value": "that (inanimate, visible, medial)"
           },
-          "lexinfo:semanticField": [
-            "Demonstratives",
-            "Grammatical Terms"
-          ]
+          "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
         }
       ]
     },
     {
       "@id": "ehk:-eth",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Suffix"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "-eθ",
@@ -73,19 +64,13 @@
             "@language": "en",
             "@value": "that (medial, inanimate, hidden, sensed)"
           },
-          "lexinfo:semanticField": [
-            "Demonstratives",
-            "Grammatical Terms"
-          ]
+          "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
         }
       ]
     },
     {
       "@id": "ehk:-is",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Suffix"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "-is",
@@ -103,19 +88,13 @@
             "@language": "en",
             "@value": "this (inanimate, sensed, proximal)"
           },
-          "lexinfo:semanticField": [
-            "Demonstratives",
-            "Grammatical Terms"
-          ]
+          "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
         }
       ]
     },
     {
       "@id": "ehk:-nat",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Suffix"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "nat",
@@ -134,19 +113,13 @@
             "@language": "en",
             "@value": "want to, desire to (desiderative suffix)"
           },
-          "lexinfo:semanticField": [
-            "Grammatical Terms",
-            "Verbal Morphology"
-          ]
+          "lexinfo:semanticField": ["Grammatical Terms", "Verbal Morphology"]
         }
       ]
     },
     {
       "@id": "ehk:-rum",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Suffix"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "-rum",
@@ -164,19 +137,13 @@
             "@language": "en",
             "@value": "that (animate, distant)"
           },
-          "lexinfo:semanticField": [
-            "Demonstratives",
-            "Grammatical Terms"
-          ]
+          "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
         }
       ]
     },
     {
       "@id": "ehk:-tan",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Suffix"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "-tan",
@@ -194,19 +161,13 @@
             "@language": "en",
             "@value": "that (animate, visible, medial)"
           },
-          "lexinfo:semanticField": [
-            "Demonstratives",
-            "Grammatical Terms"
-          ]
+          "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
         }
       ]
     },
     {
       "@id": "ehk:-thir",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Suffix"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "-θir",
@@ -224,19 +185,13 @@
             "@language": "en",
             "@value": "that (medial, animate, sensed)"
           },
-          "lexinfo:semanticField": [
-            "Demonstratives",
-            "Grammatical Terms"
-          ]
+          "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
         }
       ]
     },
     {
       "@id": "ehk:-um",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Suffix"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "-um",
@@ -254,19 +209,13 @@
             "@language": "en",
             "@value": "that (inanimate, distant)"
           },
-          "lexinfo:semanticField": [
-            "Demonstratives",
-            "Grammatical Terms"
-          ]
+          "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
         }
       ]
     },
     {
       "@id": "ehk:-ʔis",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Suffix"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "-ʔis",
@@ -284,10 +233,7 @@
             "@language": "en",
             "@value": "this (animate, sensed, proximal)"
           },
-          "lexinfo:semanticField": [
-            "Demonstratives",
-            "Grammatical Terms"
-          ]
+          "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
         }
       ]
     }

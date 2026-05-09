@@ -97,9 +97,7 @@
       "baety:sourceForm": {
         "@id": "phk:heru"
       },
-      "baety:soundChangeApplied": [
-        "Stress shift: heˈru → ˈheru"
-      ],
+      "baety:soundChangeApplied": ["Stress shift: heˈru → ˈheru"],
       "baety:hasPeriod": "c. 400-450 AI"
     },
     {
@@ -111,9 +109,7 @@
       "baety:sourceForm": {
         "@id": "phk:taku"
       },
-      "baety:soundChangeApplied": [
-        "Stress shift: taˈku → ˈtaku"
-      ],
+      "baety:soundChangeApplied": ["Stress shift: taˈku → ˈtaku"],
       "baety:hasPeriod": "c. 400-450 AI"
     },
     {
@@ -140,9 +136,7 @@
       "baety:sourceForm": {
         "@id": "phk:baha"
       },
-      "baety:soundChangeApplied": [
-        "Stress shift: baˈha → ˈbaha"
-      ],
+      "baety:soundChangeApplied": ["Stress shift: baˈha → ˈbaha"],
       "baety:hasPeriod": "c. 400-450 AI"
     },
     {
@@ -154,9 +148,7 @@
       "baety:sourceForm": {
         "@id": "phk:haka"
       },
-      "baety:soundChangeApplied": [
-        "Stress shift: haˈka → ˈhaka"
-      ],
+      "baety:soundChangeApplied": ["Stress shift: haˈka → ˈhaka"],
       "baety:hasPeriod": "c. 400-450 AI"
     },
     {
@@ -168,9 +160,7 @@
       "baety:sourceForm": {
         "@id": "phk:hihalu"
       },
-      "baety:soundChangeApplied": [
-        "Stress shift: hiˈhalu → ˈhihalu"
-      ],
+      "baety:soundChangeApplied": ["Stress shift: hiˈhalu → ˈhihalu"],
       "baety:hasPeriod": "c. 400-450 AI"
     },
     {
@@ -182,9 +172,7 @@
       "baety:sourceForm": {
         "@id": "phk:venu"
       },
-      "baety:soundChangeApplied": [
-        "Stress shift: veˈnu → ˈvenu"
-      ],
+      "baety:soundChangeApplied": ["Stress shift: veˈnu → ˈvenu"],
       "baety:hasPeriod": "c. 400-450 AI"
     },
     {
@@ -196,9 +184,7 @@
       "baety:sourceForm": {
         "@id": "phk:storu"
       },
-      "baety:soundChangeApplied": [
-        "Stress shift: stoˈru → ˈstoru"
-      ],
+      "baety:soundChangeApplied": ["Stress shift: stoˈru → ˈstoru"],
       "baety:hasPeriod": "c. 400-450 AI"
     },
     {
@@ -226,9 +212,7 @@
       "baety:sourceForm": {
         "@id": "phk:melisu"
       },
-      "baety:soundChangeApplied": [
-        "Stress shift: meˈlisu → ˈmelisu"
-      ],
+      "baety:soundChangeApplied": ["Stress shift: meˈlisu → ˈmelisu"],
       "baety:hasPeriod": "c. 400-450 AI"
     },
     {
@@ -240,9 +224,7 @@
       "baety:sourceForm": {
         "@id": "phk:daluku"
       },
-      "baety:soundChangeApplied": [
-        "Stress shift: daˈluku → ˈdaluku"
-      ],
+      "baety:soundChangeApplied": ["Stress shift: daˈluku → ˈdaluku"],
       "baety:hasPeriod": "c. 400-450 AI"
     },
     {
@@ -254,9 +236,7 @@
       "baety:sourceForm": {
         "@id": "phk:ahi"
       },
-      "baety:soundChangeApplied": [
-        "Stress shift: aˈhi → ˈahi"
-      ],
+      "baety:soundChangeApplied": ["Stress shift: aˈhi → ˈahi"],
       "baety:hasPeriod": "c. 400-450 AI"
     },
     {
@@ -308,4 +288,4 @@
       "baety:hasEtymologicalNote": "Shows simplification of r-l cluster to just l"
     }
   ]
-} 
+}

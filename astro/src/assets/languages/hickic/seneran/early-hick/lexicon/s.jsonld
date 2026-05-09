@@ -22,10 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:sai",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sai",
@@ -44,10 +41,7 @@
             "@language": "en",
             "@value": "sense of self"
           },
-          "lexinfo:semanticField": [
-            "Mental Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Mental Terms", "Sacred Terms"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -55,19 +49,13 @@
             "@language": "en",
             "@value": "inner voice"
           },
-          "lexinfo:semanticField": [
-            "Mental Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Mental Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:saw",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "saw",
@@ -87,19 +75,13 @@
             "@value": "shit"
           },
           "lexinfo:register": "lexinfo:vulgarRegister",
-          "lexinfo:semanticField": [
-            "Taboo Terms",
-            "Body Terms"
-          ]
+          "lexinfo:semanticField": ["Taboo Terms", "Body Terms"]
         }
       ]
     },
     {
       "@id": "ehk:sed",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sed",
@@ -117,19 +99,13 @@
             "@language": "en",
             "@value": "seed"
           },
-          "lexinfo:semanticField": [
-            "Flora",
-            "Plant Terms"
-          ]
+          "lexinfo:semanticField": ["Flora", "Plant Terms"]
         }
       ]
     },
     {
       "@id": "ehk:sedgral",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sed.gral",
@@ -148,19 +124,13 @@
             "@language": "en",
             "@value": "field"
           },
-          "lexinfo:semanticField": [
-            "Plant Terms",
-            "Agricultural Terms"
-          ]
+          "lexinfo:semanticField": ["Plant Terms", "Agricultural Terms"]
         }
       ]
     },
     {
       "@id": "ehk:sedok",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "se.dok",
@@ -179,19 +149,13 @@
             "@language": "en",
             "@value": "planter, farmer"
           },
-          "lexinfo:semanticField": [
-            "Agricultural Terms",
-            "Occupations"
-          ]
+          "lexinfo:semanticField": ["Agricultural Terms", "Occupations"]
         }
       ]
     },
     {
       "@id": "ehk:sedter",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sed.ter",
@@ -222,10 +186,7 @@
     },
     {
       "@id": "ehk:sibar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "si.bar",
@@ -264,10 +225,7 @@
     },
     {
       "@id": "ehk:sibris",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "si.bris",
@@ -277,10 +235,7 @@
         "@type": "etymon:Etymology",
         "etymon:note": "Metaphorical extension from 'fire' to 'passion/love'",
         "etymon:protoform": "Proto-Hick *hibrisu",
-        "etymon:soundChange": [
-          "initial fricative change",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["initial fricative change", "final vowel loss"]
       },
       "sense": [
         {
@@ -299,10 +254,7 @@
     },
     {
       "@id": "ehk:sin_num",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Numeral"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sin",
@@ -333,10 +285,7 @@
     },
     {
       "@id": "ehk:sin_float",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sin",
@@ -370,10 +319,7 @@
     },
     {
       "@id": "ehk:sinas",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "si.nas",
@@ -381,17 +327,10 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:components": [
-          "senu (float)",
-          "asa (PERL)",
-          "u (NOM)"
-        ],
+        "etymon:components": ["senu (float)", "asa (PERL)", "u (NOM)"],
         "etymon:note": "Literally 'floating through', shows typical compound reduction",
         "etymon:protoform": "Proto-Hick *senu-asa-u",
-        "etymon:soundChange": [
-          "final vowel loss",
-          "compound fusion"
-        ]
+        "etymon:soundChange": ["final vowel loss", "compound fusion"]
       },
       "sense": [
         {
@@ -410,10 +349,7 @@
     },
     {
       "@id": "ehk:sinibel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "si.ni.bel",
@@ -432,20 +368,14 @@
             "@language": "en",
             "@value": "taste"
           },
-          "lexinfo:semanticField": [
-            "Taste Terms",
-            "Body Terms"
-          ],
+          "lexinfo:semanticField": ["Taste Terms", "Body Terms"],
           "usage": "Shows metaphorical extension of floating motion to sensory perception"
         }
       ]
     },
     {
       "@id": "ehk:stor",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "stor",
@@ -488,10 +418,7 @@
     },
     {
       "@id": "ehk:storbran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "stor.bran",
@@ -546,10 +473,7 @@
     },
     {
       "@id": "ehk:sul",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sul",
@@ -573,10 +497,7 @@
     },
     {
       "@id": "ehk:sulmil",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sul.mil",
@@ -612,10 +533,7 @@
     },
     {
       "@id": "ehk:sumerok",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "su.me.rok",
@@ -641,10 +559,7 @@
     },
     {
       "@id": "ehk:sak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sak",
@@ -668,10 +583,7 @@
     },
     {
       "@id": "ehk:sar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sar",
@@ -695,10 +607,7 @@
     },
     {
       "@id": "ehk:saresp",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sa.resp",
@@ -717,19 +626,13 @@
             "@language": "en",
             "@value": "sprout"
           },
-          "lexinfo:semanticField": [
-            "Flora Terms",
-            "Agricultural Terms"
-          ]
+          "lexinfo:semanticField": ["Flora Terms", "Agricultural Terms"]
         }
       ]
     },
     {
       "@id": "ehk:sat",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sat",
@@ -753,10 +656,7 @@
     },
     {
       "@id": "ehk:sedthral",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sed.θral",
@@ -774,19 +674,13 @@
             "@language": "en",
             "@value": "planting day"
           },
-          "lexinfo:semanticField": [
-            "Time Terms",
-            "Agricultural Terms"
-          ]
+          "lexinfo:semanticField": ["Time Terms", "Agricultural Terms"]
         }
       ]
     },
     {
       "@id": "ehk:sek",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sek",
@@ -810,10 +704,7 @@
     },
     {
       "@id": "ehk:sil",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sil",
@@ -831,19 +722,13 @@
             "@language": "en",
             "@value": "hide, skin"
           },
-          "lexinfo:semanticField": [
-            "Body Parts",
-            "Material Terms"
-          ]
+          "lexinfo:semanticField": ["Body Parts", "Material Terms"]
         }
       ]
     },
     {
       "@id": "ehk:silpel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sil.pel",
@@ -867,10 +752,7 @@
     },
     {
       "@id": "ehk:siltak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sil.tak",
@@ -888,19 +770,13 @@
             "@language": "en",
             "@value": "physical pain"
           },
-          "lexinfo:semanticField": [
-            "Body Terms",
-            "Sensation Terms"
-          ]
+          "lexinfo:semanticField": ["Body Terms", "Sensation Terms"]
         }
       ]
     },
     {
       "@id": "ehk:siltak'er",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sil.tak.ʔer",
@@ -921,19 +797,13 @@
             "@language": "en",
             "@value": "to touch"
           },
-          "lexinfo:semanticField": [
-            "Action Verbs",
-            "Sensation Terms"
-          ]
+          "lexinfo:semanticField": ["Action Verbs", "Sensation Terms"]
         }
       ]
     },
     {
       "@id": "ehk:sim",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sim",
@@ -957,10 +827,7 @@
     },
     {
       "@id": "ehk:sinkres",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Numeral"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sin.kres",
@@ -984,10 +851,7 @@
     },
     {
       "@id": "ehk:sinthir",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sin.θir",
@@ -1005,10 +869,7 @@
             "@language": "en",
             "@value": "fly"
           },
-          "lexinfo:semanticField": [
-            "Animal Terms",
-            "Insect Terms"
-          ]
+          "lexinfo:semanticField": ["Animal Terms", "Insect Terms"]
         }
       ]
     }

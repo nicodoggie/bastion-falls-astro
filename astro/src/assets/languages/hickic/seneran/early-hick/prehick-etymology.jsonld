@@ -62,9 +62,7 @@
       "baety:sourceForm": {
         "@id": "prehick:hir"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -76,9 +74,7 @@
       "baety:sourceForm": {
         "@id": "prehick:tak"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -90,9 +86,7 @@
       "baety:sourceForm": {
         "@id": "prehick:asəm"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -119,9 +113,7 @@
       "baety:sourceForm": {
         "@id": "prehick:ak"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -147,9 +139,7 @@
       "baety:sourceForm": {
         "@id": "prehick:ven"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -161,9 +151,7 @@
       "baety:sourceForm": {
         "@id": "prehick:stor"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -190,9 +178,7 @@
       "baety:sourceForm": {
         "@id": "prehick:melis"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -204,9 +190,7 @@
       "baety:sourceForm": {
         "@id": "prehick:dalug"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -218,9 +202,7 @@
       "baety:sourceForm": {
         "@id": "prehick:aʔi"
       },
-      "baety:soundChangeApplied": [
-        "Glottal stop dropping: ˈaʔi → ˈai (ʔ → *)"
-      ],
+      "baety:soundChangeApplied": ["Glottal stop dropping: ˈaʔi → ˈai (ʔ → *)"],
       "baety:hasPeriod": "c. 700-800 AI",
       "baety:hasEtymologicalNote": "The glottal stop drops between vowels, creating the diphthong [ai]"
     },
@@ -233,9 +215,7 @@
       "baety:sourceForm": {
         "@id": "prehick:θiven"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -247,9 +227,7 @@
       "baety:sourceForm": {
         "@id": "prehick:au"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -261,9 +239,7 @@
       "baety:sourceForm": {
         "@id": "prehick:sin"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -275,9 +251,7 @@
       "baety:sourceForm": {
         "@id": "prehick:ʔidag"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -289,9 +263,7 @@
       "baety:sourceForm": {
         "@id": "prehick:enga"
       },
-      "baety:soundChangeApplied": [
-        "No change: No sound changes applying"
-      ],
+      "baety:soundChangeApplied": ["No change: No sound changes applying"],
       "baety:hasPeriod": "c. 700-800 AI"
     },
     {
@@ -303,9 +275,7 @@
       "baety:sourceForm": {
         "@id": "prehick:malni"
       },
-      "baety:soundChangeApplied": [
-        "Vowel coalescence: ˈmalni → ˈmani (l → *)"
-      ],
+      "baety:soundChangeApplied": ["Vowel coalescence: ˈmalni → ˈmani (l → *)"],
       "baety:hasPeriod": "c. 700-800 AI",
       "baety:hasEtymologicalNote": "The [l] was dropped between vowels, merging the syllables"
     },
@@ -318,9 +288,7 @@
       "baety:sourceForm": {
         "@id": "prehick:kalva"
       },
-      "baety:soundChangeApplied": [
-        "Vowel coalescence: ˈkalva → ˈkava (l → *)"
-      ],
+      "baety:soundChangeApplied": ["Vowel coalescence: ˈkalva → ˈkava (l → *)"],
       "baety:hasPeriod": "c. 700-800 AI",
       "baety:hasEtymologicalNote": "The [l] was dropped before another consonant, simplifying the syllable structure"
     },
@@ -566,4 +534,4 @@
       "baety:hasEtymologicalNote": "The liquid [l] is dropped between a vowel and [h]"
     }
   ]
-} 
+}

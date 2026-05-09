@@ -18,6 +18,7 @@ const enc = encodeURIComponent;
 <section class="space-y-8">
   {posts.map((post, i) => (
       <article
+       
         data-draft={post.data.draft ? 'true' : 'false'}
         class={`border border-gray-800 rounded-lg overflow-hidden bg-gray-900/30 hover:bg-gray-900/50 hover:border-gray-700 transition-all duration-200 backdrop-blur ${post.data.draft && hideDraftsInitially ? 'draft-post' : ''}`}
         style={post.data.draft && hideDraftsInitially ? 'display: none;' : ''}
@@ -74,16 +75,15 @@ const enc = encodeURIComponent;
                   </span>
                 )}
                 {post.data.tags && post.data.tags.length > 0 && (
-                  <>
-                    {post.data.tags.map((t: string) => (
+                    post.data.tags.map((t: string) => (
                       <a
+                       
                         href={`/blog/tags/${enc(t)}`}
                         class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors duration-200"
                       >
                         {t}
                       </a>
-                    ))}
-                  </>
+                    ))
                 )}
               </div>
             </div>

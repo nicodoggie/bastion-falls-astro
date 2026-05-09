@@ -1,16 +1,16 @@
 ---
-import type {
-  CharacterSexOrgan,
-  CharacterOrganization,
-  CharacterFamily,
-} from "@bastion-falls/types/Character";
 import { type CollectionEntry, getEntry } from "astro:content";
+import type {
+  CharacterFamily,
+  CharacterOrganization,
+  CharacterSexOrgan,
+} from "@bastion-falls/types/Character";
 import { slug } from "github-slugger";
 import SidebarImage from "./SidebarImage.astro";
 
 const { character } = Astro.props;
 
-let mortalityIcon;
+let mortalityIcon: string;
 switch (character.details.mortality) {
   case "dead":
     mortalityIcon = "💀";
@@ -24,6 +24,8 @@ switch (character.details.mortality) {
   case "unknown":
     mortalityIcon = "�";
     break;
+  default:
+    mortalityIcon = "";
 }
 
 interface SpeciesData {
@@ -139,14 +141,16 @@ if (character?.relationships?.families) {
   class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
 >
   {character.name && (
-      <div class="flex justify-center items-center border-gray-600">
-        <a href={character.ddb} target="_blank" rel="noopener noreferrer">
-          <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white" style="display: inline-block;">
-            {character.name}<span class="mortality-icon p-1">{mortalityIcon}</span>
-          </h2>
-        </a>
+      <div class="mb-2">
+        <div class="flex justify-center items-center border-gray-600">
+          <a href={character.ddb} target="_blank" rel="noopener noreferrer">
+            <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white" style="display: inline-block;">
+              {character.name}<span class="mortality-icon p-1">{mortalityIcon}</span>
+            </h2>
+          </a>
+        </div>
+        <hr class="border-gray-600" />
       </div>
-      <hr class="border-gray-600">
     )}
   {character.image && <SidebarImage {...character.image} />}
 
@@ -200,40 +204,53 @@ if (character?.relationships?.families) {
             <dd class="text-gray-600 dark:text-gray-400">
               <dl>
                 {character.details.sexOrgans.map((organ: CharacterSexOrgan) => (
-                  <div>
+                  <div
+                   
+                  >
                     {organ.type === "penis" && (
-                      <>
+                      <div>
                         Penis
                         <dl class="ml-4">
-                          {organ.length && <dt class="pl-2">Length</dt> <dd class="pl-4">{organ.length}</dd>}
-                          {organ.girth && <dt class="pl-2">Girth</dt> <dd class="pl-4">{organ.girth}</dd>}
-                          {organ.pubicHair && <dt class="pl-2">Pubic Hair</dt> <dd class="pl-4">{organ.pubicHair}</dd>}
+                          {organ.length ? <dt class="pl-2">Length</dt> : null}
+                          {organ.length ? <dd class="pl-4">{organ.length}</dd> : null}
+                          {organ.girth ? <dt class="pl-2">Girth</dt> : null}
+                          {organ.girth ? <dd class="pl-4">{organ.girth}</dd> : null}
+                          {organ.pubicHair?.length ? <dt class="pl-2">Pubic hair length</dt> : null}
+                          {organ.pubicHair?.length ? <dd class="pl-4">{organ.pubicHair.length}</dd> : null}
+                          {organ.pubicHair?.style ? <dt class="pl-2">Pubic hair style</dt> : null}
+                          {organ.pubicHair?.style ? <dd class="pl-4">{organ.pubicHair.style}</dd> : null}
+                          {organ.pubicHair?.color ? <dt class="pl-2">Pubic hair color</dt> : null}
+                          {organ.pubicHair?.color ? <dd class="pl-4">{organ.pubicHair.color}</dd> : null}
                         </dl>
-                      </>
+                      </div>
                     )}
                     {organ.type === "vagina" && (
-                      <>
+                      <div>
                         Vagina
                         <dl class="ml-4">
-                          {organ.profile && <dt class="pl-2">Profile</dt> <dd class="pl-4">{organ.profile.join(', ')}</dd>}
-                          {organ.depth && <dt class="pl-2">Depth</dt> <dd class="pl-4">{organ.depth}</dd>}
-                          {organ.elasticity && <dt class="pl-2">Elasticity</dt> <dd class="pl-4">{organ.elasticity}</dd>}
-                          {organ.pubicHair && <><dt class="pl-2">Pubic Hair</dt> 
-                            {organ.pubicHair?.length && <dd class="pl-4">Length: {organ.pubicHair.length}</dd>}
-                            {organ.pubicHair?.style && <dd class="pl-4">Style: {organ.pubicHair.style}</dd>}
-                            {organ.pubicHair?.color && <dd class="pl-4">Color: {organ.pubicHair.color}</dd>}
-                          </>}
+                          {organ.profile ? <dt class="pl-2">Profile</dt> : null}
+                          {organ.profile ? <dd class="pl-4">{organ.profile.join(', ')}</dd> : null}
+                          {organ.depth ? <dt class="pl-2">Depth</dt> : null}
+                          {organ.depth ? <dd class="pl-4">{organ.depth}</dd> : null}
+                          {organ.elasticity ? <dt class="pl-2">Elasticity</dt> : null}
+                          {organ.elasticity ? <dd class="pl-4">{organ.elasticity}</dd> : null}
+                          {organ.pubicHair ? <dt class="pl-2">Pubic Hair</dt> : null}
+                          {organ.pubicHair?.length ? <dd class="pl-4">Length: {organ.pubicHair.length}</dd> : null}
+                          {organ.pubicHair?.style ? <dd class="pl-4">Style: {organ.pubicHair.style}</dd> : null}
+                          {organ.pubicHair?.color ? <dd class="pl-4">Color: {organ.pubicHair.color}</dd> : null}
                         </dl>
-                      </>
+                      </div>
                     )}
                     {organ.type === "breasts" && (
-                      <>
+                      <div>
                         Breasts
                         <dl class="ml-4">
-                          {organ.size && <dt class="pl-2">Size</dt> <dd class="pl-4">{organ.size}</dd>}
-                          {organ.nipples && <dt class="pl-2">Nipples</dt> <dd class="pl-4">{organ.nipples}</dd>}
+                          {organ.size ? <dt class="pl-2">Size</dt> : null}
+                          {organ.size ? <dd class="pl-4">{organ.size}</dd> : null}
+                          {organ.nipples ? <dt class="pl-2">Nipples</dt> : null}
+                          {organ.nipples ? <dd class="pl-4">{organ.nipples}</dd> : null}
                         </dl>
-                      </>
+                      </div>
                     )}
                   </div>
                 ))}
@@ -268,7 +285,7 @@ if (character?.relationships?.families) {
               Known Aliases
             </dt>
             { 
-              character.details.aliases.length > 0 && character.details.aliases.map((alias: any) => {
+              character.details.aliases.length > 0 && character.details.aliases.map((alias: string) => {
                 return (
                   <dd class="text-gray-600 dark:text-gray-400">
                     <span data-pagefind-meta="alias">{alias}</span>
@@ -288,13 +305,15 @@ if (character?.relationships?.families) {
               
               
                 {organizations.map(
-                  ({positionsHeld, entry, name}) => (
-                    <a class="text-gray-600 dark:text-gray-400" href={`/organizations/${entry?.id}`}>{name}</a>
+                  ({ positionsHeld, entry, name }) => (
+                    <div>
+                    <a class="text-gray-600 dark:text-gray-400" href={entry?.id != null ? `/organizations/${entry.id}` : "#"}>{name}</a>
                     <ul class="ml-4 text-xs">
-                      {positionsHeld && positionsHeld.map((position: any) => (
+                      {positionsHeld?.map((position) => (
                         <li>{position.name} {position.from && `(${position.from}`} {position.to && ` - ${position.to})`}</li>
                       ))}
                     </ul>
+                    </div>
                   )
                 )}
             </dd>
@@ -310,8 +329,9 @@ if (character?.relationships?.families) {
                 {relatives.map((relative: Relative) => {
                   return (
                   <li>
-                    <a href={relative.entry && `/world/characters/${relative.entry?.id}`}>
-                      {(relative.entry as any)?.data?.title || relative.name}
+                    <a href={relative.entry ? `/world/characters/${relative.entry.id}` : undefined}>
+                      {(relative.entry?.data as { title?: string } | undefined)
+                        ?.title || relative.name}
                       {relative.type && ` (${relative.type})`}
                     </a>
                   </li>
@@ -321,23 +341,21 @@ if (character?.relationships?.families) {
             </dd>
           </div>
         )}
-      {character.relationships?.other && (
+      {character.relationships?.other &&
+        character.relationships.other.length > 0 && (
           <div class="py-2">
             <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Relatives
+              Other relationships
             </dt>
             <dd class="text-gray-600 dark:text-gray-400">
               <ul>
-                {relatives.map((relative: Relative) => {
-                  return (
+                {character.relationships.other.map(
+                  (rel: { name: string; type: string }) => (
                   <li>
-                    <a href={`/world/characters/${relative.entry?.id}`}>
-                      {(relative.entry as any)?.data?.title || relative.name}
-                      {relative.type && ` (${relative.type})`}
-                    </a>
+                    {rel.name}
+                    {rel.type && ` (${rel.type})`}
                   </li>
-                  );
-                })}
+                ))}
               </ul>
             </dd>
           </div>
@@ -367,7 +385,9 @@ if (character?.relationships?.families) {
               <ul>
                 {species.map((s: SpeciesData) => s.entry && (
                   <li>
-                    <a href={`/world/species/${s.entry.id}`}>{(s.entry as any).data.title}</a>
+                    <a href={`/world/species/${s.entry.id}`}>
+                      {(s.entry.data as { title: string }).title}
+                    </a>
                   </li>
                 ))}
               </ul>

@@ -107,25 +107,25 @@ function formatType(type: unknown): string {
   if (typeof type === "string") return type;
   if (typeof type === "object" && type !== null) {
     const t = type as Record<string, unknown>;
-    const inner = t["type"];
+    const inner = t.type;
     const base =
       typeof inner === "string"
         ? inner
         : typeof inner === "object" && inner !== null && "choose" in inner
           ? (inner as { choose: string[] }).choose.join(" or ")
           : "—";
-    const swarmSize = t["swarmSize"];
+    const swarmSize = t.swarmSize;
     const swarmPrefix =
       typeof swarmSize === "string"
         ? `swarm of ${SIZE_NAMES[swarmSize] ?? swarmSize} `
         : "";
-    const rawTags = t["tags"] as unknown[] | undefined;
+    const rawTags = t.tags as unknown[] | undefined;
     const tags = rawTags
       ?.map((tg) =>
         typeof tg === "string"
           ? tg
           : typeof tg === "object" && tg !== null
-            ? `${(tg as Record<string, string>)["prefix"] ?? ""}${(tg as Record<string, string>)["tag"] ?? ""}`
+            ? `${(tg as Record<string, string>).prefix ?? ""}${(tg as Record<string, string>).tag ?? ""}`
             : "",
       )
       .filter(Boolean)
@@ -145,13 +145,12 @@ function formatAC(ac: unknown[] | null | undefined): {
     if (typeof a === "number") return { value: String(a), note: "" };
     if (typeof a === "object" && a !== null) {
       const item = a as Record<string, unknown>;
-      if ("special" in item)
-        return { value: item["special"] as string, note: "" };
+      if ("special" in item) return { value: item.special as string, note: "" };
       const from =
-        Array.isArray(item["from"]) && item["from"].length
-          ? (item["from"] as string[]).join(", ")
+        Array.isArray(item.from) && item.from.length
+          ? (item.from as string[]).join(", ")
           : "";
-      return { value: String(item["ac"]), note: from };
+      return { value: String(item.ac), note: from };
     }
     return { value: "—", note: "" };
   });
@@ -168,9 +167,9 @@ function formatHP(hp: unknown): { value: string; note: string } {
   if (!hp) return { value: "—", note: "" };
   if (typeof hp === "object" && hp !== null) {
     const h = hp as Record<string, unknown>;
-    if (h["special"]) return { value: h["special"] as string, note: "" };
-    const avg = h["average"] as number | undefined;
-    const formula = h["formula"] as string | undefined;
+    if (h.special) return { value: h.special as string, note: "" };
+    const avg = h.average as number | undefined;
+    const formula = h.formula as string | undefined;
     return {
       value: avg !== undefined ? String(avg) : "—",
       note: formula ?? "",
@@ -189,15 +188,15 @@ function formatSpeed(speed: unknown): string {
       typeof v === "number"
         ? v
         : typeof v === "object" && v !== null
-          ? (v as Record<string, number>)["number"]
+          ? (v as Record<string, number>).number
           : undefined;
     const parts: string[] = [];
-    if (s["walk"] != null) parts.push(`${ft(s["walk"])} ft.`);
-    if (s["fly"] != null)
-      parts.push(`fly ${ft(s["fly"])} ft.${s["canHover"] ? " (hover)" : ""}`);
-    if (s["swim"] != null) parts.push(`swim ${ft(s["swim"])} ft.`);
-    if (s["burrow"] != null) parts.push(`burrow ${ft(s["burrow"])} ft.`);
-    if (s["climb"] != null) parts.push(`climb ${ft(s["climb"])} ft.`);
+    if (s.walk != null) parts.push(`${ft(s.walk)} ft.`);
+    if (s.fly != null)
+      parts.push(`fly ${ft(s.fly)} ft.${s.canHover ? " (hover)" : ""}`);
+    if (s.swim != null) parts.push(`swim ${ft(s.swim)} ft.`);
+    if (s.burrow != null) parts.push(`burrow ${ft(s.burrow)} ft.`);
+    if (s.climb != null) parts.push(`climb ${ft(s.climb)} ft.`);
     return parts.join(", ") || "—";
   }
   return "—";
@@ -241,7 +240,7 @@ function formatCR(cr: unknown): { value: string; xp: string } {
     typeof cr === "string"
       ? cr
       : typeof cr === "object" && cr !== null
-        ? ((cr as Record<string, string>)["cr"] ?? "—")
+        ? ((cr as Record<string, string>).cr ?? "—")
         : "—";
   const xp = CR_XP[crStr];
   return {
@@ -256,8 +255,8 @@ function formatEntries(entries: unknown[]): string {
       if (typeof e === "string") return e;
       if (typeof e === "object" && e !== null) {
         const obj = e as Record<string, unknown>;
-        if (Array.isArray(obj["entries"])) return formatEntries(obj["entries"]);
-        if (obj["text"]) return obj["text"] as string;
+        if (Array.isArray(obj.entries)) return formatEntries(obj.entries);
+        if (obj.text) return obj.text as string;
       }
       return "";
     })
@@ -267,16 +266,17 @@ function formatEntries(entries: unknown[]): string {
 
 function joinConjunction(items: string[]): string {
   if (items.length === 0) return "";
-  if (items.length === 1) return items[0]!;
+  if (items.length === 1) return items[0] ?? "";
   if (items.length === 2) return `${items[0]} and ${items[1]}`;
-  return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]!}`;
+  const last = items.at(-1);
+  return `${items.slice(0, -1).join(", ")}, and ${last ?? ""}`;
 }
 
 function titleCaseDamageType(s: string): string {
   if (!s) return s;
   return s.replace(
     /\w+/g,
-    (w) => w[0]!.toUpperCase() + w.slice(1).toLowerCase(),
+    (w) => w[0]?.toUpperCase() + w.slice(1).toLowerCase(),
   );
 }
 
@@ -284,7 +284,7 @@ function titleCaseCondition(s: string): string {
   if (!s) return s;
   return s
     .split(/[\s_-]+/)
-    .map((p) => p[0]!.toUpperCase() + p.slice(1).toLowerCase())
+    .map((p) => p[0]?.toUpperCase() + p.slice(1).toLowerCase())
     .join(" ");
 }
 
@@ -302,14 +302,14 @@ function formatOneDamage(item: unknown, key: DamageArrayKey): string {
     const list = joinConjunction(parts);
     const pre =
       typeof o.preNote === "string" && o.preNote.trim()
-        ? o.preNote.trim() + " "
+        ? `${o.preNote.trim()} `
         : "";
     const post =
       typeof o.note === "string" && o.note.trim() ? o.note.trim() : "";
     return (
       pre +
       list +
-      (post ? (post[0] === "." ? post : " " + post) : "")
+      (post ? (post[0] === "." ? post : ` ${post}`) : "")
     ).trim();
   }
   return "";
@@ -337,14 +337,14 @@ function formatOneConditionImmunity(item: unknown): string {
     const list = joinConjunction(parts);
     const pre =
       typeof o.preNote === "string" && o.preNote.trim()
-        ? o.preNote.trim() + " "
+        ? `${o.preNote.trim()} `
         : "";
     const post =
       typeof o.note === "string" && o.note.trim() ? o.note.trim() : "";
     return (
       pre +
       list +
-      (post ? (post[0] === "." ? post : " " + post) : "")
+      (post ? (post[0] === "." ? post : ` ${post}`) : "")
     ).trim();
   }
   return "";
@@ -450,13 +450,13 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
 ---
 
 <div class="sb not-content">
-  {/* ── Name bar ── */}
+  <!-- Name bar -->
   <div class="sb__header">
     <h2 class="sb__name">{c.name ?? 'Unknown Creature'}</h2>
     <p class="sb__meta">{meta}, {alignPart}</p>
   </div>
 
-  {/* ── Key stats row ── */}
+  <!-- Key stats row -->
   <div class="sb__key-stats">
     <div class="sb__stat-card">
       <div class="sb__stat-card-label">Armor Class</div>
@@ -479,7 +479,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
     </div>
   </div>
 
-  {/* ── Ability scores ── */}
+  <!-- Ability scores -->
   <div class="sb__abilities">
     <div class="sb__abilities-header">
       {ABILITIES.map(({ label }) => (
@@ -507,8 +507,8 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
     </div>
   </div>
 
-  {/* ── Properties ── */}
-  {/* Saving Throws are now inline in the ability score grid above */}
+  <!-- Properties -->
+  <!-- Saving throws are inline in the ability score grid above -->
   {(skills.length > 0
     || damageVulnerabilities
     || damageResistances
@@ -562,7 +562,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   </div>
   )}
 
-  {/* ── Traits ── */}
+  <!-- Traits -->
   {traits.length > 0 && (
   <div class="sb__features">
     {traits.map((t) => (
@@ -574,7 +574,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   </div>
   )}
 
-  {/* ── Actions ── */}
+  <!-- Actions -->
   {actions.length > 0 && (
   <div class="sb__section">
     <h3 class="sb__section-title">Actions</h3>
@@ -589,7 +589,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   </div>
   )}
 
-  {/* ── Bonus Actions ── */}
+  <!-- Bonus actions -->
   {bonusActions.length > 0 && (
   <div class="sb__section">
     <h3 class="sb__section-title">Bonus Actions</h3>
@@ -611,7 +611,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   </div>
   )}
 
-  {/* ── Reactions ── */}
+  <!-- Reactions -->
   {reactions.length > 0 && (
   <div class="sb__section">
     <h3 class="sb__section-title">Reactions</h3>
@@ -626,7 +626,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   </div>
   )}
 
-  {/* ── Legendary Actions ── */}
+  <!-- Legendary actions -->
   {legendary.length > 0 && (
   <div class="sb__section">
     <h3 class="sb__section-title">Legendary Actions</h3>
@@ -647,255 +647,255 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
 </div>
 
 <style>
-  /* ─── Light mode tokens ─────────────────────────────────────────────── */
-  .sb {
-    --sb-bg: #fdf6e3;
-    --sb-bg-alt: #f3e8c8;
-    --sb-red: #7a200d;
-    --sb-divider: #9c2b1b;
-    --sb-gold: #c9a14a;
-    --sb-text: #212121;
-    --sb-radius: 6px;
-    --sb-font-body:
-      "Scala Sans Pro", "Myriad Pro", Calibri, "Trebuchet MS", sans-serif;
-    --sb-font-head:
-      "Mrs Eaves", Palatino, "Palatino Linotype", "Book Antiqua", serif;
+/* ─── Light mode tokens ─────────────────────────────────────────────── */
+.sb {
+  --sb-bg: #fdf6e3;
+  --sb-bg-alt: #f3e8c8;
+  --sb-red: #7a200d;
+  --sb-divider: #9c2b1b;
+  --sb-gold: #c9a14a;
+  --sb-text: #212121;
+  --sb-radius: 6px;
+  --sb-font-body:
+    "Scala Sans Pro", "Myriad Pro", Calibri, "Trebuchet MS", sans-serif;
+  --sb-font-head:
+    "Mrs Eaves", Palatino, "Palatino Linotype", "Book Antiqua", serif;
 
-    background-color: var(--sb-bg);
-    border: 2px solid var(--sb-gold);
-    border-radius: var(--sb-radius);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
-    color: var(--sb-text);
-    font-family: var(--sb-font-body);
-    font-size: 0.9rem;
-    line-height: 1.45;
-    margin-block: 1.75rem;
-    /* Full page width — let the container decide */
-    width: 100%;
-    overflow: hidden;
-  }
+  background-color: var(--sb-bg);
+  border: 2px solid var(--sb-gold);
+  border-radius: var(--sb-radius);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  color: var(--sb-text);
+  font-family: var(--sb-font-body);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin-block: 1.75rem;
+  /* Full page width — let the container decide */
+  width: 100%;
+  overflow: hidden;
+}
 
-  /* ─── Dark mode tokens ───────────────────────────────────────────────── */
-  :global([data-theme="dark"]) .sb {
-    /* Cool indigo/amethyst palette to match the site's cavern theme */
-    --sb-bg: #0e0e1c;
-    --sb-bg-alt: #16162a;
-    --sb-red: #a882d8; /* amethyst — replaces maroon for headings  */
-    --sb-divider: #5a3f7a; /* deep purple divider                       */
-    --sb-gold: #3a2e68; /* indigo border — replaces gold             */
-    --sb-text: #ccd0ea; /* cool lavender-white                       */
-    box-shadow: 0 2px 20px rgba(100, 50, 180, 0.45);
-  }
+/* ─── Dark mode tokens ───────────────────────────────────────────────── */
+:global([data-theme="dark"]) .sb {
+  /* Cool indigo/amethyst palette to match the site's cavern theme */
+  --sb-bg: #0e0e1c;
+  --sb-bg-alt: #16162a;
+  --sb-red: #a882d8; /* amethyst — replaces maroon for headings  */
+  --sb-divider: #5a3f7a; /* deep purple divider                       */
+  --sb-gold: #3a2e68; /* indigo border — replaces gold             */
+  --sb-text: #ccd0ea; /* cool lavender-white                       */
+  box-shadow: 0 2px 20px rgba(100, 50, 180, 0.45);
+}
 
-  /* ─── Header ─────────────────────────────────────────────────────────── */
-  .sb__header {
-    background-color: var(--sb-bg-alt);
-    border-bottom: 3px solid var(--sb-divider);
-    padding: 0.75rem 1.25rem 0.5rem;
-  }
+/* ─── Header ─────────────────────────────────────────────────────────── */
+.sb__header {
+  background-color: var(--sb-bg-alt);
+  border-bottom: 3px solid var(--sb-divider);
+  padding: 0.75rem 1.25rem 0.5rem;
+}
 
-  .sb__name {
-    all: unset;
-    color: var(--sb-red);
-    display: block;
-    font-family: var(--sb-font-head);
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    line-height: 1.1;
-  }
+.sb__name {
+  all: unset;
+  color: var(--sb-red);
+  display: block;
+  font-family: var(--sb-font-head);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
 
-  .sb__meta {
-    all: unset;
-    color: var(--sb-red);
-    display: block;
-    font-size: 0.875rem;
-    font-style: italic;
-    margin-top: 0.2rem;
-    opacity: 0.85;
-  }
+.sb__meta {
+  all: unset;
+  color: var(--sb-red);
+  display: block;
+  font-size: 0.875rem;
+  font-style: italic;
+  margin-top: 0.2rem;
+  opacity: 0.85;
+}
 
-  /* ─── Key stats row ──────────────────────────────────────────────────── */
+/* ─── Key stats row ──────────────────────────────────────────────────── */
+.sb__key-stats {
+  border-bottom: 2px solid var(--sb-gold);
+  display: grid;
+  /* 4 equal columns; collapses to 2×2 on narrow screens */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+@media (max-width: 480px) {
   .sb__key-stats {
-    border-bottom: 2px solid var(--sb-gold);
-    display: grid;
-    /* 4 equal columns; collapses to 2×2 on narrow screens */
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  @media (max-width: 480px) {
-    .sb__key-stats {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
+.sb__stat-card {
+  border-right: 1px solid var(--sb-gold);
+  padding: 0.625rem 1rem;
+  text-align: center;
+}
+.sb__stat-card:last-child {
+  border-right: none;
+}
 
-  .sb__stat-card {
-    border-right: 1px solid var(--sb-gold);
-    padding: 0.625rem 1rem;
-    text-align: center;
-  }
-  .sb__stat-card:last-child {
-    border-right: none;
-  }
+.sb__stat-card-label {
+  color: var(--sb-red);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
-  .sb__stat-card-label {
-    color: var(--sb-red);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+.sb__stat-card-value {
+  font-family: var(--sb-font-head);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 0.1rem;
+}
 
-  .sb__stat-card-value {
-    font-family: var(--sb-font-head);
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1.1;
-    margin-top: 0.1rem;
-  }
+.sb__stat-card-note {
+  color: color-mix(in srgb, var(--sb-text) 65%, transparent);
+  font-size: 0.75rem;
+  margin-top: 0.1rem;
+}
 
-  .sb__stat-card-note {
-    color: color-mix(in srgb, var(--sb-text) 65%, transparent);
-    font-size: 0.75rem;
-    margin-top: 0.1rem;
-  }
+/* ─── Ability scores ─────────────────────────────────────────────────── */
+.sb__abilities {
+  border-bottom: 2px solid var(--sb-gold);
+  padding: 0;
+}
 
-  /* ─── Ability scores ─────────────────────────────────────────────────── */
-  .sb__abilities {
-    border-bottom: 2px solid var(--sb-gold);
-    padding: 0;
-  }
+.sb__abilities-header,
+.sb__abilities-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  text-align: center;
+}
 
-  .sb__abilities-header,
-  .sb__abilities-row {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    text-align: center;
-  }
+.sb__abilities-header {
+  background-color: var(--sb-bg-alt);
+  padding: 0.35rem 0 0.2rem;
+}
 
-  .sb__abilities-header {
-    background-color: var(--sb-bg-alt);
-    padding: 0.35rem 0 0.2rem;
-  }
+.sb__ability-col-head {
+  color: var(--sb-red);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
-  .sb__ability-col-head {
-    color: var(--sb-red);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+.sb__abilities-row {
+  padding: 0.4rem 0 0.5rem;
+}
 
-  .sb__abilities-row {
-    padding: 0.4rem 0 0.5rem;
-  }
+.sb__ability-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding-block: 0.5rem;
+}
 
-  .sb__ability-cell {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.15rem;
-    padding-block: 0.5rem;
-  }
+.sb__ability-score {
+  font-family: var(--sb-font-head);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
 
-  .sb__ability-score {
-    font-family: var(--sb-font-head);
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1;
-  }
+/* Row containing MOD and SAVE side-by-side */
+.sb__ability-stats {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+}
 
-  /* Row containing MOD and SAVE side-by-side */
-  .sb__ability-stats {
-    display: flex;
-    gap: 0.6rem;
-    justify-content: center;
-  }
+.sb__ability-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
 
-  .sb__ability-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
+.sb__ability-stat-label {
+  color: var(--sb-red);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  opacity: 0.75;
+  text-transform: uppercase;
+}
 
-  .sb__ability-stat-label {
-    color: var(--sb-red);
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    line-height: 1;
-    opacity: 0.75;
-    text-transform: uppercase;
-  }
+.sb__ability-mod,
+.sb__ability-save {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: color-mix(in srgb, var(--sb-text) 75%, transparent);
+}
 
-  .sb__ability-mod,
-  .sb__ability-save {
-    font-size: 0.8rem;
-    font-weight: 600;
-    line-height: 1.2;
-    color: color-mix(in srgb, var(--sb-text) 75%, transparent);
-  }
+/* Highlight saves where proficiency applies (save ≠ raw modifier) */
+.sb__ability-save[data-proficient="true"] {
+  color: var(--sb-text);
+  font-weight: 700;
+}
 
-  /* Highlight saves where proficiency applies (save ≠ raw modifier) */
-  .sb__ability-save[data-proficient="true"] {
-    color: var(--sb-text);
-    font-weight: 700;
-  }
+/* ─── Properties ─────────────────────────────────────────────────────── */
+.sb__properties {
+  border-bottom: 1px solid var(--sb-gold);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.15rem 1.5rem;
+  padding: 0.6rem 1.25rem;
+}
 
-  /* ─── Properties ─────────────────────────────────────────────────────── */
-  .sb__properties {
-    border-bottom: 1px solid var(--sb-gold);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 0.15rem 1.5rem;
-    padding: 0.6rem 1.25rem;
-  }
+.sb__prop {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
 
-  .sb__prop {
-    display: flex;
-    gap: 0.35rem;
-    flex-wrap: wrap;
-    align-items: baseline;
-  }
+.sb__prop-name {
+  color: var(--sb-red);
+  font-weight: 700;
+  white-space: nowrap;
+}
 
-  .sb__prop-name {
-    color: var(--sb-red);
-    font-weight: 700;
-    white-space: nowrap;
-  }
+/* ─── Features (traits, actions) ────────────────────────────────────── */
+.sb__features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 0.3rem 2rem;
+  padding: 0.6rem 1.25rem;
+}
 
-  /* ─── Features (traits, actions) ────────────────────────────────────── */
-  .sb__features {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 0.3rem 2rem;
-    padding: 0.6rem 1.25rem;
-  }
+.sb__feature {
+  all: unset;
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
 
-  .sb__feature {
-    all: unset;
-    display: block;
-    font-size: 0.875rem;
-    line-height: 1.5;
-  }
+/* ─── Sections (Actions, Reactions, Legendary) ───────────────────────── */
+.sb__section {
+  border-top: 2px solid var(--sb-divider);
+}
 
-  /* ─── Sections (Actions, Reactions, Legendary) ───────────────────────── */
-  .sb__section {
-    border-top: 2px solid var(--sb-divider);
-  }
-
-  .sb__section-title {
-    all: unset;
-    background-color: var(--sb-bg-alt);
-    border-bottom: 1px solid var(--sb-gold);
-    color: var(--sb-red);
-    display: block;
-    font-family: var(--sb-font-head);
-    font-size: 1.15rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    padding: 0.35rem 1.25rem;
-  }
+.sb__section-title {
+  all: unset;
+  background-color: var(--sb-bg-alt);
+  border-bottom: 1px solid var(--sb-gold);
+  color: var(--sb-red);
+  display: block;
+  font-family: var(--sb-font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.35rem 1.25rem;
+}
 </style>

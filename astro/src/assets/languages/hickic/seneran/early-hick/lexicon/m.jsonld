@@ -22,10 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:maal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ma.ʔal",
@@ -44,20 +41,14 @@
             "@language": "en",
             "@value": "community, tribe"
           },
-          "lexinfo:semanticField": [
-            "Person Terms",
-            "Political Terms"
-          ],
+          "lexinfo:semanticField": ["Person Terms", "Political Terms"],
           "usage": "Collective term implying social/political unity"
         }
       ]
     },
     {
       "@id": "ehk:mabarak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ma.ba.rak",
@@ -95,10 +86,7 @@
     },
     {
       "@id": "ehk:mal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mal",
@@ -116,10 +104,7 @@
             "@language": "en",
             "@value": "pool, standing water"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Water Features"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Water Features"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -127,10 +112,7 @@
             "@language": "en",
             "@value": "pool, standing water"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Water Features"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Water Features"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -138,10 +120,7 @@
             "@language": "en",
             "@value": "pool, standing water"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Water Features"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Water Features"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -149,19 +128,13 @@
             "@language": "en",
             "@value": "pool, standing water"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Water Features"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Water Features"]
         }
       ]
     },
     {
       "@id": "ehk:malris",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mal.ris",
@@ -180,20 +153,13 @@
             "@language": "en",
             "@value": "water reed"
           },
-          "lexinfo:semanticField": [
-            "Flora",
-            "Plant Terms",
-            "Cultivated Plants"
-          ]
+          "lexinfo:semanticField": ["Flora", "Plant Terms", "Cultivated Plants"]
         }
       ]
     },
     {
       "@id": "ehk:malthrenok",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mal.θre.nok",
@@ -201,11 +167,7 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:components": [
-          "mal (pool)",
-          "thren (watch)",
-          "-ok (AGENT)"
-        ],
+        "etymon:components": ["mal (pool)", "thren (watch)", "-ok (AGENT)"],
         "etymon:compound": "mal-thren-ok",
         "etymon:soundChange": "compound fusion"
       },
@@ -216,20 +178,14 @@
             "@language": "en",
             "@value": "pool-watcher, diviner"
           },
-          "lexinfo:semanticField": [
-            "Magical Terms",
-            "Sacred Terms"
-          ],
+          "lexinfo:semanticField": ["Magical Terms", "Sacred Terms"],
           "usage": "One who practices divination through watching pools/water"
         }
       ]
     },
     {
       "@id": "ehk:mar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mar",
@@ -256,19 +212,13 @@
             "@language": "en",
             "@value": "blood, life-fluid; red"
           },
-          "lexinfo:semanticField": [
-            "Body Parts",
-            "Colors"
-          ]
+          "lexinfo:semanticField": ["Body Parts", "Colors"]
         }
       ]
     },
     {
       "@id": "ehk:marwud",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mar.wud",
@@ -298,10 +248,7 @@
     },
     {
       "@id": "ehk:matakulambe",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ma.ta.ku.lam.be",
@@ -363,10 +310,7 @@
     },
     {
       "@id": "ehk:materok",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ma.te.rok",
@@ -392,10 +336,7 @@
             "@language": "en",
             "@value": "vessel-guide, boatman"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms",
-            "Occupations"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms", "Occupations"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -403,10 +344,7 @@
             "@language": "en",
             "@value": "vessel-guide, boatman"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms",
-            "Occupations"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms", "Occupations"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -414,10 +352,7 @@
             "@language": "en",
             "@value": "vessel-guide, boatman"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms",
-            "Occupations"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms", "Occupations"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -425,10 +360,7 @@
             "@language": "en",
             "@value": "vessel-guide, boatman"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms",
-            "Occupations"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms", "Occupations"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -436,19 +368,13 @@
             "@language": "en",
             "@value": "vessel-guide, boatman"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms",
-            "Occupations"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms", "Occupations"]
         }
       ]
     },
     {
       "@id": "ehk:mel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mel",
@@ -473,10 +399,7 @@
     },
     {
       "@id": "ehk:meltek",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mel.tek",
@@ -496,10 +419,7 @@
         "etymon:gloss": "sweet-rhythm",
         "etymon:note": "Shows preservation of first syllable of second element in compound reduction",
         "etymon:protoform": "Proto-Hick *melu-takutaku",
-        "etymon:soundChange": [
-          "compound reduction",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["compound reduction", "final vowel loss"]
       },
       "related": [
         {
@@ -515,10 +435,7 @@
             "@language": "en",
             "@value": "song"
           },
-          "lexinfo:semanticField": [
-            "Music Terms",
-            "Performance Terms"
-          ],
+          "lexinfo:semanticField": ["Music Terms", "Performance Terms"],
           "usage": "Basic term for melodic vocal performance"
         },
         {
@@ -527,20 +444,14 @@
             "@language": "en",
             "@value": "melodic rhythm"
           },
-          "lexinfo:semanticField": [
-            "Music Terms",
-            "Sound Terms"
-          ],
+          "lexinfo:semanticField": ["Music Terms", "Sound Terms"],
           "usage": "Technical term for musical patterns"
         }
       ]
     },
     {
       "@id": "ehk:mer",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mer",
@@ -568,10 +479,7 @@
             "@language": "en",
             "@value": "bird"
           },
-          "lexinfo:semanticField": [
-            "Animals",
-            "Bird Terms"
-          ]
+          "lexinfo:semanticField": ["Animals", "Bird Terms"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -579,19 +487,14 @@
             "@language": "en",
             "@value": "parent"
           },
-          "lexinfo:semanticField": [
-            "Kinship Terms"
-          ],
+          "lexinfo:semanticField": ["Kinship Terms"],
           "usage": "Extended meaning through cultural metaphor"
         }
       ]
     },
     {
       "@id": "ehk:merkran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mer.kran",
@@ -628,19 +531,13 @@
             "@language": "en",
             "@value": "emotional pain, heartache"
           },
-          "lexinfo:semanticField": [
-            "Emotional Terms",
-            "Body Terms"
-          ]
+          "lexinfo:semanticField": ["Emotional Terms", "Body Terms"]
         }
       ]
     },
     {
       "@id": "ehk:mes",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mes",
@@ -668,10 +565,7 @@
     },
     {
       "@id": "ehk:mes'er",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mes.ʔer",
@@ -698,19 +592,13 @@
             "@language": "en",
             "@value": "to feel (emotion), experience emotion"
           },
-          "lexinfo:semanticField": [
-            "Emotional Terms",
-            "Body Terms"
-          ]
+          "lexinfo:semanticField": ["Emotional Terms", "Body Terms"]
         }
       ]
     },
     {
       "@id": "ehk:mil",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mil",
@@ -728,19 +616,13 @@
             "@language": "en",
             "@value": "tallow, animal fat"
           },
-          "lexinfo:semanticField": [
-            "Body Parts",
-            "Food & Consumption Terms"
-          ]
+          "lexinfo:semanticField": ["Body Parts", "Food & Consumption Terms"]
         }
       ]
     },
     {
       "@id": "ehk:milai",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mi.lai",
@@ -769,10 +651,7 @@
     },
     {
       "@id": "ehk:miraitar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mi.rai.tar",
@@ -791,19 +670,13 @@
             "@language": "en",
             "@value": "cold rain"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Precipitation"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Precipitation"]
         }
       ]
     },
     {
       "@id": "ehk:mirik",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mi.rik",
@@ -837,10 +710,7 @@
     },
     {
       "@id": "ehk:momer",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mo.mer",
@@ -868,19 +738,13 @@
             "@language": "en",
             "@value": "chicken"
           },
-          "lexinfo:semanticField": [
-            "Animals",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Animals", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:mur",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mur",
@@ -910,10 +774,7 @@
             "@language": "en",
             "@value": "night, darkness"
           },
-          "lexinfo:semanticField": [
-            "Time Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Time Terms", "Sacred Terms"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -921,10 +782,7 @@
             "@language": "en",
             "@value": "night, darkness"
           },
-          "lexinfo:semanticField": [
-            "Time Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Time Terms", "Sacred Terms"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -932,19 +790,13 @@
             "@language": "en",
             "@value": "night, darkness"
           },
-          "lexinfo:semanticField": [
-            "Time Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Time Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:murkel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mur.kel",
@@ -970,19 +822,13 @@
             "@language": "en",
             "@value": "night sky"
           },
-          "lexinfo:semanticField": [
-            "Time Terms",
-            "Celestial Bodies"
-          ]
+          "lexinfo:semanticField": ["Time Terms", "Celestial Bodies"]
         }
       ]
     },
     {
       "@id": "ehk:murlambe",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mur.lam.be",
@@ -1010,20 +856,14 @@
             "@value": "Dark Elven (Drow)"
           },
           "lexinfo:register": "formal",
-          "lexinfo:semanticField": [
-            "Language Terms",
-            "Eldrim Terms"
-          ],
+          "lexinfo:semanticField": ["Language Terms", "Eldrim Terms"],
           "usage": "Rare term, mainly in historical or scholarly contexts"
         }
       ]
     },
     {
       "@id": "ehk:murmer",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mur.mer",
@@ -1049,11 +889,7 @@
             "@language": "en",
             "@value": "night-bird, owl"
           },
-          "lexinfo:semanticField": [
-            "Birds",
-            "Animals",
-            "Nocturnal Animals"
-          ]
+          "lexinfo:semanticField": ["Birds", "Animals", "Nocturnal Animals"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -1061,10 +897,7 @@
             "@language": "en",
             "@value": "night-bird, owl"
           },
-          "lexinfo:semanticField": [
-            "Bird Terms",
-            "Nocturnal Animals"
-          ]
+          "lexinfo:semanticField": ["Bird Terms", "Nocturnal Animals"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -1072,10 +905,7 @@
             "@language": "en",
             "@value": "night-bird, owl"
           },
-          "lexinfo:semanticField": [
-            "Bird Terms",
-            "Nocturnal Animals"
-          ]
+          "lexinfo:semanticField": ["Bird Terms", "Nocturnal Animals"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -1083,19 +913,13 @@
             "@language": "en",
             "@value": "night-bird, owl"
           },
-          "lexinfo:semanticField": [
-            "Bird Terms",
-            "Nocturnal Animals"
-          ]
+          "lexinfo:semanticField": ["Bird Terms", "Nocturnal Animals"]
         }
       ]
     },
     {
       "@id": "ehk:murvinu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mur.vi.nu",
@@ -1125,10 +949,7 @@
     },
     {
       "@id": "ehk:murvinuiter",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mur.vi.nu.i.ter",
@@ -1158,10 +979,7 @@
     },
     {
       "@id": "ehk:mulis",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mu.lis",
@@ -1179,19 +997,13 @@
             "@language": "en",
             "@value": "dream, vision"
           },
-          "lexinfo:semanticField": [
-            "Mental Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Mental Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:mulisim",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mu.li.sim",
@@ -1210,19 +1022,13 @@
             "@language": "en",
             "@value": "to enter a dream state"
           },
-          "lexinfo:semanticField": [
-            "Mental Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Mental Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:mulisimris",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mu.li.sim.ris",
@@ -1241,19 +1047,13 @@
             "@language": "en",
             "@value": "to awaken from a dream"
           },
-          "lexinfo:semanticField": [
-            "Mental Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Mental Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:mulislas",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mu.lis.las",
@@ -1272,19 +1072,13 @@
             "@language": "en",
             "@value": "to enter a dream"
           },
-          "lexinfo:semanticField": [
-            "Mental Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Mental Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:mulisthral",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mu.lis.θral",
@@ -1303,19 +1097,39 @@
             "@language": "en",
             "@value": "prophetic dream"
           },
-          "lexinfo:semanticField": [
-            "Mental Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Mental Terms", "Sacred Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:mulsum",
+      "@type": [
+        "ontolex:LexicalEntry",
+        "lexinfo:FutureParticle",
+        "lexinfo:Particle"
+      ],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "mul.sum",
+        "writtenRep": "mulsum"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "future tense marker. Placed at the beginning of a clause to indicate future tense."
+          },
+          "lexinfo:tense": {
+            "@id": "lexinfo:future"
+          },
+          "lexinfo:semanticField": ["Temporal Terms", "Tense Terms"]
         }
       ]
     },
     {
       "@id": "ehk:murduwes",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mur.du.wes",
@@ -1334,19 +1148,13 @@
             "@language": "en",
             "@value": "evening meal"
           },
-          "lexinfo:semanticField": [
-            "Food Terms",
-            "Time Terms"
-          ]
+          "lexinfo:semanticField": ["Food Terms", "Time Terms"]
         }
       ]
     },
     {
       "@id": "ehk:murkran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mur.kran",
@@ -1365,19 +1173,13 @@
             "@language": "en",
             "@value": "night watch horn"
           },
-          "lexinfo:semanticField": [
-            "Tool Terms",
-            "Time Terms"
-          ]
+          "lexinfo:semanticField": ["Tool Terms", "Time Terms"]
         }
       ]
     },
     {
       "@id": "ehk:murlis",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "mur.lis",
@@ -1396,10 +1198,7 @@
             "@language": "en",
             "@value": "night vision"
           },
-          "lexinfo:semanticField": [
-            "Body Terms",
-            "Time Terms"
-          ]
+          "lexinfo:semanticField": ["Body Terms", "Time Terms"]
         }
       ]
     }

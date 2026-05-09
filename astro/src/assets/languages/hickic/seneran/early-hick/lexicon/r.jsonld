@@ -22,10 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:ran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ran",
@@ -43,19 +40,13 @@
             "@language": "en",
             "@value": "stream, flowing water"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Water Features"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Water Features"]
         }
       ]
     },
     {
       "@id": "ehk:ranris",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ran.ris",
@@ -74,20 +65,13 @@
             "@language": "en",
             "@value": "river reed"
           },
-          "lexinfo:semanticField": [
-            "Flora",
-            "Plant Terms",
-            "Cultivated Plants"
-          ]
+          "lexinfo:semanticField": ["Flora", "Plant Terms", "Cultivated Plants"]
         }
       ]
     },
     {
       "@id": "ehk:rek",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "rek",
@@ -134,20 +118,14 @@
             "@language": "en",
             "@value": "bark (of dog/wolf)"
           },
-          "lexinfo:semanticField": [
-            "Sound Terms",
-            "Animal Terms"
-          ],
+          "lexinfo:semanticField": ["Sound Terms", "Animal Terms"],
           "usage": "Basic term for canine vocalization"
         }
       ]
     },
     {
       "@id": "ehk:ret",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ret",
@@ -171,10 +149,7 @@
     },
     {
       "@id": "ehk:ris",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ris",
@@ -192,19 +167,13 @@
             "@language": "en",
             "@value": "reed"
           },
-          "lexinfo:semanticField": [
-            "Flora",
-            "Plant Terms"
-          ]
+          "lexinfo:semanticField": ["Flora", "Plant Terms"]
         }
       ]
     },
     {
       "@id": "ehk:rok",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "rok",
@@ -223,20 +192,14 @@
             "@language": "en",
             "@value": "horse"
           },
-          "lexinfo:semanticField": [
-            "Animals",
-            "Pastoral Terms"
-          ],
+          "lexinfo:semanticField": ["Animals", "Pastoral Terms"],
           "usage": "Shows elvish introduction of horses"
         }
       ]
     },
     {
       "@id": "ehk:ru",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Conjunction"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Conjunction"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ru",
@@ -255,10 +218,7 @@
     },
     {
       "@id": "ehk:rak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "rak",
@@ -276,19 +236,13 @@
             "@language": "en",
             "@value": "to break, shatter"
           },
-          "lexinfo:semanticField": [
-            "Action Verbs",
-            "Destructive Actions"
-          ]
+          "lexinfo:semanticField": ["Action Verbs", "Destructive Actions"]
         }
       ]
     },
     {
       "@id": "ehk:ranes",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ra.nes",
@@ -307,19 +261,13 @@
             "@language": "en",
             "@value": "river fish"
           },
-          "lexinfo:semanticField": [
-            "Animal Terms",
-            "Maritime Terms"
-          ]
+          "lexinfo:semanticField": ["Animal Terms", "Maritime Terms"]
         }
       ]
     },
     {
       "@id": "ehk:rantirdu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ran.tir.du",
@@ -336,19 +284,13 @@
             "@language": "en",
             "@value": "piracy, maritime raiding"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms",
-            "Criminal Terms"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms", "Criminal Terms"]
         }
       ]
     },
     {
       "@id": "ehk:rantirduok",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ran.tir.du.ok",
@@ -370,19 +312,13 @@
             "@language": "en",
             "@value": "pirate, maritime raider"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms",
-            "Professional Terms"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms", "Professional Terms"]
         }
       ]
     },
     {
       "@id": "ehk:ren",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ren",
@@ -400,18 +336,13 @@
             "@language": "en",
             "@value": "deer"
           },
-          "lexinfo:semanticField": [
-            "Animal Terms"
-          ]
+          "lexinfo:semanticField": ["Animal Terms"]
         }
       ]
     },
     {
       "@id": "ehk:rismater",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ris.ma.ter",
@@ -432,18 +363,13 @@
             "@language": "en",
             "@value": "reed-vessel"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms"]
         }
       ]
     },
     {
       "@id": "ehk:riswad",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ris.wad",
@@ -464,10 +390,7 @@
             "@language": "en",
             "@value": "garden path"
           },
-          "lexinfo:semanticField": [
-            "Path Terms",
-            "Garden Terms"
-          ]
+          "lexinfo:semanticField": ["Path Terms", "Garden Terms"]
         }
       ]
     }

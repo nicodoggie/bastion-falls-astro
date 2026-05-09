@@ -6,7 +6,7 @@
     "root": "../"
   },
   "files": {
-    "includes": ["src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,jsonc,astro}"],
+    "includes": ["src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,jsonld,jsonc,astro}"],
     "maxSize": 2097152 // 2MiB
   },
   "formatter": {
@@ -21,12 +21,27 @@
   },
   "overrides": [
     {
-      "includes": ["src/components/SpellBlock.astro", "src/components/ItemBlock.astro"],
+      "includes": ["**/*.astro"],
       "linter": {
         "rules": {
           "correctness": {
-            "noUnusedVariables": "off",
             "useJsxKeyInIterable": "off"
+          },
+          "suspicious": {
+            "noArrayIndexKey": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "src/components/SpellBlock.astro",
+        "src/components/ItemBlock.astro"
+      ],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedVariables": "off"
           }
         }
       }

@@ -22,10 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:paket",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "pa.ket",
@@ -34,10 +31,7 @@
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:protoform": "Proto-Hick *pakata",
-        "etymon:soundChange": [
-          "final vowel loss",
-          "vowel reduction"
-        ]
+        "etymon:soundChange": ["final vowel loss", "vowel reduction"]
       },
       "sense": [
         {
@@ -56,10 +50,7 @@
     },
     {
       "@id": "ehk:palmal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "pal.mal",
@@ -96,10 +87,7 @@
     },
     {
       "@id": "ehk:palmil",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "pal.mil",
@@ -135,10 +123,7 @@
     },
     {
       "@id": "ehk:par",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "par",
@@ -158,19 +143,13 @@
             "@language": "en",
             "@value": "crawl"
           },
-          "lexinfo:semanticField": [
-            "Motion Terms",
-            "Body Terms"
-          ]
+          "lexinfo:semanticField": ["Motion Terms", "Body Terms"]
         }
       ]
     },
     {
       "@id": "ehk:parduwes",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "par.du.wes",
@@ -215,20 +194,14 @@
             "@language": "en",
             "@value": "cavern, cave network"
           },
-          "lexinfo:semanticField": [
-            "Landforms",
-            "Mythological Terms"
-          ],
+          "lexinfo:semanticField": ["Landforms", "Mythological Terms"],
           "usage": "Originally 'worm-eaten,' extended to mean cave networks"
         }
       ]
     },
     {
       "@id": "ehk:parmatal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "par.ma.tal",
@@ -256,20 +229,14 @@
             "@language": "en",
             "@value": "library"
           },
-          "lexinfo:semanticField": [
-            "Writing Terms",
-            "Building Terms"
-          ],
+          "lexinfo:semanticField": ["Writing Terms", "Building Terms"],
           "usage": "Institutional term for book repository"
         }
       ]
     },
     {
       "@id": "ehk:pir",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "pir",
@@ -296,19 +263,13 @@
             "@language": "en",
             "@value": "ear"
           },
-          "lexinfo:semanticField": [
-            "Body Parts",
-            "Perception Terms"
-          ]
+          "lexinfo:semanticField": ["Body Parts", "Perception Terms"]
         }
       ]
     },
     {
       "@id": "ehk:pak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "pak",
@@ -326,19 +287,13 @@
             "@language": "en",
             "@value": "poke"
           },
-          "lexinfo:semanticField": [
-            "Tool Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Tool Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:pakupak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ˈpa.ku.pək",
@@ -356,19 +311,13 @@
             "@language": "en",
             "@value": "tickle"
           },
-          "lexinfo:semanticField": [
-            "Basic Terms",
-            "Physical Sensation"
-          ]
+          "lexinfo:semanticField": ["Basic Terms", "Physical Sensation"]
         }
       ]
     },
     {
       "@id": "ehk:pal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "pal",
@@ -386,19 +335,13 @@
             "@language": "en",
             "@value": "belly, center"
           },
-          "lexinfo:semanticField": [
-            "Body Parts",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Body Parts", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:pel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "pel",
@@ -416,19 +359,13 @@
             "@language": "en",
             "@value": "bear"
           },
-          "lexinfo:semanticField": [
-            "Animal Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Animal Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:pil",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "pil",
@@ -446,19 +383,13 @@
             "@language": "en",
             "@value": "five"
           },
-          "lexinfo:semanticField": [
-            "Number Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Number Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:pirlas",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "pir.las",
@@ -476,19 +407,13 @@
             "@language": "en",
             "@value": "hearing"
           },
-          "lexinfo:semanticField": [
-            "Body Parts",
-            "Perception Terms"
-          ]
+          "lexinfo:semanticField": ["Body Parts", "Perception Terms"]
         }
       ]
     },
     {
       "@id": "ehk:pirlas'er",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "pir.las.ʔer",
@@ -506,20 +431,14 @@
             "@language": "en",
             "@value": "to hear"
           },
-          "lexinfo:semanticField": [
-            "Perception Terms",
-            "Basic Terms"
-          ],
+          "lexinfo:semanticField": ["Perception Terms", "Basic Terms"],
           "usage": "Passive perception verb using illative to mark reception of sound. Contrasts with active pir'er 'listen'"
         }
       ]
     },
     {
       "@id": "ehk:pran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "pran",
@@ -537,10 +456,7 @@
             "@language": "en",
             "@value": "seven"
           },
-          "lexinfo:semanticField": [
-            "Number Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Number Terms", "Basic Terms"]
         }
       ]
     }

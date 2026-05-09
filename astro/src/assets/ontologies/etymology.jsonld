@@ -236,8 +236,6 @@
       "rdfs:label": "Has Stage",
       "rdfs:comment": "Links an etymology collection to its chronological stages"
     },
-    
-    // Properties
     {
       "@id": "hasEtymology",
       "@type": "owl:ObjectProperty",

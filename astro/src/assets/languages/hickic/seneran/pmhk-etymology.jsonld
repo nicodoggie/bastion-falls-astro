@@ -220,9 +220,7 @@
       "baety:sourceForm": {
         "@id": "pmhk:ahi"
       },
-      "baety:soundChangeApplied": [
-        "Medial h-weakening: ˈahi → ˈaʔi (h → ʔ)"
-      ],
+      "baety:soundChangeApplied": ["Medial h-weakening: ˈahi → ˈaʔi (h → ʔ)"],
       "baety:hasPeriod": "c. 550-600 AI"
     },
     {
@@ -285,4 +283,4 @@
       "baety:hasEtymologicalNote": "Shows both intervocalic stop voicing and final schwa dropping"
     }
   ]
-} 
+}

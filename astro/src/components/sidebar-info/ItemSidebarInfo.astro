@@ -8,14 +8,16 @@ const { item } = Astro.props;
   class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
 >
   {item.name && (
-      <div class="flex justify-center items-center border-gray-600">
-        <a href={item?.ddb} target="_blank" rel="noopener noreferrer">
-          <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
-            {item.name}
-          </h2>
-        </a>
+      <div class="mb-2">
+        <div class="flex justify-center items-center border-gray-600">
+          <a href={item?.ddb} target="_blank" rel="noopener noreferrer">
+            <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
+              {item.name}
+            </h2>
+          </a>
+        </div>
+        <hr class="border-gray-600" />
       </div>
-      <hr class="border-gray-600">
     )}
   {item.image && <SidebarImage {...item.image} />}
   <div class="space-y-4">

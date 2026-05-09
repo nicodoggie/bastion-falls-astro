@@ -67,13 +67,19 @@ function formatSpellTime(time: unknown[] | undefined): string {
 function formatSpellRange(range: unknown): string {
   if (!range || typeof range !== "object") return "";
   const r = range as Record<string, unknown>;
-  if (typeof r.type === "string" && r.type === "special" && typeof r.entry === "string")
+  if (
+    typeof r.type === "string" &&
+    r.type === "special" &&
+    typeof r.entry === "string"
+  )
     return r.entry;
   const dist = r.distance;
   if (dist && typeof dist === "object") {
     const d = dist as Record<string, unknown>;
-    if (d.type === "feet" && typeof d.amount === "number") return `${d.amount} ft.`;
-    if (d.type === "miles" && typeof d.amount === "number") return `${d.amount} mi.`;
+    if (d.type === "feet" && typeof d.amount === "number")
+      return `${d.amount} ft.`;
+    if (d.type === "miles" && typeof d.amount === "number")
+      return `${d.amount} mi.`;
     if (d.type === "self") return "Self";
     if (d.type === "touch") return "Touch";
     if (d.type === "sight") return "Sight";
@@ -94,7 +100,8 @@ function formatSpellDuration(duration: unknown[] | undefined): string {
         const dur = o.duration as Record<string, unknown>;
         const amt = dur.amount;
         const typ = dur.type;
-        if (typeof amt === "number" && typeof typ === "string") return `${amt} ${typ}`;
+        if (typeof amt === "number" && typeof typ === "string")
+          return `${amt} ${typ}`;
       }
       if (o.type === "permanent") return "Until dispelled";
       return "";
@@ -103,17 +110,15 @@ function formatSpellDuration(duration: unknown[] | undefined): string {
     .join("; ");
 }
 
-function formatSpellComponents(components: Record<string, unknown> | undefined): string {
+function formatSpellComponents(
+  components: Record<string, unknown> | undefined,
+): string {
   if (!components) return "";
   const parts: string[] = [];
   if (components.v) parts.push("V");
   if (components.s) parts.push("S");
   if (components.m) {
-    parts.push(
-      typeof components.m === "string"
-        ? `M (${components.m})`
-        : "M",
-    );
+    parts.push(typeof components.m === "string" ? `M (${components.m})` : "M");
   }
   return parts.join(", ");
 }

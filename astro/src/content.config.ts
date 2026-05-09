@@ -1,16 +1,12 @@
 import { defineCollection, type SchemaContext } from "astro:content";
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
+import { ItemDataSchema, SpellDataSchema } from "@bastion-falls/5e-schema-zod";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { autoSidebarLoader } from "starlight-auto-sidebar/loader";
 import { autoSidebarSchema } from "starlight-auto-sidebar/schema";
-
 import { collectionExtensions, docsExtension } from "./collection-schemas.js";
-import {
-  ItemDataSchema,
-  SpellDataSchema,
-} from "@bastion-falls/5e-schema-zod";
 
 const baseBlogSchema = z.object({
   title: z.string(),

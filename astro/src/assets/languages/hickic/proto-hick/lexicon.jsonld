@@ -31,10 +31,7 @@
   "@graph": [
     {
       "@id": "phk:heru",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "heru",
@@ -54,10 +51,7 @@
     },
     {
       "@id": "phk:taku",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "taku",
@@ -77,10 +71,7 @@
     },
     {
       "@id": "phk:xasamu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun" 
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "xasamu",
@@ -100,10 +91,7 @@
     },
     {
       "@id": "phk:baha",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "baha",
@@ -123,10 +111,7 @@
     },
     {
       "@id": "phk:haka",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Interrogative"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "haka",
@@ -137,7 +122,7 @@
           "@type": "ontolex:LexicalSense",
           "definition": {
             "@value": "what",
-            "@language": "en" 
+            "@language": "en"
           },
           "lexinfo:semanticField": "Interrogatives"
         }
@@ -146,10 +131,7 @@
     },
     {
       "@id": "phk:hihalu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "hi-halu",
@@ -177,10 +159,7 @@
     },
     {
       "@id": "phk:venu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "venu",
@@ -200,10 +179,7 @@
     },
     {
       "@id": "phk:storu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "storu",
@@ -216,20 +192,14 @@
             "@value": "grow; and",
             "@language": "en"
           },
-          "lexinfo:semanticField": [
-            "Basic Terms",
-            "Conjunctions"
-          ]
+          "lexinfo:semanticField": ["Basic Terms", "Conjunctions"]
         }
       ],
       "note": "Source of Early Hick ru \"and\" through grammaticalization"
     },
     {
       "@id": "phk:takutaku",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "takutaku",
@@ -257,10 +227,7 @@
     },
     {
       "@id": "phk:risu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "risu",
@@ -280,10 +247,7 @@
     },
     {
       "@id": "phk:wudu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "wudu",
@@ -303,10 +267,7 @@
     },
     {
       "@id": "phk:grasu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "grasu",
@@ -326,10 +287,7 @@
     },
     {
       "@id": "phk:sedu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "sedu",
@@ -349,10 +307,7 @@
     },
     {
       "@id": "phk:kelu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "kelu",
@@ -372,10 +327,7 @@
     },
     {
       "@id": "phk:bahuluharanu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "bahu lu-haranu",
@@ -406,10 +358,7 @@
     },
     {
       "@id": "phk:hasa",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "hasa",
@@ -429,10 +378,7 @@
     },
     {
       "@id": "phk:wenu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "wenu",
@@ -452,10 +398,7 @@
     },
     {
       "@id": "phk:tagu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "tagu",
@@ -475,10 +418,7 @@
     },
     {
       "@id": "phk:melisu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "melisu",
@@ -498,10 +438,7 @@
     },
     {
       "@id": "phk:daluku",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "daluku",
@@ -521,10 +458,7 @@
     },
     {
       "@id": "phk:piru",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "piru",
@@ -544,10 +478,7 @@
     },
     {
       "@id": "phk:ahi",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "ahi",
@@ -567,10 +498,7 @@
     },
     {
       "@id": "phk:bahu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "bahu",
@@ -590,10 +518,7 @@
     },
     {
       "@id": "phk:nahi",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "nahi",
@@ -613,10 +538,7 @@
     },
     {
       "@id": "phk:xalu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "xalu",
@@ -629,20 +551,14 @@
             "@value": "natural rock",
             "@language": "en"
           },
-          "lexinfo:semanticField": [
-            "Natural Elements",
-            "Natural World"
-          ]
+          "lexinfo:semanticField": ["Natural Elements", "Natural World"]
         }
       ],
       "note": "Source of Early Hick al"
     },
     {
       "@id": "phk:haranu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "haranu",
@@ -661,10 +577,7 @@
     },
     {
       "@id": "phk:lu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adposition"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adposition"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "lu",
@@ -683,10 +596,7 @@
     },
     {
       "@id": "phk:na",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adposition"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adposition"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "na",
@@ -705,10 +615,7 @@
     },
     {
       "@id": "phk:pu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adposition"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adposition"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "pu",
@@ -727,10 +634,7 @@
     },
     {
       "@id": "phk:ki",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "ki",
@@ -749,10 +653,7 @@
     },
     {
       "@id": "phk:ha",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "ha",
@@ -771,10 +672,7 @@
     },
     {
       "@id": "phk:ma",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "ma",
@@ -793,10 +691,7 @@
     },
     {
       "@id": "phk:tala",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "tala",
@@ -815,10 +710,7 @@
     },
     {
       "@id": "phk:duxu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "duxu",
@@ -837,10 +729,7 @@
     },
     {
       "@id": "phk:ku",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Pronoun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Pronoun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "ku",
@@ -859,10 +748,7 @@
     },
     {
       "@id": "phk:su",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Pronoun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Pronoun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "su",
@@ -881,10 +767,7 @@
     },
     {
       "@id": "phk:nu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Pronoun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Pronoun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "nu",
@@ -903,10 +786,7 @@
     },
     {
       "@id": "phk:kuma",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Pronoun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Pronoun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "kuma",
@@ -925,10 +805,7 @@
     },
     {
       "@id": "phk:suma",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Pronoun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Pronoun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "suma",
@@ -947,10 +824,7 @@
     },
     {
       "@id": "phk:numa",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Pronoun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Pronoun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "numa",
@@ -969,10 +843,7 @@
     },
     {
       "@id": "phk:karu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "karu",
@@ -991,10 +862,7 @@
     },
     {
       "@id": "phk:miku",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "miku",
@@ -1013,10 +881,7 @@
     },
     {
       "@id": "phk:taru",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "taru",
@@ -1035,10 +900,7 @@
     },
     {
       "@id": "phk:sini",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "sini",
@@ -1057,10 +919,7 @@
     },
     {
       "@id": "phk:hutu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "hutu",
@@ -1080,10 +939,7 @@
     },
     {
       "@id": "phk:gada",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "gada",
@@ -1103,10 +959,7 @@
     },
     {
       "@id": "phk:maxi",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "maxi",
@@ -1126,10 +979,7 @@
     },
     {
       "@id": "phk:lemi",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "lemi",
@@ -1149,10 +999,7 @@
     },
     {
       "@id": "phk:hapa",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "hapa",
@@ -1172,10 +1019,7 @@
     },
     {
       "@id": "phk:saru",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "saru",
@@ -1195,10 +1039,7 @@
     },
     {
       "@id": "phk:delu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "delu",
@@ -1218,10 +1059,7 @@
     },
     {
       "@id": "phk:hada",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "hada",
@@ -1240,10 +1078,7 @@
     },
     {
       "@id": "phk:xana",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "xana",
@@ -1262,10 +1097,7 @@
     },
     {
       "@id": "phk:madu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "madu",
@@ -1284,10 +1116,7 @@
     },
     {
       "@id": "phk:palu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "palu",
@@ -1306,10 +1135,7 @@
     },
     {
       "@id": "phk:kisa",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "kisa",
@@ -1329,10 +1155,7 @@
     },
     {
       "@id": "phk:tila",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Numeral"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "tila",
@@ -1351,10 +1174,7 @@
     },
     {
       "@id": "phk:duka",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Numeral"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "duka",
@@ -1373,10 +1193,7 @@
     },
     {
       "@id": "phk:hesu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Numeral"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "hesu",
@@ -1395,10 +1212,7 @@
     },
     {
       "@id": "phk:halu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "halu",
@@ -1430,10 +1244,7 @@
     },
     {
       "@id": "phk:hahu",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "hahu",
@@ -1452,10 +1263,7 @@
             "@value": "laugh, laughter",
             "@language": "en"
           },
-          "lexinfo:semanticField": [
-            "Sound Terms",
-            "Emotion Terms"
-          ],
+          "lexinfo:semanticField": ["Sound Terms", "Emotion Terms"],
           "usage": "Preserves original meaning through irregular development"
         }
       ],
@@ -1469,10 +1277,7 @@
     },
     {
       "@id": "phk:harala",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "writtenRep": "harala",
@@ -1485,10 +1290,7 @@
             "@value": "sun deity",
             "@language": "en"
           },
-          "lexinfo:semanticField": [
-            "Religious Terms",
-            "Natural World"
-          ]
+          "lexinfo:semanticField": ["Religious Terms", "Natural World"]
         }
       ],
       "note": "Source of Early Hick thral through sacred term sound changes"

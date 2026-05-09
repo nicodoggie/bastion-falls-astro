@@ -22,10 +22,7 @@
   "@graph": [
     {
       "@id": "ehk:kabrast",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.brast",
@@ -52,10 +49,7 @@
     },
     {
       "@id": "ehk:kaduwes",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.du.wes",
@@ -89,10 +83,7 @@
     },
     {
       "@id": "ehk:kaken",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.ken",
@@ -110,19 +101,13 @@
             "@language": "en",
             "@value": "snowy, snow-covered"
           },
-          "lexinfo:semanticField": [
-            "Weather Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Weather Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kaketh",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.keθ",
@@ -141,20 +126,14 @@
             "@language": "en",
             "@value": "salty"
           },
-          "lexinfo:semanticField": [
-            "Taste Terms",
-            "Maritime Terms"
-          ],
+          "lexinfo:semanticField": ["Taste Terms", "Maritime Terms"],
           "usage": "Literally 'sea-like', shows maritime influence on taste terminology"
         }
       ]
     },
     {
       "@id": "ehk:kandup",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kan.dup",
@@ -191,10 +170,7 @@
     },
     {
       "@id": "ehk:kanmil",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kan.mil",
@@ -227,10 +203,7 @@
     },
     {
       "@id": "ehk:kar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kar",
@@ -263,10 +236,7 @@
     },
     {
       "@id": "ehk:kasai",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kas.əi",
@@ -294,19 +264,13 @@
             "@language": "en",
             "@value": "introspection, self-reflection"
           },
-          "lexinfo:semanticField": [
-            "Mental Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Mental Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kasger",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kas.ger",
@@ -325,10 +289,7 @@
         "etymon:compound": "kasu-garu",
         "etymon:gloss": "reflection-stone",
         "etymon:note": "Shows technological origin in polished stone mirrors",
-        "etymon:soundChange": [
-          "compound fusion",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["compound fusion", "final vowel loss"]
       },
       "sense": [
         {
@@ -337,19 +298,13 @@
             "@language": "en",
             "@value": "mirror (especially polished stone mirror)"
           },
-          "lexinfo:semanticField": [
-            "Tool Terms",
-            "Stone Terms"
-          ]
+          "lexinfo:semanticField": ["Tool Terms", "Stone Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kawak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.wak",
@@ -368,20 +323,14 @@
             "@language": "en",
             "@value": "soft"
           },
-          "lexinfo:semanticField": [
-            "Tactile Properties",
-            "Body Terms"
-          ],
+          "lexinfo:semanticField": ["Tactile Properties", "Body Terms"],
           "usage": "Shows cultural association between softness and nurturing"
         }
       ]
     },
     {
       "@id": "ehk:kel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kel",
@@ -412,10 +361,7 @@
             "@language": "en",
             "@value": "sky"
           },
-          "lexinfo:semanticField": [
-            "Celestial Terms",
-            "Natural World"
-          ],
+          "lexinfo:semanticField": ["Celestial Terms", "Natural World"],
           "usage": "Often used in compounds referring to celestial phenomena"
         },
         {
@@ -433,20 +379,14 @@
             "@language": "en",
             "@value": "leaf"
           },
-          "lexinfo:semanticField": [
-            "Flora",
-            "Plant Terms"
-          ],
+          "lexinfo:semanticField": ["Flora", "Plant Terms"],
           "usage": "Productive in botanical compounds"
         }
       ]
     },
     {
       "@id": "ehk:kelwud",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kel.wud",
@@ -473,19 +413,13 @@
             "@language": "en",
             "@value": "orchard"
           },
-          "lexinfo:semanticField": [
-            "Garden Terms",
-            "Flora"
-          ]
+          "lexinfo:semanticField": ["Garden Terms", "Flora"]
         }
       ]
     },
     {
       "@id": "ehk:ken",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ken",
@@ -503,19 +437,13 @@
             "@language": "en",
             "@value": "snow"
           },
-          "lexinfo:semanticField": [
-            "Weather Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Weather Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kethul",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ke.θul",
@@ -535,20 +463,14 @@
             "@language": "en",
             "@value": "east"
           },
-          "lexinfo:semanticField": [
-            "Directional Terms",
-            "Maritime Terms"
-          ],
+          "lexinfo:semanticField": ["Directional Terms", "Maritime Terms"],
           "usage": "Derived from term for east wind"
         }
       ]
     },
     {
       "@id": "ehk:kethulbres",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ke.θul.bres",
@@ -586,10 +508,7 @@
     },
     {
       "@id": "ehk:kirirur",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kir.ʔi.rur",
@@ -623,10 +542,7 @@
     },
     {
       "@id": "ehk:kirgar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kir.gər",
@@ -644,10 +560,7 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "kir-gar",
         "etymon:gloss": "chest-bone",
-        "etymon:soundChange": [
-          "compound fusion",
-          "unstressed vowel reduction"
-        ]
+        "etymon:soundChange": ["compound fusion", "unstressed vowel reduction"]
       },
       "sense": [
         {
@@ -663,10 +576,7 @@
     },
     {
       "@id": "ehk:kiris",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ki.ris",
@@ -674,16 +584,10 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:components": [
-          "kiru (body)",
-          "ʔisu (out)"
-        ],
+        "etymon:components": ["kiru (body)", "ʔisu (out)"],
         "etymon:note": "Shows archaic directional suffix",
         "etymon:protoform": "Proto-Hick *kiru-ʔisu",
-        "etymon:soundChange": [
-          "compound fusion",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["compound fusion", "final vowel loss"]
       },
       "sense": [
         {
@@ -692,19 +596,13 @@
             "@language": "en",
             "@value": "outsider"
           },
-          "lexinfo:semanticField": [
-            "Person Terms",
-            "Social Terms"
-          ]
+          "lexinfo:semanticField": ["Person Terms", "Social Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kiriter",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ki.ri.ter",
@@ -723,19 +621,13 @@
             "@language": "en",
             "@value": "foreigner, stranger"
           },
-          "lexinfo:semanticField": [
-            "Person Terms",
-            "Social Terms"
-          ]
+          "lexinfo:semanticField": ["Person Terms", "Social Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kirmil",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kir.mil",
@@ -771,10 +663,7 @@
     },
     {
       "@id": "ehk:kirtor",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kir.tor",
@@ -801,10 +690,7 @@
             "@language": "en",
             "@value": "cliff face"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Landforms"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Landforms"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -812,19 +698,13 @@
             "@language": "en",
             "@value": "cliff face"
           },
-          "lexinfo:semanticField": [
-            "Natural World",
-            "Landforms"
-          ]
+          "lexinfo:semanticField": ["Natural World", "Landforms"]
         }
       ]
     },
     {
       "@id": "ehk:kol",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kol",
@@ -848,10 +728,7 @@
     },
     {
       "@id": "ehk:kor",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kor",
@@ -876,10 +753,7 @@
     },
     {
       "@id": "ehk:kost",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kost",
@@ -903,10 +777,7 @@
     },
     {
       "@id": "ehk:krakesi",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kra.ke.si",
@@ -935,20 +806,14 @@
             "@language": "en",
             "@value": "sword, long bladed weapon"
           },
-          "lexinfo:semanticField": [
-            "Weapon Terms",
-            "Tool Terms"
-          ],
+          "lexinfo:semanticField": ["Weapon Terms", "Tool Terms"],
           "usage": "Originally referred to wooden paddle with obsidian teeth inserts"
         }
       ]
     },
     {
       "@id": "ehk:krakiger",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "krak.i.ger",
@@ -956,10 +821,7 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:components": [
-          "*kraku (tooth)",
-          "*garu (rock)"
-        ],
+        "etymon:components": ["*kraku (tooth)", "*garu (rock)"],
         "etymon:gloss": "tooth-rock",
         "etymon:protoform": "Proto-Hick *kraku-garu",
         "etymon:soundChange": [
@@ -975,19 +837,13 @@
             "@language": "en",
             "@value": "flint, chert"
           },
-          "lexinfo:semanticField": [
-            "Material Terms",
-            "Tool Terms"
-          ]
+          "lexinfo:semanticField": ["Material Terms", "Tool Terms"]
         }
       ]
     },
     {
       "@id": "ehk:krakrak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kra.krak",
@@ -1015,20 +871,13 @@
             "@language": "en",
             "@value": "fang"
           },
-          "lexinfo:semanticField": [
-            "Body Terms",
-            "Animal Terms"
-          ]
+          "lexinfo:semanticField": ["Body Terms", "Animal Terms"]
         }
       ]
     },
     {
       "@id": "ehk:krantak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kran.tak",
@@ -1065,10 +914,7 @@
             "@language": "en",
             "@value": "to pierce, stab"
           },
-          "lexinfo:semanticField": [
-            "Basic Actions",
-            "Weapon Terms"
-          ]
+          "lexinfo:semanticField": ["Basic Actions", "Weapon Terms"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -1076,19 +922,13 @@
             "@language": "en",
             "@value": "physical pain"
           },
-          "lexinfo:semanticField": [
-            "Body Terms",
-            "Physical States"
-          ]
+          "lexinfo:semanticField": ["Body Terms", "Physical States"]
         }
       ]
     },
     {
       "@id": "ehk:kras",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kras",
@@ -1113,10 +953,7 @@
     },
     {
       "@id": "ehk:kul",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kul",
@@ -1150,19 +987,13 @@
             "@language": "en",
             "@value": "magic, sorcery"
           },
-          "lexinfo:semanticField": [
-            "Magical Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Magical Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kun",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kun",
@@ -1186,10 +1017,7 @@
     },
     {
       "@id": "ehk:kur",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kur",
@@ -1207,10 +1035,7 @@
             "@language": "en",
             "@value": "moss"
           },
-          "lexinfo:semanticField": [
-            "Flora",
-            "Plant Terms"
-          ]
+          "lexinfo:semanticField": ["Flora", "Plant Terms"]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -1218,19 +1043,13 @@
             "@language": "en",
             "@value": "copper"
           },
-          "lexinfo:semanticField": [
-            "Metals",
-            "Material Culture"
-          ]
+          "lexinfo:semanticField": ["Metals", "Material Culture"]
         }
       ]
     },
     {
       "@id": "ehk:kabran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.bran",
@@ -1249,20 +1068,14 @@
             "@language": "en",
             "@value": "crooked, leaning"
           },
-          "lexinfo:semanticField": [
-            "Position Terms",
-            "Basic Terms"
-          ],
+          "lexinfo:semanticField": ["Position Terms", "Basic Terms"],
           "usage": "Forms common expression kabran 'irek'er 'to lean' (lit. 'stand crookedly')"
         }
       ]
     },
     {
       "@id": "ehk:kagar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.gar",
@@ -1281,19 +1094,13 @@
             "@language": "en",
             "@value": "hard"
           },
-          "lexinfo:semanticField": [
-            "Tactile Properties",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Tactile Properties", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kagral",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.gral",
@@ -1312,19 +1119,13 @@
             "@language": "en",
             "@value": "earthy, brown"
           },
-          "lexinfo:semanticField": [
-            "Colors",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Colors", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kaimpal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.im.pal",
@@ -1344,19 +1145,13 @@
             "@language": "en",
             "@value": "weak, feeble"
           },
-          "lexinfo:semanticField": [
-            "Physical States",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Physical States", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kakethmal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.keθ.mal",
@@ -1375,19 +1170,13 @@
             "@language": "en",
             "@value": "brine pool"
           },
-          "lexinfo:semanticField": [
-            "Water Features",
-            "Natural World"
-          ]
+          "lexinfo:semanticField": ["Water Features", "Natural World"]
         }
       ]
     },
     {
       "@id": "ehk:kames",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.mes",
@@ -1406,19 +1195,13 @@
             "@language": "en",
             "@value": "emotional"
           },
-          "lexinfo:semanticField": [
-            "Emotional Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Emotional Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kan",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kan",
@@ -1442,10 +1225,7 @@
     },
     {
       "@id": "ehk:kapal",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.pal",
@@ -1465,20 +1245,14 @@
             "@language": "en",
             "@value": "strong, vigorous"
           },
-          "lexinfo:semanticField": [
-            "Physical States",
-            "Basic Terms"
-          ],
+          "lexinfo:semanticField": ["Physical States", "Basic Terms"],
           "usage": "Contrasts with kaimpal 'weak'. Forms compounds like kapaltak 'strong-strike'"
         }
       ]
     },
     {
       "@id": "ehk:kasak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.sak",
@@ -1497,19 +1271,13 @@
             "@language": "en",
             "@value": "wolf-like howl"
           },
-          "lexinfo:semanticField": [
-            "Sound Terms",
-            "Animal Terms"
-          ]
+          "lexinfo:semanticField": ["Sound Terms", "Animal Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kasgasam",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kas.ga.sam",
@@ -1529,19 +1297,13 @@
             "@language": "en",
             "@value": "polishing, lapping"
           },
-          "lexinfo:semanticField": [
-            "Tool Terms",
-            "Craft Terms"
-          ]
+          "lexinfo:semanticField": ["Tool Terms", "Craft Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kasul",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.sul",
@@ -1560,19 +1322,13 @@
             "@language": "en",
             "@value": "energetic"
           },
-          "lexinfo:semanticField": [
-            "Physical States",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Physical States", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kathrakel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.θra.kel",
@@ -1591,19 +1347,13 @@
             "@language": "en",
             "@value": "bright, shining"
           },
-          "lexinfo:semanticField": [
-            "Light Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Light Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kator",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ka.tor",
@@ -1622,19 +1372,13 @@
             "@language": "en",
             "@value": "massive, heavy"
           },
-          "lexinfo:semanticField": [
-            "Size Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Size Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:keth",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Numeral"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "keθ",
@@ -1658,10 +1402,7 @@
     },
     {
       "@id": "ehk:kethbran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "keθ.bran",
@@ -1680,19 +1421,13 @@
             "@language": "en",
             "@value": "kin, extended family"
           },
-          "lexinfo:semanticField": [
-            "Kinship Terms",
-            "Social Terms"
-          ]
+          "lexinfo:semanticField": ["Kinship Terms", "Social Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kethmater",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "keθ.ma.ter",
@@ -1711,19 +1446,13 @@
             "@language": "en",
             "@value": "sea vessel"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms",
-            "Vehicle Terms"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms", "Vehicle Terms"]
         }
       ]
     },
     {
       "@id": "ehk:ketnes",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ket.nes",
@@ -1742,19 +1471,13 @@
             "@language": "en",
             "@value": "sea fish"
           },
-          "lexinfo:semanticField": [
-            "Maritime Terms",
-            "Animal Terms"
-          ]
+          "lexinfo:semanticField": ["Maritime Terms", "Animal Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kir",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kir",
@@ -1778,10 +1501,7 @@
     },
     {
       "@id": "ehk:kirmel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kir.mel",
@@ -1800,19 +1520,13 @@
             "@language": "en",
             "@value": "chest fat"
           },
-          "lexinfo:semanticField": [
-            "Body Parts",
-            "Food Terms"
-          ]
+          "lexinfo:semanticField": ["Body Parts", "Food Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kirpel",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kir.pel",
@@ -1837,10 +1551,7 @@
     },
     {
       "@id": "ehk:krak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "krak",
@@ -1865,10 +1576,7 @@
     },
     {
       "@id": "ehk:krak'er",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "krak.ʔer",
@@ -1887,19 +1595,13 @@
             "@language": "en",
             "@value": "to bite"
           },
-          "lexinfo:semanticField": [
-            "Action Terms",
-            "Body Terms"
-          ]
+          "lexinfo:semanticField": ["Action Terms", "Body Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kran",
@@ -1917,19 +1619,13 @@
             "@language": "en",
             "@value": "horn, spike"
           },
-          "lexinfo:semanticField": [
-            "Body Parts",
-            "Animal Terms"
-          ]
+          "lexinfo:semanticField": ["Body Parts", "Animal Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kranren",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kran.ren",
@@ -1948,19 +1644,13 @@
             "@language": "en",
             "@value": "antlered deer"
           },
-          "lexinfo:semanticField": [
-            "Animals",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Animals", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kras'er",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kras.ʔer",
@@ -1979,19 +1669,13 @@
             "@language": "en",
             "@value": "to be bitter"
           },
-          "lexinfo:semanticField": [
-            "Taste Terms",
-            "Basic Terms"
-          ]
+          "lexinfo:semanticField": ["Taste Terms", "Basic Terms"]
         }
       ]
     },
     {
       "@id": "ehk:krasim",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kra.sim",
@@ -2010,19 +1694,13 @@
             "@language": "en",
             "@value": "hatred"
           },
-          "lexinfo:semanticField": [
-            "Emotional Terms",
-            "Abstract Terms"
-          ]
+          "lexinfo:semanticField": ["Emotional Terms", "Abstract Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kres",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Numeral"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kres",
@@ -2046,10 +1724,7 @@
     },
     {
       "@id": "ehk:kul'er",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kul.ʔer",
@@ -2068,19 +1743,13 @@
             "@language": "en",
             "@value": "to perform magic"
           },
-          "lexinfo:semanticField": [
-            "Magical Terms",
-            "Sacred Terms"
-          ]
+          "lexinfo:semanticField": ["Magical Terms", "Sacred Terms"]
         }
       ]
     },
     {
       "@id": "ehk:kurtin",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "kur.tin",
@@ -2099,10 +1768,7 @@
             "@language": "en",
             "@value": "bronze"
           },
-          "lexinfo:semanticField": [
-            "Metal Terms",
-            "Material Terms"
-          ]
+          "lexinfo:semanticField": ["Metal Terms", "Material Terms"]
         }
       ]
     }
