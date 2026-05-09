@@ -1,1 +1,1468 @@
-Checked 151 files in 141ms. No fixes applied.
+    `biome.jsonc format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✖ Formatter would have printed the following content:
+  
+     7  7 │     },
+     8  8 │     "files": {
+     9    │ - → → → "includes":·["src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,jsonld,jsonc,astro}"],
+    10    │ - → → → "maxSize":·2097152·//·2MiB
+    11    │ - → → },
+        9 │ + ····"includes":·["src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,jsonld,jsonc,astro}"],
+       10 │ + ····"maxSize":·2097152·//·2MiB
+       11 │ + ··},
+    12 12 │     "formatter": {
+    13 13 │       "indentStyle": "space",
+    ····· │ 
+    22 22 │     "overrides": [
+    23 23 │       {
+    24    │ - ······"includes":·["src/components/SpellBlock.astro",·"src/components/ItemBlock.astro"],
+       24 │ + ······"includes":·[
+       25 │ + ········"src/components/SpellBlock.astro",
+       26 │ + ········"src/components/ItemBlock.astro"
+       27 │ + ······],
+    25 28 │         "linter": {
+    26 29 │           "rules": {
+    ····· │ 
+    47 50 │     },
+    48 51 │     "json": {
+    49    │ - → → → "formatter":·{
+    50    │ - → → → → "trailingCommas":·"none"
+    51    │ - → → → }
+    52    │ - → → }
+       52 │ + ····"formatter":·{
+       53 │ + ······"trailingCommas":·"none"
+       54 │ + ····}
+       55 │ + ··}
+    53 56 │   }
+    54 57 │   
+  
+src/assets/languages/hickic/apgarian/phk-etymology.jsonld format ━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✖ Formatter would have printed the following content:
+  
+     98  98 │           "@id": "phk:heru"
+     99  99 │         },
+    100     │ - ······"baety:soundChangeApplied":·[
+    101     │ - ········"Stress·shift:·heˈru·→·ˈheru"
+    102     │ - ······],
+        100 │ + ······"baety:soundChangeApplied":·["Stress·shift:·heˈru·→·ˈheru"],
+    103 101 │         "baety:hasPeriod": "c. 400-450 AI"
+    104 102 │       },
+    ······· │ 
+    112 110 │           "@id": "phk:taku"
+    113 111 │         },
+    114     │ - ······"baety:soundChangeApplied":·[
+    115     │ - ········"Stress·shift:·taˈku·→·ˈtaku"
+    116     │ - ······],
+        112 │ + ······"baety:soundChangeApplied":·["Stress·shift:·taˈku·→·ˈtaku"],
+    117 113 │         "baety:hasPeriod": "c. 400-450 AI"
+    118 114 │       },
+    ······· │ 
+    141 137 │           "@id": "phk:baha"
+    142 138 │         },
+    143     │ - ······"baety:soundChangeApplied":·[
+    144     │ - ········"Stress·shift:·baˈha·→·ˈbaha"
+    145     │ - ······],
+        139 │ + ······"baety:soundChangeApplied":·["Stress·shift:·baˈha·→·ˈbaha"],
+    146 140 │         "baety:hasPeriod": "c. 400-450 AI"
+    147 141 │       },
+    ······· │ 
+    155 149 │           "@id": "phk:haka"
+    156 150 │         },
+    157     │ - ······"baety:soundChangeApplied":·[
+    158     │ - ········"Stress·shift:·haˈka·→·ˈhaka"
+    159     │ - ······],
+        151 │ + ······"baety:soundChangeApplied":·["Stress·shift:·haˈka·→·ˈhaka"],
+    160 152 │         "baety:hasPeriod": "c. 400-450 AI"
+    161 153 │       },
+    ······· │ 
+    169 161 │           "@id": "phk:hihalu"
+    170 162 │         },
+    171     │ - ······"baety:soundChangeApplied":·[
+    172     │ - ········"Stress·shift:·hiˈhalu·→·ˈhihalu"
+    173     │ - ······],
+        163 │ + ······"baety:soundChangeApplied":·["Stress·shift:·hiˈhalu·→·ˈhihalu"],
+    174 164 │         "baety:hasPeriod": "c. 400-450 AI"
+    175 165 │       },
+    ······· │ 
+    183 173 │           "@id": "phk:venu"
+    184 174 │         },
+    185     │ - ······"baety:soundChangeApplied":·[
+    186     │ - ········"Stress·shift:·veˈnu·→·ˈvenu"
+    187     │ - ······],
+        175 │ + ······"baety:soundChangeApplied":·["Stress·shift:·veˈnu·→·ˈvenu"],
+    188 176 │         "baety:hasPeriod": "c. 400-450 AI"
+    189 177 │       },
+    ······· │ 
+    197 185 │           "@id": "phk:storu"
+    198 186 │         },
+    199     │ - ······"baety:soundChangeApplied":·[
+    200     │ - ········"Stress·shift:·stoˈru·→·ˈstoru"
+    201     │ - ······],
+        187 │ + ······"baety:soundChangeApplied":·["Stress·shift:·stoˈru·→·ˈstoru"],
+    202 188 │         "baety:hasPeriod": "c. 400-450 AI"
+    203 189 │       },
+    ······· │ 
+    227 213 │           "@id": "phk:melisu"
+    228 214 │         },
+    229     │ - ······"baety:soundChangeApplied":·[
+    230     │ - ········"Stress·shift:·meˈlisu·→·ˈmelisu"
+    231     │ - ······],
+        215 │ + ······"baety:soundChangeApplied":·["Stress·shift:·meˈlisu·→·ˈmelisu"],
+    232 216 │         "baety:hasPeriod": "c. 400-450 AI"
+    233 217 │       },
+    ······· │ 
+    241 225 │           "@id": "phk:daluku"
+    242 226 │         },
+    243     │ - ······"baety:soundChangeApplied":·[
+    244     │ - ········"Stress·shift:·daˈluku·→·ˈdaluku"
+    245     │ - ······],
+        227 │ + ······"baety:soundChangeApplied":·["Stress·shift:·daˈluku·→·ˈdaluku"],
+    246 228 │         "baety:hasPeriod": "c. 400-450 AI"
+    247 229 │       },
+    ······· │ 
+    255 237 │           "@id": "phk:ahi"
+    256 238 │         },
+    257     │ - ······"baety:soundChangeApplied":·[
+    258     │ - ········"Stress·shift:·aˈhi·→·ˈahi"
+    259     │ - ······],
+        239 │ + ······"baety:soundChangeApplied":·["Stress·shift:·aˈhi·→·ˈahi"],
+    260 240 │         "baety:hasPeriod": "c. 400-450 AI"
+    261 241 │       },
+    ······· │ 
+    309 289 │       }
+    310 290 │     ]
+    311     │ - }·
+        291 │ + }
+    312 292 │   
+  
+src/assets/languages/hickic/proto-hick/lexicon.jsonld format ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✖ Formatter would have printed the following content:
+  
+      32   32 │       {
+      33   33 │         "@id": "phk:heru",
+      34      │ - ······"@type":·[
+      35      │ - ········"ontolex:LexicalEntry",
+      36      │ - ········"lexinfo:Noun"
+      37      │ - ······],
+           34 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+      38   35 │         "canonicalForm": {
+      39   36 │           "@type": "ontolex:Form",
+    ········· │ 
+      55   52 │       {
+      56   53 │         "@id": "phk:taku",
+      57      │ - ······"@type":·[
+      58      │ - ········"ontolex:LexicalEntry",
+      59      │ - ········"lexinfo:Verb"
+      60      │ - ······],
+           54 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Verb"],
+      61   55 │         "canonicalForm": {
+      62   56 │           "@type": "ontolex:Form",
+    ········· │ 
+      78   72 │       {
+      79   73 │         "@id": "phk:xasamu",
+      80      │ - ······"@type":·[
+      81      │ - ········"ontolex:LexicalEntry",
+      82      │ - ········"lexinfo:Noun"·
+      83      │ - ······],
+           74 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+      84   75 │         "canonicalForm": {
+      85   76 │           "@type": "ontolex:Form",
+    ········· │ 
+     101   92 │       {
+     102   93 │         "@id": "phk:baha",
+     103      │ - ······"@type":·[
+     104      │ - ········"ontolex:LexicalEntry",
+     105      │ - ········"lexinfo:Verb"
+     106      │ - ······],
+           94 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Verb"],
+     107   95 │         "canonicalForm": {
+     108   96 │           "@type": "ontolex:Form",
+    ········· │ 
+     124  112 │       {
+     125  113 │         "@id": "phk:haka",
+     126      │ - ······"@type":·[
+     127      │ - ········"ontolex:LexicalEntry",
+     128      │ - ········"lexinfo:Interrogative"
+     129      │ - ······],
+          114 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Interrogative"],
+     130  115 │         "canonicalForm": {
+     131  116 │           "@type": "ontolex:Form",
+    ········· │ 
+     138  123 │             "definition": {
+     139  124 │               "@value": "what",
+     140      │ - ············"@language":·"en"·
+          125 │ + ············"@language":·"en"
+     141  126 │             },
+     142  127 │             "lexinfo:semanticField": "Interrogatives"
+    ········· │ 
+     147  132 │       {
+     148  133 │         "@id": "phk:hihalu",
+     149      │ - ······"@type":·[
+     150      │ - ········"ontolex:LexicalEntry",
+     151      │ - ········"lexinfo:Adjective"
+     152      │ - ······],
+          134 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Adjective"],
+     153  135 │         "canonicalForm": {
+     154  136 │           "@type": "ontolex:Form",
+    ········· │ 
+     178  160 │       {
+     179  161 │         "@id": "phk:venu",
+     180      │ - ······"@type":·[
+     181      │ - ········"ontolex:LexicalEntry",
+     182      │ - ········"lexinfo:Noun"
+     183      │ - ······],
+          162 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     184  163 │         "canonicalForm": {
+     185  164 │           "@type": "ontolex:Form",
+    ········· │ 
+     201  180 │       {
+     202  181 │         "@id": "phk:storu",
+     203      │ - ······"@type":·[
+     204      │ - ········"ontolex:LexicalEntry",
+     205      │ - ········"lexinfo:Verb"
+     206      │ - ······],
+          182 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Verb"],
+     207  183 │         "canonicalForm": {
+     208  184 │           "@type": "ontolex:Form",
+    ········· │ 
+     217  193 │               "@language": "en"
+     218  194 │             },
+     219      │ - ··········"lexinfo:semanticField":·[
+     220      │ - ············"Basic·Terms",
+     221      │ - ············"Conjunctions"
+     222      │ - ··········]
+          195 │ + ··········"lexinfo:semanticField":·["Basic·Terms",·"Conjunctions"]
+     223  196 │           }
+     224  197 │         ],
+    ········· │ 
+     227  200 │       {
+     228  201 │         "@id": "phk:takutaku",
+     229      │ - ······"@type":·[
+     230      │ - ········"ontolex:LexicalEntry",
+     231      │ - ········"lexinfo:Noun"
+     232      │ - ······],
+          202 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     233  203 │         "canonicalForm": {
+     234  204 │           "@type": "ontolex:Form",
+    ········· │ 
+     258  228 │       {
+     259  229 │         "@id": "phk:risu",
+     260      │ - ······"@type":·[
+     261      │ - ········"ontolex:LexicalEntry",
+     262      │ - ········"lexinfo:Noun"
+     263      │ - ······],
+          230 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     264  231 │         "canonicalForm": {
+     265  232 │           "@type": "ontolex:Form",
+    ········· │ 
+     281  248 │       {
+     282  249 │         "@id": "phk:wudu",
+     283      │ - ······"@type":·[
+     284      │ - ········"ontolex:LexicalEntry",
+     285      │ - ········"lexinfo:Noun"
+     286      │ - ······],
+          250 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     287  251 │         "canonicalForm": {
+     288  252 │           "@type": "ontolex:Form",
+    ········· │ 
+     304  268 │       {
+     305  269 │         "@id": "phk:grasu",
+     306      │ - ······"@type":·[
+     307      │ - ········"ontolex:LexicalEntry",
+     308      │ - ········"lexinfo:Noun"
+     309      │ - ······],
+          270 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     310  271 │         "canonicalForm": {
+     311  272 │           "@type": "ontolex:Form",
+    ········· │ 
+     327  288 │       {
+     328  289 │         "@id": "phk:sedu",
+     329      │ - ······"@type":·[
+     330      │ - ········"ontolex:LexicalEntry",
+     331      │ - ········"lexinfo:Noun"
+     332      │ - ······],
+          290 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     333  291 │         "canonicalForm": {
+     334  292 │           "@type": "ontolex:Form",
+    ········· │ 
+     350  308 │       {
+     351  309 │         "@id": "phk:kelu",
+     352      │ - ······"@type":·[
+     353      │ - ········"ontolex:LexicalEntry",
+     354      │ - ········"lexinfo:Noun"
+     355      │ - ······],
+          310 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     356  311 │         "canonicalForm": {
+     357  312 │           "@type": "ontolex:Form",
+    ········· │ 
+     373  328 │       {
+     374  329 │         "@id": "phk:bahuluharanu",
+     375      │ - ······"@type":·[
+     376      │ - ········"ontolex:LexicalEntry",
+     377      │ - ········"lexinfo:Noun"
+     378      │ - ······],
+          330 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     379  331 │         "canonicalForm": {
+     380  332 │           "@type": "ontolex:Form",
+  450 more lines truncated
+  
+src/assets/languages/hickic/seneran/early-hick/folk-etymology.jsonld format ━━━━━━━━━━━━
+
+  ✖ Formatter would have printed the following content:
+  
+    269 │ }·
+        │  -
+src/assets/languages/hickic/seneran/early-hick/lexicon/-.jsonld format ━━━━━━━━━━━━━━━━━
+
+  ✖ Formatter would have printed the following content:
+  
+     23  23 │       {
+     24  24 │         "@id": "ehk:suffixes-en",
+     25     │ - ······"@type":·[
+     26     │ - ········"ontolex:LexicalEntry",
+     27     │ - ········"lexinfo:Suffix"
+     28     │ - ······],
+         25 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Suffix"],
+     29  26 │         "canonicalForm": {
+     30  27 │           "@type": "ontolex:Form",
+    ······· │ 
+     44  41 │               "@value": "that (inanimate, visible, medial)"
+     45  42 │             },
+     46     │ - ··········"lexinfo:semanticField":·[
+     47     │ - ············"Demonstratives",
+     48     │ - ············"Grammatical·Terms"
+     49     │ - ··········]
+         43 │ + ··········"lexinfo:semanticField":·["Demonstratives",·"Grammatical·Terms"]
+     50  44 │           }
+     51  45 │         ]
+    ······· │ 
+     53  47 │       {
+     54  48 │         "@id": "ehk:-eth",
+     55     │ - ······"@type":·[
+     56     │ - ········"ontolex:LexicalEntry",
+     57     │ - ········"lexinfo:Suffix"
+     58     │ - ······],
+         49 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Suffix"],
+     59  50 │         "canonicalForm": {
+     60  51 │           "@type": "ontolex:Form",
+    ······· │ 
+     74  65 │               "@value": "that (medial, inanimate, hidden, sensed)"
+     75  66 │             },
+     76     │ - ··········"lexinfo:semanticField":·[
+     77     │ - ············"Demonstratives",
+     78     │ - ············"Grammatical·Terms"
+     79     │ - ··········]
+         67 │ + ··········"lexinfo:semanticField":·["Demonstratives",·"Grammatical·Terms"]
+     80  68 │           }
+     81  69 │         ]
+    ······· │ 
+     83  71 │       {
+     84  72 │         "@id": "ehk:-is",
+     85     │ - ······"@type":·[
+     86     │ - ········"ontolex:LexicalEntry",
+     87     │ - ········"lexinfo:Suffix"
+     88     │ - ······],
+         73 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Suffix"],
+     89  74 │         "canonicalForm": {
+     90  75 │           "@type": "ontolex:Form",
+    ······· │ 
+    104  89 │               "@value": "this (inanimate, sensed, proximal)"
+    105  90 │             },
+    106     │ - ··········"lexinfo:semanticField":·[
+    107     │ - ············"Demonstratives",
+    108     │ - ············"Grammatical·Terms"
+    109     │ - ··········]
+         91 │ + ··········"lexinfo:semanticField":·["Demonstratives",·"Grammatical·Terms"]
+    110  92 │           }
+    111  93 │         ]
+    ······· │ 
+    113  95 │       {
+    114  96 │         "@id": "ehk:-nat",
+    115     │ - ······"@type":·[
+    116     │ - ········"ontolex:LexicalEntry",
+    117     │ - ········"lexinfo:Suffix"
+    118     │ - ······],
+         97 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Suffix"],
+    119  98 │         "canonicalForm": {
+    120  99 │           "@type": "ontolex:Form",
+    ······· │ 
+    135 114 │               "@value": "want to, desire to (desiderative suffix)"
+    136 115 │             },
+    137     │ - ··········"lexinfo:semanticField":·[
+    138     │ - ············"Grammatical·Terms",
+    139     │ - ············"Verbal·Morphology"
+    140     │ - ··········]
+        116 │ + ··········"lexinfo:semanticField":·["Grammatical·Terms",·"Verbal·Morphology"]
+    141 117 │           }
+    142 118 │         ]
+    ······· │ 
+    144 120 │       {
+    145 121 │         "@id": "ehk:-rum",
+    146     │ - ······"@type":·[
+    147     │ - ········"ontolex:LexicalEntry",
+    148     │ - ········"lexinfo:Suffix"
+    149     │ - ······],
+        122 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Suffix"],
+    150 123 │         "canonicalForm": {
+    151 124 │           "@type": "ontolex:Form",
+    ······· │ 
+    165 138 │               "@value": "that (animate, distant)"
+    166 139 │             },
+    167     │ - ··········"lexinfo:semanticField":·[
+    168     │ - ············"Demonstratives",
+    169     │ - ············"Grammatical·Terms"
+    170     │ - ··········]
+        140 │ + ··········"lexinfo:semanticField":·["Demonstratives",·"Grammatical·Terms"]
+    171 141 │           }
+    172 142 │         ]
+    ······· │ 
+    174 144 │       {
+    175 145 │         "@id": "ehk:-tan",
+    176     │ - ······"@type":·[
+    177     │ - ········"ontolex:LexicalEntry",
+    178     │ - ········"lexinfo:Suffix"
+    179     │ - ······],
+        146 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Suffix"],
+    180 147 │         "canonicalForm": {
+    181 148 │           "@type": "ontolex:Form",
+    ······· │ 
+    195 162 │               "@value": "that (animate, visible, medial)"
+    196 163 │             },
+    197     │ - ··········"lexinfo:semanticField":·[
+    198     │ - ············"Demonstratives",
+    199     │ - ············"Grammatical·Terms"
+    200     │ - ··········]
+        164 │ + ··········"lexinfo:semanticField":·["Demonstratives",·"Grammatical·Terms"]
+    201 165 │           }
+    202 166 │         ]
+    ······· │ 
+    204 168 │       {
+    205 169 │         "@id": "ehk:-thir",
+    206     │ - ······"@type":·[
+    207     │ - ········"ontolex:LexicalEntry",
+    208     │ - ········"lexinfo:Suffix"
+    209     │ - ······],
+        170 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Suffix"],
+    210 171 │         "canonicalForm": {
+    211 172 │           "@type": "ontolex:Form",
+    ······· │ 
+    225 186 │               "@value": "that (medial, animate, sensed)"
+    226 187 │             },
+    227     │ - ··········"lexinfo:semanticField":·[
+    228     │ - ············"Demonstratives",
+    229     │ - ············"Grammatical·Terms"
+    230     │ - ··········]
+        188 │ + ··········"lexinfo:semanticField":·["Demonstratives",·"Grammatical·Terms"]
+    231 189 │           }
+    232 190 │         ]
+    ······· │ 
+    234 192 │       {
+    235 193 │         "@id": "ehk:-um",
+    236     │ - ······"@type":·[
+    237     │ - ········"ontolex:LexicalEntry",
+    238     │ - ········"lexinfo:Suffix"
+    239     │ - ······],
+        194 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Suffix"],
+    240 195 │         "canonicalForm": {
+    241 196 │           "@type": "ontolex:Form",
+    ······· │ 
+    255 210 │               "@value": "that (inanimate, distant)"
+    256 211 │             },
+    257     │ - ··········"lexinfo:semanticField":·[
+    258     │ - ············"Demonstratives",
+    259     │ - ············"Grammatical·Terms"
+    260     │ - ··········]
+        212 │ + ··········"lexinfo:semanticField":·["Demonstratives",·"Grammatical·Terms"]
+    261 213 │           }
+    262 214 │         ]
+    ······· │ 
+    264 216 │       {
+    265 217 │         "@id": "ehk:-ʔis",
+    266     │ - ······"@type":·[
+    267     │ - ········"ontolex:LexicalEntry",
+    268     │ - ········"lexinfo:Suffix"
+    269     │ - ······],
+  12 more lines truncated
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/b.jsonld:295:15 parse ━━━━━━━━━━━
+
+  ✖ Expected a property but instead found '{'.
+  
+    293 │           "lexicog:usageExample": {
+    294 │             "rdf:value": {
+  > 295 │               {
+        │               ^
+    296 │                 "@language": "ehk",
+    297 │                 "@value": "branrum 'ales venitar"
+  
+  ℹ Expected a property here.
+  
+    293 │           "lexicog:usageExample": {
+    294 │             "rdf:value": {
+  > 295 │               {
+        │               ^
+    296 │                 "@language": "ehk",
+    297 │                 "@value": "branrum 'ales venitar"
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/b.jsonld:299:15 parse ━━━━━━━━━━━
+
+  ✖ Expected a property but instead found '{'.
+  
+    297 │                 "@value": "branrum 'ales venitar"
+    298 │               },
+  > 299 │               {
+        │               ^
+    300 │                 "@language": "en",
+    301 │                 "@value": "The person lifted long ago"
+  
+  ℹ Expected a property here.
+  
+    297 │                 "@value": "branrum 'ales venitar"
+    298 │               },
+  > 299 │               {
+        │               ^
+    300 │                 "@language": "en",
+    301 │                 "@value": "The person lifted long ago"
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/b.jsonld format ━━━━━━━━━━━━━━━━━
+
+  ✖ Code formatting aborted due to parsing errors. To format code with errors, enable the 'formatter.formatWithErrors' option.
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/e.jsonld format ━━━━━━━━━━━━━━━━━
+
+  ✖ Formatter would have printed the following content:
+  
+     23  23 │       {
+     24  24 │         "@id": "ehk:eldalulbres",
+     25     │ - ······"@type":·[
+     26     │ - ········"ontolex:LexicalEntry",
+     27     │ - ········"lexinfo:Noun"
+     28     │ - ······],
+         25 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     29  26 │         "canonicalForm": {
+     30  27 │           "@type": "ontolex:Form",
+    ······· │ 
+     65  62 │       {
+     66  63 │         "@id": "ehk:eldegralen_asadimris",
+     67     │ - ······"@type":·[
+     68     │ - ········"ontolex:LexicalEntry",
+     69     │ - ········"lexinfo:ProperNoun"
+     70     │ - ······],
+         64 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:ProperNoun"],
+     71  65 │         "canonicalForm": {
+     72  66 │           "@type": "ontolex:Form",
+    ······· │ 
+     99  93 │       {
+    100  94 │         "@id": "ehk:eldul",
+    101     │ - ······"@type":·[
+    102     │ - ········"ontolex:LexicalEntry",
+    103     │ - ········"lexinfo:Noun"
+    104     │ - ······],
+         95 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    105  96 │         "canonicalForm": {
+    106  97 │           "@type": "ontolex:Form",
+    ······· │ 
+    122 113 │               "@value": "north"
+    123 114 │             },
+    124     │ - ··········"lexinfo:semanticField":·[
+    125     │ - ············"Directional·Terms",
+    126     │ - ············"Wind·Terms"
+    127     │ - ··········],
+        115 │ + ··········"lexinfo:semanticField":·["Directional·Terms",·"Wind·Terms"],
+    128 116 │             "usage": "Derived from term for north wind"
+    129 117 │           }
+    ······· │ 
+    132 120 │       {
+    133 121 │         "@id": "ehk:eltek",
+    134     │ - ······"@type":·[
+    135     │ - ········"ontolex:LexicalEntry",
+    136     │ - ········"lexinfo:Adjective"
+    137     │ - ······],
+        122 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Adjective"],
+    138 123 │         "canonicalForm": {
+    139 124 │           "@type": "ontolex:Form",
+    ······· │ 
+    143 128 │         "etymology": {
+    144 129 │           "@type": "etymon:Etymology",
+    145     │ - ········"etymon:components":·[
+    146     │ - ··········"*ʔelu·(INST)",
+    147     │ - ··········"*taku·(strike)"
+    148     │ - ········],
+        130 │ + ········"etymon:components":·["*ʔelu·(INST)",·"*taku·(strike)"],
+    149 131 │           "etymon:note": "From phrase 'grale ʔelu taku' (soil together hit). Shows development from physical action to resultant state",
+    150 132 │           "etymon:protoform": "Proto-Hick *ʔelu-taku",
+    151     │ - ········"etymon:soundChange":·[
+    152     │ - ··········"compound·fusion",
+    153     │ - ··········"final·vowel·loss"
+    154     │ - ········]
+        133 │ + ········"etymon:soundChange":·["compound·fusion",·"final·vowel·loss"]
+    155 134 │         },
+    156 135 │         "sense": [
+    ······· │ 
+    161 140 │               "@value": "compacted, condensed (especially of soil)"
+    162 141 │             },
+    163     │ - ··········"lexinfo:semanticField":·[
+    164     │ - ············"Basic·Terms",
+    165     │ - ············"Earth·Terms"
+    166     │ - ··········]
+        142 │ + ··········"lexinfo:semanticField":·["Basic·Terms",·"Earth·Terms"]
+    167 143 │           },
+    168 144 │           {
+    ······· │ 
+    172 148 │               "@value": "shaped from loose material"
+    173 149 │             },
+    174     │ - ··········"lexinfo:semanticField":·[
+    175     │ - ············"Basic·Terms",
+    176     │ - ············"Earth·Terms"
+    177     │ - ··········]
+        150 │ + ··········"lexinfo:semanticField":·["Basic·Terms",·"Earth·Terms"]
+    178 151 │           }
+    179 152 │         ]
+    ······· │ 
+    181 154 │       {
+    182 155 │         "@id": "ehk:-'er",
+    183     │ - ······"@type":·[
+    184     │ - ········"ontolex:LexicalEntry",
+    185     │ - ········"lexinfo:Suffix"
+    186     │ - ······],
+        156 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Suffix"],
+    187 157 │         "canonicalForm": {
+    188 158 │           "@type": "ontolex:Form",
+    ······· │ 
+    194 164 │           "etymon:gloss": "motion",
+    195 165 │           "etymon:protoform": "Proto-Hick *heru",
+    196     │ - ········"etymon:soundChange":·[
+    197     │ - ··········"initial·h·>·ʔ",
+    198     │ - ··········"final·vowel·loss"
+    199     │ - ········]
+        166 │ + ········"etymon:soundChange":·["initial·h·>·ʔ",·"final·vowel·loss"]
+    200 167 │         },
+    201 168 │         "sense": [
+    ······· │ 
+    214 181 │       {
+    215 182 │         "@id": "ehk:'eteleth",
+    216     │ - ······"@type":·[
+    217     │ - ········"ontolex:LexicalEntry",
+    218     │ - ········"lexinfo:Interrogative"
+    219     │ - ······],
+        183 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Interrogative"],
+    220 184 │         "canonicalForm": {
+    221 185 │           "@type": "ontolex:Form",
+    ······· │ 
+    235 199 │               "@value": "when (sensed time)"
+    236 200 │             },
+    237     │ - ··········"lexinfo:semanticField":·[
+    238     │ - ············"Interrogatives",
+    239     │ - ············"Medial",
+    240     │ - ············"Temporal"
+    241     │ - ··········]
+        201 │ + ··········"lexinfo:semanticField":·["Interrogatives",·"Medial",·"Temporal"]
+    242 202 │           }
+    243 203 │         ]
+    ······· │ 
+    245 205 │       {
+    246 206 │         "@id": "ehk:'etelum",
+    247     │ - ······"@type":·[
+    248     │ - ········"ontolex:LexicalEntry",
+    249     │ - ········"lexinfo:Interrogative"
+    250     │ - ······],
+        207 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Interrogative"],
+    251 208 │         "canonicalForm": {
+    252 209 │           "@type": "ontolex:Form",
+    ······· │ 
+    266 223 │               "@value": "when (unknown time)"
+    267 224 │             },
+    268     │ - ··········"lexinfo:semanticField":·[
+    269     │ - ············"Interrogatives",
+    270     │ - ············"Distal",
+    271     │ - ············"Temporal"
+    272     │ - ··········]
+        225 │ + ··········"lexinfo:semanticField":·["Interrogatives",·"Distal",·"Temporal"]
+    273 226 │           }
+    274 227 │         ]
+    ······· │ 
+    276 229 │       {
+    277 230 │         "@id": "ehk:etil",
+    278     │ - ······"@type":·[
+    279     │ - ········"ontolex:LexicalEntry",
+    280     │ - ········"lexinfo:Noun"
+    281     │ - ······],
+        231 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    282 232 │         "canonicalForm": {
+    283 233 │           "@type": "ontolex:Form",
+    ······· │ 
+    303 253 │       {
+    304 254 │         "@id": "ehk:'etil",
+    305     │ - ······"@type":·[
+    306     │ - ········"ontolex:LexicalEntry",
+    307     │ - ········"lexinfo:Noun"
+    308     │ - ······],
+  147 more lines truncated
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/g.jsonld format ━━━━━━━━━━━━━━━━━
+
+  ✖ Formatter would have printed the following content:
+  
+     23  23 │       {
+     24  24 │         "@id": "ehk:gar",
+     25     │ - ······"@type":·[
+     26     │ - ········"ontolex:LexicalEntry",
+     27     │ - ········"lexinfo:Noun"
+     28     │ - ······],
+         25 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     29  26 │         "canonicalForm": {
+     30  27 │           "@type": "ontolex:Form",
+    ······· │ 
+     44  41 │               "@value": "stone"
+     45  42 │             },
+     46     │ - ··········"lexinfo:semanticField":·[
+     47     │ - ············"Natural·World",
+     48     │ - ············"Elements"
+     49     │ - ··········]
+         43 │ + ··········"lexinfo:semanticField":·["Natural·World",·"Elements"]
+     50  44 │           },
+     51  45 │           {
+    ······· │ 
+     55  49 │               "@value": "stone"
+     56  50 │             },
+     57     │ - ··········"lexinfo:semanticField":·[
+     58     │ - ············"Natural·World",
+     59     │ - ············"Elements"
+     60     │ - ··········]
+         51 │ + ··········"lexinfo:semanticField":·["Natural·World",·"Elements"]
+     61  52 │           },
+     62  53 │           {
+    ······· │ 
+     66  57 │               "@value": "stone"
+     67  58 │             },
+     68     │ - ··········"lexinfo:semanticField":·[
+     69     │ - ············"Natural·World",
+     70     │ - ············"Elements"
+     71     │ - ··········]
+         59 │ + ··········"lexinfo:semanticField":·["Natural·World",·"Elements"]
+     72  60 │           },
+     73  61 │           {
+    ······· │ 
+     77  65 │               "@value": "stone"
+     78  66 │             },
+     79     │ - ··········"lexinfo:semanticField":·[
+     80     │ - ············"Natural·World",
+     81     │ - ············"Elements"
+     82     │ - ··········]
+         67 │ + ··········"lexinfo:semanticField":·["Natural·World",·"Elements"]
+     83  68 │           }
+     84  69 │         ]
+    ······· │ 
+     86  71 │       {
+     87  72 │         "@id": "ehk:ger",
+     88     │ - ······"@type":·[
+     89     │ - ········"ontolex:LexicalEntry",
+     90     │ - ········"lexinfo:Noun"
+     91     │ - ······],
+         73 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     92  74 │         "canonicalForm": {
+     93  75 │           "@type": "ontolex:Form",
+    ······· │ 
+    109  91 │               "@value": "metal"
+    110  92 │             },
+    111     │ - ··········"lexinfo:semanticField":·[
+    112     │ - ············"Metals",
+    113     │ - ············"Material·Culture",
+    114     │ - ············"Basic·Terms"
+    115     │ - ··········]
+         93 │ + ··········"lexinfo:semanticField":·["Metals",·"Material·Culture",·"Basic·Terms"]
+    116  94 │           }
+    117  95 │         ]
+    ······· │ 
+    119  97 │       {
+    120  98 │         "@id": "ehk:gnar",
+    121     │ - ······"@type":·[
+    122     │ - ········"ontolex:LexicalEntry",
+    123     │ - ········"lexinfo:Noun"
+    124     │ - ······],
+         99 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    125 100 │         "canonicalForm": {
+    126 101 │           "@type": "ontolex:Form",
+    ······· │ 
+    155 130 │       {
+    156 131 │         "@id": "ehk:gnater",
+    157     │ - ······"@type":·[
+    158     │ - ········"ontolex:LexicalEntry",
+    159     │ - ········"lexinfo:Verb"
+    160     │ - ······],
+        132 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Verb"],
+    161 133 │         "canonicalForm": {
+    162 134 │           "@type": "ontolex:Form",
+    ······· │ 
+    195 167 │       {
+    196 168 │         "@id": "ehk:gral",
+    197     │ - ······"@type":·[
+    198     │ - ········"ontolex:LexicalEntry",
+    199     │ - ········"lexinfo:Noun"
+    200     │ - ······],
+        169 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    201 170 │         "canonicalForm": {
+    202 171 │           "@type": "ontolex:Form",
+    ······· │ 
+    216 185 │               "@value": "earth, soil"
+    217 186 │             },
+    218     │ - ··········"lexinfo:semanticField":·[
+    219     │ - ············"Natural·World",
+    220     │ - ············"Elements"
+    221     │ - ··········]
+        187 │ + ··········"lexinfo:semanticField":·["Natural·World",·"Elements"]
+    222 188 │           },
+    223 189 │           {
+    ······· │ 
+    249 215 │       {
+    250 216 │         "@id": "ehk:gralimris",
+    251     │ - ······"@type":·[
+    252     │ - ········"ontolex:LexicalEntry",
+    253     │ - ········"lexinfo:Noun"
+    254     │ - ······],
+        217 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    255 218 │         "canonicalForm": {
+    256 219 │           "@type": "ontolex:Form",
+    ······· │ 
+    277 240 │             },
+    278 241 │             "lexinfo:register": "lexinfo:formalRegister",
+    279     │ - ··········"lexinfo:semanticField":·[
+    280     │ - ············"Medical·Terms",
+    281     │ - ············"Body·Terms"
+    282     │ - ··········]
+        242 │ + ··········"lexinfo:semanticField":·["Medical·Terms",·"Body·Terms"]
+    283 243 │           }
+    284 244 │         ]
+    ······· │ 
+    286 246 │       {
+    287 247 │         "@id": "ehk:granmal",
+    288     │ - ······"@type":·[
+    289     │ - ········"ontolex:LexicalEntry",
+    290     │ - ········"lexinfo:Noun"
+    291     │ - ······],
+        248 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    292 249 │         "canonicalForm": {
+    293 250 │           "@type": "ontolex:Form",
+    ······· │ 
+    308 265 │               "@value": "grain storage"
+    309 266 │             },
+    310     │ - ··········"lexinfo:semanticField":·[
+    311     │ - ············"Agricultural·Terms",
+    312     │ - ············"Storage·Terms"
+    313     │ - ··········]
+        267 │ + ··········"lexinfo:semanticField":·["Agricultural·Terms",·"Storage·Terms"]
+    314 268 │           }
+    315 269 │         ]
+    ······· │ 
+    317 271 │       {
+    318 272 │         "@id": "ehk:gransed",
+    319     │ - ······"@type":·[
+    320     │ - ········"ontolex:LexicalEntry",
+    321     │ - ········"lexinfo:Noun"
+    322     │ - ······],
+        273 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    323 274 │         "canonicalForm": {
+    324 275 │           "@type": "ontolex:Form",
+    ······· │ 
+    339 290 │               "@value": "grain"
+    340 291 │             },
+    341     │ - ··········"lexinfo:semanticField":·[
+    342     │ - ············"Plant·Terms",
+    343     │ - ············"Place·Terms"
+  165 more lines truncated
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/h.jsonld format ━━━━━━━━━━━━━━━━━
+
+  ✖ Formatter would have printed the following content:
+  
+     23  23 │       {
+     24  24 │         "@id": "ehk:harabran",
+     25     │ - ······"@type":·[
+     26     │ - ········"ontolex:LexicalEntry",
+     27     │ - ········"lexinfo:Noun"
+     28     │ - ······],
+         25 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     29  26 │         "canonicalForm": {
+     30  27 │           "@type": "ontolex:Form",
+    ······· │ 
+     54  51 │               "@value": "conflict, grievance (especially between families/clans)"
+     55  52 │             },
+     56     │ - ··········"lexinfo:semanticField":·[
+     57     │ - ············"Social·Terms",
+     58     │ - ············"Conflict·Terms"
+     59     │ - ··········]
+         53 │ + ··········"lexinfo:semanticField":·["Social·Terms",·"Conflict·Terms"]
+     60  54 │           }
+     61  55 │         ]
+    ······· │ 
+     63  57 │       {
+     64  58 │         "@id": "ehk:haran",
+     65     │ - ······"@type":·[
+     66     │ - ········"ontolex:LexicalEntry",
+     67     │ - ········"lexinfo:Noun"
+     68     │ - ······],
+         59 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     69  60 │         "canonicalForm": {
+     70  61 │           "@type": "ontolex:Form",
+    ······· │ 
+    106  97 │       {
+    107  98 │         "@id": "ehk:hilis",
+    108     │ - ······"@type":·[
+    109     │ - ········"ontolex:LexicalEntry",
+    110     │ - ········"lexinfo:Noun"
+    111     │ - ······],
+         99 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    112 100 │         "canonicalForm": {
+    113 101 │           "@type": "ontolex:Form",
+    ······· │ 
+    156 144 │               "@value": "sight, active vision"
+    157 145 │             },
+    158     │ - ··········"lexinfo:semanticField":·[
+    159     │ - ············"Perception·Terms",
+    160     │ - ············"Basic·Terms"
+    161     │ - ··········]
+        146 │ + ··········"lexinfo:semanticField":·["Perception·Terms",·"Basic·Terms"]
+    162 147 │           }
+    163 148 │         ]
+    ······· │ 
+    165 150 │       {
+    166 151 │         "@id": "ehk:his",
+    167     │ - ······"@type":·[
+    168     │ - ········"ontolex:LexicalEntry",
+    169     │ - ········"lexinfo:Noun",
+    170     │ - ········"lexinfo:Verb"
+    171     │ - ······],
+        152 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun",·"lexinfo:Verb"],
+    172 153 │         "canonicalForm": {
+    173 154 │           "@type": "ontolex:Form",
+    ······· │ 
+    191 172 │               "@value": "sight (animate/conscious perception)"
+    192 173 │             },
+    193     │ - ··········"lexinfo:semanticField":·[
+    194     │ - ············"Perception",
+    195     │ - ············"Sacred",
+    196     │ - ············"Abstract·Concepts"
+    197     │ - ··········]
+        174 │ + ··········"lexinfo:semanticField":·["Perception",·"Sacred",·"Abstract·Concepts"]
+    198 175 │           },
+    199 176 │           {
+    ······· │ 
+    203 180 │               "@value": "to see (passive/unintentional perception)"
+    204 181 │             },
+    205     │ - ··········"lexinfo:semanticField":·[
+    206     │ - ············"Perception·Terms",
+    207     │ - ············"Basic·Terms"
+    208     │ - ··········]
+        182 │ + ··········"lexinfo:semanticField":·["Perception·Terms",·"Basic·Terms"]
+    209 183 │           }
+    210 184 │         ]
+    ······· │ 
+    212 186 │       {
+    213 187 │         "@id": "ehk:hisimris",
+    214     │ - ······"@type":·[
+    215     │ - ········"ontolex:LexicalEntry",
+    216     │ - ········"lexinfo:Verb"
+    217     │ - ······],
+        188 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Verb"],
+    218 189 │         "canonicalForm": {
+    219 190 │           "@type": "ontolex:Form",
+    ······· │ 
+    260 231 │               "@value": "show"
+    261 232 │             },
+    262     │ - ··········"lexinfo:semanticField":·[
+    263     │ - ············"Perception·Terms",
+    264     │ - ············"Action·Terms"
+    265     │ - ··········],
+        233 │ + ··········"lexinfo:semanticField":·["Perception·Terms",·"Action·Terms"],
+    266 234 │             "usage": "Contrasts with hilis'er 'to look'"
+    267 235 │           }
+    ······· │ 
+    270 238 │       {
+    271 239 │         "@id": "ehk:hahu",
+    272     │ - ······"@type":·[
+    273     │ - ········"ontolex:LexicalEntry",
+    274     │ - ········"lexinfo:Noun"
+    275     │ - ······],
+        240 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    276 241 │         "canonicalForm": {
+    277 242 │           "@type": "ontolex:Form",
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/m.jsonld:1333:13 parse ━━━━━━━━━━
+
+  ✖ unexpected character `@`
+  
+    1331 │           },
+    1332 │           "lexinfo:tense": {
+  > 1333 │             @id: "lexinfo:future"
+         │             ^
+    1334 │           },
+    1335 │           "lexinfo:semanticField": [
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/m.jsonld:1333:14 parse ━━━━━━━━━━
+
+  ✖ expected `,` but instead found `id`
+  
+    1331 │           },
+    1332 │           "lexinfo:tense": {
+  > 1333 │             @id: "lexinfo:future"
+         │              ^^
+    1334 │           },
+    1335 │           "lexinfo:semanticField": [
+  
+  ℹ Remove id
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/m.jsonld:1333:16 parse ━━━━━━━━━━
+
+  ✖ expected `,` but instead found `:`
+  
+    1331 │           },
+    1332 │           "lexinfo:tense": {
+  > 1333 │             @id: "lexinfo:future"
+         │                ^
+    1334 │           },
+    1335 │           "lexinfo:semanticField": [
+  
+  ℹ Remove :
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/m.jsonld:1333:18 parse ━━━━━━━━━━
+
+  ✖ expected `,` but instead found `"lexinfo:future"`
+  
+    1331 │           },
+    1332 │           "lexinfo:tense": {
+  > 1333 │             @id: "lexinfo:future"
+         │                  ^^^^^^^^^^^^^^^^
+    1334 │           },
+    1335 │           "lexinfo:semanticField": [
+  
+  ℹ Remove "lexinfo:future"
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/m.jsonld:1334:11 parse ━━━━━━━━━━
+
+  ✖ expected `,` but instead found `}`
+  
+    1332 │           "lexinfo:tense": {
+    1333 │             @id: "lexinfo:future"
+  > 1334 │           },
+         │           ^
+    1335 │           "lexinfo:semanticField": [
+    1336 │             "Temporal Terms",
+  
+  ℹ Remove }
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/n.jsonld format ━━━━━━━━━━━━━━━━━
+
+  ✖ Formatter would have printed the following content:
+  
+     23  23 │       {
+     24  24 │         "@id": "ehk:nagral",
+     25     │ - ······"@type":·[
+     26     │ - ········"ontolex:LexicalEntry",
+     27     │ - ········"lexinfo:Noun"
+     28     │ - ······],
+         25 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     29  26 │         "canonicalForm": {
+     30  27 │           "@type": "ontolex:Form",
+    ······· │ 
+     53  50 │               "@value": "black earth"
+     54  51 │             },
+     55     │ - ··········"lexinfo:semanticField":·[
+     56     │ - ············"Natural·World",
+     57     │ - ············"Landforms"
+     58     │ - ··········]
+         52 │ + ··········"lexinfo:semanticField":·["Natural·World",·"Landforms"]
+     59  53 │           },
+     60  54 │           {
+    ······· │ 
+     64  58 │               "@value": "black earth"
+     65  59 │             },
+     66     │ - ··········"lexinfo:semanticField":·[
+     67     │ - ············"Natural·World",
+     68     │ - ············"Landforms"
+     69     │ - ··········]
+         60 │ + ··········"lexinfo:semanticField":·["Natural·World",·"Landforms"]
+     70  61 │           },
+     71  62 │           {
+    ······· │ 
+     75  66 │               "@value": "black earth"
+     76  67 │             },
+     77     │ - ··········"lexinfo:semanticField":·[
+     78     │ - ············"Natural·World",
+     79     │ - ············"Landforms"
+     80     │ - ··········]
+         68 │ + ··········"lexinfo:semanticField":·["Natural·World",·"Landforms"]
+     81  69 │           },
+     82  70 │           {
+    ······· │ 
+     86  74 │               "@value": "black earth"
+     87  75 │             },
+     88     │ - ··········"lexinfo:semanticField":·[
+     89     │ - ············"Natural·World",
+     90     │ - ············"Landforms"
+     91     │ - ··········]
+         76 │ + ··········"lexinfo:semanticField":·["Natural·World",·"Landforms"]
+     92  77 │           }
+     93  78 │         ]
+    ······· │ 
+     95  80 │       {
+     96  81 │         "@id": "ehk:nai",
+     97     │ - ······"@type":·[
+     98     │ - ········"ontolex:LexicalEntry",
+     99     │ - ········"lexinfo:Noun"
+    100     │ - ······],
+         82 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    101  83 │         "canonicalForm": {
+    102  84 │           "@type": "ontolex:Form",
+    ······· │ 
+    146 128 │       {
+    147 129 │         "@id": "ehk:natlas",
+    148     │ - ······"@type":·[
+    149     │ - ········"ontolex:LexicalEntry",
+    150     │ - ········"lexinfo:Noun"
+    151     │ - ······],
+        130 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    152 131 │         "canonicalForm": {
+    153 132 │           "@type": "ontolex:Form",
+    ······· │ 
+    160 139 │           "etymon:gloss": "desire-ILL",
+    161 140 │           "etymon:note": "Shows cluster simplification and case lexicalization. From 'one in a state of desire/affection' to 'friend'",
+    162     │ - ········"etymon:soundChange":·[
+    163     │ - ··········"compound·fusion",
+    164     │ - ··········"cluster·simplification"
+    165     │ - ········]
+        141 │ + ········"etymon:soundChange":·["compound·fusion",·"cluster·simplification"]
+    166 142 │         },
+    167 143 │         "sense": [
+    ······· │ 
+    172 148 │               "@value": "friend"
+    173 149 │             },
+    174     │ - ··········"lexinfo:semanticField":·[
+    175     │ - ············"Person·Terms",
+    176     │ - ············"Social·Terms"
+    177     │ - ··········]
+        150 │ + ··········"lexinfo:semanticField":·["Person·Terms",·"Social·Terms"]
+    178 151 │           }
+    179 152 │         ]
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/r.jsonld format ━━━━━━━━━━━━━━━━━
+
+  ✖ Formatter would have printed the following content:
+  
+     23  23 │       {
+     24  24 │         "@id": "ehk:ran",
+     25     │ - ······"@type":·[
+     26     │ - ········"ontolex:LexicalEntry",
+     27     │ - ········"lexinfo:Noun"
+     28     │ - ······],
+         25 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     29  26 │         "canonicalForm": {
+     30  27 │           "@type": "ontolex:Form",
+    ······· │ 
+     44  41 │               "@value": "stream, flowing water"
+     45  42 │             },
+     46     │ - ··········"lexinfo:semanticField":·[
+     47     │ - ············"Natural·World",
+     48     │ - ············"Water·Features"
+     49     │ - ··········]
+         43 │ + ··········"lexinfo:semanticField":·["Natural·World",·"Water·Features"]
+     50  44 │           }
+     51  45 │         ]
+    ······· │ 
+     53  47 │       {
+     54  48 │         "@id": "ehk:ranris",
+     55     │ - ······"@type":·[
+     56     │ - ········"ontolex:LexicalEntry",
+     57     │ - ········"lexinfo:Noun"
+     58     │ - ······],
+         49 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     59  50 │         "canonicalForm": {
+     60  51 │           "@type": "ontolex:Form",
+    ······· │ 
+     75  66 │               "@value": "river reed"
+     76  67 │             },
+     77     │ - ··········"lexinfo:semanticField":·[
+     78     │ - ············"Flora",
+     79     │ - ············"Plant·Terms",
+     80     │ - ············"Cultivated·Plants"
+     81     │ - ··········]
+         68 │ + ··········"lexinfo:semanticField":·["Flora",·"Plant·Terms",·"Cultivated·Plants"]
+     82  69 │           }
+     83  70 │         ]
+    ······· │ 
+     85  72 │       {
+     86  73 │         "@id": "ehk:rek",
+     87     │ - ······"@type":·[
+     88     │ - ········"ontolex:LexicalEntry",
+     89     │ - ········"lexinfo:Noun"
+     90     │ - ······],
+         74 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     91  75 │         "canonicalForm": {
+     92  76 │           "@type": "ontolex:Form",
+    ······· │ 
+    135 119 │               "@value": "bark (of dog/wolf)"
+    136 120 │             },
+    137     │ - ··········"lexinfo:semanticField":·[
+    138     │ - ············"Sound·Terms",
+    139     │ - ············"Animal·Terms"
+    140     │ - ··········],
+        121 │ + ··········"lexinfo:semanticField":·["Sound·Terms",·"Animal·Terms"],
+    141 122 │             "usage": "Basic term for canine vocalization"
+    142 123 │           }
+    ······· │ 
+    145 126 │       {
+    146 127 │         "@id": "ehk:ret",
+    147     │ - ······"@type":·[
+    148     │ - ········"ontolex:LexicalEntry",
+    149     │ - ········"lexinfo:Noun"
+    150     │ - ······],
+        128 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    151 129 │         "canonicalForm": {
+    152 130 │           "@type": "ontolex:Form",
+    ······· │ 
+    172 150 │       {
+    173 151 │         "@id": "ehk:ris",
+    174     │ - ······"@type":·[
+    175     │ - ········"ontolex:LexicalEntry",
+    176     │ - ········"lexinfo:Noun"
+    177     │ - ······],
+        152 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    178 153 │         "canonicalForm": {
+    179 154 │           "@type": "ontolex:Form",
+    ······· │ 
+    193 168 │               "@value": "reed"
+    194 169 │             },
+    195     │ - ··········"lexinfo:semanticField":·[
+    196     │ - ············"Flora",
+    197     │ - ············"Plant·Terms"
+    198     │ - ··········]
+        170 │ + ··········"lexinfo:semanticField":·["Flora",·"Plant·Terms"]
+    199 171 │           }
+    200 172 │         ]
+    ······· │ 
+    202 174 │       {
+    203 175 │         "@id": "ehk:rok",
+    204     │ - ······"@type":·[
+    205     │ - ········"ontolex:LexicalEntry",
+    206     │ - ········"lexinfo:Noun"
+    207     │ - ······],
+        176 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    208 177 │         "canonicalForm": {
+    209 178 │           "@type": "ontolex:Form",
+    ······· │ 
+    224 193 │               "@value": "horse"
+    225 194 │             },
+    226     │ - ··········"lexinfo:semanticField":·[
+    227     │ - ············"Animals",
+    228     │ - ············"Pastoral·Terms"
+    229     │ - ··········],
+        195 │ + ··········"lexinfo:semanticField":·["Animals",·"Pastoral·Terms"],
+    230 196 │             "usage": "Shows elvish introduction of horses"
+    231 197 │           }
+    ······· │ 
+    234 200 │       {
+    235 201 │         "@id": "ehk:ru",
+    236     │ - ······"@type":·[
+    237     │ - ········"ontolex:LexicalEntry",
+    238     │ - ········"lexinfo:Conjunction"
+    239     │ - ······],
+        202 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Conjunction"],
+    240 203 │         "canonicalForm": {
+    241 204 │           "@type": "ontolex:Form",
+    ······· │ 
+    256 219 │       {
+    257 220 │         "@id": "ehk:rak",
+    258     │ - ······"@type":·[
+    259     │ - ········"ontolex:LexicalEntry",
+    260     │ - ········"lexinfo:Verb"
+    261     │ - ······],
+        221 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Verb"],
+    262 222 │         "canonicalForm": {
+    263 223 │           "@type": "ontolex:Form",
+    ······· │ 
+    277 237 │               "@value": "to break, shatter"
+    278 238 │             },
+    279     │ - ··········"lexinfo:semanticField":·[
+    280     │ - ············"Action·Verbs",
+    281     │ - ············"Destructive·Actions"
+    282     │ - ··········]
+        239 │ + ··········"lexinfo:semanticField":·["Action·Verbs",·"Destructive·Actions"]
+    283 240 │           }
+    284 241 │         ]
+    ······· │ 
+    286 243 │       {
+    287 244 │         "@id": "ehk:ranes",
+    288     │ - ······"@type":·[
+    289     │ - ········"ontolex:LexicalEntry",
+    290     │ - ········"lexinfo:Noun"
+    291     │ - ······],
+        245 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    292 246 │         "canonicalForm": {
+    293 247 │           "@type": "ontolex:Form",
+    ······· │ 
+    308 262 │               "@value": "river fish"
+    309 263 │             },
+    310     │ - ··········"lexinfo:semanticField":·[
+    311     │ - ············"Animal·Terms",
+    312     │ - ············"Maritime·Terms"
+    313     │ - ··········]
+        264 │ + ··········"lexinfo:semanticField":·["Animal·Terms",·"Maritime·Terms"]
+    314 265 │           }
+    315 266 │         ]
+    ······· │ 
+    317 268 │       {
+    318 269 │         "@id": "ehk:rantirdu",
+    319     │ - ······"@type":·[
+    320     │ - ········"ontolex:LexicalEntry",
+    321     │ - ········"lexinfo:Noun"
+  83 more lines truncated
+  
+src/assets/languages/hickic/seneran/early-hick/lexicon/u.jsonld format ━━━━━━━━━━━━━━━━━
+
+  ✖ Formatter would have printed the following content:
+  
+     23  23 │       {
+     24  24 │         "@id": "ehk:'u'u",
+     25     │ - ······"@type":·[
+     26     │ - ········"ontolex:LexicalEntry",
+     27     │ - ········"lexinfo:Verb"
+     28     │ - ······],
+         25 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Verb"],
+     29  26 │         "canonicalForm": {
+     30  27 │           "@type": "ontolex:Form",
+    ······· │ 
+     65  62 │       {
+     66  63 │         "@id": "ehk:ul",
+     67     │ - ······"@type":·[
+     68     │ - ········"ontolex:LexicalEntry",
+     69     │ - ········"lexinfo:Noun"
+     70     │ - ······],
+         64 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+     71  65 │         "canonicalForm": {
+     72  66 │           "@type": "ontolex:Form",
+    ······· │ 
+     95  89 │           "etymon:note": "Original root (~800 PF) had meanings 'thumb/grasp/possession'. By Late Proto-Hick (~400 PF), bare form specialized to 'thumb/possession'. Source of possessive suffix -ul through grammaticalization.",
+     96  90 │           "etymon:protoform": "Proto-Hick *ʔulu",
+     97     │ - ········"etymon:soundChange":·[
+     98     │ - ··········"initial·glottal·loss",
+     99     │ - ··········"final·vowel·loss"
+    100     │ - ········]
+         91 │ + ········"etymon:soundChange":·["initial·glottal·loss",·"final·vowel·loss"]
+    101  92 │         },
+    102  93 │         "sense": [
+    ······· │ 
+    107  98 │               "@value": "thumb"
+    108  99 │             },
+    109     │ - ··········"lexinfo:semanticField":·[
+    110     │ - ············"Body·Terms",
+    111     │ - ············"Basic·Terms"
+    112     │ - ··········]
+        100 │ + ··········"lexinfo:semanticField":·["Body·Terms",·"Basic·Terms"]
+    113 101 │           }
+    114 102 │         ]
+    ······· │ 
+    116 104 │       {
+    117 105 │         "@id": "ehk:uran",
+    118     │ - ······"@type":·[
+    119     │ - ········"ontolex:LexicalEntry",
+    120     │ - ········"lexinfo:Noun"
+    121     │ - ······],
+        106 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    122 107 │         "canonicalForm": {
+    123 108 │           "@type": "ontolex:Form",
+    ······· │ 
+    127 112 │         "etymology": {
+    128 113 │           "@type": "etymon:Etymology",
+    129     │ - ········"etymon:components":·[
+    130     │ - ··········"*ulu·(thumb)",
+    131     │ - ··········"*haranu·(length)"
+    132     │ - ········],
+        114 │ + ········"etymon:components":·["*ulu·(thumb)",·"*haranu·(length)"],
+    133 115 │           "etymon:note": "Shows development of measurement system from body parts",
+    134 116 │           "etymon:protoform": "Proto-Hick *ulu-haranu",
+    135     │ - ········"etymon:soundChange":·[
+    136     │ - ··········"compound·fusion",
+    137     │ - ··········"unstressed·vowel·reduction"
+    138     │ - ········]
+        117 │ + ········"etymon:soundChange":·["compound·fusion",·"unstressed·vowel·reduction"]
+    139 118 │         },
+    140 119 │         "sense": [
+    ······· │ 
+    145 124 │               "@value": "inch (unit of length, approximately thumb-width)"
+    146 125 │             },
+    147     │ - ··········"lexinfo:semanticField":·[
+    148     │ - ············"Measurement·Terms",
+    149     │ - ············"Basic·Terms"
+    150     │ - ··········]
+        126 │ + ··········"lexinfo:semanticField":·["Measurement·Terms",·"Basic·Terms"]
+    151 127 │           }
+    152 128 │         ]
+    ······· │ 
+    154 130 │       {
+    155 131 │         "@id": "ehk:us",
+    156     │ - ······"@type":·[
+    157     │ - ········"ontolex:LexicalEntry",
+    158     │ - ········"lexinfo:Noun"
+    159     │ - ······],
+        132 │ + ······"@type":·["ontolex:LexicalEntry",·"lexinfo:Noun"],
+    160 133 │         "canonicalForm": {
+    161 134 │           "@type": "ontolex:Form",
+    ······· │ 
+    174 147 │         "etymology": {
+    175 148 │           "@type": "etymon:Etymology",
+    176     │ - ········"etymon:components":·[
+    177     │ - ··········"*ʔulu·(thumb/grasp)",
+    178     │ - ··········"-isu·(locative)"
+    179     │ - ········],
+        149 │ + ········"etymon:components":·["*ʔulu·(thumb/grasp)",·"-isu·(locative)"],
+    180 150 │           "etymon:note": "Developed from locative form of *ʔulu (~400 PF) specializing in 'grasp' meaning",
+    181 151 │           "etymon:protoform": "Proto-Hick *ʔulu-isu",
+    182     │ - ········"etymon:soundChange":·[
+    183     │ - ··········"vowel·coalescence",
+    184     │ - ··········"final·vowel·loss"
+    185     │ - ········]
+        152 │ + ········"etymon:soundChange":·["vowel·coalescence",·"final·vowel·loss"]
+    186 153 │         },
+    187 154 │         "sense": [
+    ······· │ 
+    192 159 │               "@value": "grasp, possession"
+    193 160 │             },
+    194     │ - ··········"lexinfo:semanticField":·[
+    195     │ - ············"Basic·Terms",
+    196     │ - ············"Action·Terms"
+    197     │ - ··········]
+        161 │ + ··········"lexinfo:semanticField":·["Basic·Terms",·"Action·Terms"]
+    198 162 │           }
+    199 163 │         ]
+  
+src/types/Lexicon.ts:1:1 assist/source/organizeImports  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✖ The imports and exports are not sorted.
+  
+  > 1 │ export type {
+      │ ^^^^^^^^^^^^^
+  > 2 │   DerivedForm,
+  > 3 │   Lexicon,
+  > 4 │   LexItem,
+  > 5 │   Sense,
+  > 6 │ } from "@bastion-falls/types";
+      │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    7 │ 
+  
+  ℹ Safe fix: Organize Imports (Biome)
+  
+    1 1 │   export type {
+    2 2 │     DerivedForm,
+    3   │ - ··Lexicon,
+    4   │ - ··LexItem,
+      3 │ + ··LexItem,
+      4 │ + ··Lexicon,
+    5 5 │     Sense,
+    6 6 │   } from "@bastion-falls/types";
+  
+The number of diagnostics exceeds the limit allowed. Use --max-diagnostics to increase it.
+Diagnostics not shown: 328.Checked 151 files in 111ms. No fixes applied.
+Found 278 errors.
+Found 30 warnings.
+Found 40 infos.

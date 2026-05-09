@@ -25,6 +25,7 @@
       "linter": {
         "rules": {
           "correctness": {
+            "noUnusedImports": "off",
             "useJsxKeyInIterable": "off"
           },
           "suspicious": {

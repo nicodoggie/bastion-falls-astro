@@ -21,6 +21,7 @@
 	"eslint.workingDirectories": [
 		{ "directory": "astro", "changeProcessCWD": true }
 	],
+	"biome.configurationPath": "astro/biome.jsonc",
 	"yaml.schemas": {
 		"${workspaceFolder}/.vscode/schemas/frontmatter/character.json": [
 			"astro/src/content/docs/world/characters/**/*.{md,mdx}"
