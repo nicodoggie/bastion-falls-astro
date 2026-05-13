@@ -1,0 +1,18 @@
+{
+  "name": "Topaz Sword of Summer",
+  "source": "BF",
+  "type": {
+    "type": "Weapon (greatsword), wondrous item"
+  },
+  "rarity": "very rare",
+  "wondrous": true,
+  "reqAttune": true,
+  "weight": 6,
+  "dmg1": "2d6",
+  "dmgType": "S",
+  "entries": [
+    "Forged in the Summer Queen's radiance, this greatsword bears a topaz-set hilt and was one of the Four Elven Boons. Titania gifted it to the elven host, and the elves in turn passed it to the Mathrantor'al—whose haughtiness matched the High Elves and whose sense of blind justice ran just as deep.",
+    "**Unshaken duelist.** While you are attuned to this sword, if you are not frightened, your confidence in your own fighting prowess becomes armored truth. You have immunity to damage of every type—whether from weapons, unarmed strikes, spells, environmental effects, or any other source—including acid, bludgeoning, cold, fire, force, lightning, necrotic, piercing, poison, psychic, radiant, slashing, and thunder damage. You also have immunity to every condition except the frightened condition.",
+    "**Frailty of doubt.** If you become frightened, these benefits cease until you finish a short or long rest, even if the condition ends sooner."
+  ]
+}
