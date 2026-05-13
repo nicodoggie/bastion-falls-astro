@@ -1,0 +1,30 @@
+{
+  // Folder-specific settings
+  //
+  // For a full list of overridable settings, and general information on folder-specific settings,//zed.dev/docs/configuring-zed#settings-files
+  "semantic_tokens": "combined",
+  "document_symbols": "on",
+  "tab_size": 2,
+  "formatter": "auto",
+  "file_types": {
+    "Markdown": ["md", "mdx"],
+  },
+  "languages": {
+    "Markdown": {
+      "language_servers": ["rumdl"],
+      "format_on_save": "on",
+    },
+    "MDX": {
+      "language_servers": ["rumdl"],
+      "format_on_save": "on",
+    },
+  },
+  "lsp": {
+    "rumdl": {
+      "binary": {
+        "path": "/usr/bin/rumdl",
+        "arguments": ["server"],
+      },
+    },
+  },
+}

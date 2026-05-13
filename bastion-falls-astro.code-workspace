@@ -6,11 +6,13 @@
 	],
 	"extensions": {
 		"recommendations": [
-			"unifiedjs.vscode-mdx",
-			"unifiedjs.vscode-remark",
-			"esbenp.prettier-vscode"
-		],
-		"unwantedRecommendations": ["davidanson.vscode-markdownlint"]
+			"astro-build.astro-vscode",
+			"bradlc.vscode-tailwindcss",
+			"redhat.vscode-yaml",
+			"rvben.rumdl",
+			"biomejs.biome",
+			"pinage404.git-extension-pack"
+		]
 	},
 	"settings": {
 		"eslint.codeActionsOnSave.mode": "problems",

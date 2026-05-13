@@ -1,0 +1,20 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+//
+// Example:
+[
+  {
+    "label": "Astro Dev Server",
+    "command": "yarn dev",
+    "cwd": "${workspace_root}/",
+    "env": {
+      "PATH": "${env.PATH}:${env.HOME}/.volta/bin",
+    },
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "none",
+  },
+  {
+    "label": "Dev types",
+    "command": "",
+  },
+]

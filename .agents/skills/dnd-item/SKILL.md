@@ -2,11 +2,12 @@
 name: dnd-item
 description: >-
   Create a D&D 5e magic item as 5etools-style ItemData JSON with source "BF"
-  under astro/src/content/docs/world/items as <item-slug>.item.json, prompting
-  for any missing details.
+  under astro/src/content/docs/world/items as <item-slug>.item.json, add or
+  update a companion <item-slug>.mdx that wires itemDataStats + ItemBlock, and
+  prompt for any missing details.
 ---
 
-# D&D 5e magic item → `world/items/*.item.json` (source: `BF`)
+# D&D 5e magic item → `world/items/<slug>.item.json` + `<slug>.mdx` (source: `BF`)
 
 Use this skill when the user wants to add a **new D&D 5e magic item** to the
 repo as **5etools ItemData JSON** consumed by `ItemBlock.astro`.
@@ -23,7 +24,27 @@ This skill must be able to work from:
 3. Place the file under:
    `astro/src/content/docs/world/items/<item-slug>.item.json`
 4. Ensure the file passes `ItemDataSchema` validation.
-5. Run `yarn astro sync` from `astro/` to validate the content collections.
+5. **Companion MDX** (same slug, no `.item`):
+   - Path: `astro/src/content/docs/world/items/<item-slug>.mdx`
+   - **If it does not exist**: create it with Starlight frontmatter, optional
+     `item` metadata (`ItemSchema` from `@bastion-falls/types`—mirror name,
+     rarity, type, attunement, weight, value from the JSON where helpful),
+     **`itemDataStats`** with at least one key whose value is the **`itemData`**
+     collection id: `items/<item-slug>.item` (path under `world/` without
+     `.json`; same rule as `potion-of-healing.item.json` →
+     `items/potion-of-healing.item`).
+   - **If it already exists**: do not replace the whole article; **add or
+     correct** `itemDataStats` so one entry points at `items/<item-slug>.item`,
+     and ensure the page renders that data (e.g. `<ItemBlock
+     item={frontmatter.itemDataStats.<key>} />`). Prefer **one** conventional
+     key such as `rules` or `statBlock` for new pages.
+   - Import: from `world/items/*.mdx`, use
+     `import ItemBlock from '../../../../components/ItemBlock.astro';`
+6. Run `yarn astro sync` from `astro/` to validate the content collections.
+
+When other docs (e.g. lore articles) embed the same item, they may link to this
+MDX page instead of duplicating `ItemBlock`, unless a second embed is
+deliberate.
 
 ## Authoritative schema + repo rules
 
@@ -143,5 +164,8 @@ After writing the file:
 - [ ] File created at `astro/src/content/docs/world/items/<slug>.item.json`
 - [ ] `"source": "BF"` is present
 - [ ] JSON validates under `ItemDataSchema`
+- [ ] Companion `astro/src/content/docs/world/items/<slug>.mdx` exists (new or
+      updated) with `itemDataStats` → `items/<slug>.item` and `ItemBlock` (or
+      equivalent wiring)
 - [ ] `yarn astro sync` succeeds
 

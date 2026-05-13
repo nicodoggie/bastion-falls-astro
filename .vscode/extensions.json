@@ -2,8 +2,10 @@
   "recommendations": [
     "astro-build.astro-vscode",
     "bradlc.vscode-tailwindcss",
-    "dbaeumer.vscode-eslint",
-    "redhat.vscode-yaml"
+    "redhat.vscode-yaml",
+    "rvben.rumdl",
+    "biomejs.biome",
+    "pinage404.git-extension-pack"
   ],
   "unwantedRecommendations": []
 }
