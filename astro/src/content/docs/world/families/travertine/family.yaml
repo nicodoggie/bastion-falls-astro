@@ -3,14 +3,14 @@ families:
     families:
       - parents:
           - Elisolde
-          - Odgen
+          - Palladium
         children:
           - Pallia
 people:
   Elisolde:
     fullname: Elisolde Travertine
-  Odgen:
-    fullname: Odgen Travertine
+  Palladium:
+    fullname: Palladium Travertine
   Pallia:
     fullname: Pallia Travertine
 styles:

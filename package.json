@@ -15,7 +15,7 @@
     "build": "yarn cli build && yarn types build && yarn workspace @bastion-falls/astro-lexicon-integration build && yarn 5e-schema build && yarn astro build",
     "preview": "yarn astro preview",
     "deploy": "yarn wrangler pages deploy",
-    "bfcli": "yarn cli bfcli",
+    "bfcli": "_REAL_CWD=$INIT_CWD yarn cli bfcli",
     "lex-lint": "node ./packages/lex-lint/dist/cli.js"
   },
   "keywords": [],

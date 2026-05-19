@@ -5,7 +5,7 @@
   {
     "label": "Astro Dev Server",
     "command": "yarn dev",
-    "cwd": "${workspace_root}/",
+    "cwd": "$ZED_WORKTREE_ROOT/astro",
     "env": {
       "PATH": "${env.PATH}:${env.HOME}/.volta/bin",
     },
@@ -14,7 +14,25 @@
     "save": "none",
   },
   {
-    "label": "Dev types",
-    "command": "",
+    "label": "BF Dev types",
+    "command": "yarn dev:types",
+    "cwd": "$ZED_WORKTREE_ROOT/astro",
+    "env": {
+      "PATH": "${env.PATH}:${env.HOME}/.volta/bin",
+    },
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "none",
+  },
+  {
+    "label": "BF 5e-tools",
+    "command": "npm run serve:dev",
+    "cwd": "$ZED_WORKTREE_ROOT/5etools-src",
+    "env": {
+      "PATH": "${env.PATH}:${env.HOME}/.volta/bin",
+    },
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "none",
   },
 ]

@@ -7,6 +7,7 @@ import { scanStubCommand } from "./commands/scan/command.js";
 import { migrateCommand } from "./commands/migrate/command.js";
 import { validateCommand } from "./commands/validate/command.js";
 import { kingraphCommandRoutes } from "./commands/kingraph/command.js";
+import { transcribeCommand } from "./commands/transcribe/command.js";
 
 const { name, version, description } = packageJson as any;
 
@@ -15,6 +16,7 @@ const routes = buildRouteMap({
     new: newCommandRoutes,
     migrate: migrateCommand,
     scan: scanStubCommand,
+    transcribe: transcribeCommand,
     kingraph: kingraphCommandRoutes,
     validate: validateCommand,
     install: buildInstallCommand("bfcli", { bash: "__cli_bash_complete" }),
