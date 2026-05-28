@@ -1,18 +1,22 @@
 {
-  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "$schema": "../node_modules/@biomejs/biome/configuration_schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
     "root": "../"
   },
   "files": {
-    "includes": ["src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,jsonld,jsonc,astro}"],
+    "includes": [
+      "astro.config.ts",
+      "src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,jsonld,jsonc,astro}"
+    ],
     "maxSize": 2097152 // 2MiB
   },
   "formatter": {
     "indentStyle": "space",
     "indentWidth": 2,
-    "lineWidth": 80
+    "lineWidth": 80,
+    "formatWithErrors": true
   },
   "linter": {
     "rules": {
@@ -64,6 +68,14 @@
   "json": {
     "formatter": {
       "trailingCommas": "none"
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
     }
   }
 }

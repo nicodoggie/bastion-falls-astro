@@ -1,12 +1,20 @@
 ---
+import { rewriteDocsUrl } from "../helpers/docs-links";
+
 interface Props {
   href: string;
 }
 
 const { href } = Astro.props as Props;
+// biome-ignore-start lint/correctness/noUnusedVariables: rewrittenHref is used in the template
+const rewrittenHref = rewriteDocsUrl(href, {
+  currentPath: Astro.url.pathname,
+  trailingSlash: false,
+});
+// biome-ignore-end lint/correctness/noUnusedVariables: rewrittenHref is used in the template
 ---
 
 <sub>
-  See also:{" "}
-  <a href={href} aria-label={`See also (${href})`}> <slot /> </a>
+  See also:{' '}
+  <a href={rewrittenHref} aria-label={`See also (${href})`}> <slot /> </a>
 </sub>

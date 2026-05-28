@@ -1,0 +1,13 @@
+declare const Spell: typeof import("./components/Spell.astro").default;
+declare const Feat: typeof import("./components/Feat.astro").default;
+declare const ConditionDisease: typeof import("./components/ConditionDisease.astro").default;
+declare const Stub: typeof import("./components/Stub.astro").default;
+declare const FamilyTree: typeof import("./components/FamilyTree").default;
+declare const HomebrewSpell: typeof import("./components/HomebrewSpell.astro").default;
+declare const Incomplete: typeof import("./components/Incomplete.astro").default;
+declare const MapViewer: typeof import("./components/MapViewer").default;
+declare const Monster: typeof import("./components/Monster.astro").default;
+declare const OutOfDate: typeof import("./components/OutOfDate.astro").default;
+declare const SeeAlso: typeof import("./components/SeeAlso.astro").default;
+declare const VehicleStatBlock: typeof import("./components/VehicleStatBlock.astro").default;
+declare const Redirect: typeof import("./components/Redirect.astro").default;

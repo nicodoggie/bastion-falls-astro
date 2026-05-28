@@ -5,14 +5,14 @@
   "compilerOptions": {
     "plugins": [
       {
-        "name": "@mdx-js/typescript-plugin"
+        "name": "@mdx-js/typescript-plugin",
       },
       {
-        "name": "@astrojs/ts-plugin"
-      }
+        "name": "@astrojs/ts-plugin",
+      },
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react",
@@ -20,11 +20,11 @@
   "mdx": {
     "checkMdx": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
     },
     "plugins": [
       ["remark-frontmatter", "yaml"],
-      ["remark-mdx-frontmatter", { "name": "frontmatter" }]
-    ]
-  }
+      ["remark-mdx-frontmatter", { "name": "frontmatter" }],
+    ],
+  },
 }

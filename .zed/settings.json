@@ -25,14 +25,10 @@
   "lsp": {
     "astro-language-server": {
       "initialization_options": {
+        "contentIntellisense": true,
         "provideFormatter": true,
         "typescript": {
           "tsdk": "node_modules/typescript/lib",
-        },
-      },
-      "settings": {
-        "astro": {
-          "content-intellisense": true,
         },
       },
     },
