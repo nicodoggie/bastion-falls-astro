@@ -10,6 +10,7 @@ import { type Organization, OrganizationSchema } from './Organization.js';
 import { type Concept, ConceptSchema } from './Concept.js';
 import { type Vehicle, VehicleSchema } from './Vehicle.js';
 import { type Religion, ReligionSchema } from './Religion.js';
+import { type Novelty, NoveltySchema } from './Novelty.js';
 import type {
   DerivedForm,
   Lexicon,
@@ -31,6 +32,7 @@ export type {
   Species,
   Vehicle,
   Religion,
+  Novelty,
   LexItem,
   Sense,
   DerivedForm,
@@ -54,4 +56,5 @@ export {
   OrganizationSchema,
   SpeciesSchema,
   VehicleSchema,
+  NoveltySchema,
 };

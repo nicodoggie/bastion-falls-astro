@@ -5,11 +5,6 @@
 		"source.organizeImports.biome": "always",
 		"source.fixAll.rumdl": "always"
 	},
-	"files.associations": {
-		"*.css": "tailwindcss",
-		"*.jsonld": "json"
-	},
-	"tailwindCSS.classAttributes": ["class", "className", "theme"],
 	"tailwindCSS.experimental.classRegex": [
 		["twMerge\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
 		[
@@ -17,42 +12,7 @@
 			"{?\\s?[\\w].*:\\s*?[\"'`]([^\"'`]*).*?,?\\s?}?"
 		]
 	],
-	"terminal.integrated.defaultProfile.linux": "zsh",
-	"eslint.workingDirectories": [
-		{ "directory": "astro", "changeProcessCWD": true }
-	],
 	"biome.configurationPath": "astro/biome.jsonc",
-	"yaml.schemas": {
-		"${workspaceFolder}/.vscode/schemas/frontmatter/character.json": [
-			"astro/src/content/docs/world/characters/**/*.{md,mdx}"
-		],
-		"${workspaceFolder}/.vscode/schemas/frontmatter/concept.json": [
-			"astro/src/content/docs/world/concepts/**/*.{md,mdx}"
-		],
-		"${workspaceFolder}/.vscode/schemas/frontmatter/event.json": [
-			"astro/src/content/docs/world/events/**/*.{md,mdx}"
-		],
-		"${workspaceFolder}/.vscode/schemas/frontmatter/family.json": [
-			"astro/src/content/docs/world/families/**/*.{md,mdx}"
-		],
-		"${workspaceFolder}/.vscode/schemas/frontmatter/item.json": [
-			"astro/src/content/docs/world/items/**/*.{md,mdx}"
-		],
-		"${workspaceFolder}/.vscode/schemas/frontmatter/location.json": [
-			"astro/src/content/docs/world/locations/**/*.{md,mdx}"
-		],
-		"${workspaceFolder}/.vscode/schemas/frontmatter/organization.json": [
-			"astro/src/content/docs/world/organizations/**/*.{md,mdx}"
-		],
-		"${workspaceFolder}/.vscode/schemas/frontmatter/species.json": [
-			"astro/src/content/docs/world/species/**/*.{md,mdx}"
-		],
-		"${workspaceFolder}/.vscode/schemas/frontmatter/vehicle.json": [
-			"astro/src/content/docs/world/vehicles/**/*.{md,mdx}"
-		]
-	},
-	"snyk.advanced.organization": "3f272c09-68a2-499f-bc2c-9ee0e601292d",
-	"snyk.advanced.autoSelectOrganization": true,
 	"json.schemas": [
 		{
 			"fileMatch": ["**/*.creature.json"],

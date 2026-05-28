@@ -122,10 +122,11 @@ export const CharacterRelativeSchema = z.object({
   name: z.string(),
   type: z.enum([
     "parent",
-    "father",
-    "mother",
+    "stepparent",
     "sibling",
+    "stepsibling",
     "child",
+    "stepchild",
     "partner",
     "spouse",
     "betrothed",

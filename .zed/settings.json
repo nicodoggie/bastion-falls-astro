@@ -6,20 +6,36 @@
   "document_symbols": "on",
   "tab_size": 2,
   "formatter": "auto",
-  "file_types": {
-    "Markdown": ["md", "mdx"],
-  },
   "languages": {
+    "Astro": {
+      "language_servers": ["astro-language-server", "..."],
+    },
     "Markdown": {
       "language_servers": ["rumdl"],
       "format_on_save": "on",
     },
     "MDX": {
+      // mdx-analyzer currently crashes in Zed's extension cache because
+      // vscode-markdown-languageservice imports a default export from
+      // vscode-uri@3, which only exposes named ESM exports.
       "language_servers": ["rumdl"],
       "format_on_save": "on",
     },
   },
   "lsp": {
+    "astro-language-server": {
+      "initialization_options": {
+        "provideFormatter": true,
+        "typescript": {
+          "tsdk": "node_modules/typescript/lib",
+        },
+      },
+      "settings": {
+        "astro": {
+          "content-intellisense": true,
+        },
+      },
+    },
     "rumdl": {
       "binary": {
         "path": "/usr/bin/rumdl",

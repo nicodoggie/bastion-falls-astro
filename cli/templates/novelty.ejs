@@ -1,0 +1,12 @@
+---
+title: <%= title %>
+<%_ if (description) { _%>
+description: <%= description %>
+<%_ } _%>
+tags:
+  <%_ tags.forEach(function(tag){ _%>
+  - <%- tag %>
+  <%_ }) _%>
+---
+
+<Stub />

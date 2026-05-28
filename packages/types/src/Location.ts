@@ -110,6 +110,10 @@ export const BuildingLocationTypeSchema = z.enum([
   'lighthouse',
   'headquarters',
   'library',
+  'school',
+  'university',
+  'college',
+  'academy',
 ]);
 
 export const LocationTypeSchema = z.union([

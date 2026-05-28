@@ -7,6 +7,7 @@ import { vehicleCommandBuilder } from "./vehicle/command.js";
 import { speciesCommandBuilder } from "./species/command.js";
 import { organizationCommandBuilder } from "./organization/command.js";
 import { itemCommandBuilder } from "./item/command.js";
+import { noveltyCommandBuilder } from "./novelty/command.js";
 
 export interface NewCommandFlags {
   force?: boolean;
@@ -35,6 +36,7 @@ const vehicleCommand = vehicleCommandBuilder(defaultFlags);
 const speciesCommand = speciesCommandBuilder(defaultFlags);
 const organizationCommand = organizationCommandBuilder(defaultFlags);
 const itemCommand = itemCommandBuilder(defaultFlags);
+const noveltyCommand = noveltyCommandBuilder(defaultFlags);
 
 export const newCommandRoutes = buildRouteMap({
   routes: {
@@ -61,6 +63,9 @@ export const newCommandRoutes = buildRouteMap({
     item: itemCommand,
     items: itemCommand,
     it: itemCommand,
+    nov: noveltyCommand,
+    novelty: noveltyCommand,
+    novelties: noveltyCommand,
   },
   docs: {
     brief: "Create a new article",
