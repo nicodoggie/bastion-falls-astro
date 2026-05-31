@@ -1,13 +1,7 @@
 pre-commit:
   parallel: true
   jobs:
-    - name: astro lint
-      run: yarn astro lint
-      glob: "{astro,packages}/**/*.{ts,tsx,astro,mjs,mts,cjs,cts,json,md,mdx}"
+    - name: lint
+      run: yarn lint
       env:
-        PATH: "${HOME}/.volta/bin:${PATH}"
-    - name: lex lint
-      run: yarn lex-lint
-      glob: "astro/src/assets/languages/**/*.{jsonld,json}"
-      env:
-        PATH: "${HOME}/.volta/bin:${PATH}"
+        PATH: '${HOME}/.volta/bin:${PATH}'

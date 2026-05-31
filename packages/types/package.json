@@ -24,32 +24,21 @@
     }
   },
   "scripts": {
-    "build": "tsup --dts",
-    "dev": "tsup --dts --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "build": "yarn run clean && tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
     "export:schemas": "tsx scripts/export-json-schemas.ts"
   },
-  "tsup": {
-    "entry": [
-      "src/index.ts",
-      "src/*.ts",
-      "src/legacy/index.ts",
-      "src/legacy/*.ts"
-    ],
-    "format": "esm",
-    "tsconfig": "tsconfig.json",
-    "clean": true,
-    "minify": false
-  },
   "dependencies": {
-    "zod": "4"
+    "zod": "~4.3.6"
   },
   "volta": {
     "extends": "../../package.json"
   },
   "devDependencies": {
-    "tsup": "^8.5.0",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
     "zod-to-json-schema": "^3.25.2"
   }
 }

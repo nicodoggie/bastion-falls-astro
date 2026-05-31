@@ -1,7 +1,6 @@
 import { date, z } from 'zod';
 import { BaseImageSchema } from './Image.js';
 
-
 export const PoliticalLocationTypeSchema = z.enum([
   'capital',
   'city',
@@ -10,6 +9,7 @@ export const PoliticalLocationTypeSchema = z.enum([
   'country',
   'diocese',
   'duchy',
+  'barony',
   'empire',
   'fortress',
   'freehold',
@@ -33,7 +33,7 @@ export const PoliticalLocationTypeSchema = z.enum([
   'world',
   'corridor',
   'fort',
-])
+]);
 
 export const HeritageLocationTypeSchema = z.enum([
   'ruins',
@@ -144,76 +144,96 @@ export const PoliticalLocationSchema = BaseLocationSchema.extend({
   type: PoliticalLocationTypeSchema,
   dateFounded: z.string().optional(),
   dateDissolved: z.string().optional(),
-  details: z.object({
-    flag: BaseImageSchema.optional(),
-    map: BaseImageSchema.optional(),
-    motto: z.string().optional(),
-    anthem: z.string().optional(),
-    capital: z.string().optional(),
-    government: z.object({
-      type: z.string().optional(),
-      structure: z.record(z.string(), z.string()).optional(),
-    }).optional(),
-    currency: z.string().optional(),
-    languages: z.array(z.string()).optional(),
-    ethnicities: z.array(z.string()).optional(),
-    religions: z.array(z.string()).optional(),
-    states: z.array(z.string()).optional(),
-    population: z.string().optional(),
-    area: z.string().optional(),
-    elevation: z.string().optional(),
-    climate: z.string().optional(),
-    sections: z.array(PoliticalLocationSectionSchema).optional(),
-  }).optional(),
-})
+  details: z
+    .object({
+      flag: BaseImageSchema.optional(),
+      map: BaseImageSchema.optional(),
+      motto: z.string().optional(),
+      anthem: z.string().optional(),
+      capital: z.string().optional(),
+      government: z
+        .object({
+          type: z.string().optional(),
+          structure: z.record(z.string(), z.string()).optional(),
+        })
+        .optional(),
+      currency: z.string().optional(),
+      languages: z.array(z.string()).optional(),
+      ethnicities: z.array(z.string()).optional(),
+      religions: z.array(z.string()).optional(),
+      states: z.array(z.string()).optional(),
+      population: z.string().optional(),
+      area: z.string().optional(),
+      elevation: z.string().optional(),
+      climate: z.string().optional(),
+      sections: z.array(PoliticalLocationSectionSchema).optional(),
+    })
+    .optional(),
+});
 
 export const HeritageLocationSchema = BaseLocationSchema.extend({
   type: HeritageLocationTypeSchema,
-  details: z.object({
-    timeline: z.object({
-      start: z.string().optional(),
-      end: z.string().optional(),
-    }).optional(),
-  }).optional(),
+  details: z
+    .object({
+      timeline: z
+        .object({
+          start: z.string().optional(),
+          end: z.string().optional(),
+        })
+        .optional(),
+    })
+    .optional(),
 });
 
 export const NaturalLocationSchema = BaseLocationSchema.extend({
   type: NaturalLocationTypeSchema,
   discovered: z.string().optional(),
-  details: z.object({
-    area: z.string().optional(),
-    elevation: z.string().optional(),
-    climate: z.string().optional(),
-  }).optional(),
+  details: z
+    .object({
+      area: z.string().optional(),
+      elevation: z.string().optional(),
+      climate: z.string().optional(),
+    })
+    .optional(),
 });
 
 export const BuildingLocationSchema = BaseLocationSchema.extend({
   type: BuildingLocationTypeSchema,
-  details: z.object({
-    owner: z.string().optional(),
-    area: z.string().optional(),
-  }).optional(),
+  details: z
+    .object({
+      owner: z.string().optional(),
+      area: z.string().optional(),
+    })
+    .optional(),
 });
 
 export const NaturalWaterLocationSchema = NaturalLocationSchema.extend({
   type: NaturalWaterLocationTypeSchema,
-  details: z.object({
-    depth: z.object({
-      min: z.string().optional(),
-      mean: z.string().optional(),
-      max: z.string().optional(),
-    }).optional(),
-    width: z.object({
-      min: z.string().optional(),
-      mean: z.string().optional(),
-      max: z.string().optional(),
-    }).optional(),
-    current: z.object({
-      min: z.number().optional(),
-      mean: z.number().optional(),
-      max: z.number().optional(),
-    }).optional(), // knots
-  }).optional(),
+  details: z
+    .object({
+      depth: z
+        .object({
+          min: z.string().optional(),
+          mean: z.string().optional(),
+          max: z.string().optional(),
+        })
+        .optional(),
+      width: z
+        .object({
+          min: z.string().optional(),
+          mean: z.string().optional(),
+          max: z.string().optional(),
+        })
+        .optional(),
+      current: z
+        .object({
+          min: z.number().optional(),
+          mean: z.number().optional(),
+          max: z.number().optional(),
+        })
+        .optional(), // knots
+    })
+    .optional(),
 });
 
 export const LocationSchema = z.discriminatedUnion('type', [
@@ -228,11 +248,15 @@ export type Location = z.infer<typeof LocationSchema>;
 export type BuildingLocationType = z.infer<typeof BuildingLocationTypeSchema>;
 export type PoliticalLocationType = z.infer<typeof PoliticalLocationTypeSchema>;
 export type NaturalLocationType = z.infer<typeof NaturalLocationTypeSchema>;
-export type NaturalWaterLocationType = z.infer<typeof NaturalWaterLocationTypeSchema>;
+export type NaturalWaterLocationType = z.infer<
+  typeof NaturalWaterLocationTypeSchema
+>;
 export type HeritageLocationType = z.infer<typeof HeritageLocationTypeSchema>;
 export type LocationType = z.infer<typeof LocationTypeSchema>;
 export type BuildingLocation = z.infer<typeof BuildingLocationSchema>;
-export type PoliticalLocationSection = z.infer<typeof PoliticalLocationSectionSchema>;
+export type PoliticalLocationSection = z.infer<
+  typeof PoliticalLocationSectionSchema
+>;
 export type PoliticalLocation = z.infer<typeof PoliticalLocationSchema>;
 export type NaturalLocation = z.infer<typeof NaturalLocationSchema>;
 export type NaturalWaterLocation = z.infer<typeof NaturalWaterLocationSchema>;

@@ -103,15 +103,23 @@ export default defineConfig({
         },
         {
           label: "World",
-          autogenerate: {
-            directory: "world",
-          },
+          items: [
+            {
+              autogenerate: {
+                directory: "world",
+              },
+            },
+          ],
         },
         {
           label: "Help",
-          autogenerate: {
-            directory: "help",
-          },
+          items: [
+            {
+              autogenerate: {
+                directory: "help",
+              },
+            },
+          ],
         },
       ],
       components: {

@@ -21,10 +21,12 @@ This skill must be able to work from:
 
 1. Produce a **single JSON file** shaped like **5etools `ItemData`**.
 2. Ensure `"source": "BF"` (unless the user explicitly requests otherwise).
-3. Place the file under:
+3. Include a top-level **`"$schema"`** property as the first key:
+   `"https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData"`
+4. Place the file under:
    `astro/src/content/docs/world/items/<item-slug>.item.json`
-4. Ensure the file passes `ItemDataSchema` validation.
-5. **Companion MDX** (same slug, no `.item`):
+5. Ensure the file passes `ItemDataSchema` validation.
+6. **Companion MDX** (same slug, no `.item`):
    - Path: `astro/src/content/docs/world/items/<item-slug>.mdx`
    - **If it does not exist**: create it with Starlight frontmatter, optional
      `item` metadata (`ItemSchema` from `@bastion-falls/types`—mirror name,
@@ -35,12 +37,12 @@ This skill must be able to work from:
      `items/potion-of-healing.item`).
    - **If it already exists**: do not replace the whole article; **add or
      correct** `itemDataStats` so one entry points at `items/<item-slug>.item`,
-     and ensure the page renders that data (e.g. `<ItemBlock
-     item={frontmatter.itemDataStats.<key>} />`). Prefer **one** conventional
-     key such as `rules` or `statBlock` for new pages.
+     and ensure the page renders that data (e.g.
+     `<ItemBlock item={frontmatter.itemDataStats.<key>} />`). Prefer **one**
+     conventional key such as `rules` or `statBlock` for new pages.
    - Import: from `world/items/*.mdx`, use
      `import ItemBlock from '../../../../components/ItemBlock.astro';`
-6. Run `yarn astro sync` from `astro/` to validate the content collections.
+7. Run `yarn astro sync` from `astro/` to validate the content collections.
 
 When other docs (e.g. lore articles) embed the same item, they may link to this
 MDX page instead of duplicating `ItemBlock`, unless a second embed is
@@ -48,11 +50,11 @@ deliberate.
 
 ## Authoritative schema + repo rules
 
-- **Schema**: `ItemDataSchema` from `@bastion-falls/5e-schema-zod`
-  (wired in `astro/src/content.config.ts` as the `itemData` collection schema).
-- **Data files**: any `**/*.item.json` under `astro/src/content/docs/world/`
-  are loaded by the `itemData` collection. This skill standardizes on
-  `world/items/` for location.
+- **Schema**: `ItemDataSchema` from `@bastion-falls/5e-schema-zod` (wired in
+  `astro/src/content.config.ts` as the `itemData` collection schema).
+- **Data files**: any `**/*.item.json` under `astro/src/content/docs/world/` are
+  loaded by the `itemData` collection. This skill standardizes on `world/items/`
+  for location.
 - **Collection id**: path relative to `world/` without `.json`, e.g.:
   `items/potion-of-healing.item.json` → id `items/potion-of-healing.item`
 
@@ -100,8 +102,8 @@ chat response (not in code comments).
 - **attunement**: required for strong passive bonuses or repeatable powers
 - **entries**: write rules text as plain readable sentences (no `{@tag}` unless
   the user specifically wants raw 5etools tags)
-- **value**: if provided in gp, convert to 5etools copper pieces:
-  \(1\text{ gp} = 100\text{ cp}\). Example: 50 gp → `5000`.
+- **value**: if provided in gp, convert to 5etools copper pieces: \(1\text{ gp}
+  = 100\text{ cp}\). Example: 50 gp → `5000`.
 
 ## File naming (slug rules)
 
@@ -122,6 +124,7 @@ Filename must be exactly:
 
 At minimum, most items should have:
 
+- `$schema` (exact public 5etools itemData schema URL above)
 - `name` (string)
 - `source` (string, `"BF"`)
 - `type` (string code per 5etools, e.g. `"P"` for potion)
@@ -162,10 +165,11 @@ After writing the file:
 ## Checklist before finishing
 
 - [ ] File created at `astro/src/content/docs/world/items/<slug>.item.json`
+- [ ] `"$schema"` is the first key and points at the public 5etools
+      `brew/items.json#/$defs/itemData` schema URL
 - [ ] `"source": "BF"` is present
 - [ ] JSON validates under `ItemDataSchema`
 - [ ] Companion `astro/src/content/docs/world/items/<slug>.mdx` exists (new or
       updated) with `itemDataStats` → `items/<slug>.item` and `ItemBlock` (or
       equivalent wiring)
 - [ ] `yarn astro sync` succeeds
-

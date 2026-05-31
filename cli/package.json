@@ -37,36 +37,36 @@
     "minify": false
   },
   "dependencies": {
-    "@bastion-falls/types": "workspace:*",
-    "@stricli/auto-complete": "^1.2.0",
-    "@stricli/core": "^1.2.0",
-    "ejs": "^3.1.10",
-    "env-paths": "^3.0.0",
+    "@bastion-falls/types": "workspace:^",
+    "@stricli/auto-complete": "^1.2.7",
+    "@stricli/core": "^1.2.7",
+    "ejs": "^6.0.1",
+    "env-paths": "^4.0.0",
     "esm-path": "^1.0.1",
     "find-up": "^8.0.0",
     "github-slugger": "^2.0.0",
-    "glob": "^11.0.3",
-    "js-yaml": "^4.1.0",
-    "minimatch": "^10.0.3",
+    "glob": "^13.0.6",
+    "js-yaml": "^4.1.1",
+    "minimatch": "^10.2.5",
     "nodejs-whisper": "^0.3.0",
     "remark": "^15.0.1",
     "remark-frontmatter": "^5.0.0",
     "remark-mdx": "^3.1.1",
     "remark-stringify": "^11.0.0",
-    "tinyglobby": "^0.2.15",
+    "tinyglobby": "^0.2.17",
     "vfile": "^6.0.3",
-    "zod": "^3.25.76"
+    "zod": "~4.3.6"
   },
   "devDependencies": {
     "@types/ejs": "^3.1.5",
     "@types/js-yaml": "^4.0.9",
     "@types/mdast": "^4.0.4",
-    "@types/node": "~24.7.0",
+    "@types/node": "^22.15.29",
     "copyfiles": "^2.4.1",
-    "tsup": "^8.5.0",
-    "tsx": "^4.20.6",
-    "typescript": "^5.9.3",
-    "unist-util-visit": "^5.0.0"
+    "tsup": "^8.5.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "unist-util-visit": "^5.1.0"
   },
   "volta": {
     "extends": "../package.json"

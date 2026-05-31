@@ -53,8 +53,8 @@ export function extractGlossaryEntries(files: ContextFile[]): string[] {
   const entries = new Set<string>();
   for (const file of files) {
     const fm = frontmatter(file.content);
-    if (typeof fm.title === "string") {
-      entries.add(fm.title);
+    if (typeof fm["title"] === "string") {
+      entries.add(fm["title"]);
     }
     for (const heading of headings(file.content)) {
       entries.add(heading);

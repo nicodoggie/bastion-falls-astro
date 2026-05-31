@@ -1,4 +1,4 @@
-import { buildCommand, type FlagParametersForType } from "@stricli/core";
+import { buildCommand, buildRouteMap, type FlagParametersForType } from "@stricli/core";
 import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import { basename, extname, isAbsolute, join, resolve } from "node:path";
 
@@ -16,6 +16,10 @@ import { runCodexCorrection, runCodexNotes } from "./codex.js";
 import { defaultSttBackend, parseSttBackend, type SttBackend } from "./sttBackend.js";
 import { canReuseAudioChunks, readManifest } from "./resume.js";
 import { getCheckpointPath, writeTranscribeCheckpoint, type TranscribeCheckpoint } from "./checkpoint.js";
+import { runOllamaHierarchicalNotes } from "./ollamaNotes.js";
+import { applyCorrectionsCommand } from "./applyCorrections.js";
+
+type NotesBackend = "codex" | "ollama";
 
 interface TranscribeFlags {
   campaign: string;
@@ -37,6 +41,11 @@ interface TranscribeFlags {
   resume?: boolean;
   "skip-correction"?: boolean;
   "skip-notes"?: boolean;
+  "notes-backend": NotesBackend;
+  "notes-model": string;
+  "ollama-url": string;
+  "summary-chunk-chars": number;
+  "summary-scene-size": number;
 }
 
 const parseNumber = (value: string): number => {
@@ -45,6 +54,21 @@ const parseNumber = (value: string): number => {
     throw new Error(`Expected a non-negative number, received ${value}`);
   }
   return parsed;
+};
+
+const parsePositiveInteger = (value: string): number => {
+  const parsed = parseNumber(value);
+  if (!Number.isInteger(parsed) || parsed <= 0) {
+    throw new Error(`Expected a positive integer, received ${value}`);
+  }
+  return parsed;
+};
+
+const parseNotesBackend = (value: string): NotesBackend => {
+  if (value === "codex" || value === "ollama") {
+    return value;
+  }
+  throw new Error(`Unsupported notes backend: ${value}`);
 };
 
 const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
@@ -154,6 +178,36 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
     kind: "boolean",
     brief: "Skip Astro campaign note generation",
     optional: true,
+  },
+  "notes-backend": {
+    kind: "parsed",
+    parse: parseNotesBackend,
+    brief: "Notes generation backend: codex or ollama",
+    default: "codex",
+  },
+  "notes-model": {
+    kind: "parsed",
+    parse: String,
+    brief: "Model used by the selected notes backend",
+    default: "qwen3:8b",
+  },
+  "ollama-url": {
+    kind: "parsed",
+    parse: String,
+    brief: "Ollama server URL for --notes-backend ollama",
+    default: "http://127.0.0.1:11434",
+  },
+  "summary-chunk-chars": {
+    kind: "parsed",
+    parse: parsePositiveInteger,
+    brief: "Character budget for each local-model transcript summary chunk",
+    default: "12000",
+  },
+  "summary-scene-size": {
+    kind: "parsed",
+    parse: parsePositiveInteger,
+    brief: "Number of chunk summaries to merge into each scene summary",
+    default: "5",
   },
 };
 
@@ -271,7 +325,7 @@ async function writeChunkTranscriptFiles(options: {
   );
 }
 
-export const transcribeCommand = buildCommand({
+export const transcribeRunCommand = buildCommand({
   async func(this: LocalContext, flags: TranscribeFlags, audioFile: string) {
     assertSessionDate(flags["session-date"]);
 
@@ -295,7 +349,7 @@ export const transcribeCommand = buildCommand({
     });
     const shouldResume = Boolean(flags.resume) && !flags.force;
 
-    if (!flags["skip-notes"] && (await exists(notesPath)) && !flags.force) {
+    if (!flags["skip-notes"] && (await exists(notesPath)) && !flags.force && !shouldResume) {
       throw new Error(`${notesPath} already exists. Pass --force to overwrite it.`);
     }
 
@@ -473,15 +527,33 @@ export const transcribeCommand = buildCommand({
         outDir,
         maxFiles: 40,
       });
-      await runCodexNotes({
-        cwd,
-        campaign: flags.campaign,
-        sessionDate: flags["session-date"],
-        transcriptPath: transcriptForNotes,
-        correctionNotesPath: flags["skip-correction"] ? undefined : correctionNotesPath,
-        contextExcerpt: buildContextExcerpt(contextFiles),
-        notesPath,
-      });
+      if (flags["notes-backend"] === "ollama") {
+        await runOllamaHierarchicalNotes({
+          campaign: flags.campaign,
+          sessionDate: flags["session-date"],
+          transcriptPath: transcriptForNotes,
+          correctionNotesPath: flags["skip-correction"] ? undefined : correctionNotesPath,
+          contextExcerpt: buildContextExcerpt(contextFiles),
+          notesPath,
+          outDir,
+          model: flags["notes-model"],
+          baseUrl: flags["ollama-url"],
+          chunkChars: flags["summary-chunk-chars"],
+          sceneGroupSize: flags["summary-scene-size"],
+          force: Boolean(flags.force),
+          resume: shouldResume,
+        });
+      } else {
+        await runCodexNotes({
+          cwd,
+          campaign: flags.campaign,
+          sessionDate: flags["session-date"],
+          transcriptPath: transcriptForNotes,
+          correctionNotesPath: flags["skip-correction"] ? undefined : correctionNotesPath,
+          contextExcerpt: buildContextExcerpt(contextFiles),
+          notesPath,
+        });
+      }
       checkpoint.updatedAt = new Date().toISOString();
       checkpoint.stages.notes_summary_pass = {
         status: "complete",
@@ -508,6 +580,18 @@ export const transcribeCommand = buildCommand({
       ],
     },
   },
+  docs: {
+    brief: "Normalize, chunk, transcribe, correct, and summarize campaign audio",
+  },
+});
+
+export const transcribeCommand = buildRouteMap({
+  routes: {
+    run: transcribeRunCommand,
+    audio: transcribeRunCommand,
+    "apply-corrections": applyCorrectionsCommand,
+  },
+  defaultCommand: transcribeRunCommand,
   docs: {
     brief: "Normalize, chunk, transcribe, correct, and summarize campaign audio",
   },

@@ -125,11 +125,11 @@ function rowsFromJson(parsed: unknown): NodeWhisperRow[] {
   }
   if (typeof parsed === "object" && parsed !== null) {
     const record = parsed as Record<string, unknown>;
-    if (Array.isArray(record.transcription)) {
-      return record.transcription as NodeWhisperRow[];
+    if (Array.isArray(record["transcription"])) {
+      return record["transcription"] as NodeWhisperRow[];
     }
-    if (Array.isArray(record.segments)) {
-      return record.segments as NodeWhisperRow[];
+    if (Array.isArray(record["segments"])) {
+      return record["segments"] as NodeWhisperRow[];
     }
   }
   return [];

@@ -28,7 +28,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@rdfjs/data-model": "^2.1.0",
+    "@rdfjs/data-model": "^2.1.1",
     "@rdfjs/dataset": "^2.0.2",
     "@rdfjs/environment": "^1.0.0",
     "@rdfjs/namespace": "^2.0.1",
@@ -37,15 +37,15 @@
     "glob": "^11.0.3",
     "jsonc-parser": "^3.3.1",
     "jsonld": "^9.0.0",
-    "n3": "^1.26.0",
+    "n3": "^2.0.3",
     "rdf-validate-shacl": "^0.6.5"
   },
   "devDependencies": {
     "@types/jsonld": "^1.5.15",
-    "@types/node": "^22.15.29",
-    "tsup": "^8.5.0",
-    "typescript": "^5.9.3",
-    "vitest": "^3.2.4"
+    "@types/node": "~24.7.0",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.7"
   },
   "volta": {
     "extends": "../../package.json"
