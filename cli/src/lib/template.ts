@@ -1,4 +1,3 @@
-import * as ejs from "ejs";
 import * as YAML from "js-yaml";
 import { getAbsolutePath } from "esm-path";
 import { slug } from "github-slugger";
@@ -72,7 +71,8 @@ export default async function renderTemplate(options: RenderTemplateOptions) {
     if (!templateFileExists && !devTemplateFileExists) {
       throw new Error(`Template file ${templateFile} does not exist`);
     }
-
+    // @ts-expect-error ejs doesn't have type information
+    const ejs = (await import('ejs') as any).default;
     const content = await ejs.renderFile(templateFile, data);
 
     const fileExists = await stat(target)
