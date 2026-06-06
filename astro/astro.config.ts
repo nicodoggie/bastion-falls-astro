@@ -136,6 +136,7 @@ export default defineConfig({
         "./src/components/inline-references/Creature.astro",
         "./src/components/inline-references/Feat.astro",
         "./src/components/inline-references/ConditionDisease.astro",
+        "./src/components/inline-references/Sense.astro",
         "./src/components/Stub.astro",
         "./src/components/FamilyTree.tsx",
         "./src/components/HomebrewSpell.astro",

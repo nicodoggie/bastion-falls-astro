@@ -12,6 +12,7 @@ export {
   loadConditionDisease,
   type ResolvedConditionDisease,
 } from "./conditions";
+export { loadSense, type ResolvedSense } from "./senses";
 export { loadFeat, type ResolvedFeat } from "./feats";
 export {
   loadItemFromContentJson,
