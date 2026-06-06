@@ -1,0 +1,157 @@
+{
+  "name": "Kotryna",
+  "size": ["M"],
+  "type": {
+    "type": "humanoid",
+    "tags": ["tabaxi"]
+  },
+  "alignment": ["N", "G"],
+  "ac": [
+    {
+      "ac": 16,
+      "from": ["draconic resilience"]
+    }
+  ],
+  "hp": {
+    "average": 104,
+    "formula": "16d8 + 32"
+  },
+  "speed": {
+    "walk": 40,
+    "climb": 20
+  },
+  "str": 10,
+  "dex": 18,
+  "con": 14,
+  "int": 13,
+  "wis": 14,
+  "cha": 19,
+  "save": {
+    "dex": "+8",
+    "con": "+6",
+    "cha": "+8"
+  },
+  "skill": {
+    "arcana": "+5",
+    "deception": "+8",
+    "insight": "+6",
+    "perception": "+6",
+    "stealth": "+8"
+  },
+  "resist": ["poison"],
+  "senses": ["darkvision 60 ft."],
+  "passive": 16,
+  "languages": ["Common", "Seneran", "one other language"],
+  "cr": "9",
+  "trait": [
+    {
+      "name": "Feline Agility",
+      "entries": [
+        "On its turn, Kotryna can double its speed until the end of the turn. Once it uses this trait, it can't use it again until it moves 0 feet on one of its turns."
+      ]
+    },
+    {
+      "name": "Spellcasting",
+      "entries": [
+        "Kotryna is a 12th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 16}, {@hit +8} to hit with spell attacks). It has the following sorcerer spells prepared:",
+        "Cantrips (at will): {@spell mage hand}, {@spell minor illusion}, {@spell poison spray}, {@spell ray of frost}",
+        "1st level (4 slots): {@spell shield}, {@spell silent image}, {@spell unseen servant}",
+        "2nd level (3 slots): {@spell invisibility}, {@spell misty step}, {@spell scorching ray}",
+        "3rd level (3 slots): {@spell counterspell}, {@spell major image}, {@spell thunder step}",
+        "4th level (3 slots): {@spell dimension door}, {@spell greater invisibility}",
+        "5th level (2 slots): {@spell telekinesis}, {@spell teleportation circle}",
+        "6th level (1 slot): {@spell arcane gate}",
+        "Kotryna fights through summoned scaled servitors first, using {@spell thunder step}, {@spell dimension door}, and {@spell arcane gate} to keep her conjurations between herself and her enemies."
+      ]
+    },
+    {
+      "name": "Draconic Bloodline",
+      "entries": [
+        "Kotryna's magic descends from a green dragon bloodline. It gains 1 additional hit point per Hit Die already included in its hit points, has resistance to poison damage, and parts of its fur are streaked with dark emerald scales."
+      ]
+    },
+    {
+      "name": "Metamagic Conjunction (3/Day)",
+      "entries": [
+        "When Kotryna casts a conjuration spell of 1st level or higher or uses Summon Scaled Servitors, it can use one of the following options: Distant Spell, Extended Spell, or Quickened Spell. If the effect summons one or more creatures, one summoned creature gains 10 temporary hit points and has advantage on its first attack roll before the end of Kotryna's next turn."
+      ]
+    },
+    {
+      "name": "Scaled Summoner",
+      "entries": [
+        "Creatures summoned by Kotryna are not dragons, but they bear obvious green-dragon traits such as dark scales, venomous fangs, hooked claws, or acrid breath. A creature summoned by Kotryna adds {@damage 3} poison damage to its damage rolls."
+      ]
+    },
+    {
+      "name": "Reformist Adept",
+      "entries": [
+        "Kotryna has advantage on saving throws against being frightened, and it has advantage on Charisma checks made to negotiate a ceasefire or safe passage with a creature that can hear it."
+      ]
+    },
+    {
+      "name": "Conjurer's Detection Kit",
+      "entries": [
+        "Kotryna carries a Wand of Magic Detection and a shuttered Lantern of Revealing to inspect wards, binding circles, and hidden observers before committing a summoned creature to the field. While holding the wand, Kotryna can use an action and expend 1 of its 3 charges to cast {@spell detect magic}. The wand regains {@dice 1d3} expended charges daily at dawn.",
+        "While the lantern is lit and unhooded, invisible creatures and objects are visible while they are in the lantern's bright light within 30 feet of Kotryna. This doesn't grant truesight, reveal illusions automatically, reveal shapechangers, or perceive creatures on the Ethereal Plane."
+      ]
+    }
+  ],
+  "action": [
+    {
+      "name": "Multiattack",
+      "entries": [
+        "Kotryna makes two Rift Bolt attacks, or it makes one Claw attack and one Rift Bolt attack."
+      ]
+    },
+    {
+      "name": "Rift Bolt",
+      "entries": [
+        "Ranged Spell Attack: {@hit +8} to hit, range 120 ft., one target. Hit: 16 ({@damage 3d8 + 3}) force damage."
+      ]
+    },
+    {
+      "name": "Claw",
+      "entries": [
+        "Melee Weapon Attack: {@hit +8} to hit, reach 5 ft., one target. Hit: 10 ({@damage 1d6 + 7}) slashing damage."
+      ]
+    },
+    {
+      "name": "Summon Scaled Servitors (Costs a Spell Slot)",
+      "entries": [
+        "Kotryna expends a 3rd-, 4th-, or 5th-level spell slot to summon draconic creatures that are not true dragons in unoccupied spaces it can see within 30 feet. These summons are typically green-scaled hounds, green guard drakes, or other venomous draconic hunting beasts.",
+        "3rd-level slot: Kotryna summons one green guard drake. The creature remains for 1 minute, acts immediately after Kotryna in the initiative order, obeys Kotryna's verbal commands, and its attacks are magical.",
+        "4th-level slot: As above, but the summoned green guard drake gains 20 temporary hit points, and its speed increases by 10 feet.",
+        "5th-level slot: Kotryna summons two green guard drakes instead of one. Each remains for 1 minute, acts immediately after Kotryna in the initiative order, obeys Kotryna's verbal commands, and its attacks are magical.",
+        "A summoned creature disappears early if Kotryna is incapacitated or if the creature drops to 0 hit points."
+      ]
+    },
+    {
+      "name": "Chromatic Lash ({@recharge 6})",
+      "entries": [
+        "Kotryna exhales a braided lash of draconic force in a 30-foot line that is 5 feet wide. Each creature in that area must make a {@dc 16} Constitution saving throw, taking 22 ({@damage 4d10}) poison damage on a failed save, or half as much damage on a successful one."
+      ]
+    }
+  ],
+  "bonus": [
+    {
+      "name": "Command the Brood",
+      "entries": [
+        "One creature summoned by Kotryna can immediately move up to half its speed and make one attack."
+      ]
+    }
+  ],
+  "reaction": [
+    {
+      "name": "Shield",
+      "entries": [
+        "When Kotryna is hit by an attack roll or targeted by {@spell magic missile}, it casts {@spell shield} (1st level). Until the start of its next turn, it has a +5 bonus to AC, including against the triggering attack."
+      ]
+    },
+    {
+      "name": "Spell Scent",
+      "entries": [
+        "When a creature Kotryna can see within 60 feet casts a spell, Kotryna learns the spell's school of magic and can move up to half its speed without provoking opportunity attacks from that creature."
+      ]
+    }
+  ]
+}

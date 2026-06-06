@@ -1,0 +1,181 @@
+{
+  "name": "Garward Eastonton, Reformed Vessel",
+  "size": ["M"],
+  "type": {
+    "type": "aberration",
+    "tags": [
+      {
+        "tag": "human",
+        "prefix": "transformed"
+      }
+    ]
+  },
+  "alignment": ["L", "E"],
+  "ac": [
+    {
+      "ac": 20,
+      "from": ["plate", "shield"]
+    }
+  ],
+  "hp": {
+    "average": 95,
+    "formula": "11d8 + 45"
+  },
+  "speed": {
+    "walk": 30
+  },
+  "str": 20,
+  "dex": 10,
+  "con": 18,
+  "int": 18,
+  "wis": 17,
+  "cha": 20,
+  "save": {
+    "str": "+9",
+    "con": "+8",
+    "int": "+8",
+    "wis": "+7",
+    "cha": "+9"
+  },
+  "skill": {
+    "athletics": "+9",
+    "insight": "+7",
+    "intimidation": "+9",
+    "perception": "+7",
+    "religion": "+8"
+  },
+  "resist": ["radiant", "psychic"],
+  "conditionImmune": ["charmed", "frightened"],
+  "senses": ["darkvision 120 ft."],
+  "passive": 17,
+  "languages": ["Common", "Celestial", "Deep Speech", "telepathy 120 ft."],
+  "cr": "12",
+  "trait": [
+    {
+      "name": "Blooming Revelation",
+      "entries": [
+        "When this phase begins, each creature of Garward's choice within 30 feet must succeed on a {@dc 17} Wisdom saving throw or be stunned until the end of Garward's next turn."
+      ]
+    },
+    {
+      "name": "Full Paragon",
+      "entries": [
+        "Garward takes three turns each round, spaced evenly through initiative. He regains spent legendary actions only at the start of his first turn each round."
+      ]
+    },
+    {
+      "name": "Aura of Confession",
+      "entries": [
+        "Creatures of Garward's choice within 30 feet of him have a -2 penalty to Wisdom saving throws."
+      ]
+    },
+    {
+      "name": "Psychic Smite",
+      "entries": [
+        "Garward's weapon attacks deal an extra 9 ({@damage 2d8}) psychic damage."
+      ]
+    },
+    {
+      "name": "Legendary Resistance (2/Day)",
+      "entries": [
+        "If Garward fails a saving throw, he can choose to succeed instead."
+      ]
+    },
+    {
+      "name": "Spellcasting",
+      "entries": [
+        "Garward's spellcasting ability is Charisma (spell save {@dc 17}, {@hit +9} to hit with spell attacks). He has the following paladin spells prepared:",
+        "1st level (4 slots): {@spell bless}, {@spell command}, {@spell compelled duel}, {@spell shield of faith}",
+        "2nd level (3 slots): {@spell aid}, {@spell find steed}, {@spell hold person}, {@spell lesser restoration}",
+        "3rd level (3 slots): {@spell aura of vitality}, {@spell crusader's mantle}, {@spell revivify}",
+        "4th level (1 slot): {@spell banishment}, {@spell staggering smite}"
+      ]
+    }
+  ],
+  "action": [
+    {
+      "name": "Multiattack",
+      "entries": [
+        "Garward makes two attacks, choosing from Longsword and Tentacles. He can replace one attack with Mind Lance."
+      ]
+    },
+    {
+      "name": "Longsword",
+      "entries": [
+        "Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 9 ({@damage 1d8 + 5}) slashing damage, or 10 ({@damage 1d10 + 5}) slashing damage if used with two hands, plus 9 ({@damage 2d8}) psychic damage."
+      ]
+    },
+    {
+      "name": "Mind Lance",
+      "entries": [
+        "Ranged Spell Attack: {@hit +9} to hit, range 120 ft., one creature. Hit: 22 ({@damage 4d10}) psychic damage, and the target cannot take reactions until the end of its next turn."
+      ]
+    },
+    {
+      "name": "Tentacles",
+      "entries": [
+        "Melee Weapon Attack: {@hit +9} to hit, reach 10 ft., one creature. Hit: 16 ({@damage 2d10 + 5}) psychic damage. If the target is Large or smaller, it is grappled (escape {@dc 17}) and must succeed on a {@dc 17} Intelligence saving throw or be stunned until this grapple ends."
+      ]
+    },
+    {
+      "name": "Mind Blast ({@recharge 5})",
+      "entries": [
+        "Garward magically emits psychic energy in a 60-foot cone. Each creature in that area must succeed on a {@dc 17} Intelligence saving throw or take 33 ({@damage 6d10}) psychic damage and be stunned for 1 minute. A stunned target repeats the saving throw at the end of each of its turns, ending the effect on itself on a success."
+      ]
+    },
+    {
+      "name": "Extract Heresy",
+      "entries": [
+        "Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one incapacitated humanoid grappled by Garward. Hit: 55 ({@damage 10d10}) piercing damage. If this damage reduces the target to 0 hit points, Garward kills the target by extracting and devouring its brain."
+      ]
+    }
+  ],
+  "bonus": [
+    {
+      "name": "Lay on Hands",
+      "entries": [
+        "Garward touches himself or another creature and restores up to 35 hit points from a pool."
+      ]
+    }
+  ],
+  "reaction": [
+    {
+      "name": "Rebuke the Faithless",
+      "entries": [
+        "When a creature Garward can see within 30 feet hits him with an attack, Garward forces the creature to make a {@dc 17} Wisdom saving throw. On a failed save, the creature takes 14 ({@damage 4d6}) psychic damage. On a successful save, the creature takes half as much damage."
+      ]
+    }
+  ],
+  "legendaryActions": 3,
+  "legendaryHeader": [
+    "Garward can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time, and only at the end of another creature's turn. Garward regains spent legendary actions at the start of his first turn each round."
+  ],
+  "legendary": [
+    {
+      "name": "Commanding Step",
+      "entries": [
+        "Garward moves up to half his speed without provoking opportunity attacks."
+      ]
+    },
+    {
+      "name": "Sword of Office",
+      "entries": ["Garward makes one Longsword attack."]
+    },
+    {
+      "name": "Psychic Rebuke",
+      "entries": [
+        "One creature Garward can see within 60 feet must succeed on a {@dc 17} Wisdom saving throw or take 10 ({@damage 3d6}) psychic damage and have disadvantage on the next saving throw it makes before the end of its next turn."
+      ]
+    },
+    {
+      "name": "Tentacular Drag (Costs 2 Actions)",
+      "entries": [
+        "One creature grappled by Garward must succeed on a {@dc 17} Strength saving throw or be pulled up to 15 feet to an unoccupied space Garward can see."
+      ]
+    },
+    {
+      "name": "Break the Doctrine (Costs 3 Actions)",
+      "entries": ["Garward recharges Mind Blast."]
+    }
+  ]
+}

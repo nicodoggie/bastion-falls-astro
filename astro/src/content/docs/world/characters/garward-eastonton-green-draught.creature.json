@@ -1,0 +1,153 @@
+{
+  "name": "Garward Eastonton, Green Draught",
+  "size": ["M"],
+  "type": {
+    "type": "humanoid",
+    "tags": ["human"]
+  },
+  "alignment": ["L", "E"],
+  "ac": [
+    {
+      "ac": 20,
+      "from": ["plate", "shield"]
+    }
+  ],
+  "hp": {
+    "average": 80,
+    "formula": "10d8 + 35"
+  },
+  "speed": {
+    "walk": 30
+  },
+  "str": 20,
+  "dex": 10,
+  "con": 18,
+  "int": 14,
+  "wis": 16,
+  "cha": 19,
+  "save": {
+    "str": "+9",
+    "con": "+8",
+    "wis": "+7",
+    "cha": "+8"
+  },
+  "skill": {
+    "athletics": "+9",
+    "insight": "+7",
+    "intimidation": "+8",
+    "perception": "+7",
+    "religion": "+6"
+  },
+  "resist": ["radiant", "psychic"],
+  "conditionImmune": ["charmed", "frightened"],
+  "senses": ["darkvision 60 ft."],
+  "passive": 17,
+  "languages": ["Common", "Celestial", "telepathy 120 ft."],
+  "cr": "11",
+  "trait": [
+    {
+      "name": "Transformation Countdown",
+      "entries": [
+        "When this phase begins, roll {@dice 1d4}. At the end of each of Garward's turns, reduce the result by 1. When it reaches 0, Garward transitions to Phase 3 even if he has hit points remaining."
+      ]
+    },
+    {
+      "name": "Leaking Confession",
+      "entries": [
+        "A creature that starts its turn within 10 feet of Garward must succeed on a {@dc 17} Wisdom saving throw or hear one Reformist confession it cannot forget until the start of its next turn. A creature affected this way has disadvantage on its next attack roll against Garward before then."
+      ]
+    },
+    {
+      "name": "Unstable Paragon",
+      "entries": [
+        "Garward takes two turns each round, spaced evenly through initiative. He regains spent legendary actions only at the start of his first turn each round."
+      ]
+    },
+    {
+      "name": "Legendary Resistance (1/Day)",
+      "entries": [
+        "If Garward fails a saving throw, he can choose to succeed instead."
+      ]
+    },
+    {
+      "name": "Spellcasting",
+      "entries": [
+        "Garward's spellcasting ability is Charisma (spell save {@dc 16}, {@hit +8} to hit with spell attacks). He has the following paladin spells prepared:",
+        "1st level (4 slots): {@spell bless}, {@spell command}, {@spell compelled duel}, {@spell shield of faith}",
+        "2nd level (3 slots): {@spell aid}, {@spell find steed}, {@spell hold person}, {@spell lesser restoration}",
+        "3rd level (3 slots): {@spell aura of vitality}, {@spell crusader's mantle}, {@spell revivify}",
+        "4th level (1 slot): {@spell banishment}, {@spell staggering smite}"
+      ]
+    }
+  ],
+  "action": [
+    {
+      "name": "Multiattack",
+      "entries": [
+        "Garward makes two attacks, choosing from Longsword and Mind Lance."
+      ]
+    },
+    {
+      "name": "Longsword",
+      "entries": [
+        "Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 9 ({@damage 1d8 + 5}) slashing damage, or 10 ({@damage 1d10 + 5}) slashing damage if used with two hands, plus 9 ({@damage 2d8}) radiant damage and 7 ({@damage 2d6}) psychic damage."
+      ]
+    },
+    {
+      "name": "Mind Lance",
+      "entries": [
+        "Ranged Spell Attack: {@hit +8} to hit, range 120 ft., one creature. Hit: 22 ({@damage 4d10}) psychic damage, and the target cannot take reactions until the end of its next turn."
+      ]
+    },
+    {
+      "name": "Psychic Smite (3/Day)",
+      "entries": [
+        "When Garward hits a creature with a melee weapon attack, he deals an extra 18 ({@damage 4d8}) psychic damage to the target."
+      ]
+    }
+  ],
+  "bonus": [
+    {
+      "name": "Lay on Hands",
+      "entries": [
+        "Garward touches himself or another creature and restores up to 35 hit points from a pool."
+      ]
+    }
+  ],
+  "reaction": [
+    {
+      "name": "Rebuke the Faithless",
+      "entries": [
+        "When a creature Garward can see within 30 feet hits him with an attack, Garward forces the creature to make a {@dc 16} Wisdom saving throw. On a failed save, the creature takes 14 ({@damage 4d6}) psychic damage. On a successful save, the creature takes half as much damage."
+      ]
+    }
+  ],
+  "legendaryActions": 3,
+  "legendaryHeader": [
+    "Garward can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time, and only at the end of another creature's turn. Garward regains spent legendary actions at the start of his first turn each round."
+  ],
+  "legendary": [
+    {
+      "name": "Commanding Step",
+      "entries": [
+        "Garward moves up to half his speed without provoking opportunity attacks."
+      ]
+    },
+    {
+      "name": "Sword of Office",
+      "entries": ["Garward makes one Longsword attack."]
+    },
+    {
+      "name": "Psychic Rebuke",
+      "entries": [
+        "One creature Garward can see within 60 feet must succeed on a {@dc 16} Wisdom saving throw or take 10 ({@damage 3d6}) psychic damage and have disadvantage on the next saving throw it makes before the end of its next turn."
+      ]
+    },
+    {
+      "name": "Forced Revelation (Costs 2 Actions)",
+      "entries": [
+        "Garward reduces his Transformation Countdown by 1 and immediately uses Mind Lance."
+      ]
+    }
+  ]
+}

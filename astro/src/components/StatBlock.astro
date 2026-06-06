@@ -391,9 +391,10 @@ function toDisplayFeatureParagraphs(
 ): DisplayFeatureParagraph[] {
   return features.flatMap((feature) => {
     const paragraphs = entriesToDisplayParagraphs(feature.entries);
-    if (paragraphs.length === 0) return [{ name: feature.name, text: "" }];
+    const name = entriesToDisplayParagraphs([feature.name])[0] ?? feature.name;
+    if (paragraphs.length === 0) return [{ name, text: "" }];
     return paragraphs.map((text, index) => ({
-      name: index === 0 ? feature.name : undefined,
+      name: index === 0 ? name : undefined,
       text,
     }));
   });
@@ -576,7 +577,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
         <p class="sb__feature">
           {t.name && (
             <>
-              <em><strong>{t.name}.</strong></em>
+              <em><strong><Fragment set:html={t.name} />.</strong></em>
               {t.text && ' '}
             </>
           )}
@@ -595,7 +596,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
           <p class="sb__feature">
             {a.name && (
               <>
-                <em><strong>{a.name}.</strong></em>
+                <em><strong><Fragment set:html={a.name} />.</strong></em>
                 {a.text && ' '}
               </>
             )}
@@ -622,7 +623,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
           <p class="sb__feature">
             {b.name && (
               <>
-                <em><strong>{b.name}.</strong></em>
+                <em><strong><Fragment set:html={b.name} />.</strong></em>
                 {b.text && ' '}
               </>
             )}
@@ -642,7 +643,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
           <p class="sb__feature">
             {r.name && (
               <>
-                <em><strong>{r.name}.</strong></em>
+                <em><strong><Fragment set:html={r.name} />.</strong></em>
                 {r.text && ' '}
               </>
             )}
@@ -666,7 +667,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
           <p class="sb__feature">
             {la.name && (
               <>
-                <em><strong>{la.name}.</strong></em>
+                <em><strong><Fragment set:html={la.name} />.</strong></em>
                 {la.text && ' '}
               </>
             )}
@@ -704,7 +705,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   margin-block: 1.75rem;
   /* Full page width — let the container decide */
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* ─── Dark mode tokens ───────────────────────────────────────────────── */
