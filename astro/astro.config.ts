@@ -133,6 +133,7 @@ export default defineConfig({
       imports: [
         "./src/components/inline-references/Spell.astro",
         "./src/components/inline-references/Item.astro",
+        "./src/components/inline-references/Creature.astro",
         "./src/components/inline-references/Feat.astro",
         "./src/components/inline-references/ConditionDisease.astro",
         "./src/components/Stub.astro",

@@ -1,0 +1,62 @@
+---
+import {
+  assert5etoolsDataPresent,
+  loadCreature,
+  loadCreatureFromContentJson,
+  type ResolvedCreature,
+  resolveCreatureFromData,
+  truncatePlain,
+} from "@/lib/5etools/index";
+import { stripHtmlToText } from "@/lib/strip-html";
+import InlineReferenceTooltip from "./InlineReferenceTooltip.astro";
+
+interface Props {
+  /** Lookup in bundled 5etools bestiary data (requires submodule). */
+  name?: string;
+  /** Book key from bestiary data (e.g. mm, xmm). Omit to resolve across books. */
+  src?: string;
+  /**
+   * Creature JSON under `src/content/docs/`, e.g. `world/characters/foo.creature.json`.
+   * When the file is `{ "monster": [...] }`, pass `name` to pick one row.
+   */
+  json?: string;
+  /**
+   * Inline creature object (e.g. `import x from './x.creature.json'`). Validated
+   * with `CreatureDataSchema`. Takes precedence over `json` and `name`.
+   */
+  creature?: Record<string, unknown>;
+}
+
+const props = Astro.props as Props;
+const { name, src, json, creature: creatureProp } = props;
+
+let resolved: ResolvedCreature | null = null;
+if (creatureProp != null && typeof creatureProp === "object") {
+  resolved = resolveCreatureFromData(creatureProp, "Creature creature={...}");
+} else if (json?.trim()) {
+  resolved = loadCreatureFromContentJson(json.trim(), name);
+} else if (name?.trim()) {
+  assert5etoolsDataPresent();
+  resolved = loadCreature(name, src);
+}
+
+const rendered = Astro.slots.has("default")
+  ? await Astro.slots.render("default")
+  : "";
+
+const label = rendered.trim()
+  ? stripHtmlToText(rendered)
+  : (resolved?.record.name ?? name ?? "Unknown creature");
+const heading = resolved?.record.name ?? name ?? "Unknown creature";
+const summaryLines = resolved?.summaryLines ?? [];
+const body = resolved ? truncatePlain(resolved.body, 1200) : "";
+const missing = resolved == null;
+---
+
+<InlineReferenceTooltip
+  label={label}
+  heading={heading}
+  summaryLines={summaryLines}
+  body={body}
+  missing={missing}
+/>

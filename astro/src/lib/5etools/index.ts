@@ -1,4 +1,14 @@
 export {
+  loadCreatureFromContentJson,
+  resolveCreatureFromData,
+} from "./creature-data";
+export {
+  buildResolvedCreature,
+  loadCreature,
+  type CreatureJson,
+  type ResolvedCreature,
+} from "./creatures";
+export {
   loadConditionDisease,
   type ResolvedConditionDisease,
 } from "./conditions";
