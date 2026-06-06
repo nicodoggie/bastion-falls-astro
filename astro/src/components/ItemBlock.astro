@@ -101,7 +101,7 @@ const moreParagraphs = entriesToDisplayParagraphs(
   {paragraphs.length > 0 && (
       <div class="sb__features">
         {paragraphs.map((p) => (
-          <p class="sb__feature">{p}</p>
+          <p class="sb__feature" set:html={p} />
         ))}
       </div>
     )}
@@ -111,7 +111,7 @@ const moreParagraphs = entriesToDisplayParagraphs(
         <h3 class="sb__section-title">Additional</h3>
         <div class="sb__features">
           {moreParagraphs.map((p) => (
-            <p class="sb__feature">{p}</p>
+            <p class="sb__feature" set:html={p} />
           ))}
         </div>
       </div>

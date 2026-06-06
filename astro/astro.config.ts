@@ -131,9 +131,10 @@ export default defineConfig({
 
     AutoImport({
       imports: [
-        "./src/components/Spell.astro",
-        "./src/components/Feat.astro",
-        "./src/components/ConditionDisease.astro",
+        "./src/components/inline-references/Spell.astro",
+        "./src/components/inline-references/Item.astro",
+        "./src/components/inline-references/Feat.astro",
+        "./src/components/inline-references/ConditionDisease.astro",
         "./src/components/Stub.astro",
         "./src/components/FamilyTree.tsx",
         "./src/components/HomebrewSpell.astro",

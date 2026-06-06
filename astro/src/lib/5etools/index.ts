@@ -4,6 +4,16 @@ export {
 } from "./conditions";
 export { loadFeat, type ResolvedFeat } from "./feats";
 export {
+  loadItemFromContentJson,
+  resolveItemFromData,
+} from "./item-data";
+export {
+  buildResolvedItem,
+  loadItem,
+  type ItemJson,
+  type ResolvedItem,
+} from "./items";
+export {
   assert5etoolsDataPresent,
   get5etoolsDataDir,
   getAstroPackageRoot,

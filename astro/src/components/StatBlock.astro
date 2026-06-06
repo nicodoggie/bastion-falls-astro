@@ -1,5 +1,6 @@
 ---
 import { getEntry } from "astro:content";
+import { entriesToDisplayParagraphs } from "../lib/5etools/entries-display";
 
 /**
  * D&D 5e stat block component — full-width layout inspired by D&D Beyond.
@@ -249,21 +250,6 @@ function formatCR(cr: unknown): { value: string; xp: string } {
   };
 }
 
-function formatEntries(entries: unknown[]): string {
-  return entries
-    .map((e) => {
-      if (typeof e === "string") return e;
-      if (typeof e === "object" && e !== null) {
-        const obj = e as Record<string, unknown>;
-        if (Array.isArray(obj.entries)) return formatEntries(obj.entries);
-        if (obj.text) return obj.text as string;
-      }
-      return "";
-    })
-    .filter(Boolean)
-    .join(" ");
-}
-
 function joinConjunction(items: string[]): string {
   if (items.length === 0) return "";
   if (items.length === 1) return items[0] ?? "";
@@ -390,12 +376,27 @@ const SKILL_NAMES: Record<string, string> = {
 };
 
 type AnyFeature = { name: string; entries: unknown[] };
+type DisplayFeatureParagraph = { name?: string; text: string };
+
 function asFeatures(val: unknown): AnyFeature[] {
   if (!Array.isArray(val)) return [];
   return val.filter(
     (v): v is AnyFeature =>
       typeof v === "object" && v !== null && "name" in v && "entries" in v,
   );
+}
+
+function toDisplayFeatureParagraphs(
+  features: AnyFeature[],
+): DisplayFeatureParagraph[] {
+  return features.flatMap((feature) => {
+    const paragraphs = entriesToDisplayParagraphs(feature.entries);
+    if (paragraphs.length === 0) return [{ name: feature.name, text: "" }];
+    return paragraphs.map((text, index) => ({
+      name: index === 0 ? feature.name : undefined,
+      text,
+    }));
+  });
 }
 
 const acInfo = formatAC(c.ac as unknown[]);
@@ -407,6 +408,12 @@ const actions = asFeatures(c.action);
 const bonusActions = asFeatures(c.bonus);
 const reactions = asFeatures(c.reaction);
 const legendary = asFeatures(c.legendary);
+
+const displayTraits = toDisplayFeatureParagraphs(traits);
+const displayActions = toDisplayFeatureParagraphs(actions);
+const displayBonusActions = toDisplayFeatureParagraphs(bonusActions);
+const displayReactions = toDisplayFeatureParagraphs(reactions);
+const displayLegendary = toDisplayFeatureParagraphs(legendary);
 
 // const saves = c.save
 //   ? Object.entries(c.save)
@@ -563,26 +570,36 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   )}
 
   <!-- Traits -->
-  {traits.length > 0 && (
+  {displayTraits.length > 0 && (
   <div class="sb__features">
-    {traits.map((t) => (
+    {displayTraits.map((t) => (
         <p class="sb__feature">
-          <em><strong>{t.name}.</strong></em>
-          {' '}{formatEntries(t.entries)}
+          {t.name && (
+            <>
+              <em><strong>{t.name}.</strong></em>
+              {t.text && ' '}
+            </>
+          )}
+          {t.text && <Fragment set:html={t.text} />}
         </p>
       ))}
   </div>
   )}
 
   <!-- Actions -->
-  {actions.length > 0 && (
+  {displayActions.length > 0 && (
   <div class="sb__section">
     <h3 class="sb__section-title">Actions</h3>
     <div class="sb__features">
-      {actions.map((a) => (
+      {displayActions.map((a) => (
           <p class="sb__feature">
-            <em><strong>{a.name}.</strong></em>
-            {' '}{formatEntries(a.entries)}
+            {a.name && (
+              <>
+                <em><strong>{a.name}.</strong></em>
+                {a.text && ' '}
+              </>
+            )}
+            {a.text && <Fragment set:html={a.text} />}
           </p>
         ))}
     </div>
@@ -590,7 +607,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   )}
 
   <!-- Bonus actions -->
-  {bonusActions.length > 0 && (
+  {displayBonusActions.length > 0 && (
   <div class="sb__section">
     <h3 class="sb__section-title">Bonus Actions</h3>
     <div class="sb__features">
@@ -601,10 +618,15 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
           (c.bonusHeader as unknown[]).map((h) => (
             <p class="sb__feature">{String(h)}</p>
           ))}
-      {bonusActions.map((b) => (
+      {displayBonusActions.map((b) => (
           <p class="sb__feature">
-            <em><strong>{b.name}.</strong></em>
-            {' '}{formatEntries(b.entries)}
+            {b.name && (
+              <>
+                <em><strong>{b.name}.</strong></em>
+                {b.text && ' '}
+              </>
+            )}
+            {b.text && <Fragment set:html={b.text} />}
           </p>
         ))}
     </div>
@@ -612,14 +634,19 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   )}
 
   <!-- Reactions -->
-  {reactions.length > 0 && (
+  {displayReactions.length > 0 && (
   <div class="sb__section">
     <h3 class="sb__section-title">Reactions</h3>
     <div class="sb__features">
-      {reactions.map((r) => (
+      {displayReactions.map((r) => (
           <p class="sb__feature">
-            <em><strong>{r.name}.</strong></em>
-            {' '}{formatEntries(r.entries)}
+            {r.name && (
+              <>
+                <em><strong>{r.name}.</strong></em>
+                {r.text && ' '}
+              </>
+            )}
+            {r.text && <Fragment set:html={r.text} />}
           </p>
         ))}
     </div>
@@ -627,7 +654,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
   )}
 
   <!-- Legendary actions -->
-  {legendary.length > 0 && (
+  {displayLegendary.length > 0 && (
   <div class="sb__section">
     <h3 class="sb__section-title">Legendary Actions</h3>
     <div class="sb__features">
@@ -635,10 +662,15 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
           (c.legendaryHeader as string[]).map((h) => (
             <p class="sb__feature">{h}</p>
           ))}
-      {legendary.map((la) => (
+      {displayLegendary.map((la) => (
           <p class="sb__feature">
-            <em><strong>{la.name}.</strong></em>
-            {' '}{formatEntries(la.entries)}
+            {la.name && (
+              <>
+                <em><strong>{la.name}.</strong></em>
+                {la.text && ' '}
+              </>
+            )}
+            {la.text && <Fragment set:html={la.text} />}
           </p>
         ))}
     </div>

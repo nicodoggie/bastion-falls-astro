@@ -91,7 +91,7 @@ const higherParas = entriesToDisplayParagraphs(
   {bodyParas.length > 0 && (
       <div class="sb__features">
         {bodyParas.map((para) => (
-          <p class="sb__feature">{para}</p>
+          <p class="sb__feature" set:html={para} />
         ))}
       </div>
     )}
@@ -101,7 +101,7 @@ const higherParas = entriesToDisplayParagraphs(
         <h3 class="sb__section-title">At Higher Levels</h3>
         <div class="sb__features">
           {higherParas.map((para) => (
-            <p class="sb__feature">{para}</p>
+            <p class="sb__feature" set:html={para} />
           ))}
         </div>
       </div>

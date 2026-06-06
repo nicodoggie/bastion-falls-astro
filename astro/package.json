@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "clean": "rm -rf dist",
+    "test": "node --import tsx --test src/**/*.test.ts",
     "typecheck": "tsc --noEmit",
     "build": "yarn run clean && astro build",
     "preview": "astro preview",
@@ -57,6 +58,9 @@
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-zoom-pan-pinch": "^4.0.3",
+    "rehype-parse": "^9.0.1",
+    "rehype-sanitize": "^6.0.0",
+    "rehype-stringify": "^10.0.1",
     "remark-custom-header-id": "^1.0.0",
     "remark-definition-list": "^2.0.0",
     "remark-markmap": "^1.1.5",
@@ -99,6 +103,7 @@
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
     "rumdl": "^0.2.4",
+    "tsx": "^4.22.4",
     "unified": "^11.0.5"
   },
   "volta": {

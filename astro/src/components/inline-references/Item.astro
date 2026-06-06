@@ -1,0 +1,62 @@
+---
+import {
+  assert5etoolsDataPresent,
+  loadItem,
+  loadItemFromContentJson,
+  type ResolvedItem,
+  resolveItemFromData,
+  truncatePlain,
+} from "@/lib/5etools/index";
+import { stripHtmlToText } from "@/lib/strip-html";
+import InlineReferenceTooltip from "./InlineReferenceTooltip.astro";
+
+interface Props {
+  /** Lookup in bundled 5etools data (requires submodule). */
+  name?: string;
+  /** Book key from item data (e.g. dmg, xdmg, phb). Omit to resolve across books. */
+  src?: string;
+  /**
+   * Item JSON under `src/content/docs/`, e.g. `world/items/foo.item.json`.
+   * When the file is `{ "item": [...] }`, pass `name` to pick one row.
+   */
+  json?: string;
+  /**
+   * Inline item object (e.g. `import x from './x.item.json'`). Validated with
+   * `ItemDataSchema`. Takes precedence over `json` and `name`.
+   */
+  item?: Record<string, unknown>;
+}
+
+const props = Astro.props as Props;
+const { name, src, json, item: itemProp } = props;
+
+let resolved: ResolvedItem | null = null;
+if (itemProp != null && typeof itemProp === "object") {
+  resolved = resolveItemFromData(itemProp, "Item item={...}");
+} else if (json?.trim()) {
+  resolved = loadItemFromContentJson(json.trim(), name);
+} else if (name?.trim()) {
+  assert5etoolsDataPresent();
+  resolved = loadItem(name, src);
+}
+
+const rendered = Astro.slots.has("default")
+  ? await Astro.slots.render("default")
+  : "";
+
+const label = rendered.trim()
+  ? stripHtmlToText(rendered)
+  : (resolved?.record.name ?? name ?? "Unknown item");
+const heading = resolved?.record.name ?? name ?? "Unknown item";
+const summaryLines = resolved?.summaryLines ?? [];
+const body = resolved ? truncatePlain(resolved.body, 1200) : "";
+const missing = resolved == null;
+---
+
+<InlineReferenceTooltip
+  label={label}
+  heading={heading}
+  summaryLines={summaryLines}
+  body={body}
+  missing={missing}
+/>

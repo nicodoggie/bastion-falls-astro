@@ -1,6 +1,7 @@
-declare const Spell: typeof import("./components/Spell.astro").default;
-declare const Feat: typeof import("./components/Feat.astro").default;
-declare const ConditionDisease: typeof import("./components/ConditionDisease.astro").default;
+declare const Spell: typeof import("./components/inline-references/Spell.astro").default;
+declare const Item: typeof import("./components/inline-references/Item.astro").default;
+declare const Feat: typeof import("./components/inline-references/Feat.astro").default;
+declare const ConditionDisease: typeof import("./components/inline-references/ConditionDisease.astro").default;
 declare const Stub: typeof import("./components/Stub.astro").default;
 declare const FamilyTree: typeof import("./components/FamilyTree").default;
 declare const HomebrewSpell: typeof import("./components/HomebrewSpell.astro").default;
