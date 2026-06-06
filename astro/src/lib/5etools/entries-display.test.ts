@@ -9,7 +9,7 @@ test("renders safe formatting and reference tags", () => {
   ]);
 
   assert.deepEqual(paragraphs, [
-    '<em>whispered</em> about <span class="bf5e-ref bf5e-ref--inline bf5e-ref--creature">Kotryna</span> and <strong><em>2d6</em></strong>.',
+    '<em>whispered</em> about <span class="bf5e-ref bf5e-ref--inline bf5e-ref--creature">Kotryna</span> and <strong class="bf5e-mechanic"><em>2d6</em></strong>.',
   ]);
 });
 
@@ -29,6 +29,6 @@ test("uses display text for entity tags and emphasizes mechanics tags", () => {
   ]);
 
   assert.deepEqual(paragraphs, [
-    '<span class="bf5e-ref bf5e-ref--inline bf5e-ref--spell">flame blossom</span> calls for <strong><em>DC 15</em></strong>, <strong><em>+7</em></strong>, <strong><em>(Recharge 5-6)</em></strong>, and <strong><em>25 percent</em></strong>. It grants <span class="bf5e-ref bf5e-ref--inline bf5e-ref--sense">night sight</span>.',
+    '<span class="bf5e-ref bf5e-ref--inline bf5e-ref--spell">flame blossom</span> calls for <strong class="bf5e-mechanic"><em>DC 15</em></strong>, <strong class="bf5e-mechanic"><em>+7</em></strong>, <strong class="bf5e-mechanic"><em>(Recharge 5-6)</em></strong>, and <strong class="bf5e-mechanic"><em>25 percent</em></strong>. It grants <span class="bf5e-ref bf5e-ref--inline bf5e-ref--sense">night sight</span>.',
   ]);
 });

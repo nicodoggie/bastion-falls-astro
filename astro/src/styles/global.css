@@ -15,6 +15,24 @@ hr {
   text-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
 }
 
+/* 5etools entry fragments rendered from JSON stat/spell/item blocks. */
+.bf5e-ref--inline {
+  border-bottom: 1px dotted currentColor;
+  color: color-mix(in srgb, currentColor 82%, #7c3aed);
+  font-weight: 600;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.16em;
+}
+
+.bf5e-mechanic {
+  color: color-mix(in srgb, currentColor 80%, #9c2b1b);
+  font-weight: 700;
+}
+
+.bf5e-mechanic em {
+  font-style: italic;
+}
+
 /* Markmap overrides */
 .markmap-wrap {
   width: 100%;

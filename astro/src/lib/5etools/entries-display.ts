@@ -38,6 +38,7 @@ const sanitizer = unified()
     tagNames: ["em", "span", "strong"],
     attributes: {
       span: ["className"],
+      strong: ["className"],
     },
   })
   .use(rehypeStringify);
@@ -94,7 +95,7 @@ function render5eTags(input: string): string {
     const formatTag = FORMAT_TAGS[tag];
     if (REFERENCE_TAGS.has(tag)) return renderReferenceTag(tag, rawText);
     if (MECHANICS_TAGS.has(tag)) {
-      return `<strong><em>${formatMechanicTag(tag, rawText)}</em></strong>`;
+      return `<strong class="bf5e-mechanic"><em>${formatMechanicTag(tag, rawText)}</em></strong>`;
     }
     const text = displayTextFromThirdPipe(rawText);
     if (!formatTag) return text;
