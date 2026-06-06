@@ -1,6 +1,7 @@
 ---
 import { getEntry } from "astro:content";
 import { entriesToDisplayParagraphs } from "../lib/5etools/entries-display";
+import Sense from "./inline-references/Sense.astro";
 
 /**
  * D&D 5e stat block component — full-width layout inspired by D&D Beyond.
@@ -377,6 +378,7 @@ const SKILL_NAMES: Record<string, string> = {
 
 type AnyFeature = { name: string; entries: unknown[] };
 type DisplayFeatureParagraph = { name?: string; text: string };
+type DisplaySense = { label: string; senseName?: string };
 
 function asFeatures(val: unknown): AnyFeature[] {
   if (!Array.isArray(val)) return [];
@@ -398,6 +400,21 @@ function toDisplayFeatureParagraphs(
       text,
     }));
   });
+}
+
+const SENSE_NAMES = [
+  "blindsight",
+  "darkvision",
+  "tremorsense",
+  "truesight",
+];
+
+function toDisplaySense(raw: string): DisplaySense {
+  const label = raw.trim();
+  const senseName = SENSE_NAMES.find((name) => {
+    return new RegExp(`^${name}\\b`, "i").test(label);
+  });
+  return senseName ? { label, senseName } : { label };
 }
 
 const acInfo = formatAC(c.ac as unknown[]);
@@ -432,6 +449,7 @@ const senses: string[] = [
   ...(Array.isArray(c.senses) ? (c.senses as string[]) : []),
   c.passive != null ? `passive Perception ${c.passive}` : "",
 ].filter(Boolean);
+const displaySenses = senses.map(toDisplaySense);
 
 const languages = Array.isArray(c.languages) ? (c.languages as string[]) : [];
 
@@ -522,7 +540,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
     || damageResistances
     || damageImmunities
     || conditionImmunities
-    || senses.length > 0
+    || displaySenses.length > 0
     || languages.length > 0) && (
   <div class="sb__properties">
     {skills.length > 0 && (
@@ -555,10 +573,21 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => ({
           <span class="sb__prop-value">{conditionImmunities}</span>
         </div>
       )}
-    {senses.length > 0 && (
+    {displaySenses.length > 0 && (
         <div class="sb__prop">
           <span class="sb__prop-name">Senses</span>
-          <span class="sb__prop-value">{senses.join(', ')}</span>
+          <span class="sb__prop-value">
+            {displaySenses.map((sense, index) => (
+              <>
+                {index > 0 && ', '}
+                {sense.senseName ? (
+                  <Sense name={sense.senseName}>{sense.label}</Sense>
+                ) : (
+                  sense.label
+                )}
+              </>
+            ))}
+          </span>
         </div>
       )}
     {languages.length > 0 && (
