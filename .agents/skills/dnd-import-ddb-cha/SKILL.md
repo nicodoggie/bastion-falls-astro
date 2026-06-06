@@ -48,17 +48,26 @@ human judgment.
      `details.sex`, `details.pronouns`, `mortality`, relationships,
      organizations, aliases, dates, or biography. DDB race/species may reflect
      mechanics rather than canon.
-   - Prefer adding a short prose note like “Her D&D Beyond sheet lists…” over
-     replacing existing narrative.
+   - Prefer adding a cautious in-world sentence over replacing existing
+     narrative, such as “Accounts of her abilities emphasize…” or “Some records
+     associate her with…”.
    - For an empty or stub article, create an in-world biographical article:
      write in a neutral encyclopedia style, similar to a Wikipedia biography,
      and present facts as campaign-world knowledge rather than as player-sheet
      metadata.
+   - Never mention out-of-world sourcing in article prose. Avoid phrases such
+     as “campaign notes,” “D&D Beyond sheet,” “DDB notes,” “player notes,”
+     “session notes,” “the sheet lists,” or “mechanically.” Keep those details
+     in frontmatter, import artifacts, or the final response instead.
+   - Recast source uncertainty diegetically. Use phrases such as “records
+     describe,” “accounts portray,” “is said to,” “appears to have,” “some
+     records use,” or “is associated with” instead of naming the real-world
+     source.
    - Link the first mention of known existing characters, locations,
      organizations, peoples, events, and important items to their existing MDX
      articles using relative markdown links. Do not link repeated mentions.
    - Keep speculative or sheet-only details cautious. Prefer “is described as,”
-     “is associated with,” or “the sheet notes” when the DDB note is not yet
+     “is associated with,” or “some records note” when the DDB note is not yet
      corroborated by existing campaign lore.
 1. Validate.
    - Run `yarn astro sync` from `astro/` after edits.
