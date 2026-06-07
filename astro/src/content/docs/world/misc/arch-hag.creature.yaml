@@ -1,0 +1,93 @@
+name: Arch Hag
+size:
+  - M
+type: fey
+alignment:
+  - "N"
+  - E
+ac:
+  - ac: 17
+    from:
+      - natural armor
+hp:
+  average: 120
+  formula: 16d8 + 48
+speed:
+  walk: 30
+str: 18
+dex: 16
+con: 18
+int: 15
+wis: 16
+cha: 18
+save:
+  wis: "+6"
+  cha: "+7"
+skill:
+  deception: "+7"
+  insight: "+6"
+  perception: "+6"
+  stealth: "+7"
+resist:
+  - cold
+  - fire
+  - special: bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered
+conditionImmune:
+  - charmed
+senses:
+  - darkvision 120 ft.
+passive: 16
+languages:
+  - Common
+  - Infernal
+  - Sylvan
+cr: "6"
+trait:
+  - name: Magic Resistance
+    entries:
+      - The arch hag has advantage on saving throws against spells and other magical effects.
+  - name: Innate Spellcasting
+    entries:
+      - >-
+        The arch hag's innate spellcasting ability is Charisma (spell save DC 15, +7 to hit with
+        spell attacks). It can innately cast the following spells, requiring no material components:
+      - "Cantrips (at will): chill touch, dancing lights, minor illusion, vicious mockery"
+      - "1st level (3/day each): dissonant whispers, faerie fire, sleep"
+      - "2nd level (3/day each): hold person, misty step, ray of enfeeblement, suggestion"
+      - "2nd level (2/day each): mirror image, web"
+      - "3rd level (1/day each): bestow curse, counterspell, fear, hypnotic pattern, modify memory"
+      - >-
+        4th level (1/day each): blight, polymorph (the hag targets only itself and becomes a Small
+        or Medium beast with challenge rating 2 or lower that has no flying speed)
+action:
+  - name: Multiattack
+    entries:
+      - The arch hag makes two claw attacks.
+  - name: Claw
+    entries:
+      - >-
+        Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d6 + 4) slashing damage
+        plus 10 (3d6) necrotic damage.
+  - name: Dire Scream (Recharge 5-6)
+    entries:
+      - >-
+        The arch hag shrieks in a 30-foot cone. Each creature in that area must make a DC 15
+        Constitution saving throw, taking 21 (6d6) thunder damage on a failed save, or half as much
+        on a successful one. A creature that fails the save is also deafened until the end of its
+        next turn.
+bonus:
+  - name: Beguiling Glare
+    entries:
+      - >-
+        The arch hag fixes its gaze on one creature it can see within 30 feet of it. The target must
+        succeed on a DC 15 Wisdom saving throw or be charmed until the end of the arch hag's next
+        turn. While charmed in this way, the target can't attack the arch hag, and the arch hag has
+        advantage on attack rolls against the target.
+reaction:
+  - name: Wretched Rebuke (3/Day)
+    entries:
+      - >-
+        When the arch hag takes damage from a creature it can see within 30 feet of it, the arch hag
+        forces the attacker to make a DC 15 Wisdom saving throw. On a failed save, the attacker
+        takes 10 (3d6) psychic damage and is frightened of the arch hag until the end of the
+        attacker's next turn.

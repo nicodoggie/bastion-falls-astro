@@ -1,0 +1,68 @@
+name: Evoker Adept
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - any race
+alignment:
+  - L
+  - E
+ac:
+  - ac: 12
+    from:
+      - fine clothes
+hp:
+  average: 52
+  formula: 8d8 + 16
+speed:
+  walk: 30
+str: 10
+dex: 14
+con: 14
+int: 16
+wis: 12
+cha: 10
+save:
+  int: "+6"
+  wis: "+4"
+skill:
+  arcana: "+6"
+  investigation: "+5"
+passive: 11
+languages:
+  - Common
+  - Draconic
+cr: "3"
+trait:
+  - name: Sculpt Spells
+    entries:
+      - >-
+        When the adept casts an evocation spell that affects other creatures it can see, it can
+        choose a number of them equal to 1 + the spell's level to succeed on their saving throws
+        against the spell automatically, and they take no damage if they would normally take half
+        damage on a successful save.
+  - name: Spellcasting
+    entries:
+      - >-
+        The adept is a 5th-level wizard (School of Evocation). Its spellcasting ability is
+        Intelligence (spell save DC 14, +6 to hit with spell attacks). It has the following spells
+        prepared:
+      - "Cantrips (at will): fire bolt, light, prestidigitation"
+      - "1st level (4 slots): burning hands, magic missile, shield, thunderwave"
+      - "2nd level (3 slots): misty step, scorching ray, shatter"
+      - "3rd level (2 slots): counterspell, fireball"
+      - >-
+        In combat the adept favors fireball or scorching ray to punish clustered foes, and uses
+        shield when targeted.
+action:
+  - name: Fire Bolt
+    entries:
+      - "Ranged Spell Attack: +6 to hit, range 120 ft., one target. Hit: 11 (2d10) fire damage."
+reaction:
+  - name: Shield
+    entries:
+      - >-
+        When the adept is hit by an attack roll or targeted by magic missile, it casts shield (1st
+        level). Until the start of its next turn, it has a +5 bonus to AC, including against the
+        triggering attack.

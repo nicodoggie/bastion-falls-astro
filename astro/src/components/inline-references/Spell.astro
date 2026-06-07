@@ -16,12 +16,12 @@ interface Props {
   /** Book key from spells index (e.g. phb, xphb). Omit to resolve across books (XPHB preferred). */
   src?: string;
   /**
-   * Spell JSON under `src/content/docs/`, e.g. `world/misc/examples/foo.spell.json`.
+   * Spell data under `src/content/docs/`, e.g. `world/misc/examples/foo.spell.yaml`.
    * When the file is `{ "spell": [...] }`, pass `name` to pick a row.
    */
   json?: string;
   /**
-   * Inline spell object (e.g. `import x from './x.spell.json'`). Validated with
+   * Inline spell object (e.g. `import x from './x.spell.yaml'`). Validated with
    * `SpellDataSchema`. Takes precedence over `json` and `name`.
    */
   spell?: Record<string, unknown>;

@@ -40,17 +40,17 @@ Override the visible label by passing children:
 
 Point `json` at a path **relative to** `src/content/docs/` (no `..` segments).
 The file must match the 5etools spell shape and is validated with
-`SpellDataSchema` (same as `*.spell.json` in collections).
+`SpellDataSchema` (same as `*.spell.yaml` in collections).
 
 ```mdx
-<Spell json="world/misc/examples/fire-bolt.spell.json" />
+<Spell json="world/misc/examples/fire-bolt.spell.yaml" />
 ```
 
 If the root object is `{ "spell": [ … ] }`, pass `name` to choose one entry
 (case-insensitive match):
 
 ```mdx
-<Spell json="path/to/bundle.spell.json" name="Fire Bolt" />
+<Spell json="path/to/bundle.spell.yaml" name="Fire Bolt" />
 ```
 
 ### Inline object (`spell`)
@@ -59,7 +59,7 @@ Pass a spell object directly (for example from a static JSON import). Takes
 precedence over `json` and `name`.
 
 ```mdx
-import fireBolt from './fire-bolt.spell.json';
+import fireBolt from './fire-bolt.spell.yaml';
 
 <Spell spell={fireBolt} />
 ```

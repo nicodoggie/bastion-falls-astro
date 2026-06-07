@@ -1,0 +1,71 @@
+name: Divine Inquisitor
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - any race
+alignment:
+  - L
+  - E
+ac:
+  - ac: 18
+    from:
+      - plate
+hp:
+  average: 95
+  formula: 10d10 + 40
+speed:
+  walk: 30
+str: 18
+dex: 10
+con: 18
+int: 10
+wis: 14
+cha: 16
+save:
+  wis: "+5"
+  cha: "+6"
+skill:
+  insight: "+5"
+  intimidation: "+6"
+  athletics: "+7"
+resist:
+  - radiant
+passive: 12
+languages:
+  - Common
+  - Celestial
+cr: "6"
+trait:
+  - name: Aura of Vengeance
+    entries:
+      - >-
+        Allied creatures within 10 feet of the inquisitor deal an extra 2 radiant damage when they
+        hit with a melee weapon attack.
+  - name: Divine Smite (2/Day)
+    entries:
+      - >-
+        When the inquisitor hits a creature with a melee weapon attack, the inquisitor can deal an
+        extra 14 (4d8) radiant damage to the target.
+  - name: Lay on Hands
+    entries:
+      - >-
+        The inquisitor has a pool of 30 hit points it can restore by touch. As an action, it can
+        restore up to its entire pool to one creature it touches, or spend 5 points to end one
+        disease or poison affecting that creature.
+  - name: Spellcasting
+    entries:
+      - >-
+        The inquisitor is a 6th-level paladin. Its spellcasting ability is Charisma (spell save DC
+        14, +6 to hit with spell attacks). It has the following spells prepared:
+      - "1st level (4 slots): bless, command, shield of faith"
+      - "2nd level (3 slots): hold person, find steed"
+      - "3rd level (2 slots): spirit guardians"
+action:
+  - name: Multiattack
+    entries:
+      - The inquisitor makes two greatsword attacks.
+  - name: Greatsword
+    entries:
+      - "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 12 (2d6 + 4) slashing damage."

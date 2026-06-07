@@ -1,0 +1,115 @@
+name: Bardic Berserker
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - any race
+alignment:
+  - C
+  - "N"
+ac:
+  - ac: 15
+    from:
+      - Unarmored Defense
+hp:
+  average: 111
+  formula: 13d8 + 52
+speed:
+  walk: 40
+str: 16
+dex: 14
+con: 18
+int: 10
+wis: 10
+cha: 16
+save:
+  dex: "+5"
+  con: "+7"
+  cha: "+6"
+skill:
+  acrobatics: "+5"
+  performance: "+6"
+  intimidation: "+6"
+passive: 10
+languages:
+  - Common
+  - plus two other languages of your choice
+cr: "7"
+trait:
+  - name: Reckless Attack
+    entries:
+      - >-
+        When making its first attack on a turn, the Bardic Berserker can attack recklessly, giving
+        it advantage on melee weapon attack rolls using Strength during that turn. Attack rolls
+        against it have advantage until the start of its next turn.
+  - name: Spellcasting
+    entries:
+      - >-
+        The Bardic Berserker is a 6th-level bard. Its spellcasting ability is Charisma (spell save
+        DC 14, +6 to hit with spell attacks). It has the following bard spells prepared:
+      - "Cantrips (at will): minor illusion, vicious mockery, prestidigitation"
+      - "1st level (4 slots): healing word, dissonant whispers, thunderwave"
+      - "2nd level (3 slots): shatter, mirror image, hold person"
+      - "3rd level (3 slots): hypnotic pattern, counterspell"
+  - name: Unarmored Defense
+    entries:
+      - >-
+        While the Bardic Berserker is wearing no armor, its AC includes its Dexterity and
+        Constitution modifiers.
+  - name: Jack of All Trades
+    entries:
+      - >-
+        The Bardic Berserker adds +1 to any ability check it makes that doesn't already include its
+        proficiency bonus.
+  - name: Song of Rest
+    entries:
+      - >-
+        If the Bardic Berserker or any friendly creatures spend Hit Dice to regain hit points at the
+        end of a short rest, each of those creatures regains an extra 1d6 hit points.
+bonus:
+  - name: Rage (3/Day)
+    entries:
+      - >-
+        As a bonus action, the Bardic Berserker enters a rage for up to 1 minute. While raging, it
+        has advantage on Strength checks and Strength saving throws; it has resistance to
+        bludgeoning, piercing, and slashing damage; and when it hits with a melee weapon attack
+        using Strength, its rage deals 2 extra damage (included in the greataxe line below while
+        raging).
+  - name: Bardic Inspiration (4/Day)
+    entries:
+      - >-
+        As a bonus action, the Bardic Berserker inspires one creature other than itself that it can
+        see and hear within 60 feet. That creature gains one Bardic Inspiration die (1d8). Within
+        the next 10 minutes, the creature can roll that die and add it to one ability check, attack
+        roll, or saving throw.
+action:
+  - name: Multiattack
+    entries:
+      - The Bardic Berserker makes two melee weapon attacks.
+  - name: Greataxe
+    entries:
+      - >-
+        Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (1d12 + 3) slashing damage,
+        or 13 (1d12 + 5) slashing damage while raging.
+  - name: Shatter (2nd-Level Spell; 3 Slots)
+    entries:
+      - >-
+        Each creature in a 10-foot-radius sphere centered on a point within 60 feet must make a DC
+        14 Constitution saving throw, taking 13 (3d8) thunder damage on a failed save, or half as
+        much damage on a successful one.
+  - name: Hypnotic Pattern (3rd-Level Spell; 3 Slots)
+    entries:
+      - >-
+        The Bardic Berserker creates a twisting pattern of colors in a 30-foot cube within 120 feet.
+        Each creature in the area who sees the pattern must succeed on a DC 14 Wisdom saving throw
+        or become charmed for the duration. While charmed, the creature is incapacitated and has a
+        speed of 0.
+reaction:
+  - name: Counterspell (3rd-Level Spell; 3 Slots)
+    entries:
+      - >-
+        When a creature within 60 feet of the Bardic Berserker casts a spell, the Bardic Berserker
+        can interrupt it with counterspell. If the spell is 3rd level or lower, it fails and has no
+        effect. If the spell is 4th level or higher, the Bardic Berserker must succeed on a Charisma
+        ability check (DC 10 + the spell's level) or the spell is not interrupted.

@@ -1,10 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import {
-  loadItemFromContentJson,
-  resolveItemFromData,
-} from "./item-data.ts";
+import { loadItemFromContentJson, resolveItemFromData } from "./item-data.ts";
 import { loadItem } from "./items.ts";
 
 test("resolves inline item data into tooltip payload", () => {
@@ -29,7 +26,7 @@ test("resolves inline item data into tooltip payload", () => {
 
 test("loads item JSON relative to content docs", () => {
   const resolved = loadItemFromContentJson(
-    "world/misc/examples/potion-of-healing.item.json",
+    "world/misc/examples/potion-of-healing.item.yaml",
   );
 
   assert.equal(resolved?.record.name, "Potion of Healing");

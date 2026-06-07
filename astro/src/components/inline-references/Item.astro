@@ -16,12 +16,12 @@ interface Props {
   /** Book key from item data (e.g. dmg, xdmg, phb). Omit to resolve across books. */
   src?: string;
   /**
-   * Item JSON under `src/content/docs/`, e.g. `world/items/foo.item.json`.
+   * Item data under `src/content/docs/`, e.g. `world/items/foo.item.yaml`.
    * When the file is `{ "item": [...] }`, pass `name` to pick one row.
    */
   json?: string;
   /**
-   * Inline item object (e.g. `import x from './x.item.json'`). Validated with
+   * Inline item object (e.g. `import x from './x.item.yaml'`). Validated with
    * `ItemDataSchema`. Takes precedence over `json` and `name`.
    */
   item?: Record<string, unknown>;

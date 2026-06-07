@@ -1,0 +1,129 @@
+name: Deathengel, the Celestial Avenger
+size:
+  - L
+type: celestial
+alignment:
+  - L
+  - G
+ac:
+  - ac: 19
+    from:
+      - natural armor
+hp:
+  average: 240
+  formula: 20d10 + 120
+speed:
+  walk: 40
+  fly: 120
+str: 24
+dex: 20
+con: 22
+int: 19
+wis: 24
+cha: 25
+save:
+  wis: "+13"
+  cha: "+13"
+skill:
+  insight: "+13"
+  perception: "+13"
+resist:
+  - radiant
+  - resist:
+      - bludgeoning
+      - piercing
+      - slashing
+    note: from nonmagical attacks
+conditionImmune:
+  - charmed
+  - exhaustion
+  - frightened
+senses:
+  - truesight 120 ft.
+passive: 23
+languages:
+  - all
+  - telepathy 120 ft.
+cr: "19"
+traitTags:
+  - Magic Resistance
+trait:
+  - name: Divine Awareness
+    entries:
+      - Deathengel knows if it hears a lie.
+  - name: Innate Spellcasting
+    entries:
+      - >-
+        Deathengel's spellcasting ability is Charisma (spell save DC 21). Deathengel can innately
+        cast the following spells, requiring no material components.
+      - "At will: detect evil and good, invisibility (self only)"
+      - "3/day each: blade barrier, dispel evil and good, raise dead, resurrection"
+  - name: Magic Resistance
+    entries:
+      - Deathengel has advantage on saving throws against spells and other magical effects.
+  - name: Divine Presence
+    entries:
+      - >-
+        Deathengel emits an aura of divine power within 30 feet of it. Friendly creatures in the
+        aura have advantage on saving throws against spells and other magical effects. Additionally,
+        any fiend or undead creature that starts its turn within the aura takes 11 (2d10) radiant
+        damage.
+  - name: Possession (Recharge 5-6)
+    entries:
+      - >-
+        Deathengel attempts to possess a creature it can see within 30 feet of it. The target must
+        make a DC 21 Wisdom saving throw. On a failed save, Deathengel possesses the target, and the
+        target's body becomes an empty vessel under Deathengel's control. The possession lasts until
+        Deathengel ends it as a bonus action, the target succeeds on a DC 21 Wisdom saving throw at
+        the end of each of its turns, or the target drops to 0 hit points. While possessed, the
+        target is incapacitated, and Deathengel controls its movement and actions.
+action:
+  - name: Multiattack
+    entries:
+      - >-
+        Deathengel makes three melee attacks: two with its longsword and one with its ethereal
+        shield.
+  - name: Longsword
+    entries:
+      - >-
+        Melee Weapon Attack: +14 to hit, reach 5 ft., one target. Hit: 20 (3d8 + 7) slashing damage
+        plus 17 (5d6) radiant damage.
+  - name: Ethereal Shield
+    entries:
+      - >-
+        Melee Weapon Attack: +14 to hit, reach 10 ft., one target. Hit: 18 (3d6 + 7) bludgeoning
+        damage plus 17 (5d6) radiant damage, and the target must succeed on a DC 21 Strength saving
+        throw or be knocked prone.
+  - name: Heavenly Light
+    entries:
+      - >-
+        Deathengel releases a radiant burst of energy in a 30-foot radius. Each creature of its
+        choice must make a DC 21 Constitution saving throw, taking 40 (10d8) radiant damage on a
+        failed save, or half as much damage on a successful one.
+legendaryActions: 3
+legendaryHeader:
+  - >-
+    Deathengel can take 3 legendary actions, choosing from the options below. Only one legendary
+    action option can be used at a time, and only at the end of another creature's turn. Deathengel
+    regains spent legendary actions at the start of its turn.
+legendary:
+  - name: Ethereal Charge
+    entries:
+      - Deathengel moves up to its flying speed without provoking opportunity attacks.
+  - name: Radiant Burst (Costs 2 Actions)
+    entries:
+      - Deathengel uses its Heavenly Light ability.
+  - name: Healing Touch (Costs 3 Actions)
+    entries:
+      - >-
+        Deathengel touches another creature. The target regains 30 (4d10 + 10) hit points and is
+        cured of any diseases or neutralized poisons.
+reaction:
+  - name: Blade Ward
+    entries:
+      - When Deathengel is hit by an attack, it gains resistance to all damage from that attack.
+  - name: Celestial Shield
+    entries:
+      - >-
+        When a creature within 30 feet of Deathengel is targeted by a spell, Deathengel can use its
+        reaction to grant the target advantage on the saving throw against that spell.

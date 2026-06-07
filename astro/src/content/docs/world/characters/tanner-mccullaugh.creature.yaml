@@ -1,0 +1,76 @@
+name: Tanner McCullaugh
+size:
+  - M
+type: humanoid
+alignment:
+  - L
+  - "N"
+ac:
+  - ac: 15
+    from:
+      - mage armor
+hp:
+  average: 22
+  formula: 5d6 + 5
+speed:
+  walk: 30
+str: 8
+dex: 14
+con: 12
+int: 18
+wis: 10
+cha: 14
+save:
+  int: "+7"
+  wis: "+3"
+skill:
+  arcana: "+7"
+  history: "+7"
+  insight: "+3"
+  investigation: "+7"
+  perception: "+3"
+passive: 13
+languages:
+  - Common
+  - two additional languages (Sage background)
+cr: "3"
+trait:
+  - name: Spellcasting
+    entries:
+      - >-
+        Tanner is a 5th-level spellcaster. His spellcasting ability is Intelligence (spell save DC
+        15, +7 to hit with spell attacks). He has the following wizard spells prepared:
+      - "Cantrips (at will): mage hand, minor illusion, prestidigitation"
+      - "1st level (4 slots): charm person, disguise self, mage armor, magic missile, shield"
+      - "2nd level (3 slots): invisibility, mirror image, misty step, suggestion"
+      - "3rd level (2 slots): fireball, major image, phantom steed, slow"
+  - name: Improved Minor Illusion
+    entries:
+      - >-
+        When Tanner casts Minor Illusion, he can create both a sound and an image simultaneously
+        with the same casting.
+  - name: Arcane Recovery (1/Day)
+    entries:
+      - >-
+        Once per day when Tanner finishes a short rest, he can recover expended spell slots whose
+        combined level is no higher than 3 (e.g. one 3rd-level slot, or one 2nd-level and one
+        1st-level slot).
+action:
+  - name: Quarterstaff
+    entries:
+      - >-
+        Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d6 - 1) bludgeoning
+        damage, or 3 (1d8 - 1) bludgeoning damage if wielded with two hands.
+bonus:
+  - name: Misty Step (2nd-Level Spell)
+    entries:
+      - >-
+        Tanner teleports up to 30 feet to an unoccupied space he can see. Costs one 2nd-level spell
+        slot.
+reaction:
+  - name: Shield (1st-Level Spell)
+    entries:
+      - >-
+        When Tanner is hit by an attack or targeted by magic missile, he gains +5 AC until the start
+        of his next turn (including against the triggering attack), potentially causing it to miss.
+        Costs one 1st-level spell slot.

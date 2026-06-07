@@ -1,0 +1,19 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Mask of the Urdefolcin
+source: BF
+type: wondrous item
+rarity: very rare
+reqAttune: true
+wondrous: true
+weight: 1
+value: 50000000
+entries:
+  - This wooden mask carries the silent, predatory presence of an urdefolcin.
+  - >-
+    While wearing the mask, you can transform into an urdefolcin at will. While transformed, you use
+    the urdefolcin's stat block in place of your own game statistics.
+  - >-
+    If your hit points are reduced to 0 while you are transformed into an urdefolcin, you
+    immediately revert to your original form. After reverting in this way, you cannot transform into
+    an urdefolcin with the mask again until you finish a long rest.

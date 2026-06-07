@@ -129,7 +129,7 @@ export function resolveSpellFromData(
 
 /**
  * Load spell JSON/YAML under `src/content/docs/`. Path is relative to that
- * folder, e.g. `world/misc/examples/fire-bolt.spell.json`.
+ * folder, e.g. `world/misc/examples/fire-bolt.spell.yaml`.
  * Optional `pickName` selects an entry when the file is `{ "spell": [...] }`.
  */
 export function loadSpellFromContentJson(

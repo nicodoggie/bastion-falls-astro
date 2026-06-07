@@ -1,0 +1,43 @@
+name: Smuggler Crossbowman
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - any race
+alignment:
+  - "N"
+  - E
+ac:
+  - ac: 14
+    from:
+      - leather armor
+hp:
+  average: 16
+  formula: 3d8 + 3
+speed:
+  walk: 30
+str: 11
+dex: 14
+con: 12
+int: 10
+wis: 10
+cha: 11
+skill:
+  acrobatics: "+4"
+  stealth: "+4"
+  sleight of hand: "+4"
+passive: 10
+languages:
+  - Common
+cr: 1/2
+bonus:
+  - name: Cunning Action
+    entries:
+      - The crossbowman takes the Dash or Disengage action as a bonus action.
+action:
+  - name: Light Crossbow
+    entries:
+      - >-
+        Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 6 (1d8 + 2) piercing
+        damage.

@@ -12,7 +12,7 @@ Structured **spells** and **magic items** follow the same idea as
 `creatureStats`:
 
 - Data files live under `src/content/docs/world/**` with suffixes
-  **`.spell.json`** and **`.item.json`**.
+  **`*.spell.yaml`** and **`*.item.yaml`**.
 - Astro collections **`spells`** and **`itemData`** load them; each file’s
   **collection id** is the path relative to `world` **without** `.json` (same
   rule as creatures).
@@ -20,7 +20,7 @@ Structured **spells** and **magic items** follow the same idea as
   **`itemDataStats`** (validated with `SpellDataSchema` and `ItemDataSchema`
   from `@bastion-falls/5e-schema-zod`).
 
-## Spells (`*.spell.json`)
+## Spells (`*.spell.yaml`)
 
 The same files can drive **inline** `<Spell />` tooltips in prose via the
 `json` or `spell` props; see
@@ -39,7 +39,7 @@ import SpellBlock from '../../../../components/SpellBlock.astro';
 <SpellBlock spell={frontmatter.spellStats.demoFireBolt} />
 ```
 
-## Magic items (`*.item.json`)
+## Magic items (`*.item.yaml`)
 
 The collection is named **`itemData`** so it does not collide with the
 existing MDX **`item`** collection (`src/content/docs/world/items`).
@@ -69,6 +69,6 @@ import ItemBlock from '../../../../components/ItemBlock.astro';
   `{@...}` tags to readable text where possible).
 - Item **`value`** in 5etools is typically in **copper pieces**; the block
   displays a simple **gp / sp / cp** conversion.
-- Do **not** register `*.spell.json` or `*.item.json` as a separate Starlight
+- Do **not** register `*.spell.yaml` or `*.item.yaml` as a separate Starlight
   doc glob with `docsSchema` — only this project’s collections + frontmatter
   extension, matching the `creatureStats` pattern.

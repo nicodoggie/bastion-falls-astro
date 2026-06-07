@@ -16,12 +16,12 @@ interface Props {
   /** Book key from bestiary data (e.g. mm, xmm). Omit to resolve across books. */
   src?: string;
   /**
-   * Creature JSON under `src/content/docs/`, e.g. `world/characters/foo.creature.json`.
+   * Creature data under `src/content/docs/`, e.g. `world/characters/foo.creature.yaml`.
    * When the file is `{ "monster": [...] }`, pass `name` to pick one row.
    */
   json?: string;
   /**
-   * Inline creature object (e.g. `import x from './x.creature.json'`). Validated
+   * Inline creature object (e.g. `import x from './x.creature.yaml'`). Validated
    * with `CreatureDataSchema`. Takes precedence over `json` and `name`.
    */
   creature?: Record<string, unknown>;

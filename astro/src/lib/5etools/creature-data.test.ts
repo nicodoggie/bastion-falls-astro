@@ -40,12 +40,15 @@ test("resolves inline creature data into tooltip payload", () => {
     "Small dragon · Neutral",
     "CR 1 · AC 14 · HP 22",
   ]);
-  assert.equal(resolved?.body, "Glowing Hide. The drake sheds dim light in a 10-foot radius.");
+  assert.equal(
+    resolved?.body,
+    "Glowing Hide. The drake sheds dim light in a 10-foot radius.",
+  );
 });
 
 test("loads creature JSON relative to content docs", () => {
   const resolved = loadCreatureFromContentJson(
-    "world/characters/deathengel.creature.json",
+    "world/characters/deathengel.creature.yaml",
   );
 
   assert.equal(resolved?.record.name, "Deathengel, the Celestial Avenger");

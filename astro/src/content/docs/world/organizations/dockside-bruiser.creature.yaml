@@ -1,0 +1,60 @@
+name: Dockside Bruiser
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - any race
+alignment:
+  - C
+  - E
+ac:
+  - ac: 14
+    from:
+      - hide armor
+hp:
+  average: 67
+  formula: 7d12 + 21
+speed:
+  walk: 30
+str: 18
+dex: 12
+con: 16
+int: 8
+wis: 10
+cha: 8
+save:
+  str: "+6"
+  con: "+5"
+skill:
+  athletics: "+6"
+  intimidation: "+2"
+passive: 10
+languages:
+  - Common
+cr: "3"
+trait:
+  - name: Reckless Attack
+    entries:
+      - >-
+        When the bruiser makes its first attack on its turn, it can attack recklessly. Doing so
+        gives it advantage on melee weapon attack rolls using Strength during this turn, but attack
+        rolls against it have advantage until the start of its next turn.
+bonus:
+  - name: Rage (3/Day)
+    entries:
+      - >-
+        As a bonus action, the bruiser enters a rage for up to 1 minute. While raging, it has
+        advantage on Strength checks and saving throws, it gains a +2 bonus to damage rolls with
+        melee weapon attacks using Strength, and it has resistance to bludgeoning, piercing, and
+        slashing damage. If the bruiser is able to cast spells, it can't cast them or concentrate on
+        them while raging.
+action:
+  - name: Multiattack
+    entries:
+      - The bruiser makes two greataxe attacks.
+  - name: Greataxe
+    entries:
+      - >-
+        Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (1d12 + 4) slashing damage,
+        or 13 (1d12 + 6) slashing damage while raging.

@@ -1,0 +1,30 @@
+$schema: >-
+  https://raw.githubusercontent.com/nicodoggie/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Mask of the Green Lord
+source: BF
+type: wondrous item
+rarity: very rare
+reqAttune: true
+wondrous: true
+weight: 1
+entries:
+  - >-
+    A verdant, leaf-traced mask said to bear the regard of the Green Lord. It carries the same
+    predatory presence as a Mask of the Urdefolcin, layered with quiet, watchful sight.
+  - >-
+    While wearing the mask, you can transform into an urdefolcin at will. While transformed, you use
+    the urdefolcin's stat block in place of your own game statistics.
+  - >-
+    If your hit points are reduced to 0 while you are transformed into an urdefolcin, you
+    immediately revert to your original form. After reverting in this way, you cannot transform into
+    an urdefolcin with the mask again until you finish a long rest.
+  - >-
+    While wearing the mask, you continuously perceive magical effects and auras as if you were
+    concentrating on the Detect Magic spell. This sense requires no concentration and cannot be
+    ended by damage or other interruption while the mask is worn.
+  - While wearing the mask, you have truesight out to a range of 10 feet.
+  - >-
+    While wearing the mask, when you look upon a Tide Pool of Divination of the kind used by the
+    Malthrenok of the Magarisok, you clearly perceive the safest path through it. You see only the
+    safest route currently available; the mask does not reveal the pool's other visions or hidden
+    meanings.

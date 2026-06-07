@@ -9,7 +9,7 @@ import Sense from "./inline-references/Sense.astro";
  * Accepts either a creature object (direct JSON import) or a creatures
  * collection entry ID (e.g. from frontmatter creatureStats).
  *
- *   import drekavac from './drekavac.creature.json'
+ *   import drekavac from './drekavac.creature.yaml'
  *   <StatBlock creature={drekavac} />
  *
  *   <StatBlock creature="species/drekavac.creature" />
@@ -402,12 +402,7 @@ function toDisplayFeatureParagraphs(
   });
 }
 
-const SENSE_NAMES = [
-  "blindsight",
-  "darkvision",
-  "tremorsense",
-  "truesight",
-];
+const SENSE_NAMES = ["blindsight", "darkvision", "tremorsense", "truesight"];
 
 function toDisplaySense(raw: string): DisplaySense {
   const label = raw.trim();
