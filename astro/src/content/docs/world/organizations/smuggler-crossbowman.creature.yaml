@@ -6,7 +6,7 @@ type:
   tags:
     - any race
 alignment:
-  - "N"
+  - N
   - E
 ac:
   - ac: 14

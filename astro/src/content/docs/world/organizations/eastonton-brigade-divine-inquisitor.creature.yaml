@@ -68,4 +68,5 @@ action:
       - The inquisitor makes two greatsword attacks.
   - name: Greatsword
     entries:
-      - "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 12 (2d6 + 4) slashing damage."
+      - >-
+        Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 12 (2d6 + 4) slashing damage.

@@ -62,7 +62,7 @@ people:
     class: [dead]
   Romulus:
     fullname: Romulus Bouillard
-    died: '1255-06-15'
+    died: 1255-06-15
     class: [dead]
   Anya:
     fullname: Anya Kalashnikova
@@ -75,8 +75,8 @@ people:
     class: [dead]
   Nathalie:
     fullname: Nathalie Bouillard
-    born: '1151-01-12'
-    died: '1232-05-12'
+    born: 1151-01-12
+    died: 1232-05-12
     class: [dead]
   Yves Renault:
     fullname: Yves Renault Bouillard
@@ -89,7 +89,6 @@ people:
     class: [dead]
   Renault II:
     fullname: Renault II Bouillard
-
 styles:
   undead:
     color: black

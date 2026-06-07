@@ -52,20 +52,20 @@ cr: "11"
 trait:
   - name: Transformation Countdown
     entries:
-      - >-
+      - >
         When this phase begins, roll {@dice 1d4}. At the end of each of Garward's turns, reduce the
         result by 1. When it reaches 0, Garward transitions to Phase 3 even if he has hit points
         remaining.
   - name: Leaking Confession
     entries:
-      - >-
+      - >
         A creature that starts its turn within 10 feet of Garward must succeed on a {@dc 17} Wisdom
         saving throw or hear one Reformist confession it cannot forget until the start of its next
         turn. A creature affected this way has disadvantage on its next attack roll against Garward
         before then.
   - name: Unstable Paragon
     entries:
-      - >-
+      - >
         Garward takes two turns each round, spaced evenly through initiative. He regains spent
         legendary actions only at the start of his first turn each round.
   - name: Legendary Resistance (1/Day)

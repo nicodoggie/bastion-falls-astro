@@ -54,7 +54,8 @@ action:
       - The urdefolcin makes one bite attack and two claw attacks per round.
   - name: Bite
     entries:
-      - "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 18 (4d6 + 4) piercing damage."
+      - >-
+        Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 18 (4d6 + 4) piercing damage.
   - name: Claw
     entries:
       - >-

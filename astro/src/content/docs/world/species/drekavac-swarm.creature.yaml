@@ -7,7 +7,7 @@ type:
   swarmSize: T
 alignment:
   - E
-  - "N"
+  - N
 ac:
   - ac: 12
     from:

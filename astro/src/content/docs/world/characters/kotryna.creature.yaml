@@ -6,7 +6,7 @@ type:
   tags:
     - tabaxi
 alignment:
-  - "N"
+  - N
   - G
 ac:
   - ac: 16

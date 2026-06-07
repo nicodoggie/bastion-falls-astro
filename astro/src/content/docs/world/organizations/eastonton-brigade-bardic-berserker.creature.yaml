@@ -7,7 +7,7 @@ type:
     - any race
 alignment:
   - C
-  - "N"
+  - N
 ac:
   - ac: 15
     from:

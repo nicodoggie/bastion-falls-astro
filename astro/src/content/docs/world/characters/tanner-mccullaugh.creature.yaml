@@ -4,7 +4,7 @@ size:
 type: humanoid
 alignment:
   - L
-  - "N"
+  - N
 ac:
   - ac: 15
     from:

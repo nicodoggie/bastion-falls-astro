@@ -3,7 +3,7 @@ size:
   - M
 type: fey
 alignment:
-  - "N"
+  - N
   - E
 ac:
   - ac: 17

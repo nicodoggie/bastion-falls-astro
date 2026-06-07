@@ -23,7 +23,6 @@ families:
                             families:
                               - parents: [Bart IV, Emma]
                                 children: [Matt V]
-
 people:
   Matt I:
     fullname: Matthew Strandiz I
