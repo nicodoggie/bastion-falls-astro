@@ -20,7 +20,7 @@ style = "one-one"
 
 [MD013]
 line-length = 80
-code-blocks = true
+code-blocks = false
 tables = false
 reflow = true
 reflow-mode = "default"

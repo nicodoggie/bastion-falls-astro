@@ -1,0 +1,25 @@
+---
+title: Kotryna
+character:
+  name: Kotryna
+  details:
+    sex: female
+    pronouns: she/her
+    mortality: alive
+    species: tabaxi
+    sexOrgans: []
+  relationships:
+    religions:
+      - Reformist Divine Masochism
+creatureStats:
+  kotryna: 'characters/kotryna.creature'
+
+tags:
+  - characters
+  - Tabaxi
+  - reformist-divine-masochism
+---
+
+import StatBlock from '../../../../components/StatBlock.astro';
+
+<StatBlock creature={frontmatter.creatureStats.kotryna} />
