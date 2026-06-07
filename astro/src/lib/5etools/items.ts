@@ -152,7 +152,7 @@ export function loadItem(name: string, src?: string): ResolvedItem | null {
     return buildResolvedItem(found.item);
   }
 
-  if (candidates.length === 1) return buildResolvedItem(candidates[0]!.item);
+  if (candidates.length === 1) return buildResolvedItem(candidates[0]?.item);
   const sorted = [...candidates].sort(
     (a, b) => rankItemSource(a.source) - rankItemSource(b.source),
   );

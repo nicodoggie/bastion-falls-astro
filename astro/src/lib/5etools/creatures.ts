@@ -227,7 +227,7 @@ export function loadCreature(
   }
 
   if (candidates.length === 1) {
-    return buildResolvedCreature(candidates[0]!.creature);
+    return buildResolvedCreature(candidates[0]?.creature);
   }
   const sorted = [...candidates].sort(
     (a, b) => rankCreatureSource(a.source) - rankCreatureSource(b.source),
