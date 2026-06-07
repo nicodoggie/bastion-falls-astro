@@ -77,25 +77,25 @@ export const collections = {
   }),
   creatures: defineCollection({
     loader: glob({
-      pattern: "**/*.creature.json",
+      pattern: "**/*.creature.{json,yaml,yml}",
       base: "./src/content/docs/world",
-      generateId: ({ entry }) => entry.replace(/\.json$/, ""),
+      generateId: ({ entry }) => entry.replace(/\.(json|ya?ml)$/, ""),
     }),
     schema: z.record(z.string(), z.unknown()),
   }),
   spells: defineCollection({
     loader: glob({
-      pattern: "**/*.spell.json",
+      pattern: "**/*.spell.{json,yaml,yml}",
       base: "./src/content/docs/world",
-      generateId: ({ entry }) => entry.replace(/\.json$/, ""),
+      generateId: ({ entry }) => entry.replace(/\.(json|ya?ml)$/, ""),
     }),
     schema: SpellDataSchema,
   }),
   itemData: defineCollection({
     loader: glob({
-      pattern: "**/*.item.json",
+      pattern: "**/*.item.{json,yaml,yml}",
       base: "./src/content/docs/world",
-      generateId: ({ entry }) => entry.replace(/\.json$/, ""),
+      generateId: ({ entry }) => entry.replace(/\.(json|ya?ml)$/, ""),
     }),
     schema: ItemDataSchema,
   }),

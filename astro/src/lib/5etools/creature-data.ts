@@ -1,9 +1,12 @@
 import fs from "node:fs";
-import path from "node:path";
 
 import { CreatureDataSchema } from "@bastion-falls/5e-schema-zod";
 import type { z } from "zod";
 
+import {
+  readContentDataFile,
+  resolveContentDataFilePath,
+} from "./content-data-file";
 import {
   buildResolvedCreature,
   type CreatureJson,
@@ -17,13 +20,7 @@ type CreatureData = z.infer<typeof CreatureDataSchema>;
 const HOME_SOURCE = "BF";
 
 function safeResolveUnderContentDocs(rel: string): string | null {
-  const raw = rel.trim().replace(/^[/\\]+/, "");
-  if (!raw || raw.includes("\0")) return null;
-  const base = path.resolve(getContentDocsDir());
-  const abs = path.normalize(path.resolve(base, raw));
-  const relToBase = path.relative(base, abs);
-  if (relToBase.startsWith("..") || path.isAbsolute(relToBase)) return null;
-  return abs;
+  return resolveContentDataFilePath(rel, getContentDocsDir());
 }
 
 function normalizeLookup(s: string): string {
@@ -119,19 +116,16 @@ export function loadCreatureFromContentJson(
     return null;
   }
   if (!fs.existsSync(abs)) {
-    warnOnce(
-      `creature-json-missing:${abs}`,
-      `Creature JSON not found: ${abs}`,
-    );
+    warnOnce(`creature-json-missing:${abs}`, `Creature JSON not found: ${abs}`);
     return null;
   }
   let raw: unknown;
   try {
-    raw = JSON.parse(fs.readFileSync(abs, "utf8")) as unknown;
+    raw = readContentDataFile(abs);
   } catch (e) {
     warnOnce(
       `creature-json-read:${abs}`,
-      `Could not read creature JSON ${abs}: ${String(e)}`,
+      `Could not read creature data file ${abs}: ${String(e)}`,
     );
     return null;
   }

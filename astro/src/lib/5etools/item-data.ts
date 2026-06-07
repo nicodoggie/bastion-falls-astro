@@ -1,27 +1,20 @@
 import fs from "node:fs";
-import path from "node:path";
 
 import { ItemDataSchema } from "@bastion-falls/5e-schema-zod";
 import type { z } from "zod";
 
 import {
-  buildResolvedItem,
-  type ItemJson,
-  type ResolvedItem,
-} from "./items";
+  readContentDataFile,
+  resolveContentDataFilePath,
+} from "./content-data-file";
+import { buildResolvedItem, type ItemJson, type ResolvedItem } from "./items";
 import { getContentDocsDir } from "./paths";
 import { warnOnce } from "./warn";
 
 type ItemData = z.infer<typeof ItemDataSchema>;
 
 function safeResolveUnderContentDocs(rel: string): string | null {
-  const raw = rel.trim().replace(/^[/\\]+/, "");
-  if (!raw || raw.includes("\0")) return null;
-  const base = path.resolve(getContentDocsDir());
-  const abs = path.normalize(path.resolve(base, raw));
-  const relToBase = path.relative(base, abs);
-  if (relToBase.startsWith("..") || path.isAbsolute(relToBase)) return null;
-  return abs;
+  return resolveContentDataFilePath(rel, getContentDocsDir());
 }
 
 function normalizeLookup(s: string): string {
@@ -117,11 +110,11 @@ export function loadItemFromContentJson(
   }
   let raw: unknown;
   try {
-    raw = JSON.parse(fs.readFileSync(abs, "utf8")) as unknown;
+    raw = readContentDataFile(abs);
   } catch (e) {
     warnOnce(
       `item-json-read:${abs}`,
-      `Could not read item JSON ${abs}: ${String(e)}`,
+      `Could not read item data file ${abs}: ${String(e)}`,
     );
     return null;
   }

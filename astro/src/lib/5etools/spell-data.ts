@@ -1,9 +1,12 @@
 import fs from "node:fs";
-import path from "node:path";
 
 import { SpellDataSchema } from "@bastion-falls/5e-schema-zod";
 import type { z } from "zod";
 
+import {
+  readContentDataFile,
+  resolveContentDataFilePath,
+} from "./content-data-file";
 import { getContentDocsDir } from "./paths";
 import {
   buildResolvedSpell,
@@ -15,13 +18,7 @@ import { warnOnce } from "./warn";
 type SpellData = z.infer<typeof SpellDataSchema>;
 
 function safeResolveUnderContentDocs(rel: string): string | null {
-  const raw = rel.trim().replace(/^[/\\]+/, "");
-  if (!raw || raw.includes("\0")) return null;
-  const base = path.resolve(getContentDocsDir());
-  const abs = path.normalize(path.resolve(base, raw));
-  const relToBase = path.relative(base, abs);
-  if (relToBase.startsWith("..") || path.isAbsolute(relToBase)) return null;
-  return abs;
+  return resolveContentDataFilePath(rel, getContentDocsDir());
 }
 
 function normalizeLookup(s: string): string {
@@ -131,8 +128,8 @@ export function resolveSpellFromData(
 }
 
 /**
- * Load spell JSON under `src/content/docs/`. Path is relative to that folder,
- * e.g. `world/misc/examples/fire-bolt.spell.json`.
+ * Load spell JSON/YAML under `src/content/docs/`. Path is relative to that
+ * folder, e.g. `world/misc/examples/fire-bolt.spell.json`.
  * Optional `pickName` selects an entry when the file is `{ "spell": [...] }`.
  */
 export function loadSpellFromContentJson(
@@ -154,11 +151,11 @@ export function loadSpellFromContentJson(
   }
   let raw: unknown;
   try {
-    raw = JSON.parse(fs.readFileSync(abs, "utf8")) as unknown;
+    raw = readContentDataFile(abs);
   } catch (e) {
     warnOnce(
       `spell-json-read:${abs}`,
-      `Could not read spell JSON ${abs}: ${String(e)}`,
+      `Could not read spell data file ${abs}: ${String(e)}`,
     );
     return null;
   }
