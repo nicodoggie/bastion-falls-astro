@@ -39,10 +39,7 @@ export type ResolvedSense = {
   body: string;
 };
 
-export function loadSense(
-  name: string,
-  src?: string,
-): ResolvedSense | null {
+export function loadSense(name: string, src?: string): ResolvedSense | null {
   const targetName = normalizeLookup(name);
   const matches = loadBundle().filter((row) => {
     return normalizeLookup(row.name ?? "") === targetName;
@@ -56,7 +53,9 @@ export function loadSense(
   let chosen: SenseRow | undefined;
   if (src?.trim()) {
     const targetSrc = src.trim().toUpperCase();
-    chosen = matches.find((row) => (row.source ?? "").toUpperCase() === targetSrc);
+    chosen = matches.find(
+      (row) => (row.source ?? "").toUpperCase() === targetSrc,
+    );
     if (!chosen) {
       warnOnce(
         `sense-bad-src:${targetName}:${targetSrc}`,
@@ -68,7 +67,9 @@ export function loadSense(
     chosen = [...matches].sort(
       (a, b) => rankSource(a.source) - rankSource(b.source),
     )[0];
-    const sources = [...new Set(matches.map((match) => match.source).filter(Boolean))];
+    const sources = [
+      ...new Set(matches.map((match) => match.source).filter(Boolean)),
+    ];
     if (sources.length > 1) {
       warnOnce(
         `sense-ambiguous:${targetName}`,

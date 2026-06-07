@@ -122,7 +122,11 @@ type TooltipReference = {
   body: string;
 };
 
-function resolveReferenceTag(tag: string, name: string, src: string): TooltipReference | null {
+function resolveReferenceTag(
+  tag: string,
+  name: string,
+  src: string,
+): TooltipReference | null {
   switch (tag) {
     case "condition":
     case "disease": {

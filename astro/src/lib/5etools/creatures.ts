@@ -132,7 +132,10 @@ function formatCR(cr: unknown): string {
   return "";
 }
 
-function formatFeature(feature: { name?: string; entries?: unknown[] }): string {
+function formatFeature(feature: {
+  name?: string;
+  entries?: unknown[];
+}): string {
   const body = entriesToPlain(feature.entries ?? []);
   if (!feature.name) return body;
   return body ? `${feature.name}. ${body}` : feature.name;

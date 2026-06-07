@@ -11,10 +11,19 @@ test("renders safe formatting and reference tags", () => {
   assert.equal(paragraphs.length, 1);
   const [paragraph = ""] = paragraphs;
   assert.match(paragraph, /^<em>whispered<\/em> about /);
-  assert.match(paragraph, /class="bf5e-ref bf5e-ref--inline bf5e-ref--creature"/);
+  assert.match(
+    paragraph,
+    /class="bf5e-ref bf5e-ref--inline bf5e-ref--creature"/,
+  );
   assert.match(paragraph, />Ancient Red Dragon<\/span>/);
-  assert.match(paragraph, /class="bf5e-tip__heading">Ancient Red Dragon<\/span>/);
-  assert.match(paragraph, /and <strong class="bf5e-mechanic"><em>2d6<\/em><\/strong>\./);
+  assert.match(
+    paragraph,
+    /class="bf5e-tip__heading">Ancient Red Dragon<\/span>/,
+  );
+  assert.match(
+    paragraph,
+    /and <strong class="bf5e-mechanic"><em>2d6<\/em><\/strong>\./,
+  );
 });
 
 test("drops unsafe html from tag text and removes tag props", () => {
@@ -42,10 +51,22 @@ test("uses display text for entity tags and emphasizes mechanics tags", () => {
   assert.match(paragraph, /class="bf5e-ref-wrap"/);
   assert.match(paragraph, />flame blossom<\/span>/);
   assert.match(paragraph, /class="bf5e-tip__heading">Fireball<\/span>/);
-  assert.match(paragraph, /calls for <strong class="bf5e-mechanic"><em>DC 15<\/em><\/strong>/);
-  assert.match(paragraph, /<strong class="bf5e-mechanic"><em>\+7<\/em><\/strong>/);
-  assert.match(paragraph, /<strong class="bf5e-mechanic"><em>\(Recharge 5-6\)<\/em><\/strong>/);
-  assert.match(paragraph, /<strong class="bf5e-mechanic"><em>25 percent<\/em><\/strong>/);
+  assert.match(
+    paragraph,
+    /calls for <strong class="bf5e-mechanic"><em>DC 15<\/em><\/strong>/,
+  );
+  assert.match(
+    paragraph,
+    /<strong class="bf5e-mechanic"><em>\+7<\/em><\/strong>/,
+  );
+  assert.match(
+    paragraph,
+    /<strong class="bf5e-mechanic"><em>\(Recharge 5-6\)<\/em><\/strong>/,
+  );
+  assert.match(
+    paragraph,
+    /<strong class="bf5e-mechanic"><em>25 percent<\/em><\/strong>/,
+  );
   assert.match(paragraph, /class="bf5e-ref bf5e-ref--inline bf5e-ref--sense"/);
   assert.match(paragraph, />night sight<\/span>/);
   assert.match(paragraph, /class="bf5e-tip__heading">Darkvision<\/span>/);
@@ -60,7 +81,10 @@ test("renders tooltips for item condition and feat references", () => {
   const [paragraph = ""] = paragraphs;
   assert.match(paragraph, /class="bf5e-ref bf5e-ref--inline bf5e-ref--item"/);
   assert.match(paragraph, /class="bf5e-tip__heading">Longsword<\/span>/);
-  assert.match(paragraph, /class="bf5e-ref bf5e-ref--inline bf5e-ref--condition"/);
+  assert.match(
+    paragraph,
+    /class="bf5e-ref bf5e-ref--inline bf5e-ref--condition"/,
+  );
   assert.match(paragraph, /class="bf5e-tip__heading">Poisoned<\/span>/);
   assert.match(paragraph, /class="bf5e-ref bf5e-ref--inline bf5e-ref--feat"/);
   assert.match(paragraph, /class="bf5e-tip__heading">Alert<\/span>/);
