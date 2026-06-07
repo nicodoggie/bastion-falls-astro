@@ -1,0 +1,183 @@
+{
+  "name": "Bound Fire Snake",
+  "size": ["G"],
+  "type": "elemental",
+  "alignment": ["U"],
+  "ac": [{ "ac": 21, "from": ["natural armor"] }],
+  "hp": {
+    "average": 540,
+    "formula": "40d20 + 120"
+  },
+  "speed": {
+    "walk": 50,
+    "climb": 50,
+    "swim": 50
+  },
+  "str": 28,
+  "dex": 16,
+  "con": 26,
+  "int": 8,
+  "wis": 18,
+  "cha": 20,
+  "save": {
+    "str": "+16",
+    "dex": "+10",
+    "con": "+15",
+    "wis": "+11",
+    "cha": "+12"
+  },
+  "skill": {
+    "perception": "+18"
+  },
+  "resist": [
+    "lightning",
+    "thunder",
+    {
+      "resist": ["bludgeoning", "piercing", "slashing"],
+      "note": "from nonmagical attacks"
+    }
+  ],
+  "immune": ["fire", "poison"],
+  "conditionImmune": [
+    "charmed",
+    "exhaustion",
+    "frightened",
+    "grappled",
+    "paralyzed",
+    "petrified",
+    "poisoned",
+    "prone",
+    "restrained"
+  ],
+  "senses": ["blindsight 120 ft.", "tremorsense 240 ft."],
+  "passive": 28,
+  "languages": ["Ignan", "Primordial"],
+  "cr": "21",
+  "traitTags": ["Legendary Resistances", "Magic Resistance"],
+  "trait": [
+    {
+      "name": "Bound to the Pit",
+      "entries": [
+        "The fire snake is bound to the magical pit that sustains it. It cannot willingly move more than 120 feet from the pit, and if it is forcibly moved farther away, it teleports to an unoccupied space at the pit's edge at the end of the current turn. The fire snake can move through the pit's flames and raw magical energy as though they were normal terrain."
+      ]
+    },
+    {
+      "name": "Endless Magical Feed",
+      "entries": [
+        "At the start of each of the fire snake's turns while the pit's magical feed is active, the fire snake regains 60 hit points. If the fire snake is reduced to 0 hit points while the feed is active, it does not die or disappear; instead, it collapses into the pit and reforms with 200 hit points at initiative count 20 on the next round. Cold damage suppresses this regeneration until the start of the fire snake's next turn, but it does not prevent the snake from reforming unless the magical feed is interrupted."
+      ]
+    },
+    {
+      "name": "Banishment Vulnerability",
+      "entries": [
+        "The fire snake cannot be permanently destroyed while the magical feed remains active. If the feed is interrupted, the fire snake loses its Endless Magical Feed trait until the end of its next turn. During that time, the fire snake has disadvantage on Charisma saving throws against spells and magical effects that would banish, dismiss, or return it to another plane. If it fails such a save, it is banished to its native plane rather than being temporarily incapacitated."
+      ]
+    },
+    {
+      "name": "Legendary Resistance (3/Day)",
+      "entries": [
+        "If the fire snake fails a saving throw, it can choose to succeed instead."
+      ]
+    },
+    {
+      "name": "Magic Resistance",
+      "entries": [
+        "The fire snake has advantage on saving throws against spells and other magical effects."
+      ]
+    },
+    {
+      "name": "Molten Body",
+      "entries": [
+        "A creature that touches the fire snake or hits it with a melee attack while within 15 feet of it takes 14 (4d6) fire damage. A creature that starts its turn grappled by the fire snake takes 28 (8d6) fire damage."
+      ]
+    },
+    {
+      "name": "Siege Monster",
+      "entries": [
+        "The fire snake deals double damage to objects and structures."
+      ]
+    }
+  ],
+  "action": [
+    {
+      "name": "Multiattack",
+      "entries": [
+        "The fire snake makes three attacks: one with its bite and two with its coils. It can replace one coils attack with Hurl Cinder."
+      ]
+    },
+    {
+      "name": "Bite",
+      "entries": [
+        "Melee Weapon Attack: +16 to hit, reach 20 ft., one target. Hit: 31 (4d10 + 9) piercing damage plus 31 (9d6) fire damage. If the target is a creature, it must succeed on a DC 23 Constitution saving throw or be seared until the end of its next turn. While seared, the target cannot regain hit points and has disadvantage on Constitution saving throws made to maintain concentration."
+      ]
+    },
+    {
+      "name": "Coils",
+      "entries": [
+        "Melee Weapon Attack: +16 to hit, reach 25 ft., one target. Hit: 27 (4d8 + 9) bludgeoning damage plus 21 (6d6) fire damage. If the target is Huge or smaller, it is grappled (escape DC 24). Until this grapple ends, the target is restrained, and the fire snake cannot use this coils attack against another target."
+      ]
+    },
+    {
+      "name": "Hurl Cinder",
+      "entries": [
+        "Ranged Spell Attack: +12 to hit, range 180 ft., one target. Hit: 35 (10d6) fire damage, and each creature within 10 feet of the target must succeed on a DC 23 Dexterity saving throw or take 17 (5d6) fire damage."
+      ]
+    },
+    {
+      "name": "Pit-Fed Inferno (Recharge 5-6)",
+      "entries": [
+        "The fire snake exhales a flood of white fire in a 120-foot line that is 15 feet wide. Each creature in that line must make a DC 23 Dexterity saving throw, taking 91 (26d6) fire damage on a failed save, or half as much damage on a successful one. A creature that fails the save also burns for 21 (6d6) fire damage at the start of each of its turns. A burning creature or a creature within 5 feet of it can use an action to end the burning."
+      ]
+    },
+    {
+      "name": "Overwhelming Constriction",
+      "entries": [
+        "Each creature grappled by the fire snake must make a DC 24 Strength saving throw. On a failed save, a creature takes 54 (10d8 + 9) bludgeoning damage plus 35 (10d6) fire damage and is pulled up to 30 feet toward the pit. On a successful save, a creature takes half as much damage and is not pulled."
+      ]
+    }
+  ],
+  "bonus": [
+    {
+      "name": "Devour the Feed",
+      "entries": [
+        "The fire snake draws power from the pit. Until the start of its next turn, its speed increases by 20 feet, and the next time it hits with a bite or coils attack, the attack deals an extra 21 (6d6) fire damage."
+      ]
+    }
+  ],
+  "reaction": [
+    {
+      "name": "Molten Recoil",
+      "entries": [
+        "When the fire snake takes damage from a creature it can see within 120 feet of it, the attacker must make a DC 23 Dexterity saving throw. On a failed save, the attacker takes 21 (6d6) fire damage and is pushed up to 20 feet away from the fire snake. On a successful save, the attacker takes half as much damage and is not pushed."
+      ]
+    }
+  ],
+  "legendaryActions": 5,
+  "legendaryHeader": [
+    "The fire snake can take 5 legendary actions, choosing from the options below. Only one legendary action option can be used at a time, and only at the end of another creature's turn. The fire snake regains spent legendary actions at the start of its turn."
+  ],
+  "legendary": [
+    {
+      "name": "Sinuous Shift",
+      "entries": [
+        "The fire snake moves up to half its speed without provoking opportunity attacks."
+      ]
+    },
+    {
+      "name": "Cinder Snap",
+      "entries": ["The fire snake makes one Hurl Cinder attack."]
+    },
+    {
+      "name": "Coiling Drag (Costs 2 Actions)",
+      "entries": [
+        "One creature grappled by the fire snake must succeed on a DC 24 Strength saving throw or be pulled up to 30 feet toward the pit and knocked prone. The fire snake can then move up to 20 feet without releasing the target."
+      ]
+    },
+    {
+      "name": "Pit Surge (Costs 3 Actions)",
+      "entries": [
+        "Raw magical energy erupts from the pit at a point the fire snake can see within 120 feet of it. Each creature in a 20-foot-radius, 40-foot-high cylinder centered on that point must make a DC 23 Dexterity saving throw, taking 45 (10d8) fire damage on a failed save, or half as much damage on a successful one. The area becomes heavily obscured by smoke until the end of the fire snake's next turn."
+      ]
+    }
+  ]
+}
