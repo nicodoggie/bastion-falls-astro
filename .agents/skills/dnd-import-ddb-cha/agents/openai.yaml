@@ -1,4 +1,4 @@
 interface:
   display_name: "DDB Character Import"
-  short_description: "Import D&D Beyond character JSON for later MDX merging."
-  default_prompt: "Import this D&D Beyond character into the campaign notes."
+  short_description: "Import D&D Beyond characters or campaign rosters into MDX."
+  default_prompt: "Import this D&D Beyond character or campaign roster into the campaign notes."

@@ -4,7 +4,9 @@ import { test } from "node:test";
 import {
   buildCharacterApiUrl,
   buildDefaultCharacterJsonPath,
+  createRenderedCharacterFallback,
   extractDdbCharacterPayload,
+  parseRenderedCharacterText,
   parseDdbCharacterId,
   serializeDdbCharacterJson,
 } from "./characterImport.js";
@@ -72,4 +74,130 @@ test("serializes DDB character JSON with import metadata", () => {
     character: wrappedPayload.data,
   });
   assert.equal(json.endsWith("\n"), true);
+});
+
+test("parses mechanics from rendered DDB character sheet text", () => {
+  const rendered = parseRenderedCharacterText({
+    characterId: "84373628",
+    url: "https://www.dndbeyond.com/characters/84373628",
+    title: "Guillerma's Character Sheet - D&D Beyond",
+    text: [
+      "SIGN OUT",
+      "Guillerma",
+      "MANAGE",
+      "FemaleVariant HumanMonk 6 / Rogue 3",
+      "Level 9",
+      "Ability Scores",
+      "STR",
+      "+",
+      "0",
+      "10",
+      "DEX",
+      "+",
+      "3",
+      "16",
+      "CON",
+      "+",
+      "2",
+      "14",
+      "INT",
+      "-",
+      "1",
+      "8",
+      "WIS",
+      "+",
+      "2",
+      "15",
+      "CHA",
+      "+",
+      "3",
+      "16",
+      "Speed",
+      "WALKING",
+      "30",
+      "ft.",
+      "HIT POINTS",
+      "Max hit points",
+      "72",
+      "Senses",
+      "12",
+      "PASSIVE PERCEPTION",
+      "13",
+      "PASSIVE INVESTIGATION",
+      "16",
+      "PASSIVE INSIGHT",
+      "ARMOR CLASS",
+      "ARMOR",
+      "16",
+      "CLASS",
+      "LANGUAGES",
+      "Apgarian, Thieves' cant, Common, Elvish, Thieves’ Cant",
+    ].join("\n"),
+  });
+
+  assert.deepEqual(rendered.mechanics, {
+    name: "Guillerma",
+    summaryLine: "FemaleVariant HumanMonk 6 / Rogue 3",
+    level: 9,
+    armorClass: 16,
+    maxHitPoints: 72,
+    speed: { walking: 30 },
+    senses: {
+      passivePerception: 12,
+      passiveInvestigation: 13,
+      passiveInsight: 16,
+    },
+    languages: ["Apgarian", "Thieves' cant", "Common", "Elvish", "Thieves’ Cant"],
+    stats: {
+      strength: 10,
+      dexterity: 16,
+      constitution: 14,
+      intelligence: 8,
+      wisdom: 15,
+      charisma: 16,
+    },
+  });
+});
+
+test("creates a rendered fallback artifact inside the character payload", () => {
+  const fallback = createRenderedCharacterFallback({
+    characterId: "84373628",
+    sourceUrl: "https://www.dndbeyond.com/characters/84373628",
+    fetchedAt: "2026-06-07T00:00:00.000Z",
+    reason: "DDB character API returned 403",
+    rendered: {
+      url: "https://www.dndbeyond.com/characters/84373628",
+      title: "Guillerma's Character Sheet - D&D Beyond",
+      text: "Guillerma\nMANAGE\nLevel 9",
+      mechanics: { name: "Guillerma", level: 9 },
+      tabs: {
+        background: { clicked: true, text: "BACKGROUND\nEntertainer" },
+        notes: { clicked: true, text: "ORGANIZATIONS\nHunting Lodge" },
+      },
+    },
+  });
+
+  assert.deepEqual(JSON.parse(fallback), {
+    importedFrom: {
+      source: "dndbeyond",
+      characterId: "84373628",
+      sourceUrl: "https://www.dndbeyond.com/characters/84373628",
+      fetchedAt: "2026-06-07T00:00:00.000Z",
+    },
+    character: {
+      id: "84373628",
+      importMode: "rendered-sheet-fallback",
+      fallbackReason: "DDB character API returned 403",
+      renderedSheet: {
+        url: "https://www.dndbeyond.com/characters/84373628",
+        title: "Guillerma's Character Sheet - D&D Beyond",
+        text: "Guillerma\nMANAGE\nLevel 9",
+        mechanics: { name: "Guillerma", level: 9 },
+        tabs: {
+          background: { clicked: true, text: "BACKGROUND\nEntertainer" },
+          notes: { clicked: true, text: "ORGANIZATIONS\nHunting Lodge" },
+        },
+      },
+    },
+  });
 });

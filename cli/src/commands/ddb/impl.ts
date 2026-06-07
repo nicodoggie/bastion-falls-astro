@@ -7,10 +7,12 @@ import { getDdbCookieHeader, launchChromeForDdbAuth } from "./browserAuth.js";
 import {
   buildCharacterApiUrl,
   buildDefaultCharacterJsonPath,
+  createRenderedCharacterFallback,
   extractDdbCharacterPayload,
   parseDdbCharacterId,
   serializeDdbCharacterJson,
 } from "./characterImport.js";
+import { scrapeRenderedCharacterSheet } from "./renderedSheet.js";
 
 interface ImportCharacterFlags {
   out?: string;
@@ -45,13 +47,46 @@ export default async function importCharacter(this: LocalContext, flags: ImportC
     await waitForEnter();
   }
 
-  const cookieHeader = await getDdbCookieHeader(port);
-  const apiUrl = buildCharacterApiUrl(characterId);
+  const fetchedAt = new Date().toISOString();
+  const json = await fetchDdbCharacterJson({
+    characterId,
+    sourceUrl,
+    fetchedAt,
+    port,
+  }).catch(async (error: unknown) => {
+    const reason = error instanceof Error ? error.message : String(error);
+    console.warn(`DDB character API import failed; falling back to rendered sheet scrape: ${reason}`);
+    const rendered = await scrapeRenderedCharacterSheet({ port, characterId, sourceUrl }).catch((fallbackError: unknown) => {
+      const fallbackReason = fallbackError instanceof Error ? fallbackError.message : String(fallbackError);
+      throw new Error(`DDB character API import failed (${reason}) and rendered sheet fallback failed (${fallbackReason})`);
+    });
+    return createRenderedCharacterFallback({
+      characterId,
+      sourceUrl,
+      fetchedAt,
+      reason,
+      rendered,
+    });
+  });
+
+  await mkdir(dirname(outputPath), { recursive: true });
+  await writeFile(outputPath, json, "utf8");
+  console.log(`Imported DDB character artifact to ${outputPath}`);
+}
+
+async function fetchDdbCharacterJson(options: {
+  characterId: string;
+  sourceUrl: string;
+  fetchedAt: string;
+  port: number;
+}): Promise<string> {
+  const cookieHeader = await getDdbCookieHeader(options.port);
+  const apiUrl = buildCharacterApiUrl(options.characterId);
   const response = await fetch(apiUrl, {
     headers: {
       accept: "application/json",
       cookie: cookieHeader,
-      referer: `https://www.dndbeyond.com/characters/${characterId}`,
+      referer: `https://www.dndbeyond.com/characters/${options.characterId}`,
       "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
     },
   });
@@ -62,15 +97,11 @@ export default async function importCharacter(this: LocalContext, flags: ImportC
 
   const wrappedPayload = await response.json();
   const character = extractDdbCharacterPayload(wrappedPayload);
-  const json = serializeDdbCharacterJson(character, {
-    characterId,
-    sourceUrl,
-    fetchedAt: new Date().toISOString(),
+  return serializeDdbCharacterJson(character, {
+    characterId: options.characterId,
+    sourceUrl: options.sourceUrl,
+    fetchedAt: options.fetchedAt,
   });
-
-  await mkdir(dirname(outputPath), { recursive: true });
-  await writeFile(outputPath, json, "utf8");
-  console.log(`Imported DDB character JSON to ${outputPath}`);
 }
 
 async function fileExists(path: string): Promise<boolean> {
