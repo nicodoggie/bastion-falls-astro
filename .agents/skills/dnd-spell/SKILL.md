@@ -1,15 +1,15 @@
 ---
 name: dnd-spell
 description: >-
-  Create a D&D 5e spell as 5etools-style SpellData JSON with source "BF" under
-  astro/src/content/docs/world/spells as <spell-slug>.spell.json, prompting for
+  Create a D&D 5e spell as 5etools-style SpellData YAML with source "BF" under
+  astro/src/content/docs/world/spells as <spell-slug>.spell.yaml, prompting for
   any missing details.
 ---
 
-# D&D 5e spell → `world/spells/*.spell.json` (source: `BF`)
+# D&D 5e spell → `world/spells/*.spell.yaml` (source: `BF`)
 
 Use this skill when the user wants to add a **new D&D 5e spell** to the repo as
-**5etools `SpellData` JSON** consumed by `SpellBlock.astro`.
+**5etools-shaped `SpellData` YAML** consumed by `SpellBlock.astro`.
 
 This skill must be able to work from:
 
@@ -18,10 +18,10 @@ This skill must be able to work from:
 
 ## Goals
 
-1. Produce a **single JSON file** shaped like **5etools `SpellData`**.
+1. Produce a **single YAML file** shaped like **5etools `SpellData`**.
 2. Ensure `"source": "BF"` (unless the user explicitly requests otherwise).
 3. Place the file under:
-   `astro/src/content/docs/world/spells/<spell-slug>.spell.json`
+   `astro/src/content/docs/world/spells/<spell-slug>.spell.yaml`
 4. Ensure the file passes `SpellDataSchema` validation.
 5. Run `yarn astro sync` from `astro/` to validate the content collections.
 
@@ -29,11 +29,13 @@ This skill must be able to work from:
 
 - **Schema**: `SpellDataSchema` from `@bastion-falls/5e-schema-zod`
   (wired in `astro/src/content.config.ts` as the `spells` collection schema).
-- **Data files**: any `**/*.spell.json` under `astro/src/content/docs/world/`
-  are loaded by the `spells` collection. This skill standardizes on
-  `world/spells/` for location.
-- **Collection id**: path relative to `world/` without `.json`, e.g.:
-  `spells/fire-bolt.spell.json` → id `spells/fire-bolt.spell`
+- **Data files**: any `**/*.spell.{yaml,yml,json}` under
+  `astro/src/content/docs/world/` are loaded by the `spells` collection. This
+  skill standardizes on `world/spells/` and **YAML by default**; write JSON only
+  if the user explicitly asks.
+- **Collection id**: path relative to `world/` without `.yaml`, `.yml`, or
+  `.json`, e.g.:
+  `spells/fire-bolt.spell.yaml` → id `spells/fire-bolt.spell`
 
 Help reference: `astro/src/content/docs/help/5e-tools-schema/spell-and-item.mdx`
 
@@ -96,9 +98,9 @@ Create a filesystem-safe slug for the filename:
 
 Filename must be exactly:
 
-`astro/src/content/docs/world/spells/<slug>.spell.json`
+`astro/src/content/docs/world/spells/<slug>.spell.yaml`
 
-## Building the JSON (`SpellData`)
+## Building the YAML (`SpellData`)
 
 Use the schema as the source of truth. Prefer the simplest schema-valid
 representation.
@@ -147,13 +149,12 @@ both).
 After writing the file:
 
 - Run `yarn astro sync` from `astro/`.
-- If validation fails, adjust the JSON to satisfy `SpellDataSchema` (do not
+- If validation fails, adjust the YAML data to satisfy `SpellDataSchema` (do not
   weaken validation or add custom loaders).
 
 ## Checklist before finishing
 
-- [ ] File created at `astro/src/content/docs/world/spells/<slug>.spell.json`
+- [ ] File created at `astro/src/content/docs/world/spells/<slug>.spell.yaml`
 - [ ] `"source": "BF"` is present
-- [ ] Spell data validates under `SpellDataSchema`
+- [ ] YAML spell data validates under `SpellDataSchema`
 - [ ] `yarn astro sync` succeeds
-

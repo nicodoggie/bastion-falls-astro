@@ -1,12 +1,12 @@
 ---
 name: dnd-stat-block
 description: >-
-  Convert D&D 5e creature stat blocks into 5etools-style creature JSON under
+  Convert D&D 5e creature stat blocks into 5etools-style creature YAML under
   astro/src/content/docs/world, wire StatBlock in MDX, validate with
   CreatureDataSchema and yarn astro sync.
 ---
 
-# D&D 5e stat block → `*.creature.json`
+# D&D 5e stat block → `*.creature.yaml`
 
 Use this skill when the user pastes or describes a **D&D 5th edition** creature
 (stat block, bullet list, or MM-style prose) and wants it in the repo as data
@@ -14,7 +14,7 @@ for **`StatBlock.astro`**.
 
 ## Goals
 
-1. Produce a **single JSON file** shaped like **5etools / bestiary creature
+1. Produce a **single YAML file** shaped like **5etools / bestiary creature
    data** (the project calls this **`CreatureData`**).
 2. Place it where the **`creatures`** Astro collection can load it.
 3. Optionally wire **`creatureStats`** in an MDX page and render
@@ -40,14 +40,15 @@ Do **not** invent parallel shapes to satisfy **`StatBlock`**; extend
 
 - **Directory:** `astro/src/content/docs/world/` (any subfolder, e.g.
   `organizations/`, `misc/`, `species/`).
-- **Filename:** `something.creature.json` (suffix **`.creature.json`**).
+- **Filename:** `something.creature.yaml` (suffix **`.creature.yaml`**) by
+  default. Use `.creature.json` only if the user explicitly asks.
 - **Collection id (for `StatBlock` and frontmatter):** path under `world/`
-  **without** `.json`, e.g. file
-  `organizations/eastonton-brigade-squire.creature.json` → id
+  **without** `.yaml`, `.yml`, or `.json`, e.g. file
+  `organizations/eastonton-brigade-squire.creature.yaml` → id
   **`organizations/eastonton-brigade-squire.creature`**.
 
 Defined in **`astro/src/content.config.ts`**: `creatures` collection uses
-`generateId: ({ entry }) => entry.replace(/\.json$/, '')`.
+`generateId: ({ entry }) => entry.replace(/\.(json|ya?ml)$/, '')`.
 
 ## Step-by-step conversion
 
@@ -68,9 +69,9 @@ Extract explicitly (or infer clearly and note assumptions):
 If the paste mixes **“Features”** and **“Actions”**, map each named ability to
 the correct **5etools bucket** (next section).
 
-### 2. Map sections to JSON arrays
+### 2. Map sections to data arrays
 
-| Stat block section                                    | JSON key        | Shape                                          |
+| Stat block section                                    | Data key        | Shape                                          |
 | ----------------------------------------------------- | --------------- | ---------------------------------------------- |
 | Passive traits, spell lists as prose, senses-as-trait | **`trait`**     | `[{ "name": "...", "entries": ["...", ...] }]` |
 | Actions (attacks, spell “actions”)                    | **`action`**    | same                                           |
@@ -134,7 +135,7 @@ bonus) in a **`trait`** so it appears in the stat block.
    - Add to frontmatter:  
      `creatureStats:`  
      `  myKey: path/under/world/name.creature`  
-     (no `.json`; path relative to `astro/src/content/docs/world`).
+     (no `.yaml`/`.json`; path relative to `astro/src/content/docs/world`).
    - Import:  
      `import StatBlock from '../../../../components/StatBlock.astro'`  
      (adjust `../` depth from the MDX file to `astro/src/components/`).
@@ -143,21 +144,22 @@ bonus) in a **`trait`** so it appears in the stat block.
 
 ### 6. CR and encounter copy
 
-- **`cr`** in JSON should match the **design intent** of the block; optional
+- **`cr`** in YAML should match the **design intent** of the block; optional
   sanity check vs DMG offensive/defensive benchmarks (HP, AC, DPR, save DCs).
 - Encounter prose (**tactics**, **composition**) lives in **MDX**, not in the
-  JSON, unless you are storing pure narrative in a trait (usually avoid).
+  creature data, unless you are storing pure narrative in a trait (usually
+  avoid).
 
 ## Pitfalls (project-specific)
 
 - **`creatureStats` must not** be implemented as a **separate glob collection**
-  over **`*.creature.json`** with **`docsSchema`** — JSON would be validated as
-  Starlight docs and require **`title`**, etc. In this repo, **`creatureStats`**
-  is only on **`docsExtension`**, not a duplicate loader.
+  over **`*.creature.yaml`** with **`docsSchema`** — the data file would be
+  validated as Starlight docs and require **`title`**, etc. In this repo,
+  **`creatureStats`** is only on **`docsExtension`**, not a duplicate loader.
 
 ## Checklist before finishing
 
-- [ ] **`*.creature.json`** under **`world/`** with valid **`CreatureData`**
+- [ ] **`*.creature.yaml`** under **`world/`** with valid **`CreatureData`**
       shape.
 - [ ] **`hp.average`** agrees with **`hp.formula`** (rounded per house rule).
 - [ ] Features sit in **`trait` / `action` / `bonus` / `reaction`** as
@@ -170,21 +172,21 @@ bonus) in a **`trait`** so it appears in the stat block.
 ## Example references in-repo
 
 - Minimal martial:  
-  `astro/src/content/docs/world/organizations/eastonton-brigade-squire.creature.json`
+  `astro/src/content/docs/world/organizations/eastonton-brigade-squire.creature.yaml`
 - Full caster + bonus + reaction:  
-  `astro/src/content/docs/world/organizations/eastonton-brigade-charmweaver.creature.json`
+  `astro/src/content/docs/world/organizations/eastonton-brigade-charmweaver.creature.yaml`
 - Paladin-style leader:  
-  `astro/src/content/docs/world/organizations/eastonton-brigade-divine-inquisitor.creature.json`
+  `astro/src/content/docs/world/organizations/eastonton-brigade-divine-inquisitor.creature.yaml`
 
 ## Related: spells and magic items (same workflow)
 
-The repo also supports **5etools `SpellData`** and **`ItemData`** as JSON with
+The repo also supports **5etools `SpellData`** and **`ItemData`** as YAML with
 **`SpellBlock.astro`** and **`ItemBlock.astro`**:
 
 | Kind | Suffix | Astro collection | Frontmatter | Component |
 |------|--------|------------------|-------------|-----------|
-| Spell | `.spell.json` | `spells` | `spellStats` | `<SpellBlock spell={...} />` |
-| Item | `.item.json` | `itemData` | `itemDataStats` | `<ItemBlock item={...} />` |
+| Spell | `.spell.yaml` | `spells` | `spellStats` | `<SpellBlock spell={...} />` |
+| Item | `.item.yaml` | `itemData` | `itemDataStats` | `<ItemBlock item={...} />` |
 
 Schemas: **`SpellDataSchema`**, **`ItemDataSchema`** (`@bastion-falls/5e-schema-zod`).
 Help page: `astro/src/content/docs/help/5e-tools-schema/spell-and-item.mdx`.

@@ -1,16 +1,16 @@
 ---
 name: dnd-item
 description: >-
-  Create a D&D 5e magic item as 5etools-style ItemData JSON with source "BF"
-  under astro/src/content/docs/world/items as <item-slug>.item.json, add or
+  Create a D&D 5e magic item as 5etools-style ItemData YAML with source "BF"
+  under astro/src/content/docs/world/items as <item-slug>.item.yaml, add or
   update a companion <item-slug>.mdx that wires itemDataStats + ItemBlock, and
   prompt for any missing details.
 ---
 
-# D&D 5e magic item → `world/items/<slug>.item.json` + `<slug>.mdx` (source: `BF`)
+# D&D 5e magic item → `world/items/<slug>.item.yaml` + `<slug>.mdx` (source: `BF`)
 
 Use this skill when the user wants to add a **new D&D 5e magic item** to the
-repo as **5etools ItemData JSON** consumed by `ItemBlock.astro`.
+repo as **5etools-shaped ItemData YAML** consumed by `ItemBlock.astro`.
 
 This skill must be able to work from:
 
@@ -19,21 +19,21 @@ This skill must be able to work from:
 
 ## Goals
 
-1. Produce a **single JSON file** shaped like **5etools `ItemData`**.
+1. Produce a **single YAML file** shaped like **5etools `ItemData`**.
 2. Ensure `"source": "BF"` (unless the user explicitly requests otherwise).
 3. Include a top-level **`"$schema"`** property as the first key:
    `"https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData"`
 4. Place the file under:
-   `astro/src/content/docs/world/items/<item-slug>.item.json`
+   `astro/src/content/docs/world/items/<item-slug>.item.yaml`
 5. Ensure the file passes `ItemDataSchema` validation.
 6. **Companion MDX** (same slug, no `.item`):
    - Path: `astro/src/content/docs/world/items/<item-slug>.mdx`
    - **If it does not exist**: create it with Starlight frontmatter, optional
      `item` metadata (`ItemSchema` from `@bastion-falls/types`—mirror name,
-     rarity, type, attunement, weight, value from the JSON where helpful),
+     rarity, type, attunement, weight, value from the data file where helpful),
      **`itemDataStats`** with at least one key whose value is the **`itemData`**
      collection id: `items/<item-slug>.item` (path under `world/` without
-     `.json`; same rule as `potion-of-healing.item.json` →
+     `.yaml`; same rule as `potion-of-healing.item.yaml` →
      `items/potion-of-healing.item`).
    - **If it already exists**: do not replace the whole article; **add or
      correct** `itemDataStats` so one entry points at `items/<item-slug>.item`,
@@ -52,11 +52,13 @@ deliberate.
 
 - **Schema**: `ItemDataSchema` from `@bastion-falls/5e-schema-zod` (wired in
   `astro/src/content.config.ts` as the `itemData` collection schema).
-- **Data files**: any `**/*.item.json` under `astro/src/content/docs/world/` are
-  loaded by the `itemData` collection. This skill standardizes on `world/items/`
-  for location.
-- **Collection id**: path relative to `world/` without `.json`, e.g.:
-  `items/potion-of-healing.item.json` → id `items/potion-of-healing.item`
+- **Data files**: any `**/*.item.{yaml,yml,json}` under
+  `astro/src/content/docs/world/` are loaded by the `itemData` collection. This
+  skill standardizes on `world/items/` and **YAML by default**; write JSON only
+  if the user explicitly asks.
+- **Collection id**: path relative to `world/` without `.yaml`, `.yml`, or
+  `.json`, e.g.:
+  `items/potion-of-healing.item.yaml` → id `items/potion-of-healing.item`
 
 Help reference: `astro/src/content/docs/help/5e-tools-schema/spell-and-item.mdx`
 
@@ -116,9 +118,9 @@ Create a filesystem-safe slug for the filename:
 
 Filename must be exactly:
 
-`astro/src/content/docs/world/items/<slug>.item.json`
+`astro/src/content/docs/world/items/<slug>.item.yaml`
 
-## Building the JSON (`ItemData`)
+## Building the YAML (`ItemData`)
 
 ### Minimal required shape (typical)
 
@@ -139,7 +141,7 @@ the simplest schema-valid representation.
 Prefer standard 5etools item type codes when known. If the user gives a plain
 English type, map it to a 5etools type code that `ItemDataSchema` accepts.
 
-If you can’t confidently map it, search existing `*.item.json` examples in the
+If you can’t confidently map it, search existing `*.item.yaml` examples in the
 repo and mirror the closest match.
 
 ### Entries
@@ -159,16 +161,16 @@ rules text here:
 After writing the file:
 
 - Run `yarn astro sync` from `astro/`.
-- If validation fails, adjust the JSON to satisfy `ItemDataSchema` (do not
+- If validation fails, adjust the YAML data to satisfy `ItemDataSchema` (do not
   weaken validation or add custom loaders).
 
 ## Checklist before finishing
 
-- [ ] File created at `astro/src/content/docs/world/items/<slug>.item.json`
+- [ ] File created at `astro/src/content/docs/world/items/<slug>.item.yaml`
 - [ ] `"$schema"` is the first key and points at the public 5etools
       `brew/items.json#/$defs/itemData` schema URL
 - [ ] `"source": "BF"` is present
-- [ ] JSON validates under `ItemDataSchema`
+- [ ] YAML data validates under `ItemDataSchema`
 - [ ] Companion `astro/src/content/docs/world/items/<slug>.mdx` exists (new or
       updated) with `itemDataStats` → `items/<slug>.item` and `ItemBlock` (or
       equivalent wiring)
