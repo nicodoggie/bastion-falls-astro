@@ -6,6 +6,12 @@ export type DdbImportMetadata = {
   fetchedAt: string;
 };
 
+export type DdbCampaignImportMetadata = {
+  campaignId: string;
+  sourceUrl: string;
+  fetchedAt: string;
+};
+
 export type DdbCharacterJsonArtifact = {
   importedFrom: {
     source: "dndbeyond";
@@ -14,6 +20,30 @@ export type DdbCharacterJsonArtifact = {
     fetchedAt: string;
   };
   character: unknown;
+};
+
+export type DdbCampaignRosterCharacter = {
+  id: string;
+  nameHint?: string;
+  url: string;
+  sourceUrls: string[];
+};
+
+export type DdbCampaignRoster = {
+  id: string;
+  url: string;
+  title: string;
+  characters: DdbCampaignRosterCharacter[];
+};
+
+export type DdbCampaignJsonArtifact = {
+  importedFrom: {
+    source: "dndbeyond";
+    campaignId: string;
+    sourceUrl: string;
+    fetchedAt: string;
+  };
+  campaign: DdbCampaignRoster;
 };
 
 export type RenderedCharacterTab = {
@@ -52,12 +82,34 @@ export function parseDdbCharacterId(urlOrId: string): string {
   return match[1];
 }
 
+export function parseDdbCampaignId(urlOrId: string): string {
+  if (/^\d+$/.test(urlOrId)) return urlOrId;
+
+  let url: URL;
+  try {
+    url = new URL(urlOrId);
+  } catch {
+    throw new Error("Expected a D&D Beyond campaign URL or numeric campaign ID");
+  }
+
+  const match = url.pathname.match(/\/campaigns\/(\d+)/);
+  if (!match || !(url.hostname === "www.dndbeyond.com" || url.hostname === "dndbeyond.com")) {
+    throw new Error("Expected a D&D Beyond campaign URL like https://www.dndbeyond.com/campaigns/123");
+  }
+
+  return match[1];
+}
+
 export function buildCharacterApiUrl(characterId: string): string {
   return `https://character-service.dndbeyond.com/character/v5/character/${characterId}`;
 }
 
 export function buildDefaultCharacterJsonPath(targetDir: string, characterId: string): string {
   return resolve(targetDir, `ddb-character-${characterId}.json`);
+}
+
+export function buildDefaultCampaignJsonPath(targetDir: string, campaignId: string): string {
+  return resolve(targetDir, `ddb-campaign-${campaignId}.json`);
 }
 
 export function extractDdbCharacterPayload(payload: unknown): unknown {
@@ -92,6 +144,63 @@ export function createDdbCharacterJsonArtifact(character: unknown, metadata: Ddb
 
 export function serializeDdbCharacterJson(character: unknown, metadata: DdbImportMetadata): string {
   return `${JSON.stringify(createDdbCharacterJsonArtifact(character, metadata), null, 2)}\n`;
+}
+
+export function extractDdbCampaignRoster(input: {
+  campaignId: string;
+  url: string;
+  title: string;
+  text: string;
+  links: Array<{ text?: string; href: string }>;
+}): DdbCampaignRoster {
+  const nameHints = extractRosterNameHints(input.text);
+  const byId = new Map<string, DdbCampaignRosterCharacter>();
+
+  for (const link of input.links) {
+    const id = extractCharacterIdFromHref(link.href);
+    if (!id) continue;
+
+    const character = byId.get(id) ?? {
+      id,
+      nameHint: nameHints[byId.size],
+      url: `https://www.dndbeyond.com/characters/${id}`,
+      sourceUrls: [],
+    };
+
+    if (!character.sourceUrls.includes(link.href)) {
+      character.sourceUrls.push(link.href);
+    }
+    byId.set(id, character);
+  }
+
+  return {
+    id: input.campaignId,
+    url: input.url,
+    title: input.title,
+    characters: [...byId.values()],
+  };
+}
+
+export function createDdbCampaignJsonArtifact(
+  campaign: DdbCampaignRoster,
+  metadata: DdbCampaignImportMetadata,
+): DdbCampaignJsonArtifact {
+  return {
+    importedFrom: {
+      source: "dndbeyond",
+      campaignId: metadata.campaignId,
+      sourceUrl: metadata.sourceUrl,
+      fetchedAt: metadata.fetchedAt,
+    },
+    campaign,
+  };
+}
+
+export function serializeDdbCampaignJson(
+  campaign: DdbCampaignRoster,
+  metadata: DdbCampaignImportMetadata,
+): string {
+  return `${JSON.stringify(createDdbCampaignJsonArtifact(campaign, metadata), null, 2)}\n`;
 }
 
 export function parseRenderedCharacterText(input: {
@@ -142,6 +251,24 @@ function toLines(text: string): string[] {
   return text.split(/\r?\n/)
     .map((line) => line.trim())
     .filter((line) => line.length > 0);
+}
+
+function extractRosterNameHints(text: string): string[] {
+  const lines = toLines(text);
+  const names: string[] = [];
+  for (const [index, line] of lines.entries()) {
+    if (!/^Lvl \d+\b/.test(line)) continue;
+    const name = lines[index - 1];
+    if (name && !names.includes(name)) names.push(name);
+  }
+  return names;
+}
+
+function extractCharacterIdFromHref(href: string): string | undefined {
+  const match = href.match(/\/characters\/(\d+)\b/)
+    ?? href.match(/\/campaigns\/\d+\/(?:deactivate-character|remove-character)\/(\d+)\b/)
+    ?? href.match(/\/campaigns\/(\d+)\/\d+\/(?:claim-unassigned-character|unclaim-assigned-character)\b/);
+  return match?.[1];
 }
 
 function parseName(lines: string[], title: string): string | undefined {

@@ -3,11 +3,16 @@ import { test } from "node:test";
 
 import {
   buildCharacterApiUrl,
+  buildDefaultCampaignJsonPath,
   buildDefaultCharacterJsonPath,
+  createDdbCampaignJsonArtifact,
   createRenderedCharacterFallback,
+  extractDdbCampaignRoster,
   extractDdbCharacterPayload,
+  parseDdbCampaignId,
   parseRenderedCharacterText,
   parseDdbCharacterId,
+  serializeDdbCampaignJson,
   serializeDdbCharacterJson,
 } from "./characterImport.js";
 
@@ -32,6 +37,15 @@ test("rejects non-character URLs", () => {
   assert.throws(() => parseDdbCharacterId("https://www.dndbeyond.com/monsters/1"), /D&D Beyond character URL/);
 });
 
+test("parses DDB campaign URLs and numeric campaign IDs", () => {
+  assert.equal(parseDdbCampaignId("2396433"), "2396433");
+  assert.equal(parseDdbCampaignId("https://www.dndbeyond.com/campaigns/2396433"), "2396433");
+});
+
+test("rejects non-campaign URLs", () => {
+  assert.throws(() => parseDdbCampaignId("https://www.dndbeyond.com/characters/124205957"), /D&D Beyond campaign URL/);
+});
+
 test("builds the DDB character JSON API URL", () => {
   assert.equal(
     buildCharacterApiUrl("124205957"),
@@ -43,6 +57,13 @@ test("builds the default character JSON output path", () => {
   assert.equal(
     buildDefaultCharacterJsonPath("/campaign/world/characters", "124205957"),
     "/campaign/world/characters/ddb-character-124205957.json",
+  );
+});
+
+test("builds the default campaign JSON output path", () => {
+  assert.equal(
+    buildDefaultCampaignJsonPath("/campaign/world/characters", "2396433"),
+    "/campaign/world/characters/ddb-campaign-2396433.json",
   );
 });
 
@@ -73,6 +94,88 @@ test("serializes DDB character JSON with import metadata", () => {
     },
     character: wrappedPayload.data,
   });
+  assert.equal(json.endsWith("\n"), true);
+});
+
+test("extracts campaign roster IDs with visible name hints", () => {
+  const roster = extractDdbCampaignRoster({
+    campaignId: "2396433",
+    url: "https://www.dndbeyond.com/campaigns/2396433",
+    title: "Bastion Falls - Campaigns - D&D Beyond",
+    text: [
+      "Active Characters",
+      "Angel Rannek",
+      "Lvl 8 | Aasimar | Bard / College of Glamour",
+      "Player: Karrotchin",
+      "VIEW",
+      "EDIT",
+      "UNASSIGNED CHARACTERS",
+      "Alexander Surrata-Spellvig",
+      "Lvl 5 | Human | Barbarian / Path of the Wild Heart",
+      "Unassigned",
+      "VIEW",
+      "EDIT",
+    ].join("\n"),
+    links: [
+      { text: "", href: "https://www.dndbeyond.com/profile/Karrotchin/characters/140122555" },
+      { text: "VIEW", href: "https://www.dndbeyond.com/profile/Karrotchin/characters/140122555" },
+      { text: "REMOVE", href: "https://www.dndbeyond.com/campaigns/2396433/remove-character/140122555" },
+      { text: "", href: "https://www.dndbeyond.com/profile/nicodoggie/characters/140640977" },
+      { text: "VIEW", href: "https://www.dndbeyond.com/profile/nicodoggie/characters/140640977" },
+      { text: "CLAIM", href: "https://www.dndbeyond.com/campaigns/140640977/2396433123/claim-unassigned-character" },
+    ],
+  });
+
+  assert.deepEqual(roster.characters, [
+    {
+      id: "140122555",
+      nameHint: "Angel Rannek",
+      url: "https://www.dndbeyond.com/characters/140122555",
+      sourceUrls: [
+        "https://www.dndbeyond.com/profile/Karrotchin/characters/140122555",
+        "https://www.dndbeyond.com/campaigns/2396433/remove-character/140122555",
+      ],
+    },
+    {
+      id: "140640977",
+      nameHint: "Alexander Surrata-Spellvig",
+      url: "https://www.dndbeyond.com/characters/140640977",
+      sourceUrls: [
+        "https://www.dndbeyond.com/profile/nicodoggie/characters/140640977",
+        "https://www.dndbeyond.com/campaigns/140640977/2396433123/claim-unassigned-character",
+      ],
+    },
+  ]);
+});
+
+test("serializes DDB campaign JSON with import metadata", () => {
+  const campaign = createDdbCampaignJsonArtifact({
+    id: "2396433",
+    url: "https://www.dndbeyond.com/campaigns/2396433",
+    title: "Bastion Falls - Campaigns - D&D Beyond",
+    characters: [
+      {
+        id: "140122555",
+        nameHint: "Angel Rannek",
+        url: "https://www.dndbeyond.com/characters/140122555",
+        sourceUrls: ["https://www.dndbeyond.com/profile/Karrotchin/characters/140122555"],
+      },
+    ],
+  }, {
+    campaignId: "2396433",
+    sourceUrl: "https://www.dndbeyond.com/campaigns/2396433",
+    fetchedAt: "2026-06-08T00:00:00.000Z",
+  });
+
+  assert.deepEqual(campaign.importedFrom, {
+    source: "dndbeyond",
+    campaignId: "2396433",
+    sourceUrl: "https://www.dndbeyond.com/campaigns/2396433",
+    fetchedAt: "2026-06-08T00:00:00.000Z",
+  });
+
+  const json = serializeDdbCampaignJson(campaign.campaign, campaign.importedFrom);
+  assert.deepEqual(JSON.parse(json), campaign);
   assert.equal(json.endsWith("\n"), true);
 });
 

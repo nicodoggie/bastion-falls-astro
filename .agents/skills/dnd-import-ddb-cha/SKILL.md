@@ -21,8 +21,31 @@ human judgment.
    - If the user names an existing character article, inspect that MDX first for
      an existing `character.ddb` link.
 1. For a campaign link, discover the roster before importing.
-   - Open/crawl the authenticated campaign page with the same Chrome DevTools
-     session used for character imports.
+   - From the repo root, first import a raw roster artifact with `bfcli`:
+
+     ```bash
+     yarn bfcli ddb import-campaign --useExistingChrome --port 9224 --force --out /tmp/ddb-campaign-<id>.json <campaign-url-or-id>
+     ```
+
+   - If no authenticated Chrome DevTools session is running, run:
+     `yarn bfcli ddb import-campaign --force --out /tmp/ddb-campaign-<id>.json <campaign-url-or-id>`
+     Then complete D&D Beyond login in the opened Chrome window and press Enter
+     in the terminal.
+   - Read `/tmp/ddb-campaign-<id>.json` and use `.campaign.characters[]` as the
+     roster source.
+   - For every roster entry, run the per-character importer before attempting an
+     MDX merge:
+
+     ```bash
+     yarn bfcli ddb import-cha --useExistingChrome --port 9224 --force --out /tmp/ddb-character-<character-id>.json <character-id-or-url>
+     ```
+
+     Prefer the roster entry's `id` for `<character-id-or-url>` unless a
+     canonical `url` is needed for troubleshooting. The imported character
+     artifact confirms the final character name and current sheet data.
+   - If the campaign command is unavailable or fails before producing a roster
+     artifact, open/crawl the authenticated campaign page with the same Chrome
+     DevTools session used for character imports.
    - Extract every `https://www.dndbeyond.com/characters/<id>` or
      `https://ddb.ac/characters/<id>` link from anchors, visible page text, and
      obvious embedded page data.
