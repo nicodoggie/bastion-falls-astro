@@ -50,10 +50,11 @@ character:
       - Orthodox Divine Masochism
     families:
       - name: Eastonton
+creatureStats:
+  aigral: 'characters/aigral-eastonton.creature'
 ---
 
 import StatBlock from '../../../../components/StatBlock.astro';
-import aigralEastonton from './aigral-eastonton.creature.yaml';
 
 _Sir Aigral Eastonton_ is the third son of Baron Garward Eastonton
 and a Paladin of the Orthodox Church of Divine Masochism.
@@ -151,4 +152,4 @@ then the episcopal seneschal of the Diocese of Surrey.
 
 ### Giant of Inespell Incident
 
-<StatBlock creature={aigralEastonton} />
+<StatBlock creature={frontmatter.creatureStats.aigral} />

@@ -20,10 +20,7 @@ interface Props {
    * When the file is `{ "item": [...] }`, pass `name` to pick one row.
    */
   json?: string;
-  /**
-   * Inline item object (e.g. `import x from './x.item.yaml'`). Validated with
-   * `ItemDataSchema`. Takes precedence over `json` and `name`.
-   */
+  /** Inline item object. Validated with `ItemDataSchema`. Takes precedence over `json` and `name`. */
   item?: Record<string, unknown>;
 }
 

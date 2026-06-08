@@ -9,31 +9,11 @@
  * Load on 5e.tools via: Tools → Homebrew Manager → Import from URL
  */
 
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { getCollection } from "astro:content";
 import { CreatureDataSchema } from "@bastion-falls/5e-schema-zod";
-import type { APIRoute } from "astro";
-import { readContentDataFile } from "@/lib/5etools/content-data-file";
 
 const SOURCE_JSON = "BastionFalls";
 const SOURCE_VERSION = "1.0.0";
-const WORLD_CONTENT_DIR = fileURLToPath(
-  new URL("../../content/docs/world", import.meta.url),
-);
-
-function findCreatureDataFiles(dir: string): string[] {
-  const files: string[] = [];
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const abs = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      files.push(...findCreatureDataFiles(abs));
-    } else if (/\.creature\.(json|ya?ml)$/i.test(entry.name)) {
-      files.push(abs);
-    }
-  }
-  return files.sort();
-}
 
 function getCreatureRows(raw: unknown): unknown[] {
   if (!raw || typeof raw !== "object") return [raw];
@@ -42,21 +22,13 @@ function getCreatureRows(raw: unknown): unknown[] {
   return monster;
 }
 
-export const GET: APIRoute = () => {
+export const GET = async () => {
   const monsters = [];
   const errors: string[] = [];
 
-  for (const filePath of findCreatureDataFiles(WORLD_CONTENT_DIR)) {
-    const relativePath = path.relative(WORLD_CONTENT_DIR, filePath);
-    let raw: unknown;
-    try {
-      raw = readContentDataFile(filePath);
-    } catch (error) {
-      errors.push(`${relativePath}: ${String(error)}`);
-      continue;
-    }
-
-    for (const row of getCreatureRows(raw)) {
+  const entries = await getCollection("creatures");
+  for (const entry of entries.sort((a, b) => a.id.localeCompare(b.id))) {
+    for (const row of getCreatureRows(entry.data)) {
       // Inject the source key so 5e.tools can associate the entry with our _meta.
       const creature =
         typeof row === "object" && row !== null
@@ -66,7 +38,7 @@ export const GET: APIRoute = () => {
       if (result.success) {
         monsters.push(result.data);
       } else {
-        errors.push(`${relativePath}: ${result.error.message}`);
+        errors.push(`${entry.id}: ${result.error.message}`);
       }
     }
   }

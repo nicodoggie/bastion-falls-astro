@@ -55,13 +55,19 @@ If the root object is `{ "spell": [ … ] }`, pass `name` to choose one entry
 
 ### Inline object (`spell`)
 
-Pass a spell object directly (for example from a static JSON import). Takes
-precedence over `json` and `name`.
+Pass a spell object directly. Takes precedence over `json` and `name`.
+For YAML files under `src/content/docs/`, prefer the `json` prop above so the
+repo's content-data loader handles parsing.
 
 ```mdx
-import fireBolt from './fire-bolt.spell.yaml';
+const fireBolt = {
+  name: 'Fire Bolt',
+  source: 'BF',
+  level: 0,
+  // ...
+};
 
-<Spell spell={fireBolt} />
+<Spell spell={fireBolt}>fire bolt</Spell>
 ```
 
 For **full stat blocks** and collection-backed frontmatter, see

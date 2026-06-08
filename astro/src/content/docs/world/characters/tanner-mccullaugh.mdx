@@ -21,9 +21,10 @@ character:
         girth: 1
 tags:
   - characters
+creatureStats:
+  tanner: 'characters/tanner-mccullaugh.creature'
 ---
 
 import StatBlock from '../../../../components/StatBlock.astro';
-import tannerMccullaugh from './tanner-mccullaugh.creature.yaml';
 
-<StatBlock creature={tannerMccullaugh} />
+<StatBlock creature={frontmatter.creatureStats.tanner} />
