@@ -16,25 +16,11 @@
     "node": ">=20"
   },
   "scripts": {
-    "copy-templates": "copyfiles -u templates/*.ejs dist/templates",
     "prebuild": "tsc -p src/tsconfig.json",
-    "build": "yarn run copy-templates && tsup",
-    "dev": "yarn run copy-templates && tsup --watch",
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs --watch",
     "test": "node --import tsx --test src/**/*.test.ts",
     "exec": "tsx --tsconfig src/tsconfig.json src/bin/cli.ts"
-  },
-  "tsup": {
-    "entry": [
-      "src/bin/cli.ts",
-      "src/bin/bash-complete.ts"
-    ],
-    "format": [
-      "esm"
-    ],
-    "tsconfig": "src/tsconfig.json",
-    "clean": true,
-    "splitting": true,
-    "minify": false
   },
   "dependencies": {
     "@bastion-falls/types": "workspace:^",
@@ -61,8 +47,7 @@
     "@types/js-yaml": "^4.0.9",
     "@types/mdast": "^4.0.4",
     "@types/node": "^22.15.29",
-    "copyfiles": "^2.4.1",
-    "tsup": "^8.5.1",
+    "esbuild": "^0.27.4",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
     "unist-util-visit": "^5.1.0"

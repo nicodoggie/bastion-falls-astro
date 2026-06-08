@@ -12,8 +12,8 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json --watch",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -29,7 +29,6 @@
     "@types/jsonld": "^1.5.15",
     "@types/node": "~24.7.0",
     "astro": "6.0.8",
-    "tsup": "^8.5.1",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
   },
