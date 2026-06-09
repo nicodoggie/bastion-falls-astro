@@ -110,6 +110,52 @@ function getLineStartOffsets(text) {
   return offsets;
 }
 
+const preferFoldedBlockScalar = {
+  meta: {
+    type: "layout",
+    fixable: "code",
+    docs: {
+      description: "prefer folded YAML block scalars for prose",
+    },
+    messages: {
+      preferFolded:
+        "Use folded block scalar `>` for prose that should read as one string.",
+    },
+    schema: [],
+  },
+  create(context) {
+    const sourceCode = context.sourceCode;
+
+    return {
+      YAMLScalar(node) {
+        if (node.style !== "literal") {
+          return;
+        }
+
+        const indicator = sourceCode
+          .getTokens(node)
+          .find((token) => token.type === "Punctuator" && token.value[0] === "|");
+
+        if (!indicator) {
+          return;
+        }
+
+        context.report({
+          node,
+          loc: indicator.loc,
+          messageId: "preferFolded",
+          fix(fixer) {
+            return fixer.replaceTextRange(
+              [indicator.range[0], indicator.range[0] + 1],
+              ">",
+            );
+          },
+        });
+      },
+    };
+  },
+};
+
 const blockScalarLineLength = {
   meta: {
     type: "layout",
@@ -196,6 +242,7 @@ export default [
     plugins: {
       "bf-yaml": {
         rules: {
+          "prefer-folded-block-scalar": preferFoldedBlockScalar,
           "block-scalar-line-length": blockScalarLineLength,
         },
       },
@@ -211,6 +258,7 @@ export default [
         },
       ],
       "bf-yaml/block-scalar-line-length": "error",
+      "bf-yaml/prefer-folded-block-scalar": "error",
       "yml/indent": ["error", 2],
       "yml/plain-scalar": "off",
     },
