@@ -1,7 +1,13 @@
 [global]
 flavor = "mdx"
 # Exclude files/directories
-exclude = ["node_modules", ".git", ".astro", "dist"]
+exclude = [
+    "node_modules", 
+    ".git", 
+    "astro/.astro", 
+    "**/dist", 
+    "**/timeline-generated.mdx"
+]
 
 # Set line length limit
 line_length = 80
@@ -29,7 +35,11 @@ reflow-mode = "default"
 front-matter-title = "title"
 
 [MD033]
-enabled = false
+enabled = true
+fix = true
+allowed = ["table", "th", "tr", "td", "thead", "tbody"]
+fix-mode = "relaxed"
+br-style = "backslash"
 
 [MD041]
 enabled = false

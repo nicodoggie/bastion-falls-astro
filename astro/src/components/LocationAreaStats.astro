@@ -1,0 +1,25 @@
+---
+interface StatItem {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  items: StatItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<aside class="stats">
+  <dl>
+    {
+      items.map(({ label, value }) => (
+        <>
+          <dt>{label}</dt>
+          <dd>{value}</dd>
+        </>
+      ))
+    }
+  </dl>
+</aside>

@@ -1,0 +1,21 @@
+---
+interface Props {
+  location?: string;
+  date?: string;
+}
+
+const { location, date } = Astro.props;
+---
+
+<div class="event-infobar">
+  <h3>Setting</h3>
+
+  <hr />
+
+  <dl>
+    <dt>Location</dt>
+    {location && <dd>{location}</dd>}
+    <dt>Date</dt>
+    {date && <dd>{date}</dd>}
+  </dl>
+</div>

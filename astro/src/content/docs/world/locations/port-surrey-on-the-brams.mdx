@@ -16,6 +16,8 @@ location:
     - 'Senera'
 ---
 
+import LocationAreaStats from '../../../../components/LocationAreaStats.astro';
+
 **Port Surrey-on-the-Brams** is a major port city in the
 [Seneran](../locations/senera/index.mdx) island of
 [Surrey-on-the-Brams](../locations/surrey-on-the-brams.mdx).
@@ -128,18 +130,14 @@ while the western areas show more organic development patterns.
 
 ### Northcross District
 
-<aside class="stats">
-  <dl>
-    <dt>Area</dt>
-    <dd>~5 square miles</dd>
-    <dt>Population</dt>
-    <dd>~75,000</dd>
-    <dt>Terrain</dt>
-    <dd>Terraced slopes</dd>
-    <dt>Character</dt>
-    <dd>Maritime commerce and wealthy residential</dd>
-  </dl>
-</aside>
+<LocationAreaStats
+  items={[
+    { label: 'Area', value: '~5 square miles' },
+    { label: 'Population', value: '~75,000' },
+    { label: 'Terrain', value: 'Terraced slopes' },
+    { label: 'Character', value: 'Maritime commerce and wealthy residential' },
+  ]}
+/>
 
 Stretching along the northern shore facing Greater Surrey Reach,
 this district combines merchant shipping facilities with elegant estates.
@@ -153,18 +151,14 @@ while providing direct access to:
 
 ### Admiralty Dockyards District
 
-<aside class="stats">
-  <dl>
-    <dt>Area</dt>
-    <dd>~3 square miles</dd>
-    <dt>Population</dt>
-    <dd>~15,000</dd>
-    <dt>Terrain</dt>
-    <dd>Flat waterfront</dd>
-    <dt>Character</dt>
-    <dd>Military-industrial, restricted access</dd>
-  </dl>
-</aside>
+<LocationAreaStats
+  items={[
+    { label: 'Area', value: '~3 square miles' },
+    { label: 'Population', value: '~15,000' },
+    { label: 'Terrain', value: 'Flat waterfront' },
+    { label: 'Character', value: 'Military-industrial, restricted access' },
+  ]}
+/>
 
 The naval heart of Port Surrey, featuring:
 
@@ -176,18 +170,14 @@ The naval heart of Port Surrey, featuring:
 
 ### Port Surrey District (Central)
 
-<aside class="stats">
-  <dl>
-    <dt>Area</dt>
-    <dd>~6 square miles</dd>
-    <dt>Population</dt>
-    <dd>~150,000</dd>
-    <dt>Terrain</dt>
-    <dd>Gentle slopes to waterfront</dd>
-    <dt>Character</dt>
-    <dd>Commercial and administrative center</dd>
-  </dl>
-</aside>
+<LocationAreaStats
+  items={[
+    { label: 'Area', value: '~6 square miles' },
+    { label: 'Population', value: '~150,000' },
+    { label: 'Terrain', value: 'Gentle slopes to waterfront' },
+    { label: 'Character', value: 'Commercial and administrative center' },
+  ]}
+/>
 
 The city's commercial and administrative core, featuring:
 

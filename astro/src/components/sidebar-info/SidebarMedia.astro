@@ -61,614 +61,631 @@ const slides = (
 const hasMultiple = slides.length > 1;
 ---
 
-{slides.length > 0 && (
-  <div class="mb-4 w-full character-image-container bg-black" data-sidebar-media>
+{
+  slides.length > 0 && (
     <div
-      class="sidebar-media-stage group/sidebar-media relative rounded-lg"
-      data-sidebar-media-stage
-      data-controls-visible={hasMultiple ? "false" : undefined}
-      tabindex={hasMultiple ? 0 : undefined}
+      class="mb-4 w-full character-image-container bg-black"
+      data-sidebar-media
     >
-      {slides.map((slide, index) => (
-        <figure
-          class:list={["sidebar-media-slide", index !== 0 && "hidden"]}
-          data-sidebar-media-slide
-          aria-hidden={index === 0 ? "false" : "true"}
-        >
-          <button
-            type="button"
-            class="sidebar-media-image-button"
-            data-sidebar-media-open
-            data-sidebar-media-open-index={index}
-            aria-label="Expand image"
+      <div
+        class="sidebar-media-stage group/sidebar-media relative rounded-lg"
+        data-sidebar-media-stage
+        data-controls-visible={hasMultiple ? "false" : undefined}
+        tabindex={hasMultiple ? 0 : undefined}
+      >
+        {slides.map((slide, index) => (
+          <figure
+            class:list={["sidebar-media-slide", index !== 0 && "hidden"]}
+            data-sidebar-media-slide
+            aria-hidden={index === 0 ? "false" : "true"}
           >
-            <Image
-              src={slide.image}
-              alt={slide.alt}
-              class="w-full h-full max-h-48 rounded-lg object-scale-down block mx-auto"
-            />
-          </button>
-          {slide.attributionUrl && slide.title && (
-            <a
-              class="absolute top-2 right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-gray-900/72 text-white opacity-0 pointer-events-none transition-opacity duration-150 [visibility:hidden] group-hover/sidebar-media:opacity-100 group-hover/sidebar-media:pointer-events-auto group-hover/sidebar-media:[visibility:visible]"
-              href={slide.attributionUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={slide.title}
-              aria-label={`Open image attribution: ${slide.title}`}
+            <button
+              type="button"
+              class="sidebar-media-image-button"
+              data-sidebar-media-open
+              data-sidebar-media-open-index={index}
+              aria-label="Expand image"
             >
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+              <Image
+                src={slide.image}
+                alt={slide.alt}
+                class="w-full h-full max-h-48 rounded-lg object-scale-down block mx-auto"
+              />
+            </button>
+            {slide.attributionUrl && slide.title && (
+              <a
+                class="absolute top-2 right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-gray-900/72 text-white opacity-0 pointer-events-none transition-opacity duration-150 invisible group-hover/sidebar-media:opacity-100 group-hover/sidebar-media:pointer-events-auto group-hover/sidebar-media:visible"
+                href={slide.attributionUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={slide.title}
+                aria-label={`Open image attribution: ${slide.title}`}
               >
-                <path d="M7 17 17 7" />
-                <path d="M8 7h9v9" />
-              </svg>
-              <span class="sr-only">Open image attribution: {slide.title}</span>
-            </a>
-          )}
-        </figure>
-      ))}
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 17 17 7" />
+                  <path d="M8 7h9v9" />
+                </svg>
+                <span class="sr-only">
+                  Open image attribution: {slide.title}
+                </span>
+              </a>
+            )}
+          </figure>
+        ))}
 
-      {hasMultiple && (
-        <>
+        {hasMultiple && (
+          <>
+            <button
+              type="button"
+              class="sidebar-media-nav sidebar-media-nav-prev"
+              data-sidebar-media-prev
+              aria-label="Previous image"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              class="sidebar-media-nav sidebar-media-nav-next"
+              data-sidebar-media-next
+              aria-label="Next image"
+            >
+              ›
+            </button>
+            <div class="sidebar-media-dots">
+              <div class="sidebar-media-dots-inner">
+                {slides.map((_, index) => (
+                  <button
+                    type="button"
+                    class:list={[
+                      "sidebar-media-dot",
+                      index === 0 && "sidebar-media-dot-active",
+                    ]}
+                    data-sidebar-media-dot
+                    data-sidebar-media-index={index}
+                    aria-label={`Go to image ${index + 1}`}
+                    aria-current={index === 0 ? "true" : "false"}
+                  />
+                ))}
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+
+      <div
+        class="sidebar-media-modal"
+        data-sidebar-media-dialog
+        role="dialog"
+        aria-modal="true"
+        aria-label="Expanded image"
+        hidden
+      >
+        <div class="sidebar-media-modal-panel" data-sidebar-media-modal-panel>
           <button
             type="button"
-            class="sidebar-media-nav sidebar-media-nav-prev"
-            data-sidebar-media-prev
-            aria-label="Previous image"
+            class="sidebar-media-modal-close"
+            data-sidebar-media-close
+            aria-label="Close expanded image"
           >
-            ‹
+            ×
           </button>
-          <button
-            type="button"
-            class="sidebar-media-nav sidebar-media-nav-next"
-            data-sidebar-media-next
-            aria-label="Next image"
-          >
-            ›
-          </button>
-          <div class="sidebar-media-dots">
-            <div class="sidebar-media-dots-inner">
-              {slides.map((_, index) => (
+
+          <div class="sidebar-media-modal-stage">
+            <div class="sidebar-media-modal-viewer">
+              {hasMultiple && (
                 <button
                   type="button"
+                  class="sidebar-media-nav sidebar-media-modal-nav sidebar-media-modal-nav-prev"
+                  data-sidebar-media-modal-prev
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+              )}
+
+              {slides.map((slide, index) => (
+                <figure
                   class:list={[
-                    "sidebar-media-dot",
-                    index === 0 && "sidebar-media-dot-active",
+                    "sidebar-media-modal-slide",
+                    index !== 0 && "hidden",
                   ]}
-                  data-sidebar-media-dot
-                  data-sidebar-media-index={index}
-                  aria-label={`Go to image ${index + 1}`}
-                  aria-current={index === 0 ? "true" : "false"}
-                />
+                  data-sidebar-media-modal-slide
+                  aria-hidden={index === 0 ? "false" : "true"}
+                >
+                  <Image
+                    src={slide.image}
+                    alt={slide.alt}
+                    class="sidebar-media-modal-image"
+                  />
+                </figure>
               ))}
+
+              {hasMultiple && (
+                <button
+                  type="button"
+                  class="sidebar-media-nav sidebar-media-modal-nav sidebar-media-modal-nav-next"
+                  data-sidebar-media-modal-next
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              )}
             </div>
-          </div>
-        </>
-      )}
-    </div>
-
-    <div
-      class="sidebar-media-modal"
-      data-sidebar-media-dialog
-      role="dialog"
-      aria-modal="true"
-      aria-label="Expanded image"
-      hidden
-    >
-      <div class="sidebar-media-modal-panel" data-sidebar-media-modal-panel>
-        <button
-          type="button"
-          class="sidebar-media-modal-close"
-          data-sidebar-media-close
-          aria-label="Close expanded image"
-        >
-          ×
-        </button>
-
-        <div class="sidebar-media-modal-stage">
-          <div class="sidebar-media-modal-viewer">
-            {hasMultiple && (
-              <button
-                type="button"
-                class="sidebar-media-nav sidebar-media-modal-nav sidebar-media-modal-nav-prev"
-                data-sidebar-media-modal-prev
-                aria-label="Previous image"
-              >
-                ‹
-              </button>
-            )}
 
             {slides.map((slide, index) => (
-              <figure
-                class:list={["sidebar-media-modal-slide", index !== 0 && "hidden"]}
-                data-sidebar-media-modal-slide
-                aria-hidden={index === 0 ? "false" : "true"}
+              <p
+                class:list={[
+                  "sidebar-media-modal-caption",
+                  (index !== 0 || !(slide.attributionUrl && slide.title)) &&
+                    "hidden",
+                ]}
+                data-sidebar-media-modal-caption
+                aria-hidden={
+                  index === 0 && slide.attributionUrl && slide.title
+                    ? "false"
+                    : "true"
+                }
               >
-                <Image
-                  src={slide.image}
-                  alt={slide.alt}
-                  class="sidebar-media-modal-image"
-                />
-              </figure>
+                {slide.attributionUrl && slide.title ? (
+                  <a
+                    href={slide.attributionUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {slide.title}
+                  </a>
+                ) : null}
+              </p>
             ))}
-
-            {hasMultiple && (
-              <button
-                type="button"
-                class="sidebar-media-nav sidebar-media-modal-nav sidebar-media-modal-nav-next"
-                data-sidebar-media-modal-next
-                aria-label="Next image"
-              >
-                ›
-              </button>
-            )}
           </div>
-
-          {slides.map((slide, index) => (
-            <p
-              class:list={[
-                "sidebar-media-modal-caption",
-                (index !== 0 || !(slide.attributionUrl && slide.title)) && "hidden",
-              ]}
-              data-sidebar-media-modal-caption
-              aria-hidden={
-                index === 0 && slide.attributionUrl && slide.title ? "false" : "true"
-              }
-            >
-              {slide.attributionUrl && slide.title ? (
-                <a
-                  href={slide.attributionUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {slide.title}
-                </a>
-              ) : null}
-            </p>
-          ))}
         </div>
       </div>
     </div>
-  </div>
-)}
+  )
+}
 
 <script is:inline>
-function initSidebarMedia(root) {
-  const stage = root.querySelector("[data-sidebar-media-stage]");
-  const slides = Array.from(
-    root.querySelectorAll("[data-sidebar-media-slide]"),
-  );
-  const modalSlides = Array.from(
-    root.querySelectorAll("[data-sidebar-media-modal-slide]"),
-  );
-  const modalCaptions = Array.from(
-    root.querySelectorAll("[data-sidebar-media-modal-caption]"),
-  );
-  const dots = Array.from(root.querySelectorAll("[data-sidebar-media-dot]"));
-  const openButtons = Array.from(
-    root.querySelectorAll("[data-sidebar-media-open]"),
-  );
-  const dialog = root.querySelector("[data-sidebar-media-dialog]");
-  const modalPanel = root.querySelector("[data-sidebar-media-modal-panel]");
-  const closeButton = root.querySelector("[data-sidebar-media-close]");
-  const prevButton = root.querySelector("[data-sidebar-media-prev]");
-  const nextButton = root.querySelector("[data-sidebar-media-next]");
-  const modalPrevButton = root.querySelector("[data-sidebar-media-modal-prev]");
-  const modalNextButton = root.querySelector("[data-sidebar-media-modal-next]");
-  if (!stage || !dialog) return;
-
-  let index = 0;
-  let isKeyboardInteraction = false;
-  let isModalOpen = false;
-  let lastTrigger = null;
-  let previousBodyOverflow = "";
-
-  const isEscapeKey = (event) =>
-    event.key === "Escape" || event.key === "Esc" || event.keyCode === 27;
-
-  const syncControlsVisible = () => {
-    const activeElement = document.activeElement;
-    const hasFocus =
-      activeElement instanceof Node && stage.contains(activeElement);
-    const hasKeyboardFocus = isKeyboardInteraction && hasFocus;
-    const isHovered = stage.matches(":hover");
-
-    stage.setAttribute(
-      "data-controls-visible",
-      hasKeyboardFocus || isHovered ? "true" : "false",
+  function initSidebarMedia(root) {
+    const stage = root.querySelector("[data-sidebar-media-stage]");
+    const slides = Array.from(
+      root.querySelectorAll("[data-sidebar-media-slide]"),
     );
-  };
+    const modalSlides = Array.from(
+      root.querySelectorAll("[data-sidebar-media-modal-slide]"),
+    );
+    const modalCaptions = Array.from(
+      root.querySelectorAll("[data-sidebar-media-modal-caption]"),
+    );
+    const dots = Array.from(root.querySelectorAll("[data-sidebar-media-dot]"));
+    const openButtons = Array.from(
+      root.querySelectorAll("[data-sidebar-media-open]"),
+    );
+    const dialog = root.querySelector("[data-sidebar-media-dialog]");
+    const modalPanel = root.querySelector("[data-sidebar-media-modal-panel]");
+    const closeButton = root.querySelector("[data-sidebar-media-close]");
+    const prevButton = root.querySelector("[data-sidebar-media-prev]");
+    const nextButton = root.querySelector("[data-sidebar-media-next]");
+    const modalPrevButton = root.querySelector(
+      "[data-sidebar-media-modal-prev]",
+    );
+    const modalNextButton = root.querySelector(
+      "[data-sidebar-media-modal-next]",
+    );
+    if (!stage || !dialog) return;
 
-  const render = () => {
-    slides.forEach((slide, slideIndex) => {
-      const active = slideIndex === index;
-      slide.classList.toggle("hidden", !active);
-      slide.setAttribute("aria-hidden", active ? "false" : "true");
+    let index = 0;
+    let isKeyboardInteraction = false;
+    let isModalOpen = false;
+    let lastTrigger = null;
+    let previousBodyOverflow = "";
+
+    const isEscapeKey = (event) =>
+      event.key === "Escape" || event.key === "Esc" || event.keyCode === 27;
+
+    const syncControlsVisible = () => {
+      const activeElement = document.activeElement;
+      const hasFocus =
+        activeElement instanceof Node && stage.contains(activeElement);
+      const hasKeyboardFocus = isKeyboardInteraction && hasFocus;
+      const isHovered = stage.matches(":hover");
+
+      stage.setAttribute(
+        "data-controls-visible",
+        hasKeyboardFocus || isHovered ? "true" : "false",
+      );
+    };
+
+    const render = () => {
+      slides.forEach((slide, slideIndex) => {
+        const active = slideIndex === index;
+        slide.classList.toggle("hidden", !active);
+        slide.setAttribute("aria-hidden", active ? "false" : "true");
+      });
+
+      modalSlides.forEach((slide, slideIndex) => {
+        const active = slideIndex === index;
+        slide.classList.toggle("hidden", !active);
+        slide.setAttribute("aria-hidden", active ? "false" : "true");
+      });
+
+      modalCaptions.forEach((caption, captionIndex) => {
+        const active = captionIndex === index;
+        const hasText = Boolean(caption.textContent?.trim());
+        const shouldShow = active && hasText;
+        caption.classList.toggle("hidden", !shouldShow);
+        caption.setAttribute("aria-hidden", shouldShow ? "false" : "true");
+      });
+
+      dots.forEach((dot, dotIndex) => {
+        const active = dotIndex === index;
+        dot.classList.toggle("sidebar-media-dot-active", active);
+        dot.setAttribute("aria-current", active ? "true" : "false");
+      });
+    };
+
+    const openModal = (nextIndex, trigger) => {
+      index = nextIndex;
+      lastTrigger = trigger ?? null;
+      render();
+      if (isModalOpen) return;
+
+      isModalOpen = true;
+      previousBodyOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      dialog.hidden = false;
+      closeButton?.focus();
+    };
+
+    const closeModal = () => {
+      if (!isModalOpen) return;
+
+      isModalOpen = false;
+      dialog.hidden = true;
+      document.body.style.overflow = previousBodyOverflow;
+      if (lastTrigger instanceof HTMLElement) {
+        lastTrigger.focus();
+      }
+    };
+
+    prevButton?.addEventListener("click", () => {
+      index = (index - 1 + slides.length) % slides.length;
+      render();
     });
 
-    modalSlides.forEach((slide, slideIndex) => {
-      const active = slideIndex === index;
-      slide.classList.toggle("hidden", !active);
-      slide.setAttribute("aria-hidden", active ? "false" : "true");
+    nextButton?.addEventListener("click", () => {
+      index = (index + 1) % slides.length;
+      render();
     });
 
-    modalCaptions.forEach((caption, captionIndex) => {
-      const active = captionIndex === index;
-      const hasText = Boolean(caption.textContent?.trim());
-      const shouldShow = active && hasText;
-      caption.classList.toggle("hidden", !shouldShow);
-      caption.setAttribute("aria-hidden", shouldShow ? "false" : "true");
+    modalPrevButton?.addEventListener("click", () => {
+      index = (index - 1 + slides.length) % slides.length;
+      render();
+    });
+
+    modalNextButton?.addEventListener("click", () => {
+      index = (index + 1) % slides.length;
+      render();
     });
 
     dots.forEach((dot, dotIndex) => {
-      const active = dotIndex === index;
-      dot.classList.toggle("sidebar-media-dot-active", active);
-      dot.setAttribute("aria-current", active ? "true" : "false");
+      dot.addEventListener("click", () => {
+        index = dotIndex;
+        render();
+      });
     });
-  };
 
-  const openModal = (nextIndex, trigger) => {
-    index = nextIndex;
-    lastTrigger = trigger ?? null;
-    render();
-    if (isModalOpen) return;
-
-    isModalOpen = true;
-    previousBodyOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    dialog.hidden = false;
-    closeButton?.focus();
-  };
-
-  const closeModal = () => {
-    if (!isModalOpen) return;
-
-    isModalOpen = false;
-    dialog.hidden = true;
-    document.body.style.overflow = previousBodyOverflow;
-    if (lastTrigger instanceof HTMLElement) {
-      lastTrigger.focus();
-    }
-  };
-
-  prevButton?.addEventListener("click", () => {
-    index = (index - 1 + slides.length) % slides.length;
-    render();
-  });
-
-  nextButton?.addEventListener("click", () => {
-    index = (index + 1) % slides.length;
-    render();
-  });
-
-  modalPrevButton?.addEventListener("click", () => {
-    index = (index - 1 + slides.length) % slides.length;
-    render();
-  });
-
-  modalNextButton?.addEventListener("click", () => {
-    index = (index + 1) % slides.length;
-    render();
-  });
-
-  dots.forEach((dot, dotIndex) => {
-    dot.addEventListener("click", () => {
-      index = dotIndex;
-      render();
+    openButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const indexValue = Number.parseInt(
+          button.getAttribute("data-sidebar-media-open-index") ?? "0",
+          10,
+        );
+        openModal(Number.isNaN(indexValue) ? 0 : indexValue, button);
+      });
     });
-  });
 
-  openButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const indexValue = Number.parseInt(
-        button.getAttribute("data-sidebar-media-open-index") ?? "0",
-        10,
-      );
-      openModal(Number.isNaN(indexValue) ? 0 : indexValue, button);
+    root.addEventListener("keydown", () => {
+      isKeyboardInteraction = true;
+      syncControlsVisible();
     });
-  });
 
-  root.addEventListener("keydown", () => {
-    isKeyboardInteraction = true;
-    syncControlsVisible();
-  });
+    root.addEventListener("pointerdown", () => {
+      isKeyboardInteraction = false;
+      syncControlsVisible();
+    });
 
-  root.addEventListener("pointerdown", () => {
-    isKeyboardInteraction = false;
-    syncControlsVisible();
-  });
+    const handleEscape = (event) => {
+      if (isModalOpen && isEscapeKey(event)) {
+        event.preventDefault();
+        event.stopPropagation();
+        closeModal();
+      }
+    };
 
-  const handleEscape = (event) => {
-    if (isModalOpen && isEscapeKey(event)) {
-      event.preventDefault();
-      event.stopPropagation();
+    window.addEventListener("keydown", handleEscape, true);
+    document.addEventListener("keydown", handleEscape);
+
+    stage.addEventListener("focusin", () => {
+      syncControlsVisible();
+    });
+
+    stage.addEventListener("focusout", (event) => {
+      const nextFocused = event.relatedTarget;
+      if (nextFocused instanceof Node && stage.contains(nextFocused)) {
+        return;
+      }
+
+      syncControlsVisible();
+    });
+
+    stage.addEventListener("mouseenter", () => {
+      syncControlsVisible();
+    });
+
+    stage.addEventListener("mouseleave", () => {
+      syncControlsVisible();
+    });
+
+    closeButton?.addEventListener("click", () => {
       closeModal();
-    }
-  };
+    });
 
-  window.addEventListener("keydown", handleEscape, true);
-  document.addEventListener("keydown", handleEscape);
+    modalPanel?.addEventListener("click", (event) => {
+      if (event.target === modalPanel) {
+        closeModal();
+      }
+    });
 
-  stage.addEventListener("focusin", () => {
-    syncControlsVisible();
-  });
+    render();
+  }
 
-  stage.addEventListener("focusout", (event) => {
-    const nextFocused = event.relatedTarget;
-    if (nextFocused instanceof Node && stage.contains(nextFocused)) {
-      return;
-    }
-
-    syncControlsVisible();
-  });
-
-  stage.addEventListener("mouseenter", () => {
-    syncControlsVisible();
-  });
-
-  stage.addEventListener("mouseleave", () => {
-    syncControlsVisible();
-  });
-
-  closeButton?.addEventListener("click", () => {
-    closeModal();
-  });
-
-  modalPanel?.addEventListener("click", (event) => {
-    if (event.target === modalPanel) {
-      closeModal();
-    }
-  });
-
-  render();
-}
-
-for (const root of document.querySelectorAll("[data-sidebar-media]")) {
-  initSidebarMedia(root);
-}
+  for (const root of document.querySelectorAll("[data-sidebar-media]")) {
+    initSidebarMedia(root);
+  }
 </script>
 
 <style>
-.sidebar-media-stage {
-  overflow: hidden;
-}
+  .sidebar-media-stage {
+    overflow: hidden;
+  }
 
-.sidebar-media-image-button {
-  cursor: zoom-in;
-  display: block;
-  width: 100%;
-}
+  .sidebar-media-image-button {
+    cursor: zoom-in;
+    display: block;
+    width: 100%;
+  }
 
-.sidebar-media-stage:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.75);
-  outline-offset: 2px;
-}
+  .sidebar-media-stage:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.75);
+    outline-offset: 2px;
+  }
 
-.sidebar-media-slide {
-  position: relative;
-}
+  .sidebar-media-slide {
+    position: relative;
+  }
 
-.sidebar-media-nav {
-  align-items: center;
-  background: rgba(17, 24, 39, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 9999px;
-  color: white;
-  display: flex;
-  font-size: 1.25rem;
-  height: 2rem;
-  justify-content: center;
-  position: absolute;
-  top: calc(50% - 1rem);
-  width: 2rem;
-}
+  .sidebar-media-nav {
+    align-items: center;
+    background: rgba(17, 24, 39, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    color: white;
+    display: flex;
+    font-size: 1.25rem;
+    height: 2rem;
+    justify-content: center;
+    position: absolute;
+    top: calc(50% - 1rem);
+    width: 2rem;
+  }
 
-.sidebar-media-nav-prev {
-  left: 0.5rem;
-}
+  .sidebar-media-nav-prev {
+    left: 0.5rem;
+  }
 
-.sidebar-media-nav-next {
-  right: 0.5rem;
-}
+  .sidebar-media-nav-next {
+    right: 0.5rem;
+  }
 
-.sidebar-media-dots {
-  display: flex;
-  bottom: 0.75rem;
-  justify-content: center;
-  left: 0;
-  position: absolute;
-  right: 0;
-  z-index: 1;
-}
+  .sidebar-media-dots {
+    display: flex;
+    bottom: 0.75rem;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+  }
 
-.sidebar-media-attribution svg {
-  height: 0.95rem;
-  width: 0.95rem;
-}
+  .sidebar-media-attribution svg {
+    height: 0.95rem;
+    width: 0.95rem;
+  }
 
-.sidebar-media-stage[data-controls-visible="false"] .sidebar-media-nav,
-.sidebar-media-stage[data-controls-visible="false"] .sidebar-media-dots {
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-}
+  .sidebar-media-stage[data-controls-visible="false"] .sidebar-media-nav,
+  .sidebar-media-stage[data-controls-visible="false"] .sidebar-media-dots {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
 
-.sidebar-media-stage[data-controls-visible="true"] .sidebar-media-nav,
-.sidebar-media-stage[data-controls-visible="true"] .sidebar-media-dots {
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
-}
+  .sidebar-media-stage[data-controls-visible="true"] .sidebar-media-nav,
+  .sidebar-media-stage[data-controls-visible="true"] .sidebar-media-dots {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
 
-.sidebar-media-nav,
-.sidebar-media-dots {
-  transition:
-    opacity 150ms ease,
-    visibility 150ms ease;
-}
+  .sidebar-media-nav,
+  .sidebar-media-dots {
+    transition:
+      opacity 150ms ease,
+      visibility 150ms ease;
+  }
 
-.sidebar-media-modal {
-  background: rgba(3, 7, 18, 0.78);
-  border: 0;
-  height: 100vh;
-  inset: 0;
-  margin: 0;
-  max-height: none;
-  max-width: none;
-  padding: 0;
-  position: fixed;
-  width: 100vw;
-  z-index: 1000;
-}
+  .sidebar-media-modal {
+    background: rgba(3, 7, 18, 0.78);
+    border: 0;
+    height: 100vh;
+    inset: 0;
+    margin: 0;
+    max-height: none;
+    max-width: none;
+    padding: 0;
+    position: fixed;
+    width: 100vw;
+    z-index: 1000;
+  }
 
-.sidebar-media-modal[hidden] {
-  display: none;
-}
+  .sidebar-media-modal[hidden] {
+    display: none;
+  }
 
-.sidebar-media-modal-panel {
-  align-items: center;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  padding: 2rem;
-  position: relative;
-  width: 100%;
-}
+  .sidebar-media-modal-panel {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    width: 100%;
+  }
 
-.sidebar-media-modal-stage {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  max-height: 100%;
-  max-width: 100%;
-  position: relative;
-}
+  .sidebar-media-modal-stage {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 100%;
+    max-width: 100%;
+    position: relative;
+  }
 
-.sidebar-media-modal-viewer {
-  align-items: stretch;
-  column-gap: 0.75rem;
-  display: grid;
-  grid-template-columns: 3rem minmax(0, auto) 3rem;
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
-}
+  .sidebar-media-modal-viewer {
+    align-items: stretch;
+    column-gap: 0.75rem;
+    display: grid;
+    grid-template-columns: 3rem minmax(0, auto) 3rem;
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+  }
 
-.sidebar-media-modal-slide {
-  grid-column: 2;
-  justify-self: center;
-  position: relative;
-}
+  .sidebar-media-modal-slide {
+    grid-column: 2;
+    justify-self: center;
+    position: relative;
+  }
 
-.sidebar-media-modal-slide:not(.hidden) {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  justify-content: center;
-}
+  .sidebar-media-modal-slide:not(.hidden) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: center;
+  }
 
-.sidebar-media-modal-image {
-  display: block;
-  height: auto;
-  max-height: 88vh;
-  max-width: 92vw;
-  width: auto;
-}
+  .sidebar-media-modal-image {
+    display: block;
+    height: auto;
+    max-height: 88vh;
+    max-width: 92vw;
+    width: auto;
+  }
 
-.sidebar-media-modal-caption {
-  color: rgba(226, 232, 240, 0.92);
-  font-size: 0.875rem;
-  line-height: 1.4;
-  max-width: min(92vw, 48rem);
-  min-height: 1.25rem;
-  text-align: center;
-}
+  .sidebar-media-modal-caption {
+    color: rgba(226, 232, 240, 0.92);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    max-width: min(92vw, 48rem);
+    min-height: 1.25rem;
+    text-align: center;
+  }
 
-.sidebar-media-modal-caption a {
-  text-decoration: underline;
-  text-underline-offset: 0.14em;
-}
+  .sidebar-media-modal-caption a {
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
+  }
 
-.sidebar-media-modal-close {
-  align-items: center;
-  background: rgba(17, 24, 39, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 9999px;
-  color: white;
-  display: flex;
-  font-size: 1.5rem;
-  height: 2.25rem;
-  justify-content: center;
-  position: absolute;
-  right: 0.75rem;
-  top: 0.75rem;
-  width: 2.25rem;
-  z-index: 20;
-}
+  .sidebar-media-modal-close {
+    align-items: center;
+    background: rgba(17, 24, 39, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    color: white;
+    display: flex;
+    font-size: 1.5rem;
+    height: 2.25rem;
+    justify-content: center;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    width: 2.25rem;
+    z-index: 20;
+  }
 
-.sidebar-media-modal-nav {
-  align-items: center;
-  align-self: stretch;
-  background: rgba(17, 24, 39, 0.42);
-  border-color: rgba(255, 255, 255, 0.12);
-  border-radius: 0.75rem;
-  display: flex;
-  font-size: 1.75rem;
-  height: 100%;
-  opacity: 1;
-  pointer-events: auto;
-  position: static;
-  top: auto;
-  visibility: visible;
-  width: 3rem;
-}
+  .sidebar-media-modal-nav {
+    align-items: center;
+    align-self: stretch;
+    background: rgba(17, 24, 39, 0.42);
+    border-color: rgba(255, 255, 255, 0.12);
+    border-radius: 0.75rem;
+    display: flex;
+    font-size: 1.75rem;
+    height: 100%;
+    opacity: 1;
+    pointer-events: auto;
+    position: static;
+    top: auto;
+    visibility: visible;
+    width: 3rem;
+  }
 
-.sidebar-media-modal-nav-prev {
-  grid-column: 1;
-}
+  .sidebar-media-modal-nav-prev {
+    grid-column: 1;
+  }
 
-.sidebar-media-modal-nav-next {
-  grid-column: 3;
-}
+  .sidebar-media-modal-nav-next {
+    grid-column: 3;
+  }
 
-.sidebar-media-modal-nav,
-.sidebar-media-modal-nav-prev,
-.sidebar-media-modal-nav-next {
-  pointer-events: auto;
-  visibility: visible;
-}
+  .sidebar-media-modal-nav,
+  .sidebar-media-modal-nav-prev,
+  .sidebar-media-modal-nav-next {
+    pointer-events: auto;
+    visibility: visible;
+  }
 
-.sidebar-media-dots-inner {
-  align-items: center;
-  background: rgba(17, 24, 39, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 9999px;
-  display: inline-flex;
-  gap: 0.5rem;
-  justify-content: center;
-  padding: 0.35rem 0.55rem;
-}
+  .sidebar-media-dots-inner {
+    align-items: center;
+    background: rgba(17, 24, 39, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 9999px;
+    display: inline-flex;
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 0.35rem 0.55rem;
+  }
 
-.sidebar-media-dot {
-  background: rgba(226, 232, 240, 0.75);
-  border: 0;
-  border-radius: 9999px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
-  height: 0.5rem;
-  transition: background-color 150ms ease;
-  width: 0.5rem;
-}
+  .sidebar-media-dot {
+    background: rgba(226, 232, 240, 0.75);
+    border: 0;
+    border-radius: 9999px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+    height: 0.5rem;
+    transition: background-color 150ms ease;
+    width: 0.5rem;
+  }
 
-.sidebar-media-dot-active {
-  background: rgba(255, 255, 255, 0.95);
-}
+  .sidebar-media-dot-active {
+    background: rgba(255, 255, 255, 0.95);
+  }
 </style>
