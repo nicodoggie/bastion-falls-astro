@@ -50,12 +50,12 @@ if (character?.details?.species) {
           const entry = await getEntry("species", sluggedName);
           return { name, entry };
         }
-        throw new Error(`Species ${name} has no slugged name`);
+        return { name };
       }),
     )
   )
     .map((settled) => (settled.status === "fulfilled" ? settled.value : null))
-    .filter((s): s is SpeciesData => s !== null && s.entry !== undefined);
+    .filter((s): s is SpeciesData => s !== null);
 }
 
 interface Relative {
@@ -261,11 +261,15 @@ if (character?.relationships?.families) {
     {character.details?.species && species && (
           <SidebarDetail label="Species">
               <ul>
-                {species.map((s: SpeciesData) => s.entry && (
+                {species.map((s: SpeciesData) => (
                   <li>
-                    <a href={`/world/species/${s.entry.id}`}>
-                      {(s.entry.data as { title: string }).title}
-                    </a>
+                    {s.entry ? (
+                      <a href={`/world/species/${s.entry.id}`}>
+                        {(s.entry.data as { title: string }).title}
+                      </a>
+                    ) : (
+                      s.name
+                    )}
                   </li>
                 ))}
               </ul>
