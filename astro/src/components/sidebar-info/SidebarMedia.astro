@@ -68,8 +68,6 @@ const hasMultiple = slides.length > 1;
       data-sidebar-media-stage
       data-controls-visible={hasMultiple ? "false" : undefined}
       tabindex={hasMultiple ? 0 : undefined}
-      role={hasMultiple ? "group" : undefined}
-      aria-label={hasMultiple ? "Image gallery" : undefined}
     >
       {slides.map((slide, index) => (
         <figure
@@ -111,6 +109,7 @@ const hasMultiple = slides.length > 1;
                 <path d="M7 17 17 7" />
                 <path d="M8 7h9v9" />
               </svg>
+              <span class="sr-only">Open image attribution: {slide.title}</span>
             </a>
           )}
         </figure>
@@ -134,7 +133,7 @@ const hasMultiple = slides.length > 1;
           >
             ›
           </button>
-          <div class="sidebar-media-dots" aria-label="Image selection">
+          <div class="sidebar-media-dots">
             <div class="sidebar-media-dots-inner">
               {slides.map((_, index) => (
                 <button
@@ -403,10 +402,7 @@ function initSidebarMedia(root) {
 
   stage.addEventListener("focusout", (event) => {
     const nextFocused = event.relatedTarget;
-    if (
-      nextFocused instanceof Node &&
-      stage.contains(nextFocused)
-    ) {
+    if (nextFocused instanceof Node && stage.contains(nextFocused)) {
       return;
     }
 
