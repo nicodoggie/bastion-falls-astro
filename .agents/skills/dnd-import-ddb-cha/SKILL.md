@@ -95,8 +95,20 @@ human judgment.
      quote wholesale, unless the user explicitly requests verbatim text.
 1. Merge into MDX carefully.
    - Update safe mechanical fields: `character.ddb`, `character.stats`,
-     `character.speed`, and concise prose summary of class/level, AC, max HP,
-     speed, senses, and languages.
+     `character.speed`, and other structured metadata where supported. Keep
+     game abstractions in frontmatter, import artifacts, or the final response;
+     do not turn them into article prose.
+   - Do not mention character class/level, AC, HP, raw ability scores,
+     proficiency, saving throws, or numeric speed in article prose. The world
+     does not have a LitRPG conceit. Translate only observable traits into
+     diegetic language, such as “quick,” “heavily armored,” “hardy,” “watchful,”
+     “trained in swordplay,” or “known to speak Elvish.”
+   - If a new or stub article has sparse lore, mechanical stats may be used as
+     private scaffolding for placeholder description, but the result must read
+     like cautious biographical prose rather than converted game data. Write
+     modest, observable descriptions such as “broad-shouldered,” “quick-handed,”
+     “studious,” “watchful,” “plain-spoken,” or “commanding,” and avoid implying
+     that numbers, classes, or player abstractions exist in-world.
    - Do not blindly overwrite lore fields such as `details.species`,
      `details.sex`, `details.pronouns`, `mortality`, relationships,
      organizations, aliases, dates, or biography. DDB race/species may reflect
@@ -112,6 +124,9 @@ human judgment.
      as “campaign notes,” “D&D Beyond sheet,” “DDB notes,” “player notes,”
      “session notes,” “the sheet lists,” or “mechanically.” Keep those details
      in frontmatter, import artifacts, or the final response instead.
+   - Do not describe someone as being “in the campaign” or “associated with
+     the campaign” in article prose; campaign names belong in tags/frontmatter
+     or final status, not in-world biography.
    - Recast source uncertainty diegetically. Use phrases such as “records
      describe,” “accounts portray,” “is said to,” “appears to have,” “some
      records use,” or “is associated with” instead of naming the real-world
