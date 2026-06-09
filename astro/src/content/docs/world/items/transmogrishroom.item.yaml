@@ -1,0 +1,29 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Transmogrishroom
+source: BF
+type: wondrous item
+rarity: rare
+wondrous: true
+entries:
+  - >-
+    This strange mushroom carries unstable transformative magic. Its cap shifts through colors and
+    silhouettes that suggest many thinking peoples at once.
+  - >-
+    **Consumable.** As an action, a creature can eat the entire mushroom. The creature immediately
+    transforms into a random sapient creature chosen or rolled by the GM from peoples that exist in
+    the setting. The new form is a physical transformation, not an illusion.
+  - >-
+    The transformed creature retains its memories, personality, alignment, class levels, hit points,
+    proficiencies, and ability scores unless the GM decides the new anatomy makes a trait
+    impossible to use. The creature gains the ordinary physical traits of the new kind, such as size,
+    basic movement, natural appearance, and languages or senses the GM considers inherent to that
+    body.
+  - >-
+    **Duration.** Roll d100 when the mushroom is eaten: on a 01-40, the transformation lasts 1d6
+    hours; on a 41-75, it lasts 1d6 days; on a 76-95, it lasts 1d6 months; on a 96-99, it lasts
+    until ended by Remove Curse, Greater Restoration, Wish, or comparable magic; on a 100, the
+    transformation is permanent and can be undone only by Wish or similarly powerful magic.
+  - >-
+    A creature transformed by a Transmogrishroom can be transformed by another Transmogrishroom, but
+    the new result replaces the previous transformation rather than layering with it.
