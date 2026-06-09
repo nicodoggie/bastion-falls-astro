@@ -147,7 +147,7 @@ export default defineConfig({
         "./src/components/SeeAlso.astro",
         "./src/components/VehicleStatBlock.astro",
         "./src/components/Redirect.astro",
-        "./src/components/EventInfoCard.astro",
+        "./src/components/SettingCard.astro",
       ],
     }),
     mdx({
