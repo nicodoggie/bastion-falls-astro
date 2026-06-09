@@ -17,87 +17,85 @@ const details = [
   </div>
 
   <dl class="setting-card__details">
-    {
-      details.map(({ label, value }) => (
+    {details.map(({ label, value }) => (
         <div class="setting-card__detail">
           <dt>{label}</dt>
           <dd>{value}</dd>
         </div>
-      ))
-    }
+      ))}
   </dl>
 </aside>
 
 <style>
+.setting-card {
+  background: linear-gradient(135deg, #10204f, #31205f);
+  border: 1px solid rgba(167, 139, 250, 0.32);
+  border-left: 0.35rem solid #6d5bd0;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.65rem 1.25rem rgba(0, 0, 0, 0.12);
+  margin: 1.5rem 0 1.25rem;
+  overflow: hidden;
+  padding: 1rem 1.1rem;
+}
+
+.setting-card__header {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.setting-card__header::before {
+  background: #a78bfa;
+  border-radius: 999px;
+  content: "";
+  display: block;
+  height: 0.55rem;
+  width: 0.55rem;
+}
+
+.setting-card__eyebrow {
+  color: #c4b5fd;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.setting-card__details {
+  display: grid;
+  gap: 0.8rem 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  margin: 0;
+}
+
+.setting-card__detail {
+  min-width: 0;
+}
+
+.setting-card dt {
+  color: rgba(219, 234, 254, 0.72);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.2rem;
+  text-transform: uppercase;
+}
+
+.setting-card dd {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 35rem) {
   .setting-card {
-    background: linear-gradient(135deg, #10204f, #31205f);
-    border: 1px solid rgba(167, 139, 250, 0.32);
-    border-left: 0.35rem solid #6d5bd0;
-    border-radius: 0.5rem;
-    box-shadow: 0 0.65rem 1.25rem rgba(0, 0, 0, 0.12);
-    margin: 1.5rem 0 1.25rem;
-    overflow: hidden;
-    padding: 1rem 1.1rem;
+    padding: 0.9rem 1rem;
   }
-
-  .setting-card__header {
-    align-items: center;
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .setting-card__header::before {
-    background: #a78bfa;
-    border-radius: 999px;
-    content: "";
-    display: block;
-    height: 0.55rem;
-    width: 0.55rem;
-  }
-
-  .setting-card__eyebrow {
-    color: #c4b5fd;
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    line-height: 1;
-    margin: 0;
-    text-transform: uppercase;
-  }
-
-  .setting-card__details {
-    display: grid;
-    gap: 0.8rem 1.25rem;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    margin: 0;
-  }
-
-  .setting-card__detail {
-    min-width: 0;
-  }
-
-  .setting-card dt {
-    color: rgba(219, 234, 254, 0.72);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    margin: 0 0 0.2rem;
-    text-transform: uppercase;
-  }
-
-  .setting-card dd {
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.35;
-    margin: 0;
-    overflow-wrap: anywhere;
-  }
-
-  @media (max-width: 35rem) {
-    .setting-card {
-      padding: 0.9rem 1rem;
-    }
-  }
+}
 </style>
