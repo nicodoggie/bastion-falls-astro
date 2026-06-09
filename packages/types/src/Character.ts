@@ -10,7 +10,6 @@ const AlignmentSchema = z.object({
 
 const MortalityEnum = z.enum(["alive", "dead", "undead", "unknown"]);
 
-
 const SexOrganTypeSchema = z.object({
   type: z.enum(["penis", "vagina", "breasts", "unknown"]),
 })
@@ -181,7 +180,7 @@ export const CharacterRelationshipsSchema = z.object({
 export const CharacterSchema = z.object({
   name: z.string(),
   ddb: z.url().optional(),
-  image: ImageSchema.optional(),
+  image: (ImageSchema.or(ImageSchema.array())).optional(),
   stats: BaseStatsSchema.optional(),
   speed: SpeedSchema.optional(),
   background: CharacterBackgroundSchema.optional(),

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ImageSchema } from "./Image.js";
 
 const EventType = z.enum([
   "conference",
@@ -21,6 +22,7 @@ const EventType = z.enum([
 
 export const EventSchema = z.object({
   name: z.string(),
+  image: ImageSchema.or(ImageSchema.array()).optional(),
   dateStarted: z.string().optional(),
   dateEnded: z.string().optional(),
   type: EventType.or(z.string()).optional(),

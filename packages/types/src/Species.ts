@@ -3,7 +3,7 @@ import { ImageSchema } from './Image.js';
 
 export const SpeciesSchema = z.object({
   name: z.string(),
-  image: ImageSchema.optional(),
+  image: ImageSchema.or(ImageSchema.array()).optional(),
   type: z.string().optional(),
   origin: z.string().optional(),
   locations: z.array(z.string()).optional(),

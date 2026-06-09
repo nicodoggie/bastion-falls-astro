@@ -1,0 +1,30 @@
+---
+interface Props {
+  label: string;
+  layout?: "inline" | "stacked";
+}
+
+const { label, layout = "inline" } = Astro.props;
+const isStacked = layout === "stacked";
+---
+
+<div
+  class:list={[
+    "py-2",
+    isStacked
+      ? "flex flex-col gap-y-2"
+      : "flex flex-wrap items-start gap-x-3 gap-y-1",
+  ]}
+>
+  <dt class="shrink-0 text-lg font-semibold text-gray-700 dark:text-gray-300">
+    {label}
+  </dt>
+  <dd
+    class:list={[
+      "text-gray-600 dark:text-gray-400",
+      isStacked ? "w-full" : "min-w-0 flex-1 text-right",
+    ]}
+  >
+    <slot />
+  </dd>
+</div>

@@ -1,0 +1,44 @@
+---
+import {
+  buildGenericSidebarRows,
+  type GenericSidebarSubject,
+  getGenericSidebarImage,
+} from "./genericSidebarInfo";
+import SidebarCard from "./SidebarCard.astro";
+import SidebarDetail from "./SidebarDetail.astro";
+import SidebarMedia from "./SidebarMedia.astro";
+
+interface Props {
+  entryFilePath?: string;
+  subject: GenericSidebarSubject;
+}
+
+const { entryFilePath, subject } = Astro.props;
+const image = getGenericSidebarImage(subject.data);
+const rows = buildGenericSidebarRows(subject.data);
+---
+
+<SidebarCard title={subject.title}>
+  {image && (
+    <SidebarMedia
+      slot="image"
+      image={image}
+      entryFilePath={entryFilePath}
+    />
+  )}
+  <dl class="divide-y divide-gray-200 dark:divide-gray-700">
+    {rows.map((row) =>
+      row.kind === "text" ? (
+        <SidebarDetail label={row.label}>{row.text}</SidebarDetail>
+      ) : (
+        <SidebarDetail label={row.label} layout="stacked">
+          <ul class="space-y-1 text-right">
+            {row.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </SidebarDetail>
+      ),
+    )}
+  </dl>
+</SidebarCard>

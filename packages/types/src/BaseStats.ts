@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const BaseStatsSchema = z.object({
+  ac: z.number().positive().optional(),
   size: z.enum(["tiny", "small", "medium", "large", "huge", "gargantuan"]),
   strength: z.number(),
   dexterity: z.number(),

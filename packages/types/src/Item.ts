@@ -3,7 +3,7 @@ import { ImageSchema } from './Image.js';
 
 export const ItemSchema = z.object({
   name: z.string().optional(),
-  image: ImageSchema.optional(),
+  image: ImageSchema.or(ImageSchema.array()).optional(),
   ddb: z.string().url().optional(),
   details: z.object({
     attunement: z.boolean().optional(),

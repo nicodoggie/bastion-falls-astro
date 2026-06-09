@@ -1,5 +1,5 @@
 import { date, z } from 'zod';
-import { BaseImageSchema } from './Image.js';
+import { BaseImageSchema, ImageSchema } from './Image.js';
 
 export const PoliticalLocationTypeSchema = z.enum([
   'capital',
@@ -126,7 +126,7 @@ export const LocationTypeSchema = z.union([
 
 export const BaseLocationSchema = z.object({
   type: LocationTypeSchema,
-  image: BaseImageSchema.optional(),
+  image: ImageSchema.or(ImageSchema.array()).optional(),
   parents: z.array(z.string()).optional(),
   related: z.array(z.string()).optional(),
   aliases: z.array(z.string()).optional(),

@@ -3,8 +3,11 @@ import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 import type { OrganizationMember } from "@bastion-falls/types/Organization";
 import { slug } from "github-slugger";
+import SidebarCard from "./SidebarCard.astro";
+import SidebarDetail from "./SidebarDetail.astro";
+import SidebarMedia from "./SidebarMedia.astro";
 
-const { organization } = Astro.props;
+const { organization, filePath } = Astro.props;
 
 // Get member character entries if they exist
 interface MemberData {
@@ -33,75 +36,41 @@ if (organization?.members) {
 }
 ---
 
-<div
-  class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
->
-  {organization.name && (
-      <div class="mb-2">
-        <div class="flex justify-center items-center border-gray-600">
-          <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
-            {organization.name}
-          </h2>
-        </div>
-        <hr class="border-gray-600" />
-      </div>
-    )}
-
-  <div class="space-y-4">
-    <ul class="divide-y divide-gray-200 dark:divide-gray-700">
-      {organization?.type && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Type
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
+<SidebarCard title={organization.name}>
+  {organization.image && (
+    <SidebarMedia
+      slot="image"
+      image={organization.image}
+      entryFilePath={filePath}
+    />
+  )}
+  <dl class="divide-y divide-gray-200 dark:divide-gray-700">
+    {organization?.type && (
+          <SidebarDetail label="Type">
               {organization.type.charAt(0).toUpperCase() + organization.type.slice(1)}
-            </p>
-          </li>
+          </SidebarDetail>
         )}
 
-      {organization?.founded && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Founded
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
-              {organization.founded}
-            </p>
-          </li>
+    {organization?.founded && (
+          <SidebarDetail label="Founded">{organization.founded}</SidebarDetail>
         )}
 
-      {organization?.dissolved && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Dissolved
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
-              {organization.dissolved}
-            </p>
-          </li>
+    {organization?.dissolved && (
+          <SidebarDetail label="Dissolved">{organization.dissolved}</SidebarDetail>
         )}
 
-      {organization?.headquarters && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Headquarters
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400">
-              {organization.headquarters}
-            </p>
-          </li>
+    {organization?.headquarters && (
+          <SidebarDetail label="Headquarters">
+            {organization.headquarters}
+          </SidebarDetail>
         )}
 
-      {members && members.length > 0 && (
-          <li class="py-2">
-            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Members
-            </h3>
-            <ul class="text-gray-600 dark:text-gray-400">
+    {members && members.length > 0 && (
+          <SidebarDetail label="Members" layout="stacked">
+            <ul class="space-y-1 text-right text-gray-600 dark:text-gray-400">
               {members.map((member: MemberData) => (
                 <li>
-                  <a href={`/characters/${member.entry?.id}`}>
+                  <a href={`/world/characters/${member.entry?.id}`}>
                     {(member.entry?.data as { title?: string } | undefined)?.title ||
                       member.name}
                     {member.type && ` (${member.type})`}
@@ -109,8 +78,7 @@ if (organization?.members) {
                 </li>
               ))}
             </ul>
-          </li>
+          </SidebarDetail>
         )}
-    </ul>
-  </div>
-</div>
+  </dl>
+</SidebarCard>

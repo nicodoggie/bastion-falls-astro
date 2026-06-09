@@ -1,0 +1,40 @@
+---
+interface Props {
+  href?: string;
+  title?: string;
+}
+
+const { href, title } = Astro.props;
+---
+
+<div
+  class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
+>
+  {title && (
+    <div class="mb-2">
+      <div class="flex justify-center items-center border-gray-600">
+        {href ? (
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            <h2
+              class="text-xl text-center font-bold text-gray-900 dark:text-white"
+              style="display: inline-block;"
+            >
+              {title}<slot name="title-suffix" />
+            </h2>
+          </a>
+        ) : (
+          <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
+            {title}<slot name="title-suffix" />
+          </h2>
+        )}
+      </div>
+      <hr class="border-gray-600" />
+    </div>
+  )}
+
+  <slot name="image" />
+
+  <div class="space-y-4">
+    <slot />
+  </div>
+</div>

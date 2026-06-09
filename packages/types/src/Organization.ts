@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { ImageSchema } from './Image.js';
 
 const OrganizationTypeSchema = z.enum([
   'revolutionary',
@@ -31,6 +32,7 @@ export const OrganizationMemberSchema = z.object({
 
 export const OrganizationSchema = z.object({
   name: z.string().optional(),
+  image: ImageSchema.or(ImageSchema.array()).optional(),
   type: OrganizationTypeSchema.or(z.string()).optional(),
   founded: z.string().optional(),
   dissolved: z.string().optional(),

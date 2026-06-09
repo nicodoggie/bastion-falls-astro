@@ -3,12 +3,15 @@ import { type CollectionEntry, getEntry } from "astro:content";
 import type {
   CharacterFamily,
   CharacterOrganization,
-  CharacterSexOrgan,
 } from "@bastion-falls/types/Character";
 import { slug } from "github-slugger";
-import SidebarImage from "./SidebarImage.astro";
+import CharacterPcStats from "./CharacterPcStats.astro";
+import CharacterSexOrgans from "./CharacterSexOrgans.astro";
+import SidebarCard from "./SidebarCard.astro";
+import SidebarDetail from "./SidebarDetail.astro";
+import SidebarMedia from "./SidebarMedia.astro";
 
-const { character } = Astro.props;
+const { character, filePath } = Astro.props;
 
 let mortalityIcon: string;
 switch (character.details.mortality) {
@@ -137,178 +140,68 @@ if (character?.relationships?.families) {
 }
 ---
 
-<div
-  class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
->
-  {character.name && (
-      <div class="mb-2">
-        <div class="flex justify-center items-center border-gray-600">
-          <a href={character.ddb} target="_blank" rel="noopener noreferrer">
-            <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white" style="display: inline-block;">
-              {character.name}<span class="mortality-icon p-1">{mortalityIcon}</span>
-            </h2>
-          </a>
-        </div>
-        <hr class="border-gray-600" />
-      </div>
-    )}
-  {character.image && <SidebarImage {...character.image} />}
-
-  <div class="space-y-4">
-    <dl class="divide-y divide-gray-200 dark:divide-gray-700">
-      {character.details?.age && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Age
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              {character.details.age}
-            </dd>
-          </div>
+<SidebarCard title={character.name} href={character.ddb}>
+  <span slot="title-suffix" class="mortality-icon p-1">{mortalityIcon}</span>
+  {character.image && (
+    <SidebarMedia slot="image" image={character.image} entryFilePath={filePath} />
+  )}
+  <CharacterPcStats character={character} />
+  <dl class="divide-y divide-gray-200 dark:divide-gray-700">
+    {character.details?.age && (
+          <SidebarDetail label="Age">{character.details.age}</SidebarDetail>
         )}
-      {character.details?.dateOfBirth && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Date of Birth
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              {character.details.dateOfBirth}
-            </dd>
-          </div>
+    {character.details?.dateOfBirth && (
+          <SidebarDetail label="Date of Birth">
+            {character.details.dateOfBirth}
+          </SidebarDetail>
         )}
-      {character.details?.dateOfDeath && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Date of Death
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              {character.details.dateOfDeath}
-            </dd>
-          </div>
+    {character.details?.dateOfDeath && (
+          <SidebarDetail label="Date of Death">
+            {character.details.dateOfDeath}
+          </SidebarDetail>
         )}
-      {character?.details.sex && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Sex
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              {character.details.sex}{character.details.pronouns && ` (${character.details.pronouns})`}
-            </dd>
-          </div>
+    {character?.details.sex && (
+          <SidebarDetail label="Sex">
+            {character.details.sex}{character.details.pronouns && ` (${character.details.pronouns})`}
+          </SidebarDetail>
         )}
-      {character?.details.sexOrgans && character.details.sexOrgans.length > 0 && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Genitalia
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              <dl>
-                {character.details.sexOrgans.map((organ: CharacterSexOrgan) => (
-                  <div
-                   
-                  >
-                    {organ.type === "penis" && (
-                      <div>
-                        Penis
-                        <dl class="ml-4">
-                          {organ.length ? <dt class="pl-2">Length</dt> : null}
-                          {organ.length ? <dd class="pl-4">{organ.length}</dd> : null}
-                          {organ.girth ? <dt class="pl-2">Girth</dt> : null}
-                          {organ.girth ? <dd class="pl-4">{organ.girth}</dd> : null}
-                          {organ.pubicHair?.length ? <dt class="pl-2">Pubic hair length</dt> : null}
-                          {organ.pubicHair?.length ? <dd class="pl-4">{organ.pubicHair.length}</dd> : null}
-                          {organ.pubicHair?.style ? <dt class="pl-2">Pubic hair style</dt> : null}
-                          {organ.pubicHair?.style ? <dd class="pl-4">{organ.pubicHair.style}</dd> : null}
-                          {organ.pubicHair?.color ? <dt class="pl-2">Pubic hair color</dt> : null}
-                          {organ.pubicHair?.color ? <dd class="pl-4">{organ.pubicHair.color}</dd> : null}
-                        </dl>
-                      </div>
-                    )}
-                    {organ.type === "vagina" && (
-                      <div>
-                        Vagina
-                        <dl class="ml-4">
-                          {organ.profile ? <dt class="pl-2">Profile</dt> : null}
-                          {organ.profile ? <dd class="pl-4">{organ.profile.join(', ')}</dd> : null}
-                          {organ.depth ? <dt class="pl-2">Depth</dt> : null}
-                          {organ.depth ? <dd class="pl-4">{organ.depth}</dd> : null}
-                          {organ.elasticity ? <dt class="pl-2">Elasticity</dt> : null}
-                          {organ.elasticity ? <dd class="pl-4">{organ.elasticity}</dd> : null}
-                          {organ.pubicHair ? <dt class="pl-2">Pubic Hair</dt> : null}
-                          {organ.pubicHair?.length ? <dd class="pl-4">Length: {organ.pubicHair.length}</dd> : null}
-                          {organ.pubicHair?.style ? <dd class="pl-4">Style: {organ.pubicHair.style}</dd> : null}
-                          {organ.pubicHair?.color ? <dd class="pl-4">Color: {organ.pubicHair.color}</dd> : null}
-                        </dl>
-                      </div>
-                    )}
-                    {organ.type === "breasts" && (
-                      <div>
-                        Breasts
-                        <dl class="ml-4">
-                          {organ.size ? <dt class="pl-2">Size</dt> : null}
-                          {organ.size ? <dd class="pl-4">{organ.size}</dd> : null}
-                          {organ.nipples ? <dt class="pl-2">Nipples</dt> : null}
-                          {organ.nipples ? <dd class="pl-4">{organ.nipples}</dd> : null}
-                        </dl>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </dl>
-            </dd>
-          </div>
+    {character?.details.sexOrgans && character.details.sexOrgans.length > 0 && (
+          <SidebarDetail label="Genitalia" layout="stacked">
+              <CharacterSexOrgans sexOrgans={character.details.sexOrgans} />
+          </SidebarDetail>
         )}
-      {character.details?.origin && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Origin
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              {character.details.origin}
-            </dd>
-          </div>
+    {character.details?.origin && (
+          <SidebarDetail label="Origin">
+            {character.details.origin}
+          </SidebarDetail>
         )}
-      {character.background?.alignment && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Alignment
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              {character.background.alignment.moral}{' '}
-              {character.background.alignment.law}
-            </dd>
-          </div>
+    {character.background?.alignment && (
+          <SidebarDetail label="Alignment">
+            {character.background.alignment.moral}{' '}
+            {character.background.alignment.law}
+          </SidebarDetail>
         )}
-      {character.details?.aliases && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Known Aliases
-            </dt>
+    {character.details?.aliases && (
+          <SidebarDetail label="Known Aliases">
             { 
               character.details.aliases.length > 0 && character.details.aliases.map((alias: string) => {
                 return (
-                  <dd class="text-gray-600 dark:text-gray-400">
+                  <div>
                     <span data-pagefind-meta="alias">{alias}</span>
-                  </dd>
+                  </div>
                 )
               })
             }
-            
-          </div>
+          </SidebarDetail>
         )}
-      {organizations && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Organizations
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              
-              
+    {organizations && (
+          <SidebarDetail label="Organizations" layout="stacked">
+              <div class="space-y-3 text-right">
                 {organizations.map(
                   ({ positionsHeld, entry, name }) => (
-                    <div>
+                    <div class="space-y-1">
                     <a class="text-gray-600 dark:text-gray-400" href={entry?.id != null ? `/organizations/${entry.id}` : "#"}>{name}</a>
-                    <ul class="ml-4 text-xs">
+                    <ul class="space-y-1 text-xs text-gray-500 dark:text-gray-400">
                       {positionsHeld?.map((position) => (
                         <li>{position.name} {position.from && `(${position.from}`} {position.to && ` - ${position.to})`}</li>
                       ))}
@@ -316,38 +209,33 @@ if (character?.relationships?.families) {
                     </div>
                   )
                 )}
-            </dd>
-          </div>
+              </div>
+          </SidebarDetail>
         )}
-      {relatives && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Relatives
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              <ul>
+    {relatives && (
+          <SidebarDetail label="Relatives" layout="stacked">
+              <dl class="space-y-2">
                 {relatives.map((relative: Relative) => {
                   return (
-                  <li>
+                  <div class="flex flex-wrap items-start justify-end gap-x-3 gap-y-1">
+                    <dt class="shrink-0 text-sm text-gray-500 dark:text-gray-400">
+                      {relative.type}
+                    </dt>
+                    <dd class="min-w-0 text-right">
                     <a href={relative.entry ? `/world/characters/${relative.entry.id}` : undefined}>
                       {(relative.entry?.data as { title?: string } | undefined)
                         ?.title || relative.name}
-                      {relative.type && ` (${relative.type})`}
                     </a>
-                  </li>
+                    </dd>
+                  </div>
                   );
                 })}
-              </ul>
-            </dd>
-          </div>
+              </dl>
+          </SidebarDetail>
         )}
-      {character.relationships?.other &&
+    {character.relationships?.other &&
         character.relationships.other.length > 0 && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Other relationships
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
+          <SidebarDetail label="Other relationships">
               <ul>
                 {character.relationships.other.map(
                   (rel: { name: string; type: string }) => (
@@ -357,31 +245,21 @@ if (character?.relationships?.families) {
                   </li>
                 ))}
               </ul>
-            </dd>
-          </div>
+          </SidebarDetail>
         )}
-      {families && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Families
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              <ul>
+    {families && (
+          <SidebarDetail label="Families" layout="stacked">
+              <ul class="space-y-1 text-right">
                 {families.map((family: {name: string, entry: CollectionEntry<"family">}) => (
                   <li>
                     <a href={family.entry && `/world/families/${family.entry?.id}`}>{family.name}</a>
                   </li>
                 ))}
               </ul>
-            </dd>
-          </div>
+          </SidebarDetail>
         )}
-      {character.details?.species && species && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Species
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
+    {character.details?.species && species && (
+          <SidebarDetail label="Species">
               <ul>
                 {species.map((s: SpeciesData) => s.entry && (
                   <li>
@@ -391,59 +269,32 @@ if (character?.relationships?.families) {
                   </li>
                 ))}
               </ul>
-            </dd>
-          </div>
+          </SidebarDetail>
         )}
-      {character.details?.height && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Height
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              {character.details.height}
-            </dd>
-          </div>
+    {character.details?.height && (
+          <SidebarDetail label="Height">
+            {character.details.height}
+          </SidebarDetail>
         )}
-      {character.details?.weight && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Weight
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              {character.details.weight}
-            </dd>
-          </div>
+    {character.details?.weight && (
+          <SidebarDetail label="Weight">
+            {character.details.weight}
+          </SidebarDetail>
         )}
-      {character.background?.goals && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Goals
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              {character.background.goals}
-            </dd>
-          </div>
+    {character.background?.goals && (
+          <SidebarDetail label="Goals">
+            {character.background.goals}
+          </SidebarDetail>
         )}
-      {character.background?.flaws && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Flaws
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              {character.background.flaws}
-            </dd>
-          </div>
+    {character.background?.flaws && (
+          <SidebarDetail label="Flaws">
+            {character.background.flaws}
+          </SidebarDetail>
         )}
-      {character.background?.backstory && (
-          <div class="py-2">
-            <dt class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              Backstory
-            </dt>
-            <dd class="text-gray-600 dark:text-gray-400">
-              {character.background.backstory}
-            </dd>
-          </div>
+    {character.background?.backstory && (
+          <SidebarDetail label="Backstory">
+            {character.background.backstory}
+          </SidebarDetail>
         )}
-    </dl>
-  </div>
-</div>
+  </dl>
+</SidebarCard>

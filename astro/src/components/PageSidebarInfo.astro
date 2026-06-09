@@ -1,29 +1,54 @@
 ---
 import CharacterSidebarInfo from "./sidebar-info/CharacterSidebarInfo.astro";
 import FamilySidebarInfo from "./sidebar-info/FamilySidebarInfo.astro";
+import GenericSidebarInfo from "./sidebar-info/GenericSidebarInfo.astro";
+import { getGenericSidebarSubject } from "./sidebar-info/genericSidebarInfo";
 import ItemSidebarInfo from "./sidebar-info/ItemSidebarInfo.astro";
 import LocationSidebarInfo from "./sidebar-info/LocationSidebarInfo.astro";
 import OrganizationSidebarInfo from "./sidebar-info/OrganizationSidebarInfo.astro";
 
 const { entry } = Astro.locals.starlightRoute;
+const genericSidebar = getGenericSidebarSubject(
+  entry.data as Record<string, unknown>,
+);
 ---
 
 {(
     <>
       {entry.data?.character && (
-        <CharacterSidebarInfo character={entry.data.character} />
+        <CharacterSidebarInfo
+          character={entry.data.character}
+          filePath={entry.filePath}
+        />
       )}
       {entry.data?.item && (
-        <ItemSidebarInfo item={entry.data.item} />
+        <ItemSidebarInfo item={entry.data.item} filePath={entry.filePath} />
       )}
       {entry.data?.organization && (
-        <OrganizationSidebarInfo organization={entry.data.organization} />
+        <OrganizationSidebarInfo
+          organization={entry.data.organization}
+          filePath={entry.filePath}
+        />
       )}
       {entry.data?.location && (
-        <LocationSidebarInfo location={entry.data.location} />
+        <LocationSidebarInfo
+          location={entry.data.location}
+          title={entry.data.title}
+          filePath={entry.filePath}
+        />
       )}
       {entry.data?.family && (
-        <FamilySidebarInfo family={entry.data.family} title={entry.data.title} />
+        <FamilySidebarInfo
+          family={entry.data.family}
+          title={entry.data.title}
+          filePath={entry.filePath}
+        />
+      )}
+      {genericSidebar && (
+        <GenericSidebarInfo
+          subject={genericSidebar}
+          entryFilePath={entry.filePath}
+        />
       )}
     </>
   )}

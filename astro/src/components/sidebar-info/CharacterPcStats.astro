@@ -1,0 +1,148 @@
+---
+import type { Character } from "@bastion-falls/types";
+import {
+  ABILITY_SCORES,
+  formatAbilityScoreDisplay,
+  formatSize,
+  formatSpeed,
+} from "./characterSidebarInfo";
+
+interface Props {
+  character: Character;
+}
+
+const { character } = Astro.props;
+const characterSpeed = formatSpeed(character.speed);
+const stats = character.stats;
+const hasPcStats = characterSpeed != null || stats != null;
+---
+
+{hasPcStats && (
+    <section class="my-4 border-y border-red-900/25 py-3 dark:border-red-300/25">
+      <h3 class="mb-2 text-center text-sm font-semibold uppercase tracking-wide text-red-900 dark:text-red-200">
+        PC Stats
+      </h3>
+      {stats && (
+        <dl class="pc-ability-grid text-center">
+          {ABILITY_SCORES.map(({ key, label }) => {
+            const ability = formatAbilityScoreDisplay(stats[key]);
+            return (
+              <div class="pc-ability-score">
+                <dt>{label}</dt>
+                <dd>
+                  <span class="pc-ability-score-value">{ability.score}</span>
+                  <span class="pc-ability-score-modifier">
+                    {ability.modifier}
+                  </span>
+                </dd>
+              </div>
+            );
+          })}
+        </dl>
+      )}
+      {(stats?.ac != null || characterSpeed || stats?.size) && (
+        <dl class="mb-3 grid grid-cols-2 gap-x-3 gap-y-1 text-sm">
+          {stats?.ac != null && (
+            <>
+              <dt class="font-semibold text-gray-700 dark:text-gray-300">AC</dt>
+              <dd class="text-right text-gray-600 dark:text-gray-400">
+                {stats?.ac}
+              </dd>
+            </>
+          )}
+          {characterSpeed && (
+            <>
+              <dt class="font-semibold text-gray-700 dark:text-gray-300">
+                Speed
+              </dt>
+              <dd class="text-right text-gray-600 dark:text-gray-400">
+                {characterSpeed}
+              </dd>
+            </>
+          )}
+          {stats?.size && (
+            <>
+              <dt class="font-semibold text-gray-700 dark:text-gray-300">
+                Size
+              </dt>
+              <dd class="text-right text-gray-600 dark:text-gray-400">
+                {formatSize(stats.size)}
+              </dd>
+            </>
+          )}
+        </dl>
+      )}
+    </section>
+  )}
+
+<style>
+.pc-ability-grid {
+  background: rgb(55, 35, 35);
+  border-color: rgba(248, 113, 113, 0.28);
+  border-radius: 0.375rem;
+  border-width: 1px;
+  color: rgb(243, 244, 246);
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.125rem;
+  padding: 0.5rem 0.25rem;
+}
+
+.pc-ability-score {
+  border-inline-end: 1px solid rgba(254, 202, 202, 0.22);
+  color: rgb(243, 244, 246);
+  min-width: 0;
+  padding-inline: 0.125rem;
+}
+
+.pc-ability-score:last-child {
+  border-inline-end: 0;
+}
+
+.pc-ability-score dt {
+  color: rgb(254, 202, 202);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.pc-ability-score dd {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+  margin: 0.2rem 0 0;
+}
+
+.pc-ability-score-value {
+  color: rgb(255, 255, 255);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.pc-ability-score-modifier {
+  color: rgb(254, 226, 226);
+  font-size: 0.7rem;
+  margin-block-start: 0.1rem;
+}
+
+:global(.dark) .pc-ability-score {
+  border-inline-end-color: rgba(254, 202, 202, 0.18);
+}
+
+:global(.dark) .pc-ability-grid {
+  background: rgb(47, 29, 29);
+  border-color: rgba(254, 202, 202, 0.2);
+}
+
+@media (max-width: 420px) {
+  .pc-ability-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 0.5rem;
+  }
+
+  .pc-ability-score:nth-child(3n) {
+    border-inline-end: 0;
+  }
+}
+</style>

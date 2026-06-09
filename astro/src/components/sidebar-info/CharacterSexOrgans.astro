@@ -1,0 +1,84 @@
+---
+import type { CharacterSexOrgan } from "@bastion-falls/types/Character";
+import { getCharacterSexOrganSections } from "./characterSexOrgans";
+
+interface Props {
+  sexOrgans: CharacterSexOrgan[];
+}
+
+const { sexOrgans } = Astro.props;
+const sections = getCharacterSexOrganSections(sexOrgans);
+---
+
+<dl>
+  {sections.map((section) => (
+    <div class="character-sex-organ-section">
+      <div class="character-sex-organ-title">{section.title}</div>
+      <dl class="character-sex-organ-rows">
+        {section.rows.map((row) => (
+          <div class="character-sex-organ-row">
+            <dt class="character-sex-organ-row-label">{row.label}</dt>
+            <dd class="character-sex-organ-row-value">{row.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  ))}
+</dl>
+
+<style>
+.character-sex-organ-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.character-sex-organ-section + .character-sex-organ-section {
+  margin-top: 0.75rem;
+}
+
+.character-sex-organ-title {
+  color: rgb(55, 65, 81);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.character-sex-organ-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.character-sex-organ-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.25rem 0.75rem;
+  justify-content: flex-end;
+}
+
+.character-sex-organ-row-label {
+  color: rgb(107, 114, 128);
+  flex-shrink: 0;
+}
+
+.character-sex-organ-row-value {
+  color: rgb(75, 85, 99);
+  margin: 0;
+  min-width: 0;
+  text-align: right;
+}
+
+:global(.dark) .character-sex-organ-title {
+  color: rgb(229, 231, 235);
+}
+
+:global(.dark) .character-sex-organ-row-label {
+  color: rgb(156, 163, 175);
+}
+
+:global(.dark) .character-sex-organ-row-value {
+  color: rgb(209, 213, 219);
+}
+</style>

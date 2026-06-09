@@ -2,6 +2,7 @@ import { z } from "zod";
 import { BaseStatsSchema } from "./BaseStats.js";
 import { SpeedSchema } from "./Speed.js";
 import { DamageTypeSchema } from "./Damage.js";
+import { ImageSchema } from "./Image.js";
 
 export const VehicleTypeSchema = z.enum(["land", "air", "sea"]);
 
@@ -56,6 +57,7 @@ export const VehicleSectionSchema = z.object({
 
 export const VehicleSchema = z.object({
   name: z.string(),
+  image: ImageSchema.or(ImageSchema.array()).optional(),
   type: z.string(),
   stats: BaseStatsSchema,
   travelPace: z.number(), // miles per hour

@@ -1,0 +1,336 @@
+---
+import { Image } from "astro:assets";
+import type { Image as SidebarImageData } from "@bastion-falls/types/Image";
+import type { ImageMetadata } from "astro";
+import { normalizeSidebarImages, resolveSidebarImageUrl } from "./sidebarMedia";
+
+interface Props {
+  entryFilePath?: string;
+  image?: SidebarImageData | SidebarImageData[];
+}
+
+interface SidebarMediaSlide {
+  alt: string;
+  attributionUrl?: string;
+  image: ImageMetadata;
+  title: string;
+}
+
+const { image, entryFilePath } = Astro.props;
+
+const assetImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/**/*.{jpg,jpeg,png,webp}",
+);
+const contentImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/content/docs/world/**/*.{jpg,jpeg,png,webp}",
+);
+
+const imageData = normalizeSidebarImages(image);
+const slides = (
+  await Promise.all(
+    imageData.map(async (item): Promise<SidebarMediaSlide | null> => {
+      const resolvedUrl = resolveSidebarImageUrl(item.url, entryFilePath);
+      if (!resolvedUrl) return null;
+
+      const loader = assetImages[resolvedUrl] ?? contentImages[resolvedUrl];
+      if (!loader) return null;
+
+      const mod = await loader();
+
+      let title = item.alt ?? "";
+      let attributionUrl = resolvedUrl;
+
+      if ("attribution" in item) {
+        title = item.attribution ?? title;
+        attributionUrl = item.attributionUrl ?? attributionUrl;
+      } else if ("prompt" in item) {
+        title = item.prompt ?? title;
+        attributionUrl = item.generatorUrl ?? attributionUrl;
+      }
+
+      return {
+        alt: item.alt ?? "",
+        attributionUrl,
+        image: mod.default,
+        title,
+      };
+    }),
+  )
+).filter((slide): slide is SidebarMediaSlide => slide !== null);
+
+const hasMultiple = slides.length > 1;
+---
+
+{slides.length > 0 && (
+  <div class="mb-4 w-full character-image-container bg-black" data-sidebar-media>
+    <div
+      class="sidebar-media-stage group/sidebar-media relative rounded-lg"
+      data-sidebar-media-stage
+      data-controls-visible={hasMultiple ? "false" : undefined}
+      tabindex={hasMultiple ? 0 : undefined}
+      role={hasMultiple ? "group" : undefined}
+      aria-label={hasMultiple ? "Image gallery" : undefined}
+    >
+      {slides.map((slide, index) => (
+        <figure
+          class:list={["sidebar-media-slide", index !== 0 && "hidden"]}
+          data-sidebar-media-slide
+          aria-hidden={index === 0 ? "false" : "true"}
+        >
+          <Image
+            src={slide.image}
+            alt={slide.alt}
+            class="w-full h-full max-h-48 rounded-lg object-scale-down block mx-auto"
+          />
+          {slide.attributionUrl && (
+            <a
+              class="absolute top-2 right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-gray-900/72 text-white opacity-0 pointer-events-none transition-opacity duration-150 [visibility:hidden] group-hover/sidebar-media:opacity-100 group-hover/sidebar-media:pointer-events-auto group-hover/sidebar-media:[visibility:visible]"
+              href={slide.attributionUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={slide.title}
+              aria-label={`Open image attribution: ${slide.title}`}
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 17 17 7" />
+                <path d="M8 7h9v9" />
+              </svg>
+            </a>
+          )}
+        </figure>
+      ))}
+
+      {hasMultiple && (
+        <>
+          <button
+            type="button"
+            class="sidebar-media-nav sidebar-media-nav-prev"
+            data-sidebar-media-prev
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            class="sidebar-media-nav sidebar-media-nav-next"
+            data-sidebar-media-next
+            aria-label="Next image"
+          >
+            ›
+          </button>
+          <div class="sidebar-media-dots" aria-label="Image selection">
+            <div class="sidebar-media-dots-inner">
+              {slides.map((_, index) => (
+                <button
+                  type="button"
+                  class:list={[
+                    "sidebar-media-dot",
+                    index === 0 && "sidebar-media-dot-active",
+                  ]}
+                  data-sidebar-media-dot
+                  data-sidebar-media-index={index}
+                  aria-label={`Go to image ${index + 1}`}
+                  aria-current={index === 0 ? "true" : "false"}
+                />
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+
+  </div>
+)}
+
+<script is:inline>
+function initSidebarMedia(root) {
+  const stage = root.querySelector("[data-sidebar-media-stage]");
+  const slides = Array.from(
+    root.querySelectorAll("[data-sidebar-media-slide]"),
+  );
+  const dots = Array.from(root.querySelectorAll("[data-sidebar-media-dot]"));
+  const prevButton = root.querySelector("[data-sidebar-media-prev]");
+  const nextButton = root.querySelector("[data-sidebar-media-next]");
+  if (slides.length <= 1 || !stage) return;
+
+  let index = 0;
+
+  const syncControlsVisible = () => {
+    const activeElement = document.activeElement;
+    const hasFocus =
+      activeElement instanceof Node && stage.contains(activeElement);
+    const isHovered = stage.matches(":hover");
+
+    stage.setAttribute(
+      "data-controls-visible",
+      hasFocus || isHovered ? "true" : "false",
+    );
+  };
+
+  const render = () => {
+    slides.forEach((slide, slideIndex) => {
+      const active = slideIndex === index;
+      slide.classList.toggle("hidden", !active);
+      slide.setAttribute("aria-hidden", active ? "false" : "true");
+    });
+
+    dots.forEach((dot, dotIndex) => {
+      const active = dotIndex === index;
+      dot.classList.toggle("sidebar-media-dot-active", active);
+      dot.setAttribute("aria-current", active ? "true" : "false");
+    });
+  };
+
+  prevButton?.addEventListener("click", () => {
+    index = (index - 1 + slides.length) % slides.length;
+    render();
+  });
+
+  nextButton?.addEventListener("click", () => {
+    index = (index + 1) % slides.length;
+    render();
+  });
+
+  dots.forEach((dot, dotIndex) => {
+    dot.addEventListener("click", () => {
+      index = dotIndex;
+      render();
+    });
+  });
+
+  stage.addEventListener("focusin", () => {
+    syncControlsVisible();
+  });
+
+  stage.addEventListener("focusout", (event) => {
+    const nextFocused = event.relatedTarget;
+    if (
+      nextFocused instanceof Node &&
+      stage.contains(nextFocused)
+    ) {
+      return;
+    }
+
+    syncControlsVisible();
+  });
+
+  stage.addEventListener("mouseenter", () => {
+    syncControlsVisible();
+  });
+
+  stage.addEventListener("mouseleave", () => {
+    syncControlsVisible();
+  });
+}
+
+for (const root of document.querySelectorAll("[data-sidebar-media]")) {
+  initSidebarMedia(root);
+}
+</script>
+
+<style>
+.sidebar-media-stage {
+  overflow: hidden;
+}
+
+.sidebar-media-stage:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.75);
+  outline-offset: 2px;
+}
+
+.sidebar-media-slide {
+  position: relative;
+}
+
+.sidebar-media-nav {
+  align-items: center;
+  background: rgba(17, 24, 39, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  color: white;
+  display: flex;
+  font-size: 1.25rem;
+  height: 2rem;
+  justify-content: center;
+  position: absolute;
+  top: calc(50% - 1rem);
+  width: 2rem;
+}
+
+.sidebar-media-nav-prev {
+  left: 0.5rem;
+}
+
+.sidebar-media-nav-next {
+  right: 0.5rem;
+}
+
+.sidebar-media-dots {
+  display: flex;
+  bottom: 0.75rem;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.sidebar-media-attribution svg {
+  height: 0.95rem;
+  width: 0.95rem;
+}
+
+.sidebar-media-stage[data-controls-visible="false"] .sidebar-media-nav,
+.sidebar-media-stage[data-controls-visible="false"] .sidebar-media-dots {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.sidebar-media-stage[data-controls-visible="true"] .sidebar-media-nav,
+.sidebar-media-stage[data-controls-visible="true"] .sidebar-media-dots {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.sidebar-media-nav,
+.sidebar-media-dots {
+  transition:
+    opacity 150ms ease,
+    visibility 150ms ease;
+}
+
+.sidebar-media-dots-inner {
+  align-items: center;
+  background: rgba(17, 24, 39, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  display: inline-flex;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0.35rem 0.55rem;
+}
+
+.sidebar-media-dot {
+  background: rgba(226, 232, 240, 0.75);
+  border: 0;
+  border-radius: 9999px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+  height: 0.5rem;
+  transition: background-color 150ms ease;
+  width: 0.5rem;
+}
+
+.sidebar-media-dot-active {
+  background: rgba(255, 255, 255, 0.95);
+}
+</style>
