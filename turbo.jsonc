@@ -15,6 +15,11 @@
         "dist/templates/*.ejs"
       ]
     },
+    "@bastion-falls/astro-lexicon-integration#build": {
+      "outputs": [
+        "dist/**"
+      ]
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".astro/**", "astro/dist/**"],
