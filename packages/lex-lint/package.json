@@ -21,7 +21,8 @@
     }
   },
   "scripts": {
-    "build": "tsup",
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
     "cli": "node ./dist/cli.js",
     "lint": "node ./dist/cli.js",
     "test": "vitest run",
@@ -43,7 +44,6 @@
   "devDependencies": {
     "@types/jsonld": "^1.5.15",
     "@types/node": "~24.7.0",
-    "tsup": "^8.5.1",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
   },
