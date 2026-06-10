@@ -20,13 +20,13 @@ This skill must be able to work from:
 ## Goals
 
 1. Produce a **single YAML file** shaped like **5etools `ItemData`**.
-2. Ensure `"source": "BF"` (unless the user explicitly requests otherwise).
-3. Include a top-level **`"$schema"`** property as the first key:
+1. Ensure `"source": "BF"` (unless the user explicitly requests otherwise).
+1. Include a top-level **`"$schema"`** property as the first key:
    `"https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData"`
-4. Place the file under:
+1. Place the file under:
    `astro/src/content/docs/world/items/<item-slug>.item.yaml`
-5. Ensure the file passes `ItemDataSchema` validation.
-6. **Companion MDX** (same slug, no `.item`):
+1. Ensure the file passes `ItemDataSchema` validation.
+1. **Companion MDX** (same slug, no `.item`):
    - Path: `astro/src/content/docs/world/items/<item-slug>.mdx`
    - **If it does not exist**: create it with Starlight frontmatter, optional
      `item` metadata (`ItemSchema` from `@bastion-falls/types`—mirror name,
@@ -42,7 +42,7 @@ This skill must be able to work from:
      conventional key such as `rules` or `statBlock` for new pages.
    - Import: from `world/items/*.mdx`, use
      `import ItemBlock from '../../../../components/ItemBlock.astro';`
-7. Run `yarn astro sync` from `astro/` to validate the content collections.
+1. Run `pnpm astro sync` from `astro/` to validate the content collections.
 
 When other docs (e.g. lore articles) embed the same item, they may link to this
 MDX page instead of duplicating `ItemBlock`, unless a second embed is
@@ -160,7 +160,7 @@ rules text here:
 
 After writing the file:
 
-- Run `yarn astro sync` from `astro/`.
+- Run `pnpm astro sync` from `astro/`.
 - If validation fails, adjust the YAML data to satisfy `ItemDataSchema` (do not
   weaken validation or add custom loaders).
 
@@ -174,4 +174,4 @@ After writing the file:
 - [ ] Companion `astro/src/content/docs/world/items/<slug>.mdx` exists (new or
       updated) with `itemDataStats` → `items/<slug>.item` and `ItemBlock` (or
       equivalent wiring)
-- [ ] `yarn astro sync` succeeds
+- [ ] `pnpm astro sync` succeeds

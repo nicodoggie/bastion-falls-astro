@@ -9,6 +9,7 @@
       "dependsOn": ["^typecheck"],
     },
     "dev": {
+      "dependsOn": ["^dev"],
       "persistent": true,
       "cache": false,
     },

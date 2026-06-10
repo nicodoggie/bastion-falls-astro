@@ -1,6 +1,7 @@
 # Zarifa Bot (Cloudflare Worker)
 
-Discord slash-command bot deployed on Cloudflare Workers, using Cloudflare AI Search.
+Discord slash-command bot deployed on Cloudflare Workers, using Cloudflare AI
+Search.
 
 ## Endpoints
 
@@ -18,11 +19,11 @@ Discord slash-command bot deployed on Cloudflare Workers, using Cloudflare AI Se
 ## Dev
 
 ```bash
-yarn --cwd packages/zarifa-bot dev
+pnpm -C packages/zarifa-bot dev
 ```
 
 ## Deploy
 
 ```bash
-yarn --cwd packages/zarifa-bot deploy
+pnpm -C packages/zarifa-bot deploy
 ```

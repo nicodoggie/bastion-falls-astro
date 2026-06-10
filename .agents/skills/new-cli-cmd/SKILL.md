@@ -16,11 +16,11 @@ a **Zod schema** exported from **`@bastion-falls/types`** (source:
 
 1. Map the target **TypeScript / Zod** type to **CLI flags** and to an **EJS
    template** that emits valid YAML frontmatter.
-2. Write files into the **content tree** (e.g. `families/`, `vehicles/`) via
+1. Write files into the **content tree** (e.g. `families/`, `vehicles/`) via
    `getTargetPath("<folder>")`, matching how existing articles are organized.
-3. **Register** the command in `cli/src/commands/new/commands.ts` with short and
+1. **Register** the command in `cli/src/commands/new/commands.ts` with short and
    long route names.
-4. Run **`yarn build`** in **`cli/`** (or `yarn exec` for a quick run) so
+1. Run **`pnpm build`** in **`cli/`** (or `pnpm exec` for a quick run) so
    templates are copied and **TypeScript** compiles.
 
 ## Authoritative schema
@@ -131,9 +131,9 @@ pass **`"species"`** if `contentDir` points at `.../world`).
 
 ### 6. Build and spot-check
 
-- From **`cli/`:** `yarn build` — runs `tsc`, **copy-templates** (`.ejs` into
+- From **`cli/`:** `pnpm build` — runs `tsc`, **copy-templates** (`.ejs` into
   `dist/templates/`), and **tsup**.
-- Run **`bfcli`:** e.g. `yarn exec` or project‑documented entry; verify help for
+- Run **`bfcli`:** e.g. `pnpm exec` or project‑documented entry; verify help for
   `new foo` and create a file under the expected path with `--force` if
   re-running.
 
@@ -156,4 +156,4 @@ pass **`"species"`** if `contentDir` points at `.../world`).
 - [ ] `cli/templates/<name>.ejs` added.
 - [ ] `cli/src/commands/new/<name>/command.ts` + `impl.ts` added.
 - [ ] `cli/src/commands/new/commands.ts` updated (import, instance, routes).
-- [ ] `cd cli && yarn build` succeeds.
+- [ ] `cd cli && pnpm build` succeeds.

@@ -2,6 +2,6 @@ pre-push:
   parallel: true
   jobs:
     - name: lint
-      run: yarn lint
+      run: pnpm lint
       env:
         PATH: '${HOME}/.volta/bin:${PATH}'

@@ -19,11 +19,11 @@ This skill must be able to work from:
 ## Goals
 
 1. Produce a **single YAML file** shaped like **5etools `SpellData`**.
-2. Ensure `"source": "BF"` (unless the user explicitly requests otherwise).
-3. Place the file under:
+1. Ensure `"source": "BF"` (unless the user explicitly requests otherwise).
+1. Place the file under:
    `astro/src/content/docs/world/spells/<spell-slug>.spell.yaml`
-4. Ensure the file passes `SpellDataSchema` validation.
-5. Run `yarn astro sync` from `astro/` to validate the content collections.
+1. Ensure the file passes `SpellDataSchema` validation.
+1. Run `pnpm astro sync` from `astro/` to validate the content collections.
 
 ## Authoritative schema + repo rules
 
@@ -148,7 +148,7 @@ both).
 
 After writing the file:
 
-- Run `yarn astro sync` from `astro/`.
+- Run `pnpm astro sync` from `astro/`.
 - If validation fails, adjust the YAML data to satisfy `SpellDataSchema` (do not
   weaken validation or add custom loaders).
 
@@ -157,4 +157,4 @@ After writing the file:
 - [ ] File created at `astro/src/content/docs/world/spells/<slug>.spell.yaml`
 - [ ] `"source": "BF"` is present
 - [ ] YAML spell data validates under `SpellDataSchema`
-- [ ] `yarn astro sync` succeeds
+- [ ] `pnpm astro sync` succeeds

@@ -2,7 +2,7 @@
  * @bastion-falls/5e-schema-zod
  *
  * Zod 4 schemas generated from the 5etools-utils JSON Schema files.
- * Run `yarn generate` (or `yarn build`) to regenerate src/generated/.
+ * Run `pnpm generate` (or `pnpm build`) to regenerate src/generated/.
  */
 
 export * from './generated/shared.js'

@@ -3,7 +3,7 @@ name: dnd-stat-block
 description: >-
   Convert D&D 5e creature stat blocks into 5etools-style creature YAML under
   astro/src/content/docs/world, wire StatBlock in MDX, validate with
-  CreatureDataSchema and yarn astro sync.
+  CreatureDataSchema and pnpm astro sync.
 ---
 
 # D&D 5e stat block → `*.creature.yaml`
@@ -16,10 +16,10 @@ for **`StatBlock.astro`**.
 
 1. Produce a **single YAML file** shaped like **5etools / bestiary creature
    data** (the project calls this **`CreatureData`**).
-2. Place it where the **`creatures`** Astro collection can load it.
-3. Optionally wire **`creatureStats`** in an MDX page and render
+1. Place it where the **`creatures`** Astro collection can load it.
+1. Optionally wire **`creatureStats`** in an MDX page and render
    **`<StatBlock creature={...} />`**.
-4. Run **`yarn astro sync`** from **`astro/`** so Zod validates any
+1. Run **`pnpm astro sync`** from **`astro/`** so Zod validates any
    **`creatureStats`** frontmatter that embeds or references the creature.
 
 ## Authoritative schema
@@ -126,15 +126,15 @@ bonus) in a **`trait`** so it appears in the stat block.
 
 ### 5. Validate and wire
 
-1. **`yarn astro sync`** from **`astro/`** — fixes types and validates docs
+1. **`pnpm astro sync`** from **`astro/`** — fixes types and validates docs
    frontmatter against **`docsExtension`** (includes **`creatureStats`**).
-2. If the creature is only referenced from MDX as a **string id**, the
+1. If the creature is only referenced from MDX as a **string id**, the
    **`creatures`** entry still loads; strict **`CreatureDataSchema`** applies
    when the stat object is **inlined** in frontmatter.
-3. **MDX wiring:**
+1. **MDX wiring:**
    - Add to frontmatter:  
      `creatureStats:`  
-     `  myKey: path/under/world/name.creature`  
+     `myKey: path/under/world/name.creature`  
      (no `.yaml`/`.json`; path relative to `astro/src/content/docs/world`).
    - Import:  
      `import StatBlock from '../../../../components/StatBlock.astro'`  
@@ -166,7 +166,7 @@ bonus) in a **`trait`** so it appears in the stat block.
       appropriate for **`StatBlock`**.
 - [ ] Spellcasting text is where **`StatBlock`** can show it (usually
       **`trait`**).
-- [ ] **`yarn astro sync`** succeeds.
+- [ ] **`pnpm astro sync`** succeeds.
 - [ ] MDX **`creatureStats`** keys and **`StatBlock`** import path are correct.
 
 ## Example references in-repo
@@ -188,5 +188,6 @@ The repo also supports **5etools `SpellData`** and **`ItemData`** as YAML with
 | Spell | `.spell.yaml` | `spells` | `spellStats` | `<SpellBlock spell={...} />` |
 | Item | `.item.yaml` | `itemData` | `itemDataStats` | `<ItemBlock item={...} />` |
 
-Schemas: **`SpellDataSchema`**, **`ItemDataSchema`** (`@bastion-falls/5e-schema-zod`).
-Help page: `astro/src/content/docs/help/5e-tools-schema/spell-and-item.mdx`.
+Schemas: **`SpellDataSchema`**, **`ItemDataSchema`**
+(`@bastion-falls/5e-schema-zod`). Help page:
+`astro/src/content/docs/help/5e-tools-schema/spell-and-item.mdx`.

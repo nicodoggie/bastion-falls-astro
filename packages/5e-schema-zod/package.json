@@ -18,8 +18,8 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
-    "build": "yarn run clean && yarn run generate && tsc -p tsconfig.build.json",
-    "dev": "yarn run generate && tsc -p tsconfig.build.json --watch",
+    "build": "pnpm run clean && pnpm run generate && tsc -p tsconfig.build.json",
+    "dev": "pnpm run generate && tsc -p tsconfig.build.json --watch",
     "generate": "tsx scripts/generate.ts"
   },
   "dependencies": {

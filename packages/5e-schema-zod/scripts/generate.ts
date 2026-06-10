@@ -338,7 +338,7 @@ function generateModule(
 
   const header = `/**
  * Generated from 5etools-utils/schema/${target.schemaPath}
- * DO NOT EDIT — run \`yarn generate\` to regenerate.
+ * DO NOT EDIT — run \`pnpm generate\` to regenerate.
  */`
 
   return [header, importLines.join('\n'), '', blocks.join('\n\n'), ''].join(

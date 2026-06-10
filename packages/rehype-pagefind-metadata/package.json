@@ -1,6 +1,5 @@
 {
   "name": "@bastion-falls/rehype-pagefind-metadata",
-  "packageManager": "yarn@4.3.1",
   "type": "module",
   "exports": {
     ".": {

@@ -20,22 +20,24 @@ jobs:
           corepack enable
       - name: Setup Node.js
         uses: actions/setup-node@v6
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
         with:
-          node-version: "24"
-          cache: "yarn"
+          cache: true
+
       - name: Install dependencies
         env:
           NODE_ENV: ci
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
 
       - name: Build project
-        run: yarn run build
+        run: pnpm -F @bastion-falls/astro run build
 
       - name: Deploy to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
-        run: yarn run deploy
+        run: pnpm run deploy
       - name: Generate changelog
         id: changelog
         run: |

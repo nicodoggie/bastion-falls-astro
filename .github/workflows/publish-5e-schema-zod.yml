@@ -39,10 +39,10 @@ jobs:
         run: corepack enable
 
       - name: Install dependencies
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
 
       - name: Build package
-        run: yarn workspace @bastion-falls/5e-schema-zod build
+        run: pnpm -F @bastion-falls/5e-schema-zod build
 
       - name: Publish to npm
         if: ${{ !inputs.dry_run }}

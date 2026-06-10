@@ -8,7 +8,7 @@
     "clean": "rm -rf dist",
     "test": "node --import tsx --test src/**/*.test.ts",
     "typecheck": "tsc --noEmit",
-    "build": "yarn run clean && astro build",
+    "build": "pnpm run clean && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "format:biome": "biome check --write .",
@@ -18,10 +18,10 @@
     "lint:biome": "biome check .",
     "lint:mdx": "rumdl check src/**/*.{md,mdx}",
     "lint:yaml": "eslint --config eslint.yaml.config.mjs \"src/content/docs/world/**/*.{yaml,yml}\"",
-    "fmt": "yarn format:biome && yarn format:mdx && yarn format:yaml",
-    "lint": "yarn lint:astro && yarn lint:biome && yarn lint:mdx && yarn lint:yaml",
+    "fmt": "pnpm format:biome && pnpm format:mdx && pnpm format:yaml",
+    "lint": "pnpm lint:astro && pnpm lint:biome && pnpm lint:mdx && pnpm lint:yaml",
     "postinstall": "flowbite-react install",
-    "bfcli": "_REAL_CWD=$INIT_CWD yarn workspace @bastion-falls/cli run exec"
+    "bfcli": "_REAL_CWD=$INIT_CWD pnpm -F @bastion-falls/cli run exec"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -109,7 +109,6 @@
     "unified": "^11.0.5"
   },
   "volta": {
-    "extends": "../package.json",
-    "node": "22.19.0"
+    "extends": "../package.json"
   }
 }

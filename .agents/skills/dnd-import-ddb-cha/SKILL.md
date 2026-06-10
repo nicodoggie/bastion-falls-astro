@@ -24,11 +24,11 @@ human judgment.
    - From the repo root, first import a raw roster artifact with `bfcli`:
 
      ```bash
-     yarn bfcli ddb import-campaign --useExistingChrome --port 9224 --force --out /tmp/ddb-campaign-<id>.json <campaign-url-or-id>
+     pnpm bfcli ddb import-campaign --useExistingChrome --port 9224 --force --out /tmp/ddb-campaign-<id>.json <campaign-url-or-id>
      ```
 
    - If no authenticated Chrome DevTools session is running, run:
-     `yarn bfcli ddb import-campaign --force --out /tmp/ddb-campaign-<id>.json <campaign-url-or-id>`
+     `pnpm bfcli ddb import-campaign --force --out /tmp/ddb-campaign-<id>.json <campaign-url-or-id>`
      Then complete D&D Beyond login in the opened Chrome window and press Enter
      in the terminal.
    - Read `/tmp/ddb-campaign-<id>.json` and use `.campaign.characters[]` as the
@@ -37,7 +37,7 @@ human judgment.
      MDX merge:
 
      ```bash
-     yarn bfcli ddb import-cha --useExistingChrome --port 9224 --force --out /tmp/ddb-character-<character-id>.json <character-id-or-url>
+     pnpm bfcli ddb import-cha --useExistingChrome --port 9224 --force --out /tmp/ddb-character-<character-id>.json <character-id-or-url>
      ```
 
      Prefer the roster entry's `id` for `<character-id-or-url>` unless a
@@ -67,11 +67,11 @@ human judgment.
    - From the repo root, run:
 
      ```bash
-     yarn bfcli ddb import-cha --useExistingChrome --port 9224 --force --out /tmp/ddb-character-<id>.json <url-or-id>
+     pnpm bfcli ddb import-cha --useExistingChrome --port 9224 --force --out /tmp/ddb-character-<id>.json <url-or-id>
      ```
 
    - If no authenticated Chrome DevTools session is running, run:
-     `yarn bfcli ddb import-cha --force --out /tmp/ddb-character-<id>.json <url-or-id>`
+     `pnpm bfcli ddb import-cha --force --out /tmp/ddb-character-<id>.json <url-or-id>`
      Then complete D&D Beyond login in the opened Chrome window and press Enter
      in the terminal.
    - When specifying Chrome explicitly on this workstation, prefer the distro
@@ -138,7 +138,7 @@ human judgment.
      “is associated with,” or “some records note” when the DDB note is not yet
      corroborated by existing campaign lore.
 1. Validate.
-   - Run `yarn astro sync` from `astro/` after edits.
+   - Run `pnpm astro sync` from `astro/` after edits.
    - Report any existing unrelated dirty files separately.
 
 ## DDB Field Hints

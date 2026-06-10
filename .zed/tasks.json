@@ -4,7 +4,7 @@
 [
   {
     "label": "Astro Dev Server",
-    "command": "yarn dev",
+    "command": "pnpm dev",
     "cwd": "$ZED_WORKTREE_ROOT/astro",
     "env": {
       "PATH": "${env.PATH}:${env.HOME}/.volta/bin",
@@ -15,7 +15,7 @@
   },
   {
     "label": "BF Dev types",
-    "command": "yarn dev:types",
+    "command": "pnpm dev:types",
     "cwd": "$ZED_WORKTREE_ROOT/astro",
     "env": {
       "PATH": "${env.PATH}:${env.HOME}/.volta/bin",

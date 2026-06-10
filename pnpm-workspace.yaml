@@ -1,0 +1,11 @@
+packages:
+  - astro
+  - cli
+  - packages/*
+allowBuilds:
+  esbuild: true
+  lefthook: true
+  phantomjs-prebuilt: true
+  sharp: true
+  workerd: true
+nodeLinker: isolated
