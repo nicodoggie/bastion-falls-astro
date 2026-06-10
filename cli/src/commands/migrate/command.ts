@@ -72,6 +72,12 @@ export const migrateCommand = buildCommand({
         brief: "Dry run the migration",
         optional: true,
       },
+      target: {
+        kind: "parsed",
+        parse: String,
+        brief: "Target directory for migrated files",
+        optional: true,
+      },
     },
     positional: {
       kind: "tuple",

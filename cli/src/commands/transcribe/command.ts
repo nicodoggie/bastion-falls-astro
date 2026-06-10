@@ -591,7 +591,7 @@ export const transcribeCommand = buildRouteMap({
     audio: transcribeRunCommand,
     "apply-corrections": applyCorrectionsCommand,
   },
-  defaultCommand: transcribeRunCommand,
+  defaultCommand: "run",
   docs: {
     brief: "Normalize, chunk, transcribe, correct, and summarize campaign audio",
   },

@@ -41,7 +41,7 @@ export async function launchChromeForDdbAuth(options: {
   const profileDir = options.profileDir ?? join(tmpdir(), `bfcli-ddb-auth-${options.port}`);
   await mkdir(profileDir, { recursive: true });
 
-  const chromePath = options.chromePath ?? process.env.DDB_CHROME_PATH ?? defaultChromePath();
+  const chromePath = options.chromePath ?? process.env["DDB_CHROME_PATH"] ?? defaultChromePath();
   const child = spawn(chromePath, [
     `--remote-debugging-address=127.0.0.1`,
     `--remote-debugging-port=${options.port}`,

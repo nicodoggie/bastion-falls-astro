@@ -70,7 +70,7 @@ test("rejects invalid checkpoint status values", () => {
   };
   checkpoint.stages.normalization.status = "finished";
 
-  assert.throws(() => parseTranscribeCheckpoint(checkpoint), /Invalid enum value/);
+  assert.throws(() => parseTranscribeCheckpoint(checkpoint), /Invalid option/);
 });
 
 test("rejects malformed chunk indexes", () => {
@@ -79,7 +79,7 @@ test("rejects malformed chunk indexes", () => {
   };
   checkpoint.stages.transcribed_chunks.completed = [0, -1];
 
-  assert.throws(() => parseTranscribeCheckpoint(checkpoint), /greater than or equal to 0/);
+  assert.throws(() => parseTranscribeCheckpoint(checkpoint), />=0/);
 });
 
 test("writes checkpoint files atomically and reads them back", async () => {
@@ -115,4 +115,3 @@ test("throws for corrupt checkpoint JSON", async () => {
     await rm(dir, { recursive: true, force: true });
   }
 });
-

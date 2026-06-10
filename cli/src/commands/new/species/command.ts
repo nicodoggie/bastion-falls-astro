@@ -1,18 +1,24 @@
 import { buildCommand, type FlagParametersForType } from "@stricli/core";
+import { SpeciesSchema, type Species } from "@bastion-falls/types";
 import type { NewCommandFlags } from "../commands.js";
+
+type SpeciesBiome = NonNullable<Species["biomes"]>[number];
 
 export interface NewSpeciesCommandFlags extends NewCommandFlags {
   type?: string;
   origin?: string;
   lifespan?: string;
   locations?: string[];
-  biomes?: string[];
+  biomes?: SpeciesBiome[];
   traits?: string[];
   diet?: string[];
 }
 
 const csvList = (value: string) =>
   value.split(",").map((s) => s.trim());
+const SpeciesBiomeSchema = SpeciesSchema.shape.biomes.unwrap().element;
+const csvBiomeList = (value: string) =>
+  csvList(value).map((biome) => SpeciesBiomeSchema.parse(biome));
 
 export const speciesCommandBuilder = (
   parentFlags: FlagParametersForType<NewCommandFlags>
@@ -50,7 +56,7 @@ export const speciesCommandBuilder = (
         },
         biomes: {
           kind: "parsed",
-          parse: csvList,
+          parse: csvBiomeList,
           brief: "Comma-separated list of biomes inhabited",
           optional: true,
         },

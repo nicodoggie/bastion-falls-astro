@@ -74,12 +74,12 @@ export function parseDdbCharacterId(urlOrId: string): string {
     throw new Error("Expected a D&D Beyond character URL or numeric character ID");
   }
 
-  const match = url.pathname.match(/\/characters\/(\d+)/);
-  if (!match || !(url.hostname === "www.dndbeyond.com" || url.hostname === "dndbeyond.com" || url.hostname === "ddb.ac")) {
+  const characterId = url.pathname.match(/\/characters\/(\d+)/)?.[1];
+  if (!characterId || !(url.hostname === "www.dndbeyond.com" || url.hostname === "dndbeyond.com" || url.hostname === "ddb.ac")) {
     throw new Error("Expected a D&D Beyond character URL like https://www.dndbeyond.com/characters/123");
   }
 
-  return match[1];
+  return characterId;
 }
 
 export function parseDdbCampaignId(urlOrId: string): string {
@@ -92,12 +92,12 @@ export function parseDdbCampaignId(urlOrId: string): string {
     throw new Error("Expected a D&D Beyond campaign URL or numeric campaign ID");
   }
 
-  const match = url.pathname.match(/\/campaigns\/(\d+)/);
-  if (!match || !(url.hostname === "www.dndbeyond.com" || url.hostname === "dndbeyond.com")) {
+  const campaignId = url.pathname.match(/\/campaigns\/(\d+)/)?.[1];
+  if (!campaignId || !(url.hostname === "www.dndbeyond.com" || url.hostname === "dndbeyond.com")) {
     throw new Error("Expected a D&D Beyond campaign URL like https://www.dndbeyond.com/campaigns/123");
   }
 
-  return match[1];
+  return campaignId;
 }
 
 export function buildCharacterApiUrl(characterId: string): string {

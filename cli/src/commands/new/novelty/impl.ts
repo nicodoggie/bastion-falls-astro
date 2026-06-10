@@ -8,7 +8,9 @@ interface NewNoveltyCommandFlags extends NewCommandFlags {
   description?: string;
 }
 
-interface NoveltyTemplate extends TemplateData, Novelty {}
+interface NoveltyTemplate extends TemplateData {
+  description?: Novelty["description"];
+}
 
 export default async function novelty(
   this: LocalContext,

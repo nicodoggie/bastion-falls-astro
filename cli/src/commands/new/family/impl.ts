@@ -27,7 +27,6 @@ export default async function family(
     dissolved,
     seat,
     motto,
-    sigil,
     tags,
     force = false,
   } = flags;
@@ -39,7 +38,6 @@ export default async function family(
       dissolved,
       seat,
       motto,
-      sigil,
     },
     tags: ["families", ...(tags ?? [])],
   };

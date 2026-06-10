@@ -5,6 +5,7 @@ import type { Item } from "@bastion-falls/types/Item";
 import type { NewItemFlags } from "./command.js";
 
 type ItemTemplateItem = Omit<Item, "image">;
+type ItemDetails = NonNullable<Item["details"]>;
 
 interface ItemTemplate extends TemplateData {
   item: ItemTemplateItem;
@@ -26,7 +27,7 @@ export default async function item(
     force = false,
   } = flags;
 
-  const rawDetails: NonNullable<Item["details"]> = {
+  const rawDetails: ItemDetails = {
     attunement,
     type,
     rarity,
@@ -34,19 +35,17 @@ export default async function item(
     value,
   };
 
-  const details = Object.fromEntries(
-    Object.entries(rawDetails).filter(
-      (entry): entry is [string, NonNullable<Item["details"]>[string]] =>
-        entry[1] !== undefined
-    )
-  ) as Item["details"];
+  const detailEntries = Object.entries(rawDetails).filter(([, value]) => value !== undefined);
+  const details = detailEntries.length > 0
+    ? Object.fromEntries(detailEntries) as ItemDetails
+    : undefined;
 
   const data: ItemTemplate = {
     title: articleName,
     item: {
       name: articleName,
       ddb,
-      details: details && Object.keys(details).length > 0 ? details : undefined,
+      details,
     },
     tags: ["items", ...(tags ?? [])],
   };

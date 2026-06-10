@@ -4,12 +4,14 @@ import type { NewCommandFlags } from "../commands.js";
 import type { Species } from "@bastion-falls/types";
 import { getTargetPath } from "@/config.js";
 
+type SpeciesBiome = NonNullable<Species["biomes"]>[number];
+
 interface NewSpeciesCommandFlags extends NewCommandFlags {
   type?: string;
   origin?: string;
   lifespan?: string;
   locations?: string[];
-  biomes?: string[];
+  biomes?: SpeciesBiome[];
   traits?: string[];
   diet?: string[];
 }

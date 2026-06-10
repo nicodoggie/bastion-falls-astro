@@ -6,27 +6,31 @@ import { LocationSchema, type Location } from '@bastion-falls/types';
 import type { MigrateMapFunction } from '@/types/MigrateMapFunction';
 import {
   BuildingLocationTypeSchema,
+  HeritageLocationTypeSchema,
   LocationTypeSchema,
+  NaturalWaterLocationTypeSchema,
   PoliticalLocationTypeSchema,
   NaturalLocationTypeSchema
 } from '@bastion-falls/types/Location';
 import type {
-  BuildingLocationDetails,
-  LocationDetails,
+  BuildingLocationType,
+  HeritageLocationType,
   LocationType,
-  NaturalLocationDetails,
-  PoliticalLocationDetails,
+  NaturalLocationType,
+  NaturalWaterLocationType,
   PoliticalLocationType
 } from '@bastion-falls/types/Location';
-import { z } from 'zod';
+
+const buildingLocationTypes = new Set<string>(BuildingLocationTypeSchema.options);
+const naturalLocationTypes = new Set<string>(NaturalLocationTypeSchema.options);
+const naturalWaterLocationTypes = new Set<string>(NaturalWaterLocationTypeSchema.options);
+const politicalLocationTypes = new Set<string>(PoliticalLocationTypeSchema.options);
+const heritageLocationTypes = new Set<string>(HeritageLocationTypeSchema.options);
 
 // Helper function to infer location type from title and tags with high confidence
 function inferLocationTypeFromTitleAndTags(title: string, tags: string[]): { type: string | undefined; shouldAddTag: boolean } {
   // Get all valid location types from the schema
-  const validTypes = LocationTypeSchema.options.values().reduce((acc, value) => {
-    acc = acc.concat(value.options);
-    return acc;
-  }, [] as string[]);
+  const validTypes: string[] = LocationTypeSchema.options.flatMap((schema) => schema.options);
 
   const lowerTitle = title.toLowerCase();
   const lowerTags = tags.map(tag => tag.toLowerCase().trim());
@@ -198,25 +202,31 @@ const migrateLocation: MigrateMapFunction<
     }
   }
 
-  let locationDetails: any;
+  let location: Location;
 
-  if (locationType in BuildingLocationTypeSchema.Values) {
-    locationDetails = {
-      type: locationType,
+  if (buildingLocationTypes.has(locationType)) {
+    location = {
+      type: locationType as BuildingLocationType,
       details: {
         area: legacyDetails?.total_area ?? legacyDetails?.area,
       },
     };
-  } else if (locationType in NaturalLocationTypeSchema.Values) {
-    locationDetails = {
-      type: locationType,
-      area: legacyDetails?.total_area ?? legacyDetails?.area,
-      elevation: legacyDetails?.elevation,
-      climate: legacyDetails?.climate,
+  } else if (naturalLocationTypes.has(locationType)) {
+    location = {
+      type: locationType as NaturalLocationType,
+      details: {
+        area: legacyDetails?.total_area ?? legacyDetails?.area,
+        elevation: legacyDetails?.elevation,
+        climate: legacyDetails?.climate,
+      },
     };
-  } else if (locationType in PoliticalLocationTypeSchema.Values) {
-    locationDetails = {
-      type: locationType,
+  } else if (naturalWaterLocationTypes.has(locationType)) {
+    location = {
+      type: locationType as NaturalWaterLocationType,
+    };
+  } else if (politicalLocationTypes.has(locationType)) {
+    location = {
+      type: locationType as PoliticalLocationType,
       details: {
         flag: {
           url: extraMetadata?.location?.flag?.url,
@@ -248,17 +258,19 @@ const migrateLocation: MigrateMapFunction<
         })),
       },
     };
+  } else if (heritageLocationTypes.has(locationType)) {
+    location = {
+      type: locationType as HeritageLocationType,
+    };
+  } else {
+    throw new Error(`Unsupported location type ${locationType}`);
   }
 
   return {
     title,
     tags: updatedTags,
-    location: {
-      name: title,
-      type: locationType,
-      details: locationDetails,
-    },
+    location,
   };
 };
 
-export default migrateLocation; 
+export default migrateLocation;

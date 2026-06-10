@@ -11,6 +11,8 @@ import { visit } from 'unist-util-visit';
 import type { Root } from 'mdast';
 import yaml from 'js-yaml';
 
+type ScanStubCommandFlags = Record<string, never>;
+
 function remarkStub() {
   return (tree: Root) => {
     let hasContent = false;
@@ -36,7 +38,7 @@ function remarkStub() {
 }
 
 export const scanStubCommand = buildCommand({
-  async func(this: LocalContext, flags: any, directoryArg: string) {
+  async func(this: LocalContext, _flags: ScanStubCommandFlags, directoryArg: string) {
     const cwd = this.currentPath;
     for (const item of await glob(directoryArg, { cwd })) {
       const filePath = resolve(cwd, item);
@@ -57,6 +59,7 @@ export const scanStubCommand = buildCommand({
     this.process.exit(0);
   },
   parameters: {
+    flags: {},
     positional: {
       kind: "tuple",
       parameters: [

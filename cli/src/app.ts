@@ -1,6 +1,6 @@
 import { buildApplication, buildRouteMap } from "@stricli/core";
 import { buildInstallCommand, buildUninstallCommand } from "@stricli/auto-complete";
-import * as packageJson from "../package.json" assert { type: "json" };
+import * as packageJson from "../package.json" with { type: "json" };
 
 import { newCommandRoutes } from "./commands/new/commands.js";
 import { scanStubCommand } from "./commands/scan/command.js";
