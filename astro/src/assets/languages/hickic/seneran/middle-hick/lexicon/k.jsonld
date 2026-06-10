@@ -1,0 +1,72 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "decomp": "http://www.w3.org/ns/lemon/decomp#",
+    "etymon": "http://www.lexinfo.net/lemon/etymon#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "lexvo": "http://lexvo.org/id/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "bf": "https://bastion-falls.thekennel.info/languages/",
+    "mhk": "#"
+  },
+  "@id": "lexicon:MiddleHick_K",
+  "@type": "lime:Lexicon",
+  "dc:title": "Middle Hick Lexicon - K entries",
+  "dc:language": {
+    "@id": "bf:hickic/seneran/middle-hick",
+    "skos:prefLabel": "Middle Hick"
+  },
+  "@graph": [
+    {
+      "@id": "mhk:kener",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ke.ner",
+        "writtenRep": "kener"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *koennaer",
+        "etymon:note": "Maritime occupational borrowing."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "skilled sailor"
+          },
+          "lexinfo:semanticField": ["Nautical Terms", "Occupations", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:keper",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ke.per",
+        "writtenRep": "keper"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *koepaer",
+        "etymon:note": "Trade borrowing."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "merchant"
+          },
+          "lexinfo:semanticField": ["Trade Terms", "Occupations", "Borrowings"]
+        }
+      ]
+    }
+  ]
+}

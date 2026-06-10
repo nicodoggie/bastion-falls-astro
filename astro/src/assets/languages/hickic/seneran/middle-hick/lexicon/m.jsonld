@@ -1,0 +1,136 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "decomp": "http://www.w3.org/ns/lemon/decomp#",
+    "etymon": "http://www.lexinfo.net/lemon/etymon#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "lexvo": "http://lexvo.org/id/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "bf": "https://bastion-falls.thekennel.info/languages/",
+    "mhk": "#"
+  },
+  "@id": "lexicon:MiddleHick_M",
+  "@type": "lime:Lexicon",
+  "dc:title": "Middle Hick Lexicon - M entries",
+  "dc:language": {
+    "@id": "bf:hickic/seneran/middle-hick",
+    "skos:prefLabel": "Middle Hick"
+  },
+  "@graph": [
+    {
+      "@id": "mhk:mel",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "mel",
+        "writtenRep": "mel"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *mel",
+        "etymon:note": "Landscape borrowing."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "sand, gravel"
+          },
+          "lexinfo:semanticField": ["Landscape Terms", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:melskel",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "mel.skel",
+        "writtenRep": "melskel"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "mhk:mel"
+        },
+        {
+          "@id": "mhk:skel"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "mel-skel",
+        "etymon:gloss": "sand-ship"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "beached vessel"
+          },
+          "lexinfo:semanticField": ["Nautical Terms", "Landscape Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:mur",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "mur",
+        "writtenRep": "mur"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *mur",
+        "etymon:note": "Landscape and fortification borrowing."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "wall, barrier"
+          },
+          "lexinfo:semanticField": ["Landscape Terms", "Architecture", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:murwud",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "mur.wud",
+        "writtenRep": "murwud"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "mhk:mur"
+        },
+        {
+          "@id": "mhk:wud"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "mur-wud",
+        "etymon:gloss": "wall-forest"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "defensive tree line"
+          },
+          "lexinfo:semanticField": ["Landscape Terms", "Architecture"]
+        }
+      ]
+    }
+  ]
+}

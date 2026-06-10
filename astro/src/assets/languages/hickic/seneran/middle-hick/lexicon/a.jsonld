@@ -1,0 +1,72 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "decomp": "http://www.w3.org/ns/lemon/decomp#",
+    "etymon": "http://www.lexinfo.net/lemon/etymon#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "lexvo": "http://lexvo.org/id/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "bf": "https://bastion-falls.thekennel.info/languages/",
+    "mhk": "#"
+  },
+  "@id": "lexicon:MiddleHick_A",
+  "@type": "lime:Lexicon",
+  "dc:title": "Middle Hick Lexicon - A entries",
+  "dc:language": {
+    "@id": "bf:hickic/seneran/middle-hick",
+    "skos:prefLabel": "Middle Hick"
+  },
+  "@graph": [
+    {
+      "@id": "mhk:af",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Preposition"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "af",
+        "writtenRep": "af"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *af",
+        "etymon:note": "Borrowed possessive preposition that becomes common in speech while inherited -ul remains formal or sacred."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "of, from"
+          },
+          "lexinfo:semanticField": ["Grammar", "Possession", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:arem",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "a.rem",
+        "writtenRep": "arem"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *arm",
+        "etymon:note": "Maritime borrowing with vowel repair."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "arm, oar"
+          },
+          "lexinfo:semanticField": ["Nautical Terms", "Borrowings"]
+        }
+      ]
+    }
+  ]
+}

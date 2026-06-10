@@ -1,0 +1,80 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "decomp": "http://www.w3.org/ns/lemon/decomp#",
+    "etymon": "http://www.lexinfo.net/lemon/etymon#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "lexvo": "http://lexvo.org/id/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "bf": "https://bastion-falls.thekennel.info/languages/",
+    "mhk": "#"
+  },
+  "@id": "lexicon:MiddleHick_B",
+  "@type": "lime:Lexicon",
+  "dc:title": "Middle Hick Lexicon - B entries",
+  "dc:language": {
+    "@id": "bf:hickic/seneran/middle-hick",
+    "skos:prefLabel": "Middle Hick"
+  },
+  "@graph": [
+    {
+      "@id": "mhk:bek",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "bek",
+        "writtenRep": "bek"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *bøk",
+        "etymon:note": "Shows vowel adaptation /ø/ to /e/."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "beech wood"
+          },
+          "lexinfo:semanticField": ["Wood Terms", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:bekwud",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "bek.wud",
+        "writtenRep": "bekwud"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "mhk:bek"
+        },
+        {
+          "@id": "mhk:wud"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "bek-wud",
+        "etymon:gloss": "beech-forest"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "beech forest"
+          },
+          "lexinfo:semanticField": ["Wood Terms", "Landscape Terms"]
+        }
+      ]
+    }
+  ]
+}

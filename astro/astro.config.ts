@@ -168,6 +168,18 @@ export default defineConfig({
           "src/content/docs/world/languages/hickic/seneran/early-hick/lexicon",
       },
     }),
+    lexiconIntegration({
+      localeId: "middle-hick",
+      title: "Middle Hick Lexicon",
+      lexiconGlob:
+        "src/assets/languages/hickic/seneran/middle-hick/lexicon/*.jsonld",
+      outputDir: "src/generated/lexicon/middle-hick",
+      pageSize: 80,
+      starlightMdx: {
+        contentLexiconDirRelative:
+          "src/content/docs/world/languages/hickic/seneran/middle-hick/lexicon",
+      },
+    }),
   ],
   vite: {
     plugins: [tailwindcss(), flowbiteReact()],

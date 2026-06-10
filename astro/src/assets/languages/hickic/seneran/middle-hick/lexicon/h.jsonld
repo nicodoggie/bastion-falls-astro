@@ -1,0 +1,160 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "decomp": "http://www.w3.org/ns/lemon/decomp#",
+    "etymon": "http://www.lexinfo.net/lemon/etymon#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "lexvo": "http://lexvo.org/id/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "bf": "https://bastion-falls.thekennel.info/languages/",
+    "mhk": "#"
+  },
+  "@id": "lexicon:MiddleHick_H",
+  "@type": "lime:Lexicon",
+  "dc:title": "Middle Hick Lexicon - H entries",
+  "dc:language": {
+    "@id": "bf:hickic/seneran/middle-hick",
+    "skos:prefLabel": "Middle Hick"
+  },
+  "@graph": [
+    {
+      "@id": "mhk:hafel",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ha.fel",
+        "writtenRep": "hafel"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *haf",
+        "etymon:note": "Ocean term borrowed during maritime contact; final consonant repaired with -el."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "ocean"
+          },
+          "lexinfo:semanticField": ["Maritime Terms", "Water Features", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:hafelskel",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ha.fel.skel",
+        "writtenRep": "hafelskel"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "mhk:hafel"
+        },
+        {
+          "@id": "mhk:skel"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "hafel-skel",
+        "etymon:gloss": "ocean-ship"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "ocean-going ship"
+          },
+          "lexinfo:semanticField": ["Nautical Terms", "Maritime Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:hel",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "hel",
+        "writtenRep": "hel"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *haell",
+        "etymon:note": "Landscape borrowing."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "hill, slope"
+          },
+          "lexinfo:semanticField": ["Landscape Terms", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:helward",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "hel.ward",
+        "writtenRep": "helward"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "mhk:hel"
+        },
+        {
+          "@id": "mhk:ward"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "hel-ward",
+        "etymon:gloss": "hill-path"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "mountain trail"
+          },
+          "lexinfo:semanticField": ["Landscape Terms", "Path Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:hvalbek",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:ProperNoun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "hval.bek",
+        "writtenRep": "hvalbek"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Iutlandish *hval-bekk",
+        "etymon:note": "Northeastern place-name element meaning whale stream."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "whale stream"
+          },
+          "lexinfo:semanticField": ["Place Names", "Water Features"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,368 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "decomp": "http://www.w3.org/ns/lemon/decomp#",
+    "etymon": "http://www.lexinfo.net/lemon/etymon#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "lexvo": "http://lexvo.org/id/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "bf": "https://bastion-falls.thekennel.info/languages/",
+    "mhk": "#"
+  },
+  "@id": "lexicon:MiddleHick_S",
+  "@type": "lime:Lexicon",
+  "dc:title": "Middle Hick Lexicon - S entries",
+  "dc:language": {
+    "@id": "bf:hickic/seneran/middle-hick",
+    "skos:prefLabel": "Middle Hick"
+  },
+  "@graph": [
+    {
+      "@id": "mhk:selholm",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:ProperNoun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "sel.holm",
+        "writtenRep": "selholm"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Iutlandish *sel-holm",
+        "etymon:note": "Northeastern place-name element meaning seal island."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "seal island"
+          },
+          "lexinfo:semanticField": ["Place Names", "Maritime Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:serand",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "se.rand",
+        "writtenRep": "serand"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *strand",
+        "etymon:note": "Beach term with onset simplification and vowel repair."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "beach, strand"
+          },
+          "lexinfo:semanticField": ["Maritime Terms", "Landscape Terms", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:siler",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "si.ler",
+        "writtenRep": "siler"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *silfr",
+        "etymon:note": "Trade and metal-working borrowing."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "silver"
+          },
+          "lexinfo:semanticField": ["Metal Terms", "Trade Terms", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:silersmed",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "si.ler.smed",
+        "writtenRep": "silersmed"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "mhk:siler"
+        },
+        {
+          "@id": "mhk:smed"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "siler-smed",
+        "etymon:gloss": "silver-smith"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "silversmith"
+          },
+          "lexinfo:semanticField": ["Metal Terms", "Occupations"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:skel",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "skel",
+        "writtenRep": "skel"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *skip",
+        "etymon:note": "Nautical borrowing with final consonant repair."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "ship"
+          },
+          "lexinfo:semanticField": ["Nautical Terms", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:skelward",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "skel.ward",
+        "writtenRep": "skelward"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "mhk:skel"
+        },
+        {
+          "@id": "mhk:ward"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "skel-ward",
+        "etymon:gloss": "ship-path"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "shipping lane"
+          },
+          "lexinfo:semanticField": ["Nautical Terms", "Path Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:skipvik",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:ProperNoun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "skip.vik",
+        "writtenRep": "skipvik"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Iutlandish *skip-vik",
+        "etymon:note": "Northeastern place-name element meaning ship bay."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "ship bay"
+          },
+          "lexinfo:semanticField": ["Place Names", "Maritime Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:smed",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "smed",
+        "writtenRep": "smed"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *smidr",
+        "etymon:note": "Metal-working occupational borrowing."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "smith"
+          },
+          "lexinfo:semanticField": ["Metal Terms", "Occupations", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:stal",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "stal",
+        "writtenRep": "stal"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *stal",
+        "etymon:note": "Metal-working borrowing."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "steel"
+          },
+          "lexinfo:semanticField": ["Metal Terms", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:stalskel",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "stal.skel",
+        "writtenRep": "stalskel"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "mhk:stal"
+        },
+        {
+          "@id": "mhk:skel"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "stal-skel",
+        "etymon:gloss": "steel-ship"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "iron-reinforced vessel"
+          },
+          "lexinfo:semanticField": ["Nautical Terms", "Metal Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:stel",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "stel",
+        "writtenRep": "stel"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *staefn",
+        "etymon:note": "Nautical borrowing."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "stern"
+          },
+          "lexinfo:semanticField": ["Nautical Terms", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:stelward",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "stel.ward",
+        "writtenRep": "stelward"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "mhk:stel"
+        },
+        {
+          "@id": "mhk:ward"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "stel-ward",
+        "etymon:gloss": "stern-path"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "wake of a ship"
+          },
+          "lexinfo:semanticField": ["Nautical Terms", "Path Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:storskog",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:ProperNoun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "stor.skog",
+        "writtenRep": "Storskog"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Iutlandish *stor-skog",
+        "etymon:note": "Northeastern inland place name, source of Modern Seneran Storskey."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "great forest"
+          },
+          "lexinfo:semanticField": ["Place Names", "Landscape Terms"]
+        }
+      ]
+    }
+  ]
+}

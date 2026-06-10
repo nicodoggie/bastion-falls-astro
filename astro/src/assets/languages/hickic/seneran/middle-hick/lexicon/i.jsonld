@@ -1,0 +1,167 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "decomp": "http://www.w3.org/ns/lemon/decomp#",
+    "etymon": "http://www.lexinfo.net/lemon/etymon#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "lexvo": "http://lexvo.org/id/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "bf": "https://bastion-falls.thekennel.info/languages/",
+    "mhk": "#"
+  },
+  "@id": "lexicon:MiddleHick_I",
+  "@type": "lime:Lexicon",
+  "dc:title": "Middle Hick Lexicon - I entries",
+  "dc:language": {
+    "@id": "bf:hickic/seneran/middle-hick",
+    "skos:prefLabel": "Middle Hick"
+  },
+  "@graph": [
+    {
+      "@id": "mhk:imal",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "i.mal",
+        "writtenRep": "imal"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:derivedFrom": "Early Hick imtelmal",
+        "etymon:note": "Contracted Middle Hick form of western Early Hick imtelmal 'without-end-pool'. Folk etymology increasingly associated the form with im 'evil, abstract negativity'."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "ocean, outer sea"
+          },
+          "lexinfo:register": "regional",
+          "lexinfo:semanticField": ["Water Features", "Maritime Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:imales",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "i.ma.les",
+        "writtenRep": "imales"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "mhk:imal"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "imal-es",
+        "etymon:gloss": "ocean-ABS",
+        "etymon:note": "Poetic or fossilizing absolutive/theme form used for the ocean as an expanse or named place."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "the ocean, ocean as expanse"
+          },
+          "lexinfo:register": "poetic",
+          "lexinfo:semanticField": ["Water Features", "Maritime Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:imalel",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "i.ma.lel",
+        "writtenRep": "imalel"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "mhk:imal"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "imal-el",
+        "etymon:gloss": "ocean-ERG",
+        "etymon:note": "Poetic agentive form used when the ocean is described as an acting or destructive force."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "ocean as active force; storm surge, tidal surge"
+          },
+          "lexinfo:register": "poetic",
+          "lexinfo:semanticField": ["Water Features", "Weather Terms", "Maritime Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:iren",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "i.ren",
+        "writtenRep": "iren"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *isarn",
+        "etymon:note": "Metal-working borrowing."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "iron"
+          },
+          "lexinfo:semanticField": ["Metal Terms", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:irensmed",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "i.ren.smed",
+        "writtenRep": "irensmed"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "mhk:iren"
+        },
+        {
+          "@id": "mhk:smed"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "iren-smed",
+        "etymon:gloss": "iron-smith"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "ironsmith"
+          },
+          "lexinfo:semanticField": ["Metal Terms", "Occupations"]
+        }
+      ]
+    }
+  ]
+}

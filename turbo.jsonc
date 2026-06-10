@@ -1,6 +1,20 @@
 {
   "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
+    "@bastion-falls/5e-schema-zod#build": {
+      "outputs": [
+        "dist/index.js",
+        "dist/index.d.ts"
+      ]
+    },
+    "@bastion-falls/cli#build": {
+      "outputs": [
+        "dist/bash-complete.js",
+        "dist/cli.js",
+        "dist/chunks/*.js",
+        "dist/templates/*.ejs"
+      ]
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".astro/**", "astro/dist/**"],

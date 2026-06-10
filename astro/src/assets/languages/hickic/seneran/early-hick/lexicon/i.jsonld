@@ -545,6 +545,39 @@
       ]
     },
     {
+      "@id": "ehk:im-prefix",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Prefix"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "im",
+        "writtenRep": "im"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:derivedFrom": "im",
+        "etymon:note": "Predominantly western Seneran privative prefix developed from im 'evil, abstract negativity' through semantic bleaching from harmful or defective to lacking or without."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "privative prefix: without, lacking, deprived of"
+          },
+          "examples": [
+            "imtelmal 'ocean, outer sea' < im-tel-mal 'without-end-pool'"
+          ],
+          "lexinfo:register": "regional",
+          "lexinfo:semanticField": [
+            "Negation",
+            "Derivational Morphology",
+            "Regional Terms"
+          ],
+          "usage": "Western Seneran variant used mainly in fossilized compounds and regional landscape terms. It contrasts with standard mo- as the general negation prefix."
+        }
+      ]
+    },
+    {
       "@id": "ehk:imasam",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
@@ -1720,6 +1753,44 @@
           },
           "lexinfo:semanticField": ["Body Parts", "Basic Terms"],
           "literalMeaning": "ill-belly"
+        }
+      ]
+    },
+    {
+      "@id": "ehk:imtelmal",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "im.tel.mal",
+        "writtenRep": "imtelmal"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:im-prefix"
+        },
+        {
+          "@id": "ehk:tel"
+        },
+        {
+          "@id": "ehk:mal"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "im-tel-mal",
+        "etymon:gloss": "without-end-pool",
+        "etymon:note": "Western Early Hick regional term from a descriptive phrase for an endless pool. The im- element reflects regional privative use, distinct from the standard moral sense of im as evil or abstract negativity."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "ocean, outer sea"
+          },
+          "lexinfo:register": "regional",
+          "lexinfo:semanticField": ["Water Features", "Maritime Terms"],
+          "usage": "Western Early Hick term contrasting with keth as the known or navigable sea. Poetic usage may take agentive -el when the ocean is treated as an active force."
         }
       ]
     },

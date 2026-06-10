@@ -709,6 +709,45 @@
       ]
     },
     {
+      "@id": "ehk:mo",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Prefix"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "mo",
+        "writtenRep": "mo"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *muru",
+        "etymon:soundChange": [
+          "liquid deletion in unstressed position",
+          "prefix reduction"
+        ],
+        "etymon:note": "General negation prefix grammaticalized from Proto-Hick *muru 'darkness, absence'."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "general negation prefix: not, non-, mis-"
+          },
+          "examples": [
+            "mo-thral 'non-sacred, profane'",
+            "mo-ter 'not flowing, stagnant'",
+            "mo-ward 'misdirect, lead astray'",
+            "momer 'chicken' < mo-mer 'not-bird'"
+          ],
+          "lexinfo:semanticField": [
+            "Negation",
+            "Derivational Morphology",
+            "Grammatical Terms"
+          ],
+          "usage": "Standard Early Hick negation prefix, contrasting with regional western im- as a privative prefix."
+        }
+      ]
+    },
+    {
       "@id": "ehk:momer",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
