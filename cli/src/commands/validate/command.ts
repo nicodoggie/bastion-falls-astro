@@ -24,6 +24,8 @@ import {
   VehicleSchema
 } from '@bastion-falls/types';
 
+type ZodSchemaNode = z.core.SomeType;
+
 // Starlight base schema fields (common to all Starlight pages)
 const starlightBaseFields = {
   title: z.string(),
@@ -130,10 +132,10 @@ function extractFrontmatter(tree: Root): Record<string, any> {
   return frontmatter;
 }
 
-function getRequiredFields(schema: z.ZodSchema): string[] {
+export function getRequiredFields(schema: ZodSchemaNode): string[] {
   const requiredFields: string[] = [];
 
-  function traverseSchema(schema: z.ZodSchema, path: string = ''): void {
+  function traverseSchema(schema: ZodSchemaNode, path: string = ''): void {
     if (schema instanceof z.ZodObject) {
       const shape = schema.shape;
       for (const [key, value] of Object.entries(shape)) {
@@ -142,7 +144,11 @@ function getRequiredFields(schema: z.ZodSchema): string[] {
         if (value instanceof z.ZodOptional || value instanceof z.ZodDefault) {
           // Optional field, skip
           continue;
-        } else if (value instanceof z.ZodObject) {
+        } else if (
+          value instanceof z.ZodObject ||
+          value instanceof z.ZodDiscriminatedUnion ||
+          value instanceof z.ZodUnion
+        ) {
           traverseSchema(value, currentPath);
         } else {
           requiredFields.push(currentPath);
@@ -200,14 +206,14 @@ function determineCollection(filePath: string): string {
 /**
  * Make a schema strict recursively to catch unknown keys
  */
-function makeSchemaStrict(schema: z.ZodTypeAny): z.ZodTypeAny {
+export function makeSchemaStrict(schema: ZodSchemaNode): z.ZodTypeAny {
   if (schema instanceof z.ZodObject) {
     // Make the object strict and recursively make nested schemas strict
     const shape = schema.shape;
-    const strictShape: Record<string, z.ZodTypeAny> = {};
+    const strictShape: Record<string, ZodSchemaNode> = {};
 
     for (const [key, value] of Object.entries(shape)) {
-      strictShape[key] = makeSchemaStrict(value as z.ZodTypeAny);
+      strictShape[key] = makeSchemaStrict(value);
     }
 
     return z.object(strictShape).strict();
@@ -216,16 +222,16 @@ function makeSchemaStrict(schema: z.ZodTypeAny): z.ZodTypeAny {
   } else if (schema instanceof z.ZodOptional) {
     return makeSchemaStrict(schema.unwrap()).optional();
   } else if (schema instanceof z.ZodDefault) {
-    const innerSchema = schema.removeDefault();
-    return makeSchemaStrict(innerSchema).default(schema._def.defaultValue());
-  } else if (schema instanceof z.ZodUnion) {
-    return z.union(schema.options.map((opt: z.ZodTypeAny) => makeSchemaStrict(opt)) as any);
+    return makeSchemaStrict(schema.unwrap()).default(schema.def.defaultValue as never);
   } else if (schema instanceof z.ZodDiscriminatedUnion) {
-    const strictOptions = Array.from(schema.options.values()).map(opt => makeSchemaStrict(opt));
-    return z.discriminatedUnion(schema.discriminator as any, strictOptions as any);
+    const strictOptions = schema.options.map((option) => makeSchemaStrict(option));
+    return z.discriminatedUnion(schema.def.discriminator, strictOptions as any);
+  } else if (schema instanceof z.ZodUnion) {
+    const strictOptions = schema.options.map((option) => makeSchemaStrict(option));
+    return z.union(strictOptions as any);
   }
 
-  return schema;
+  return schema as z.ZodTypeAny;
 }
 
 async function validateFile(filePath: string, collection: string): Promise<ValidationResult> {
