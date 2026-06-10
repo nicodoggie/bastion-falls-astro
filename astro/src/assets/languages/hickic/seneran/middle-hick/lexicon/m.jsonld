@@ -21,6 +21,30 @@
   },
   "@graph": [
     {
+      "@id": "mhk:materok",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ma.te.rok",
+        "writtenRep": "materok"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:derivedFrom": "Early Hick mater-ok",
+        "etymon:note": "Inherited -ok agentive form retained in early Middle Hick."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "boatman, vessel-handler"
+          },
+          "lexinfo:semanticField": ["Nautical Terms", "Occupations", "Inherited Terms"]
+        }
+      ]
+    },
+    {
       "@id": "mhk:mel",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {

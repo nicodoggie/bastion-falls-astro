@@ -45,6 +45,30 @@
       ]
     },
     {
+      "@id": "mhk:wardok",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "war.dok",
+        "writtenRep": "wardok"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:derivedFrom": "Early Hick ward-ok",
+        "etymon:note": "Inherited -ok agentive form retained in early Middle Hick."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "guide, one who directs"
+          },
+          "lexinfo:semanticField": ["Occupations", "Path Terms", "Inherited Terms"]
+        }
+      ]
+    },
+    {
       "@id": "mhk:wud",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {

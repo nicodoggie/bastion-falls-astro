@@ -89,6 +89,15 @@
             "@value": "silver"
           },
           "lexinfo:semanticField": ["Metal Terms", "Trade Terms", "Borrowings"]
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "silverworker"
+          },
+          "lexinfo:semanticField": ["Metal Terms", "Occupations", "Borrowings"],
+          "usage": "Late Middle Hick occupational use under influence from Iutlandish -er formations."
         }
       ]
     },
@@ -145,6 +154,56 @@
             "@value": "ship"
           },
           "lexinfo:semanticField": ["Nautical Terms", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:skeler",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ske.ler",
+        "writtenRep": "skeler"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "skel-er",
+        "etymon:gloss": "ship-AGENT",
+        "etymon:note": "Late Middle Hick maritime/trade variant using Iutlandish-influenced -er."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "shipwright"
+          },
+          "lexinfo:semanticField": ["Nautical Terms", "Occupations"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:skelok",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ske.lok",
+        "writtenRep": "skelok"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "skel-ok",
+        "etymon:gloss": "ship-AGENT",
+        "etymon:note": "Native -ok agentive variant alongside skeler."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "shipwright"
+          },
+          "lexinfo:semanticField": ["Nautical Terms", "Occupations"]
         }
       ]
     },
@@ -225,6 +284,56 @@
             "@value": "smith"
           },
           "lexinfo:semanticField": ["Metal Terms", "Occupations", "Borrowings"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:smeder",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "sme.der",
+        "writtenRep": "smeder"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "smed-er",
+        "etymon:gloss": "smith-AGENT",
+        "etymon:note": "Late Middle Hick occupational variant using Iutlandish-influenced -er."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "smith"
+          },
+          "lexinfo:semanticField": ["Metal Terms", "Occupations"]
+        }
+      ]
+    },
+    {
+      "@id": "mhk:smedok",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "sme.dok",
+        "writtenRep": "smedok"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "smed-ok",
+        "etymon:gloss": "smith-AGENT",
+        "etymon:note": "Native -ok agentive variant alongside smeder."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "smith"
+          },
+          "lexinfo:semanticField": ["Metal Terms", "Occupations"]
         }
       ]
     },

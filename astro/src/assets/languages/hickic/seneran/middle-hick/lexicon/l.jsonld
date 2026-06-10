@@ -1,0 +1,48 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "decomp": "http://www.w3.org/ns/lemon/decomp#",
+    "etymon": "http://www.lexinfo.net/lemon/etymon#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "lexvo": "http://lexvo.org/id/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "bf": "https://bastion-falls.thekennel.info/languages/",
+    "mhk": "#"
+  },
+  "@id": "lexicon:MiddleHick_L",
+  "@type": "lime:Lexicon",
+  "dc:title": "Middle Hick Lexicon - L entries",
+  "dc:language": {
+    "@id": "bf:hickic/seneran/middle-hick",
+    "skos:prefLabel": "Middle Hick"
+  },
+  "@graph": [
+    {
+      "@id": "mhk:langdal",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:ProperNoun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "laŋ.dal",
+        "writtenRep": "Langdal"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Iutlandish *lang-dal",
+        "etymon:note": "Northeastern inland place name meaning long valley; unchanged because it fits Middle Hick phonology."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "long valley"
+          },
+          "lexinfo:semanticField": ["Place Names", "Landscape Terms", "Borrowings"]
+        }
+      ]
+    }
+  ]
+}

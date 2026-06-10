@@ -133,6 +133,30 @@
       ]
     },
     {
+      "@id": "mhk:hegfell",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:ProperNoun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "heg.fel",
+        "writtenRep": "Hegfell"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Old Iutlandish *hog-fell",
+        "etymon:note": "Northeastern inland place name meaning high mountain; shows /o/ to /e/ vowel adaptation."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "high mountain"
+          },
+          "lexinfo:semanticField": ["Place Names", "Landscape Terms", "Borrowings"]
+        }
+      ]
+    },
+    {
       "@id": "mhk:hvalbek",
       "@type": ["ontolex:LexicalEntry", "lexinfo:ProperNoun"],
       "canonicalForm": {

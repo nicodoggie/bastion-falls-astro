@@ -43,6 +43,30 @@
           "lexinfo:semanticField": ["Trade Terms", "Numbers", "Borrowings"]
         }
       ]
+    },
+    {
+      "@id": "mhk:threnok",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θre.nok",
+        "writtenRep": "threnok"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:derivedFrom": "Early Hick thren-ok",
+        "etymon:note": "Inherited -ok agentive form retained in early Middle Hick."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "watcher, one who watches"
+          },
+          "lexinfo:semanticField": ["Occupations", "Inherited Terms"]
+        }
+      ]
     }
   ]
 }
