@@ -40,7 +40,11 @@
             "@language": "en",
             "@value": "skilled sailor"
           },
-          "lexinfo:semanticField": ["Nautical Terms", "Occupations", "Borrowings"]
+          "lexinfo:semanticField": [
+            "Nautical Terms",
+            "Occupations",
+            "Borrowings"
+          ]
         }
       ]
     },

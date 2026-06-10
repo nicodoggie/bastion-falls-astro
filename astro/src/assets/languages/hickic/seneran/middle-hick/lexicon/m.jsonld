@@ -40,7 +40,11 @@
             "@language": "en",
             "@value": "boatman, vessel-handler"
           },
-          "lexinfo:semanticField": ["Nautical Terms", "Occupations", "Inherited Terms"]
+          "lexinfo:semanticField": [
+            "Nautical Terms",
+            "Occupations",
+            "Inherited Terms"
+          ]
         }
       ]
     },
@@ -120,7 +124,11 @@
             "@language": "en",
             "@value": "wall, barrier"
           },
-          "lexinfo:semanticField": ["Landscape Terms", "Architecture", "Borrowings"]
+          "lexinfo:semanticField": [
+            "Landscape Terms",
+            "Architecture",
+            "Borrowings"
+          ]
         }
       ]
     },

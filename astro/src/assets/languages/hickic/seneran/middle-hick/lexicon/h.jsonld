@@ -40,7 +40,11 @@
             "@language": "en",
             "@value": "ocean"
           },
-          "lexinfo:semanticField": ["Maritime Terms", "Water Features", "Borrowings"]
+          "lexinfo:semanticField": [
+            "Maritime Terms",
+            "Water Features",
+            "Borrowings"
+          ]
         }
       ]
     },
@@ -152,7 +156,11 @@
             "@language": "en",
             "@value": "high mountain"
           },
-          "lexinfo:semanticField": ["Place Names", "Landscape Terms", "Borrowings"]
+          "lexinfo:semanticField": [
+            "Place Names",
+            "Landscape Terms",
+            "Borrowings"
+          ]
         }
       ]
     },

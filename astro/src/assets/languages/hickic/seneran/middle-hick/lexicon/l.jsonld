@@ -40,7 +40,11 @@
             "@language": "en",
             "@value": "long valley"
           },
-          "lexinfo:semanticField": ["Place Names", "Landscape Terms", "Borrowings"]
+          "lexinfo:semanticField": [
+            "Place Names",
+            "Landscape Terms",
+            "Borrowings"
+          ]
         }
       ]
     }

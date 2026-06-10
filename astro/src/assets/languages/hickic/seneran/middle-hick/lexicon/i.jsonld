@@ -103,7 +103,11 @@
             "@value": "ocean as active force; storm surge, tidal surge"
           },
           "lexinfo:register": "poetic",
-          "lexinfo:semanticField": ["Water Features", "Weather Terms", "Maritime Terms"]
+          "lexinfo:semanticField": [
+            "Water Features",
+            "Weather Terms",
+            "Maritime Terms"
+          ]
         }
       ]
     },

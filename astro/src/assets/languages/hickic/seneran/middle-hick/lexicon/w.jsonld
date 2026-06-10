@@ -40,7 +40,11 @@
             "@language": "en",
             "@value": "path, direction"
           },
-          "lexinfo:semanticField": ["Path Terms", "Nautical Terms", "Borrowings"]
+          "lexinfo:semanticField": [
+            "Path Terms",
+            "Nautical Terms",
+            "Borrowings"
+          ]
         }
       ]
     },
@@ -64,7 +68,11 @@
             "@language": "en",
             "@value": "guide, one who directs"
           },
-          "lexinfo:semanticField": ["Occupations", "Path Terms", "Inherited Terms"]
+          "lexinfo:semanticField": [
+            "Occupations",
+            "Path Terms",
+            "Inherited Terms"
+          ]
         }
       ]
     },
@@ -88,7 +96,11 @@
             "@language": "en",
             "@value": "forest, timber"
           },
-          "lexinfo:semanticField": ["Wood Terms", "Landscape Terms", "Borrowings"]
+          "lexinfo:semanticField": [
+            "Wood Terms",
+            "Landscape Terms",
+            "Borrowings"
+          ]
         }
       ]
     },
@@ -120,7 +132,11 @@
             "@language": "en",
             "@value": "forest path"
           },
-          "lexinfo:semanticField": ["Wood Terms", "Path Terms", "Landscape Terms"]
+          "lexinfo:semanticField": [
+            "Wood Terms",
+            "Path Terms",
+            "Landscape Terms"
+          ]
         }
       ]
     }

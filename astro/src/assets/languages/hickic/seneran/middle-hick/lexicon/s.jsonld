@@ -64,7 +64,11 @@
             "@language": "en",
             "@value": "beach, strand"
           },
-          "lexinfo:semanticField": ["Maritime Terms", "Landscape Terms", "Borrowings"]
+          "lexinfo:semanticField": [
+            "Maritime Terms",
+            "Landscape Terms",
+            "Borrowings"
+          ]
         }
       ]
     },
