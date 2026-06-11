@@ -19,6 +19,9 @@
     "./LexiconEntryBlock.astro": "./src/LexiconEntryBlock.astro",
     "./LexiconAlphaPage.astro": "./src/LexiconAlphaPage.astro",
     "./LexiconByFieldPage.astro": "./src/LexiconByFieldPage.astro",
+    "./LexiconFieldPage.astro": "./src/LexiconFieldPage.astro",
+    "./LexiconFieldsIndexPage.astro": "./src/LexiconFieldsIndexPage.astro",
+    "./LexiconNav.astro": "./src/LexiconNav.astro",
     "./LexPagination.astro": "./src/LexPagination.astro"
   },
   "volta": {

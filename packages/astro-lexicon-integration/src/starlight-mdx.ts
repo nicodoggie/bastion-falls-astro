@@ -65,6 +65,20 @@ function pruneNumberedMdxPages(dir: string, maxPage: number): void {
   }
 }
 
+function pruneNamedMdxPages(dir: string, allowedNames: ReadonlySet<string>): void {
+  let entries: string[];
+  try {
+    entries = readdirSync(dir);
+  } catch {
+    return;
+  }
+  for (const name of entries) {
+    if (name.endsWith(".mdx") && !allowedNames.has(name)) {
+      unlinkSync(path.join(dir, name));
+    }
+  }
+}
+
 /**
  * Writes `lexicon/alpha/{1..N}.mdx` and `lexicon/by-field/{1..N}.mdx` for Starlight.
  * Skips disk writes when content is already identical so dev watchers (e.g.
@@ -80,11 +94,17 @@ export function writeStarlightLexiconMdxPages(
 
   const alphaDir = path.join(lexAbs, "alpha");
   const byFieldDir = path.join(lexAbs, "by-field");
+  const fieldDir = path.join(lexAbs, "field");
   mkdirSync(alphaDir, { recursive: true });
   mkdirSync(byFieldDir, { recursive: true });
+  mkdirSync(fieldDir, { recursive: true });
 
   pruneNumberedMdxPages(alphaDir, manifest.alpha.pageCount);
   pruneNumberedMdxPages(byFieldDir, manifest.byField.pageCount);
+  pruneNamedMdxPages(
+    fieldDir,
+    new Set(manifest.fields.routes.map((route) => `${route.uri}.mdx`)),
+  );
 
   let filesWritten = 0;
 
@@ -95,14 +115,20 @@ export function writeStarlightLexiconMdxPages(
 title: ${JSON.stringify(title)}
 description: >-
   ${manifest.title}, sorted alphabetically (page ${i} of ${manifest.alpha.pageCount}).
+sidebar:
+  hidden: true
+pagefind: true
 ---
 
 import LexiconAlphaPage from '@bastion-falls/lexicon-components/LexiconAlphaPage.astro';
 import chunk from '${genImport}/alpha-${pad}.json';
+import manifest from '${genImport}/manifest.json';
 
 <LexiconAlphaPage
   items={chunk.items}
   basePath="${publicBase}/alpha"
+  lexiconBasePath="${publicBase}"
+  fieldRoutes={manifest.fields.routes}
   page={${String(i)}}
   pageCount={${String(manifest.alpha.pageCount)}}
 />
@@ -127,14 +153,20 @@ import chunk from '${genImport}/alpha-${pad}.json';
 title: ${JSON.stringify(title)}
 description: >-
   ${manifest.title}, grouped by semantic field (page ${i} of ${manifest.byField.pageCount}).
+sidebar:
+  hidden: true
+pagefind: true
 ---
 
 import LexiconByFieldPage from '@bastion-falls/lexicon-components/LexiconByFieldPage.astro';
 import chunk from '${genImport}/by-field-${pad}.json';
+import manifest from '${genImport}/manifest.json';
 
 <LexiconByFieldPage
   rows={chunk.rows}
   basePath="${publicBase}/by-field"
+  lexiconBasePath="${publicBase}"
+  fieldRoutes={manifest.fields.routes}
   page={${String(i)}}
   pageCount={${String(manifest.byField.pageCount)}}
   showFieldIndex={${showIndex ? "true" : "false"}}
@@ -143,6 +175,52 @@ import chunk from '${genImport}/by-field-${pad}.json';
 />
 `;
     if (writeFileIfChanged(path.join(byFieldDir, `${i}.mdx`), body)) {
+      filesWritten += 1;
+    }
+  }
+
+  const fieldsIndexBody = `---
+title: ${JSON.stringify(`${manifest.title} — semantic fields`)}
+description: >-
+  ${manifest.title}, grouped into stable semantic field pages.
+---
+
+import LexiconFieldsIndexPage from '@bastion-falls/lexicon-components/LexiconFieldsIndexPage.astro';
+import manifest from '${genImport}/manifest.json';
+
+<LexiconFieldsIndexPage
+  lexiconBasePath="${publicBase}"
+  fieldRoutes={manifest.fields.routes}
+/>
+`;
+  if (writeFileIfChanged(path.join(lexAbs, "fields.mdx"), fieldsIndexBody)) {
+    filesWritten += 1;
+  }
+
+  for (const route of manifest.fields.routes) {
+    const title = `${manifest.title} — ${route.label}`;
+    const body = `---
+title: ${JSON.stringify(title)}
+description: >-
+  ${manifest.title} entries in the ${route.label} semantic field.
+sidebar:
+  hidden: true
+pagefind: true
+---
+
+import LexiconFieldPage from '@bastion-falls/lexicon-components/LexiconFieldPage.astro';
+import chunk from '${genImport}/field-${route.uri}.json';
+import manifest from '${genImport}/manifest.json';
+
+<LexiconFieldPage
+  fieldLabel={chunk.fieldLabel}
+  fieldUri={chunk.fieldUri}
+  items={chunk.items}
+  lexiconBasePath="${publicBase}"
+  fieldRoutes={manifest.fields.routes}
+/>
+`;
+    if (writeFileIfChanged(path.join(fieldDir, `${route.uri}.mdx`), body)) {
       filesWritten += 1;
     }
   }

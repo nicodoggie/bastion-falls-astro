@@ -1,0 +1,38 @@
+---
+import LexiconNav from "@bastion-falls/lexicon-components/LexiconNav.astro";
+import earlyHickManifest from "@/generated/lexicon/early-hick/manifest.json";
+import middleHickManifest from "@/generated/lexicon/middle-hick/manifest.json";
+
+const { entry } = Astro.locals.starlightRoute;
+
+const lexicons = [
+  {
+    docId: "world/languages/hickic/seneran/early-hick/lexicon",
+    basePath: "/world/languages/hickic/seneran/early-hick/lexicon",
+    manifest: earlyHickManifest,
+  },
+  {
+    docId: "world/languages/hickic/seneran/middle-hick/lexicon",
+    basePath: "/world/languages/hickic/seneran/middle-hick/lexicon",
+    manifest: middleHickManifest,
+  },
+];
+
+const currentLexicon = lexicons.find(
+  (lexicon) =>
+    entry.id === lexicon.docId || entry.id.startsWith(`${lexicon.docId}/`),
+);
+const fieldPrefix = currentLexicon ? `${currentLexicon.docId}/field/` : "";
+const currentFieldUri =
+  currentLexicon && entry.id.startsWith(fieldPrefix)
+    ? entry.id.slice(fieldPrefix.length)
+    : undefined;
+---
+
+{currentLexicon ? (
+    <LexiconNav
+      lexiconBasePath={currentLexicon.basePath}
+      fieldRoutes={currentLexicon.manifest.fields.routes}
+      currentFieldUri={currentFieldUri}
+    />
+  ) : null}

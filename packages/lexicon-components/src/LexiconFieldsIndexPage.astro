@@ -1,0 +1,57 @@
+---
+interface LexiconFieldRoute {
+  label: string;
+  uri: string;
+  itemCount: number;
+}
+
+interface Props {
+  lexiconBasePath: string;
+  fieldRoutes: LexiconFieldRoute[];
+}
+
+const { lexiconBasePath, fieldRoutes }: Props = Astro.props;
+---
+
+<div class="lex-fields-index">
+  <p>
+    Browse entries by semantic field. Each field has a stable page, so links do
+    not depend on pagination.
+  </p>
+  <ul class="lex-field-grid">
+    {
+      fieldRoutes.map((field) => (
+        <li>
+          <a href={`${lexiconBasePath}/field/${field.uri}`}>
+            <span>{field.label}</span>
+            <span class="lex-field-count">{field.itemCount}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .lex-field-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 0.45rem 0.75rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  .lex-field-grid a {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.35rem 0;
+  }
+
+  .lex-field-count {
+    color: var(--sl-color-gray-3, currentColor);
+    font-size: var(--sl-text-xs);
+    font-variant-numeric: tabular-nums;
+  }
+</style>

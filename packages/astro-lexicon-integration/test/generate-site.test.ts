@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
@@ -80,5 +80,48 @@ describe("generateLexiconSite skip-if-unchanged", () => {
     writeFileSync(shard, JSON.stringify(changed));
 
     expect(generateLexiconSite(opts).skipped).toBe(false);
+  });
+
+  it("writes stable semantic field chunks and route metadata", () => {
+    const root = mkdirSync(
+      path.join(os.tmpdir(), `lex-fields-${Date.now()}-${Math.random()}`),
+      { recursive: true },
+    );
+    const lexDir = path.join(root, "lex");
+    mkdirSync(lexDir, { recursive: true });
+    const shard = path.join(lexDir, "a.jsonld");
+    writeFileSync(shard, JSON.stringify(minimalDoc));
+
+    const outRel = "out/lex-fields";
+    const result = generateLexiconSite({
+      astroRoot: root,
+      shardPaths: [shard],
+      outputDirRelative: outRel,
+      localeId: "test",
+      title: "Test Lex",
+      pageSize: 50,
+    });
+
+    const outAbs = path.join(root, outRel);
+    const fieldPath = path.join(outAbs, "field-basic-terms.json");
+
+    expect(existsSync(fieldPath)).toBe(true);
+    expect(result.manifest.fields.fieldCount).toBe(1);
+    expect(result.manifest.fields.routes).toEqual([
+      {
+        label: "Basic Terms",
+        uri: "basic-terms",
+        itemCount: 1,
+      },
+    ]);
+
+    const chunk = JSON.parse(readFileSync(fieldPath, "utf8")) as {
+      fieldLabel: string;
+      fieldUri: string;
+      items: Array<{ writtenForm: string }>;
+    };
+    expect(chunk.fieldLabel).toBe("Basic Terms");
+    expect(chunk.fieldUri).toBe("basic-terms");
+    expect(chunk.items.map((item) => item.writtenForm)).toEqual(["foo"]);
   });
 });

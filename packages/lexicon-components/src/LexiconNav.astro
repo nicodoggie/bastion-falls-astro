@@ -1,0 +1,90 @@
+---
+interface LexiconFieldRoute {
+  label: string;
+  uri: string;
+  itemCount: number;
+}
+
+interface Props {
+  lexiconBasePath: string;
+  fieldRoutes: LexiconFieldRoute[];
+  currentFieldUri?: string;
+}
+
+const { lexiconBasePath, fieldRoutes, currentFieldUri }: Props = Astro.props;
+---
+
+<nav class="lex-nav" aria-label="Lexicon navigation">
+  <h2>Lexicon</h2>
+  <a href={`${lexiconBasePath}/alpha/1`}>Alphabetical dictionary</a>
+  <a href={`${lexiconBasePath}/fields`}>Semantic fields</a>
+  {
+    fieldRoutes.length ? (
+      <details class="lex-field-details">
+        <summary>All fields</summary>
+        <ul>
+          {fieldRoutes.map((field) => (
+            <li>
+              <a
+                href={`${lexiconBasePath}/field/${field.uri}`}
+                aria-current={field.uri === currentFieldUri ? "page" : undefined}
+              >
+                <span>{field.label}</span>
+                <span class="lex-field-count">{field.itemCount}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ) : null
+  }
+</nav>
+
+<style>
+  .lex-nav {
+    margin-bottom: 1rem;
+  }
+
+  .lex-nav h2 {
+    margin-top: 0;
+  }
+
+  .lex-field-details {
+    margin-top: 0.4rem;
+  }
+
+  .lex-field-details summary {
+    cursor: pointer;
+    color: var(--sl-color-gray-2, currentColor);
+    font-size: var(--sl-text-xs);
+  }
+
+  .lex-field-details ul {
+    list-style: none;
+    margin: 0.4rem 0 0;
+    padding: 0;
+    max-height: min(52vh, 34rem);
+    overflow: auto;
+  }
+
+  .lex-field-details li + li {
+    margin-top: 0.15rem;
+  }
+
+  .lex-field-details a {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .lex-field-details a[aria-current="page"] {
+    color: var(--sl-color-white, currentColor);
+    font-weight: 600;
+  }
+
+  .lex-field-count {
+    color: var(--sl-color-gray-4, currentColor);
+    font-variant-numeric: tabular-nums;
+  }
+</style>

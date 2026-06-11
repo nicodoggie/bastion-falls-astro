@@ -1,6 +1,12 @@
 import type { LexiconFieldMeta } from "@bastion-falls/types";
 
-export const MANIFEST_VERSION = 1 as const;
+export const MANIFEST_VERSION = 2 as const;
+
+export interface LexiconFieldRoute {
+  label: string;
+  uri: string;
+  itemCount: number;
+}
 
 export interface LexiconSiteManifest {
   version: typeof MANIFEST_VERSION;
@@ -19,5 +25,9 @@ export interface LexiconSiteManifest {
   byField: {
     pageCount: number;
     rowCount: number;
+  };
+  fields: {
+    fieldCount: number;
+    routes: LexiconFieldRoute[];
   };
 }

@@ -1,0 +1,30 @@
+---
+import type { LexItem } from "@bastion-falls/types";
+import LexiconEntryBlock from "./LexiconEntryBlock.astro";
+
+interface LexiconFieldRoute {
+  label: string;
+  uri: string;
+  itemCount: number;
+}
+
+interface Props {
+  fieldLabel: string;
+  fieldUri: string;
+  items: LexItem[];
+  lexiconBasePath: string;
+  fieldRoutes: LexiconFieldRoute[];
+}
+
+const { fieldLabel, items }: Props = Astro.props;
+---
+
+<div id="lex-page-top" aria-hidden="true" class="lex-page-top-anchor"></div>
+<div class="lex-field-page">
+  <p>
+    Entries in the <strong>{fieldLabel}</strong> semantic field.
+  </p>
+  <div class="lex-items">
+    {items.map((item) => <LexiconEntryBlock item={item} />)}
+  </div>
+</div>

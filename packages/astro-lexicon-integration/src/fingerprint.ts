@@ -8,7 +8,7 @@ import { MANIFEST_VERSION } from "./manifest.js";
  * Bump when JSON-LD → LexItem mapping, chunk layout, or pagination logic changes
  * so stale output is not reused.
  */
-export const LEXICON_COMPILER_REVISION = 1;
+export const LEXICON_COMPILER_REVISION = 3;
 
 export interface LexiconStampFile {
   fingerprint: string;

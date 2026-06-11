@@ -4,6 +4,7 @@ import FamilySidebarInfo from "./sidebar-info/FamilySidebarInfo.astro";
 import GenericSidebarInfo from "./sidebar-info/GenericSidebarInfo.astro";
 import { getGenericSidebarSubject } from "./sidebar-info/genericSidebarInfo";
 import ItemSidebarInfo from "./sidebar-info/ItemSidebarInfo.astro";
+import LexiconSidebarInfo from "./sidebar-info/LexiconSidebarInfo.astro";
 import LocationSidebarInfo from "./sidebar-info/LocationSidebarInfo.astro";
 import OrganizationSidebarInfo from "./sidebar-info/OrganizationSidebarInfo.astro";
 
@@ -50,5 +51,6 @@ const genericSidebar = getGenericSidebarSubject(
           entryFilePath={entry.filePath}
         />
       )}
+      <LexiconSidebarInfo />
     </>
   )}

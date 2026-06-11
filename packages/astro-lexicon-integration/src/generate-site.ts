@@ -16,7 +16,11 @@ import {
   readStampFile,
   type LexiconStampFile,
 } from "./fingerprint.js";
-import { MANIFEST_VERSION, type LexiconSiteManifest } from "./manifest.js";
+import {
+  MANIFEST_VERSION,
+  type LexiconFieldRoute,
+  type LexiconSiteManifest,
+} from "./manifest.js";
 
 export interface GenerateLexiconSiteOptions {
   astroRoot: string;
@@ -48,6 +52,12 @@ export interface ByFieldChunkRow {
 export interface ByFieldChunk {
   page: number;
   rows: ByFieldChunkRow[];
+}
+
+export interface FieldChunk {
+  fieldLabel: string;
+  fieldUri: string;
+  items: LexItem[];
 }
 
 function sortAlpha(items: LexItem[]): LexItem[] {
@@ -96,6 +106,32 @@ function annotateByFieldRows(
   }
 
   return out;
+}
+
+function buildFieldChunks(
+  flat: ByFieldFlatRow[],
+  fieldLabelsOrdered: readonly string[],
+): FieldChunk[] {
+  const rowsByLabel = new Map<string, ByFieldFlatRow[]>();
+  for (const row of flat) {
+    const rows = rowsByLabel.get(row.fieldLabel);
+    if (rows) {
+      rows.push(row);
+    } else {
+      rowsByLabel.set(row.fieldLabel, [row]);
+    }
+  }
+
+  return fieldLabelsOrdered.map((label) => {
+    const rows = rowsByLabel.get(label) ?? [];
+    const first = rows[0];
+    const fieldUri = first?.fieldUri ?? "";
+    return {
+      fieldLabel: label,
+      fieldUri,
+      items: rows.map((row) => row.item),
+    };
+  });
 }
 
 export interface GenerateLexiconSiteResult {
@@ -172,6 +208,13 @@ export function generateLexiconSite(
     if (m) fieldsMeta[label] = m;
   }
 
+  const fieldChunks = buildFieldChunks(flatField, fieldLabelsOrdered);
+  const fieldRoutes: LexiconFieldRoute[] = fieldChunks.map((chunk) => ({
+    label: chunk.fieldLabel,
+    uri: chunk.fieldUri,
+    itemCount: chunk.items.length,
+  }));
+
   alphaPages.forEach((items, idx) => {
     const chunk: AlphaChunk = { page: idx + 1, items };
     writeFileSync(
@@ -184,6 +227,13 @@ export function generateLexiconSite(
     const chunk: ByFieldChunk = { page: idx + 1, rows };
     writeFileSync(
       path.join(outAbs, `by-field-${String(idx + 1).padStart(4, "0")}.json`),
+      `${JSON.stringify(chunk, null, 0)}\n`,
+    );
+  });
+
+  fieldChunks.forEach((chunk) => {
+    writeFileSync(
+      path.join(outAbs, `field-${chunk.fieldUri}.json`),
       `${JSON.stringify(chunk, null, 0)}\n`,
     );
   });
@@ -203,6 +253,10 @@ export function generateLexiconSite(
     byField: {
       pageCount: Math.max(1, byFieldPages.length),
       rowCount: flatField.length,
+    },
+    fields: {
+      fieldCount: fieldRoutes.length,
+      routes: fieldRoutes,
     },
   };
 

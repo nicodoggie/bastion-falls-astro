@@ -6,6 +6,8 @@ import LexPagination from "./LexPagination.astro";
 interface Props {
   items: LexItem[];
   basePath: string;
+  lexiconBasePath?: string;
+  fieldRoutes?: unknown[];
   page: number;
   pageCount: number;
 }
