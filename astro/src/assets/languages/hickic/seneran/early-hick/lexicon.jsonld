@@ -371,7 +371,7 @@
         {
           "@type": "ontolex:Form",
           "writtenRep": "aiesp'er",
-          "phoneticRep": "ai.esp.ʔer",
+          "phoneticRep": "ai.es.per",
           "decomposition": "aiesp + -'er (verbalizer)",
           "grammaticalMeaning": "to bathe, to immerse in water"
         }
@@ -2089,7 +2089,7 @@
             "@value": "verbalizer suffix that creates verbs from nouns and property concepts",
             "@language": "en"
           },
-          "usage": "Standard realization is always -'er in the standard language, with dialectal -er after plosives",
+          "usage": "Productive forms preserve -'er, while ordinary speech may collapse the glottal after sibilant-stop codas by moving the final stop into the verbalizer syllable",
           "lexinfo:partOfSpeech": "suffix",
           "lexinfo:morphosyntacticProperty": "verbalizer"
         }
@@ -3675,7 +3675,7 @@
         {
           "@type": "ontolex:Form",
           "writtenRep": "imeresp'er",
-          "phoneticRep": "i.me.res.pʔer",
+          "phoneticRep": "i.me.res.per",
           "decomposition": "imeresp + -'er (verbalizer)",
           "grammaticalMeaning": "to sleep"
         }
@@ -4141,7 +4141,7 @@
         "etymon:compound": "im-wes",
         "etymon:meaning": "evil-enclose",
         "etymon:soundChange": "compound fusion",
-        "etymon:note": "Shows productive use of im- prefix for harmful actions"
+        "etymon:note": "Shows productive use of im in its older moral sense of evil, harmful, or improper action, not the newer western privative prefix."
       },
       "sense": [
         {

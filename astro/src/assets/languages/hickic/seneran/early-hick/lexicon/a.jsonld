@@ -228,9 +228,10 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:compound": "ai-tar",
-        "etymon:meaning": "water-fall",
-        "etymon:soundChange": "compound fusion"
+        "etymon:compound": "ai-itar",
+        "etymon:meaning": "water-SUPE",
+        "etymon:note": "Lexicalized superessive compound, understood as water above or water coming upon one from above",
+        "etymon:soundChange": "case lexicalization"
       },
       "sense": [
         {
@@ -650,7 +651,7 @@
             "@value": "rest, resting place"
           },
           "lexinfo:semanticField": "Basic Terms",
-          "usage": "Source of subessive case marker -asam through grammaticalization"
+          "usage": "Source of sublative case marker -asam through grammaticalization"
         }
       ]
     },
@@ -1041,7 +1042,7 @@
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "arasad-itar",
-        "etymon:gloss": "plank-SUPER",
+        "etymon:gloss": "plank-SUPE",
         "etymon:note": "Literally \"elevated plank\""
       },
       "sense": [
@@ -1115,8 +1116,8 @@
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "asam-asam",
-        "etymon:gloss": "rest-SUBE",
-        "etymon:note": "From asam \"rest\" with subessive case -asam, literally \"rest downward\". Shows parallel formation to asamitar \"sit\""
+        "etymon:gloss": "rest-SUBL",
+        "etymon:note": "From asam \"rest\" with sublative case -asam, literally \"rest downward\". Shows parallel formation to asamitar \"sit\""
       },
       "sense": [
         {
@@ -1165,7 +1166,7 @@
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "asam-itar",
-        "etymon:gloss": "rest-SUPER",
+        "etymon:gloss": "rest-SUPE",
         "etymon:note": "From asam \"rest, resting place\" with superessive case, literally \"rest upon\". Shows common pattern of case suffixes becoming lexicalized into verbs"
       },
       "sense": [

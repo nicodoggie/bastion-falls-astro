@@ -856,7 +856,7 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "imlis-itar",
         "etymon:gloss": "fear-SUPE",
-        "etymon:note": "Uses superlative case to indicate sudden upward movement",
+        "etymon:note": "Uses the surface-allative reading of -itar to indicate sudden upward movement",
         "etymon:soundChange": "case lexicalization"
       },
       "sense": [
@@ -1184,7 +1184,7 @@
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:meaning": "evil-enclose",
-        "etymon:note": "Shows productive use of im- prefix for harmful actions",
+        "etymon:note": "Shows productive use of im in its older moral sense of evil, harmful, or improper action, not the newer western privative prefix.",
         "etymon:soundChange": "compound fusion"
       },
       "sense": [
@@ -1589,7 +1589,7 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "im-bris",
         "etymon:gloss": "evil-heat",
-        "etymon:note": "Shows productive use of im- prefix for negative conditions"
+        "etymon:note": "Shows productive use of im in its older moral sense of evil, harmful, or improper condition, not the newer western privative prefix."
       },
       "sense": [
         {

@@ -996,10 +996,10 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:compound": "murvinu-imris",
-        "etymon:gloss": "stillbirth-ELL",
-        "etymon:note": "Uses ellative case to indicate 'from/out of stillbirth'",
-        "etymon:soundChange": "ellative case formation"
+        "etymon:compound": "mur-vinuiter",
+        "etymon:gloss": "night-birth",
+        "etymon:note": "Built on already lexicalized vinuiter, preserving the inland/fossil ellative-like -iter birth term",
+        "etymon:soundChange": "compound formation"
       },
       "sense": [
         {

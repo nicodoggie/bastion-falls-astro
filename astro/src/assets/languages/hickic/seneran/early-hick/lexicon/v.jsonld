@@ -225,8 +225,8 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:components": ["vinu (pregnancy)", "itar (ELL)"],
-        "etymon:note": "Lexicalized from ellative case",
+        "etymon:components": ["vinu (pregnancy)", "iter (ELL.DIAL)"],
+        "etymon:note": "Lexicalized from inland/fossil ellative-like -iter",
         "etymon:soundChange": "case lexicalization"
       },
       "sense": [
@@ -335,9 +335,9 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:compound": "venu-itar",
+        "etymon:compound": "venu-iter",
         "etymon:gloss": "pregnancy-ELL",
-        "etymon:note": "Lexicalized from ellative case of 'pregnancy'"
+        "etymon:note": "Lexicalized from inland/fossil ellative-like -iter; standard productive Early Hick uses -imris for ellative functions"
       },
       "sense": [
         {
@@ -385,7 +385,7 @@
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "ven-itar",
-        "etymon:gloss": "yoke-SUPER",
+        "etymon:gloss": "yoke-SUPE",
         "etymon:note": "Lexicalized from superessive case of 'yoke'"
       },
       "sense": [

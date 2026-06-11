@@ -18,42 +18,42 @@ const { title = "Answer", label = "Pop quiz" } = Astro.props;
 </details>
 
 <style>
-  .pop-quiz {
-    margin: 1rem 0;
-    border: 1px solid var(--sl-color-gray-5);
-    border-radius: 0.5rem;
-    background: var(--sl-color-gray-7);
-  }
+.pop-quiz {
+  margin: 1rem 0;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  background: var(--sl-color-gray-7);
+}
 
-  .pop-quiz[open] {
-    border-color: var(--sl-color-accent-low);
-  }
+.pop-quiz[open] {
+  border-color: var(--sl-color-accent-low);
+}
 
-  .pop-quiz summary {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    font-weight: 600;
-  }
+.pop-quiz summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
 
-  .pop-quiz summary::marker {
-    color: var(--sl-color-accent);
-  }
+.pop-quiz summary::marker {
+  color: var(--sl-color-accent);
+}
 
-  .pop-quiz__label {
-    color: var(--sl-color-accent);
-    font-size: var(--sl-text-sm);
-    text-transform: uppercase;
-  }
+.pop-quiz__label {
+  color: var(--sl-color-accent);
+  font-size: var(--sl-text-sm);
+  text-transform: uppercase;
+}
 
-  .pop-quiz__title {
-    color: var(--sl-color-white);
-  }
+.pop-quiz__title {
+  color: var(--sl-color-white);
+}
 
-  .pop-quiz__body {
-    padding: 0 1rem 1rem;
-    border-top: 1px solid var(--sl-color-gray-6);
-  }
+.pop-quiz__body {
+  padding: 0 1rem 1rem;
+  border-top: 1px solid var(--sl-color-gray-6);
+}
 </style>

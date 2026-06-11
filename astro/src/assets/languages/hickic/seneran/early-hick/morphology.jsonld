@@ -84,21 +84,22 @@
             },
             {
               "@type": "morph:GrammaticalValue",
-              "dc:title": "Superlative",
+              "dc:title": "Superessive / Surface Allative",
               "morph:marker": "Suffix -itar",
               "morph:examples": [
                 "rismater-itar (reed.boat-SUPE)",
+                "rismater-itar (reed.boat-SURF.ALL)",
                 "ven-itar (yoke-SUPE)"
               ],
-              "morph:notes": "Indicates movement 'upward' or 'upon' something."
+              "morph:notes": "Marks static support or position 'on/upon/above' as SUPE; in motion contexts the same suffix may be glossed SURF.ALL for 'onto/up onto'."
             },
             {
               "@type": "morph:GrammaticalValue",
               "dc:title": "Sublative",
               "morph:marker": "Suffix -asam",
               "morph:examples": [
-                "rismater-asam (reed.boat-SUBE)",
-                "ven-asam (yoke-SUBE)"
+                "rismater-asam (reed.boat-SUBL)",
+                "ven-asam (yoke-SUBL)"
               ],
               "morph:notes": "Indicates movement 'downward' or 'onto' something."
             },
@@ -107,8 +108,8 @@
               "dc:title": "Subessive",
               "morph:marker": "Suffix -esp",
               "morph:examples": [
-                "rismater-esp (reed.boat-SUB)",
-                "ven-esp (yoke-SUB)"
+                "rismater-esp (reed.boat-SUBE)",
+                "ven-esp (yoke-SUBE)"
               ],
               "morph:notes": "Indicates position 'under' or 'below' something."
             }

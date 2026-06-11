@@ -279,6 +279,38 @@
       ]
     },
     {
+      "@id": "ehk:wesp",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "wesp",
+        "writtenRep": "wesp"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *wesu pu",
+        "etymon:compound": "wes-pu",
+        "etymon:gloss": "enclosed.space-hole",
+        "etymon:note": "Lexical bridge between wes \"cover, enclose\" and the productive subessive -esp. Probably first meant an enclosed hole or burrow-dwelling, broadened under Maritime Hick influence to enclosed lower spaces such as ship holds, then generalized in Early Hick to cellars, basements, and similar lower enclosed spaces.",
+        "etymon:soundChange": ["compound formation", "final vowel loss"]
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "cellar, basement, lower enclosed space"
+          },
+          "lexinfo:semanticField": [
+            "Architecture",
+            "Dwelling Terms",
+            "Spatial Terms"
+          ],
+          "usage": "Lexicalized relic; productive case use normally appears as -esp"
+        }
+      ]
+    },
+    {
       "@id": "ehk:wud",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
