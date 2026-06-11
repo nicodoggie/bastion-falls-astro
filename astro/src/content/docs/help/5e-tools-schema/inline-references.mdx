@@ -55,9 +55,9 @@ If the root object is `{ "spell": [ … ] }`, pass `name` to choose one entry
 
 ### Inline object (`spell`)
 
-Pass a spell object directly. Takes precedence over `json` and `name`.
-For YAML files under `src/content/docs/`, prefer the `json` prop above so the
-repo's content-data loader handles parsing.
+Pass a spell object directly. Takes precedence over `json` and `name`. For YAML
+files under `src/content/docs/`, prefer the `json` prop above so the repo's
+content-data loader handles parsing.
 
 ```mdx
 const fireBolt = {
@@ -98,8 +98,8 @@ that ambiguity applies.
 
 In CommonMark, a **blank line** ends a paragraph. If you put an empty line
 before `<Spell />`, the spell becomes the start of a **new** paragraph after
-“…the spell”, which looks like the name is repeated and can sit oddly next to
-“, but…”. Keep the component **on the same line** as the surrounding sentence:
+“…the spell”, which looks like the name is repeated and can sit oddly next to “,
+but…”. Keep the component **on the same line** as the surrounding sentence:
 
 ```mdx
 They act similarly to the spell <Spell name="Antimagic Field" />, but…

@@ -7,10 +7,9 @@ description: |
 
 import StatBlock from '../../../../components/StatBlock.astro';
 
-The `creatureStats` frontmatter field on species pages lets you embed one
-or more D&D 5e stat blocks directly in an article.
-Each key is an arbitrary identifier you choose;
-the value is a creature object following the
+The `creatureStats` frontmatter field on species pages lets you embed one or
+more D&D 5e stat blocks directly in an article. Each key is an arbitrary
+identifier you choose; the value is a creature object following the
 [5etools bestiary schema](https://github.com/TheGiddyLimit/5etools-utils).
 
 ```yaml
@@ -35,8 +34,8 @@ creature={frontmatter.creatureStats['my-creature-key']} /> }
 
 ## Minimal example
 
-The smallest valid stat block needs a name, size, type, AC, HP, speed,
-the six ability scores, and a CR.
+The smallest valid stat block needs a name, size, type, AC, HP, speed, the six
+ability scores, and a CR.
 
 ```yaml
 creatureStats:
@@ -101,8 +100,7 @@ Multiple codes render as "Small or Medium", etc.
 
 ### `type`
 
-`string | object` — The creature type.
-Can be a plain string:
+`string | object` — The creature type. Can be a plain string:
 
 ```yaml
 type: undead
@@ -151,8 +149,7 @@ alignment:
 
 ### `ac`
 
-`array` — Armor class.
-Each element is either a plain number or an object:
+`array` — Armor class. Each element is either a plain number or an object:
 
 ```yaml
 ac:
@@ -183,8 +180,7 @@ ac:
 
 ### `hp`
 
-`object` — Hit points.
-Provide both `average` and `formula`:
+`object` — Hit points. Provide both `average` and `formula`:
 
 ```yaml
 hp:
@@ -214,15 +210,15 @@ speed:
   burrow: 10
 ```
 
-Add `canHover: true` alongside `fly` for hovering creatures.
-Omit any speed type the creature lacks.
+Add `canHover: true` alongside `fly` for hovering creatures. Omit any speed type
+the creature lacks.
 
 ---
 
 ### Ability scores (`str`, `dex`, `con`, `int`, `wis`, `cha`)
 
-`number` — The raw score (not the modifier).
-Modifiers and saving throw bonuses are computed automatically.
+`number` — The raw score (not the modifier). Modifiers and saving throw bonuses
+are computed automatically.
 
 ```yaml
 str: 20
@@ -244,9 +240,9 @@ str:
 
 ### `save`
 
-`object` — Saving throw bonuses for proficient saves.
-Only include the saves where the creature has proficiency (or expertise).
-Values are formatted strings including the sign:
+`object` — Saving throw bonuses for proficient saves. Only include the saves
+where the creature has proficiency (or expertise). Values are formatted strings
+including the sign:
 
 ```yaml
 save:
@@ -261,9 +257,8 @@ Saves not listed here default to the raw ability modifier in the stat block.
 
 ### `skill`
 
-`object` — Skill bonuses.
-Same format as `save`: only list skills where the creature has proficiency
-or expertise:
+`object` — Skill bonuses. Same format as `save`: only list skills where the
+creature has proficiency or expertise:
 
 ```yaml
 skill:
@@ -272,8 +267,7 @@ skill:
   athletics: '+3'
 ```
 
-All 18 skills are supported.
-Multi-word skill names are quoted:
+All 18 skills are supported. Multi-word skill names are quoted:
 
 ```yaml
 skill:
@@ -297,8 +291,7 @@ senses:
 
 ### `passive`
 
-`number` — Passive Wisdom (Perception).
-Usually `10 + Perception modifier`:
+`number` — Passive Wisdom (Perception). Usually `10 + Perception modifier`:
 
 ```yaml
 passive: 15
@@ -321,8 +314,7 @@ languages:
 
 ### `cr`
 
-`string` — Challenge rating.
-Use fractional strings for sub-1 CRs:
+`string` — Challenge rating. Use fractional strings for sub-1 CRs:
 
 ```yaml
 cr: "1/8"   # 25 XP
@@ -343,8 +335,8 @@ cr:
 
 ### `resist`, `immune`, `vulnerable`
 
-Damage resistances, immunities, and vulnerabilities.
-Accepts an array of damage type strings or condition objects:
+Damage resistances, immunities, and vulnerabilities. Accepts an array of damage
+type strings or condition objects:
 
 ```yaml
 immune:
@@ -376,8 +368,8 @@ conditionImmune:
 
 ### `trait`
 
-`array` — Passive features.
-Each entry needs a `name` and `entries` (a list of description strings):
+`array` — Passive features. Each entry needs a `name` and `entries` (a list of
+description strings):
 
 ```yaml
 trait:
@@ -397,8 +389,7 @@ trait:
 
 ### `action`
 
-`array` — Actions.
-Same shape as `trait`:
+`array` — Actions. Same shape as `trait`:
 
 ```yaml
 action:
@@ -414,8 +405,8 @@ action:
 ```
 
 **Recharge mechanic** — there is no separate `recharge` field in the schema.
-Embed the recharge note directly in the action `name`,
-exactly as it appears in print:
+Embed the recharge note directly in the action `name`, exactly as it appears in
+print:
 
 ```yaml
 action:
@@ -437,8 +428,7 @@ action:
 
 ### `bonus`
 
-`array` — Bonus actions.
-Same shape as `action`:
+`array` — Bonus actions. Same shape as `action`:
 
 ```yaml
 bonus:
@@ -452,8 +442,7 @@ bonus:
 
 ### `reaction`
 
-`array` — Reactions.
-Same shape as `action`:
+`array` — Reactions. Same shape as `action`:
 
 ```yaml
 reaction:
@@ -469,9 +458,8 @@ reaction:
 
 ### `legendary`
 
-`array` — Legendary actions.
-Same shape as `action`.
-Add `legendaryHeader` for the introductory paragraph:
+`array` — Legendary actions. Same shape as `action`. Add `legendaryHeader` for
+the introductory paragraph:
 
 ```yaml
 legendaryHeader:
