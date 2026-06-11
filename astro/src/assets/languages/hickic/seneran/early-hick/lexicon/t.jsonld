@@ -1278,6 +1278,37 @@
       ]
     },
     {
+      "@id": "ehk:thimer",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θi.mer",
+        "writtenRep": "thimer"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *ha-meru",
+        "etymon:intermediateForm": ["*θameru", "*θəmeru"],
+        "etymon:soundChange": [
+          "sacred prefix spirantization",
+          "unstressed vowel reduction",
+          "final vowel loss"
+        ],
+        "etymon:note": "Sacred extension of the nurturing sense also preserved in mer 'bird; parent'."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "spiritual nurturing; penitence"
+          },
+          "lexinfo:semanticField": ["Sacred Terms", "Abstract Concepts"],
+          "usage": "Used in ritual contexts"
+        }
+      ]
+    },
+    {
       "@id": "ehk:thir",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
@@ -1295,9 +1326,51 @@
           "@type": "ontolex:LexicalSense",
           "definition": {
             "@language": "en",
-            "@value": "air, wind; white"
+            "@value": "air, wind"
           },
-          "lexinfo:semanticField": ["Elements", "Colors"]
+          "lexinfo:semanticField": ["Elements"]
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "white"
+          },
+          "lexinfo:semanticField": ["Colors"]
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "elder, elderly, white-haired"
+          },
+          "lexinfo:semanticField": ["Kinship Terms", "Age Terms"],
+          "usage": "Extended from 'white' through white hair; productive in age-marked compounds."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thirwud",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θir.wud",
+        "writtenRep": "thirwud"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "thir-wud",
+        "etymon:gloss": "white-wood",
+        "etymon:soundChange": "compound fusion"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "white wood"
+          },
+          "lexinfo:semanticField": ["Plant Terms", "Material Terms", "Color Terms"]
         }
       ]
     },
@@ -1337,7 +1410,8 @@
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "thir-lis",
-        "etymon:gloss": "elder-child"
+        "etymon:gloss": "elder/white-haired-child",
+        "etymon:note": "Uses thir- as an age-marked kinship element extended from white hair."
       },
       "sense": [
         {
@@ -1347,6 +1421,56 @@
             "@value": "grandchild"
           },
           "lexinfo:semanticField": ["Kinship Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thirba",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θir.ba",
+        "writtenRep": "thirba"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "thir-ba",
+        "etymon:gloss": "elder/white-haired-father",
+        "etymon:soundChange": "compound fusion"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "grandfather"
+          },
+          "lexinfo:semanticField": "Kinship Terms"
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thirnai",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θir.nai",
+        "writtenRep": "thirnai"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "thir-nai",
+        "etymon:gloss": "elder/white-haired-mother",
+        "etymon:soundChange": "compound fusion"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "grandmother"
+          },
+          "lexinfo:semanticField": "Kinship Terms"
         }
       ]
     },
@@ -1361,7 +1485,8 @@
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "thir-mer",
-        "etymon:gloss": "elder-parent"
+        "etymon:gloss": "elder/white-haired-parent",
+        "etymon:note": "Uses thir- as an age-marked kinship element extended from white hair."
       },
       "sense": [
         {
@@ -1447,6 +1572,93 @@
       ]
     },
     {
+      "@id": "ehk:thrakel",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θra.kel",
+        "writtenRep": "thrakel"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "thral-kel",
+        "etymon:gloss": "sacred-sky",
+        "etymon:soundChange": "liquid deletion",
+        "etymon:note": "Lexicalized as the ordinary word for the sun; the literal sense 'sacred sky' is archaic."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "sun"
+          },
+          "lexinfo:semanticField": ["Celestial Bodies", "Sacred Terms"]
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "sacred sky"
+          },
+          "lexinfo:semanticField": ["Celestial Bodies", "Sacred Terms"],
+          "usage": "Archaic literal sense preserved in etymology and poetic register"
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thral",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θral",
+        "writtenRep": "thral"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *harala",
+        "etymon:gloss": "sun deity",
+        "etymon:soundChange": "regular sound changes",
+        "etymon:note": "Developed from daylight and appointed day senses into sacred or ritually marked use; contrasts with brises 'firelight, illumination'."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "daylight, daytime"
+          },
+          "lexinfo:semanticField": ["Time Terms", "Natural Terms"]
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "calendar day, appointed day"
+          },
+          "lexinfo:semanticField": ["Time Terms"]
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "sacred, ritual"
+          },
+          "lexinfo:semanticField": ["Sacred Terms", "Ritual Terms"],
+          "usage": "Archaic or literary as a bare word; in ordinary usage chiefly retained as a productive derivational and compound element for sacred or ritually marked concepts."
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "sun deity"
+          },
+          "lexinfo:semanticField": ["Sacred Terms", "Religious Terms"],
+          "usage": "Archaic or theological; displaced in ordinary reference to the sun by thrakel."
+        }
+      ]
+    },
+    {
       "@id": "ehk:thragral",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
@@ -1468,6 +1680,32 @@
           },
           "lexinfo:semanticField": ["Landforms", "Garden Terms"],
           "usage": "The dual meaning reflects the sacred nature of cultivated land in Hick culture, where gardens were seen as sanctified spaces"
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thralgral",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θral.gral",
+        "writtenRep": "thralgral"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "thral-gral",
+        "etymon:gloss": "sacred-earth",
+        "etymon:note": "Formal unreduced counterpart to thragral 'garden'."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "consecrated ground, ritual or burial ground"
+          },
+          "lexinfo:semanticField": ["Sacred Terms", "Landforms", "Ritual Terms"],
+          "lexinfo:register": "lexinfo:religiousRegister"
         }
       ]
     },
@@ -1497,6 +1735,111 @@
       ]
     },
     {
+      "@id": "ehk:thralter",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θral.ter",
+        "writtenRep": "thralter"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "thral-ter",
+        "etymon:gloss": "appointed/sacred-day-flow",
+        "etymon:note": "From thral 'appointed day; sacred/ritual in derivation' and ter 'flow, time-flow'. The ritual-register meaning refers to the ordered flow of ceremony; the common meaning extends this to the whole significant day."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "important day, day of significance"
+          },
+          "lexinfo:semanticField": ["Time Terms", "Social Terms", "Sacred Terms"],
+          "usage": "Common or colloquial extension from the ritual-register sense to the whole marked day"
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "ritual progression, liturgical sequence"
+          },
+          "lexinfo:semanticField": ["Ritual Terms", "Time Terms", "Sacred Terms"],
+          "lexinfo:register": "lexinfo:technicalRegister",
+          "usage": "Ritual register; the ordered flow of actions in a ceremony or marked day"
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thralthren",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θral.θren",
+        "writtenRep": "thralthren"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "thral-thren",
+        "etymon:gloss": "sacred/ritual-watch"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "vigil"
+          },
+          "lexinfo:semanticField": ["Ritual Terms", "Sacred Terms", "Time Terms"],
+          "usage": "A formal period of sacred or appointed watchfulness"
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "ritual observation; divination"
+          },
+          "lexinfo:semanticField": ["Ritual Terms", "Sacred Terms", "Magical Terms"],
+          "usage": "Formal sacred watching, including divinatory observation when performed as a rite"
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thralwad",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θral.wad",
+        "writtenRep": "thralwad"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "thral-wad",
+        "etymon:gloss": "sacred/ritual-way",
+        "etymon:note": "Uses wad in its extended sense of way or manner; the concrete path sense remains available in ritual movement."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "righteous path, moral way"
+          },
+          "lexinfo:semanticField": ["Sacred Terms", "Ethical Terms", "Path Terms"],
+          "usage": "Spiritual or ethical way; the proper manner of living or acting"
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "ritual path, processional route"
+          },
+          "lexinfo:semanticField": ["Ritual Terms", "Path Terms"],
+          "usage": "Literal path followed in ritual or ceremonial movement"
+        }
+      ]
+    },
+    {
       "@id": "ehk:thran",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
       "canonicalForm": {
@@ -1517,6 +1860,110 @@
             "@value": "thousand"
           },
           "lexinfo:semanticField": ["Number Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thranal",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θra.nal",
+        "writtenRep": "thranal"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "thran-thral",
+        "etymon:gloss": "thousand-day",
+        "etymon:soundChange": "early contraction",
+        "etymon:note": "Literally 'countless days'; distinct from ordinary seasonal terms."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "eternity, endless time"
+          },
+          "lexinfo:semanticField": ["Time Terms", "Sacred Terms", "Abstract Concepts"],
+          "usage": "Poetic or religious term"
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "great cycle, age"
+          },
+          "lexinfo:semanticField": ["Time Terms", "Calendar Terms"],
+          "usage": "Used for large calendrical or omen cycles"
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thrantor",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θran.tor",
+        "writtenRep": "thrantor"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:thran"
+        },
+        {
+          "@id": "ehk:tor"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "thran-tor",
+        "etymon:gloss": "thousand-peak",
+        "etymon:soundChange": "compound fusion",
+        "etymon:note": "Common noun behind later regional place names and reductions such as Ranterg."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "mountain range"
+          },
+          "lexinfo:semanticField": ["Natural World", "Landforms"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thren",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θren",
+        "writtenRep": "thren"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *threnu",
+        "etymon:soundChange": "final vowel loss"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "watching, observation"
+          },
+          "lexinfo:semanticField": ["Perception", "Sacred Terms"],
+          "usage": "Nominal/root form; verbal use normally takes -'er"
+        }
+      ],
+      "derivedForms": [
+        {
+          "@type": "ontolex:Form",
+          "writtenRep": "thren-'er",
+          "phoneticRep": "θren.ʔer",
+          "decomposition": "thren + -'er",
+          "grammaticalMeaning": "to watch, to observe"
         }
       ]
     },
@@ -1651,6 +2098,64 @@
       ]
     },
     {
+      "@id": "ehk:tir",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "tir",
+        "writtenRep": "tir"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *tiru",
+        "etymon:note": "Basic cardinal form",
+        "etymon:soundChange": "final vowel loss"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "two"
+          },
+          "lexinfo:semanticField": "Number Terms"
+        }
+      ]
+    },
+    {
+      "@id": "ehk:tir-sour",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "tir",
+        "writtenRep": "tir"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *tilmuru",
+        "etymon:note": "Shows semantic connection between sour taste and facial response",
+        "etymon:soundChange": "Proto-Hick *tilmuru > tilru > tiru > tir"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "sour"
+          },
+          "lexinfo:semanticField": "Taste Terms"
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "wince, sour facial response"
+          },
+          "lexinfo:semanticField": ["Bodily Functions", "Taste Terms"]
+        }
+      ]
+    },
+    {
       "@id": "ehk:tirai",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
@@ -1672,6 +2177,40 @@
             "@value": "fermented drink"
           },
           "lexinfo:semanticField": ["Food Terms", "Drink Terms", "Taste Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:tir'er",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "tir.ʔer",
+        "writtenRep": "tir'er"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "tir-'er",
+        "etymon:gloss": "sour/wince-VERB",
+        "etymon:note": "Shows connection between taste sensation, involuntary facial response, and fermentation",
+        "etymon:soundChange": "verbalizer suffix"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "to wince"
+          },
+          "lexinfo:semanticField": ["Bodily Functions", "Taste Terms"]
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "to ferment"
+          },
+          "lexinfo:semanticField": ["Process Terms", "Food Terms"]
         }
       ]
     },
@@ -1881,7 +2420,7 @@
       "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
-        "phoneticRep": "tras.kʔer",
+        "phoneticRep": "tras.ker",
         "writtenRep": "trask'er"
       },
       "etymology": {
