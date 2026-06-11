@@ -144,6 +144,7 @@ export default defineConfig({
         "./src/components/MapViewer.tsx",
         "./src/components/Monster.astro",
         "./src/components/OutOfDate.astro",
+        "./src/components/PopQuiz.astro",
         "./src/components/SeeAlso.astro",
         "./src/components/VehicleStatBlock.astro",
         "./src/components/Redirect.astro",

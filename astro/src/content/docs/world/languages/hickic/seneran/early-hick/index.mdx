@@ -431,7 +431,7 @@ conservative spellings, or later regional forms.
      tor-mal → \[ˈto.məl] > tomal
 1. Secondary Stress
    - In three-syllable compounds: tor-ma-ter → \[ˈtor.mə.ˌter]
-   - In prefix chains: ma-ka-tor → \[ˈma.kə.ˌtor]
+   - In possible colloquial prefix chains: ma-ka-tor → \[ˈma.kə.ˌtor]
 1. Stress-Related Changes
    - Unstressed /a/ → \[ə]
    - Stressed vowels resist reduction
@@ -758,6 +758,79 @@ For detailed discussion of conjunction types and usage, see:
 
 ### Nominal Morphology
 
+#### Noun Phrase Structure
+
+Early Hick noun phrases are built around a marked noun.
+Words that describe the noun are normally derived with _ka-_ and come before it,
+while suffixes that identify or mark the noun attach after the noun stem.
+
+```txt
+[possessor-ul] [describing words] [prefixes-noun-demonstrative-case]
+```
+
+The common spoken order is:
+
+1. Possessor phrase, if present
+1. Describing words, usually _ka-_ forms
+1. Number, partitive, negative, or size prefixes attached to the noun
+1. Noun root
+1. Demonstrative suffix
+1. Case suffix
+
+```txt
+ka'il ma-mater-is-es
+good PL-boat-PROX.INAN-ABS
+"these good boats"
+```
+
+Demonstratives come before case endings.
+For animate nouns, the same slot takes the animate demonstrative:
+
+```txt
+ma-'al-'is-es
+PL-person-PROX.ANIM-ABS
+"these people"
+```
+
+Possessors come before the noun phrase they possess.
+The possessive suffix _-ul_ attaches to the possessor,
+not to the possessed noun:
+
+```txt
+materok-ul ka'il ma-mater-is-es
+handler-POSS good PL-boat-PROX.INAN-ABS
+"the handler's good boats"
+```
+
+This overview gives the normal order for transparent,
+fully marked forms.
+Poetry and formal prose may front a case-marked noun phrase for emphasis,
+but the internal order of the noun phrase usually remains visible.
+
+When a describing word made with _ka-_ refers to more than one thing,
+the plural marker normally belongs to the noun that is being counted,
+not inside the _ka-_ word:
+
+```txt
+ka-mater ma-etil-es
+ADJ-boat PL-thing-ABS
+"boat-like things"
+```
+
+One possible colloquial development would be to compress this into a derived
+form:
+
+```txt
+ma-ka-mater-es
+PL-ADJ-boat-ABS
+"boat-like ones"
+```
+
+This _ma-ka-N_ pattern is noted here only as a possible future or colloquial
+form.
+It is not yet treated as a settled canonical Early Hick rule.
+Careful speech prefers the fuller noun phrase.
+
 #### Agentive Marking
 
 1. Primary Marker
@@ -880,7 +953,7 @@ Early Hick has five strategies for marking number:
    marking exclusivity:
 
    These markers are mutually exclusive in the same position class:
-   (NEG)-(ADJ)-(PLURAL/PART/NUM-PART)-(SIZE)-ROOT
+   (NEG)-(PLURAL/PART/NUM-PART)-(SIZE)-ROOT
 
    ```txt
    telran-materok
@@ -1324,7 +1397,8 @@ Quality concepts are expressed through:
       ```
 
 1. Notes:
-   - No attributive modification
+   - No bare attributive modification by property roots
+   - Attributive description uses _ka-_ derived forms
    - All qualities are verbal predicates
    - Follows ergative-absolutive alignment
    - Causatives marked by adding ergative agent
@@ -1498,13 +1572,32 @@ and indicate the performer of the action.
 1. Order of Elements
 
 ```txt
-(NEG)-(ADJ)-(PLURAL)-(SIZE)-ROOT-(AGENT)-(CASE)
+(NEG)-(PLURAL/PART/NUM-PART)-(SIZE)-ROOT-(AGENT)-(DEM)-(CASE)
+```
+
+Adjectival _ka-_ usually derives a describing word from its own root,
+rather than stacking inside the numbered noun phrase.
+The derived describing word then stands before the noun phrase it modifies:
+
+```txt
+ka-mater ma-etil-es
+ADJ-boat PL-thing-ABS
+"boat-like things"
+```
+
+One possible colloquial development would compress recoverable phrases by
+placing _ma-_ before a _ka-_ derived word:
+
+```txt
+ma-ka-mater-es
+PL-ADJ-boat-ABS
+"boat-like ones"
 ```
 
 Examples:
 
 - mo-ka-tor-el (NEG-ADJ-height-ERG) "not height-like (as agent)"
-- ka-ma-li-mal-ok-es (ADJ-PL-DIM-pool-AGENT-ABS) "small pool-like keepers"
+- ma-li-mal-ok-es (PL-DIM-pool-AGENT-ABS) "small pool keepers"
 - ka-tor-mal-el (ADJ-AUG-pool-ERG) "great pool-like thing (as agent)"
 
 #### Prefix Classes
@@ -1513,10 +1606,14 @@ Examples:
    - mo- (NEG): negation
 
 1. Second Position
-   - ka- (ADJ): adjectivizer
+   - ma- (PL): plural
+   - ran- (PART): partitive
+   - telran- (EXCL.PART): exclusive partitive
 
 1. Third Position
-   - ma- (PL): plural
+   - ka- (ADJ): adjectivizer
+     - Usually forms a separate describing word before the noun phrase
+     - Possible, non-canonical colloquial compression may show ma-ka-ROOT
 
 1. Inner Prefixes (closest to root)
    - tor- (AUG): augmentative
@@ -1529,6 +1626,12 @@ Examples:
    - -arm (VOL): volitional (See: [Morphological Mood](#morphological-mood))
    - -nat (DES): desiderative (See: [Morphological Mood](#morphological-mood))
    - -ok (AGENT): agentive (See: [Agentive Marking](#agentive-marking))
+
+1. Demonstrative Suffixes (before case)
+   - -is / -'is (PROX): proximal demonstrative
+   - -en / -tan (MED): visible or known medial demonstrative
+   - -eth / -thir (MED.SENSED): sensed but hidden demonstrative
+   - -um / -rum (DIST): distant or general demonstrative
 
 1. Outer Suffixes (final position)
    - -el (ERG): ergative case
@@ -1547,6 +1650,7 @@ Examples:
 1. Co-occurrence
    - Only one prefix from each position class
    - Maximum of one case suffix
+   - Demonstrative suffixes precede final case suffixes
    - Agent suffix must precede case suffix
 
 1. Phonological Interactions
@@ -1560,15 +1664,15 @@ Examples:
 
 ### Property Words and Modification
 
-Early Hick uses property words
-(like English adjectives and adverbs) in three main ways:
+Early Hick uses property roots and _ka-_ derived describing words in three main
+ways:
 
 1. As Adjectives (modifying nouns)
-   - Come before the noun they modify
+   - _ka-_ derived forms come before the noun they modify
 
    ```txt
-   'irek litor-es etal
-   firm hill-ABS that.MED
+   ka'irek litor-es etal
+   ADJ-firm hill-ABS that.MED
    "that firm hill" (like English "the tall tree")
    ```
 
@@ -1582,17 +1686,19 @@ Early Hick uses property words
 
 1. As Adverbs (modifying verbs)
    - Come after the verb they modify
-   - Often take the similarity prefix ka-
+   - Usually take the similarity prefix _ka-_
 
    ```txt
    wen'altanes 'irek'er ka'irek
-   woman.MED.VIS.ANIM-ABS stand-VERB firm-SIM
+   woman.MED.VIS.ANIM-ABS stand-VERB ADJ-firm
    "She stands firmly" (like English "-ly" adverbs)
    ```
 
 This pattern means that word order shows
-whether a property word is acting like an adjective (before nouns) or an adverb
-(after verbs).
+whether a _ka-_ describing word is acting like an adjective (before nouns)
+or an adverb (after verbs).
+Bare property roots before the subject are noted only as a possible colloquial
+or poetic shortening and are not treated as settled canonical Early Hick.
 
 ### Clause Structure and Word Order
 
@@ -2169,8 +2275,8 @@ showing split ergativity typical of command forms.
 Examples with different modifiers:
 
 ```txt
-mes   thral  threnes!
-heart sacred watch.IMP.ABS
+mes   kathral    threnes!
+heart ADJ-sacred watch.IMP.ABS
 "watch the heart sacredly!"
 materok ka'il    wardes!
 boat    ADJ.good guide.IMP.ABS
