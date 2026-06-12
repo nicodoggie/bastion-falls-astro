@@ -25,15 +25,15 @@ int: 13
 wis: 19
 cha: 16
 save:
-  con: '+7'
-  wis: '+7'
-  cha: '+6'
+  con: "+7"
+  wis: "+7"
+  cha: "+6"
 skill:
-  deception: '+6'
-  insight: '+7'
-  medicine: '+7'
-  persuasion: '+6'
-  religion: '+4'
+  deception: "+6"
+  insight: "+7"
+  medicine: "+7"
+  persuasion: "+6"
+  religion: "+4"
 conditionImmune:
   - frightened
 passive: 17
@@ -41,7 +41,7 @@ languages:
   - Common
   - Hickic
   - Infernal
-cr: '8'
+cr: "8"
 trait:
   - name: Spellcasting
     entries:
@@ -49,18 +49,25 @@ trait:
         The reformist is a 12th-level spellcaster. Its spellcasting ability is Wisdom (spell save
         {@dc 15}, {@hit +7} to hit with spell attacks). The reformist has the following cleric
         spells prepared:
-      - 'Cantrips (at will): {@spell guidance}, {@spell sacred flame}, {@spell spare the dying}, {@spell thaumaturgy}'
-      - '1st level (4 slots): {@spell bane}, {@spell command}, {@spell cure wounds}, {@spell sanctuary}'
-      - '2nd level (3 slots): {@spell blindness/deafness}, {@spell hold person}, {@spell spiritual weapon}'
-      - '3rd level (3 slots): {@spell bestow curse}, {@spell dispel magic}, {@spell spirit guardians}'
-      - '4th level (3 slots): {@spell banishment}, {@spell death ward}'
-      - '5th level (2 slots): {@spell contagion}, {@spell dominate person}'
-      - '6th level (1 slot): {@spell harm}'
+      - >-
+        Cantrips (at will): {@spell guidance}, {@spell sacred flame}, {@spell spare the dying},
+        {@spell thaumaturgy}
+      - >-
+        1st level (4 slots): {@spell bane}, {@spell command}, {@spell cure wounds}, {@spell
+        sanctuary}
+      - >-
+        2nd level (3 slots): {@spell blindness/deafness}, {@spell hold person}, {@spell spiritual
+        weapon}
+      - >-
+        3rd level (3 slots): {@spell bestow curse}, {@spell dispel magic}, {@spell spirit guardians}
+      - "4th level (3 slots): {@spell banishment}, {@spell death ward}"
+      - "5th level (2 slots): {@spell contagion}, {@spell dominate person}"
+      - "6th level (1 slot): {@spell harm}"
   - name: Parasite Liturgist
     entries:
       - >-
-        A humanoid {@condition charmed} by the reformist has disadvantage on saving throws against the
-        reformist's cleric spells and Channel the Vessel.
+        A humanoid {@condition charmed} by the reformist has disadvantage on saving throws against
+        the reformist's cleric spells and Channel the Vessel.
   - name: False Orthodoxy
     entries:
       - >-
@@ -73,29 +80,32 @@ action:
   - name: Mace
     entries:
       - >-
-        Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d6 + 3}) bludgeoning damage
-        plus 10 ({@damage 3d6}) necrotic damage.
+        Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d6 + 3})
+        bludgeoning damage plus 10 ({@damage 3d6}) necrotic damage.
   - name: Sacred Flame
     entries:
       - >-
-        One creature the reformist can see within 60 feet must succeed on a {@dc 15} Dexterity saving
-        throw or take 18 ({@damage 4d8}) radiant damage.
+        One creature the reformist can see within 60 feet must succeed on a {@dc 15} Dexterity
+        saving throw or take 18 ({@damage 4d8}) radiant damage.
   - name: Channel the Vessel (Recharge 5-6)
     entries:
       - >-
-        The reformist targets one humanoid it can see within 60 feet. The target must make a {@dc 15}
-        Wisdom saving throw. On a failed save, the target takes 27 ({@damage 6d8}) psychic damage and is
-        {@condition charmed} by the reformist until the end of the reformist's next turn. On a successful save,
-        the target takes half as much damage and isn't {@condition charmed}.
+        The reformist targets one humanoid it can see within 60 feet. The target must make a {@dc
+        15} Wisdom saving throw. On a failed save, the target takes 27 ({@damage 6d8}) psychic
+        damage and is {@condition charmed} by the reformist until the end of the reformist's next
+        turn. On a successful save, the target takes half as much damage and isn't {@condition
+        charmed}.
 bonus:
   - name: Spiritual Weapon
     entries:
-      - If the reformist has cast {@spell spiritual weapon}, it makes one spell attack with the weapon.
+      - >-
+        If the reformist has cast {@spell spiritual weapon}, it makes one spell attack with the
+        weapon.
   - name: Compel Kneeling
     entries:
       - >-
-        One creature {@condition charmed} by the reformist and within 60 feet must use its reaction, if
-        available, to fall {@condition prone}.
+        One creature {@condition charmed} by the reformist and within 60 feet must use its reaction,
+        if available, to fall {@condition prone}.
 reaction:
   - name: Ministerial Rebuke
     entries:

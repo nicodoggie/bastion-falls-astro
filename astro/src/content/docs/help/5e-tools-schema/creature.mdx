@@ -7,10 +7,9 @@ description: |
 
 import StatBlock from '../../../../components/StatBlock.astro';
 
-The `creatureStats` frontmatter field on species pages lets you embed one or
-more D&D 5e stat blocks directly in an article. Each key is an arbitrary
-identifier you choose; the value is a creature object following the
-[5etools bestiary schema](https://github.com/TheGiddyLimit/5etools-utils).
+The `creatureStats` frontmatter field on species pages lets you embed one or more D&D 5e stat blocks
+directly in an article. Each key is an arbitrary identifier you choose; the value is a creature
+object following the [5etools bestiary schema](https://github.com/TheGiddyLimit/5etools-utils).
 
 ```yaml
 # in a species page's frontmatter
@@ -34,8 +33,8 @@ creature={frontmatter.creatureStats['my-creature-key']} /> }
 
 ## Minimal example
 
-The smallest valid stat block needs a name, size, type, AC, HP, speed, the six
-ability scores, and a CR.
+The smallest valid stat block needs a name, size, type, AC, HP, speed, the six ability scores, and a
+CR.
 
 ```yaml
 creatureStats:
@@ -116,9 +115,8 @@ type:
     - shapechanger
 ```
 
-Common types: `aberration`, `beast`, `celestial`, `construct`, `dragon`,
-`elemental`, `fey`, `fiend`, `giant`, `humanoid`, `monstrosity`, `ooze`,
-`plant`, `undead`.
+Common types: `aberration`, `beast`, `celestial`, `construct`, `dragon`, `elemental`, `fey`,
+`fiend`, `giant`, `humanoid`, `monstrosity`, `ooze`, `plant`, `undead`.
 
 ---
 
@@ -210,15 +208,14 @@ speed:
   burrow: 10
 ```
 
-Add `canHover: true` alongside `fly` for hovering creatures. Omit any speed type
-the creature lacks.
+Add `canHover: true` alongside `fly` for hovering creatures. Omit any speed type the creature lacks.
 
 ---
 
 ### Ability scores (`str`, `dex`, `con`, `int`, `wis`, `cha`)
 
-`number` — The raw score (not the modifier). Modifiers and saving throw bonuses
-are computed automatically.
+`number` — The raw score (not the modifier). Modifiers and saving throw bonuses are computed
+automatically.
 
 ```yaml
 str: 20
@@ -240,9 +237,8 @@ str:
 
 ### `save`
 
-`object` — Saving throw bonuses for proficient saves. Only include the saves
-where the creature has proficiency (or expertise). Values are formatted strings
-including the sign:
+`object` — Saving throw bonuses for proficient saves. Only include the saves where the creature has
+proficiency (or expertise). Values are formatted strings including the sign:
 
 ```yaml
 save:
@@ -257,8 +253,8 @@ Saves not listed here default to the raw ability modifier in the stat block.
 
 ### `skill`
 
-`object` — Skill bonuses. Same format as `save`: only list skills where the
-creature has proficiency or expertise:
+`object` — Skill bonuses. Same format as `save`: only list skills where the creature has proficiency
+or expertise:
 
 ```yaml
 skill:
@@ -335,8 +331,8 @@ cr:
 
 ### `resist`, `immune`, `vulnerable`
 
-Damage resistances, immunities, and vulnerabilities. Accepts an array of damage
-type strings or condition objects:
+Damage resistances, immunities, and vulnerabilities. Accepts an array of damage type strings or
+condition objects:
 
 ```yaml
 immune:
@@ -368,8 +364,7 @@ conditionImmune:
 
 ### `trait`
 
-`array` — Passive features. Each entry needs a `name` and `entries` (a list of
-description strings):
+`array` — Passive features. Each entry needs a `name` and `entries` (a list of description strings):
 
 ```yaml
 trait:
@@ -404,9 +399,8 @@ action:
       - The creature makes two Claw attacks.
 ```
 
-**Recharge mechanic** — there is no separate `recharge` field in the schema.
-Embed the recharge note directly in the action `name`, exactly as it appears in
-print:
+**Recharge mechanic** — there is no separate `recharge` field in the schema. Embed the recharge note
+directly in the action `name`, exactly as it appears in print:
 
 ```yaml
 action:
@@ -458,8 +452,8 @@ reaction:
 
 ### `legendary`
 
-`array` — Legendary actions. Same shape as `action`. Add `legendaryHeader` for
-the introductory paragraph:
+`array` — Legendary actions. Same shape as `action`. Add `legendaryHeader` for the introductory
+paragraph:
 
 ```yaml
 legendaryHeader:

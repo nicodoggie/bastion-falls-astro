@@ -5,11 +5,10 @@ description: |
   schema and the VehicleStatBlock component.
 ---
 
-On vehicle collection pages, the `vehicle` frontmatter key holds a single object
-that follows the
-[5etools vehicles schema](https://github.com/TheGiddyLimit/5etools-utils) (ship
-data: `vehicleShipData` in the JSON Schema). In this repo it is validated as
-`VehicleShipData` from `@bastion-falls/5e-schema-zod`.
+On vehicle collection pages, the `vehicle` frontmatter key holds a single object that follows the
+[5etools vehicles schema](https://github.com/TheGiddyLimit/5etools-utils) (ship data:
+`vehicleShipData` in the JSON Schema). In this repo it is validated as `VehicleShipData` from
+`@bastion-falls/5e-schema-zod`.
 
 ```yaml
 # in a vehicle page's frontmatter (astro/src/content/docs/world/vehicles/…)
@@ -19,11 +18,11 @@ vehicle:
   # … fields described below
 ```
 
-The page title comes from Starlight's `title` field; `vehicle.name` can match it
-or add a shorter display name for stat blocks.
+The page title comes from Starlight's `title` field; `vehicle.name` can match it or add a shorter
+display name for stat blocks.
 
-To render the stat-style card in the body, use `VehicleStatBlock` (same pattern
-as `StatBlock` on species pages — pass typed ship data from frontmatter):
+To render the stat-style card in the body, use `VehicleStatBlock` (same pattern as `StatBlock` on
+species pages — pass typed ship data from frontmatter):
 
 ```mdx
 { // @ts-expect-error -- frontmatter is injected at runtime frontmatter.vehicle
@@ -32,20 +31,19 @@ as `StatBlock` on species pages — pass typed ship data from frontmatter):
 <VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />) }
 ```
 
-`VehicleStatBlock` is registered for MDX via `astro-auto-import` in
-`astro.config.mjs` (same pattern as other shared components). Species pages
-still import `StatBlock` explicitly because it is not auto-imported.
+`VehicleStatBlock` is registered for MDX via `astro-auto-import` in `astro.config.mjs` (same pattern
+as other shared components). Species pages still import `StatBlock` explicitly because it is not
+auto-imported.
 
-`VehicleStatBlock` mirrors the `StatBlock` / `CreatureData` pattern: one
-component, typed ship data from `@bastion-falls/5e-schema-zod`.
+`VehicleStatBlock` mirrors the `StatBlock` / `CreatureData` pattern: one component, typed ship data
+from `@bastion-falls/5e-schema-zod`.
 
 ---
 
 ## Minimal example (ship)
 
-A usable ship block needs hull AC/HP, the six object ability scores, and enough
-identity fields for your layout. Pace and capacities match the Ghosts of
-Saltmarsh style tables.
+A usable ship block needs hull AC/HP, the six object ability scores, and enough identity fields for
+your layout. Pace and capacities match the Ghosts of Saltmarsh style tables.
 
 ```yaml
 vehicle:
@@ -76,22 +74,22 @@ vehicle:
 
 ### `name`
 
-`string` — Display name in the card header. Optional if you pass a `name` prop
-to `VehicleStatBlock`.
+`string` — Display name in the card header. Optional if you pass a `name` prop to
+`VehicleStatBlock`.
 
 ---
 
 ### `vehicleType`
 
-`"SHIP"` — Literal constant in 5etools data. Including it documents intent and
-matches official ship JSON.
+`"SHIP"` — Literal constant in 5etools data. Including it documents intent and matches official ship
+JSON.
 
 ---
 
 ### `terrain`
 
-`string[]` — Where the vehicle operates (free-form strings, lower case is fine).
-Examples: `sea`, `air`, `land`, `underwater`, `space`.
+`string[]` — Where the vehicle operates (free-form strings, lower case is fine). Examples: `sea`,
+`air`, `land`, `underwater`, `space`.
 
 ---
 
@@ -137,27 +135,24 @@ dimensions:
 
 ### `str` / `dex` / `con` / `int` / `wis` / `cha`
 
-`integer` — The vehicle object's ability scores (not modifiers). Use `0` for
-mindless objects, same as many official stat blocks.
+`integer` — The vehicle object's ability scores (not modifiers). Use `0` for mindless objects, same
+as many official stat blocks.
 
 ---
 
 ### `conditionImmune` / `immune` / `resist` / `vulnerable`
 
-These use the same util definitions as creatures:
-`ConditionImmunityArraySchema`, `DamageImmunityArraySchema`,
-`DamageResistArraySchema`, and `DamageVulnerabilityArraySchema` in `shared.ts`
-(arrays of damage types, `special` strings, or nested objects with `preNote` /
-`note` / nested lists). YAML can mirror 5etools JSON; simple cases are plain
-string arrays.
+These use the same util definitions as creatures: `ConditionImmunityArraySchema`,
+`DamageImmunityArraySchema`, `DamageResistArraySchema`, and `DamageVulnerabilityArraySchema` in
+`shared.ts` (arrays of damage types, `special` strings, or nested objects with `preNote` / `note` /
+nested lists). YAML can mirror 5etools JSON; simple cases are plain string arrays.
 
 ---
 
 ### `actionThresholds`
 
-`Record<string, unknown>` — Optional map of crew thresholds to action counts
-(5etools uses string keys for numbers). Rare in homebrew; omit unless you need
-it.
+`Record<string, unknown>` — Optional map of crew thresholds to action counts (5etools uses string
+keys for numbers). Rare in homebrew; omit unless you need it.
 
 ---
 
@@ -190,8 +185,8 @@ it.
 
 ### `movement`
 
-`array` — Sails, oars, propulsion. Each item includes `ac`, `hp`, optional `dt`,
-optional `name`, optional `isControl`, and **either**:
+`array` — Sails, oars, propulsion. Each item includes `ac`, `hp`, optional `dt`, optional `name`,
+optional `isControl`, and **either**:
 
 - `speed`: array of `{ mode: string, entries: unknown[] }` (preferred for ships
   — see Rozenmaiden), or
@@ -216,15 +211,13 @@ optional `name`, optional `isControl`, and **either**:
 
 ### `other`
 
-`array` — Named components that are not weapons or movement (each has `name` and
-`entries`).
+`array` — Named components that are not weapons or movement (each has `name` and `entries`).
 
 ---
 
 ### `trait`
 
-`array | null` — Named passive features (`name` + `entries`), same spirit as
-creature traits.
+`array | null` — Named passive features (`name` + `entries`), same spirit as creature traits.
 
 ---
 
@@ -236,20 +229,18 @@ creature traits.
 
 ### Source / meta (optional)
 
-Fields like `source`, `page`, `token`, `fluff`, and Foundry exports exist in the
-full 5etools schema. You can omit them for wiki-style frontmatter; add them when
-copying raw data from 5etools.
+Fields like `source`, `page`, `token`, `fluff`, and Foundry exports exist in the full 5etools
+schema. You can omit them for wiki-style frontmatter; add them when copying raw data from 5etools.
 
 ---
 
 ## Other vehicle kinds (reference only)
 
-`@bastion-falls/5e-schema-zod` also exports Zod schemas for
-`VehicleSpelljammerData`, `VehicleElementalAirshipData`,
-`VehicleInfernalWarMachineData`, `VehicleCreatureData`, and `VehicleObjectData`.
-The **vehicle** content collection in this project validates
-**`VehicleShipData` only** (ships). Use the same YAML patterns as 5etools site
-JSON when you adopt another subtype later.
+`@bastion-falls/5e-schema-zod` also exports Zod schemas for `VehicleSpelljammerData`,
+`VehicleElementalAirshipData`, `VehicleInfernalWarMachineData`, `VehicleCreatureData`, and
+`VehicleObjectData`. The **vehicle** content collection in this project validates
+**`VehicleShipData` only** (ships). Use the same YAML patterns as 5etools site JSON when you adopt
+another subtype later.
 
 ---
 

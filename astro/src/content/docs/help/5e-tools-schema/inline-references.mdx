@@ -5,8 +5,8 @@ description: |
   from the 5etools mirror submodule, from JSON under content docs, or inline.
 ---
 
-Data comes from the [`5etools-src`](https://github.com/nicodoggie/5etools-src)
-submodule at repo root. Clone with submodules:
+Data comes from the [`5etools-src`](https://github.com/nicodoggie/5etools-src) submodule at repo
+root. Clone with submodules:
 
 ```bash
 git submodule update --init --recursive
@@ -14,9 +14,9 @@ git submodule update --init --recursive
 
 ## Spell
 
-`Spell` is auto-imported in MDX. It resolves data in this order: optional
-`spell` prop (inline object), then `json` (file under the docs tree), then
-`name` (+ optional `src`) against the 5etools mirror.
+`Spell` is auto-imported in MDX. It resolves data in this order: optional `spell` prop (inline
+object), then `json` (file under the docs tree), then `name` (+ optional `src`) against the 5etools
+mirror.
 
 ### From the 5etools mirror (`name`, optional `src`)
 
@@ -27,8 +27,8 @@ git submodule update --init --recursive
 <Spell name="Burning Hands" />
 ```
 
-Without `src`, the first matching entry is chosen with **XPHB** preferred over
-**PHB** when both exist (see build log for a one-time ambiguity warning).
+Without `src`, the first matching entry is chosen with **XPHB** preferred over **PHB** when both
+exist (see build log for a one-time ambiguity warning).
 
 Override the visible label by passing children:
 
@@ -38,9 +38,9 @@ Override the visible label by passing children:
 
 ### From a JSON file (`json`)
 
-Point `json` at a path **relative to** `src/content/docs/` (no `..` segments).
-The file must match the 5etools spell shape and is validated with
-`SpellDataSchema` (same as `*.spell.yaml` in collections).
+Point `json` at a path **relative to** `src/content/docs/` (no `..` segments). The file must match
+the 5etools spell shape and is validated with `SpellDataSchema` (same as `*.spell.yaml` in
+collections).
 
 ```mdx
 <Spell json="world/misc/examples/fire-bolt.spell.yaml" />
@@ -55,9 +55,8 @@ If the root object is `{ "spell": [ … ] }`, pass `name` to choose one entry
 
 ### Inline object (`spell`)
 
-Pass a spell object directly. Takes precedence over `json` and `name`. For YAML
-files under `src/content/docs/`, prefer the `json` prop above so the repo's
-content-data loader handles parsing.
+Pass a spell object directly. Takes precedence over `json` and `name`. For YAML files under
+`src/content/docs/`, prefer the `json` prop above so the repo's content-data loader handles parsing.
 
 ```mdx
 const fireBolt = {
@@ -83,11 +82,10 @@ Same pattern as spells; data is read from `data/feats.json`.
 
 ## Condition or disease
 
-`ConditionDisease` reads `data/conditionsdiseases.json`. The file lists both
-conditions and diseases. Optional `src` pins the book when the same name exists
-in legacy and revised sources; if `src` is omitted, **XPHB** / **XDMG** are
-preferred over **PHB** / **DMG**, and a one-time build warning is logged when
-that ambiguity applies.
+`ConditionDisease` reads `data/conditionsdiseases.json`. The file lists both conditions and
+diseases. Optional `src` pins the book when the same name exists in legacy and revised sources; if
+`src` is omitted, **XPHB** / **XDMG** are preferred over **PHB** / **DMG**, and a one-time build
+warning is logged when that ambiguity applies.
 
 ```mdx
 <ConditionDisease name="Blinded" />
@@ -98,8 +96,8 @@ that ambiguity applies.
 
 In CommonMark, a **blank line** ends a paragraph. If you put an empty line
 before `<Spell />`, the spell becomes the start of a **new** paragraph after
-“…the spell”, which looks like the name is repeated and can sit oddly next to “,
-but…”. Keep the component **on the same line** as the surrounding sentence:
+“…the spell”, which looks like the name is repeated and can sit oddly next to “, but…”. Keep the
+component **on the same line** as the surrounding sentence:
 
 ```mdx
 They act similarly to the spell <Spell name="Antimagic Field" />, but…
@@ -107,11 +105,9 @@ They act similarly to the spell <Spell name="Antimagic Field" />, but…
 
 ## Tooltip behavior
 
-References render as static HTML: one `span` wrapper, a `button` trigger, and a
-tooltip panel toggled with **CSS** (`group-hover` / `group-focus-within`) so
-there is no `astro-island` or second hydration wrapper. If an entry is missing,
-the label still renders with a `title` fallback.
+References render as static HTML: one `span` wrapper, a `button` trigger, and a tooltip panel
+toggled with **CSS** (`group-hover` / `group-focus-within`) so there is no `astro-island` or second
+hydration wrapper. If an entry is missing, the label still renders with a `title` fallback.
 
-Tab to the trigger to show the tooltip; tab away to hide it. (There is no
-per-instance client script, so **Escape** does not blur the trigger; use Tab or
-click outside.)
+Tab to the trigger to show the tooltip; tab away to hide it. (There is no per-instance client
+script, so **Escape** does not blur the trigger; use Tab or click outside.)

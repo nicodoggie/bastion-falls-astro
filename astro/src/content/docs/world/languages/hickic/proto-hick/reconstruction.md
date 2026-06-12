@@ -6,14 +6,14 @@ tags:
   - reconstruction
 ---
 
-These are working notes for Hickic reconstruction. They are not a polished
-reference grammar. Use them to collect evidence, test sound-change assumptions,
-and separate inherited Proto-Hick material from later branch innovations.
+These are working notes for Hickic reconstruction. They are not a polished reference grammar. Use
+them to collect evidence, test sound-change assumptions, and separate inherited Proto-Hick material
+from later branch innovations.
 
 ## Working Tree
 
-The current working model treats the documented stages as historical layers
-rather than a single direct jump from Proto-Hick to Early Hick.
+The current working model treats the documented stages as historical layers rather than a single
+direct jump from Proto-Hick to Early Hick.
 
 ```text
 Proto-Hick
@@ -30,11 +30,10 @@ Proto-Hick
             └─ Early Hick
 ```
 
-Each protolanguage represents both a shared ancestor and a period of shared
-innovation after some degree of geographic or social isolation. Proto-Apgarian
-may preserve older mainland features, but it is still a daughter branch with its
-own innovations. Proto-Maritime reflects the spread of reliable seafaring and
-island settlement. Proto-Seneran reflects later settlement in Senera and
+Each protolanguage represents both a shared ancestor and a period of shared innovation after some
+degree of geographic or social isolation. Proto-Apgarian may preserve older mainland features, but
+it is still a daughter branch with its own innovations. Proto-Maritime reflects the spread of
+reliable seafaring and island settlement. Proto-Seneran reflects later settlement in Senera and
 subsequent local development.
 
 ## Method
@@ -66,13 +65,13 @@ Stage 3: Pre-Hick
 Stage 4: Early Hick
 ```
 
-These should be treated as testable checkpoints. The stage labels may need
-renaming or splitting as the wider Hickic family model becomes clearer.
+These should be treated as testable checkpoints. The stage labels may need renaming or splitting as
+the wider Hickic family model becomes clearer.
 
 ## Calibration Form: lawesu
 
-The root family around `*lawesu` is a useful test case because it touches
-lexical inheritance, grammaticalization, and fossilized case morphology.
+The root family around `*lawesu` is a useful test case because it touches lexical inheritance,
+grammaticalization, and fossilized case morphology.
 
 ### Current Lexurgy Outputs
 
@@ -98,16 +97,14 @@ bramu lahesu  > bras
 
 ### Working Interpretation
 
-Plain `*lawesu` currently behaves best as a lexical root: "consume, take in,
-use, eat." This supports descendants such as `ewes` and `duwes`.
+Plain `*lawesu` currently behaves best as a lexical root: "consume, take in, use, eat." This
+supports descendants such as `ewes` and `duwes`.
 
-The form `*lahesu` currently produces `las`. This makes it a strong candidate
-for a later grammaticalized allomorph that became the productive Early Hick
-illative suffix `-las`.
+The form `*lahesu` currently produces `las`. This makes it a strong candidate for a later
+grammaticalized allomorph that became the productive Early Hick illative suffix `-las`.
 
-The form `*laʔesu` produces apostrophe-bearing `-'es` shapes. This may belong
-with archaic or fossilized inward/receptive forms, but it should not be treated
-as productive Early Hick morphology.
+The form `*laʔesu` produces apostrophe-bearing `-'es` shapes. This may belong with archaic or
+fossilized inward/receptive forms, but it should not be treated as productive Early Hick morphology.
 
 ### Provisional Analysis
 
@@ -129,22 +126,20 @@ Proto-Maritime or exploratory coastal usage:
 *-laes / *-aes = inward, into, where something enters
 ```
 
-The `-aes` layer is best treated as Proto-Maritime or early exploratory fossil
-material rather than productive Early Hick morphology. This especially suits
-hydronyms and coastal descriptions, where Maritime Hick speakers may have named
-features during first exploration. For example, `bram-aes` can be understood as
-an older description of a tidal river or estuary, later inherited as
+The `-aes` layer is best treated as Proto-Maritime or early exploratory fossil material rather than
+productive Early Hick morphology. This especially suits hydronyms and coastal descriptions, where
+Maritime Hick speakers may have named features during first exploration. For example, `bram-aes` can
+be understood as an older description of a tidal river or estuary, later inherited as
 `Bramaes > Brams`.
 
-This means the older statement `*lawes > *laes > -las` is too simple. The
-productive Early Hick `-las` descends from a branch-specific grammaticalized
-allomorph, while `-aes` survives as a fossilized or borrowed Maritime layer.
+This means the older statement `*lawes > *laes > -las` is too simple. The productive Early Hick
+`-las` descends from a branch-specific grammaticalized allomorph, while `-aes` survives as a
+fossilized or borrowed Maritime layer.
 
 ## Calibration Form: imris
 
-The ellative and source-causative marker `-imris` is another high-value
-calibration form because it is productive in Early Hick, but its older etymology
-is less secure than its synchronic function.
+The ellative and source-causative marker `-imris` is another high-value calibration form because it
+is productive in Early Hick, but its older etymology is less secure than its synchronic function.
 
 ### Current Lexurgy Outputs
 
@@ -171,9 +166,8 @@ risu           > ris
 
 ### Working Interpretation
 
-The transparent derivation `ʔimeru ʔirisu > imris` is not produced by the
-current rules. The closest regular output is `imeris`, from either `ʔimerisu` or
-`ʔimeru risu`.
+The transparent derivation `ʔimeru ʔirisu > imris` is not produced by the current rules. The closest
+regular output is `imeris`, from either `ʔimerisu` or `ʔimeru risu`.
 
 The current working model is:
 
@@ -188,10 +182,9 @@ Pre-Hick to Early Hick productive morphology:
 imeris > imris
 ```
 
-The final `imeris > imris` reduction should be treated as a special reduction in
-high-frequency bound morphology, not as a general sound law. The productive
-Early Hick marker then extends from physical/source ellative use into
-derivational and clause-linking functions:
+The final `imeris > imris` reduction should be treated as a special reduction in high-frequency
+bound morphology, not as a general sound law. The productive Early Hick marker then extends from
+physical/source ellative use into derivational and clause-linking functions:
 
 ```text
 out of, from
@@ -200,29 +193,25 @@ out of, from
 > cause to emerge or bring out
 ```
 
-The `*risu` root is attested as "reed", so it should not be repurposed as the
-source of `-imris`. The `*-isu` suffix is documented as locative "at, in"; its
-exterior/outward use should remain a branch-specific or contextual development
-unless stronger comparative evidence is found.
+The `*risu` root is attested as "reed", so it should not be repurposed as the source of `-imris`.
+The `*-isu` suffix is documented as locative "at, in"; its exterior/outward use should remain a
+branch-specific or contextual development unless stronger comparative evidence is found.
 
-The Early Hick word `kiris` should not currently be used as firm evidence that
-`*isu` originally meant "out". Its etymology may need reanalysis or may
-represent folk etymology.
+The Early Hick word `kiris` should not currently be used as firm evidence that `*isu` originally
+meant "out". Its etymology may need reanalysis or may represent folk etymology.
 
 ### Candidate Reanalysis: kiris
 
-The current Early Hick lexicon derives `kiris` from `*kiru-ʔisu` "body-out", but
-the current Lexurgy rules produce `kir'is`, not `kiris`. The cleaner
-sound-change path is:
+The current Early Hick lexicon derives `kiris` from `*kiru-ʔisu` "body-out", but the current Lexurgy
+rules produce `kir'is`, not `kiris`. The cleaner sound-change path is:
 
 ```text
 *kiru-risu > kiris
 ```
 
-Since `*risu` is independently attested as "reed", this gives a literal sense
-"reed body". That phrase can remain available as a botanical description of the
-body or stalk of a reed, while also developing a socially marked sense through
-contact with plantlike fey:
+Since `*risu` is independently attested as "reed", this gives a literal sense "reed body". That
+phrase can remain available as a botanical description of the body or stalk of a reed, while also
+developing a socially marked sense through contact with plantlike fey:
 
 ```text
 reed body
@@ -231,17 +220,15 @@ reed body
 > fey outsider, strange non-human person
 ```
 
-This development fits a Maritime or Seneran setting better than an inherited
-Proto-Hick exterior case etymology. Raibon Island and Senera both have strong
-later traditions of fey contact, wetland crossings, and bog-associated magical
-beings, so `kiris` may reflect a branch-specific folk or contact term rather
-than a general Proto-Hick derivation from `*-isu`.
+This development fits a Maritime or Seneran setting better than an inherited Proto-Hick exterior
+case etymology. Raibon Island and Senera both have strong later traditions of fey contact, wetland
+crossings, and bog-associated magical beings, so `kiris` may reflect a branch-specific folk or
+contact term rather than a general Proto-Hick derivation from `*-isu`.
 
 ## Calibration Form: itaru
 
-The superessive marker `-itar` and the inland/fossil form `-iter` need to be
-kept separate in synchronic Early Hick description, even if they may be
-historically related.
+The superessive marker `-itar` and the inland/fossil form `-iter` need to be kept separate in
+synchronic Early Hick description, even if they may be historically related.
 
 ### Current Lexurgy Outputs
 
@@ -263,18 +250,16 @@ The regular sound-change path is:
 > iter
 ```
 
-Bare `itaru` is not a valid Proto-Hick input under the current syllable model,
-because vowel-initial forms require an onset repair. The `roots.wli` file may
-contain generated phonotactic test words, so its `*-itaru`-like outputs should
-be treated as sound-change feasibility rather than canonical lexical
-attestation.
+Bare `itaru` is not a valid Proto-Hick input under the current syllable model, because vowel-initial
+forms require an onset repair. The `roots.wli` file may contain generated phonotactic test words, so
+its `*-itaru`-like outputs should be treated as sound-change feasibility rather than canonical
+lexical attestation.
 
 ### Working Interpretation
 
-The current working model is that `-iter` is the regular inherited reflex of an
-older onset-bearing superessive or upper-surface marker, while `-itar` is the
-productive Early Hick superessive that spread from a separate Seneran dialect
-layer.
+The current working model is that `-iter` is the regular inherited reflex of an older onset-bearing
+superessive or upper-surface marker, while `-itar` is the productive Early Hick superessive that
+spread from a separate Seneran dialect layer.
 
 ```text
 regular inherited reflex:
@@ -284,23 +269,20 @@ prestige or restored dialect form:
 *-itaru > -itar
 ```
 
-In the coastal and eastern trade standard, the productive ellative `-imris`
-became the clearer marker for source, emergence, and outward motion. This likely
-caused inherited `-iter` to lose productivity where it overlapped with ellative
-meanings. It survived mostly in inland, conservative, domestic, or ritual
-vocabulary, such as `venuiter` and related forms.
+In the coastal and eastern trade standard, the productive ellative `-imris` became the clearer
+marker for source, emergence, and outward motion. This likely caused inherited `-iter` to lose
+productivity where it overlapped with ellative meanings. It survived mostly in inland, conservative,
+domestic, or ritual vocabulary, such as `venuiter` and related forms.
 
-The productive superessive `-itar` is best placed in Ranterg highland or
-eastern-slope prestige speech. During the middle Early Hick period, the growing
-ritual and political importance of Thrantorgral in the Ranterg Mountains may
-have carried this highland form into broader Early Hick usage. Its meaning
-remained comparatively clear: "on, upon, atop, supported by; onto/upon with
+The productive superessive `-itar` is best placed in Ranterg highland or eastern-slope prestige
+speech. During the middle Early Hick period, the growing ritual and political importance of
+Thrantorgral in the Ranterg Mountains may have carried this highland form into broader Early Hick
+usage. Its meaning remained comparatively clear: "on, upon, atop, supported by; onto/upon with
 motion verbs."
 
 ### Regional Model
 
-The resulting Early Hick standard is not purely coastal. It is a layered contact
-variety:
+The resulting Early Hick standard is not purely coastal. It is a layered contact variety:
 
 ```text
 Eastern/coastal trade speech:
@@ -313,34 +295,28 @@ Ranterg highland prestige speech:
   -itar spreads as the productive superessive
 ```
 
-Coastal Early Hick became the practical base of the standard because eastern and
-coastal communities controlled the trade routes to the wider Beteran community.
-Ranterg speech then contributed prestige religious or political forms after
-Thrantorgral gained importance.
+Coastal Early Hick became the practical base of the standard because eastern and coastal communities
+controlled the trade routes to the wider Beteran community. Ranterg speech then contributed prestige
+religious or political forms after Thrantorgral gained importance.
 
-The strongest dialectal drift should be expected in the most isolated Seneran
-regions. The Maltreks, especially the remote northwestern highlands, are the
-best candidate for the most conservative or divergent local speech. They likely
-remained marginal to island-wide standardization until rare minerals made the
-region economically important late in the Early Hick period or later.
-Northeastern Senera is a likely secondary isolation zone, because colder and
-less productive conditions would have limited settlement density, trade
-intensity, and regular contact with the coastal standard. This northeastern or
-Skelmark zone likely had little island-wide influence during the Early Hick
-period. Its larger influence begins in Middle Hick, after the Iutlandish landing
-made it a base for inland expansion. The inland Western Lowlands and eastern
-Rannek may also preserve local features because of distance from the eastern
-maritime network, but their agricultural importance likely created more regular
-trade contact. They should therefore be treated as conservative contact zones
-rather than fully isolated dialect pockets. These regions may preserve older
-reflexes or develop stronger local innovations than the eastern trade coast or
-the Ranterg prestige corridor.
+The strongest dialectal drift should be expected in the most isolated Seneran regions. The Maltreks,
+especially the remote northwestern highlands, are the best candidate for the most conservative or
+divergent local speech. They likely remained marginal to island-wide standardization until rare
+minerals made the region economically important late in the Early Hick period or later. Northeastern
+Senera is a likely secondary isolation zone, because colder and less productive conditions would
+have limited settlement density, trade intensity, and regular contact with the coastal standard.
+This northeastern or Skelmark zone likely had little island-wide influence during the Early Hick
+period. Its larger influence begins in Middle Hick, after the Iutlandish landing made it a base for
+inland expansion. The inland Western Lowlands and eastern Rannek may also preserve local features
+because of distance from the eastern maritime network, but their agricultural importance likely
+created more regular trade contact. They should therefore be treated as conservative contact zones
+rather than fully isolated dialect pockets. These regions may preserve older reflexes or develop
+stronger local innovations than the eastern trade coast or the Ranterg prestige corridor.
 
-One small confirmed Maltreks or upper Malter Valley split is the regional
-earthworm form `grapal`, especially plural `grapales`, beside standard Early
-Hick `grapar`/`grapares`. This should be treated as a local lexical variant,
-not as a general Early Hick liquid sound law. The form likely reflects local
-liquid leveling in a familiar inherited compound:
+One small confirmed Maltreks or upper Malter Valley split is the regional earthworm form `grapal`,
+especially plural `grapales`, beside standard Early Hick `grapar`/`grapares`. This should be treated
+as a local lexical variant, not as a general Early Hick liquid sound law. The form likely reflects
+local liquid leveling in a familiar inherited compound:
 
 ```text
 standard lexicalized compound:
@@ -350,9 +326,8 @@ regional leveling:
 grapar(es) > grapal(es)
 ```
 
-The split fits the broader expectation that isolated western and mountain
-regions preserve local reductions, but it should not be projected onto all
-`r/l` environments without further evidence.
+The split fits the broader expectation that isolated western and mountain regions preserve local
+reductions, but it should not be projected onto all `r/l` environments without further evidence.
 
 This explains mixed formal expressions such as:
 
@@ -362,17 +337,16 @@ good-SUPE birth-ELL.DIAL-ABS
 "blessings upon your birth"
 ```
 
-Here, `'ilitar` uses the standard or prestige superessive, while `venuiter`
-preserves an older inland/fossil birth term.
+Here, `'ilitar` uses the standard or prestige superessive, while `venuiter` preserves an older
+inland/fossil birth term.
 
 ## Working Form: esp
 
-The direct reconstruction `*espu > -esp` is currently weak. It produces the
-desired Early Hick shape, but it looks more like a placeholder than a motivated
-Proto-Hick form.
+The direct reconstruction `*espu > -esp` is currently weak. It produces the desired Early Hick
+shape, but it looks more like a placeholder than a motivated Proto-Hick form.
 
-A better working model derives `-esp` from a grammaticalized compound around
-`*wesu` and a probable root `*pu`:
+A better working model derives `-esp` from a grammaticalized compound around `*wesu` and a probable
+root `*pu`:
 
 ```text
 *wesu pu
@@ -389,9 +363,9 @@ The likely older senses are:
      > cover, enclose
 ```
 
-The independent Early Hick root `wes` preserves the later lexical sense "cover,
-enclose." The compound `*wesu pu` preserves a more spatial use: "enclosed hole,
-covered hollow, burrow-dwelling." The important semantic development is:
+The independent Early Hick root `wes` preserves the later lexical sense "cover, enclose." The
+compound `*wesu pu` preserves a more spatial use: "enclosed hole, covered hollow, burrow-dwelling."
+The important semantic development is:
 
 ```text
 burrow-dwelling, covered hollow
@@ -399,8 +373,7 @@ burrow-dwelling, covered hollow
 > subessive -esp "under, below, beneath"
 ```
 
-This should not be treated as a fully formed Proto-Hick subessive. The best
-chronology is:
+This should not be treated as a fully formed Proto-Hick subessive. The best chronology is:
 
 ```text
 Proto-Hick:
@@ -419,15 +392,13 @@ Early Hick:
   -esp becomes the productive subessive case marker
 ```
 
-This path fits the current Early Hick lexicon better than bare `*espu`. It also
-explains why `wesp` could survive as a separate lexical relic: Maritime Hick
-could shift the older burrow or covered-hole sense toward ship holds and
-enclosed lower storage spaces, while Early Hick later generalizes the
-independent word to "cellar", "basement", or "lower enclosed space." It explains
-`saresp` "sprout" as "leaf under/covered," with growth understood as emergence
-from concealment or from beneath the ground. It also gives `aiesp` "bathe" a
-more concrete source: "water covering/enclosing the body," rather than only
-abstract "water under."
+This path fits the current Early Hick lexicon better than bare `*espu`. It also explains why `wesp`
+could survive as a separate lexical relic: Maritime Hick could shift the older burrow or
+covered-hole sense toward ship holds and enclosed lower storage spaces, while Early Hick later
+generalizes the independent word to "cellar", "basement", or "lower enclosed space." It explains
+`saresp` "sprout" as "leaf under/covered," with growth understood as emergence from concealment or
+from beneath the ground. It also gives `aiesp` "bathe" a more concrete source: "water
+covering/enclosing the body," rather than only abstract "water under."
 
 Lexurgy currently gives:
 
@@ -436,23 +407,21 @@ Lexurgy currently gives:
 *brisu-wesu-pu > brisesp
 ```
 
-The second form is important because the current compound rules already allow
-`w` to disappear after sibilants at a compound boundary. The phonotactics also
-do not allow general `Cw` onset clusters. Once `wesp` was reanalyzed as a bound
-suffix, forms like `*imer-wesp`, `*sar-wesp`, or `*gral-wesp` were therefore
-prone to repair as `imer-esp`, `sar-esp`, and `gral-esp`. This makes
-`wesp > esp` plausible as a common-use reduction of a very frequent grammatical
-suffix: sibilant-final compounds could surface with `-esp`, and consonant-final
-stems would independently favor loss of the weak initial `w`. Speakers then
-generalized `-esp` as the productive subessive.
+The second form is important because the current compound rules already allow `w` to disappear after
+sibilants at a compound boundary. The phonotactics also do not allow general `Cw` onset clusters.
+Once `wesp` was reanalyzed as a bound suffix, forms like `*imer-wesp`, `*sar-wesp`, or `*gral-wesp`
+were therefore prone to repair as `imer-esp`, `sar-esp`, and `gral-esp`. This makes `wesp > esp`
+plausible as a common-use reduction of a very frequent grammatical suffix: sibilant-final compounds
+could surface with `-esp`, and consonant-final stems would independently favor loss of the weak
+initial `w`. Speakers then generalized `-esp` as the productive subessive.
 
-This should be treated as a common-use reduction and analogical leveling, not as
-a global sound change deleting all `w` before `e`.
+This should be treated as a common-use reduction and analogical leveling, not as a global sound
+change deleting all `w` before `e`.
 
 ## Calibration Form: asam
 
-The `asam` family is best treated as a shared-base reconstruction problem, not
-as a strictly sequential derivation from a live Early Hick verb.
+The `asam` family is best treated as a shared-base reconstruction problem, not as a strictly
+sequential derivation from a live Early Hick verb.
 
 ### Working Interpretation
 
@@ -469,10 +438,9 @@ Early Hick case marker:
 -asam = sublative, downward / onto a lower surface
 ```
 
-The most economical analysis is that the noun and the case marker are cognate
-developments from the same older base. The case marker does not need to be
-synchronically derived from a live finite verb such as `asam'er`. Instead, the
-grammaticalization path is better understood as:
+The most economical analysis is that the noun and the case marker are cognate developments from the
+same older base. The case marker does not need to be synchronically derived from a live finite verb
+such as `asam'er`. Instead, the grammaticalization path is better understood as:
 
 ```text
 rest, resting place
@@ -482,12 +450,10 @@ rest, resting place
 > sublative -asam
 ```
 
-This fits the Early Hick lexical evidence better than a model where speakers
-first derive a verb "to go to rest" and only later turn that verb into a case
-marker. If `asam'er` is later normalized or explicitly documented, it can be
-treated as a transparent finite verbalization of the lexical base `asam`, not as
-the historical source that speakers must reconstruct in order to understand
-`-asam`.
+This fits the Early Hick lexical evidence better than a model where speakers first derive a verb "to
+go to rest" and only later turn that verb into a case marker. If `asam'er` is later normalized or
+explicitly documented, it can be treated as a transparent finite verbalization of the lexical base
+`asam`, not as the historical source that speakers must reconstruct in order to understand `-asam`.
 
 ### Synchrony vs. History
 
@@ -495,30 +461,29 @@ Synchronically in Early Hick:
 
 - `asam` is a lexical noun
 - `-asam` is a productive grammatical case suffix
-- forms such as `asamasam` and `asamitar` show later lexicalized derivations
-  built from the noun-plus-case family
+- forms such as `asamasam` and `asamitar` show later lexicalized derivations built from the
+  noun-plus-case family
 
 Historically:
 
 - the noun and suffix are related
-- but they should be treated as parallel outcomes of older `*xasamu` material,
-  not as a simple live chain `asam > asam'er > -asam`
+- but they should be treated as parallel outcomes of older `*xasamu` material, not as a simple live
+  chain `asam > asam'er > -asam`
 
 ## Open Questions
 
 - Does Apgarian preserve a form closer to `*lawesu`?
-- Does Maritime preserve `*lahesu`, `*laʔesu`, or a separate inward marker
-  behind fossil `-aes`?
-- Does Apgarian or Maritime preserve an `imeris`-like form before the productive
-  Early Hick reduction to `imris`?
+- Does Maritime preserve `*lahesu`, `*laʔesu`, or a separate inward marker behind fossil `-aes`?
+- Does Apgarian or Maritime preserve an `imeris`-like form before the productive Early Hick
+  reduction to `imris`?
 - Is the exterior/source sense of `*-isu` inherited from Proto-Hick, or is it a
   Proto-Maritime/Proto-Seneran contextual development?
-- Does Early Hick `kiris` come from `*kiru-risu` "reed body", and did that
-  meaning develop through plantlike fey contact?
-- Is `-itar` specifically a Ranterg highland prestige form, or did the same
-  restored superessive survive in multiple Seneran regions?
+- Does Early Hick `kiris` come from `*kiru-risu` "reed body", and did that meaning develop through
+  plantlike fey contact?
+- Is `-itar` specifically a Ranterg highland prestige form, or did the same restored superessive
+  survive in multiple Seneran regions?
 - Which stage first developed productive spatial case suffixes?
-- Are `duwes`, `ewes`, and `-las` part of one derivational family, or do they
-  reflect separate lexical and grammaticalized branches?
-- Does `*pu` survive elsewhere with the sense "hole, hollow, burrow", or only in
-  the bridge form `wesp`?
+- Are `duwes`, `ewes`, and `-las` part of one derivational family, or do they reflect separate
+  lexical and grammaticalized branches?
+- Does `*pu` survive elsewhere with the sense "hole, hollow, burrow", or only in the bridge form
+  `wesp`?

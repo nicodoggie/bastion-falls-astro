@@ -29,7 +29,7 @@ line-length = 100
 code-blocks = false
 tables = false
 reflow = true
-reflow-mode = "normalize"
+reflow-mode = "default"
 
 [MD025]
 front-matter-title = "title"

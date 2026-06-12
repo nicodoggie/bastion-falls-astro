@@ -26,15 +26,15 @@ int: 14
 wis: 18
 cha: 18
 save:
-  con: '+8'
-  wis: '+8'
-  cha: '+8'
+  con: "+8"
+  wis: "+8"
+  cha: "+8"
 skill:
-  deception: '+8'
-  insight: '+8'
-  medicine: '+8'
-  persuasion: '+8'
-  religion: '+6'
+  deception: "+8"
+  insight: "+8"
+  medicine: "+8"
+  persuasion: "+8"
+  religion: "+6"
 resist:
   - fire
   - poison
@@ -46,7 +46,7 @@ languages:
   - Common
   - Hickic
   - Infernal
-cr: '11'
+cr: "11"
 trait:
   - name: Cambion Piercing
     entries:
@@ -56,16 +56,22 @@ trait:
   - name: Spellcasting
     entries:
       - >-
-        Maribel is a 13th-level spellcaster. Her spellcasting ability is Wisdom (spell save {@dc 16},
-        {@hit +8} to hit with spell attacks). She has the following cleric spells prepared:
-      - 'Cantrips (at will): {@spell guidance}, {@spell sacred flame}, {@spell spare the dying}, {@spell thaumaturgy}'
-      - '1st level (4 slots): {@spell bane}, {@spell command}, {@spell cure wounds}, {@spell sanctuary}'
-      - '2nd level (3 slots): {@spell aid}, {@spell hold person}, {@spell lesser restoration}'
-      - '3rd level (3 slots): {@spell bestow curse}, {@spell mass healing word}, {@spell spirit guardians}'
-      - '4th level (3 slots): {@spell banishment}, {@spell death ward}'
-      - '5th level (2 slots): {@spell contagion}, {@spell greater restoration}'
-      - '6th level (1 slot): {@spell heal}'
-      - '7th level (1 slot): {@spell regenerate}'
+        Maribel is a 13th-level spellcaster. Her spellcasting ability is Wisdom (spell save {@dc
+        16}, {@hit +8} to hit with spell attacks). She has the following cleric spells prepared:
+      - >-
+        Cantrips (at will): {@spell guidance}, {@spell sacred flame}, {@spell spare the dying},
+        {@spell thaumaturgy}
+      - >-
+        1st level (4 slots): {@spell bane}, {@spell command}, {@spell cure wounds}, {@spell
+        sanctuary}
+      - "2nd level (3 slots): {@spell aid}, {@spell hold person}, {@spell lesser restoration}"
+      - >-
+        3rd level (3 slots): {@spell bestow curse}, {@spell mass healing word}, {@spell spirit
+        guardians}
+      - "4th level (3 slots): {@spell banishment}, {@spell death ward}"
+      - "5th level (2 slots): {@spell contagion}, {@spell greater restoration}"
+      - "6th level (1 slot): {@spell heal}"
+      - "7th level (1 slot): {@spell regenerate}"
 action:
   - name: Multiattack
     entries:
@@ -86,11 +92,11 @@ bonus:
   - name: Administer the Cup
     entries:
       - >-
-        Maribel chooses one allied Reformist within 5 feet. The target regains 18 ({@damage 4d8}) hit
-        points and can immediately end one disease or poison affecting it.
+        Maribel chooses one allied Reformist within 5 feet. The target regains 18 ({@damage 4d8})
+        hit points and can immediately end one disease or poison affecting it.
 reaction:
   - name: Poisoned Grace
     entries:
       - >-
-        When a creature within 30 feet succeeds on a saving throw against being {@condition poisoned},
-        Maribel forces it to reroll the save and use the new result.
+        When a creature within 30 feet succeeds on a saving throw against being {@condition
+        poisoned}, Maribel forces it to reroll the save and use the new result.

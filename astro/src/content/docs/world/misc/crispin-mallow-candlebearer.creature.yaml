@@ -1,0 +1,95 @@
+name: Crispin Mallow, Bearer of the Candle
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+    - reformist
+alignment:
+  - L
+  - E
+ac:
+  - ac: 17
+    from:
+      - mage armor
+      - infernal piercing
+hp:
+  average: 145
+  formula: 17d8 + 68
+speed:
+  walk: 30
+str: 10
+dex: 16
+con: 18
+int: 18
+wis: 16
+cha: 18
+save:
+  con: "+8"
+  int: "+8"
+  cha: "+8"
+skill:
+  arcana: "+8"
+  deception: "+8"
+  investigation: "+8"
+  perception: "+7"
+  religion: "+8"
+resist:
+  - fire
+  - psychic
+senses:
+  - darkvision 60 ft.
+passive: 17
+languages:
+  - Common
+  - Hickic
+  - Infernal
+cr: "11"
+trait:
+  - name: Cambion Piercing
+    entries:
+      - >-
+        Crispin's cursed piercing marks him as a bearer of relics. Magical darkness does not impede
+        his darkvision, and he has advantage on saving throws against illusions.
+  - name: Spellcasting
+    entries:
+      - >-
+        Crispin is a 13th-level spellcaster. His spellcasting ability is Intelligence (spell save
+        {@dc 16}, {@hit +8} to hit with spell attacks). He has the following wizard spells prepared:
+      - >
+        Cantrips (at will): {@spell fire bolt}, {@spell light}, {@spell mage hand}, {@spell minor
+        illusion}
+      - "1st level (4 slots): {@spell disguise self}, {@spell mage armor}, {@spell shield}"
+      - >
+        2nd level (3 slots): {@spell detect thoughts}, {@spell invisibility}, {@spell scorching ray}
+      - "3rd level (3 slots): {@spell counterspell}, {@spell fear}, {@spell hypnotic pattern}"
+      - "4th level (3 slots): {@spell greater invisibility}, {@spell wall of fire}"
+      - "5th level (2 slots): {@spell dominate person}, {@spell wall of light}"
+      - "6th level (1 slot): {@spell sunbeam}"
+      - "7th level (1 slot): {@spell prismatic spray}"
+action:
+  - name: Candleflame
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +8} to hit, range 120 ft., one target. Hit: 27 ({@damage 6d8})
+        radiant damage plus 14 ({@damage 4d6}) psychic damage.
+  - name: Unveiling Light (Recharge 5-6)
+    entries:
+      - >-
+        Crispin reveals a 30-foot cone of impossible light. Each creature in the area must make a
+        {@dc 16} Intelligence saving throw, taking 40 ({@damage 9d8}) psychic damage on a failed
+        save, or half as much damage on a successful one. Invisible creatures in the cone become
+        visible until the end of Crispin's next turn.
+bonus:
+  - name: Snuff the Witness
+    entries:
+      - >-
+        Crispin chooses one creature he can see within 60 feet. Until the start of his next turn,
+        that creature cannot take reactions and sheds dim green light in a 5-foot radius.
+reaction:
+  - name: Candle's Ward
+    entries:
+      - >-
+        When Crispin is hit by an attack, he gains a +4 bonus to AC against that attack, potentially
+        causing it to miss.

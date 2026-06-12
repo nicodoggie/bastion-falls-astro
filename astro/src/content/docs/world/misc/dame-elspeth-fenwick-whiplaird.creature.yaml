@@ -1,0 +1,88 @@
+name: Dame Elspeth Fenwick, Bearer of the Whip
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+    - reformist
+alignment:
+  - L
+  - E
+ac:
+  - ac: 18
+    from:
+      - studded leather
+      - infernal piercing
+hp:
+  average: 145
+  formula: 17d8 + 68
+speed:
+  walk: 35
+str: 14
+dex: 18
+con: 18
+int: 13
+wis: 16
+cha: 18
+save:
+  dex: "+8"
+  con: "+8"
+  cha: "+8"
+skill:
+  acrobatics: "+8"
+  deception: "+8"
+  insight: "+7"
+  intimidation: "+8"
+  religion: "+5"
+resist:
+  - fire
+  - psychic
+conditionImmune:
+  - frightened
+passive: 13
+languages:
+  - Common
+  - Hickic
+  - Infernal
+cr: "11"
+trait:
+  - name: Cambion Piercing
+    entries:
+      - >-
+        Elspeth's cursed piercing marks her as a bearer of relics. She has advantage on saving
+        throws against being {@condition charmed} or {@condition frightened}.
+  - name: Shared Mortification
+    entries:
+      - >-
+        When Elspeth deals psychic damage to a creature, one allied Reformist within 30 feet of her
+        gains 7 ({@damage 2d6}) temporary hit points.
+action:
+  - name: Multiattack
+    entries:
+      - Elspeth makes three Relic Whip attacks.
+  - name: Relic Whip
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +8} to hit, reach 15 ft., one target. Hit: 8 ({@damage 1d8 + 4})
+        slashing damage plus 14 ({@damage 4d6}) psychic damage, and the target is grappled (escape
+        {@dc 16}) if it is Large or smaller.
+  - name: Lash the Confession (Recharge 5-6)
+    entries:
+      - >-
+        Each creature of Elspeth's choice within 15 feet must make a {@dc 16} Charisma saving throw.
+        On a failed save, a creature takes 36 ({@damage 8d8}) psychic damage and is {@condition
+        frightened} until the end of its next turn. On a successful save, a creature takes half as
+        much damage and isn't {@condition frightened}.
+bonus:
+  - name: Drag Forward
+    entries:
+      - >-
+        One creature grappled by Elspeth is pulled up to 15 feet straight toward her and knocked
+        {@condition prone}.
+reaction:
+  - name: Pain for Doubt
+    entries:
+      - >-
+        When a creature within 30 feet misses Elspeth with an attack, Elspeth forces it to take 10
+        ({@damage 3d6}) psychic damage.

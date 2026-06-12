@@ -25,15 +25,15 @@ int: 16
 wis: 16
 cha: 12
 save:
-  dex: '+7'
-  int: '+6'
-  wis: '+6'
+  dex: "+7"
+  int: "+6"
+  wis: "+6"
 skill:
-  acrobatics: '+7'
-  arcana: '+6'
-  deception: '+4'
-  perception: '+6'
-  stealth: '+7'
+  acrobatics: "+7"
+  arcana: "+6"
+  deception: "+4"
+  perception: "+6"
+  stealth: "+7"
 resist:
   - psychic
 conditionImmune:
@@ -45,14 +45,14 @@ languages:
   - Common
   - Hickic
   - Infernal
-cr: '8'
+cr: "8"
 trait:
   - name: Boundary-Touched Body
     entries:
       - >-
         The dark archon can move through the space of hostile creatures. The first time it enters a
-        creature's space on a turn, that creature must succeed on a {@dc 15} Wisdom saving throw or be
-        unable to take reactions until the start of the dark archon's next turn.
+        creature's space on a turn, that creature must succeed on a {@dc 15} Wisdom saving throw or
+        be unable to take reactions until the start of the dark archon's next turn.
   - name: Mockery of Archons
     entries:
       - >-
@@ -62,11 +62,12 @@ trait:
     entries:
       - >-
         The dark archon is a 5th-level spellcaster. Its spellcasting ability is Intelligence (spell
-        save {@dc 14}, {@hit +6} to hit with spell attacks). It has the following wizard spells prepared:
-      - 'Cantrips (at will): {@spell mage hand}, {@spell minor illusion}, {@spell ray of frost}'
-      - '1st level (4 slots): {@spell disguise self}, {@spell mage armor}, {@spell shield}'
-      - '2nd level (3 slots): {@spell blur}, {@spell misty step}'
-      - '3rd level (2 slots): {@spell counterspell}, {@spell hypnotic pattern}'
+        save {@dc 14}, {@hit +6} to hit with spell attacks). It has the following wizard spells
+        prepared:
+      - "Cantrips (at will): {@spell mage hand}, {@spell minor illusion}, {@spell ray of frost}"
+      - "1st level (4 slots): {@spell disguise self}, {@spell mage armor}, {@spell shield}"
+      - "2nd level (3 slots): {@spell blur}, {@spell misty step}"
+      - "3rd level (2 slots): {@spell counterspell}, {@spell hypnotic pattern}"
 action:
   - name: Multiattack
     entries:
@@ -74,16 +75,16 @@ action:
   - name: Boundary Strike
     entries:
       - >-
-        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4}) bludgeoning damage
-        plus 7 ({@damage 2d6}) psychic damage.
+        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4})
+        bludgeoning damage plus 7 ({@damage 2d6}) psychic damage.
   - name: Boundary Rend (Recharge 5-6)
     entries:
       - >-
         The dark archon opens a wavering tear in a 30-foot line that is 5 feet wide. Each creature
-        in that line must make a {@dc 15} Intelligence saving throw, taking 31 ({@damage 7d8}) psychic damage on
-        a failed save, or half as much damage on a successful one. A creature that fails the save is
-        also disoriented until the end of its next turn. While disoriented, the creature subtracts
-        {@dice 1d4} from attack rolls and ability checks.
+        in that line must make a {@dc 15} Intelligence saving throw, taking 31 ({@damage 7d8})
+        psychic damage on a failed save, or half as much damage on a successful one. A creature that
+        fails the save is also disoriented until the end of its next turn. While disoriented, the
+        creature subtracts {@dice 1d4} from attack rolls and ability checks.
 bonus:
   - name: Boundary Step
     entries:
@@ -94,5 +95,6 @@ reaction:
   - name: Deflect Spell
     entries:
       - >-
-        When the dark archon is hit by a ranged spell attack, it reduces the damage by 16 ({@damage 1d10 + 11}). If this reduces the damage to 0, the dark archon can redirect the spell at another
-        creature within 60 feet of it, using the original attack roll.
+        When the dark archon is hit by a ranged spell attack, it reduces the damage by 16 ({@damage
+        1d10 + 11}). If this reduces the damage to 0, the dark archon can redirect the spell at
+        another creature within 60 feet of it, using the original attack roll.

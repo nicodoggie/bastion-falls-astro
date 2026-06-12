@@ -6,7 +6,7 @@ type:
   tags:
     - human
 alignment:
-  - 'N'
+  - "N"
   - E
 ac:
   - ac: 12
@@ -24,19 +24,19 @@ int: 18
 wis: 13
 cha: 12
 save:
-  int: '+7'
-  wis: '+4'
+  int: "+7"
+  wis: "+4"
 skill:
-  arcana: '+7'
-  deception: '+4'
-  history: '+7'
-  investigation: '+7'
+  arcana: "+7"
+  deception: "+4"
+  history: "+7"
+  investigation: "+7"
 passive: 11
 languages:
   - Common
   - Hickic
   - Infernal
-cr: '5'
+cr: "5"
 trait:
   - name: Spellcasting
     entries:
@@ -44,12 +44,16 @@ trait:
         The wizard is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save
         {@dc 15}, {@hit +7} to hit with spell attacks). The wizard has the following wizard spells
         prepared:
-      - 'Cantrips (at will): {@spell fire bolt}, {@spell mage hand}, {@spell message}, {@spell minor illusion}'
-      - '1st level (4 slots): {@spell charm person}, {@spell detect magic}, {@spell mage armor}, {@spell shield}'
-      - '2nd level (3 slots): {@spell detect thoughts}, {@spell hold person}, {@spell invisibility}'
-      - '3rd level (3 slots): {@spell counterspell}, {@spell fear}, {@spell lightning bolt}'
-      - '4th level (3 slots): {@spell confusion}, {@spell greater invisibility}'
-      - '5th level (1 slot): {@spell dominate person}'
+      - >
+        Cantrips (at will): {@spell fire bolt}, {@spell mage hand}, {@spell message}, {@spell minor
+        illusion}
+      - >
+        1st level (4 slots): {@spell charm person}, {@spell detect magic}, {@spell mage armor},
+        {@spell shield}
+      - "2nd level (3 slots): {@spell detect thoughts}, {@spell hold person}, {@spell invisibility}"
+      - "3rd level (3 slots): {@spell counterspell}, {@spell fear}, {@spell lightning bolt}"
+      - "4th level (3 slots): {@spell confusion}, {@spell greater invisibility}"
+      - "5th level (1 slot): {@spell dominate person}"
   - name: Funeral Etiquette
     entries:
       - >-
@@ -59,15 +63,17 @@ action:
   - name: Dagger
     entries:
       - >-
-        Melee or Ranged Weapon Attack: {@hit +5} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4
-        ({@damage 1d4 + 2}) piercing damage.
+        Melee or Ranged Weapon Attack: {@hit +5} to hit, reach 5 ft. or range 20/60 ft., one target.
+        Hit: 4 ({@damage 1d4 + 2}) piercing damage.
   - name: Fire Bolt
     entries:
-      - 'Ranged Spell Attack: {@hit +7} to hit, range 120 ft., one target. Hit: 16 ({@damage 3d10}) fire damage.'
+      - >
+        Ranged Spell Attack: {@hit +7} to hit, range 120 ft., one target. Hit: 16 ({@damage 3d10})
+        fire damage.
 reaction:
   - name: Shield
     entries:
       - >-
-        When the wizard is hit by an attack or targeted by the {@spell magic missile} spell, it gains a +5
-        bonus to AC until the start of its next turn, including against the triggering attack, and
-        takes no damage from {@spell magic missile}.
+        When the wizard is hit by an attack or targeted by the {@spell magic missile} spell, it
+        gains a +5 bonus to AC until the start of its next turn, including against the triggering
+        attack, and takes no damage from {@spell magic missile}.

@@ -8,17 +8,14 @@ description: |
 import ItemBlock from '../../../../components/ItemBlock.astro';
 import SpellBlock from '../../../../components/SpellBlock.astro';
 
-Structured **spells** and **magic items** follow the same idea as
-`creatureStats`:
+Structured **spells** and **magic items** follow the same idea as `creatureStats`:
 
-- Data files live under `src/content/docs/world/**` with suffixes
-  **`*.spell.yaml`** and **`*.item.yaml`**.
-- Astro collections **`spells`** and **`itemData`** load them; each file’s
-  **collection id** is the path relative to `world` **without** `.json` (same
-  rule as creatures).
-- Docs frontmatter may reference them with **`spellStats`** and
-  **`itemDataStats`** (validated with `SpellDataSchema` and `ItemDataSchema`
-  from `@bastion-falls/5e-schema-zod`).
+- Data files live under `src/content/docs/world/**` with suffixes **`*.spell.yaml`** and
+  **`*.item.yaml`**.
+- Astro collections **`spells`** and **`itemData`** load them; each file’s **collection id** is the
+  path relative to `world` **without** `.json` (same rule as creatures).
+- Docs frontmatter may reference them with **`spellStats`** and **`itemDataStats`** (validated with
+  `SpellDataSchema` and `ItemDataSchema` from `@bastion-falls/5e-schema-zod`).
 
 ## Spells (`*.spell.yaml`)
 
@@ -41,9 +38,8 @@ import SpellBlock from '../../../../components/SpellBlock.astro';
 
 ## Magic items (`*.item.yaml`)
 
-The collection is named **`itemData`** so it does not collide with the existing
-MDX **`item`** collection (`src/content/docs/world/items`). Frontmatter uses
-**`itemDataStats`**:
+The collection is named **`itemData`** so it does not collide with the existing MDX **`item`**
+collection (`src/content/docs/world/items`). Frontmatter uses **`itemDataStats`**:
 
 ```yaml
 itemDataStats:
@@ -64,11 +60,11 @@ import ItemBlock from '../../../../components/ItemBlock.astro';
 
 ## Notes
 
-- **`entries`** and **`entriesHigherLevel`** use the same mixed 5etools shapes
-  as the bestiary; the UI flattens them to plain text (including stripping
-  `{@...}` tags to readable text where possible).
-- Item **`value`** in 5etools is typically in **copper pieces**; the block
-  displays a simple **gp / sp / cp** conversion.
-- Do **not** register `*.spell.yaml` or `*.item.yaml` as a separate Starlight
-  doc glob with `docsSchema` — only this project’s collections + frontmatter
-  extension, matching the `creatureStats` pattern.
+- **`entries`** and **`entriesHigherLevel`** use the same mixed 5etools shapes as the bestiary; the
+  UI flattens them to plain text (including stripping `{@...}` tags to readable text where
+  possible).
+- Item **`value`** in 5etools is typically in **copper pieces**; the block displays a simple
+  **gp / sp / cp** conversion.
+- Do **not** register `*.spell.yaml` or `*.item.yaml` as a separate Starlight doc glob with
+  `docsSchema` — only this project’s collections + frontmatter extension, matching the
+  `creatureStats` pattern.

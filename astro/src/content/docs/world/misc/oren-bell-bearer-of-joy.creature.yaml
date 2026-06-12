@@ -1,0 +1,94 @@
+name: Oren Bell, Bearer of Joy
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+    - reformist
+alignment:
+  - L
+  - E
+ac:
+  - ac: 17
+    from:
+      - glamoured breastplate
+hp:
+  average: 120
+  formula: 16d8 + 48
+speed:
+  walk: 30
+str: 10
+dex: 16
+con: 16
+int: 14
+wis: 16
+cha: 20
+save:
+  dex: "+7"
+  wis: "+7"
+  cha: "+9"
+skill:
+  deception: "+9"
+  performance: "+9"
+  persuasion: "+9"
+  religion: "+6"
+resist:
+  - psychic
+conditionImmune:
+  - charmed
+passive: 13
+languages:
+  - Common
+  - Hickic
+  - Infernal
+cr: "10"
+trait:
+  - name: Joyous Captivity
+    entries:
+      - >-
+        A creature {@condition charmed} by Oren regards the first hostile act it sees from Oren or
+        his allies each round as harmless until after the act resolves.
+  - name: Spellcasting
+    entries:
+      - >-
+        Oren is an 11th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc
+        17}, {@hit +9} to hit with spell attacks). He has the following spells prepared:
+      - >
+        Cantrips (at will): {@spell friends}, {@spell mage hand}, {@spell minor illusion}, {@spell
+        vicious mockery}
+      - "1st level (4 slots): {@spell charm person}, {@spell command}, {@spell dissonant whispers}"
+      - "2nd level (3 slots): {@spell calm emotions}, {@spell enthrall}, {@spell suggestion}"
+      - >
+        3rd level (3 slots): {@spell enemies abound}, {@spell hypnotic pattern}, {@spell major
+        image}
+      - "4th level (3 slots): {@spell charm monster}, {@spell confusion}"
+      - "5th level (2 slots): {@spell dominate person}, {@spell seeming}"
+      - "6th level (1 slot): {@spell mass suggestion}"
+action:
+  - name: Ecstatic Touch
+    entries:
+      - >-
+        Melee Spell Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 36 ({@damage 8d8})
+        psychic damage, and the target must succeed on a {@dc 17} Wisdom saving throw or be
+        {@condition charmed} by Oren until the end of its next turn.
+  - name: Feast of Relief (Recharge 5-6)
+    entries:
+      - >-
+        Oren chooses up to three creatures he can see within 60 feet. Each target must make a {@dc
+        17} Wisdom saving throw. On a failed save, a target takes 31 ({@damage 7d8}) psychic damage
+        and is {@condition charmed} for 1 minute. The target can repeat the save at the end of each
+        of its turns, ending the effect on itself on a success. On a successful save, a target takes
+        half as much damage and isn't {@condition charmed}.
+bonus:
+  - name: Applause
+    entries:
+      - >-
+        Oren chooses one allied Reformist within 60 feet that can hear him. The ally gains advantage
+        on its next attack roll or saving throw before the start of Oren's next turn.
+reaction:
+  - name: Laugh It Away
+    entries:
+      - >-
+        When Oren fails a saving throw, he adds {@dice 1d8} to the roll, potentially turning the
+        failure into a success.

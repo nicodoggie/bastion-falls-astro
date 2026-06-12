@@ -26,15 +26,15 @@ int: 16
 wis: 20
 cha: 18
 save:
-  con: '+8'
-  wis: '+9'
-  cha: '+8'
+  con: "+8"
+  wis: "+9"
+  cha: "+8"
 skill:
-  deception: '+8'
-  insight: '+9'
-  medicine: '+9'
-  persuasion: '+8'
-  religion: '+7'
+  deception: "+8"
+  insight: "+9"
+  medicine: "+9"
+  persuasion: "+8"
+  religion: "+7"
 resist:
   - necrotic
   - psychic
@@ -47,7 +47,7 @@ languages:
   - Hickic
   - Infernal
   - telepathy 60 ft.
-cr: '12'
+cr: "12"
 trait:
   - name: High Local Rite
     entries:
@@ -65,15 +65,22 @@ trait:
       - >-
         Karam is a 15th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 17},
         {@hit +9} to hit with spell attacks). He has the following cleric spells prepared:
-      - 'Cantrips (at will): {@spell guidance}, {@spell sacred flame}, {@spell spare the dying}, {@spell thaumaturgy}'
-      - '1st level (4 slots): {@spell bane}, {@spell command}, {@spell cure wounds}, {@spell sanctuary}'
-      - '2nd level (3 slots): {@spell blindness/deafness}, {@spell hold person}, {@spell spiritual weapon}'
-      - '3rd level (3 slots): {@spell bestow curse}, {@spell dispel magic}, {@spell spirit guardians}'
-      - '4th level (3 slots): {@spell banishment}, {@spell death ward}'
-      - '5th level (2 slots): {@spell contagion}, {@spell dominate person}'
-      - '6th level (1 slot): {@spell harm}'
-      - '7th level (1 slot): {@spell divine word}'
-      - '8th level (1 slot): {@spell holy aura}'
+      - >-
+        Cantrips (at will): {@spell guidance}, {@spell sacred flame}, {@spell spare the dying},
+        {@spell thaumaturgy}
+      - >-
+        1st level (4 slots): {@spell bane}, {@spell command}, {@spell cure wounds}, {@spell
+        sanctuary}
+      - >-
+        2nd level (3 slots): {@spell blindness/deafness}, {@spell hold person}, {@spell spiritual
+        weapon}
+      - >-
+        3rd level (3 slots): {@spell bestow curse}, {@spell dispel magic}, {@spell spirit guardians}
+      - "4th level (3 slots): {@spell banishment}, {@spell death ward}"
+      - "5th level (2 slots): {@spell contagion}, {@spell dominate person}"
+      - "6th level (1 slot): {@spell harm}"
+      - "7th level (1 slot): {@spell divine word}"
+      - "8th level (1 slot): {@spell holy aura}"
 action:
   - name: Multiattack
     entries:

@@ -7,7 +7,7 @@ type:
     - human
 alignment:
   - L
-  - 'N'
+  - "N"
 ac:
   - ac: 20
     from:
@@ -25,19 +25,19 @@ int: 11
 wis: 14
 cha: 14
 save:
-  str: '+7'
-  con: '+7'
-  wis: '+5'
+  str: "+7"
+  con: "+7"
+  wis: "+5"
 skill:
-  athletics: '+7'
-  history: '+3'
-  insight: '+5'
-  intimidation: '+5'
+  athletics: "+7"
+  history: "+3"
+  insight: "+5"
+  intimidation: "+5"
 passive: 12
 languages:
   - Common
   - Hickic
-cr: '5'
+cr: "5"
 trait:
   - name: Ducal Bearing
     entries:
@@ -54,19 +54,19 @@ action:
   - name: Warhammer
     entries:
       - >-
-        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4}) bludgeoning
-        damage, or 9 ({@damage 1d10 + 4}) bludgeoning damage if used with two hands.
+        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4})
+        bludgeoning damage, or 9 ({@damage 1d10 + 4}) bludgeoning damage if used with two hands.
   - name: Javelin
     entries:
       - >-
-        Melee or Ranged Weapon Attack: {@hit +7} to hit, reach 5 ft. or range 30/120 ft., one target. Hit:
-        7 ({@damage 1d6 + 4}) piercing damage.
+        Melee or Ranged Weapon Attack: {@hit +7} to hit, reach 5 ft. or range 30/120 ft., one
+        target. Hit: 7 ({@damage 1d6 + 4}) piercing damage.
   - name: Commanding Rebuke (Recharge 5-6)
     entries:
       - >-
         The knight shouts a ducal command at one creature it can see within 30 feet. The target must
-        succeed on a {@dc 15} Wisdom saving throw or take 18 ({@damage 4d8}) psychic damage and have disadvantage
-        on the next attack roll it makes before the end of its next turn.
+        succeed on a {@dc 15} Wisdom saving throw or take 18 ({@damage 4d8}) psychic damage and have
+        disadvantage on the next attack roll it makes before the end of its next turn.
 bonus:
   - name: Advance the Line
     entries:

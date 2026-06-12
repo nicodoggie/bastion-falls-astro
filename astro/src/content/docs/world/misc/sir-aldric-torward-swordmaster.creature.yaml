@@ -26,14 +26,14 @@ int: 12
 wis: 16
 cha: 16
 save:
-  str: '+9'
-  con: '+8'
-  wis: '+7'
+  str: "+9"
+  con: "+8"
+  wis: "+7"
 skill:
-  athletics: '+9'
-  history: '+5'
-  insight: '+7'
-  intimidation: '+7'
+  athletics: "+9"
+  history: "+5"
+  insight: "+7"
+  intimidation: "+7"
 resist:
   - fire
   - psychic
@@ -44,7 +44,7 @@ languages:
   - Common
   - Hickic
   - Infernal
-cr: '11'
+cr: "11"
 trait:
   - name: Cambion Piercing
     entries:

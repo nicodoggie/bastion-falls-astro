@@ -1,0 +1,98 @@
+name: Sir Bertram Ashwick, Bearer of Pain
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+    - reformist
+alignment:
+  - L
+  - E
+ac:
+  - ac: 18
+    from:
+      - half plate
+hp:
+  average: 120
+  formula: 16d8 + 48
+speed:
+  walk: 30
+str: 18
+dex: 12
+con: 16
+int: 12
+wis: 18
+cha: 16
+save:
+  str: "+8"
+  con: "+7"
+  wis: "+8"
+skill:
+  athletics: "+8"
+  intimidation: "+7"
+  medicine: "+8"
+  religion: "+5"
+resist:
+  - necrotic
+  - psychic
+conditionImmune:
+  - frightened
+passive: 14
+languages:
+  - Common
+  - Hickic
+  - Infernal
+cr: "10"
+trait:
+  - name: Doctrine of Pain
+    entries:
+      - >-
+        When Bertram takes damage, his next melee attack before the end of his next turn deals an
+        extra 10 ({@damage 3d6}) psychic damage.
+  - name: Spellcasting
+    entries:
+      - >-
+        Bertram is an 11th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc
+        16}, {@hit +8} to hit with spell attacks). He has the following cleric spells prepared:
+      - >
+        Cantrips (at will): {@spell guidance}, {@spell sacred flame}, {@spell spare the dying},
+        {@spell thaumaturgy}
+      - "1st level (4 slots): {@spell bane}, {@spell command}, {@spell inflict wounds}"
+      - >
+        2nd level (3 slots): {@spell blindness/deafness}, {@spell hold person}, {@spell spiritual
+        weapon}
+      - >
+        3rd level (3 slots): {@spell bestow curse}, {@spell spirit guardians}, {@spell vampiric
+        touch}
+      - "4th level (3 slots): {@spell death ward}, {@spell staggering smite}"
+      - "5th level (2 slots): {@spell contagion}, {@spell geas}"
+      - "6th level (1 slot): {@spell harm}"
+action:
+  - name: Multiattack
+    entries:
+      - Bertram makes two Barbed Mace attacks.
+  - name: Barbed Mace
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +8} to hit, reach 5 ft., one target. Hit: 9 ({@damage 1d10 + 4})
+        bludgeoning damage plus 18 ({@damage 4d8}) psychic damage.
+  - name: Pain Made Public (Recharge 5-6)
+    entries:
+      - >-
+        One creature Bertram can see within 60 feet must make a {@dc 16} Constitution saving throw.
+        On a failed save, the target takes 44 ({@damage 8d10}) necrotic damage and cannot regain hit
+        points until the end of its next turn. On a successful save, the target takes half as much
+        damage and can regain hit points normally.
+bonus:
+  - name: Martyr's Step
+    entries:
+      - >-
+        Bertram takes 7 ({@damage 2d6}) necrotic damage and teleports up to 30 feet to an unoccupied
+        space he can see.
+reaction:
+  - name: Return the Hurt
+    entries:
+      - >-
+        When a creature within 5 feet damages Bertram, the creature takes 18 ({@damage 4d8}) psychic
+        damage.

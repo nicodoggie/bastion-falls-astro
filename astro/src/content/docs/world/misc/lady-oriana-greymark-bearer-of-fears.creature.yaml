@@ -1,0 +1,91 @@
+name: Lady Oriana Greymark, Bearer of Fears
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+    - reformist
+alignment:
+  - L
+  - E
+ac:
+  - ac: 17
+    from:
+      - breastplate
+hp:
+  average: 120
+  formula: 16d8 + 48
+speed:
+  walk: 30
+str: 10
+dex: 14
+con: 16
+int: 16
+wis: 18
+cha: 18
+save:
+  wis: "+8"
+  cha: "+8"
+skill:
+  deception: "+8"
+  insight: "+8"
+  intimidation: "+8"
+  religion: "+7"
+resist:
+  - psychic
+conditionImmune:
+  - frightened
+passive: 18
+languages:
+  - Common
+  - Hickic
+  - Infernal
+cr: "10"
+trait:
+  - name: Terror Liturgy
+    entries:
+      - >-
+        A creature {@condition frightened} by Oriana has disadvantage on Intelligence, Wisdom, and
+        Charisma saving throws.
+  - name: Spellcasting
+    entries:
+      - >-
+        Oriana is an 11th-level spellcaster. Her spellcasting ability is Charisma (spell save {@dc
+        16}, {@hit +8} to hit with spell attacks). She has the following spells prepared:
+      - >-
+        Cantrips (at will): {@spell eldritch blast}, {@spell mage hand}, {@spell minor illusion},
+        {@spell thaumaturgy}
+      - "1st level (4 slots): {@spell bane}, {@spell command}, {@spell dissonant whispers}"
+      - "2nd level (3 slots): {@spell detect thoughts}, {@spell hold person}, {@spell suggestion}"
+      - "3rd level (3 slots): {@spell fear}, {@spell hypnotic pattern}, {@spell major image}"
+      - "4th level (3 slots): {@spell confusion}, {@spell phantasmal killer}"
+      - "5th level (2 slots): {@spell dominate person}, {@spell synaptic static}"
+      - "6th level (1 slot): {@spell mental prison}"
+action:
+  - name: Dread Touch
+    entries:
+      - >-
+        Melee Spell Attack: {@hit +8} to hit, reach 5 ft., one target. Hit: 31 ({@damage 7d8})
+        psychic damage, and the target must succeed on a {@dc 16} Wisdom saving throw or be
+        {@condition frightened} until the end of its next turn.
+  - name: Procession of Fears (Recharge 5-6)
+    entries:
+      - >-
+        Each creature of Oriana's choice within 30 feet must make a {@dc 16} Wisdom saving throw,
+        taking 45 ({@damage 10d8}) psychic damage on a failed save, or half as much damage on a
+        successful one. On a failed save, the creature is also {@condition frightened} for 1 minute.
+        The creature can repeat the save at the end of each of its turns, ending the effect on
+        itself on a success.
+bonus:
+  - name: Name the Fear
+    entries:
+      - >-
+        Oriana chooses one {@condition frightened} creature within 60 feet. Until the start of
+        Oriana's next turn, the target's speed is reduced to 0.
+reaction:
+  - name: Flinch
+    entries:
+      - >-
+        When a creature Oriana can see within 30 feet makes an attack roll, she imposes disadvantage
+        on the roll.

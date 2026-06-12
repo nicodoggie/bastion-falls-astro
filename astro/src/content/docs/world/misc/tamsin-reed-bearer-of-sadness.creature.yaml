@@ -1,0 +1,90 @@
+name: Tamsin Reed, Bearer of Sadness
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+    - reformist
+alignment:
+  - L
+  - E
+ac:
+  - ac: 16
+    from:
+      - studded leather
+hp:
+  average: 120
+  formula: 16d8 + 48
+speed:
+  walk: 30
+str: 10
+dex: 16
+con: 16
+int: 14
+wis: 18
+cha: 18
+save:
+  wis: "+8"
+  cha: "+8"
+skill:
+  deception: "+8"
+  insight: "+8"
+  medicine: "+8"
+  persuasion: "+8"
+  religion: "+6"
+resist:
+  - necrotic
+  - psychic
+passive: 18
+languages:
+  - Common
+  - Hickic
+  - Infernal
+cr: "10"
+trait:
+  - name: Grief Choir
+    entries:
+      - >-
+        A creature that starts its turn within 30 feet of Tamsin and has fewer than half its hit
+        points must succeed on a {@dc 16} Wisdom saving throw or have disadvantage on attack rolls
+        until the start of its next turn.
+  - name: Spellcasting
+    entries:
+      - >-
+        Tamsin is an 11th-level spellcaster. Her spellcasting ability is Wisdom (spell save {@dc
+        16}, {@hit +8} to hit with spell attacks). She has the following cleric spells prepared:
+      - >
+        Cantrips (at will): {@spell guidance}, {@spell sacred flame}, {@spell spare the dying},
+        {@spell thaumaturgy}
+      - "1st level (4 slots): {@spell bane}, {@spell command}, {@spell cure wounds}"
+      - "2nd level (3 slots): {@spell calm emotions}, {@spell hold person}, {@spell silence}"
+      - "3rd level (3 slots): {@spell bestow curse}, {@spell revivify}, {@spell spirit guardians}"
+      - "4th level (3 slots): {@spell death ward}, {@spell divination}"
+      - "5th level (2 slots): {@spell geas}, {@spell modify memory}"
+      - "6th level (1 slot): {@spell harm}"
+action:
+  - name: Mourning Knife
+    entries:
+      - >-
+        Melee or Ranged Weapon Attack: {@hit +7} to hit, reach 5 ft. or range 20/60 ft., one target.
+        Hit: 6 ({@damage 1d6 + 3}) piercing damage plus 27 ({@damage 6d8}) psychic damage.
+  - name: Weight of the Funeral (Recharge 5-6)
+    entries:
+      - >-
+        Each creature of Tamsin's choice within 30 feet must make a {@dc 16} Charisma saving throw.
+        On a failed save, a creature takes 40 ({@damage 9d8}) psychic damage and is restrained by
+        spectral mourning veils until the end of its next turn. On a successful save, a creature
+        takes half as much damage and isn't restrained.
+bonus:
+  - name: Borrow Sorrow
+    entries:
+      - >-
+        Tamsin chooses one creature she can see within 60 feet. The target loses 10 temporary hit
+        points, if it has them, and Tamsin gains that many temporary hit points.
+reaction:
+  - name: Shared Lament
+    entries:
+      - >-
+        When Tamsin takes damage, one creature of her choice within 30 feet must succeed on a {@dc
+        16} Wisdom saving throw or take 14 ({@damage 4d6}) psychic damage.
