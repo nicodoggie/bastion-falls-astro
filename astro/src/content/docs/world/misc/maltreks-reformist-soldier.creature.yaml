@@ -1,0 +1,63 @@
+name: Maltreks Reformist Soldier
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+alignment:
+  - L
+  - E
+ac:
+  - ac: 16
+    from:
+      - chain shirt
+      - shield
+hp:
+  average: 27
+  formula: 5d8 + 5
+speed:
+  walk: 30
+str: 14
+dex: 12
+con: 12
+int: 10
+wis: 11
+cha: 10
+skill:
+  athletics: '+4'
+  deception: '+2'
+passive: 10
+languages:
+  - Common
+  - Hickic
+cr: '1'
+trait:
+  - name: Courtly Disguise
+    entries:
+      - >-
+        The soldier has advantage on Charisma (Deception) checks made to pass as an Orthodox guard,
+        mourner, or ducal retainer.
+  - name: Parasite-Softened Zeal
+    entries:
+      - >-
+        The soldier has advantage on saving throws against being {@condition frightened} while it can see another
+        Reformist ally within 30 feet of it.
+action:
+  - name: Spear
+    entries:
+      - >-
+        Melee or Ranged Weapon Attack: {@hit +4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5
+        ({@damage 1d6 + 2}) piercing damage, or 6 ({@damage 1d8 + 2}) piercing damage if used with two hands to make a
+        melee attack.
+  - name: Light Crossbow
+    entries:
+      - >-
+        Ranged Weapon Attack: {@hit +3} to hit, range 80/320 ft., one target. Hit: 5 ({@damage 1d8 + 1}) piercing
+        damage.
+bonus:
+  - name: Close Ranks
+    entries:
+      - >-
+        The soldier moves up to 10 feet toward an ally it can see. This movement does not provoke
+        opportunity attacks from creatures {@condition frightened} by or {@condition charmed} by any Reformist ally.

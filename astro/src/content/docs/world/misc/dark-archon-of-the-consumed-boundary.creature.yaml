@@ -1,0 +1,124 @@
+name: Dark Archon of the Consumed Boundary
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+    - reformist
+alignment:
+  - L
+  - E
+ac:
+  - ac: 18
+    from:
+      - unarmored defense
+hp:
+  average: 171
+  formula: 18d8 + 90
+speed:
+  walk: 50
+str: 12
+dex: 20
+con: 20
+int: 17
+wis: 18
+cha: 14
+save:
+  dex: '+9'
+  con: '+9'
+  int: '+7'
+  wis: '+8'
+skill:
+  acrobatics: '+9'
+  arcana: '+7'
+  deception: '+6'
+  insight: '+8'
+  perception: '+8'
+  stealth: '+9'
+resist:
+  - force
+  - psychic
+conditionImmune:
+  - charmed
+  - frightened
+senses:
+  - darkvision 60 ft.
+  - truesight 10 ft.
+passive: 18
+languages:
+  - Common
+  - Hickic
+  - Infernal
+  - telepathy 60 ft.
+cr: '10'
+trait:
+  - name: Boundary-Touched Body
+    entries:
+      - >-
+        The dark archon can move through the space of hostile creatures and through nonmagical
+        objects no more than 5 feet thick. If it ends its turn inside an object, it takes 16 ({@damage 3d10})
+        force damage and is shunted to the nearest unoccupied space.
+  - name: Mockery of Archons
+    entries:
+      - >-
+        The dark archon has advantage on Charisma (Deception) checks made to imitate, profane, or
+        exploit Orthodox command rites associated with a Patriarch's archons.
+  - name: Parasite-Joined Mind
+    entries:
+      - >-
+        The dark archon has advantage on saving throws against being {@condition stunned} or knocked {@condition unconscious}.
+        If it succeeds on a saving throw against being {@condition stunned}, one creature of its choice within 30
+        feet takes 7 ({@damage 2d6}) psychic damage.
+  - name: Spellcasting
+    entries:
+      - >-
+        The dark archon is a 7th-level spellcaster. Its spellcasting ability is Intelligence (spell
+        save {@dc 15}, {@hit +7} to hit with spell attacks). It has the following wizard spells prepared:
+      - 'Cantrips (at will): {@spell mage hand}, {@spell mind sliver}, {@spell minor illusion}, {@spell ray of frost}'
+      - '1st level (4 slots): {@spell disguise self}, {@spell mage armor}, {@spell shield}'
+      - '2nd level (3 slots): {@spell blur}, {@spell mirror image}, {@spell misty step}'
+      - '3rd level (3 slots): {@spell counterspell}, {@spell hypnotic pattern}, {@spell slow}'
+      - '4th level (1 slot): {@spell dimension door}'
+action:
+  - name: Multiattack
+    entries:
+      - The dark archon makes four boundary strike attacks.
+  - name: Boundary Strike
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 10 ({@damage 1d10 + 5}) bludgeoning
+        damage plus 10 ({@damage 3d6}) psychic damage.
+  - name: Boundary Rend (Recharge 5-6)
+    entries:
+      - >-
+        The dark archon opens a wavering tear in a 60-foot line that is 5 feet wide. Each creature
+        in that line must make a {@dc 16} Intelligence saving throw, taking 45 ({@damage 10d8}) psychic damage on
+        a failed save, or half as much damage on a successful one. A creature that fails the save is
+        also {@condition stunned} until the end of its next turn. A creature that succeeds on the save cannot be
+        {@condition stunned} by this dark archon's Boundary Rend for 24 hours.
+  - name: Unmake Distance
+    entries:
+      - >-
+        The dark archon chooses one creature it can see within 60 feet. The target must succeed on a
+        {@dc 16} Charisma saving throw or be teleported up to 30 feet to an unoccupied space the dark
+        archon can see. The destination must be on a surface or liquid that can support the target.
+bonus:
+  - name: Boundary Step
+    entries:
+      - >-
+        The dark archon teleports up to 40 feet to an unoccupied space it can see. Until the end of
+        the turn, it has advantage on the first boundary strike attack it makes, and opportunity
+        attacks against it are made with disadvantage.
+reaction:
+  - name: Deflect Spell
+    entries:
+      - >-
+        When the dark archon is hit by a ranged spell attack, it reduces the damage by 21 ({@damage 1d10 + 16}). 
+        If this reduces the damage to 0, the dark archon can redirect the spell at another creature within 60 feet of
+        it, using the original attack roll.
+  - name: Step Out of the World
+    entries:
+      - >-
+        When the dark archon is hit by an attack it can see, it halves the attack's damage and
+        teleports up to 15 feet to an unoccupied space it can see.
