@@ -1,0 +1,84 @@
+name: Sir Aldric Torward, Bearer of the Sword
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+    - reformist
+alignment:
+  - L
+  - E
+ac:
+  - ac: 20
+    from:
+      - plate
+      - infernal piercing
+hp:
+  average: 145
+  formula: 17d8 + 68
+speed:
+  walk: 30
+str: 20
+dex: 12
+con: 18
+int: 12
+wis: 16
+cha: 16
+save:
+  str: '+9'
+  con: '+8'
+  wis: '+7'
+skill:
+  athletics: '+9'
+  history: '+5'
+  insight: '+7'
+  intimidation: '+7'
+resist:
+  - fire
+  - psychic
+conditionImmune:
+  - frightened
+passive: 13
+languages:
+  - Common
+  - Hickic
+  - Infernal
+cr: '11'
+trait:
+  - name: Cambion Piercing
+    entries:
+      - >-
+        Aldric's cursed piercing marks him as a bearer of relics. His weapon attacks are magical and
+        deal an extra 7 ({@damage 2d6}) psychic damage.
+  - name: Swordmaster's Command
+    entries:
+      - >-
+        Reformist soldiers, guards, knights, and Dark Archons within 30 feet of Aldric add {@dice
+        1d4} to weapon damage rolls.
+action:
+  - name: Multiattack
+    entries:
+      - Aldric makes three Relic Greatsword attacks.
+  - name: Relic Greatsword
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 12 ({@damage 2d6 + 5})
+        slashing damage plus 14 ({@damage 4d6}) psychic damage.
+  - name: Sever Allegiance (Recharge 5-6)
+    entries:
+      - >-
+        Aldric slashes at one creature within 5 feet. The target must make a {@dc 16} Wisdom saving
+        throw, taking 45 ({@damage 10d8}) psychic damage on a failed save, or half as much damage on
+        a successful one. On a failed save, the target also cannot benefit from Bardic Inspiration,
+        Bless, Guidance, Help, or similar allied assistance until the end of its next turn.
+bonus:
+  - name: Advance the Blasphemous Line
+    entries:
+      - >-
+        Aldric chooses up to three allies within 60 feet that can hear him. Each target can move up
+        to 15 feet without provoking opportunity attacks and gains 10 temporary hit points.
+reaction:
+  - name: Parry
+    entries:
+      - Aldric adds 4 to his AC against one melee attack that would hit him.

@@ -1,0 +1,96 @@
+name: Lady Maribel Veyne, Bearer of the Cup
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+    - reformist
+alignment:
+  - L
+  - E
+ac:
+  - ac: 18
+    from:
+      - breastplate
+      - infernal piercing
+hp:
+  average: 145
+  formula: 17d8 + 68
+speed:
+  walk: 30
+str: 12
+dex: 16
+con: 18
+int: 14
+wis: 18
+cha: 18
+save:
+  con: '+8'
+  wis: '+8'
+  cha: '+8'
+skill:
+  deception: '+8'
+  insight: '+8'
+  medicine: '+8'
+  persuasion: '+8'
+  religion: '+6'
+resist:
+  - fire
+  - poison
+  - psychic
+conditionImmune:
+  - poisoned
+passive: 18
+languages:
+  - Common
+  - Hickic
+  - Infernal
+cr: '11'
+trait:
+  - name: Cambion Piercing
+    entries:
+      - >-
+        Maribel's cursed piercing marks her as a bearer of relics. Magical healing she grants also
+        grants 7 ({@damage 2d6}) temporary hit points.
+  - name: Spellcasting
+    entries:
+      - >-
+        Maribel is a 13th-level spellcaster. Her spellcasting ability is Wisdom (spell save {@dc 16},
+        {@hit +8} to hit with spell attacks). She has the following cleric spells prepared:
+      - 'Cantrips (at will): {@spell guidance}, {@spell sacred flame}, {@spell spare the dying}, {@spell thaumaturgy}'
+      - '1st level (4 slots): {@spell bane}, {@spell command}, {@spell cure wounds}, {@spell sanctuary}'
+      - '2nd level (3 slots): {@spell aid}, {@spell hold person}, {@spell lesser restoration}'
+      - '3rd level (3 slots): {@spell bestow curse}, {@spell mass healing word}, {@spell spirit guardians}'
+      - '4th level (3 slots): {@spell banishment}, {@spell death ward}'
+      - '5th level (2 slots): {@spell contagion}, {@spell greater restoration}'
+      - '6th level (1 slot): {@spell heal}'
+      - '7th level (1 slot): {@spell regenerate}'
+action:
+  - name: Multiattack
+    entries:
+      - Maribel makes two Cup Knife attacks or one Cup Knife attack and uses Bitter Draught.
+  - name: Cup Knife
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d6 + 4})
+        piercing damage plus 14 ({@damage 4d6}) poison damage.
+  - name: Bitter Draught (Recharge 5-6)
+    entries:
+      - >-
+        Maribel throws a consecrated draught at one creature within 60 feet. The target must succeed
+        on a {@dc 16} Constitution saving throw or take 36 ({@damage 8d8}) poison damage and be
+        {@condition poisoned} until the end of its next turn. On a successful save, the target takes
+        half as much damage and isn't {@condition poisoned}.
+bonus:
+  - name: Administer the Cup
+    entries:
+      - >-
+        Maribel chooses one allied Reformist within 5 feet. The target regains 18 ({@damage 4d8}) hit
+        points and can immediately end one disease or poison affecting it.
+reaction:
+  - name: Poisoned Grace
+    entries:
+      - >-
+        When a creature within 30 feet succeeds on a saving throw against being {@condition poisoned},
+        Maribel forces it to reroll the save and use the new result.

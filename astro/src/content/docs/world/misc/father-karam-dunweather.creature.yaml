@@ -1,0 +1,113 @@
+name: Father Karam Dunweather
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+    - reformist
+alignment:
+  - L
+  - E
+ac:
+  - ac: 19
+    from:
+      - half plate
+      - shield
+hp:
+  average: 162
+  formula: 19d8 + 76
+speed:
+  walk: 30
+str: 14
+dex: 12
+con: 18
+int: 16
+wis: 20
+cha: 18
+save:
+  con: '+8'
+  wis: '+9'
+  cha: '+8'
+skill:
+  deception: '+8'
+  insight: '+9'
+  medicine: '+9'
+  persuasion: '+8'
+  religion: '+7'
+resist:
+  - necrotic
+  - psychic
+conditionImmune:
+  - charmed
+  - frightened
+passive: 19
+languages:
+  - Common
+  - Hickic
+  - Infernal
+  - telepathy 60 ft.
+cr: '12'
+trait:
+  - name: High Local Rite
+    entries:
+      - >-
+        Reformist allies within 30 feet of Karam have advantage on saving throws against being
+        {@condition frightened}. If such an ally is {@condition charmed} by a creature other than
+        Karam, Karam can end that condition on the ally at the start of his turn.
+  - name: Parasite Shepherd
+    entries:
+      - >-
+        A humanoid {@condition charmed} by Karam has disadvantage on saving throws against Karam's
+        spells and Channel the Vessel.
+  - name: Spellcasting
+    entries:
+      - >-
+        Karam is a 15th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 17},
+        {@hit +9} to hit with spell attacks). He has the following cleric spells prepared:
+      - 'Cantrips (at will): {@spell guidance}, {@spell sacred flame}, {@spell spare the dying}, {@spell thaumaturgy}'
+      - '1st level (4 slots): {@spell bane}, {@spell command}, {@spell cure wounds}, {@spell sanctuary}'
+      - '2nd level (3 slots): {@spell blindness/deafness}, {@spell hold person}, {@spell spiritual weapon}'
+      - '3rd level (3 slots): {@spell bestow curse}, {@spell dispel magic}, {@spell spirit guardians}'
+      - '4th level (3 slots): {@spell banishment}, {@spell death ward}'
+      - '5th level (2 slots): {@spell contagion}, {@spell dominate person}'
+      - '6th level (1 slot): {@spell harm}'
+      - '7th level (1 slot): {@spell divine word}'
+      - '8th level (1 slot): {@spell holy aura}'
+action:
+  - name: Multiattack
+    entries:
+      - Karam makes two Crozier attacks and uses Channel the Vessel if available.
+  - name: Crozier
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +8} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4})
+        bludgeoning damage plus 18 ({@damage 4d8}) psychic damage.
+  - name: Sacred Flame
+    entries:
+      - >-
+        One creature Karam can see within 60 feet must succeed on a {@dc 17} Dexterity saving throw
+        or take 22 ({@damage 5d8}) radiant damage.
+  - name: Channel the Vessel (Recharge 5-6)
+    entries:
+      - >-
+        Karam targets up to three humanoids he can see within 60 feet. Each target must make a {@dc
+        17} Wisdom saving throw. On a failed save, a target takes 27 ({@damage 6d8}) psychic damage
+        and is {@condition charmed} by Karam until the end of Karam's next turn. On a successful
+        save, a target takes half as much damage and isn't {@condition charmed}.
+bonus:
+  - name: Spiritual Weapon
+    entries:
+      - If Karam has cast {@spell spiritual weapon}, he makes one spell attack with the weapon.
+  - name: Appoint the Vessel
+    entries:
+      - >-
+        Karam chooses one allied bearer or Dark Archon within 60 feet that can hear him. The target
+        can move up to half its speed and make one weapon attack or use one non-spell action.
+reaction:
+  - name: Confessor's Rebuke
+    entries:
+      - >-
+        When a creature Karam can see within 60 feet damages him or a bearer, the attacker must
+        succeed on a {@dc 17} Wisdom saving throw or take 22 ({@damage 5d8}) psychic damage and have
+        disadvantage on the next saving throw it makes before the end of its next turn.
