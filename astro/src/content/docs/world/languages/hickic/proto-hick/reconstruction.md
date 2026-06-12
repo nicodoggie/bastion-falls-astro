@@ -336,6 +336,24 @@ rather than fully isolated dialect pockets. These regions may preserve older
 reflexes or develop stronger local innovations than the eastern trade coast or
 the Ranterg prestige corridor.
 
+One small confirmed Maltreks or upper Malter Valley split is the regional
+earthworm form `grapal`, especially plural `grapales`, beside standard Early
+Hick `grapar`/`grapares`. This should be treated as a local lexical variant,
+not as a general Early Hick liquid sound law. The form likely reflects local
+liquid leveling in a familiar inherited compound:
+
+```text
+standard lexicalized compound:
+gral-par > grapar "earthworm"
+
+regional leveling:
+grapar(es) > grapal(es)
+```
+
+The split fits the broader expectation that isolated western and mountain
+regions preserve local reductions, but it should not be projected onto all
+`r/l` environments without further evidence.
+
 This explains mixed formal expressions such as:
 
 ```text

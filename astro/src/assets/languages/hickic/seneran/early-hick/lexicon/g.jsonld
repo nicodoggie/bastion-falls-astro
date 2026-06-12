@@ -299,6 +299,20 @@
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gra.par",
+        "variantForms": [
+          {
+            "phoneticRep": "gra.pal",
+            "writtenRep": "grapal",
+            "lexinfo:register": "regional",
+            "usage": "Maltreks or upper Malter Valley regional variant."
+          },
+          {
+            "phoneticRep": "gra.pa.les",
+            "writtenRep": "grapales",
+            "lexinfo:register": "regional",
+            "usage": "Maltreks or upper Malter Valley regional plural form."
+          }
+        ],
         "writtenRep": "grapar"
       },
       "decomp:subterm": [
@@ -323,7 +337,8 @@
             "@language": "en",
             "@value": "earthworm"
           },
-          "lexinfo:semanticField": ["Animals", "Earth Terms"]
+          "lexinfo:semanticField": ["Animals", "Earth Terms"],
+          "usage": "Standard Early Hick form. Maltreks and upper Malter Valley speech may use grapal, especially in the plural grapales."
         }
       ]
     },

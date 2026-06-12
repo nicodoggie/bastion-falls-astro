@@ -25,11 +25,11 @@ style = "text-aligned"
 style = "one-one"
 
 [MD013]
-line-length = 80
+line-length = 100
 code-blocks = false
 tables = false
 reflow = true
-reflow-mode = "default"
+reflow-mode = "normalize"
 
 [MD025]
 front-matter-title = "title"

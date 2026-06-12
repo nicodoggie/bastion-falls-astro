@@ -43,6 +43,7 @@
 		},
 		"rumdl.configPath": "",
 		"rumdl.fixOnSave": true,
-		"rumdl.diagnostics.deduplicate": false
+		"rumdl.diagnostics.deduplicate": false,
+		"editor.rulers": []
 	}
 }
