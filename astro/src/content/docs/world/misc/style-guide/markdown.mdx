@@ -6,20 +6,20 @@ tags:
 
 ## Markdown
 
-This site is built using Astro as a static site generator, and thus this site
-uses the CommonMark[^1] flavor of Markdown.
+This site is built using Astro as a static site generator, and thus this site uses the
+CommonMark[^1] flavor of Markdown.
 
 ### Preferred syntax
 
 #### Spaces over tabs
 
-A linter from the text editor of choice may force the choice in this regard, but
-two spaces are preferred over tabs for indentation.
+A linter from the text editor of choice may force the choice in this regard, but two spaces are
+preferred over tabs for indentation.
 
 #### `-` for Unordered List Markers
 
-The hyphen-minus `-` character (minus character on the typical US keyboard
-layout) is preferred over other variants when defining list items.
+The hyphen-minus `-` character (minus character on the typical US keyboard layout) is preferred over
+other variants when defining list items.
 
 Use:
 
@@ -69,8 +69,8 @@ ATX Headings are of the form
 ### Header 3
 ```
 
-These are the preferred way of defining headings. It makes it easier to make a
-hierarchy of headings, and also would use fewer characters to type.
+These are the preferred way of defining headings. It makes it easier to make a hierarchy of
+headings, and also would use fewer characters to type.
 
 Do not use Setext Headings:
 
@@ -82,9 +82,8 @@ Do not use Setext Headings:
 
 #### Use `*` for emphasis and strong emphasis
 
-CommonMark allows for both asterisks `*` and underscores `_` for emphasis and
-strong emphasis. It is preferred to use `*` unless the text makes it more
-complicated to do so.
+CommonMark allows for both asterisks `*` and underscores `_` for emphasis and strong emphasis. It is
+preferred to use `*` unless the text makes it more complicated to do so.
 
 Use:
 
@@ -104,9 +103,8 @@ _emphasis_ and **strong**
 
 #### Use a single backtick \` for code spans
 
-The CommonMark spec allows for arbitrary number of backticks (except three,
-which are used for code blocks), as long as the same number of backticks are
-used in the closing set as in the opening set.
+The CommonMark spec allows for arbitrary number of backticks (except three, which are used for code
+blocks), as long as the same number of backticks are used in the closing set as in the opening set.
 
 For consistency, we would like to use one backtick \` for consistency.
 
@@ -173,26 +171,24 @@ Not:
 section 2
 ```
 
-This is to ensure that we don't accidentally make a heading, because using three
-hyphen-minuses --- may trigger a second-level Setext heading, as can be seen
-below:
+This is to ensure that we don't accidentally make a heading, because using three hyphen-minuses ---
+may trigger a second-level Setext heading, as can be seen below:
 
 > ## section 1
 >
 > section 2
 
-Thematic breaks should not be used on wiki articles, with the exception of
-separating the footnotes section. Headings and paragraphs are preferred when
-managing thematic shifts within a wiki article. In-world articles may use
-thematic breaks when necessary.
+Thematic breaks should not be used on wiki articles, with the exception of separating the footnotes
+section. Headings and paragraphs are preferred when managing thematic shifts within a wiki article.
+In-world articles may use thematic breaks when necessary.
 
 ### Non-CommonMark Extensions
 
-Certain markdown extensions that are implemented by `pulldown_cmark` but are not
-defined in the reference CommonMark spec.
+Certain markdown extensions that are implemented by `pulldown_cmark` but are not defined in the
+reference CommonMark spec.
 
-Below is a non-exhaustive list of available extensions, but those that would
-most likely see use on this site:
+Below is a non-exhaustive list of available extensions, but those that would most likely see use on
+this site:
 
 #### Tables
 
@@ -212,12 +208,11 @@ Results in:
 | -------- | :----------- | :------------: | ------------: |
 | Cell 1 | Cell 2 | Cell 3 |  |
 
-Tables may bne used in the contents for any information that can be easily
-represented on a two-dimensional tabular format. Any alignment may be
-acceptable, as long as they make sense, and are aesthetically pleasing.
+Tables may bne used in the contents for any information that can be easily represented on a
+two-dimensional tabular format. Any alignment may be acceptable, as long as they make sense, and are
+aesthetically pleasing.
 
-HTML-style tables are also supported, and may be sparingly used for more
-complicated layouts.
+HTML-style tables are also supported, and may be sparingly used for more complicated layouts.
 
 The following code:
 
@@ -266,24 +261,23 @@ In new syntax, this undefined footnote definition renders as
 literal text [^4]. In old syntax, it creates a dangling link.
 ```
 
-Footnotes are preferred when a reference is made to content outside the site,
-such as the many references on this document.
+Footnotes are preferred when a reference is made to content outside the site, such as the many
+references on this document.
 
-Footnotes may also be used for references or quotations from content written as
-if it were created by an in-world source, such as the article
+Footnotes may also be used for references or quotations from content written as if it were created
+by an in-world source, such as the article
 [_On the Fall of the Western Kalassarian Empire_](../../novelty/on-the-fall-of-the-western-kalassarian-empire.mdx).
-It is, however, preferred to use an _inline link_ (`[title](url)`) when
-referring to the article as a whole, instead of a specific piece of information
-within it.
+It is, however, preferred to use an _inline link_ (`[title](url)`) when referring to the article as
+a whole, instead of a specific piece of information within it.
 
 #### Strikethrough
 
-Strikethroughs are made by wrapping text with a pair of two tildas(~)
-`~~like this~~`, which will result in ~~like this~~.
+Strikethroughs are made by wrapping text with a pair of two tildas(~) `~~like this~~`, which will
+result in ~~like this~~.
 
-Strikethroughs must be used sparingly in wiki articles, but may be used where it
-makes sense in in-world articles or letters where the in-world author might have
-used a strikethrough either stylistically, or to remove a word.
+Strikethroughs must be used sparingly in wiki articles, but may be used where it makes sense in
+in-world articles or letters where the in-world author might have used a strikethrough either
+stylistically, or to remove a word.
 
 ---
 
