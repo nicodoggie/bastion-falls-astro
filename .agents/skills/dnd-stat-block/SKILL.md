@@ -86,6 +86,22 @@ paragraph or bullet per string is fine; **`StatBlock`** joins them for display).
 array. Put **Pact Magic / Spellcasting** text (cantrips, slots, DC, attack
 bonus) in a **`trait`** so it appears in the stat block.
 
+**5etools inline tags:** prose strings in **`entries`** should use inline tags
+where the repo can render tooltips/formatting:
+
+- Spells: **`{@spell shield}`**, **`{@spell hold person}`**
+- Dice and damage dice: **`{@dice 1d4}`**, **`{@damage 2d8}`**,
+  **`{@damage 1d8 + 5}`**
+- DCs and attack bonuses: **`{@dc 15}`**, **`{@hit +7}`**
+- Conditions in prose: **`{@condition frightened}`**, **`{@condition prone}`**
+- Items/creatures/etc. when referenced as entities: **`{@item longsword}`**,
+  **`{@creature knight}`**
+
+Keep schema/enumerated fields plain, e.g. **`conditionImmune: ["frightened"]`**,
+**`resist: ["psychic"]`**, and **`ac.from: ["shield"]`**. Tag rendered prose,
+not data values or action names unless the action name is intentionally a spell
+reference.
+
 **Conditional resistances** (e.g. “while raging”): avoid a top-level
 **`resist`** if it would read as always-on; put the condition in **`trait`** or
 **`bonus`** (rage) text so the printed block is not wrong.
@@ -166,6 +182,8 @@ bonus) in a **`trait`** so it appears in the stat block.
       appropriate for **`StatBlock`**.
 - [ ] Spellcasting text is where **`StatBlock`** can show it (usually
       **`trait`**).
+- [ ] Rendered prose uses 5etools inline tags for spells, dice/damage, DCs,
+      hits, conditions, and entity refs; schema fields stay plain.
 - [ ] **`pnpm astro sync`** succeeds.
 - [ ] MDX **`creatureStats`** keys and **`StatBlock`** import path are correct.
 
