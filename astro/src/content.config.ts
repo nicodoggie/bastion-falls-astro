@@ -1,6 +1,6 @@
 import { defineCollection, type SchemaContext } from "astro:content";
-import { docsLoader } from "@astrojs/starlight/loaders";
-import { docsSchema } from "@astrojs/starlight/schema";
+import { docsLoader, i18nLoader } from "@astrojs/starlight/loaders";
+import { docsSchema, i18nSchema } from "@astrojs/starlight/schema";
 import { ItemDataSchema, SpellDataSchema } from "@bastion-falls/5e-schema-zod";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
@@ -66,6 +66,10 @@ export const collections = {
   docs: defineCollection({
     loader: docsLoader(),
     schema: docsSchema({ extend: docsExtension }),
+  }),
+  i18n: defineCollection({
+    loader: i18nLoader(),
+    schema: i18nSchema(),
   }),
   autoSidebar: defineCollection({
     loader: autoSidebarLoader(),
