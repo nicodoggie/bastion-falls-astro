@@ -1,0 +1,67 @@
+name: Mark Malthrek, Wolf Form
+size:
+  - M
+type: beast
+alignment:
+  - N
+ac:
+  - ac: 14
+    from:
+      - natural armor
+hp:
+  average: 52
+  formula: 7d8 + 21
+speed:
+  walk: 50
+str: 18
+dex: 16
+con: 16
+int: 10
+wis: 14
+cha: 11
+save:
+  str: "+7"
+  con: "+6"
+skill:
+  athletics: "+7"
+  perception: "+5"
+  stealth: "+6"
+  survival: "+5"
+resist:
+  - special: bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered
+senses:
+  - darkvision 60 ft.
+passive: 15
+languages:
+  - understands Common and Seneran but can't speak
+cr: "3"
+trait:
+  - name: Keen Hearing and Smell
+    entries:
+      - Mark has advantage on Wisdom (Perception) checks that rely on hearing or smell.
+  - name: Pack Tactics
+    entries:
+      - >-
+        Mark has advantage on an attack roll against a creature if at least one of Mark's allies is
+        within 5 feet of the creature and the ally isn't incapacitated.
+  - name: Reluctant Shapechanger
+    entries:
+      - >-
+        Mark can use an action to polymorph into a wolf-humanoid hybrid, into a wolf, or back into
+        his human form. His statistics are replaced by the statistics of the new form, but he
+        retains his personality and memories.
+action:
+  - name: Multiattack
+    entries:
+      - Mark makes two Bite attacks.
+  - name: Bite
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 11 ({@damage 2d6 + 4})
+        piercing damage. If the target is a creature, it must succeed on a {@dc 15} Strength saving
+        throw or be knocked {@condition prone}. If the target is a humanoid, it must succeed on a
+        {@dc 13} Constitution saving throw or be cursed with werewolf lycanthropy.
+bonus:
+  - name: Bounding Rush
+    entries:
+      - Mark moves up to half his speed without provoking opportunity attacks.

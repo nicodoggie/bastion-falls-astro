@@ -1,0 +1,90 @@
+name: Mark Malthrek, Human Form
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+alignment:
+  - N
+ac:
+  - ac: 16
+    from:
+      - studded leather
+hp:
+  average: 52
+  formula: 7d8 + 21
+speed:
+  walk: 30
+str: 16
+dex: 18
+con: 16
+int: 10
+wis: 14
+cha: 11
+save:
+  str: "+6"
+  con: "+6"
+skill:
+  athletics: "+6"
+  perception: "+5"
+  stealth: "+7"
+  survival: "+5"
+senses:
+  - darkvision 60 ft.
+passive: 15
+languages:
+  - Common
+  - Seneran
+cr: "4"
+trait:
+  - name: Action Surge (1/Short Rest)
+    entries:
+      - >-
+        Once per short or long rest, Mark can take one additional action on his turn. If he uses
+        this to attack, he makes four longbow attacks total that turn instead of two.
+  - name: Archery Fighting Style
+    entries:
+      - Mark gains a +2 bonus to attack rolls he makes with ranged weapons.
+  - name: Favored Quarry
+    entries:
+      - >-
+        The first time on each of his turns that Mark hits a creature with a weapon attack, the
+        target takes an extra 3 ({@damage 1d6}) damage if Mark has tracked, marked, or pursued that
+        creature for at least 1 minute.
+  - name: Keen Hearing and Smell
+    entries:
+      - Mark has advantage on Wisdom (Perception) checks that rely on hearing or smell.
+  - name: Recent Lycanthropy
+    entries:
+      - >-
+        Mark is still learning to contain the curse. When he starts his turn below half his hit
+        point maximum, he must succeed on a {@dc 13} Wisdom saving throw or use his movement to get
+        closer to the nearest hostile creature he can see or smell.
+action:
+  - name: Multiattack
+    entries:
+      - Mark makes two Longbow attacks or two Shortsword attacks.
+  - name: Longbow
+    entries:
+      - >-
+        Ranged Weapon Attack: {@hit +9} to hit, range 150/600 ft., one target. Hit: 8 ({@damage 1d8
+        + 4}) piercing damage.
+  - name: Shortsword
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d6 + 4})
+        piercing damage.
+bonus:
+  - name: Second Wind (1/Short Rest)
+    entries:
+      - Mark regains 12 ({@dice 1d10 + 7}) hit points.
+  - name: Hunter's Step
+    entries:
+      - Mark takes the Dash or Hide action.
+reaction:
+  - name: Archer's Brace
+    entries:
+      - >-
+        When a creature Mark can see enters a space within 30 feet of him, Mark can make one Longbow
+        attack against that creature.

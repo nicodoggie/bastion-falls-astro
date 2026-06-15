@@ -1,6 +1,7 @@
 ---
 title: Mark Malthrek
 character:
+  name: Mark Malthrek
   details:
     age: 26
     dateOfBirth: 1244-11-10 AI
@@ -38,6 +39,16 @@ character:
       - name: Malthrek
 tags:
   - characters
+creatureStats:
+  human: 'characters/mark-malthrek-human.creature'
+  wolf: 'characters/mark-malthrek-wolf.creature'
+  werewolf: 'characters/mark-malthrek-werewolf.creature'
 ---
 
-<Stub />
+import StatBlock from '../../../../components/StatBlock.astro';
+
+<StatBlock creature={frontmatter.creatureStats.human} />
+
+<StatBlock creature={frontmatter.creatureStats.wolf} />
+
+<StatBlock creature={frontmatter.creatureStats.werewolf} />

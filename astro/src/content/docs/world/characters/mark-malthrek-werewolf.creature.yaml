@@ -1,0 +1,106 @@
+name: Mark Malthrek, Beast Werewolf Form
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+    - shapechanger
+alignment:
+  - N
+ac:
+  - ac: 15
+    from:
+      - natural armor
+hp:
+  average: 67
+  formula: 9d8 + 27
+speed:
+  walk: 40
+str: 20
+dex: 16
+con: 16
+int: 10
+wis: 14
+cha: 11
+save:
+  str: "+8"
+  con: "+6"
+skill:
+  athletics: "+8"
+  intimidation: "+3"
+  perception: "+5"
+  stealth: "+6"
+  survival: "+5"
+resist:
+  - special: bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered
+senses:
+  - darkvision 60 ft.
+passive: 15
+languages:
+  - Common
+  - Seneran
+cr: "5"
+trait:
+  - name: Action Surge (1/Short Rest)
+    entries:
+      - >-
+        Once per short or long rest, Mark can take one additional action on his turn. If he uses
+        this to attack, he makes two additional attacks as part of that action.
+  - name: Feral Archery
+    entries:
+      - >-
+        Mark can still fire a longbow in this form, but his claws make precise shooting difficult.
+        His Longbow attack does not include the Archery fighting style bonus while he is in beast
+        werewolf form.
+  - name: Keen Hearing and Smell
+    entries:
+      - Mark has advantage on Wisdom (Perception) checks that rely on hearing or smell.
+  - name: Pack Tactics
+    entries:
+      - >-
+        Mark has advantage on an attack roll against a creature if at least one of Mark's allies is
+        within 5 feet of the creature and the ally isn't incapacitated.
+  - name: Reluctant Shapechanger
+    entries:
+      - >-
+        Mark can use an action to polymorph into a wolf-humanoid hybrid, into a wolf, or back into
+        his human form. His statistics are replaced by the statistics of the new form, but he
+        retains his personality and memories.
+action:
+  - name: Multiattack
+    entries:
+      - >-
+        Mark makes three attacks: one Bite attack and two Claw attacks, or three Longbow attacks.
+  - name: Bite
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +8} to hit, reach 5 ft., one target. Hit: 12 ({@damage 2d6 + 5})
+        piercing damage. If the target is a humanoid, it must succeed on a {@dc 13} Constitution
+        saving throw or be cursed with werewolf lycanthropy.
+  - name: Claw
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +8} to hit, reach 5 ft., one target. Hit: 10 ({@damage 2d4 + 5})
+        slashing damage.
+  - name: Longbow
+    entries:
+      - >-
+        Ranged Weapon Attack: {@hit +7} to hit, range 150/600 ft., one target. Hit: 8 ({@damage 1d8
+        + 4}) piercing damage.
+bonus:
+  - name: Second Wind (1/Short Rest)
+    entries:
+      - Mark regains 12 ({@dice 1d10 + 7}) hit points.
+  - name: Feral Lunge
+    entries:
+      - >-
+        Mark moves up to half his speed toward a creature he can see or smell. If he ends this move
+        within 5 feet of that creature, his next melee attack against it before the end of the turn
+        deals an extra 3 ({@damage 1d6}) slashing damage.
+reaction:
+  - name: Savage Pursuit
+    entries:
+      - >-
+        When a creature Mark can see within 30 feet of him moves away from him, Mark moves up to
+        half his speed toward that creature.
