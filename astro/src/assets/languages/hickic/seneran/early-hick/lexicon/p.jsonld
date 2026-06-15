@@ -340,6 +340,216 @@
       ]
     },
     {
+      "@id": "ehk:pe",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interjection"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "pe",
+        "writtenRep": "pe"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *pe",
+        "etymon:gloss": "no, refusal",
+        "etymon:note": "Inherited Proto-Hick refusal particle preserved in Early Hick mainly in child-directed, petulant, or teasing speech."
+      },
+      "related": [
+        {
+          "@id": "ehk:mope",
+          "note": "ordinary standalone negative answer reinforced with mo-",
+          "relationshipType": "source of"
+        },
+        {
+          "@id": "ehk:penar",
+          "note": "fossilized no-action form",
+          "relationshipType": "source of"
+        },
+        {
+          "@id": "ehk:peker",
+          "note": "lexicalized refusal verb",
+          "relationshipType": "source of"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "no!"
+          },
+          "lexinfo:semanticField": [
+            "Basic Terms",
+            "Speech Terms",
+            "Formulaic Expressions",
+            "Negation"
+          ],
+          "usage": "Childish, petulant, or teasing refusal particle; not the ordinary adult standalone negative answer."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:peka",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "pe.ka",
+        "writtenRep": "peka"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *peka",
+        "etymon:gloss": "refusal, denial",
+        "etymon:note": "Nominalized or lexicalized form of the older Proto-Hick refusal particle *pe."
+      },
+      "related": [
+        {
+          "@id": "ehk:pe",
+          "note": "older refusal particle",
+          "relationshipType": "derived from"
+        },
+        {
+          "@id": "ehk:peker",
+          "note": "verbalized refusal form",
+          "relationshipType": "source of"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "refusal, denial"
+          },
+          "lexinfo:semanticField": [
+            "Speech Terms",
+            "Social Terms",
+            "Negation"
+          ],
+          "usage": "Lexical fossil of the older pe refusal layer rather than a productive negation form."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:peker",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "pe.ker",
+        "writtenRep": "peker"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:peka"
+        },
+        {
+          "@id": "ehk:-'er"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "Proto-Hick *peka heru",
+        "etymon:gloss": "refusal-do",
+        "etymon:note": "Lexicalized refusal verb from peka 'refusal' and the action verb *heru, source of productive Early Hick -'er.",
+        "etymon:soundChange": [
+          "compound lexicalization",
+          "final vowel loss",
+          "h-loss in bound verbalizer element"
+        ]
+      },
+      "related": [
+        {
+          "@id": "ehk:peka",
+          "note": "refusal noun",
+          "relationshipType": "derived from"
+        },
+        {
+          "@id": "ehk:pe",
+          "note": "older refusal particle",
+          "relationshipType": "semantic domain"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "to refuse, deny"
+          },
+          "lexinfo:semanticField": [
+            "Speech Terms",
+            "Social Terms",
+            "Action Terms",
+            "Negation"
+          ],
+          "usage": "Lexical verb; ordinary clausal negation still uses mo-."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:pekok",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "pe.kok",
+        "writtenRep": "pekok"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:pe"
+        },
+        {
+          "@id": "ehk:-ok"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "pe-ok",
+        "etymon:gloss": "refusal-AGENT",
+        "etymon:note": "Agentive form from the fossil pe refusal layer and -ok. The social sense targets habitual refusal or perceived non-participation rather than mere poverty.",
+        "etymon:soundChange": "agentive lexicalization"
+      },
+      "related": [
+        {
+          "@id": "ehk:pe",
+          "note": "older refusal particle",
+          "relationshipType": "derived from"
+        },
+        {
+          "@id": "ehk:penar",
+          "note": "related inaction term",
+          "relationshipType": "semantic domain"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "naysayer, habitual refuser"
+          },
+          "lexinfo:semanticField": [
+            "Social Terms",
+            "Speech Terms",
+            "Occupational Terms",
+            "Negation"
+          ],
+          "usage": "Colloquial or mildly derogatory; can imply a person known for opposing or refusing expected action."
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "idle, unskilled, or unemployed person perceived as refusing expected work"
+          },
+          "lexinfo:semanticField": [
+            "Social Terms",
+            "Occupational Terms"
+          ],
+          "usage": "Secondary social extension with a scolding or dismissive tone."
+        }
+      ]
+    },
+    {
       "@id": "ehk:pel",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
@@ -360,6 +570,66 @@
             "@value": "bear"
           },
           "lexinfo:semanticField": ["Animal Terms", "Basic Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:penar",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "pe.nar",
+        "writtenRep": "penar"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:pe"
+        },
+        {
+          "@id": "ehk:nar"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "Proto-Hick *pe naru",
+        "etymon:gloss": "no-action",
+        "etymon:note": "Fossilized child-coded refusal term from older pe 'no!' and naru 'action, enacted response'.",
+        "etymon:soundChange": [
+          "compound lexicalization",
+          "final vowel loss"
+        ]
+      },
+      "related": [
+        {
+          "@id": "ehk:pe",
+          "note": "older refusal particle",
+          "relationshipType": "derived from"
+        },
+        {
+          "@id": "ehk:nater",
+          "note": "shares the naru action element",
+          "relationshipType": "semantic domain"
+        },
+        {
+          "@id": "ehk:pekok",
+          "note": "related habitual-refuser term",
+          "relationshipType": "semantic domain"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "inaction, refusal to act, sulking non-action"
+          },
+          "lexinfo:semanticField": [
+            "Action Terms",
+            "Social Terms",
+            "Emotional Terms",
+            "Negation"
+          ],
+          "usage": "Often child-coded or scolding: doing nothing when action is expected."
         }
       ]
     },

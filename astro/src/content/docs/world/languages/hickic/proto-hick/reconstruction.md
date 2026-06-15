@@ -225,6 +225,48 @@ case etymology. Raibon Island and Senera both have strong later traditions of fe
 crossings, and bog-associated magical beings, so `kiris` may reflect a branch-specific folk or
 contact term rather than a general Proto-Hick derivation from `*-isu`.
 
+## Working Form: pe, mope, penar
+
+Proto-Hick likely had an inherited negative or refusal particle distinct from the later Seneran
+darkness and evil negation cluster:
+
+```text
+*pe = no!, refusal!
+```
+
+This root should not be derived from `*muru` "night, darkness" or `*ʔimu` / `imur` "evil,
+harmful force." It belongs instead to an older expressive refusal layer: a short, bodily negator
+associated with refusing food, touch, command, or expected action.
+
+In Seneran Early Hick, productive negation is supplied by `mo-`, while `*pe` survives in fossilized
+and child-directed forms:
+
+```text
+*pe        > pe      "no!" (childish, petulant, or teasing refusal)
+mo-pe      > mope    "no" (ordinary standalone negative answer)
+*pe naru   > penar   "inaction, refusal to act, sulking non-action"
+*peka      > pek     "refusal, denial" (bound or lexicalized stem)
+*peka heru > peker   "to refuse, deny"
+pe-ok      > pekok   "naysayer, habitual refuser; idler"
+```
+
+The form `mope` should be treated as reinforced negation or negative concord, not as a logical
+double negative. The newer Seneran negative `mo-` reinforces the older inherited refusal particle
+`pe`, producing the normal standalone negative answer. This lets Early Hick keep `mo-` as the
+productive clausal and derivational negator while still preserving an older Proto-Hick negative
+root in everyday speech.
+
+The `pe` family gives Early Hick a small register of childish or socially marked refusal:
+
+- `pe!` "no!" in child speech, petulant refusal, or teasing adult imitation
+- `penar` "inaction; refusal to act; sulking non-action"
+- `peker` "to refuse, deny"
+- `pekok` "naysayer; habitual refuser; by extension, an idle or unskilled person perceived as
+  refusing expected work"
+
+These forms should remain lexical fossils. They do not make `pe-` a productive Early Hick negation
+prefix.
+
 ## Working Form: ig, ignar, nater
 
 The affirmative and desiderative clusters should be kept related through `*naru`, but not derived
@@ -252,10 +294,12 @@ Current Lexurgy output supports the first step:
 naru      > nar
 ```
 
-Early Hick writes the formal or conservative response as `ignar`, preserving the visible link to
-`naru` and to the clipped ordinary form `gnar`. The form `gnar` is the common affirmative and
-correctness term, while `nar` is an informal clipped affirmative. The older `*gnaru` reconstruction
-should be retired unless comparative evidence later requires a separate root.
+Early Hick preserves `ignar` as the visible full-form reflex of the older formula, but its primary
+living sense is "fit, accord with an established pattern or norm." This keeps the link to `naru`
+and to the clipped ordinary form `gnar` visible without making `ignar` the normal standalone "yes."
+The form `gnar` is the common affirmative and correctness term, while `nar` is an informal clipped
+affirmative, similar to English "yup." The older `*gnaru` reconstruction should be retired unless
+comparative evidence later requires a separate root.
 
 The `ig` element may become useful as a Hickic sound-symbolic marker of correctness, fittingness,
 or truth. At present this should be treated as a promising reconstruction clue, not as a proven

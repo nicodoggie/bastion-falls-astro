@@ -748,6 +748,63 @@
       ]
     },
     {
+      "@id": "ehk:mope",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interjection"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "mo.pe",
+        "writtenRep": "mope"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:mo"
+        },
+        {
+          "@id": "ehk:pe"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "mo-pe",
+        "etymon:gloss": "NEG-no",
+        "etymon:note": "Reinforced negative answer from productive mo- plus older inherited refusal particle pe. This is negative concord, not a logical double negative.",
+        "etymon:soundChange": "compound lexicalization"
+      },
+      "related": [
+        {
+          "@id": "ehk:pe",
+          "note": "older childish or petulant refusal particle",
+          "relationshipType": "reinforces"
+        },
+        {
+          "@id": "ehk:mo",
+          "note": "productive negation prefix",
+          "relationshipType": "contains"
+        },
+        {
+          "@id": "ehk:mo-gnar",
+          "note": "transparent analytical negative answer meaning 'not correct'",
+          "relationshipType": "contrasts with"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "no"
+          },
+          "lexinfo:semanticField": [
+            "Basic Terms",
+            "Speech Terms",
+            "Formulaic Expressions",
+            "Negation"
+          ],
+          "usage": "Ordinary standalone negative answer. It does not negate clauses by itself; productive clausal negation uses mo-."
+        }
+      ]
+    },
+    {
       "@id": "ehk:momer",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {

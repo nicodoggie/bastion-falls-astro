@@ -119,7 +119,7 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "ignar",
         "etymon:gloss": "yes, correct; that is right",
-        "etymon:note": "Ordinary clipped form of formal ignar, from Proto-Hick *ʔiga naru 'correct action, fitting response'.",
+        "etymon:note": "Ordinary clipped affirmative from the same formula as ignar, Proto-Hick *ʔiga naru 'correct action, fitting response'.",
         "etymon:protoform": "Proto-Hick *ʔiga naru",
         "etymon:soundChange": [
           "regular development to ignar",
@@ -129,8 +129,8 @@
       "related": [
         {
           "@id": "ehk:ignar",
-          "note": "formal or conservative affirmative source",
-          "relationshipType": "clipped from"
+          "note": "related fittingness and correctness term from the same formula",
+          "relationshipType": "shared formula with"
         },
         {
           "@id": "ehk:nar",
@@ -163,7 +163,7 @@
             "Speech Terms",
             "Formulaic Expressions"
           ],
-          "usage": "Ordinary affirmative response, especially when agreeing that a statement is correct."
+          "usage": "Ordinary affirmative response and normal standalone answer when agreeing that a statement is correct."
         }
       ]
     },

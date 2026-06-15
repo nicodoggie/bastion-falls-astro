@@ -143,7 +143,7 @@
       "related": [
         {
           "@id": "ehk:ignar",
-          "note": "formal or conservative affirmative",
+          "note": "related fittingness and correctness term from the same formula",
           "relationshipType": "contrasts by register with"
         },
         {
@@ -157,14 +157,14 @@
           "@type": "ontolex:LexicalSense",
           "definition": {
             "@language": "en",
-            "@value": "yes"
+            "@value": "yes; yup"
           },
           "lexinfo:semanticField": [
             "Basic Terms",
             "Speech Terms",
             "Formulaic Expressions"
           ],
-          "usage": "Informal affirmative response, usually in quick speech or familiar contexts."
+          "usage": "Informal affirmative response, similar to English 'yup' or 'yeah', usually in quick speech or familiar contexts."
         }
       ]
     },
