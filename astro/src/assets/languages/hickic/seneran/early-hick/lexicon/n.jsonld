@@ -209,6 +209,11 @@
           "@id": "ehk:nar",
           "note": "shares the naru action or response element",
           "relationshipType": "semantic domain"
+        },
+        {
+          "@id": "ehk:naterlas",
+          "note": "requestive auxiliary grammaticalized from nater + -las",
+          "relationshipType": "source of"
         }
       ],
       "sense": [
@@ -230,6 +235,20 @@
           "@type": "ontolex:LexicalSense",
           "definition": {
             "@language": "en",
+            "@value": "to be willing; to intend a course of action"
+          },
+          "lexinfo:semanticField": [
+            "Mental Terms",
+            "Action Terms",
+            "Speech Terms",
+            "Grammatical Terms"
+          ],
+          "usage": "In request constructions, nater can predicate willingness over an absolutive action: ACTION-'er-es nater AGENT-el 'is AGENT willing to do ACTION?'"
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
             "@value": "desire, intention; intended course"
           },
           "lexinfo:semanticField": [
@@ -238,6 +257,66 @@
             "Action Terms"
           ],
           "usage": "Nominal or abstract use preserving the older 'course of action' sense."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:naterlas",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Particle"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "na.ter.las",
+        "writtenRep": "naterlas"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:nater"
+        },
+        {
+          "@id": "ehk:-las"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "nater-las",
+        "etymon:gloss": "desire/willingness-ALL",
+        "etymon:note": "Soft requestive auxiliary from nater 'desire, willingness, intended course' plus allative -las. Literally 'toward willingness', then grammaticalized as a polite requestive.",
+        "etymon:soundChange": "case grammaticalization in request construction"
+      },
+      "related": [
+        {
+          "@id": "ehk:nater",
+          "note": "lexical source meaning desire or willingness",
+          "relationshipType": "grammaticalized from"
+        },
+        {
+          "@id": "ehk:-nat",
+          "note": "separate desiderative suffix from the same nater source",
+          "relationshipType": "semantic domain"
+        },
+        {
+          "@id": "ehk:-las",
+          "note": "allative element supplying 'toward willingness'",
+          "relationshipType": "contains"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "please; would you be willing to; requestive auxiliary"
+          },
+          "examples": [
+            "vinud'er-es naterlas 'al'tan-el 'Please build.'"
+          ],
+          "lexinfo:semanticField": [
+            "Grammatical Terms",
+            "Mood",
+            "Speech Terms",
+            "Formulaic Expressions"
+          ],
+          "usage": "Used after an absolutive verbal action and before the responsible agent in polite requests: ACTION-'er-es naterlas AGENT-el."
         }
       ]
     },

@@ -21,6 +21,58 @@
   },
   "@graph": [
     {
+      "@id": "ehk:ma",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Prefix"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ma",
+        "writtenRep": "ma-"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *ma",
+        "etymon:gloss": "plural, collective",
+        "etymon:note": "General plural and collective prefix. In action-event imperatives, ma- can mark collective participation and form hortatives.",
+        "etymon:soundChange": "prefix grammaticalization"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "plural, collective"
+          },
+          "examples": [
+            "ma-mater 'boats'",
+            "ma-'al 'people'"
+          ],
+          "lexinfo:semanticField": [
+            "Grammatical Terms",
+            "Number Marking",
+            "Derivational Morphology"
+          ],
+          "usage": "General plural prefix for nominal referents."
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "collective action marker in hortatives"
+          },
+          "examples": [
+            "ma-vinud-es! 'Let's build!'",
+            "ma-sinas-es! 'Let's play!'"
+          ],
+          "lexinfo:semanticField": [
+            "Grammatical Terms",
+            "Mood",
+            "Speech Terms"
+          ],
+          "usage": "With absolutive event-call imperatives, ma- invites shared participation: ma-ACTION-es! 'let us do ACTION'."
+        }
+      ]
+    },
+    {
       "@id": "ehk:maal",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
@@ -744,6 +796,57 @@
             "Grammatical Terms"
           ],
           "usage": "Standard Early Hick negation prefix, contrasting with regional western im- as a privative prefix."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:mo'er",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "mo.ʔer",
+        "writtenRep": "mo'er"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:mo"
+        },
+        {
+          "@id": "ehk:-'er"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "mo-'er",
+        "etymon:gloss": "NEG-VERB",
+        "etymon:note": "Verbalized negation used as a predicate of non-execution or prohibition in action-focused prohibitives.",
+        "etymon:soundChange": "verbalizer attachment"
+      },
+      "related": [
+        {
+          "@id": "ehk:mo",
+          "note": "productive negation prefix",
+          "relationshipType": "derived from"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "to prohibit or negate the execution of an action; to not-do"
+          },
+          "examples": [
+            "vinud-es mo'er! 'No building!'",
+            "vinud'er-es mo'er 'al'tan-el 'You are not to build.'"
+          ],
+          "lexinfo:semanticField": [
+            "Negation",
+            "Speech Terms",
+            "Action Terms",
+            "Grammatical Terms"
+          ],
+          "usage": "Used as a prohibitive predicate with an absolutive action or verbalized action. Productive clausal negation still normally uses mo- directly on the predicate."
         }
       ]
     },

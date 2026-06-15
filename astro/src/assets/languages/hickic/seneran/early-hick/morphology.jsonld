@@ -218,9 +218,10 @@
               "morph:examples": [
                 "ma-mater (boats)",
                 "ma-'al (people)",
-                "ma-tor (mountains)"
+                "ma-tor (mountains)",
+                "ma-vinud-es! (let's build!)"
               ],
-              "morph:notes": "Indicates general plurality."
+              "morph:notes": "Indicates general plurality. With absolutive action-event imperatives, ma- can mark collective participation and form hortatives: ma-ACTION-es! 'let us do ACTION'."
             },
             {
               "@type": "morph:GrammaticalValue",
@@ -382,6 +383,25 @@
                 "hilisnat (want to see)"
               ],
               "morph:notes": "Marks desire or intention. Derived from nater 'desire, intended course', historically early lexicalized Proto-Hick *nateru < *naru teru 'action-flow, course of action'. Preserves the transitivity of the base verb."
+            },
+            {
+              "@type": "morph:GrammaticalValue",
+              "dc:title": "Requestive",
+              "morph:marker": "Auxiliary naterlas",
+              "morph:examples": [
+                "vinud'er-es naterlas 'al'tan-el (please build)",
+                "hilis'er-es naterlas 'al'tan-el (please look)"
+              ],
+              "morph:notes": "Marks a softened request. Grammaticalized from nater-las 'toward willingness' and used with an absolutive verbal action plus an ergative responsible agent: ACTION-'er-es naterlas AGENT-el."
+            },
+            {
+              "@type": "morph:GrammaticalValue",
+              "dc:title": "Volitional Request",
+              "morph:marker": "Lexical verb nater",
+              "morph:examples": [
+                "vinud'er-es nater 'al'tan-el (are you willing to build?)"
+              ],
+              "morph:notes": "Predicates willingness or intended course over an absolutive action. Less grammaticalized than naterlas and still transparently means 'want, intend, be willing'."
             }
           ],
           "morph:historicalDevelopment": "Mood markers developed from the grammaticalization of independent verbs expressing mental states."
@@ -479,6 +499,16 @@
                 "mo-ward (misdirect, lead astray)"
               ],
               "morph:notes": "Forms negative concepts. General negation prefix."
+            },
+            {
+              "@type": "morph:DerivationalPattern",
+              "dc:title": "Prohibitive Predicate",
+              "morph:marker": "mo-'er",
+              "morph:examples": [
+                "vinud-es mo'er! (no building!)",
+                "vinud'er-es mo'er 'al'tan-el (you are not to build)"
+              ],
+              "morph:notes": "Verbalized negation used to prohibit execution of an action. It follows an absolutive action or verbalized action and may name the responsible agent in ergative case."
             }
           ],
           "morph:historicalDevelopment": "The negation prefix developed from a negative particle that became grammaticalized."

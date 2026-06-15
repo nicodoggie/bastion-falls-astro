@@ -68,6 +68,40 @@ Stage 4: Early Hick
 These should be treated as testable checkpoints. The stage labels may need renaming or splitting as
 the wider Hickic family model becomes clearer.
 
+## Proto-Hick Morphosyntax Working Hypothesis
+
+Do not assume that Proto-Hick already had the full Early Hick case system. Most documented Early
+Hick case marking is better treated as a later Seneran development or grammaticalization layer.
+When reconstructing Proto-Hick, start from looser morphosyntax:
+
+- action nouns or event words
+- discourse particles
+- postpositions or clitic-like relation markers
+- serial predicates or predicate chains
+- pragmatic word order and context
+- optional responsible participants rather than obligatory ergative marking
+
+Early Hick may preserve older discourse habits while expressing them through newer case suffixes.
+For example, a later Early Hick pattern such as "absolutive event + ergative responsible agent" may
+reflect an older pragmatic shape:
+
+```text
+named event + responsibility/agent phrase
+```
+
+rather than an inherited Proto-Hick ergative-absolutive sentence frame.
+
+This is especially important for commands, requests, possession, spatial relations, and clause
+linking. Proto-Hick may have had the beginnings of these functions through particles and discourse
+structure before later daughter branches turned them into case suffixes, verbal suffixes, or fixed
+auxiliaries. Future Apgarian, Maritime, and Seneran comparative work should test whether a function
+is inherited as:
+
+- a lexical root
+- a particle or postposition
+- a word-order/pragmatic construction
+- a later branch-specific case marker or suffix
+
 ## Calibration Form: lawesu
 
 The root family around `*lawesu` is a useful test case because it touches lexical inheritance,
@@ -339,6 +373,66 @@ It likely began as `gnar-ter` "correct flow, fitting course" after `gnar` had le
 "correct; yes." Because it sits beside `nater`, it can pick up a secondary desire/intention sense
 where the desired thing is understood as fitting, proper, or rightful. It is not the direct source
 of the productive suffix `-nat`.
+
+## Request and Command Reconstruction Notes
+
+### Early Hick Requestive naterlas
+
+Early Hick can grammaticalize a soft requestive from `nater-las`:
+
+```text
+nater-las = desire/willingness-ALL
+> naterlas "toward willingness"
+> polite requestive, "please; would you be willing to..."
+```
+
+This should not be reconstructed as a Proto-Hick request marker. The allative `-las` belongs to the
+later Seneran spatial case system. What may be older is the pragmatic construction discussed above:
+a requested action is treated as a named event, then combined with a particle or predicate of
+desire, correctness, negation, or responsibility. Early Hick expresses that older discourse pattern
+with its newer case morphology:
+
+```text
+ACTION-es!                         direct event call
+ACTION-'er-es nater AGENT-el       willingness request
+ACTION-'er-es naterlas AGENT-el    soft requestive
+ACTION-'er-es ignar'er AGENT-el    obligation / fittingness request
+```
+
+For Proto-Hick and early branch reconstruction, prefer reconstructing roots and particles relevant
+to the construction, such as `*naru`, `*teru`, `*nateru`, `*ʔiga`, `*pe`, and whatever earlier
+negative particles were active.
+
+### Request-Specific Branch Comparison
+
+When reconstructing Proto-Hick or early branch daughters, use the Early Hick request system as
+evidence for discourse patterns, not as direct evidence for inherited case morphology.
+
+The likely inherited pattern is:
+
+```text
+named action/event + discourse particle or predicate + optional responsible participant
+```
+
+Early Hick realizes this through absolutive event calls and later Seneran case marking. Other
+Hickic branches may instead preserve older particles, postpositions, serial verbs, or looser action
+noun constructions. This gives several comparative predictions to test once Apgarian, Maritime, and
+other Seneran descendants are developed:
+
+- If another branch has a requestive particle cognate with `nater` or `*nateru`, then Early Hick
+  `naterlas` may be a Seneran renewal of an older Hickic willingness-request strategy.
+- If another branch uses a correctness or fittingness predicate for advice and obligation, compare
+  it with Early Hick `ignar'er` and the proposed `*ʔiga naru` correctness formula.
+- If another branch has bare action nouns or event words as commands, that supports reconstructing
+  an older "event call" imperative strategy without reconstructing Early Hick `-es`.
+- If another branch marks the responsible doer in commands with a particle or postposition rather
+  than an ergative suffix, compare its function with Early Hick targeted imperatives like
+  `vinud-es, Aigral-el!`.
+- If another branch has a special prohibitive particle, compare it against Early Hick
+  `mo-ACTION-'er!` and `ACTION-es mo'er!`. Early Hick may have renewed prohibition through its
+  productive `mo-` negation, while older Hickic may have used a separate negative command marker.
+- If another branch expresses beneficiary through possession rather than a benefactive case, compare
+  it with Early Hick request phrases such as `tan-ul vinud` "one's own dwelling."
 
 ### Lexicalized Compound Smoothing
 
