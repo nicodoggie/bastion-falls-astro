@@ -70,17 +70,17 @@
                 "rismater-las (reed.boat-ILL)",
                 "kakel-las (blue-ILL)"
               ],
-              "morph:notes": "Indicates movement 'inward' or 'into' something. Also used for change of state."
+              "morph:notes": "Indicates movement 'inward' or 'into' something, including reception, internalization, and change into a state. Productive Early Hick -las is distinct from the fossil or borrowed Maritime -aes layer."
             },
             {
               "@type": "morph:GrammaticalValue",
-              "dc:title": "Elative",
+              "dc:title": "Ellative",
               "morph:marker": "Suffix -imris",
               "morph:examples": [
                 "rismater-imris (reed.boat-ELL)",
                 "kakel-imris (blue-ELL)"
               ],
-              "morph:notes": "Indicates movement 'outward' or 'from' something."
+              "morph:notes": "Indicates movement 'outward' or 'from' something. This is the standard productive Early Hick source/emergence suffix; older inland -iter survives mainly in regional or lexicalized forms."
             },
             {
               "@type": "morph:GrammaticalValue",
@@ -91,7 +91,7 @@
                 "rismater-itar (reed.boat-SURF.ALL)",
                 "ven-itar (yoke-SUPE)"
               ],
-              "morph:notes": "Marks static support or position 'on/upon/above' as SUPE; in motion contexts the same suffix may be glossed SURF.ALL for 'onto/up onto'."
+              "morph:notes": "Marks static support or position 'on/upon/above' as SUPE; in motion contexts the same suffix may be glossed SURF.ALL for 'onto/up onto'. The standard form -itar reflects a prestige Seneran dialect layer; inherited -iter is treated separately as regional/fossil."
             },
             {
               "@type": "morph:GrammaticalValue",
@@ -101,7 +101,7 @@
                 "rismater-asam (reed.boat-SUBL)",
                 "ven-asam (yoke-SUBL)"
               ],
-              "morph:notes": "Indicates movement 'downward' or 'onto' something."
+              "morph:notes": "Indicates movement 'downward' or 'onto' something, often toward a resting position. Cognate with asam 'rest, resting place' from the same older locative/resting-place source."
             },
             {
               "@type": "morph:GrammaticalValue",
@@ -111,7 +111,7 @@
                 "rismater-esp (reed.boat-SUBE)",
                 "ven-esp (yoke-SUBE)"
               ],
-              "morph:notes": "Indicates position 'under' or 'below' something."
+              "morph:notes": "Indicates position 'under' or 'below' something. Grammaticalized from wesp 'cellar, basement, lower enclosed space', with initial w- lost in bound case use."
             }
           ],
           "morph:historicalDevelopment": "The spatial case system developed from independent postpositions that gradually grammaticalized into bound case markers."

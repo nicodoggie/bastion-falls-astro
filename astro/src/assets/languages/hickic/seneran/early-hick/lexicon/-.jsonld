@@ -21,6 +21,39 @@
   },
   "@graph": [
     {
+      "@id": "ehk:-asam",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "-a.səm",
+        "writtenRep": "-asam"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:cognateWith": "asam",
+        "etymon:note": "Cognate with lexical asam 'rest, resting place' from Proto-Hick *xasamu. The case marker and noun share an older locative/resting-place source rather than deriving through a live asam'er verbal chain.",
+        "etymon:protoform": "Proto-Hick *xasamu",
+        "etymon:soundChange": "grammaticalization as spatial case marker"
+      },
+      "related": [
+        {
+          "@id": "ehk:asam",
+          "note": "cognate lexical noun",
+          "relationshipType": "cognate with"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "downward, down onto, toward a resting place (sublative suffix)"
+          },
+          "lexinfo:semanticField": ["Grammatical Terms", "Spatial Cases"]
+        }
+      ]
+    },
+    {
       "@id": "ehk:suffixes-en",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {
@@ -41,6 +74,39 @@
             "@value": "that (inanimate, visible, medial)"
           },
           "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:-esp",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "-esp",
+        "writtenRep": "-esp"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:derivedFrom": "wesp",
+        "etymon:note": "Grammaticalized from wesp 'cellar, basement, lower enclosed space', itself from older *wesu pu 'enclosed dwelling/hole'. The initial w- was lost as the form became a bound case suffix.",
+        "etymon:protoform": "Proto-Hick *wesu pu",
+        "etymon:soundChange": "compound reduction and loss of initial w- in bound use"
+      },
+      "related": [
+        {
+          "@id": "ehk:wesp",
+          "note": "lexical bridge form",
+          "relationshipType": "derived from"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "under, below, beneath (subessive suffix)"
+          },
+          "lexinfo:semanticField": ["Grammatical Terms", "Spatial Cases"]
         }
       ]
     },
@@ -69,6 +135,31 @@
       ]
     },
     {
+      "@id": "ehk:-imris",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "-im.ris",
+        "writtenRep": "-imris"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:note": "From an older bound form around Proto-Hick *ʔimer-isu or *ʔimerisu, 'breath/spirit at or outward; released breath'. Regular development gives imeris, then high-frequency bound morphology reduces imeris to imris.",
+        "etymon:protoform": "Proto-Hick *ʔimerisu",
+        "etymon:soundChange": "regular reduction to imeris, then bound-morphology reduction to imris"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "out of, from, outward from; source or emergence (ellative suffix)"
+          },
+          "lexinfo:semanticField": ["Grammatical Terms", "Spatial Cases"]
+        }
+      ]
+    },
+    {
       "@id": "ehk:-is",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {
@@ -89,6 +180,100 @@
             "@value": "this (inanimate, sensed, proximal)"
           },
           "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:-itar",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "-i.tar",
+        "writtenRep": "-itar"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:note": "Standard/prestige superessive form from a Seneran dialect layer, probably Ranterg highland or eastern-slope speech. It replaced or displaced inherited -iter in most standard spatial use.",
+        "etymon:soundChange": "dialectal raising or preservation followed by analogical spread"
+      },
+      "related": [
+        {
+          "@id": "ehk:-iter",
+          "note": "older inherited inland/fossil reflex",
+          "relationshipType": "contrasts with"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "on, upon, above; onto/up onto in motion contexts (superessive or surface-allative suffix)"
+          },
+          "lexinfo:semanticField": ["Grammatical Terms", "Spatial Cases"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:-las",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "-las",
+        "writtenRep": "-las"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:note": "Productive Early Hick illative from a branch-specific grammaticalized allomorph, probably Proto-Maritime or Proto-Seneran *lahesu. This should be kept distinct from the fossil or borrowed Maritime *-laes/*-aes layer.",
+        "etymon:protoform": "Proto-Maritime or Proto-Seneran *lahesu",
+        "etymon:soundChange": "grammaticalized allomorph reduction to las"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "into, inward, into a bounded place or state; receptive/internalizing direction (illative suffix)"
+          },
+          "lexinfo:semanticField": ["Grammatical Terms", "Spatial Cases"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:-iter",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "-i.ter",
+        "writtenRep": "-iter"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:note": "Regular inherited reflex of an older onset-bearing upper-surface marker, probably Proto-Hick *ʔitaru or *hitaru. Coastal/eastern standard lost it as a productive spatial suffix when -imris took over source and emergence functions, but it survives in inland, regional, and lexicalized forms.",
+        "etymon:protoform": "Proto-Hick *ʔitaru or *hitaru",
+        "etymon:soundChange": "regular inherited reflex with regional/fossil retention"
+      },
+      "related": [
+        {
+          "@id": "ehk:-itar",
+          "note": "standard/prestige superessive counterpart",
+          "relationshipType": "contrasts with"
+        },
+        {
+          "@id": "ehk:venuiter",
+          "note": "lexicalized inland/fossil use",
+          "relationshipType": "preserved in"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "regional or fossil ellative-like/source-like suffix; preserved chiefly in lexicalized inland forms"
+          },
+          "lexinfo:semanticField": ["Grammatical Terms", "Spatial Cases", "Regional Forms"],
+          "usage": "Not the standard productive Early Hick ellative; compare -imris."
         }
       ]
     },
