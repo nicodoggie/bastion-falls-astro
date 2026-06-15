@@ -126,6 +126,122 @@
       ]
     },
     {
+      "@id": "ehk:nar",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interjection"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "nar",
+        "writtenRep": "nar"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "ignar",
+        "etymon:gloss": "yes, correct; that is right",
+        "etymon:note": "Informal reduced affirmative, associated with the naru 'action, response' element in Proto-Hick *ʔiga naru.",
+        "etymon:soundChange": "formulaic clipping"
+      },
+      "related": [
+        {
+          "@id": "ehk:ignar",
+          "note": "formal or conservative affirmative",
+          "relationshipType": "contrasts by register with"
+        },
+        {
+          "@id": "ehk:gnar",
+          "note": "ordinary affirmative and correctness term",
+          "relationshipType": "reduced from"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "yes"
+          },
+          "lexinfo:semanticField": [
+            "Basic Terms",
+            "Speech Terms",
+            "Formulaic Expressions"
+          ],
+          "usage": "Informal affirmative response, usually in quick speech or familiar contexts."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:nater",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "na.ter",
+        "writtenRep": "nater"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:nar"
+        },
+        {
+          "@id": "ehk:ter"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "Proto-Hick *nateru < *naru teru",
+        "etymon:gloss": "action-flow, course of action",
+        "etymon:note": "Early lexicalized stem from *naru teru 'action-flow, course of action'. Developed from 'course of action' to 'intended course' and then to desire or intention. Later reanalyzed as nat + -'er, providing the source of desiderative -nat.",
+        "etymon:soundChange": [
+          "compound fusion",
+          "final vowel reduction"
+        ]
+      },
+      "related": [
+        {
+          "@id": "ehk:-nat",
+          "note": "grammaticalized desiderative suffix",
+          "relationshipType": "source of"
+        },
+        {
+          "@id": "ehk:gnater",
+          "note": "correctness-colored analogical variant associated with gnar",
+          "relationshipType": "contrasts with"
+        },
+        {
+          "@id": "ehk:nar",
+          "note": "shares the naru action or response element",
+          "relationshipType": "semantic domain"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "to desire, intend, want"
+          },
+          "lexinfo:semanticField": [
+            "Mental Terms",
+            "Emotional Terms",
+            "Action Terms",
+            "Basic Terms"
+          ],
+          "usage": "Full lexical verb beside the grammaticalized desiderative suffix -nat."
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "desire, intention; intended course"
+          },
+          "lexinfo:semanticField": [
+            "Mental Terms",
+            "Emotional Terms",
+            "Action Terms"
+          ],
+          "usage": "Nominal or abstract use preserving the older 'course of action' sense."
+        }
+      ]
+    },
+    {
       "@id": "ehk:natlas",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
@@ -135,9 +251,9 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:compound": "gnater-las",
+        "etymon:compound": "nater-las",
         "etymon:gloss": "desire-ILL",
-        "etymon:note": "Shows cluster simplification and case lexicalization. From 'one in a state of desire/affection' to 'friend'",
+        "etymon:note": "Shows case lexicalization. From 'one in a state of desire/affection' to 'friend'",
         "etymon:soundChange": ["compound fusion", "cluster simplification"]
       },
       "sense": [

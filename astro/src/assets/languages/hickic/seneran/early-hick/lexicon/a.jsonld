@@ -332,6 +332,37 @@
       ]
     },
     {
+      "@id": "ehk:'athid",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Particle"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ʔa.θid",
+        "writtenRep": "'athid"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "'aka thid",
+        "etymon:gloss": "what truth",
+        "etymon:note": "Grammaticalized confirmation and polar question particle from the phrase 'aka thid, literally 'what truth?' or 'is it true?'",
+        "etymon:soundChange": "phrase reduction and compound fusion"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "confirmational yes/no question particle; is it true that"
+          },
+          "lexinfo:semanticField": [
+            "Interrogatives",
+            "Particles",
+            "Discourse Markers"
+          ],
+          "usage": "Clause-initial particle asking whether the following clause is true"
+        }
+      ]
+    },
+    {
       "@id": "ehk:'akereth",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {

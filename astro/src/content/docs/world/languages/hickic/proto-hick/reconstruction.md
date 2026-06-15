@@ -225,6 +225,90 @@ case etymology. Raibon Island and Senera both have strong later traditions of fe
 crossings, and bog-associated magical beings, so `kiris` may reflect a branch-specific folk or
 contact term rather than a general Proto-Hick derivation from `*-isu`.
 
+## Working Form: ig, ignar, nater
+
+The affirmative and desiderative clusters should be kept related through `*naru`, but not derived
+from the same immediate form.
+
+### Affirmative and Correctness
+
+The current best reconstruction for Early Hick `ignar`, `gnar`, and `nar` is:
+
+```text
+*ʔiga = correct, fitting, true
+*naru = action, deed, enacted response
+
+*ʔiga naru = correct action, fitting response
+> ignar [ignər]
+> gnar
+> nar
+```
+
+Current Lexurgy output supports the first step:
+
+```text
+ʔiga      > ig
+ʔiga naru > ignər
+naru      > nar
+```
+
+Early Hick writes the formal or conservative response as `ignar`, preserving the visible link to
+`naru` and to the clipped ordinary form `gnar`. The form `gnar` is the common affirmative and
+correctness term, while `nar` is an informal clipped affirmative. The older `*gnaru` reconstruction
+should be retired unless comparative evidence later requires a separate root.
+
+The `ig` element may become useful as a Hickic sound-symbolic marker of correctness, fittingness,
+or truth. At present this should be treated as a promising reconstruction clue, not as a proven
+productive sound-symbolic rule across the family.
+
+### Desiderative and Intended Course
+
+The desiderative is cleaner if it comes through an early lexicalized `*nateru`, from transparent
+`*naru teru`, rather than directly from `gnar-ter`:
+
+```text
+*naru teru = action-flow, course of action
+> *nateru
+> nater
+> intended course, desired outcome
+> desire, intention
+> nat-'er by reanalysis with productive -'er
+> -nat
+```
+
+This keeps the semantic bridge natural:
+
+```text
+flow of action
+> course of action
+> intended course
+> desired outcome
+> desire, intention
+```
+
+This also gives the meaning enough time to settle before `-nat` becomes productive. A transparent
+late compound `naru teru` currently yields `narter` in Lexurgy, while already-fused `nateru` yields
+`nater`, so the desired form is better treated as an earlier lexicalized stem.
+
+The related form `gnater` can remain in Early Hick as a correctness-colored analogical variant.
+It likely began as `gnar-ter` "correct flow, fitting course" after `gnar` had lexicalized as
+"correct; yes." Because it sits beside `nater`, it can pick up a secondary desire/intention sense
+where the desired thing is understood as fitting, proper, or rightful. It is not the direct source
+of the productive suffix `-nat`.
+
+### Lexicalized Compound Smoothing
+
+Forms such as `gnater` and `thragral` suggest a tendency for lexicalized compounds to smooth heavy
+or redundant boundary material after speakers stop feeling the internal boundary clearly:
+
+```text
+gnar-ter > gnater
+thral-gral > thragral
+```
+
+This should not be encoded as a broad Lexurgy sound law yet. It is a case-by-case lexicalization
+tendency affecting high-frequency, culturally important, or semantically opaque compounds.
+
 ## Calibration Form: itaru
 
 The superessive marker `-itar` and the inland/fossil form `-iter` need to be kept separate in

@@ -102,10 +102,22 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:derivedFrom": "gnater",
-        "etymon:note": "Grammaticalized from full verb 'desire' to desiderative suffix",
+        "etymon:derivedFrom": "nater",
+        "etymon:note": "Grammaticalized from nater 'desire, intended course', from early lexicalized Proto-Hick *nateru < *naru teru 'action-flow, course of action'.",
         "etymon:soundChange": "grammaticalization with phonological reduction"
       },
+      "related": [
+        {
+          "@id": "ehk:nater",
+          "note": "full lexical source",
+          "relationshipType": "grammaticalized from"
+        },
+        {
+          "@id": "ehk:gnater",
+          "note": "related analogical desire term influenced by gnar",
+          "relationshipType": "semantic domain"
+        }
+      ],
       "sense": [
         {
           "@type": "ontolex:LexicalSense",

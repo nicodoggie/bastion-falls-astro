@@ -410,6 +410,54 @@
       ]
     },
     {
+      "@id": "ehk:ignar",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interjection"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "i.gnər",
+        "writtenRep": "ignar"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "Proto-Hick *ʔiga naru",
+        "etymon:gloss": "correct-action, fitting-response",
+        "etymon:note": "Formal or conservative affirmative formula. Regular development gives [ignər], written ignar by analogy with naru and clipped gnar.",
+        "etymon:soundChange": [
+          "compound fusion",
+          "unstressed vowel reduction",
+          "initial glottal loss",
+          "final vowel loss"
+        ]
+      },
+      "related": [
+        {
+          "@id": "ehk:gnar",
+          "note": "ordinary clipped affirmative and correctness term",
+          "relationshipType": "formal source of"
+        },
+        {
+          "@id": "ehk:nar",
+          "note": "informal reduced affirmative",
+          "relationshipType": "contrasts by register with"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "yes; correct; that is right"
+          },
+          "lexinfo:semanticField": [
+            "Basic Terms",
+            "Speech Terms",
+            "Formulaic Expressions"
+          ],
+          "usage": "Formal or conservative affirmative response, especially when confirming correctness or assent."
+        }
+      ]
+    },
+    {
       "@id": "ehk:ilitar_sarespes",
       "@type": ["ontolex:MultiwordExpression", "lexinfo:MultiwordExpression"],
       "canonicalForm": {

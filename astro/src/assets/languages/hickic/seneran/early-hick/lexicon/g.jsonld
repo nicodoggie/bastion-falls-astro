@@ -96,7 +96,11 @@
     },
     {
       "@id": "ehk:gnar",
-      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "@type": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun",
+        "lexinfo:Interjection"
+      ],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gnar",
@@ -113,9 +117,32 @@
       ],
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *gnaru",
-        "etymon:soundChange": "final vowel loss"
+        "etymon:compound": "ignar",
+        "etymon:gloss": "yes, correct; that is right",
+        "etymon:note": "Ordinary clipped form of formal ignar, from Proto-Hick *ʔiga naru 'correct action, fitting response'.",
+        "etymon:protoform": "Proto-Hick *ʔiga naru",
+        "etymon:soundChange": [
+          "regular development to ignar",
+          "formulaic clipping"
+        ]
       },
+      "related": [
+        {
+          "@id": "ehk:ignar",
+          "note": "formal or conservative affirmative source",
+          "relationshipType": "clipped from"
+        },
+        {
+          "@id": "ehk:nar",
+          "note": "informal reduced affirmative",
+          "relationshipType": "contrasts by register with"
+        },
+        {
+          "@id": "ehk:gnater",
+          "note": "correctness-colored analogical variant of nater",
+          "relationshipType": "semantic domain"
+        }
+      ],
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
@@ -124,12 +151,25 @@
             "@value": "correct"
           },
           "lexinfo:semanticField": "Basic Terms"
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "yes"
+          },
+          "lexinfo:semanticField": [
+            "Basic Terms",
+            "Speech Terms",
+            "Formulaic Expressions"
+          ],
+          "usage": "Ordinary affirmative response, especially when agreeing that a statement is correct."
         }
       ]
     },
     {
       "@id": "ehk:gnater",
-      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gna.ter",
@@ -146,21 +186,53 @@
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:compound": "gnar-ter",
-        "etymon:meaning": "correct-flow",
-        "etymon:soundChange": "compound fusion"
+        "etymon:meaning": "correct-flow, fitting course",
+        "etymon:note": "Correctness-colored analogical variant beside nater 'desire, intended course'. It likely began as 'correct flow, fitting course' and gained desire/intention use through closeness to nater.",
+        "etymon:soundChange": "lexicalized compound smoothing"
       },
+      "related": [
+        {
+          "@id": "ehk:nater",
+          "note": "desire term whose meaning overlaps with gnater",
+          "relationshipType": "semantic domain"
+        },
+        {
+          "@id": "ehk:gnar",
+          "note": "correctness and affirmative term influencing the form",
+          "relationshipType": "formed by analogy with"
+        },
+        {
+          "@id": "ehk:-nat",
+          "note": "desiderative suffix derives from nater rather than gnater",
+          "relationshipType": "contrasts with"
+        }
+      ],
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
             "@language": "en",
-            "@value": "desire"
+            "@value": "correct flow, fitting course"
+          },
+          "lexinfo:semanticField": [
+            "Abstract Terms",
+            "Action Terms",
+            "Basic Terms"
+          ],
+          "usage": "Primary correctness-colored sense: a course, action, or response that flows rightly."
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "desire, intention"
           },
           "lexinfo:semanticField": [
             "Mental Terms",
             "Emotional Terms",
             "Basic Terms"
-          ]
+          ],
+          "usage": "Secondary overlap with nater, especially for fitting, proper, or rightful desire."
         }
       ]
     },
