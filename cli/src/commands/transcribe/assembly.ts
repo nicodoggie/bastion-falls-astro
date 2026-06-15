@@ -1,10 +1,12 @@
-import type { ChunkTranscript, PlannedChunk } from "./types.js";
+import type { ChunkTranscript, PlannedChunk, SilenceInterval } from "./types.js";
 
 export interface AssembleTranscriptOptions {
   source: string;
   backend?: string;
   model: string;
   chunks: Array<PlannedChunk & { transcript: ChunkTranscript }>;
+  silences?: SilenceInterval[];
+  silenceTagMinimumSeconds?: number;
 }
 
 export function formatTimestamp(seconds: number): string {
@@ -49,21 +51,49 @@ export function assembleTranscript(options: AssembleTranscriptOptions): string {
     "",
   ];
 
+  const transcriptEvents = options.chunks.flatMap((chunk) => {
+    return formatChunkTranscript(chunk)
+      .trim()
+      .split("\n")
+      .map((line) => {
+        const match = /^\[(\d\d):(\d\d):(\d\d) -/.exec(line);
+        const start = match
+          ? Number(match[1]) * 3_600 + Number(match[2]) * 60 + Number(match[3])
+          : Number.MAX_SAFE_INTEGER;
+        return { type: "transcript" as const, start, line };
+      });
+  });
+  const silenceEvents = (options.silences ?? [])
+    .filter((silence) => silence.duration >= (options.silenceTagMinimumSeconds ?? Number.POSITIVE_INFINITY))
+    .map((silence) => ({
+      type: "silence" as const,
+      start: silence.start,
+      line: `[${formatTimestamp(silence.start)} - ${formatTimestamp(silence.end)}] [extended silence: ${Math.round(silence.duration)}s]`,
+    }));
+  const events = [...transcriptEvents, ...silenceEvents]
+    .filter((event) => event.line.trim())
+    .sort((a, b) => a.start - b.start || (a.type === "silence" ? -1 : 1));
+
   let previousText = "";
-  for (const chunk of options.chunks) {
-    for (const line of formatChunkTranscript(chunk).trim().split("\n")) {
-      const text = line.replace(/^\[[^\]]+\]\s*/, "").trim();
-      if (!text) {
-        continue;
-      }
-
-      if (text === previousText) {
-        continue;
-      }
-
-      lines.push(line);
-      previousText = text;
+  for (const event of events) {
+    if (event.type === "silence") {
+      lines.push(event.line);
+      previousText = "";
+      continue;
     }
+
+    const line = event.line;
+    const text = line.replace(/^\[[^\]]+\]\s*/, "").trim();
+    if (!text) {
+      continue;
+    }
+
+    if (text === previousText) {
+      continue;
+    }
+
+    lines.push(line);
+    previousText = text;
   }
 
   return `${lines.join("\n")}\n`;

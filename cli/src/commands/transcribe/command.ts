@@ -4,7 +4,7 @@ import { basename, extname, isAbsolute, join, resolve } from "node:path";
 
 import type { LocalContext } from "@/context.js";
 import { getAudioDurationSeconds, normalizeToFlac, writeChunkFlacs } from "./audio.js";
-import { detectSilences } from "./silence.js";
+import { detectSilences, trimChunksToSpeech } from "./silence.js";
 import { planChunks } from "./chunkPlanner.js";
 import { transcribeChunksWithLocalWhisper } from "./localWhisper.js";
 import { transcribeChunksWithNodeWhisper } from "./nodeWhisper.js";
@@ -12,7 +12,14 @@ import { assembleTranscript, formatChunkTranscript } from "./assembly.js";
 import type { ChunkTranscript, Manifest } from "./types.js";
 import { buildContextExcerpt, collectContextFiles, writeGlossary } from "./context.js";
 import { getNotesPath } from "./notes.js";
-import { runCodexCorrection, runCodexNotes } from "./codex.js";
+import {
+  correctionNotesChunksDirFor,
+  correctedTranscriptionDirFor,
+  runCodexCorrection,
+  runCodexNotes,
+  runCodexSummaryCleanup,
+  summaryTranscriptionDirFor,
+} from "./codex.js";
 import { defaultSttBackend, parseSttBackend, type SttBackend } from "./sttBackend.js";
 import { canReuseAudioChunks, readManifest } from "./resume.js";
 import { getCheckpointPath, writeTranscribeCheckpoint, type TranscribeCheckpoint } from "./checkpoint.js";
@@ -34,12 +41,19 @@ interface TranscribeFlags {
   "boundary-search-seconds": number;
   "boundary-max-search-seconds": number;
   "overlap-seconds": number;
+  denoise?: boolean;
+  "voice-boost"?: boolean;
+  "keep-silence"?: boolean;
+  "silence-padding-seconds": number;
+  "minimum-speech-seconds": number;
+  "silence-tag-seconds": number;
   device: string;
   "compute-type": string;
   python: string;
   force?: boolean;
   resume?: boolean;
   "skip-correction"?: boolean;
+  "skip-summary-cleanup"?: boolean;
   "skip-notes"?: boolean;
   "notes-backend": NotesBackend;
   "notes-model": string;
@@ -141,6 +155,39 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
     brief: "Overlap on both sides of each chunk in seconds",
     default: "5",
   },
+  denoise: {
+    kind: "boolean",
+    brief: "Apply conservative ffmpeg noise reduction before speech normalization",
+    optional: true,
+  },
+  "voice-boost": {
+    kind: "boolean",
+    brief: "Apply a mild speech-presence EQ boost before loudness normalization",
+    optional: true,
+  },
+  "keep-silence": {
+    kind: "boolean",
+    brief: "Keep long leading/trailing silence in chunks instead of trimming it before transcription",
+    optional: true,
+  },
+  "silence-padding-seconds": {
+    kind: "parsed",
+    parse: parseNumber,
+    brief: "Seconds of context to keep around detected speech when trimming silent chunk edges",
+    default: "1",
+  },
+  "minimum-speech-seconds": {
+    kind: "parsed",
+    parse: parseNumber,
+    brief: "Drop planned chunks with less speech than this after silence trimming",
+    default: "2",
+  },
+  "silence-tag-seconds": {
+    kind: "parsed",
+    parse: parseNumber,
+    brief: "Minimum silence duration to tag in the assembled raw transcript",
+    default: "10",
+  },
   device: {
     kind: "parsed",
     parse: String,
@@ -172,6 +219,11 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
   "skip-correction": {
     kind: "boolean",
     brief: "Skip Codex transcript correction",
+    optional: true,
+  },
+  "skip-summary-cleanup": {
+    kind: "boolean",
+    brief: "Skip the Codex transcript cleanup pass used to prepare safer note summaries",
     optional: true,
   },
   "skip-notes": {
@@ -341,6 +393,7 @@ export const transcribeRunCommand = buildCommand({
     const checkpointPath = getCheckpointPath(outDir);
     const rawTranscriptPath = join(outDir, "raw_transcript.md");
     const correctedTranscriptPath = join(outDir, "corrected_transcript.md");
+    const summaryTranscriptPath = join(outDir, "summary_transcript.md");
     const correctionNotesPath = join(outDir, "correction_notes.md");
     const notesPath = getNotesPath({
       contextRoot,
@@ -364,15 +417,25 @@ export const transcribeRunCommand = buildCommand({
     } else {
       const sourceDurationSeconds = await getAudioDurationSeconds(audioPath);
       this.process.stdout.write(`Normalizing audio to ${normalizedPath}\n`);
-      await normalizeToFlac(audioPath, normalizedPath, Boolean(flags.force), {
-        sink: this.process.stdout,
-        totalSeconds: sourceDurationSeconds,
-      });
+      await normalizeToFlac(
+        audioPath,
+        normalizedPath,
+        Boolean(flags.force),
+        {
+          denoise: Boolean(flags.denoise),
+          voiceBoost: Boolean(flags["voice-boost"]),
+        },
+        {
+          sink: this.process.stdout,
+          totalSeconds: sourceDurationSeconds,
+        },
+      );
     }
 
     let manifest: Manifest | undefined;
     let chunkPaths: string[] | undefined;
     const existingManifest = shouldResume ? await readManifest(manifestPath) : undefined;
+    let silences = existingManifest?.silences;
     if (existingManifest) {
       const reusableChunks = await canReuseAudioChunks({ manifest: existingManifest, chunksDir });
       if (reusableChunks.reusable) {
@@ -389,8 +452,8 @@ export const transcribeRunCommand = buildCommand({
     if (!manifest || !chunkPaths) {
       this.process.stdout.write("Detecting silence boundaries\n");
       const durationSeconds = await getAudioDurationSeconds(normalizedPath);
-      const silences = await detectSilences(normalizedPath);
-      const chunks = planChunks({
+      silences = await detectSilences(normalizedPath);
+      const plannedChunks = planChunks({
         durationSeconds,
         chunkSeconds: flags["chunk-seconds"],
         boundarySearchSeconds: flags["boundary-search-seconds"],
@@ -398,6 +461,14 @@ export const transcribeRunCommand = buildCommand({
         overlapSeconds: flags["overlap-seconds"],
         silences,
       });
+      const chunks = flags["keep-silence"]
+        ? plannedChunks
+        : trimChunksToSpeech({
+            chunks: plannedChunks,
+            silences,
+            paddingSeconds: flags["silence-padding-seconds"],
+            minimumSpeechSeconds: flags["minimum-speech-seconds"],
+          });
 
       manifest = {
         source: audioPath,
@@ -407,6 +478,7 @@ export const transcribeRunCommand = buildCommand({
         boundarySearchSeconds: flags["boundary-search-seconds"],
         boundaryMaxSearchSeconds: flags["boundary-max-search-seconds"],
         overlapSeconds: flags["overlap-seconds"],
+        silences,
         chunks,
       };
       await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
@@ -415,6 +487,11 @@ export const transcribeRunCommand = buildCommand({
       chunkPaths = await writeChunkFlacs(normalizedPath, chunksDir, chunks, Boolean(flags.force), {
         sink: this.process.stdout,
       });
+    }
+
+    if (!silences) {
+      this.process.stdout.write("Detecting silence boundaries for transcript tags\n");
+      silences = await detectSilences(normalizedPath);
     }
 
     const checkpoint = baseCheckpoint({
@@ -480,6 +557,8 @@ export const transcribeRunCommand = buildCommand({
         backend: flags.backend,
         model: flags["whisper-model"],
         chunks: chunkTranscripts,
+        silences,
+        silenceTagMinimumSeconds: flags["silence-tag-seconds"],
       }),
       "utf8",
     );
@@ -507,6 +586,8 @@ export const transcribeRunCommand = buildCommand({
         glossaryPath,
         correctedTranscriptPath,
         correctionNotesPath,
+        rawTranscriptionDir,
+        force: Boolean(flags.force),
       });
       transcriptForNotes = correctedTranscriptPath;
       checkpoint.updatedAt = new Date().toISOString();
@@ -544,14 +625,44 @@ export const transcribeRunCommand = buildCommand({
           resume: shouldResume,
         });
       } else {
+        const transcriptChunksDir = flags["skip-correction"] ? rawTranscriptionDir : correctedTranscriptionDirFor(outDir);
+        const notesTranscriptPath = flags["skip-summary-cleanup"]
+          ? transcriptForNotes
+          : summaryTranscriptPath;
+        const notesTranscriptChunksDir = flags["skip-summary-cleanup"]
+          ? transcriptChunksDir
+          : summaryTranscriptionDirFor(outDir);
+
+        if (!flags["skip-summary-cleanup"]) {
+          this.process.stdout.write(`Preparing summary-safe transcript at ${summaryTranscriptPath}\n`);
+          await runCodexSummaryCleanup({
+            cwd,
+            transcriptPath: transcriptForNotes,
+            summaryTranscriptPath,
+            transcriptChunksDir,
+            outDir,
+            chunkChars: flags["summary-chunk-chars"],
+            onProgress: (message) => this.process.stdout.write(message),
+            force: Boolean(flags.force),
+            resume: shouldResume,
+          });
+        }
+
         await runCodexNotes({
           cwd,
           campaign: flags.campaign,
           sessionDate: flags["session-date"],
-          transcriptPath: transcriptForNotes,
+          transcriptPath: notesTranscriptPath,
           correctionNotesPath: flags["skip-correction"] ? undefined : correctionNotesPath,
+          transcriptChunksDir: notesTranscriptChunksDir,
+          correctionNotesChunksDir: flags["skip-correction"] ? undefined : correctionNotesChunksDirFor(outDir),
           contextExcerpt: buildContextExcerpt(contextFiles),
           notesPath,
+          outDir,
+          chunkChars: flags["summary-chunk-chars"],
+          sceneGroupSize: flags["summary-scene-size"],
+          force: Boolean(flags.force),
+          resume: shouldResume,
         });
       }
       checkpoint.updatedAt = new Date().toISOString();

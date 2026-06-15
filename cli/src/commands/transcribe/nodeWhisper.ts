@@ -1,6 +1,8 @@
 import { access, mkdir, readFile, rm, writeFile } from "node:fs/promises";
-import { basename, extname, join } from "node:path";
+import { createRequire } from "node:module";
+import { basename, dirname, extname, join } from "node:path";
 
+import { runCommand } from "./process.js";
 import type { ChunkTranscript, TranscriptSegment } from "./types.js";
 
 export interface NodeWhisperOptions {
@@ -37,6 +39,8 @@ const quietLogger = {
   log: (...args: unknown[]) => console.log(...args),
   error: () => {},
 };
+
+const requireFromHere = createRequire(import.meta.url);
 
 export function parseNodeWhisperTimestamp(value: string | number): number {
   if (typeof value === "number") {
@@ -98,6 +102,78 @@ async function pathExists(path: string): Promise<boolean> {
   }
 }
 
+function nodeWhisperPackageRoot(): string {
+  return dirname(requireFromHere.resolve("nodejs-whisper/package.json"));
+}
+
+function nodeWhisperCppRoot(packageRoot: string): string {
+  return join(packageRoot, "cpp", "whisper.cpp");
+}
+
+export function nodeWhisperExecutableCandidates(packageRoot: string): string[] {
+  const executable = process.platform === "win32" ? "whisper-cli.exe" : "whisper-cli";
+  const cppRoot = nodeWhisperCppRoot(packageRoot);
+  return [
+    join(cppRoot, "build", "bin", executable),
+    join(cppRoot, "build", "bin", "Release", executable),
+    join(cppRoot, "build", "bin", "Debug", executable),
+    join(cppRoot, "build", executable),
+    join(cppRoot, executable),
+  ];
+}
+
+export async function findNodeWhisperExecutable(packageRoot: string): Promise<string | undefined> {
+  for (const candidate of nodeWhisperExecutableCandidates(packageRoot)) {
+    if (await pathExists(candidate)) {
+      return candidate;
+    }
+  }
+  return undefined;
+}
+
+function splitExtraCmakeArgs(value: string | undefined): string[] {
+  return value?.trim().split(/\s+/).filter(Boolean) ?? [];
+}
+
+export function nodeWhisperConfigureArgs(options: { withCuda: boolean; extraCmakeArgs?: string }): string[] {
+  return [
+    "-B",
+    "build",
+    "-DGGML_CCACHE=OFF",
+    ...(options.withCuda ? ["-DGGML_CUDA=1"] : []),
+    ...splitExtraCmakeArgs(options.extraCmakeArgs),
+  ];
+}
+
+async function ensureNodeWhisperExecutable(options: { withCuda: boolean }): Promise<void> {
+  const packageRoot = nodeWhisperPackageRoot();
+  if (await findNodeWhisperExecutable(packageRoot)) {
+    return;
+  }
+
+  const cppRoot = nodeWhisperCppRoot(packageRoot);
+  const configureArgs = nodeWhisperConfigureArgs({
+    withCuda: options.withCuda,
+    extraCmakeArgs: process.env["NODEJS_WHISPER_CMAKE_ARGS"],
+  });
+
+  console.log("Building nodejs-whisper whisper-cli");
+  await runCommand("cmake", configureArgs, {
+    cwd: cppRoot,
+    onStdout: (text) => process.stdout.write(text),
+    onStderr: (text) => process.stderr.write(text),
+  });
+  await runCommand("cmake", ["--build", "build", "--config", "Release"], {
+    cwd: cppRoot,
+    onStdout: (text) => process.stdout.write(text),
+    onStderr: (text) => process.stderr.write(text),
+  });
+
+  if (!(await findNodeWhisperExecutable(packageRoot))) {
+    throw new Error("nodejs-whisper build completed but whisper-cli executable was not found");
+  }
+}
+
 async function readNodeWhisperJson(chunkPath: string): Promise<unknown> {
   const extension = extname(chunkPath);
   const wavPath = `${chunkPath.slice(0, -extension.length)}.wav`;
@@ -137,6 +213,7 @@ function rowsFromJson(parsed: unknown): NodeWhisperRow[] {
 
 export async function transcribeChunksWithNodeWhisper(options: NodeWhisperOptions): Promise<string[]> {
   await mkdir(options.outDir, { recursive: true });
+  await ensureNodeWhisperExecutable({ withCuda: options.device === "cuda" });
   const { nodewhisper } = await import("nodejs-whisper");
   const jsonPaths: string[] = [];
 

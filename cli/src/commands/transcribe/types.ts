@@ -45,5 +45,6 @@ export interface Manifest {
   boundarySearchSeconds: number;
   boundaryMaxSearchSeconds: number;
   overlapSeconds: number;
+  silences?: SilenceInterval[];
   chunks: PlannedChunk[];
 }

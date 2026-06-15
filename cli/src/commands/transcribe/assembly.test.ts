@@ -59,6 +59,37 @@ test("includes the selected backend in the transcript header", () => {
   assert.match(transcript, /Transcription: nodejs-whisper tiny/);
 });
 
+test("tags extended silences in the assembled raw transcript", () => {
+  const transcript = assembleTranscript({
+    source: "/tmp/session.mp3",
+    model: "large-v3-turbo",
+    chunks: [
+      {
+        index: 0,
+        start: 0,
+        end: 60,
+        overlapStart: 0,
+        overlapEnd: 60,
+        endReason: "duration-end",
+        transcript: {
+          segments: [
+            { start: 2, end: 3, text: "Before the pause." },
+            { start: 45, end: 46, text: "After the pause." },
+          ],
+        },
+      },
+    ],
+    silences: [
+      { start: 4, end: 9, duration: 5 },
+      { start: 10, end: 42, duration: 32 },
+    ],
+    silenceTagMinimumSeconds: 10,
+  });
+
+  assert.doesNotMatch(transcript, /00:00:04 - 00:00:09/);
+  assert.match(transcript, /\[00:00:10 - 00:00:42\] \[extended silence: 32s\]/);
+});
+
 test("formats a single logical chunk transcript", () => {
   const transcript = formatChunkTranscript({
     index: 1,
