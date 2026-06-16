@@ -40,7 +40,7 @@
                 "thral-el (ritual-ERG)",
                 "'al-el (person-ERG)"
               ],
-              "morph:notes": "Marks the agent of transitive verbs. Derived from Proto-Hick *mela through final vowel loss and initial m-loss in unstressed position."
+              "morph:notes": "Marks the agent of transitive verbs. Derived from Proto-Hick *mela through final vowel loss, clitic erosion, and reanalysis of reduced *=mel as the generalized ergative suffix -el."
             },
             {
               "@type": "morph:GrammaticalValue",
@@ -120,7 +120,7 @@
           "@id": "ehkmorph:DemonstrativeSystem",
           "@type": "morph:GrammaticalCategory",
           "dc:title": "Demonstrative System",
-          "morph:description": "Early Hick has a complex demonstrative system that distinguishes between animate and inanimate referents, as well as visibility and distance.",
+          "morph:description": "Early Hick has a complex demonstrative system that distinguishes between animate and inanimate referents, direct and indirect availability, and distance.",
           "morph:values": [
             {
               "@type": "morph:GrammaticalValue",
@@ -144,23 +144,23 @@
             },
             {
               "@type": "morph:GrammaticalValue",
-              "dc:title": "Medial Visible/Known (Inanimate)",
+              "dc:title": "Medial Direct (Inanimate)",
               "morph:marker": "Suffix -en",
               "morph:examples": [
                 "mater-en (that boat)",
                 "tor-en (that mountain)"
               ],
-              "morph:notes": "Indicates an inanimate object at a medium distance that is visible or known."
+              "morph:notes": "Indicates an inanimate object at a medium distance that is directly available to shared attention. Inherited from Proto-Hick *ena; the inherited animate counterpart was lost or merged, and Early Hick renewed the animate form with -tan."
             },
             {
               "@type": "morph:GrammaticalValue",
-              "dc:title": "Medial Visible/Known (Animate)",
+              "dc:title": "Medial Direct (Animate)",
               "morph:marker": "Suffix -tan",
               "morph:examples": [
                 "'al-tan (that person)",
                 "pel-tan (that bear)"
               ],
-              "morph:notes": "Indicates an animate being at a medium distance that is visible or known."
+              "morph:notes": "Indicates an animate being at a medium distance that is directly available to shared attention. Contact-derived from Old Chemise tan 'sibling, comrade' through Princely Maritime tan 'comrade, crewmate' and an Early Raibonian or Maritime Lingua Franca medial animate demonstrative particle."
             },
             {
               "@type": "morph:GrammaticalValue",

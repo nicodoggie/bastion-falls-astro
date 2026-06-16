@@ -87,7 +87,7 @@
           "lexinfo:semanticField": "Basic Terms"
         }
       ],
-      "note": "Source of Early Hick asam and subessive case marker -asam"
+      "note": "Source of Early Hick asam and sublative case marker -asam"
     },
     {
       "@id": "phk:baha",
@@ -625,12 +625,12 @@
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
-            "@value": "with, by means of",
+            "@value": "at, in, within; interior place",
             "@language": "en"
           }
         }
       ],
-      "note": "Instrumental preposition, source of Early Hick p-"
+      "note": "Locative/interior particle. Preserved in lexicalized compounds such as *wesu pu > Early Hick wesp and *duhapu < *duha pu > Early Hick dup."
     },
     {
       "@id": "phk:ki",

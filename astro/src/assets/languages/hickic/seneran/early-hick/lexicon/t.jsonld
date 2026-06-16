@@ -221,6 +221,47 @@
       ]
     },
     {
+      "@id": "ehk:tan",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "tan",
+        "writtenRep": "tan"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:borrowedFrom": "Old Chemise tan",
+        "etymon:gloss": "sibling, comrade",
+        "etymon:note": "Old Chemise contact term borrowed through Princely Maritime speech. The Princely sense 'comrade, crewmate, associated person' later fed the Early Raibonian or Maritime Lingua Franca medial animate demonstrative particle, which Early Hick reattached as suffix -tan.",
+        "etymon:soundChange": "Old Chemise tan > Princely Maritime tan > Maritime Lingua Franca tan"
+      },
+      "related": [
+        {
+          "@id": "ehk:-tan",
+          "note": "grammaticalized medial animate demonstrative suffix",
+          "relationshipType": "source of"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "comrade, crewmate, associated person"
+          },
+          "lexinfo:semanticField": ["Kinship Terms", "Social Terms", "Borrowed Terms"]
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "one of one's own side; familiar participant"
+          },
+          "lexinfo:semanticField": ["Social Terms", "Reference Terms"]
+        }
+      ]
+    },
+    {
       "@id": "ehk:tamin",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {

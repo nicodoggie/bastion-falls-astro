@@ -63,6 +63,7 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:note": "Inherited medial direct inanimate/default demonstrative. An older animate counterpart was lost or merged with this form, leaving Early Hick to renew the animate medial direct demonstrative with contact-derived -tan.",
         "etymon:protoform": "Proto-Hick *ena",
         "etymon:soundChange": "final vowel loss"
       },
@@ -88,7 +89,7 @@
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:derivedFrom": "wesp",
-        "etymon:note": "Grammaticalized from wesp 'cellar, basement, lower enclosed space', itself from older *wesu pu 'enclosed dwelling/hole'. The initial w- was lost as the form became a bound case suffix.",
+        "etymon:note": "Grammaticalized from wesp 'cellar, basement, lower enclosed space', itself from older *wesu pu 'within an enclosure, enclosed interior'. The initial w- was lost as the form became a bound case suffix.",
         "etymon:protoform": "Proto-Hick *wesu pu",
         "etymon:soundChange": "compound reduction and loss of initial w- in bound use"
       },
@@ -348,8 +349,10 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *tana",
-        "etymon:soundChange": "final vowel loss"
+        "etymon:borrowedFrom": "Old Chemise tan",
+        "etymon:note": "Contact-derived animate medial direct demonstrative. Old Chemise tan 'sibling, comrade' was borrowed into Princely Maritime as tan 'comrade, crewmate', then developed in Early Raibonian or Maritime Lingua Franca into a postposed medial animate demonstrative particle before Early Hick reattached it as -tan. This renewed an animate medial direct slot after the inherited animate counterpart to -en was lost or merged.",
+        "etymon:protoform": "Old Chemise tan",
+        "etymon:soundChange": "Old Chemise tan > Princely Maritime tan > Maritime Lingua Franca tan > Early Hick -tan"
       },
       "sense": [
         {

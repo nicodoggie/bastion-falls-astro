@@ -71,7 +71,7 @@
         "@type": "etymon:Etymology",
         "etymon:compound": "'eldegral-en asad-imris",
         "etymon:gloss": "feywild-MED.VIS.INAN bridge-ELL",
-        "etymon:note": "Shows formal preservation of medial marker and elative case"
+        "etymon:note": "Shows formal preservation of medial marker and ellative case"
       },
       "sense": [
         {
@@ -372,7 +372,7 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:note": "From instrumental *ʔelu \"by means of\" + *lawes \"consume\", showing semantic development from \"consuming with\" to general accompaniment",
+        "etymon:note": "From comitative-instrumental *ʔelu \"with, together with, by joint action\" + *lawes \"consume\", showing semantic development from \"consuming with\" to general accompaniment",
         "etymon:protoform": "Proto-Hick *ʔelu-lawes"
       },
       "sense": [

@@ -294,7 +294,7 @@
         "rdfs:comment": "Initial fricative loss: xasamu → asamu"
       },
       "baety:hasPeriod": "c. 500-600 AI",
-      "baety:hasEtymologicalNote": "Also the source of the subessive case marker -asam"
+      "baety:hasEtymologicalNote": "Also the source of the sublative case marker -asam"
     },
     {
       "@id": "ehketym:baha",
@@ -659,7 +659,7 @@
         "Grammaticalization: independent preposition → prefix"
       ],
       "baety:hasPeriod": "c. 500-600 AI",
-      "baety:hasEtymologicalNote": "Instrumental preposition that became a prefix in Early Hick"
+      "baety:hasEtymologicalNote": "Locative/interior particle preserved mainly in lexicalized compounds; older p- prefix analysis is legacy and not currently productive in Early Hick"
     },
     {
       "@id": "ehketym:hutu",

@@ -162,10 +162,11 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:gloss": "pearl",
-        "etymon:note": "Shows semantic extension from 'pearl' to general 'rounded mass'",
-        "etymon:protoform": "Proto-Hick *dupu",
-        "etymon:soundChange": "final vowel loss"
+        "etymon:components": ["*duha (meat, flesh)", "*pu (within, interior)"],
+        "etymon:gloss": "meat/flesh-interior",
+        "etymon:note": "From lexicalized Proto-Hick *duhapu < *duha pu 'thing within flesh; internal concretion', with semantic extension from pearl or internal lump to general rounded mass.",
+        "etymon:protoform": "Proto-Hick *duhapu < *duha pu",
+        "etymon:soundChange": ["compound lexicalization", "vowel coalescence", "final vowel loss"]
       },
       "sense": [
         {

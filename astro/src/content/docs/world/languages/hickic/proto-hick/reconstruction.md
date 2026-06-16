@@ -131,8 +131,12 @@ bramu lahesu  > bras
 
 ### Working Interpretation
 
-Plain `*lawesu` currently behaves best as a lexical root: "consume, take in, use, eat." This
-supports descendants such as `ewes` and `duwes`.
+Plain `*lawesu` currently behaves best as a lexical root: "consume, take in, use, eat." It can
+support fossilized compounds such as `ewes` when combined with the older comitative-instrumental
+particle `*ʔelu`.
+
+The related but distinct `*wesu` branch covers "cover, enclose; enclosed space" and better explains
+`wesp`, `-esp`, `brises`, and `duwes`-type compounds.
 
 The form `*lahesu` currently produces `las`. This makes it a strong candidate for a later
 grammaticalized allomorph that became the productive Early Hick illative suffix `-las`.
@@ -145,6 +149,8 @@ fossilized inward/receptive forms, but it should not be treated as productive Ea
 ```text
 Proto-Hick:
 *lawesu = consume, take in
+*ʔelu-lawesu = consume/take in together > ewes
+*wesu = cover, enclose
 
 Proto-Maritime or Proto-Seneran:
 *lahesu = reduced or grammaticalized inward allomorph
@@ -434,6 +440,33 @@ other Seneran descendants are developed:
 - If another branch expresses beneficiary through possession rather than a benefactive case, compare
   it with Early Hick request phrases such as `tan-ul vinud` "one's own dwelling."
 
+## Working Form: medial demonstratives
+
+The Early Hick medial direct pair is layered rather than a simple inherited animate/inanimate pair.
+The inanimate or default form is inherited:
+
+```text
+Proto-Hick *ena "that, there in shared attention"
+  > Early Hick -en MED.DIR.INAN/default
+```
+
+An inherited animate counterpart either merged with `-en`, was lost, or became too opaque to
+maintain the animate distinction. Early Hick then renewed the animate medial direct form through
+Princely Channel contact:
+
+```text
+Old Chemise tan "sibling, comrade"
+  > Princely Maritime tan "comrade, crewmate"
+  > Early Raibonian / Maritime Lingua Franca tan
+     "that known person, that fellow there"
+  > Early Hick -tan MED.DIR.ANIM
+```
+
+This keeps `-tan` out of the core Proto-Hick demonstrative inventory while explaining why it is so
+strongly animate and socially direct in Early Hick. It also leaves `tan` available as an ordinary
+borrowed/contact stem meaning "comrade, associated person, one of one's own side"; in phrases like
+`tan-ul vinud`, `-ul` is still the regular possessive marker.
+
 ### Lexicalized Compound Smoothing
 
 Forms such as `gnater` and `thragral` suggest a tendency for lexicalized compounds to smooth heavy
@@ -567,8 +600,8 @@ inland/fossil birth term.
 The direct reconstruction `*espu > -esp` is currently weak. It produces the desired Early Hick
 shape, but it looks more like a placeholder than a motivated Proto-Hick form.
 
-A better working model derives `-esp` from a grammaticalized compound around `*wesu` and a probable
-root `*pu`:
+A better working model derives `-esp` from a grammaticalized compound around `*wesu` and the
+locative/interior particle `*pu`:
 
 ```text
 *wesu pu
@@ -579,18 +612,19 @@ root `*pu`:
 The likely older senses are:
 
 ```text
-*pu = hole, hollow, burrow
+*pu = at, in, within; interior place
 *wesu = dwelling, enclosed space
      > enclosure
      > cover, enclose
 ```
 
 The independent Early Hick root `wes` preserves the later lexical sense "cover, enclose." The
-compound `*wesu pu` preserves a more spatial use: "enclosed hole, covered hollow, burrow-dwelling."
+compound `*wesu pu` preserves a more spatial use: "within an enclosure, enclosed interior,
+covered place."
 The important semantic development is:
 
 ```text
-burrow-dwelling, covered hollow
+enclosed interior, covered place
 > under-cover place, beneath a surface, under the ground
 > subessive -esp "under, below, beneath"
 ```
@@ -599,11 +633,11 @@ This should not be treated as a fully formed Proto-Hick subessive. The best chro
 
 ```text
 Proto-Hick:
-  *wesu pu = enclosed hole, burrow-dwelling
+  *wesu pu = within an enclosure, enclosed interior
 
 Maritime / Proto-Seneran:
-  burrow sense weakens or broadens in island and maritime settings
-  > covered hollow, ship hold, enclosed lower storage space,
+  enclosed-interior sense broadens in island and maritime settings
+  > covered interior, ship hold, enclosed lower storage space,
     under-cover place
 
 Pre-Hick:
@@ -615,8 +649,8 @@ Early Hick:
 ```
 
 This path fits the current Early Hick lexicon better than bare `*espu`. It also explains why `wesp`
-could survive as a separate lexical relic: Maritime Hick could shift the older burrow or
-covered-hole sense toward ship holds and enclosed lower storage spaces, while Early Hick later
+could survive as a separate lexical relic: Maritime Hick could shift the older enclosed-interior
+sense toward ship holds and enclosed lower storage spaces, while Early Hick later
 generalizes the independent word to "cellar", "basement", or "lower enclosed space." It explains
 `saresp` "sprout" as "leaf under/covered," with growth understood as emergence from concealment or
 from beneath the ground. It also gives `aiesp` "bathe" a more concrete source: "water
@@ -639,6 +673,20 @@ initial `w`. Speakers then generalized `-esp` as the productive subessive.
 
 This should be treated as a common-use reduction and analogical leveling, not as a global sound
 change deleting all `w` before `e`.
+
+The same locative/interior `*pu` also helps explain `dup`:
+
+```text
+*duha pu
+> *duhapu
+> dup
+```
+
+Here `*duha` contributes "meat, flesh" and `*pu` contributes "inside, interior." The lexicalized
+compound therefore means "thing within flesh; internal concretion," which gives Early Hick `dup`
+"pearl; lump, mass" a better source than older `dupu`-style placeholder forms. The form should be
+treated as a lexicalized compound before regular reduction, not as a fully transparent productive
+phrase.
 
 ## Calibration Form: asam
 
@@ -707,5 +755,3 @@ Historically:
 - Which stage first developed productive spatial case suffixes?
 - Are `duwes`, `ewes`, and `-las` part of one derivational family, or do they reflect separate
   lexical and grammaticalized branches?
-- Does `*pu` survive elsewhere with the sense "hole, hollow, burrow", or only in the bridge form
-  `wesp`?
