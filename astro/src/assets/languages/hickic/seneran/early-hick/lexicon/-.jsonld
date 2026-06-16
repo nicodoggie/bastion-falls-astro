@@ -122,6 +122,7 @@
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:protoform": "Proto-Hick *etha",
+        "etymon:note": "Inherited medial indirect inanimate/default demonstrative for hidden, sensed, inferred, or expected referents.",
         "etymon:soundChange": "final vowel loss"
       },
       "sense": [
@@ -129,7 +130,7 @@
           "@type": "ontolex:LexicalSense",
           "definition": {
             "@language": "en",
-            "@value": "that (medial, inanimate, hidden, sensed)"
+            "@value": "that (medial indirect, inanimate/default; hidden, sensed, inferred, or expected)"
           },
           "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
         }
@@ -326,6 +327,7 @@
       "etymology": {
         "@type": "etymon:Etymology",
         "etymon:protoform": "Proto-Hick *ruma",
+        "etymon:note": "Inherited animate distal demonstrative. The r- may preserve an older pre-Proto-Hick animate-deictic linker, but by Proto-Hick *ruma was already distinct from inanimate/default *ʔuma.",
         "etymon:soundChange": "final vowel loss"
       },
       "sense": [
@@ -375,15 +377,16 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *thira",
-        "etymon:soundChange": "final vowel loss"
+        "etymon:derivedFrom": "thir",
+        "etymon:note": "Native renewal of the animate medial indirect demonstrative from lexical thir 'air, wind', used for unseen natural forces and other indirectly sensed animate or agentive presences.",
+        "etymon:protoform": "Early Hick thir"
       },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
             "@language": "en",
-            "@value": "that (medial, animate, sensed)"
+            "@value": "that (medial indirect, animate; hidden, sensed, inferred, or agentive presence)"
           },
           "lexinfo:semanticField": ["Demonstratives", "Grammatical Terms"]
         }
@@ -399,7 +402,8 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *uma",
+        "etymon:protoform": "Proto-Hick *ʔuma",
+        "etymon:note": "Inherited inanimate/default distal demonstrative, distinct by Proto-Hick from animate *ruma.",
         "etymon:soundChange": "final vowel loss"
       },
       "sense": [

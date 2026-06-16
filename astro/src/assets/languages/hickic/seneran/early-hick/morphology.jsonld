@@ -164,23 +164,23 @@
             },
             {
               "@type": "morph:GrammaticalValue",
-              "dc:title": "Medial Hidden but Sensed (Inanimate)",
+              "dc:title": "Medial Indirect (Inanimate)",
               "morph:marker": "Suffix -eth",
               "morph:examples": [
                 "mater-eth (that boat)",
                 "tor-eth (that mountain)"
               ],
-              "morph:notes": "Indicates an inanimate object that is not visible but can be sensed."
+              "morph:notes": "Indicates an inanimate or default referent that is hidden, indirectly sensed, inferred, expected, or otherwise not directly available to shared attention. Inherited from Proto-Hick *etha."
             },
             {
               "@type": "morph:GrammaticalValue",
-              "dc:title": "Medial Hidden but Sensed (Animate)",
+              "dc:title": "Medial Indirect (Animate)",
               "morph:marker": "Suffix -thir",
               "morph:examples": [
                 "'al-thir (that person)",
                 "pel-thir (that bear)"
               ],
-              "morph:notes": "Indicates an animate being that is not visible but can be sensed."
+              "morph:notes": "Indicates an animate referent or agentive unseen force that is hidden, indirectly sensed, inferred, or expected. Renewed from lexical thir 'air, wind', which was used for unseen moving natural forces."
             },
             {
               "@type": "morph:GrammaticalValue",
@@ -190,7 +190,7 @@
                 "mater-um (that boat over there)",
                 "tor-um (that mountain over there)"
               ],
-              "morph:notes": "Indicates an inanimate object that is distant or out of sight."
+              "morph:notes": "Indicates an inanimate or default referent that is distant, out of sight, unknown, general, or outside the current shared scene. Inherited from Proto-Hick *ʔuma."
             },
             {
               "@type": "morph:GrammaticalValue",
@@ -200,10 +200,10 @@
                 "'al-rum (that person over there)",
                 "pel-rum (that bear over there)"
               ],
-              "morph:notes": "Indicates an animate being that is distant or out of sight."
+              "morph:notes": "Indicates an animate referent that is distant, out of sight, unknown, general, or socially distant. Inherited from Proto-Hick *ruma; its r- may preserve an older animate-deictic linker."
             }
           ],
-          "morph:historicalDevelopment": "The demonstrative system evolved from a simpler Proto-Hick system that gradually elaborated distinctions in animacy, visibility, and distance."
+          "morph:historicalDevelopment": "The demonstrative system evolved from inherited Proto-Hick deictic stems, later renewed unevenly. The direct animate medial -tan is contact-derived, while the indirect animate medial -thir is a native renewal from lexical thir 'air, wind'. The distal pair -um/-rum is more conservative."
         },
         {
           "@id": "ehkmorph:NumberMarking",

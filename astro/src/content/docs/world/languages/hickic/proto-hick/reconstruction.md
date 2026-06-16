@@ -467,6 +467,52 @@ strongly animate and socially direct in Early Hick. It also leaves `tan` availab
 borrowed/contact stem meaning "comrade, associated person, one of one's own side"; in phrases like
 `tan-ul vinud`, `-ul` is still the regular possessive marker.
 
+The medial indirect pair is layered in a different way. The inanimate/default form appears
+inherited:
+
+```text
+Proto-Hick *etha "that hidden, sensed, or indirectly available thing"
+  > Early Hick -eth MED.INDIR.INAN/default
+```
+
+The animate indirect form can be explained as a native renewal from lexical `thir` "air, wind."
+Since wind is an unseen moving force, `thir` could extend to unseen presences before becoming a
+bound animate indirect demonstrative:
+
+```text
+thir "air, wind; unseen moving force"
+  > thir "unseen animate or agentive presence"
+  > Early Hick -thir MED.INDIR.ANIM
+```
+
+This also explains why lexical `thir` narrows toward "air" in ordinary use while `bressim` becomes
+the regular word for wind as a weather event or gust.
+
+## Working Form: distal demonstratives
+
+The distal pair is the most conservative part of the Early Hick demonstrative system:
+
+```text
+Proto-Hick *ʔuma "that distant thing"
+  > Early Hick -um DIST.INAN/default
+
+Proto-Hick *ruma "that distant animate one"
+  > Early Hick -rum DIST.ANIM
+```
+
+Current Lexurgy rules support these direct paths:
+
+```text
+ʔuma > um
+ruma > rum
+```
+
+They do not directly support `hi + ʔuma > rum`; such forms produce an initial `i` or glottal trace
+instead. If the `r-` of `*ruma` reflects older animacy morphology, that effect must already predate
+Proto-Hick proper. A plausible deeper note is that pre-Proto-Hick `*hi + *ʔuma` produced or
+preserved a rhotic animate-deictic linker, but by Proto-Hick `*ʔuma` and `*ruma` were separate
+stems.
+
 ### Lexicalized Compound Smoothing
 
 Forms such as `gnater` and `thragral` suggest a tendency for lexicalized compounds to smooth heavy
