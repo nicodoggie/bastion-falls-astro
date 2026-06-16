@@ -1,0 +1,50 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "decomp": "http://www.w3.org/ns/lemon/decomp#",
+    "etymon": "http://www.lexinfo.net/lemon/etymon#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "lexvo": "http://lexvo.org/id/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "bf": "https://bastion-falls.thekennel.info/languages/",
+    "ehk": "#"
+  },
+  "@id": "lexicon:EarlyHick_O",
+  "@type": "lime:Lexicon",
+  "dc:title": "Early Hick Lexicon - O entries",
+  "dc:language": {
+    "@id": "bf:hickic/seneran/early-hick",
+    "skos:prefLabel": "Early Hick"
+  },
+  "@graph": [
+    {
+      "@id": "ehk:o",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Particle"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "o",
+        "writtenRep": "o"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *ho",
+        "etymon:note": "Inherited enumeration particle. The Proto-Hick onset-bearing form *ho regularly loses weak initial h- before a non-high vowel, leaving Early Hick o.",
+        "etymon:soundChange": "initial h-loss"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "enumeration particle; marks each member of a coordinated list"
+          },
+          "lexinfo:semanticField": ["Grammatical Terms", "Particles", "Coordination"],
+          "usage": "Used after each coordinated member before a set-level coordinator such as ru, 'a, or ewes."
+        }
+      ]
+    }
+  ]
+}

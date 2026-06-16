@@ -364,7 +364,7 @@
     },
     {
       "@id": "ehk:ewes",
-      "@type": ["ontolex:LexicalEntry", "lexinfo:Adposition"],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adposition", "lexinfo:Particle"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "e.wes",
@@ -372,8 +372,9 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:note": "From comitative-instrumental *ʔelu \"with, together with, by joint action\" + *lawes \"consume\", showing semantic development from \"consuming with\" to general accompaniment",
-        "etymon:protoform": "Proto-Hick *ʔelu-lawes"
+        "etymon:note": "From comitative-instrumental *ʔelu \"with, together with, by joint action\" + *lawesu \"consume, take in\", showing semantic development from \"consuming with\" to general accompaniment and joint participation.",
+        "etymon:protoform": "Proto-Hick *ʔelu lawesu",
+        "etymon:soundChange": "compound reduction"
       },
       "sense": [
         {
@@ -382,8 +383,8 @@
             "@language": "en",
             "@value": "together with; together"
           },
-          "lexinfo:semanticField": ["Basic Terms", "Grammatical Terms"],
-          "usage": "Functions both as pre-absolutive adverbial marker and independent lexical item"
+          "lexinfo:semanticField": ["Basic Terms", "Grammatical Terms", "Particles", "Coordination"],
+          "usage": "Functions both as pre-absolutive adverbial marker and shared-action coordinator in o...ewes constructions."
         }
       ]
     },

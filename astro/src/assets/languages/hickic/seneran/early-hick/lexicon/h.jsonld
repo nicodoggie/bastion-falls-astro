@@ -64,15 +64,15 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *haranu",
+        "etymon:source": "mainland Hickic cognate of Proto-Hick *haranu",
         "etymon:reference": [
           "@/languages/hickic/proto-hick.md#phonological-processes",
           "@/languages/hickic/seneran/early-hick/_index.md#vowel-allophony"
         ],
+        "etymon:note": "Later learned or technical reborrowing from a mainland Hickic cognate. Used for intentional division of a whole object and for mathematical division; distinct from older naturalized 'iran/ran forms.",
         "etymon:soundChange": [
-          "final vowel loss",
-          "stress shift to initial syllable",
-          "unstressed vowel reduction"
+          "loan adaptation",
+          "technical reborrowing"
         ]
       },
       "sense": [
@@ -80,7 +80,7 @@
           "@type": "ontolex:LexicalSense",
           "definition": {
             "@language": "en",
-            "@value": "split, separate"
+            "@value": "split, separate; divide a whole object"
           },
           "lexinfo:semanticField": "Action Terms"
         },

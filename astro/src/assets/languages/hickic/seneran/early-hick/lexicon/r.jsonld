@@ -30,8 +30,9 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:protoform": "Proto-Hick *ranu",
-        "etymon:soundChange": "final vowel loss"
+        "etymon:source": "Early Hick 'iran",
+        "etymon:note": "Lexical narrowing from 'iran 'bifurcation point in flowing water' to one branch of the divided flow.",
+        "etymon:soundChange": "initial syllable loss after lexical narrowing"
       },
       "sense": [
         {
@@ -199,11 +200,17 @@
     },
     {
       "@id": "ehk:ru",
-      "@type": ["ontolex:LexicalEntry", "lexinfo:Conjunction"],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Conjunction", "lexinfo:Particle"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ru",
         "writtenRep": "ru"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *storu",
+        "etymon:note": "Grammaticalized additive coordinator associated with stor 'growth, addition, increment' < Proto-Hick *storu. Since *storu regularly yields stor, ru should be treated as a clipped coordinator from the additive family rather than a direct inherited sound-change reflex.",
+        "etymon:soundChange": "grammatical clipping and coordinator reduction"
       },
       "sense": [
         {
@@ -212,7 +219,8 @@
             "@language": "en",
             "@value": "and"
           },
-          "lexinfo:semanticField": "Conjunction"
+          "lexinfo:semanticField": ["Conjunction", "Particles", "Coordination"],
+          "usage": "Set-level additive coordinator in o...ru coordination; takes case or demonstrative morphology for the coordinated phrase as a whole."
         }
       ]
     },

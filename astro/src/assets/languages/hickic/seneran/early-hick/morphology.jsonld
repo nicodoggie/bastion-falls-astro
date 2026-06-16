@@ -243,7 +243,7 @@
                 "ran-'al (some people)",
                 "thal-ran-mater (three boats)"
               ],
-              "morph:notes": "Indicates 'some of' or 'part of'. Derived from Proto-Hick *haranu 'divide'. Also used with numbers."
+              "morph:notes": "Indicates 'some of' or 'part of'. Grammaticalized from 'iran 'bifurcation point, branching divide', an older naturalized mainland Hickic borrowing related to Proto-Hick *haranu 'divide'. Also used with numbers."
             },
             {
               "@type": "morph:GrammaticalValue",
@@ -253,7 +253,7 @@
                 "telran-materok (only the handlers)",
                 "telran-'al (only the people)"
               ],
-              "morph:notes": "Marks exclusivity, specifically excluding others outside the group."
+              "morph:notes": "Marks exclusivity, specifically excluding others outside the group. Built from tel- 'end, limit' plus the partitive ran-."
             }
           ],
           "morph:historicalDevelopment": "The number marking system developed from the grammaticalization of independent words indicating quantity or extent."
@@ -562,6 +562,62 @@
             }
           ],
           "morph:historicalDevelopment": "Compound formation patterns developed from syntactic constructions that became morphologized."
+        }
+      ]
+    },
+    {
+      "@id": "ehkmorph:ParticlesAndCoordinators",
+      "@type": "morph:MorphologicalSubsystem",
+      "dc:title": "Particles and Coordinators",
+      "morph:description": "Early Hick uses particles for coordination, enumeration, and shared participation. These particles remain syntactically independent, but they can govern the case or demonstrative marking of coordinated phrases.",
+      "morph:categories": [
+        {
+          "@id": "ehkmorph:CoordinationParticles",
+          "@type": "morph:GrammaticalCategory",
+          "dc:title": "Coordination Particles",
+          "morph:description": "Coordinated phrases are marked with an enumeration particle after each member, followed by a set-level coordinator. The enumeration particle marks list membership only; the final coordinator supplies additive, disjunctive, or shared-action meaning.",
+          "morph:values": [
+            {
+              "@type": "morph:GrammaticalValue",
+              "dc:title": "Enumeration Particle",
+              "morph:marker": "Particle o",
+              "morph:examples": [
+                "kor o toren o ru-es (the cow and horse)",
+                "'al'is o Mari o ewes-es (I and Mari together)"
+              ],
+              "morph:notes": "Marks each listed member, without itself meaning 'and' or 'or'. Inherited from Proto-Hick *ho, which regularly loses initial h- to Early Hick o."
+            },
+            {
+              "@type": "morph:GrammaticalValue",
+              "dc:title": "Additive Coordinator",
+              "morph:marker": "Particle ru",
+              "morph:examples": [
+                "kor o toren o ru-el (the cow and horse, as agent)",
+                "'imwen o wenkulok o rutanes (that witch and sorceress)"
+              ],
+              "morph:notes": "Joins enumerated members as an additive set and can take case or demonstrative morphology for the whole coordinated phrase. Historically associated with stor 'growth, addition, increment' < Proto-Hick *storu, but ru is a clipped coordinator rather than the regular inherited reflex."
+            },
+            {
+              "@type": "morph:GrammaticalValue",
+              "dc:title": "Disjunctive Coordinator",
+              "morph:marker": "Particle 'a",
+              "morph:examples": [
+                "kor o toren o 'a-el (either the cow or the horse, as agent)",
+                "'imwen o wenkulok o 'atanes (either that witch or that sorceress)"
+              ],
+              "morph:notes": "Joins enumerated members as alternatives and can take case or demonstrative morphology for the whole coordinated phrase. Inherited from Proto-Hick *ʔaha 'other, another; alternative'; the lexical alterity sense survives more fully in 'atil."
+            },
+            {
+              "@type": "morph:GrammaticalValue",
+              "dc:title": "Shared-Action Coordinator",
+              "morph:marker": "Particle ewes",
+              "morph:examples": [
+                "'al'is o Mari o ewes-es ward'er (I and Mari together travel)"
+              ],
+              "morph:notes": "Marks joint participation by coordinated members. From Proto-Hick *ʔelu lawesu 'consume/take in with', preserving an older comitative-instrumental particle *ʔelu."
+            }
+          ],
+          "morph:historicalDevelopment": "The coordination system preserves several layers: inherited *ho > o as a simple enumerator; clipped Early Hick ru from the stor/addition family as the ordinary additive coordinator; inherited *ʔaha > 'a as the disjunctive coordinator from an older alterity root; and older fossilized *ʔelu lawesu > ewes for shared or joint participation."
         }
       ]
     }

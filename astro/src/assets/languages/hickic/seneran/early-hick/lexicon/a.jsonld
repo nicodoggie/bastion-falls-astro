@@ -283,6 +283,93 @@
       ]
     },
     {
+      "@id": "ehk:'a",
+      "@type": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Conjunction",
+        "lexinfo:Particle"
+      ],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ʔa",
+        "writtenRep": "'a"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:note": "Inherited alterity root grammaticalized as the disjunctive coordinator. Bare lexical use survives mainly in contrastive or elliptical speech; the ordinary content-word descendant is 'atil.",
+        "etymon:protoform": "Proto-Hick *ʔaha",
+        "etymon:soundChange": "final vowel loss; grammaticalization"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "or; either/or"
+          },
+          "lexinfo:semanticField": [
+            "Conjunctions",
+            "Particles",
+            "Coordination"
+          ],
+          "usage": "Set-level disjunctive coordinator used with the enumeration particle o."
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "other one; another"
+          },
+          "lexinfo:register": "archaic-elliptical",
+          "lexinfo:semanticField": ["Relation Terms", "Deixis"],
+          "usage": "Contrastive bare use, especially in corrective expressions; generally replaced by lexical 'atil."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:'atil",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ʔa.til",
+        "writtenRep": "'atil"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:'a"
+        },
+        {
+          "@id": "ehk:'etil"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "'a-'etil",
+        "etymon:gloss": "other-entity",
+        "etymon:note": "Lexicalized from corrective contrastive expressions where 'a singled out the alternative referent. Became the ordinary lexical term for an other/different thing or alternative.",
+        "etymon:soundChange": "compound lexicalization"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "other one; another thing or entity"
+          },
+          "lexinfo:semanticField": ["Relation Terms", "Deixis"],
+          "usage": "Can take demonstrative and case marking to identify the alternative referent."
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "different thing; alternative; option"
+          },
+          "lexinfo:semanticField": ["Abstract Terms", "Choice Terms"]
+        }
+      ]
+    },
+    {
       "@id": "ehk:'aka",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Interrogative"],
       "canonicalForm": {

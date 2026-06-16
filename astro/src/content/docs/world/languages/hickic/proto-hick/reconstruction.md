@@ -786,6 +786,92 @@ Historically:
 - but they should be treated as parallel outcomes of older `*xasamu` material, not as a simple live
   chain `asam > asam'er > -asam`
 
+## Coordination Particles
+
+Early Hick coordination currently preserves at least four historical layers:
+
+```text
+Proto-Hick *ho
+> Early Hick o
+
+Proto-Hick *storu "grow, increase"
+> Early Hick stor "growth, addition, increment"
+> clipped/grammaticalized Early Hick ru "and"
+
+Proto-Hick *ʔaha "other, another; alternative"
+> Early Hick 'a "or"
+> Early Hick 'atil "'a + 'etil, other one; alternative"
+
+Proto-Hick *ʔelu lawesu "consume/take in with"
+> Early Hick ewes "together with; together"
+```
+
+The Lexurgy path supports `*ho > o`, so the bare Early Hick enumeration particle does not need to
+come from a vowel-initial Proto-Hick form. `*ʔo` also yields `o`, but `*ho` better respects the
+current Proto-Hick preference for onset-bearing simple particles while explaining the weak onset's
+loss in Early Hick.
+
+The additive coordinator `ru` should not be treated as the regular direct reflex of `*storu`, since
+`*storu` yields `stor`. Its best current analysis is grammatical clipping from the same additive
+semantic family as `stor`: "grow, increase" > "addition, increment" > "and, plus." This makes `ru`
+a later Pre-Hick or Early Hick coordinator shaped by repeated use in `o...ru` list frames.
+
+The disjunctive coordinator `'a` is the grammaticalized reflex of Proto-Hick `*ʔaha` "other,
+another; alternative." Synchronically, bare `'a` is chiefly a coordinator in `o...'a` list frames,
+but the older alterity sense is preserved through the lexicalized compound `'atil` (< `'a` +
+`'etil` "living thing, entity"). Corrective expressions such as "not that person, the other one"
+provide a natural bridge from contrastive alterity into the ordinary lexical sense "other,
+different thing; alternative."
+
+The shared-action coordinator `ewes` is older and more securely phonological. The tested path
+`*ʔelu lawesu > ewes` supports the existing analysis where older comitative-instrumental `*ʔelu`
+survives in fossilized compounds and coordinators. Synchronically, `ewes` behaves like a particle
+that can take case for a coordinated group, but diachronically it belongs to the same fossil layer
+as other `*ʔelu` compounds rather than to the newer productive ergative `-el`.
+
+This alterity/disjunction family should remain distinct from the `haran` / `'iran` / `ran` /
+`ran-` family. `*ʔaha > 'a` concerns alternatives and choice, while the `haran` family concerns
+physical or conceptual division, partition, and exclusive part-whole structure.
+
+## Division and Partitive Doublets
+
+The `haran` / `'iran` / `ran` / `ran-` family should not be treated as a simple direct inheritance
+from Proto-Hick `*haranu` through the regular Seneran sound-change pipeline.
+
+Lexurgy currently predicts the following regular Seneran outcomes:
+
+```text
+*haranu
+> Early Hick thren/thrən
+
+embedded *... haranu
+> Early Hick ...rən
+
+*ʔiharanu or *hiharanu
+> Early Hick iren/irən
+```
+
+This means ordinary inherited Seneran material does not directly yield lexical `haran`, nor does it
+cleanly explain all uses of `ran`. The better working analysis is a doublet family from mainland
+Hickic contact:
+
+```text
+older naturalized mainland Hickic borrowing:
+'iran = bifurcation point; branching divide in flowing water
+> ran = stream, brook; one branch of the divided flow
+> ran- = partitive, generalized from "divided portion/share"
+> telran- = exclusive partitive, tel- "end, limit" + ran-
+
+later learned mainland Hickic reborrowing:
+haran = split, separate; divide a whole object; divide mathematically
+```
+
+Under this model, lexical `ran` and grammatical `ran-` are related but not sequentially derived from
+one another. `ran` narrows the hydrological sense of `'iran` to the flowing branch after a fork,
+while `ran-` grammaticalizes the same division/share sense into partitive morphology. Later `haran`
+is a more conservative or learned mainland Hickic form, useful for physical division of a whole and
+for mathematical division.
+
 ## Open Questions
 
 - Does Apgarian preserve a form closer to `*lawesu`?

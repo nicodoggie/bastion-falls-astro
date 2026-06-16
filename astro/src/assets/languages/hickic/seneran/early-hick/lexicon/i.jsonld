@@ -79,6 +79,38 @@
       ]
     },
     {
+      "@id": "ehk:'iran",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ʔi.ran",
+        "writtenRep": "'iran"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:source": "older naturalized borrowing from a mainland Hickic cognate of Proto-Hick *haranu",
+        "etymon:note": "Preserves the older Seneran hydrological sense of a divide or fork in flowing water. Source of lexical ran 'stream' and grammatical ran- 'partitive'."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "bifurcation point in a flowing water system; fork or divide of a stream"
+          },
+          "lexinfo:semanticField": ["Natural World", "Water Features", "Landscape Terms"]
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "division point, branching divide"
+          },
+          "lexinfo:semanticField": ["Landscape Terms", "Spatial Terms"]
+        }
+      ]
+    },
+    {
       "@id": "ehk:'ibris'er",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
