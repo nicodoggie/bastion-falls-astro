@@ -1312,12 +1312,19 @@
         "phoneticRep": "mul.sum",
         "writtenRep": "mulsum"
       },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "mulis-um",
+        "etymon:gloss": "vision-DIST",
+        "etymon:note": "Likely from mulis 'dream, vision' plus distal/default deixis -um. The original sense was probably 'that envisioned thing' or 'that foreseen event', later grammaticalized as the ordinary future tense marker after earlier Proto-Hick future reference strategies were lost or replaced.",
+        "etymon:soundChange": "compound reduction"
+      },
       "sense": [
         {
           "@type": "ontolex:LexicalSense",
           "definition": {
             "@language": "en",
-            "@value": "future tense marker. Placed at the beginning of a clause to indicate future tense."
+            "@value": "future tense marker. Usually placed at the beginning of a clause to indicate future tense, though tense particles can also appear in other clause-level positions for contrast, narrative pacing, or poetic effect."
           },
           "lexinfo:tense": {
             "@id": "lexinfo:future"

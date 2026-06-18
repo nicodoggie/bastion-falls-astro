@@ -410,7 +410,7 @@
           "@id": "ehkmorph:TenseMarking",
           "@type": "morph:GrammaticalCategory",
           "dc:title": "Tense Marking",
-          "morph:description": "Early Hick marks tense through clause-initial temporal markers.",
+          "morph:description": "Early Hick marks tense through clause-level temporal markers, most commonly clause-initial in neutral exposition.",
           "morph:values": [
             {
               "@type": "morph:GrammaticalValue",
@@ -420,7 +420,7 @@
                 "branum 'ales venitar (The person lifted)",
                 "branum materok-el rismater-las (The handler entered the reed boat)"
               ],
-              "morph:notes": "Indicates past tense."
+              "morph:notes": "Indicates past tense. Historically from bran 'branch, offshoot' plus distal/default deixis -um; originally a more remote temporal branch, later generalized to ordinary past."
             },
             {
               "@type": "morph:GrammaticalValue",
@@ -430,7 +430,7 @@
                 "branrum 'ales venitar (The person lifted long ago)",
                 "branrum materok-el rismater-las (The handler entered the reed boat long ago)"
               ],
-              "morph:notes": "Indicates distant past tense."
+              "morph:notes": "Indicates distant past tense. Reanalyzes branum with animate/remote distal deixis -rum, preserving a marked sense of ancestral, mythic, ritual, or otherwise remote past."
             },
             {
               "@type": "morph:GrammaticalValue",
@@ -440,10 +440,10 @@
                 "mulsum 'ales venitar (The person will lift)",
                 "mulsum materok-el rismater-las (The handler will enter the reed boat)"
               ],
-              "morph:notes": "Indicates future tense."
+              "morph:notes": "Indicates future tense. Likely from mulis 'dream, vision' plus distal/default deixis -um, originally 'that envisioned/foreseen event'."
             }
           ],
-          "morph:historicalDevelopment": "Tense markers developed from temporal adverbs that grammaticalized into clause-initial tense markers."
+          "morph:historicalDevelopment": "Tense markers developed as Seneran/Early Hick innovations from older lexical and deictic material rather than as inherited Proto-Hick tense morphology. Their neutral position is clause-initial, but the reference grammar permits final narrative placement and pre-verbal contrastive placement."
         }
       ]
     },
@@ -612,9 +612,10 @@
               "dc:title": "Shared-Action Coordinator",
               "morph:marker": "Particle ewes",
               "morph:examples": [
-                "'al'is o Mari o ewes-es ward'er (I and Mari together travel)"
+                "'al'is o Mari o ewes-es ward'er (I and Mari together travel)",
+                "'imwen o wenkulok o ewestanes ward'er (that witch and sorceress travel together)"
               ],
-              "morph:notes": "Marks joint participation by coordinated members. From Proto-Hick *ʔelu lawesu 'consume/take in with', preserving an older comitative-instrumental particle *ʔelu."
+              "morph:notes": "Marks joint participation by coordinated members and can take case or demonstrative morphology for the whole coordinated phrase, parallel to ru and 'a. From Proto-Hick *ʔelu lawesu 'consume/take in with', preserving an older comitative-instrumental particle *ʔelu."
             }
           ],
           "morph:historicalDevelopment": "The coordination system preserves several layers: inherited *ho > o as a simple enumerator; clipped Early Hick ru from the stor/addition family as the ordinary additive coordinator; inherited *ʔaha > 'a as the disjunctive coordinator from an older alterity root; and older fossilized *ʔelu lawesu > ewes for shared or joint participation."

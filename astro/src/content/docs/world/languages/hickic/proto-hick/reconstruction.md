@@ -872,6 +872,35 @@ while `ran-` grammaticalizes the same division/share sense into partitive morpho
 is a more conservative or learned mainland Hickic form, useful for physical division of a whole and
 for mathematical division.
 
+## Tense Particles
+
+The Early Hick tense particles should be treated as Seneran/Early Hick grammaticalizations, not as
+inherited Proto-Hick tense morphology. Proto-Hick may have had lexical temporal expressions and
+deictic particles, but the current evidence does not require reconstructing a PHK tense system with
+`branum`, `branrum`, or `mulsum` as grammatical tense markers.
+
+Current working paths:
+
+```text
+bran "branch, offshoot" + -um DIST/default
+> branum "that branch; that remote branch of events"
+> ordinary past marker
+
+bran "branch, offshoot" + -rum DIST.ANIM/remote
+> branrum "that remote/ancestral branch of events"
+> far past marker used for mythic, ritual, epic, genealogical, or otherwise remote time
+
+mulis "dream, vision" + -um DIST/default
+> mulis-um "that envisioned thing; that foreseen event"
+> mulsum "future marker"
+```
+
+This explains why `branum` can have generalized to ordinary past while `branrum` preserves a more
+marked remote-past function. It also keeps `mulsum` from needing to descend from a Proto-Hick future
+marker: the future sense can arise when a deictic "envisioned/foreseen event" formula becomes the
+ordinary way to mark expected or upcoming events. By Early Hick, `mulsum` is fully grammaticalized
+and does not require a ritual, prophetic, or dream-divination context.
+
 ## Open Questions
 
 - Does Apgarian preserve a form closer to `*lawesu`?

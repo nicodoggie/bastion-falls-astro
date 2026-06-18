@@ -364,7 +364,12 @@
     },
     {
       "@id": "ehk:ewes",
-      "@type": ["ontolex:LexicalEntry", "lexinfo:Adposition", "lexinfo:Particle"],
+      "@type": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Adposition",
+        "lexinfo:Conjunction",
+        "lexinfo:Particle"
+      ],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "e.wes",
@@ -383,8 +388,13 @@
             "@language": "en",
             "@value": "together with; together"
           },
-          "lexinfo:semanticField": ["Basic Terms", "Grammatical Terms", "Particles", "Coordination"],
-          "usage": "Functions both as pre-absolutive adverbial marker and shared-action coordinator in o...ewes constructions."
+          "lexinfo:semanticField": [
+            "Basic Terms",
+            "Grammatical Terms",
+            "Particles",
+            "Coordination"
+          ],
+          "usage": "Functions both as an adpositional/adverbial marker of accompaniment and as the shared-action coordinator in o...ewes constructions. When used as a set-level coordinator, it can take case or demonstrative morphology for the coordinated phrase as a whole."
         }
       ]
     },

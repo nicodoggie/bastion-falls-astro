@@ -997,32 +997,6 @@
       ]
     },
     {
-      "@id": "ehk:tre",
-      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "phoneticRep": "tre",
-        "writtenRep": "tre"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:intermediateForm": "matre",
-        "etymon:note": "Back-formed through reanalysis of ma- as plural prefix",
-        "etymon:protoform": "Proto-Hick *mataru",
-        "etymon:soundChange": "final vowel loss"
-      },
-      "sense": [
-        {
-          "@type": "ontolex:LexicalSense",
-          "definition": {
-            "@language": "en",
-            "@value": "wagon, cart"
-          },
-          "lexinfo:semanticField": "Vehicle Terms"
-        }
-      ]
-    },
-    {
       "@id": "ehk:tag'er",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {

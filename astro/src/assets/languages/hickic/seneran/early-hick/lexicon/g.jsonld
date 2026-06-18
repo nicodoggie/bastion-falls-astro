@@ -415,6 +415,40 @@
       ]
     },
     {
+      "@id": "ehk:grater",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "gra.ter",
+        "writtenRep": "grater"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:gral"
+        },
+        {
+          "@id": "ehk:mater"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "gral-mater",
+        "etymon:gloss": "earth-vessel",
+        "etymon:note": "Transparent land-vehicle term shaped by maritime usage of mater as 'vessel'; literally 'earth vessel' or 'land vessel'.",
+        "etymon:soundChange": "compound reduction"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "wagon, cart"
+          },
+          "lexinfo:semanticField": ["Vehicle Terms", "Land Travel"]
+        }
+      ]
+    },
+    {
       "@id": "ehk:gras",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
