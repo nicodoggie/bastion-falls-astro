@@ -8,7 +8,8 @@
   "files": {
     "includes": [
       "astro.config.ts",
-      "src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,jsonld,jsonc,astro}"
+      "src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,jsonld,jsonc,astro}",
+      "!src/generated"
     ],
     "maxSize": 2097152 // 2MiB
   },
