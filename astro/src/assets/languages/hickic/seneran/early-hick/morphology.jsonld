@@ -88,10 +88,10 @@
               "morph:marker": "Suffix -itar",
               "morph:examples": [
                 "rismater-itar (reed.boat-SUPE)",
-                "rismater-itar (reed.boat-SURF.ALL)",
+                "rismater-itar (reed.boat-SALL)",
                 "ven-itar (yoke-SUPE)"
               ],
-              "morph:notes": "Marks static support or position 'on/upon/above' as SUPE; in motion contexts the same suffix may be glossed SURF.ALL for 'onto/up onto'. The standard form -itar reflects a prestige Seneran dialect layer; inherited -iter is treated separately as regional/fossil."
+              "morph:notes": "Marks static support or position 'on/upon/above' as SUPE; in motion contexts the same suffix may be glossed SALL for 'onto/up onto'. The standard form -itar reflects a prestige Seneran dialect layer; inherited -iter is treated separately as regional/fossil."
             },
             {
               "@type": "morph:GrammaticalValue",
