@@ -64,10 +64,12 @@ describe("writeStarlightLexiconMdxPages field routes", () => {
     const lexAbs = path.join(root, contentLexiconDirRelative);
     const fieldsIndex = path.join(lexAbs, "fields.mdx");
     const fieldPage = path.join(lexAbs, "field", "basic-terms.mdx");
+    const searchPage = path.join(lexAbs, "search.mdx");
 
     expect(result.filesWritten).toBeGreaterThanOrEqual(2);
     expect(existsSync(fieldsIndex)).toBe(true);
     expect(existsSync(fieldPage)).toBe(true);
+    expect(existsSync(searchPage)).toBe(true);
 
     expect(readFileSync(fieldsIndex, "utf8")).toContain(
       "import LexiconFieldsIndexPage",
@@ -79,5 +81,12 @@ describe("writeStarlightLexiconMdxPages field routes", () => {
     expect(fieldMdx).toContain("pagefind: true");
     expect(fieldMdx).toContain("import LexiconFieldPage");
     expect(fieldMdx).toContain("field-basic-terms.json");
+
+    const searchMdx = readFileSync(searchPage, "utf8");
+    expect(searchMdx).toContain("import LexiconSearchWorkbench");
+    expect(searchMdx).toContain("search-index.json");
+    expect(searchMdx).toContain(
+      'lexiconUrl="/world/languages/hickic/seneran/test/lexicon"',
+    );
   });
 });

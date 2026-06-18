@@ -1,11 +1,17 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
-import type { LexItem, LexiconFieldMeta } from "@bastion-falls/types";
+import type {
+  LexiconSearchEntry,
+  LexiconSearchIndex,
+  LexItem,
+  LexiconFieldMeta,
+} from "@bastion-falls/types";
 
 import {
   collectFieldsFromItems,
   compileLexiconShard,
+  fieldLabelToUri,
   flattenByFieldRows,
   type ByFieldFlatRow,
 } from "./compile.js";
@@ -35,6 +41,31 @@ export interface GenerateLexiconSiteOptions {
    * `starlightMdx.contentLexiconDirRelative`).
    */
   starlightContentLexiconDirRelative?: string;
+  audio?: {
+    manifestPathRelative: string;
+    publicBaseUrl: string;
+  };
+}
+
+interface AudioManifestItem {
+  id?: string;
+  status?: string;
+  outputPath?: string;
+  sources?: AudioManifestSource[];
+}
+
+interface AudioManifestSource {
+  outputPath?: string;
+  url?: string;
+  type?: string;
+}
+
+interface SearchAudioById {
+  label: string;
+  sources: Array<{
+    url: string;
+    type: string;
+  }>;
 }
 
 export interface AlphaChunk {
@@ -134,6 +165,97 @@ function buildFieldChunks(
   });
 }
 
+function buildAlphaPageById(alphaPages: readonly LexItem[][]): Map<string, number> {
+  const alphaPageById = new Map<string, number>();
+  alphaPages.forEach((items, index) => {
+    for (const item of items) {
+      alphaPageById.set(item.id, index + 1);
+    }
+  });
+  return alphaPageById;
+}
+
+function buildSearchEntries(
+  items: readonly LexItem[],
+  alphaPageById: ReadonlyMap<string, number>,
+  audioById: ReadonlyMap<string, SearchAudioById> = new Map(),
+): LexiconSearchEntry[] {
+  return items.map((item) => {
+    const fieldLabels = new Set<string>();
+    for (const sense of item.senses) {
+      for (const field of sense.semanticField ?? []) {
+        fieldLabels.add(field);
+      }
+    }
+    const orderedFieldLabels = [...fieldLabels].sort((a, b) =>
+      a.localeCompare(b, "en", { sensitivity: "base" }),
+    );
+    const entry: LexiconSearchEntry = {
+      id: item.id,
+      writtenForm: item.writtenForm,
+      phoneticForm: item.phoneticForm,
+      types: item.types,
+      typeLabels: item.lexicalCategory
+        ? item.lexicalCategory.split(",").map((label) => label.trim()).filter(Boolean)
+        : [],
+      senses: item.senses.map((sense) => ({
+        definition: sense.definition,
+        ...(sense.usage ? { usage: sense.usage } : {}),
+        ...(sense.semanticField?.length
+          ? { semanticField: sense.semanticField }
+          : {}),
+      })),
+      alphaPage: alphaPageById.get(item.id) ?? 1,
+      fieldUris: orderedFieldLabels.map((label) => fieldLabelToUri(label)),
+      fieldLabels: orderedFieldLabels,
+      ...(audioById.has(item.id) ? { audio: audioById.get(item.id) } : {}),
+      ...(item.protoform ? { protoform: item.protoform } : {}),
+      ...(item.note ? { note: item.note } : {}),
+    };
+    return entry;
+  });
+}
+
+function audioTypeForPath(filePath: string): string {
+  const ext = path.extname(filePath).toLowerCase();
+  if (ext === ".webm") return "audio/webm; codecs=opus";
+  if (ext === ".mp3") return "audio/mpeg";
+  if (ext === ".ogg" || ext === ".opus") return "audio/ogg; codecs=opus";
+  if (ext === ".wav") return "audio/wav";
+  return "application/octet-stream";
+}
+
+function loadAudioById(options: GenerateLexiconSiteOptions): Map<string, SearchAudioById> {
+  if (!options.audio) return new Map();
+  const manifestPath = path.resolve(options.astroRoot, options.audio.manifestPathRelative);
+  if (!existsSync(manifestPath)) return new Map();
+
+  const raw = JSON.parse(readFileSync(manifestPath, "utf8")) as { items?: AudioManifestItem[] };
+  const publicBase = options.audio.publicBaseUrl.replace(/\/+$/g, "");
+  const audioById = new Map<string, SearchAudioById>();
+  for (const item of raw.items ?? []) {
+    if (!item.id || item.status !== "generated") continue;
+    const sources = (item.sources?.length ? item.sources : [{ outputPath: item.outputPath }])
+      .flatMap((source) => {
+        const sourcePath = source.url ?? source.outputPath;
+        if (!sourcePath) return [];
+        const url = source.url ?? `${publicBase}/${path.basename(sourcePath)}`;
+        return [
+          {
+            url,
+            type: source.type ?? audioTypeForPath(sourcePath),
+          },
+        ];
+      });
+    if (!sources.length) continue;
+    audioById.set(item.id, {
+      label: "Pronunciation",
+      sources,
+    });
+  }
+  return audioById;
+}
+
 export interface GenerateLexiconSiteResult {
   manifest: LexiconSiteManifest;
   /** True when shard inputs and options matched the last stamp; disk was not rewritten. */
@@ -151,6 +273,7 @@ export function generateLexiconSite(
     title,
     pageSize,
     starlightContentLexiconDirRelative,
+    audio,
   } = options;
 
   const outAbs = path.resolve(astroRoot, outputDirRelative);
@@ -164,6 +287,8 @@ export function generateLexiconSite(
     pageSize,
     outputDirRelative,
     starlightContentLexiconDirRelative,
+    audioManifestPathRelative: audio?.manifestPathRelative,
+    audioPublicBaseUrl: audio?.publicBaseUrl,
   });
 
   const manifestPath = path.join(outAbs, "manifest.json");
@@ -194,6 +319,8 @@ export function generateLexiconSite(
 
   const alphaSorted = sortAlpha(allItems);
   const alphaPages = paginate(alphaSorted, pageSize);
+  const alphaPageById = buildAlphaPageById(alphaPages);
+  const audioById = loadAudioById(options);
 
   const flatField = flattenByFieldRows(allItems);
   const byFieldPages = annotateByFieldRows(flatField, pageSize);
@@ -237,6 +364,17 @@ export function generateLexiconSite(
       `${JSON.stringify(chunk, null, 0)}\n`,
     );
   });
+
+  const searchIndex: LexiconSearchIndex = {
+    version: 1,
+    localeId,
+    title,
+    entries: buildSearchEntries(alphaSorted, alphaPageById, audioById),
+  };
+  writeFileSync(
+    path.join(outAbs, "search-index.json"),
+    `${JSON.stringify(searchIndex, null, 0)}\n`,
+  );
 
   const manifest: LexiconSiteManifest = {
     version: MANIFEST_VERSION,

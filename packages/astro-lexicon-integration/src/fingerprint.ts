@@ -8,7 +8,7 @@ import { MANIFEST_VERSION } from "./manifest.js";
  * Bump when JSON-LD → LexItem mapping, chunk layout, or pagination logic changes
  * so stale output is not reused.
  */
-export const LEXICON_COMPILER_REVISION = 3;
+export const LEXICON_COMPILER_REVISION = 4;
 
 export interface LexiconStampFile {
   fingerprint: string;
@@ -25,6 +25,8 @@ export function computeLexiconInputFingerprint(options: {
   outputDirRelative: string;
   /** Included so changing Starlight MDX layout path invalidates cache. */
   starlightContentLexiconDirRelative?: string;
+  audioManifestPathRelative?: string;
+  audioPublicBaseUrl?: string;
 }): string {
   const {
     astroRoot,
@@ -34,6 +36,8 @@ export function computeLexiconInputFingerprint(options: {
     pageSize,
     outputDirRelative,
     starlightContentLexiconDirRelative,
+    audioManifestPathRelative,
+    audioPublicBaseUrl,
   } = options;
 
   const normalizedRoot = path.resolve(astroRoot);
@@ -50,6 +54,17 @@ export function computeLexiconInputFingerprint(options: {
     lines.push(`${rel}\t${st.mtimeMs}\t${st.size}`);
   }
 
+  if (audioManifestPathRelative) {
+    const resolved = path.resolve(normalizedRoot, audioManifestPathRelative);
+    if (!existsSync(resolved)) {
+      lines.push(`missing-audio-manifest\t${audioManifestPathRelative.replace(/\\/g, "/")}`);
+    } else {
+      const st = statSync(resolved);
+      const rel = path.relative(normalizedRoot, resolved).replace(/\\/g, "/");
+      lines.push(`audio-manifest\t${rel}\t${st.mtimeMs}\t${st.size}`);
+    }
+  }
+
   const payload = [
     lines.join("\n"),
     "",
@@ -58,6 +73,8 @@ export function computeLexiconInputFingerprint(options: {
     `pageSize=${pageSize}`,
     `outputDir=${outputDirRelative.replace(/\\/g, "/")}`,
     `starlightMDX=${starlightContentLexiconDirRelative?.replace(/\\/g, "/") ?? ""}`,
+    `audioManifest=${audioManifestPathRelative?.replace(/\\/g, "/") ?? ""}`,
+    `audioPublicBase=${audioPublicBaseUrl ?? ""}`,
     `manifestVersion=${MANIFEST_VERSION}`,
     `compilerRevision=${LEXICON_COMPILER_REVISION}`,
   ].join("\n");

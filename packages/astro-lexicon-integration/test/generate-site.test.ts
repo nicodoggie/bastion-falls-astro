@@ -124,4 +124,140 @@ describe("generateLexiconSite skip-if-unchanged", () => {
     expect(chunk.fieldUri).toBe("basic-terms");
     expect(chunk.items.map((item) => item.writtenForm)).toEqual(["foo"]);
   });
+
+  it("writes a deterministic search index with alpha page and field metadata", () => {
+    const root = mkdirSync(
+      path.join(os.tmpdir(), `lex-search-${Date.now()}-${Math.random()}`),
+      { recursive: true },
+    );
+    const lexDir = path.join(root, "lex");
+    mkdirSync(lexDir, { recursive: true });
+    const shard = path.join(lexDir, "a.jsonld");
+    writeFileSync(shard, JSON.stringify(minimalDoc));
+
+    const outRel = "out/lex-search";
+    const result = generateLexiconSite({
+      astroRoot: root,
+      shardPaths: [shard],
+      outputDirRelative: outRel,
+      localeId: "test",
+      title: "Test Lex",
+      pageSize: 50,
+    });
+
+    const indexPath = path.join(root, outRel, "search-index.json");
+
+    expect(existsSync(indexPath)).toBe(true);
+    const searchIndex = JSON.parse(readFileSync(indexPath, "utf8")) as {
+      version: number;
+      localeId: string;
+      title: string;
+      entries: Array<{
+        id: string;
+        writtenForm: string;
+        typeLabels: string[];
+        alphaPage: number;
+        fieldUris: string[];
+        fieldLabels: string[];
+      }>;
+    };
+
+    expect(searchIndex).toEqual({
+      version: 1,
+      localeId: "test",
+      title: "Test Lex",
+      entries: [
+        {
+          id: "ehk:foo",
+          writtenForm: "foo",
+          phoneticForm: "foo",
+          types: ["ontolex:LexicalEntry", "lexinfo:Noun"],
+          typeLabels: ["noun"],
+          senses: [
+            {
+              definition: "bar",
+              semanticField: ["Basic Terms"],
+            },
+          ],
+          alphaPage: 1,
+          fieldUris: ["basic-terms"],
+          fieldLabels: ["Basic Terms"],
+        },
+      ],
+    });
+    expect(result.manifest.alpha.entryCount).toBe(1);
+  });
+
+  it("adds audio metadata to the search index from a TTS manifest", () => {
+    const root = mkdirSync(
+      path.join(os.tmpdir(), `lex-audio-${Date.now()}-${Math.random()}`),
+      { recursive: true },
+    );
+    const lexDir = path.join(root, "lex");
+    mkdirSync(lexDir, { recursive: true });
+    const shard = path.join(lexDir, "a.jsonld");
+    writeFileSync(shard, JSON.stringify(minimalDoc));
+
+    const audioDir = path.join(root, "audio");
+    mkdirSync(audioDir, { recursive: true });
+    const audioManifest = path.join(audioDir, "tts-lexicon-manifest.json");
+    writeFileSync(
+      audioManifest,
+      JSON.stringify({
+        items: [
+          {
+            id: "ehk:foo",
+            status: "generated",
+            outputPath: path.join(audioDir, "foo.webm"),
+            sources: [
+              {
+                outputPath: path.join(audioDir, "foo.webm"),
+                type: "audio/webm; codecs=opus",
+              },
+              {
+                outputPath: path.join(audioDir, "foo.mp3"),
+              },
+            ],
+          },
+        ],
+      }),
+    );
+
+    generateLexiconSite({
+      astroRoot: root,
+      shardPaths: [shard],
+      outputDirRelative: "out/lex-audio",
+      localeId: "test",
+      title: "Test Lex",
+      pageSize: 50,
+      audio: {
+        manifestPathRelative: "audio/tts-lexicon-manifest.json",
+        publicBaseUrl: "/assets/audio",
+      },
+    });
+
+    const searchIndex = JSON.parse(
+      readFileSync(path.join(root, "out/lex-audio/search-index.json"), "utf8"),
+    ) as {
+      entries: Array<{
+        audio?: {
+          sources: Array<{ url: string; type: string }>;
+        };
+      }>;
+    };
+
+    expect(searchIndex.entries[0]?.audio).toEqual({
+      label: "Pronunciation",
+      sources: [
+        {
+          url: "/assets/audio/foo.webm",
+          type: "audio/webm; codecs=opus",
+        },
+        {
+          url: "/assets/audio/foo.mp3",
+          type: "audio/mpeg",
+        },
+      ],
+    });
+  });
 });

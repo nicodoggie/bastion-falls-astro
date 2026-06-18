@@ -15,6 +15,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .bf-transcripts/
+.superpowers/
 .yarn/install-state.gz
 
 # environment variables
@@ -36,3 +37,4 @@ astro/src/content/docs/world/languages/hickic/seneran/*/lexicon/alpha/
 astro/src/content/docs/world/languages/hickic/seneran/*/lexicon/by-field/
 astro/src/content/docs/world/languages/hickic/seneran/*/lexicon/field/
 astro/src/content/docs/world/languages/hickic/seneran/*/lexicon/fields.mdx
+astro/src/content/docs/world/languages/hickic/seneran/*/lexicon/search.mdx

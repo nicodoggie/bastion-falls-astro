@@ -168,6 +168,12 @@ export default defineConfig({
         contentLexiconDirRelative:
           "src/content/docs/world/languages/hickic/seneran/early-hick/lexicon",
       },
+      audio: {
+        manifestPathRelative:
+          "src/assets/languages/hickic/seneran/early-hick/audio/lexicon/tts-lexicon-manifest.json",
+        publicBaseUrl:
+          "/languages/hickic/seneran/early-hick/audio/lexicon",
+      },
     }),
     lexiconIntegration({
       localeId: "middle-hick",

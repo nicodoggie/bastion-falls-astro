@@ -31,6 +31,10 @@ export interface LexiconIntegrationInput {
   starlightMdx?: {
     contentLexiconDirRelative: string;
   };
+  audio?: {
+    manifestPathRelative: string;
+    publicBaseUrl: string;
+  };
 }
 
 function isLexiconShardPath(pathname: string): boolean {
@@ -38,7 +42,7 @@ function isLexiconShardPath(pathname: string): boolean {
   return n.includes("/lexicon/") && n.endsWith(".jsonld");
 }
 
-function starlightLexiconMdxNeedsWrite(
+export function starlightLexiconMdxNeedsWrite(
   astroRoot: string,
   contentLexiconDirRelative: string,
 ): boolean {
@@ -48,7 +52,8 @@ function starlightLexiconMdxNeedsWrite(
     "alpha",
     "1.mdx",
   );
-  return !existsSync(alpha1);
+  const search = path.join(astroRoot, contentLexiconDirRelative, "search.mdx");
+  return !existsSync(alpha1) || !existsSync(search);
 }
 
 function relativeLexiconShards(
@@ -120,6 +125,7 @@ export function lexiconIntegration(
       title: options.title,
       pageSize,
       starlightContentLexiconDirRelative: options.starlightMdx?.contentLexiconDirRelative,
+      audio: options.audio,
     });
     const starlightDir = options.starlightMdx?.contentLexiconDirRelative;
     let starlightMdxFilesWritten = 0;

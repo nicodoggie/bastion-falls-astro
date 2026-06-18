@@ -197,6 +197,24 @@ import manifest from '${genImport}/manifest.json';
     filesWritten += 1;
   }
 
+  const searchBody = `---
+title: ${JSON.stringify(`${manifest.title} — search`)}
+description: >-
+  Search ${manifest.title} by word, definition, semantic field, or lexical type.
+---
+
+import LexiconSearchWorkbench from '@bastion-falls/lexicon-components/LexiconSearchWorkbench.astro';
+import searchIndex from '${genImport}/search-index.json';
+
+<LexiconSearchWorkbench
+  searchIndex={searchIndex}
+  lexiconUrl="${publicBase}"
+/>
+`;
+  if (writeFileIfChanged(path.join(lexAbs, "search.mdx"), searchBody)) {
+    filesWritten += 1;
+  }
+
   for (const route of manifest.fields.routes) {
     const title = `${manifest.title} — ${route.label}`;
     const body = `---
