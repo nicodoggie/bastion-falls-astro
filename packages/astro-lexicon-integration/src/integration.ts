@@ -1,5 +1,5 @@
 import path from "node:path";
-import { existsSync, mkdirSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 import type { AstroIntegration } from "astro";
@@ -46,14 +46,25 @@ export function starlightLexiconMdxNeedsWrite(
   astroRoot: string,
   contentLexiconDirRelative: string,
 ): boolean {
-  const alpha1 = path.join(
-    astroRoot,
-    contentLexiconDirRelative,
-    "alpha",
-    "1.mdx",
-  );
-  const search = path.join(astroRoot, contentLexiconDirRelative, "search.mdx");
-  return !existsSync(alpha1) || !existsSync(search);
+  const lexiconPage = path.join(astroRoot, `${contentLexiconDirRelative}.mdx`);
+  if (existsSync(path.join(astroRoot, contentLexiconDirRelative))) {
+    return true;
+  }
+
+  if (!existsSync(lexiconPage)) {
+    return true;
+  }
+
+  try {
+    const existing = readFileSync(lexiconPage, "utf8");
+    return !(
+      existing.includes("LexiconSearchWorkbench") &&
+      existing.includes("search-index.json") &&
+      existing.includes("lexiconUrl=")
+    );
+  } catch {
+    return true;
+  }
 }
 
 function relativeLexiconShards(

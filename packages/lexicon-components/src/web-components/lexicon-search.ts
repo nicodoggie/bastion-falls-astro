@@ -1,4 +1,5 @@
 import {
+  getLexiconInitialQueryFromSearchParams,
   listLexiconEntries,
   moveLexiconSuggestionIndex,
   paginateLexiconResults,
@@ -43,12 +44,31 @@ class BfLexiconSearchElement extends HTMLElement {
   #currentPage = 1;
   #currentQuery = "";
   #activeSuggestionIndex = -1;
+  #requestedEntryId = "";
+  #hasFocusedRequestedEntry = false;
 
   connectedCallback(): void {
     const raw = this.getAttribute("data-config");
     if (!raw) return;
     this.#config = JSON.parse(raw) as LexiconSearchConfig;
+    this.#applyUrlSearchState();
     this.#render();
+  }
+
+  #applyUrlSearchState(): void {
+    if (!this.#config || typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const urlQuery = getLexiconInitialQueryFromSearchParams(
+      window.location.search,
+      this.#config.searchIndex,
+    );
+    this.#requestedEntryId = params.get("entry") ?? "";
+    if (!this.#config.initialQuery && urlQuery) {
+      this.#config = {
+        ...this.#config,
+        initialQuery: urlQuery,
+      };
+    }
   }
 
   #render(): void {
@@ -131,6 +151,11 @@ class BfLexiconSearchElement extends HTMLElement {
         padding: 0;
         text-align: left;
         width: 100%;
+      }
+      .lex-search-row-actions {
+        align-items: center;
+        display: inline-flex;
+        gap: 0.2rem;
       }
       .lex-search-summary-content {
         display: grid;
@@ -242,9 +267,37 @@ class BfLexiconSearchElement extends HTMLElement {
         display: inline-flex;
         height: 1.75rem;
         justify-content: center;
-        margin-left: 0.75rem;
         padding: 0;
         width: 1.75rem;
+      }
+      .lex-search-copy-link-button {
+        align-items: center;
+        appearance: none;
+        background: transparent;
+        border: 0;
+        border-radius: 999px;
+        color: var(--sl-color-gray-3, currentColor);
+        cursor: pointer;
+        display: inline-flex;
+        height: 1.75rem;
+        justify-content: center;
+        padding: 0;
+        width: 1.75rem;
+      }
+      .lex-search-copy-link-button:hover,
+      .lex-search-copy-link-button:focus-visible,
+      .lex-search-copy-link-button[data-copied="true"] {
+        background: var(--sl-color-gray-6, rgba(148, 163, 184, 0.2));
+        color: var(--sl-color-accent, currentColor);
+      }
+      .lex-search-link-icon {
+        fill: none;
+        height: 1rem;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2;
+        width: 1rem;
       }
       .lex-search-disclosure-button:hover,
       .lex-search-disclosure-button:focus-visible {
@@ -283,6 +336,8 @@ class BfLexiconSearchElement extends HTMLElement {
     const input = this.querySelector<HTMLInputElement>(".lex-search-input");
     input?.addEventListener("input", () => {
       this.#currentPage = 1;
+      this.#requestedEntryId = "";
+      this.#replaceSearchUrl(input.value);
       this.#renderResults(input.value);
       this.#renderSearchSuggestions(input.value);
     });
@@ -383,6 +438,8 @@ class BfLexiconSearchElement extends HTMLElement {
     if (!input) return;
     input.value = suggestion;
     this.#currentPage = 1;
+    this.#requestedEntryId = "";
+    this.#replaceSearchUrl(suggestion);
     this.#clearSearchSuggestions();
     this.#renderResults(suggestion);
     input.focus();
@@ -424,7 +481,9 @@ class BfLexiconSearchElement extends HTMLElement {
       .join("")}${renderPager(page.page, page.pageCount)}`;
     this.#bindResultToggles();
     this.#bindAudioButtons();
+    this.#bindCopyLinkButtons();
     this.#bindPagination();
+    this.#focusRequestedEntry();
   }
 
   #bindResultToggles(): void {
@@ -467,6 +526,32 @@ class BfLexiconSearchElement extends HTMLElement {
     });
   }
 
+  #bindCopyLinkButtons(): void {
+    this.querySelectorAll<HTMLButtonElement>("[data-lex-copy-link]").forEach((button) => {
+      const defaultLabel = button.getAttribute("aria-label") ?? "Copy permalink";
+      button.addEventListener("click", async () => {
+        const link = button.dataset.lexCopyLink;
+        if (!link) return;
+        const permalink = typeof window === "undefined"
+          ? link
+          : new URL(link, window.location.href).toString();
+        try {
+          await navigator.clipboard.writeText(permalink);
+          button.dataset.copied = "true";
+          button.setAttribute("aria-label", "Copied permalink");
+          button.setAttribute("title", "Copied permalink");
+          window.setTimeout(() => {
+            delete button.dataset.copied;
+            button.setAttribute("aria-label", defaultLabel);
+            button.setAttribute("title", defaultLabel);
+          }, 1600);
+        } catch {
+          if (typeof window !== "undefined") window.location.href = permalink;
+        }
+      });
+    });
+  }
+
   #bindPagination(): void {
     this.querySelectorAll<HTMLButtonElement>("[data-lex-page]").forEach((button) => {
       button.addEventListener("click", () => {
@@ -475,6 +560,33 @@ class BfLexiconSearchElement extends HTMLElement {
         this.#renderResults(this.#currentQuery);
       });
     });
+  }
+
+  #replaceSearchUrl(query: string): void {
+    if (typeof window === "undefined" || !window.history?.replaceState) return;
+    const url = new URL(window.location.href);
+    const trimmed = query.trim();
+    url.searchParams.delete("entry");
+    if (trimmed) {
+      url.searchParams.set("q", trimmed);
+    } else {
+      url.searchParams.delete("q");
+    }
+    window.history.replaceState(window.history.state, "", url);
+  }
+
+  #focusRequestedEntry(): void {
+    if (!this.#requestedEntryId || this.#hasFocusedRequestedEntry) return;
+    const article = [...this.querySelectorAll<HTMLElement>("[data-lex-entry-id]")]
+      .find((element) => element.dataset.lexEntryId === this.#requestedEntryId);
+    if (!article) return;
+    this.#hasFocusedRequestedEntry = true;
+    const button = article.querySelector<HTMLButtonElement>("[data-lex-toggle]");
+    const panelId = button?.getAttribute("aria-controls");
+    const panel = panelId ? this.querySelector<HTMLElement>(`#${CSS.escape(panelId)}`) : null;
+    button?.setAttribute("aria-expanded", "true");
+    if (panel) panel.hidden = false;
+    article.scrollIntoView({ block: "start" });
   }
 }
 

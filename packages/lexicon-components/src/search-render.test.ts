@@ -78,6 +78,17 @@ describe("renderLexiconSearchResult", () => {
     assert.doesNotMatch(html, /lex-search-reasons/);
     assert.doesNotMatch(html, />type</);
   });
+
+  it("renders an above-the-fold icon button for the exact entry permalink", () => {
+    const html = renderLexiconSearchResult("/lexicon", result);
+
+    assert.match(html, /class="lex-search-copy-link-button"/);
+    assert.match(html, /data-lex-copy-link="\/lexicon\/\?entry=ehk%3A-asam"/);
+    assert.match(html, /aria-label="Copy permalink for -asam"/);
+    assert.match(html, /class="lex-search-link-icon"/);
+    assert.doesNotMatch(html, />Link to this entry</);
+    assert.doesNotMatch(html, />Open full entry</);
+  });
 });
 
 describe("renderLexiconTagSuggestions", () => {

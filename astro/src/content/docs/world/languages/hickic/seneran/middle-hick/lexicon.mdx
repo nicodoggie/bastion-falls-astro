@@ -1,56 +1,13 @@
 ---
-title: Middle Hick Lexicon
+title: "Middle Hick Lexicon"
 description: >-
-  Vocabulary of Middle Hick, with inherited Hick terms, regional developments,
-  and Iutlandish maritime borrowings.
-tags:
-  - middle-hick
-  - languages
-  - pre-kalassarian
-  - senera
-  - lexicon
-  - vocabulary
+  Search Middle Hick Lexicon by word, definition, semantic field, or lexical type.
 ---
 
-## Overview \{#lexicon-top}
+import LexiconSearchWorkbench from '@bastion-falls/lexicon-components/LexiconSearchWorkbench.astro';
+import searchIndex from '@/generated/lexicon/middle-hick/search-index.json';
 
-The Middle Hick lexicon records inherited Early Hick vocabulary alongside Iutlandish maritime,
-trade, and landscape borrowings from the period of increased seafaring contact.
-
-For grammatical information and language overview, see [Middle Hick](index.mdx).
-
-## Usage Notes
-
-1. Cross-references are marked with →
-1. Etymologies are shown in parentheses
-1. Compound derivations are marked with \<
-1. Apostrophes (') are used to transcribe glottal stops in phonemic transcriptions
-
-## Linking to entries
-
-Each lemma is wrapped in a definition list with `id` equal to its lexicon id (for example
-`mhk:hafel` for _hafel_ “ocean”). You can deep-link from anywhere on the site to a headword on the
-paginated page that contains it:
-
-`/world/languages/hickic/seneran/middle-hick/lexicon/alpha/1#mhk:hafel`
-
-The same `id` appears on both alphabetical and by-field pages, so either browse mode works for
-fragment links.
-
-## Search the lexicon
-
-Use the generated search workbench to filter by word, definition, semantic field, or lexical type:
-
-[**Search the Middle Hick lexicon →**](/world/languages/hickic/seneran/middle-hick/lexicon/search)
-
-## Browse alphabetically
-
-The full lexicon is split into static pages generated from JSON-LD shards:
-
-[**Alphabetical lexicon, page 1 →**](/world/languages/hickic/seneran/middle-hick/lexicon/alpha/1)
-
-## Browse by semantic field
-
-The same lemmas are listed under stable semantic field pages:
-
-[**Semantic field index →**](/world/languages/hickic/seneran/middle-hick/lexicon/fields)
+<LexiconSearchWorkbench
+  searchIndex={searchIndex}
+  lexiconUrl="/world/languages/hickic/seneran/middle-hick/lexicon"
+/>

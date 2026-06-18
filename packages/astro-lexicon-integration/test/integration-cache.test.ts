@@ -8,20 +8,86 @@ import { computeLexiconInputFingerprint } from "../src/fingerprint.js";
 import { starlightLexiconMdxNeedsWrite } from "../src/integration.js";
 
 describe("starlightLexiconMdxNeedsWrite", () => {
-  it("requires a write when the generated search page is missing", () => {
+  it("requires a write when the generated canonical lexicon page is missing", () => {
     const root = mkdirSync(
       path.join(os.tmpdir(), `lex-mdx-cache-${Date.now()}-${Math.random()}`),
       { recursive: true },
     );
     const contentLexiconDirRelative =
       "src/content/docs/world/languages/hickic/seneran/test/lexicon";
-    const alphaDir = path.join(root, contentLexiconDirRelative, "alpha");
-    mkdirSync(alphaDir, { recursive: true });
-    writeFileSync(path.join(alphaDir, "1.mdx"), "---\ntitle: old\n---\n");
 
     expect(
       starlightLexiconMdxNeedsWrite(root, contentLexiconDirRelative),
     ).toBe(true);
+  });
+
+  it("requires a write when the old generated lexicon directory still exists", () => {
+    const root = mkdirSync(
+      path.join(os.tmpdir(), `lex-mdx-cache-${Date.now()}-${Math.random()}`),
+      { recursive: true },
+    );
+    const contentLexiconDirRelative =
+      "src/content/docs/world/languages/hickic/seneran/test/lexicon";
+    mkdirSync(path.join(root, contentLexiconDirRelative), { recursive: true });
+
+    expect(
+      starlightLexiconMdxNeedsWrite(root, contentLexiconDirRelative),
+    ).toBe(true);
+  });
+
+  it("requires a write when the existing page is the old lexicon overview", () => {
+    const root = mkdirSync(
+      path.join(os.tmpdir(), `lex-mdx-cache-${Date.now()}-${Math.random()}`),
+      { recursive: true },
+    );
+    const contentLexiconDirRelative =
+      "src/content/docs/world/languages/hickic/seneran/test/lexicon";
+    mkdirSync(path.join(root, path.dirname(contentLexiconDirRelative)), {
+      recursive: true,
+    });
+    writeFileSync(
+      path.join(root, `${contentLexiconDirRelative}.mdx`),
+      [
+        "---",
+        "title: Test Lex",
+        "---",
+        "",
+        "[Search the lexicon](/world/languages/hickic/seneran/test/lexicon/search)",
+      ].join("\n"),
+    );
+
+    expect(
+      starlightLexiconMdxNeedsWrite(root, contentLexiconDirRelative),
+    ).toBe(true);
+  });
+
+  it("skips a write when the generated canonical lexicon page exists", () => {
+    const root = mkdirSync(
+      path.join(os.tmpdir(), `lex-mdx-cache-${Date.now()}-${Math.random()}`),
+      { recursive: true },
+    );
+    const contentLexiconDirRelative =
+      "src/content/docs/world/languages/hickic/seneran/test/lexicon";
+    mkdirSync(path.join(root, path.dirname(contentLexiconDirRelative)), {
+      recursive: true,
+    });
+    writeFileSync(
+      path.join(root, `${contentLexiconDirRelative}.mdx`),
+      [
+        "---",
+        "title: Test Lex",
+        "---",
+        "",
+        "import LexiconSearchWorkbench from '@bastion-falls/lexicon-components/LexiconSearchWorkbench.astro';",
+        "import searchIndex from '@/generated/lexicon/test/search-index.json';",
+        "",
+        '<LexiconSearchWorkbench searchIndex={searchIndex} lexiconUrl="/world/languages/hickic/seneran/test/lexicon" />',
+      ].join("\n"),
+    );
+
+    expect(
+      starlightLexiconMdxNeedsWrite(root, contentLexiconDirRelative),
+    ).toBe(false);
   });
 });
 

@@ -1,4 +1,5 @@
 import {
+  buildLexiconEntrySearchHref,
   listLexiconQuerySuggestions,
   listLexiconTagQuerySuggestions,
   listLexiconTypeBadges,
@@ -17,10 +18,6 @@ function escapeHtml(value: string): string {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
-}
-
-function entryUrl(lexiconUrl: string, result: LexiconSearchResult): string {
-  return `${lexiconUrl}/alpha/${String(result.entry.alphaPage)}#${encodeURIComponent(result.entry.id)}`;
 }
 
 function stableDomId(value: string): string {
@@ -68,6 +65,16 @@ function renderAudioButton(
     </audio>`;
 }
 
+function renderCopyLinkButton(href: string, writtenForm: string): string {
+  const label = `Copy permalink for ${writtenForm}`;
+  return `<button class="lex-search-copy-link-button" type="button" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}" data-lex-copy-link="${escapeHtml(href)}">
+    <svg class="lex-search-link-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+      <path d="M10 13a5 5 0 0 0 7.54.54l2.83-2.83a5 5 0 0 0-7.07-7.07l-1.62 1.62" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54L3.63 13.3a5 5 0 0 0 7.07 7.07l1.62-1.62" />
+    </svg>
+  </button>`;
+}
+
 export function renderLexiconTagSuggestions(
   index: LexiconSearchIndex,
   query: string,
@@ -107,7 +114,9 @@ export function renderLexiconSearchResult(
   const typeBadges = listLexiconTypeBadges(entry);
   const panelId = `lex-search-detail-${stableDomId(entry.id)}`;
   const audioId = `lex-search-audio-${stableDomId(entry.id)}`;
-  return `<article class="lex-search-result">
+  const articleId = `lex-search-entry-${stableDomId(entry.id)}`;
+  const entryHref = buildLexiconEntrySearchHref(lexiconUrl, entry);
+  return `<article class="lex-search-result" id="${articleId}" data-lex-entry-id="${escapeHtml(entry.id)}">
     <div class="lex-search-row-wrap">
       <div class="lex-search-row">
         <span class="lex-search-summary-content">
@@ -121,10 +130,13 @@ export function renderLexiconSearchResult(
           </span>
           ${renderSenseLines(preview, "lex-search-preview")}
         </span>
-        <button class="lex-search-disclosure-button" type="button" aria-expanded="false" aria-controls="${panelId}" data-lex-toggle>
-          <span class="sr-only">Toggle entry details</span>
-          <span class="lex-search-disclosure" aria-hidden="true"></span>
-        </button>
+        <span class="lex-search-row-actions">
+          ${renderCopyLinkButton(entryHref, entry.writtenForm)}
+          <button class="lex-search-disclosure-button" type="button" aria-expanded="false" aria-controls="${panelId}" data-lex-toggle>
+            <span class="sr-only">Toggle entry details</span>
+            <span class="lex-search-disclosure" aria-hidden="true"></span>
+          </button>
+        </span>
       </div>
     </div>
     <div class="lex-search-detail" id="${panelId}" hidden>
@@ -132,7 +144,6 @@ export function renderLexiconSearchResult(
       ${tags ? `<p class="lex-search-tags">${escapeHtml(tags)}</p>` : ""}
       ${entry.protoform ? `<p>${escapeHtml(entry.protoform)}</p>` : ""}
       ${entry.note ? `<p>${escapeHtml(entry.note)}</p>` : ""}
-      <p><a href="${entryUrl(lexiconUrl, result)}">Open full entry</a></p>
     </div>
   </article>`;
 }

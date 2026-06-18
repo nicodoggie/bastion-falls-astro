@@ -3,6 +3,10 @@ import { describe, it } from "node:test";
 
 import type { LexiconSearchEntry, LexiconSearchIndex } from "./types.ts";
 import {
+  buildLexiconEntrySearchHref,
+  buildLexiconSearchHref,
+  getLexiconInitialQueryFromSearchParams,
+  getLexiconQueryFromSearchParams,
   listLexiconEntries,
   listLexiconQuerySuggestions,
   listLexiconTagQuerySuggestions,
@@ -172,5 +176,34 @@ describe("searchLexicon", () => {
   it("returns no results for empty or unmatched queries", () => {
     assert.deepEqual(searchLexicon(index, ""), []);
     assert.deepEqual(searchLexicon(index, "def:stone"), []);
+  });
+
+  it("reads the q query parameter for shareable search links", () => {
+    assert.equal(getLexiconQueryFromSearchParams("?q=type%3Anoun"), "type:noun");
+    assert.equal(getLexiconQueryFromSearchParams("q=word%3Abarak%27er"), "word:barak'er");
+    assert.equal(getLexiconQueryFromSearchParams("?page=2"), "");
+    assert.equal(
+      getLexiconInitialQueryFromSearchParams("?entry=ehk%3Abarak%27er", index),
+      "word:barak'er",
+    );
+    assert.equal(
+      getLexiconInitialQueryFromSearchParams("?q=tag%3Amotion&entry=ehk%3Abarak%27er", index),
+      "tag:motion",
+    );
+  });
+
+  it("builds shareable search hrefs for query values", () => {
+    assert.equal(
+      buildLexiconSearchHref("/world/lexicon", "word:barak'er"),
+      "/world/lexicon/?q=word%3Abarak%27er",
+    );
+    assert.equal(
+      buildLexiconSearchHref("/world/lexicon/", "tag:sacred terms"),
+      "/world/lexicon/?q=tag%3Asacred+terms",
+    );
+    assert.equal(
+      buildLexiconEntrySearchHref("/world/lexicon", index.entries[1]),
+      "/world/lexicon/?entry=ehk%3Abarak%27er",
+    );
   });
 });

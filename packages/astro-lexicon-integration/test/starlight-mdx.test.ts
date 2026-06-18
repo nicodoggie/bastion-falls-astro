@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
@@ -24,14 +24,20 @@ describe("derivePublicLexiconBase", () => {
   });
 });
 
-describe("writeStarlightLexiconMdxPages field routes", () => {
-  it("writes a visible fields index and hidden indexable field pages", () => {
+describe("writeStarlightLexiconMdxPages", () => {
+  it("writes a single canonical lexicon page and prunes legacy generated routes", () => {
     const root = mkdirSync(
       path.join(os.tmpdir(), `lex-mdx-fields-${Date.now()}-${Math.random()}`),
       { recursive: true },
     );
     const contentLexiconDirRelative =
       "src/content/docs/world/languages/hickic/seneran/test/lexicon";
+    const legacyDir = path.join(root, contentLexiconDirRelative);
+    mkdirSync(path.join(legacyDir, "alpha"), { recursive: true });
+    mkdirSync(path.join(legacyDir, "field"), { recursive: true });
+    writeFileSync(path.join(legacyDir, "search.mdx"), "---\ntitle: old\n---\n");
+    writeFileSync(path.join(legacyDir, "alpha", "1.mdx"), "---\ntitle: old\n---\n");
+    writeFileSync(path.join(legacyDir, "field", "basic-terms.mdx"), "---\ntitle: old\n---\n");
 
     const result = writeStarlightLexiconMdxPages({
       astroRoot: root,
@@ -62,31 +68,19 @@ describe("writeStarlightLexiconMdxPages field routes", () => {
     });
 
     const lexAbs = path.join(root, contentLexiconDirRelative);
-    const fieldsIndex = path.join(lexAbs, "fields.mdx");
-    const fieldPage = path.join(lexAbs, "field", "basic-terms.mdx");
-    const searchPage = path.join(lexAbs, "search.mdx");
+    const canonicalPage = `${lexAbs}.mdx`;
 
-    expect(result.filesWritten).toBeGreaterThanOrEqual(2);
-    expect(existsSync(fieldsIndex)).toBe(true);
-    expect(existsSync(fieldPage)).toBe(true);
-    expect(existsSync(searchPage)).toBe(true);
+    expect(result.filesWritten).toBe(1);
+    expect(existsSync(canonicalPage)).toBe(true);
+    expect(existsSync(lexAbs)).toBe(false);
 
-    expect(readFileSync(fieldsIndex, "utf8")).toContain(
-      "import LexiconFieldsIndexPage",
-    );
-
-    const fieldMdx = readFileSync(fieldPage, "utf8");
-    expect(fieldMdx).toContain("sidebar:");
-    expect(fieldMdx).toContain("hidden: true");
-    expect(fieldMdx).toContain("pagefind: true");
-    expect(fieldMdx).toContain("import LexiconFieldPage");
-    expect(fieldMdx).toContain("field-basic-terms.json");
-
-    const searchMdx = readFileSync(searchPage, "utf8");
-    expect(searchMdx).toContain("import LexiconSearchWorkbench");
-    expect(searchMdx).toContain("search-index.json");
-    expect(searchMdx).toContain(
+    const lexiconMdx = readFileSync(canonicalPage, "utf8");
+    expect(lexiconMdx).toContain("import LexiconSearchWorkbench");
+    expect(lexiconMdx).toContain("search-index.json");
+    expect(lexiconMdx).toContain(
       'lexiconUrl="/world/languages/hickic/seneran/test/lexicon"',
     );
+    expect(lexiconMdx).not.toContain("LexiconAlphaPage");
+    expect(lexiconMdx).not.toContain("LexiconFieldPage");
   });
 });

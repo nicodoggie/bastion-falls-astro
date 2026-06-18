@@ -297,3 +297,37 @@ export function summarizeLexiconSenses(
 export function listLexiconTypeBadges(entry: LexiconSearchEntry): string[] {
   return [...new Set(entry.typeLabels.map((label) => label.trim()).filter(Boolean))];
 }
+
+export function getLexiconQueryFromSearchParams(search: string): string {
+  const normalized = search.startsWith("?") ? search.slice(1) : search;
+  return new URLSearchParams(normalized).get("q") ?? "";
+}
+
+export function getLexiconInitialQueryFromSearchParams(
+  search: string,
+  index: LexiconSearchIndex,
+): string {
+  const normalized = search.startsWith("?") ? search.slice(1) : search;
+  const params = new URLSearchParams(normalized);
+  const query = params.get("q");
+  if (query) return query;
+  const entryId = params.get("entry");
+  if (!entryId) return "";
+  const entry = index.entries.find((item) => item.id === entryId);
+  return entry ? `word:${entry.writtenForm}` : "";
+}
+
+export function buildLexiconSearchHref(lexiconUrl: string, query: string): string {
+  const base = lexiconUrl.replace(/\/+$/g, "");
+  const params = new URLSearchParams({ q: query });
+  return `${base}/?${params.toString()}`;
+}
+
+export function buildLexiconEntrySearchHref(
+  lexiconUrl: string,
+  entry: Pick<LexiconSearchEntry, "id">,
+): string {
+  const base = lexiconUrl.replace(/\/+$/g, "");
+  const params = new URLSearchParams({ entry: entry.id });
+  return `${base}/?${params.toString()}`;
+}
