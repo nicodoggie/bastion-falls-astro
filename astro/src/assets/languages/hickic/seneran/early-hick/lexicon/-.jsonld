@@ -274,7 +274,11 @@
             "@language": "en",
             "@value": "regional or fossil ellative-like/source-like suffix; preserved chiefly in lexicalized inland forms"
           },
-          "lexinfo:semanticField": ["Grammatical Terms", "Spatial Cases", "Regional Forms"],
+          "lexinfo:semanticField": [
+            "Grammatical Terms",
+            "Spatial Cases",
+            "Regional Forms"
+          ],
           "usage": "Not the standard productive Early Hick ellative; compare -imris."
         }
       ]

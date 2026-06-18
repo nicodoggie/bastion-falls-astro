@@ -249,7 +249,11 @@
             "@language": "en",
             "@value": "comrade, crewmate, associated person"
           },
-          "lexinfo:semanticField": ["Kinship Terms", "Social Terms", "Borrowed Terms"]
+          "lexinfo:semanticField": [
+            "Kinship Terms",
+            "Social Terms",
+            "Borrowed Terms"
+          ]
         },
         {
           "@type": "ontolex:LexicalSense",

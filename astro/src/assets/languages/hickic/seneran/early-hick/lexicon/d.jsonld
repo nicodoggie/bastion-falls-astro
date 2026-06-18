@@ -166,7 +166,11 @@
         "etymon:gloss": "meat/flesh-interior",
         "etymon:note": "From lexicalized Proto-Hick *duhapu < *duha pu 'thing within flesh; internal concretion', with semantic extension from pearl or internal lump to general rounded mass.",
         "etymon:protoform": "Proto-Hick *duhapu < *duha pu",
-        "etymon:soundChange": ["compound lexicalization", "vowel coalescence", "final vowel loss"]
+        "etymon:soundChange": [
+          "compound lexicalization",
+          "vowel coalescence",
+          "final vowel loss"
+        ]
       },
       "sense": [
         {

@@ -189,10 +189,7 @@
         "etymon:compound": "Proto-Hick *nateru < *naru teru",
         "etymon:gloss": "action-flow, course of action",
         "etymon:note": "Early lexicalized stem from *naru teru 'action-flow, course of action'. Developed from 'course of action' to 'intended course' and then to desire or intention. Later reanalyzed as nat + -'er, providing the source of desiderative -nat.",
-        "etymon:soundChange": [
-          "compound fusion",
-          "final vowel reduction"
-        ]
+        "etymon:soundChange": ["compound fusion", "final vowel reduction"]
       },
       "related": [
         {
@@ -307,9 +304,7 @@
             "@language": "en",
             "@value": "please; would you be willing to; requestive auxiliary"
           },
-          "examples": [
-            "vinud'er-es naterlas 'al'tan-el 'Please build.'"
-          ],
+          "examples": ["vinud'er-es naterlas 'al'tan-el 'Please build.'"],
           "lexinfo:semanticField": [
             "Grammatical Terms",
             "Mood",

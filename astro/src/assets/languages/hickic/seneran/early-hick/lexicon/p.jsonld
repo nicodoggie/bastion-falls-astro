@@ -420,11 +420,7 @@
             "@language": "en",
             "@value": "refusal, denial"
           },
-          "lexinfo:semanticField": [
-            "Speech Terms",
-            "Social Terms",
-            "Negation"
-          ],
+          "lexinfo:semanticField": ["Speech Terms", "Social Terms", "Negation"],
           "usage": "Lexical fossil of the older pe refusal layer rather than a productive negation form."
         }
       ]
@@ -541,10 +537,7 @@
             "@language": "en",
             "@value": "idle, unskilled, or unemployed person perceived as refusing expected work"
           },
-          "lexinfo:semanticField": [
-            "Social Terms",
-            "Occupational Terms"
-          ],
+          "lexinfo:semanticField": ["Social Terms", "Occupational Terms"],
           "usage": "Secondary social extension with a scolding or dismissive tone."
         }
       ]
@@ -594,10 +587,7 @@
         "etymon:compound": "Proto-Hick *pe naru",
         "etymon:gloss": "no-action",
         "etymon:note": "Fossilized child-coded refusal term from older pe 'no!' and naru 'action, enacted response'.",
-        "etymon:soundChange": [
-          "compound lexicalization",
-          "final vowel loss"
-        ]
+        "etymon:soundChange": ["compound lexicalization", "final vowel loss"]
       },
       "related": [
         {

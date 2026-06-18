@@ -171,8 +171,7 @@ export default defineConfig({
       audio: {
         manifestPathRelative:
           "src/assets/languages/hickic/seneran/early-hick/audio/lexicon/tts-lexicon-manifest.json",
-        publicBaseUrl:
-          "/languages/hickic/seneran/early-hick/audio/lexicon",
+        publicBaseUrl: "/languages/hickic/seneran/early-hick/audio/lexicon",
       },
     }),
     lexiconIntegration({

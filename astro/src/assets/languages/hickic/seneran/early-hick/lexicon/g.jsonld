@@ -96,11 +96,7 @@
     },
     {
       "@id": "ehk:gnar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun",
-        "lexinfo:Interjection"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun", "lexinfo:Interjection"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "gnar",

@@ -200,7 +200,11 @@
     },
     {
       "@id": "ehk:ru",
-      "@type": ["ontolex:LexicalEntry", "lexinfo:Conjunction", "lexinfo:Particle"],
+      "@type": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Conjunction",
+        "lexinfo:Particle"
+      ],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "ru",

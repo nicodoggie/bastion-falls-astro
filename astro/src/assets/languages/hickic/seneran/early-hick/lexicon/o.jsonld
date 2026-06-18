@@ -41,7 +41,11 @@
             "@language": "en",
             "@value": "enumeration particle; marks each member of a coordinated list"
           },
-          "lexinfo:semanticField": ["Grammatical Terms", "Particles", "Coordination"],
+          "lexinfo:semanticField": [
+            "Grammatical Terms",
+            "Particles",
+            "Coordination"
+          ],
           "usage": "Used after each coordinated member before a set-level coordinator such as ru, 'a, or ewes."
         }
       ]

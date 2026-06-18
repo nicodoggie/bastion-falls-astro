@@ -42,10 +42,7 @@
             "@language": "en",
             "@value": "plural, collective"
           },
-          "examples": [
-            "ma-mater 'boats'",
-            "ma-'al 'people'"
-          ],
+          "examples": ["ma-mater 'boats'", "ma-'al 'people'"],
           "lexinfo:semanticField": [
             "Grammatical Terms",
             "Number Marking",

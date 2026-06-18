@@ -98,7 +98,11 @@
             "@language": "en",
             "@value": "bifurcation point in a flowing water system; fork or divide of a stream"
           },
-          "lexinfo:semanticField": ["Natural World", "Water Features", "Landscape Terms"]
+          "lexinfo:semanticField": [
+            "Natural World",
+            "Water Features",
+            "Landscape Terms"
+          ]
         },
         {
           "@type": "ontolex:LexicalSense",
@@ -443,11 +447,7 @@
     },
     {
       "@id": "ehk:ignar",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb",
-        "lexinfo:Interjection"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb", "lexinfo:Interjection"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "i.gnər",
