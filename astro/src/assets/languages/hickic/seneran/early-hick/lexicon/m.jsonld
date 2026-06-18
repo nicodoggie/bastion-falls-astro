@@ -905,6 +905,65 @@
       ]
     },
     {
+      "@id": "ehk:mokrassim",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interjection"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "mo.kra.sim",
+        "writtenRep": "mokrassim"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:mo"
+        },
+        {
+          "@id": "ehk:kras"
+        },
+        {
+          "@id": "ehk:-sim"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "mo-kras-sim",
+        "etymon:gloss": "NEG-bitter-TRANS",
+        "etymon:note": "Formulaic greeting wishing that bitterness not arise between host and guest. The clipped or outsider form krassim is semantically awkward because it resembles kras-sim 'become bitter'.",
+        "etymon:soundChange": "formulaic case expression"
+      },
+      "related": [
+        {
+          "@id": "ehk:mo",
+          "note": "negation prefix",
+          "relationshipType": "contains"
+        },
+        {
+          "@id": "ehk:kras",
+          "note": "root for bitterness",
+          "relationshipType": "contains"
+        },
+        {
+          "@id": "ehk:krasitar",
+          "note": "paired farewell formula",
+          "relationshipType": "paired formula with"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "welcome; come in peace; no hard feelings"
+          },
+          "lexinfo:semanticField": [
+            "Speech Terms",
+            "Formulaic Expressions",
+            "Social Terms"
+          ],
+          "usage": "Threshold greeting for receiving someone across a social boundary, especially into a home, camp, boat, or conversation after tension."
+        }
+      ]
+    },
+    {
       "@id": "ehk:momer",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {

@@ -952,6 +952,57 @@
       ]
     },
     {
+      "@id": "ehk:krasitar",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Interjection"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "kra.si.tar",
+        "writtenRep": "krasitar"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:kras"
+        },
+        {
+          "@id": "ehk:-itar"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "kras-itar",
+        "etymon:gloss": "bitter-SUPE",
+        "etymon:note": "Formulaic farewell using the superessive metaphor of standing above bitterness.",
+        "etymon:soundChange": "formulaic case expression"
+      },
+      "related": [
+        {
+          "@id": "ehk:kras",
+          "note": "root for bitterness",
+          "relationshipType": "contains"
+        },
+        {
+          "@id": "ehk:mokrassim",
+          "note": "paired greeting formula",
+          "relationshipType": "paired formula with"
+        }
+      ],
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "farewell; part without bitterness"
+          },
+          "lexinfo:semanticField": [
+            "Speech Terms",
+            "Formulaic Expressions",
+            "Social Terms"
+          ],
+          "usage": "Used as a conciliatory or hospitable leave-taking formula. Literally 'above bitterness'."
+        }
+      ]
+    },
+    {
       "@id": "ehk:kul",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
