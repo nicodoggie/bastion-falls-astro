@@ -179,6 +179,88 @@ export function listLexiconEntries(
   return typeof options.limit === "number" ? results.slice(0, options.limit) : results;
 }
 
+export function listLexiconTagSuggestions(index: LexiconSearchIndex): string[] {
+  const labels = new Map<string, string>();
+  for (const entry of index.entries) {
+    for (const label of entry.fieldLabels) {
+      const trimmed = label.trim();
+      if (!trimmed) continue;
+      const key = trimmed.toLowerCase();
+      if (!labels.has(key)) labels.set(key, trimmed);
+    }
+  }
+  return [...labels.values()].sort((a, b) =>
+    a.localeCompare(b, "en", {
+      numeric: true,
+      sensitivity: "base",
+    }),
+  );
+}
+
+export function listLexiconTypeSuggestions(index: LexiconSearchIndex): string[] {
+  const labels = new Map<string, string>();
+  for (const entry of index.entries) {
+    for (const label of entry.typeLabels) {
+      const trimmed = label.trim();
+      if (!trimmed) continue;
+      const key = trimmed.toLowerCase();
+      if (!labels.has(key)) labels.set(key, trimmed);
+    }
+  }
+  return [...labels.values()].sort((a, b) =>
+    a.localeCompare(b, "en", {
+      numeric: true,
+      sensitivity: "base",
+    }),
+  );
+}
+
+export function listLexiconTagQuerySuggestions(
+  index: LexiconSearchIndex,
+  query: string,
+  options: { limit?: number } = {},
+): string[] {
+  const trimmed = query.trimStart();
+  const prefix = /^tag:(.*)$/i.exec(trimmed);
+  if (!prefix) return [];
+
+  const needle = normalize(prefix[1] ?? "");
+  const suggestions = listLexiconTagSuggestions(index)
+    .filter((label) => normalize(label).includes(needle))
+    .map((label) => `tag:${label}`);
+  return typeof options.limit === "number" ? suggestions.slice(0, options.limit) : suggestions;
+}
+
+export function listLexiconQuerySuggestions(
+  index: LexiconSearchIndex,
+  query: string,
+  options: { limit?: number } = {},
+): string[] {
+  const trimmed = query.trimStart();
+  const prefix = /^(tag|type|pos):(.*)$/i.exec(trimmed);
+  if (!prefix) return [];
+
+  const rawScope = prefix[1]?.toLowerCase() ?? "";
+  const needle = normalize(prefix[2] ?? "");
+  const suggestionPrefix = rawScope === "pos" ? "pos" : rawScope;
+  const labels =
+    rawScope === "tag" ? listLexiconTagSuggestions(index) : listLexiconTypeSuggestions(index);
+  const suggestions = labels
+    .filter((label) => normalize(label).includes(needle))
+    .map((label) => `${suggestionPrefix}:${label}`);
+  return typeof options.limit === "number" ? suggestions.slice(0, options.limit) : suggestions;
+}
+
+export function moveLexiconSuggestionIndex(
+  currentIndex: number,
+  count: number,
+  direction: 1 | -1,
+): number {
+  if (count <= 0) return -1;
+  if (currentIndex < 0) return direction > 0 ? 0 : count - 1;
+  return (currentIndex + direction + count) % count;
+}
+
 export function paginateLexiconResults(
   results: readonly LexiconSearchResult[],
   options: { page: number; pageSize: number },

@@ -1,9 +1,12 @@
 import {
+  listLexiconQuerySuggestions,
+  listLexiconTagQuerySuggestions,
   listLexiconTypeBadges,
   summarizeLexiconSenses,
 } from "./search.ts";
 import type {
   LexiconSearchAudio,
+  LexiconSearchIndex,
   LexiconSearchResult,
   LexiconSearchSense,
 } from "./types.ts";
@@ -63,6 +66,35 @@ function renderAudioButton(
         )
         .join("")}
     </audio>`;
+}
+
+export function renderLexiconTagSuggestions(
+  index: LexiconSearchIndex,
+  query: string,
+): string {
+  const suggestions = listLexiconTagQuerySuggestions(index, query, { limit: 8 });
+  return renderLexiconSuggestionList(suggestions, "Semantic field suggestions");
+}
+
+export function renderLexiconSearchSuggestions(
+  index: LexiconSearchIndex,
+  query: string,
+): string {
+  const suggestions = listLexiconQuerySuggestions(index, query, { limit: 8 });
+  return renderLexiconSuggestionList(suggestions, "Search suggestions");
+}
+
+function renderLexiconSuggestionList(
+  suggestions: readonly string[],
+  label: string,
+): string {
+  if (!suggestions.length) return "";
+  return `<span class="lex-search-suggestions" role="listbox" aria-label="${escapeHtml(label)}">${suggestions
+    .map(
+      (suggestion) =>
+        `<button class="lex-search-suggestion" type="button" role="option" aria-selected="false" data-lex-suggestion="${escapeHtml(suggestion)}">${escapeHtml(suggestion)}</button>`,
+    )
+    .join("")}</span>`;
 }
 
 export function renderLexiconSearchResult(

@@ -1,8 +1,12 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
-import { renderLexiconSearchResult } from "./search-render.ts";
-import type { LexiconSearchResult } from "./types.ts";
+import {
+  renderLexiconSearchResult,
+  renderLexiconSearchSuggestions,
+  renderLexiconTagSuggestions,
+} from "./search-render.ts";
+import type { LexiconSearchIndex, LexiconSearchResult } from "./types.ts";
 
 const result: LexiconSearchResult = {
   score: 0,
@@ -63,5 +67,37 @@ describe("renderLexiconSearchResult", () => {
     assert.match(html, /src="\/audio\/foo\.mp3"/);
     assert.ok(html.indexOf("lex-search-phonetic") < html.indexOf("lex-search-audio-button"));
     assert.ok(html.indexOf("lex-search-audio-button") < html.indexOf("lex-search-type"));
+  });
+});
+
+describe("renderLexiconTagSuggestions", () => {
+  it("renders prefixed suggestions after supported filter prefixes", () => {
+    const index: LexiconSearchIndex = {
+      version: 1,
+      localeId: "test",
+      title: "Test",
+      entries: [
+        {
+          ...result.entry,
+          fieldLabels: ["sacred terms", "Motion"],
+        },
+      ],
+    };
+
+    assert.equal(renderLexiconTagSuggestions(index, "ta"), "");
+
+    const html = renderLexiconTagSuggestions(index, "tag:");
+
+    assert.match(html, /role="listbox"/);
+    assert.match(html, /data-lex-suggestion="tag:Motion"/);
+    assert.match(html, />tag:Motion</);
+    assert.match(html, /data-lex-suggestion="tag:sacred terms"/);
+    assert.match(html, />tag:sacred terms</);
+
+    const typeHtml = renderLexiconSearchSuggestions(index, "type:");
+
+    assert.match(typeHtml, /aria-label="Search suggestions"/);
+    assert.match(typeHtml, /data-lex-suggestion="type:suffix"/);
+    assert.match(typeHtml, />type:suffix</);
   });
 });

@@ -1,9 +1,13 @@
 import {
   listLexiconEntries,
+  moveLexiconSuggestionIndex,
   paginateLexiconResults,
   searchLexicon,
 } from "../search.ts";
-import { renderLexiconSearchResult } from "../search-render.ts";
+import {
+  renderLexiconSearchResult,
+  renderLexiconSearchSuggestions,
+} from "../search-render.ts";
 import type { LexiconSearchIndex } from "../types.ts";
 
 interface LexiconSearchConfig {
@@ -21,6 +25,10 @@ function escapeHtml(value: string): string {
     .replaceAll('"', "&quot;");
 }
 
+function stableDomId(value: string): string {
+  return value.replace(/[^a-z0-9_-]+/gi, "-").replace(/^-+|-+$/g, "") || "lexicon";
+}
+
 function renderPager(page: number, pageCount: number): string {
   if (pageCount <= 1) return "";
   return `<nav class="lex-search-pagination" aria-label="Lexicon result pages">
@@ -34,6 +42,7 @@ class BfLexiconSearchElement extends HTMLElement {
   #config: LexiconSearchConfig | null = null;
   #currentPage = 1;
   #currentQuery = "";
+  #activeSuggestionIndex = -1;
 
   connectedCallback(): void {
     const raw = this.getAttribute("data-config");
@@ -44,6 +53,9 @@ class BfLexiconSearchElement extends HTMLElement {
 
   #render(): void {
     if (!this.#config) return;
+    const tagSuggestionsId = `lex-search-tag-suggestions-${stableDomId(
+      this.#config.searchIndex.localeId,
+    )}`;
     this.innerHTML = `<style>
       .lex-search-workbench {
         display: grid;
@@ -54,12 +66,48 @@ class BfLexiconSearchElement extends HTMLElement {
         display: grid;
         gap: 0.35rem;
       }
+      .lex-search-input-wrap {
+        display: block;
+        position: relative;
+      }
       .lex-search-input {
         border: 1px solid var(--sl-color-gray-5, #d1d5db);
         border-radius: 0.35rem;
         font: inherit;
         padding: 0.45rem 0.55rem;
         width: 100%;
+      }
+      .lex-search-suggestions-slot {
+        display: block;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: calc(100% + 0.25rem);
+        z-index: 4;
+      }
+      .lex-search-suggestions {
+        background: var(--sl-color-bg, #fff);
+        border: 1px solid var(--sl-color-gray-5, #d1d5db);
+        border-radius: 0.35rem;
+        box-shadow: 0 0.35rem 1rem rgba(15, 23, 42, 0.14);
+        display: grid;
+        overflow: hidden;
+        width: 100%;
+      }
+      .lex-search-suggestion {
+        appearance: none;
+        background: transparent;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+        padding: 0.42rem 0.55rem;
+        text-align: left;
+      }
+      .lex-search-suggestion:hover,
+      .lex-search-suggestion:focus-visible,
+      .lex-search-suggestion[data-active="true"] {
+        background: var(--sl-color-gray-6, rgba(148, 163, 184, 0.2));
       }
       .lex-search-help,
       .lex-search-status {
@@ -223,7 +271,10 @@ class BfLexiconSearchElement extends HTMLElement {
     <section class="lex-search-workbench">
       <label class="lex-search-label">
         <span>Search ${escapeHtml(this.#config.searchIndex.title)}</span>
-        <input class="lex-search-input" type="search" value="${escapeHtml(this.#config.initialQuery)}" placeholder="Try word:thral, def:revelation, tag:sacred, type:noun" />
+        <span class="lex-search-input-wrap">
+          <input class="lex-search-input" type="search" value="${escapeHtml(this.#config.initialQuery)}" aria-controls="${escapeHtml(tagSuggestionsId)}" aria-expanded="false" autocomplete="off" placeholder="Try word:thral, def:revelation, tag:sacred, type:noun" />
+          <span class="lex-search-suggestions-slot" id="${escapeHtml(tagSuggestionsId)}"></span>
+        </span>
       </label>
       <p class="lex-search-help">Use prefixes like <code>word:</code>, <code>def:</code>, <code>tag:</code>, or <code>type:</code>. <code>pos:</code> also works for type.</p>
       <div class="lex-search-status" aria-live="polite"></div>
@@ -234,8 +285,117 @@ class BfLexiconSearchElement extends HTMLElement {
     input?.addEventListener("input", () => {
       this.#currentPage = 1;
       this.#renderResults(input.value);
+      this.#renderSearchSuggestions(input.value);
+    });
+    input?.addEventListener("focus", () => {
+      this.#renderSearchSuggestions(input.value);
+    });
+    input?.addEventListener("keydown", (event) => {
+      this.#handleSuggestionKeydown(event, input);
+    });
+    document.addEventListener("click", (event) => {
+      if (event.target instanceof Node && this.contains(event.target)) return;
+      this.#clearSearchSuggestions();
     });
     this.#renderResults(this.#config.initialQuery);
+    this.#renderSearchSuggestions(this.#config.initialQuery);
+  }
+
+  #renderSearchSuggestions(query: string): void {
+    if (!this.#config) return;
+    const input = this.querySelector<HTMLInputElement>(".lex-search-input");
+    const slot = this.querySelector<HTMLElement>(".lex-search-suggestions-slot");
+    if (!input || !slot) return;
+    slot.innerHTML = renderLexiconSearchSuggestions(this.#config.searchIndex, query);
+    this.#activeSuggestionIndex = -1;
+    input.removeAttribute("aria-activedescendant");
+    input.setAttribute("aria-expanded", slot.innerHTML ? "true" : "false");
+    this.#suggestionButtons().forEach((button, index) => {
+      button.id = `${slot.id}-option-${String(index)}`;
+      button.addEventListener("pointerenter", () => {
+        this.#setActiveSuggestionIndex(index);
+      });
+      button.addEventListener("click", () => {
+        const suggestion = button.dataset.lexSuggestion;
+        if (!suggestion) return;
+        this.#chooseSuggestion(suggestion);
+      });
+    });
+  }
+
+  #handleSuggestionKeydown(event: KeyboardEvent, input: HTMLInputElement): void {
+    if (event.key === "Escape") {
+      this.#clearSearchSuggestions();
+      return;
+    }
+
+    if (event.key === "Enter") {
+      const active = this.#suggestionButtons()[this.#activeSuggestionIndex];
+      const suggestion = active?.dataset.lexSuggestion;
+      if (!suggestion) return;
+      event.preventDefault();
+      this.#chooseSuggestion(suggestion);
+      return;
+    }
+
+    const direction = event.key === "ArrowDown" ? 1 : event.key === "ArrowUp" ? -1 : 0;
+    if (!direction) return;
+
+    if (!this.#suggestionButtons().length) {
+      this.#renderSearchSuggestions(input.value);
+    }
+    const buttons = this.#suggestionButtons();
+    if (!buttons.length) return;
+
+    event.preventDefault();
+    this.#setActiveSuggestionIndex(
+      moveLexiconSuggestionIndex(this.#activeSuggestionIndex, buttons.length, direction),
+    );
+  }
+
+  #suggestionButtons(): HTMLButtonElement[] {
+    return [
+      ...this.querySelectorAll<HTMLButtonElement>(
+        ".lex-search-suggestions-slot [data-lex-suggestion]",
+      ),
+    ];
+  }
+
+  #setActiveSuggestionIndex(index: number): void {
+    const input = this.querySelector<HTMLInputElement>(".lex-search-input");
+    const buttons = this.#suggestionButtons();
+    this.#activeSuggestionIndex = index;
+    buttons.forEach((button, buttonIndex) => {
+      const isActive = buttonIndex === index;
+      button.dataset.active = isActive ? "true" : "false";
+      button.setAttribute("aria-selected", isActive ? "true" : "false");
+      if (isActive) {
+        input?.setAttribute("aria-activedescendant", button.id);
+        button.scrollIntoView({ block: "nearest" });
+      }
+    });
+    if (index < 0 || index >= buttons.length) {
+      input?.removeAttribute("aria-activedescendant");
+    }
+  }
+
+  #chooseSuggestion(suggestion: string): void {
+    const input = this.querySelector<HTMLInputElement>(".lex-search-input");
+    if (!input) return;
+    input.value = suggestion;
+    this.#currentPage = 1;
+    this.#clearSearchSuggestions();
+    this.#renderResults(suggestion);
+    input.focus();
+  }
+
+  #clearSearchSuggestions(): void {
+    const input = this.querySelector<HTMLInputElement>(".lex-search-input");
+    const slot = this.querySelector<HTMLElement>(".lex-search-suggestions-slot");
+    this.#activeSuggestionIndex = -1;
+    if (slot) slot.innerHTML = "";
+    input?.setAttribute("aria-expanded", "false");
+    input?.removeAttribute("aria-activedescendant");
   }
 
   #renderResults(query: string): void {

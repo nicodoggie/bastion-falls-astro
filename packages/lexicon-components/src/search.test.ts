@@ -4,7 +4,12 @@ import { describe, it } from "node:test";
 import type { LexiconSearchEntry, LexiconSearchIndex } from "./types.ts";
 import {
   listLexiconEntries,
+  listLexiconQuerySuggestions,
+  listLexiconTagQuerySuggestions,
+  listLexiconTagSuggestions,
+  listLexiconTypeSuggestions,
   listLexiconTypeBadges,
+  moveLexiconSuggestionIndex,
   paginateLexiconResults,
   searchLexicon,
   summarizeLexiconSenses,
@@ -97,6 +102,53 @@ describe("searchLexicon", () => {
   it("supports definition and tag prefixes", () => {
     assert.equal(searchLexicon(index, "def:revelation")[0]?.entry.id, "ehk:thral");
     assert.equal(searchLexicon(index, "tag:sacred")[0]?.entry.id, "ehk:thral");
+  });
+
+  it("lists unique semantic-field labels for tag autocomplete", () => {
+    const suggestions = listLexiconTagSuggestions({
+      ...index,
+      entries: [
+        ...index.entries,
+        {
+          ...index.entries[0],
+          id: "ehk:ritual",
+          writtenForm: "ritual",
+          fieldLabels: ["Ritual practice", "sacred terms", ""],
+        },
+      ],
+    });
+
+    assert.deepEqual(suggestions, ["motion", "Ritual practice", "sacred terms"]);
+  });
+
+  it("only suggests semantic-field tags after an explicit tag prefix", () => {
+    assert.deepEqual(listLexiconTagQuerySuggestions(index, "ta"), []);
+    assert.deepEqual(listLexiconTagQuerySuggestions(index, "tag:"), [
+      "tag:motion",
+      "tag:sacred terms",
+    ]);
+    assert.deepEqual(listLexiconTagQuerySuggestions(index, "tag:sa"), [
+      "tag:sacred terms",
+    ]);
+  });
+
+  it("suggests lexical categories after type and pos prefixes", () => {
+    assert.deepEqual(listLexiconTypeSuggestions(index), ["noun", "verb"]);
+    assert.deepEqual(listLexiconQuerySuggestions(index, "ty"), []);
+    assert.deepEqual(listLexiconQuerySuggestions(index, "type:"), [
+      "type:noun",
+      "type:verb",
+    ]);
+    assert.deepEqual(listLexiconQuerySuggestions(index, "type:no"), ["type:noun"]);
+    assert.deepEqual(listLexiconQuerySuggestions(index, "pos:v"), ["pos:verb"]);
+  });
+
+  it("wraps suggestion keyboard navigation in both directions", () => {
+    assert.equal(moveLexiconSuggestionIndex(-1, 3, 1), 0);
+    assert.equal(moveLexiconSuggestionIndex(2, 3, 1), 0);
+    assert.equal(moveLexiconSuggestionIndex(-1, 3, -1), 2);
+    assert.equal(moveLexiconSuggestionIndex(0, 3, -1), 2);
+    assert.equal(moveLexiconSuggestionIndex(0, 0, 1), -1);
   });
 
   it("supports type prefix and pos alias with normalized lexical categories", () => {
