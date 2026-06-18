@@ -4,6 +4,7 @@ import { basename, dirname, isAbsolute, join, resolve } from "node:path";
 import { spawn } from "node:child_process";
 import { glob } from "tinyglobby";
 
+import { BUILTIN_EARLY_HICK_TTS_DEFAULTS } from "./config.js";
 import {
   buildEarlyHickMbrolaPlan,
   loadLexiconEntries,
@@ -19,6 +20,7 @@ interface TtsLexiconFlags {
   "lexicon-glob": string;
   out: string;
   "public-out": string;
+  "mbrola-pho-dir": string;
   "work-dir": string;
   ids?: string;
   limit?: number;
@@ -96,10 +98,12 @@ interface WebAudioOutputPlan {
 }
 
 export const DEFAULT_EARLY_HICK_AUDIO_OUT_DIR =
-  "astro/src/assets/languages/hickic/seneran/early-hick/audio/lexicon";
+  BUILTIN_EARLY_HICK_TTS_DEFAULTS.audioOutDir;
 export const DEFAULT_EARLY_HICK_AUDIO_PUBLIC_OUT_DIR =
-  "astro/public/languages/hickic/seneran/early-hick/audio/lexicon";
-export const DEFAULT_EARLY_HICK_AUDIO_WORK_DIR = "/tmp/early-hick-tts-cli";
+  BUILTIN_EARLY_HICK_TTS_DEFAULTS.publicAudioOutDir;
+export const DEFAULT_EARLY_HICK_MBROLA_PHO_DIR =
+  BUILTIN_EARLY_HICK_TTS_DEFAULTS.mbrolaPhoDir;
+export const DEFAULT_EARLY_HICK_AUDIO_WORK_DIR = BUILTIN_EARLY_HICK_TTS_DEFAULTS.workDir;
 
 const CHATTERBOX_SCRIPT = String.raw`
 import json
@@ -132,6 +136,7 @@ export default async function ttsLexicon(
   const cwd = this.currentPath;
   const outDir = resolveMaybe(cwd, flags.out);
   const publicOutDir = resolveMaybe(cwd, flags["public-out"]);
+  const mbrolaPhoDir = resolveMaybe(cwd, flags["mbrola-pho-dir"]);
   const workDir = resolveMaybe(cwd, flags["work-dir"]);
   const shardPaths = await glob(flags["lexicon-glob"], {
     cwd,
@@ -144,6 +149,7 @@ export default async function ttsLexicon(
 
   await mkdir(outDir, { recursive: true });
   await mkdir(publicOutDir, { recursive: true });
+  await mkdir(mbrolaPhoDir, { recursive: true });
   await mkdir(workDir, { recursive: true });
   const entries = selectEntries(await loadLexiconEntries(shardPaths), flags);
   const uniqueSlugs = uniqueSlugsForLexiconEntries(entries);
@@ -154,14 +160,13 @@ export default async function ttsLexicon(
   const vcItems: Array<{ source: string; output: string }> = [];
   const splicePlans: SplicePlan[] = [];
   const vcDir = join(workDir, "vc", flags.voice);
-  await mkdir(join(workDir, "mbrola", "pho"), { recursive: true });
   await mkdir(join(workDir, "mbrola", "wav"), { recursive: true });
   await mkdir(vcDir, { recursive: true });
 
   for (const entry of entries) {
     const plan = buildEarlyHickMbrolaPlan(entry);
     const slug = uniqueSlugs.get(entry.id) ?? plan.slug;
-    const paths = mbrolaSourcePaths(workDir, slug);
+    const paths = mbrolaSourcePaths(workDir, mbrolaPhoDir, slug);
     const workingOutputPath = join(vcDir, `${slug}.wav`);
     const webOutputs = webAudioOutputsForSlug(outDir, publicOutDir, slug, flags.voice);
     webOutputsById.set(plan.id, webOutputs);

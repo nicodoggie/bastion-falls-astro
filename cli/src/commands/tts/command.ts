@@ -1,9 +1,12 @@
 import { buildCommand, buildRouteMap, numberParser, type FlagParametersForType } from "@stricli/core";
 
+import { config } from "@/config.js";
 import type { LocalContext } from "@/context.js";
+import { resolveEarlyHickTtsDefaults } from "./config.js";
 import {
   DEFAULT_EARLY_HICK_AUDIO_OUT_DIR,
   DEFAULT_EARLY_HICK_AUDIO_PUBLIC_OUT_DIR,
+  DEFAULT_EARLY_HICK_MBROLA_PHO_DIR,
   DEFAULT_EARLY_HICK_AUDIO_WORK_DIR,
 } from "./impl.js";
 
@@ -11,6 +14,7 @@ interface TtsLexiconFlags {
   "lexicon-glob": string;
   out: string;
   "public-out": string;
+  "mbrola-pho-dir": string;
   "work-dir": string;
   ids?: string;
   limit?: number;
@@ -23,30 +27,38 @@ interface TtsLexiconFlags {
   "skip-vc"?: boolean;
 }
 
+const earlyHickDefaults = resolveEarlyHickTtsDefaults(config);
+
 const flags: FlagParametersForType<TtsLexiconFlags, LocalContext> = {
   "lexicon-glob": {
     kind: "parsed",
     parse: String,
     brief: "Glob for source lexicon JSON-LD shards",
-    default: "astro/src/assets/languages/hickic/seneran/early-hick/lexicon/*.jsonld",
+    default: earlyHickDefaults.lexiconGlob,
   },
   out: {
     kind: "parsed",
     parse: String,
     brief: "Output directory for final browser audio and the TTS manifest",
-    default: DEFAULT_EARLY_HICK_AUDIO_OUT_DIR,
+    default: earlyHickDefaults.audioOutDir || DEFAULT_EARLY_HICK_AUDIO_OUT_DIR,
   },
   "public-out": {
     kind: "parsed",
     parse: String,
     brief: "Astro public directory to mirror final browser audio into",
-    default: DEFAULT_EARLY_HICK_AUDIO_PUBLIC_OUT_DIR,
+    default: earlyHickDefaults.publicAudioOutDir || DEFAULT_EARLY_HICK_AUDIO_PUBLIC_OUT_DIR,
+  },
+  "mbrola-pho-dir": {
+    kind: "parsed",
+    parse: String,
+    brief: "Directory for committed MBROLA .pho source files",
+    default: earlyHickDefaults.mbrolaPhoDir || DEFAULT_EARLY_HICK_MBROLA_PHO_DIR,
   },
   "work-dir": {
     kind: "parsed",
     parse: String,
     brief: "Scratch directory for MBROLA, Chatterbox, and intermediate WAV files",
-    default: DEFAULT_EARLY_HICK_AUDIO_WORK_DIR,
+    default: earlyHickDefaults.workDir || DEFAULT_EARLY_HICK_AUDIO_WORK_DIR,
   },
   ids: {
     kind: "parsed",

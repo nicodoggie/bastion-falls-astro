@@ -118,7 +118,6 @@ export function renderLexiconSearchResult(
               ${renderAudioButton(entry.audio, audioId, entry.writtenForm)}
             </span>
             ${typeBadges.map((type) => `<span class="lex-search-type">${escapeHtml(type)}</span>`).join("")}
-            ${result.matchedFields.length ? `<span class="lex-search-reasons">${escapeHtml(result.matchedFields.join(", "))}</span>` : ""}
           </span>
           ${renderSenseLines(preview, "lex-search-preview")}
         </span>

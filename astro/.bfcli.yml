@@ -1,1 +1,9 @@
 contentDir: src/content/docs/world
+
+tts:
+  earlyHick:
+    lexiconGlob: src/assets/languages/hickic/seneran/early-hick/lexicon/*.jsonld
+    audioOutDir: src/assets/languages/hickic/seneran/early-hick/audio/lexicon
+    publicAudioOutDir: public/languages/hickic/seneran/early-hick/audio/lexicon
+    mbrolaPhoDir: src/assets/languages/hickic/seneran/early-hick/audio/mbrola
+    workDir: /tmp/early-hick-tts-cli

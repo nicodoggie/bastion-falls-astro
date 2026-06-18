@@ -152,8 +152,7 @@ class BfLexiconSearchElement extends HTMLElement {
         gap: 0.18rem;
       }
       .lex-search-phonetic,
-      .lex-search-preview,
-      .lex-search-reasons {
+      .lex-search-preview {
         color: var(--sl-color-gray-3, currentColor);
       }
       .lex-search-type {

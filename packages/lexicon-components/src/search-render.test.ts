@@ -68,6 +68,16 @@ describe("renderLexiconSearchResult", () => {
     assert.ok(html.indexOf("lex-search-phonetic") < html.indexOf("lex-search-audio-button"));
     assert.ok(html.indexOf("lex-search-audio-button") < html.indexOf("lex-search-type"));
   });
+
+  it("does not render internal matched-field labels in entry rows", () => {
+    const html = renderLexiconSearchResult("/lexicon", {
+      ...result,
+      matchedFields: ["type"],
+    });
+
+    assert.doesNotMatch(html, /lex-search-reasons/);
+    assert.doesNotMatch(html, />type</);
+  });
 });
 
 describe("renderLexiconTagSuggestions", () => {

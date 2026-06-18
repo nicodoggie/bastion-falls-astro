@@ -241,12 +241,12 @@ export function splitEntryForPostVcGlottal(
   };
 }
 
-export function mbrolaSourcePaths(rootDir: string, slug: string): {
+export function mbrolaSourcePaths(rootDir: string, phoDir: string, slug: string): {
   pho: string;
   wav: string;
 } {
   return {
-    pho: path.join(rootDir, "mbrola", "pho", `${slug}.pho`),
+    pho: path.join(phoDir, `${slug}.pho`),
     wav: path.join(rootDir, "mbrola", "wav", `${slug}.wav`),
   };
 }
