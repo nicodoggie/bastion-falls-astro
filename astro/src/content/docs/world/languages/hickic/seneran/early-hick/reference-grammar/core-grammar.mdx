@@ -1,0 +1,316 @@
+---
+title: Early Hick Core Grammar
+description: Core alignment, sentence patterns, verbalization, spatial grammar, tense, and coordinators in Early Hick.
+tags:
+  - early-hick
+  - languages
+  - reference-grammar
+  - grammar
+---
+
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
+## Ergative-Absolutive Alignment
+
+- -el \[el] (ERG): marks agent of transitive verbs
+- -es \[es] (ABS): marks patient of transitive & sole argument of intransitive
+
+Early Hick can be described as a language with an ergative-absolutive alignment. Languages with this
+alignment treat the "subject" of an intransitive verb like the "object" of a transitive verb. This
+"object" or "patient" referent is marked with the _absolutive_ case marker -es. The "subject" or
+"agent" referent is marked with the _ergative_ case marker -el.
+
+<InterlinearGloss>
+  <GlossToken source="materok" gloss="handler" />
+  <GlossToken source="-el" gloss="ERG" type="suffix" />
+  <GlossToken source="'al" gloss="person" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossToken source="venitar" gloss="burden.SUP" />
+  <GlossTranslation>The handler carries the person</GlossTranslation>
+</InterlinearGloss>
+
+In the above example, the handler _materok_ is the agent of the verb "to carry" and is marked with
+the ergative case marker -el. The person _'al_ is the patient of the verb and is marked with the
+absolutive case marker -es.
+
+<InterlinearGloss>
+  <GlossToken source="'al" gloss="person" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossToken source="barak" gloss="walk" />
+  <GlossToken source="-'er" gloss="VRB" type="suffix" />
+  <GlossTranslation>The person walks</GlossTranslation>
+</InterlinearGloss>
+
+The single argument of the intransitive verb _barak'er_ is the one performing the action, but
+because Early Hick is an ergative-absolutive language, the absolutive case marker -es is used to
+mark the referent.
+
+### Development of the Ergative Case Marking -el
+
+The Early Hick ergative marker -el derives from Proto-Hick \*mela, an older postposed
+deictic/definite particle, through clitic erosion and reanalysis:
+
+1. Sound Changes:
+   - \*mela > \*mel (final vowel loss)
+   - \*mel weakens to enclitic =mel in frequent definite-agent phrases
+
+1. Clitic Reanalysis:
+   - \*kalu mela "the person" > \*kal=mel "the known/salient person"
+   - In high-frequency clitic phrases, =mel erodes to =el after sonorant-final stems
+   - Speakers reanalyze =el as a case suffix and generalize it by analogy
+
+1. Functional Development:
+   - Original meaning: definite animate marker
+   - Intermediate stage: marks definite agents
+   - Final stage: general ergative marker
+
+## Basic Sentence Patterns
+
+Early Hick word order is flexible because the core sentence roles are marked by case endings. That
+does not mean word order is meaningless. Case tells the listener who is doing, moving, or receiving;
+order can still mark topic, focus, rhythm, poetic shape, or the felt path of a motion. The examples
+below give common neutral orders first, then show alternate orders with the same basic roles. In
+complex clauses, word order becomes more constrained because modifiers, quoted clauses, and
+dependent clauses need clear scope.
+
+### One Noun Plus Action
+
+When a clause has one participant and one action, the single participant takes absolutive _-es_.
+This is the noun English grammar would usually call the subject. Early Hick still marks it with
+absolutive because there is no separate receiver or affected noun in the clause.
+
+```txt
+'al-es barak'er
+person-ABS walk-VRB
+"The person walks."
+
+barak'er 'al-es
+walk-VRB person-ABS
+"The person walks." / "Walks, the person."
+```
+
+The first order is plain and neutral. The second order can put attention on the action first, but
+the _-es_ ending still marks _'al_ as the single participant.
+
+### Doer, Receiver, and Action
+
+With a transitive action, the doer takes ergative _-el_ and the receiver or affected noun takes
+absolutive _-es_. Because the endings carry the roles, the doer does not have to come first.
+Changing the order changes emphasis or discourse flow, not the basic doer/receiver relationship.
+
+```txt
+materok-el rismater-es ward'er
+handler-ERG reed.boat-ABS guide-VRB
+"The handler guides the reed boat."
+
+rismater-es ward'er materok-el
+reed.boat-ABS guide-VRB handler-ERG
+"The handler guides the reed boat."
+```
+
+The second order places the reed boat first, which can make it the discourse topic or the first
+image in a poetic line. The handler is still the doer because it carries _-el_. The reed boat is
+still the receiver because it carries _-es_.
+
+### Stative Descriptions
+
+Quality descriptions are usually formed with _ka-_ derived forms. To make the description a full
+finite statement, the describing form can take the verbalizer _-'er_. This is a stative description:
+it presents the noun as having a quality, rather than describing a separate action.
+
+<InterlinearGloss>
+  <GlossToken source="kel" gloss="sky" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossToken source="kakel" gloss="blue" />
+  <GlossToken source="-'er" gloss="VRB" type="suffix" />
+  <GlossTranslation>The sky is blue.</GlossTranslation>
+</InterlinearGloss>
+
+Short descriptive phrases can also place the _ka-_ form before the absolutive noun:
+
+<InterlinearGloss>
+  <GlossToken source="kakel" gloss="blue" />
+  <GlossToken source="kel" gloss="sky" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossTranslation>"the blue sky" / "the sky is blue"</GlossTranslation>
+</InterlinearGloss>
+
+This shorter pattern is less explicitly finite than _kel-es kakel'er_. It is useful when the quality
+is being presented as a property of the noun rather than as a full action-like predicate.
+
+### Zero-Verb Motion
+
+Productive spatial case can imply motion without adding the verbalizer _-'er_. In this pattern, the
+spatially marked noun phrase acts as the directional predicate of the clause. The moving participant
+is the only core argument, so it takes absolutive _-es_.
+
+Order is not grammatically fixed. The mover may appear before or after the spatial phrase. However,
+the order can be chosen to match the felt direction of the motion, to set a location as the topic,
+or to fit a poetic line.
+
+```txt
+gal-es rismater-las
+man-ABS reed.boat-ILL
+"The man enters the reed boat."
+
+rismater-las gal-es
+reed.boat-ILL man-ABS
+"Into the reed boat, the man goes."
+```
+
+The first example starts with the mover and then gives the goal. The second example starts with the
+goal, so it can feel like the sentence is oriented toward the destination before the mover is named.
+Both are still zero-verb motion clauses, and neither adds _-'er_ to the spatial case ending.
+
+### Caused Motion
+
+When someone causes another noun to perform a directional movement or task, the causer takes
+ergative _-el_, the moving participant takes absolutive _-es_, and the goal or source takes the
+spatial case. The absolutive noun remains the subject of the directional movement; the ergative noun
+is the agent causing that movement. This differs from ordinary transitive action because the
+absolutive noun is not only an affected receiver. It is the participant whose path or directional
+task is being caused.
+
+```txt
+materok-el rismater-es keth-las
+handler-ERG reed.boat-ABS sea-ILL
+"The handler takes the reed boat to sea."
+
+keth-las rismater-es materok-el
+sea-ILL reed.boat-ABS handler-ERG
+"To sea, the handler takes the reed boat."
+```
+
+In both examples, _materok-el_ is the causer. _rismater-es_ is the thing caused to move. _keth-las_
+names the directional goal. The order can change for emphasis, but the case endings keep the roles
+clear.
+
+## Verbal System
+
+See: [Verbal Morphology](../index.mdx#verbal-morphology) for details on:
+
+Early Hick has no true verb class. Verbs are formed from nouns and property concepts and are marked
+with the verbalizer affix _-'er_.
+
+```txt
+'al'isel ven'er 'ales
+person.PROX.ERG yoke.VRB person.ABS
+this person carries a person
+I am carrying a person
+```
+
+The above example shows the word _ven_ that means yoke or burden with the verbalizer _-'er_ affixed
+to it. It then acts as the verb of the sentence that means "to carry".
+
+While some words, such as _barak_ "walk", semantically denote actions, the verbalizer affix _-'er_
+is still applied in most instances.
+
+<InterlinearGloss>
+  <GlossToken source="'al" gloss="person" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossToken source="barak" gloss="walk" />
+  <GlossToken source="-'er" gloss="VRB" type="suffix" />
+  <GlossTranslation>The person walks.</GlossTranslation>
+</InterlinearGloss>
+
+## Spatial Case System
+
+See the expanded [Spatial Cases](spatial-cases.mdx) page for detailed uses and regional variants.
+
+Early Hick uses case marking to show direction, source, path, or spatially understood change.
+
+The spatial cases are:
+
+- -las (ILL): "inward, into"
+- -imris (ELL): "outward, from"
+- -itar (SUPE, motion-context SALL): "on, upon, above"; "onto, up onto" in motion contexts
+- -esp (SUBE): "under, below"
+- -asam (SUBL): "downward, onto a lower surface"
+
+Productive spatial case attaches to the noun phrase that names the place, source, goal, path, or
+state. In this use, the spatial case does not take the verbalizer _-'er_. The spatially marked noun
+phrase itself can imply motion or change without an overt English-style verb.
+
+<InterlinearGloss>
+  <GlossToken source="branum" gloss="PAST" />
+  <GlossToken source="gal" gloss="man" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossToken source="rismater" gloss="reed.boat" />
+  <GlossToken source="-las" gloss="ILL" type="suffix" />
+  <GlossTranslation>The man entered the reed boat.</GlossTranslation>
+</InterlinearGloss>
+
+The above example shows the man _gal_ moving inward into the boat _rismater_. Because _gal_ is the
+sole moving participant, it takes absolutive _-es_.
+
+<InterlinearGloss>
+  <GlossToken source="materok" gloss="handler" />
+  <GlossToken source="-el" gloss="ERG" type="suffix" />
+  <GlossToken source="rismater" gloss="reed.boat" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossToken source="keth" gloss="sea" />
+  <GlossToken source="-las" gloss="ILL" type="suffix" />
+  <GlossTranslation>The handler takes the reed boat to sea.</GlossTranslation>
+</InterlinearGloss>
+
+When a participant causes something else to move, the causer takes ergative _-el_, the moved thing
+takes absolutive _-es_, and the goal or source carries the spatial case. If an overt action verb is
+present, the verb takes _-'er_ while the spatial case remains on the place or state noun.
+
+Spatial cases can also fossilize into derivational morphology, creating case-lexicalized directional
+stems such as _taglas_ "take, receive" and _thralas_ "divine revelation, sacred illumination." See
+[Case-Lexicalized Directional Stems](../index.mdx#case-lexicalized-directional-stems).
+
+## Temporal System
+
+### Tense Marking
+
+See: [Clause Structure and Word Order](../index.mdx#clause-structure-and-word-order)
+
+The basic temporal markers are added to the beginning of a clause to indicate the time of the
+action.
+
+| Tense Marker | Meaning  |
+| ------------ | -------- |
+| branum       | past     |
+| branrum      | far past |
+| mulsum       | future   |
+
+```txt
+branum 'ales venitar
+PAST person-ABS yoke-SUPE
+PAST person lift
+"The person lifted."
+```
+
+```txt
+branrum 'ales venitar
+FAR PAST person-ABS yoke-SUPE
+FAR PAST person lifted
+"The person lifted long ago."
+```
+
+<InterlinearGloss>
+  <GlossToken source="mulsum" gloss="FUT" />
+  <GlossToken source="'al" gloss="person" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossToken source="veni" gloss="yoke" />
+  <GlossToken source="-tar" gloss="SUPE" type="suffix" />
+  <GlossTranslation>The person will lift.</GlossTranslation>
+</InterlinearGloss>
+
+## Conjunctions
+
+Early Hick has several conjunctions for connecting elements:
+
+- o \[o] - enumeration particle used after each coordinated member
+- ru \[ru] "and" - general coordinator
+- ewes \[e.wes] "together with" - marks shared/joint actions
+- 'aterbran \[ʔa.ter.bran] "before" - temporal sequence
+- 'aterimris \[ʔa.te.rim.ris] "after" - temporal sequence
+- imris \[im.ris] "because" - causal relationships
+
+For detailed discussion of conjunction types and usage, see:
+[Syntax: Conjunctions](../index.mdx#conjunctions).

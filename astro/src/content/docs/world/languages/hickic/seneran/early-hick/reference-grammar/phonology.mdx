@@ -1,0 +1,267 @@
+---
+title: Early Hick Phonology and Prosody
+description: Segmental inventory, phonotactics, prosody, allophony, and compound phonology for Early Hick.
+tags:
+  - early-hick
+  - languages
+  - reference-grammar
+  - phonology
+---
+
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
+Early Hick shows a relatively conservative phonological system inherited from
+[Proto-Hick](../../../proto-hick/index.mdx), with significant changes occurring mainly in compound
+formation and unstressed syllables. For the chronological reconstruction behind these forms, see the
+[historical development overview](../index.mdx#historical-development).
+
+## Segmental Inventory
+
+### Consonants
+
+|            | Labial | Dental | Alveolar | Velar | Glottal |
+| ---------- | ------ | ------ | -------- | ----- | ------- |
+| Stops      | p b    |        | t d      | k g   | '       |
+| Fricatives | f v    | θ      | s        |       | h       |
+| Nasals     | m      |        | n        |       |         |
+| Liquids    |        |        | l r      |       |         |
+| Glides     | w      |        |          |       |         |
+
+Note: The glottal stop is written as \<'> in phonemic transcription and \[ʔ] in phonetic
+transcription.
+
+Examples:
+
+- /'al/ \[ʔal] "person"
+- /'el/ \[ʔel] "speaker"
+
+### Vowels
+
+|      | Front | Central | Back |
+| ---- | ----- | ------- | ---- |
+| High | i     |         | u    |
+| Mid  | e     | ə       | o    |
+| Low  |       | a       |      |
+
+See: [Vowel Allophony](#vowel-allophony) for positional variants.
+
+## Phonotactics
+
+### Syllable Structure
+
+- Basic Pattern: (C)(C)V(C)(C)
+- Special Pattern: (C)(C)VV for permitted diphthongs
+- Stress: Initial syllable unless marked
+
+### Consonant Clusters
+
+#### Initial Clusters
+
+| Type    | Clusters                            | Examples         |
+| ------- | ----------------------------------- | ---------------- |
+| Common  | /br-, dr-, tr-, kr-, fl-, pl-, kl-/ | bram, dren, tral |
+| Sacred  | /θr-/                               | thral, thren     |
+| Archaic | /gn-, kn-/                          | gnal, knes       |
+
+#### Final Clusters
+
+| Type            | Clusters        | Examples         |
+| --------------- | --------------- | ---------------- |
+| Common          | /-st, -sk, -sp/ | mest, risk, lisp |
+| Rare / repaired | /-ks, -ls, -rs/ | teks, mals, tors |
+
+The productive heavy coda pattern favors sibilant plus voiceless stop clusters. Other final clusters
+are rare, and are most expected in repaired borrowings, conservative spellings, or later regional
+forms.
+
+### Vowel Sequences
+
+1. Permitted Diphthongs:
+   - Within morphemes: /ai/, /ei/
+   - At morpheme boundaries:
+     - /ei-ae/ -> \[ei]
+     - /ai-ae/ -> \[ae]
+   - No three-vowel sequences
+
+1. Examples:
+   - Fossil /kei-aes/ -> \[ke.es] "sky flow"
+   - Fossil /thrai-aes/ -> \[thraes] "sacred flow"
+   - Fossil /brai-aes/ -> \[braes] "swift flow"
+
+   These illustrate the older Maritime or exploratory `-aes` layer, not the productive Early Hick
+   illative `-las`, which remains segmentally distinct in ordinary case marking.
+
+### Weight Distribution Constraints
+
+1. Stress Patterns
+   - Primary stress falls on first syllable of simple words
+   - In compounds:
+     - First element maintains primary stress
+     - Second element reduces unless sacred/ritual term
+     - Three-element compounds:
+       - Primary stress on first element
+       - Secondary stress on final element
+       - Middle element reduces
+   - Exceptions:
+     - Sacred/ritual terms resist reduction
+     - Maritime terms maintain second element weight
+     - Recent compounds may preserve full weight
+     - Morphological boundaries may preserve weight
+
+   Examples:
+   - tor-mal -> \[ˈto.məl] "great pool"
+   - thral-kel -> \[ˈθral.kel] "sacred sky" (no reduction - sacred term)
+   - tor-ma-ter -> \[ˈtor.mə.ˌter] "great-pool-flow"
+   - bram-ma-ter -> \[ˈbram.ma.ˌter] "tide-vessel" (no reduction - maritime)
+
+## Prosodic System
+
+### Stress Patterns
+
+1. Primary Stress
+   - Falls on first syllable of root in isolation
+   - Maintained in prefixation: ma-tor -> \[ˈma.tor]
+   - Transparent compounds may preserve stress on the semantic head: tor-mal -> \[tor.ˈmal]
+   - Mature compounds usually retract toward initial stress: tor-mal -> \[ˈto.məl] > tomal
+1. Secondary Stress
+   - In three-syllable compounds: tor-ma-ter -> \[ˈtor.mə.ˌter]
+   - In possible colloquial prefix chains: ma-ka-tor -> \[ˈma.kə.ˌtor]
+1. Stress-Related Changes
+   - Unstressed /a/ -> \[ə]
+   - Stressed vowels resist reduction
+   - Compound stress affects vowel quality
+
+### Compound Maturation and Glottal Boundaries
+
+Early Hick compounds often pass through a prosodic maturation pattern. New or transparent compounds
+may keep prominence on the second element, especially when that element is the semantic head. As a
+compound becomes conventional, stress tends to retract toward the language's dominant initial-stress
+pattern. When the compound becomes lexicalized, internal vowels may reduce further, and later
+regional or Middle Hick forms may smooth internal glottal boundaries.
+
+```txt
+taku-TAK-'al -> TA-ku-tak-'al -> TA-ku-ta-kal
+speech-rhythm-person -> speech community / language name
+```
+
+This maturation is not the same as productive morphology. Glottal stops at active morpheme
+boundaries are retained more strongly when they continue to mark a grammatical contrast, such as
+plurality, person, deixis, animacy, case, or verbal derivation. Frequency alone does not force
+glottal loss: frequent forms inside a living paradigm may preserve their boundaries because speakers
+still parse the components.
+
+<InterlinearGloss>
+  <GlossToken source="ma-" gloss="PL" type="prefix" />
+  <GlossToken source="'al" gloss="person" />
+  <GlossToken source="-'is" gloss="PROX.ANIM" type="suffix" />
+  <GlossTranslation>these people</GlossTranslation>
+</InterlinearGloss>
+
+In this form, the glottal boundaries remain recoverable because _ma-_, _'al_, and _-'is_ all
+continue to participate in the personal-reference paradigm. Regional or later Middle Hick speech may
+smooth such forms, but Early Hick keeps the morphology visible in careful and central forms.
+
+Glottal-initial roots and suffixes also affect stress placement. A word-initial glottal tends to
+reinforce initial prominence, while a word-internal glottal boundary can draw prominence toward the
+preceding syllable. The productive verbalizer _-'er_ is the clearest example:
+
+```txt
+BA-rak
+walk
+
+ba-RAK-'er
+walk-VRB
+```
+
+Thus, Early Hick remains dominantly initial-stress at the lexical root level, but productive
+glottal-onset morphology can create secondary or phrase-level prominence at the boundary.
+
+Sibilant-stop codas create the main exception in ordinary speech. Before the verbalizer _-'er_, a
+heavy coda such as _-sk_ may be repaired by moving the final stop into the verbalizer syllable and
+collapsing the glottal onset. The morphological or written form can still preserve _-'er_:
+
+```txt
+trask-'er -> tras-ker
+leg-VRB
+"to run"
+```
+
+This repair keeps the verbal stress shift toward the suffix while avoiding the cumbersome sequence
+_-sk-'er_.
+
+## Compound Phonology
+
+### Sound Changes in Compounds
+
+1. Liquid Deletion
+   - tor-mal -> tomal "lake"
+   - val-mal -> vamal "spirit pool"
+   - thral-gral -> thragral "sacred earth"
+
+1. Nasal Deletion
+   - bram-mal -> bramal "tidal pool"
+   - bran-kel -> brakel "morning sky"
+
+1. Vowel Coalescence
+   - fossil kei-aes -> kees "sky flow"
+   - fossil thrai-aes -> thraes "sacred flow"
+
+### Compound Types
+
+1. Element + Element
+   - kur-tin -> kurtin "bronze" (copper-tin)
+   - mal-ter -> mater "stream" (pool-flow)
+
+1. Descriptor + Element
+   - gra-kur -> grakur "grey copper"
+   - tor-mal -> tomal "great pool"
+
+## Allophonic Rules
+
+### Vowel Allophony
+
+The vowel /a/ surfaces as \[ə]:
+
+1. After sibilants and affricates:
+   - /sak/ -> \[sək] "wolf"
+   - /sal/ -> \[səl] "stone"
+
+1. After voiceless stops in unstressed syllables:
+   - /karan/ -> \[kərən] "stream"
+   - /tamal/ -> \[təmal] "pool-like"
+
+1. In grammatical prefixes:
+   - /ka-/ -> \[kə-] (similarity prefix)
+   - /ma-/ -> \[mə-] (plural prefix)
+
+1. Between identical consonants:
+   - /malam/ -> \[məlam] "pooled"
+   - /ranar/ -> \[rənər] "flowing"
+
+### Stress-Dependent Reduction
+
+1. In Compounds:
+   - First element maintains stress: 'tor-mal -> \['tor.məl]
+   - Second element reduced: mal-'ter -> \[məl.'ter]
+
+1. With Prefixes:
+   - Stressed prefix blocks reduction: 'ma-tor -> \['ma.tor]
+   - Unstressed prefix shows reduction: ka-'tor -> \[kə.'tor]
+
+1. In Three-syllable Words:
+   - Primary stress blocks reduction: 'ka-ra-nal -> \['ka.rə.nəl]
+   - Secondary stress partially blocks: ˌka-'ra-nal -> \[ˌka.'ra.nəl]
+
+#### Exceptions
+
+- Maintains \[a] in:
+  - Stressed syllables
+  - Sacred/formal terms
+  - Recent compounds See:
+    [Sacred Terminology](/world/languages/hickic/seneran/early-hick/lexicon/?q=tag:Sacred%20Terms)
+
+### Consonant Allophony
+
+\[Section to be added]

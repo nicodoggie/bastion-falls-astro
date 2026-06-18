@@ -1,0 +1,158 @@
+---
+title: Early Hick Spatial Cases
+description: Detailed reference for Early Hick spatial case suffixes and directional constructions.
+tags:
+  - early-hick
+  - languages
+  - reference-grammar
+  - spatial-cases
+---
+
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
+Early Hick's spatial case system interacts closely with verbal semantics, marking not only physical
+direction but also abstract state changes and causation.
+
+See also: [Early Hick summary](../index.mdx#spatial-case-system).
+
+## Basic Spatial Cases
+
+- -las (ILL): "inward, into"
+- -imris (ELL): "outward, from"
+- -itar (SUPE, motion-context SALL): "on, upon, above"; "onto, up onto" in motion contexts
+- -asam (SUBL): "downward, onto a lower surface"
+- -esp (SUBE): "under, below"
+
+## Illative: -las
+
+The illative `-las` marks inward motion, entry, or movement into a bounded place or state. With
+concrete nouns, it usually answers "into where?". With property concepts, it can mark a change into
+a resulting state.
+
+```txt
+materok-es rismater-las
+handler-ABS reed.boat-ILL
+"The handler enters the reed boat"
+
+kamar kel-es kakel-las
+red sky-ABS blue-ILL
+"red sky turns blue"
+```
+
+## Ellative: -imris
+
+The ellative `-imris` marks outward motion, emergence, source, or motion from a place or state. It
+is also extended into source-like abstract functions, including causal and derivational uses. In
+standard Early Hick, `-imris` is the main productive ellative marker.
+
+<InterlinearGloss>
+  <GlossToken source="materok" gloss="handler" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossToken source="rismater-imris" gloss="reed.boat-ELL" />
+  <GlossTranslation>The handler exits the reed boat</GlossTranslation>
+</InterlinearGloss>
+
+Regional note: Some inland dialects preserve `-iter` in similar ellative-like uses, especially in
+fossilized or formal terms. For example, `venuiter` "to give birth" corresponds to standard
+`vinuimris`, but survives in formal expressions such as `'ilitar venuiteres` "blessings upon your
+birth".
+
+## Superessive: -itar
+
+The superessive `-itar` marks a relation of being on, upon, atop, or supported by a surface or
+higher reference point. It is primarily locative. With motion clauses, the same form can be read as
+a surface goal, "onto" or "up onto", because the motion comes from the clause context. This
+reference uses `SUPE` for the static/support reading and `SALL` for the directional surface-goal
+reading. This is a glossing distinction, not a separate case suffix.
+
+<InterlinearGloss>
+  <GlossToken source="materok" gloss="handler" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossToken source="rismater-itar" gloss="reed.boat-SALL" />
+  <GlossTranslation>The handler climbs onto the reed boat</GlossTranslation>
+</InterlinearGloss>
+
+Lexicalized forms may preserve edge-case readings involving an overhead source or something coming
+from above. For example, `aitar` "rain" is understood as `ai-itar`, "water above" or "water coming
+upon one from above", rather than as a productive directional meaning "upward".
+
+## Subessive: -esp
+
+The subessive `-esp` marks position under, below, or beneath a reference point. It is the static
+counterpart to lower-position meanings and is used when the important relation is being below
+something, not necessarily moving downward.
+
+The independent form `wesp` "cellar, basement, lower enclosed space" preserves a lexical relic of
+the same development. In ordinary case marking, the initial `w` was lost after the form
+grammaticalized, especially when attached to consonant-final stems.
+
+## Descending / Lowering Case: -asam
+
+The `-asam` case marks downward motion, lowering, or movement toward a lower surface or lower state.
+It contrasts with `-esp`, which marks being under or below without necessarily implying motion.
+
+<InterlinearGloss>
+  <GlossToken source="materok" gloss="handler" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossToken source="rismater-asam" gloss="reed.boat-SUBL" />
+  <GlossTranslation>The handler climbs down onto the reed boat</GlossTranslation>
+</InterlinearGloss>
+
+## Directional Usage
+
+```txt
+materok-es rismater-las
+handler-ABS reed.boat-ILL
+"The handler enters the reed boat"
+
+materok-es rismater-imris
+handler-ABS reed.boat-ELL
+"The handler exits the reed boat"
+
+materok-es rismater-itar
+handler-ABS reed.boat-SALL
+"The handler climbs onto the reed boat"
+
+materok-es rismater-asam
+handler-ABS reed.boat-SUBL
+"The handler climbs down onto the reed boat"
+```
+
+In these zero-verb motion clauses, the moving participant is the only core argument and takes
+absolutive case. Caused-motion clauses keep the normal ergative-absolutive contrast:
+
+<InterlinearGloss>
+  <GlossToken source="materok" gloss="handler" />
+  <GlossToken source="-el" gloss="ERG" type="suffix" />
+  <GlossToken source="rismater" gloss="reed.boat" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossToken source="keth" gloss="sea" />
+  <GlossToken source="-las" gloss="ILL" type="suffix" />
+  <GlossTranslation>The handler takes the reed boat to sea</GlossTranslation>
+</InterlinearGloss>
+
+## Change of State
+
+Spatial cases extend to mark state changes. See
+[Adjectival Morphology](../index.mdx#adjectival-morphology) for full details.
+
+<InterlinearGloss>
+  <GlossToken source="kamar" gloss="red" />
+  <GlossToken source="kel" gloss="sky" />
+  <GlossToken source="-es" gloss="ABS" type="suffix" />
+  <GlossToken source="kakel" gloss="blue" />
+  <GlossToken source="-las" gloss="ILL" type="suffix" />
+  <GlossTranslation>red sky turns blue</GlossTranslation>
+</InterlinearGloss>
+
+## Syntactic Properties
+
+- Marks the goal, source, path, position, or resulting state
+- Takes no verbalizer in productive spatial-case phrases
+- Uses absolutive on the sole mover in intransitive motion contexts
+- Can be fronted for emphasis
+- Implies motion/change without overt verb
+- Allows ergative causers in caused-motion clauses
+- Interacts with causative constructions

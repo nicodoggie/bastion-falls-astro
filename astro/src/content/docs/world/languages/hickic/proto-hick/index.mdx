@@ -90,72 +90,80 @@ structure and obligatory onsets (filled by glottal stop if no other consonant).
 
 ## Sound Changes from Proto-Hick to Early Hick
 
+The staged sound-change model is implemented in
+[`early-hick.lsc`](early-hick.lsc). The prose below is a descriptive guide to that file, not a
+separate source of rules. When the prose and Lexurgy disagree, treat the Lexurgy file as the current
+testable model and update the prose.
+
 ### Chronological Stages
 
-#### Pre-Hick Period (before ~600 PF)
+#### Stage 0: Proto-Hick
 
-1. Stress Shift
-   - Penultimate stress patterns start shifting to initial stress
-   - Secondary stress patterns move to final element on 3-element compounds
-   - Secondary stress patterns move to final element on 3-element compounds
+Stage 0 defines the starting phonology and repairs:
 
-1. Final Vowel Devoicing
-   - V → V̥ / \_# in unstressed syllables
-   - \*thralu > \[ˈθra.lu̥]
-   - \*wardu > \[ˈwar.du̥]
-   - \*taku > \[ˈta.ku̥]
+- strict syllable shape with simple onsets and codas;
+- obligatory initial onset repair with `ʔ-`;
+- final vowel repair for clipped or borrowed forms;
+- glottal-stop plus consonant repair;
+- double-letter cleanup;
+- inherited penultimate stress.
 
-1. Devoiced Vowel Reduction
-   - V̥ → ə / \_#
-   - \[ˈθra.lu̥] > \[ˈθra.lə]
-   - \[ˈwar.du̥] > \[ˈwar.də]
-   - \[ˈta.ku̥] > \[ˈta.kə]
+#### Stage 1: Proto-Maritime Hick
 
-#### Early Hick Period (~600 PF onward)
+Stage 1 models the shared island and straits layer:
 
-1. Final Schwa Deletion
-   - ə → ∅ / \_#
-   - \[ˈθra.lə] > \[ˈθral]
-   - \[ˈwar.də] > \[ˈward]
-   - \[ˈta.kə] > \[ˈtak]
+- liquids weaken or delete near `h`;
+- liquid clusters simplify;
+- compounds may delete a weak vowel at the second element boundary;
+- compounds may delete nasals or liquids at the compound boundary;
+- sacred `ha-` shifts toward `th-`/`thə-` patterns;
+- voiced glottals devoice in initial weak positions;
+- stress shifts toward the initial syllable.
 
-1. Initial Fricative Changes
-   1. Animacy marker \*hi-:
-      - \*hi- > ʔi- / #\_i
-      - \*hi-C > ʔi-C\[+voiced] / #\_V
-      - \*hi- > ʔ- elsewhere
-   1. Sacred marker \*ha-:
-      - \*ha > θi / \_C
-      - \*ha- > θ- elsewhere
+#### Stage 2: Proto-Seneran Hick
 
-1. Vowel Coalescence
-   - \*ahi > ai
-   - \*ahu > au
-   - \*grau > gra
+Stage 2 models the Seneran branch after settlement began:
 
-1. Compound-Specific Changes
-   1. Liquid Deletion:
-   - r → ∅ / \_C in compounds
-   - tor-mal → tomal
-   - val-mal → vamal
-   1. Nasal Deletion:
-   - N → ∅ / \_C in compounds
-   - bram-mal → bramal
-   - bran-kel → brakel
+- unstressed vowels reduce, with initial-cluster exceptions;
+- final vowel repair is turned off;
+- vowels front in stressed initial syllables after fricative onsets;
+- final high and mid vowels centralize.
 
-1. Unstressed Vowel Reduction
-   - a → ə in unstressed syllables
-   - After sibilants and affricates
-   - After voiceless stops
-   - Between identical consonants
-   - In grammatical prefixes
+#### Stage 3: Pre-Hick
+
+Stage 3 allows Early-Hick-like syllables and performs the main pre-Early-Hick repairs:
+
+- final `w` vocalizes;
+- `eu` repairs to schwa;
+- nuclei are inserted where initial clusters would otherwise be stranded;
+- initial `h-` and `ʔ-` delete before many vowels;
+- the animacy marker `hi-` reduces to glottal forms;
+- dental fricative clusters form;
+- hiatus and weak consonants are repaired by vowel coalescence;
+- initial `h-` before consonants repairs to `ʔ-`;
+- coda liquid/nasal clusters simplify;
+- complex final clusters may metathesize;
+- first-syllable syncope applies in restricted environments;
+- back vowels may delete after velar stops before nasals.
+
+#### Stage 4: Early Hick
+
+Stage 4 handles the final Early Hick surface repairs:
+
+- voiced glottals devoice before vowels;
+- cluster-resolution rules reshape `CərC`, `rəC`, `CəC-r`, and final schwa clusters;
+- final schwa can transpose and color to `a` or `e` in restricted environments;
+- final weak vowels reduce or delete;
+- romanization maps `ʔ` to apostrophe and `θ` to `th`.
 
 #### Ordering Rules
 
-1. Final vowel changes must precede compound formation
-1. Initial fricative changes precede vowel coalescence
-1. Compound-specific changes apply after basic sound changes
-1. Unstressed vowel reduction applies last
+1. Stage 0 repairs create pronounceable Proto-Hick inputs.
+1. Stage 1 compound and sacred-term changes precede Seneran-specific vowel changes.
+1. Stage 2 vowel reduction and final-vowel centralization precede Pre-Hick glottal and hiatus
+   repairs.
+1. Stage 3 vowel coalescence is turned off before Stage 4 surface cluster repairs.
+1. Stage 4 produces the romanized Early Hick form.
 
 ### Special Cases
 
@@ -163,6 +171,9 @@ structure and obligatory onsets (filled by glottal stop if no other consonant).
 1. Maritime terms maintain second element weight
 1. Recent compounds may preserve full weight
 1. Morphological boundaries may preserve weight
+1. Borrowed or later repaired forms may follow
+   [Early Hick repair rules](../seneran/early-hick/repair.lsc) instead of the inherited Stage 0-4
+   chain.
 
 ### Exceptions
 
@@ -258,7 +269,7 @@ In Early Hick, the prefix is lost, but it is preserved in words starting with th
    Note: The breathy voice stage (\*aʱi) may be significant for understanding dialectal developments,
    though direct evidence is limited to Early Hick.
 
-1. Compound-Specific Changes (Early Proto-Hick)
+1. Compound-Specific Changes (branch-level compound cleanup, provisional)
    - Syncope in compounds:
      - \*CVCV-VCV → CCV-VCV
      - \*stenu-alu → stenal → snal
@@ -348,13 +359,17 @@ In Early Hick, the prefix is lost, but it is preserved in words starting with th
 
 ### Morphological Evolution
 
+The following morphology notes preserve older reconstruction hypotheses. They should be checked
+against the staged Lexurgy model and the working hypothesis that most Early Hick case morphology is
+later than Proto-Hick proper.
+
 1. Compound Formation Patterns
    - Element + Element preserved from Proto-Hick
    - New patterns developed:
      - Descriptor + Element
      - Location + Base
 1. Grammatical Categories
-   - Retention of Proto-Hick case system
+   - Development of branch-specific case marking
    - Development of new aspectual markers
 
 #### Verbalizer Development
@@ -363,12 +378,12 @@ In Early Hick, the prefix is lost, but it is preserved in words starting with th
    - \*heru "do, make, act" (full lexical verb)
    - Used in compounds to indicate action/process
 
-1. Early Proto-Hick:
+1. Early grammaticalization stage:
    - \*heru becomes postverbal particle marking action
    - \*ter heru "flow-do" > "to flow"
    - \*ward heru "guide-do" > "to guide"
 
-1. Late Proto-Hick:
+1. Later pre-Early-Hick stage:
    - Unstressed position leads to reduction:
    - \*heru > \*her (final vowel loss)
    - \*ter her, \*ward her
@@ -436,7 +451,7 @@ In Early Hick, the prefix is lost, but it is preserved in words starting with th
    - \*muru "darkness, absence" (full lexical word)
    - Used in compounds to indicate lack/absence
 
-1. Early Proto-Hick:
+1. Early grammaticalization stage:
    - \*muru becomes preverbal particle marking negation
    - \*muru teru "not flow" (lit. "absence flow")
 
@@ -472,10 +487,10 @@ In Early Hick, the prefix is lost, but it is preserved in words starting with th
    - \*ula-uma "exists-towards"
 
 1. Development Path:
-   1. Early Proto-Hick:
-      - Full spatial case system
+   1. Early grammaticalization stage:
+      - Spatial postpositions and particles begin to specialize
       - \*ula as independent verb
-   1. Late Proto-Hick:
+   1. Later pre-Early-Hick stage:
       - \*ula begins grammaticalizing in possessive constructions
       - Still takes case markings as a verb
       - Spatial cases begin shift to demonstrative use
@@ -545,11 +560,11 @@ demonstrative to a true definite article.
    - \*meru "bird" (metaphorical extension)
 
 1. Development Path:
-   1. Early Proto-Hick:
+   1. Early semantic stage:
       - \*meru primary meaning "nurture/care"
       - Used in sacred compounds with \*ha-
       - Cultural association with birds as nurturers
-   1. Late Proto-Hick:
+   1. Later pre-Early-Hick stage:
       - \*ha-meru > \*θameru (sacred prefix spirantization)
       - \*θameru > \*θəmeru (unstressed vowel reduction)
       - \*meru specializes in bird terminology
