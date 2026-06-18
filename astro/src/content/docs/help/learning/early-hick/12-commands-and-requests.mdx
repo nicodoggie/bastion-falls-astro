@@ -5,6 +5,10 @@ sidebar:
   order: 12
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson teaches common ways to ask someone to do something:
@@ -19,11 +23,11 @@ This lesson teaches common ways to ask someone to do something:
 Early Hick commands name the action as an event. The simplest command uses the
 action stem plus `-es`.
 
-```txt
-vinud-es!
-build-COMMAND
-"Build!"
-```
+<InterlinearGloss>
+  <GlossToken source={"vinud"} gloss={"build"} />
+  <GlossToken source={"-es!"} gloss={"COMMAND"} type="suffix" />
+  <GlossTranslation>{"Build!"}</GlossTranslation>
+</InterlinearGloss>
 
 This is not a full sentence with a named doer. It is more like calling the
 building event into action.
@@ -33,11 +37,12 @@ building event into action.
 For a more explicit command, keep the action ending `-'er` and then add `-es`.
 This can sound stronger, corrective, or more official.
 
-```txt
-vinud'er-es!
-build-ACTION-COMMAND
-"Do the building!"
-```
+<InterlinearGloss>
+  <GlossToken source={"vinud"} gloss={"build"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"-es!"} gloss={"COMMAND"} type="suffix" />
+  <GlossTranslation>{"Do the building!"}</GlossTranslation>
+</InterlinearGloss>
 
 This form is useful when the speaker wants the action itself to be unmistakable.
 
@@ -46,29 +51,37 @@ This form is useful when the speaker wants the action itself to be unmistakable.
 If the listener needs to be named, put that person after the command with the
 doer ending `-el`.
 
-```txt
-vinud-es, 'al'tan-el!
-build-COMMAND person-that-DOER
-"Build, you!"
-```
+<InterlinearGloss>
+  <GlossToken source={"vinud"} gloss={"build"} />
+  <GlossToken source={"-es,"} gloss={"COMMAND"} type="suffix" />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'tan"} gloss={"that"} type="suffix" />
+  <GlossToken source={"-el!"} gloss={"DOER"} type="suffix" />
+  <GlossTranslation>{"Build, you!"}</GlossTranslation>
+</InterlinearGloss>
 
 With a name:
 
-```txt
-vinud-es, Aigral-el!
-build-COMMAND Aigral-DOER
-"Build, Aigral!"
-```
+<InterlinearGloss>
+  <GlossToken source={"vinud"} gloss={"build"} />
+  <GlossToken source={"-es,"} gloss={"COMMAND"} type="suffix" />
+  <GlossToken source={"Aigral"} gloss={"Aigral"} />
+  <GlossToken source={"-el!"} gloss={"DOER"} type="suffix" />
+  <GlossTranslation>{"Build, Aigral!"}</GlossTranslation>
+</InterlinearGloss>
 
 ## Commands with a Receiver
 
 When a command acts on a thing, the thing can come before the command word.
 
-```txt
-materok ka-'il wardes!
-boat ADJ-good guide-COMMAND
-"Guide the boat well!"
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"boat"} />
+  <GlossToken source={"ka-"} gloss={"ADJ"} type="prefix" />
+  <GlossToken source={"'il"} gloss={"good"} />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-es!"} gloss={"COMMAND"} type="suffix" />
+  <GlossTranslation>{"Guide the boat well!"}</GlossTranslation>
+</InterlinearGloss>
 
 The boat is not marked with `-es` here. In this command pattern, the action
 word carries the command ending.
@@ -78,11 +91,16 @@ word carries the command ending.
 The word `naterlas` softens a command into a request. It means something like
 "toward willingness."
 
-```txt
-vinud'er-es naterlas 'al'tan-el
-build-ACTION-COMMAND REQUEST person-that-DOER
-"Please build." / "Would you be willing to build?"
-```
+<InterlinearGloss>
+  <GlossToken source={"vinud"} gloss={"build"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"COMMAND"} type="suffix" />
+  <GlossToken source={"naterlas"} gloss={"REQUEST"} />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'tan"} gloss={"that"} type="suffix" />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossTranslation>{"\"Please build.\" / \"Would you be willing to build?\""}</GlossTranslation>
+</InterlinearGloss>
 
 This is gentler than a bare command because it asks the listener toward
 willingness rather than simply calling the action.
@@ -91,20 +109,27 @@ willingness rather than simply calling the action.
 
 To say "do not," put `mo-` before the action word.
 
-```txt
-mo-vinud'er!
-not-build-ACTION
-"Don't build!"
-```
+<InterlinearGloss>
+  <GlossToken source={"mo-"} gloss={"not"} type="prefix" />
+  <GlossToken source={"vinud"} gloss={"build"} />
+  <GlossToken source={"-'er!"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"Don't build!"}</GlossTranslation>
+</InterlinearGloss>
 
 For a more formal or explicit negative command, Early Hick can keep the command
 event and add a negative action word:
 
-```txt
-vinud'er-es mo'er 'al'tan-el
-build-ACTION-COMMAND not-ACTION person-that-DOER
-"You are not to build."
-```
+<InterlinearGloss>
+  <GlossToken source={"vinud"} gloss={"build"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"COMMAND"} type="suffix" />
+  <GlossToken source={"mo-"} gloss={"not"} type="prefix" />
+  <GlossToken source={"'er"} gloss={"ACTION"} />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'tan"} gloss={"that"} type="suffix" />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossTranslation>{"You are not to build."}</GlossTranslation>
+</InterlinearGloss>
 
 ## Try It
 

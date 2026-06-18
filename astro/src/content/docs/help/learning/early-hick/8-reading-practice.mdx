@@ -5,6 +5,9 @@ sidebar:
   order: 8
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson reviews the whole beginner path:
@@ -16,10 +19,12 @@ This lesson reviews the whole beginner path:
 
 ## Practice 1: A Simple Action
 
-```txt
-'ales barak'er
-person-MAIN walk-ACTION
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+</InterlinearGloss>
 
 <PopQuiz title="Translation">
 
@@ -29,10 +34,14 @@ person-MAIN walk-ACTION
 
 ## Practice 2: Doer and Receiver
 
-```txt
-materok-el rismater-es ward'er
-handler-DOER reed.boat-RECEIVER guide-ACTION
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+</InterlinearGloss>
 
 <PopQuiz title="Translation">
 
@@ -45,10 +54,13 @@ boat as the receiver.
 
 ## Practice 3: Into the Boat
 
-```txt
-branum gal-es rismater-las
-PAST man-MAIN reed.boat-INTO
-```
+<InterlinearGloss>
+  <GlossToken source={"branum"} gloss={"PAST"} />
+  <GlossToken source={"gal"} gloss={"man"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-las"} gloss={"INTO"} type="suffix" />
+</InterlinearGloss>
 
 <PopQuiz title="Translation">
 
@@ -61,10 +73,14 @@ means "into."
 
 ## Practice 4: Finished Walking
 
-```txt
-branum 'ales barak'er tel
-PAST person-MAIN walk-ACTION FINISHED
-```
+<InterlinearGloss>
+  <GlossToken source={"branum"} gloss={"PAST"} />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"tel"} gloss={"FINISHED"} />
+</InterlinearGloss>
 
 <PopQuiz title="Translation">
 
@@ -76,10 +92,13 @@ The marker `tel` tells you the action is finished.
 
 ## Practice 5: Color Change
 
-```txt
-kamar kel-es kakel-las
-red sky-MAIN blue-INTO
-```
+<InterlinearGloss>
+  <GlossToken source={"kamar"} gloss={"red"} />
+  <GlossToken source={"kel"} gloss={"sky"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"kakel"} gloss={"blue"} />
+  <GlossToken source={"-las"} gloss={"INTO"} type="suffix" />
+</InterlinearGloss>
 
 <PopQuiz title="Translation">
 
@@ -98,10 +117,10 @@ every word. Practice spotting the pieces you already know.
 
 From [The Giant of Inespell][giant]:
 
-```txt
-branrum 'aterbran mator'alul branes
-FAR.PAST before greater.tribe dawn
-```
+<InterlinearGloss
+  source={"branrum 'aterbran mator'alul branes"}
+  gloss={"FAR.PAST before greater.tribe dawn"}
+/>
 
 <PopQuiz title="Reading">
 
@@ -117,10 +136,13 @@ This line begins with `branrum`, the far-past word. A beginner translation is:
 
 Also from [The Giant of Inespell][giant]:
 
-```txt
-'ilisimris'er tamines 'isel
-teach-ACTION forge-MAIN us
-```
+<InterlinearGloss>
+  <GlossToken source={"'ilisimris"} gloss={"teach"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"tamin"} gloss={"forge"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"'isel"} gloss={"us"} />
+</InterlinearGloss>
 
 <PopQuiz title="Reading">
 

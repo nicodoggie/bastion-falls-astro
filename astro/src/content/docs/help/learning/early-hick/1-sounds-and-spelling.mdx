@@ -5,6 +5,10 @@ sidebar:
   order: 1
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson teaches the spelling habits you need before reading examples:
@@ -25,11 +29,11 @@ vessel, boat
 
 A word like `barak'er` has a stem and an ending:
 
-```txt
-barak-'er
-walk-ACTION
-"walks" or "is walking"
-```
+<InterlinearGloss>
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"\"walks\" or \"is walking\""}</GlossTranslation>
+</InterlinearGloss>
 
 The apostrophe is not decoration. It marks a short catch in the throat, like the break in the middle
 of "uh-oh." The technical name is a glottal stop.
@@ -94,11 +98,11 @@ that, sensed but hidden
 
 Many Early Hick words are easiest to read with the first part stronger:
 
-```txt
-MA-ter
-BA-rak
-RIS-ma-ter
-```
+<InterlinearGloss
+  source={"MA-ter"}
+  gloss={"BA-rak"}
+  translation={"RIS-ma-ter"}
+/>
 
 Do not worry about perfect pronunciation yet. For beginner reading, the goal is to keep the pieces
 clear.

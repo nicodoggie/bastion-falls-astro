@@ -1,8 +1,8 @@
 import {
   createGlossPairsFromLines,
   normalizeGlossPairs,
-} from "../gloss.ts";
-import type { GlossPair, GlossPairInput } from "../types.ts";
+} from "../gloss";
+import type { GlossPair, GlossPairInput } from "../types";
 
 function escapeHtml(value: string): string {
   return value
@@ -37,7 +37,11 @@ function renderTokenLine(
     .join("");
 }
 
-function renderGloss(pairs: readonly GlossPair[], translation: string): string {
+function renderGloss(
+  pairs: readonly GlossPair[],
+  translation: string,
+  sourceLine: string,
+): string {
   return `<style>
     .bf-ig {
       background: color-mix(in srgb, var(--sl-color-bg-nav, #111827) 72%, transparent);
@@ -51,6 +55,15 @@ function renderGloss(pairs: readonly GlossPair[], translation: string): string {
       align-items: baseline;
       display: flex;
       min-width: max-content;
+    }
+    .bf-ig__surface {
+      color: var(--sl-color-white, currentColor);
+      font-family: ui-serif, Georgia, serif;
+      font-size: 1.08rem;
+      font-weight: 650;
+      margin: 0 0 0.35rem;
+      min-width: max-content;
+      white-space: nowrap;
     }
     .bf-ig__source {
       margin-bottom: 0.16rem;
@@ -73,6 +86,12 @@ function renderGloss(pairs: readonly GlossPair[], translation: string): string {
       margin-right: -0.06rem;
       padding-right: 0;
     }
+    .bf-ig-token--prefix + .bf-ig-token {
+      margin-left: -0.06rem;
+    }
+    .bf-ig-token + .bf-ig-token--suffix {
+      margin-left: 0rem;
+    }
     .bf-ig-token--clitic {
       margin-left: 0.16rem;
     }
@@ -87,7 +106,6 @@ function renderGloss(pairs: readonly GlossPair[], translation: string): string {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: 0.75rem;
       letter-spacing: 0;
-      text-transform: uppercase;
     }
     .bf-ig-token[data-gloss-active="true"] {
       background: color-mix(in srgb, var(--sl-color-accent, #6366f1) 18%, transparent);
@@ -100,6 +118,7 @@ function renderGloss(pairs: readonly GlossPair[], translation: string): string {
     }
   </style>
   <div class="bf-ig" role="group" aria-label="Interlinear gloss">
+    ${sourceLine ? `<p class="bf-ig__surface">${escapeHtml(sourceLine)}</p>` : ""}
     <div class="bf-ig__line bf-ig__source">${renderTokenLine(pairs, "source")}</div>
     <div class="bf-ig__line bf-ig__gloss">${renderTokenLine(pairs, "gloss")}</div>
     ${translation ? `<p class="bf-ig__translation">${escapeHtml(translation)}</p>` : ""}
@@ -126,6 +145,10 @@ function translationFromElement(element: HTMLElement): string {
     element.querySelector<HTMLElement>("[data-gloss-translation]")?.textContent?.trim() ??
     ""
   );
+}
+
+function sourceLineFromElement(element: HTMLElement): string {
+  return element.querySelector<HTMLElement>("[data-gloss-source]")?.textContent?.trim() ?? "";
 }
 
 class BfInterlinearGlossElement extends HTMLElement {
@@ -162,7 +185,8 @@ class BfInterlinearGlossElement extends HTMLElement {
   #render(): void {
     const pairs = pairsFromElement(this);
     const translation = translationFromElement(this);
-    this.innerHTML = renderGloss(pairs, translation);
+    const sourceLine = sourceLineFromElement(this);
+    this.innerHTML = renderGloss(pairs, translation, sourceLine);
   }
 }
 

@@ -5,6 +5,10 @@ sidebar:
   order: 13
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson teaches how Early Hick talks about what someone wants or is willing
@@ -20,33 +24,42 @@ to do:
 To say someone wants or intends to do an action, Early Hick can replace the
 action ending `-'er` with `-nat`.
 
-```txt
-imeresp'er
-sleep-ACTION
-"to sleep"
-```
+<InterlinearGloss>
+  <GlossToken source={"imeresp"} gloss={"sleep"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"to sleep"}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-imerespnat
-sleep-WANT
-"want to sleep"
-```
+<InterlinearGloss>
+  <GlossToken source={"imeresp"} gloss={"sleep"} />
+  <GlossToken source={"-nat"} gloss={"WANT"} type="suffix" />
+  <GlossTranslation>{"want to sleep"}</GlossTranslation>
+</InterlinearGloss>
 
 In a sentence:
 
-```txt
-'al'is-es imerespnat
-person-this-MAIN sleep-WANT
-"I want to sleep."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"imeresp"} gloss={"sleep"} />
+  <GlossToken source={"-nat"} gloss={"WANT"} type="suffix" />
+  <GlossTranslation>{"I want to sleep."}</GlossTranslation>
+</InterlinearGloss>
 
 The same pattern works with an action that has a receiver.
 
-```txt
-'al'is-el hilisnat 'altal-es
-person-this-DOER see-WANT person-that-RECEIVER
-"I want to see you."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"hilis"} gloss={"see"} />
+  <GlossToken source={"-nat"} gloss={"WANT"} type="suffix" />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-tal"} gloss={"that"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossTranslation>{"I want to see you."}</GlossTranslation>
+</InterlinearGloss>
 
 ## The Full Word `nater`
 
@@ -74,11 +87,16 @@ want-to / intend-to ending
 
 In the last lesson, you saw `naterlas` in polite requests.
 
-```txt
-vinud'er-es naterlas 'al'tan-el
-build-ACTION-COMMAND REQUEST person-that-DOER
-"Please build." / "Would you be willing to build?"
-```
+<InterlinearGloss>
+  <GlossToken source={"vinud"} gloss={"build"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"COMMAND"} type="suffix" />
+  <GlossToken source={"naterlas"} gloss={"REQUEST"} />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'tan"} gloss={"that"} type="suffix" />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossTranslation>{"\"Please build.\" / \"Would you be willing to build?\""}</GlossTranslation>
+</InterlinearGloss>
 
 `naterlas` is related to `nater`. It is like saying the request moves "toward
 willingness." You do not need to build that word yourself yet. For now, learn it
@@ -89,25 +107,28 @@ as the request word.
 Early Hick also has `-'arm`, an ending for willingness or readiness. Like
 `-nat`, it replaces the regular action ending `-'er`.
 
-```txt
-ward'er
-guide-ACTION
-"to guide"
-```
+<InterlinearGloss>
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"to guide"}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-wardarm
-guide-WILLING
-"willing to guide"
-```
+<InterlinearGloss>
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-arm"} gloss={"WILLING"} type="suffix" />
+  <GlossTranslation>{"willing to guide"}</GlossTranslation>
+</InterlinearGloss>
 
 In a sentence:
 
-```txt
-'al'is-es wardarm
-person-this-MAIN guide-WILLING
-"I am willing to guide."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-arm"} gloss={"WILLING"} type="suffix" />
+  <GlossTranslation>{"I am willing to guide."}</GlossTranslation>
+</InterlinearGloss>
 
 This form can sound more formal, pledge-like, or duty-focused than ordinary
 wanting with `-nat`.
@@ -116,27 +137,38 @@ wanting with `-nat`.
 
 Use `-nat` when the main idea is desire or intention.
 
-```txt
-'al'is-es imerespnat
-person-this-MAIN sleep-WANT
-"I want to sleep."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"imeresp"} gloss={"sleep"} />
+  <GlossToken source={"-nat"} gloss={"WANT"} type="suffix" />
+  <GlossTranslation>{"I want to sleep."}</GlossTranslation>
+</InterlinearGloss>
 
 Use `-'arm` when the main idea is willingness or readiness to take the action.
 
-```txt
-'al'is-es wardarm
-person-this-MAIN guide-WILLING
-"I am willing to guide."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-arm"} gloss={"WILLING"} type="suffix" />
+  <GlossTranslation>{"I am willing to guide."}</GlossTranslation>
+</InterlinearGloss>
 
 Use `naterlas` when you are making a polite request to someone else.
 
-```txt
-vinud'er-es naterlas 'al'tan-el
-build-ACTION-COMMAND REQUEST person-that-DOER
-"Please build."
-```
+<InterlinearGloss>
+  <GlossToken source={"vinud"} gloss={"build"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"COMMAND"} type="suffix" />
+  <GlossToken source={"naterlas"} gloss={"REQUEST"} />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'tan"} gloss={"that"} type="suffix" />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossTranslation>{"Please build."}</GlossTranslation>
+</InterlinearGloss>
 
 ## Try It
 

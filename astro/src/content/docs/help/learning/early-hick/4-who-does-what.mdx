@@ -5,6 +5,10 @@ sidebar:
   order: 4
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson teaches the two most important sentence endings:
@@ -17,11 +21,15 @@ This lesson teaches the two most important sentence endings:
 
 When one person or thing does an action to another person or thing, the doer gets `-el`.
 
-```txt
-materok-el 'al-es venitar
-handler-DOER person-RECEIVER burden-UP
-"The handler carries the person."
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossToken source={"veni"} gloss={"burden"} />
+  <GlossToken source={"-tar"} gloss={"UP"} type="suffix" />
+  <GlossTranslation>{"The handler carries the person."}</GlossTranslation>
+</InterlinearGloss>
 
 `materok` means "handler" or "boatman." The ending `-el` tells you the handler is the one doing the
 action.
@@ -31,16 +39,18 @@ action.
 The ending `-es` marks the main noun of a simple sentence. In a sentence with a doer and a receiver,
 it marks the receiver.
 
-```txt
-'al-es
-person-MAIN
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+</InterlinearGloss>
 
-```txt
-'ales barak'er
-person-MAIN walk-ACTION
-"The person walks."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The person walks."}</GlossTranslation>
+</InterlinearGloss>
 
 In English class terms, this is unusual. English usually treats "the person" in "the person walks"
 like a subject. Early Hick marks it with the same ending used for a receiver. The technical term is
@@ -57,10 +67,14 @@ absolutive.
 
 In the sentence below, who is the doer and who is the receiver?
 
-```txt
-materok-el rismater-es ward'er
-handler-DOER reed.boat-RECEIVER guide-ACTION
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+</InterlinearGloss>
 
 <PopQuiz title="Answer">
 

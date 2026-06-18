@@ -5,6 +5,10 @@ sidebar:
   order: 14
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson teaches how Early Hick joins equal pieces:
@@ -19,11 +23,15 @@ This lesson teaches how Early Hick joins equal pieces:
 Early Hick uses `o` to mark items in a list. The joining word comes after the
 listed items.
 
-```txt
-'al'is o materok o ru
-person-this LIST handler LIST and
-"this person and the handler"
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"ru"} gloss={"and"} />
+  <GlossTranslation>{"this person and the handler"}</GlossTranslation>
+</InterlinearGloss>
 
 The word `o` does not mean "and" by itself. It marks each listed item. The
 joining word `ru` tells you the list means "and."
@@ -35,46 +43,73 @@ puts the role ending for the joined group.
 
 When the joined group does the action, put the doer ending `-el` on `ru`.
 
-```txt
-'al'is o materok o ru-el rismater-es ward'er
-person-this LIST handler LIST and-DOER reed.boat-RECEIVER guide-ACTION
-"This person and the handler guide the reed boat."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"ru"} gloss={"and"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"This person and the handler guide the reed boat."}</GlossTranslation>
+</InterlinearGloss>
 
 The people in the list do not each need `-el`. The ending goes on `ru` because
 `ru` carries the role of the whole joined group.
 
 When the joined group is the main noun or receiver, use `ru-es`.
 
-```txt
-materok-el 'al'is o rismater o ru-es ward'er
-handler-DOER person-this LIST reed.boat LIST and-RECEIVER guide-ACTION
-"The handler guides this person and the reed boat."
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"ru"} gloss={"and"} />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The handler guides this person and the reed boat."}</GlossTranslation>
+</InterlinearGloss>
 
 ## Or with `'a`
 
 Use `'a` when the joined items are alternatives, like English "or."
 
-```txt
-'al'is o materok o 'a-el rismater-es ward'er
-person-this LIST handler LIST or-DOER reed.boat-RECEIVER guide-ACTION
-"This person or the handler guides the reed boat."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"'a"} gloss={"or"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"This person or the handler guides the reed boat."}</GlossTranslation>
+</InterlinearGloss>
 
 The same role-ending pattern applies:
 
-```txt
-'a-el
-or-DOER
-"one of them as the doer"
-```
+<InterlinearGloss>
+  <GlossToken source={"'a"} gloss={"or"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossTranslation>{"one of them as the doer"}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-'a-es
-or-RECEIVER
-"one of them as the receiver or main noun"
-```
+<InterlinearGloss>
+  <GlossToken source={"'a"} gloss={"or"} />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossTranslation>{"one of them as the receiver or main noun"}</GlossTranslation>
+</InterlinearGloss>
 
 The older sense behind `'a` is "other" or "alternative." In ordinary sentences
 like these, read it as "or."
@@ -84,11 +119,18 @@ like these, read it as "or."
 Use `ewes` when the point is shared action or equal participation. It is closer
 to "together with" than plain "and."
 
-```txt
-'al'is o Mari o ewes-es ward'er
-person-this LIST Mari LIST together-MAIN travel-ACTION
-"This person and Mari travel together."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"Mari"} gloss={"Mari"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"ewes"} gloss={"together"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"travel"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"This person and Mari travel together."}</GlossTranslation>
+</InterlinearGloss>
 
 Here `ewes-es` treats the listed people as one shared-action group.
 
@@ -99,27 +141,42 @@ it is the final joining word for the whole group.
 
 Use `ru` for ordinary "and."
 
-```txt
-'al'is o materok o ru-el
-person-this LIST handler LIST and-DOER
-"this person and the handler" as doers
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"ru"} gloss={"and"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossTranslation>{"\"this person and the handler\" as doers"}</GlossTranslation>
+</InterlinearGloss>
 
 Use `'a` for alternatives.
 
-```txt
-'al'is o materok o 'a-el
-person-this LIST handler LIST or-DOER
-"this person or the handler" as doer
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"'a"} gloss={"or"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossTranslation>{"\"this person or the handler\" as doer"}</GlossTranslation>
+</InterlinearGloss>
 
 Use `ewes` when doing the action together matters.
 
-```txt
-'al'is o Mari o ewes-es
-person-this LIST Mari LIST together-MAIN
-"this person together with Mari" as one shared group
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"Mari"} gloss={"Mari"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"ewes"} gloss={"together"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossTranslation>{"\"this person together with Mari\" as one shared group"}</GlossTranslation>
+</InterlinearGloss>
 
 ## Try It
 

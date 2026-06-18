@@ -4,13 +4,13 @@ import { describe, it } from "node:test";
 import {
   createGlossPairsFromLines,
   normalizeGlossPairs,
-} from "./gloss.ts";
+} from "./gloss";
 
 describe("interlinear gloss utilities", () => {
   it("pairs source and gloss spans from shorthand lines", () => {
     const pairs = createGlossPairsFromLines(
       "barak'er-es 'aterimris",
-      "walk-ACTION-MAIN after",
+      "walk-VRB-ABS after",
     );
 
     assert.deepEqual(
@@ -24,7 +24,7 @@ describe("interlinear gloss utilities", () => {
         {
           id: "g1",
           source: "barak'er-es",
-          gloss: "walk-ACTION-MAIN",
+          gloss: "walk-VRB-ABS",
           type: "word",
         },
         {
@@ -42,23 +42,44 @@ describe("interlinear gloss utilities", () => {
       { source: "ka-", gloss: "ADJ", type: "prefix" },
       { source: "kras", gloss: "bitter" },
       { source: "='u", gloss: "cry", type: "clitic" },
-      { source: "-'er", gloss: "ACTION", type: "suffix" },
+      { source: "-'er", gloss: "VRB", type: "suffix" },
     ]);
 
     assert.deepEqual(
       pairs.map((pair) => [pair.id, pair.source, pair.gloss, pair.type]),
       [
-        ["g1", "ka-", "ADJ", "prefix"],
+        ["g1", "ka-", "ADJ-", "prefix"],
         ["g2", "kras", "bitter", "word"],
         ["g3", "='u", "cry", "clitic"],
-        ["g4", "-'er", "ACTION", "suffix"],
+        ["g4", "-'er", "-VRB", "suffix"],
+      ],
+    );
+  });
+
+  it("adds affix boundary hyphens from prefix and suffix token types", () => {
+    const pairs = normalizeGlossPairs([
+      { source: "ma", gloss: "PL", type: "prefix" },
+      { source: "vinud", gloss: "build" },
+      { source: "es!", gloss: "ABS!", type: "suffix" },
+      { source: "ka-", gloss: "ADJ-", type: "prefix" },
+      { source: "-'er", gloss: "-VRB", type: "suffix" },
+    ]);
+
+    assert.deepEqual(
+      pairs.map((pair) => [pair.id, pair.source, pair.gloss, pair.type]),
+      [
+        ["g1", "ma-", "PL-", "prefix"],
+        ["g2", "vinud", "build", "word"],
+        ["g3", "-es!", "-ABS!", "suffix"],
+        ["g4", "ka-", "ADJ-", "prefix"],
+        ["g5", "-'er", "-VRB", "suffix"],
       ],
     );
   });
 
   it("rejects shorthand lines with mismatched token counts", () => {
     assert.throws(
-      () => createGlossPairsFromLines("barak'er-es 'aterimris", "walk-ACTION"),
+      () => createGlossPairsFromLines("barak'er-es 'aterimris", "walk-VRB"),
       /same number of tokens/,
     );
   });

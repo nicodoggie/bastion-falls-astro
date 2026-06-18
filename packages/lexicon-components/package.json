@@ -24,6 +24,7 @@
   "exports": {
     "./LexiconEntryBlock.astro": "./src/LexiconEntryBlock.astro",
     "./InterlinearGloss.astro": "./src/InterlinearGloss.astro",
+    "./GlossSource.astro": "./src/GlossSource.astro",
     "./GlossToken.astro": "./src/GlossToken.astro",
     "./GlossTranslation.astro": "./src/GlossTranslation.astro",
     "./LexiconAlphaPage.astro": "./src/LexiconAlphaPage.astro",

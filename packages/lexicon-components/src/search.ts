@@ -3,7 +3,7 @@ import type {
   LexiconSearchIndex,
   LexiconSearchMatchedField,
   LexiconSearchResult,
-} from "./types.ts";
+} from "./types";
 
 type SearchScope = "smart" | "word" | "def" | "tag" | "type";
 

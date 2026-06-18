@@ -17,6 +17,10 @@ extraMetadata:
       - Proto-Hick
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## Overview
 
 The Hick language was the primary tongue of pre-Kalassarian Senera. While no longer spoken, it
@@ -39,6 +43,66 @@ suffixes, and these interact with its derivational morphology to form complex co
 
 A reconstruction of a hypothetical [Proto-Hick](../../proto-hick/index.mdx) exists, in an incomplete
 state.
+
+## Glossing Conventions
+
+Technical examples in this reference use Leipzig-style interlinear glosses. Lexical meanings are
+written in lowercase, while grammatical categories are written in uppercase. Multiple categories on
+a single morpheme are joined with periods, and morpheme boundaries are joined with hyphens:
+
+```txt
+barak-'er-es
+walk-VRB-ABS
+"walking; the walking event"
+
+'al-tan-el
+person-MED.DIR.ANIM-ERG
+"that person, as agent"
+```
+
+The beginner lessons sometimes use plain-English labels such as `ACTION`, `MAIN`, or `DOER` for
+pedagogical clarity. Those labels are learner aids, not the reference abbreviations.
+
+Common abbreviations in this reference:
+
+| Abbrev. | Meaning |
+| --- | --- |
+| `ABS` | absolutive case |
+| `ERG` | ergative case |
+| `POSS` | possessive |
+| `PL` | plural |
+| `NEG` | negation |
+| `PRIV` | privative |
+| `VRB` | verbalizer / verbal predicate marker, especially _-'er_ |
+| `ADJ` | adjectival/descriptive marker, especially _ka-_ |
+| `AGT` | agentive |
+| `VOL` | volitional |
+| `DES` | desiderative |
+| `REQ` | requestive |
+| `IMP` | imperative |
+| `PROX` | proximal demonstrative |
+| `MED` | medial demonstrative |
+| `DIST` | distal demonstrative |
+| `DIR` | direct, visible, or recoverable deixis |
+| `INDIR` | indirect, hidden, inferred, or sensed deixis |
+| `ANIM` | animate |
+| `INAN` | inanimate |
+| `ILL` | illative, into or toward an interior |
+| `ELL` | ellative, out of or from within |
+| `SUPE` | superessive, on/upon/above |
+| `SURF.ALL` | surface allative, onto/up onto |
+| `SUBE` | subessive, under/beneath/covered by |
+| `SUBL` | sublative, down to/under/to a lower surface |
+| `TRANS` | translative, becoming/changing into |
+| `PAST` | past tense |
+| `FUT` | future tense |
+| `ITER` | iterative |
+| `LIST` | list particle _o_ |
+| `ADD` | additive coordinator _ru_ |
+| `DISJ` | disjunctive coordinator _'a_ |
+| `COM` | comitative, accompanying participant |
+| `SOC` | sociative/shared-action coordinator _ewes_ |
+| `Q` | question marker |
 
 ## Historical Development
 
@@ -433,11 +497,12 @@ plurality, person, deixis, animacy, case, or verbal derivation. Frequency alone 
 glottal loss: frequent forms inside a living paradigm may preserve their boundaries because speakers
 still parse the components.
 
-```txt
-ma-'al-'is
-PL-person-PROX.ANIM
-"these people"
-```
+<InterlinearGloss>
+  <GlossToken source={"ma-"} gloss={"PL"} type="prefix" />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"PROX.ANIM"} type="suffix" />
+  <GlossTranslation>{"these people"}</GlossTranslation>
+</InterlinearGloss>
 
 In this form, the glottal boundaries remain recoverable because _ma-_, _'al_, and _-'is_ all
 continue to participate in the personal-reference paradigm. Regional or later Middle Hick speech may
@@ -452,7 +517,7 @@ BA-rak
 walk
 
 ba-RAK-'er
-walk-VERB
+walk-VRB
 ```
 
 Thus, Early Hick remains dominantly initial-stress at the lexical root level, but productive
@@ -464,7 +529,7 @@ collapsing the glottal onset. The morphological or written form can still preser
 
 ```txt
 trask-'er → tras-ker
-leg-VERB
+leg-VRB
 "to run"
 ```
 
@@ -562,21 +627,26 @@ alignment treat the "subject" of an intransitive verb like the "object" of a tra
 "object" or "patient" referent is marked with the _absolutive_ case marker -es. The "subject" or
 "agent" referent is marked with the _ergative_ case marker -el.
 
-```txt
-materokel 'al-es venitar
-handler-ERG person-ABS burden.SUP
-"The handler carries the person"
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"ERG"} type="suffix" />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"venitar"} gloss={"burden.SUP"} />
+  <GlossTranslation>{"The handler carries the person"}</GlossTranslation>
+</InterlinearGloss>
 
 In the above example, the handler _materok_ is the agent of the verb "to carry" and is marked with
 the ergative case marker -el. The person _'al_ is the patient of the verb and is marked with the
 absolutive case marker -es.
 
-```txt
-'ales barak'er
-person-ABS walk-VERB
-"The person walks"
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+  <GlossTranslation>{"The person walks"}</GlossTranslation>
+</InterlinearGloss>
 
 The single argument of the intransitive verb _barak'er_ is the one performing the action, but
 because Early Hick is an ergative-absolutive language, the absolutive case marker -es is used to
@@ -618,11 +688,11 @@ absolutive because there is no separate receiver or affected noun in the clause.
 
 ```txt
 'al-es barak'er
-person-ABS walk-VERB
+person-ABS walk-VRB
 "The person walks."
 
 barak'er 'al-es
-walk-VERB person-ABS
+walk-VRB person-ABS
 "The person walks." / "Walks, the person."
 ```
 
@@ -637,11 +707,11 @@ Changing the order changes emphasis or discourse flow, not the basic doer/receiv
 
 ```txt
 materok-el rismater-es ward'er
-handler-ERG reed.boat-ABS guide-VERB
+handler-ERG reed.boat-ABS guide-VRB
 "The handler guides the reed boat."
 
 rismater-es ward'er materok-el
-reed.boat-ABS guide-VERB handler-ERG
+reed.boat-ABS guide-VRB handler-ERG
 "The handler guides the reed boat."
 ```
 
@@ -655,19 +725,22 @@ Quality descriptions are usually formed with _ka-_ derived forms. To make the de
 finite statement, the describing form can take the verbalizer _-'er_. This is a stative description:
 it presents the noun as having a quality, rather than describing a separate action.
 
-```txt
-kel-es kakel'er
-sky-ABS blue-VERB
-"The sky is blue."
-```
+<InterlinearGloss>
+  <GlossToken source={"kel"} gloss={"sky"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"kakel"} gloss={"blue"} />
+  <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+  <GlossTranslation>{"The sky is blue."}</GlossTranslation>
+</InterlinearGloss>
 
 Short descriptive phrases can also place the _ka-_ form before the absolutive noun:
 
-```txt
-kakel kel-es
-blue sky-ABS
-"the blue sky" / "the sky is blue"
-```
+<InterlinearGloss>
+  <GlossToken source={"kakel"} gloss={"blue"} />
+  <GlossToken source={"kel"} gloss={"sky"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"\"the blue sky\" / \"the sky is blue\""}</GlossTranslation>
+</InterlinearGloss>
 
 This shorter pattern is less explicitly finite than _kel-es kakel'er_. It is useful when the quality
 is being presented as a property of the noun rather than as a full action-like predicate.
@@ -728,7 +801,7 @@ with the verbalizer affix _-'er_.
 
 ```txt
 'al'isel ven'er 'ales
-person.PROX.ERG yoke.VERB person.ABS
+person.PROX.ERG yoke.VRB person.ABS
 this person carries a person
 I am carrying a person
 ```
@@ -739,11 +812,13 @@ to it. It then acts as the verb of the sentence that means "to carry".
 While some words, such as _barak_ "walk", semantically denote actions, the verbalizer affix _-'er_
 is still applied in most instances.
 
-```txt
-'ales barak'er
-person-ABS walk-VERB
-"The person walks."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+  <GlossTranslation>{"The person walks."}</GlossTranslation>
+</InterlinearGloss>
 
 ### Spatial Case System
 
@@ -765,20 +840,27 @@ Productive spatial case attaches to the noun phrase that names the place, source
 state. In this use, the spatial case does not take the verbalizer _-'er_. The spatially marked noun
 phrase itself can imply motion or change without an overt English-style verb.
 
-```txt
-branum gal-es rismater-las
-PAST man-ABS reed.boat-ILL
-The man entered the reed boat.
-```
+<InterlinearGloss>
+  <GlossToken source={"branum"} gloss={"PAST"} />
+  <GlossToken source={"gal"} gloss={"man"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-las"} gloss={"ILL"} type="suffix" />
+  <GlossTranslation>{"The man entered the reed boat."}</GlossTranslation>
+</InterlinearGloss>
 
 The above example shows the man _gal_ moving inward into the boat _rismater_. Because _gal_ is the
 sole moving participant, it takes absolutive _-es_.
 
-```txt
-materok-el rismater-es keth-las
-handler-ERG reed.boat-ABS sea-ILL
-The handler takes the reed boat to sea.
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"ERG"} type="suffix" />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"keth"} gloss={"sea"} />
+  <GlossToken source={"-las"} gloss={"ILL"} type="suffix" />
+  <GlossTranslation>{"The handler takes the reed boat to sea."}</GlossTranslation>
+</InterlinearGloss>
 
 When a participant causes something else to move, the causer takes ergative _-el_, the moved thing
 takes absolutive _-es_, and the goal or source carries the spatial case. If an overt action verb is
@@ -817,11 +899,14 @@ FAR PAST person lifted
 "The person lifted long ago."
 ```
 
-```txt
-mulsum 'ales venitar
-FUT person-ABS yoke-SUPE
-"The person will lift."
-```
+<InterlinearGloss>
+  <GlossToken source={"mulsum"} gloss={"FUT"} />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"veni"} gloss={"yoke"} />
+  <GlossToken source={"-tar"} gloss={"SUPE"} type="suffix" />
+  <GlossTranslation>{"The person will lift."}</GlossTranslation>
+</InterlinearGloss>
 
 ### Conjunctions
 
@@ -861,29 +946,39 @@ The common spoken order is:
 1. Demonstrative suffix
 1. Case suffix
 
-```txt
-ka'il ma-mater-is-es
-good PL-boat-PROX.INAN-ABS
-"these good boats"
-```
+<InterlinearGloss>
+  <GlossToken source={"ka'il"} gloss={"good"} />
+  <GlossToken source={"ma-"} gloss={"PL"} type="prefix" />
+  <GlossToken source={"mater"} gloss={"boat"} />
+  <GlossToken source={"-is"} gloss={"PROX.INAN"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"these good boats"}</GlossTranslation>
+</InterlinearGloss>
 
 Demonstratives come before case endings. For animate nouns, the same slot takes the animate
 demonstrative:
 
-```txt
-ma-'al-'is-es
-PL-person-PROX.ANIM-ABS
-"these people"
-```
+<InterlinearGloss>
+  <GlossToken source={"ma-"} gloss={"PL"} type="prefix" />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"PROX.ANIM"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"these people"}</GlossTranslation>
+</InterlinearGloss>
 
 Possessors come before the noun phrase they possess. The possessive suffix _-ul_ attaches to the
 possessor, not to the possessed noun:
 
-```txt
-materok-ul ka'il ma-mater-is-es
-handler-POSS good PL-boat-PROX.INAN-ABS
-"the handler's good boats"
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-ul"} gloss={"POSS"} type="suffix" />
+  <GlossToken source={"ka'il"} gloss={"good"} />
+  <GlossToken source={"ma-"} gloss={"PL"} type="prefix" />
+  <GlossToken source={"mater"} gloss={"boat"} />
+  <GlossToken source={"-is"} gloss={"PROX.INAN"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"the handler's good boats"}</GlossTranslation>
+</InterlinearGloss>
 
 This overview gives the normal order for transparent, fully marked forms. Poetry and formal prose
 may front a case-marked noun phrase for emphasis, but the internal order of the noun phrase usually
@@ -892,19 +987,24 @@ remains visible.
 When a describing form made with _ka-_ refers to more than one thing, the plural marker normally
 belongs to the noun that is being counted, not inside the _ka-_ form:
 
-```txt
-ka-mater ma-etil-es
-ADJ-boat PL-thing-ABS
-"boat-like things"
-```
+<InterlinearGloss>
+  <GlossToken source={"ka-"} gloss={"ADJ"} type="prefix" />
+  <GlossToken source={"mater"} gloss={"boat"} />
+  <GlossToken source={"ma-"} gloss={"PL"} type="prefix" />
+  <GlossToken source={"etil"} gloss={"thing"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"boat-like things"}</GlossTranslation>
+</InterlinearGloss>
 
 One possible colloquial development would be to compress this into a derived form:
 
-```txt
-ma-ka-mater-es
-PL-ADJ-boat-ABS
-"boat-like ones"
-```
+<InterlinearGloss>
+  <GlossToken source={"ma-"} gloss={"PL"} type="prefix" />
+  <GlossToken source={"ka-"} gloss={"ADJ"} type="prefix" />
+  <GlossToken source={"mater"} gloss={"boat"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"boat-like ones"}</GlossTranslation>
+</InterlinearGloss>
 
 This _ma-ka-N_ pattern is noted here only as a possible future or colloquial form. It is not yet
 treated as a settled canonical Early Hick rule. Careful speech prefers the fuller noun phrase.
@@ -986,12 +1086,12 @@ Early Hick has five strategies for marking number:
    ```
 
    b. As a prefix in number marking position:
-
-   ```txt
-   thaltermateres matir'er
-   third-ship sail-VERB
-   "third ship to sail"
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"thaltermateres"} gloss={"third-ship"} />
+     <GlossToken source={"matir"} gloss={"sail"} />
+     <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+     <GlossTranslation>{"third ship to sail"}</GlossTranslation>
+   </InterlinearGloss>
 
 1. Fractional Marking with ran- The partitive prefix ran- can also mark fractions when used with
    numbers:
@@ -1080,11 +1180,15 @@ concepts, becoming a general adjectivizer.
 
    a. Intransitive use (spontaneous change):
 
-   ```txt
-   mes-es kames-sim
-   heart-ABS heart.like-TRANS
-   "The heart becomes emotional" (lit. "becomes heart-like")
-   ```
+   <InterlinearGloss>
+      <GlossToken source={"mes"} gloss={"heart"} />
+      <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+      <GlossToken source={"kames"} gloss={"heart.like"} />
+      <GlossToken source={"-sim"} gloss={"TRANS"} type="suffix" />
+      <GlossTranslation>
+         {"\"The heart becomes emotional\" (lit. \"becomes heart-like\")"}
+      </GlossTranslation>
+   </InterlinearGloss>
 
    b. Transitive use (caused change):
 
@@ -1124,7 +1228,7 @@ wooden round boat"
 After the introduction of Elven writing (c. 800 PF), a formal coordinated style developed based on
 the "o...ru" nominal coordination pattern:
 
-'il o keth o wud o mal ka-es mater-es good PART sea PART wood PART round ADJ-ABS boat-ABS "good and
+'il o keth o wud o mal ka-es mater-es good LIST sea LIST wood LIST round ADJ-ABS boat-ABS "good and
 sea-worthy and wooden and round boat"
 
 This literary innovation appears primarily in written texts and formal speech.
@@ -1204,11 +1308,18 @@ speaker behind a door, someone moving in darkness, or an unseen living force.
 Natural forces can be grammatically animate when they are treated as agentive. This is especially
 common with _-thir_, which can mark unseen living or quasi-living forces:
 
-```txt
-bressim-es bressim-'er. 'etil-thir-es kabrast-'er
-wind-ABS wind-VERB. living.thing-MED.INDIR.ANIM-ABS strength-VERB
-"The wind is blowing. That unseen living force is strong."
-```
+<InterlinearGloss>
+  <GlossToken source={"bressim"} gloss={"wind"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"bressim"} gloss={"wind"} />
+  <GlossToken source={"-'er."} gloss={"VRB."} type="suffix" />
+  <GlossToken source={"'etil"} gloss={"living.thing"} />
+  <GlossToken source={"-thir"} gloss={"MED.INDIR.ANIM"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"kabrast"} gloss={"strength"} />
+  <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+  <GlossTranslation>{"The wind is blowing. That unseen living force is strong."}</GlossTranslation>
+</InterlinearGloss>
 
 ##### Distal Demonstratives -um and -rum
 
@@ -1233,11 +1344,11 @@ Personal reference extends the demonstrative system rather than forming an indep
 class. The common proximal animate form is built from _'al_ "person" plus the animate proximal
 demonstrative _-'is_:
 
-```txt
-'al-'is
-person-PROX.ANIM
-"this person"
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"PROX.ANIM"} type="suffix" />
+  <GlossTranslation>{"this person"}</GlossTranslation>
+</InterlinearGloss>
 
 With case marking, this gives forms such as:
 
@@ -1253,29 +1364,30 @@ clear from context. They are retained when the reference needs reinforcement, co
 strengthening, or literary weight. Formal and poetic styles use overt personal references more often
 than ordinary speech.
 
-```txt
-barak'er
-walk-VERB
-"I walk / they walk" (understood from context)
-```
+<InterlinearGloss>
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+  <GlossTranslation>{"\"I walk / they walk\" (understood from context)"}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-'al'ises barak'er
-person.PROX.ABS walk-VERB
-"I walk" (reinforced: this person, not another)
-```
+<InterlinearGloss>
+  <GlossToken source={"'al'ises"} gloss={"person.PROX.ABS"} />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+  <GlossTranslation>{"\"I walk\" (reinforced: this person, not another)"}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-ven'er 'ales
-yoke.VERB person.ABS
-"I carry a person" (agent understood from context)
-```
+<InterlinearGloss
+  source={"ven'er 'ales"}
+  gloss={"yoke.VRB person.ABS"}
+  translation={"\"I carry a person\" (agent understood from context)"}
+/>
 
-```txt
-'al'isel ven'er 'ales
-person.PROX.ERG yoke.VERB person.ABS
-"I carry a person" (reinforced or literary)
-```
+<InterlinearGloss
+  source={"'al'isel ven'er 'ales"}
+  gloss={"person.PROX.ERG yoke.VRB person.ABS"}
+  translation={"\"I carry a person\" (reinforced or literary)"}
+/>
 
 Animacy remains important in reference. Animate personal-reference forms are used for people and
 other animate referents. This is not the same as biological life. Some non-living referents may be
@@ -1286,23 +1398,26 @@ demonstrative marking in some contexts.
 When the speaker refers to an ordinary object, place, event, or situation in relation to themselves,
 Early Hick usually uses the inanimate demonstrative series instead of the animate _'al-_ forms.
 
-```txt
-mater-is-es
-boat-PROX.INAN-ABS
-"this boat" / "this boat of mine here"
-```
+<InterlinearGloss>
+  <GlossToken source={"mater"} gloss={"boat"} />
+  <GlossToken source={"-is"} gloss={"PROX.INAN"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"\"this boat\" / \"this boat of mine here\""}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-mater-en-es
-boat-MED.INAN-ABS
-"that boat" / "that boat associated with you or the current scene"
-```
+<InterlinearGloss>
+  <GlossToken source={"mater"} gloss={"boat"} />
+  <GlossToken source={"-en"} gloss={"MED.INAN"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"\"that boat\" / \"that boat associated with you or the current scene\""}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-kakel-is-es
-blue-PROX.INAN-ABS
-"this blue one" / "this blue state here"
-```
+<InterlinearGloss>
+  <GlossToken source={"kakel"} gloss={"blue"} />
+  <GlossToken source={"-is"} gloss={"PROX.INAN"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"\"this blue one\" / \"this blue state here\""}</GlossTranslation>
+</InterlinearGloss>
 
 These are not ordinary English possessive pronouns. They are demonstrative references whose
 interpretation depends on speaker, addressee, discourse, and visible context. Use animate _'al-_
@@ -1314,17 +1429,17 @@ Medial forms such as _'altanel_ or _ma'altanel_ usually refer to a known, recove
 group: "they, those friends of ours." Distal forms such as _'alrumel_ or _ma'alrumel_ can instead
 refer to a generalized or socially distant group: "they, people like that."
 
-```txt
-ma'altanel ward'er
-PL.person.MED.ERG guide.VERB
-"They guide" (a known group)
-```
+<InterlinearGloss
+  source={"ma'altanel ward'er"}
+  gloss={"PL.person.MED.ERG guide.VRB"}
+  translation={"\"They guide\" (a known group)"}
+/>
 
-```txt
-ma'alrumel ward'er
-PL.person.DIST.ERG guide.VERB
-"They guide" (people like that; a generalized or distanced group)
-```
+<InterlinearGloss
+  source={"ma'alrumel ward'er"}
+  gloss={"PL.person.DIST.ERG guide.VRB"}
+  translation={"\"They guide\" (people like that; a generalized or distanced group)"}
+/>
 
 1. Spatial Demonstratives
    - istal "this.place-person" (speaker's location)
@@ -1356,40 +1471,49 @@ attaches before the stem or derived form it negates.
 
    In qualitative or stative description, _mo-_ scopes outside the _ka-_ descriptive form. The
    negative prefix therefore comes before _ka-_:
-
-   ```txt
-   mo-ka-kel kel-es
-   NEG-ADJ-sky sky-ABS
-   "the sky is not blue" / "not-blue sky"
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"mo-"} gloss={"NEG"} type="prefix" />
+     <GlossToken source={"ka-"} gloss={"ADJ"} type="prefix" />
+     <GlossToken source={"kel"} gloss={"sky"} />
+     <GlossToken source={"kel"} gloss={"sky"} />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossTranslation>{"\"the sky is not blue\" / \"not-blue sky\""}</GlossTranslation>
+   </InterlinearGloss>
 
    In a fully finite stative statement, the negative derived form can take the verbalizer:
-
-   ```txt
-   kel-es mo-ka-kel-'er
-   sky-ABS NEG-ADJ-sky-VERB
-   "The sky is not blue."
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"kel"} gloss={"sky"} />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossToken source={"mo-"} gloss={"NEG"} type="prefix" />
+     <GlossToken source={"ka-"} gloss={"ADJ"} type="prefix" />
+     <GlossToken source={"kel"} gloss={"sky"} />
+     <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+     <GlossTranslation>{"The sky is not blue."}</GlossTranslation>
+   </InterlinearGloss>
 
    This pattern parallels other stative negation such as:
-
-   ```txt
-   mal-es mo-tor-'er
-   pool-ABS NEG-height-VERB
-   "The pool is not tall."
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"mal"} gloss={"pool"} />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossToken source={"mo-"} gloss={"NEG"} type="prefix" />
+     <GlossToken source={"tor"} gloss={"height"} />
+     <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+     <GlossTranslation>{"The pool is not tall."}</GlossTranslation>
+   </InterlinearGloss>
 
 1. Action Negation
 
    Broader clausal action negation is less fully attested in the current corpus. The expected
    transparent pattern would be _mo-ROOT-'er_, with _mo-_ negating the verbal stem before the
    verbalizer:
-
-   ```txt
-   'al-es mo-barak-'er
-   person-ABS NEG-walk-VERB
-   "The person does not walk."
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"'al"} gloss={"person"} />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossToken source={"mo-"} gloss={"NEG"} type="prefix" />
+     <GlossToken source={"barak"} gloss={"walk"} />
+     <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+     <GlossTranslation>{"The person does not walk."}</GlossTranslation>
+   </InterlinearGloss>
 
    This should be treated as the regular expected pattern unless a more specific negative particle
    or construction is later documented.
@@ -1399,12 +1523,11 @@ attaches before the stem or derived form it negates.
    The ordinary standalone negative answer is _mope_ "no." Historically, this is a reinforced
    negative form _mo-pe_, with the productive Seneran negative _mo-_ strengthening an older
    inherited refusal particle _pe_. This is a negative-concord form, not a logical double negative.
-
-   ```txt
-   mope.
-   NEG-no
-   "No."
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"mo-"} gloss={"NEG"} type="prefix" />
+     <GlossToken source={"pe."} gloss={"no"} />
+     <GlossTranslation>{"No."}</GlossTranslation>
+   </InterlinearGloss>
 
    The older _pe!_ survives mainly as childish, petulant, or teasing refusal. Related fossilized
    forms include _penar_ "inaction, refusal to act", _peker_ "to refuse, deny", and _pekok_
@@ -1421,12 +1544,11 @@ attaches before the stem or derived form it negates.
    are therefore better treated as the older moral/qualitative _im_ pattern unless the meaning is
    clearly privative. For now, it should be treated as a regional western Seneran feature rather
    than a general standard Early Hick clausal negator.
-
-   ```txt
-   im-tel-mal
-   PRIV-end-pool
-   "without-end-pool" → "ocean, outer sea"
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"im-"} gloss={"PRIV"} type="prefix" />
+     <GlossToken source={"tel-mal"} gloss={"end-pool"} />
+     <GlossTranslation>{"\"without-end-pool\" → \"ocean, outer sea\""}</GlossTranslation>
+   </InterlinearGloss>
 
 #### Possession Marking
 
@@ -1437,11 +1559,12 @@ The possessive suffix -ul marks ownership and possession relationships:
    - Possessed noun follows directly
    - No additional marking on possessed noun
 
-   ```txt
-   materok-ul rismater
-   handler-POSS boat
-   "the handler's boat"
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"materok"} gloss={"handler"} />
+     <GlossToken source={"-ul"} gloss={"POSS"} type="suffix" />
+     <GlossToken source={"rismater"} gloss={"boat"} />
+     <GlossTranslation>{"the handler's boat"}</GlossTranslation>
+   </InterlinearGloss>
 
 1. Semantic Range
    - Physical possession ("X's Y")
@@ -1458,21 +1581,21 @@ The possessive suffix -ul marks ownership and possession relationships:
 - After sibilant-stop codas, ordinary speech may repair the cluster by moving the final stop into
   the verbalizer syllable and collapsing the glottal
 
-```txt
-mulis-'er [mulis.ʔer] "dreaminɡ"
-barak-'er [ba.rak.ʔer] "walking"
-trask-'er [tras.ker] "running"
-```
+<InterlinearGloss
+  source={"mulis-'er [mulis.ʔer] \"dreaminɡ\""}
+  gloss={"barak-'er [ba.rak.ʔer] \"walking\""}
+  translation={"trask-'er [tras.ker] \"running\""}
+/>
 
 ##### Active verbs (from action/motion concepts)
 
 ```txt
 ai-es ter-'er
-water-ABS flow-VERB
+water-ABS flow-VRB
 "Water flows"
 
 materok-el 'al-es ward-'er
-handler-ERG person-ABS guide-VERB
+handler-ERG person-ABS guide-VRB
 "The handler guides the person"
 ```
 
@@ -1491,11 +1614,11 @@ from active verbs, in most cases, the adjectivizer prefix ka- is prepended to th
 
 ```txt
 tor-thir-es kathral-'er
-peak-KNOWN.ANIM-ABS ADJ-sacred-VERB
+peak-KNOWN.ANIM-ABS ADJ-sacred-VRB
 "The known peak is sacred"
 
 kel-es ka-mar-'er
-sky-ABS ADJ-red-VERB
+sky-ABS ADJ-red-VRB
 "The sky is red"
 ```
 
@@ -1525,12 +1648,12 @@ other modal suffixes, it replaces the verbalizer -'er:
 ```txt
 # Intransitive
 'al'ises wardarm
-person.DEM.PROX.ANIM.VIS-ABS guide.VOL
+person.PROX.DIR.ANIM-ABS guide.VOL
 "I am willing to guide"
 
 # Transitive
 'al'isel threnarm tores
-person.DEM.PROX.ANIM.VIS-ERG watch.VOL mountain.ABS
+person.PROX.DIR.ANIM-ERG watch.VOL mountain.ABS
 "I am willing to watch the mountain"
 ```
 
@@ -1554,22 +1677,24 @@ to grammaticalize as a suffix. It replaces the verbalizer -'er and preserves the
 the base verb:
 
 1. With intransitive verbs:
-
-   ```txt
-   'al'ises imerespnat
-   person.DEM.PROX.ANIM.VIS-ABS sleep.DES.VERB
-   "I want to sleep"
-   ```
+   <InterlinearGloss>
+   <GlossToken source={"'al'is"} gloss={"person.PROX.DIR.ANIM"} />
+   <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+   <GlossToken source={"imerespnat"} gloss={"sleep.DES.VRB"} />
+   <GlossTranslation>{"I want to sleep"}</GlossTranslation>
+   </InterlinearGloss>
 
    The sole argument takes absolutive case as expected for S arguments.
 
 1. With transitive verbs:
-
-   ```txt
-   'al'isel hilisnat 'altanes
-   person.DEM.PROX.ANIM.VIS-ERG look.DES.VERB person.DEM.MED.VIS.ANIM-ABS
-   "I want to see you"
-   ```
+   <InterlinearGloss>
+   <GlossToken source={"'al'is"} gloss={"person.PROX.DIR.ANIM"} />
+   <GlossToken source={"-el"} gloss={"ERG"} type="suffix" />
+   <GlossToken source={"hilisnat"} gloss={"look.DES.VRB"} />
+   <GlossToken source={"'altan"} gloss={"person.MED.DIR.ANIM"} />
+   <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+   <GlossTranslation>{"I want to see you"}</GlossTranslation>
+   </InterlinearGloss>
 
    Both A and P arguments maintain regular ergative-absolutive marking.
 
@@ -1616,11 +1741,12 @@ The ellative `-imris` marks outward motion, emergence, source, or motion from a 
 is also extended into source-like abstract functions, including causal and derivational uses. In
 standard Early Hick, `-imris` is the main productive ellative marker.
 
-```txt
-materok-es rismater-imris
-handler-ABS reed.boat-ELL
-"The handler exits the reed boat"
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"rismater-imris"} gloss={"reed.boat-ELL"} />
+  <GlossTranslation>{"The handler exits the reed boat"}</GlossTranslation>
+</InterlinearGloss>
 
 Regional note: Some inland dialects preserve `-iter` in similar ellative-like uses, especially in
 fossilized or formal terms. For example, `venuiter` "to give birth" corresponds to standard
@@ -1635,11 +1761,12 @@ a surface goal, "onto" or "up onto", because the motion comes from the clause co
 reference uses `SUPE` for the static/support reading and `SURF.ALL` for the directional surface-goal
 reading. This is a glossing distinction, not a separate case suffix.
 
-```txt
-materok-es rismater-itar
-handler-ABS reed.boat-SURF.ALL
-"The handler climbs onto the reed boat"
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"rismater-itar"} gloss={"reed.boat-SURF.ALL"} />
+  <GlossTranslation>{"The handler climbs onto the reed boat"}</GlossTranslation>
+</InterlinearGloss>
 
 Lexicalized forms may preserve edge-case readings involving an overhead source or something coming
 from above. For example, `aitar` "rain" is understood as `ai-itar`, "water above" or "water coming
@@ -1660,11 +1787,12 @@ grammaticalized, especially when attached to consonant-final stems.
 The `-asam` case marks downward motion, lowering, or movement toward a lower surface or lower state.
 It contrasts with `-esp`, which marks being under or below without necessarily implying motion.
 
-```txt
-materok-es rismater-asam
-handler-ABS reed.boat-SUBL
-"The handler climbs down onto the reed boat"
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"rismater-asam"} gloss={"reed.boat-SUBL"} />
+  <GlossTranslation>{"The handler climbs down onto the reed boat"}</GlossTranslation>
+</InterlinearGloss>
 
 #### Directional Usage
 
@@ -1688,23 +1816,29 @@ handler-ABS reed.boat-SUBL
 
 In these zero-verb motion clauses, the moving participant is the only core argument and takes
 absolutive case. Caused-motion clauses keep the normal ergative-absolutive contrast:
-
-   ```txt
-   materok-el rismater-es keth-las
-   handler-ERG reed.boat-ABS sea-ILL
-   "The handler takes the reed boat to sea"
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"materok"} gloss={"handler"} />
+     <GlossToken source={"-el"} gloss={"ERG"} type="suffix" />
+     <GlossToken source={"rismater"} gloss={"reed.boat"} />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossToken source={"keth"} gloss={"sea"} />
+     <GlossToken source={"-las"} gloss={"ILL"} type="suffix" />
+     <GlossTranslation>{"The handler takes the reed boat to sea"}</GlossTranslation>
+   </InterlinearGloss>
 
 #### Change of State
 
 Spatial cases extend to mark state changes. See: [Adjectival System](#adjectival-morphology) for
 full details.
 
-```txt
-kamar kel-es kakel-las
-red sky-ABS blue-ILL
-"red sky turns blue"
-```
+<InterlinearGloss>
+  <GlossToken source={"kamar"} gloss={"red"} />
+  <GlossToken source={"kel"} gloss={"sky"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"kakel"} gloss={"blue"} />
+  <GlossToken source={"-las"} gloss={"ILL"} type="suffix" />
+  <GlossTranslation>{"red sky turns blue"}</GlossTranslation>
+</InterlinearGloss>
 
 #### Syntactic Properties
 
@@ -1726,30 +1860,32 @@ Early Hick has no true adjective class. Quality concepts are expressed through:
 
    ```txt
    kel-es kakel-ʔer
-   sky-ABS blue-VERB
+   sky-ABS blue-VRB
    "The sky is blue"
 
    thral-el kel-es kakel-ʔer
-   ritual-ERG sky-ABS blue-VERB
+   ritual-ERG sky-ABS blue-VRB
    "The ritual makes the sky blue"
    ```
 
 1. Change of State
    1. Translative (-sim):
 
-      ```txt
-      kel-es kakel-sim
-      sky.ABS blue.TRANS
-      "sky becomes blue"
-      ```
+      <InterlinearGloss
+        source={"kel-es kakel-sim"}
+        gloss={"sky.ABS blue.TRANS"}
+        translation={"sky becomes blue"}
+      />
 
    1. Directional Cases (-las/-imris):
-
-      ```txt
-      kamar kel-es kakel-las
-      red sky-ABS blue-ILL
-      "red sky turns blue"
-      ```
+      <InterlinearGloss>
+        <GlossToken source={"kamar"} gloss={"red"} />
+        <GlossToken source={"kel"} gloss={"sky"} />
+        <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+        <GlossToken source={"kakel"} gloss={"blue"} />
+        <GlossToken source={"-las"} gloss={"ILL"} type="suffix" />
+        <GlossTranslation>{"red sky turns blue"}</GlossTranslation>
+      </InterlinearGloss>
 
 1. Notes:
    - No bare attributive modification by property roots
@@ -1793,11 +1929,11 @@ blue sky
 
 The -rak suffix can also be used in color-changing contexts:
 
-```txt
-'al'isel alises arak'er kelel kelrakes
-person.PROX.ERG who.ABS color.VERB sky.ERG blue.ABS
-"I colored the sky blue"
-```
+<InterlinearGloss
+  source={"'al'isel alises arak'er kelel kelrakes"}
+  gloss={"person.PROX.ERG who.ABS color.VRB sky.ERG blue.ABS"}
+  translation={"I colored the sky blue"}
+/>
 
 ### Derivational Morphology
 
@@ -1860,11 +1996,17 @@ boundary and comes to mean "divine revelation, sacred illumination." This is not
 passive. Rather, the subject is conceptualized as entering the state or place named by the
 directional phrase.
 
-```txt
-thid-es thrallas → thid-es thralas
-truth-ABS sacred.light-ILL → truth-ABS revelation
-"truth into sacred light" → "divine revelation"
-```
+<InterlinearGloss>
+  <GlossToken source={"thid"} gloss={"truth"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"thral"} gloss={"sacred.light"} />
+  <GlossToken source={"-las"} gloss={"ILL"} type="suffix" />
+  <GlossToken source={"→"} gloss={"→"} />
+  <GlossToken source={"thid"} gloss={"truth"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"thralas"} gloss={"revelation"} />
+  <GlossTranslation>{"\"truth into sacred light\" → \"divine revelation\""}</GlossTranslation>
+</InterlinearGloss>
 
 #### Compound Formation
 
@@ -1882,7 +2024,7 @@ truth-ABS sacred.light-ILL → truth-ABS revelation
 
 Action nominal compounds require the verbalizer -'er as part of the compound structure:
 
-BASE-VERB'er (e.g., mater-tag'er, pel-thren'er)
+BASE-VRB'er (e.g., mater-tag'er, pel-thren'er)
 
 Unlike regular compounds, action nominals preserve morphological boundaries and resist normal
 compound phonology:
@@ -1908,7 +2050,7 @@ Compare:
    - First element must be a concrete noun (*mater-tag'er "boat-making" but not*thral-tag'er
      "sacred-making")
    - Second element must be an action-capable root (tag'er "make", thren'er "watch", but not
-     \*sul'er "liver-VERB")
+     \*sul'er "liver-VRB")
 
 1. Semantic Restrictions:
    - Must describe culturally recognized activities
@@ -1971,20 +2113,26 @@ Adjectival _ka-_ usually derives a describing form from its own root, rather tha
 the numbered noun phrase. The derived describing form then stands before the noun phrase it
 modifies:
 
-```txt
-ka-mater ma-etil-es
-ADJ-boat PL-thing-ABS
-"boat-like things"
-```
+<InterlinearGloss>
+  <GlossToken source={"ka-"} gloss={"ADJ"} type="prefix" />
+  <GlossToken source={"mater"} gloss={"boat"} />
+  <GlossToken source={"ma-"} gloss={"PL"} type="prefix" />
+  <GlossToken source={"etil"} gloss={"thing"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"boat-like things"}</GlossTranslation>
+</InterlinearGloss>
 
 Negative descriptive forms use the same outer-prefix logic. When _mo-_ negates a _ka-_ derived form,
 it appears outside _ka-_:
 
-```txt
-mo-ka-kel kel-es
-NEG-ADJ-sky sky-ABS
-"not-blue sky" / "the sky is not blue"
-```
+<InterlinearGloss>
+  <GlossToken source={"mo-"} gloss={"NEG"} type="prefix" />
+  <GlossToken source={"ka-"} gloss={"ADJ"} type="prefix" />
+  <GlossToken source={"kel"} gloss={"sky"} />
+  <GlossToken source={"kel"} gloss={"sky"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"\"not-blue sky\" / \"the sky is not blue\""}</GlossTranslation>
+</InterlinearGloss>
 
 This does not make _ka-_ an ordinary part of the counted noun-head template above. It is a derived
 describing form that can itself be negated.
@@ -1992,11 +2140,13 @@ describing form that can itself be negated.
 One possible colloquial development would compress recoverable phrases by placing _ma-_ before a
 _ka-_ derived form:
 
-```txt
-ma-ka-mater-es
-PL-ADJ-boat-ABS
-"boat-like ones"
-```
+<InterlinearGloss>
+  <GlossToken source={"ma-"} gloss={"PL"} type="prefix" />
+  <GlossToken source={"ka-"} gloss={"ADJ"} type="prefix" />
+  <GlossToken source={"mater"} gloss={"boat"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"boat-like ones"}</GlossTranslation>
+</InterlinearGloss>
 
 Examples:
 
@@ -2026,7 +2176,7 @@ Examples:
 #### Suffix Classes
 
 1. Inner Suffixes (closer to root)
-   - -'er (VERB): verbalizer (See: [Verbal Morphology](#verbal-morphology))
+   - -'er (VRB): verbalizer (See: [Verbal Morphology](#verbal-morphology))
    - -arm (VOL): volitional (See: [Morphological Mood](#morphological-mood))
    - -nat (DES): desiderative (See: [Morphological Mood](#morphological-mood))
    - -ok (AGENT): agentive (See: [Agentive Marking](#agentive-marking))
@@ -2072,20 +2222,25 @@ Early Hick uses property roots and _ka-_ derived describing words in three main 
 
 1. As Adjectives (modifying nouns)
    - _ka-_ derived forms come before the noun they modify
-
-   ```txt
-   ka'irek litor-es etal
-   ADJ-firm hill-ABS that.MED
-   "that firm hill" (like English "the tall tree")
-   ```
+   <InterlinearGloss>
+   <GlossToken source={"ka-"} gloss={"ADJ"} type="prefix" />
+   <GlossToken source={"'irek"} gloss={"firm"} />
+   <GlossToken source={"litor"} gloss={"hill"} />
+   <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+   <GlossToken source={"etal"} gloss={"that.MED"} />
+   <GlossTranslation>{"\"that firm hill\" (like English \"the tall tree\")"}</GlossTranslation>
+   </InterlinearGloss>
 
 1. As Predicate Adjectives (with verb marking)
 
-   ```txt
-   litor-es ka'irek'er
-   hill-ABS ADJ-firm-VERB
-   "The hill is firm" (like English "The tree is tall")
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"litor"} gloss={"hill"} />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossToken source={"ka-"} gloss={"ADJ"} type="prefix" />
+     <GlossToken source={"'irek"} gloss={"firm"} />
+     <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+     <GlossTranslation>{"\"The hill is firm\" (like English \"The tree is tall\")"}</GlossTranslation>
+   </InterlinearGloss>
 
 1. As Adverbs (modifying verbs)
    - Stand near the verb they modify
@@ -2095,11 +2250,11 @@ Early Hick uses property roots and _ka-_ derived describing words in three main 
 
    ```txt
    wen'altanes 'irek'er ka'irek
-   woman.MED.VIS.ANIM-ABS stand-VERB ADJ-firm
+   woman.MED.DIR.ANIM-ABS stand-VRB ADJ-firm
    "She stands firmly" (like English "-ly" adverbs)
 
    wen'altanes ka'irek 'irek'er
-   woman.MED.VIS.ANIM-ABS ADJ-firm stand-VERB
+   woman.MED.DIR.ANIM-ABS ADJ-firm stand-VRB
    "She firmly stands"
    ```
 
@@ -2146,12 +2301,15 @@ are not treated as settled canonical Early Hick.
      ```
 
    - Directional constructions allow goal prominence:
-
-     ```txt
-     keth-las materok-el rismater-es
-     sea-ILL  handler-ERG reed.boat-ABS
-     "To sea the handler (takes) the reed boat"
-     ```
+     <InterlinearGloss>
+     <GlossToken source={"keth"} gloss={"sea"} />
+     <GlossToken source={"-las"} gloss={"ILL"} type="suffix" />
+     <GlossToken source={"materok"} gloss={"handler"} />
+     <GlossToken source={"-el"} gloss={"ERG"} type="suffix" />
+     <GlossToken source={"rismater"} gloss={"reed.boat"} />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossTranslation>{"To sea the handler (takes) the reed boat"}</GlossTranslation>
+     </InterlinearGloss>
 
 1. Temporal Reference
    - Time words can float freely but tend toward:
@@ -2162,7 +2320,7 @@ are not treated as settled canonical Early Hick.
 
      ```txt
      branum materok-el ward-ʔer  # Frame-setting
-     past    handler-ERG guide-VERB
+     past    handler-ERG guide-VRB
      "In the past, the handler guided"
 
      materok-el branum ward-ʔer  # Temporal contrast
@@ -2186,11 +2344,15 @@ See: [Tense](#tense) and [Aspect](#aspect) for a complete description of:
 Early Hick marks accompaniment through the particle ewes, which precedes an absolutive-marked
 participant:
 
-```txt
-'al'isel ewes Maries ward'er
-person.DEM.PROX.ANIM.VIS-ERG WITH Mari-ABS travel.VERB
-"I travel with Mari"
-```
+<InterlinearGloss>
+  <GlossToken source={"'al'is"} gloss={"person.PROX.DIR.ANIM"} />
+  <GlossToken source={"-el"} gloss={"ERG"} type="suffix" />
+  <GlossToken source={"ewes"} gloss={"COM"} />
+  <GlossToken source={"Mari"} gloss={"Mari"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"ward'er"} gloss={"travel.VRB"} />
+  <GlossTranslation>{"I travel with Mari"}</GlossTranslation>
+</InterlinearGloss>
 
 The primary participant takes ergative case while the accompanying participant is marked absolutive.
 See also: [Conjunctions](#conjunctions) for coordinated usage of ewes.
@@ -2204,33 +2366,37 @@ Early Hick has two primary strategies for expressing object control ("X tells Y 
 Uses the adjectival prefix ka- with translative -sim to show caused state (See:
 [Adjectival Marking](#adjectival-marking)):
 
-```txt
-branum 'al'isel kaimerespsim galtanes
-PAST person.PROX.ERG ADJ-sleep-TRANS man.MED.ABS
-"I made him sleep" (lit. "I made him become sleep-like")
-```
+<InterlinearGloss>
+  <GlossToken source={"branum"} gloss={"PAST"} />
+  <GlossToken source={"'al'isel"} gloss={"person.PROX.ERG"} />
+  <GlossToken source={"ka-"} gloss={"ADJ"} type="prefix" />
+  <GlossToken source={"imeresp"} gloss={"sleep"} />
+  <GlossToken source={"-sim"} gloss={"TRANS"} type="suffix" />
+  <GlossToken source={"galtanes"} gloss={"man.MED.ABS"} />
+  <GlossTranslation>{"\"I made him sleep\" (lit. \"I made him become sleep-like\")"}</GlossTranslation>
+</InterlinearGloss>
 
 The construction maintains ergative-absolutive alignment, with the causer marked ergative and the
 causee marked absolutive.
 
 ```txt
 ma'altanel 'al'ises 'ilisimris'er [katagsim wen'er wenel]
-PL.person.MED.ERG person.PROX.ABS teach.VERB [ADJ.give.TRANS bloom.VERB flower.ERG]
+PL.person.MED.ERG person.PROX.ABS teach.VRB [ADJ.give.TRANS bloom.VRB flower.ERG]
 "They taught us to make flowers bloom"
 
 'al'isel altanes 'ilisimris'er [katagsim sul'er aiel]
-person.PROX.ERG person.MED.ABS teach.VERB [ADJ.give.TRANS flow.VERB water.ERG]
+person.PROX.ERG person.MED.ABS teach.VRB [ADJ.give.TRANS flow.VRB water.ERG]
 "I taught them to make the water flow"
 ```
 
 The embedded causative maintains its fixed \[AUX VERB SUBJ] order even with multiple verbs, while
 the matrix clause remains flexible:
 
-```txt
-altanes 'al'isel [katagsim sul'er aiel] 'ilisimris'er
-person.MED.ABS person.PROX.ERG [ADJ.give.TRANS flow.VERB water.ERG] teach.VERB
-"Them, I taught to make the water flow"
-```
+<InterlinearGloss
+  source={"altanes 'al'isel [katagsim sul'er aiel] 'ilisimris'er"}
+  gloss={"person.MED.ABS person.PROX.ERG [ADJ.give.TRANS flow.VRB water.ERG] teach.VRB"}
+  translation={"Them, I taught to make the water flow"}
+/>
 
 This construction differs from case-lexicalized directional stems such as _taglas_ "take, receive"
 or _thralas_ "divine revelation, sacred illumination." The _katagsim_ construction profiles an overt
@@ -2242,11 +2408,11 @@ meanings through their directional metaphor, but they are not object-control cla
 
 Uses relative clause structure to frame commands as reported speech:
 
-```txt
-branum 'al'isel ['alises paket'er imerespes!] galtanimrises
-PAST person.PROX.ERG [who.ABS say.VERB sleep.IMP.ABS!] man.MED.ELL.ABS
-"I who said 'sleep!' to him"
-```
+<InterlinearGloss
+  source={"branum 'al'isel ['alises paket'er imerespes!] galtanimrises"}
+  gloss={"PAST person.PROX.ERG [who.ABS say.VRB sleep.IMP.ABS!] man.MED.ELL.ABS"}
+  translation={"I who said 'sleep!' to him"}
+/>
 
 Key features:
 
@@ -2264,11 +2430,11 @@ Early Hick marks reflexive relationships primarily through case marking and demo
 
    ```txt
    galtalel tallas hilis'er
-   person.MED.ERG MED.ILL look.VERB
+   person.MED.ERG MED.ILL look.VRB
    "He looked at himself"
 
    ma'altalel matallas pak'er
-   PL.person.MED.ERG PL.MED.ILL speak.VERB
+   PL.person.MED.ERG PL.MED.ILL speak.VRB
    "They spoke among themselves"
    ```
 
@@ -2276,7 +2442,7 @@ Early Hick marks reflexive relationships primarily through case marking and demo
 
    ```txt
    'al'isel 'islas taglas'er 'iruretiles
-   person.PROX.ERG PROX.ILL give.ITER.VERB gift.ABS
+   person.PROX.ERG PROX.ILL give.ITER.VRB gift.ABS
    "I gave myself a gift"
 
    wen'altalel tallas paket'irur
@@ -2296,11 +2462,11 @@ Key features:
 
    ```txt
    'al'isel paketes katenwasim tenwa'er
-   person.PROX.ERG speech.ABS ADJ.write.TRANS write.VERB
+   person.PROX.ERG speech.ABS ADJ.write.TRANS write.VRB
    "I wrote the speech through writing"
 
    materok-el rismater-es katagasim ward'er
-   handler-ERG reed.boat-ABS ADJ.craft.TRANS guide.VERB
+   handler-ERG reed.boat-ABS ADJ.craft.TRANS guide.VRB
    "The handler guides the reed boat through crafting"
    ```
 
@@ -2319,19 +2485,19 @@ Early Hick marks similarity through two related constructions derived from Proto
 
 1. Simple Comparisons Uses the ka- prefix for straightforward comparisons with single nouns:
 
-   ```txt
-   kamales ward'er
-   ADJ.pool.ABS contain.VERB
-   "(It) contains like a pool"
-   ```
+   <InterlinearGloss
+     source={"kamales ward'er"}
+     gloss={"ADJ.pool.ABS contain.VRB"}
+     translation={"(It) contains like a pool"}
+   />
 
 1. Complex Comparisons Uses kas conjunction for phrases with modifiers:
 
-   ```txt
-   kas [kameris kethbranes] tagimris'er
-   LIKE [ADJ.love kin.ABS] give.VERB
-   "As beloved kin give"
-   ```
+   <InterlinearGloss
+     source={"kas [kameris kethbranes] tagimris'er"}
+     gloss={"LIKE [ADJ.love kin.ABS] give.VRB"}
+     translation={"As beloved kin give"}
+   />
 
 ##### Relative Degree
 
@@ -2348,12 +2514,12 @@ Uses the superessive case (-itar "upon/above"):
 
 ```txt
 tores tor'er malitar
-mountain-ABS height-VERB pool-SUPE
+mountain-ABS height-VRB pool-SUPE
 "The mountain is taller than the pool"
 (lit. "mountain heights above-pool")
 
 'ales vinu'er 'altanitar
-person-ABS birth-VERB man-SUPE
+person-ABS birth-VRB man-SUPE
 "The person is older than the man"
 (lit. "person births above-man")
 ```
@@ -2364,12 +2530,12 @@ Uses the sublative case (-asam "lower than/below in degree"):
 
 ```txt
 males tor'er torasam
-pool-ABS height-VERB mountain-SUBL
+pool-ABS height-VRB mountain-SUBL
 "The pool is less tall than the mountain"
 (lit. "pool heights lower-than-mountain")
 
 'altanes vinu'er 'alasam
-man-ABS birth-VERB person-SUBL
+man-ABS birth-VRB person-SUBL
 "The man is younger than the person"
 (lit. "man births lower-than-person")
 ```
@@ -2380,7 +2546,7 @@ Uses the comparative particle kas (see: [Comparative Markers](#development-of-co
 
 ```txt
 kas males tores tor'er
-LIKE pool-ABS mountain-ABS height-VERB
+LIKE pool-ABS mountain-ABS height-VRB
 "The pool is as tall as the mountain"
 (lit. "like pool mountain heights")
 ```
@@ -2395,46 +2561,63 @@ The comparative construction shows several important properties:
    - Maintains ergative-absolutive alignment pattern
 
 1. Word Order
-   - Basic order: COMPARABLE-ABS QUALITY-VERB COMPARATOR-SUPE/SUBL
+   - Basic order: COMPARABLE-ABS QUALITY-VRB COMPARATOR-SUPE/SUBL
    - Follows standard clause structure flexibility
 
 1. Multiple Comparators
    - Can be coordinated with ru:
-
-   ```txt
-   tores tor'er [mal o keth ruitar]
-   mountain-ABS height-VERB [pool PART sea AND-SUPE]
-   "The mountain is taller than both the pool and sea"
-   ```
+   <InterlinearGloss>
+   <GlossToken source={"tor"} gloss={"mountain"} />
+   <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+   <GlossToken source={"tor"} gloss={"height"} />
+   <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+   <GlossToken source={"[mal"} gloss={"[pool"} />
+   <GlossToken source={"o"} gloss={"LIST"} />
+   <GlossToken source={"keth"} gloss={"sea"} />
+   <GlossToken source={"ruitar]"} gloss={"ADD-SUPE]"} />
+   <GlossTranslation>{"The mountain is taller than both the pool and sea"}</GlossTranslation>
+   </InterlinearGloss>
 
    - Similarly for subessive comparisons:
-
-     ```txt
-     males tor'er [tor o keth ruasam]
-     pool-ABS height-VERB [mountain PART sea AND-SUBL]
-     "The pool is shorter than both the mountain and sea"
-     ```
+     <InterlinearGloss>
+     <GlossToken source={"mal"} gloss={"pool"} />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossToken source={"tor"} gloss={"height"} />
+     <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+     <GlossToken source={"[tor"} gloss={"[mountain"} />
+     <GlossToken source={"o"} gloss={"LIST"} />
+     <GlossToken source={"keth"} gloss={"sea"} />
+     <GlossToken source={"ruasam]"} gloss={"ADD-SUBL]"} />
+     <GlossTranslation>{"The pool is shorter than both the mountain and sea"}</GlossTranslation>
+     </InterlinearGloss>
 
 The case marking attaches to the coordinator ru rather than to individual nouns, following Early
 Hick's general coordination pattern.
 
 1. Negation
    - Negates the stative verb with mo-:
-
-   ```txt
-   males motor'er torasam
-   pool-ABS NEG-height-VERB mountain-SUBL
-   "The pool is not less tall than the mountain"
-   ```
+   <InterlinearGloss>
+   <GlossToken source={"mal"} gloss={"pool"} />
+   <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+   <GlossToken source={"mo-"} gloss={"NEG"} type="prefix" />
+   <GlossToken source={"tor"} gloss={"height"} />
+   <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+   <GlossToken source={"torasam"} gloss={"mountain-SUBL"} />
+   <GlossTranslation>{"The pool is not less tall than the mountain"}</GlossTranslation>
+   </InterlinearGloss>
 
 1. Temporal Reference
    - Takes standard temporal markers:
-
-   ```txt
-   branum 'ales vinu'er 'altanitar
-   PAST person-ABS birth-VERB man-SUPE
-   "The person was older than the man"
-   ```
+   <InterlinearGloss>
+   <GlossToken source={"branum"} gloss={"PAST"} />
+   <GlossToken source={"'al"} gloss={"person"} />
+   <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+   <GlossToken source={"vinu"} gloss={"birth"} />
+   <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+   <GlossToken source={"'altani"} gloss={"man"} />
+   <GlossToken source={"-tar"} gloss={"SUPE"} type="suffix" />
+   <GlossTranslation>{"The person was older than the man"}</GlossTranslation>
+   </InterlinearGloss>
 
 ### Tense
 
@@ -2442,11 +2625,13 @@ Clauses without explicit temporal marking in Early Hick express present tense. T
 clauses can indicate either simple present ("walks") or present progressive ("is walking") readings,
 with the specific interpretation determined by context and predicate semantics. For example:
 
-```txt
-'ales      barak'er
-person-ABS walk-VERB
-"The person walks/is walking"
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+  <GlossTranslation>{"The person walks/is walking"}</GlossTranslation>
+</InterlinearGloss>
 
 #### Tense Markers
 
@@ -2462,26 +2647,35 @@ the clause level:
 In a simple clause, the temporal tense marker can be typically found in the beginning or end of the
 clause.
 
-```txt
-branum materok-el  ward-'er
-past   handler-ERG guide-VERB
-"The handler guided (in the past)"
-```
+<InterlinearGloss>
+  <GlossToken source={"branum"} gloss={"past"} />
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"ERG"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+  <GlossTranslation>{"The handler guided (in the past)"}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-mulsum materok-el  ward-'er
-future handler-ERG guide-VERB
-"The handler will guide"
-```
+<InterlinearGloss>
+  <GlossToken source={"mulsum"} gloss={"future"} />
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"ERG"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+  <GlossTranslation>{"The handler will guide"}</GlossTranslation>
+</InterlinearGloss>
 
 In contexts where aesthetic or poetic effect is desired, the marker can be found right before the
 verbal phrase.
 
-```txt
-'ales      mulsum barak'er
-person-ABS future walk-VERB
-"The person will walk"
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"mulsum"} gloss={"future"} />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+  <GlossTranslation>{"The person will walk"}</GlossTranslation>
+</InterlinearGloss>
 
 ##### Relative Clauses
 
@@ -2490,17 +2684,26 @@ clause, temporal markers may occur after the relativizer. See: [Relative Clauses
 
 For example:
 
-```txt
-'altanel         ['alises branum thren'er] ward'er
-man-MED.VIS.ANIM [WHO-ABS PAST watch.VERB] guide.VERB
-"That man who watches guides"
-```
+<InterlinearGloss>
+  <GlossToken source={"'altanel"} gloss={"man-MED.DIR.ANIM"} />
+  <GlossToken source={"['alis"} gloss={"[WHO"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"branum"} gloss={"PAST"} />
+  <GlossToken source={"thren'er]"} gloss={"watch.VRB]"} />
+  <GlossToken source={"ward'er"} gloss={"guide.VRB"} />
+  <GlossTranslation>{"That man who watches guides"}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-mulsum   'altanel         ['alises branum thren'er] ward'er
-FUT      man-MED.VIS.ANIM [WHO-ABS PAST watch.VERB] guide.VERB
-"That man who watches guides"
-```
+<InterlinearGloss>
+  <GlossToken source={"mulsum"} gloss={"FUT"} />
+  <GlossToken source={"'altanel"} gloss={"man-MED.DIR.ANIM"} />
+  <GlossToken source={"['alis"} gloss={"[WHO"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"branum"} gloss={"PAST"} />
+  <GlossToken source={"thren'er]"} gloss={"watch.VRB]"} />
+  <GlossToken source={"ward'er"} gloss={"guide.VRB"} />
+  <GlossTranslation>{"That man who watches guides"}</GlossTranslation>
+</InterlinearGloss>
 
 ##### Complex Clauses
 
@@ -2540,11 +2743,11 @@ conjunction with the temporal markers to indicate different time frames.
 
 ```txt
 'ales      barak'er  terum
-person-ABS walk-VERB flow.DIST
+person-ABS walk-VRB flow.DIST
 "The person is walking"
 
 branum 'ales      barak'er  terum
-PAST   person-ABS walk-VERB flow.DIST
+PAST   person-ABS walk-VRB flow.DIST
 "The person has been walking"
 ```
 
@@ -2554,11 +2757,11 @@ The completive aspect marker `tel` indicates finished actions.
 
 ```txt
 'ales      barak'er  tel
-person-ABS walk-VERB COMPL
+person-ABS walk-VRB COMPL
 "The person has walked"
 
 branum 'ales      barak'er  tel
-PAST   person-ABS walk-VERB COMPL
+PAST   person-ABS walk-VRB COMPL
 "The person had walked"
 ```
 
@@ -2570,27 +2773,28 @@ deriving from Proto-Hick \*heru-heru "motion-motion":
 
 1. Formal/Ritual: -'irur
 
-   ```txt
-   'ales barak'irur
-   person-ABS walk-ITER
-   "The person walks repeatedly" (formal/ritual context)
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"'al"} gloss={"person"} />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossToken source={"barak'irur"} gloss={"walk-ITER"} />
+     <GlossTranslation>{"\"The person walks repeatedly\" (formal/ritual context)"}</GlossTranslation>
+   </InterlinearGloss>
 
 1. Common: -rur
-
-   ```txt
-   'ales barakrur
-   person-ABS walk.ITER
-   "The person walks repeatedly" (everyday usage)
-   ```
+   <InterlinearGloss>
+   <GlossToken source={"'al"} gloss={"person"} />
+   <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+   <GlossToken source={"barakrur"} gloss={"walk.ITER"} />
+   <GlossTranslation>{"\"The person walks repeatedly\" (everyday usage)"}</GlossTranslation>
+   </InterlinearGloss>
 
 1. Colloquial: -ur
-
-   ```txt
-   'ales barakur
-   person-ABS walk.ITER
-   "The person walks repeatedly" (casual speech)
-   ```
+   <InterlinearGloss>
+   <GlossToken source={"'al"} gloss={"person"} />
+   <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+   <GlossToken source={"barakur"} gloss={"walk.ITER"} />
+   <GlossTranslation>{"\"The person walks repeatedly\" (casual speech)"}</GlossTranslation>
+   </InterlinearGloss>
 
 The development shows typical grammaticalization path:
 
@@ -2619,11 +2823,12 @@ PAST school-ABS walk.ITER COMPL
 
 This construction differs from the simple iterative, which marks continuous repetition:
 
-```txt
-'ales barakrur
-person-ABS walk.ITER
-"The person walks repeatedly"
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"barakrur"} gloss={"walk.ITER"} />
+  <GlossTranslation>{"The person walks repeatedly"}</GlossTranslation>
+</InterlinearGloss>
 
 The repetitive aspect is particularly useful for marking:
 
@@ -2644,20 +2849,21 @@ command that calls the event into being.
 
 The ordinary imperative uses the action stem with absolutive _-es_:
 
-```txt
-vinud-es!
-build-ABS
-"Build!"
-```
+<InterlinearGloss>
+  <GlossToken source={"vinud"} gloss={"build"} />
+  <GlossToken source={"-es!"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"Build!"}</GlossTranslation>
+</InterlinearGloss>
 
 The verbalizer _-'er_ can be retained before _-es_ to make the command more explicit, forceful, or
 corrective:
 
-```txt
-vinud'er-es!
-build-VERB-ABS
-"Build!" / "Do the building!"
-```
+<InterlinearGloss>
+  <GlossToken source={"vinud"} gloss={"build"} />
+  <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+  <GlossToken source={"-es!"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"\"Build!\" / \"Do the building!\""}</GlossTranslation>
+</InterlinearGloss>
 
 With roots that are also nouns, context distinguishes the event call from a plain noun phrase. The
 imperative force comes from intonation, context, and the lack of a following predicate. If ambiguity
@@ -2668,7 +2874,7 @@ The construction shows distinct word order and case marking from declarative sen
 ```txt
 # Declarative
 'al'isel tor ward'er
-person.ERG mountain guide.VERB
+person.ERG mountain guide.VRB
 "The person guides the mountain"
 
 # Imperative event call
@@ -2701,11 +2907,14 @@ build-ABS Aigral-ERG
 The verbalized targeted form is more authoritative, common from supervisors, elders, captains,
 ritual officiants, teachers, or parents:
 
-```txt
-vinud'er-es, Aigral-el!
-build-VERB-ABS Aigral-ERG
-"Do the building, Aigral!"
-```
+<InterlinearGloss>
+  <GlossToken source={"vinud"} gloss={"build"} />
+  <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+  <GlossToken source={"-es,"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"Aigral"} gloss={"Aigral"} />
+  <GlossToken source={"-el!"} gloss={"ERG"} type="suffix" />
+  <GlossTranslation>{"Do the building, Aigral!"}</GlossTranslation>
+</InterlinearGloss>
 
 Examples with different modifiers:
 
@@ -2720,11 +2929,11 @@ boat    ADJ.good guide.IMP.ABS
 
 The pattern appears in both formal and informal contexts, including ritual expressions:
 
-```txt
-'ilitar   venuiteres!
-good.SUPE birth.IMP.ABS
-"(let) birth be raised in goodness!"
-```
+<InterlinearGloss
+  source={"'ilitar   venuiteres!"}
+  gloss={"good.SUPE birth.IMP.ABS"}
+  translation={"(let) birth be raised in goodness!"}
+/>
 
 #### Requests, Hortatives, and Prohibitives
 
@@ -2733,13 +2942,13 @@ that supplies willingness, obligation, or negation.
 
 1. Hortative / collective invitation
 
-   _ma-ACTION-es!_ marks a shared event and functions as a common hortative:
-
-   ```txt
-   ma-vinud-es!
-   PLU-build-ABS
-   "Let's build!"
-   ```
+   A _ma-_ prefixed action stem with _-es!_ marks a shared event and functions as a
+   common hortative:
+   <InterlinearGloss>
+     <GlossToken source={"ma-vinud"} gloss={"PL-build"} />
+     <GlossToken source={"-es!"} gloss={"ABS"} type="suffix" />
+     <GlossTranslation>{"Let's build!"}</GlossTranslation>
+   </InterlinearGloss>
 
    The plural prefix makes the action collective. The construction invites participation rather
    than assigning a single responsible agent.
@@ -2747,12 +2956,14 @@ that supplies willingness, obligation, or negation.
 1. Volitional request
 
    _Nater_ "desire, intended course" can predicate willingness over an absolutive action:
-
-   ```txt
-   vinud'er-es nater 'al'tan-el
-   build-VERB-ABS want person.MED.ERG
-   "Are you willing to build?" / "Would you build?"
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"vinud"} gloss={"build"} />
+     <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossToken source={"nater"} gloss={"want"} />
+     <GlossToken source={"'al'tan-el"} gloss={"person.MED.ERG"} />
+     <GlossTranslation>{"\"Are you willing to build?\" / \"Would you build?\""}</GlossTranslation>
+   </InterlinearGloss>
 
    This remains relatively transparent: the addressee is being asked about willingness or intended
    course.
@@ -2760,12 +2971,14 @@ that supplies willingness, obligation, or negation.
 1. Soft requestive
 
    _Naterlas_ (< _nater-las_ "toward willingness") is a grammaticalized polite requestive:
-
-   ```txt
-   vinud'er-es naterlas 'al'tan-el
-   build-VERB-ABS REQ person.MED.ERG
-   "Please build." / "Would you be willing to build?"
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"vinud"} gloss={"build"} />
+     <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossToken source={"naterlas"} gloss={"REQ"} />
+     <GlossToken source={"'al'tan-el"} gloss={"person.MED.ERG"} />
+     <GlossTranslation>{"\"Please build.\" / \"Would you be willing to build?\""}</GlossTranslation>
+   </InterlinearGloss>
 
    This construction softens the command by inviting the addressee toward willingness rather than
    bluntly asserting desire. It is distinct from the verbal desiderative suffix _-nat_, which marks
@@ -2775,11 +2988,14 @@ that supplies willingness, obligation, or negation.
 
    _Ignar'er_ "be fitting, accord with the proper pattern" can make obligation or advice:
 
-   ```txt
-   vinud'er-es ignar'er 'al'tan-el
-   build-VERB-ABS fitting.VERB person.MED.ERG
-   "It is fitting for you to build." / "You should build."
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"vinud"} gloss={"build"} />
+     <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossToken source={"ignar'er"} gloss={"fitting.VRB"} />
+     <GlossToken source={"'al'tan-el"} gloss={"person.MED.ERG"} />
+     <GlossTranslation>{"\"It is fitting for you to build.\" / \"You should build.\""}</GlossTranslation>
+   </InterlinearGloss>
 
    This is not a bare command. It frames the action as correct, proper, or socially expected for the
    named agent.
@@ -2787,28 +3003,32 @@ that supplies willingness, obligation, or negation.
 1. Prohibitives
 
    Early Hick has several prohibitive strategies:
-
-   ```txt
-   mo-vinud'er!
-   NEG-build-VERB
-   "Don't build!"
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"mo-"} gloss={"NEG"} type="prefix" />
+     <GlossToken source={"vinud"} gloss={"build"} />
+     <GlossToken source={"-'er!"} gloss={"VRB"} type="suffix" />
+     <GlossTranslation>{"Don't build!"}</GlossTranslation>
+   </InterlinearGloss>
 
    This is the direct negative imperative.
-
-   ```txt
-   vinud-es mo'er!
-   build-ABS NEG-VERB
-   "No building!" / "Don't build!"
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"vinud"} gloss={"build"} />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossToken source={"mo-"} gloss={"NEG"} type="prefix" />
+     <GlossToken source={"'er!"} gloss={"VRB"} />
+     <GlossTranslation>{"\"No building!\" / \"Don't build!\""}</GlossTranslation>
+   </InterlinearGloss>
 
    This is a colloquial action-focused prohibitive, useful for scolding, quick correction, or signs.
-
-   ```txt
-   vinud'er-es mo'er 'al'tan-el
-   build-VERB-ABS NEG-VERB person.MED.ERG
-   "You are not to build."
-   ```
+   <InterlinearGloss>
+     <GlossToken source={"vinud"} gloss={"build"} />
+     <GlossToken source={"-'er"} gloss={"VRB"} type="suffix" />
+     <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+     <GlossToken source={"mo-"} gloss={"NEG"} type="prefix" />
+     <GlossToken source={"'er"} gloss={"VRB"} />
+     <GlossToken source={"'al'tan-el"} gloss={"person.MED.ERG"} />
+     <GlossTranslation>{"You are not to build."}</GlossTranslation>
+   </InterlinearGloss>
 
    This is the more explicit or formal prohibitive, with the responsible agent named.
 
@@ -2819,11 +3039,11 @@ that supplies willingness, obligation, or negation.
 
    ```txt
    vinud'er-es naterlas 'al'tan-el 'al-ul vinud
-   build-VERB-ABS REQ person.MED.ERG person-POSS dwelling
+   build-VRB-ABS REQ person.MED.ERG person-POSS dwelling
    "Please build my dwelling."
 
    vinud'er-es naterlas 'al'tan-el tan-ul vinud
-   build-VERB-ABS REQ person.MED.ERG self/own-POSS dwelling
+   build-VRB-ABS REQ person.MED.ERG self/own-POSS dwelling
    "Please build your own dwelling."
    ```
 
@@ -2837,11 +3057,11 @@ Early Hick marks exclamations through single-word utterances:
 
    ```txt
    imris'er!
-   flee.VERB!
+   flee.VRB!
    "(they're) fleeing!"
 
    ward'er!
-   guide.VERB!
+   guide.VRB!
    "(they're) guiding!"
    ```
 
@@ -2875,11 +3095,15 @@ associated with the stor "growth, addition, increment" family (\< Proto-Hick \*s
 Because \*storu regularly yields stor, ru should be treated as a grammaticalized coordinator rather
 than a direct inherited sound-change reflex.
 
-```txt
-kor o toren o ru-el
-[cow LIST horse LIST] AND-ERG
-"the cow and horse (as agent)"
-```
+<InterlinearGloss>
+  <GlossToken source={"kor"} gloss={"[cow"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"toren"} gloss={"horse"} />
+  <GlossToken source={"o"} gloss={"LIST]"} />
+  <GlossToken source={"ru"} gloss={"ADD"} />
+  <GlossToken source={"-el"} gloss={"ERG"} type="suffix" />
+  <GlossTranslation>{"the cow and horse (as agent)"}</GlossTranslation>
+</InterlinearGloss>
 
 The coordinator ru can take case marking to show the role of the coordinated phrase:
 
@@ -2889,17 +3113,21 @@ The coordinator ru can take case marking to show the role of the coordinated phr
 Demonstrative marking may also be appended to ru when the coordinated set shares a single
 referential frame.
 
-```txt
-'imwen o wenkulok o rutanes
-[witch LIST sorceress LIST] AND-DEM.MED.VIS.ANIM-ABS
-"that witch and sorceress"
-```
+<InterlinearGloss>
+  <GlossToken source={"'imwen"} gloss={"[witch"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"wenkulok"} gloss={"sorceress"} />
+  <GlossToken source={"o"} gloss={"LIST]"} />
+  <GlossToken source={"rutan"} gloss={"ADD-MED.DIR.ANIM"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"that witch and sorceress"}</GlossTranslation>
+</InterlinearGloss>
 
 compare with:
 
 ```txt
 'imwentan o wenkuloktan o rues
-[that witch LIST that sorceress LIST] AND-ABS
+[that witch LIST that sorceress LIST] ADD-ABS
 "that witch and that (other) sorceress"
 ```
 
@@ -2908,11 +3136,15 @@ compare with:
 Early Hick marks alternatives with the particle o and joins them with the coordinator 'a (\<
 Proto-Hick \*ʔaha "other"):
 
-```txt
-kor o toren o 'a-el
-[cow LIST horse LIST] OR-ERG
-"either the cow or the horse (as agent)"
-```
+<InterlinearGloss>
+  <GlossToken source={"kor"} gloss={"[cow"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"toren"} gloss={"horse"} />
+  <GlossToken source={"o"} gloss={"LIST]"} />
+  <GlossToken source={"'a"} gloss={"DISJ"} />
+  <GlossToken source={"-el"} gloss={"ERG"} type="suffix" />
+  <GlossTranslation>{"either the cow or the horse (as agent)"}</GlossTranslation>
+</InterlinearGloss>
 
 The coordinator 'a can take case marking to show the role of the coordinated phrase:
 
@@ -2922,17 +3154,21 @@ The coordinator 'a can take case marking to show the role of the coordinated phr
 Demonstrative marking may also be appended to 'a, if the coordinated elements share referential
 properties:
 
-```txt
-'imwen o wenkulok o 'atanes
-[witch LIST sorceress LIST] OR-DEM.MED.VIS.ANIM-ABS
-"either that witch or that sorceress"
-```
+<InterlinearGloss>
+  <GlossToken source={"'imwen"} gloss={"[witch"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"wenkulok"} gloss={"sorceress"} />
+  <GlossToken source={"o"} gloss={"LIST]"} />
+  <GlossToken source={"'atan"} gloss={"DISJ-MED.DIR.ANIM"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"either that witch or that sorceress"}</GlossTranslation>
+</InterlinearGloss>
 
 compare with:
 
 ```txt
 'imwentan o wenkuloktan o 'aes
-[that witch LIST that sorceress LIST] OR-ABS
+[that witch LIST that sorceress LIST] DISJ-ABS
 "either that witch or that (other) sorceress"
 ```
 
@@ -2945,11 +3181,15 @@ The lexical sense survives more clearly in _'atil_ (< _'a_ + _'etil_ "living thi
 means "other one, another thing; alternative." A likely bridge is corrective contrast, where a
 speaker rejects one referent and points to a different one:
 
-```txt
-mope, mo-'al-tan-es! 'atil-tan-es!
-no NEG-person-MED.DIR.ANIM-ABS other.thing-MED.DIR.ANIM-ABS
-"No, not that person! That other one!"
-```
+<InterlinearGloss>
+  <GlossToken source={"mope,"} gloss={"no"} />
+  <GlossToken source={"mo-"} gloss={"NEG"} type="prefix" />
+  <GlossToken source={"'al-tan"} gloss={"person-MED.DIR.ANIM"} />
+  <GlossToken source={"-es!"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"'atil-tan"} gloss={"other.thing-MED.DIR.ANIM"} />
+  <GlossToken source={"-es!"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"No, not that person! That other one!"}</GlossTranslation>
+</InterlinearGloss>
 
 This keeps _'a_ as the coordinator while giving Early Hick a separate lexical form for "other" or
 "alternative." It also keeps this alterity family separate from _haran_ "divide," _ran-_ partitive,
@@ -2960,11 +3200,16 @@ rather than choice between alternatives.
 
 Early Hick can mark joint participation using ewes with the enumeration particle o:
 
-```txt
-'al'is o Mari o ewes-es ward'er
-[person.DEM.PROX.ANIM.VIS PART Mari PART] WITH-ABS travel.VERB
-"I and Mari together travel"
-```
+<InterlinearGloss>
+  <GlossToken source={"'al'is"} gloss={"[person.PROX.DIR.ANIM"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"Mari"} gloss={"Mari"} />
+  <GlossToken source={"o"} gloss={"LIST]"} />
+  <GlossToken source={"ewes"} gloss={"SOC"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"ward'er"} gloss={"travel.VRB"} />
+  <GlossTranslation>{"I and Mari together travel"}</GlossTranslation>
+</InterlinearGloss>
 
 The coordinator ewes takes case marking and treats the coordinated elements as a single unit. This
 construction emphasizes equal participation in the action, contrasting with the comitative
@@ -2986,11 +3231,16 @@ Temporal relationships between clauses use specialized coordinators:
 
 Dependent clauses use nominalized verbs:
 
-```txt
-[kor o toren o] gras'er-es 'aterimris
-[cow PART horse PART] graze-ABS after-ELL
-"after the cow and horse grazed"
-```
+<InterlinearGloss>
+  <GlossToken source={"[kor"} gloss={"[cow"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"toren"} gloss={"horse"} />
+  <GlossToken source={"o]"} gloss={"LIST]"} />
+  <GlossToken source={"gras'er"} gloss={"graze"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"'aterimris"} gloss={"after-ELL"} />
+  <GlossTranslation>{"after the cow and horse grazed"}</GlossTranslation>
+</InterlinearGloss>
 
 Position affects emphasis:
 
@@ -3009,11 +3259,11 @@ imris \[im.ris] "because" \< earlier \*ʔimerisu / imeris "source, emergence, ou
 
 ```txt
 imris torthil, 'al'ises barak'er
-CAUS haughtiness, person.PROX.ABS walk.VERB
+CAUS haughtiness, person.PROX.ABS walk.VRB
 "Because of haughtiness, I walk"
 
 imris ['al'isel ward'er tores], 'al'ises barak'er
-CAUS [person.ERG guide.VERB mountain.ABS], person.PROX.ABS walk.VERB
+CAUS [person.ERG guide.VRB mountain.ABS], person.PROX.ABS walk.VRB
 "Because they guide the mountain, I walk"
 ```
 
@@ -3034,11 +3284,11 @@ CONC inspiration, person.PROX.ABS empty.ABS PAST
 "Despite/For all inspiration, I was empty"
 
 las torthil, 'al'ises barak'er
-CONC haughtiness, person.PROX.ABS walk.VERB
+CONC haughtiness, person.PROX.ABS walk.VRB
 "Despite haughtiness, I walk"
 
 las ['al'isel ward'er tores], 'al'ises tel'es branum
-CONC [person.ERG guide.VERB mountain.ABS], person.PROX.ABS empty.ABS PAST
+CONC [person.ERG guide.VRB mountain.ABS], person.PROX.ABS empty.ABS PAST
 "Despite (that) they guide the mountain, I was empty"
 ```
 
@@ -3055,11 +3305,11 @@ Examples:
 
 ```txt
 imris toranes ter'er, 'ales barak'er
-SUB   river-ABS flow-VERB person-ABS walk-VERB
+SUB   river-ABS flow-VRB person-ABS walk-VRB
 "Because the river flows, the person walks"
 
 'ales barak'er imris toranes ter'er
-person-ABS walk-VERB SUB river-ABS flow-VERB
+person-ABS walk-VRB SUB river-ABS flow-VRB
 "The person walks because the river flows"
 ```
 
@@ -3072,7 +3322,7 @@ person.PROX.ABS empty.ABS PAST, inspiration CONC
 "I was empty, despite inspiration"
 
 'al'ises barak'er, ['al'isel ward'er tores] imris
-person.PROX.ABS walk.VERB, [person.ERG guide.VERB mountain.ABS] CAUS
+person.PROX.ABS walk.VRB, [person.ERG guide.VRB mountain.ABS] CAUS
 "I walk, because they guide the mountain"
 ```
 
@@ -3092,7 +3342,7 @@ from spatial/directional meaning to both case marking and subordination.
    - 'atal \[ʔa.tal] "where" \< 'aka-tal-is (what-place-PROX.INAN)
    - 'ater \[ʔa.ter] "when" \< 'aka-ter-is (what-flow-PROX.INAN)
      - Shows temporal metaphor of time as flow
-   - 'aker \[ʔa.ker] "how" \< 'aka-'er-is (what-VERB-PROX.INAN)
+   - 'aker \[ʔa.ker] "how" \< 'aka-'er-is (what-VRB-PROX.INAN)
 
 1. Medial Indirect Forms (Hidden, Sensed, or Inferred)
    - 'akaleth, 'aleth \[ʔa.leθ] \< 'aka-'al-eth "who" (indirectly sensed person)
@@ -3110,15 +3360,15 @@ from spatial/directional meaning to both case marking and subordination.
 
    ```txt
    'alis-el materok-es ward-'er?
-   who.PROX-ERG boat-ABS guide-VERB
+   who.PROX-ERG boat-ABS guide-VRB
    "Who (that we can see) guides the boat?"
 
    'aleth-el thral-es his-'er?
-   who.MED.INDIR-ERG ritual-ABS watch-VERB
+   who.MED.INDIR-ERG ritual-ABS watch-VRB
    "Who (that we can hear/sense) watches the ritual?"
 
    'atum-las materok-el rismater-es ward-'er?
-   where.DIST-ILL handler-ERG reed.boat-ABS guide-VERB
+   where.DIST-ILL handler-ERG reed.boat-ABS guide-VRB
    "Where (unknown) does the handler guide the reed boat to?"
    ```
 
@@ -3140,11 +3390,11 @@ this reduces to _'athid_ \[ʔa.θid].
 
 ```txt
 'aka thid kel-es kakel-'er?
-Q truth sky-ABS blue-VERB
+Q truth sky-ABS blue-VRB
 "Is it true that the sky is blue?"
 
 'athid kel-es kakel-'er?
-Q.TRUE sky-ABS blue-VERB
+Q.TRUE sky-ABS blue-VRB
 "Is the sky blue?" / "Is it true that the sky is blue?"
 ```
 
@@ -3155,20 +3405,28 @@ rather than asking for a missing noun like _'aka_ "what."
 When _'aka_ functions as an ordinary content question word,
 it takes the case ending required by its role in the clause:
 
-```txt
-'aka-es materok-el ward-'er?
-what-ABS handler-ERG guide-VERB
-"What does the handler guide?"
-```
+<InterlinearGloss>
+  <GlossToken source={"'aka"} gloss={"what"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"ERG"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er?"} gloss={"VRB"} type="suffix" />
+  <GlossTranslation>{"What does the handler guide?"}</GlossTranslation>
+</InterlinearGloss>
 
 With tense markers,
 _'athid_ normally has wider scope and comes before the temporal marker:
 
-```txt
-'athid branum 'al-es barak-'er?
-Q.TRUE PAST person-ABS walk-VERB
-"Did the person walk?"
-```
+<InterlinearGloss>
+  <GlossToken source={"'athid"} gloss={"Q.TRUE"} />
+  <GlossToken source={"branum"} gloss={"PAST"} />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er?"} gloss={"VRB"} type="suffix" />
+  <GlossTranslation>{"Did the person walk?"}</GlossTranslation>
+</InterlinearGloss>
 
 Affirmative answers normally use one of two short correctness terms:
 
@@ -3187,7 +3445,7 @@ This is negative concord rather than a logical double negative.
 
 ```txt
 'athid kel-es kakel-'er?
-Q.TRUE sky-ABS blue-VERB
+Q.TRUE sky-ABS blue-VRB
 "Is the sky blue?"
 
 gnar.
@@ -3202,11 +3460,11 @@ no
 A transparent negative answer can use _mo-gnar_ "not correct, no," though fuller negative echoes are
 often clearer:
 
-```txt
-mo-gnar.
-not-correct
-"No." / "That is not correct."
-```
+<InterlinearGloss>
+  <GlossToken source={"mo-"} gloss={"not"} type="prefix" />
+  <GlossToken source={"gnar."} gloss={"correct"} />
+  <GlossTranslation>{"\"No.\" / \"That is not correct.\""}</GlossTranslation>
+</InterlinearGloss>
 
 Usage note: _ignar_ and _ka-ignar_ qualify statements; they do not normally serve as the basic
 yes/no answer themselves. In a response, _gnar_ can answer the truth of the question, while a
@@ -3214,11 +3472,11 @@ following echo clause can specify that the action was correct or fitting:
 
 ```txt
 'athid mater-es vinud-'er ka-ignar?
-Q.TRUE boat-ABS build-VERB ADJ-correct
+Q.TRUE boat-ABS build-VRB ADJ-correct
 "Was the boat built correctly?"
 
 gnar, vinud-'er ka-ignar.
-yes build-VERB ADJ-correct
+yes build-VRB ADJ-correct
 "Yes, built correctly."
 ```
 
@@ -3232,11 +3490,11 @@ relative clause.
 
 1. Basic Structure
 
-   ```txt
-   ['alisel tiraies ter'er] barak'erimris vinudes
-   [who.ERG ale.ABS drink.VERB] walk.VERB-ELL dwelling.ABS
-   "Who drinks the ale walks home"
-   ```
+   <InterlinearGloss
+     source={"['alisel tiraies ter'er] barak'erimris vinudes"}
+     gloss={"[who.ERG ale.ABS drink.VRB] walk.VRB-ELL dwelling.ABS"}
+     translation={"Who drinks the ale walks home"}
+   />
 
 1. Interrogative Forms Used
    - ak "which" (inanimate referents)
@@ -3249,22 +3507,22 @@ relative clause.
    - Relativizer takes case based on its role in the relative clause
    - Main clause maintains independent case marking
 
-   ```txt
-   'altanel [alises thren'er] ward'er
-   man-MED.VIS.ANIM [who.ABS watch.VERB] guide.VERB
-   "That man who watches guides"
-   ```
+   <InterlinearGloss
+     source={"'altanel [alises thren'er] ward'er"}
+     gloss={"man-MED.DIR.ANIM [who.ABS watch.VRB] guide.VRB"}
+     translation={"That man who watches guides"}
+   />
 
 1. Evidentiality Through Distance Forms
    - Proximal (-is): visible/known referents
    - Medial indirect (-eth): hidden, sensed, inferred, or expected referents
    - Distal (-um): unknown/general referents
 
-   ```txt
-   ['alumel materokes ward'er] thren'er
-   [who.DIST.ERG boat.ABS guide.VERB] watch.VERB
-   "Who(ever) guides the boat watches"
-   ```
+   <InterlinearGloss
+     source={"['alumel materokes ward'er] thren'er"}
+     gloss={"[who.DIST.ERG boat.ABS guide.VRB] watch.VRB"}
+     translation={"Who(ever) guides the boat watches"}
+   />
 
 1. Word Order
    - Relative clause typically precedes its head
@@ -3287,11 +3545,13 @@ forms like:
 
 This dialectal variation is preserved in the formal birthday greeting:
 
-```txt
-'ilitar venuiteres
-good-SUPE birth-ELL.DIAL-ABS
-"blessings upon your birth"
-```
+<InterlinearGloss>
+  <GlossToken source={"'ili"} gloss={"good"} />
+  <GlossToken source={"-tar"} gloss={"SUPE"} type="suffix" />
+  <GlossToken source={"venuiter"} gloss={"birth-ELL.DIAL"} />
+  <GlossToken source={"-es"} gloss={"ABS"} type="suffix" />
+  <GlossTranslation>{"blessings upon your birth"}</GlossTranslation>
+</InterlinearGloss>
 
 Note: The greeting layers standard or prestige `-itar` with the inland fossil form `venuiter`,
 suggesting a formula that passed through more than one regional register.
@@ -3527,19 +3787,19 @@ with embedded event clauses:
 
 1. Original Construction:
 
-   ```txt
-   'al'isel 'alises command'er [tores threnes] talimris
-   person.PROX.ERG who.ABS command.VERB [mountain.ABS watch.ABS] MED.ELL
-   "I who command [mountain watching] to you"
-   ```
+   <InterlinearGloss
+     source={"'al'isel 'alises command'er [tores threnes] talimris"}
+     gloss={"person.PROX.ERG who.ABS command.VRB [mountain.ABS watch.ABS] MED.ELL"}
+     translation={"I who command [mountain watching] to you"}
+   />
 
 1. Modern Imperative:
 
-   ```txt
-   tor threnes!
-   mountain watch.IMP.ABS
-   "watch the mountain!"
-   ```
+   <InterlinearGloss
+     source={"tor threnes!"}
+     gloss={"mountain watch.IMP.ABS"}
+     translation={"watch the mountain!"}
+   />
 
 This development explains several features of the modern construction:
 
@@ -3575,37 +3835,37 @@ extensive use of relative clauses (see: [Relative Clauses](#relative-clauses)):
 
 Formal/Literary:
 
-```txt
-'al'isel ['alises command'er tores threnes] talimris
-person.ERG [who.ABS command.VERB mountain.ABS watch.ABS] MED.ELL
-"I who command mountain-watching to you"
-```
+<InterlinearGloss
+  source={"'al'isel ['alises command'er tores threnes] talimris"}
+  gloss={"person.ERG [who.ABS command.VRB mountain.ABS watch.ABS] MED.ELL"}
+  translation={"I who command mountain-watching to you"}
+/>
 
 Colloquial:
 
-```txt
-tor threnes!
-mountain watch.IMP.ABS
-"watch the mountain!"
-```
+<InterlinearGloss
+  source={"tor threnes!"}
+  gloss={"mountain watch.IMP.ABS"}
+  translation={"watch the mountain!"}
+/>
 
 ##### Desires
 
 Formal/Literary:
 
-```txt
-'al'isel ['alises gnar'er ward'er] talimris
-person.ERG [who.ABS correct.VERB guide.VERB] MED.ELL
-"I who intend guiding to you"
-```
+<InterlinearGloss
+  source={"'al'isel ['alises gnar'er ward'er] talimris"}
+  gloss={"person.ERG [who.ABS correct.VRB guide.VRB] MED.ELL"}
+  translation={"I who intend guiding to you"}
+/>
 
 Colloquial:
 
-```txt
-'al'isel wardnat
-person.ERG guide.DES
-"I want to guide"
-```
+<InterlinearGloss
+  source={"'al'isel wardnat"}
+  gloss={"person.ERG guide.DES"}
+  translation={"I want to guide"}
+/>
 
 This pattern of preserving older relative clause constructions in formal registers while using
 grammaticalized forms in colloquial speech appears to be a regular feature of Early Hick's
@@ -3626,11 +3886,11 @@ markers in Early Hick, with one further developing into the general adjective ma
 - Maintains clear scope over entire phrases
 - Examples:
 
-  ```txt
-  kas [kameris kethbranes] tagimris'er
-  LIKE [ADJ.love kin.ABS] give.VERB
-  "As beloved kin give"
-  ```
+  <InterlinearGloss
+    source={"kas [kameris kethbranes] tagimris'er"}
+    gloss={"LIKE [ADJ.love kin.ABS] give.VRB"}
+    translation={"As beloved kin give"}
+  />
 
 ##### ka- Development Path
 
@@ -3640,22 +3900,22 @@ markers in Early Hick, with one further developing into the general adjective ma
    - No scope beyond single noun
    - Examples:
 
-     ```txt
-     kamales ward'er
-     ADJ.pool.ABS contain.VERB
-     "(It) contains like a pool"
-     ```
+     <InterlinearGloss
+       source={"kamales ward'er"}
+       gloss={"ADJ.pool.ABS contain.VRB"}
+       translation={"(It) contains like a pool"}
+     />
 
 1. Middle Stage: Similarity Marker
    - Semantic broadening from "like X" to "X-like"
    - Used to mark general similarity
    - Examples:
 
-     ```txt
-     kakethbran ma'altanes
-     ADJ.kin person.MED.ABS
-     "kin-like people"
-     ```
+     <InterlinearGloss
+       source={"kakethbran ma'altanes"}
+       gloss={"ADJ.kin person.MED.ABS"}
+       translation={"kin-like people"}
+     />
 
 1. Late Stage: Adjective Marker
    - Further grammaticalization into general adjective prefix
@@ -3664,11 +3924,11 @@ markers in Early Hick, with one further developing into the general adjective ma
    - Original comparative meaning still visible in some constructions
    - Examples:
 
-     ```txt
-     kameris ales
-     ADJ.love person.ABS
-     "beloved person"
-     ```
+     <InterlinearGloss
+       source={"kameris ales"}
+       gloss={"ADJ.love person.ABS"}
+       translation={"beloved person"}
+     />
 
 #### Development of the possession marker -ul
 

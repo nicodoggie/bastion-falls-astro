@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
-import type { LexiconSearchEntry, LexiconSearchIndex } from "./types.ts";
+import type { LexiconSearchEntry, LexiconSearchIndex } from "./types";
 import {
   buildLexiconEntrySearchHref,
   buildLexiconSearchHref,
@@ -17,7 +17,7 @@ import {
   paginateLexiconResults,
   searchLexicon,
   summarizeLexiconSenses,
-} from "./search.ts";
+} from "./search";
 
 const index: LexiconSearchIndex = {
   version: 1,

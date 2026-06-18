@@ -5,6 +5,10 @@ sidebar:
   order: 3
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson teaches three beginner patterns:
@@ -23,11 +27,11 @@ barak
 walk
 ```
 
-```txt
-barak'er
-walk-ACTION
-"walks" or "is walking"
-```
+<InterlinearGloss>
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"\"walks\" or \"is walking\""}</GlossTranslation>
+</InterlinearGloss>
 
 The technical name for `-'er` is a verbalizer. In this book, call it the action ending.
 
@@ -36,11 +40,13 @@ The technical name for `-'er` is a verbalizer. In this book, call it the action 
 Early Hick uses the ending `-es` on the main person or thing in a simple sentence. You will learn
 more about this ending in the next lesson.
 
-```txt
-'ales barak'er
-person-MAIN walk-ACTION
-"The person walks."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The person walks."}</GlossTranslation>
+</InterlinearGloss>
 
 For now, read `-es` as "this is the main noun of the sentence."
 
@@ -50,20 +56,22 @@ Early Hick often leaves out a personal word when everyone already knows who is b
 bare action can work like English "I walk" or "they walk" when the story has already made the person
 clear.
 
-```txt
-barak'er
-walk-ACTION
-"I walk" or "they walk," if context makes the person clear
-```
+<InterlinearGloss>
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"\"I walk\" or \"they walk,\" if context makes the person clear"}</GlossTranslation>
+</InterlinearGloss>
 
 The fuller form uses `'al`, "person," plus a "this" ending. It is stronger, like pointing to "this
 person" in the sentence.
 
-```txt
-'al'ises barak'er
-this.person-MAIN walk-ACTION
-"I walk" with extra emphasis
-```
+<InterlinearGloss>
+  <GlossToken source={"'al'is"} gloss={"this.person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"\"I walk\" with extra emphasis"}</GlossTranslation>
+</InterlinearGloss>
 
 Writers and poets use the fuller forms more often for rhythm, contrast, or a stronger voice.
 
@@ -71,17 +79,21 @@ Writers and poets use the fuller forms more often for rhythm, contrast, or a str
 
 Early Hick can also show whether "they" means a known group or a more general, distant group.
 
-```txt
-ma'altalel ward'er
-known.people-DOER guide-ACTION
-"They guide" (those people we know or have been talking about)
-```
+<InterlinearGloss>
+  <GlossToken source={"ma'altal"} gloss={"known.people"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"\"They guide\" (those people we know or have been talking about)"}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-ma'alrumel ward'er
-distant.people-DOER guide-ACTION
-"They guide" (people like that, not a specific nearby group)
-```
+<InterlinearGloss>
+  <GlossToken source={"ma'alrum"} gloss={"distant.people"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"\"They guide\" (people like that, not a specific nearby group)"}</GlossTranslation>
+</InterlinearGloss>
 
 ## More Action Words
 
@@ -104,11 +116,13 @@ Add the action ending `-'er`, then translate the sentence.
 
 `ward` means "guide." `ward'er` means "guides."
 
-```txt
-'ales ward'er
-person-MAIN guide-ACTION
-"The person guides."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The person guides."}</GlossTranslation>
+</InterlinearGloss>
 
 </PopQuiz>
 

@@ -4,30 +4,43 @@ tags:
   - early-hick
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+import GlossSource from "@bastion-falls/lexicon-components/GlossSource.astro";
+
 This page contains Early Hick translations of Gary Shannon's
 [Graded Sentences for Analysis](https://cofl.github.io/conlang/resources/mirror/graded-sentences-for-analysis.html)
 (linked is a mirror of the original).
 
 1. Birds sing.
-
-   ```txt
-   mameres meltek'er
-   PLU-bird-ABS sing-VERB
-   ```
+   <InterlinearGloss>
+   <GlossSource>mameres meltek'er</GlossSource>
+   <GlossToken source="ma-" gloss="PL" type="prefix" />
+   <GlossToken source="mer" gloss="bird" />
+   <GlossToken source="-es" gloss="ABS" type="suffix" />
+   <GlossToken source="meltek" gloss="sing" />
+   <GlossToken source="-'er" gloss="VRB" type="suffix" />
+   </InterlinearGloss>
 
 1. Children play.
-
-   ```txt
-   malises sinas'er
-   PLU-child-ABS play-VERB
-   ```
+   <InterlinearGloss>
+   <GlossSource>malises sinas'er</GlossSource>
+   <GlossToken source="ma-" gloss="PL" type="prefix" />
+   <GlossToken source="lis" gloss="child" />
+   <GlossToken source="-es" gloss="ABS" type="suffix" />
+   <GlossToken source="sinas" gloss="play" />
+   <GlossToken source="-'er" gloss="VRB" type="suffix" />
+   </InterlinearGloss>
 
 1. Dogs bark.
-
-   ```txt
-   mavinusak rek'er
-   PLU-dog-ABS bark-VERB
-   ```
+   <InterlinearGloss>
+   <GlossSource>mavinusak rek'er</GlossSource>
+   <GlossToken source="ma-" gloss="PL" type="prefix" />
+   <GlossToken source="vinusak" gloss="dog-ABS" />
+   <GlossToken source="rek" gloss="bark" />
+   <GlossToken source="-'er" gloss="VRB" type="suffix" />
+   </InterlinearGloss>
 
 1. Bees hum.
 
@@ -37,23 +50,35 @@ This page contains Early Hick translations of Gary Shannon's
 
 1. Baby laughed.
 
-   ```txt
-   branum vinokes hahu'er
-   ```
+   <InterlinearGloss>
+   <GlossSource>branum vinokes hahu'er</GlossSource>
+   <GlossToken source="branum" gloss="PAST" />
+   <GlossToken source="vinok" gloss="baby" />
+   <GlossToken source="-es" gloss="ABS" type="suffix" />
+   <GlossToken source="hahu" gloss="laugh" />
+   <GlossToken source="-'er" gloss="VRB" type="suffix" />
+   <GlossTranslation>The baby laughed.</GlossTranslation>
+   </InterlinearGloss>
 
 1. The sun shines.
-
-   ```txt
-   thrakeles thrakel'er
-   PLU-sun-ABS sun-VERB
-   ```
+   <InterlinearGloss>
+   <GlossSource>thrakeles thrakel'er</GlossSource>
+   <GlossToken source="thrakel" gloss="sun" />
+   <GlossToken source="-es" gloss="ABS" type="suffix" />
+   <GlossToken source="thrakel" gloss="sun" />
+   <GlossToken source="-'er" gloss="VRB" type="suffix" />
+   <GlossTranslation>The sun shines.</GlossTranslation>
+   </InterlinearGloss>
 
 1. The wind blows.
-
-   ```txt
-   breses bres'er
-   PLU-wind-ABS blow-VERB
-   ```
+   <InterlinearGloss>
+   <GlossSource>breses bres'er</GlossSource>
+   <GlossToken source="bres" gloss="PL-wind" />
+   <GlossToken source="-es" gloss="ABS" type="suffix" />
+   <GlossToken source="bres" gloss="blow" />
+   <GlossToken source="-'er" gloss="VRB" type="suffix" />
+   <GlossTranslation>The wind blows.</GlossTranslation>
+   </InterlinearGloss>
 
 1. The car started.
 
@@ -62,42 +87,70 @@ This page contains Early Hick translations of Gary Shannon's
    ```
 
 1. School began again.
-
-   ```txt
-   branum 'ilistales branrur tel
-   PAST school-ABS begin.ITER COMPL
-
-   ```
+   <InterlinearGloss>
+   <GlossSource>branum 'ilistales branrur tel</GlossSource>
+   <GlossToken source="branum" gloss="PAST" />
+   <GlossToken source="'ilistal" gloss="school" />
+   <GlossToken source="-es" gloss="ABS" type="suffix" />
+   <GlossToken source="bran" gloss="begin" />
+   <GlossToken source="rur" gloss="rur" type="suffix" />
+   <GlossToken source="tel" gloss="COMPL" />
+   <GlossTranslation>School began again.</GlossTranslation>
+   </InterlinearGloss>
 
 1. The child ran quickly.
 
-    ```txt
-    branum lises kasinthir trask'er
-    PAST child-ABS ADJ-fly run-VERB
-    The child fly-like ran
-    The child quickly ran
-    ```
+    <InterlinearGloss>
+    <GlossSource>branum lises kasinthir trask'er</GlossSource>
+    <GlossToken source="branum" gloss="PAST"/>
+    <GlossToken source="lis" gloss="child" />
+    <GlossToken source="es" gloss="ADJ" type="suffix" />
+    <GlossToken source="ka" gloss="ADJ" type="prefix" />
+    <GlossToken source="sinthir" gloss="fly"/>
+    <GlossToken source="trask" gloss="leg"/>
+    <GlossToken source="'er" gloss="VRB" type="suffix" />
+    <GlossTranslation>The child quickly ran.</GlossTranslation>
+    </InterlinearGloss>
 
 1. Yellow daffodils nodded gaily.
 
-    ```txt
-    branum karak asamwenes kaimeritar ba'er
-    PAST ADJ-yellow daffodil-ABS ADJ-raised spirits nod-VERB
-    The yellow daffodils happily nodded
-    ```
+    <InterlinearGloss>
+    <GlossSource>branum karak asamwenes kaimeritar ba'er</GlossSource>
+    <GlossToken source="branum" gloss="PAST" />
+    <GlossToken source="ka" gloss="ADJ" type="prefix" />
+    <GlossToken source="rak" gloss="yellow" />
+    <GlossToken source="asamwen" gloss="daffodil" />
+    <GlossToken source="es" gloss="ABS" type="suffix"/>
+    <GlossToken source="ka" gloss="ADJ" type="prefix" />
+    <GlossToken source="imeritar" gloss="raised spirits" />
+    <GlossToken source="ba" gloss="nod" />
+    <GlossToken source="'er" gloss="VRB" type="suffix" />
+    <GlossTranslation>The yellow daffodils happily nodded</GlossTranslation>
+    </InterlinearGloss>
 
 1. Little Marigold cried bitterly.
 
-    ```txt
-    kali marigod-es kakras 'u'u'er branum
-    ADJ-little marigold-ABS ADJ-bitter cry-VERB PAST
-    Little Marigold bitterly cried
-    ```
+    <InterlinearGloss>
+    <GlossSource>kali marigodes kakras 'u'u'er branum</GlossSource>
+    <GlossToken source="ka-" gloss="ADJ" type="prefix" />
+    <GlossToken source="li" gloss="little" />
+    <GlossToken source="marigod" gloss="marigold" />
+    <GlossToken source="-es" gloss="ABS" type="suffix" />
+    <GlossToken source="ka-" gloss="ADJ" type="prefix" />
+    <GlossToken source="kras" gloss="bitter" />
+    <GlossToken source="'u'u" gloss="cry" />
+    <GlossToken source="-'er" gloss="VRB" type="suffix" />
+    <GlossToken source="branum" gloss="PAST" />
+    <GlossTranslation>Little Marigold bitterly cried</GlossTranslation>
+    </InterlinearGloss>
 
 1. All the people shouted.
-
-    ```txt
-    masin'ales bresubel'er
-    UNIV-people-ABS shout-VERB
-    Every person shouted.
-    ```
+   <InterlinearGloss>
+   <GlossSource>masin'ales bresubel'er</GlossSource>
+   <GlossToken source="masin-" gloss="UNIV" type="prefix" />
+   <GlossToken source="'al" gloss="people" />
+   <GlossToken source="-es" gloss="ABS" type="suffix" />
+   <GlossToken source="bresubel" gloss="shout" />
+   <GlossToken source="-'er" gloss="VRB" type="suffix" />
+   <GlossTranslation>Every person shouted.</GlossTranslation>
+   </InterlinearGloss>

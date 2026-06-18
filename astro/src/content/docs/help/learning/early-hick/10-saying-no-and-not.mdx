@@ -5,6 +5,10 @@ sidebar:
   order: 10
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson teaches three ways Early Hick handles negative meaning:
@@ -35,19 +39,23 @@ part of the sentence is false.
 To say what is not true, use the prefix `mo-`. A prefix is a word part added to
 the front of another word. Here, `mo-` means "not."
 
-```txt
-'al-es mo-barak'er
-person-MAIN not-walk-ACTION
-"The person does not walk."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"mo-"} gloss={"not"} type="prefix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The person does not walk."}</GlossTranslation>
+</InterlinearGloss>
 
 The same pattern can give a short answer after a question:
 
-```txt
-mo-barak'er
-not-walk-ACTION
-"does not walk"
-```
+<InterlinearGloss>
+  <GlossToken source={"mo-"} gloss={"not"} type="prefix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"does not walk"}</GlossTranslation>
+</InterlinearGloss>
 
 This is more specific than `mope`. It says exactly which action is being denied.
 
@@ -55,19 +63,23 @@ This is more specific than `mope`. It says exactly which action is being denied.
 
 When a description uses `ka-`, put `mo-` before the whole `ka-` form.
 
-```txt
-kel-es mo-ka-kel'er
-sky-MAIN not-blue-ACTION
-"The sky is not blue."
-```
+<InterlinearGloss>
+  <GlossToken source={"kel"} gloss={"sky"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"mo-"} gloss={"not"} type="prefix" />
+  <GlossToken source={"ka-kel"} gloss={"blue"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The sky is not blue."}</GlossTranslation>
+</InterlinearGloss>
 
 The order matters here:
 
-```txt
-mo-ka-kel'er
-not-blue-ACTION
-"is not blue"
-```
+<InterlinearGloss>
+  <GlossToken source={"mo-"} gloss={"not"} type="prefix" />
+  <GlossToken source={"ka-kel"} gloss={"blue"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"is not blue"}</GlossTranslation>
+</InterlinearGloss>
 
 Think of `mo-ka-kel` as "not-blue," then `-'er` turns that description into the
 main action-like word of the sentence.
@@ -76,11 +88,11 @@ main action-like word of the sentence.
 
 `gnar` can mean "yes" or "correct." To deny correctness, use `mo-gnar`.
 
-```txt
-mo-gnar
-not-correct
-"That is not right."
-```
+<InterlinearGloss>
+  <GlossToken source={"mo-"} gloss={"not"} type="prefix" />
+  <GlossToken source={"gnar"} gloss={"correct"} />
+  <GlossTranslation>{"That is not right."}</GlossTranslation>
+</InterlinearGloss>
 
 Use `mope` for a plain "no." Use `mo-gnar` when the point is that a statement,
 answer, or action is incorrect.

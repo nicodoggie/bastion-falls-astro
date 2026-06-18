@@ -4,13 +4,13 @@ import {
   listLexiconTagQuerySuggestions,
   listLexiconTypeBadges,
   summarizeLexiconSenses,
-} from "./search.ts";
+} from "./search";
 import type {
   LexiconSearchAudio,
   LexiconSearchIndex,
   LexiconSearchResult,
   LexiconSearchSense,
-} from "./types.ts";
+} from "./types";
 
 function escapeHtml(value: string): string {
   return value

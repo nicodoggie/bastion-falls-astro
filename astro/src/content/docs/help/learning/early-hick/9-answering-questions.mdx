@@ -5,6 +5,10 @@ sidebar:
   order: 9
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson teaches beginner-safe ways to answer questions:
@@ -24,45 +28,57 @@ Early Hick question words take the same kind of role endings as ordinary nouns.
 If the question asks for the receiver or main noun, the question word can take
 the main/receiver ending `-es`.
 
-```txt
-'aka-es materok-el ward'er?
-what-RECEIVER handler-DOER guide-ACTION
-"What does the handler guide?"
-```
+<InterlinearGloss>
+  <GlossToken source={"'aka"} gloss={"what"} />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er?"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"What does the handler guide?"}</GlossTranslation>
+</InterlinearGloss>
 
 A short answer can give the missing receiver with the same ending:
 
-```txt
-rismater-es
-reed.boat-RECEIVER
-"the reed boat"
-```
+<InterlinearGloss>
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossTranslation>{"the reed boat"}</GlossTranslation>
+</InterlinearGloss>
 
 A fuller answer repeats the whole sentence:
 
-```txt
-materok-el rismater-es ward'er
-handler-DOER reed.boat-RECEIVER guide-ACTION
-"The handler guides the reed boat."
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The handler guides the reed boat."}</GlossTranslation>
+</InterlinearGloss>
 
 ## Answer Who Did It
 
 If the question asks for the doer, the answer can use the doer ending `-el`.
 
-```txt
-'alis-el rismater-es ward'er?
-who-DOER reed.boat-RECEIVER guide-ACTION
-"Who guides the reed boat?"
-```
+<InterlinearGloss>
+  <GlossToken source={"'alis"} gloss={"who"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er?"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"Who guides the reed boat?"}</GlossTranslation>
+</InterlinearGloss>
 
 Short answer:
 
-```txt
-materok-el
-handler-DOER
-"the handler"
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossTranslation>{"the handler"}</GlossTranslation>
+</InterlinearGloss>
 
 The role ending matters because it tells the listener how the answer fits into
 the question.
@@ -72,11 +88,14 @@ the question.
 Early Hick can ask a yes/no question with `'aka thid`, "is it true?", or the
 shorter question word `'athid`.
 
-```txt
-'athid kel-es kakel'er?
-IS.IT.TRUE sky-MAIN blue-ACTION
-"Is the sky blue?"
-```
+<InterlinearGloss>
+  <GlossToken source={"'athid"} gloss={"IS.IT.TRUE"} />
+  <GlossToken source={"kel"} gloss={"sky"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"kakel"} gloss={"blue"} />
+  <GlossToken source={"-'er?"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"Is the sky blue?"}</GlossTranslation>
+</InterlinearGloss>
 
 The short answer `gnar` means "yes" or "correct." It is the ordinary answer when
 someone asks whether a statement is true.
@@ -97,20 +116,22 @@ yup
 
 The safest beginner answer is a full sentence:
 
-```txt
-kel-es kakel'er
-sky-MAIN blue-ACTION
-"The sky is blue."
-```
+<InterlinearGloss>
+  <GlossToken source={"kel"} gloss={"sky"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"kakel"} gloss={"blue"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The sky is blue."}</GlossTranslation>
+</InterlinearGloss>
 
 In quick speech, a short echo can answer by repeating the important sentence
 word:
 
-```txt
-kakel'er
-blue-ACTION
-"It is blue."
-```
+<InterlinearGloss>
+  <GlossToken source={"kakel"} gloss={"blue"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"It is blue."}</GlossTranslation>
+</InterlinearGloss>
 
 ## Answer No
 
@@ -125,44 +146,54 @@ no
 `mope` answers the question. To say exactly what is not true, negate the word
 being denied. Use `mo-`, the "not" prefix.
 
-```txt
-'athid 'al-es barak'er?
-IS.IT.TRUE person-MAIN walk-ACTION
-"Does the person walk?"
-```
+<InterlinearGloss>
+  <GlossToken source={"'athid"} gloss={"IS.IT.TRUE"} />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er?"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"Does the person walk?"}</GlossTranslation>
+</InterlinearGloss>
 
 Full negative answer:
 
-```txt
-'al-es mo-barak'er
-person-MAIN not-walk-ACTION
-"The person does not walk."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"mo-"} gloss={"not"} type="prefix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The person does not walk."}</GlossTranslation>
+</InterlinearGloss>
 
 Short negative echo:
 
-```txt
-mo-barak'er
-not-walk-ACTION
-"does not walk"
-```
+<InterlinearGloss>
+  <GlossToken source={"mo-"} gloss={"not"} type="prefix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"does not walk"}</GlossTranslation>
+</InterlinearGloss>
 
 A transparent answer like `mo-gnar`, "not correct," is possible when the answer
 means "that is not right."
 
-```txt
-mo-gnar
-not-correct
-"That is not right."
-```
+<InterlinearGloss>
+  <GlossToken source={"mo-"} gloss={"not"} type="prefix" />
+  <GlossToken source={"gnar"} gloss={"correct"} />
+  <GlossTranslation>{"That is not right."}</GlossTranslation>
+</InterlinearGloss>
 
 For describing sentences, `mo-` comes before the `ka-` form:
 
-```txt
-kel-es mo-ka-kel'er
-sky-MAIN not-blue-ACTION
-"The sky is not blue."
-```
+<InterlinearGloss>
+  <GlossToken source={"kel"} gloss={"sky"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"mo-"} gloss={"not"} type="prefix" />
+  <GlossToken source={"ka-kel"} gloss={"blue"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The sky is not blue."}</GlossTranslation>
+</InterlinearGloss>
 
 ## Try It
 

@@ -5,6 +5,10 @@ sidebar:
   order: 5
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson teaches five place endings:
@@ -21,11 +25,14 @@ The technical name is spatial case. In this book, call them place endings.
 
 The ending `-las` means movement inward or into something. The formal grammar calls it the illative.
 
-```txt
-branum gal-es rismater-las
-PAST man-MAIN reed.boat-INTO
-"The man entered the reed boat."
-```
+<InterlinearGloss>
+  <GlossToken source={"branum"} gloss={"PAST"} />
+  <GlossToken source={"gal"} gloss={"man"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-las"} gloss={"INTO"} type="suffix" />
+  <GlossTranslation>{"The man entered the reed boat."}</GlossTranslation>
+</InterlinearGloss>
 
 The boat is marked with `-las` because the motion goes into the boat.
 
@@ -43,11 +50,13 @@ The boat is marked with `-las` because the motion goes into the boat.
 
 Early Hick can sometimes use a place ending where English would use a separate action word.
 
-```txt
-materok-es rismater-imris
-handler-MAIN reed.boat-FROM
-"The handler exits the reed boat."
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-imris"} gloss={"FROM"} type="suffix" />
+  <GlossTranslation>{"The handler exits the reed boat."}</GlossTranslation>
+</InterlinearGloss>
 
 There is no separate word for "exit" in the sentence. The `-imris` ending does the work.
 
@@ -59,11 +68,14 @@ lesson uses the ordinary place-ending pattern.
 
 The "into" idea can also mean changing into a new state.
 
-```txt
-kamar kel-es kakel-las
-red sky-MAIN blue-INTO
-"The red sky turns blue."
-```
+<InterlinearGloss>
+  <GlossToken source={"kamar"} gloss={"red"} />
+  <GlossToken source={"kel"} gloss={"sky"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"kakel"} gloss={"blue"} />
+  <GlossToken source={"-las"} gloss={"INTO"} type="suffix" />
+  <GlossTranslation>{"The red sky turns blue."}</GlossTranslation>
+</InterlinearGloss>
 
 Think of the sky moving into blueness.
 

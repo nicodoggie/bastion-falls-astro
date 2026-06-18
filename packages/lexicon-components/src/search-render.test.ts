@@ -5,8 +5,8 @@ import {
   renderLexiconSearchResult,
   renderLexiconSearchSuggestions,
   renderLexiconTagSuggestions,
-} from "./search-render.ts";
-import type { LexiconSearchIndex, LexiconSearchResult } from "./types.ts";
+} from "./search-render";
+import type { LexiconSearchIndex, LexiconSearchResult } from "./types";
 
 const result: LexiconSearchResult = {
   score: 0,

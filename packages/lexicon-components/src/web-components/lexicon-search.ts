@@ -4,12 +4,12 @@ import {
   moveLexiconSuggestionIndex,
   paginateLexiconResults,
   searchLexicon,
-} from "../search.ts";
+} from "../search";
 import {
   renderLexiconSearchResult,
   renderLexiconSearchSuggestions,
-} from "../search-render.ts";
-import type { LexiconSearchIndex } from "../types.ts";
+} from "../search-render";
+import type { LexiconSearchIndex } from "../types";
 
 interface LexiconSearchConfig {
   searchIndex: LexiconSearchIndex;

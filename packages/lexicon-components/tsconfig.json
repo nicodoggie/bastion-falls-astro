@@ -3,7 +3,6 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "strict": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,

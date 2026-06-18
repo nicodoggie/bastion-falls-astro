@@ -5,6 +5,10 @@ sidebar:
   order: 15
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson teaches how Early Hick links one idea to another:
@@ -21,17 +25,18 @@ This lesson teaches how Early Hick links one idea to another:
 When Early Hick uses one action as the time frame for another, the action often
 gets the main noun ending `-es`.
 
-```txt
-barak'er
-walk-ACTION
-"walks"
-```
+<InterlinearGloss>
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"walks"}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-barak'er-es
-walk-ACTION-MAIN
-"walking" / "the walking event"
-```
+<InterlinearGloss>
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossTranslation>{"\"walking\" / \"the walking event\""}</GlossTranslation>
+</InterlinearGloss>
 
 This lets the action work like a noun phrase inside a larger sentence. In the
 technical grammar, this is a nominalized verb: an action word used as a noun.
@@ -40,11 +45,18 @@ technical grammar, this is a nominalized verb: an action word used as a noun.
 
 Use `'aterimris` after the event that happens first.
 
-```txt
-barak'er-es 'aterimris, 'al'is-es imeresp'er
-walk-ACTION-MAIN after person-this-MAIN sleep-ACTION
-"After walking, this person sleeps."
-```
+<InterlinearGloss>
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"'aterimris,"} gloss={"after"} />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"imeresp"} gloss={"sleep"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"After walking, this person sleeps."}</GlossTranslation>
+</InterlinearGloss>
 
 The first part gives the time frame. The second part gives the main sentence.
 
@@ -52,11 +64,18 @@ The first part gives the time frame. The second part gives the main sentence.
 
 Use `'aterbran` after the event that has not happened yet.
 
-```txt
-barak'er-es 'aterbran, 'al'is-es imeresp'er
-walk-ACTION-MAIN before person-this-MAIN sleep-ACTION
-"Before walking, this person sleeps."
-```
+<InterlinearGloss>
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"'aterbran,"} gloss={"before"} />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"imeresp"} gloss={"sleep"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"Before walking, this person sleeps."}</GlossTranslation>
+</InterlinearGloss>
 
 The structure is the same as the "after" pattern:
 
@@ -70,29 +89,46 @@ Use `'atertel` when one event continues up to another event. English often puts
 "until" before the second event. Early Hick can put the time link after that
 event instead.
 
-```txt
-'al'is-es barak'er imeresp'er-es 'atertel
-person-this-MAIN walk-ACTION sleep-ACTION-MAIN until
-"This person walks until sleeping."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"imeresp"} gloss={"sleep"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"'atertel"} gloss={"until"} />
+  <GlossTranslation>{"This person walks until sleeping."}</GlossTranslation>
+</InterlinearGloss>
 
 Read the end as a time frame:
 
-```txt
-imeresp'er-es 'atertel
-sleep-ACTION-MAIN until
-"until sleeping"
-```
+<InterlinearGloss>
+  <GlossToken source={"imeresp"} gloss={"sleep"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"'atertel"} gloss={"until"} />
+  <GlossTranslation>{"until sleeping"}</GlossTranslation>
+</InterlinearGloss>
 
 ## Because with `imris`
 
 Use `imris` when one sentence gives the reason for another.
 
-```txt
-imris toran-es ter'er, 'al'is-es barak'er
-because river-MAIN flow-ACTION person-this-MAIN walk-ACTION
-"Because the river flows, this person walks."
-```
+<InterlinearGloss>
+  <GlossToken source={"imris"} gloss={"because"} />
+  <GlossToken source={"toran"} gloss={"river"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"ter"} gloss={"flow"} />
+  <GlossToken source={"-'er,"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"Because the river flows, this person walks."}</GlossTranslation>
+</InterlinearGloss>
 
 Here, `imris` introduces the reason. The sentence after the comma gives what
 happens because of that reason.
@@ -103,11 +139,19 @@ Use `las` when the first sentence gives something that does not stop the main
 sentence from happening. English often says "despite" with a noun, or "even
 though" with a full sentence.
 
-```txt
-las toran-es ter'er, 'al'is-es barak'er
-despite river-MAIN flow-ACTION person-this-MAIN walk-ACTION
-"Even though the river flows, this person walks."
-```
+<InterlinearGloss>
+  <GlossToken source={"las"} gloss={"despite"} />
+  <GlossToken source={"toran"} gloss={"river"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"ter"} gloss={"flow"} />
+  <GlossToken source={"-'er,"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"Even though the river flows, this person walks."}</GlossTranslation>
+</InterlinearGloss>
 
 The same word is related to the place ending `-las`, "into." In this sentence,
 it works as a sentence link, not as a place ending.
@@ -131,41 +175,62 @@ Early Hick can move these pieces for style or story flow. A link at the
 beginning puts the relationship in focus. A link later in the sentence can feel
 more like ordinary story flow.
 
-```txt
-'al'is-es barak'er imris toran-es ter'er
-person-this-MAIN walk-ACTION because river-MAIN flow-ACTION
-"This person walks because the river flows."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"imris"} gloss={"because"} />
+  <GlossToken source={"toran"} gloss={"river"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"ter"} gloss={"flow"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"This person walks because the river flows."}</GlossTranslation>
+</InterlinearGloss>
 
 ## Coordination or Sentence Link?
 
 Use coordination from the last lesson when the pieces are equal:
 
-```txt
-'al'is o materok o ru-el
-person-this LIST handler LIST and-DOER
-"this person and the handler" as doers
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-'is"} gloss={"this"} type="suffix" />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"o"} gloss={"LIST"} />
+  <GlossToken source={"ru"} gloss={"and"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossTranslation>{"\"this person and the handler\" as doers"}</GlossTranslation>
+</InterlinearGloss>
 
 Use this lesson's links when one part gives time or reason for another:
 
-```txt
-barak'er-es 'aterimris
-walk-ACTION-MAIN after
-"after walking"
-```
+<InterlinearGloss>
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"'aterimris"} gloss={"after"} />
+  <GlossTranslation>{"after walking"}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-imris toran-es ter'er
-because river-MAIN flow-ACTION
-"because the river flows"
-```
+<InterlinearGloss>
+  <GlossToken source={"imris"} gloss={"because"} />
+  <GlossToken source={"toran"} gloss={"river"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"ter"} gloss={"flow"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"because the river flows"}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-las toran-es ter'er
-despite river-MAIN flow-ACTION
-"even though the river flows"
-```
+<InterlinearGloss>
+  <GlossToken source={"las"} gloss={"despite"} />
+  <GlossToken source={"toran"} gloss={"river"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"ter"} gloss={"flow"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"even though the river flows"}</GlossTranslation>
+</InterlinearGloss>
 
 ## Try It
 

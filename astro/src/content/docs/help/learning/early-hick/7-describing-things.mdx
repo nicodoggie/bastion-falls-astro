@@ -5,6 +5,10 @@ sidebar:
   order: 7
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson connects familiar English-class terms to the Early Hick _ka-_ system:
@@ -29,11 +33,13 @@ forms with the prefix `ka-`, meaning "like," "having the quality of," or "in the
 
 When a form built with _ka-_ comes before a noun, it does the job of an English adjective:
 
-```txt
-ka'irek litor-es etal
-firm-like hill-MAIN that
-"that firm hill"
-```
+<InterlinearGloss>
+  <GlossToken source={"ka'irek"} gloss={"firm-like"} />
+  <GlossToken source={"litor"} gloss={"hill"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"etal"} gloss={"that"} />
+  <GlossTranslation>{"that firm hill"}</GlossTranslation>
+</InterlinearGloss>
 
 Here, `ka'irek` describes `litor`, "hill." The English translation uses the adjective "firm," but
 the Early Hick form is closer to "firm-like hill."
@@ -42,19 +48,24 @@ the Early Hick form is closer to "firm-like hill."
 
 In English, an adverb often describes how an action happens:
 
-```txt
-The handler guides carefully.
-The person walks firmly.
-```
+<InterlinearGloss
+  source={"The handler guides carefully."}
+  gloss={"The person walks firmly."}
+/>
 
 Early Hick can use the same kind of _ka-_ form near the action. In the clearest beginner pattern,
 the _ka-_ form comes after the action word:
 
-```txt
-materok-el rismater-es ward'er ka'il
-handler-DOER reed.boat-RECEIVER guide-ACTION good-like
-"The handler guides the reed boat well."
-```
+<InterlinearGloss>
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"rismater"} gloss={"reed.boat"} />
+  <GlossToken source={"-es"} gloss={"RECEIVER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"ka'il"} gloss={"good-like"} />
+  <GlossTranslation>{"The handler guides the reed boat well."}</GlossTranslation>
+</InterlinearGloss>
 
 In English-class terms, `ka'il` is doing an adverb job here. It tells us how the handler guides.
 Early Hick word order is flexible, so action modifiers can also appear before the action word for
@@ -66,11 +77,13 @@ noun.
 English can say "the hill is firm." Early Hick usually turns the describing idea into an action-like
 sentence word with `-'er`:
 
-```txt
-litor-es ka'irek'er
-hill-MAIN firm-like-ACTION
-"The hill is firm."
-```
+<InterlinearGloss>
+  <GlossToken source={"litor"} gloss={"hill"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"ka'irek"} gloss={"firm-like"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The hill is firm."}</GlossTranslation>
+</InterlinearGloss>
 
 This does not mean the hill is actively doing something. It is the Early Hick way to make a quality
 into the main statement.
@@ -90,11 +103,12 @@ native images:
 The prefix `ka-` means "like" or "similar to." So `kakel` is literally "sky-like," and it can mean
 "blue."
 
-```txt
-kamarrak kel-es
-red sky-MAIN
-"the red sky"
-```
+<InterlinearGloss>
+  <GlossToken source={"kamarrak"} gloss={"red"} />
+  <GlossToken source={"kel"} gloss={"sky"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossTranslation>{"the red sky"}</GlossTranslation>
+</InterlinearGloss>
 
 The longer ending `-rak` makes clear that the word is being used specifically as a color. Without
 `-rak`, a _ka-_ form can keep a wider meaning: `kakel` can mean "sky-like" as well as "blue,"

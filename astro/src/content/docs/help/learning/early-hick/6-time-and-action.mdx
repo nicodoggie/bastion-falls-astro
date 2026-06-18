@@ -5,6 +5,10 @@ sidebar:
   order: 6
 ---
 
+import InterlinearGloss from "@bastion-falls/lexicon-components/InterlinearGloss.astro";
+import GlossTranslation from "@bastion-falls/lexicon-components/GlossTranslation.astro";
+import GlossToken from "@bastion-falls/lexicon-components/GlossToken.astro";
+
 ## What You'll Learn
 
 This lesson teaches four common time and action markers:
@@ -18,54 +22,72 @@ This lesson teaches four common time and action markers:
 
 If a sentence has no time word, read it as present time unless the story around it says otherwise.
 
-```txt
-'ales barak'er
-person-MAIN walk-ACTION
-"The person walks" or "The person is walking."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"\"The person walks\" or \"The person is walking.\""}</GlossTranslation>
+</InterlinearGloss>
 
 ## Past and Future Words
 
 Early Hick can put a time word near the beginning of the sentence.
 
-```txt
-branum materok-el ward'er
-PAST handler-DOER guide-ACTION
-"The handler guided."
-```
+<InterlinearGloss>
+  <GlossToken source={"branum"} gloss={"PAST"} />
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The handler guided."}</GlossTranslation>
+</InterlinearGloss>
 
-```txt
-mulsum materok-el ward'er
-FUTURE handler-DOER guide-ACTION
-"The handler will guide."
-```
+<InterlinearGloss>
+  <GlossToken source={"mulsum"} gloss={"FUTURE"} />
+  <GlossToken source={"materok"} gloss={"handler"} />
+  <GlossToken source={"-el"} gloss={"DOER"} type="suffix" />
+  <GlossToken source={"ward"} gloss={"guide"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossTranslation>{"The handler will guide."}</GlossTranslation>
+</InterlinearGloss>
 
 The far-past word `branrum` is used for events long ago, especially in poetry, ritual, or old
 stories.
 
-```txt
-branrum 'ales venitar
-FAR.PAST person-MAIN burden-UP
-"The person lifted long ago."
-```
+<InterlinearGloss>
+  <GlossToken source={"branrum"} gloss={"FAR.PAST"} />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"veni"} gloss={"burden"} />
+  <GlossToken source={"-tar"} gloss={"UP"} type="suffix" />
+  <GlossTranslation>{"The person lifted long ago."}</GlossTranslation>
+</InterlinearGloss>
 
 ## Finished Action with `tel`
 
 The word `tel` marks an action as finished.
 
-```txt
-'ales barak'er tel
-person-MAIN walk-ACTION FINISHED
-"The person has walked."
-```
+<InterlinearGloss>
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"tel"} gloss={"FINISHED"} />
+  <GlossTranslation>{"The person has walked."}</GlossTranslation>
+</InterlinearGloss>
 
 You can combine a time word with `tel`.
 
-```txt
-branum 'ales barak'er tel
-PAST person-MAIN walk-ACTION FINISHED
-"The person had walked."
-```
+<InterlinearGloss>
+  <GlossToken source={"branum"} gloss={"PAST"} />
+  <GlossToken source={"'al"} gloss={"person"} />
+  <GlossToken source={"-es"} gloss={"MAIN"} type="suffix" />
+  <GlossToken source={"barak"} gloss={"walk"} />
+  <GlossToken source={"-'er"} gloss={"ACTION"} type="suffix" />
+  <GlossToken source={"tel"} gloss={"FINISHED"} />
+  <GlossTranslation>{"The person had walked."}</GlossTranslation>
+</InterlinearGloss>
 
 ## Try It
 
