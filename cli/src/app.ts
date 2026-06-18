@@ -9,6 +9,7 @@ import { validateCommand } from "./commands/validate/command.js";
 import { kingraphCommandRoutes } from "./commands/kingraph/command.js";
 import { transcribeCommand } from "./commands/transcribe/command.js";
 import { ddbCommandRoutes } from "./commands/ddb/command.js";
+import { ttsCommandRoutes } from "./commands/tts/command.js";
 
 const { name, version, description } = packageJson as any;
 
@@ -18,6 +19,7 @@ const routes = buildRouteMap({
     migrate: migrateCommand,
     scan: scanStubCommand,
     transcribe: transcribeCommand,
+    tts: ttsCommandRoutes,
     kingraph: kingraphCommandRoutes,
     ddb: ddbCommandRoutes,
     validate: validateCommand,

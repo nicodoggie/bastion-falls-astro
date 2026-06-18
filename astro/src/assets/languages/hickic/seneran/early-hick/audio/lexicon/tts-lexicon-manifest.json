@@ -1,0 +1,1319 @@
+{
+  "generatedAt": "2026-06-18T09:11:25.262Z",
+  "lexiconGlob": "astro/src/assets/languages/hickic/seneran/early-hick/lexicon/*.jsonld",
+  "mbrola": {
+    "profile": "early-hick-mbrola"
+  },
+  "items": [
+    {
+      "id": "ehk:-asam",
+      "slug": "asam",
+      "writtenForm": "-asam",
+      "phoneticForm": "-a.səm",
+      "approximations": [
+        {
+          "symbol": "ə",
+          "strategy": "short_low_prominence_A",
+          "reason": "MBROLA it2 has no schwa; documented default uses shorter, lower-prominence A."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "asam.webm",
+      "sources": [
+        {
+          "outputPath": "asam.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "asam.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:suffixes-en",
+      "slug": "en",
+      "writtenForm": "-en",
+      "phoneticForm": "-en",
+      "approximations": [],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "en.webm",
+      "sources": [
+        {
+          "outputPath": "en.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "en.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-esp",
+      "slug": "esp",
+      "writtenForm": "-esp",
+      "phoneticForm": "-esp",
+      "approximations": [],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "esp.webm",
+      "sources": [
+        {
+          "outputPath": "esp.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "esp.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-eth",
+      "slug": "eth",
+      "writtenForm": "-eth",
+      "phoneticForm": "-eθ",
+      "approximations": [
+        {
+          "symbol": "θ",
+          "strategy": "it2:T",
+          "reason": "MBROLA it2 has no dental fricative; documented default approximates /θ/ with a less-sibilant T."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "eth.webm",
+      "sources": [
+        {
+          "outputPath": "eth.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "eth.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-imris",
+      "slug": "imris",
+      "writtenForm": "-imris",
+      "phoneticForm": "-im.ris",
+      "approximations": [],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "imris.webm",
+      "sources": [
+        {
+          "outputPath": "imris.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "imris.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-is",
+      "slug": "is",
+      "writtenForm": "-is",
+      "phoneticForm": "-is",
+      "approximations": [],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "is.webm",
+      "sources": [
+        {
+          "outputPath": "is.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "is.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-itar",
+      "slug": "itar",
+      "writtenForm": "-itar",
+      "phoneticForm": "-i.tar",
+      "approximations": [],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "itar.webm",
+      "sources": [
+        {
+          "outputPath": "itar.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "itar.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-iter",
+      "slug": "iter",
+      "writtenForm": "-iter",
+      "phoneticForm": "-i.ter",
+      "approximations": [],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "iter.webm",
+      "sources": [
+        {
+          "outputPath": "iter.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "iter.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-las",
+      "slug": "las",
+      "writtenForm": "-las",
+      "phoneticForm": "-las",
+      "approximations": [],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "las.webm",
+      "sources": [
+        {
+          "outputPath": "las.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "las.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-nat",
+      "slug": "nat",
+      "writtenForm": "-nat",
+      "phoneticForm": "nat",
+      "approximations": [],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "nat.webm",
+      "sources": [
+        {
+          "outputPath": "nat.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "nat.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-rum",
+      "slug": "rum",
+      "writtenForm": "-rum",
+      "phoneticForm": "-rum",
+      "approximations": [],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "rum.webm",
+      "sources": [
+        {
+          "outputPath": "rum.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "rum.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-tan",
+      "slug": "tan",
+      "writtenForm": "-tan",
+      "phoneticForm": "-tan",
+      "approximations": [],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "tan.webm",
+      "sources": [
+        {
+          "outputPath": "tan.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "tan.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-thir",
+      "slug": "thir",
+      "writtenForm": "-thir",
+      "phoneticForm": "-θir",
+      "approximations": [
+        {
+          "symbol": "θ",
+          "strategy": "it2:T",
+          "reason": "MBROLA it2 has no dental fricative; documented default approximates /θ/ with a less-sibilant T."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "thir.webm",
+      "sources": [
+        {
+          "outputPath": "thir.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "thir.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-um",
+      "slug": "um",
+      "writtenForm": "-um",
+      "phoneticForm": "-um",
+      "approximations": [],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "um.webm",
+      "sources": [
+        {
+          "outputPath": "um.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "um.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-ʔis",
+      "slug": "_is",
+      "writtenForm": "-ʔis",
+      "phoneticForm": "-ʔis",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_is.webm",
+      "sources": [
+        {
+          "outputPath": "_is.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_is.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'a",
+      "slug": "_a",
+      "writtenForm": "'a",
+      "phoneticForm": "ʔa",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_a.webm",
+      "sources": [
+        {
+          "outputPath": "_a.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_a.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'aka",
+      "slug": "_aka",
+      "writtenForm": "'aka",
+      "phoneticForm": "ʔa.ka",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_aka.webm",
+      "sources": [
+        {
+          "outputPath": "_aka.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_aka.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'aker",
+      "slug": "_aker",
+      "writtenForm": "'aker",
+      "phoneticForm": "ʔa.ker",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_aker.webm",
+      "sources": [
+        {
+          "outputPath": "_aker.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_aker.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'akereth",
+      "slug": "_akereth",
+      "writtenForm": "'akereth",
+      "phoneticForm": "ʔa.ke.reθ",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        },
+        {
+          "symbol": "θ",
+          "strategy": "it2:T",
+          "reason": "MBROLA it2 has no dental fricative; documented default approximates /θ/ with a less-sibilant T."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_akereth.webm",
+      "sources": [
+        {
+          "outputPath": "_akereth.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_akereth.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'akerum",
+      "slug": "_akerum",
+      "writtenForm": "'akerum",
+      "phoneticForm": "ʔa.ke.rum",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_akerum.webm",
+      "sources": [
+        {
+          "outputPath": "_akerum.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_akerum.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'al",
+      "slug": "_al",
+      "writtenForm": "'al",
+      "phoneticForm": "ʔal",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_al.webm",
+      "sources": [
+        {
+          "outputPath": "_al.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_al.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'aleth",
+      "slug": "_aleth",
+      "writtenForm": "'aleth",
+      "phoneticForm": "ʔa.leθ",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        },
+        {
+          "symbol": "θ",
+          "strategy": "it2:T",
+          "reason": "MBROLA it2 has no dental fricative; documented default approximates /θ/ with a less-sibilant T."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_aleth.webm",
+      "sources": [
+        {
+          "outputPath": "_aleth.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_aleth.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'alis",
+      "slug": "_alis",
+      "writtenForm": "'alis",
+      "phoneticForm": "ʔa.lis",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_alis.webm",
+      "sources": [
+        {
+          "outputPath": "_alis.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_alis.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'alum",
+      "slug": "_alum",
+      "writtenForm": "'alum",
+      "phoneticForm": "ʔa.lum",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_alum.webm",
+      "sources": [
+        {
+          "outputPath": "_alum.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_alum.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'atal",
+      "slug": "_atal",
+      "writtenForm": "'atal",
+      "phoneticForm": "ʔa.tal",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_atal.webm",
+      "sources": [
+        {
+          "outputPath": "_atal.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_atal.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'ater",
+      "slug": "_ater",
+      "writtenForm": "'ater",
+      "phoneticForm": "ʔa.ter",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_ater.webm",
+      "sources": [
+        {
+          "outputPath": "_ater.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_ater.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:aterbran",
+      "slug": "_aterbran",
+      "writtenForm": "'aterbran",
+      "phoneticForm": "ʔa.ter.bran",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_aterbran.webm",
+      "sources": [
+        {
+          "outputPath": "_aterbran.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_aterbran.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'atereth",
+      "slug": "_atereth",
+      "writtenForm": "'atereth",
+      "phoneticForm": "ʔa.te.reθ",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        },
+        {
+          "symbol": "θ",
+          "strategy": "it2:T",
+          "reason": "MBROLA it2 has no dental fricative; documented default approximates /θ/ with a less-sibilant T."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_atereth.webm",
+      "sources": [
+        {
+          "outputPath": "_atereth.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_atereth.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'aterum",
+      "slug": "_aterum",
+      "writtenForm": "'aterum",
+      "phoneticForm": "ʔa.te.rum",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_aterum.webm",
+      "sources": [
+        {
+          "outputPath": "_aterum.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_aterum.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'ateth",
+      "slug": "_ateth",
+      "writtenForm": "'ateth",
+      "phoneticForm": "ʔa.teθ",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        },
+        {
+          "symbol": "θ",
+          "strategy": "it2:T",
+          "reason": "MBROLA it2 has no dental fricative; documented default approximates /θ/ with a less-sibilant T."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_ateth.webm",
+      "sources": [
+        {
+          "outputPath": "_ateth.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_ateth.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'athid",
+      "slug": "_athid",
+      "writtenForm": "'athid",
+      "phoneticForm": "ʔa.θid",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        },
+        {
+          "symbol": "θ",
+          "strategy": "it2:T",
+          "reason": "MBROLA it2 has no dental fricative; documented default approximates /θ/ with a less-sibilant T."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_athid.webm",
+      "sources": [
+        {
+          "outputPath": "_athid.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_athid.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'atil",
+      "slug": "_atil",
+      "writtenForm": "'atil",
+      "phoneticForm": "ʔa.til",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_atil.webm",
+      "sources": [
+        {
+          "outputPath": "_atil.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_atil.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'atum",
+      "slug": "_atum",
+      "writtenForm": "'atum",
+      "phoneticForm": "ʔa.tum",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_atum.webm",
+      "sources": [
+        {
+          "outputPath": "_atum.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_atum.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'eldal",
+      "slug": "_eldal",
+      "writtenForm": "'eldal",
+      "phoneticForm": "ʔel.dal",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_eldal.webm",
+      "sources": [
+        {
+          "outputPath": "_eldal.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_eldal.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'eldalok",
+      "slug": "_eldalok",
+      "writtenForm": "'eldalok",
+      "phoneticForm": "ʔel.da.lok",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_eldalok.webm",
+      "sources": [
+        {
+          "outputPath": "_eldalok.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_eldalok.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'eldegral",
+      "slug": "_eldegral",
+      "writtenForm": "'eldegral",
+      "phoneticForm": "ʔel.də.gral",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        },
+        {
+          "symbol": "ə",
+          "strategy": "short_low_prominence_A",
+          "reason": "MBROLA it2 has no schwa; documented default uses shorter, lower-prominence A."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_eldegral.webm",
+      "sources": [
+        {
+          "outputPath": "_eldegral.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_eldegral.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:eldegralen_asadimris",
+      "slug": "_eldegralen-asadimris",
+      "writtenForm": "'eldegralen asadimris",
+      "phoneticForm": "ʔel.də.gra.len a.sa.dim.ris",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        },
+        {
+          "symbol": "ə",
+          "strategy": "short_low_prominence_A",
+          "reason": "MBROLA it2 has no schwa; documented default uses shorter, lower-prominence A."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_eldegralen-asadimris.webm",
+      "sources": [
+        {
+          "outputPath": "_eldegralen-asadimris.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_eldegralen-asadimris.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:-'er",
+      "slug": "_er",
+      "writtenForm": "'er",
+      "phoneticForm": "ʔer",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_er.webm",
+      "sources": [
+        {
+          "outputPath": "_er.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_er.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'eteleth",
+      "slug": "_eteleth",
+      "writtenForm": "'eteleth",
+      "phoneticForm": "ʔe.te.leθ",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        },
+        {
+          "symbol": "θ",
+          "strategy": "it2:T",
+          "reason": "MBROLA it2 has no dental fricative; documented default approximates /θ/ with a less-sibilant T."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_eteleth.webm",
+      "sources": [
+        {
+          "outputPath": "_eteleth.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_eteleth.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'etelum",
+      "slug": "_etelum",
+      "writtenForm": "'etelum",
+      "phoneticForm": "ʔe.te.lum",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_etelum.webm",
+      "sources": [
+        {
+          "outputPath": "_etelum.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_etelum.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'etil",
+      "slug": "_etil",
+      "writtenForm": "'etil",
+      "phoneticForm": "ʔe.til",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_etil.webm",
+      "sources": [
+        {
+          "outputPath": "_etil.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_etil.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'ibri",
+      "slug": "_ibri",
+      "writtenForm": "'ibri",
+      "phoneticForm": "ʔib.ri",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_ibri.webm",
+      "sources": [
+        {
+          "outputPath": "_ibri.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_ibri.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'ibrigral",
+      "slug": "_ibrigral",
+      "writtenForm": "'ibrigral",
+      "phoneticForm": "ʔib.ri.gral",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_ibrigral.webm",
+      "sources": [
+        {
+          "outputPath": "_ibrigral.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_ibrigral.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'ibris",
+      "slug": "_ibris",
+      "writtenForm": "'ibris",
+      "phoneticForm": "ʔib.ris",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_ibris.webm",
+      "sources": [
+        {
+          "outputPath": "_ibris.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_ibris.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'ibris'er",
+      "slug": "_ibris_er",
+      "writtenForm": "'ibris'er",
+      "phoneticForm": "ʔi.bris.ʔer",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_ibris_er.webm",
+      "sources": [
+        {
+          "outputPath": "_ibris_er.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_ibris_er.mp3",
+          "type": "audio/mpeg"
+        }
+      ],
+      "postVcGlottal": {
+        "gapMs": 35,
+        "chunks": [
+          {
+            "writtenForm": "ibris",
+            "phoneticForm": "i.bris"
+          },
+          {
+            "writtenForm": "er",
+            "phoneticForm": "er"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ehk:'ihir",
+      "slug": "_ihir",
+      "writtenForm": "'ihir",
+      "phoneticForm": "ʔi.hir",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        },
+        {
+          "symbol": "h",
+          "strategy": "short_boundary",
+          "reason": "MBROLA it2 has no h phone; documented default uses a short boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_ihir.webm",
+      "sources": [
+        {
+          "outputPath": "_ihir.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_ihir.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'il",
+      "slug": "_il",
+      "writtenForm": "'il",
+      "phoneticForm": "ʔil",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_il.webm",
+      "sources": [
+        {
+          "outputPath": "_il.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_il.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'ilibris",
+      "slug": "_ilibris",
+      "writtenForm": "'ilibris",
+      "phoneticForm": "ʔi.li.bris",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_ilibris.webm",
+      "sources": [
+        {
+          "outputPath": "_ilibris.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_ilibris.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "ehk:'ilibris'er",
+      "slug": "_ilibris_er",
+      "writtenForm": "'ilibris'er",
+      "phoneticForm": "ʔi.li.bris.ʔer",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_ilibris_er.webm",
+      "sources": [
+        {
+          "outputPath": "_ilibris_er.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_ilibris_er.mp3",
+          "type": "audio/mpeg"
+        }
+      ],
+      "postVcGlottal": {
+        "gapMs": 35,
+        "chunks": [
+          {
+            "writtenForm": "ilibris",
+            "phoneticForm": "i.li.bris"
+          },
+          {
+            "writtenForm": "er",
+            "phoneticForm": "er"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ehk:'ilis",
+      "slug": "_ilis",
+      "writtenForm": "'ilis",
+      "phoneticForm": "ʔi.lis",
+      "approximations": [
+        {
+          "symbol": "ʔ",
+          "strategy": "short_pause",
+          "reason": "MBROLA it2 has no glottal stop; documented default uses a short silence boundary."
+        }
+      ],
+      "unsupported": [],
+      "status": "generated",
+      "outputPath": "_ilis.webm",
+      "sources": [
+        {
+          "outputPath": "_ilis.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "outputPath": "_ilis.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ],
+  "voiceConversion": {
+    "enabled": true,
+    "requestedDevice": "auto",
+    "device": "cuda"
+  }
+}
