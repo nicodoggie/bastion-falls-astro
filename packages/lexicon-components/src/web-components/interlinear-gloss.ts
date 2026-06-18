@@ -40,9 +40,12 @@ function renderTokenLine(
 function renderGloss(pairs: readonly GlossPair[], translation: string): string {
   return `<style>
     .bf-ig {
+      background: color-mix(in srgb, var(--sl-color-bg-nav, #111827) 72%, transparent);
+      border: 1px solid color-mix(in srgb, var(--sl-color-gray-5, #4b5563) 65%, transparent);
+      border-radius: 0.4rem;
       overflow-x: auto;
       margin: 1rem 0;
-      padding: 0.75rem 0;
+      padding: 0.85rem 0.95rem;
     }
     .bf-ig__line {
       align-items: baseline;
