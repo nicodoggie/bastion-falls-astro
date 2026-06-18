@@ -16,6 +16,7 @@ const { lexiconBasePath, fieldRoutes, currentFieldUri }: Props = Astro.props;
 
 <nav class="lex-nav" aria-label="Lexicon navigation">
   <h2>Lexicon</h2>
+  <a href={`${lexiconBasePath}/search`}>Search dictionary</a>
   <a href={`${lexiconBasePath}/alpha/1`}>Alphabetical dictionary</a>
   <a href={`${lexiconBasePath}/fields`}>Semantic fields</a>
   {

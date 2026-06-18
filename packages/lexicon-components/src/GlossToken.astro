@@ -1,0 +1,19 @@
+---
+import type { GlossTokenType } from "./types.ts";
+
+interface Props {
+  source: string;
+  gloss: string;
+  type?: GlossTokenType;
+}
+
+const { source, gloss, type = "word" }: Props = Astro.props;
+---
+
+<span
+  data-gloss-token
+  data-source={source}
+  data-gloss={gloss}
+  data-type={type}
+  hidden
+></span>

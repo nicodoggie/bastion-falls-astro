@@ -1,0 +1,28 @@
+---
+import type { LexiconSearchIndex } from "./types.ts";
+
+interface Props {
+  searchIndex: LexiconSearchIndex;
+  lexiconUrl: string;
+  initialQuery?: string;
+  resultLimit?: number;
+}
+
+const {
+  searchIndex,
+  lexiconUrl,
+  initialQuery = "",
+  resultLimit = 50,
+}: Props = Astro.props;
+const payload = JSON.stringify({
+  searchIndex,
+  lexiconUrl,
+  initialQuery,
+  resultLimit,
+});
+---
+
+<bf-lexicon-search data-config={payload}></bf-lexicon-search>
+<script>
+  import "./web-components/lexicon-search.ts";
+</script>

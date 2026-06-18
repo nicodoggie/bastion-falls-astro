@@ -4,8 +4,14 @@
   "private": true,
   "type": "module",
   "description": "Astro UI for static lexicon pages (Early Hick and similar).",
+  "scripts": {
+    "test": "node --import tsx --test src/**/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
   "devDependencies": {
-    "astro": "^6.4.2"
+    "astro": "^6.4.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
     "@astrojs/starlight": ">=0.30.0",
@@ -17,12 +23,19 @@
   },
   "exports": {
     "./LexiconEntryBlock.astro": "./src/LexiconEntryBlock.astro",
+    "./InterlinearGloss.astro": "./src/InterlinearGloss.astro",
+    "./GlossToken.astro": "./src/GlossToken.astro",
+    "./GlossTranslation.astro": "./src/GlossTranslation.astro",
     "./LexiconAlphaPage.astro": "./src/LexiconAlphaPage.astro",
     "./LexiconByFieldPage.astro": "./src/LexiconByFieldPage.astro",
     "./LexiconFieldPage.astro": "./src/LexiconFieldPage.astro",
     "./LexiconFieldsIndexPage.astro": "./src/LexiconFieldsIndexPage.astro",
+    "./LexiconSearchWorkbench.astro": "./src/LexiconSearchWorkbench.astro",
     "./LexiconNav.astro": "./src/LexiconNav.astro",
-    "./LexPagination.astro": "./src/LexPagination.astro"
+    "./LexPagination.astro": "./src/LexPagination.astro",
+    "./search": "./src/search.ts",
+    "./gloss": "./src/gloss.ts",
+    "./types": "./src/types.ts"
   },
   "volta": {
     "extends": "../../package.json"

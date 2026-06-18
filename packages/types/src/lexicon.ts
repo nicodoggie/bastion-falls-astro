@@ -43,6 +43,44 @@ export interface LexiconByField {
   lexicon: Record<string, LexItem[]>;
 }
 
+export interface LexiconSearchSense {
+  definition: string;
+  usage?: string;
+  semanticField?: string[];
+}
+
+export interface LexiconSearchEntry {
+  id: string;
+  types: string[];
+  typeLabels: string[];
+  writtenForm: string;
+  phoneticForm: string;
+  senses: LexiconSearchSense[];
+  protoform?: string;
+  note?: string;
+  alphaPage: number;
+  fieldUris: string[];
+  fieldLabels: string[];
+  audio?: LexiconSearchAudio;
+}
+
+export interface LexiconSearchIndex {
+  version: 1;
+  localeId: string;
+  title: string;
+  entries: LexiconSearchEntry[];
+}
+
+export interface LexiconSearchAudioSource {
+  url: string;
+  type: string;
+}
+
+export interface LexiconSearchAudio {
+  label?: string;
+  sources: LexiconSearchAudioSource[];
+}
+
 export function getLexicalCategory(lexicalCategory: string): string {
   switch (lexicalCategory) {
     case "lexinfo:Noun":

@@ -1,0 +1,20 @@
+---
+interface Props {
+  source?: string;
+  gloss?: string;
+  translation?: string;
+}
+
+const { source, gloss, translation }: Props = Astro.props;
+---
+
+<bf-interlinear-gloss
+  data-source={source}
+  data-gloss={gloss}
+  data-translation={translation}
+>
+  <slot />
+</bf-interlinear-gloss>
+<script>
+  import "./web-components/interlinear-gloss.ts";
+</script>

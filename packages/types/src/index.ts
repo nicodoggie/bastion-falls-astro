@@ -16,6 +16,9 @@ import type {
   Lexicon,
   LexiconByField,
   LexiconFieldMeta,
+  LexiconSearchEntry,
+  LexiconSearchIndex,
+  LexiconSearchSense,
   LexItem,
   Sense,
 } from "./lexicon.js";
@@ -39,6 +42,9 @@ export type {
   Lexicon,
   LexiconByField,
   LexiconFieldMeta,
+  LexiconSearchEntry,
+  LexiconSearchIndex,
+  LexiconSearchSense,
 };
 export {
   getLexicalCategory,
