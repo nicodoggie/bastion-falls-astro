@@ -8,6 +8,10 @@ tags:
   - maxims
 ---
 
+import GlossToken from '@bastion-falls/lexicon-components/GlossToken.astro';
+import GlossTranslation from '@bastion-falls/lexicon-components/GlossTranslation.astro';
+import InterlinearGloss from '@bastion-falls/lexicon-components/InterlinearGloss.astro';
+
 This page collects short Early Hick expressions that are useful as phrases, ritual sayings, or
 examples of compact style. For the full grammar, see [Early Hick](index.mdx).
 
@@ -15,11 +19,13 @@ examples of compact style. For the full grammar, see [Early Hick](index.mdx).
 
 ### Truth and the Righteous Path
 
-```txt
-thides thrallas, thralwades barak'er
-truth-ABS sacred.light-ILL, righteous.path-ABS walk.VERB
-"Truth enters sacred light; one walks the righteous path."
-```
+<InterlinearGloss>
+  <GlossToken source="thides" gloss="truth-ABS" />
+  <GlossToken source="thrallas," gloss="sacred.light-ILL," />
+  <GlossToken source="thralwades" gloss="righteous.path-ABS" />
+  <GlossToken source="barak'er" gloss="walk.VERB" />
+  <GlossTranslation>Truth enters sacred light; one walks the righteous path.</GlossTranslation>
+</InterlinearGloss>
 
 Idiomatic sense:
 
@@ -37,11 +43,15 @@ does not simply get found, but enters sacred illumination through right walking.
 
 ### A Scavenger's Words
 
-```txt
-imtirokul matakalel ka'irurlislas'er 'alrumul pirul grapales!
-scavenger words cave-dweller-state.VERB ear within earthworm-ABS
-"A scavenger's words are worms in your ear."
-```
+<InterlinearGloss>
+  <GlossToken source="imtirokul" gloss="scavenger" />
+  <GlossToken source="matakalel" gloss="words" />
+  <GlossToken source="ka'irurlislas'er" gloss="cave-dweller-state.VERB" />
+  <GlossToken source="'alrumul" gloss="ear" />
+  <GlossToken source="pirul" gloss="within" />
+  <GlossToken source="grapales!" gloss="earthworm-ABS" />
+  <GlossTranslation>A scavenger's words are worms in your ear.</GlossTranslation>
+</InterlinearGloss>
 
 Idiomatic sense:
 
