@@ -9,6 +9,7 @@ export interface NodeWhisperOptions {
   chunkPaths: string[];
   outDir: string;
   model: string;
+  language: string;
   modelRootPath?: string;
   autoDownloadModel: boolean;
   device: string;
@@ -236,7 +237,7 @@ export async function transcribeChunksWithNodeWhisper(options: NodeWhisperOption
         logger: quietLogger,
         whisperOptions: {
           outputInJson: true,
-          language: "auto",
+          language: options.language,
           noGpu: options.device === "cpu",
         },
       });

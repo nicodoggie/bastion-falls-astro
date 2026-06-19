@@ -34,6 +34,7 @@ interface TranscribeFlags {
   out?: string;
   "context-root": string;
   "whisper-model": string;
+  language: string;
   backend: SttBackend;
   "node-whisper-model-root"?: string;
   "auto-download-model"?: boolean;
@@ -113,6 +114,12 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
     parse: String,
     brief: "Whisper model name used by the selected STT backend",
     default: "large-v3-turbo",
+  },
+  language: {
+    kind: "parsed",
+    parse: String,
+    brief: "Whisper language code, e.g. en or tl; use auto for language autodetection",
+    default: "en",
   },
   backend: {
     kind: "parsed",
@@ -521,6 +528,7 @@ export const transcribeRunCommand = buildCommand({
           chunkPaths,
           outDir: rawChunksDir,
           model: flags["whisper-model"],
+          language: flags.language,
           modelRootPath: flags["node-whisper-model-root"],
           autoDownloadModel: Boolean(flags["auto-download-model"]),
           device: flags.device,
@@ -530,6 +538,7 @@ export const transcribeRunCommand = buildCommand({
           chunkPaths,
           outDir: rawChunksDir,
           model: flags["whisper-model"],
+          language: flags.language,
           device: flags.device,
           computeType: flags["compute-type"],
           python: flags.python,

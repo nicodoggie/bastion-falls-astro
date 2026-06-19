@@ -7,6 +7,7 @@ export interface LocalWhisperOptions {
   chunkPaths: string[];
   outDir: string;
   model: string;
+  language: string;
   device: string;
   computeType: string;
   python: string;
@@ -34,6 +35,7 @@ def main() -> int:
     parser.add_argument("--chunks-json", required=True)
     parser.add_argument("--out-dir", required=True)
     parser.add_argument("--model", required=True)
+    parser.add_argument("--language", required=True)
     parser.add_argument("--device", required=True)
     parser.add_argument("--compute-type", required=True)
     parser.add_argument("--prompt", required=True)
@@ -56,6 +58,7 @@ def main() -> int:
             str(chunk_path),
             beam_size=5,
             vad_filter=True,
+            language=None if args.language == "auto" else args.language,
             initial_prompt=args.prompt,
             condition_on_previous_text=False,
         )
@@ -108,6 +111,8 @@ export async function transcribeChunksWithLocalWhisper(options: LocalWhisperOpti
     options.outDir,
     "--model",
     options.model,
+    "--language",
+    options.language,
     "--device",
     options.device,
     "--compute-type",
