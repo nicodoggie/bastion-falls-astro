@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-
+import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
@@ -35,13 +35,15 @@ export default defineConfig({
   output: "static",
   site: "https://bastion-falls.thekennel.info",
   markdown: {
-    remarkPlugins: [
-      remarkCustomHeaderId,
-      remarkParse,
-      remarkDefinitionList,
-      remarkRewriteLinks,
-      [remarkMarkmap, { darkThemeSelector: () => '[data-theme="dark"]' }],
-    ],
+    processor: unified({
+      remarkPlugins: [
+        remarkCustomHeaderId,
+        remarkParse,
+        remarkDefinitionList,
+        remarkRewriteLinks,
+        [remarkMarkmap, { darkThemeSelector: () => '[data-theme="dark"]' }],
+      ],
+    })
   },
   redirects: {
     "/locations/confederation-of-apgarian-states": "/locations/apgar",
