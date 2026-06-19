@@ -43,7 +43,7 @@ export default defineConfig({
         remarkRewriteLinks,
         [remarkMarkmap, { darkThemeSelector: () => '[data-theme="dark"]' }],
       ],
-    })
+    }),
   },
   redirects: {
     "/locations/confederation-of-apgarian-states": "/locations/apgar",
