@@ -134,6 +134,41 @@
       ]
     },
     {
+      "@id": "ehk:makres",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ma.kres",
+        "writtenRep": "makres"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:ma"
+        },
+        {
+          "@id": "ehk:kres"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "ma-kres",
+        "etymon:gloss": "PLU-eight",
+        "etymon:note": "Extends 'many eights' into an indefinite large number.",
+        "etymon:soundChange": "compound fusion"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "many, countless"
+          },
+          "lexinfo:semanticField": ["Number System", "Quantifiers"],
+          "usage": "Poetic or emphatic quantifier for an indefinitely large number."
+        }
+      ]
+    },
+    {
       "@id": "ehk:mal",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
@@ -262,6 +297,45 @@
             "@value": "blood, life-fluid; red"
           },
           "lexinfo:semanticField": ["Body Parts", "Colors"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:marasud",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ma.ra.sud",
+        "writtenRep": "marasud"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:ma"
+        },
+        {
+          "@id": "ehk:arasud"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "ma-arasud",
+        "etymon:gloss": "COLL-plank",
+        "etymon:note": "Literally 'plankwork'; lexicalized as a shield made from joined timber.",
+        "etymon:soundChange": "compound fusion"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "shield"
+          },
+          "lexinfo:semanticField": [
+            "Weapon Terms",
+            "Military Terms",
+            "Wood Terms"
+          ],
+          "usage": "Especially a wooden shield or defensive plankwork."
         }
       ]
     },

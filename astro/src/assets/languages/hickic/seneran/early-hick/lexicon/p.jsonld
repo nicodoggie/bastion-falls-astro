@@ -200,6 +200,26 @@
       ]
     },
     {
+      "@id": "ehk:parma",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "par.ma",
+        "writtenRep": "parma"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "book, written volume"
+          },
+          "lexinfo:semanticField": ["Writing Terms"],
+          "usage": "General term for a bound or gathered written work; appears in parmatal 'library'"
+        }
+      ]
+    },
+    {
       "@id": "ehk:parmatal",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {

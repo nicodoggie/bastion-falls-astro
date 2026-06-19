@@ -1100,30 +1100,6 @@
       ]
     },
     {
-      "@id": "ehk:anin",
-      "@type": ["ontolex:LexicalEntry", "lexinfo:Numeral"],
-      "canonicalForm": {
-        "@type": "ontolex:Form",
-        "phoneticRep": "a.nin",
-        "writtenRep": "anin"
-      },
-      "etymology": {
-        "@type": "etymon:Etymology",
-        "etymon:note": "Counting form",
-        "etymon:protoform": "Proto-Hick *xanu-inu"
-      },
-      "sense": [
-        {
-          "@type": "ontolex:LexicalSense",
-          "definition": {
-            "@language": "en",
-            "@value": "four"
-          },
-          "lexinfo:semanticField": "Number Terms"
-        }
-      ]
-    },
-    {
       "@id": "ehk:arak",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {

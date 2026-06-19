@@ -1226,6 +1226,41 @@
       ]
     },
     {
+      "@id": "ehk:kamakres",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ka.ma.kres",
+        "writtenRep": "kamakres"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:ka"
+        },
+        {
+          "@id": "ehk:makres"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "ka-makres",
+        "etymon:gloss": "like-countless",
+        "etymon:note": "Adjectival form of makres 'many, countless'.",
+        "etymon:soundChange": "compound fusion"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "countless, innumerable"
+          },
+          "lexinfo:semanticField": ["Number System", "Quantifiers"],
+          "usage": "Adjectival quantifier for things beyond practical counting."
+        }
+      ]
+    },
+    {
       "@id": "ehk:kames",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
