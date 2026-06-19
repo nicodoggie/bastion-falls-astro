@@ -734,6 +734,38 @@ compound therefore means "thing within flesh; internal concretion," which gives 
 treated as a lexicalized compound before regular reduction, not as a fully transparent productive
 phrase.
 
+## Calibration Form: simu
+
+Early Hick already has a general growth root in the `stor` family:
+
+```text
+Proto-Hick *storu "grow, increase"
+> Early Hick stor "growth, addition, increment"
+> Early Hick stor'er "to grow, to increase"
+```
+
+Because of this, `*simu` should not be reconstructed as the ordinary Proto-Hick verb "grow."
+Instead, it is better treated as a more specific root meaning "fine hair, lash; hairlike surface
+growth." This preserves the current Early Hick lexical noun `sim` while giving the translative
+suffix `-sim` a plausible semantic bridge:
+
+```text
+Proto-Hick *simu "fine hair, lash; hairlike surface growth"
+> Early Hick sim "fine hair, lash"
+> lexicalized X-sim "put forth / take on the visible trait of X"
+> translative -sim "become, transform into"
+```
+
+The contrast with `*storu` is useful:
+
+- `*storu` covers ordinary growth, increase, and addition.
+- `*simu` covers visible surface change, especially the emergence of fine or hairlike growth.
+
+This gives Early Hick `-sim` a transformation sense without making it redundant with `stor`. It
+also fits other Early Hick images where change is described as emergence into visibility, such as
+`saresp` "sprout" as "leaf under/covered." The pathway should remain a working reconstruction until
+`*simu` is added to the Proto-Hick lexicon as a canonical root.
+
 ## Calibration Form: asam
 
 The `asam` family is best treated as a shared-base reconstruction problem, not as a strictly
