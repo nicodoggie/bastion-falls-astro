@@ -35,17 +35,17 @@
     "@rdfjs/namespace": "^2.0.1",
     "@rdfjs/term-map": "^2.0.2",
     "clownface": "^2.0.3",
-    "glob": "^11.0.3",
+    "glob": "^13.0.6",
     "jsonc-parser": "^3.3.1",
     "jsonld": "^9.0.0",
-    "n3": "^2.0.3",
+    "n3": "^2.0.4",
     "rdf-validate-shacl": "^0.6.5"
   },
   "devDependencies": {
     "@types/jsonld": "^1.5.15",
     "@types/node": "~24.7.0",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.7"
+    "vitest": "^4.1.9"
   },
   "volta": {
     "extends": "../../package.json"
