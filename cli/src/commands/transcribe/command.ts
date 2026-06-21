@@ -670,6 +670,7 @@ export const transcribeRunCommand = buildCommand({
           outDir,
           chunkChars: flags["summary-chunk-chars"],
           sceneGroupSize: flags["summary-scene-size"],
+          onProgress: (message) => this.process.stdout.write(message),
           force: Boolean(flags.force),
           resume: shouldResume,
         });

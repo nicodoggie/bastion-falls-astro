@@ -1,0 +1,35 @@
+name: Greater Mending
+source: BF
+level: 5
+school: T
+time:
+  - number: 1
+    unit: minute
+range:
+  type: point
+  distance:
+    type: touch
+components:
+  v: true
+  s: true
+  m:
+    text: a one-inch cube fragment of the object or structure to be restored
+duration:
+  - type: instant
+entries:
+  - >-
+    You touch a damaged object, structure, or contiguous section of a larger structure and restore
+    it from a fragment at least one inch on each side. The target must retain enough magical,
+    material, or metaphysical memory of its original shape for the spell to follow. The restored
+    target reforms as a complete version of the defined object or section, even if most of its
+    missing pieces were reduced to ash, cinders, rubble, or dust.
+  - >-
+    The spell can restore a defined object or section such as a wing, floor, house-scale structure,
+    or ruin section, but it cannot restore an entire ruin complex unless that complex is the single
+    defined target allowed by the DM.
+  - >-
+    Greater Mending is not part of the official spell lists. It was created by an unknown
+    Kalassarian mage whose name has been lost to time; if the spell is not copied from a surviving
+    scroll or spellbook, it may be lost forever.
+miscTags:
+  - OBJ

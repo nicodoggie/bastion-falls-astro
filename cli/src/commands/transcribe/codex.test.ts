@@ -10,6 +10,7 @@ import {
   correctionContextChunksDirFor,
   correctionNotesChunksDirFor,
   codexNotesDirFor,
+  formatCodexNotesSceneProgress,
   formatSummaryCleanupJoinMessage,
   formatSummaryCleanupProgress,
   formatSummaryCleanupWriteMessage,
@@ -124,14 +125,33 @@ test("builds summary cleanup prompts that preserve transcript shape", () => {
   assert.match(prompt, /party entered the keep/);
 });
 
-test("formats summary cleanup chunk progress", () => {
+test("formats summary cleanup chunk progress states", () => {
   assert.equal(
     formatSummaryCleanupProgress({
+      status: "starting",
       index: 0,
       total: 84,
       name: "session_000.md",
     }),
-    "Preparing summary-safe transcript chunk 1/84: session_000.md\n",
+    "Starting summary-safe transcript chunk 1/84: session_000.md\n",
+  );
+  assert.equal(
+    formatSummaryCleanupProgress({
+      status: "finished",
+      index: 0,
+      total: 84,
+      name: "session_000.md",
+    }),
+    "Finished summary-safe transcript chunk 1/84: session_000.md\n",
+  );
+  assert.equal(
+    formatSummaryCleanupProgress({
+      status: "reusing",
+      index: 0,
+      total: 84,
+      name: "session_000.md",
+    }),
+    "Reusing summary-safe transcript chunk 1/84: session_000.md\n",
   );
 });
 
@@ -149,6 +169,42 @@ test("formats summary cleanup join progress", () => {
       path: "/tmp/session1/summary_transcript.md",
     }),
     "Joining 84 summary-safe chunks into /tmp/session1/summary_transcript.md\n",
+  );
+});
+
+test("formats Codex notes scene progress states", () => {
+  assert.equal(
+    formatCodexNotesSceneProgress({
+      status: "starting",
+      index: 0,
+      total: 17,
+      chunkStart: 0,
+      chunkEnd: 4,
+      path: "/tmp/session/codex_notes/scenes/scene_000.md",
+    }),
+    "Starting Codex scene summary 1/17 from chunks 1-5: /tmp/session/codex_notes/scenes/scene_000.md\n",
+  );
+  assert.equal(
+    formatCodexNotesSceneProgress({
+      status: "finished",
+      index: 0,
+      total: 17,
+      chunkStart: 0,
+      chunkEnd: 4,
+      path: "/tmp/session/codex_notes/scenes/scene_000.md",
+    }),
+    "Finished Codex scene summary 1/17 from chunks 1-5: /tmp/session/codex_notes/scenes/scene_000.md\n",
+  );
+  assert.equal(
+    formatCodexNotesSceneProgress({
+      status: "reusing",
+      index: 0,
+      total: 17,
+      chunkStart: 0,
+      chunkEnd: 4,
+      path: "/tmp/session/codex_notes/scenes/scene_000.md",
+    }),
+    "Reusing Codex scene summary 1/17 from chunks 1-5: /tmp/session/codex_notes/scenes/scene_000.md\n",
   );
 });
 

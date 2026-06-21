@@ -36,6 +36,7 @@ export interface CodexNotesOptions {
 	outDir?: string;
 	chunkChars?: number;
 	sceneGroupSize?: number;
+	onProgress?: (message: string) => void;
 	force?: boolean;
 	resume?: boolean;
 }
@@ -153,11 +154,17 @@ export function buildSummaryCleanupPrompt(options: {
 }
 
 export function formatSummaryCleanupProgress(options: {
+	status: "starting" | "finished" | "reusing";
 	index: number;
 	total: number;
 	name: string;
 }): string {
-	return `Preparing summary-safe transcript chunk ${options.index + 1}/${options.total}: ${options.name}\n`;
+	const labels = {
+		starting: "Starting",
+		finished: "Finished",
+		reusing: "Reusing",
+	};
+	return `${labels[options.status]} summary-safe transcript chunk ${options.index + 1}/${options.total}: ${options.name}\n`;
 }
 
 export function formatSummaryCleanupWriteMessage(path: string): string {
@@ -191,6 +198,22 @@ export function joinCodexSceneSummaries(summaries: string[]): string {
 		.map((summary) => summary.trim())
 		.filter(Boolean)
 		.join("\n\n---\n\n");
+}
+
+export function formatCodexNotesSceneProgress(options: {
+	status: "starting" | "finished" | "reusing";
+	index: number;
+	total: number;
+	chunkStart: number;
+	chunkEnd: number;
+	path: string;
+}): string {
+	const labels = {
+		starting: "Starting",
+		finished: "Finished",
+		reusing: "Reusing",
+	};
+	return `${labels[options.status]} Codex scene summary ${options.index + 1}/${options.total} from chunks ${options.chunkStart + 1}-${options.chunkEnd + 1}: ${options.path}\n`;
 }
 
 async function listTranscriptChunks(dir: string): Promise<string[]> {
@@ -445,7 +468,17 @@ export async function runCodexSummaryCleanup(
 	for (const [index, chunk] of transcriptChunks.entries()) {
 		const outputPath = join(summaryChunksDir, chunk.name);
 		summaryChunkPaths.push(outputPath);
+		if (resume && !force && await exists(outputPath)) {
+			options.onProgress?.(formatSummaryCleanupProgress({
+				status: "reusing",
+				index,
+				total: transcriptChunks.length,
+				name: chunk.name,
+			}));
+			continue;
+		}
 		options.onProgress?.(formatSummaryCleanupProgress({
+			status: "starting",
 			index,
 			total: transcriptChunks.length,
 			name: chunk.name,
@@ -463,8 +496,14 @@ export async function runCodexSummaryCleanup(
 					outputPath,
 				);
 				return readFile(outputPath, "utf8");
-			},
-		});
+				},
+			});
+		options.onProgress?.(formatSummaryCleanupProgress({
+			status: "finished",
+			index,
+			total: transcriptChunks.length,
+			name: chunk.name,
+		}));
 	}
 
 	const summaryChunks = await Promise.all(
@@ -587,11 +626,30 @@ export async function runCodexNotes(options: CodexNotesOptions): Promise<void> {
 
 		const chunkSummaries = await Promise.all(chunkSummaryPaths.map((path) => readFile(path, "utf8")));
 		const sceneSummaryPaths: string[] = [];
+		const sceneCount = Math.ceil(chunkSummaries.length / sceneGroupSize);
 		for (let index = 0; index < chunkSummaries.length; index += sceneGroupSize) {
 			const groupIndex = index / sceneGroupSize;
 			const path = join(sceneDir, `scene_${String(groupIndex).padStart(3, "0")}.md`);
 			sceneSummaryPaths.push(path);
 			const group = chunkSummaries.slice(index, index + sceneGroupSize);
+			const progress = {
+				index: groupIndex,
+				total: sceneCount,
+				chunkStart: index,
+				chunkEnd: index + group.length - 1,
+				path,
+			};
+			if (resume && !force && await exists(path)) {
+				options.onProgress?.(formatCodexNotesSceneProgress({
+					status: "reusing",
+					...progress,
+				}));
+				continue;
+			}
+			options.onProgress?.(formatCodexNotesSceneProgress({
+				status: "starting",
+				...progress,
+			}));
 			await writeGeneratedFile({
 				path,
 				force,
@@ -613,6 +671,10 @@ export async function runCodexNotes(options: CodexNotesOptions): Promise<void> {
 					return readFile(path, "utf8");
 				},
 			});
+			options.onProgress?.(formatCodexNotesSceneProgress({
+				status: "finished",
+				...progress,
+			}));
 		}
 
 		const sceneSummaries = await Promise.all(sceneSummaryPaths.map((path) => readFile(path, "utf8")));
