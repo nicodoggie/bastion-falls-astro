@@ -6,6 +6,29 @@ hr {
   margin: 1rem 0 1rem 0;
 }
 
+.sl-markdown-content section[data-footnotes],
+.sl-markdown-content .footnotes {
+  border-top: 1px solid var(--sl-color-gray-5);
+  font-size: 80%;
+  margin-top: 3rem;
+  padding-top: 1rem;
+}
+
+.sl-markdown-content section[data-footnotes] ol,
+.sl-markdown-content .footnotes ol {
+  padding-inline-start: 1.25rem;
+}
+
+.sl-markdown-content section[data-footnotes] li,
+.sl-markdown-content .footnotes li {
+  margin-block: 0.35rem;
+}
+
+.sl-markdown-content section[data-footnotes] p,
+.sl-markdown-content .footnotes p {
+  margin-block: 0.35rem;
+}
+
 /* Cavern theme enhancements */
 .cavern-glow {
   box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
