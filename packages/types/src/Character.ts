@@ -128,6 +128,7 @@ export const CharacterRelativeSchema = z.object({
     "stepchild",
     "partner",
     "spouse",
+    "ex-spouse",
     "betrothed",
     "uncle",
     "aunt",
