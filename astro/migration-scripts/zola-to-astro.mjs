@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import * as toml from "smol-toml";
-import yaml from "js-yaml";
+import {dump as yamlDump} from "js-yaml";
 import matter from "gray-matter";
 
 export const options = {
@@ -231,7 +231,7 @@ function migrateFile(sourceFilePath) {
     );
 
     // Combine and Write Output
-    const yamlFmString = yaml.dump(astroFmData);
+    const yamlFmString = yamlDump(astroFmData);
     const outputContent = `---
 ${yamlFmString}---
 

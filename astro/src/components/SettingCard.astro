@@ -1,14 +1,117 @@
 ---
+import { type CollectionEntry, getCollection } from "astro:content";
+import { slug } from "github-slugger";
+
+type CharacterEntry = CollectionEntry<"character">;
+type CharacterReference =
+  | string
+  | {
+      name: string;
+      id?: string;
+      slug?: string;
+    };
+
 interface Props {
   location?: string;
   date?: string;
+  characters?: CharacterReference | CharacterReference[];
 }
 
-const { location, date } = Astro.props;
+interface ResolvedCharacter {
+  name: string;
+  href?: string;
+}
+
+interface CharacterEntryData {
+  title?: string;
+  character?: {
+    name?: string;
+    aliases?: string[];
+    details?: {
+      aliases?: string[];
+    };
+  };
+}
+
+const { location, date, characters } = Astro.props;
 const details = [
   { label: "Location", value: location },
   { label: "Date", value: date },
 ].filter((item) => item.value);
+
+const characterReferences = normalizeCharacters(characters);
+const characterEntries =
+  characterReferences.length > 0 ? await getCollection("character") : [];
+const characterIndex = buildCharacterIndex(characterEntries);
+const resolvedCharacters = characterReferences.map((character) =>
+  resolveCharacter(character, characterIndex),
+);
+
+function normalizeCharacters(
+  characters: CharacterReference | CharacterReference[] | undefined,
+) {
+  if (!characters) return [];
+  return Array.isArray(characters) ? characters : [characters];
+}
+
+function buildCharacterIndex(entries: CharacterEntry[]) {
+  const index = new Map<string, CharacterEntry>();
+
+  for (const entry of entries) {
+    const data = getCharacterData(entry);
+    addIndexKey(index, entry.id, entry);
+    addIndexKey(index, data.title, entry);
+
+    const character = data.character;
+    addIndexKey(index, character?.name, entry);
+
+    for (const alias of character?.aliases ?? []) {
+      addIndexKey(index, alias, entry);
+    }
+
+    for (const alias of character?.details?.aliases ?? []) {
+      addIndexKey(index, alias, entry);
+    }
+  }
+
+  return index;
+}
+
+function addIndexKey(
+  index: Map<string, CharacterEntry>,
+  value: string | undefined,
+  entry: CharacterEntry,
+) {
+  if (!value) return;
+  index.set(value.toLowerCase(), entry);
+  index.set(slug(value), entry);
+}
+
+function resolveCharacter(
+  character: CharacterReference,
+  index: Map<string, CharacterEntry>,
+): ResolvedCharacter {
+  const name = typeof character === "string" ? character : character.name;
+  const explicitId =
+    typeof character === "string"
+      ? undefined
+      : (character.id ?? character.slug);
+  const entry =
+    (explicitId && index.get(explicitId)) ||
+    (explicitId && index.get(slug(explicitId))) ||
+    index.get(name.toLowerCase()) ||
+    index.get(slug(name));
+  const data = entry ? getCharacterData(entry) : undefined;
+
+  return {
+    name: data?.character?.name ?? data?.title ?? name,
+    href: entry ? `/world/characters/${entry.id}/` : undefined,
+  };
+}
+
+function getCharacterData(entry: CharacterEntry): CharacterEntryData {
+  return entry.data as CharacterEntryData;
+}
 ---
 
 <aside class="setting-card" aria-label="Scene setting">
@@ -23,6 +126,28 @@ const details = [
           <dd>{value}</dd>
         </div>
       ))}
+    {resolvedCharacters.length > 0 && (
+      <div class="setting-card__detail setting-card__detail--wide">
+        <dt>Characters</dt>
+        <dd>
+          <ul class="setting-card__characters" aria-label="Scene characters">
+            {resolvedCharacters.map(({ name, href }) => (
+              <li>
+                {href ? (
+                  <a href={href} class="setting-card__character">
+                    {name}
+                  </a>
+                ) : (
+                  <span class="setting-card__character setting-card__character--plain">
+                    {name}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </dd>
+      </div>
+    )}
   </dl>
 </aside>
 
@@ -75,6 +200,10 @@ const details = [
   min-width: 0;
 }
 
+.setting-card__detail--wide {
+  grid-column: 1 / -1;
+}
+
 .setting-card dt {
   color: rgba(219, 234, 254, 0.72);
   font-size: 0.72rem;
@@ -91,6 +220,39 @@ const details = [
   line-height: 1.35;
   margin: 0;
   overflow-wrap: anywhere;
+}
+
+.setting-card__characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.setting-card__character {
+  background: rgba(196, 181, 253, 0.14);
+  border: 1px solid rgba(196, 181, 253, 0.28);
+  border-radius: 999px;
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 0.28rem 0.62rem;
+  text-decoration: none;
+}
+
+a.setting-card__character:hover,
+a.setting-card__character:focus-visible {
+  background: rgba(196, 181, 253, 0.24);
+  border-color: rgba(221, 214, 254, 0.55);
+  text-decoration: underline;
+}
+
+.setting-card__character--plain {
+  color: rgba(255, 255, 255, 0.88);
 }
 
 @media (max-width: 35rem) {

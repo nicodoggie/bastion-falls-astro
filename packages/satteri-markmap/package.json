@@ -23,7 +23,7 @@
 		"gray-matter": "^4.0.3",
 		"markmap-common": "^0.18.9",
 		"markmap-lib": "^0.18.12",
-		"satteri": "^0.8.1"
+		"satteri": "^0.9.1"
 	},
 	"devDependencies": {
 		"@types/node": "~24.7.2",
@@ -31,7 +31,7 @@
 		"typescript": "^6.0.3"
 	},
 	"peerDependencies": {
-		"satteri": "^0.8.1"
+		"satteri": "^0.9.1"
 	},
 	"volta": {
 		"extends": "../../package.json"

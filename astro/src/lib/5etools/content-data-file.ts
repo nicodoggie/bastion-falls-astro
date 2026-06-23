@@ -1,14 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import yaml from "js-yaml";
+import { load as yamlLoad } from "js-yaml";
 
 export function readContentDataFile(filePath: string): unknown {
   const raw = fs.readFileSync(filePath, "utf8");
   const ext = path.extname(filePath).toLowerCase();
 
   if (ext === ".json") return JSON.parse(raw) as unknown;
-  if (ext === ".yaml" || ext === ".yml") return yaml.load(raw) as unknown;
+  if (ext === ".yaml" || ext === ".yml") return yamlLoad(raw) as unknown;
 
   throw new Error(`Unsupported content data file extension: ${ext}`);
 }
