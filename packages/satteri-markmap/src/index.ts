@@ -59,41 +59,17 @@ const defaultOptions: Required<SatteriMarkmapOptions> = {
 		(window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false),
 };
 
-const runtimeStyles = `.markmap-wrap {
-  position: relative;
-  height: max-content;
-  width: 100%;
-}
-
-.markmap-wrap.fullscreen {
-  background: #ffffff;
-}
-
-.markmap-dark .markmap-wrap.fullscreen {
-  background: #1a1a1a;
-}
-
-.markmap-wrap > svg {
-  width: 100%;
-  height: auto;
-  margin: 0;
-  padding: 0;
-}
-
-.markmap-wrap.fullscreen > svg {
-  height: 100%!important;
-}
-
-.mm-toolbar {
-  position: absolute;
-  right: .5em;
-  bottom: .5em;
-}`;
-
 function renderMarkmaps() {
 	const { Markmap, Toolbar, deriveOptions } = (
 		window as unknown as { markmap: BrowserMarkmapApi }
 	).markmap;
+	const parseEncodedJson = (value: string | undefined) => {
+		if (!value) return {};
+		const bytes = Uint8Array.from(atob(value), (character) =>
+			character.charCodeAt(0),
+		);
+		return JSON.parse(new TextDecoder().decode(bytes));
+	};
 	const resize = {
 		event: new Event("resize"),
 		observer: new ResizeObserver((entries) => {
@@ -130,11 +106,18 @@ function renderMarkmaps() {
 					? document.exitFullscreen()
 					: fullscreenElement.requestFullscreen(),
 		});
-		fullscreenElement.addEventListener("fullscreenchange", () =>
-			fullscreenElement.classList[
-				document.fullscreenElement ? "add" : "remove"
-			]("fullscreen"),
-		);
+		fullscreenElement.addEventListener("fullscreenchange", () => {
+			if (document.fullscreenElement) {
+				fullscreenElement.classList.add("fullscreen");
+			} else {
+				fullscreenElement.classList.remove("fullscreen");
+			}
+		});
+		Object.assign(toolbar.el.style, {
+			position: "absolute",
+			right: ".5em",
+			bottom: ".5em",
+		});
 		toolbar.setItems([...toolbar.items, "fullScreen"]);
 		return toolbar.el;
 	};
@@ -142,24 +125,34 @@ function renderMarkmaps() {
 	document
 		.querySelectorAll(".markmap-wrap:not([data-markmap-rendered])")
 		.forEach((element) => {
-			const [rootScript, optionsScript] = Array.from(
-				element.children,
-			) as HTMLElement[];
-			if (!rootScript || !optionsScript) return;
-			const root = JSON.parse(rootScript.innerHTML);
-			const options = JSON.parse(optionsScript.innerHTML);
+			const htmlElement = element as HTMLElement;
+			const root = parseEncodedJson(htmlElement.dataset.markmapRoot);
+			const options = parseEncodedJson(htmlElement.dataset.markmapOptions);
 			element.setAttribute("data-markmap-rendered", "true");
 			element.innerHTML = "<svg></svg>";
+			Object.assign(htmlElement.style, {
+				position: "relative",
+				width: "100%",
+				height: "max-content",
+			});
 			const svg = element.querySelector("svg");
+			if (svg) {
+				Object.assign(svg.style, {
+					width: "100%",
+					height: "auto",
+					margin: "0",
+					padding: "0",
+				});
+			}
 			const markmap = Markmap.create(svg, deriveOptions(options), root);
 			element.append(
-				createToolbar(markmap, { fullscreenElement: element as HTMLElement }),
+				createToolbar(markmap, { fullscreenElement: htmlElement }),
 			);
 			resize.observe(
 				element,
 				debounce(() => {
 					if (!svg) return;
-					svg.style.height = `${markmap.state.rect.y2}px`;
+					svg.style.height = String(markmap.state.rect.y2).concat("px");
 					markmap.fit();
 				}, 100),
 			);
@@ -188,7 +181,7 @@ export function renderMarkmapHtml(
 	const { id, jsonOptions } = getFrontmatterOptions(data);
 	const { root, features } = transformer.transform(content);
 	const { styles = [], scripts = [] } = transformer.getUsedAssets(features);
-	const html = `<div class="markmap-wrap"${id ? ` id="${escapeAttribute(id)}"` : ""}><script type="application/json">${escapeScript(JSON.stringify(root))}</script><script type="application/json">${escapeScript(JSON.stringify(jsonOptions))}</script></div>`;
+	const html = `<div class="markmap-wrap"${id ? ` id="${escapeAttribute(id)}"` : ""} data-markmap-root="${toBase64(JSON.stringify(root))}" data-markmap-options="${toBase64(JSON.stringify(jsonOptions))}"></div>`;
 	const assets = [
 		...persistCSS(styles),
 		...persistJS(scripts, {
@@ -200,15 +193,40 @@ export function renderMarkmapHtml(
 
 	return [
 		html,
-		`<script>(${applyDarkTheme.toString()})(${darkThemeSelector.toString()});</script>`,
+		renderInlineScript(
+			`(${applyDarkTheme.toString()})(${darkThemeSelector.toString()});`,
+		),
 		'<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>',
 		'<script src="https://cdn.jsdelivr.net/npm/markmap-view"></script>',
 		'<script src="https://cdn.jsdelivr.net/npm/markmap-toolbar"></script>',
-		`<style>${runtimeStyles}</style>`,
 		'<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar/dist/style.css"></link>',
-		...assets,
-		`<script>(${renderMarkmaps.toString()})();</script>`,
+		...assets.map(renderAsset),
+		renderInlineScript(`(${renderMarkmaps.toString()})();`),
 	].join("");
+}
+
+function renderInlineScript(value: string) {
+	return `<script src="${toDataUrl("text/javascript", value)}"></script>`;
+}
+
+function renderAsset(value: string) {
+	const scriptMatch = value.match(/^<script>([\s\S]*)<\/script>$/i);
+	if (scriptMatch?.[1]) return renderInlineScript(scriptMatch[1]);
+
+	const styleMatch = value.match(/^<style>([\s\S]*)<\/style>$/i);
+	if (styleMatch?.[1]) {
+		return `<link rel="stylesheet" href="${toDataUrl("text/css", styleMatch[1])}"></link>`;
+	}
+
+	return value;
+}
+
+function toDataUrl(mimeType: string, value: string) {
+	return `data:${mimeType};base64,${toBase64(value)}`;
+}
+
+function toBase64(value: string) {
+	return Buffer.from(value, "utf8").toString("base64");
 }
 
 function getFrontmatterOptions(data: MarkmapFrontmatter) {
@@ -242,10 +260,6 @@ function escapeAttribute(value: string) {
 				return character;
 		}
 	});
-}
-
-function escapeScript(value: string) {
-	return value.replace(/</g, "\\u003c");
 }
 
 function applyDarkTheme(darkThemeSelector: () => string | boolean) {
