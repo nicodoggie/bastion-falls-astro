@@ -48,9 +48,6 @@ importers:
       '@astrojs/compiler-rs':
         specifier: ^0.2.2
         version: 0.2.2(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.1)
-      '@astrojs/markdown-remark':
-        specifier: ^7.2.0
-        version: 7.2.0
       '@astrojs/markdown-satteri':
         specifier: ^0.3.1
         version: 0.3.1
