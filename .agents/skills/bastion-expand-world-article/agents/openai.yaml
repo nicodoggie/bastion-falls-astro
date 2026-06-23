@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bastion World Article Expander"
+  short_description: "Expand world articles from existing notes"
+  default_prompt: "Use $bastion-expand-world-article to expand this Bastion Falls world article from existing notes."
