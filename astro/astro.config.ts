@@ -1,28 +1,46 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { unified } from "@astrojs/markdown-remark";
+import { satteri } from "@astrojs/markdown-satteri";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import starlight from "@astrojs/starlight";
 import { lexiconIntegration } from "@bastion-falls/astro-lexicon-integration";
+import satteriAutoImport from "@bastion-falls/satteri-auto-import";
+import satteriMarkmap from "@bastion-falls/satteri-markmap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
-import AutoImport from "astro-auto-import";
 import expressiveCode from "astro-expressive-code";
 import mermaid from "astro-mermaid";
 import flowbiteReact from "flowbite-react/plugin/astro";
-import remarkCustomHeaderId from "remark-custom-header-id";
-import { remarkDefinitionList } from "remark-definition-list";
-import remarkMarkmap from "remark-markmap";
-import remarkParse from "remark-parse";
 import starlightAutoSidebar from "starlight-auto-sidebar";
 import { timelineGenerator } from "./src/integrations/timeline-generator.ts";
 import { vscodeFrontmatterSchemas } from "./src/integrations/vscode-frontmatter-schemas.ts";
-import remarkRewriteLinks from "./src/plugins/remark-rewrite-links.js";
+import satteriRewriteLinks from "./src/plugins/satteri-rewrite-links.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const autoImports = [
+  "./src/components/inline-references/Spell.astro",
+  "./src/components/inline-references/Item.astro",
+  "./src/components/inline-references/Creature.astro",
+  "./src/components/inline-references/Feat.astro",
+  "./src/components/inline-references/ConditionDisease.astro",
+  "./src/components/inline-references/Sense.astro",
+  "./src/components/Stub.astro",
+  "./src/components/FamilyTree.tsx",
+  "./src/components/HomebrewSpell.astro",
+  "./src/components/Incomplete.astro",
+  "./src/components/MapViewer.tsx",
+  "./src/components/Monster.astro",
+  "./src/components/OutOfDate.astro",
+  "./src/components/PopQuiz.astro",
+  "./src/components/SeeAlso.astro",
+  "./src/components/VehicleStatBlock.astro",
+  "./src/components/Redirect.astro",
+  "./src/components/SettingCard.astro",
+];
 
 const lexurgyLang = JSON.parse(
   fs.readFileSync(
@@ -35,13 +53,20 @@ export default defineConfig({
   output: "static",
   site: "https://bastion-falls.thekennel.info",
   markdown: {
-    processor: unified({
-      remarkPlugins: [
-        remarkCustomHeaderId,
-        remarkParse,
-        remarkDefinitionList,
-        remarkRewriteLinks,
-        [remarkMarkmap, { darkThemeSelector: () => '[data-theme="dark"]' }],
+    processor: satteri({
+      features: {
+        frontmatter: true,
+        headingAttributes: true,
+        gfm: true,
+        directive: true,
+      },
+      mdastPlugins: [
+        () => satteriAutoImport({ imports: autoImports, cwd: __dirname }),
+        satteriRewriteLinks,
+        () =>
+          satteriMarkmap({
+            darkThemeSelector: () => '[data-theme="dark"]',
+          }),
       ],
     }),
   },
@@ -130,29 +155,6 @@ export default defineConfig({
       },
       plugins: [starlightAutoSidebar()],
     }),
-
-    AutoImport({
-      imports: [
-        "./src/components/inline-references/Spell.astro",
-        "./src/components/inline-references/Item.astro",
-        "./src/components/inline-references/Creature.astro",
-        "./src/components/inline-references/Feat.astro",
-        "./src/components/inline-references/ConditionDisease.astro",
-        "./src/components/inline-references/Sense.astro",
-        "./src/components/Stub.astro",
-        "./src/components/FamilyTree.tsx",
-        "./src/components/HomebrewSpell.astro",
-        "./src/components/Incomplete.astro",
-        "./src/components/MapViewer.tsx",
-        "./src/components/Monster.astro",
-        "./src/components/OutOfDate.astro",
-        "./src/components/PopQuiz.astro",
-        "./src/components/SeeAlso.astro",
-        "./src/components/VehicleStatBlock.astro",
-        "./src/components/Redirect.astro",
-        "./src/components/SettingCard.astro",
-      ],
-    }),
     mdx({
       extendMarkdownConfig: true,
     }),
@@ -198,7 +200,6 @@ export default defineConfig({
     },
   },
   experimental: {
-    rustCompiler: true,
     contentIntellisense: true,
   },
 });

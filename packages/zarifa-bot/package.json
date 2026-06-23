@@ -12,12 +12,12 @@
     "register": "node ./scripts/register.mjs"
   },
   "devDependencies": {
-    "@types/node": "~24.7.0",
+    "@types/node": "~24.7.2",
     "typescript": "^6.0.3",
-    "wrangler": "^4.95.0"
+    "wrangler": "^4.103.0"
   },
   "dependencies": {
-    "@cloudflare/workers-types": "^4.20260531.1",
+    "@cloudflare/workers-types": "^4.20260621.1",
     "dotenv": "^17.4.2"
   }
 }

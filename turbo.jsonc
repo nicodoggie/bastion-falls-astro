@@ -1,50 +1,51 @@
 {
-  "$schema": "https://turborepo.dev/schema.json",
-  "tasks": {
-    "@bastion-falls/5e-schema-zod#build": {
-      "dependsOn": ["^build"],
-      "outputs": [
-        "dist/index.js",
-        "dist/index.d.ts"
-      ]
-    },
-    "@bastion-falls/cli#build": {
-      "dependsOn": ["^build"],
-      "outputs": [
-        "dist/bash-complete.js",
-        "dist/cli.js",
-        "dist/chunks/*.js",
-        "dist/templates/*.ejs"
-      ]
-    },
-    "@bastion-falls/types#build": {
-      "dependsOn": ["^build"],
-      "outputs": [
-        "dist/**"
-      ]
-    },
-    "@bastion-falls/astro-lexicon-integration#build": {
-      "dependsOn": ["^build"],
-      "outputs": [
-        "dist/**"
-      ]
-    },
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": [".astro/**", "astro/dist/**"],
-    },
-    "typecheck": {
-      "dependsOn": ["^typecheck"],
-    },
-    "dev": {
-      "persistent": true,
-      "cache": false,
-    },
-    "lint": {
-      "dependsOn": ["^lint"],
-    },
-    "fmt": {
-      "dependsOn": ["^fmt"],
-    },
-  },
+	"$schema": "https://turborepo.dev/schema.json",
+	"tasks": {
+		"@bastion-falls/5e-schema-zod#build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/index.js", "dist/index.d.ts"]
+		},
+		"@bastion-falls/cli#build": {
+			"dependsOn": ["^build"],
+			"outputs": [
+				"dist/bash-complete.js",
+				"dist/cli.js",
+				"dist/chunks/*.js",
+				"dist/templates/*.ejs"
+			]
+		},
+		"@bastion-falls/types#build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**"]
+		},
+		"@bastion-falls/astro-lexicon-integration#build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**"]
+		},
+		"@bastion-falls/satteri-auto-import#build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**"]
+		},
+		"@bastion-falls/satteri-markmap#build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**"]
+		},
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": [".astro/**", "astro/dist/**"]
+		},
+		"typecheck": {
+			"dependsOn": ["^typecheck"]
+		},
+		"dev": {
+			"persistent": true,
+			"cache": false
+		},
+		"lint": {
+			"dependsOn": ["^lint"]
+		},
+		"fmt": {
+			"dependsOn": ["^fmt"]
+		}
+	}
 }

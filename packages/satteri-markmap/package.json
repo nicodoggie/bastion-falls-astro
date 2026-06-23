@@ -1,0 +1,39 @@
+{
+	"name": "@bastion-falls/satteri-markmap",
+	"version": "0.0.1",
+	"private": true,
+	"type": "module",
+	"description": "Render markmap code fences from Satteri mdast plugins.",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsc --watch",
+		"test": "node --import tsx --test src/**/*.test.ts"
+	},
+	"dependencies": {
+		"gray-matter": "^4.0.3",
+		"markmap-common": "^0.18.9",
+		"markmap-lib": "^0.18.12",
+		"satteri": "^0.8.1"
+	},
+	"devDependencies": {
+		"@types/node": "~24.7.2",
+		"tsx": "^4.22.4",
+		"typescript": "^6.0.3"
+	},
+	"peerDependencies": {
+		"satteri": "^0.8.1"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
+}
