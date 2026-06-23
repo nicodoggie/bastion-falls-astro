@@ -42,9 +42,31 @@ test("injects imports into MDX before component usage", () => {
 	assert.match(result.code, /_jsx\(FamilyTree,/);
 });
 
+test("only injects imports for components used in the MDX document", () => {
+	const result = mdxToJs("<FamilyTree />", {
+		mdastPlugins: [
+			() =>
+				satteriAutoImport({
+					imports: [
+						"./src/components/FamilyTree.tsx",
+						"./src/components/Stub.astro",
+					],
+					cwd: "/site",
+				}),
+		],
+	});
+
+	assert.match(
+		result.code,
+		/import FamilyTree from "\/site\/src\/components\/FamilyTree\.tsx";/,
+	);
+	assert.doesNotMatch(result.code, /import Stub/);
+});
+
 test("injects imports after MDX frontmatter", () => {
 	const result = mdxToJs("---\ntitle: Family\n---\n\n<FamilyTree />", {
 		features: { frontmatter: true },
+		fileURL: pathToFileURL("/site/src/content/docs/world/locations/alsace.mdx"),
 		mdastPlugins: [
 			() =>
 				satteriAutoImport({
@@ -54,7 +76,10 @@ test("injects imports after MDX frontmatter", () => {
 		],
 	});
 
-	assert.match(result.code, /import FamilyTree/);
+	assert.match(
+		result.code,
+		/import FamilyTree from "\.\.\/\.\.\/\.\.\/\.\.\/components\/FamilyTree\.tsx";/,
+	);
 	assert.match(result.code, /_jsx\(FamilyTree,/);
 });
 

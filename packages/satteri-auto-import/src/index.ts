@@ -1,4 +1,5 @@
-import { parse, resolve } from "node:path";
+import { dirname, parse, relative, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import type { MdastNode, MdastPluginDefinition } from "satteri";
 import { defineMdastPlugin } from "satteri";
 
@@ -20,6 +21,12 @@ interface VisitorContext {
 	insertAfter(node: Readonly<MdastNode>, newNode: MdastNode): void;
 }
 
+interface AutoImport {
+	localName: string;
+	imported: string;
+	modulePath: string;
+}
+
 const defaultInclude = (fileURL: URL | undefined) =>
 	!fileURL || fileURL.pathname.endsWith(".mdx");
 
@@ -30,13 +37,30 @@ export default function satteriAutoImport({
 	cwd = process.cwd(),
 	include = defaultInclude,
 }: SatteriAutoImportOptions): MdastPluginDefinition {
-	const importedContexts = new WeakSet<VisitorContext>();
-	const importValue = formatAutoImports(imports, { cwd });
+	const importsByLocalName = getAutoImports(imports);
+	const importedByContext = new WeakMap<VisitorContext, Set<string>>();
 
-	function insertImports(node: Readonly<MdastNode>, ctx: VisitorContext) {
-		if (importedContexts.has(ctx) || !include(ctx.fileURL)) return;
+	function insertImportsForUsedComponents(
+		node: Readonly<MdastNode>,
+		ctx: VisitorContext,
+	) {
+		if (!include(ctx.fileURL)) return;
 
-		importedContexts.add(ctx);
+		const usedImports = getUsedImports(node, importsByLocalName);
+		if (usedImports.length === 0) return;
+
+		const imported =
+			importedByContext.get(ctx) ?? setImportedContext(ctx, importedByContext);
+		const importValue = usedImports
+			.map((autoImport) => formatAutoImport(autoImport, cwd, ctx.fileURL))
+			.filter((importStatement) => !imported.has(importStatement))
+			.map((autoImport) => {
+				imported.add(autoImport);
+				return autoImport;
+			})
+			.join("\n");
+		if (!importValue) return;
+
 		const importNode: MdastNode = {
 			type: "mdxjsEsm",
 			value: importValue,
@@ -51,17 +75,12 @@ export default function satteriAutoImport({
 
 	return defineMdastPlugin({
 		name: "auto-import",
-		yaml: insertImports,
-		toml: insertImports,
-		mdxjsEsm: insertImports,
-		mdxJsxFlowElement: insertImports,
-		paragraph: insertImports,
-		heading: insertImports,
-		thematicBreak: insertImports,
-		blockquote: insertImports,
-		list: insertImports,
-		code: insertImports,
-		html: insertImports,
+		mdxJsxFlowElement: insertImportsForUsedComponents,
+		paragraph: insertImportsForUsedComponents,
+		heading: insertImportsForUsedComponents,
+		blockquote: insertImportsForUsedComponents,
+		list: insertImportsForUsedComponents,
+		table: insertImportsForUsedComponents,
 	});
 }
 
@@ -97,6 +116,125 @@ function formatImportOption(
 		.join("\n");
 }
 
+function getAutoImports(importsConfig: ImportsConfig) {
+	const importsByLocalName = new Map<string, AutoImport[]>();
+
+	for (const option of importsConfig) {
+		for (const autoImport of getAutoImportsForOption(option)) {
+			const autoImports = importsByLocalName.get(autoImport.localName) ?? [];
+			autoImports.push(autoImport);
+			importsByLocalName.set(autoImport.localName, autoImports);
+		}
+	}
+
+	return importsByLocalName;
+}
+
+function getAutoImportsForOption(option: ImportsConfig[number]): AutoImport[] {
+	if (typeof option === "string") {
+		const localName = getDefaultImportName(option);
+		return [
+			{
+				localName,
+				imported: localName,
+				modulePath: option,
+			},
+		];
+	}
+
+	return Object.entries(option).flatMap(
+		([modulePath, namedImportsOrNamespace]) => {
+			if (typeof namedImportsOrNamespace === "string") {
+				const localName = namedImportsOrNamespace;
+				return [
+					{
+						localName,
+						imported: `* as ${localName}`,
+						modulePath,
+					},
+				];
+			}
+
+			return namedImportsOrNamespace.map((namedImport) => {
+				const localName = getNamedImportLocalName(namedImport);
+				return {
+					localName,
+					imported: `{ ${formatNamedImport(namedImport)} }`,
+					modulePath,
+				};
+			});
+		},
+	);
+}
+
+function formatAutoImport(
+	autoImport: AutoImport,
+	cwd: string,
+	fileURL: URL | undefined,
+) {
+	return formatImport(
+		autoImport.imported,
+		resolveModulePath(autoImport.modulePath, cwd, fileURL),
+	);
+}
+
+function setImportedContext(
+	ctx: VisitorContext,
+	importedByContext: WeakMap<VisitorContext, Set<string>>,
+) {
+	const imported = new Set<string>();
+	importedByContext.set(ctx, imported);
+	return imported;
+}
+
+function getUsedImports(
+	node: Readonly<MdastNode>,
+	importsByLocalName: ReadonlyMap<string, AutoImport[]>,
+) {
+	const usedImports: AutoImport[] = [];
+	const seenAutoImports = new Set<string>();
+
+	for (const componentName of getComponentNames(node)) {
+		const localName = componentName.split(".")[0];
+		if (!localName) continue;
+		const autoImports = importsByLocalName.get(localName) ?? [];
+		for (const autoImport of autoImports) {
+			const key = `${autoImport.imported}\0${autoImport.modulePath}`;
+			if (seenAutoImports.has(key)) continue;
+			seenAutoImports.add(key);
+			usedImports.push(autoImport);
+		}
+	}
+
+	return usedImports;
+}
+
+function getComponentNames(node: Readonly<MdastNode>) {
+	const names = new Set<string>();
+	visitNode(node, (current) => {
+		if (
+			(current.type === "mdxJsxFlowElement" ||
+				current.type === "mdxJsxTextElement") &&
+			typeof current.name === "string"
+		) {
+			names.add(current.name);
+		}
+	});
+	return names;
+}
+
+function visitNode(
+	node: Readonly<MdastNode>,
+	visitor: (node: Readonly<MdastNode>) => void,
+) {
+	visitor(node);
+	if (!("children" in node) || !Array.isArray(node.children)) return;
+	for (const child of node.children) {
+		if (child && typeof child === "object")
+			visitNode(child as MdastNode, visitor);
+	}
+}
+
 function getDefaultImportName(modulePath: string) {
 	return parse(modulePath).name.replaceAll(/[^\w\d]/g, "");
 }
@@ -115,7 +253,26 @@ function formatNamedImport(namedImport: NamedImportConfig) {
 	return `${from} as ${as}`;
 }
 
-function resolveModulePath(modulePath: string, cwd: string) {
-	if (modulePath.startsWith(".")) return resolve(cwd, modulePath);
-	return modulePath;
+function getNamedImportLocalName(namedImport: NamedImportConfig) {
+	if (typeof namedImport === "string") return namedImport;
+	const [, as] = namedImport;
+	return as;
+}
+
+function resolveModulePath(
+	modulePath: string,
+	cwd: string,
+	fileURL?: URL | undefined,
+) {
+	if (!modulePath.startsWith(".")) return modulePath;
+	const absoluteModulePath = resolve(cwd, modulePath);
+	if (!fileURL) return absoluteModulePath;
+
+	const importerPath = fileURLToPath(fileURL);
+	let relativeModulePath = relative(dirname(importerPath), absoluteModulePath);
+	relativeModulePath = relativeModulePath.replaceAll("\\", "/");
+	if (!relativeModulePath.startsWith(".")) {
+		relativeModulePath = `./${relativeModulePath}`;
+	}
+	return relativeModulePath;
 }

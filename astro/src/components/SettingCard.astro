@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import { slug } from "github-slugger";
 
 type CharacterEntry = CollectionEntry<"character">;
+type LocationEntry = CollectionEntry<"location">;
 type CharacterReference =
   | string
   | {
@@ -22,6 +23,11 @@ interface ResolvedCharacter {
   href?: string;
 }
 
+interface ResolvedLocation {
+  name: string;
+  href?: string;
+}
+
 interface CharacterEntryData {
   title?: string;
   character?: {
@@ -33,12 +39,22 @@ interface CharacterEntryData {
   };
 }
 
-const { location, date, characters } = Astro.props;
-const details = [
-  { label: "Location", value: location },
-  { label: "Date", value: date },
-].filter((item) => item.value);
+interface LocationEntryData {
+  title?: string;
+  location?: {
+    name?: string;
+    aliases?: string[];
+  };
+}
 
+const { location, date, characters } = Astro.props;
+const details = [{ label: "Date", value: date }].filter((item) => item.value);
+
+const locationEntries = location ? await getCollection("location") : [];
+const locationIndex = buildLocationIndex(locationEntries);
+const resolvedLocation = location
+  ? resolveLocation(location, locationIndex)
+  : undefined;
 const characterReferences = normalizeCharacters(characters);
 const characterEntries =
   characterReferences.length > 0 ? await getCollection("character") : [];
@@ -77,10 +93,27 @@ function buildCharacterIndex(entries: CharacterEntry[]) {
   return index;
 }
 
+function buildLocationIndex(entries: LocationEntry[]) {
+  const index = new Map<string, LocationEntry>();
+
+  for (const entry of entries) {
+    const data = getLocationData(entry);
+    addIndexKey(index, entry.id, entry);
+    addIndexKey(index, data.title, entry);
+    addIndexKey(index, data.location?.name, entry);
+
+    for (const alias of data.location?.aliases ?? []) {
+      addIndexKey(index, alias, entry);
+    }
+  }
+
+  return index;
+}
+
 function addIndexKey(
-  index: Map<string, CharacterEntry>,
+  index: Map<string, CharacterEntry | LocationEntry>,
   value: string | undefined,
-  entry: CharacterEntry,
+  entry: CharacterEntry | LocationEntry,
 ) {
   if (!value) return;
   index.set(value.toLowerCase(), entry);
@@ -109,8 +142,25 @@ function resolveCharacter(
   };
 }
 
+function resolveLocation(
+  location: string,
+  index: Map<string, LocationEntry>,
+): ResolvedLocation {
+  const entry = index.get(location.toLowerCase()) || index.get(slug(location));
+  const data = entry ? getLocationData(entry) : undefined;
+
+  return {
+    name: data?.location?.name ?? data?.title ?? location,
+    href: entry ? `/world/locations/${entry.id}/` : undefined,
+  };
+}
+
 function getCharacterData(entry: CharacterEntry): CharacterEntryData {
   return entry.data as CharacterEntryData;
+}
+
+function getLocationData(entry: LocationEntry): LocationEntryData {
+  return entry.data as LocationEntryData;
 }
 ---
 
@@ -120,6 +170,20 @@ function getCharacterData(entry: CharacterEntry): CharacterEntryData {
   </div>
 
   <dl class="setting-card__details">
+    {resolvedLocation && (
+      <div class="setting-card__detail">
+        <dt>Location</dt>
+        <dd>
+          {resolvedLocation.href ? (
+            <a href={resolvedLocation.href} class="setting-card__location">
+              {resolvedLocation.name}
+            </a>
+          ) : (
+            resolvedLocation.name
+          )}
+        </dd>
+      </div>
+    )}
     {details.map(({ label, value }) => (
         <div class="setting-card__detail">
           <dt>{label}</dt>
@@ -220,6 +284,17 @@ function getCharacterData(entry: CharacterEntry): CharacterEntryData {
   line-height: 1.35;
   margin: 0;
   overflow-wrap: anywhere;
+}
+
+.setting-card__location {
+  color: #ffffff;
+  text-decoration-color: rgba(221, 214, 254, 0.62);
+  text-underline-offset: 0.16em;
+}
+
+.setting-card__location:hover,
+.setting-card__location:focus-visible {
+  color: #ddd6fe;
 }
 
 .setting-card__characters {
