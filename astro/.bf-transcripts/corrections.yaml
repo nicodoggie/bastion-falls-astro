@@ -1,0 +1,340 @@
+version: 1
+
+profiles:
+  global:
+    description: Shared correction rules for Bastion Falls transcription and note generation.
+    rules:
+      - id: character.sensodyne
+        status: confirmed
+        kind: entity
+        canonical: Sensodyne
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/sensodyne.mdx
+            role: primary
+        aliases:
+          - Sensudine
+          - Sensodynes
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        instruction: >
+          Use Sensodyne for the devil/succubus crew member. Do not treat
+          Sensudine as a separate character. Sensodyne is a devil; some
+          Feywild-connected speakers may call beings like her Tanar'ri, but
+          that does not make her a tanar'ri in strict taxonomy.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-06.mdx
+            note: Clarifies Sensodyne as a devil who does not need sleep.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: Corrects Sensudine drift to Sensodyne.
+
+      - id: character.rebecca-byzantine
+        status: confirmed
+        kind: relationship
+        canonical: Byzantine
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/rebecca.mdx
+            role: owner
+        aliases:
+          - the Byzantine
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Byzantine is Rebecca's teddy bear and is somehow connected to how
+          Rebecca casts magic. Do not treat Byzantine as a separate humanoid
+          NPC unless the immediate transcript context clearly frames it as
+          Rebecca's advisor persona or play.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-07.mdx
+            note: Clarifies Byzantine as Rebecca's teddy bear and magic-linked object.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: Uses Byzantine in Rebecca's room-search side route.
+
+      - id: character.hilis-brastok
+        status: confirmed
+        kind: entity
+        canonical: Hilis Brastok
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/hilis-brastok.mdx
+            role: primary
+        aliases:
+          - Sir Brastok
+          - Sir Landon
+          - Sir Langdon
+          - her Brastok
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Angel's personal guard
+            - Rannek and Angel protection discussions
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Vengeful passages about Angel's personal guard or the Rannek
+          protection thread, use Sir Brastok / Hilis Brastok. Do not treat Sir
+          Landon or Sir Langdon as separate guards in this context, but do not
+          globally rewrite Landon or Langdon outside Angel-guard context.
+        evidence:
+          - path: astro/src/content/docs/world/characters/hilis-brastok.mdx
+            note: Canonical article identifies Hilis Brastok as Angel's guard.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: Corrects Sir Landon/Sir Langdon uncertainty to Sir Brastok.
+
+      - id: character.sierre-leveroux
+        status: confirmed
+        kind: entity
+        canonical: Sierre Leveroux
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/sierre-leveroux.mdx
+            role: primary
+        aliases:
+          - Sierra
+          - Sierra Leveroux
+          - Sister of the Light
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Raibon and Hedwig backstory
+            - Father Renaldi and Hag of Hama investigation
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Vengeful passages about Hedwig's Raibon friend, the Hag of Hama
+          investigation, or Father Renaldi, use Sierre Leveroux, a Sister of
+          Delight. Do not use Sierra or Sister of the Light in this context.
+        evidence:
+          - path: astro/src/content/docs/world/characters/sierre-leveroux.mdx
+            note: Canonical article names Sierre Leveroux as a nun of the Sisters of Delight.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Sierra, Sister of the Light should be Sierre, Sister of Delight.
+
+      - id: artifact.sabina
+        status: rejected-as-artifact
+        kind: transcription-artifact
+        canonical: null
+        canonicalRefs: []
+        aliases:
+          - Sabina
+          - Sabrina
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Malthrek descent and correction passages
+            - garbled Taglish or speaker-bleed lines
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Do not introduce Sabina as a character or NPC in these Vengeful
+          passages. Apparent Sabina lines are usually transcription noise,
+          often from Tagalog or speaker bleed. Preserve uncertainty only when
+          the audio context genuinely requires it.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-07.mdx
+            note: States Sabina is not a character or NPC in the descent.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: Treats Sabina wording as garbled or artifact phrasing.
+
+      - id: place.thrantorbury
+        status: confirmed
+        kind: place
+        canonical: Thrantorbury
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/thrantorbury.mdx
+            role: primary
+        aliases:
+          - Trantarbury
+          - Flanterbury
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        instruction: >
+          Use Thrantorbury for the place and university references unless the
+          immediate context clearly refers to another location.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-13.mdx
+            note: Clarifies Thrantorbury as a place thread.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: Corrects Trantarbury drift to Thrantorbury.
+
+      - id: place.murkendraw
+        status: confirmed
+        kind: place
+        canonical: Murkendraw
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/murkendraw.mdx
+            role: primary
+        aliases:
+          - Mercandrol
+          - Merkinbrock
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        instruction: >
+          Use Murkendraw for transcript and note references that currently
+          appear as Mercandrol or Merkinbrock, especially when discussing the
+          Awakened Library in Marsh View, Feywild research sources, or Willow's
+          hexblood calling.
+        evidence:
+          - path: astro/src/content/docs/world/locations/murkendraw.mdx
+            note: Canonical location article.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Mercandrol and Merkinbrock should be Murkendraw.
+
+      - id: character.gerta-moon
+        status: confirmed
+        kind: character
+        canonical: Gerta Moon
+        canonicalRefs: []
+        aliases:
+          - Gerda Moon
+          - Greta Moon
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        instruction: >
+          Use Gerta Moon for the White Witch and former Spirit of the Moon
+          mentioned in the 2026-06-14 Vengeful notes. Do not leave
+          Gerda/Greta uncertainty once this context is clear.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User confirmed Gerta Moon and clarified she was the previous Spirit of the Moon.
+
+      - id: place.kalassar-star-candy-source
+        status: confirmed
+        kind: place-context
+        canonical: Kalassar
+        canonicalRefs: []
+        aliases:
+          - Palasar
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Star Candies
+            - candy from an auction
+            - Emily's wild magic surge and twin
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the Vengeful discussion of Emily's wild magic surge, the candy
+          from an auction, and possible Star Candies, correct Palasar to
+          Kalassar. Do not globally rewrite Palasar outside this candy-source
+          context without checking the surrounding transcript.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-06-14/corrected_transcript.md
+            note: Corrects the candy source line at 02:14:14-02:14:19.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: Rephrases the candy as candy from an auction tied to Star Candies.
+
+      - id: place.nuenmuller
+        status: confirmed
+        kind: place-or-institution
+        canonical: Nuenmuller
+        canonicalRefs: []
+        aliases:
+          - Noemula
+          - Nomenmolar
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Prefer Nuenmuller for transcript forms like Noemula or Nomenmolar
+          when the context suggests the recurring institution/place reference.
+          Keep exact item labels such as a specific bag or academy link
+          uncertain unless the transcript context supports them.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-07.mdx
+            note: Corrects Noemula to Nuenmuller.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: Treats Nomenmolar as likely Nuenmuller-related while preserving item uncertainty.
+
+      - id: disambiguation.mark-murky-marky
+        status: confirmed
+        kind: disambiguation
+        canonical: null
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/murky-mabrams.mdx
+            role: candidate
+          - type: article
+            path: astro/src/content/docs/world/characters/mark-malthrek.mdx
+            role: candidate
+        aliases:
+          - Marky
+          - Murky
+          - Mark
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Do not mechanically rewrite Mark, Marky, or Murky. In Vengeful
+          contexts involving teasing Murky, protective suits, the Narrows, or
+          Henson fetching someone with teleportation or a Cape of the
+          Mountebank, Marky usually means Murky Mabrams. In Malthrek-family
+          contexts, mapmaking, Matthew's room, or John/Mark sibling scenes,
+          preserve Mark Malthrek if supported by context.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-06.mdx
+            note: Minfilia calls Murky Marky to tease him.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-07.mdx
+            note: Corrects Marky drift toward Murky Mabrams in relevant contexts.
+
+      - id: filler.tawag-dito
+        status: rejected-as-artifact
+        kind: filler-phrase
+        canonical: tawag dito
+        canonicalRefs: []
+        aliases:
+          - Talgito
+          - Taudito
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          When the audio reflects the Tagalog filler phrase tawag dito, do not
+          canonize it as a lore term. Talbito is also a confirmed Reformist
+          paladin in other contexts, so never globally replace Talbito without
+          checking scene context.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-07.mdx
+            note: Identifies Talgito as likely tawag dito, not a lore term.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-13.mdx
+            note: Establishes Talbito as a Reformist paladin.

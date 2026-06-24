@@ -17,6 +17,7 @@ export interface CodexCorrectionOptions {
 	cwd: string;
 	transcriptPath: string;
 	glossaryPath: string;
+	correctionRules?: string;
 	correctedTranscriptPath: string;
 	correctionNotesPath: string;
 	rawTranscriptionDir?: string;
@@ -32,6 +33,7 @@ export interface CodexNotesOptions {
 	transcriptChunksDir?: string;
 	correctionNotesChunksDir?: string;
 	contextExcerpt: string;
+	correctionRules?: string;
 	notesPath: string;
 	outDir?: string;
 	chunkChars?: number;
@@ -153,6 +155,139 @@ export function buildSummaryCleanupPrompt(options: {
 	].join("\n");
 }
 
+function correctionRulesSection(correctionRules: string | undefined): string[] {
+	return [
+		"<correction-rules>",
+		correctionRules?.trim() || "None.",
+		"</correction-rules>",
+	];
+}
+
+export function buildCodexCorrectionPrompt(options: {
+	rollingContext?: string;
+	glossary: string;
+	correctionRules?: string;
+	transcript: string;
+}): string {
+	return [
+		"Correct this D&D campaign transcript chunk.",
+		"Preserve timestamps, line order, original language, and conversational style.",
+		"Only fix likely speech-to-text mistakes, especially names, places, D&D rules terms, and campaign lore terms.",
+		"Apply shared correction rules when relevant. Do not summarize. Output only the corrected transcript Markdown for this chunk.",
+		"",
+		"<prior-session-context>",
+		options.rollingContext?.trim() || "None yet.",
+		"</prior-session-context>",
+		"",
+		"<campaign-glossary>",
+		options.glossary,
+		"</campaign-glossary>",
+		"",
+		...correctionRulesSection(options.correctionRules),
+		"",
+		"<transcript-chunk>",
+		options.transcript,
+		"</transcript-chunk>",
+	].join("\n");
+}
+
+export function buildCodexCorrectionNotesPrompt(options: {
+	glossary: string;
+	correctionRules?: string;
+	correctedTranscript: string;
+}): string {
+	return [
+		"Review this corrected D&D transcript chunk and produce concise correction notes.",
+		"List uncertain corrections, likely names/lore terms used, and any audio/transcription ambiguity worth checking.",
+		"Use shared correction rules to avoid relitigating already-settled corrections.",
+		"Do not repeat the full transcript.",
+		"",
+		"<campaign-glossary>",
+		options.glossary,
+		"</campaign-glossary>",
+		"",
+		...correctionRulesSection(options.correctionRules),
+		"",
+		"<corrected-transcript-chunk>",
+		options.correctedTranscript,
+		"</corrected-transcript-chunk>",
+	].join("\n");
+}
+
+export function buildCodexTranscriptSummaryPrompt(options: {
+	rollingContext: string;
+	contextExcerpt: string;
+	correctionNotes: string;
+	correctionRules?: string;
+	transcriptChunk: string;
+}): string {
+	return [
+		"Compact this corrected D&D session transcript chunk for later campaign-note generation.",
+		"Preserve session events, party actions, NPCs, places, factions, lore reveals, items, spells, unresolved hooks, and uncertainty.",
+		"Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
+		"Remove timestamps and obvious speech-to-text repetition loops. Do not invent details.",
+		"Use concise bullets grouped by topic.",
+		"",
+		"<prior-session-context>",
+		options.rollingContext || "None yet.",
+		"</prior-session-context>",
+		"",
+		"<campaign-context>",
+		options.contextExcerpt,
+		"</campaign-context>",
+		"",
+		...correctionRulesSection(options.correctionRules),
+		"",
+		"<correction-notes>",
+		options.correctionNotes,
+		"</correction-notes>",
+		"",
+		"<transcript-chunk>",
+		options.transcriptChunk,
+		"</transcript-chunk>",
+	].join("\n");
+}
+
+export function buildCodexSceneSummaryPrompt(options: {
+	correctionRules?: string;
+	chunkSummaries: string[];
+}): string {
+	return [
+		"Merge these compacted D&D campaign transcript summaries into a coherent scene summary.",
+		"Deduplicate repeated information. Preserve unresolved hooks and uncertainty.",
+		"Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
+		"Use concise bullets grouped by topic.",
+		"",
+		...correctionRulesSection(options.correctionRules),
+		"",
+		"<chunk-summaries>",
+		options.chunkSummaries.join("\n\n---\n\n"),
+		"</chunk-summaries>",
+	].join("\n");
+}
+
+export function buildCodexFinalNotesPrompt(options: {
+	frontmatter: string;
+	correctionRules?: string;
+	sceneSummaries: string[];
+}): string {
+	return [
+		"Create Astro MDX campaign notes from these D&D session scene summaries.",
+		"Match the style of the existing Bastion Falls session notes: multiple fenced markmap blocks, concise headings, nested bullets.",
+		"Prioritize session events, party actions, NPCs, places, factions, lore reveals, items, spells, and unresolved hooks.",
+		"Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
+		"Do not include timestamps, transcript process commentary, or a prose introduction.",
+		"Output a complete MDX file. Use exactly this frontmatter:",
+		options.frontmatter,
+		"",
+		...correctionRulesSection(options.correctionRules),
+		"",
+		"<scene-summaries>",
+		joinCodexSceneSummaries(options.sceneSummaries),
+		"</scene-summaries>",
+	].join("\n");
+}
+
 export function formatSummaryCleanupProgress(options: {
 	status: "starting" | "finished" | "reusing";
 	index: number;
@@ -260,24 +395,12 @@ async function runCodexCorrectionChunked(
 				generate: async () => {
 					await codexExecToFile(
 						options.cwd,
-						[
-							"Correct this D&D campaign transcript chunk.",
-							"Preserve timestamps, line order, original language, and conversational style.",
-							"Only fix likely speech-to-text mistakes, especially names, places, D&D rules terms, and campaign lore terms.",
-							"Do not summarize. Output only the corrected transcript Markdown for this chunk.",
-							"",
-							"<prior-session-context>",
-							rollingContext || "None yet.",
-							"</prior-session-context>",
-							"",
-							"<campaign-glossary>",
+						buildCodexCorrectionPrompt({
+							rollingContext,
 							glossary,
-							"</campaign-glossary>",
-							"",
-							"<transcript-chunk>",
-							await readFile(chunkPath, "utf8"),
-							"</transcript-chunk>",
-						].join("\n"),
+							correctionRules: options.correctionRules,
+							transcript: await readFile(chunkPath, "utf8"),
+						}),
 						outputPath,
 					);
 					return readFile(outputPath, "utf8");
@@ -322,19 +445,11 @@ async function runCodexCorrectionChunked(
 
 		await codexExecToFile(
 			options.cwd,
-			[
-				"Review this corrected D&D transcript chunk and produce concise correction notes.",
-				"List uncertain corrections, likely names/lore terms used, and any audio/transcription ambiguity worth checking.",
-				"Do not repeat the full transcript.",
-				"",
-				"<campaign-glossary>",
+			buildCodexCorrectionNotesPrompt({
 				glossary,
-				"</campaign-glossary>",
-				"",
-				"<corrected-transcript-chunk>",
-				await readFile(join(correctedChunksDir, chunkName), "utf8"),
-				"</corrected-transcript-chunk>",
-			].join("\n"),
+				correctionRules: options.correctionRules,
+				correctedTranscript: await readFile(join(correctedChunksDir, chunkName), "utf8"),
+			}),
 			outputPath,
 		);
 	}
@@ -371,38 +486,21 @@ export async function runCodexCorrection(
 
 	await codexExecToFile(
 		options.cwd,
-		[
-			"Correct this D&D campaign transcript.",
-			"Preserve timestamps, line order, original language, and conversational style.",
-			"Only fix likely speech-to-text mistakes, especially names, places, D&D rules terms, and campaign lore terms.",
-			"Do not summarize. Output only the corrected transcript Markdown.",
-			"",
-			"<campaign-glossary>",
+		buildCodexCorrectionPrompt({
 			glossary,
-			"</campaign-glossary>",
-			"",
-			"<transcript>",
+			correctionRules: options.correctionRules,
 			transcript,
-			"</transcript>",
-		].join("\n"),
+		}),
 		options.correctedTranscriptPath,
 	);
 
 	await codexExecToFile(
 		options.cwd,
-		[
-			"Review this corrected D&D transcript and produce concise correction notes.",
-			"List uncertain corrections, likely names/lore terms used, and any audio/transcription ambiguity worth checking.",
-			"Do not repeat the full transcript.",
-			"",
-			"<campaign-glossary>",
+		buildCodexCorrectionNotesPrompt({
 			glossary,
-			"</campaign-glossary>",
-			"",
-			"<corrected-transcript>",
-			await readFile(options.correctedTranscriptPath, "utf8"),
-			"</corrected-transcript>",
-		].join("\n"),
+			correctionRules: options.correctionRules,
+			correctedTranscript: await readFile(options.correctedTranscriptPath, "utf8"),
+		}),
 		options.correctionNotesPath,
 	);
 }
@@ -579,28 +677,13 @@ export async function runCodexNotes(options: CodexNotesOptions): Promise<void> {
 				generate: async () => {
 					await codexExecToFile(
 						options.cwd,
-						[
-							"Compact this corrected D&D session transcript chunk for later campaign-note generation.",
-							"Preserve session events, party actions, NPCs, places, factions, lore reveals, items, spells, unresolved hooks, and uncertainty.",
-							"Remove timestamps and obvious speech-to-text repetition loops. Do not invent details.",
-							"Use concise bullets grouped by topic.",
-							"",
-							"<prior-session-context>",
-							rollingContext || "None yet.",
-							"</prior-session-context>",
-							"",
-							"<campaign-context>",
-							options.contextExcerpt,
-							"</campaign-context>",
-							"",
-							"<correction-notes>",
-							chunkCorrectionNotes,
-							"</correction-notes>",
-							"",
-							"<transcript-chunk>",
-							chunk.text,
-							"</transcript-chunk>",
-						].join("\n"),
+						buildCodexTranscriptSummaryPrompt({
+							rollingContext,
+							contextExcerpt: options.contextExcerpt,
+							correctionRules: options.correctionRules,
+							correctionNotes: chunkCorrectionNotes,
+							transcriptChunk: chunk.text,
+						}),
 						path,
 					);
 					return readFile(path, "utf8");
@@ -657,15 +740,10 @@ export async function runCodexNotes(options: CodexNotesOptions): Promise<void> {
 				generate: async () => {
 					await codexExecToFile(
 						options.cwd,
-						[
-							"Merge these compacted D&D campaign transcript summaries into a coherent scene summary.",
-							"Deduplicate repeated information. Preserve unresolved hooks and uncertainty.",
-							"Use concise bullets grouped by topic.",
-							"",
-							"<chunk-summaries>",
-							group.join("\n\n---\n\n"),
-							"</chunk-summaries>",
-						].join("\n"),
+						buildCodexSceneSummaryPrompt({
+							correctionRules: options.correctionRules,
+							chunkSummaries: group,
+						}),
 						path,
 					);
 					return readFile(path, "utf8");
@@ -685,18 +763,11 @@ export async function runCodexNotes(options: CodexNotesOptions): Promise<void> {
 			generate: async () => {
 				await codexExecToFile(
 					options.cwd,
-					[
-						"Create Astro MDX campaign notes from these D&D session scene summaries.",
-						"Match the style of the existing Bastion Falls session notes: multiple fenced markmap blocks, concise headings, nested bullets.",
-						"Prioritize session events, party actions, NPCs, places, factions, lore reveals, items, spells, and unresolved hooks.",
-						"Do not include timestamps, transcript process commentary, or a prose introduction.",
-						"Output a complete MDX file. Use exactly this frontmatter:",
+					buildCodexFinalNotesPrompt({
 						frontmatter,
-						"",
-						"<scene-summaries>",
-						joinCodexSceneSummaries(sceneSummaries),
-						"</scene-summaries>",
-					].join("\n"),
+						correctionRules: options.correctionRules,
+						sceneSummaries,
+					}),
 					finalDraftPath,
 				);
 				return readFile(finalDraftPath, "utf8");

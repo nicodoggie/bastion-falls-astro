@@ -25,6 +25,7 @@ import { canReuseAudioChunks, readManifest } from "./resume.js";
 import { getCheckpointPath, writeTranscribeCheckpoint, type TranscribeCheckpoint } from "./checkpoint.js";
 import { runOllamaHierarchicalNotes } from "./ollamaNotes.js";
 import { applyCorrectionsCommand } from "./applyCorrections.js";
+import { loadCorrectionRulesMarkdown, writeCorrectionRulesContext } from "./corrections.js";
 
 type NotesBackend = "codex" | "ollama";
 
@@ -32,6 +33,7 @@ interface TranscribeFlags {
   campaign: string;
   "session-date": string;
   out?: string;
+  corrections?: string;
   "context-root": string;
   "whisper-model": string;
   language: string;
@@ -101,6 +103,12 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
     kind: "parsed",
     parse: String,
     brief: "Output directory for generated audio/transcript artifacts",
+    optional: true,
+  },
+  corrections: {
+    kind: "parsed",
+    parse: String,
+    brief: "Path to shared transcription correction rules YAML",
     optional: true,
   },
   "context-root": {
@@ -391,6 +399,7 @@ export const transcribeRunCommand = buildCommand({
     const cwd = this.currentPath;
     const audioPath = resolveFromCwd(cwd, audioFile);
     const contextRoot = resolveFromCwd(cwd, flags["context-root"]);
+    const correctionsPath = flags.corrections ? resolveFromCwd(cwd, flags.corrections) : undefined;
     const outDir = resolveFromCwd(cwd, flags.out ?? join(".bf-transcripts", slugifyAudioPath(audioPath)));
     const normalizedPath = join(outDir, "normalized", "session.flac");
     const chunksDir = join(outDir, "chunks");
@@ -418,6 +427,17 @@ export const transcribeRunCommand = buildCommand({
     await mkdir(chunksDir, { recursive: true });
     await mkdir(rawChunksDir, { recursive: true });
     await mkdir(rawTranscriptionDir, { recursive: true });
+    const correctionRules = await loadCorrectionRulesMarkdown({
+      cwd,
+      path: correctionsPath,
+      campaign: flags.campaign,
+      sessionDate: flags["session-date"],
+    });
+    const correctionRulesContextPath = await writeCorrectionRulesContext({
+      outDir,
+      correctionRules,
+    });
+    this.process.stdout.write(`Loaded shared correction rules at ${correctionRulesContextPath}\n`);
 
     if (shouldResume && (await exists(normalizedPath))) {
       this.process.stdout.write(`Resuming with existing normalized audio at ${normalizedPath}\n`);
@@ -593,6 +613,7 @@ export const transcribeRunCommand = buildCommand({
         cwd,
         transcriptPath: rawTranscriptPath,
         glossaryPath,
+        correctionRules,
         correctedTranscriptPath,
         correctionNotesPath,
         rawTranscriptionDir,
@@ -624,6 +645,7 @@ export const transcribeRunCommand = buildCommand({
           transcriptPath: transcriptForNotes,
           correctionNotesPath: flags["skip-correction"] ? undefined : correctionNotesPath,
           contextExcerpt: buildContextExcerpt(contextFiles),
+          correctionRules,
           notesPath,
           outDir,
           model: flags["notes-model"],
@@ -666,6 +688,7 @@ export const transcribeRunCommand = buildCommand({
           transcriptChunksDir: notesTranscriptChunksDir,
           correctionNotesChunksDir: flags["skip-correction"] ? undefined : correctionNotesChunksDirFor(outDir),
           contextExcerpt: buildContextExcerpt(contextFiles),
+          correctionRules,
           notesPath,
           outDir,
           chunkChars: flags["summary-chunk-chars"],

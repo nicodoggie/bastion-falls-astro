@@ -5,6 +5,11 @@ import { join } from "node:path";
 import { test } from "node:test";
 
 import {
+  buildCodexCorrectionNotesPrompt,
+  buildCodexCorrectionPrompt,
+  buildCodexFinalNotesPrompt,
+  buildCodexSceneSummaryPrompt,
+  buildCodexTranscriptSummaryPrompt,
   buildCodexRollingContextPrompt,
   buildSummaryCleanupPrompt,
   correctionContextChunksDirFor,
@@ -123,6 +128,43 @@ test("builds summary cleanup prompts that preserve transcript shape", () => {
   assert.match(prompt, /neutral, summary-safe wording/);
   assert.match(prompt, /<transcript-chunk>/);
   assert.match(prompt, /party entered the keep/);
+});
+
+test("includes shared correction rules in correction prompts", () => {
+  const prompt = buildCodexCorrectionPrompt({
+    rollingContext: "",
+    glossary: "- Sensodyne",
+    correctionRules: "- character.sensodyne: Use Sensodyne.",
+    transcript: "[00:00:01 - 00:00:02] Sensudine",
+  });
+
+  assert.match(prompt, /<correction-rules>/);
+  assert.match(prompt, /character\.sensodyne/);
+  assert.match(prompt, /Use Sensodyne/);
+});
+
+test("includes shared correction rules in notes prompts", () => {
+  const chunkPrompt = buildCodexTranscriptSummaryPrompt({
+    rollingContext: "",
+    contextExcerpt: "## Context",
+    correctionNotes: "- Local uncertainty",
+    correctionRules: "- artifact.sabina: Do not canonize Sabina.",
+    transcriptChunk: "Sabina.",
+  });
+  const scenePrompt = buildCodexSceneSummaryPrompt({
+    correctionRules: "- artifact.sabina: Do not canonize Sabina.",
+    chunkSummaries: ["- Apparent Sabina artifact."],
+  });
+  const finalPrompt = buildCodexFinalNotesPrompt({
+    frontmatter: "---\ntitle: Test\n---\n",
+    correctionRules: "- artifact.sabina: Do not canonize Sabina.",
+    sceneSummaries: ["- Apparent Sabina artifact."],
+  });
+
+  for (const prompt of [chunkPrompt, scenePrompt, finalPrompt]) {
+    assert.match(prompt, /<correction-rules>/);
+    assert.match(prompt, /artifact\.sabina/);
+  }
 });
 
 test("formats summary cleanup chunk progress states", () => {

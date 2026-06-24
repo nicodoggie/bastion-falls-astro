@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bastion Transcription Corrections"
+  short_description: "Update shared Bastion Falls transcription correction rules"
+  default_prompt: "Update the shared transcription corrections from this note cleanup."

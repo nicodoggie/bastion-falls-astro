@@ -9,6 +9,7 @@ export interface OllamaNotesOptions {
   transcriptPath: string;
   correctionNotesPath?: string;
   contextExcerpt: string;
+  correctionRules?: string;
   notesPath: string;
   outDir: string;
   model: string;
@@ -65,6 +66,14 @@ async function exists(path: string): Promise<boolean> {
   } catch {
     return false;
   }
+}
+
+function correctionRulesSection(correctionRules: string | undefined): string[] {
+  return [
+    "<correction-rules>",
+    correctionRules?.trim() || "None.",
+    "</correction-rules>",
+  ];
 }
 
 export async function generateWithOllama(options: {
@@ -158,6 +167,8 @@ export async function runOllamaHierarchicalNotes(options: OllamaNotesOptions): P
           options.contextExcerpt,
           "</campaign-context>",
           "",
+          ...correctionRulesSection(options.correctionRules),
+          "",
           "<correction-notes>",
           correctionNotes,
           "</correction-notes>",
@@ -187,7 +198,10 @@ export async function runOllamaHierarchicalNotes(options: OllamaNotesOptions): P
         prompt: [
           "Merge these D&D campaign chunk summaries into a coherent scene summary.",
           "Deduplicate repeated information. Preserve unresolved hooks and uncertainty.",
+          "Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
           "Use concise bullets grouped by topic.",
+          "",
+          ...correctionRulesSection(options.correctionRules),
           "",
           "<chunk-summaries>",
           group,
@@ -210,9 +224,12 @@ export async function runOllamaHierarchicalNotes(options: OllamaNotesOptions): P
         "Create Astro MDX campaign notes from these D&D session scene summaries.",
         "Match the Bastion Falls note style: multiple fenced markmap blocks, concise headings, nested bullets.",
         "Prioritize session events, party actions, NPCs, places, factions, lore reveals, items, spells, and unresolved hooks.",
+        "Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
         "Do not include transcript process commentary or a prose introduction.",
         "Output a complete MDX file. Use exactly this frontmatter:",
         frontmatter,
+        "",
+        ...correctionRulesSection(options.correctionRules),
         "",
         "<scene-summaries>",
         sceneSummaries.join("\n\n---\n\n"),
