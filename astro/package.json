@@ -11,15 +11,15 @@
     "build": "pnpm run clean && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format:biome": "biome check --write .",
-    "format:mdx": "rumdl fmt src",
-    "format:yaml": "eslint --config eslint.yaml.config.mjs --fix \"src/content/docs/world/**/*.{yaml,yml}\"",
+    "fmt:biome": "biome check --write .",
+    "fmt:mdx": "rumdl fmt src",
+    "fmt:yaml": "eslint --config eslint.yaml.config.mjs --fix \"src/content/docs/world/**/*.{yaml,yml}\"",
     "lint:astro": "astro check",
     "lint:biome": "biome check .",
     "lint:mdx": "rumdl check src",
     "lint:yaml": "eslint --config eslint.yaml.config.mjs \"src/content/docs/world/**/*.{yaml,yml}\"",
-    "fmt": "pnpm format:biome && pnpm format:mdx && pnpm format:yaml",
-    "lint": "pnpm lint:astro && pnpm lint:biome && pnpm lint:mdx && pnpm lint:yaml",
+    "fmt": "turbo run lint:all",
+    "lint": "turbo run lint:all",
     "postinstall": "flowbite-react install",
     "bfcli": "_REAL_CWD=$INIT_CWD pnpm -F @bastion-falls/cli run exec"
   },
@@ -73,7 +73,8 @@
     "tailwindcss": "^4.3.1",
     "typescript": "^6.0.3",
     "unist-util-visit": "^5.1.0",
-    "vite": "^8.1.0"
+    "vite": "^8.1.0",
+    "zod": "~4.3.6"
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.10.9",

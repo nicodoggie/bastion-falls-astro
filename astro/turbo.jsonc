@@ -1,0 +1,18 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "lint:astro": {},
+    "lint:biome": {},
+    "lint:mdx": {},
+    "lint:yaml": {},
+    "fmt:biome": {},
+    "fmt:mdx": {},
+    "fmt:yaml": {},
+    "lint:all": {
+      "dependsOn": ["lint:astro", "lint:biome", "lint:mdx", "lint:yaml"]
+    },
+    "fmt:all": {
+      "dependsOn": ["fmt:biome", "fmt:mdx", "fmt:yaml"]
+    }
+  }
+}
