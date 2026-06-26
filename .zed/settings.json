@@ -15,7 +15,12 @@
       "format_on_save": "on",
     },
     "MDX": {
-      "language_servers": ["rumdl", "mdx-analyzer", "path-server-lsp"],
+      "language_servers": [
+        "rumdl",
+        "mdx-analyzer",
+        "path-server-lsp",
+        "astro-language-server",
+      ],
       "format_on_save": "on",
     },
   },

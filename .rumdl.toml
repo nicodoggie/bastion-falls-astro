@@ -44,3 +44,15 @@ br-style = "backslash"
 
 [MD041]
 enabled = false
+
+[code-block-tools]
+enabled = true
+normalize-language = "linguist"
+on-missing-language-definition = "warn"
+on-missing-tool-binary = "warn"
+
+[code-block-tools.language-aliases]
+markmap = "markdown"
+
+[code-block-tools.languages.markdown]
+lint = ["rumdl"]
