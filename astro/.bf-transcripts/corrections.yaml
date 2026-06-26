@@ -123,6 +123,369 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User clarified Sierra, Sister of the Light should be Sierre, Sister of Delight.
 
+      - id: character.oren-bell
+        status: confirmed
+        kind: entity
+        canonical: Oren Bell
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/oren-bell.mdx
+            role: primary
+          - type: stat-block
+            path: astro/src/content/docs/world/misc/oren-bell-bearer-of-joy.creature.yaml
+            role: bearer-of-joy
+        aliases:
+          - Orren Bell
+          - Oren/Orren Bell
+          - Oren or Orren Bell
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Bearer of Joy
+            - Green Lord and Oren Bell speculation
+            - Castle Malthrek study service
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Oren Bell for the Castle Malthrek figure, Bearer of Joy, and
+          Green Lord speculation thread. Do not preserve Orren spelling
+          uncertainty, but keep separate uncertainty about his species, glamour,
+          avatar status, or Reformist role when the note context raises it.
+        evidence:
+          - path: astro/src/content/docs/world/characters/oren-bell.mdx
+            note: Canonical article uses Oren Bell.
+          - path: astro/src/content/docs/world/misc/oren-bell-bearer-of-joy.creature.yaml
+            note: Stat block uses Oren Bell, Bearer of Joy.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Oren or Orren Bell should be Oren Bell.
+
+      - id: alias.oberon-oran
+        status: confirmed
+        kind: alias
+        canonical: Oran
+        canonicalRefs: []
+        aliases:
+          - Oren is a name used by an avatar of the Green Lord
+          - Oren, avatar of the Green Lord
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Oberon avatar speculation
+            - Green Lord avatar speculation
+            - Oren Bell name resemblance
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the Oren Bell / Oberon speculation thread, the relevant known
+          alias connected to Oberon or the Green Lord is Oran. Do not state
+          that Oren itself is a known avatar name; keep Oren Bell as the
+          person's name and Oran as the alias that makes the resemblance
+          notable.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified the avatar discussion arose because Oran is a known alias.
+
+      - id: character.liana
+        status: confirmed
+        kind: entity
+        canonical: Liana
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/liana.mdx
+            role: primary
+        aliases:
+          - Eliana
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Rebecca's Wonderland story
+            - vessel and seeds of Wonderland
+            - unique doll discussion
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the Vengeful Rebecca/Wonderland thread, use Liana rather than
+          Eliana for Rebecca's vessel and the figure tied to spreading the seeds
+          of Wonderland. Do not globally rewrite Eliana outside this context
+          without checking the surrounding note.
+        evidence:
+          - path: astro/src/content/docs/world/characters/liana.mdx
+            note: Canonical character article for Liana.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Eliana should be Liana in the dryad/vessel line.
+
+      - id: character.lady-maribel-veyne
+        status: confirmed
+        kind: entity
+        canonical: Lady Maribel Veyne
+        canonicalRefs: []
+        aliases:
+          - Lady Vayne
+          - Lady Fai
+          - Lady Mirabelle Vayne
+          - Lady Maribel Veyne or Vayne
+          - Lady Vayne/Veyne/Vane
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Malthrek Reformist hierarchy
+            - Bearer of the Cup and Cupbearer
+            - Sister Rachel wild magic cover
+            - Mark warning Rachel about parasite implantation
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the Castle Malthrek / Sister Rachel risk thread, use Lady Maribel
+          Veyne for transcript forms such as Lady Vayne and Lady Fai. Lady Fai
+          is a real character elsewhere in the world, but that separate
+          campaign character is not relevant in this Vengeful context.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Lady Vayne and Lady Fai refer to Lady Maribel Veyne here.
+
+      - id: character.father-dunweather
+        status: confirmed
+        kind: entity
+        canonical: Father Dunweather
+        canonicalRefs: []
+        aliases:
+          - Father Dunwether
+          - Dunwether
+          - Dunwether or Dunweather
+          - Dunwether/Dunweather
+          - Father Dunwether or Dunweather
+          - Father Kram/Karam Dunwether
+          - Father Karam Dunweather/Dunwether
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Malthrek chapel priest
+            - Reformist hierarchy
+            - Orthodox and Reformist structures shielding each other
+            - Sister Rachel wild magic cover
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Father Dunweather for the Castle Malthrek priest. Keep the given
+          name uncertain as Kram or Karam when the transcript context raises
+          that question, but do not preserve Dunwether as an alternate surname.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User confirmed Father Dunwether or Dunweather should be Dunweather.
+
+      - id: organization.legally-bare
+        status: confirmed
+        kind: organization
+        canonical: Legally Bare
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/organizations/legally-bare.mdx
+            role: primary
+        aliases:
+          - Legally Fey
+          - The Legally Fey
+          - Legally Bear
+          - Lady Bear
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Matthew Malthrek reading material
+            - Matthew Malthrek fandom, VIP access, newest edition, freebies, or sacred relics
+            - adult magazine and Ministry of Science magazine references
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Matthew Malthrek's embarrassing reading/fandom thread, use Legally
+          Bare. Do not preserve Legally Fey, Legally Bear, or Lady Bear in this
+          context. Avoid globally rewriting unrelated Lady Bear phrases in
+          cipher, doll, or Great Erected One jokes unless the surrounding audio
+          clearly points to the magazine.
+        evidence:
+          - path: astro/src/content/docs/world/organizations/legally-bare.mdx
+            note: Canonical article for the Ministry of Science adult magazine.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified the source audio says Matthew was reading Legally Bare.
+
+      - id: character.tamsin-reed
+        status: confirmed
+        kind: entity
+        canonical: Tamsin Reed
+        canonicalRefs:
+          - type: stat-block
+            path: astro/src/content/docs/world/misc/tamsin-reed-bearer-of-sadness.creature.yaml
+            role: bearer-of-sadness
+          - type: article
+            path: astro/src/content/docs/world/notes/the-vengeful/threads/the-maltreks.mdx
+            role: malthrek-thread
+        aliases:
+          - Damson Reed
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Malthrek Reformist hierarchy
+            - Bearers of Emotions
+            - Bearer of Sadness
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Tamsin Reed for the Bearer of Sadness in the Castle Malthrek
+          Reformist hierarchy. Do not leave Damson Reed as a spelling
+          uncertainty in this context.
+        evidence:
+          - path: astro/src/content/docs/world/misc/tamsin-reed-bearer-of-sadness.creature.yaml
+            note: Canonical stat block names Tamsin Reed, Bearer of Sadness.
+          - path: astro/src/content/docs/world/notes/the-vengeful/threads/the-maltreks.mdx
+            note: Malthrek thread lists Tamsin Reed as Bearer of Sadness.
+
+      - id: taxonomy.hags-of-senera-adapted
+        status: confirmed
+        kind: taxonomy
+        canonical: Adapted
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/notes/the-vengeful/threads/hags-of-senera.mdx
+            role: taxonomy
+        aliases:
+          - Faithborn
+          - Faithborn hags
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Skelwick hags
+            - Sapphire Brooch of Winter
+            - Hags of Senera taxonomy
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Faithborn is not a descriptor used for the Hags of Senera. In the
+          Skelwick and Sapphire Brooch of Winter context, describe those hags as
+          Adapted rather than Faithful. Preserve Faithful only for hags loyal to
+          Baba Yaga who identify as children of the Mother.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/threads/hags-of-senera.mdx
+            note: Defines Faithful, Adapted, and Children of the Crone taxonomy without Faithborn.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified the Skelwick hags are Adapted, not Faithful or Faithborn.
+
+      - id: fey.lord-cals-lord-of-time
+        status: confirmed
+        kind: entity
+        canonical: Lord Cals
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/escape-from-the-feydark/2024-04-20.mdx
+            role: prior-campaign-reference
+        aliases:
+          - Caltax
+          - Lord Cals or Caltax
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Lord of Time
+            - Valdas and Queen of Mirrors domain
+            - Spring Court authority and succession
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Vengeful discussions of the ancient Lord of Time, Valdas's domain,
+          and Spring Court authority, use Lord Cals. Do not globally replace
+          Caltax in unrelated contexts, since a separate Caltax stub exists.
+        evidence:
+          - path: astro/src/content/docs/world/notes/escape-from-the-feydark/2024-04-20.mdx
+            note: Prior campaign note mentions Lord Cals.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Lord Cals or Caltax should be Lord Cals.
+
+      - id: fey.queen-duarend-spring
+        status: confirmed
+        kind: entity
+        canonical: Queen Duarend
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/escape-from-the-feydark/2024-06-07.mdx
+            role: prior-campaign-reference
+        aliases:
+          - Duarend
+          - Queen Bered
+          - Dooren
+          - Duren
+          - Dooren's domain
+          - Duren's domain
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Spring Court succession
+            - human Archfey and Spring Queen
+            - Grandiflora Island
+            - Lord Cals sent toward a Spring Queen's domain
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Vengeful Spring Court succession discussions, use Queen Duarend.
+          Dooren, Duren, and Queen Bered are mistranscriptions or drifted
+          labels for Queen Duarend in this context.
+        evidence:
+          - path: astro/src/content/docs/world/notes/escape-from-the-feydark/2024-06-07.mdx
+            note: Prior campaign note identifies Duarend as a human connected to Grandiflora.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Dooren or Duren and Queen Bered should be Queen Duarend.
+
+      - id: item.winter-ring-brooch
+        status: confirmed
+        kind: disambiguation
+        canonical: null
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/novelty/the-elven-boons.mdx
+            role: elven-boons
+          - type: article
+            path: astro/src/content/docs/world/locations/winter-court.mdx
+            role: winter-court
+        aliases:
+          - Ring of Winter
+          - Brooch of Winter
+          - Sapphire Brooch of Winter
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Winter Court artifacts
+            - Elven Boons
+            - Prince of Frost and Winter rulership
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Do not merge the Ring of Winter and the Brooch of Winter into one
+          object. Both are connected to the Winter Court. The Ring of Winter is
+          held by the ruler of the Winter Court, while the Sapphire Brooch of
+          Winter is one of the Elven Boons from that court.
+        evidence:
+          - path: astro/src/content/docs/world/novelty/the-elven-boons.mdx
+            note: Identifies the Sapphire Brooch of Winter as the Winter Elven Boon.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified the Ring and Brooch are separate Winter Court-linked items.
+
       - id: artifact.sabina
         status: rejected-as-artifact
         kind: transcription-artifact
@@ -198,12 +561,189 @@ profiles:
           Use Murkendraw for transcript and note references that currently
           appear as Mercandrol or Merkinbrock, especially when discussing the
           Awakened Library in Marsh View, Feywild research sources, or Willow's
-          hexblood calling.
+          hexblood calling. Preserve Marsh View as correct: it is where the
+          Awakened Library is in Murkendraw.
         evidence:
           - path: astro/src/content/docs/world/locations/murkendraw.mdx
             note: Canonical location article.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
-            note: User clarified Mercandrol and Merkinbrock should be Murkendraw.
+            note: User clarified Mercandrol and Merkinbrock should be Murkendraw, and that Marsh View is correct.
+
+      - id: place.thralmals
+        status: confirmed
+        kind: place
+        canonical: Thralmals
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/thralmals.mdx
+            role: primary
+        aliases:
+          - Thralmal
+          - Thralmal Pools
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Thralmals barony, keep, pools, hags, and teleportation circle
+            - Antoinette Malthrek and Thralmals political pressure
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Thralmals for the barony, keep, pools, hags, and teleportation
+          circle context. Preserve Thralmal as a surname or adjectival form
+          when referring to Antoinette Malthrek nee Thralmal or Thralmal-family
+          matters.
+        evidence:
+          - path: astro/src/content/docs/world/locations/thralmals.mdx
+            note: Canonical location article for the Thralmals.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Thralmal location references should point to Thralmals.
+
+      - id: place.flyukishilla
+        status: confirmed
+        kind: place
+        canonical: Flyukishilla
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/flyukishilla.mdx
+            role: primary
+        aliases:
+          - Fliokyshela
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Emily's origin
+            - Feywild schools
+            - Spring Court city and disease discussion
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Flyukishilla for the Feywild city in the Spring Court, especially
+          in Emily origin, Feywild schooling, and magical disease discussions.
+        evidence:
+          - path: astro/src/content/docs/world/locations/flyukishilla.mdx
+            note: Canonical location article for Flyukishilla.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Flyukishilla as the correct place.
+
+      - id: place.skelwick
+        status: confirmed
+        kind: place
+        canonical: Skelwick
+        canonicalRefs: []
+        aliases:
+          - Belwick
+          - Scalic
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Brooch of Winter
+            - frozen Children of the Crone
+            - Thralmals witch information
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Vengeful Brooch of Winter and frozen Children of the Crone
+          contexts, use Skelwick. Do not preserve Belwick or Scalic as separate
+          places in those passages unless later context clearly establishes a
+          different location.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Skelwick/Belwick references in these contexts should be Skelwick.
+
+      - id: novelty.realm-bridge
+        status: confirmed
+        kind: world-term
+        canonical: The Realm Bridge
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/novelty/the-realm-bridge.mdx
+            role: primary
+        aliases:
+          - Rhen Bridge
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Fey crossings
+            - Veil and Feywild crossing restrictions
+            - aberration risk across worlds
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use the Realm Bridge for Rhen Bridge in Fey crossing, Veil, and
+          aberration-risk discussions.
+        evidence:
+          - path: astro/src/content/docs/world/novelty/the-realm-bridge.mdx
+            note: Canonical article for the Realm Bridge.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Rhen Bridge should be the Realm Bridge.
+
+      - id: place.eastonton-teleport-destination
+        status: confirmed
+        kind: place
+        canonical: Eastonton
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/eastonton.mdx
+            role: primary
+        aliases:
+          - Eastern Twin
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-06-14"
+          contexts:
+            - teleportation sigil destinations at 14:03:29-14:03:43
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the 2026-06-14 teleportation sigil list, Eastern Twin is a
+          mistranscription of Eastonton. Do not apply this replacement outside
+          that destination-list context without checking the audio.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-06-14/corrected_transcript.md
+            note: User relistened to 14:03:29-14:03:43 and confirmed Eastonton.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: Corrects teleportation sigil destination from Eastern Twin to Eastonton.
+
+      - id: vehicle.the-scarlet
+        status: confirmed
+        kind: vehicle
+        canonical: The Scarlet
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/vehicles/the-scarlet.mdx
+            role: primary
+        aliases:
+          - Scarlet airship
+          - Scarlet
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - teleportation sigil destinations
+            - Feywild airship Hedwig and allies retook
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use the Scarlet for the Feywild airship in teleportation sigil lists
+          and Hedwig recovery discussions. The airship was retaken by Hedwig and
+          the others, seemingly because the Archfey allowed it.
+        evidence:
+          - path: astro/src/content/docs/world/vehicles/the-scarlet.mdx
+            note: Canonical vehicle article.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified the Scarlet airship's Feywild recovery context.
 
       - id: character.gerta-moon
         status: confirmed
@@ -314,6 +854,38 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-07.mdx
             note: Corrects Marky drift toward Murky Mabrams in relevant contexts.
 
+      - id: disambiguation.matthew-mark-malthrek
+        status: confirmed
+        kind: disambiguation
+        canonical: null
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/notes/the-vengeful/threads/the-maltreks.mdx
+            role: malthrek-thread
+        aliases:
+          - Matthew
+          - Mark
+          - Malthrek boy
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Thralmals hag bargain and pool protection
+            - Castle Malthrek and Malthrek child extraction
+            - Mark physically present with the group at the Thralmals
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Do not collapse Matthew Malthrek and Mark Malthrek into a generic
+          ambiguity. Mark was physically with the group at the Thralmals when
+          they talked to the hags. Matthew is the Malthrek boy promised to the
+          hags in exchange for protecting the Thralmal pools, and the one whose
+          safety matters to that inherited bargain.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Mark was with the Thralmals group, while Matthew was the promised boy.
+
       - id: filler.tawag-dito
         status: rejected-as-artifact
         kind: filler-phrase
@@ -322,6 +894,7 @@ profiles:
         aliases:
           - Talgito
           - Taudito
+          - Talbito or Taudito
         scope:
           campaigns:
             - the-vengeful
@@ -332,9 +905,13 @@ profiles:
           When the audio reflects the Tagalog filler phrase tawag dito, do not
           canonize it as a lore term. Talbito is also a confirmed Reformist
           paladin in other contexts, so never globally replace Talbito without
-          checking scene context.
+          checking scene context. In the 2026-06-14 teleportation destination
+          list, Talbito or Taudito is likely this filler phrase rather than a
+          destination.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-07.mdx
             note: Identifies Talgito as likely tawag dito, not a lore term.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-13.mdx
             note: Establishes Talbito as a Reformist paladin.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: Treats Talbito/Taudito in the teleportation destination list as likely tawag dito.
