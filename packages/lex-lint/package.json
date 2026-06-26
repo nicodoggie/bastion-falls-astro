@@ -34,11 +34,12 @@
     "@rdfjs/environment": "^1.0.0",
     "@rdfjs/namespace": "^2.0.1",
     "@rdfjs/term-map": "^2.0.2",
+    "@rdfjs/types": "^2.0.1",
     "clownface": "^2.0.3",
     "glob": "^13.0.6",
     "jsonc-parser": "^3.3.1",
     "jsonld": "^9.0.0",
-    "n3": "^2.0.4",
+    "n3": "^2.1.0",
     "rdf-validate-shacl": "^0.6.5"
   },
   "devDependencies": {
