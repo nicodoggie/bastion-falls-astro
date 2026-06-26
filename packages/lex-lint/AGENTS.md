@@ -62,16 +62,16 @@ registry.
 
 ## Touch points
 
-| Area | Role |
-|------|------|
-| `src/cli.ts` | Args, config merge, `--fix`, glob expansion |
-| `src/config.ts` | Load / parse / validate `lex-lint.config.json` |
-| `src/lint-file.ts` | Parse file, orchestrate branches, `applyRuleSeverities` |
-| `src/lint-jsonld-graph.ts` | `@graph` path + registry hooks |
-| `src/lint-graph-entry.ts` | JSON-LD expand + SHACL (not yet a registry rule) |
-| `src/rules/registry.ts` | Ordered `RULE_MODULES` |
-| `src/rules/apply-severities.ts` | `off` / `warn` / `error` filtering |
-| `src/fix-pipeline.ts` | Autofix orchestration |
+| Area                            | Role                                                    |
+| ------------------------------- | ------------------------------------------------------- |
+| `src/cli.ts`                    | Args, config merge, `--fix`, glob expansion             |
+| `src/config.ts`                 | Load / parse / validate `lex-lint.config.json`          |
+| `src/lint-file.ts`              | Parse file, orchestrate branches, `applyRuleSeverities` |
+| `src/lint-jsonld-graph.ts`      | `@graph` path + registry hooks                          |
+| `src/lint-graph-entry.ts`       | JSON-LD expand + SHACL (not yet a registry rule)        |
+| `src/rules/registry.ts`         | Ordered `RULE_MODULES`                                  |
+| `src/rules/apply-severities.ts` | `off` / `warn` / `error` filtering                      |
+| `src/fix-pipeline.ts`           | Autofix orchestration                                   |
 
 **SHACL** is still embedded in `lint-graph-entry.ts`; it can move behind the
 registry later if the indirection is worth it.

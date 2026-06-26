@@ -38,3 +38,14 @@ astro/src/content/docs/world/languages/hickic/seneran/*/lexicon/by-field/
 astro/src/content/docs/world/languages/hickic/seneran/*/lexicon/field/
 astro/src/content/docs/world/languages/hickic/seneran/*/lexicon/fields.mdx
 astro/src/content/docs/world/languages/hickic/seneran/*/lexicon/search.mdx
+AGENTS.personality.md
+DISLIKES.md
+IDENTITY.md
+HEARTBEAT.md
+INTERESTS.md
+MEMORY.md
+SECRET_MEMORY.md
+SOUL.md
+TOOLS.md
+USER.md
+openclaw-workspace-state.json

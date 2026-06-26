@@ -2,11 +2,12 @@
 flavor = "mdx"
 # Exclude files/directories
 exclude = [
-    "node_modules", 
-    ".git", 
-    "astro/.astro", 
-    "**/dist", 
-    "**/timeline-generated.mdx"
+    "node_modules",
+    ".git",
+    "astro/.astro",
+    "**/dist",
+    "**/timeline-generated.mdx",
+    ",specstory"
 ]
 
 # Set line length limit
