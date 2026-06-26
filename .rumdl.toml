@@ -51,8 +51,9 @@ normalize-language = "linguist"
 on-missing-language-definition = "warn"
 on-missing-tool-binary = "warn"
 
-[code-block-tools.language-aliases]
-markmap = "markdown"
+[code-block-tools.languages.markmap]
+lint = ["rumdl"]
+
 
 [code-block-tools.languages.markdown]
 lint = ["rumdl"]
