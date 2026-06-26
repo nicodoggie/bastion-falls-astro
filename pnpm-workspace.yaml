@@ -3,6 +3,7 @@ packages:
   - cli
   - packages/*
 allowBuilds:
+  "@parcel/watcher": true
   esbuild: true
   lefthook: true
   phantomjs-prebuilt: true
