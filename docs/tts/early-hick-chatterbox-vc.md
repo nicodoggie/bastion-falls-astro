@@ -9,8 +9,8 @@ reference voice.
 The best current chain is:
 
 1. Generate pronunciation with MBROLA `it2` using the tail-padded sources.
-2. Exclude the broken partial `ketor_no_schwa.wav` render.
-3. Use Chatterbox VC with the cute reference sample as the target voice.
+1. Exclude the broken partial `ketor_no_schwa.wav` render.
+1. Use Chatterbox VC with the cute reference sample as the target voice.
 
 The generated set that sounded good is:
 
@@ -204,8 +204,10 @@ This batch covers:
 
 Known MBROLA `it2` approximations:
 
-- `/θ/` is approximated with `T`, not `S`; the `S` source made the Chatterbox output too obviously sibilant.
-- `/ʔ/` is approximated with a short `_` silence, currently lengthened enough to keep forms like `ven'er` from blurring into repeated syllables.
+- `/θ/` is approximated with `T`, not `S`; the `S` source made the Chatterbox output too obviously
+  sibilant.
+- `/ʔ/` is approximated with a short `_` silence, currently lengthened enough to keep forms like
+  `ven'er` from blurring into repeated syllables.
 - `/h/` is approximated with a short `_` boundary because `it2` has no `h` phone.
 - `/ə/` is approximated by shorter, lower-prominence `A`; `it2` has no schwa phone.
 

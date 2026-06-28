@@ -8,7 +8,7 @@ Use `VehicleStatBlock` in MDX (and `.astro`) with ship data that matches `Vehicl
 `VehicleStatBlock` is auto-imported for MDX (see `astro-auto-import` in `astro.config.mjs`). Pass
 `vehicle` from frontmatter; optional `name` overrides the header (e.g. Starlight `title`).
 
-```mdx
+````mdx
 ---
 title: My Ship
 vehicle:
@@ -17,12 +17,7 @@ vehicle:
   # …see help/5e-tools-schema/vehicle.mdx
 ---
 
-{
-// @ts-expect-error -- frontmatter is injected at runtime
-frontmatter.vehicle && (
-  <VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
-) }
-```
+<VehicleStatBlock vehicle={frontmatter.vehicle} name={frontmatter.title} />
 
 ## `.astro` usage
 
@@ -39,6 +34,7 @@ const vehicle = entry?.data.vehicle;
   <VehicleStatBlock vehicle={vehicle} name={entry.data.title} />
 )}
 ```
+````
 
 ## Styling
 
