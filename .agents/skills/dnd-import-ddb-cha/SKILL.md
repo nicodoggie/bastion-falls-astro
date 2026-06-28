@@ -33,16 +33,15 @@ human judgment.
      in the terminal.
    - Read `/tmp/ddb-campaign-<id>.json` and use `.campaign.characters[]` as the
      roster source.
-   - For every roster entry, run the per-character importer before attempting an
-     MDX merge:
+   - For every roster entry, run the per-character importer before attempting an MDX merge:
 
      ```bash
      pnpm bfcli ddb import-cha --useExistingChrome --port 9224 --force --out /tmp/ddb-character-<character-id>.json <character-id-or-url>
      ```
 
-     Prefer the roster entry's `id` for `<character-id-or-url>` unless a
-     canonical `url` is needed for troubleshooting. The imported character
-     artifact confirms the final character name and current sheet data.
+     Prefer the roster entry's `id` for `<character-id-or-url>` unless a canonical `url` is needed
+     for troubleshooting. The imported character artifact confirms the final character name and
+     current sheet data.
    - If the campaign command is unavailable or fails before producing a roster
      artifact, open/crawl the authenticated campaign page with the same Chrome
      DevTools session used for character imports.
