@@ -34,6 +34,14 @@
         },
       },
     },
+    "mdx-analyzer": {
+      "initialization_options": {
+        "typescript": {
+          "enabled": true,
+          "tsdk": "../bastion-falls-astro/astro/node_modules/typescript/lib",
+        },
+      },
+    },
     "rumdl": {
       "binary": {
         "path": "/usr/bin/rumdl",

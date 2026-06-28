@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@types/node": "~24.7.2",
-    "typescript": "^6.0.3",
+    "typescript": "7.0.1-rc",
     "wrangler": "^4.104.0"
   },
   "dependencies": {

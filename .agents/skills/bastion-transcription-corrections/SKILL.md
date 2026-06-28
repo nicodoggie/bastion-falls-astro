@@ -17,23 +17,28 @@ Update `astro/.bf-transcripts/corrections.yaml` with reusable correction knowled
 2. Gather evidence from the current task:
    - Current conversation corrections.
    - The active note under `astro/src/content/docs/world/notes/...`.
+   - Earlier summaries and notes from the same session or campaign, especially when they provide continuity for identities, titles, family links, or recurring artifacts.
    - Session-level correction notes such as `astro/.bf-transcripts/session-YYYY-MM-DD/correction_notes.md`.
    - Matching `.bf-transcripts/session-*/codex_notes/notes.mdx`, `scenes/*.md`, and `chunks/*.md` when present.
    - Canonical world articles named by the user.
-3. Classify each correction:
+3. Use continuity before canonizing uncertainty:
+   - Compare suspect phrases against earlier summaries before treating them as new lore; a phrase may be a summarization drift from a known status, relationship, or title.
+   - Prefer continuity-supported interpretations when multiple summaries point to the same entity, but keep audio-dependent details provisional unless the user or a canonical article settles them.
+   - When continuity shows a phrase is just a distorted version of a known concept, record that in the rule instruction or evidence note.
+4. Classify each correction:
    - Use `status: confirmed` only when the user explicitly settled the canon or a canonical article proves it.
    - Use `status: provisional` when a spelling or identity is likely but still depends on audio/context.
    - Use `status: rejected-as-artifact` when a transcript term should not become a lore entity.
-4. Decide whether to update an existing rule:
+5. Decide whether to update an existing rule:
    - Add new aliases to an existing entity rule when the same wrong form resolves to the same canonical target in the same context.
    - Add or update a `kind: disambiguation` rule when one surface form can mean multiple real entities.
    - Add a `kind: transcription-artifact` rule when a term should usually be ignored or treated as ASR/table noise.
-5. Keep scope narrow enough:
+6. Keep scope narrow enough:
    - Prefer `scope.campaigns` for campaign-specific names.
    - Add `scope.sessionDates` only when the rule is not safe across the whole campaign.
    - Put contextual limits in `scope.contexts` and the `instruction`.
-6. Run the interactive Q&A workflow when session correction notes contain unresolved or low-confidence items.
-7. Patch `corrections.yaml` directly, preserving human-readable order and comments if present.
+7. Run the interactive Q&A workflow when session correction notes contain unresolved or low-confidence items.
+8. Patch `corrections.yaml` directly, preserving human-readable order and comments if present.
 
 ## Session Correction Q&A
 
@@ -103,6 +108,7 @@ Required fields: `id`, `status`, `kind`, `canonical`, `aliases`, `scope`, `apply
 - Contextual split: `Marky` can mean Murky Mabrams in teasing/protective-suit contexts, but Mark Malthrek is also real; use a disambiguation rule.
 - Rejected artifact: `Sabina` can be ASR/Taglish noise in Vengeful correction passages; do not invent a character unless later evidence changes this.
 - Filler phrase: Tagalog `tawag dito` can be mistranscribed as lore-like names; do not canonize it as a place or person.
+- Wild Magic surge summaries should prioritize the narrative effects over roll numbers. If the transcript does not state the effect cleanly, infer likely effects from `astro/src/content/docs/world/misc/wild-magic.mdx` and reconcile them with the narrative instead of preserving raw roll bookkeeping.
 
 ## Validation
 

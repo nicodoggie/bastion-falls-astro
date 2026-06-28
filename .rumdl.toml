@@ -7,11 +7,12 @@ exclude = [
     "astro/.astro",
     "**/dist",
     "**/timeline-generated.mdx",
+    "AGENTS.personality.md",
     ",specstory"
 ]
 
 # Set line length limit
-line_length = 80
+line_length = 100
 
 # Unordered list style
 [MD004]

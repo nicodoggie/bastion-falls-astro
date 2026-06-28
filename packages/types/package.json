@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "tsx": "^4.22.4",
-    "typescript": "^6.0.3",
+    "typescript": "7.0.1-rc",
     "zod-to-json-schema": "^3.25.2"
   }
 }

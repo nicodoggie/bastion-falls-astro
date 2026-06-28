@@ -283,6 +283,107 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User confirmed Father Dunwether or Dunweather should be Dunweather.
 
+      - id: character.baron-dunum-highbury
+        status: confirmed
+        kind: entity
+        canonical: Baron Dunum Highbury
+        canonicalRefs: []
+        aliases:
+          - Baron Highbury
+          - Old Man Highbury
+          - Lord Highbury
+          - Highbury-linked noble
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Malthrek Highbury and Fagus plot
+            - rescued elder from Reformist mistreatment
+            - Miya and Highbury family hooks
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Vengeful passages about the rescued elder, Castle Malthrek's
+          Highbury/Fagus plot, or Miya's Highbury family hooks, use Baron Dunum
+          Highbury. Do not preserve Baron Highbury, Old Man Highbury, Lord
+          Highbury, or generic Highbury-linked noble as unresolved alternatives in
+          this context.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
+            note: User clarified the rescued elder is Baron Dunum Highbury.
+
+      - id: character.dorothy-campbell
+        status: confirmed
+        kind: entity
+        canonical: Dorothy Marie Campbell
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/dorothy-campbell.mdx
+            role: primary
+        aliases:
+          - Miya
+          - Miya Campbell
+          - Dorothy Highbury
+          - Dorothy
+          - Dottie
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Vengeful passages about the rescued Highbury child, the Little
+          Estate survivor, or the Hags-of-Hama linked lineage, use
+          Dorothy Marie Campbell. In this context, treat Miya/Miya Campbell/
+          Dorothy Highbury as aliases, not separate characters.
+        evidence:
+          - path: astro/src/content/docs/world/characters/dorothy-campbell.mdx
+            note: Canonical character article defines Dorothy as Miya Campbell, Dorothy Highbury, age 13, born 1262-11-16 AI.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
+            note: Notes confirm Dorothy/Miya identity, age, and campaign linkage.
+
+      - id: character.luana-cinna-moan
+        status: confirmed
+        kind: entity
+        canonical: Luana Victorique Dubreuil
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/luana-victorique-dubreuil.mdx
+            role: primary
+          - type: article
+            path: astro/src/content/docs/world/organizations/legally-bare.mdx
+            role: contributor-reference
+        aliases:
+          - Cinna
+          - Cinna Moan
+          - School Girl Cinna Moan
+          - Cinnamon
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Legally Bare model references
+            - Lime's Gerta Moon's Boarding School classmates
+            - Luana-like fey spirit manifestations
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Luana Victorique Dubreuil is the person who models in Legally Bare as
+          Cinna Moan / School Girl Cinna Moan and was Lime's classmate at Gerta
+          Moon's Boarding School. In fey-spirit manifestation passages, do not
+          identify a spirit resembling Luana as Luana herself unless the context
+          explicitly says the real Luana is present.
+        evidence:
+          - path: astro/src/content/docs/world/organizations/legally-bare.mdx
+            note: Legally Bare lists School Girl Cinna Moan as Luana Victorique Dubreuil's pen name.
+          - path: astro/src/content/docs/world/characters/lime-schulze.mdx
+            note: Lime's article lists Luana among her cohort at Gerta Moon's Boarding School.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
+            note: User clarified the young fey spirit resembles Luana/Cinna Moan but is not her.
+
       - id: organization.legally-bare
         status: confirmed
         kind: organization
@@ -513,6 +614,32 @@ profiles:
             note: States Sabina is not a character or NPC in the descent.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: Treats Sabina wording as garbled or artifact phrasing.
+
+      - id: artifact.heir-of-hama
+        status: rejected-as-artifact
+        kind: transcription-artifact
+        canonical: null
+        canonicalRefs: []
+        aliases:
+          - Heir of Hama
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Miya and Highbury family hooks
+            - Legally Bare model image discussions
+            - Hags of Hama adjacent summaries
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Do not introduce an entity, title, or plot hook called Heir of Hama in
+          Vengeful notes. Treat this phrase as likely transcription noise or a
+          summarization misunderstanding of Miya's status as a Hag of Hama unless
+          later audio evidence explicitly supports it.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
+            note: User clarified there is no Heir of Hama; the line may misunderstand Miya's status as a Hag of Hama.
 
       - id: place.thrantorbury
         status: confirmed
