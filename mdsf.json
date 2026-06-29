@@ -3,6 +3,9 @@
   "files": {
     "extensions": ["md", "mdx"]
   },
+  "language_aliases": {
+    "markmap": "markdown"
+  },
   "languages": {
     "c": "clang-format",
     "cpp": "clang-format",
@@ -27,7 +30,6 @@
     "text": [],
     "yaml": "prettier",
     "markdown": [["rumdl:check:fix"]],
-    "markmap": [["rumdl:check:fix"]],
     "mdx": [["rumdl:check:fix"]],
     "astro": []
   }

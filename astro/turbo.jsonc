@@ -3,16 +3,24 @@
   "tasks": {
     "lint:astro": {},
     "lint:biome": {},
+    "lint:mdsf": {},
     "lint:mdx": {},
     "lint:yaml": {},
     "fmt:biome": {},
     "fmt:mdx": {},
+    "fmt:mdsf": {},
     "fmt:yaml": {},
     "lint:all": {
-      "dependsOn": ["lint:astro", "lint:biome", "lint:mdx", "lint:yaml"]
+      "dependsOn": [
+        "lint:astro",
+        "lint:biome",
+        "lint:mdsf",
+        "lint:mdx",
+        "lint:yaml",
+      ],
     },
     "fmt:all": {
-      "dependsOn": ["fmt:biome", "fmt:mdx", "fmt:yaml"]
-    }
-  }
+      "dependsOn": ["fmt:biome", "fmt:mdsf", "fmt:mdx", "fmt:yaml"],
+    },
+  },
 }
