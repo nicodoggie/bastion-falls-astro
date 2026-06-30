@@ -2148,6 +2148,11 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "Ilythiiri",
+          "etymon:sourceGloss": "Dark Elf",
+          "etymon:sourceLanguage": "Drow"
+        },
         "etymon:compound": "Drow Ilythiiri + pre-Early Hick ʔal",
         "etymon:note": "Borrowed term for Dark Elves"
       },

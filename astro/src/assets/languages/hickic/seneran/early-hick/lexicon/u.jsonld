@@ -21,6 +21,40 @@
   },
   "@graph": [
     {
+      "@id": "ehk:uruloke",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "u.ru.lo.ke",
+        "writtenRep": "uruloke"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "urulócë",
+          "etymon:sourceGloss": "red dragon; fire dragon",
+          "etymon:sourceLanguage": "Quenya"
+        },
+        "etymon:note": "High-register borrowing for red or fire dragons.",
+        "etymon:soundChange": "Quenya repair"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "red dragon; fire dragon"
+          },
+          "lexinfo:register": "lexinfo:formalRegister",
+          "lexinfo:semanticField": [
+            "Mythological Terms",
+            "Borrowed Terms",
+            "High Register"
+          ]
+        }
+      ]
+    },
+    {
       "@id": "ehk:'u'u",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {

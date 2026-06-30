@@ -67,9 +67,9 @@
         "etymon:borrowing": {
           "etymon:sourceForm": "lyg",
           "etymon:sourceGloss": "dragon, snake, drake",
-          "etymon:sourceLanguage": "Eldrim"
+          "etymon:sourceLanguage": "Sindarin"
         },
-        "etymon:note": "Shows semantic narrowing from general serpentine being to specific dragon concept",
+        "etymon:note": "Common lower-register borrowing for lesser dragons, drakes, and reptilian dragon-creatures; regional speech may use it where learned registers use loke.",
         "etymon:soundChange": "vowel raising, final devoicing"
       },
       "sense": [
@@ -77,10 +77,45 @@
           "@type": "ontolex:LexicalSense",
           "definition": {
             "@language": "en",
-            "@value": "dragon"
+            "@value": "lesser dragon; drake; reptilian dragon-creature"
           },
           "lexinfo:semanticField": ["Mythological Terms", "Borrowed Terms"],
-          "usage": "Cultural borrowing showing Eldrim mythological influence"
+          "usage": "Common or regional draconic term, especially for lesser dragons and folk compounds; contrasts with learned loke."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:loke",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "lo.ke",
+        "writtenRep": "loke"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "lócë",
+          "etymon:sourceGloss": "dragon; serpent; lizardlike creature",
+          "etymon:sourceLanguage": "Quenya"
+        },
+        "etymon:note": "Learned high-register draconic compound element, productive in formal dragon names and taxonomy; common or regional speech may use lik instead.",
+        "etymon:soundChange": "Quenya repair"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "dragon; draconic being; draconic compound element"
+          },
+          "lexinfo:register": "lexinfo:formalRegister",
+          "lexinfo:semanticField": [
+            "Mythological Terms",
+            "Borrowed Terms",
+            "High Register"
+          ],
+          "usage": "Productive learned compound element for anything plausibly draconic."
         }
       ]
     },

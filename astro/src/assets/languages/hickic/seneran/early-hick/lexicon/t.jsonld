@@ -275,7 +275,11 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:borrowedFrom": "Quenya tamin",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "tamin",
+          "etymon:sourceGloss": "forge",
+          "etymon:sourceLanguage": "Quenya"
+        },
         "etymon:gloss": "forge",
         "etymon:note": "Direct borrowing of Quenya technical term for forge/smithy",
         "etymon:soundChange": "direct borrowing"
@@ -411,10 +415,15 @@
       ],
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "tengwa",
+          "etymon:sourceGloss": "letter",
+          "etymon:sourceLanguage": "Quenya"
+        },
         "etymon:gloss": "letter",
         "etymon:note": "Shows semantic extension from basic writing to magical inscription",
-        "etymon:protoform": "Eldrim tengwa",
-        "etymon:soundChange": "final vowel loss"
+        "etymon:protoform": "Quenya tengwa",
+        "etymon:soundChange": "ngw cluster simplification"
       },
       "sense": [
         {

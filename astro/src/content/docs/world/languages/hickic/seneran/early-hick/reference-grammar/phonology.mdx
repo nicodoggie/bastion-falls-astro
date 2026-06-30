@@ -76,6 +76,75 @@ The productive heavy coda pattern favors sibilant plus voiceless stop clusters. 
 are rare, and are most expected in repaired borrowings, conservative spellings, or later regional
 forms.
 
+## Repair Strategies
+
+Early Hick repairs borrowed words toward its own segmental inventory and syllable shape rather than
+preserving every source-language contrast. The main pressure is phonotactic: borrowed sounds are
+first mapped to the nearest usable Early Hick segment, then clusters and weak vowels are smoothed
+until the word fits ordinary `(C)(C)V(C)(C)` syllables. The current working repair files are
+[`sindarin-repair.lsc`](../sindarin-repair.lsc) and
+[`quenya-repair.lsc`](../quenya-repair.lsc).
+
+Borrowing entries may name the source language with familiar English labels when the reference
+mapping is clear. In the current Elven material, _Sindarin_ corresponds to Wood Elven, _Quenya_ to
+High Elven, and _Drow_ or _Ilythiiri_ to Dark Elven. _Common Elvish_ is used only when the form
+belongs to a mixed or trade register rather than to one branch. _Eldrim_ names the people or
+cultural sphere, not a precise source language.
+
+General repair tendencies:
+
+1. Source sounds absent from Early Hick are mapped to native segments.
+   - Sindarin `ch` repairs through a velar/glottal fricative stage and often surfaces as `k` in
+     codas: `roch` -> `rok`.
+   - Sindarin `dh` repairs through `ð` and then to Early Hick `d` between vowels: `eðel` -> `edel`.
+   - Sindarin `y` is vocalized to `i`, because Early Hick has no palatal glide `/j/`.
+1. Long or accented vowels are shortened before ordinary Early Hick repair.
+   - `lhûg` is treated as `lhug` before repair.
+1. Source clusters are simplified when they would create illegal Early Hick syllables.
+   - `tengwa` -> `tenwa`, with the Elven `ngw` cluster reduced before ordinary syllable
+     repair.
+   - `lh-` and `rh-` lose the voiceless-liquid contrast, since Early Hick does not preserve it as a
+     separate phoneme.
+1. Voicing changes are conservative and lexical. Final `g` commonly devoices in the attested
+   borrowing set: `lyg` -> `lik`. Other final voiced stops should not be devoiced automatically
+   unless a lexical entry or borrowing layer supports it.
+
+### Elven Borrowings
+
+The clearest Wood Elven/Sindarin loans are ordinary cultural terms. They usually keep recognizable
+shape while losing non-Hickic contrasts:
+
+| Source | Repair | Current Use |
+| --- | --- | --- |
+| Sindarin `roch` | `rok` | horse |
+| Sindarin `eðel` | `edel` | Wood Elf |
+| Sindarin `lyg` | `lik` | lesser dragon or drake |
+| Sindarin `raud` | `rad` | refined or elven-worked metal |
+| Quenya `angulócë` | `anuloke` | benevolent metallic or ancient dragon |
+| Quenya `lócë` | `loke` | learned draconic compound element |
+| Quenya `fealócë` | `feloke` | blue or lightning dragon |
+| Quenya `urulócë` | `uruloke` | red or fire dragon |
+| Quenya `tengwa` | `tenwa` | writing; spellcraft |
+
+Compounds with the native person word _'al_ may repair differently depending on whether speakers
+still parse the person marker. A direct repaired phrase such as `elda 'al` can surface as `eldal`,
+while the lexicon may preserve _'eldal_ where the native animate/person boundary remains visible.
+
+High Elven/Quenya loans are usually less heavily repaired because Quenya-like source forms already
+fit Early Hick vowels and open syllables more easily. The borrowed smithing term _tamin_ is a direct
+loan:
+
+```txt
+Quenya tamin -> tamin
+"forge, smithy"
+```
+
+Quenya-specific repairs mostly handle spelling and prosody: `qu` and `c` map to `k`, long vowels
+shorten, and written `y` vocalizes to `i`. In learned dragon terminology, repeated _-loke_ forms
+make _loke_ productive as a formal draconic compound element, while _anuloke_ may be reanalyzed as
+_ano-loke_ and reinforce the honorific prefix _ano-_. This keeps High Elven technical loans distinct
+from the more cluster-heavy Sindarin and Common Elvish layer.
+
 ### Vowel Sequences
 
 1. Permitted Diphthongs:
@@ -212,6 +281,7 @@ _-sk-'er_.
 
 1. Element + Element
    - kur-tin -> kurtin "bronze" (copper-tin)
+   - kur-rad -> kurad "special copper" (copper-refined metal)
    - mal-ter -> mater "stream" (pool-flow)
 
 1. Descriptor + Element

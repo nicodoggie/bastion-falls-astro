@@ -21,6 +21,41 @@
   },
   "@graph": [
     {
+      "@id": "ehk:rad",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "rad",
+        "writtenRep": "rad"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "raud",
+          "etymon:sourceGloss": "metal",
+          "etymon:sourceLanguage": "Sindarin"
+        },
+        "etymon:note": "Borrowed prestige-metal term used for refined foreign, elven, or magically worked metal rather than ordinary native metal.",
+        "etymon:soundChange": "diphthong simplification"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "refined foreign metal; elven or magically worked metal"
+          },
+          "lexinfo:semanticField": [
+            "Metal Terms",
+            "Material Terms",
+            "Borrowed Terms",
+            "Magical Terms"
+          ],
+          "usage": "Marked borrowing used when the material is distinguished from ordinary ger 'metal'."
+        }
+      ]
+    },
+    {
       "@id": "ehk:ran",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
@@ -182,7 +217,11 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:borrowedFrom": "Sindarin roch",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "roch",
+          "etymon:sourceGloss": "horse",
+          "etymon:sourceLanguage": "Sindarin"
+        },
         "etymon:meaning": "horse",
         "etymon:period": "Early Hick"
       },

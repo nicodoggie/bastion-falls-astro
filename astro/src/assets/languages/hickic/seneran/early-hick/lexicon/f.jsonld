@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "decomp": "http://www.w3.org/ns/lemon/decomp#",
+    "etymon": "http://www.lexinfo.net/lemon/etymon#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "lime": "http://www.w3.org/ns/lemon/lime#",
+    "lexvo": "http://lexvo.org/id/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "bf": "https://bastion-falls.thekennel.info/languages/",
+    "ehk": "#"
+  },
+  "@id": "lexicon:EarlyHick_F",
+  "@type": "lime:Lexicon",
+  "dc:title": "Early Hick Lexicon - F entries",
+  "dc:language": {
+    "@id": "bf:hickic/seneran/early-hick",
+    "skos:prefLabel": "Early Hick"
+  },
+  "@graph": [
+    {
+      "@id": "ehk:feloke",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "fe.lo.ke",
+        "writtenRep": "feloke"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "fealócë",
+          "etymon:sourceGloss": "blue dragon; lightning dragon",
+          "etymon:sourceLanguage": "Quenya"
+        },
+        "etymon:note": "High-register borrowing for blue or lightning dragons.",
+        "etymon:soundChange": "Quenya repair"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "blue dragon; lightning dragon"
+          },
+          "lexinfo:register": "lexinfo:formalRegister",
+          "lexinfo:semanticField": [
+            "Mythological Terms",
+            "Borrowed Terms",
+            "High Register"
+          ]
+        }
+      ]
+    }
+  ]
+}

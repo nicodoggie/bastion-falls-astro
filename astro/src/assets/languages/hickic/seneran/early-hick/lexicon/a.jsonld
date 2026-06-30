@@ -1025,6 +1025,82 @@
       ]
     },
     {
+      "@id": "ehk:ano'eldal",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "a.no.ʔel.dal",
+        "writtenRep": "ano'eldal"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:ano-"
+        },
+        {
+          "@id": "ehk:'eldal"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "ano-'eldal",
+        "etymon:gloss": "HON-fey",
+        "etymon:note": "High-register formation using the honorific ano- prefix with 'eldal in its fey or elven-person sense. Distinct from toreldal 'High Elf', which uses the native augmentative tor-.",
+        "etymon:soundChange": "compound formation"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "archfey"
+          },
+          "lexinfo:register": "lexinfo:formalRegister",
+          "lexinfo:semanticField": [
+            "Person Terms",
+            "Sacred Terms",
+            "Mythological Terms",
+            "High Register"
+          ],
+          "usage": "Formal or ceremonial term for an archfey, exalted fey, or fey sovereign; not a term for High Elves."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:anuloke",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "a.nu.lo.ke",
+        "writtenRep": "anuloke"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "angulócë",
+          "etymon:sourceGloss": "dragon",
+          "etymon:sourceLanguage": "Quenya"
+        },
+        "etymon:note": "High-register borrowing for benevolent metallic dragons and ancient dragons, later reanalyzed as ano-loke in learned speech.",
+        "etymon:soundChange": "Quenya repair"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "benevolent metallic dragon; ancient dragon"
+          },
+          "lexinfo:register": "lexinfo:formalRegister",
+          "lexinfo:semanticField": [
+            "Mythological Terms",
+            "Borrowed Terms",
+            "High Register"
+          ],
+          "usage": "Primary high-register dragon term for benevolent metallic dragons and ancient dragons."
+        }
+      ]
+    },
+    {
       "@id": "ehk:'al",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {

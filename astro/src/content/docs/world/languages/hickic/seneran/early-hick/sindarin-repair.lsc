@@ -1,5 +1,5 @@
 # Consonant Features
-Feature place (labial, palatal, dental, alveolar, velar, glottal)
+Feature place (labial, dental, alveolar, velar, glottal)
 Feature manner (stop, fricative, nasal, liquid, glide)
 Feature voicing (voiced, unvoiced)
 
@@ -22,6 +22,7 @@ Symbol t [unvoiced alveolar stop]
 Symbol d [voiced alveolar stop]
 Symbol k [unvoiced velar stop]
 Symbol g [voiced velar stop]
+Symbol f [unvoiced labial fricative]
 Symbol v [voiced labial fricative]
 Symbol θ [unvoiced dental fricative]
 Symbol ð [voiced dental fricative]
@@ -34,7 +35,6 @@ Symbol ʔ [unvoiced glottal stop]
 Symbol h [unvoiced glottal fricative]
 Symbol x [voiced glottal fricative]
 Symbol w [voiced labial glide]
-Symbol j [voiced palatal glide]
 
 
 # Vowels
@@ -45,15 +45,30 @@ Symbol o [-high +mid -low -front -central +back]
 Symbol a [-high -mid +low -front +central -back]
 Symbol ə [+mid -high -low +central -front -back]
 
-Class consonant {p, b, t, d, k, g, v, θ, ð, s, m, n, l, r, ʔ, h, x, w, tʰ, dʰ, j}
-Class initialcluster {pr, br, kr, gr, sk, st, kn, gn, tr, θr}
+Class consonant {p, b, t, d, k, g, f, v, θ, ð, s, m, n, l, r, ʔ, h, x, w, tʰ, dʰ}
+Class initialcluster {br, dr, tr, kr, fl, pl, kl, θr, kn, gn}
 Class finalcluster {st, sk, sp, ks, ls, rs}
 Class vowel {i, e, o, a, u, ə}
 Class diphthong {ai, ae, ei}
 
 deromanizer:
+  ngw => nw
   ch => x
-  y => j
+  dh => ð
+  th => θ
+  lh => l
+  rh => r
+  â => a
+  ê => e
+  î => i
+  ô => o
+  û => u
+  á => a
+  é => e
+  í => i
+  ó => o
+  ú => u
+  y => i
 
 # Sindarin comes by after Stage 2 of transition of Proto-Hick to Early Hick
 # Syllable structure is same as Stage 3, basically last stage til Early Hick
@@ -82,8 +97,9 @@ aspiration-repair:
   tʰ => θ / [liquid] _ @vowel
   Then: θ [+low] => θ ə
 
-palatal-glide-repair:
-  j => i / _
+voiced-stop-repair:
+  g => k / _ $
+  g => * / n _ w
 
 voiced-dental-repair:
   ð => dʰ / _ 
@@ -127,7 +143,7 @@ metathesis-complex-cluster-simplification cleanup:
   @vowel$1 @consonant$2 => $2 $1 / $ _ @finalcluster
 
 first-syllable-syncope:
-  {p,b,k,t,s,θ} @vowel => {p,b,k,t,s,θ} * / $ _ {k,t,n,r} <syl> // _ @consonant <syl> @consonant
+  {p,b,k,t,s,θ} @vowel => {p,b,k,t,s,θ} * / $ _ {k,t,r} <syl> // _ @consonant <syl> @consonant
 
 back-vowel-reduction-after-velar-stop:
   [+back] => * / $ [velar stop] _ [nasal]
@@ -156,4 +172,3 @@ final-vowel-reduction:
 
 romanizer:
   x => ch
-

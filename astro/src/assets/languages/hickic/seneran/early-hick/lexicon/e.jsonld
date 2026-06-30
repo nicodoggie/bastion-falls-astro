@@ -321,6 +321,11 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "eðel",
+          "etymon:sourceGloss": "Wood Elf",
+          "etymon:sourceLanguage": "Sindarin"
+        },
         "etymon:note": "Borrowed term for Wood Elves",
         "etymon:protoform": "Sindarin eðel + pre-Early Hick ʔal"
       },
@@ -408,6 +413,11 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "elda",
+          "etymon:sourceGloss": "elf",
+          "etymon:sourceLanguage": "Sindarin"
+        },
         "etymon:compound": "elda+'al",
         "etymon:gloss": "elf-person",
         "etymon:note": "Borrowing from Sindarin eldrim with native person marker"

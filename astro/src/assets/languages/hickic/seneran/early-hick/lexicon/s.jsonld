@@ -63,7 +63,11 @@
       },
       "etymology": {
         "@type": "etymon:Etymology",
-        "etymon:borrowedFrom": "Eldrim saw",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "saw",
+          "etymon:sourceGloss": "filth, putrescence",
+          "etymon:sourceLanguage": "Common Elvish"
+        },
         "etymon:gloss": "filth, putrescence",
         "etymon:soundChange": "direct borrowing"
       },

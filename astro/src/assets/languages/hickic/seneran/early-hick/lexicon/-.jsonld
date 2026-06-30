@@ -21,6 +21,41 @@
   },
   "@graph": [
     {
+      "@id": "ehk:ano-",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Prefix"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "a.no",
+        "writtenRep": "ano-"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:borrowing": {
+          "etymon:sourceForm": "ango",
+          "etymon:sourceGloss": "dragon",
+          "etymon:sourceLanguage": "Quenya"
+        },
+        "etymon:note": "High-register honorific and intensifying prefix, reinforced by reanalysis of anuloke as ano-loke once loke became a recognizable learned draconic element.",
+        "etymon:soundChange": "Quenya repair and grammaticalization"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "great, grand, majestic, exalted, awe-inspiring"
+          },
+          "lexinfo:semanticField": [
+            "Grammatical Terms",
+            "Honorifics",
+            "High Register",
+            "Borrowed Terms"
+          ],
+          "usage": "Formal or ceremonial intensifier distinct from ordinary native tor-."
+        }
+      ]
+    },
+    {
       "@id": "ehk:-asam",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Suffix"],
       "canonicalForm": {

@@ -132,6 +132,45 @@
       ]
     },
     {
+      "@id": "ehk:kaloke",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ka.lo.ke",
+        "writtenRep": "kaloke"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:ka"
+        },
+        {
+          "@id": "ehk:loke"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "ka-loke",
+        "etymon:gloss": "ADJ-dragon",
+        "etymon:note": "Productive adjectival formation from learned draconic compound element loke.",
+        "etymon:soundChange": "compound fusion"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "draconic; dragonlike"
+          },
+          "lexinfo:semanticField": [
+            "Mythological Terms",
+            "Borrowed Terms",
+            "High Register"
+          ],
+          "usage": "Learned or formal adjective for dragonlike traits, forms, language, magic, or taxonomy."
+        }
+      ]
+    },
+    {
       "@id": "ehk:kandup",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
@@ -1855,6 +1894,41 @@
             "@value": "bronze"
           },
           "lexinfo:semanticField": ["Metal Terms", "Material Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:kurad",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ku.rad",
+        "writtenRep": "kurad"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:kur"
+        },
+        {
+          "@id": "ehk:rad"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "kur-rad",
+        "etymon:gloss": "copper-refined.metal",
+        "etymon:note": "Lexicalized compound for copper distinguished by unusual refinement, luster, or elven working.",
+        "etymon:soundChange": "compound reduction"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "special copper; refined or elven-worked copper"
+          },
+          "lexinfo:semanticField": ["Metal Terms", "Material Terms"],
+          "usage": "Used for prestige copper rather than ordinary kur."
         }
       ]
     }
