@@ -241,6 +241,9 @@ importers:
       mdxlint:
         specifier: ^1.0.0
         version: 1.0.0(bluebird@3.7.2)
+      remark-frontmatter:
+        specifier: ^5.0.0
+        version: 5.0.0
       rumdl:
         specifier: ^0.2.22
         version: 0.2.22

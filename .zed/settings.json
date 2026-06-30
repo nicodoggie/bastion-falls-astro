@@ -16,12 +16,24 @@
     },
     "MDX": {
       "language_servers": [
-        "rumdl",
         "mdx-analyzer",
+        "rumdl",
         "path-server-lsp",
         "astro-language-server",
       ],
-      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "rumdl",
+          "arguments": [
+            "fmt",
+            "-s",
+            "--stdin",
+            "--stdin-filename",
+            "{buffer_path}",
+          ],
+        },
+      },
+      "code_actions_on_format": {},
     },
   },
   "lsp": {
@@ -39,6 +51,28 @@
         "typescript": {
           "enabled": true,
           "tsdk": "../bastion-falls-astro/astro/node_modules/typescript/lib",
+        },
+        "mdx": {
+          "frontmatter": {
+            "schemas": [
+              {
+                "fileMatch": ["astro/src/content/**/*.mdx"],
+                "url": "./astro/.astro/collections/docs.schema.json",
+              },
+            ],
+          },
+        },
+      },
+      "settings": {
+        "mdx": {
+          "frontmatter": {
+            "schemas": [
+              {
+                "fileMatch": ["astro/src/content/**/*.mdx"],
+                "url": "./astro/.astro/collections/docs.schema.json",
+              },
+            ],
+          },
         },
       },
     },

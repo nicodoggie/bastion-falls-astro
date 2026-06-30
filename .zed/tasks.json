@@ -15,7 +15,7 @@
   },
   {
     "label": "BF Dev types",
-    "command": "pnpm dev:types",
+    "command": "pnpm -F ...types dev",
     "cwd": "$ZED_WORKTREE_ROOT/astro",
     "env": {
       "PATH": "${env.PATH}:${env.HOME}/.volta/bin",

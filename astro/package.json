@@ -93,6 +93,7 @@
     "eslint-plugin-yml": "^3.5.0",
     "kingraph": "^0.3.2",
     "mdxlint": "^1.0.0",
+    "remark-frontmatter": "^5.0.0",
     "rumdl": "^0.2.22",
     "tsx": "^4.22.4",
     "unified": "^11.0.5"
