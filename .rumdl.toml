@@ -8,8 +8,8 @@ exclude = [
     "**/dist",
     "**/timeline-generated.mdx",
     "AGENTS.personality.md",
-    ".specstory"
-    ".kilo"
+    ".specstory/*",
+    ".kilo/*"
 ]
 
 # Set line length limit

@@ -16,8 +16,8 @@
     },
     "MDX": {
       "language_servers": [
-        "mdx-analyzer",
         "rumdl",
+        "mdx-analyzer",
         "path-server-lsp",
         "astro-language-server",
       ],
@@ -26,6 +26,8 @@
           "command": "rumdl",
           "arguments": [
             "fmt",
+            "--config",
+            ".rumdl.toml",
             "-s",
             "--stdin",
             "--stdin-filename",
@@ -79,7 +81,11 @@
     "rumdl": {
       "binary": {
         "path": "/usr/bin/rumdl",
-        "arguments": ["server"],
+        "arguments": [
+          "server",
+          "--config",
+          "${ZED_WORKSPACE_ROOT}/.rumdl.toml",
+        ],
       },
     },
   },
