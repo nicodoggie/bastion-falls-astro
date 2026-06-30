@@ -1,0 +1,24 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Essence of Nymph
+source: BF
+type: P
+rarity: rare
+weight: 0.5
+entries:
+  - >-
+    This enchanted vial carries fey magic associated with nymphs, beauty, sensuality, revelry, and
+    natural abundance.
+  - >-
+    **Consumable.** As an action, a creature can drink the vial. The creature must make a DC 15
+    Wisdom saving throw. On a failed save, the creature is charmed for 1d6 hours, becomes sexually
+    aroused for the same duration, and adopts a nymph-like outlook shaped by beauty, sensuality,
+    revelry, and natural abundance. A creature that lacks sexual organs is unaffected.
+  - >-
+    At the end of each hour while the arousal lasts, the affected creature can repeat the Wisdom
+    saving throw. On a success, the creature no longer thinks as if a nymph for 1 hour. After three
+    successive successful saving throws, the arousal ends.
+  - >-
+    When the effect ends, the affected creature and one willing creature with whom it shared sexual
+    intimacy during the effect gain the benefits of a long rest and each loses one level of
+    exhaustion. This item does not compel sexual activity or override a creature's willingness.

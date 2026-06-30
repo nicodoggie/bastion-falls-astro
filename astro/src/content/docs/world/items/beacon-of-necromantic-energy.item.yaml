@@ -1,0 +1,32 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Beacon of Necromantic Energy
+source: BF
+type:
+  type: Staff (quarterstaff)
+rarity: legendary
+reqAttune: true
+weight: 4
+dmg1: 1d6
+dmg2: 1d8
+dmgType: B
+entries:
+  - >-
+    This staff radiates waves of necromantic power when charged with spell slots. Its effective
+    radius is 1 mile for each spell slot level spent to charge it, to a maximum radius of 25 miles.
+  - >-
+    When activated, unsanctified corpses within the radius rise as undead. A raised corpse keeps the
+    same size it had in life; the GM determines its statistics. Corpses protected by sanctifying
+    magic, such as Gentle Repose or a similar effect, are not raised.
+  - >-
+    Undead creatures within the radius must succeed on a DC 18 Constitution saving throw or become
+    hostile to every nearby non-undead creature. On a successful save, an undead creature is immune
+    to this effect until the next dawn. If it remains within the beacon's radius after that, it must
+    save again.
+  - >-
+    While unattuned, the Beacon of Necromantic Energy functions as a normal quarterstaff.
+  - >-
+    **Topple.** If you have a feature that lets you use this mastery property, when you hit a
+    creature with this weapon, you can force it to make a Constitution saving throw. The DC equals 8
+    plus the ability modifier used for the attack roll plus your proficiency bonus. On a failed
+    save, the creature falls prone.

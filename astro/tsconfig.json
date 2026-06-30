@@ -18,7 +18,16 @@
     "jsxImportSource": "react",
   },
   "mdx": {
+    "plugins": [["remark-frontmatter", ["toml", "yaml"]]],
     "checkMdx": true,
+    "frontmatter": {
+      "schemas": [
+        {
+          "fileMatch": ["src/content/**/*.mdx"],
+          "url": ".astro/collections/collections.json",
+        },
+      ],
+    },
     "paths": {
       "@/*": ["./src/*"],
     },

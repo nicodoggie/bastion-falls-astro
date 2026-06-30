@@ -1,0 +1,37 @@
+name: Essence of Nymph
+source: BF
+level: 4
+school: E
+time:
+  - number: 1
+    unit: action
+range:
+  type: point
+  distance:
+    type: touch
+components:
+  m:
+    text: a vial of Essence of Nymph, which the target drinks
+    consume: true
+duration:
+  - type: special
+    special: up to 1d6 hours
+entries:
+  - >-
+    One creature that drinks the vial must make a DC 15 Wisdom saving throw. On a failed save, the
+    creature is charmed for 1d6 hours, becomes sexually aroused for the same duration, and adopts a
+    nymph-like outlook shaped by beauty, sensuality, revelry, and natural abundance.
+  - >-
+    At the end of each hour while the arousal lasts, the affected creature can repeat the Wisdom
+    saving throw. On a success, the creature no longer thinks as if a nymph for 1 hour. After three
+    successive successful saving throws, the arousal ends.
+  - >-
+    When the effect ends, the affected creature and one willing creature with whom it shared sexual
+    intimacy during the effect gain the benefits of a long rest and each loses one level of
+    exhaustion..
+  - >-
+    A creature with no sexual organs will not be affected.
+savingThrow:
+  - wisdom
+conditionInflict:
+  - charmed

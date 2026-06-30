@@ -1,0 +1,38 @@
+name: Blood Contract
+source: BF
+level: 9
+school: E
+meta:
+  ritual: true
+time:
+  - number: 1
+    unit: hour
+range:
+  type: point
+  distance:
+    type: touch
+components:
+  v: true
+  s: true
+  m:
+    text: blood of each entity, ink stone, paper, and a writing implement
+duration:
+  - type: permanent
+    ends:
+      - dispel
+entries:
+  - >-
+    You magically bind a contract written in blood. Each entity to be involved with and bound to the
+    contract provides a vial of blood, which is ritually mixed with ink. Each and every term,
+    condition, and item in the contract must be precisely written. If a term, item, or condition can
+    be interpreted in multiple ways, then the Blood Contract can be applied to all of the ways they
+    may be interpreted.
+  - >-
+    If a term, condition, or item defined in the contract is broken by an entity whose blood is bound
+    and no failure condition is defined explicitly, the entity must make a Wisdom saving throw once
+    per day while the rule remains broken. On a failed save, that entity takes 20d6 psychic damage,
+    or half as much damage on a successful one.
+savingThrow:
+  - wisdom
+damageInflict:
+  - psychic

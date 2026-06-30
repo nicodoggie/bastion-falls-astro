@@ -1,0 +1,23 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Twin Door of Instantaneous Travel
+source: BF
+type: wondrous item
+rarity: very rare
+wondrous: true
+weight: 100
+value: 10000000
+entries:
+  - >-
+    The Twin Door of Instantaneous Travel is an identical pair of oak doors, each inlaid with
+    distinctively grained olive wood in a two-panel design. Strange runes are carved into the
+    cornices along each panel.
+  - >-
+    When you touch the doorknob of one door, you can expend spell slots to connect it to its paired
+    door. When you open the touched door, it instantaneously opens the paired door. Any number of
+    creatures can travel between the paired doors while the door remains open. Both doors close
+    automatically if no creature travels between them for 5 seconds.
+  - >-
+    **Distance Cost.** The spell slot cost depends on the distance between the doors: one 1st-level
+    spell slot per 200 feet, one 2nd-level spell slot per 1,000 feet, one 3rd-level spell slot per 1
+    mile, or one 4th-level spell slot for distances above 10 miles.
