@@ -4,7 +4,7 @@
 
 _**User (2025-05-12 13:49Z)**_
 
-@Organization.ts  @organizations  what are the listed organization `type` values in the org articles
+@Organization.ts @organizations what are the listed organization `type` values in the org articles
 
 ---
 
@@ -12,7 +12,7 @@ _**Assistant**_
 
 <details>
                 <summary>Searched codebase "type:" • **25** results</summary>
-            
+
 | File | Lines |
 |------|-------|
 | `astro/src/content/docs/organizations/the-monadic-order-of-the-ram.mdx` | L1-23 |
@@ -47,7 +47,7 @@ _**Assistant**_
 
 <details>
             <summary>Grep search for "type:" • **11** files</summary>
-        
+
 | File | Line | Match |
 |------|------|-------|
 | `file:///home/ensu/Projects/bastion-falls-astro/astro/src/content/docs/characters/brigadine-savoy.mdx` | L18 | `type: human` |
@@ -100,7 +100,7 @@ know and I can extract them precisely.
 
 _**User (2025-05-12 13:49Z)**_
 
-reths add these type values in @Organization.ts  as an enum so we can do a mapping when migrated
+reths add these type values in @Organization.ts as an enum so we can do a mapping when migrated
 
 ---
 
@@ -136,7 +136,7 @@ Lines added: 19, lines removed: undefined
 +   'Business Entity',
 +   'Ship',
 + ]);
-  
+
   const OrganizationSchema = z.object({
 ```
 
@@ -153,4 +153,3 @@ If you need a mapping function or want to see how to use this for migration,
 just let me know!
 
 ---
-

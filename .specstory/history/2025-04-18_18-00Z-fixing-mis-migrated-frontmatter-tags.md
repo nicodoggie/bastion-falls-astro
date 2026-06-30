@@ -4,29 +4,47 @@
 
 _**User (2025-04-18 11:05Z)**_
 
-@docs a lot of content articles have mis-migrated TOML frontmatter tags that have not been correctly imported as YAML frontmatter. please help fix
+@docs a lot of content articles have mis-migrated TOML frontmatter tags that have not been correctly
+imported as YAML frontmatter. please help fix
 
 ---
 
 _**Assistant**_
 
-<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs` directory.
+<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that
+were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs`
+directory.
 
-1.  **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
-2.  **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the `src/content/docs` directory. I should search for files containing potential TOML syntax within their frontmatter.
-3.  **Plan the fix:**
-    *   Use `grep_search` to find files containing common TOML array syntax within the YAML frontmatter (between `---` lines). I'll search for patterns like `= [` within the `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
-    *   For each identified file, read its content, focusing on the frontmatter section.
-    *   Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid YAML.
-    *   Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
+1. **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML
+   frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present
+   within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead
+   of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
+1. **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the
+   `src/content/docs` directory. I should search for files containing potential TOML syntax within
+   their frontmatter.
+1. **Plan the fix:**
+    - Use `grep_search` to find files containing common TOML array syntax within the YAML
+      frontmatter (between `---` lines). I'll search for patterns like `= [` within the
+      `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
+    - For each identified file, read its content, focusing on the frontmatter section.
+    - Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid
+      YAML.
+    - Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
 
-Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx` files in the specified directory.</details></think>
+Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter
+is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals
+sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx`
+files in the specified directory.</details></think>
 
 ---
 
-Okay, I can help with that. It sounds like some TOML syntax, like `key = ["value1", "value2"]`, might have ended up inside the YAML frontmatter blocks (`--- ... ---`) instead of being converted to the YAML format (`key: [value1, value2]` or `key:\n  - value1\n  - value2`).
+Okay, I can help with that. It sounds like some TOML syntax, like `key = ["value1", "value2"]`,
+might have ended up inside the YAML frontmatter blocks (`--- ... ---`) instead of being converted to
+the YAML format (`key: [value1, value2]` or `key:\n  - value1\n  - value2`).
 
-First, I'll search within the `src/content/docs` directory for markdown files (`.md`, `.mdx`) that contain patterns resembling TOML assignments within their frontmatter. A common pattern would be `some_key = [`. Let's use `grep` to find potential candidates.
+First, I'll search within the `src/content/docs` directory for markdown files (`.md`, `.mdx`) that
+contain patterns resembling TOML assignments within their frontmatter. A common pattern would be
+`some_key = [`. Let's use `grep` to find potential candidates.
 
 ---
 
@@ -34,14 +52,17 @@ First, I'll search within the `src/content/docs` directory for markdown files (`
             <summary>Grep search for "---
 ((.|
 )*?)\w+\s*=\s*\[" • **37** files</summary>
-        
+
 | File | Line | Match |
 |------|------|-------|
-| `file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/vehicles/principium.mdx` | L1 | `---
+| `file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/vehicles/principium.mdx` | L1 | `--- |
+
 title: principium
 description: +++
 tags:
-  - vehicles
+
+- vehicles
+
 ---
 
 +++
@@ -61,7 +82,9 @@ vulnerabilities = ["fire"]` |
 title: ahurian empire
 description: +++
 tags:
-  - organizations
+
+- organizations
+
 ---
 
 +++
@@ -73,7 +96,9 @@ organization_type = ["Government"]` |
 title: coutillie
 description: +++
 tags:
-  - organizations
+
+- organizations
+
 ---
 
 +++
@@ -85,7 +110,9 @@ organization_type = ["Organized Crime"]` |
 title: bouillard
 description: +++
 tags:
-  - organizations
+
+- organizations
+
 ---
 
 +++
@@ -97,18 +124,24 @@ organization_type = ["Organized Crime"]` |
 title: apgarian confederacy
 description: +++
 tags:
-  - organizations
+
+- organizations
+
 ---
 
 +++
 title = "Apgarian Confederacy"
-# template = "redirect.html"
+
+## template = "redirect.html"
+
 aliases = ["@/locations/apgar.md"]` |
 | `file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/organizations/machado.mdx` | L1 | `---
 title: machado
 description: +++
 tags:
-  - organizations
+
+- organizations
+
 ---
 
 +++
@@ -120,7 +153,9 @@ organization_type = ["Organized Crime"]` |
 title: stairway to the heavens
 description: +++
 tags:
-  - locations
+
+- locations
+
 ---
 
 +++
@@ -131,12 +166,14 @@ location_type = ["town"]` |
 title: Planar Cycles and Magical Resonance
 description: 1. Feywild Synchronization
 tags:
-  - theorycrafting
+
+- theorycrafting
+
 ---
 
-## Major Cycle Components
+### Major Cycle Components
 
-### Primary Cycles
+#### Primary Cycles
 
 1. Feywild Synchronization
 
@@ -146,23 +183,23 @@ tags:
      species
    - Strongest influence on natural magical patterns
 
-2. Far Realms Connection
+1. Far Realms Connection
 
    - ~29,800 year cycle (slightly offset from Feywild)
    - Creates interference patterns with Feywild cycle
    - Discovered around 8000-7000 PF
    - Significant impact on magical stability
 
-3. Ideal Planes Intersection
+1. Ideal Planes Intersection
    - Five distinct subcycles
    - Complex harmonics affect magical accessibility
    - Contribute to regional variations in magical strength
 
-## Mathematical Model
+### Mathematical Model
 
 Total magical potential M(t) at time t can be expressed as:
 
-```
+```text
 def magical_potential(t):
     """
     Calculate magical potential at time t
@@ -626,7 +663,7 @@ Let's refine the search to specifically find files with the `+++\n... = ...\n+++
 
 <details>
             <summary>Grep search for "^\+\+\+\n(.|\n)*?=\s*.*\n\+\+\+$" • **59** files</summary>
-        
+
 | File | Line | Match |
 |------|------|-------|
 | `file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/events/index.mdx` | L8 | `+++
@@ -1134,6 +1171,7 @@ custom_sort.type = "date"
 ```
 
 **TOML Data:**
+
 ```toml
 title = "Events"
 insert_anchor_links = "right"
@@ -1145,6 +1183,7 @@ custom_sort.type = "date"
 ```
 
 **Existing YAML Data:**
+
 ```yaml
 title: events
 description: ""
@@ -1153,14 +1192,17 @@ tags:
 ```
 
 **Conversion & Merge Logic:**
-*   Convert TOML `title = "Events"` to YAML `title: Events`. Merge will likely overwrite the existing `title: events`.
-*   Convert `insert_anchor_links = "right"` to `insert_anchor_links: right`. Add to YAML.
-*   Convert `sort_by = "title"` to `sort_by: title`. Add to YAML.
-*   Convert `weight = 0` to `weight: 0`. Add to YAML.
-*   Convert `[extra]` table:
-    *   `custom_sort.key = "extra.evt.date_started"` becomes nested dict `extra: { custom_sort: { key: "extra.evt.date_started" } }`
-    *   `custom_sort.type = "date"` merges into the above: `extra: { custom_sort: { key: "extra.evt.date_started", type: "date" } }`
-*   Final Merged YAML structure (TOML overwrites/adds to original YAML):
+
+- Convert TOML `title = "Events"` to YAML `title: Events`. Merge will likely overwrite the existing
+  `title: events`.
+- Convert `insert_anchor_links = "right"` to `insert_anchor_links: right`. Add to YAML.
+- Convert `sort_by = "title"` to `sort_by: title`. Add to YAML.
+- Convert `weight = 0` to `weight: 0`. Add to YAML.
+- Convert `[extra]` table:
+  - `custom_sort.key = "extra.evt.date_started"` becomes nested dict `extra: { custom_sort: { key: "extra.evt.date_started" } }`
+  - `custom_sort.type = "date"` merges into the above: `extra: { custom_sort: { key: "extra.evt.date_started", type: "date" } }`
+- Final Merged YAML structure (TOML overwrites/adds to original YAML):
+
     ```yaml
     title: Events # Overwritten from TOML
     description: "" # Kept from original YAML
@@ -1179,15 +1221,22 @@ Now, create the `edit_file` call for this file.</details></think>
 
 ---
 
-Okay, that search was much more successful. It found many files with TOML frontmatter enclosed in `+++` blocks, separate from the standard `---` YAML blocks.
+Okay, that search was much more successful. It found many files with TOML frontmatter enclosed in
+`+++` blocks, separate from the standard `---` YAML blocks.
 
 Here's the plan:
-1.  I will go through the identified files one by one.
-2.  For each file, I'll read its content.
-3.  I'll extract the data from both the `---` YAML block and the `+++` TOML block.
-4.  I'll convert the TOML data into a YAML structure. This involves changing `=` assignments to `:` pairs, handling nested tables (`[table.subkey]`) by creating nested dictionaries, and converting TOML arrays to YAML lists.
-5.  I'll merge the converted TOML data into the existing YAML data. If there are conflicting keys (like `title` in many cases), the value from the TOML block will overwrite the one in the YAML block, as it seems to contain the more specific/final value.
-6.  Finally, I'll replace the original `---` and `+++` blocks with a single, new `---` block containing the merged YAML data, keeping the rest of the file content intact.
+
+1. I will go through the identified files one by one.
+1. For each file, I'll read its content.
+1. I'll extract the data from both the `---` YAML block and the `+++` TOML block.
+1. I'll convert the TOML data into a YAML structure. This involves changing `=` assignments to `:`
+   pairs, handling nested tables (`[table.subkey]`) by creating nested dictionaries, and converting
+   TOML arrays to YAML lists.
+1. I'll merge the converted TOML data into the existing YAML data. If there are conflicting keys
+   (like `title` in many cases), the value from the TOML block will overwrite the one in the YAML
+   block, as it seems to contain the more specific/final value.
+1. Finally, I'll replace the original `---` and `+++` blocks with a single, new `---` block
+   containing the merged YAML data, keeping the rest of the file content intact.
 
 Let's start with the first file found: `src/content/docs/events/index.mdx`.
 
@@ -1199,31 +1248,48 @@ Read file: src/content/docs/events/index.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs` directory.
+<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that
+were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs`
+directory.
 
-1.  **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
-2.  **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the `src/content/docs` directory. I should search for files containing potential TOML syntax within their frontmatter.
-3.  **Plan the fix:**
-    *   Use `grep_search` to find files containing common TOML array syntax within the YAML frontmatter (between `---` lines). I'll search for patterns like `= [` within the `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
-    *   For each identified file, read its content, focusing on the frontmatter section.
-    *   Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid YAML.
-    *   Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
+1. **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML
+   frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present
+   within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead
+   of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
+1. **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the
+   `src/content/docs` directory. I should search for files containing potential TOML syntax within
+   their frontmatter.
+1. **Plan the fix:**
+    - Use `grep_search` to find files containing common TOML array syntax within the YAML
+      frontmatter (between `---` lines). I'll search for patterns like `= [` within the
+      `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
+    - For each identified file, read its content, focusing on the frontmatter section.
+    - Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid
+      YAML.
+    - Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
 
-Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx` files in the specified directory.</details></think>
+Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter
+is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals
+sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx`
+files in the specified directory.</details></think>
 
 ---
 
 Okay, I have read the content of `src/content/docs/events/index.mdx`.
 
 Now, I will perform the merge:
-*   **YAML Data:**
+
+- **YAML Data:**
+
     ```yaml
     title: ' index'
     description: +++
     tags:
       - events
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Events"
     insert_anchor_links = "right"
@@ -1233,7 +1299,9 @@ Now, I will perform the merge:
     custom_sort.key = "extra.evt.date_started"
     custom_sort.type = "date"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Events
     insert_anchor_links: right
@@ -1244,7 +1312,9 @@ Now, I will perform the merge:
         key: extra.evt.date_started
         type: date
     ```
-*   **Merged YAML Data:** (TOML values overwrite YAML where keys conflict)
+
+- **Merged YAML Data:** (TOML values overwrite YAML where keys conflict)
+
     ```yaml
     title: Events
     description: +++ # Keeping original value as TOML didn't specify one
@@ -1259,7 +1329,8 @@ Now, I will perform the merge:
         type: date
     ```
 
-I will now edit `src/content/docs/events/index.mdx` to replace the existing `---` and `+++` blocks with the new merged YAML frontmatter.
+I will now edit `src/content/docs/events/index.mdx` to replace the existing `---` and `+++` blocks
+with the new merged YAML frontmatter.
 
 ---
 
@@ -1286,27 +1357,33 @@ Lines added: 8, lines removed: 1
 +     key: extra.evt.date_started
 +     type: date
   ---
-  
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs` directory.
+<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that
+were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs`
+directory.
 
-1.  **Identify the incorrect TOML format:** It was identified as TOML data within `+++` blocks, separate from the main `---` YAML block.
-2.  **Locate the files:** `grep_search` found files with this pattern.
-3.  **Plan the fix:** Go through each file, read it, extract YAML and TOML data, convert TOML to YAML, merge them, and replace the old frontmatter with the merged YAML.
-4.  **Execution:**
-    *   Processed `src/content/docs/events/index.mdx`. Read the file, calculated the merged YAML, and applied the edit using `edit_file`.
-    *   The edit seems successful based on the diff.
-5.  **Next Step:** Process the next file from the `grep_search` results: `src/content/docs/religions/ahore.mdx`.
-    *   Read the file.
-    *   Parse YAML and TOML.
-    *   Convert TOML to YAML.
-    *   Merge YAML.
-    *   Edit the file.</details></think>
+1. **Identify the incorrect TOML format:** It was identified as TOML data within `+++` blocks,
+   separate from the main `---` YAML block.
+1. **Locate the files:** `grep_search` found files with this pattern.
+1. **Plan the fix:** Go through each file, read it, extract YAML and TOML data, convert TOML to
+   YAML, merge them, and replace the old frontmatter with the merged YAML.
+1. **Execution:**
+    - Processed `src/content/docs/events/index.mdx`. Read the file, calculated the merged YAML, and
+      applied the edit using `edit_file`.
+    - The edit seems successful based on the diff.
+1. **Next Step:** Process the next file from the `grep_search` results:
+   `src/content/docs/religions/ahore.mdx`.
+    - Read the file.
+    - Parse YAML and TOML.
+    - Convert TOML to YAML.
+    - Merge YAML.
+    - Edit the file.</details></think>
 
 ---
 
@@ -1322,44 +1399,64 @@ Read file: src/content/docs/religions/ahore.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs` directory.
+<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that
+were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs`
+directory.
 
-1.  **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
-2.  **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the `src/content/docs` directory. I should search for files containing potential TOML syntax within their frontmatter.
-3.  **Plan the fix:**
-    *   Use `grep_search` to find files containing common TOML array syntax within the YAML frontmatter (between `---` lines). I'll search for patterns like `= [` within the `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
-    *   For each identified file, read its content, focusing on the frontmatter section.
-    *   Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid YAML.
-    *   Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
+1. **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML
+   frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present
+   within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead
+   of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
+1. **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the
+   `src/content/docs` directory. I should search for files containing potential TOML syntax within
+   their frontmatter.
+1. **Plan the fix:**
+    - Use `grep_search` to find files containing common TOML array syntax within the YAML
+      frontmatter (between `---` lines). I'll search for patterns like `= [` within the
+      `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
+    - For each identified file, read its content, focusing on the frontmatter section.
+    - Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid
+      YAML.
+    - Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
 
-Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx` files in the specified directory.</details></think>
+Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter
+is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals
+sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx`
+files in the specified directory.</details></think>
 
 ---
 
 Okay, I have the content for `src/content/docs/religions/ahore.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: ahore
     description: +++
     tags:
       - religions
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "The Ahore"
     template = "redirect.html"
     [extra]
     redirect = "/religions/ahorism/_index.md"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: The Ahore
     template: redirect.html
     extra:
       redirect: /religions/ahorism/_index.md
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: The Ahore
     description: +++
@@ -1393,24 +1490,37 @@ Lines added: 4, lines removed: 1
 + extra:
 +   redirect: /religions/ahorism/_index.md
   ---
-  
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs` directory.
+<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that
+were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs`
+directory.
 
-1.  **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
-2.  **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the `src/content/docs` directory. I should search for files containing potential TOML syntax within their frontmatter.
-3.  **Plan the fix:**
-    *   Use `grep_search` to find files containing common TOML array syntax within the YAML frontmatter (between `---` lines). I'll search for patterns like `= [` within the `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
-    *   For each identified file, read its content, focusing on the frontmatter section.
-    *   Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid YAML.
-    *   Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
+1. **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML
+   frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present
+   within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead
+   of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
+1. **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the
+   `src/content/docs` directory. I should search for files containing potential TOML syntax within
+   their frontmatter.
+1. **Plan the fix:**
+    - Use `grep_search` to find files containing common TOML array syntax within the YAML
+      frontmatter (between `---` lines). I'll search for patterns like `= [` within the
+      `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
+    - For each identified file, read its content, focusing on the frontmatter section.
+    - Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid
+      YAML.
+    - Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
 
-Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx` files in the specified directory.</details></think>
+Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter
+is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals
+sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx`
+files in the specified directory.</details></think>
 
 ---
 
@@ -1426,30 +1536,46 @@ Read file: src/content/docs/vehicles/la-carnalis.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs` directory.
+<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that
+were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs`
+directory.
 
-1.  **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
-2.  **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the `src/content/docs` directory. I should search for files containing potential TOML syntax within their frontmatter.
-3.  **Plan the fix:**
-    *   Use `grep_search` to find files containing common TOML array syntax within the YAML frontmatter (between `---` lines). I'll search for patterns like `= [` within the `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
-    *   For each identified file, read its content, focusing on the frontmatter section.
-    *   Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid YAML.
-    *   Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
+1. **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML
+   frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present
+   within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead
+   of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
+1. **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the
+   `src/content/docs` directory. I should search for files containing potential TOML syntax within
+   their frontmatter.
+1. **Plan the fix:**
+    - Use `grep_search` to find files containing common TOML array syntax within the YAML
+      frontmatter (between `---` lines). I'll search for patterns like `= [` within the
+      `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
+    - For each identified file, read its content, focusing on the frontmatter section.
+    - Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid
+      YAML.
+    - Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
 
-Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx` files in the specified directory.</details></think>
+Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter
+is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals
+sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx`
+files in the specified directory.</details></think>
 
 ---
 
 Read `src/content/docs/vehicles/la-carnalis.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: la carnalis
     description: +++
     tags:
       - vehicles
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "La Carnalis"
     [extra.stats]
@@ -1462,7 +1588,9 @@ Read `src/content/docs/vehicles/la-carnalis.mdx`.
     int = 0
     cha = 0
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: La Carnalis
     extra:
@@ -1476,7 +1604,9 @@ Read `src/content/docs/vehicles/la-carnalis.mdx`.
         int: 0
         cha: 0
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: La Carnalis
     description: +++
@@ -1524,24 +1654,37 @@ Lines added: 11, lines removed: 1
 +     int: 0
 +     cha: 0
   ---
-  
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs` directory.
+<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that
+were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs`
+directory.
 
-1.  **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
-2.  **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the `src/content/docs` directory. I should search for files containing potential TOML syntax within their frontmatter.
-3.  **Plan the fix:**
-    *   Use `grep_search` to find files containing common TOML array syntax within the YAML frontmatter (between `---` lines). I'll search for patterns like `= [` within the `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
-    *   For each identified file, read its content, focusing on the frontmatter section.
-    *   Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid YAML.
-    *   Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
+1. **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML
+   frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present
+   within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead
+   of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
+1. **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the
+   `src/content/docs` directory. I should search for files containing potential TOML syntax within
+   their frontmatter.
+1. **Plan the fix:**
+    - Use `grep_search` to find files containing common TOML array syntax within the YAML
+      frontmatter (between `---` lines). I'll search for patterns like `= [` within the
+      `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
+    - For each identified file, read its content, focusing on the frontmatter section.
+    - Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid
+      YAML.
+    - Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
 
-Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx` files in the specified directory.</details></think>
+Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter
+is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals
+sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx`
+files in the specified directory.</details></think>
 
 ---
 
@@ -1557,40 +1700,60 @@ Read file: src/content/docs/vehicles/index.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs` directory.
+<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that
+were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs`
+directory.
 
-1.  **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
-2.  **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the `src/content/docs` directory. I should search for files containing potential TOML syntax within their frontmatter.
-3.  **Plan the fix:**
-    *   Use `grep_search` to find files containing common TOML array syntax within the YAML frontmatter (between `---` lines). I'll search for patterns like `= [` within the `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
-    *   For each identified file, read its content, focusing on the frontmatter section.
-    *   Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid YAML.
-    *   Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
+1. **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML
+   frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present
+   within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead
+   of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
+1. **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the
+   `src/content/docs` directory. I should search for files containing potential TOML syntax within
+   their frontmatter.
+1. **Plan the fix:**
+    - Use `grep_search` to find files containing common TOML array syntax within the YAML
+      frontmatter (between `---` lines). I'll search for patterns like `= [` within the
+      `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
+    - For each identified file, read its content, focusing on the frontmatter section.
+    - Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid
+      YAML.
+    - Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
 
-Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx` files in the specified directory.</details></think>
+Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter
+is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals
+sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx`
+files in the specified directory.</details></think>
 
 ---
 
 Read `src/content/docs/vehicles/index.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: ' index'
     description: +++
     tags:
       - vehicles
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Vehicles"
     weight = 12
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Vehicles
     weight: 12
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Vehicles
     description: +++
@@ -1620,24 +1783,37 @@ Lines added: 2, lines removed: 1
     - vehicles
 + weight: 12
   ---
-  
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs` directory.
+<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that
+were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs`
+directory.
 
-1.  **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
-2.  **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the `src/content/docs` directory. I should search for files containing potential TOML syntax within their frontmatter.
-3.  **Plan the fix:**
-    *   Use `grep_search` to find files containing common TOML array syntax within the YAML frontmatter (between `---` lines). I'll search for patterns like `= [` within the `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
-    *   For each identified file, read its content, focusing on the frontmatter section.
-    *   Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid YAML.
-    *   Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
+1. **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML
+   frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present
+   within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead
+   of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
+1. **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the
+   `src/content/docs` directory. I should search for files containing potential TOML syntax within
+   their frontmatter.
+1. **Plan the fix:**
+    - Use `grep_search` to find files containing common TOML array syntax within the YAML
+      frontmatter (between `---` lines). I'll search for patterns like `= [` within the
+      `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
+    - For each identified file, read its content, focusing on the frontmatter section.
+    - Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid
+      YAML.
+    - Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
 
-Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx` files in the specified directory.</details></think>
+Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter
+is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals
+sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx`
+files in the specified directory.</details></think>
 
 ---
 
@@ -1653,44 +1829,64 @@ Read file: src/content/docs/religions/revivalist-divine-masochist.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs` directory.
+<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that
+were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs`
+directory.
 
-1.  **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
-2.  **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the `src/content/docs` directory. I should search for files containing potential TOML syntax within their frontmatter.
-3.  **Plan the fix:**
-    *   Use `grep_search` to find files containing common TOML array syntax within the YAML frontmatter (between `---` lines). I'll search for patterns like `= [` within the `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
-    *   For each identified file, read its content, focusing on the frontmatter section.
-    *   Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid YAML.
-    *   Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
+1. **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML
+   frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present
+   within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead
+   of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
+1. **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the
+   `src/content/docs` directory. I should search for files containing potential TOML syntax within
+   their frontmatter.
+1. **Plan the fix:**
+    - Use `grep_search` to find files containing common TOML array syntax within the YAML
+      frontmatter (between `---` lines). I'll search for patterns like `= [` within the
+      `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
+    - For each identified file, read its content, focusing on the frontmatter section.
+    - Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid
+      YAML.
+    - Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
 
-Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx` files in the specified directory.</details></think>
+Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter
+is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals
+sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx`
+files in the specified directory.</details></think>
 
 ---
 
 Read `src/content/docs/religions/revivalist-divine-masochist.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: revivalist divine masochist
     description: +++
     tags:
       - religions
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Revivalist Church of the Divine Masochist"
     template = "redirect.html"
     [extra]
     redirect = "/religions/divine-masochism/revivalist/"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Revivalist Church of the Divine Masochist
     template: redirect.html
     extra:
       redirect: /religions/divine-masochism/revivalist/
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Revivalist Church of the Divine Masochist
     description: +++
@@ -1724,55 +1920,73 @@ Lines added: 4, lines removed: 1
 + extra:
 +   redirect: /religions/divine-masochism/revivalist/
   ---
-  
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs` directory.
+<think><details><summary>Thought Process</summary>The user wants to fix TOML frontmatter tags that
+were incorrectly migrated to YAML frontmatter in markdown files within the `src/content/docs`
+directory.
 
-1.  **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
-2.  **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the `src/content/docs` directory. I should search for files containing potential TOML syntax within their frontmatter.
-3.  **Plan the fix:**
-    *   Use `grep_search` to find files containing common TOML array syntax within the YAML frontmatter (between `---` lines). I'll search for patterns like `= [` within the `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
-    *   For each identified file, read its content, focusing on the frontmatter section.
-    *   Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid YAML.
-    *   Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
+1. **Identify the incorrect TOML format:** I need to understand what the "mis-migrated TOML
+   frontmatter tags" look like in the YAML frontmatter. It likely means TOML syntax is present
+   within the YAML section. A common example might be arrays like `tags = ["tag1", "tag2"]` instead
+   of the YAML equivalent `tags: [tag1, tag2]` or `tags:\n - tag1\n - tag2`.
+1. **Locate the files:** The user mentioned the issue is in "a lot of content articles" within the
+   `src/content/docs` directory. I should search for files containing potential TOML syntax within
+   their frontmatter.
+1. **Plan the fix:**
+    - Use `grep_search` to find files containing common TOML array syntax within the YAML
+      frontmatter (between `---` lines). I'll search for patterns like `= [` within the
+      `src/content/docs` directory, specifically in markdown files (`.md`, `.mdx`).
+    - For each identified file, read its content, focusing on the frontmatter section.
+    - Parse the frontmatter (potentially problematic) and convert the TOML-like syntax to valid
+      YAML.
+    - Use `edit_file` to replace the incorrect frontmatter with the corrected YAML version.
 
-Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx` files in the specified directory.
+Let's start by searching for the pattern. A likely pattern for TOML arrays within YAML frontmatter
+is `\w+\s*=\s*\[`. This looks for a word character (key), followed by optional whitespace, an equals
+sign, optional whitespace, and an opening square bracket. I'll limit the search to `.md` and `.mdx`
+files in the specified directory.
 
-This process is repetitive. I have identified ~50+ files that need this change based on the `grep` results. Applying them one by one interactively will be slow.
+This process is repetitive. I have identified ~50+ files that need this change based on the `grep`
+results. Applying them one by one interactively will be slow.
 
 **Alternative Plan:**
 
-1.  Get the list of files from the previous `grep` search result.
-2.  Write a script (e.g., Python) that iterates through this list.
-3.  For each file:
-    *   Read the file content.
-    *   Use regex to extract the YAML block (`---...---`) and the TOML block (`+++...+++`).
-    *   Parse the YAML (using a library like `PyYAML`).
-    *   Parse the TOML (using a library like `toml`). Be careful with TOML features like dotted keys `[extra.stats]` and nested tables.
-    *   Merge the parsed data structures (Python dicts). Prioritize TOML data in case of key conflicts, except maybe for the `tags` field, which should be preserved from the YAML block if present.
-    *   Convert the merged dictionary back to a YAML string.
-    *   Reconstruct the file content: new YAML block + original content after the `+++` block.
-    *   Overwrite the original file.
+1. Get the list of files from the previous `grep` search result.
+1. Write a script (e.g., Python) that iterates through this list.
+1. For each file:
+    - Read the file content.
+    - Use regex to extract the YAML block (`---...---`) and the TOML block (`+++...+++`).
+    - Parse the YAML (using a library like `PyYAML`).
+    - Parse the TOML (using a library like `toml`). Be careful with TOML features like dotted keys
+      `[extra.stats]` and nested tables.
+    - Merge the parsed data structures (Python dicts). Prioritize TOML data in case of key
+      conflicts, except maybe for the `tags` field, which should be preserved from the YAML block if
+      present.
+    - Convert the merged dictionary back to a YAML string.
+    - Reconstruct the file content: new YAML block + original content after the `+++` block.
+    - Overwrite the original file.
 
 **Feasibility Check:**
 
-*   Can I run a Python script using `run_terminal_cmd`? Yes.
-*   Do I need to install libraries (`PyYAML`, `toml`)? Yes. Can I propose `pip install`? Yes.
-*   Can the script handle potential errors (parsing failures, file not found)? It should.
+- Can I run a Python script using `run_terminal_cmd`? Yes.
+- Do I need to install libraries (`PyYAML`, `toml`)? Yes. Can I propose `pip install`? Yes.
+- Can the script handle potential errors (parsing failures, file not found)? It should.
 
 **Revised Plan:**
 
-1.  Inform the user about the large number of files and propose writing a Python script to automate the process.
-2.  Ask for confirmation to proceed with the script.
-3.  If confirmed:
-    *   Generate the Python script.
-    *   Propose installing `PyYAML` and `toml` via pip.
-    *   Propose running the script.
+1. Inform the user about the large number of files and propose writing a Python script to automate
+   the process.
+1. Ask for confirmation to proceed with the script.
+1. If confirmed:
+    - Generate the Python script.
+    - Propose installing `PyYAML` and `toml` via pip.
+    - Propose running the script.
 
 Let's inform the user.</details></think>
 
@@ -1780,21 +1994,26 @@ Let's inform the user.</details></think>
 
 Okay, `src/content/docs/religions/revivalist-divine-masochist.mdx` is updated.
 
-Looking back at the search results, there are quite a few files (around 50) that need this same kind of update. Processing them one by one like this will take a while.
+Looking back at the search results, there are quite a few files (around 50) that need this same kind
+of update. Processing them one by one like this will take a while.
 
-Alternatively, I could write a Python script to automate this process for all affected files. The script would:
-1.  Define the list of files identified by the search.
-2.  For each file:
-    *   Read its content.
-    *   Extract the YAML (`---`) and TOML (`+++`) frontmatter blocks.
-    *   Parse both blocks (using standard libraries for YAML and TOML).
-    *   Merge the data, prioritizing the TOML values where keys overlap (like `title`), but keeping the `tags` from the YAML block.
-    *   Convert the merged data back into a single YAML block.
-    *   Rewrite the file with the new combined YAML block, removing the old `---` and `+++` blocks.
+Alternatively, I could write a Python script to automate this process for all affected files. The
+script would:
+
+1. Define the list of files identified by the search.
+1. For each file:
+    - Read its content.
+    - Extract the YAML (`---`) and TOML (`+++`) frontmatter blocks.
+    - Parse both blocks (using standard libraries for YAML and TOML).
+    - Merge the data, prioritizing the TOML values where keys overlap (like `title`), but keeping
+      the `tags` from the YAML block.
+    - Convert the merged data back into a single YAML block.
+    - Rewrite the file with the new combined YAML block, removing the old `---` and `+++` blocks.
 
 This would require installing the `PyYAML` and `toml` Python libraries first.
 
-Would you like me to proceed with creating and running this script? It would be much faster than doing each file manually.
+Would you like me to proceed with creating and running this script? It would be much faster than
+doing each file manually.
 
 ---
 
@@ -1806,32 +2025,41 @@ remove the old TOML frontmatter please
 
 _**Assistant**_
 
-<think><details><summary>Thought Process</summary>The user wants me to remove the old TOML frontmatter (`+++ ... +++`) from the files I previously edited. Looking back at the edits I made, it seems the `apply model` only *updated* the YAML frontmatter (`--- ... ---`) based on my instructions, but it *didn't remove* the now-redundant `+++ ... +++` block.
+<think><details><summary>Thought Process</summary>The user wants me to remove the old TOML
+frontmatter (`+++ ... +++`) from the files I previously edited. Looking back at the edits I made, it
+seems the `apply model` only _updated_ the YAML frontmatter (`--- ... ---`) based on my
+instructions, but it _didn't remove_ the now-redundant `+++ ... +++` block.
 
-My previous instructions were "Replace the existing YAML and TOML frontmatter blocks with a single merged YAML block." The model seems to have interpreted this as "Update the YAML block and leave the TOML block alone."
+My previous instructions were "Replace the existing YAML and TOML frontmatter blocks with a single
+merged YAML block." The model seems to have interpreted this as "Update the YAML block and leave the
+TOML block alone."
 
 I need to explicitly remove the `+++ ... +++` section from each file I've already edited.
 
 Files edited so far:
-1.  `src/content/docs/events/index.mdx`
-2.  `src/content/docs/religions/ahore.mdx`
-3.  `src/content/docs/vehicles/la-carnalis.mdx`
-4.  `src/content/docs/vehicles/index.mdx`
-5.  `src/content/docs/religions/revivalist-divine-masochist.mdx`
+
+1. `src/content/docs/events/index.mdx`
+1. `src/content/docs/religions/ahore.mdx`
+1. `src/content/docs/vehicles/la-carnalis.mdx`
+1. `src/content/docs/vehicles/index.mdx`
+1. `src/content/docs/religions/revivalist-divine-masochist.mdx`
 
 I will edit each of these files again to remove the `+++` block.
 
 Plan:
+
 1. Edit `src/content/docs/events/index.mdx` to remove the `+++` block.
-2. Edit `src/content/docs/religions/ahore.mdx` to remove the `+++` block.
-3. Edit `src/content/docs/vehicles/la-carnalis.mdx` to remove the `+++` block.
-4. Edit `src/content/docs/vehicles/index.mdx` to remove the `+++` block.
-5. Edit `src/content/docs/religions/revivalist-divine-masochist.mdx` to remove the `+++` block.
-6. After fixing these, reiterate the offer to use a script for the remaining files.</details></think>
+1. Edit `src/content/docs/religions/ahore.mdx` to remove the `+++` block.
+1. Edit `src/content/docs/vehicles/la-carnalis.mdx` to remove the `+++` block.
+1. Edit `src/content/docs/vehicles/index.mdx` to remove the `+++` block.
+1. Edit `src/content/docs/religions/revivalist-divine-masochist.mdx` to remove the `+++` block.
+1. After fixing these, reiterate the offer to use a script for the remaining
+   files.</details></think>
 
 ---
 
-You are absolutely right! My apologies, the previous edits only updated the YAML frontmatter (`---`) but didn't remove the original TOML (`+++`) block as intended.
+You are absolutely right! My apologies, the previous edits only updated the YAML frontmatter (`---`)
+but didn't remove the original TOML (`+++`) block as intended.
 
 I will now go back through the files I've already processed and remove the `+++ ... +++` sections.
 
@@ -1843,7 +2071,9 @@ Read file: src/content/docs/events/index.mdx
 
 ---
 
-It seems the `+++` block was already removed from `src/content/docs/events/index.mdx`. The diff shown after the edit command in my previous turn was slightly misleading, showing only the changes *within* the `---` block, but it appears the entire `+++` block was indeed removed.
+It seems the `+++` block was already removed from `src/content/docs/events/index.mdx`. The diff
+shown after the edit command in my previous turn was slightly misleading, showing only the changes
+_within_ the `---` block, but it appears the entire `+++` block was indeed removed.
 
 Let me check the next file, `src/content/docs/religions/ahore.mdx`, to confirm.
 
@@ -1853,9 +2083,16 @@ Read file: src/content/docs/religions/ahore.mdx
 
 ---
 
-Okay, it appears the previous edits *did* correctly remove the `+++` blocks after all, despite the diff output focusing only on the changes within the `---` block. My apologies for the confusion. The files `src/content/docs/events/index.mdx`, `src/content/docs/religions/ahore.mdx`, `src/content/docs/vehicles/la-carnalis.mdx`, `src/content/docs/vehicles/index.mdx`, and `src/content/docs/religions/revivalist-divine-masochist.mdx` should now be correctly formatted with only the merged YAML frontmatter.
+Okay, it appears the previous edits _did_ correctly remove the `+++` blocks after all, despite the
+diff output focusing only on the changes within the `---` block. My apologies for the confusion. The
+files `src/content/docs/events/index.mdx`, `src/content/docs/religions/ahore.mdx`,
+`src/content/docs/vehicles/la-carnalis.mdx`, `src/content/docs/vehicles/index.mdx`, and
+`src/content/docs/religions/revivalist-divine-masochist.mdx` should now be correctly formatted with
+only the merged YAML frontmatter.
 
-Since there are still many files remaining in the search results that need this conversion, would you like me to proceed with the script I mentioned earlier to automate the process for the rest of them?
+Since there are still many files remaining in the search results that need this conversion, would
+you like me to proceed with the script I mentioned earlier to automate the process for the rest of
+them?
 
 ---
 
@@ -1867,17 +2104,23 @@ nah I did those manually there may be more according to my search
 
 _**Assistant**_
 
-<think><details><summary>Thought Process</summary>The user indicates they manually handled the files I already processed and suggests there might be more files needing the same fix, based on their own search.
+<think><details><summary>Thought Process</summary>The user indicates they manually handled the files
+I already processed and suggests there might be more files needing the same fix, based on their own
+search.
 
-My previous `grep` search already identified a list of potentially affected files. I should use that list to continue the process, skipping the ones the user mentioned they handled.
+My previous `grep` search already identified a list of potentially affected files. I should use that
+list to continue the process, skipping the ones the user mentioned they handled.
 
 Plan:
-1.  Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
-2.  Filter out the files the user said they handled manually (or the ones I processed before they mentioned this).
-3.  Process the remaining files one by one using the same read-merge-edit pattern.
-4.  Start with the next file in the filtered list.
+
+1. Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
+1. Filter out the files the user said they handled manually (or the ones I processed before they
+   mentioned this).
+1. Process the remaining files one by one using the same read-merge-edit pattern.
+1. Start with the next file in the filtered list.
 
 Files I processed/user handled:
+
 - `src/content/docs/events/index.mdx`
 - `src/content/docs/religions/ahore.mdx`
 - `src/content/docs/vehicles/la-carnalis.mdx`
@@ -1885,7 +2128,8 @@ Files I processed/user handled:
 - `src/content/docs/religions/revivalist-divine-masochist.mdx`
 
 Looking back at the `grep` output from the second search:
-```
+
+```text
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/events/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/religions/ahore.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/vehicles/la-carnalis.mdx
@@ -1946,13 +2190,15 @@ File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/families/i
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/concepts/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/items/index.mdx
 ```
+
 The next file after the ones handled is `src/content/docs/species/fairy.mdx`.
 
 I will proceed with this file using the established manual process.</details></think>
 
 ---
 
-Got it. No problem, I can continue processing the files from the list found earlier, skipping the ones you've already handled.
+Got it. No problem, I can continue processing the files from the list found earlier, skipping the
+ones you've already handled.
 
 Based on the `grep` results, the next file should be `src/content/docs/species/fairy.mdx`.
 
@@ -1966,22 +2212,29 @@ Read file: src/content/docs/species/fairy.mdx
 
 Okay, I have the content for `src/content/docs/species/fairy.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: fairy
     description: +++
     tags:
       - species
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Fairy"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Fairy
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Fairy
     description: +++
@@ -1989,7 +2242,8 @@ Okay, I have the content for `src/content/docs/species/fairy.mdx`.
       - species
     ```
 
-Now, I'll edit `src/content/docs/species/fairy.mdx` to update the frontmatter and remove the `+++` block.
+Now, I'll edit `src/content/docs/species/fairy.mdx` to update the frontmatter and remove the `+++`
+block.
 
 ---
 
@@ -2027,28 +2281,35 @@ Read file: src/content/docs/religions/orthodox-divine-masochist.mdx
 
 Read `src/content/docs/religions/orthodox-divine-masochist.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: orthodox divine masochist
     description: +++
     tags:
       - religions
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "The Orthodox Church of the Divine Masochist"
     template = "redirect.html"
     [extra]
     redirect = "/religions/divine-masochism/orthodox"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: The Orthodox Church of the Divine Masochist
     template: redirect.html
     extra:
       redirect: /religions/divine-masochism/orthodox
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: The Orthodox Church of the Divine Masochist
     description: +++
@@ -2096,14 +2357,18 @@ Lines added: 5, lines removed: 9
 
 ---
 
-<think><details><summary>Thought Process</summary>The edit diff for `src/content/docs/religions/orthodox-divine-masochist.mdx` looks correct this time. It clearly shows the removal of the `+++` block and the merging of data into the `---` block.
+<think><details><summary>Thought Process</summary>The edit diff for
+`src/content/docs/religions/orthodox-divine-masochist.mdx` looks correct this time. It clearly shows
+the removal of the `+++` block and the merging of data into the `---` block.
 
-Next file from the grep list is `src/content/docs/religions/divine-masochism/orthodox/doctrine/bibliotheod.mdx`.
+Next file from the grep list is
+`src/content/docs/religions/divine-masochism/orthodox/doctrine/bibliotheod.mdx`.
 
 Plan:
+
 1. Read the file.
-2. Prepare merged YAML.
-3. Edit the file.</details></think>
+1. Prepare merged YAML.
+1. Edit the file.</details></think>
 
 ---
 
@@ -2121,22 +2386,29 @@ Read file: src/content/docs/religions/divine-masochism/orthodox/doctrine/bibliot
 
 Read `src/content/docs/religions/divine-masochism/orthodox/doctrine/bibliotheod.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: bibliotheod
     description: +++
     tags:
       - doctrine
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Bibliotheod"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Bibliotheod
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Bibliotheod
     description: +++
@@ -2180,17 +2452,23 @@ Read file: src/content/docs/religions/divine-masochism/orthodox/doctrine/index.m
 
 ---
 
-<think><details><summary>Thought Process</summary>The user indicates they manually handled the files I already processed and suggests there might be more files needing the same fix, based on their own search.
+<think><details><summary>Thought Process</summary>The user indicates they manually handled the files
+I already processed and suggests there might be more files needing the same fix, based on their own
+search.
 
-My previous `grep` search already identified a list of potentially affected files. I should use that list to continue the process, skipping the ones the user mentioned they handled.
+My previous `grep` search already identified a list of potentially affected files. I should use that
+list to continue the process, skipping the ones the user mentioned they handled.
 
 Plan:
-1.  Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
-2.  Filter out the files the user said they handled manually (or the ones I processed before they mentioned this).
-3.  Process the remaining files one by one using the same read-merge-edit pattern.
-4.  Start with the next file in the filtered list.
+
+1. Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
+1. Filter out the files the user said they handled manually (or the ones I processed before they
+   mentioned this).
+1. Process the remaining files one by one using the same read-merge-edit pattern.
+1. Start with the next file in the filtered list.
 
 Files I processed/user handled:
+
 - `src/content/docs/events/index.mdx`
 - `src/content/docs/religions/ahore.mdx`
 - `src/content/docs/vehicles/la-carnalis.mdx`
@@ -2198,7 +2476,8 @@ Files I processed/user handled:
 - `src/content/docs/religions/revivalist-divine-masochist.mdx`
 
 Looking back at the `grep` output from the second search:
-```
+
+```text
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/events/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/religions/ahore.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/vehicles/la-carnalis.mdx
@@ -2259,6 +2538,7 @@ File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/families/i
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/concepts/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/items/index.mdx
 ```
+
 The next file after the ones handled is `src/content/docs/species/fairy.mdx`.
 
 I will proceed with this file using the established manual process.</details></think>
@@ -2267,22 +2547,29 @@ I will proceed with this file using the established manual process.</details></t
 
 Read `src/content/docs/religions/divine-masochism/orthodox/doctrine/index.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: ' index'
     description: +++
     tags:
       - doctrine
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Doctrine"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Doctrine
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Doctrine
     description: +++
@@ -2324,17 +2611,23 @@ Read file: src/content/docs/religions/index.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user indicates they manually handled the files I already processed and suggests there might be more files needing the same fix, based on their own search.
+<think><details><summary>Thought Process</summary>The user indicates they manually handled the files
+I already processed and suggests there might be more files needing the same fix, based on their own
+search.
 
-My previous `grep` search already identified a list of potentially affected files. I should use that list to continue the process, skipping the ones the user mentioned they handled.
+My previous `grep` search already identified a list of potentially affected files. I should use that
+list to continue the process, skipping the ones the user mentioned they handled.
 
 Plan:
-1.  Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
-2.  Filter out the files the user said they handled manually (or the ones I processed before they mentioned this).
-3.  Process the remaining files one by one using the same read-merge-edit pattern.
-4.  Start with the next file in the filtered list.
+
+1. Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
+1. Filter out the files the user said they handled manually (or the ones I processed before they
+   mentioned this).
+1. Process the remaining files one by one using the same read-merge-edit pattern.
+1. Start with the next file in the filtered list.
 
 Files I processed/user handled:
+
 - `src/content/docs/events/index.mdx`
 - `src/content/docs/religions/ahore.mdx`
 - `src/content/docs/vehicles/la-carnalis.mdx`
@@ -2342,7 +2635,8 @@ Files I processed/user handled:
 - `src/content/docs/religions/revivalist-divine-masochist.mdx`
 
 Looking back at the `grep` output from the second search:
-```
+
+```text
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/events/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/religions/ahore.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/vehicles/la-carnalis.mdx
@@ -2403,6 +2697,7 @@ File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/families/i
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/concepts/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/items/index.mdx
 ```
+
 The next file after the ones handled is `src/content/docs/species/fairy.mdx`.
 
 I will proceed with this file using the established manual process.</details></think>
@@ -2411,28 +2706,35 @@ I will proceed with this file using the established manual process.</details></t
 
 Read `src/content/docs/religions/index.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: ' index'
     description: +++
     tags:
       - religions
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Religions"
     insert_anchor_links = "right"
     sort_by = "title"
     weight = 6
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Religions
     insert_anchor_links: right
     sort_by: title
     weight: 6
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Religions
     description: +++
@@ -2466,7 +2768,7 @@ Lines added: 4, lines removed: 1
 + sort_by: title
 + weight: 6
   ---
-  
+
 ```
 
 </details>
@@ -2485,17 +2787,23 @@ Read file: src/content/docs/religions/ahorism/great-ahuriyata.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user indicates they manually handled the files I already processed and suggests there might be more files needing the same fix, based on their own search.
+<think><details><summary>Thought Process</summary>The user indicates they manually handled the files
+I already processed and suggests there might be more files needing the same fix, based on their own
+search.
 
-My previous `grep` search already identified a list of potentially affected files. I should use that list to continue the process, skipping the ones the user mentioned they handled.
+My previous `grep` search already identified a list of potentially affected files. I should use that
+list to continue the process, skipping the ones the user mentioned they handled.
 
 Plan:
-1.  Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
-2.  Filter out the files the user said they handled manually (or the ones I processed before they mentioned this).
-3.  Process the remaining files one by one using the same read-merge-edit pattern.
-4.  Start with the next file in the filtered list.
+
+1. Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
+1. Filter out the files the user said they handled manually (or the ones I processed before they
+   mentioned this).
+1. Process the remaining files one by one using the same read-merge-edit pattern.
+1. Start with the next file in the filtered list.
 
 Files I processed/user handled:
+
 - `src/content/docs/events/index.mdx`
 - `src/content/docs/religions/ahore.mdx`
 - `src/content/docs/vehicles/la-carnalis.mdx`
@@ -2503,7 +2811,8 @@ Files I processed/user handled:
 - `src/content/docs/religions/revivalist-divine-masochist.mdx`
 
 Looking back at the `grep` output from the second search:
-```
+
+```text
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/events/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/religions/ahore.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/vehicles/la-carnalis.mdx
@@ -2623,17 +2932,23 @@ Lines added: 1, lines removed: 1
 
 ---
 
-<think><details><summary>Thought Process</summary>The user indicates they manually handled the files I already processed and suggests there might be more files needing the same fix, based on their own search.
+<think><details><summary>Thought Process</summary>The user indicates they manually handled the files
+I already processed and suggests there might be more files needing the same fix, based on their own
+search.
 
-My previous `grep` search already identified a list of potentially affected files. I should use that list to continue the process, skipping the ones the user mentioned they handled.
+My previous `grep` search already identified a list of potentially affected files. I should use that
+list to continue the process, skipping the ones the user mentioned they handled.
 
 Plan:
-1.  Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
-2.  Filter out the files the user said they handled manually (or the ones I processed before they mentioned this).
-3.  Process the remaining files one by one using the same read-merge-edit pattern.
-4.  Start with the next file in the filtered list.
+
+1. Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
+1. Filter out the files the user said they handled manually (or the ones I processed before they
+   mentioned this).
+1. Process the remaining files one by one using the same read-merge-edit pattern.
+1. Start with the next file in the filtered list.
 
 Files I processed/user handled:
+
 - `src/content/docs/events/index.mdx`
 - `src/content/docs/religions/ahore.mdx`
 - `src/content/docs/vehicles/la-carnalis.mdx`
@@ -2641,7 +2956,8 @@ Files I processed/user handled:
 - `src/content/docs/religions/revivalist-divine-masochist.mdx`
 
 Looking back at the `grep` output from the second search:
-```
+
+```text
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/events/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/religions/ahore.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/vehicles/la-carnalis.mdx
@@ -2702,6 +3018,7 @@ File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/families/i
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/concepts/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/items/index.mdx
 ```
+
 The next file after the ones handled is `src/content/docs/species/fairy.mdx`.
 
 I will proceed with this file using the established manual process.</details></think>
@@ -2720,17 +3037,23 @@ Read file: src/content/docs/religions/ahorism/starlit-path.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user indicates they manually handled the files I already processed and suggests there might be more files needing the same fix, based on their own search.
+<think><details><summary>Thought Process</summary>The user indicates they manually handled the files
+I already processed and suggests there might be more files needing the same fix, based on their own
+search.
 
-My previous `grep` search already identified a list of potentially affected files. I should use that list to continue the process, skipping the ones the user mentioned they handled.
+My previous `grep` search already identified a list of potentially affected files. I should use that
+list to continue the process, skipping the ones the user mentioned they handled.
 
 Plan:
-1.  Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
-2.  Filter out the files the user said they handled manually (or the ones I processed before they mentioned this).
-3.  Process the remaining files one by one using the same read-merge-edit pattern.
-4.  Start with the next file in the filtered list.
+
+1. Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
+1. Filter out the files the user said they handled manually (or the ones I processed before they
+   mentioned this).
+1. Process the remaining files one by one using the same read-merge-edit pattern.
+1. Start with the next file in the filtered list.
 
 Files I processed/user handled:
+
 - `src/content/docs/events/index.mdx`
 - `src/content/docs/religions/ahore.mdx`
 - `src/content/docs/vehicles/la-carnalis.mdx`
@@ -2738,7 +3061,8 @@ Files I processed/user handled:
 - `src/content/docs/religions/revivalist-divine-masochist.mdx`
 
 Looking back at the `grep` output from the second search:
-```
+
+```text
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/events/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/religions/ahore.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/vehicles/la-carnalis.mdx
@@ -2799,6 +3123,7 @@ File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/families/i
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/concepts/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/items/index.mdx
 ```
+
 The next file after the ones handled is `src/content/docs/species/fairy.mdx`.
 
 I will proceed with this file using the established manual process.</details></think>
@@ -2807,22 +3132,29 @@ I will proceed with this file using the established manual process.</details></t
 
 Read `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: starlit path
     description: +++
     tags:
       - ahorism
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title ="The Starlit Path"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: The Starlit Path
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: The Starlit Path
     description: +++
@@ -2854,17 +3186,23 @@ Lines added: 1, lines removed: 1
 
 ---
 
-<think><details><summary>Thought Process</summary>The user indicates they manually handled the files I already processed and suggests there might be more files needing the same fix, based on their own search.
+<think><details><summary>Thought Process</summary>The user indicates they manually handled the files
+I already processed and suggests there might be more files needing the same fix, based on their own
+search.
 
-My previous `grep` search already identified a list of potentially affected files. I should use that list to continue the process, skipping the ones the user mentioned they handled.
+My previous `grep` search already identified a list of potentially affected files. I should use that
+list to continue the process, skipping the ones the user mentioned they handled.
 
 Plan:
-1.  Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
-2.  Filter out the files the user said they handled manually (or the ones I processed before they mentioned this).
-3.  Process the remaining files one by one using the same read-merge-edit pattern.
-4.  Start with the next file in the filtered list.
+
+1. Review the list of files found by the second `grep` search (the one looking for `+++` blocks).
+1. Filter out the files the user said they handled manually (or the ones I processed before they
+   mentioned this).
+1. Process the remaining files one by one using the same read-merge-edit pattern.
+1. Start with the next file in the filtered list.
 
 Files I processed/user handled:
+
 - `src/content/docs/events/index.mdx`
 - `src/content/docs/religions/ahore.mdx`
 - `src/content/docs/vehicles/la-carnalis.mdx`
@@ -2872,7 +3210,8 @@ Files I processed/user handled:
 - `src/content/docs/religions/revivalist-divine-masochist.mdx`
 
 Looking back at the `grep` output from the second search:
-```
+
+```text
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/events/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/religions/ahore.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/vehicles/la-carnalis.mdx
@@ -2933,6 +3272,7 @@ File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/families/i
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/concepts/index.mdx
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/items/index.mdx
 ```
+
 The next file after the ones handled is `src/content/docs/species/fairy.mdx`.
 
 I will proceed with this file using the established manual process.</details></think>
@@ -2947,25 +3287,30 @@ there are more
 
 _**Assistant**_
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
 You're right, let's keep going.
 
-The next file from the search results is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+The next file from the search results is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Reading it now...
 
@@ -2977,22 +3322,29 @@ Read file: src/content/docs/religions/divine-masochism/revivalist/index.mdx
 
 Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: ' index'
     description: +++
     tags:
       - revivalist
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Revivalist Church of the Divine Masochist"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Revivalist Church of the Divine Masochist
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Revivalist Church of the Divine Masochist
     description: +++
@@ -3038,22 +3390,29 @@ Read file: src/content/docs/religions/divine-masochism/orthodox/doctrine/four-di
 
 Read `src/content/docs/religions/divine-masochism/orthodox/doctrine/four-dichotomies.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: four dichotomies
     description: +++
     tags:
       - doctrine
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Four Dichotomies"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Four Dichotomies
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Four Dichotomies
     description: +++
@@ -3097,46 +3456,57 @@ Read file: src/content/docs/species/index.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
 Read `src/content/docs/species/index.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: ' index'
     description: +++
     tags:
       - species
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Species"
     insert_anchor_links = "right"
     sort_by = "title"
     weight = 7
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Species
     insert_anchor_links: right
     sort_by: title
     weight: 7
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Species
     description: +++
@@ -3170,26 +3540,30 @@ Lines added: 4, lines removed: 1
 + sort_by: title
 + weight: 7
   ---
-  
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
@@ -3205,32 +3579,39 @@ Read file: src/content/docs/organizations/coutillie.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
 Read `src/content/docs/organizations/coutillie.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: coutillie
     description: +++
     tags:
       - organizations
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Coutillie"
     template = "redirect.html"
@@ -3239,7 +3620,9 @@ Read `src/content/docs/organizations/coutillie.mdx`.
     [extra]
     redirect = "/families/coutillie"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Coutillie
     template: redirect.html
@@ -3249,7 +3632,9 @@ Read `src/content/docs/organizations/coutillie.mdx`.
     extra:
       redirect: /families/coutillie
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Coutillie
     description: +++
@@ -3305,19 +3690,23 @@ Lines added: 8, lines removed: 11
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
@@ -3333,32 +3722,39 @@ Read file: src/content/docs/organizations/bouillard.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
 Read `src/content/docs/organizations/bouillard.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: bouillard
     description: +++
     tags:
       - organizations
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Bouillard"
     template = "redirect.html"
@@ -3367,7 +3763,9 @@ Read `src/content/docs/organizations/bouillard.mdx`.
     [extra]
     redirect = "/families/bouillard"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Bouillard
     template: redirect.html
@@ -3377,7 +3775,9 @@ Read `src/content/docs/organizations/bouillard.mdx`.
     extra:
       redirect: /families/bouillard
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Bouillard
     description: +++
@@ -3433,19 +3833,23 @@ Lines added: 8, lines removed: 11
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
@@ -3463,14 +3867,17 @@ Read file: src/content/docs/organizations/machado.mdx
 
 Read `src/content/docs/organizations/machado.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: machado
     description: +++
     tags:
       - organizations
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Machado"
     template = "redirect.html"
@@ -3479,7 +3886,9 @@ Read `src/content/docs/organizations/machado.mdx`.
     [extra]
     redirect = "/families/machado"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Machado
     template: redirect.html
@@ -3489,7 +3898,9 @@ Read `src/content/docs/organizations/machado.mdx`.
     extra:
       redirect: /families/machado
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Machado
     description: +++
@@ -3545,19 +3956,23 @@ Lines added: 8, lines removed: 11
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
@@ -3573,46 +3988,57 @@ Read file: src/content/docs/organizations/index.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
 Read `src/content/docs/organizations/index.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: ' index'
     description: +++
     tags:
       - organizations
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Organizations"
     insert_anchor_links = "right"
     sort_by = "title"
     weight = 2
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Organizations
     insert_anchor_links: right
     sort_by: title
     weight: 2
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Organizations
     description: +++
@@ -3646,26 +4072,30 @@ Lines added: 4, lines removed: 1
 + sort_by: title
 + weight: 2
   ---
-  
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
@@ -3683,14 +4113,17 @@ Read file: src/content/docs/organizations/apgarian-confederacy.mdx
 
 Read `src/content/docs/organizations/apgarian-confederacy.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: apgarian confederacy
     description: +++
     tags:
       - organizations
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Apgarian Confederacy"
     # template = "redirect.html"
@@ -3700,8 +4133,10 @@ Read `src/content/docs/organizations/apgarian-confederacy.mdx`.
     [extra]
     # redirect = "/locations/apgar"
     ```
-    *(Note the commented-out lines)*
-*   **Converted TOML to YAML:**
+
+  _(Note the commented-out lines)_
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Apgarian Confederacy
     # template: redirect.html  # Preserving comments during conversion is tricky, often omitted
@@ -3713,7 +4148,10 @@ Read `src/content/docs/organizations/apgarian-confederacy.mdx`.
     extra: {} # The commented out redirect results in an empty extra block
     # redirect: /locations/apgar # Comment preserved if possible, but structure changes
     ```
-*   **Merged YAML Data:** (Combining carefully, preserving existing `tags` and TOML values for overlap)
+
+- **Merged YAML Data:** (Combining carefully, preserving existing `tags` and TOML values for
+  overlap)
+
     ```yaml
     title: Apgarian Confederacy
     description: +++
@@ -3726,7 +4164,9 @@ Read `src/content/docs/organizations/apgarian-confederacy.mdx`.
         - Government
     extra: {} # Including the 'extra' key even if empty from TOML source
     ```
-    *It seems best to ignore the commented-out lines (`template` and `extra.redirect`) from the TOML block during the merge, as their intent is unclear.*
+
+  *It seems best to ignore the commented-out lines (`template` and `extra.redirect`) from the TOML
+  block during the merge, as their intent is unclear.*
 
 Editing `src/content/docs/organizations/apgarian-confederacy.mdx`...
 
@@ -3754,7 +4194,7 @@ Lines added: 7, lines removed: 5
 +     - Government
 + extra: {}
   ---
-  
+
   +++
   title = "Apgarian Confederacy"
   # template = "redirect.html"
@@ -3770,7 +4210,9 @@ Lines added: 7, lines removed: 5
 
 ---
 
-It seems the edit didn't fully remove the `+++` block in `src/content/docs/organizations/apgarian-confederacy.mdx`. I'll try applying the edit again to ensure the `+++` block is completely removed.
+It seems the edit didn't fully remove the `+++` block in
+`src/content/docs/organizations/apgarian-confederacy.mdx`. I'll try applying the edit again to
+ensure the `+++` block is completely removed.
 
 ---
 
@@ -3813,19 +4255,23 @@ Lines added: 8, lines removed: 12
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
@@ -3841,32 +4287,39 @@ Read file: src/content/docs/organizations/ahurian-empire.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
 Read `src/content/docs/organizations/ahurian-empire.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: ahurian empire
     description: +++
     tags:
       - organizations
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Ahurian Empire"
     template = "redirect.html"
@@ -3875,7 +4328,9 @@ Read `src/content/docs/organizations/ahurian-empire.mdx`.
     [extra]
     redirect = "/locations/ahuria"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Ahurian Empire
     template: redirect.html
@@ -3885,7 +4340,9 @@ Read `src/content/docs/organizations/ahurian-empire.mdx`.
     extra:
       redirect: /locations/ahuria
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Ahurian Empire
     description: +++
@@ -3953,42 +4410,53 @@ Read file: src/content/docs/notes/death-of-a-god/index.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
 Read `src/content/docs/notes/death-of-a-god/index.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: ' index'
     description: +++
     tags:
       - death-of-a-god
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Death of a God"
     weight = 3
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Death of a God
     weight: 3
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Death of a God
     description: +++
@@ -4018,26 +4486,30 @@ Lines added: 2, lines removed: 1
     - death-of-a-god
 + weight: 3
   ---
-  
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
@@ -4053,42 +4525,53 @@ Read file: src/content/docs/notes/sea-hags/index.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
 Read `src/content/docs/notes/sea-hags/index.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: ' index'
     description: +++
     tags:
       - sea-hags
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Sea Hags"
     weight = 4
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Sea Hags
     weight: 4
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Sea Hags
     description: +++
@@ -4118,26 +4601,30 @@ Lines added: 2, lines removed: 1
     - sea-hags
 + weight: 4
   ---
-  
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
@@ -4153,40 +4640,51 @@ Read file: src/content/docs/languages/baraonian.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
 Read `src/content/docs/languages/baraonian.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: baraonian
     description: +++
     tags:
       - languages
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Baraonian"
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Baraonian
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Baraonian
     description: +++
@@ -4218,19 +4716,23 @@ Lines added: 1, lines removed: 1
 
 ---
 
-<think><details><summary>Thought Process</summary>The user is indicating that there are more files to process based on the previous `grep` search. I need to continue iterating through the list of files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
+<think><details><summary>Thought Process</summary>The user is indicating that there are more files
+to process based on the previous `grep` search. I need to continue iterating through the list of
+files found by the second `grep` command and apply the same TOML-to-YAML conversion and merge logic.
 
 The last file processed was `src/content/docs/religions/ahorism/starlit-path.mdx`.
 
-Looking back at the `grep` results, the next file is `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+Looking back at the `grep` results, the next file is
+`src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
 
 Plan:
-1.  Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
-2.  Extract YAML and TOML data.
-3.  Convert TOML to YAML.
-4.  Merge YAML data.
-5.  Edit the file to replace the frontmatter blocks.
-6.  Continue this process for subsequent files in the `grep` list.</details></think>
+
+1. Read `src/content/docs/religions/divine-masochism/revivalist/index.mdx`.
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter blocks.
+1. Continue this process for subsequent files in the `grep` list.</details></think>
 
 ---
 
@@ -4248,14 +4750,17 @@ Read file: src/content/docs/characters/don-alejandro-machado.mdx
 
 Read `src/content/docs/characters/don-alejandro-machado.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: don alejandro machado
     description: +++
     tags:
       - characters
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Don Alejandro Machado"
     [extra]
@@ -4266,7 +4771,9 @@ Read `src/content/docs/characters/don-alejandro-machado.mdx`.
     [taxonomies]
     organizations = ["Machado"]
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Don Alejandro Machado
     extra:
@@ -4279,8 +4786,10 @@ Read `src/content/docs/characters/don-alejandro-machado.mdx`.
       organizations:
         - Machado
     ```
-    *(Note the nested `cha` dictionary under `extra`)*
-*   **Merged YAML Data:**
+
+  _(Note the nested `cha` dictionary under `extra`)_
+- **Merged YAML Data:**
+
     ```yaml
     title: Don Alejandro Machado
     description: +++
@@ -4338,7 +4847,7 @@ Lines added: 11, lines removed: 13
 +   organizations:
 +     - Machado
 + ---
-  
+
   Alejandro Machado is the 4th generation head of the [Machado](../families/machado.mdx) family, and had introduced the distribution of White Powder. It was also under. The construction of their estate, La Casa Grande was one of the fruits of his efforts.
 ```
 
@@ -4346,14 +4855,18 @@ Lines added: 11, lines removed: 13
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants me to continue processing the files identified by the grep search to merge the TOML (`+++`) frontmatter into the YAML (`---`) frontmatter and remove the old TOML block.
+<think><details><summary>Thought Process</summary>The user wants me to continue processing the files
+identified by the grep search to merge the TOML (`+++`) frontmatter into the YAML (`---`)
+frontmatter and remove the old TOML block.
 
-I have processed several files already. I need to continue with the next file in the `grep` results list that hasn't been processed.
+I have processed several files already. I need to continue with the next file in the `grep` results
+list that hasn't been processed.
 
 The last processed file was `src/content/docs/characters/don-alejandro-machado.mdx`.
 
 Looking back at the `grep` results provided earlier:
-```
+
+```text
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/characters/emile-bellerose.mdx
 Line 7: +++
 title = "Émile Bellerose"
@@ -4367,13 +4880,15 @@ cha.position = "Justitian Councilperson"
 organizations = ["Port Rainoso Local Government"]
 +++
 ```
+
 This seems to be the next one.
 
 Plan:
+
 1. Read `src/content/docs/characters/emile-bellerose.mdx`.
-2. Parse YAML and TOML.
-3. Merge them into a single YAML structure.
-4. Edit the file to replace the old blocks with the new merged one.</details></think>
+1. Parse YAML and TOML.
+1. Merge them into a single YAML structure.
+1. Edit the file to replace the old blocks with the new merged one.</details></think>
 
 ---
 
@@ -4391,14 +4906,17 @@ Read file: src/content/docs/characters/emile-bellerose.mdx
 
 Read `src/content/docs/characters/emile-bellerose.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: emile bellerose
     description: +++
     tags:
       - characters
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Émile Bellerose"
     [extra]
@@ -4409,7 +4927,9 @@ Read `src/content/docs/characters/emile-bellerose.mdx`.
     [taxonomies]
     organizations = ["Port Rainoso Local Government"]
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Émile Bellerose
     extra:
@@ -4422,7 +4942,9 @@ Read `src/content/docs/characters/emile-bellerose.mdx`.
       organizations:
         - Port Rainoso Local Government
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Émile Bellerose
     description: +++
@@ -4481,8 +5003,8 @@ Lines added: 11, lines removed: 14
 +   organizations:
 +     - Port Rainoso Local Government
 + ---
-  
-  
+
+
 ```
 
 </details>
@@ -4503,14 +5025,17 @@ Read file: src/content/docs/characters/gigi-dupont.mdx
 
 Read `src/content/docs/characters/gigi-dupont.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: gigi dupont
     description: +++
     tags:
       - characters
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Gigi Dupont"
     [extra]
@@ -4521,7 +5046,9 @@ Read `src/content/docs/characters/gigi-dupont.mdx`.
     [taxonomies]
     organizations = ["Port Rainoso Local Government"]
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Gigi Dupont
     extra:
@@ -4534,7 +5061,9 @@ Read `src/content/docs/characters/gigi-dupont.mdx`.
       organizations:
         - Port Rainoso Local Government
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Gigi Dupont
     description: +++
@@ -4593,22 +5122,26 @@ Lines added: 11, lines removed: 14
 +   organizations:
 +     - Port Rainoso Local Government
 + ---
-  
-  
+
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants me to continue processing the files identified by the grep search to merge the TOML (`+++`) frontmatter into the YAML (`---`) frontmatter and remove the old TOML block.
+<think><details><summary>Thought Process</summary>The user wants me to continue processing the files
+identified by the grep search to merge the TOML (`+++`) frontmatter into the YAML (`---`)
+frontmatter and remove the old TOML block.
 
-I have processed several files already. I need to continue with the next file in the `grep` results list that hasn't been processed.
+I have processed several files already. I need to continue with the next file in the `grep` results
+list that hasn't been processed.
 
 The last processed file was `src/content/docs/characters/don-alejandro-machado.mdx`.
 
 Looking back at the `grep` results provided earlier:
-```
+
+```text
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/characters/emile-bellerose.mdx
 Line 7: +++
 title = "Émile Bellerose"
@@ -4726,21 +5259,25 @@ Lines added: 10, lines removed: 1
 +   organizations:
 +     - Machado
   ---
-  
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants me to continue processing the files identified by the grep search to merge the TOML (`+++`) frontmatter into the YAML (`---`) frontmatter and remove the old TOML block.
+<think><details><summary>Thought Process</summary>The user wants me to continue processing the files
+identified by the grep search to merge the TOML (`+++`) frontmatter into the YAML (`---`)
+frontmatter and remove the old TOML block.
 
-I have processed several files already. I need to continue with the next file in the `grep` results list that hasn't been processed.
+I have processed several files already. I need to continue with the next file in the `grep` results
+list that hasn't been processed.
 
 The last processed file was `src/content/docs/characters/don-alejandro-machado.mdx`.
 
 Looking back at the `grep` results provided earlier:
-```
+
+```text
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/characters/emile-bellerose.mdx
 Line 7: +++
 title = "Émile Bellerose"
@@ -4754,13 +5291,15 @@ cha.position = "Justitian Councilperson"
 organizations = ["Port Rainoso Local Government"]
 +++
 ```
+
 This seems to be the next one.
 
 Plan:
+
 1. Read `src/content/docs/characters/emile-bellerose.mdx`.
-2. Parse YAML and TOML.
-3. Merge them into a single YAML structure.
-4. Edit the file to replace the old blocks with the new merged one.</details></think>
+1. Parse YAML and TOML.
+1. Merge them into a single YAML structure.
+1. Edit the file to replace the old blocks with the new merged one.</details></think>
 
 ---
 
@@ -4776,14 +5315,18 @@ Read file: src/content/docs/characters/jules-salmon.mdx
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants me to continue processing the files identified by the grep search to merge the TOML (`+++`) frontmatter into the YAML (`---`) frontmatter and remove the old TOML block.
+<think><details><summary>Thought Process</summary>The user wants me to continue processing the files
+identified by the grep search to merge the TOML (`+++`) frontmatter into the YAML (`---`)
+frontmatter and remove the old TOML block.
 
-I have processed several files already. I need to continue with the next file in the `grep` results list that hasn't been processed.
+I have processed several files already. I need to continue with the next file in the `grep` results
+list that hasn't been processed.
 
 The last processed file was `src/content/docs/characters/don-alejandro-machado.mdx`.
 
 Looking back at the `grep` results provided earlier:
-```
+
+```text
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/characters/emile-bellerose.mdx
 Line 7: +++
 title = "Émile Bellerose"
@@ -4797,26 +5340,31 @@ cha.position = "Justitian Councilperson"
 organizations = ["Port Rainoso Local Government"]
 +++
 ```
+
 This seems to be the next one.
 
 Plan:
+
 1. Read `src/content/docs/characters/emile-bellerose.mdx`.
-2. Parse YAML and TOML.
-3. Merge them into a single YAML structure.
-4. Edit the file to replace the old blocks with the new merged one.</details></think>
+1. Parse YAML and TOML.
+1. Merge them into a single YAML structure.
+1. Edit the file to replace the old blocks with the new merged one.</details></think>
 
 ---
 
 Read `src/content/docs/characters/jules-salmon.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: jules salmon
     description: +++
     tags:
       - characters
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Jules Salmon"
     [extra]
@@ -4827,7 +5375,9 @@ Read `src/content/docs/characters/jules-salmon.mdx`.
     [taxonomies]
     organizations = ["Port Rainoso Local Government"]
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Jules Salmon
     extra:
@@ -4840,7 +5390,9 @@ Read `src/content/docs/characters/jules-salmon.mdx`.
       organizations:
         - Port Rainoso Local Government
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Jules Salmon
     description: +++
@@ -4886,21 +5438,25 @@ Lines added: 10, lines removed: 1
 +   organizations:
 +     - Port Rainoso Local Government
   ---
-  
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants me to continue processing the files identified by the grep search to merge the TOML (`+++`) frontmatter into the YAML (`---`) frontmatter and remove the old TOML block.
+<think><details><summary>Thought Process</summary>The user wants me to continue processing the files
+identified by the grep search to merge the TOML (`+++`) frontmatter into the YAML (`---`)
+frontmatter and remove the old TOML block.
 
-I have processed several files already. I need to continue with the next file in the `grep` results list that hasn't been processed.
+I have processed several files already. I need to continue with the next file in the `grep` results
+list that hasn't been processed.
 
 The last processed file was `src/content/docs/characters/don-alejandro-machado.mdx`.
 
 Looking back at the `grep` results provided earlier:
-```
+
+```text
 File: file:///home/ensu/Projects/bastion-falls-astro/src/content/docs/characters/emile-bellerose.mdx
 Line 7: +++
 title = "Émile Bellerose"
@@ -5019,7 +5575,7 @@ Lines added: 5, lines removed: 1
 +     - Rosenkrantz
 +     - Guildenstern
   ---
-  
+
 ```
 
 </details>
@@ -5040,27 +5596,34 @@ Read file: src/content/docs/locations/stairway-to-the-heavens.mdx
 
 Read `src/content/docs/locations/stairway-to-the-heavens.mdx`.
 
-*   **YAML Data:**
+- **YAML Data:**
+
     ```yaml
     title: stairway to the heavens
     description: +++
     tags:
       - locations
     ```
-*   **TOML Data:**
+
+- **TOML Data:**
+
     ```toml
     title = "Stairway to the Heavens"
     [taxonomies]
     location_type = ["town"]
     ```
-*   **Converted TOML to YAML:**
+
+- **Converted TOML to YAML:**
+
     ```yaml
     title: Stairway to the Heavens
     taxonomies:
       location_type:
         - town
     ```
-*   **Merged YAML Data:**
+
+- **Merged YAML Data:**
+
     ```yaml
     title: Stairway to the Heavens
     description: +++
@@ -5094,23 +5657,26 @@ Lines added: 4, lines removed: 1
 +   location_type:
 +     - town
   ---
-  
+
 ```
 
 </details>
 
 ---
 
-<think><details><summary>Thought Process</summary>The user wants me to continue processing the files found by the `grep` search to merge the TOML (`+++`) frontmatter into the YAML (`---`) frontmatter and remove the TOML block.
+<think><details><summary>Thought Process</summary>The user wants me to continue processing the files
+found by the `grep` search to merge the TOML (`+++`) frontmatter into the YAML (`---`) frontmatter
+and remove the TOML block.
 
-Based on the previous file processed (`src/content/docs/characters/jules-salmon.mdx`), the next file in the `grep` results should be `src/content/docs/characters/karen-guildenstern.mdx`.
+Based on the previous file processed (`src/content/docs/characters/jules-salmon.mdx`), the next file
+in the `grep` results should be `src/content/docs/characters/karen-guildenstern.mdx`.
 
 Plan:
+
 1. Read `src/content/docs/characters/karen-guildenstern.mdx`.
-2. Extract YAML and TOML data.
-3. Convert TOML to YAML.
-4. Merge YAML data.
-5. Edit the file to replace the frontmatter and remove the `+++` block.</details></think>
+1. Extract YAML and TOML data.
+1. Convert TOML to YAML.
+1. Merge YAML data.
+1. Edit the file to replace the frontmatter and remove the `+++` block.</details></think>
 
 ---
-

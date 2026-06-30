@@ -4,7 +4,8 @@
 
 _**User (2025-05-12 09:51Z)**_
 
-@00.jpg @01.jpg  can you please transcribe the text in these images and append them into @mehicania.mdx 
+@00.jpg @01.jpg can you please transcribe the text in these images and append them into
+@mehicania.mdx
 
 ---
 
@@ -61,7 +62,7 @@ Lines added: 32, lines removed: undefined
 + of their new government, and their open acknowledgment of the existence and power
 + of magic. The Posaran central authority often suppressed the worst in order to
 + explain its incompatibility with the Orthodoxy.
-  
+
 ```
 
 </details>
@@ -77,4 +78,3 @@ If you need further formatting, sectioning, or integration with other content,
 please let me know!
 
 ---
-
