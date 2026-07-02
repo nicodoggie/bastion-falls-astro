@@ -1,0 +1,15392 @@
+# Session Transcript
+
+Source: /home/ensu/session-2026-05-29.flac
+Transcription: nodejs-whisper large-v3-turbo
+
+[00:00:00 - 00:00:22] Okay, so I guess short makeup na lang. Last game we are finally at the Scarlet where we are going to be, where the book club meeting is fairly under way.
+[00:00:22 - 00:00:40] The last time we stopped, I think we were with John and Mark and Andrew on the following line actually gave the three of them a tour with the Scarlet and had them meet the Soleil of the Vampire Baby.
+[00:00:40 - 00:00:54] And they had shown them the Alchemid John where drops of blood have to be put into it. Daily ba yun? Bago siya mapuno? Kailan ba siya kailangan?
+[00:00:54 - 00:01:02] Yung Alchemid John? Or indefinite ba yun? Kasi ang alam ko... Maraming silang Alchemid John.
+[00:01:02 - 00:01:14] Hindi, pero specifically yung... Siguro meron silang tatlo. Ah hindi, meron silang... Oh hindi, at least dalawa eh. At least yung, kasi yung isa may nakuha si Snow at si Dome.
+[00:01:14 - 00:01:42] Tapos si Justin at si Lime na nakuha si Lime na si Lime na si Lime na si Lime. Ah, okay. Pero yun eh. Pero... Ah, you can take a magic action on liquid, liquid state plus and the jug to produce it so liquid up to 2 gallons.
+[00:01:42 - 00:01:48] The maximum, the maximum mga refrigerator you can produce depends on the refrigerator named.
+[00:01:48 - 00:01:56] Walang nakalagay kong ilang araw eh. Oh, sabi nyo na lang natin at least 4 blood kasi depende naman kung ano diba. At least yung blood...
+[00:01:56 - 00:02:02] Parang kailangan once a day kailangan i-replend it para makapuno ng 2 gallons. Yes, okay.
+[00:02:08 - 00:02:16] What happened? What happened? Nothing. It's time for you to go to the video. Yeah, that's what happened.
+[00:02:16 - 00:02:20] Ah, hali ka na, dali, hali ka. Dali, dali.
+[00:02:28 - 00:02:34] I mean, he will learn about it.
+[00:02:34 - 00:02:40] Pero, ganyan naman lahat ng mga bata eh. So, upisahan.
+[00:02:40 - 00:02:52] Anyway, ah, where are we now?
+[00:02:52 - 00:02:53] I mean, ah, dali nga, diba?
+[00:02:53 - 00:02:54] It's not something that matters.
+[00:02:54 - 00:02:54] Eh, bata kasi nanay mo yung magulam mo eh.
+[00:02:54 - 00:02:54] Pero, kasi diba yun?
+[00:02:54 - 00:02:56] I mean, he will learn about it.
+[00:02:56 - 00:02:58] Pero, ganyan naman lahat ng mga bata eh. So, upisahan.
+[00:02:58 - 00:03:00] Anyway, ah, where are we now?
+[00:03:00 - 00:03:02] Eh, bata kasi nanay mo yung magulam mo eh.
+[00:03:02 - 00:03:04] Pero, kasi diba yun?
+[00:03:04 - 00:03:14] So, sige, nasa book club meeting sila. Kanina tayo mag-e-start.
+[00:03:14 - 00:03:18] Ah, we can continue on with the actual book club meeting.
+[00:03:18 - 00:03:22] Kasi kung tama pagkaalala ko, kasi kung tama pagkaalala ko.
+[00:03:22 - 00:03:28] Ah, sige, nasa book club meeting sila. Kanina tayo mag-e-start?
+[00:03:28 - 00:03:32] Ah, we can continue on with the actual book club meeting.
+[00:03:32 - 00:03:36] Book club meeting. Kasi kung tama pagkaalala ko, bumalik na naman sila din afterwards.
+[00:03:36 - 00:03:38] Ah, ang mga na-discuss na basically eh.
+[00:03:38 - 00:03:40] So, yung beholder.
+[00:03:40 - 00:03:46] Oo, yung beholder, yung mga, yung background information basically.
+[00:03:46 - 00:03:53] Ganito na lang. Kasi, syempre, hindi ko naman sila bibigyan ng total knowledge about operation.
+[00:03:53 - 00:03:55] I would role each of them.
+[00:03:55 - 00:03:56] Okay.
+[00:03:56 - 00:04:00] I would role for intelligence, Afghanistan, whatever, history.
+[00:04:00 - 00:04:04] Katulad ni Fina, saka ni ano.
+[00:04:04 - 00:04:08] Hindi. Although, pinag-roll na kita kay Fina specifically eh.
+[00:04:08 - 00:04:16] So, ang alam na natin kay Fina, basically yung alam niya natin sa Tower of, ah, jewel ba yung kanya?
+[00:04:16 - 00:04:18] O yung kufin niya?
+[00:04:18 - 00:04:20] Hindi. Yung kufin niya siya tayo.
+[00:04:20 - 00:04:21] Ay, oo.
+[00:04:21 - 00:04:24] Jewels and Thread yung saka yung bones and salt.
+[00:04:24 - 00:04:26] Ah, bones and salt pa rin.
+[00:04:26 - 00:04:28] Pero yung bones and salt sila rin o yan eh.
+[00:04:28 - 00:04:29] Yeah.
+[00:04:29 - 00:04:30] So, yung bones and salt.
+[00:07:43 - 00:07:44] So, yung bone and salt.
+[00:10:00 - 00:10:02] Kalis, po to Gio.
+[00:10:02 - 00:10:04] Sa boss baby eh.
+[00:10:04 - 00:10:07] Eh mukhang ayaw niya eh kasi nandito siya eh.
+[00:10:07 - 00:10:09] Kalis!
+[00:10:09 - 00:10:11] Hold on, Mr. Bean.
+[00:10:11 - 00:10:14] Ayaw na lang yung nangyong nangyong tindihan.
+[00:10:14 - 00:10:14] Out.
+[00:10:16 - 00:10:20] Ay, nakokali ha.
+[00:10:20 - 00:10:21] Go Gio, now.
+[00:10:28 - 00:10:29] Ayaw!
+[00:10:29 - 00:10:33] Wala na langit si Daddy.
+[00:10:33 - 00:10:33] Doon pa na eh.
+[00:10:33 - 00:10:35] If you're going to sleep, go sleep in the other room.
+[00:10:35 - 00:10:37] Ayaw yan.
+[00:10:37 - 00:10:39] Recording.
+[00:10:39 - 00:10:42] Nagdi-diending nga kasi kami, di ba?
+[00:10:42 - 00:10:43] Ano.
+[00:10:43 - 00:10:46] Okay, so what Emily knows
+[00:10:46 - 00:10:47] would be like
+[00:10:47 - 00:10:49] for one thing, yun ngayon.
+[00:10:49 - 00:10:49] Kanilang.
+[00:10:49 - 00:10:54] Ay, suppose it can be.
+[00:10:54 - 00:10:55] Specifically yung
+[00:10:55 - 00:10:57] Magical, yung What's Ionic
+[00:10:57 - 00:10:58] Maddick respect.
+[00:10:58 - 00:11:00] So, how they
+[00:11:00 - 00:11:02] like, they affect your mind.
+[00:11:02 - 00:11:03] They try to
+[00:11:03 - 00:11:05] play on your fears,
+[00:11:05 - 00:11:06] your,
+[00:11:06 - 00:11:07] your insecurities.
+[00:11:07 - 00:11:08] They attack,
+[00:11:08 - 00:11:09] you know,
+[00:11:09 - 00:11:10] your psyche,
+[00:11:10 - 00:11:11] your imagination.
+[00:11:11 - 00:11:12] Uh,
+[00:11:12 - 00:11:14] they also are able
+[00:11:14 - 00:11:15] to travel
+[00:11:15 - 00:11:17] through the ethereal
+[00:11:17 - 00:11:18] plane.
+[00:11:18 - 00:11:19] Uh,
+[00:11:19 - 00:11:19] which,
+[00:11:19 - 00:11:20] well,
+[00:11:20 - 00:11:21] at least you can say
+[00:11:21 - 00:11:22] is not a true
+[00:11:22 - 00:11:23] separate plane.
+[00:11:23 - 00:11:24] like, say,
+[00:11:24 - 00:11:25] you should pay
+[00:11:25 - 00:11:26] while you see this
+[00:11:26 - 00:11:27] one,
+[00:11:27 - 00:11:28] it's always
+[00:11:28 - 00:11:29] kind of like
+[00:11:29 - 00:11:29] a border.
+[00:11:29 - 00:11:30] It's like
+[00:11:30 - 00:11:31] something that
+[00:11:31 - 00:11:32] is at the edge
+[00:11:32 - 00:11:33] of the plane
+[00:11:33 - 00:11:33] where you're in.
+[00:11:33 - 00:11:34] There is something
+[00:11:34 - 00:11:35] that's parallel
+[00:11:35 - 00:11:35] to,
+[00:11:35 - 00:11:42] what she also
+[00:11:42 - 00:11:43] knows is
+[00:11:43 - 00:11:44] regarding this
+[00:11:44 - 00:11:45] is that
+[00:11:45 - 00:12:03] a theory of
+[00:12:03 - 00:12:05] planes where
+[00:12:05 - 00:12:06] like the
+[00:12:06 - 00:12:07] fae wild,
+[00:12:07 - 00:12:09] the fae crossings
+[00:12:09 - 00:12:10] don't necessarily,
+[00:12:10 - 00:12:11] nobody's really
+[00:12:11 - 00:12:12] proven this,
+[00:12:12 - 00:12:13] but this is
+[00:12:13 - 00:12:14] kind of like
+[00:12:14 - 00:12:15] a famous,
+[00:12:15 - 00:12:16] uh,
+[00:12:16 - 00:12:17] theory in
+[00:12:17 - 00:12:18] Owen Muller
+[00:12:18 - 00:12:18] in particular
+[00:12:18 - 00:12:19] that,
+[00:12:19 - 00:12:21] the fae crossings
+[00:12:21 - 00:12:22] aren't like
+[00:12:22 - 00:12:23] just instant
+[00:12:23 - 00:12:24] connections
+[00:12:24 - 00:12:24] between
+[00:12:24 - 00:12:26] two different,
+[00:12:26 - 00:12:27] two different
+[00:12:27 - 00:12:28] worlds that
+[00:12:28 - 00:12:28] they actually
+[00:12:28 - 00:12:30] open, uh,
+[00:12:30 - 00:12:31] the gateway
+[00:12:31 - 00:12:31] through something
+[00:12:31 - 00:12:32] called the
+[00:12:32 - 00:12:33] astral plane
+[00:12:33 - 00:12:34] where you can
+[00:12:34 - 00:12:34] travel and
+[00:12:34 - 00:12:35] usually you are
+[00:12:35 - 00:12:37] unconscious or
+[00:12:37 - 00:12:39] only partially
+[00:12:39 - 00:12:40] conscious during
+[00:12:40 - 00:12:41] this travel,
+[00:12:41 - 00:12:42] but,
+[00:12:42 - 00:12:43] uh,
+[00:12:43 - 00:12:44] nobody's actually
+[00:12:44 - 00:12:45] proved it
+[00:12:45 - 00:12:46] and they only
+[00:12:46 - 00:12:47] have some
+[00:12:47 - 00:12:47] kind of
+[00:12:47 - 00:12:48] So,
+[00:12:48 - 00:12:51] these are the
+[00:12:51 - 00:12:52] things that she
+[00:12:52 - 00:12:52] knows about
+[00:12:52 - 00:12:54] that and
+[00:12:54 - 00:12:55] also that
+[00:12:55 - 00:12:55] the aberrations
+[00:12:55 - 00:12:56] in particular
+[00:12:56 - 00:12:57] how it connects
+[00:12:57 - 00:12:58] to that
+[00:12:58 - 00:12:59] is that,
+[00:12:59 - 00:12:59] yeah,
+[00:12:59 - 00:12:59] they,
+[00:12:59 - 00:13:01] they use,
+[00:13:01 - 00:13:02] uh,
+[00:13:03 - 00:13:03] parang
+[00:13:03 - 00:13:04] their,
+[00:13:05 - 00:13:07] how they're
+[00:13:07 - 00:13:07] able to,
+[00:13:07 - 00:13:08] like,
+[00:13:08 - 00:13:08] transmit
+[00:13:08 - 00:13:10] through minds
+[00:13:10 - 00:13:11] into each
+[00:13:11 - 00:13:11] other,
+[00:13:11 - 00:13:12] connections
+[00:13:12 - 00:13:12] to each
+[00:13:12 - 00:13:13] others
+[00:13:13 - 00:13:13] through
+[00:13:13 - 00:13:14] their
+[00:13:14 - 00:13:16] means of
+[00:13:16 - 00:13:17] manipulating
+[00:13:17 - 00:13:17] the
+[00:13:17 - 00:13:18] material
+[00:13:18 - 00:13:19] planes.
+[00:13:19 - 00:13:20] So,
+[00:13:20 - 00:13:21] um,
+[00:13:21 - 00:13:23] so,
+[00:13:23 - 00:13:23] Hedwig
+[00:13:23 - 00:13:24] says,
+[00:13:24 - 00:13:24] uh,
+[00:13:24 - 00:13:25] so,
+[00:13:25 - 00:13:25] Emily,
+[00:13:25 - 00:13:26] kind of like,
+[00:13:26 - 00:13:27] she doesn't
+[00:13:27 - 00:13:27] tell
+[00:13:27 - 00:13:28] the whole
+[00:13:28 - 00:13:29] thing.
+[00:13:29 - 00:13:30] She just
+[00:13:30 - 00:13:30] make it
+[00:13:30 - 00:13:31] like a
+[00:13:31 - 00:13:31] layman,
+[00:13:31 - 00:13:32] parang
+[00:13:32 - 00:13:32] easy to
+[00:13:32 - 00:13:33] understand.
+[00:13:33 - 00:13:33] Right.
+[00:13:33 - 00:13:34] But,
+[00:13:34 - 00:13:34] she doesn't
+[00:13:34 - 00:13:35] tell them
+[00:13:35 - 00:13:36] about the
+[00:13:36 - 00:13:36] astral
+[00:13:36 - 00:13:37] shit.
+[00:13:37 - 00:13:38] Okay.
+[00:13:38 - 00:13:39] And,
+[00:13:39 - 00:13:40] yeah,
+[00:13:40 - 00:13:40] and,
+[00:13:40 - 00:13:40] uh,
+[00:13:40 - 00:13:41] Hedwig
+[00:13:41 - 00:13:41] says,
+[00:13:41 - 00:13:43] Hedwig
+[00:13:43 - 00:13:43] says,
+[00:13:43 - 00:13:44] um,
+[00:13:45 - 00:13:49] we have
+[00:13:49 - 00:13:50] a,
+[00:13:50 - 00:13:50] we have
+[00:13:50 - 00:13:51] a threat
+[00:13:51 - 00:13:52] here in
+[00:13:52 - 00:13:53] our world
+[00:13:53 - 00:13:54] that's
+[00:13:54 - 00:13:54] going on
+[00:13:54 - 00:13:55] about
+[00:13:55 - 00:13:56] 10
+[00:13:56 - 00:13:57] years
+[00:13:57 - 00:13:58] or more.
+[00:13:58 - 00:13:59] She says,
+[00:13:59 - 00:14:01] we don't
+[00:14:01 - 00:14:02] know.
+[00:14:02 - 00:14:03] Uh,
+[00:14:03 - 00:14:03] maybe
+[00:14:03 - 00:14:04] this is,
+[00:14:04 - 00:14:04] yeah,
+[00:14:04 - 00:14:05] and we need
+[00:14:05 - 00:14:06] the timeline.
+[00:14:06 - 00:14:08] She says,
+[00:14:08 - 00:14:09] we need
+[00:14:09 - 00:14:09] the timeline
+[00:14:09 - 00:14:11] for this
+[00:14:11 - 00:14:12] or else
+[00:14:12 - 00:14:14] we're just
+[00:14:14 - 00:14:17] being surprised.
+[00:14:17 - 00:14:18] So,
+[00:14:18 - 00:14:19] uh,
+[00:14:19 - 00:14:19] I think,
+[00:14:19 - 00:14:20] of course,
+[00:14:20 - 00:14:22] Nadia.
+[00:14:22 - 00:14:23] Serafin,
+[00:14:23 - 00:14:24] she says,
+[00:14:24 - 00:14:26] yeah,
+[00:14:26 - 00:14:27] yeah.
+[00:14:27 - 00:14:28] Got any
+[00:14:28 - 00:14:28] timeline for
+[00:14:28 - 00:14:29] us?
+[00:14:29 - 00:14:38] Things
+[00:14:38 - 00:14:39] started
+[00:14:39 - 00:14:40] being
+[00:14:40 - 00:14:41] warm.
+[00:14:41 - 00:14:42] Well,
+[00:14:42 - 00:14:43] the reformists
+[00:14:43 - 00:14:44] supposedly
+[00:14:44 - 00:14:45] were formed
+[00:14:45 - 00:14:45] sometime
+[00:14:45 - 00:14:46] around
+[00:14:46 - 00:14:47] 20 years
+[00:14:47 - 00:14:47] ago
+[00:14:47 - 00:14:48] or even
+[00:14:48 - 00:14:49] further.
+[00:14:49 - 00:14:52] The first
+[00:14:52 - 00:14:52] ones
+[00:14:52 - 00:14:53] could have
+[00:14:53 - 00:14:53] been there
+[00:14:53 - 00:14:54] right after
+[00:14:54 - 00:14:55] Bastion?
+[00:14:55 - 00:14:55] What?
+[00:14:55 - 00:14:57] The,
+[00:14:57 - 00:14:57] uh,
+[00:14:57 - 00:14:59] after Bastion
+[00:14:59 - 00:14:59] fell.
+[00:15:03 - 00:15:05] there's
+[00:15:05 - 00:15:06] no,
+[00:15:06 - 00:15:08] there's no active
+[00:15:08 - 00:15:09] thing to
+[00:15:09 - 00:15:09] retake,
+[00:15:09 - 00:15:10] uh,
+[00:15:10 - 00:15:11] to retake Bastion.
+[00:15:11 - 00:15:12] Uh,
+[00:15:12 - 00:15:12] we're only
+[00:15:12 - 00:15:13] no one.
+[00:15:13 - 00:15:14] The,
+[00:15:14 - 00:15:14] the crusade
+[00:15:14 - 00:15:15] of that
+[00:15:15 - 00:15:15] where,
+[00:15:15 - 00:15:16] uh,
+[00:15:16 - 00:15:17] Levi's,
+[00:15:17 - 00:15:18] uh,
+[00:15:18 - 00:15:22] where Levi's,
+[00:15:22 - 00:15:23] uh,
+[00:15:23 - 00:15:25] brother got lost
+[00:15:25 - 00:15:25] or something
+[00:15:25 - 00:15:26] swallowed by the
+[00:15:26 - 00:15:26] sea,
+[00:15:26 - 00:15:27] whatever.
+[00:15:27 - 00:15:28] or,
+[00:15:28 - 00:15:28] says.
+[00:15:28 - 00:15:30] So there
+[00:15:30 - 00:15:30] were multiple
+[00:15:30 - 00:15:31] events.
+[00:15:31 - 00:15:32] That was,
+[00:15:32 - 00:15:33] goes to that
+[00:15:33 - 00:15:34] event that you're
+[00:15:34 - 00:15:34] talking about
+[00:15:34 - 00:15:35] or to save.
+[00:15:35 - 00:15:36] And the
+[00:15:36 - 00:15:37] fake Bastion.
+[00:15:37 - 00:15:38] Of course,
+[00:15:38 - 00:15:41] it said that even
+[00:15:41 - 00:15:41] the Bastion
+[00:15:41 - 00:15:43] tried to do it,
+[00:15:43 - 00:15:43] tried to take
+[00:15:43 - 00:15:45] Bastion for
+[00:15:45 - 00:15:46] themselves,
+[00:15:46 - 00:15:47] take advantage
+[00:15:47 - 00:15:47] of the fact that
+[00:15:47 - 00:15:48] people were
+[00:15:48 - 00:15:48] hoping.
+[00:15:48 - 00:15:49] but,
+[00:15:49 - 00:15:49] you know,
+[00:15:49 - 00:15:49] again?
+[00:15:49 - 00:15:51] Uh,
+[00:15:51 - 00:15:52] after they took
+[00:15:52 - 00:15:52] Manastua,
+[00:15:52 - 00:15:55] they did
+[00:15:55 - 00:15:56] try to
+[00:15:56 - 00:15:57] push through.
+[00:15:57 - 00:15:59] They were able
+[00:15:59 - 00:16:00] to get some
+[00:16:00 - 00:16:00] territory,
+[00:16:00 - 00:16:01] but they were
+[00:16:01 - 00:16:03] weren't able
+[00:16:03 - 00:16:04] to go further
+[00:16:04 - 00:16:04] than what
+[00:16:04 - 00:16:05] they were
+[00:16:05 - 00:16:05] in the time.
+[00:16:05 - 00:16:06] Ah,
+[00:16:06 - 00:16:07] alright,
+[00:16:07 - 00:16:08] so the rumors
+[00:16:08 - 00:16:08] are,
+[00:16:08 - 00:16:09] well,
+[00:16:09 - 00:16:10] it's not a rumor,
+[00:16:10 - 00:16:11] but,
+[00:16:11 - 00:16:11] uh,
+[00:16:11 - 00:16:12] anyway,
+[00:16:12 - 00:16:13] she says,
+[00:16:13 - 00:16:14] so,
+[00:16:14 - 00:16:16] yeah,
+[00:16:18 - 00:16:25] from our
+[00:16:25 - 00:16:26] networks
+[00:16:26 - 00:16:27] as a medicine.
+[00:16:27 - 00:16:30] We've only
+[00:16:30 - 00:16:31] heard of
+[00:16:31 - 00:16:32] at least
+[00:16:32 - 00:16:34] three more
+[00:16:34 - 00:16:34] and this
+[00:16:34 - 00:16:35] one of course
+[00:16:35 - 00:16:36] was going soon.
+[00:16:36 - 00:16:37] The others
+[00:16:37 - 00:16:38] were from
+[00:16:38 - 00:16:39] a coalition
+[00:16:39 - 00:16:39] that was sent
+[00:16:39 - 00:16:40] by the climate
+[00:16:40 - 00:16:41] force up
+[00:16:41 - 00:16:43] sometime
+[00:16:43 - 00:16:44] like
+[00:16:44 - 00:16:46] 35 years
+[00:16:46 - 00:16:46] ago.
+[00:16:46 - 00:16:48] But those
+[00:16:48 - 00:16:49] failed
+[00:16:49 - 00:16:50] even before
+[00:16:50 - 00:16:50] they could
+[00:16:50 - 00:16:51] come close
+[00:16:51 - 00:16:52] to an area
+[00:16:52 - 00:16:53] of purchase
+[00:16:53 - 00:16:53] that was
+[00:16:53 - 00:16:54] controlled
+[00:16:54 - 00:16:55] by the war
+[00:16:55 - 00:16:56] women.
+[00:16:56 - 00:17:01] I don't know.
+[00:17:01 - 00:17:02] In that
+[00:17:02 - 00:17:03] took
+[00:17:03 - 00:17:03] version
+[00:17:03 - 00:17:04] of territory,
+[00:17:04 - 00:17:05] I would tell.
+[00:17:05 - 00:17:06] Ah,
+[00:17:06 - 00:17:08] fuck that.
+[00:17:08 - 00:17:09] What about
+[00:17:09 - 00:17:09] Mahicanians?
+[00:17:09 - 00:17:12] Mahicanians
+[00:17:12 - 00:17:12] didn't.
+[00:17:12 - 00:17:14] There were
+[00:17:14 - 00:17:15] Mahicanians
+[00:17:15 - 00:17:15] that were
+[00:17:15 - 00:17:16] part
+[00:17:16 - 00:17:16] of
+[00:17:16 - 00:17:17] those
+[00:17:17 - 00:17:19] coalition
+[00:17:19 - 00:17:21] by
+[00:17:21 - 00:17:22] just
+[00:17:22 - 00:17:23] attracting
+[00:17:23 - 00:17:23] their
+[00:17:23 - 00:17:23] part of
+[00:17:23 - 00:17:23] the
+[00:17:23 - 00:17:24] nation.
+[00:17:24 - 00:17:25] But they
+[00:17:25 - 00:17:26] didn't
+[00:17:26 - 00:17:27] commit
+[00:17:27 - 00:17:28] as
+[00:17:28 - 00:17:29] government.
+[00:17:29 - 00:17:29] They had
+[00:17:29 - 00:17:30] their own
+[00:17:30 - 00:17:30] problems
+[00:17:30 - 00:17:31] at the time.
+[00:17:31 - 00:17:32] So she
+[00:17:32 - 00:17:32] says,
+[00:17:32 - 00:17:34] so
+[00:17:34 - 00:17:36] is this,
+[00:17:36 - 00:17:36] is it
+[00:17:36 - 00:17:37] possible,
+[00:17:37 - 00:17:38] so let's
+[00:17:38 - 00:17:41] think more.
+[00:17:41 - 00:17:42] Let's think
+[00:17:42 - 00:17:42] more about
+[00:17:42 - 00:17:43] this.
+[00:17:43 - 00:17:45] So,
+[00:17:45 - 00:17:46] someone
+[00:17:46 - 00:17:47] made
+[00:17:47 - 00:17:48] the religion
+[00:17:48 - 00:17:50] reformist's
+[00:17:50 - 00:17:50] church,
+[00:17:50 - 00:17:51] right?
+[00:17:51 - 00:17:53] Is that
+[00:17:53 - 00:17:54] the elder
+[00:17:54 - 00:17:55] brain that
+[00:17:55 - 00:17:56] made the
+[00:17:56 - 00:17:56] religion,
+[00:17:57 - 00:17:58] or a
+[00:17:58 - 00:17:59] person?
+[00:17:59 - 00:18:00] But he
+[00:18:00 - 00:18:00] didn't
+[00:18:00 - 00:18:00] see,
+[00:18:00 - 00:18:00] right?
+[00:18:00 - 00:18:01] Yeah.
+[00:18:01 - 00:18:02] Oh,
+[00:18:02 - 00:18:04] I don't
+[00:18:04 - 00:18:04] think so.
+[00:18:04 - 00:18:08] The religion
+[00:18:08 - 00:18:10] had a
+[00:18:10 - 00:18:11] more
+[00:18:11 - 00:18:11] race than
+[00:18:11 - 00:18:12] a thing,
+[00:18:12 - 00:18:12] et cetera,
+[00:18:12 - 00:18:13] you know,
+[00:18:13 - 00:18:14] it wasn't
+[00:18:14 - 00:18:14] one year
+[00:18:14 - 00:18:14] ago,
+[00:18:14 - 00:18:15] it was
+[00:18:15 - 00:18:17] just a few
+[00:18:17 - 00:18:18] years after
+[00:18:18 - 00:18:19] births happened.
+[00:18:19 - 00:18:21] Immediately after
+[00:18:21 - 00:18:22] births happened,
+[00:18:22 - 00:18:22] and I just
+[00:18:22 - 00:18:22] started
+[00:18:22 - 00:18:24] coming in,
+[00:18:24 - 00:18:24] please.
+[00:18:24 - 00:18:29] 50 years
+[00:18:29 - 00:18:30] ago?
+[00:18:30 - 00:18:32] 40 something
+[00:18:32 - 00:18:33] around that.
+[00:18:33 - 00:18:35] One or
+[00:18:35 - 00:18:36] two years
+[00:18:36 - 00:18:36] after
+[00:18:36 - 00:18:38] births happened,
+[00:18:38 - 00:18:40] we started
+[00:18:40 - 00:18:41] transforming the
+[00:18:41 - 00:18:42] area.
+[00:18:42 - 00:18:44] So the
+[00:18:44 - 00:18:45] aberration
+[00:18:45 - 00:18:45] hasn't
+[00:18:45 - 00:18:46] arrived around
+[00:18:46 - 00:18:47] that time.
+[00:18:47 - 00:18:48] Because
+[00:18:48 - 00:18:49] this is an
+[00:18:49 - 00:18:50] invasion of
+[00:18:50 - 00:18:51] the world
+[00:18:51 - 00:18:52] from other
+[00:18:52 - 00:18:53] claims.
+[00:18:53 - 00:18:54] We should
+[00:18:54 - 00:18:55] have a,
+[00:18:55 - 00:18:55] we need
+[00:18:55 - 00:18:56] the
+[00:18:56 - 00:18:56] timeline
+[00:18:56 - 00:18:56] for it.
+[00:18:56 - 00:18:57] We can
+[00:18:57 - 00:18:58] say for
+[00:18:58 - 00:18:59] sure whether
+[00:18:59 - 00:18:59] or not
+[00:18:59 - 00:19:00] they arrived
+[00:19:00 - 00:19:01] in a decent
+[00:19:01 - 00:19:01] slope,
+[00:19:01 - 00:19:03] or whether
+[00:19:03 - 00:19:04] they were
+[00:19:04 - 00:19:04] already here
+[00:19:04 - 00:19:05] but dormant.
+[00:19:05 - 00:19:07] What we
+[00:19:07 - 00:19:08] know is that
+[00:19:08 - 00:19:09] when
+[00:19:09 - 00:19:11] the reformists
+[00:19:11 - 00:19:12] were made,
+[00:19:12 - 00:19:13] it wasn't
+[00:19:13 - 00:19:13] because they
+[00:19:13 - 00:19:14] wanted to take
+[00:19:14 - 00:19:15] over the world
+[00:19:15 - 00:19:16] because they
+[00:19:16 - 00:19:16] wanted to do
+[00:19:16 - 00:19:17] that.
+[00:19:17 - 00:19:18] So there's
+[00:19:18 - 00:19:18] not like
+[00:19:18 - 00:19:19] this,
+[00:19:19 - 00:19:21] that's why
+[00:19:21 - 00:19:21] the revival
+[00:19:21 - 00:19:22] is created.
+[00:19:23 - 00:19:24] the revivalists
+[00:19:24 - 00:19:26] told what
+[00:19:26 - 00:19:26] the original
+[00:19:26 - 00:19:27] and the
+[00:19:27 - 00:19:28] the reform
+[00:19:28 - 00:19:29] was created.
+[00:19:29 - 00:19:31] They just
+[00:19:31 - 00:19:31] wanted to
+[00:19:31 - 00:19:33] have everyone
+[00:19:33 - 00:19:34] treat,
+[00:19:34 - 00:19:35] the revivalists
+[00:19:35 - 00:19:36] have,
+[00:19:36 - 00:19:36] when did the
+[00:19:36 - 00:19:37] revivalists
+[00:19:37 - 00:19:38] create it?
+[00:19:38 - 00:19:39] When the revivalists
+[00:19:39 - 00:19:40] turned out
+[00:19:40 - 00:19:44] about 30 years
+[00:19:44 - 00:19:45] ago.
+[00:19:45 - 00:19:46] So,
+[00:19:46 - 00:19:48] 30?
+[00:19:48 - 00:19:49] How about
+[00:19:49 - 00:19:49] that matter?
+[00:19:49 - 00:19:50] Yeah,
+[00:19:50 - 00:19:51] 30.
+[00:19:51 - 00:19:54] And still,
+[00:19:54 - 00:19:55] it was a very
+[00:19:55 - 00:19:55] small,
+[00:19:55 - 00:19:56] it might have
+[00:19:56 - 00:19:56] been a main
+[00:19:56 - 00:19:57] city,
+[00:19:57 - 00:19:58] but that
+[00:19:58 - 00:19:58] came to
+[00:19:58 - 00:19:59] the system.
+[00:19:59 - 00:20:00] So,
+[00:19:59 - 00:20:20] So, let's say that the Formus Church was made 14 years ago, so there's 18 years that you're through to your origin, moving slow, but after that something changed. That's why the Revivalists had to go wrong.
+[00:20:20 - 00:20:27] And that's what this doesn't happen. And the difference is the Rothschild.
+[00:20:27 - 00:20:34] Ah, right. Well, you've seen her house, right?
+[00:20:34 - 00:20:36] Sure.
+[00:20:36 - 00:20:48] So, the arrival of the Rothschild in the Reformus is the one that kind of, like, they became this, like, evil organization.
+[00:20:48 - 00:20:58] Well, you know, Freyjan, that the head of the Rothschild, who is sovereign, is an arch-lich.
+[00:20:58 - 00:21:09] Fucking bastard. Another fucking, uh, another human being trying to be God.
+[00:21:09 - 00:21:12] So, how old is this Rothschild again, assuming?
+[00:21:12 - 00:21:18] Seventy-something or something. Older than that. Eighteen years old?
+[00:21:18 - 00:21:22] So, that's from being's age or older.
+[00:21:22 - 00:21:24] That's what I know about this guy.
+[00:21:24 - 00:21:30] Oh, he became an arch-lich.
+[00:21:30 - 00:21:35] Ah, shit. Could be something that, uh, sabi-sabi niya.
+[00:21:35 - 00:21:55] So, uh, how to become an arch-lich? Sabi-sabi niya. Just a side, uh, side fucking note.
+[00:21:55 - 00:22:05] So, you've got to reap 99 souls. Every attempt, every soul shards you will create.
+[00:22:05 - 00:22:07] Exactly, it's not an arch-lich, huh?
+[00:22:07 - 00:22:07] Huh?
+[00:22:07 - 00:22:09] It's not an arch-lich.
+[00:22:09 - 00:22:13] I mean, that's where leech comes.
+[00:22:13 - 00:22:21] So, you split all your, uh, split your soul into, like, depends on your power.
+[00:22:21 - 00:22:28] You can handle three shards, two shards, four, five, seven. Sabi-sabi niya.
+[00:22:28 - 00:22:37] Split your soul, and by splitting your soul, you need 99 other souls to sacrifice, and then,
+[00:22:37 - 00:22:44] that's how you, uh, ritually, uh, offer your soul and split them into that.
+[00:22:44 - 00:22:52] Ah, it's a long process, but it's possible, he says. Now, the magic is returned.
+[00:22:52 - 00:22:54] The baby is crying.
+[00:22:54 - 00:22:58] So, this person is an arch-lich. So, this is what you're talking about.
+[00:22:58 - 00:23:00] Uh-huh.
+[00:23:00 - 00:23:01] Uh, your soul.
+[00:23:01 - 00:23:04] Delactery. That's the term.
+[00:23:04 - 00:23:10] Like, uh, this person might even be a little older than the age of now.
+[00:23:10 - 00:23:11] Yeah.
+[00:23:11 - 00:23:15] It's probably just his, so, I can see.
+[00:23:15 - 00:23:21] What if Sovereign or the Rothschild family is, like, from another plane?
+[00:23:21 - 00:23:27] Migrated here, and, you know, just like that.
+[00:23:27 - 00:23:30] Tina and Emily would think that that might be possible.
+[00:23:30 - 00:23:33] That's possible, something new, Emily.
+[00:23:33 - 00:23:38] Tina would actually think that, at least, they may not be.
+[00:23:38 - 00:23:45] There are other material places like this, and Emily would know, naman, that at least,
+[00:23:45 - 00:23:49] there is that place where the Sinai people come from.
+[00:23:49 - 00:23:49] Yeah.
+[00:23:49 - 00:23:54] They come from something that's like this, that is more like,
+[00:23:54 - 00:23:58] it's not necessary, okay, well, it's a little bit more logical.
+[00:23:58 - 00:23:58] Uh-huh.
+[00:23:58 - 00:24:02] It's a little bit more like this world, but different circumstances.
+[00:24:02 - 00:24:09] It's a little bit more like this, right?
+[00:24:09 - 00:24:09] Uh-huh.
+[00:24:09 - 00:24:09] Yeah.
+[00:24:09 - 00:24:10] It's a little bit more like this, right?
+[00:24:10 - 00:24:11] Uh-huh.
+[00:24:11 - 00:24:12] It's a little bit more like this, right?
+[00:24:18 - 00:24:19] Yeah.
+[00:24:19 - 00:24:20] It's a little bit more like this.
+[00:24:28 - 00:24:32] No offense, uh, Ms. Seraphine, she says,
+[00:24:32 - 00:24:40] "Celestial beings are believed to be sent to a plane of existence to save them,
+[00:24:40 - 00:24:45] help them guide their community or something, their world," she says.
+[00:24:45 - 00:24:54] But who gave them, who gave the right to the celestial to put such beings in our world to guide us?
+[00:24:54 - 00:24:55] Right?
+[00:24:55 - 00:24:59] Who put the right on them?
+[00:24:59 - 00:25:03] I mean, no offense against Ms. Seraphine.
+[00:25:03 - 00:25:09] I really respect you, and I know you went through some things.
+[00:25:12 - 00:25:19] and that I'm trying to declare a method right now that I have changed in my life.
+[00:25:19 - 00:25:24] It's not...
+[00:25:24 - 00:25:30] They don't think of it as a matter of right.
+[00:25:30 - 00:25:35] It's a matter of vanquering those.
+[00:25:35 - 00:25:38] So, like a charity?
+[00:25:40 - 00:25:41] It's not a matter.
+[00:25:41 - 00:25:44] A strong sense of justice.
+[00:25:44 - 00:25:45] It's something like that.
+[00:25:45 - 00:25:49] This is where Jessica will come from.
+[00:25:49 - 00:26:00] The fact that these aberrations are trying to invade other places.
+[00:26:00 - 00:26:03] They try to invade Celestia.
+[00:26:06 - 00:26:12] and that they are basically a scourge to anyone that neighbors.
+[00:26:12 - 00:26:19] This is why Celestials are dispatched effectively.
+[00:26:19 - 00:26:26] And, also, that I suppose I would not be
+[00:26:29 - 00:26:30] offending...
+[00:26:30 - 00:26:32] offending our dear sense of dying now.
+[00:26:32 - 00:26:46] It is a similar reason why Celestials fight for humans and devils.
+[00:26:46 - 00:26:51] I don't think we're similar to them for the sake of it.
+[00:26:51 - 00:26:56] No, what I mean to say is why Celestials fight them as well.
+[00:26:56 - 00:27:01] It's because they also try to go to other things.
+[00:27:01 - 00:27:04] Under their headgems.
+[00:27:04 - 00:27:08] Because their intentions are different than us, Celestials.
+[00:27:08 - 00:27:12] Our intentions are to do nothing.
+[00:27:12 - 00:27:15] They are just evil, Celestials.
+[00:27:15 - 00:27:21] And humans, mortal beings are inferior to us.
+[00:27:21 - 00:27:22] Celestials.
+[00:27:22 - 00:27:24] That's right, Celestials.
+[00:27:24 - 00:27:26] Right, all of you games.
+[00:27:26 - 00:27:27] Magical items.
+[00:27:27 - 00:27:30] Power up certain capabilities.
+[00:27:30 - 00:27:34] But all of you doesn't have any chance to be in fairness.
+[00:27:34 - 00:27:35] Celestials.
+[00:27:35 - 00:27:37] Courses of evil.
+[00:27:37 - 00:27:43] I mean, out of boredom, devils and demons sire.
+[00:27:43 - 00:27:44] Warlocks.
+[00:27:44 - 00:27:47] What you call corn-ups.
+[00:27:47 - 00:27:58] I suppose it's a matter of intent.
+[00:27:58 - 00:28:04] But also, well, like you said,
+[00:28:04 - 00:28:10] I suppose this is a matter that I can't decrease it.
+[00:28:10 - 00:28:13] It's what I'm starting to remember about Celestials.
+[00:28:14 - 00:28:24] But yes, even the Celestials think that in some way, that humanity is inferior and solidates power.
+[00:28:24 - 00:28:32] A lot of light and light are protected in some ways, whether or not they want it.
+[00:28:32 - 00:28:39] Because some believe that they don't protect it.
+[00:28:42 - 00:28:45] So, Sensu Begis talks.
+[00:28:45 - 00:28:48] I don't know, like, yeah, Gilgari.
+[00:28:48 - 00:28:50] I said, yeah, Arangganan.
+[00:28:50 - 00:29:00] But she kind of like, she's standing beside the door, like a driver, with her towering presence,
+[00:29:00 - 00:29:04] the towers, most of the people who are in the, even Koto.
+[00:29:04 - 00:29:04] Yeah.
+[00:29:06 - 00:29:16] And then, uh, beside her, uh, kind of like, uh, Jessica says, I see you're still this illusion of Celestials.
+[00:29:20 - 00:29:23] I lost myself in my devotion.
+[00:29:23 - 00:29:35] Even if I actually forgot what it was, I understood I was acting with the girl, with the girl and the children.
+[00:29:35 - 00:29:37] Asked if I knew better.
+[00:29:39 - 00:29:48] And there was a point in that, these people around us, there's an absolute point here, and I'm just kidding.
+[00:29:48 - 00:29:48] No.
+[00:29:48 - 00:29:56] You're almost, too, but it's not your story, it's your left story, it's your left story.
+[00:29:56 - 00:30:01] It's the Celestials full sense.
+[00:29:59 - 00:30:10] She says, "Do you remember the ones where we came from, our home food? Remember that?"
+[00:30:10 - 00:30:23] And Celestia, so she looks at her and says, "Well, I'll tell you what I can remember.
+[00:30:23 - 00:30:29] All I can remember is you can only feel one food in that place.
+[00:30:29 - 00:30:36] And that is just an overwhelming sensation of anything here."
+[00:30:36 - 00:30:51] Well, the mirror, that the Celestia, the mirror, used that we will send you somewhere to kind
+[00:30:51 - 00:30:55] of a piece of work, right?
+[00:30:55 - 00:31:00] So that's what all of us remember in Celestia.
+[00:31:00 - 00:31:15] Once we knew that's why we are very adamant in justice, in what we believe is right, because we're very confident in Celestia.
+[00:31:15 - 00:31:24] And that's the news that they put us to work missions, helping others, charities.
+[00:31:24 - 00:31:25] Kind of.
+[00:31:25 - 00:31:30] He says, "It overwhelms us that we must do this."
+[00:31:30 - 00:31:31] How is that possible, she says.
+[00:31:31 - 00:31:32] How is that possible, she says?
+[00:31:33 - 00:31:34] She says.
+[00:31:34 - 00:31:39] But you feel content in one thing. I mean, I mean nobody's feel content with anything. I mean, you can be contented with one thing, but, she says,
+[00:31:39 - 00:31:40] humans are designed to explore, adventure, she says.
+[00:31:40 - 00:31:40] So Celestia.
+[00:31:42 - 00:32:04] How is that possible? She says. But you feel content in one thing. I mean, nobody's feel content with anything. You can be contented with one thing, but humans are designed to explore, adventure.
+[00:32:08 - 00:32:20] So, Celestials are like that, I think, that Jesus says. You might even realize this.
+[00:32:20 - 00:32:28] They don't realize that as well.
+[00:32:28 - 00:32:32] But what I do right now is that is what I'm listening to.
+[00:32:32 - 00:32:38] That feeling, I lost that a long time ago.
+[00:32:38 - 00:32:40] I think that is what I was listening to.
+[00:32:40 - 00:32:50] And why I acted the way that I did is because I wanted that sense of encouragement for myself, for the dark.
+[00:32:50 - 00:33:00] I think that is what I was searching for and I couldn't find it because we don't have that thing ever since I suppose the Africa cut us away from Celestia.
+[00:33:00 - 00:33:12] And I think that was what I was searching for and I couldn't find it because we don't have that thing ever since I suppose the Africa cut us away from Celestia.
+[00:33:12 - 00:33:24] None of the angels here, none of the angels here, none of the angels here, none of the ones that have been trapped here during the time that they didn't screw the person without that.
+[00:33:24 - 00:33:32] And I think those of them handling it, those who weren't aware of the nature of Celestia.
+[00:33:32 - 00:33:38] That's, that's, that's how I heard Celestia.
+[00:33:38 - 00:33:40] Come in and Jessica.
+[00:33:40 - 00:33:48] I, myself when I sing, O for them.
+[00:33:48 - 00:33:50] I, myself when I sing, I'm a little girl.
+[00:37:14 - 00:37:16] I'm a little girl.
+[00:37:16 - 00:37:18] I, myself when I sing, I'm a little girl.
+[00:39:59 - 00:40:03] Oh my. You were 16 when you were pregnant.
+[00:40:03 - 00:40:17] Duchess, she says, you have connections in Senera, right?
+[00:40:17 - 00:40:29] That I may give this, I may offer you this, I may request, not offer, but request this favor upon you, she says.
+[00:40:29 - 00:40:37] Of course, but I don't know what kind of connections I have, but the crowning prince is not.
+[00:40:37 - 00:40:46] Oh, I thread carefully with relationships with the crowning prince. No prince.
+[00:40:46 - 00:40:49] Of course, I'm just considering that.
+[00:40:49 - 00:41:05] I will have to consider your feeling of weakness upon learning that your country is, how shall we name it?
+[00:41:05 - 00:41:13] Not in the ass, as he says. Not in the ass, he says.
+[00:41:13 - 00:41:22] I have much more than that. I think at this point, there is only, I don't think there is no hope that he is perfectly unrighteous.
+[00:41:22 - 00:41:29] That is why I'm not putting you in this simple favor, which is nice.
+[00:41:29 - 00:41:38] Well, we returned, as all of you know, that we just recently returned from the Feywab view.
+[00:41:38 - 00:41:45] It was more about two weeks, at least, she said. Almost two weeks ago, she said.
+[00:41:45 - 00:41:51] We stumbled upon a lot of horses in the Feywab.
+[00:41:51 - 00:42:10] And, but, we haven't seen people like us until, I mean, we've seen them fought, they were enslaved, but we managed to save one girl.
+[00:42:10 - 00:42:25] She is, she was in the Feywab and was being, uh, uh, in the slave, uh, slave network, the country, like that.
+[00:42:25 - 00:42:34] But, we found her and we rescued her, she says. And she's, uh, taking a residence in here, in this apartment, she says.
+[00:42:34 - 00:42:40] She's around, uh, how old is, uh, Rebecca is, uh, son?
+[00:42:40 - 00:42:42] Six. Rebecca? Ten.
+[00:42:42 - 00:42:46] How old is she probably? Nine to a lot of years?
+[00:42:46 - 00:43:00] Around the years, yes. The one thing that, uh, kind of troubles me is that we found some, Mark, who's a locket that has a, um, a sheave.
+[00:43:00 - 00:43:10] Uh, we checked her, uh, um, in biology, um, checked her, uh, physical, uh, we checked her physically.
+[00:43:10 - 00:43:18] Uh, we checked her physically. She, you know, somewhat, uh, uh, she strongly covers from cinema.
+[00:43:18 - 00:43:25] He says. She has this red head, red hair, he says.
+[00:43:25 - 00:43:33] Um, where's the red head, uh, uh, well, northern markets or, uh, still markets?
+[00:43:33 - 00:43:37] Hey! Fuck you! What's your problem with red heads?
+[00:43:37 - 00:43:43] Oh, come on, uh, let me tell ya. You're not from Cineville, of course. We already know that.
+[00:43:43 - 00:43:51] Yeah, I'm from the underworld.
+[00:43:51 - 00:43:53] He says.
+[00:43:53 - 00:43:57] This little girl is, um, Cenera. Cenera.
+[00:43:57 - 00:44:05] And she knows about Cenera a little bit, but it seems that she is, uh, withholding information from us.
+[00:44:05 - 00:44:13] Or, she is really, she has this, uh, psychological problem.
+[00:44:13 - 00:44:17] She seems to be, uh, believed that she's still in the favor.
+[00:44:17 - 00:44:19] I'm thinking it.
+[00:44:19 - 00:44:29] If you would, uh, if you would be a kind of woman who helped us, uh, back where she belongs.
+[00:44:29 - 00:44:35] And she is, uh, what kind of woman, she came to, we hope.
+[00:44:35 - 00:44:40] I don't know if they were to see her, or not she's gone.
+[00:44:40 - 00:44:44] I don't see if, if there are some ways when people don't know.
+[00:44:44 - 00:44:54] But, yes, just from my, I, I, I heard her, um, that, um, especially if she is from the North,
+[00:44:54 - 00:45:04] of the noble descent that limits us to the areas around Skelola, that's Skelomar.
+[00:45:04 - 00:45:14] Simple as it may seem, but there's also a problem with Pela being lost in a Pela.
+[00:45:14 - 00:45:25] She could be lost in time, she could be teleported in a...no, no, no, no, no.
+[00:45:25 - 00:45:27] What did she ask?
+[00:45:27 - 00:45:32] So, Emily says, "Is that little Rebecca?"
+[00:45:32 - 00:45:35] "Yes, why?"
+[00:45:35 - 00:45:39] And then Lyon says, "Oh, you mean Rebecca?"
+[00:45:39 - 00:45:52] So, she mentioned before that she was traveling with her family from a vacation outside Sinera.
+[00:45:52 - 00:45:59] But she wasn't told when she slept in Skelomar.
+[00:45:59 - 00:46:02] That's what she said, that's what she told us.
+[00:46:02 - 00:46:07] She slept and then she wakes up and she was in Wonderland.
+[00:46:07 - 00:46:12] It does make sense, she would not come down to the Pela with his baby and Skelomar.
+[00:46:12 - 00:46:14] She's already established.
+[00:46:14 - 00:46:17] Yeah, but her clothes, I mean...
+[00:46:17 - 00:46:20] It could be Skelomar, too.
+[00:46:20 - 00:46:27] But would they have been outside of Skelomar and why they could have gone through them and stuff?
+[00:46:27 - 00:46:28] Across?
+[00:46:28 - 00:46:34] Yeah, we know that. We kind of like, established them.
+[00:46:34 - 00:46:40] But, I don't know.
+[00:46:40 - 00:46:44] She won't tell us the name of her parents.
+[00:46:44 - 00:46:47] She only says that she can't remember.
+[00:46:47 - 00:46:50] But she talks in Sinera, she says.
+[00:46:50 - 00:46:53] She can speak Sinera, she says.
+[00:46:53 - 00:47:02] So, yeah, Duchess, if you would be a friend.
+[00:47:02 - 00:47:09] If we are able to speak with her, then I suppose we can, let's say more about her accent.
+[00:47:09 - 00:47:12] For example, how she speaks.
+[00:47:12 - 00:47:13] You can know.
+[00:47:14 - 00:47:18] Highborn children speak in a certain way.
+[00:47:18 - 00:47:21] It is much different than old ones.
+[00:47:21 - 00:47:24] You can check on her later, I'll tell her.
+[00:47:24 - 00:47:31] That shouldn't narrow things down, whether or not she is a child or a merchant, for example.
+[00:47:31 - 00:47:33] Oh, yeah, Duchess.
+[00:47:33 - 00:47:35] She is a spellcaster.
+[00:47:35 - 00:47:39] But she doesn't have the yellow hair.
+[00:47:39 - 00:47:43] We check if her hair is dyed at some point.
+[00:47:43 - 00:47:44] But it's not.
+[00:47:44 - 00:47:45] It's not.
+[00:47:45 - 00:47:47] She has the eyes though.
+[00:47:47 - 00:48:15] Yes. We don't include the children in our living room there. If it is because the eyes will not be given, and there is the yellow Muslim eyes for registering, then virtually it would exist. There is a registering in there.
+[00:48:15 - 00:48:17] Yes.
+[00:48:17 - 00:48:27] Funny now, 700. The registry we have in APGAR is from the filter's literature.
+[00:48:27 - 00:48:39] But APGAR also has a similar course graph.
+[00:48:39 - 00:48:51] I suppose who have similar systems, like the people present here being from Rhetorium and the people who have been accepted.
+[00:48:51 - 00:48:53] Yes.
+[00:48:53 - 00:49:03] Reborn was freed from this evilness of this reparnishment, because I've been happy.
+[00:49:03 - 00:49:05] It's not been hollow after the...
+[00:49:05 - 00:49:17] Like what I told you, every part of the... every part of this world is...
+[00:49:17 - 00:49:31] General Strangese is in that place, because he is handling a very important problem, very important to APGAR.
+[00:49:31 - 00:49:47] And the fact that you've mentioned that the S.A.A.R.I.A.R.I.A.A. is a swarm and a more famous performance, so he's somewhat known throughout the way, and of the extended reach.
+[00:49:47 - 00:49:49] But the rest of the rest of that N.A.R.I.A.R.I.A.R.I.A.R.I.A.
+[00:49:49 - 00:49:53] I've been similarly impressed with this kind of question.
+[00:49:53 - 00:49:55] Yes.
+[00:49:55 - 00:50:01] What you are implied, is what I think is...
+[00:49:59 - 00:50:06] So I think this is not going to be my own self, as I succumbed to this problem.
+[00:50:06 - 00:50:12] It might have been a mystery, or an angry confederate.
+[00:50:12 - 00:50:20] So, under a similar situation, you and I have come to the moment.
+[00:50:20 - 00:50:23] It could not work.
+[00:50:23 - 00:50:28] So, how have you deserved?
+[00:50:29 - 00:50:58] What we can look up to is, we have the resources, we have people, they are very well trained in magic, and they are good people, just as you can trust them.
+[00:50:58 - 00:51:05] But, my friends, and my friends, all these people around me are good.
+[00:51:05 - 00:51:08] Would you perhaps consider...
+[00:51:08 - 00:51:15] ...
+[00:52:52 - 00:53:20] I was hoping that there would be some good news regarding Polasa. Prior to the start of that, I'd heard that the crisis at Northern Polasa was already close to being told.
+[00:53:22 - 00:53:34] So, soldiers from Fort Mountain have already liberated a huge swad of fire.
+[00:53:34 - 00:53:51] So, Hedrig is close to your life. She's sitting with the Duchess, you're sitting with Ketanah, and you see her removes a small chest underneath.
+[00:53:51 - 00:54:00] Places on top of the table where you are, everyone around. And she places that.
+[00:54:00 - 00:54:15] And I was hoping to say that perhaps they could send some people to verify the status of Miura, since they are much closer.
+[00:54:15 - 00:54:18] This is unfortunate for her.
+[00:54:18 - 00:54:38] She opens, so she says, "The news from...we heard a lot of rumors from news from Polasa, that there are Anden, trying to overwhelm their cities," she says.
+[00:54:38 - 00:54:44] But one thing that we...one thing that was...
+[00:54:44 - 00:54:47] We must work for it. This is officially verified.
+[00:54:47 - 00:54:57] Yes. One thing that we have news from Polasa is this...as she opens this, she see devices inside.
+[00:54:57 - 00:55:03] So, these devices are, these devices are the deciphered devices that they've got.
+[00:55:03 - 00:55:04] Oh, cypher wheels!
+[00:55:04 - 00:55:28] So, these things, these things, before it lost its power, or before it was disattuned to the one who uses it, we trace that, uh...the other...the other...the other...the other hair of this...is connected to Polasa.
+[00:55:28 - 00:55:30] So, she's like, "Oh, what's the military?"
+[00:55:30 - 00:55:35] So, she would be put Chris, who is on the other side of this.
+[00:55:35 - 00:55:38] Miss Teen does!
+[00:55:38 - 00:55:50] And so, she goes, "This place, what I was using, the paratrain, before that, the paratrain was in the sky."
+[00:55:50 - 00:56:07] And so, she takes her own smile, and, uh, shows her her single one, perhaps we're able to make use of it, to find what is this community coming from.
+[00:56:07 - 00:56:11] You are with, uh, you are with Tiffany, am I right?
+[00:56:11 - 00:56:12] Yes.
+[00:56:12 - 00:56:14] She could do that for me.
+[00:56:14 - 00:56:18] I don't work...I don't work for you anymore, Hedwig.
+[00:56:18 - 00:56:22] I work for the prince now, I'm part of Sinella.
+[00:56:22 - 00:56:25] That would be useful for Sinella first.
+[00:56:25 - 00:56:26] It's greater, she says.
+[00:56:26 - 00:56:27] Hmm.
+[00:56:27 - 00:56:37] Of course, I can, Sabrina, subject myself to trace whoever has the other pair of this, she says.
+[00:56:37 - 00:56:40] I'll keep it for you, that chest, she says.
+[00:56:40 - 00:56:41] Thank you.
+[00:56:41 - 00:56:46] So, what about the, uh, what about this one in the, in the chest?
+[00:56:46 - 00:56:51] This one was, um, acquired from a spy, sorry.
+[00:56:51 - 00:56:55] This spy speaks in, um, we don't know.
+[00:56:55 - 00:57:00] He had a modified memory spell casted on him, he says.
+[00:57:00 - 00:57:02] He is Tanwarian, though.
+[00:57:02 - 00:57:11] The other pair of this is connected to, um, one member of the Thirteen.
+[00:57:11 - 00:57:12] Oh, yeah.
+[00:57:12 - 00:57:13] I remember.
+[00:57:13 - 00:57:14] Oh, shit.
+[00:57:14 - 00:57:15] That's our gentleman.
+[00:57:15 - 00:57:16] Oh, shit.
+[00:57:16 - 00:57:26] Yeah, but that, that fucking pervert who tries to, like, pick, uh, tries to, like, jump on me, because I'm a redhead.
+[00:57:26 - 00:57:27] Yeah.
+[00:57:27 - 00:57:30] Yung, ano na yun.
+[00:57:30 - 00:57:31] Yes.
+[00:57:31 - 00:57:40] So, uh, that's a huge news from the military, from the Poulosan military, Denise?
+[00:57:40 - 00:57:41] Yes.
+[00:57:43 - 00:57:44] Ah, yes.
+[00:57:44 - 00:57:48] It could be that one of the Thirteen was, uh, it, it could be that the, the, the Poulosan,
+[00:57:48 - 00:57:55] the Thirteen, was infiltrated, replaced with a face-tealer.
+[00:57:55 - 00:57:58] That is a possibility.
+[00:57:58 - 00:58:03] But yes, unfortunately, in this part, this could be known.
+[00:58:03 - 00:58:11] And that particular person, I suppose, was, as you said, Denise Harden.
+[00:58:11 - 00:58:12] Samantha Harden.
+[00:58:12 - 00:58:30] She has been, we have been notified by the Poulosans before all this happened, that she had been blackest and removed from the Thirteen.
+[00:58:30 - 00:58:31] Hmm.
+[00:58:31 - 00:58:47] Which is a big deal to the Treaty of Terrain organization in particular, because she was one of its witnesses and the signatories.
+[00:58:47 - 00:58:48] I told you, one base-tealer could infiltrate the whole thing.
+[00:58:48 - 00:58:48] I'm sorry.
+[00:58:50 - 00:59:03] I told you, one base sealer could be inputting the whole thing. So sorry.
+[00:59:03 - 00:59:11] And yes, if I remember correctly.
+[00:59:11 - 00:59:15] I must pass the sealer in that area.
+[00:59:15 - 00:59:27] And the sewer. If I remember correctly.
+[00:59:27 - 00:59:32] Just across the manure by the building.
+[00:59:38 - 00:59:43] I don't know why she is there in one of the princely lands.
+[00:59:43 - 00:59:47] And this one's part of the court in Olhar.
+[00:59:47 - 00:59:51] But that's where she was last seen.
+[00:59:51 - 00:59:53] According to reports.
+[00:59:53 - 01:00:01] Well.
+[00:59:59 - 01:00:06] well she says is it time for us to exchange books this is a book club meeting after all
+[01:00:06 - 01:00:14] I did you bring does our guests bring books as well
+[01:00:14 - 01:00:18] yeah we told them to do it
+[01:00:18 - 01:00:27] no magical book so if we didn't get the note no magical book
+[01:00:27 - 01:00:36] that'll be thrown in the trash and no man no more you're talking about there's no
+[01:00:36 - 01:00:41] such thing as rules in the book club meeting books as books even if the bad
+[01:00:41 - 01:00:47] ones are allowed don't listen to this to idiots well we don't want to see
+[01:00:47 - 01:00:55] fucking manuals about ship construction well you kind of like
+[01:00:55 - 01:01:07] let us show the whole bugs are make well that's fucking interesting that's nice
+[01:01:07 - 01:01:11] you don't want to know how bugs fuck
+[01:01:11 - 01:01:24] let's take let's take a break up crown prince she says
+[01:01:24 - 01:01:43] that sounds relaxing and perhaps perhaps some refreshments to um if that would be possible
+[01:01:43 - 01:02:02] yeah considering how much how many they may there's a fragment right now why are they a good idea
+[01:02:02 - 01:02:06] why are you pregnant too Tiffany
+[01:02:06 - 01:02:07] are you pregnant too Tiffany?
+[01:02:07 - 01:02:10] you don't want to know how many that's your best man
+[01:02:10 - 01:02:12] ah so you are
+[01:02:12 - 01:02:17] why aren't you in your cop form then?
+[01:02:17 - 01:02:23] wait if you're in the cop form can another cop bang me?
+[01:02:23 - 01:02:38] how can you get pregnant with other cats you are a droid Oscar you should have known that
+[01:02:38 - 01:02:48] well I know that when it's a cat and a cat that fucks but what if a cat that can swarm into little girls can they get pregnant with other cats?
+[01:02:48 - 01:02:55] and what happens when you get pregnant with other cats and what happens when you like transform into a like a person with the baby cat and the baby kitten like transform into your in into a human too or like you get give if you if you give birth as a person and then you just
+[01:02:55 - 01:03:20] like poop out cats
+[01:03:20 - 01:03:22] listen Oscar
+[01:03:24 - 01:03:38] in the farewell we have a certain rule of nature that if you are a shifter and you shift into an animal you can bang other animals you can actually get pregnant
+[01:03:38 - 01:03:39] right
+[01:03:39 - 01:03:41] but it's up to the person
+[01:03:41 - 01:03:42] she says
+[01:03:42 - 01:03:45] does that answer your question?
+[01:03:45 - 01:03:54] and if the shifter turns into a girl but takes on a humanoid form
+[01:03:54 - 01:03:57] the pregnancy still persists
+[01:03:57 - 01:04:00] yeah cause that's a difference I guess
+[01:04:00 - 01:04:03] I mean druids can do wild shapey things right
+[01:04:03 - 01:04:08] but lady druids can't really get pregnant by the animals for example
+[01:04:08 - 01:04:12] they can't
+[01:04:12 - 01:04:14] so
+[01:04:14 - 01:04:15] well not here
+[01:04:16 - 01:04:17] we
+[01:04:17 - 01:04:18] that's not
+[01:04:18 - 01:04:19] then it's a
+[01:04:19 - 01:04:20] then that's
+[01:04:20 - 01:04:22] thus applying the rules for the paywall
+[01:04:22 - 01:04:23] okay
+[01:04:23 - 01:04:26] so here they can get pregnant
+[01:04:26 - 01:04:27] then they can
+[01:04:27 - 01:04:28] in the paywall
+[01:04:28 - 01:04:29] they can
+[01:04:29 - 01:04:32] but they have to stay in the
+[01:04:32 - 01:04:33] pool
+[01:04:33 - 01:04:34] for a while
+[01:04:34 - 01:04:36] yeah I think that's a difference right
+[01:04:36 - 01:04:37] I mean druids here
+[01:04:38 - 01:04:43] well unless you're really fucking like high level archbude or something
+[01:04:43 - 01:04:46] like that guy we met in the paydark
+[01:04:46 - 01:04:47] in the paydark
+[01:04:47 - 01:04:48] sassafra
+[01:04:48 - 01:04:52] so Tiffany looks at them as the sassafras
+[01:04:52 - 01:04:53] oh right
+[01:04:53 - 01:04:57] Liana's like godfather or something
+[01:04:57 - 01:05:07] yes he blessed uh he was the one who helped us get out of the paydark
+[01:05:07 - 01:05:11] well it's a long long long adventure
+[01:05:11 - 01:05:13] oh
+[01:05:13 - 01:05:26] oh and she's the one who gave like alvin that flower pot where he was doing some kind of crap like that
+[01:05:26 - 01:05:28] yes she says
+[01:05:28 - 01:05:34] and that pot could awaken uh diets
+[01:05:34 - 01:05:35] do you know that?
+[01:05:35 - 01:05:37] little diet girls
+[01:05:37 - 01:05:37] she says
+[01:05:45 - 01:05:46] yes
+[01:05:47 - 01:05:47] she says
+[01:05:47 - 01:05:49] and Liana is one
+[01:05:49 - 01:05:51] but she grew really quick
+[01:05:51 - 01:05:52] she says
+[01:05:55 - 01:05:56] and she keeps talking about
+[01:05:56 - 01:06:17] She's talking about making her own girl. Well, let's just change the books.
+[01:06:17 - 01:06:37] In fact, Alvin already purchased some land near the forest around the Hamelin.
+[01:06:37 - 01:06:44] I think that's where Alvin gets to wear that roof.
+[01:06:44 - 01:06:50] We won't be able to expect anything from Alvin for a while then.
+[01:06:50 - 01:06:55] Well, that's very funny.
+[01:06:55 - 01:07:06] You know, after attuned to that roof, police said something about having lands not being special in that way that they don't have to respect all of their lives.
+[01:07:06 - 01:07:16] That was a light type of event that I've ever experienced.
+[01:07:16 - 01:07:17] Alvin and Lennon.
+[01:07:17 - 01:07:18] Oscar.
+[01:07:18 - 01:07:25] It was quite, I don't know, it was like an orgasm.
+[01:07:25 - 01:07:27] Alvin and Lennon.
+[01:07:27 - 01:07:28] Well, alright.
+[01:07:28 - 01:07:30] Well, kind of like that.
+[01:07:30 - 01:07:32] But it's kind of fun.
+[01:07:32 - 01:07:34] You know what we did?
+[01:07:34 - 01:07:40] All of us like, who has a strong affinity with nature, like we would.
+[01:07:40 - 01:07:42] And we were talking about you actually.
+[01:07:42 - 01:07:45] But if Oscar is here, you could join us as well.
+[01:07:45 - 01:07:47] Oh, I would be all over.
+[01:07:47 - 01:07:49] Oh yeah, I'm sure.
+[01:07:49 - 01:07:54] Yeah, he's the greatest.
+[01:07:54 - 01:07:57] So, if you have Sassafras, we have Oscar here.
+[01:07:57 - 01:07:58] Right.
+[01:07:58 - 01:08:03] Hey, I'm a good dude, but yeah, Oscar is stronger than me.
+[01:08:03 - 01:08:06] Robert, don't believe.
+[01:08:06 - 01:08:08] I don't believe Doc O'Connor.
+[01:08:08 - 01:08:10] You're the spirit of the moon.
+[01:08:10 - 01:08:12] I'm just more experienced.
+[01:08:12 - 01:08:16] Lime just needs more experience.
+[01:08:16 - 01:08:18] Well, he's a wanted man.
+[01:08:18 - 01:08:19] Exactly.
+[01:08:19 - 01:08:20] Yeah.
+[01:08:20 - 01:08:23] You have to be wanted by more people too.
+[01:08:23 - 01:08:28] And wanted by the Hugs, especially.
+[01:08:28 - 01:08:31] Hugs?
+[01:08:31 - 01:08:33] What are you talking about?
+[01:08:33 - 01:08:36] Edwin, you know the Hugs in Asenera?
+[01:08:36 - 01:08:38] The Hugs loves him.
+[01:08:38 - 01:08:40] And they want to bang him.
+[01:08:40 - 01:08:43] Oh, isn't that great, Oscar?
+[01:08:43 - 01:08:44] No.
+[01:08:44 - 01:08:47] Listen.
+[01:08:47 - 01:08:49] Hags are hammer.
+[01:08:49 - 01:08:50] Most of them are hammer.
+[01:08:50 - 01:08:51] Right?
+[01:08:51 - 01:08:53] The fucking Hags are all like,
+[01:08:53 - 01:08:56] "Hey, you look delicious."
+[01:08:56 - 01:08:59] Yeah, and they fell for him.
+[01:08:59 - 01:09:01] Not because of his look.
+[01:09:01 - 01:09:02] Because of his heart.
+[01:09:03 - 01:09:07] Unfortunately, they all look like feet.
+[01:09:07 - 01:09:09] And not with mice kind of hands.
+[01:09:09 - 01:09:11] They look like raisins.
+[01:09:11 - 01:09:13] They look like feet that's been like,
+[01:09:13 - 01:09:15] dipped in the water for like,
+[01:09:15 - 01:09:17] 24 hours.
+[01:09:17 - 01:09:19] I hate raisins.
+[01:09:19 - 01:09:23] What?
+[01:09:23 - 01:09:24] I don't like raisins.
+[01:09:24 - 01:09:26] I thought raisins was kind of your thing.
+[01:09:26 - 01:09:28] No, actually no.
+[01:09:28 - 01:09:31] So you don't go out and like,
+[01:09:31 - 01:09:33] make raisins?
+[01:09:33 - 01:09:38] Come on, Oscar.
+[01:09:40 - 01:09:47] Be nice to me.
+[01:09:47 - 01:09:50] Come on, I am.
+[01:09:50 - 01:09:58] So Emily, would you be willing to join the speech?
+[01:09:58 - 01:10:01] Well, okay.
+[01:09:59 - 01:10:08] Well, I'm kind of weird, actually, because, uh, we're close, we're already close to the
+[01:10:08 - 01:10:11] beginning of our adventure.
+[01:10:11 - 01:10:20] I, I have plans for that already, but, uh, what, what, uh, what's the scenario for me?
+[01:10:20 - 01:10:25] I mean, I'm a runecrafter, she says.
+[01:10:25 - 01:10:36] I make runes, she says, uh, yeah, she is a very, she is, uh, the daughter of a runecrafter
+[01:10:36 - 01:10:43] from the Feywild, and she has, her family has a reputation, um, they craft runes, and they
+[01:10:43 - 01:10:51] could craft, uh, let me show, just show you this, she was talking to the Crown Prince and
+[01:10:51 - 01:10:59] the Tiffany, I know her very well, uh, as Hedwig plays a, kind of like a parang gem on top
+[01:10:59 - 01:11:01] of the table, like that.
+[01:11:01 - 01:11:04] This is, uh, what is this, Brina?
+[01:11:04 - 01:11:07] This is a language, Brina, she says.
+[01:11:07 - 01:11:15] She could, uh, put a spell in these gems, and they will work for everyone.
+[01:11:15 - 01:11:19] Even non-cancelors could use it.
+[01:11:19 - 01:11:25] Yeah, but, uh, she's the only one who can do that.
+[01:11:25 - 01:11:32] We tried to copy her technique, we even, like, we have, uh, we have Mia Campbell tries it, but,
+[01:11:32 - 01:11:37] uh, no, she says, we can't replicate her skills.
+[01:11:37 - 01:11:40] Hmm, that's right, she says.
+[01:11:40 - 01:11:44] Hmm, I like hearing when someone complimenting me.
+[01:11:44 - 01:11:46] Sabi ni Emily.
+[01:11:46 - 01:11:49] I can make a lot of, uh, but only third level.
+[01:11:49 - 01:11:51] I'm not really not good like my father.
+[01:11:51 - 01:11:54] I learn, though, so, so.
+[01:11:54 - 01:11:58] I can put, um, uh, just recently I can put paste.
+[01:11:58 - 01:12:00] Yes.
+[01:12:00 - 01:12:04] How long does it take to make a page one?
+[01:12:04 - 01:12:05] A day.
+[01:12:05 - 01:12:14] Perhaps, um, would you be able to make one for old, dead, black pages, for example?
+[01:12:14 - 01:12:16] Yeah, I actually remember.
+[01:12:16 - 01:12:19] You're not the first old man who asked me to help.
+[01:12:19 - 01:12:26] Besides, I don't want to call myself old.
+[01:12:26 - 01:12:28] Well, you look old.
+[01:12:28 - 01:12:37] Can you speak like an old person, she says?
+[01:12:37 - 01:12:43] Hmm, yes, it's just because I'm surrounded by you, you put myself false clothes.
+[01:12:43 - 01:12:52] Well, if, Sabi niya, if you're going to be, if I'm going to join, uh, you and Serenera and Miss Tiffany and the others,
+[01:12:52 - 01:12:58] There's one more old people who will surround you because I'm 150 years old.
+[01:12:58 - 01:13:04] She's telling the truth.
+[01:13:04 - 01:13:07] She is 150, regardless of her looks.
+[01:13:07 - 01:13:10] Uh, Fina, how old are you?
+[01:13:10 - 01:13:16] I don't have to answer anything.
+[01:13:16 - 01:13:22] Well, I've been told on many occasions that Tiffany is much older than any of you combined.
+[01:13:22 - 01:13:29] So, part of those, I mean, as to which...
+[01:13:29 - 01:13:31] Really?
+[01:13:31 - 01:13:31] She says.
+[01:13:32 - 01:13:37] You're going to attack me because you're power under the...
+[01:13:37 - 01:13:39] Insult, she says.
+[01:13:39 - 01:13:49] Yes, Miss Tiffany is all older, she says.
+[01:13:49 - 01:13:50] But she doesn't look like old.
+[01:13:50 - 01:13:53] You're from Leo Kishala, too, right?
+[01:13:53 - 01:13:54] Hmm, yes.
+[01:13:54 - 01:13:55] Yes, yes.
+[01:13:55 - 01:13:58] Just observing.
+[01:13:58 - 01:13:59] Yes.
+[01:13:59 - 01:14:09] I've heard about your family there, but I wasn't around by the time the rule crafting was made.
+[01:14:09 - 01:14:13] Actually, I stayed in Leo Kishala because of such knowledge.
+[01:14:13 - 01:14:14] I'm surprised.
+[01:14:14 - 01:14:14] Yes.
+[01:14:14 - 01:14:16] Who look?
+[01:14:16 - 01:14:19] Something, yeah.
+[01:14:19 - 01:14:24] So, aside from wounds of language, what you think is nothing?
+[01:14:24 - 01:14:30] Just, uh, for now, it's kind of like, uh, my rune crafting is like, um, only...
+[01:14:30 - 01:14:34] I don't know what I was doing.
+[01:14:34 - 01:14:37] Only available for utility spell, unfortunately, he says.
+[01:14:37 - 01:14:38] So, it's something like...
+[01:14:38 - 01:14:40] For prostitution, something like that.
+[01:14:40 - 01:14:45] That would still be useful, especially things like, say, memory.
+[01:14:45 - 01:14:53] Uh, yeah, that's actually a very, uh, kind of like a very, uh, uh, parang popular.
+[01:14:53 - 01:14:57] So, the presentry world doesn't really like things like that.
+[01:14:57 - 01:15:01] How about things like, say, stone shape?
+[01:15:01 - 01:15:05] No. What's that?
+[01:15:05 - 01:15:11] What's the most low level? The first level spirit?
+[01:15:11 - 01:15:13] Skullshape.
+[01:15:31 - 01:15:37] Though, my rooms are easily dispel.
+[01:15:37 - 01:15:39] The first level comes down first.
+[01:15:39 - 01:15:41] Oh, and we add.
+[01:15:41 - 01:15:49] Ah, this is Mold Earth.
+[01:15:49 - 01:15:53] This is something like this country level.
+[01:15:53 - 01:15:55] Mold Earth.
+[01:15:55 - 01:15:57] Yeah, that's easy.
+[01:15:57 - 01:15:59] That would be good for for example.
+[01:16:01 - 01:16:03] Yeah.
+[01:16:03 - 01:16:05] But, um,
+[01:16:05 - 01:16:07] those kinds of plans,
+[01:16:07 - 01:16:09] I already like,
+[01:16:09 - 01:16:11] I have to prioritize
+[01:16:11 - 01:16:13] Mr. Renault over here.
+[01:16:13 - 01:16:15] Sorry, she says.
+[01:16:15 - 01:16:21] That's right.
+[01:16:21 - 01:16:23] I owe them a lot.
+[01:16:23 - 01:16:25] Mr. Renault and
+[01:16:25 - 01:16:27] Inez, she says.
+[01:16:27 - 01:16:29] They're the ones who
+[01:16:29 - 01:16:31] kind of like,
+[01:16:31 - 01:16:33] offered me a place when I
+[01:16:33 - 01:16:35] called them.
+[01:16:35 - 01:16:37] And we do have
+[01:16:37 - 01:16:39] a lot of ideas.
+[01:16:39 - 01:16:41] However, we are willing to...
+[01:16:41 - 01:16:43] That's really heading to Senera,
+[01:16:43 - 01:16:45] right, Emily?
+[01:16:45 - 01:16:47] She says.
+[01:16:47 - 01:16:49] Well, I'm not sure.
+[01:16:49 - 01:16:51] Yes.
+[01:16:51 - 01:16:53] But...
+[01:16:53 - 01:16:53] Well...
+[01:16:53 - 01:16:55] We...
+[01:16:55 - 01:16:57] Things regarding our business,
+[01:16:57 - 01:16:57] of course,
+[01:16:57 - 01:16:59] is proprietary information
+[01:16:59 - 01:17:01] that even the Crown Prince
+[01:17:01 - 01:17:03] himself is bound by
+[01:17:03 - 01:17:05] certain rules and regulations
+[01:17:05 - 01:17:07] from earlier treaties,
+[01:17:07 - 01:17:09] like the treaty, of course,
+[01:17:09 - 01:17:11] regarding intellectual property.
+[01:17:11 - 01:17:13] So it's not...
+[01:17:13 - 01:17:13] Oh!
+[01:17:13 - 01:17:15] I'm not...
+[01:17:15 - 01:17:16] Wait.
+[01:17:16 - 01:17:17] I remember now.
+[01:17:17 - 01:17:19] I'm not the only one who knows
+[01:17:19 - 01:17:20] about Wincraft.
+[01:17:20 - 01:17:21] Emma can.
+[01:17:21 - 01:17:23] And she, like, can.
+[01:17:23 - 01:17:25] Yeah, but Emma is like...
+[01:17:25 - 01:17:27] Deep.
+[01:17:27 - 01:17:31] Something is plunging deep in her.
+[01:17:31 - 01:17:32] She's not...
+[01:17:33 - 01:17:35] She's kind of, like, lazy.
+[01:17:35 - 01:17:39] She's lazy and she's always complaining
+[01:17:39 - 01:17:40] about stuff.
+[01:17:40 - 01:17:45] Well...
+[01:17:45 - 01:17:46] She has her use,
+[01:17:46 - 01:17:48] and she's very, like,
+[01:17:48 - 01:17:49] mischievous.
+[01:17:49 - 01:17:51] She always...
+[01:17:51 - 01:17:53] She always
+[01:17:53 - 01:17:55] KICK STRENDEEZ.
+[01:17:55 - 01:17:56] And always, like,
+[01:17:56 - 01:17:57] humiliate them.
+[01:17:59 - 01:18:01] If I remember correctly,
+[01:18:01 - 01:18:02] we, uh,
+[01:18:02 - 01:18:03] some of my, uh,
+[01:18:03 - 01:18:04] some of my sisters
+[01:18:04 - 01:18:06] had to teleport him out
+[01:18:06 - 01:18:07] of the street.
+[01:18:07 - 01:18:08] This is something
+[01:18:08 - 01:18:09] that we don't necessarily
+[01:18:09 - 01:18:10] want to remember
+[01:18:10 - 01:18:11] about STRENDEEZ
+[01:18:11 - 01:18:12] at the moment.
+[01:18:12 - 01:18:13] She's not the...
+[01:18:13 - 01:18:14] No.
+[01:18:14 - 01:18:15] Me and Inez
+[01:18:15 - 01:18:16] have been...
+[01:18:16 - 01:18:18] We've seen...
+[01:18:18 - 01:18:20] No!
+[01:18:20 - 01:18:21] This is...
+[01:18:21 - 01:18:22] After you and Inez,
+[01:18:22 - 01:18:23] this is...
+[01:18:23 - 01:18:24] STRENDEEZ was, uh,
+[01:18:24 - 01:18:25] found really,
+[01:18:25 - 01:18:26] really drunk
+[01:18:26 - 01:18:27] in Hama,
+[01:18:27 - 01:18:28] naked.
+[01:18:28 - 01:18:29] and all of his belongings
+[01:18:29 - 01:18:30] is, like,
+[01:18:30 - 01:18:31] stolen
+[01:18:31 - 01:18:32] from him.
+[01:18:32 - 01:18:33] From him.
+[01:18:34 - 01:18:35] Well, if I remember
+[01:18:35 - 01:18:36] correctly,
+[01:18:36 - 01:18:37] Inez,
+[01:18:37 - 01:18:38] he did similar things
+[01:18:38 - 01:18:39] in the, uh,
+[01:18:39 - 01:18:40] cabin.
+[01:18:40 - 01:18:41] I don't really
+[01:18:41 - 01:18:42] remember that.
+[01:18:42 - 01:18:43] Ha, ha, ha, ha.
+[01:18:43 - 01:18:44] Ha, ha, ha.
+[01:18:45 - 01:18:46] Well, you see,
+[01:18:46 - 01:18:47] STRENDEEZ has a reputation
+[01:18:47 - 01:18:48] in here.
+[01:18:48 - 01:18:49] He says...
+[01:18:49 - 01:18:51] Has an exhibition,
+[01:18:51 - 01:18:52] yes.
+[01:18:52 - 01:18:53] There's nothing wrong
+[01:18:53 - 01:18:55] for being an exhibitionist.
+[01:18:55 - 01:18:56] It's all about everything.
+[01:18:56 - 01:18:57] Yeah.
+[01:18:57 - 01:18:58] There's nothing...
+[01:18:58 - 01:18:59] You are an exhibitionist too,
+[01:18:59 - 01:19:00] Oscar.
+[01:19:00 - 01:19:01] Well, I didn't say there was
+[01:19:01 - 01:19:02] anything wrong with that.
+[01:19:02 - 01:19:03] We're just making sure
+[01:19:03 - 01:19:05] that the crown prince is...
+[01:19:05 - 01:19:06] like...
+[01:19:06 - 01:19:10] He knows that famous general
+[01:19:10 - 01:19:11] STRENDEEZ who was popularized
+[01:19:11 - 01:19:12] by the...
+[01:19:12 - 01:19:13] You are 20 years ago
+[01:19:13 - 01:19:14] as a famous general
+[01:19:14 - 01:19:15] is an exhibitionist.
+[01:19:15 - 01:19:24] who was popularized by the UART 20 years ago as a famous general. Yes, in the conference is his fan.
+[01:19:24 - 01:19:53] So I'd be looking at him. The dude laughs. "You Australian D's a fanboy?" She says. "Gotcha." And he laughs. I don't know what. I do study many of the...
+[01:19:54 - 01:20:01] events of the time period. Those who don't study history are doomed to repeat
+[01:19:59 - 01:20:04] study history are doomed to repeat it and all that.
+[01:20:04 - 01:20:11] And yes, it would be interesting if these books did mention of their Western geese's
+[01:20:11 - 01:20:12] The question is...
+[01:20:12 - 01:20:13] Exhibitionists.
+[01:20:13 - 01:20:14] Yeah.
+[01:20:14 - 01:20:22] What is the thing that kind of like you don't want him to repeat, the war's trendies or
+[01:20:22 - 01:20:23] the exhibitionist trendies?
+[01:20:23 - 01:20:35] I'd rather not see the exhibitionists from these if you ask me.
+[01:20:35 - 01:20:38] I want to see it.
+[01:20:38 - 01:20:44] I mean, I've seen everyone in here doing stuff like that.
+[01:20:44 - 01:20:45] I'm done.
+[01:20:45 - 01:20:46] Just...
+[01:20:46 - 01:20:47] I'm...
+[01:20:47 - 01:20:48] I feel numb already.
+[01:20:48 - 01:20:49] She says.
+[01:20:49 - 01:20:58] I've heard that Strunly's almost got one of my own stuff pregnant as well.
+[01:20:58 - 01:20:59] Huh?
+[01:20:59 - 01:21:00] No.
+[01:21:00 - 01:21:01] Almost.
+[01:21:02 - 01:21:03] I'm just...
+[01:21:03 - 01:21:04] Oh.
+[01:21:04 - 01:21:05] I...
+[01:21:06 - 01:21:07] I'm done.
+[01:21:08 - 01:21:09] So...
+[01:21:09 - 01:21:10] I don't know.
+[01:21:10 - 01:21:11] So did you hit him?
+[01:21:11 - 01:21:12] I don't know.
+[01:21:13 - 01:21:14] So did you hit him?
+[01:21:14 - 01:21:15] I don't know.
+[01:21:23 - 01:21:24] So did you hit him?
+[01:21:24 - 01:21:25] I don't know.
+[01:21:28 - 01:21:32] Let's just say that fireball isn't the only thing that he likes making.
+[01:21:32 - 01:21:33] It's cloud.
+[01:21:33 - 01:21:38] Some bread.
+[01:21:38 - 01:21:42] Different kinds of cheese.
+[01:21:42 - 01:21:43] Sauce.
+[01:21:43 - 01:21:46] Some drinks.
+[01:21:46 - 01:21:47] Non-alcoholic.
+[01:21:47 - 01:21:48] Sauce.
+[01:21:48 - 01:21:50] Everyone's welcome to it.
+[01:21:50 - 01:21:51] Sauce.
+[01:21:51 - 01:21:52] I don't know.
+[01:21:52 - 01:21:53] What's your name, bro?
+[01:21:54 - 01:21:55] Okay.
+[01:21:55 - 01:21:56] What's your name, Mark?
+[01:21:56 - 01:21:58] Do you happen to have some meat?
+[01:21:58 - 01:21:59] Yeah.
+[01:22:03 - 01:22:05] We have a lot of meat.
+[01:22:05 - 01:22:06] That's nice.
+[01:22:06 - 01:22:07] We want...
+[01:22:07 - 01:22:08] What kind of meat?
+[01:22:08 - 01:22:09] Do you want?
+[01:22:09 - 01:22:10] Uh...
+[01:22:10 - 01:22:11] I'd be part of some...
+[01:22:11 - 01:22:12] Yeah.
+[01:22:12 - 01:22:14] That sounds great.
+[01:22:14 - 01:22:17] Some beef or lamb or something.
+[01:22:17 - 01:22:18] No, no.
+[01:22:18 - 01:22:19] Yeah.
+[01:22:19 - 01:22:20] It's fine.
+[01:22:20 - 01:22:21] Like...
+[01:22:21 - 01:22:22] And you think...
+[01:22:22 - 01:22:23] Hey!
+[01:22:23 - 01:22:24] Cows can be cute too, though.
+[01:22:24 - 01:22:25] Yeah, but Cows...
+[01:22:25 - 01:22:26] But Ted would say that only cows from scenario.
+[01:22:26 - 01:22:27] I mean, guess what?
+[01:22:27 - 01:22:28] Only kills cows from scenario.
+[01:22:28 - 01:22:29] Not cows from here.
+[01:22:29 - 01:22:30] Yeah, but cows...
+[01:22:30 - 01:22:31] But Ted would say that only cows from scenario.
+[01:22:31 - 01:22:32] I mean, guess what?
+[01:22:32 - 01:22:33] Only kills cows from scenario.
+[01:22:33 - 01:22:34] Not cows from here.
+[01:22:35 - 01:22:36] That's right.
+[01:22:36 - 01:22:53] Are you the one who's afflicted with the recantity?
+[01:22:53 - 01:22:54] Uh...
+[01:22:55 - 01:22:56] Yeah.
+[01:22:56 - 01:22:58] That'd be me.
+[01:22:58 - 01:23:00] Oh, fun.
+[01:23:00 - 01:23:01] Mark...
+[01:23:01 - 01:23:02] But...
+[01:23:02 - 01:23:03] Who do you wanna go with?
+[01:23:03 - 01:23:04] He says.
+[01:23:04 - 01:23:05] Wait a minute.
+[01:23:05 - 01:23:08] You want to go to the kitchen, right?
+[01:23:08 - 01:23:10] So I'm supposed to let someone take you.
+[01:23:10 - 01:23:11] Oh.
+[01:23:11 - 01:23:12] I'll go with him.
+[01:23:12 - 01:23:13] He says.
+[01:23:13 - 01:23:14] Why you?
+[01:23:14 - 01:23:15] He says.
+[01:23:15 - 01:23:16] He's my friend.
+[01:23:16 - 01:23:17] He says.
+[01:23:17 - 01:23:18] Well, we've only met up a couple of times, but yeah.
+[01:23:18 - 01:23:19] We are friendsy.
+[01:23:19 - 01:23:20] Oh!
+[01:23:20 - 01:23:21] He says.
+[01:23:21 - 01:23:22] Oh God.
+[01:23:22 - 01:23:23] You're so princessy.
+[01:23:23 - 01:23:24] Princessy.
+[01:23:25 - 01:23:26] Haha.
+[01:23:26 - 01:23:27] Princessy.
+[01:23:27 - 01:23:28] Haha.
+[01:23:28 - 01:23:29] Princessy.
+[01:23:30 - 01:23:31] Haha.
+[01:23:31 - 01:23:32] Princessy.
+[01:23:32 - 01:23:33] Haha.
+[01:23:33 - 01:23:34] Princessy.
+[01:23:34 - 01:23:35] Haha.
+[01:23:35 - 01:23:36] Princessy.
+[01:23:36 - 01:23:37] Haha.
+[01:23:37 - 01:23:38] I'll go with him.
+[01:23:38 - 01:23:39] Why you?
+[01:23:39 - 01:23:40] Sabrina.
+[01:23:40 - 01:23:41] Why you?
+[01:23:41 - 01:23:42] Sabrina.
+[01:23:42 - 01:23:43] He's my friend.
+[01:23:43 - 01:23:44] She says.
+[01:23:44 - 01:23:45] Well, we've only met up a couple of times, but yeah.
+[01:23:45 - 01:23:46] Princessy.
+[01:23:46 - 01:23:47] Haha.
+[01:23:47 - 01:23:48] That's what the young people.
+[01:23:48 - 01:23:49] How old are you?
+[01:23:51 - 01:23:52] And you?
+[01:23:52 - 01:23:53] The size.
+[01:23:53 - 01:23:54] So Mark is.
+[01:23:54 - 01:23:55] I'm 26.
+[01:23:55 - 01:23:56] Luke.
+[01:23:56 - 01:23:57] Because I'm a little older.
+[01:23:57 - 01:23:58] My older brother is 31.
+[01:23:58 - 01:23:59] And John here is 21.
+[01:23:59 - 01:24:00] So we have like 5 years.
+[01:24:00 - 01:24:01] We have the same age, John.
+[01:24:01 - 01:24:02] Oh.
+[01:24:02 - 01:24:03] We have the same age, John.
+[01:24:03 - 01:24:04] I don't know.
+[01:24:04 - 01:24:05] We have the same age.
+[01:24:05 - 01:24:06] I don't know.
+[01:24:08 - 01:24:09] The baby's fine.
+[01:24:09 - 01:24:10] Well, I mean.
+[01:24:10 - 01:24:11] The baby's fine.
+[01:24:11 - 01:24:12] I think that you might even be.
+[01:24:12 - 01:24:13] I thought that you might even be a little younger than that.
+[01:24:13 - 01:24:14] No.
+[01:24:14 - 01:24:15] I'm 21.
+[01:24:16 - 01:24:17] I'm sorry.
+[01:24:19 - 01:24:20] Well, I mean.
+[01:24:20 - 01:24:21] The baby's fine.
+[01:24:21 - 01:24:22] Well, I mean.
+[01:24:22 - 01:24:23] I think that you might even be.
+[01:24:23 - 01:24:26] I thought that you might even be a little younger than that.
+[01:24:26 - 01:24:27] No.
+[01:24:27 - 01:24:28] I'm 21.
+[01:24:28 - 01:24:35] Well, yeah.
+[01:24:35 - 01:24:37] And we do have a brother.
+[01:24:37 - 01:24:38] Uh.
+[01:24:38 - 01:24:39] Matthew.
+[01:24:39 - 01:24:40] The youngest is 16.
+[01:24:40 - 01:24:41] Yeah.
+[01:24:41 - 01:24:42] We're all.
+[01:24:42 - 01:24:44] We're all exactly like 5 years apart.
+[01:24:44 - 01:24:45] I don't know.
+[01:24:45 - 01:24:47] Oh, is that a plan, mother?
+[01:24:47 - 01:24:48] Not necessarily.
+[01:24:48 - 01:24:51] It just happened to be that way.
+[01:24:51 - 01:24:54] I only have sex with my husband every 5 years.
+[01:24:54 - 01:24:55] Apparently.
+[01:24:55 - 01:24:57] Of course not.
+[01:24:57 - 01:24:59] Too much information.
+[01:24:59 - 01:25:03] We shall fix that, she says.
+[01:25:03 - 01:25:04] Oh.
+[01:25:04 - 01:25:05] Of course that was a joke.
+[01:25:05 - 01:25:07] It's just how it turned out.
+[01:25:07 - 01:25:13] I suppose I just get pregnant in 5 year cycles.
+[01:25:13 - 01:25:14] But yes.
+[01:25:14 - 01:25:14] Do go ahead if you wish to go and have some meats.
+[01:25:14 - 01:25:15] That's it.
+[01:25:17 - 01:25:18] That's what I put on.
+[01:25:18 - 01:25:19] Both of them.
+[01:25:19 - 01:25:20] I'm going to go with me.
+[01:25:20 - 01:25:21] I'm going to go with somebody in length.
+[01:25:21 - 01:25:22] Can I go with you somebody in length?
+[01:25:22 - 01:25:23] Yeah, come on.
+[01:25:23 - 01:25:24] He says.
+[01:25:24 - 01:25:26] I guess they don't really want to talk about politics.
+[01:25:26 - 01:25:27] How about you guys coming along?
+[01:25:27 - 01:25:28] Um.
+[01:25:28 - 01:25:28] Yeah, I can stay here for a bit.
+[01:25:28 - 01:25:28] Sure.
+[01:25:28 - 01:25:28] You should return.
+[01:25:28 - 01:25:29] Come on.
+[01:25:36 - 01:25:37] He says.
+[01:25:37 - 01:25:38] I guess they don't really want to talk about politics.
+[01:25:38 - 01:25:40] How about you guys coming along?
+[01:25:40 - 01:25:52] I can stay here for a bit. Sure? You should return.
+[01:26:10 - 01:26:16] If you want to play roblox also, play roblox on your ipad.
+[01:26:16 - 01:26:24] Hey, are you sleepy?
+[01:26:24 - 01:26:32] Okay, so the kids get up except John because she thinks she's not a kid.
+[01:26:32 - 01:26:36] No, he's interested in the things that are happening.
+[01:26:36 - 01:26:40] Okay, so you want to play roblox?
+[01:26:40 - 01:26:42] They just go to roblox.
+[01:26:42 - 01:27:00] Do you have books? How many books do you have?
+[01:27:00 - 01:27:02] Uh, there are other books.
+[01:27:02 - 01:27:06] I don't want to play roblox but I'll just make it up.
+[01:27:06 - 01:27:08] Okay, on the fly.
+[01:27:08 - 01:27:10] I don't want to play roblox.
+[01:27:44 - 01:27:48] So Emily, are you really going with us in scenario?
+[01:27:48 - 01:27:52] I'm not quite sure.
+[01:27:52 - 01:28:00] What's your name again?
+[01:28:00 - 01:28:02] I'm Andrew.
+[01:28:04 - 01:28:06] Oh yeah, he's one of my friends here.
+[01:28:08 - 01:28:10] So you made friends.
+[01:28:10 - 01:28:11] Like, guys.
+[01:28:11 - 01:28:12] Who are guys.
+[01:28:12 - 01:28:14] Yeah, kind of.
+[01:28:14 - 01:28:15] She says.
+[01:28:15 - 01:28:16] And you?
+[01:28:16 - 01:28:17] What's your name again?
+[01:28:18 - 01:28:20] The wolfie?
+[01:28:20 - 01:28:22] Wolfie?
+[01:28:22 - 01:28:23] Wow.
+[01:28:23 - 01:28:24] Well, I'm Mark.
+[01:28:24 - 01:28:26] And well...
+[01:28:26 - 01:28:31] Manfilia and us were the first ones to meet me.
+[01:28:31 - 01:28:35] They saved me from being like...
+[01:28:35 - 01:28:37] They found him in a ditch.
+[01:28:37 - 01:28:38] Yeah.
+[01:28:38 - 01:28:43] So if I didn't turn into a werewolf, I could have probably been an actual wolf.
+[01:28:43 - 01:28:46] Why do you want to be a werewolf?
+[01:28:46 - 01:28:50] Well, it's not that I want him to be a werewolf.
+[01:28:50 - 01:28:52] It's just how it happened.
+[01:28:52 - 01:28:53] They just...
+[01:28:53 - 01:28:57] They have to take one of those parasite things out of my head.
+[01:28:57 - 01:29:02] And so they gave me something and that thing got it out.
+[01:29:02 - 01:29:05] But it also turned me into a werewolf.
+[01:29:05 - 01:29:08] Well, it's okay with me to turn into a werewolf.
+[01:29:08 - 01:29:10] I guess...
+[01:29:10 - 01:29:12] It doesn't have a choice.
+[01:29:12 - 01:29:15] They showed me the alternatives.
+[01:29:15 - 01:29:18] And I'd rather be a werewolf than a squid man.
+[01:29:18 - 01:29:20] Let me say that.
+[01:29:20 - 01:29:21] Hi!
+[01:29:21 - 01:29:22] You mean the...
+[01:29:23 - 01:29:24] What's...
+[01:29:24 - 01:29:25] Um...
+[01:29:25 - 01:29:26] Mindflayer?
+[01:29:26 - 01:29:29] Mindflayers are really smart.
+[01:29:29 - 01:29:32] What's happening, Dun?
+[01:29:32 - 01:29:34] Yeah, it doesn't suit him.
+[01:29:34 - 01:29:36] How do you know?
+[01:29:36 - 01:29:39] Mindflayers are sentient creatures.
+[01:29:39 - 01:29:41] That's not my brother.
+[01:29:41 - 01:29:43] Your brother...
+[01:29:43 - 01:29:45] Can you think he's smart?
+[01:29:45 - 01:29:50] No, I'm calling him a not smart.
+[01:29:50 - 01:29:51] I'm sorry.
+[01:29:51 - 01:29:52] It was a...
+[01:29:52 - 01:29:54] It was a poor delivery and a joke.
+[01:29:54 - 01:29:56] Ah, so he's an idiot.
+[01:29:56 - 01:29:59] Well, if he's gonna be a mindflayer and he's an idiot,
+[01:29:59 - 01:30:03] player and he's an idiot, he's going to be the first of his kind.
+[01:30:03 - 01:30:13] Because a lot of werewolves are idiot already, so I'm sorry, they're not the first idiot
+[01:30:13 - 01:30:20] werewolf ever, so don't tell Jessica about that.
+[01:30:20 - 01:30:26] No, she called me that when I turned into a werewolf, so I'm pretty sure she knows.
+[01:30:26 - 01:30:34] I still have the option of being a mine player, so I'll pass.
+[01:30:34 - 01:30:39] I want to put one of those things in my head again.
+[01:30:39 - 01:30:46] We can turn into a frogman!
+[01:30:46 - 01:30:53] Oh yeah, we know very, very good frogmen, they're also idiots, I'm sure you're gonna do it.
+[01:30:53 - 01:31:01] You're gonna do well with them.
+[01:31:01 - 01:31:07] I'd rather be hairy than slimy, so I think that's the primary choice.
+[01:31:07 - 01:31:17] He's going to marry Angel's sister, who's not again.
+[01:31:17 - 01:31:18] Oh, when?
+[01:31:18 - 01:31:19] Yeah.
+[01:31:19 - 01:31:21] Oh, have you guys met?
+[01:31:21 - 01:31:25] Oh, you're, you're, you're already engaged, subbing Emily.
+[01:31:25 - 01:31:27] Does your partner likes it, Harry?
+[01:31:27 - 01:31:28] Oh, well.
+[01:31:28 - 01:31:37] Emily, don't tease him so much.
+[01:31:37 - 01:31:39] I, I don't know yet.
+[01:31:39 - 01:31:41] She doesn't even know.
+[01:31:41 - 01:31:42] Yeah.
+[01:31:42 - 01:31:44] I'm gonna tell her though.
+[01:31:44 - 01:31:45] She knows, right?
+[01:31:45 - 01:31:47] She, she knows about your werewolf.
+[01:31:47 - 01:31:50] No, she hasn't seen it.
+[01:31:50 - 01:31:53] You're fucking, you're bullshitting us.
+[01:31:53 - 01:31:54] We already told her.
+[01:31:54 - 01:31:55] Oh, you did?
+[01:31:55 - 01:31:56] Yeah, why?
+[01:31:56 - 01:31:57] I was gonna tell her.
+[01:31:57 - 01:31:58] Alright.
+[01:31:58 - 01:31:59] Sensitive one.
+[01:31:59 - 01:32:00] No, it's fine.
+[01:32:00 - 01:32:17] So, you're going to tell her, to tell your fiancé about your werewolf, like you're a 14-year-old girl that just got pregnant, telling their parents?
+[01:32:17 - 01:32:19] Probably not a mood.
+[01:32:19 - 01:32:21] Geez, probably not a mood.
+[01:32:21 - 01:32:22] Great to you.
+[01:32:22 - 01:32:23] Cheer.
+[01:32:23 - 01:32:29] No, but yeah, even if she knows, like, she, I don't know.
+[01:32:29 - 01:32:33] She, I don't know if he knows what that exactly means yet.
+[01:32:33 - 01:32:42] She knows that, well, I might be interesting to paint when I become one, is what she said.
+[01:32:42 - 01:32:56] But, considering how I was during my very first transformation, I don't think I would let her paint necessarily.
+[01:32:56 - 01:33:01] Yeah, you'd be humping her for sure.
+[01:33:01 - 01:33:02] I don't know if she knows how to do it.
+[01:33:47 - 01:33:48] She says.
+[01:33:48 - 01:33:51] Kind of like an arch-werewolf.
+[01:33:51 - 01:33:54] I don't really understand that.
+[01:33:54 - 01:33:59] But where we've been in the Fade Arc is where the Vampires are.
+[01:33:59 - 01:34:02] Iskandar, she says.
+[01:34:02 - 01:34:03] Shit.
+[01:34:03 - 01:34:10] It's like going to a place where it's like in the Northern Hemisphere.
+[01:34:10 - 01:34:12] Everything is just dark.
+[01:34:12 - 01:34:13] And it's always nighttime.
+[01:34:13 - 01:34:16] Always nighttime, she says.
+[01:34:16 - 01:34:22] And people there are gaunt, she says.
+[01:34:22 - 01:34:23] Grim.
+[01:34:23 - 01:34:25] Even the merchants.
+[01:34:25 - 01:34:28] It's such a weird experience.
+[01:34:28 - 01:34:29] Well, I does remember this.
+[01:34:29 - 01:34:32] You were with us.
+[01:34:32 - 01:34:35] Yeah, but I don't tell them about it.
+[01:34:35 - 01:34:36] Mostly.
+[01:34:36 - 01:34:39] Because, you know, they don't really...
+[01:34:39 - 01:34:41] They're kind of like...
+[01:34:41 - 01:34:44] They're newcomers, she says.
+[01:34:44 - 01:34:47] In magic, she says.
+[01:34:47 - 01:34:51] Well, they've already seen a vampire baby, you know.
+[01:34:51 - 01:34:53] So, I don't think they necessarily...
+[01:34:53 - 01:34:55] Oh, they've seen our Maya before, she says.
+[01:34:55 - 01:34:56] Oh.
+[01:34:56 - 01:34:58] Yeah, we met them when...
+[01:34:58 - 01:34:59] When they met...
+[01:34:59 - 01:35:03] Imagine a hundred or a thousand of our Maya.
+[01:35:03 - 01:35:04] Living in a community.
+[01:35:04 - 01:35:04] That's a standard.
+[01:35:04 - 01:35:13] I mean, if it's just a Maya, I guess that would be nice to say.
+[01:35:13 - 01:35:18] But, that's not how you describe it to me.
+[01:35:18 - 01:35:19] Oh, geez.
+[01:35:19 - 01:35:23] Why we're not allowed to go to the Pai Bars?
+[01:35:23 - 01:35:28] I mean, we'd even settle for just going to the fucking Pai Dark.
+[01:35:28 - 01:35:32] Yeah, we'll even settle to wherever, whatever.
+[01:35:32 - 01:35:33] What's that?
+[01:35:33 - 01:35:34] Jing Shen Da.
+[01:35:35 - 01:35:39] Ah, that's a very beautiful place.
+[01:35:39 - 01:35:46] Yeah, but I'd even like just go to that camp where you met that person who was selling you long pies.
+[01:35:46 - 01:35:49] I mean, the crazy, crazy...
+[01:35:49 - 01:35:51] We had the best night there, right?
+[01:35:51 - 01:35:52] Song, she says.
+[01:35:52 - 01:35:54] We got drunk, she says.
+[01:35:54 - 01:35:56] We had a party with Cedars.
+[01:35:56 - 01:35:58] Yeah, we had a party.
+[01:35:58 - 01:35:59] Like, I don't...
+[01:35:59 - 01:36:01] When I wake up, that's the first time I've...
+[01:36:01 - 01:36:05] Like, my mind is out of my head, she says.
+[01:36:05 - 01:36:06] And he says.
+[01:36:06 - 01:36:08] I was so drunk.
+[01:36:08 - 01:36:13] Diba, that's where it's sitting.
+[01:36:13 - 01:36:15] Walang orgy-orgy.
+[01:36:15 - 01:36:16] Lasing lang, talaga.
+[01:36:16 - 01:36:18] Tapos, when I stayed there.
+[01:36:18 - 01:36:22] For some reason, sabi ni Koto.
+[01:36:22 - 01:36:23] I...
+[01:36:23 - 01:36:30] I have some kind of connection with Jing Shen Da.
+[01:36:30 - 01:36:31] When you say it.
+[01:36:31 - 01:36:34] Well, we met one of your followers there.
+[01:36:34 - 01:36:36] Sperlin, he says.
+[01:36:36 - 01:36:38] And he is a...
+[01:36:38 - 01:36:40] He is a paladin of...
+[01:36:40 - 01:36:42] The followers of the goat.
+[01:36:42 - 01:36:44] And he is the one who...
+[01:36:44 - 01:36:46] He's befriended, he says.
+[01:36:46 - 01:36:49] So I have a paladin now.
+[01:36:49 - 01:36:50] That's interesting.
+[01:36:50 - 01:36:51] I have to write that down.
+[01:36:51 - 01:36:52] Don't.
+[01:36:52 - 01:36:53] That's unfair.
+[01:36:53 - 01:36:55] We have...
+[01:36:55 - 01:36:56] We have to find a paladin.
+[01:36:56 - 01:36:57] John.
+[01:36:57 - 01:37:01] Wait, isn't like...
+[01:37:01 - 01:37:04] Sarai Grohl supposed to be your first paladin?
+[01:37:04 - 01:37:05] Oh, yeah.
+[01:37:05 - 01:37:06] But...
+[01:37:06 - 01:37:07] Yeah, yeah.
+[01:37:07 - 01:37:08] Actually.
+[01:37:08 - 01:37:09] Let me get...
+[01:37:09 - 01:37:10] Yeah.
+[01:37:10 - 01:37:13] Agrohl is our first paladin.
+[01:37:13 - 01:37:14] Well, we need more.
+[01:37:14 - 01:37:15] Maybe Andrew.
+[01:37:15 - 01:37:16] Hey, Andrew.
+[01:37:16 - 01:37:17] You're broke, right?
+[01:37:17 - 01:37:21] So that's the only service you can offer for the Great Erected One.
+[01:37:21 - 01:37:22] The Great Erected One.
+[01:37:22 - 01:37:23] Nah, nah, nah, nah, nah.
+[01:37:23 - 01:37:24] One of the...
+[01:37:24 - 01:37:28] You have to perform an oath to a Legally Bear.
+[01:37:28 - 01:37:31] And that's how you become a paladin of the Great Erected One.
+[01:37:31 - 01:37:32] Oh, yeah.
+[01:37:32 - 01:37:33] You know that, uh...
+[01:37:33 - 01:37:35] Miss Teen just, uh...
+[01:37:35 - 01:37:36] We have a...
+[01:37:37 - 01:37:38] Uh...
+[01:37:39 - 01:37:40] We have a...
+[01:37:40 - 01:37:44] A latest copy of the Night Shift Nurses and Legally Bear.
+[01:37:44 - 01:37:46] And we're going to give it away.
+[01:37:46 - 01:37:47] Today.
+[01:37:47 - 01:37:48] So there's a new one?
+[01:37:48 - 01:37:49] Yeah, today.
+[01:37:49 - 01:37:50] There's a new one.
+[01:37:50 - 01:37:52] All for the guests, she says.
+[01:37:52 - 01:37:54] We also have free...
+[01:37:54 - 01:37:56] Freebies, she says.
+[01:37:56 - 01:38:01] To thank all of you for this lovely meeting, she says.
+[01:38:05 - 01:38:06] Including the Prince.
+[01:38:06 - 01:38:07] The Prince can get one.
+[01:38:07 - 01:38:10] I suppose I can...
+[01:38:10 - 01:38:14] The Legally Bear, though, it's kind of, like, updated.
+[01:38:14 - 01:38:15] Because, uh...
+[01:38:15 - 01:38:19] They only had four members, or four models before.
+[01:38:19 - 01:38:20] Now it's complete.
+[01:38:20 - 01:38:21] Wait, there's...
+[01:38:21 - 01:38:23] There are new models?
+[01:38:23 - 01:38:24] Yes.
+[01:38:24 - 01:38:26] Three more, she says.
+[01:38:26 - 01:38:27] Shit.
+[01:38:27 - 01:38:30] We can't use them for time of day anymore.
+[01:38:30 - 01:38:31] You don't know about...
+[01:38:31 - 01:38:34] You didn't know about this last year, she says.
+[01:38:34 - 01:38:35] Now!
+[01:38:35 - 01:38:36] I was in a fucking scenario!
+[01:38:36 - 01:38:39] God damn!
+[01:38:39 - 01:38:48] Alright.
+[01:38:48 - 01:38:50] Well, later you'll see, she says.
+[01:38:50 - 01:38:51] Well...
+[01:38:51 - 01:38:51] One exchange of books, she says.
+[01:38:51 - 01:38:52] Oh, I suppose we should do.
+[01:38:52 - 01:38:53] But weren't you kids leaving?
+[01:38:53 - 01:38:54] Oh yeah, she says.
+[01:38:54 - 01:38:55] Let's go!
+[01:38:55 - 01:38:55] Let's go downstairs to the kitchen or something away.
+[01:38:55 - 01:38:56] Alright.
+[01:38:56 - 01:38:56] Let's get some meat.
+[01:38:56 - 01:38:57] I wanna have something...
+[01:38:57 - 01:38:58] If you have something that's still on the phone, you know, like...
+[01:38:58 - 01:38:59] How you eat it and...
+[01:38:59 - 01:38:59] Yeah, we get it.
+[01:38:59 - 01:39:00] You're a werewolf.
+[01:39:02 - 01:39:03] And you're a dog.
+[01:39:03 - 01:39:04] No, I just...
+[01:39:04 - 01:39:04] I've never, like, tried it.
+[01:39:04 - 01:39:05] It looks so fun.
+[01:39:05 - 01:39:06] Jeez, where...
+[01:39:06 - 01:39:07] Where in the world do you eat it?
+[01:39:08 - 01:39:09] Oh, I'm just leaving.
+[01:39:09 - 01:39:10] Oh yeah, she says.
+[01:39:10 - 01:39:11] Let's go!
+[01:39:11 - 01:39:14] Let's go downstairs to the kitchen or something away.
+[01:39:14 - 01:39:15] Alright.
+[01:39:15 - 01:39:17] Yeah, let's get some meat.
+[01:39:17 - 01:39:19] I wanna have something...
+[01:39:19 - 01:39:23] If you have something that's still on the phone, you know, like...
+[01:39:23 - 01:39:24] How you eat it and...
+[01:39:26 - 01:39:27] Yeah, we get it.
+[01:39:27 - 01:39:28] You're a werewolf.
+[01:39:28 - 01:39:29] And you're a dog.
+[01:39:29 - 01:39:30] I've never, like, cried it.
+[01:39:30 - 01:39:32] It looks so fun.
+[01:39:32 - 01:39:34] Jeez, where...
+[01:39:34 - 01:39:35] Where...
+[01:39:35 - 01:39:36] Where in the world do you eat it?
+[01:39:36 - 01:39:38] The oven to try it out?
+[01:39:38 - 01:39:41] Oh, Mother doesn't let us eat, like...
+[01:39:41 - 01:39:42] Monsters.
+[01:39:42 - 01:39:47] That's kind of weird, something in line.
+[01:39:51 - 01:39:52] Oh, yeah.
+[01:39:52 - 01:39:54] John told me about that, Sabiniana.
+[01:39:54 - 01:39:55] And...
+[01:39:55 - 01:39:56] You're not coming with us, John!
+[01:39:56 - 01:39:57] Sabiniana.
+[01:39:57 - 01:39:59] Um...
+[01:39:59 - 01:40:00] Well, alright.
+[01:39:59 - 01:40:05] Well, all right, uh, it's work.
+[01:40:05 - 01:40:15] I mean, not every day you see a flying ship, by the way, in any case.
+[01:40:15 - 01:40:26] Well, I've learned about, I've read the book about, um, where it came from, this, uh, this, uh, airship.
+[01:40:26 - 01:40:32] This airship is, uh, made by this nettle family in Ianguel.
+[01:40:32 - 01:40:39] Well, Ianguel is like a desert, I mean, not Ianguel, but the day port.
+[01:40:39 - 01:40:49] It's kind of like a vast desert where you can only ride airship, uh, kind of like sand, uh, have you been there, Emily?
+[01:40:49 - 01:40:52] Yeah, a couple of times.
+[01:40:52 - 01:40:56] We ride those, um, what do you call it, the sand ships?
+[01:40:56 - 01:41:00] Ah, they have, they have, they have, they have a term for that.
+[01:41:00 - 01:41:01] I forgot.
+[01:41:01 - 01:41:05] You've been here too long.
+[01:41:05 - 01:41:06] Flying ships.
+[01:41:06 - 01:41:09] Go to Scarlet.
+[01:41:09 - 01:41:16] But you said it's, it's, this, uh, this airship is made by the Seneca family, right?
+[01:41:16 - 01:41:21] Aren't they the, one of the five pillars of, um, Ianguel?
+[01:41:21 - 01:41:28] Yeah, and the senetor is a family of dragonborns.
+[01:41:28 - 01:41:29] Do you know that?
+[01:41:29 - 01:41:29] No.
+[01:41:29 - 01:41:33] She says, oh yeah, I've seen a dragonborn before.
+[01:41:33 - 01:41:41] Yeah, dragonborns. Um, dragonborns are like dragons, but, uh, uh, how do I explain this?
+[01:41:42 - 01:41:46] They're like the same, the size of you, but they're dragons.
+[01:41:46 - 01:41:50] So like that Andy guy?
+[01:41:50 - 01:41:56] Ah, no, that he's a hobo. Please, uh, kind of, don't tell him that, don't tell him this,
+[01:41:56 - 01:42:00] but he's, looks like a lizard, right? But dragonborns are different.
+[01:42:03 - 01:42:06] Oh, so I guess they have more like, fans and teeth.
+[01:42:06 - 01:42:09] Yeah, and they, they have the look of a dragon.
+[01:42:09 - 01:42:11] But, like I said, your size.
+[01:42:11 - 01:42:15] And they're walking like that, walking like people.
+[01:42:23 - 01:42:25] So we head towards the deck, first.
+[01:42:25 - 01:42:29] Is there like a were-dragon kind of situation, maybe?
+[01:42:29 - 01:42:30] Well...
+[01:42:30 - 01:42:35] There are different kinds of dragon.
+[01:42:35 - 01:42:36] Sabi niya Emily.
+[01:42:36 - 01:42:40] There are the chromatic ones, and, uh, the...
+[01:42:40 - 01:42:42] Metallic ones.
+[01:42:42 - 01:42:44] The metallic ones.
+[01:42:44 - 01:42:49] The metallic ones are good in nature, just as is what we believed in Feywild.
+[01:42:49 - 01:42:52] The chromatic ones are the one who makes trouble.
+[01:42:52 - 01:42:54] Well, we do have books like that, too, here.
+[01:42:54 - 01:42:58] Oh, well, not here, in Samara.
+[01:42:58 - 01:43:05] Legends about dragons, and legends about, like, dragon hunters and stuff.
+[01:43:05 - 01:43:08] All right, then let's proofread it.
+[01:43:08 - 01:43:09] Can you tell me more?
+[01:43:09 - 01:43:12] What do you know about them?
+[01:43:12 - 01:43:17] Well, for one thing, there aren't a lot of them.
+[01:43:19 - 01:43:43] But they say that the dragons from the dragons that came to Samara are, like, evil dragons, capricious, and greedy, and they like, uh, destroying towns to keep all of their treasure for themselves, put them under, you know, mountains and things like that.
+[01:43:43 - 01:43:45] Like a horde.
+[01:43:45 - 01:43:46] Like a horde?
+[01:43:46 - 01:43:47] Yeah, yeah, yeah.
+[01:43:47 - 01:43:49] Hordes, they have pressure hordes.
+[01:43:49 - 01:43:51] Well, you got it, right?
+[01:43:51 - 01:44:01] But metallic dragons, even though they're good, they also, um, keep hordes, but they don't take it from people.
+[01:44:02 - 01:44:07] They just take it from their adventures, I guess?
+[01:44:07 - 01:44:14] There's different kinds of dragons, but, uh, the rarest one is the platinum and the silver.
+[01:44:16 - 01:44:24] I imagine, like, if you were a dragon and you wanted to do, like, legit business, you'd probably be some kind of merchant or something.
+[01:44:24 - 01:44:28] If you're gonna do crazy things.
+[01:44:28 - 01:44:39] Well, in Autumn Court, there is one who is a dragonborn and a merchant, and she sells magical items, but she doesn't, and she accepts barter and she accepts favors.
+[01:44:39 - 01:44:44] So if you don't have gold, you can, like, work or get some resources for her.
+[01:44:44 - 01:44:47] Yeah, it sounds like my sister.
+[01:44:47 - 01:44:51] It sounds like a Guinevere sister.
+[01:44:51 - 01:44:54] My soon-to-be sister-in-law.
+[01:44:54 - 01:45:11] That's how she describes, uh, Aladin, she's, like, like, she likes, uh, she does favors and things like that for payment, and that's how she has all sorts of weird connections with people, and, like, has more influence than usual.
+[01:45:11 - 01:45:14] Well, you know a lot about Angel's family.
+[01:45:14 - 01:45:18] I do spend a lot of time with it.
+[01:45:18 - 01:45:19] Who's this Angel?
+[01:45:19 - 01:45:23] Oh, uh, Angel is, uh, Sylvester.
+[01:45:23 - 01:45:25] Sylvester?
+[01:45:25 - 01:45:27] In his, in Scenera?
+[01:45:27 - 01:45:32] Yeah, you, if you, if you're coming with us, you'll meet her.
+[01:45:32 - 01:45:33] She's really cute.
+[01:45:33 - 01:45:35] She's so adorable.
+[01:45:35 - 01:45:36] She looks like a doll.
+[01:45:36 - 01:45:46] Like, those expensive dolls they sell in, in the, not the, not the one from the doll maker's house, right?
+[01:45:46 - 01:45:50] No, well, well, I haven't seen them, she says.
+[01:45:50 - 01:45:53] They're pretty, she says.
+[01:45:53 - 01:45:56] Explain.
+[01:45:56 - 01:46:04] They're pretty, because, uh, they're, they're, like, modified double-dammers, she says.
+[01:46:04 - 01:46:08] Ah, that's creepy.
+[01:46:08 - 01:46:19] So this is a Feywild thing, too?
+[01:46:19 - 01:46:25] Now, um, well, we're not supposed to talk about them, but not yet.
+[01:46:25 - 01:46:26] I'm sorry.
+[01:46:26 - 01:46:29] Until here, we're talking about politics.
+[01:46:29 - 01:46:36] Yeah, John seems to like to talk about politics.
+[01:46:36 - 01:46:37] Huh, John?
+[01:46:37 - 01:46:42] Well, uh, it's not the politics, necessarily.
+[01:46:42 - 01:46:47] It's just, everything's new and interesting.
+[01:46:49 - 01:46:53] So, we go down to the, to the, yung mga rooms, di ba?
+[01:46:53 - 01:46:55] Because we, yeah, we passed by the rooms.
+[01:46:55 - 01:46:58] Yeah, you're going to the kitchen right now, right?
+[01:46:58 - 01:47:03] So, yeah, the rooms, and the, I suppose the kitchen is down because it's close to where
+[01:47:03 - 01:47:06] the fire elemental is, so that they can more efficiently cook.
+[01:47:07 - 01:47:10] And so, he just said, "sabene, sabene, john."
+[01:47:10 - 01:47:19] Well, it's more about everything, like, how the magic is really the door, the politics stuff,
+[01:47:19 - 01:47:22] and how, like, it works and things.
+[01:47:22 - 01:47:31] I mean, the fact that I can cast now is kind of making me interested in it a little bit.
+[01:47:33 - 01:47:43] So, sabene, if I'm going with you, I could help you, uh, like, um, pass the, I don't know.
+[01:47:43 - 01:47:47] So, can my, my rooms work with your brother?
+[01:47:47 - 01:47:49] So, maybe, and he's an uncastle, right?
+[01:47:49 - 01:47:51] Wait, so that thing was a room?
+[01:47:51 - 01:47:54] Why would I tell you?
+[01:47:54 - 01:47:57] What, sabene, john?
+[01:47:57 - 01:47:58] What is that?
+[01:47:58 - 01:48:01] Well, ask him, he says.
+[01:48:01 - 01:48:02] What are you talking about?
+[01:48:02 - 01:48:03] She smiles.
+[01:48:03 - 01:48:06] Uh, nothing.
+[01:48:06 - 01:48:09] What is it, sabene the lion?
+[01:48:09 - 01:48:20] Um, well, something, like, happened, and I was, remember when I was about to transform into a werewolf?
+[01:48:20 - 01:48:23] Yeah, before I had to smack your head in.
+[01:48:23 - 01:48:28] Well, I saw all of you guys naked for some reason.
+[01:48:28 - 01:48:29] EW!
+[01:48:29 - 01:48:31] Really?
+[01:48:31 - 01:48:34] That's disgusting, Mark, he says.
+[01:48:34 - 01:48:36] Well, I mean...
+[01:48:36 - 01:48:37] Please don't do that.
+[01:48:37 - 01:48:41] I think he's just making up some storyline.
+[01:48:41 - 01:48:44] Well, it wasn't my choice.
+[01:48:44 - 01:48:44] It just happened.
+[01:48:45 - 01:48:49] I think he has some inner, like, I think he has some inner, like, thing.
+[01:48:49 - 01:48:52] You know, what they call intrusive thoughts.
+[01:48:52 - 01:48:55] Intrusive thoughts?!
+[01:48:55 - 01:48:59] Listen, I'm not the guy who goes and, like, starts peeping on people.
+[01:48:59 - 01:49:02] That's our elder brother, not me.
+[01:49:04 - 01:49:09] Peeping is one thing, but imagining other people naked in front of you is another.
+[01:49:09 - 01:49:12] It wasn't that I was imagining anyone.
+[01:49:12 - 01:49:13] Don't you know the difference?
+[01:49:14 - 01:49:15] I wasn't imagining.
+[01:49:15 - 01:49:19] What is that?
+[01:49:19 - 01:49:22] Because I wouldn't imagine seeing the other.
+[01:49:22 - 01:49:26] I wouldn't, for example, imagine Oscar naked for one thing.
+[01:49:26 - 01:49:27] EW!
+[01:49:28 - 01:49:29] Can we drop this?
+[01:49:29 - 01:49:34] We don't want to learn about your intrusive thoughts, um, Mark.
+[01:49:34 - 01:49:37] Please, John.
+[01:49:37 - 01:49:44] Why would you imagine Oscar naked?
+[01:49:44 - 01:49:48] Aye, that's what I'm saying.
+[01:49:48 - 01:49:50] I didn't imagine him naked.
+[01:49:50 - 01:49:53] It just happened.
+[01:49:51 - 01:49:53] What has not happened?
+[01:49:57 - 01:49:59] How did you imagine Bob?
+[01:49:59 - 01:50:03] I didn't...
+[01:50:03 - 01:50:07] It's his intrusive thoughts.
+[01:50:07 - 01:50:11] She says, "Make him no mind, and let's go to the kitchen."
+[01:50:11 - 01:50:13] She says, and then he says...
+[01:50:13 - 01:50:15] So yeah, you're close to the kitchen at this point.
+[01:50:15 - 01:50:17] She gives him a smirk.
+[01:50:17 - 01:50:27] Okay, so yeah, you're now by the kitchens of course.
+[01:50:27 - 01:50:33] And I suppose it would be Andy and Rin who are currently in here right now.
+[01:50:33 - 01:50:37] Rin is a really beautiful elf woman.
+[01:50:37 - 01:50:39] Kind of like...
+[01:50:39 - 01:50:49] She's like cutting some onions and vegetables and sliding it up to the stove.
+[01:50:49 - 01:50:53] And it smells really nice here.
+[01:50:53 - 01:50:55] That's what Andy said.
+[01:50:55 - 01:50:59] That surprise smells absolutely delicious.
+[01:50:59 - 01:51:01] And you see...
+[01:51:01 - 01:51:02] Oh!
+[01:51:02 - 01:51:03] You see Liana here.
+[01:51:03 - 01:51:04] Helping his...
+[01:51:04 - 01:51:05] Helping her...
+[01:51:05 - 01:51:06] Yeah.
+[01:51:06 - 01:51:07] Si Alvin.
+[01:51:07 - 01:51:08] And here's Alvin.
+[01:51:08 - 01:51:10] Kasi kulang sila ng tao.
+[01:51:10 - 01:51:11] And...
+[01:51:11 - 01:51:13] Liana, can you grow us some herbs?
+[01:51:13 - 01:51:14] Alvin is a...
+[01:51:14 - 01:51:16] We need some cilantro.
+[01:51:16 - 01:51:16] Hey Alvin!
+[01:51:16 - 01:51:18] It's a vinilon.
+[01:51:18 - 01:51:19] Boom!
+[01:51:19 - 01:51:20] Hey Lime!
+[01:51:20 - 01:51:21] And...
+[01:51:21 - 01:51:22] Oh!
+[01:51:22 - 01:51:24] These must be our visitors.
+[01:51:24 - 01:51:25] Yeah!
+[01:51:25 - 01:51:26] This is Andrew.
+[01:51:26 - 01:51:27] This is John and Mark.
+[01:51:27 - 01:51:29] Nice to meet you all.
+[01:51:29 - 01:51:30] I'm Alvin.
+[01:51:30 - 01:51:31] And...
+[01:51:31 - 01:51:33] This is my little girl Liana.
+[01:51:33 - 01:51:34] You know...
+[01:51:34 - 01:51:35] You know what?
+[01:51:35 - 01:51:37] Alvin is just 15 years old.
+[01:51:37 - 01:51:38] 16.
+[01:51:38 - 01:51:40] We're the same age.
+[01:51:40 - 01:51:41] Ah.
+[01:51:41 - 01:51:42] Alright.
+[01:51:42 - 01:51:43] She says.
+[01:51:43 - 01:51:44] Now you're...
+[01:51:44 - 01:51:46] I'm a little younger than you.
+[01:51:46 - 01:51:48] That's what I remember you said before.
+[01:51:48 - 01:51:49] Yeah.
+[01:51:49 - 01:51:50] I am a little younger than you.
+[01:51:50 - 01:51:51] And then you...
+[01:51:51 - 01:51:53] Kind of like age up and you have a baby.
+[01:51:53 - 01:51:57] It's hard to tell ages now because of what happened.
+[01:52:00 - 01:52:01] And that's Liana.
+[01:52:01 - 01:52:02] You look...
+[01:52:02 - 01:52:03] Liana says.
+[01:52:03 - 01:52:04] Hi!
+[01:52:04 - 01:52:05] She says.
+[01:52:05 - 01:52:07] Nice to meet you.
+[01:52:07 - 01:52:08] And that's Rebecca.
+[01:52:08 - 01:52:09] Oh!
+[01:52:09 - 01:52:10] That's...
+[01:52:10 - 01:52:11] That's where you see a...
+[01:52:11 - 01:52:12] Like a...
+[01:52:12 - 01:52:13] Parang same age as Liana.
+[01:52:13 - 01:52:14] Yeah.
+[01:52:14 - 01:52:15] 10 years old.
+[01:52:15 - 01:52:17] But she has a really long like...
+[01:52:17 - 01:52:18] Red hair.
+[01:52:18 - 01:52:19] Long red orange.
+[01:52:19 - 01:52:20] Yeah.
+[01:52:20 - 01:52:21] And she is...
+[01:52:21 - 01:52:22] Has a very like...
+[01:52:22 - 01:52:22] Pale...
+[01:52:23 - 01:52:24] Complexion.
+[01:52:24 - 01:52:26] And she has a lot of freckles all over her face.
+[01:52:26 - 01:52:27] And her...
+[01:52:27 - 01:52:28] Hands.
+[01:52:28 - 01:52:29] Body.
+[01:52:29 - 01:52:30] Oh...
+[01:52:30 - 01:52:31] She really does look skillish.
+[01:52:31 - 01:52:35] So she says...
+[01:52:35 - 01:52:38] She says...
+[01:52:38 - 01:52:42] My name is...
+[01:52:42 - 01:52:43] So she says...
+[01:52:43 - 01:52:51] Let me introduce you...
+[01:52:51 - 01:52:53] Everyone to...
+[01:52:53 - 01:52:54] The...
+[01:52:55 - 01:52:56] The Red Queen.
+[01:52:56 - 01:52:57] She says...
+[01:52:57 - 01:52:58] Princess...
+[01:52:58 - 01:52:59] Rebecca.
+[01:52:59 - 01:53:00] She says...
+[01:53:00 - 01:53:02] So Rebecca does the...
+[01:53:02 - 01:53:03] Kind of like the...
+[01:53:03 - 01:53:04] The bow.
+[01:53:04 - 01:53:05] In the bow.
+[01:53:07 - 01:53:08] And of course because these are like...
+[01:53:08 - 01:53:09] She's...
+[01:53:10 - 01:53:11] She's holding a teddy bear.
+[01:53:11 - 01:53:12] And the teddy bear has a distinct like...
+[01:53:12 - 01:53:13] Ruby...
+[01:53:13 - 01:53:14] Nose.
+[01:53:14 - 01:53:15] On...
+[01:53:15 - 01:53:16] Him.
+[01:53:16 - 01:53:18] And she just looks at everyone.
+[01:53:18 - 01:53:20] So...
+[01:53:20 - 01:53:21] So because they're all like...
+[01:53:21 - 01:53:22] Scenarians.
+[01:53:22 - 01:53:23] They...
+[01:53:23 - 01:53:25] They do their best bow.
+[01:53:25 - 01:53:26] And then Mark...
+[01:53:26 - 01:53:28] Your majesty.
+[01:53:28 - 01:53:29] It's a...
+[01:53:29 - 01:53:31] Pleasure to meet you.
+[01:53:32 - 01:53:34] That's his...
+[01:53:34 - 01:53:35] That's her...
+[01:53:35 - 01:53:36] Daddy bear.
+[01:53:36 - 01:53:38] She doesn't let me borrow it.
+[01:53:38 - 01:53:39] So I had to...
+[01:53:39 - 01:53:40] Nothing.
+[01:53:40 - 01:53:41] She says...
+[01:53:41 - 01:53:42] Leanna says...
+[01:53:42 - 01:53:44] Oh, because that's her knight, I guess.
+[01:53:44 - 01:53:45] Yeah.
+[01:53:45 - 01:53:46] This is my...
+[01:53:46 - 01:53:47] Baby bear...
+[01:53:47 - 01:53:48] This is my...
+[01:53:48 - 01:53:49] Sorry.
+[01:53:49 - 01:53:50] You don't need a teddy bear.
+[01:53:50 - 01:53:51] Yeah.
+[01:53:51 - 01:53:53] This is my number...
+[01:53:53 - 01:53:54] This is my knight.
+[01:53:54 - 01:53:56] And his name is Bailly too.
+[01:53:56 - 01:53:57] He says...
+[01:53:57 - 01:54:00] Oh, your...
+[01:54:00 - 01:54:01] Your bear has a name?
+[01:54:01 - 01:54:05] So she nods.
+[01:54:05 - 01:54:09] So Lyme goes to her and kind of like...
+[01:54:09 - 01:54:12] Rubs her tear like that.
+[01:54:12 - 01:54:13] And...
+[01:54:13 - 01:54:14] Have you been eating?
+[01:54:14 - 01:54:15] She says...
+[01:54:15 - 01:54:17] And Lyme just nods at him.
+[01:54:17 - 01:54:18] And...
+[01:54:18 - 01:54:19] Lyme...
+[01:54:19 - 01:54:20] You see Lyme...
+[01:54:20 - 01:54:23] Because she spent a lot of time with these girls.
+[01:54:23 - 01:54:25] When they were in the ship.
+[01:54:25 - 01:54:26] She takes care of them.
+[01:54:26 - 01:54:27] She kind of like...
+[01:54:28 - 01:54:29] Fixes her...
+[01:54:29 - 01:54:30] Like red ones on her...
+[01:54:30 - 01:54:31] Dress.
+[01:54:31 - 01:54:32] Kind of like...
+[01:54:32 - 01:54:34] Parang pinagpag niya yung...
+[01:54:34 - 01:54:35] And they are wearing like...
+[01:54:35 - 01:54:36] Small aprons.
+[01:54:36 - 01:54:37] Which is wearing...
+[01:54:37 - 01:54:38] She's kind of like...
+[01:54:38 - 01:54:39] Fixing them.
+[01:54:39 - 01:54:40] As if she's the...
+[01:54:40 - 01:54:41] Kind of like...
+[01:54:41 - 01:54:42] The ate.
+[01:54:42 - 01:54:43] The big sister of this.
+[01:54:43 - 01:54:44] And...
+[01:54:44 - 01:54:45] She says...
+[01:54:45 - 01:54:46] You should eat more...
+[01:54:46 - 01:54:47] Uh...
+[01:54:47 - 01:54:48] Rebecca...
+[01:54:49 - 01:54:50] She says...
+[01:54:50 - 01:54:52] I don't like...
+[01:54:52 - 01:54:53] Eating...
+[01:54:53 - 01:54:54] I only eat sweets.
+[01:54:54 - 01:54:55] So sweet.
+[01:54:59 - 01:55:00] Yeah that really does...
+[01:55:00 - 01:55:01] Remind me of Angel.
+[01:55:01 - 01:55:06] I...
+[01:55:06 - 01:55:07] Didn't give you permission...
+[01:55:07 - 01:55:08] To fuck...
+[01:55:08 - 01:55:09] Peasant.
+[01:55:09 - 01:55:13] Oh!
+[01:55:13 - 01:55:14] My mistake...
+[01:55:14 - 01:55:15] Your Majesty.
+[01:55:15 - 01:55:16] You shouldn't...
+[01:55:16 - 01:55:17] You shouldn't fuck him...
+[01:55:17 - 01:55:18] Peasant.
+[01:55:18 - 01:55:19] That's kind of rude.
+[01:55:19 - 01:55:20] Rebecca...
+[01:55:20 - 01:55:21] But he's not...
+[01:55:21 - 01:55:23] Like the others.
+[01:55:23 - 01:55:24] He...
+[01:55:24 - 01:55:25] Walk...
+[01:55:25 - 01:55:26] A little bit.
+[01:55:26 - 01:55:29] Parang yung...
+[01:55:29 - 01:55:30] Ragged.
+[01:55:31 - 01:55:32] She says...
+[01:55:32 - 01:55:33] Ano ba yun Kali?
+[01:55:33 - 01:55:35] Sleep lang.
+[01:55:35 - 01:55:40] Tulog na lang kay daddy.
+[01:55:40 - 01:55:45] Mas malambat si mami...
+[01:55:45 - 01:55:47] Na mami is up there.
+[01:55:47 - 01:55:48] So lang...
+[01:55:48 - 01:55:49] Kind of like...
+[01:55:49 - 01:55:50] Parang...
+[01:55:50 - 01:55:51] After she fixes...
+[01:55:51 - 01:55:52] Then she...
+[01:55:52 - 01:55:53] Heads...
+[01:55:53 - 01:55:54] Looks up John.
+[01:55:54 - 01:55:55] Will you...
+[01:55:55 - 01:55:56] So...
+[01:55:56 - 01:55:56] Is she...
+[01:55:56 - 01:55:57] Seneran?
+[01:55:57 - 01:55:58] She says...
+[01:55:58 - 01:55:59] She definitely looks...
+[01:55:59 - 01:56:00] Stellish...
+[01:56:00 - 01:56:01] To me...
+[01:56:01 - 01:56:02] Like...
+[01:56:02 - 01:56:03] Northern Seneran...
+[01:56:03 - 01:56:04] From Skelmark...
+[01:56:04 - 01:56:05] Like...
+[01:56:05 - 01:56:06] Mother mentioned...
+[01:56:06 - 01:56:08] That's where I came from...
+[01:56:08 - 01:56:09] I came from...
+[01:56:09 - 01:56:11] The kingdom of Seneran...
+[01:56:11 - 01:56:12] He says...
+[01:56:14 - 01:56:15] I have a long voyage...
+[01:56:15 - 01:56:16] And returning...
+[01:56:16 - 01:56:17] Well...
+[01:56:17 - 01:56:18] Your Majesty...
+[01:56:18 - 01:56:19] We're...
+[01:56:19 - 01:56:20] From Senera...
+[01:56:20 - 01:56:21] As well...
+[01:56:21 - 01:56:22] We're your emissaries...
+[01:56:22 - 01:56:25] Come to take you home...
+[01:56:25 - 01:56:28] Uh...
+[01:56:28 - 01:56:29] Let's...
+[01:56:29 - 01:56:30] Do the...
+[01:56:30 - 01:56:31] Art...
+[01:56:31 - 01:56:32] Do...
+[01:56:32 - 01:56:33] Ano ba yung mag...
+[01:56:33 - 01:56:34] Saripato?
+[01:56:34 - 01:56:35] Parang...
+[01:56:35 - 01:56:36] Old English...
+[01:56:36 - 01:56:37] Arche...
+[01:56:37 - 01:56:38] Language...
+[01:56:38 - 01:56:39] So...
+[01:56:39 - 01:56:40] She says...
+[01:56:40 - 01:56:41] Hello...
+[01:56:41 - 01:56:42] Telling...
+[01:56:42 - 01:56:43] It's true?
+[01:56:43 - 01:56:44] She says...
+[01:56:44 - 01:56:47] The truth?
+[01:56:47 - 01:56:48] Uh...
+[01:56:48 - 01:56:49] He reminds you...
+[01:56:49 - 01:56:50] They're gonna...
+[01:56:50 - 01:56:51] They're gonna take care of you...
+[01:56:51 - 01:56:52] Alright?
+[01:56:52 - 01:56:53] She says...
+[01:56:53 - 01:56:54] What?
+[01:56:54 - 01:56:55] Sabi ni Liana...
+[01:56:55 - 01:56:57] They're gonna go...
+[01:56:57 - 01:56:58] They're gonna...
+[01:56:58 - 01:57:00] Return her to Senera...
+[01:57:00 - 01:57:01] Sabi ni Anna...
+[01:57:01 - 01:57:02] Line girl Liana...
+[01:57:03 - 01:57:04] But...
+[01:57:06 - 01:57:07] I wanna go with her...
+[01:57:07 - 01:57:08] She says...
+[01:57:08 - 01:57:10] Well...
+[01:57:10 - 01:57:11] Well we're gonna...
+[01:57:11 - 01:57:12] We're gonna...
+[01:57:12 - 01:57:13] We're gonna start our grove...
+[01:57:13 - 01:57:14] Right?
+[01:57:14 - 01:57:17] We can start our grove in Senera...
+[01:57:17 - 01:57:18] She says...
+[01:57:18 - 01:57:21] Well Grandpa's gonna be sad...
+[01:57:21 - 01:57:22] If we don't...
+[01:57:22 - 01:57:23] If we're not in...
+[01:57:23 - 01:57:24] Grandpa to be sad...
+[01:57:24 - 01:57:25] But I don't wanna part with...
+[01:57:25 - 01:57:27] With...
+[01:57:27 - 01:57:28] Becky...
+[01:57:28 - 01:57:29] Well we can always visit...
+[01:57:29 - 01:57:30] Senera's...
+[01:57:30 - 01:57:31] We can always just...
+[01:57:31 - 01:57:33] Fly there...
+[01:57:33 - 01:57:34] Or something...
+[01:57:34 - 01:57:35] Hmm...
+[01:57:35 - 01:57:38] Sabi ni...
+[01:57:38 - 01:57:39] Sabi ni Liana...
+[01:57:39 - 01:57:41] Oh come on Liana...
+[01:57:41 - 01:57:42] It's fine...
+[01:57:42 - 01:57:44] Ha?
+[01:57:44 - 01:57:45] Come on...
+[01:57:45 - 01:57:46] I have to sit up...
+[01:57:46 - 01:57:47] Don't sit down...
+[01:57:47 - 01:57:48] In it...
+[01:57:50 - 01:57:51] Oh sige...
+[01:57:51 - 01:57:52] Bok sabi ni...
+[01:57:52 - 01:57:53] So she says...
+[01:57:53 - 01:57:54] Uh...
+[01:57:54 - 01:57:55] She's lying says...
+[01:57:55 - 01:57:56] We're gonna talk about it later...
+[01:57:56 - 01:57:57] Alright...
+[01:57:57 - 01:57:58] But...
+[01:57:58 - 01:57:59] First...
+[01:57:59 - 01:58:00] Um...
+[01:58:00 - 01:58:01] We need...
+[01:58:01 - 01:58:02] We need meat...
+[01:58:02 - 01:58:03] And we need desserts...
+[01:58:03 - 01:58:04] And we need drinks...
+[01:58:04 - 01:58:05] Refreshments...
+[01:58:05 - 01:58:06] Yes...
+[01:58:06 - 01:58:08] Uh...
+[01:58:08 - 01:58:09] We have uh...
+[01:58:09 - 01:58:11] We have some stir fry coming along...
+[01:58:11 - 01:58:12] And...
+[01:58:12 - 01:58:13] Yes...
+[01:58:13 - 01:58:14] Meat is almost ready...
+[01:58:14 - 01:58:16] He wants one of those...
+[01:58:16 - 01:58:17] Meat with the bones on it...
+[01:58:17 - 01:58:18] And I'm not sure...
+[01:58:18 - 01:58:19] Oh you want...
+[01:58:19 - 01:58:20] Bone-in?
+[01:58:20 - 01:58:21] Bone-in meat?
+[01:58:23 - 01:58:24] Oh...
+[01:58:24 - 01:58:25] Yeah...
+[01:58:25 - 01:58:26] Please...
+[01:58:26 - 01:58:27] Well...
+[01:58:27 - 01:58:29] We do have some...
+[01:58:29 - 01:58:31] But it won't be lamb...
+[01:58:31 - 01:58:32] That's gonna be...
+[01:58:32 - 01:58:33] Like...
+[01:58:33 - 01:58:34] Either pork...
+[01:58:34 - 01:58:35] Or...
+[01:58:35 - 01:58:36] Or beef...
+[01:58:36 - 01:58:37] Yeah...
+[01:58:37 - 01:58:38] Ah...
+[01:58:38 - 01:58:39] So...
+[01:58:39 - 01:58:40] You see...
+[01:58:40 - 01:58:41] We're not allowed to cook...
+[01:58:41 - 01:58:42] Cute things...
+[01:58:42 - 01:58:43] Is what I've been told...
+[01:58:43 - 01:58:44] So...
+[01:58:44 - 01:58:44] You see...
+[01:58:44 - 01:58:45] I mean...
+[01:58:45 - 01:58:46] He kind of like...
+[01:58:46 - 01:58:47] Erases her...
+[01:58:47 - 01:58:48] Like...
+[01:58:48 - 01:58:49] And...
+[01:58:50 - 01:58:51] She starts helping them...
+[01:58:51 - 01:58:52] With her...
+[01:58:52 - 01:58:53] Stuff...
+[01:58:53 - 01:58:54] And...
+[01:58:54 - 01:58:55] Lime as well...
+[01:58:55 - 01:58:56] Kind of like...
+[01:58:56 - 01:58:57] Gets the plates...
+[01:58:57 - 01:58:58] So...
+[01:58:58 - 01:58:59] Andrew...
+[01:58:59 - 01:59:01] Being awkward right now...
+[01:59:01 - 01:59:02] Um...
+[01:59:02 - 01:59:03] Is there anything...
+[01:59:03 - 01:59:04] I can help with?
+[01:59:04 - 01:59:05] Yeah...
+[01:59:05 - 01:59:06] Get those glasses...
+[01:59:06 - 01:59:07] Okay...
+[01:59:07 - 01:59:08] Alright...
+[01:59:08 - 01:59:08] So...
+[01:59:08 - 01:59:09] Of course...
+[01:59:09 - 01:59:10] We work together here...
+[01:59:10 - 01:59:11] In the ship...
+[01:59:12 - 01:59:13] So...
+[01:59:13 - 01:59:14] Of course...
+[01:59:14 - 01:59:15] While he's like...
+[01:59:15 - 01:59:16] Clumsy...
+[01:59:16 - 01:59:17] And other things...
+[01:59:17 - 01:59:18] Things like this are...
+[01:59:18 - 01:59:20] Drilled into him...
+[01:59:20 - 01:59:21] When he was...
+[01:59:21 - 01:59:22] Like...
+[01:59:22 - 01:59:23] A cadet...
+[01:59:23 - 01:59:24] So...
+[01:59:24 - 01:59:25] He is able to...
+[01:59:25 - 01:59:26] Like...
+[01:59:26 - 01:59:27] Do them with proficiency...
+[01:59:27 - 01:59:28] So...
+[01:59:28 - 01:59:29] After that...
+[01:59:29 - 01:59:30] After a few minutes...
+[01:59:30 - 01:59:31] Uh...
+[01:59:33 - 01:59:34] The kids was...
+[01:59:34 - 01:59:35] Were dismissed...
+[01:59:35 - 01:59:36] From the kitchen...
+[01:59:36 - 01:59:37] Uh...
+[01:59:37 - 01:59:38] They went upstairs...
+[01:59:38 - 01:59:39] To play...
+[01:59:39 - 01:59:40] I guess...
+[01:59:40 - 01:59:41] The deck...
+[01:59:41 - 01:59:42] And...
+[01:59:42 - 01:59:43] Uh...
+[01:59:43 - 01:59:44] Lime and...
+[01:59:44 - 01:59:45] Emily...
+[01:59:45 - 01:59:46] Kind of like...
+[01:59:46 - 01:59:47] Yung...
+[01:59:47 - 01:59:48] Trolley...
+[01:59:48 - 01:59:49] Teka...
+[01:59:49 - 01:59:50] Yung trolley...
+[01:59:50 - 01:59:51] Yeah...
+[01:59:51 - 01:59:52] Huyan...
+[01:59:52 - 01:59:53] Dad yung aso...
+[01:59:53 - 01:59:54] Get out...
+[01:59:55 - 01:59:56] Spooks out...
+[01:59:55 - 02:00:00] Ang gawin sa laban.
+[02:01:32 - 02:01:34] Sabi ni Emily.
+[02:01:34 - 02:01:36] Ay shit.
+[02:01:36 - 02:01:38] Alam mo pala kung saan pala tayo tumigil.
+[02:01:38 - 02:01:40] Ngayon ko rin naalala.
+[02:01:40 - 02:01:42] Ang gawin sa laban.
+[02:01:52 - 02:01:56] Pwede tayo natapos yung kumukuha kayo ng mga reformate sa senensa.
+[02:01:56 - 02:01:58] Huwag mo na. Hindi mo na.
+[02:01:58 - 02:02:00] Ero na kung nito.
+[02:02:00 - 02:02:02] Okay.
+[02:02:10 - 02:02:12] Ang gawin sa laban.
+[02:03:24 - 02:03:26] ang gawin sa laban.
+[02:03:26 - 02:03:28] Ang gawin sa laban.
+[02:04:30 - 02:04:32] ang gawin sa laban.
+[02:04:32 - 02:04:34] Ang gawin sa laban.
+[02:04:58 - 02:05:00] ang gawin sa laban.
+[02:05:00 - 02:05:02] Ang gawin sa laban.
+[02:05:16 - 02:05:18] ang gawin sa laban.
+[02:05:18 - 02:05:20] Ang gawin sa laban.
+[02:06:48 - 02:06:50] gawin sa laban.
+[02:06:50 - 02:06:52] Ang gawin sa laban.
+[02:07:12 - 02:07:14] Gawin sa laban.
+[02:07:14 - 02:07:16] Ang gawin sa laban.
+[02:09:14 - 02:09:16] ang gawin sa laban.
+[02:09:16 - 02:09:18] Ang gawin sa laban.
+[02:09:28 - 02:09:30] ang gawin sa laban.
+[02:09:30 - 02:09:32] Ang gawin sa laban.
+[02:09:46 - 02:09:53] but I think
+[02:09:53 - 02:09:57] well, forgetting 10 years of your own life
+[02:09:57 - 02:10:00] is going to be a bigger problem in that regard
+[02:10:00 - 02:10:08] okay
+[02:10:08 - 02:10:16] oh, it looks nice
+[02:10:16 - 02:10:25] you, it's kind of weird to talk about marriage as I am
+[02:10:25 - 02:10:26] probably the line
+[02:10:26 - 02:10:29] well
+[02:10:29 - 02:10:31] don't you want to marry Justin?
+[02:10:31 - 02:10:32] hey
+[02:10:32 - 02:10:33] probably the line
+[02:10:33 - 02:10:37] he can deal with you, you know
+[02:10:37 - 02:10:40] he's just up there
+[02:10:40 - 02:10:43] wait, he can hear us from here?
+[02:10:43 - 02:10:45] yeah, that's interesting
+[02:10:45 - 02:10:48] so she lowers her voice
+[02:10:48 - 02:10:51] Justin has a very consensus
+[02:10:51 - 02:10:56] kind of compromising his blindness
+[02:10:56 - 02:10:57] which is really cool
+[02:10:57 - 02:11:05] right, you did mention that he was blind
+[02:11:05 - 02:11:07] and he can fight
+[02:11:07 - 02:11:08] and I mean
+[02:11:08 - 02:11:10] let's have to
+[02:11:10 - 02:11:14] let's bring this stuff in the conference room
+[02:11:14 - 02:11:19] so when they arrive in the conference room
+[02:11:19 - 02:11:22] no, no, no
+[02:11:22 - 02:11:26] before they arrive in the conference room
+[02:11:26 - 02:11:27] you see Miss Teen
+[02:11:27 - 02:11:28] Miss Teen
+[02:11:28 - 02:11:29] and Miss Teen Lang
+[02:11:29 - 02:11:30] si Miss Teen Lang
+[02:11:30 - 02:11:32] she is like
+[02:11:32 - 02:11:34] kind of like
+[02:11:34 - 02:11:37] nakatayo siya
+[02:11:37 - 02:11:38] but nakacross-armed siya
+[02:11:38 - 02:11:39] in one of the corners
+[02:11:39 - 02:11:41] before the door
+[02:11:41 - 02:11:43] in the conference room
+[02:11:43 - 02:11:45] and you hear a
+[02:11:45 - 02:11:46] like a voice
+[02:11:46 - 02:11:48] a guy's voice
+[02:11:48 - 02:11:48] saying
+[02:11:48 - 02:11:50] I'm not gonna model
+[02:11:50 - 02:11:51] for that magazine
+[02:11:51 - 02:11:52] for men
+[02:11:53 - 02:11:54] that's for
+[02:11:54 - 02:11:55] that's two
+[02:11:55 - 02:11:55] two
+[02:11:55 - 02:11:58] men
+[02:11:58 - 02:12:00] doing things
+[02:12:00 - 02:12:01] who's this
+[02:12:01 - 02:12:03] some guy in the
+[02:12:03 - 02:12:07] I'm not
+[02:12:07 - 02:12:07] all right
+[02:12:07 - 02:12:10] look
+[02:12:10 - 02:12:11] you're very pretty
+[02:12:11 - 02:12:11] and all
+[02:12:11 - 02:12:13] and you seem to be my type
+[02:12:13 - 02:12:14] but
+[02:12:14 - 02:12:15] you're already like
+[02:12:15 - 02:12:16] spoken for
+[02:12:16 - 02:12:17] I'm not
+[02:12:17 - 02:12:19] going to like
+[02:12:19 - 02:12:19] you know
+[02:12:19 - 02:12:20] please
+[02:12:20 - 02:12:21] even if it's like
+[02:12:21 - 02:12:22] 10,000 gold
+[02:12:22 - 02:12:24] which you're offering to me
+[02:12:24 - 02:12:25] and some perks
+[02:12:25 - 02:12:26] but
+[02:12:26 - 02:12:27] no
+[02:12:27 - 02:12:29] I am
+[02:12:29 - 02:12:29] not
+[02:12:29 - 02:12:31] gay
+[02:12:31 - 02:12:32] and then you see
+[02:12:32 - 02:12:33] a redhead
+[02:12:33 - 02:12:34] a blonde
+[02:12:34 - 02:12:35] kind of like
+[02:12:35 - 02:12:36] tall elf
+[02:12:36 - 02:12:37] really kind of like
+[02:12:37 - 02:12:38] beautiful
+[02:12:38 - 02:12:39] fogey
+[02:12:39 - 02:12:40] handsome
+[02:12:40 - 02:12:41] and slender
+[02:12:41 - 02:12:43] but he has like
+[02:12:43 - 02:12:44] parang malaki yung
+[02:12:44 - 02:12:45] mga muscles niya
+[02:12:45 - 02:12:45] and
+[02:12:45 - 02:12:49] as he sees
+[02:12:49 - 02:12:49] all of you
+[02:12:49 - 02:12:51] he kind of like
+[02:12:51 - 02:12:53] sees Emily
+[02:12:53 - 02:12:53] and
+[02:12:53 - 02:12:53] oh shit
+[02:12:53 - 02:12:54] is this ano
+[02:12:54 - 02:12:56] he sees Emily
+[02:12:56 - 02:12:58] and goes behind
+[02:12:58 - 02:12:58] her
+[02:12:58 - 02:12:59] and
+[02:12:59 - 02:13:00] please
+[02:13:00 - 02:13:03] Emily
+[02:13:03 - 02:13:04] he says
+[02:13:04 - 02:13:04] Emma
+[02:13:04 - 02:13:05] help me
+[02:13:05 - 02:13:06] convince this
+[02:13:06 - 02:13:07] woman
+[02:13:07 - 02:13:08] that I'm not
+[02:13:08 - 02:13:09] modeling for
+[02:13:09 - 02:13:10] her gay
+[02:13:10 - 02:13:11] magazine
+[02:13:11 - 02:13:13] well
+[02:13:13 - 02:13:17] if that's the
+[02:13:17 - 02:13:17] only
+[02:13:17 - 02:13:19] way
+[02:13:19 - 02:13:20] you can
+[02:13:20 - 02:13:21] survive this
+[02:13:21 - 02:13:21] place
+[02:13:21 - 02:13:21] I mean
+[02:13:21 - 02:13:23] you have to
+[02:13:23 - 02:13:23] take that
+[02:13:23 - 02:13:25] Oh, fart. Mommy.
+[02:13:25 - 02:13:27] *laughs*
+[02:13:27 - 02:13:29] No, Mommy.
+[02:13:29 - 02:13:31] Mom?
+[02:13:31 - 02:13:33] No, you're fine.
+[02:13:33 - 02:13:35] That's what Henry said.
+[02:13:35 - 02:13:37] Oh, Henry, can we see?
+[02:13:37 - 02:13:39] I, uh, gotta go.
+[02:13:39 - 02:13:41] Where's Justin?
+[02:13:41 - 02:13:43] He says...
+[02:13:43 - 02:13:45] And then he looks at him like...
+[02:13:45 - 02:13:47] Where's Justin?
+[02:13:49 - 02:13:51] He's in the crow's nest.
+[02:13:51 - 02:13:53] Alright.
+[02:13:53 - 02:13:55] Uh...
+[02:13:55 - 02:13:57] Who's this?
+[02:13:57 - 02:13:59] Ah, you see him.
+[02:13:59 - 02:14:01] He has a very...
+[02:14:01 - 02:14:03] Elad rin kasi to eh.
+[02:14:03 - 02:14:05] So, Andrew goes on the side.
+[02:14:05 - 02:14:07] He bows towards him.
+[02:14:07 - 02:14:09] Thank you again for your help.
+[02:14:09 - 02:14:13] Don't do that to her.
+[02:14:13 - 02:14:15] That will, like, boost her ego.
+[02:14:15 - 02:14:19] I don't have money.
+[02:14:21 - 02:14:23] That's what you said, right?
+[02:14:23 - 02:14:25] And...
+[02:14:25 - 02:14:27] Hedwig says to offer you a job.
+[02:14:27 - 02:14:31] You just don't have to do it with Trajan.
+[02:14:31 - 02:14:33] And Trajan says forever.
+[02:14:33 - 02:14:35] It means yes.
+[02:14:35 - 02:14:37] He says yes.
+[02:14:37 - 02:14:39] What?
+[02:14:39 - 02:14:51] How come whatever means yes?
+[02:14:51 - 02:14:53] That's what he means.
+[02:14:53 - 02:14:55] So, it's just...
+[02:14:55 - 02:14:59] We just need one more really handsome guy.
+[02:14:59 - 02:15:01] Daddy?
+[02:15:01 - 02:15:03] Oh, John!
+[02:15:03 - 02:15:05] Honey!
+[02:15:05 - 02:15:07] You know, um...
+[02:15:07 - 02:15:09] Well, Andrew here is bowing at the way.
+[02:15:09 - 02:15:11] I think, uh...
+[02:15:11 - 02:15:13] Maybe he's interested?
+[02:15:13 - 02:15:14] Daddy!
+[02:15:15 - 02:15:16] Can I say her bathroom?
+[02:15:16 - 02:15:17] Andrew?
+[02:15:17 - 02:15:19] Oh, I'm not gay.
+[02:15:19 - 02:15:20] Yes!
+[02:15:23 - 02:15:27] That is what I am trying to tell her.
+[02:15:27 - 02:15:29] Top of the day already.
+[02:15:29 - 02:15:31] I am not gay.
+[02:15:31 - 02:15:33] Maybe I don't know what to give you to.
+[02:15:33 - 02:15:34] Yes!
+[02:15:34 - 02:15:35] Hey!
+[02:15:35 - 02:15:36] How are you?
+[02:15:36 - 02:15:37] Just...
+[02:15:37 - 02:15:38] Ugh!
+[02:15:38 - 02:15:39] Uh...
+[02:15:39 - 02:15:40] I gotta go.
+[02:15:40 - 02:15:41] Uh...
+[02:15:41 - 02:15:42] What's your name again?
+[02:15:42 - 02:15:43] What's your name?
+[02:15:43 - 02:15:44] Hey!
+[02:15:44 - 02:15:46] Sorry, uh...
+[02:15:46 - 02:15:47] Nice to meet you.
+[02:15:47 - 02:15:48] I am Mark.
+[02:15:48 - 02:15:49] This...
+[02:15:49 - 02:15:51] This is my younger brother, John.
+[02:15:51 - 02:15:52] You're cursed!
+[02:15:52 - 02:15:53] Dude!
+[02:15:53 - 02:15:54] What is this?
+[02:15:54 - 02:15:55] Oh!
+[02:15:55 - 02:15:56] You mean the lycanthropy?
+[02:15:56 - 02:15:57] Yeah, that's a curse.
+[02:15:57 - 02:15:59] Well, considering what was...
+[02:15:59 - 02:16:03] What it replaced, I think this is a better curse, I guess.
+[02:16:03 - 02:16:04] Uh...
+[02:16:04 - 02:16:07] Oh, you weren't in...
+[02:16:07 - 02:16:11] So he puts his arms around Lyme and Emily.
+[02:16:11 - 02:16:15] Don't go near this guy during a full moon.
+[02:16:15 - 02:16:16] He says.
+[02:16:16 - 02:16:17] Uh...
+[02:16:17 - 02:16:18] Including you, Em.
+[02:16:18 - 02:16:19] You're like a sister to me.
+[02:16:19 - 02:16:20] So, uh...
+[02:16:20 - 02:16:21] Lyme, uh...
+[02:16:21 - 02:16:22] You...
+[02:16:22 - 02:16:25] You're like, uh...
+[02:16:25 - 02:16:26] Kind of like a...
+[02:16:26 - 02:16:27] I...
+[02:16:27 - 02:16:28] They do know that I have...
+[02:16:28 - 02:16:29] Lycanthropy.
+[02:16:29 - 02:16:30] Yes.
+[02:16:30 - 02:16:33] That's why I'm advising them not to go to you...
+[02:16:33 - 02:16:35] With you during a full moon.
+[02:16:35 - 02:16:36] And...
+[02:16:36 - 02:16:37] Just the sight of, uh...
+[02:16:37 - 02:16:38] Just...
+[02:16:38 - 02:16:39] A smell...
+[02:16:39 - 02:16:41] A sniff...
+[02:16:41 - 02:16:43] Of woman's essence.
+[02:16:43 - 02:16:44] He said,
+[02:16:44 - 02:16:46] "You will go berserk, man."
+[02:16:46 - 02:16:48] That's what I tell you.
+[02:16:48 - 02:16:51] That's what I can tell about Lycanthropy.
+[02:16:51 - 02:16:52] Oh, like hunting.
+[02:16:52 - 02:16:57] Hey.
+[02:16:57 - 02:16:59] I'm kind of good with that guy.
+[02:16:59 - 02:17:00] Just the sniffing.
+[02:17:00 - 02:17:08] Well, what if we, like, uh...
+[02:17:08 - 02:17:11] You know, remove his sense of sniffing.
+[02:17:11 - 02:17:12] I can hate Emily.
+[02:17:12 - 02:17:15] Hmm...
+[02:17:15 - 02:17:16] Is that possible?
+[02:17:16 - 02:17:18] Well, we can block his senses, right?
+[02:17:18 - 02:17:20] During a full moon?
+[02:17:20 - 02:17:21] Does any of you...
+[02:17:21 - 02:17:22] Thought of that?
+[02:17:22 - 02:17:24] That's kind of hard.
+[02:17:24 - 02:17:25] She says.
+[02:17:25 - 02:17:27] I mean...
+[02:17:27 - 02:17:29] I guess we can...
+[02:17:29 - 02:17:32] Cut his nose off.
+[02:17:32 - 02:17:33] What?
+[02:17:35 - 02:17:36] No!
+[02:17:36 - 02:17:37] Maybe we could cut off his number...
+[02:17:37 - 02:17:38] I mean Emily.
+[02:17:38 - 02:17:42] Oh, right!
+[02:17:42 - 02:17:43] Like...
+[02:17:43 - 02:17:44] You know, some...
+[02:17:44 - 02:17:49] Like some dogs that you don't want to be breeding, you're castrated.
+[02:17:49 - 02:17:50] Are you castrated?
+[02:17:50 - 02:17:52] Yeah, but...
+[02:17:52 - 02:17:54] I mean...
+[02:17:54 - 02:17:55] I don't think...
+[02:17:55 - 02:17:56] The...
+[02:17:56 - 02:18:03] Martinus Ranik will allow me to marry Gwyn if I don't have those.
+[02:18:03 - 02:18:04] Oh, you are to marry...
+[02:18:04 - 02:18:06] But the name is Helion.
+[02:18:06 - 02:18:07] Congratulations.
+[02:18:07 - 02:18:09] Thank you so much.
+[02:18:09 - 02:18:10] Thank you.
+[02:18:10 - 02:18:12] And then, uh...
+[02:18:12 - 02:18:13] And your name is?
+[02:18:13 - 02:18:15] Helion Blanchema.
+[02:18:15 - 02:18:18] Blanchema?
+[02:18:18 - 02:18:21] Yes.
+[02:18:21 - 02:18:22] Uh...
+[02:18:22 - 02:18:24] We are an Aladren family from Feedal Cleo-Kishula.
+[02:18:24 - 02:18:25] Hmm.
+[02:18:25 - 02:18:29] There's a family name here in, uh...
+[02:18:29 - 02:18:31] in Apgwara too, the Blanchema.
+[02:18:32 - 02:18:33] They, uh...
+[02:18:34 - 02:18:38] They sell sparkling wine.
+[02:18:38 - 02:18:40] Ah, maybe along...
+[02:18:40 - 02:18:43] distant relatives.
+[02:18:43 - 02:18:45] Which I often, uh, meet...
+[02:18:45 - 02:18:48] in the Feywild, he says.
+[02:18:48 - 02:18:49] Apparently, um...
+[02:18:49 - 02:18:51] Yeah.
+[02:18:51 - 02:18:52] They're everywhere.
+[02:18:54 - 02:18:55] Yeah.
+[02:18:55 - 02:18:56] Maybe...
+[02:18:58 - 02:19:00] Maybe somewhere in your distant past, you also had a...
+[02:19:00 - 02:19:01] a cursed member.
+[02:19:01 - 02:19:03] Uh...
+[02:19:03 - 02:19:04] Well...
+[02:19:04 - 02:19:05] My member isn't cursed.
+[02:19:06 - 02:19:07] You...
+[02:19:07 - 02:19:07] Well, apparently...
+[02:19:07 - 02:19:08] That's not been your mic.
+[02:19:08 - 02:19:09] We don't wanna hear.
+[02:19:09 - 02:19:10] Well, apparently, you're cursed to be, like...
+[02:19:10 - 02:19:11] in a magazine with other men, so...
+[02:19:11 - 02:19:12] Hmm...
+[02:19:12 - 02:19:13] Well, apparently...
+[02:19:13 - 02:19:14] That's not been your mic.
+[02:19:14 - 02:19:15] We don't wanna hear.
+[02:19:15 - 02:19:18] Well, apparently, you're cursed to be, like...
+[02:19:18 - 02:19:20] in a magazine with other men, so...
+[02:19:20 - 02:19:21] Hmm...
+[02:19:22 - 02:19:23] I don't know.
+[02:19:23 - 02:19:29] Gotta...
+[02:19:29 - 02:19:30] Find...
+[02:19:30 - 02:19:31] Another job.
+[02:19:31 - 02:19:32] He says.
+[02:19:32 - 02:19:35] You think, uh, that, uh...
+[02:19:35 - 02:19:37] Old Grump, uh...
+[02:19:37 - 02:19:39] Need some help?
+[02:19:39 - 02:19:40] Uh...
+[02:19:40 - 02:19:41] I'll head upstairs.
+[02:19:41 - 02:19:42] In the deck.
+[02:19:42 - 02:19:44] And then he goes off.
+[02:19:44 - 02:19:48] But...
+[02:19:46 - 02:20:01] I think he saw Mark and Mark saw him naked too so he had to leave
+[02:20:01 - 02:20:09] I don't just see people naked all right it's whenever like Emily does something
+[02:20:09 - 02:20:35] Helion has a brother in Nuremberg. He's a professor. Really? In Nuremberg? Yeah his name is Felix. He's a man of culture. What? So his brother is a man of culture? What about him?
+[02:20:35 - 02:21:01] What is this man of culture thing? Who is he? He's a man of culture. But his brother Felix, well we call him Professor Felix, he says, Professor Blancheman likes kind of like girls and asking them for things, he says.
+[02:21:01 - 02:21:12] Now we don't know what it is. But, um, secret. And then they pull the thing.
+[02:21:12 - 02:21:21] Because he's here, Rosie's two. He's a man of the victim. And then he's a man of the victim. And he's a man of the victim. And he's a man of the victim.
+[02:21:21 - 02:21:23] Mm-hmm.
+[02:21:23 - 02:21:28] That's a little freaky.
+[02:21:53 - 02:22:00] It's magical. In Inkwell, everyone has their free flying grooms taken.
+[02:22:00 - 02:22:03] And bag of holding?
+[02:22:03 - 02:22:08] And bag of holding? Well, in Owen Muller too as well.
+[02:22:08 - 02:22:13] Bag of holding is like this bag that I have.
+[02:22:13 - 02:22:21] It can magically hold a lot of things, tons of things.
+[02:22:21 - 02:22:25] Even dead bodies, he says.
+[02:22:25 - 02:22:27] I don't have a dead body in my bag.
+[02:22:27 - 02:22:29] It's just Inkwell, yeah? He says.
+[02:22:29 - 02:22:32] Who does that? He says.
+[02:22:32 - 02:22:37] I have, though, a lot of books, he says.
+[02:22:37 - 02:22:39] What?
+[02:22:39 - 02:22:41] What, George?
+[02:22:41 - 02:22:43] I don't know.
+[02:22:43 - 02:22:49] I have a lot of books.
+[02:22:49 - 02:22:53] When I was in the payroll, I bought a lot of books.
+[02:22:53 - 02:22:55] He says.
+[02:22:55 - 02:22:57] Anything that you'll be sharing today?
+[02:22:57 - 02:22:59] Yeah, he says.
+[02:22:59 - 02:23:03] Cool, right? He says.
+[02:23:03 - 02:23:05] Oh, it looks amazing.
+[02:23:05 - 02:23:15] I mean, I've seen a couple of universities here and I already kind of feel that way.
+[02:23:15 - 02:23:21] I can only imagine what it would be like for something like a place like a Feywild.
+[02:23:21 - 02:23:25] I don't know how you guys talk about it.
+[02:23:25 - 02:23:33] How there's magic everywhere and things where there are dragons and just...
+[02:23:33 - 02:23:41] Well, actually, there's more, like, there's more to the dragons than everyone you feel knows from there.
+[02:23:41 - 02:23:43] There's also Draculiches.
+[02:23:43 - 02:23:45] He says.
+[02:23:49 - 02:23:51] I feel you're kind of mentioned about that.
+[02:23:51 - 02:23:55] Yeah, we faced Draculiches when we were in the Feywild.
+[02:23:55 - 02:23:57] He says.
+[02:23:57 - 02:24:03] Anyway, there's a lot of free stuff in the Feywild that happened.
+[02:24:03 - 02:24:04] He says.
+[02:24:05 - 02:24:07] But I don't want to talk about them.
+[02:24:07 - 02:24:08] I don't want to talk about them.
+[02:24:08 - 02:24:09] He says.
+[02:24:09 - 02:24:10] Talk about your world.
+[02:24:10 - 02:24:11] He says.
+[02:24:11 - 02:24:14] I've been here for like almost a month already.
+[02:24:14 - 02:24:15] He says.
+[02:24:15 - 02:24:17] Everything is just like...
+[02:24:17 - 02:24:20] Well, you haven't been to Samara for a long time.
+[02:24:20 - 02:24:21] Yeah, but...
+[02:24:21 - 02:24:22] Oh.
+[02:24:22 - 02:24:23] Yeah.
+[02:24:23 - 02:24:29] I mean, if we head to the Malfour, there are a lot of places where I can show you guys.
+[02:24:29 - 02:24:38] Unlike these fellows over here only like see the sea because they're part of the Navy.
+[02:24:38 - 02:24:42] Whenever I go out, I try to find something new.
+[02:24:42 - 02:24:43] So, yeah.
+[02:24:43 - 02:24:48] Nice to see in Leo Keshawatu called Paridons.
+[02:24:48 - 02:24:49] Yes.
+[02:24:49 - 02:24:52] But I want to see what gems you have.
+[02:24:52 - 02:24:54] Do you have gems?
+[02:24:54 - 02:24:55] Gems for me?
+[02:24:55 - 02:24:56] Gems?
+[02:24:56 - 02:24:59] Because runecrafting requires gems.
+[02:24:59 - 02:25:00] Yes.
+[02:25:00 - 02:25:05] I synthesize gems into magical runes, for example.
+[02:25:05 - 02:25:07] Well, that's perfect then.
+[02:25:07 - 02:25:10] If you're going to our place, have any gems.
+[02:25:10 - 02:25:11] The Maltrix.
+[02:25:11 - 02:25:15] Well, our family made our fortune.
+[02:25:15 - 02:25:22] Because the lands that we control are full of different kinds of gems.
+[02:25:22 - 02:25:24] We have mines of all kinds.
+[02:25:24 - 02:25:26] That's amazing, she says.
+[02:25:26 - 02:25:27] So, yeah.
+[02:25:27 - 02:25:31] We have rubies, topazes, emorals, diamonds.
+[02:25:31 - 02:25:35] They have like, presents of Feywild in the Art of Scenera.
+[02:25:35 - 02:25:36] Emily.
+[02:25:36 - 02:25:40] They have statues of the green board.
+[02:25:40 - 02:25:41] That's weird.
+[02:25:41 - 02:25:42] King Auburn?
+[02:25:42 - 02:25:43] Oh, that's nice.
+[02:25:43 - 02:25:55] The mistress really, like, dislikes that person.
+[02:25:55 - 02:26:01] That's understandable, because Miss Tiffany is a hag, she says.
+[02:26:01 - 02:26:04] And Hugs doesn't like the court system.
+[02:26:04 - 02:26:08] Especially the silly court.
+[02:26:08 - 02:26:10] What's silly court?
+[02:26:10 - 02:26:13] You mean silly like funny?
+[02:26:13 - 02:26:14] Not really.
+[02:26:14 - 02:26:15] She says.
+[02:26:15 - 02:26:16] Not really the silly court.
+[02:26:16 - 02:26:20] It means summer court and the spring court.
+[02:26:20 - 02:26:21] Let's just stop.
+[02:26:21 - 02:26:30] Alright, I don't understand that part of Feywild still.
+[02:26:30 - 02:26:35] So, Emily just smiled and she says.
+[02:26:35 - 02:26:36] What?
+[02:26:36 - 02:26:45] I praise, I, I, I, I, I, my family is a long term follower of King Auburn.
+[02:26:45 - 02:26:50] And, I believe he is.
+[02:26:50 - 02:26:53] Hey, hey, hey, hey, hey, hey.
+[02:26:53 - 02:26:54] I follow him more.
+[02:26:54 - 02:26:58] I look up to him more than Quintay Kanya.
+[02:26:58 - 02:26:59] So, I'll do that.
+[02:26:59 - 02:27:03] King Auburn helps you when you're in need, he says.
+[02:27:03 - 02:27:12] It depends on you, if you, if you, how, how would you look at it in that way though?
+[02:27:12 - 02:27:17] And according to the mistress, the Flayfifil is in the spring court, right?
+[02:27:17 - 02:27:18] Yeah.
+[02:27:18 - 02:27:19] I guess that makes sense, like.
+[02:27:19 - 02:27:20] Yeah.
+[02:27:20 - 02:27:24] Isn't he part of the, didn't he used to be the king, the spring court?
+[02:27:24 - 02:27:27] Yeah, King Auburn was the spring one, she says.
+[02:27:27 - 02:27:29] That's the term for now, she says.
+[02:27:29 - 02:27:37] Well, the, there are still some books in Samara about the Archfabe.
+[02:27:37 - 02:27:45] And, well, in our stories, he's still the guy who's considered the spring king.
+[02:27:45 - 02:27:51] Well, he gave up the throne to join his beloved queen, Queen Titania.
+[02:27:51 - 02:27:52] Yeah, actually.
+[02:27:52 - 02:27:56] So, one of them ruled over the summer court and the sea court, she says.
+[02:27:56 - 02:27:57] During secondary education.
+[02:27:57 - 02:28:02] Yeah, but he gave up on being the spring lord and gave it to someone else.
+[02:28:02 - 02:28:03] It was awesome.
+[02:28:03 - 02:28:04] Queen Lorend.
+[02:28:04 - 02:28:09] Queen Lorend fell into a deep sleep, a deep slumber.
+[02:28:09 - 02:28:12] So, they had to replace her.
+[02:28:12 - 02:28:16] Though, it was sad, because Queen Lorend's reign was fun.
+[02:28:16 - 02:28:20] It was really, it was like a child's dream, she says.
+[02:28:20 - 02:28:22] I mean, her festivals are amazing.
+[02:28:22 - 02:28:23] How can I say that?
+[02:28:23 - 02:28:24] How can I describe it?
+[02:28:24 - 02:28:25] I'm sorry.
+[02:28:25 - 02:28:26] It was really fun when it was Queen Lorend's rule.
+[02:28:26 - 02:28:27] And she allowed use of any kind of magic.
+[02:28:27 - 02:28:28] Even necromancy.
+[02:28:28 - 02:28:35] Which is weird because spring is like, and necromancy is for the scholomans, you know.
+[02:28:35 - 02:28:50] So, but she allowed it because she allowed it because it kind of, well, can I, let's just say that she pursued, she encouraged people, she encouraged people to be created with Jesus.
+[02:28:50 - 02:29:09] After that, it was sad because of Baldas and you see kind of like a, parang, parang, she bit her lips when she speaks of Baldas.
+[02:29:09 - 02:29:20] And you see kind of like a, parang, parang, parang, she bit her lips when she speaks of Baldas.
+[02:29:20 - 02:29:36] But the Green Lord is a, so she says, when she looks at Lyman, she says, you know what, I actually wished for someone to help, help, help, uh, Cleofisula with the magical poisoning.
+[02:29:36 - 02:29:43] And I think the Green Lord gave, gave me, you guys, he says.
+[02:29:43 - 02:29:44] Really?
+[02:29:44 - 02:29:46] Yeah.
+[02:29:46 - 02:29:56] Yeah, we do help with the magical poison, and we help Karyukeshala a lot, you help the mayor, you help everyone there, even the monks, he says.
+[02:29:56 - 02:30:01] Ah, that's kind of like...
+[02:30:01 - 02:30:04] They're lumped. They're lumped. They're lumped.
+[02:30:04 - 02:30:09] No, there are repercussions, he says.
+[02:30:09 - 02:30:14] But, I don't know, Emma is the one who went with you, right, not me?
+[02:30:14 - 02:30:20] Oh, yeah. Hi, geez.
+[02:30:20 - 02:30:24] Well, the mistress apparently didn't...
+[02:30:24 - 02:30:28] Well, she did mention that this ride is still here now.
+[02:30:28 - 02:30:34] Yeah, we were the one who...
+[02:30:34 - 02:30:36] Like, um...
+[02:30:36 - 02:30:38] Anyway, let's go.
+[02:30:38 - 02:30:42] So, they pull the cart in...
+[02:30:42 - 02:30:54] They push the cart inside the conference room, and offers everyone, like, good food, more drinks, and more, like, desserts.
+[02:30:54 - 02:30:58] And, uh, Hendrik is, like, waiting for these people.
+[02:30:58 - 02:31:02] Oh, finally! We can hand the books now, I guess?
+[02:31:02 - 02:31:04] His pork leg is really...
+[02:31:04 - 02:31:05] Huh?
+[02:31:05 - 02:31:08] His pork leg is really juicy.
+[02:31:08 - 02:31:10] Oh, sorry.
+[02:31:10 - 02:31:12] Um...
+[02:31:12 - 02:31:14] Your manners, Mark?
+[02:31:14 - 02:31:22] Well, it's hard to have manners while eating a bare leg of a pork mother.
+[02:31:22 - 02:31:28] Well, at the very least, keep your hands clean before touching anyone's books, alright?
+[02:31:28 - 02:31:30] Of course.
+[02:31:32 - 02:31:33] I wouldn't wanna, like...
+[02:31:33 - 02:31:36] I wouldn't wanna, like, get the books oily or anything like that.
+[02:31:36 - 02:31:40] So, how do we do this?
+[02:31:40 - 02:31:41] Okay.
+[02:31:41 - 02:31:43] Uh, how we used to do it is...
+[02:31:43 - 02:31:44] Anyway...
+[02:31:44 - 02:31:45] We're already 20.
+[02:31:45 - 02:31:47] Yeah, and see who goes first.
+[02:31:47 - 02:31:48] But I think we have...
+[02:31:48 - 02:31:49] Do we have more than 20 people now?
+[02:31:49 - 02:31:50] More than 20.
+[02:31:52 - 02:31:54] So, this is happening in some...
+[02:31:54 - 02:31:58] Well, since there are a lot of books this time...
+[02:31:58 - 02:32:04] We can't necessarily rely on...
+[02:32:04 - 02:32:06] We can't, it's hard to rely on...
+[02:32:06 - 02:32:09] A randomness right now.
+[02:32:09 - 02:32:15] What if we just...
+[02:32:15 - 02:32:19] Phrased with someone who was, uh, across from us directly?
+[02:32:21 - 02:32:22] Alright.
+[02:32:22 - 02:32:25] Who's across?
+[02:32:25 - 02:32:27] Who, uh, who is across across?
+[02:32:27 - 02:32:28] Well...
+[02:32:28 - 02:32:30] Ang sabi niyo, magkatabi si...
+[02:32:30 - 02:32:31] Hedwig, tsaka si...
+[02:32:31 - 02:32:33] Dutchess, diba?
+[02:32:33 - 02:32:34] Tsaka si, ano?
+[02:32:35 - 02:32:36] Tsaka si...
+[02:32:36 - 02:32:37] Trumpins.
+[02:32:37 - 02:32:39] So, ang mga nasa tapat ng mga yun...
+[02:32:39 - 02:32:40] I suppose...
+[02:32:40 - 02:32:41] Siyaki na, si Keke.
+[02:32:41 - 02:32:42] Ano?
+[02:32:42 - 02:32:43] Yung nga eh.
+[02:32:43 - 02:32:44] Pero...
+[02:32:44 - 02:32:45] Let's see.
+[02:32:45 - 02:32:46] Nakalist sila sa akin dito.
+[02:32:46 - 02:32:47] Okay.
+[02:32:47 - 02:32:48] So, let's start with them.
+[02:32:48 - 02:32:50] So, si Hedwig muna.
+[02:32:50 - 02:32:53] Tsaka yung mga katabi niya.
+[02:32:54 - 02:33:00] So, beside the Hedwig, to her left, I suppose si Dutchess, no?
+[02:33:00 - 02:33:03] Tapos to her right will be yung front win.
+[02:33:03 - 02:33:04] Si Tiffany yung muna.
+[02:33:04 - 02:33:06] Tapos katabi ni Tiffany yung front win.
+[02:33:06 - 02:33:07] Tapos yung mga katabi ni Tiffany yung front win.
+[02:33:07 - 02:33:08] So, across them.
+[02:33:08 - 02:33:09] So, I suppose ito si Som.
+[02:33:09 - 02:33:10] Tsaka si Rosie.
+[02:33:10 - 02:33:11] Ah, si Rosie.
+[02:33:11 - 02:33:12] Tapos si Koto.
+[02:33:12 - 02:33:13] Tsaka si Pina.
+[02:33:13 - 02:33:14] Right?
+[02:33:14 - 02:33:15] Yeah.
+[02:33:15 - 02:33:16] Tapos si Koto.
+[02:33:16 - 02:33:17] Tsaka si Pina.
+[02:33:17 - 02:33:18] Right?
+[02:33:18 - 02:33:19] Yeah.
+[02:33:19 - 02:33:20] Then beside the Duchess would probably be John.
+[02:33:20 - 02:33:20] And then beside John would probably be Andrew.
+[02:33:20 - 02:33:20] And beside the Duchess would probably be Andrew.
+[02:33:22 - 02:33:23] And beside the Duchess would probably be Mark.
+[02:33:23 - 02:33:24] Okay.
+[02:33:25 - 02:33:29] Then beside the Duchess would probably be John.
+[02:33:29 - 02:33:32] And then beside John would probably be Andrew.
+[02:33:32 - 02:33:37] And beside the Duchess would probably be Andrew.
+[02:33:50 - 02:33:51] Okay.
+[02:33:51 - 02:33:53] So, si Emily, nasaan?
+[02:33:53 - 02:33:54] Patabi ni laman.
+[02:33:54 - 02:33:55] So, patabi ni Mark.
+[02:33:55 - 02:33:56] Si Emily.
+[02:33:56 - 02:33:57] Lime would be beside Emily.
+[02:33:57 - 02:33:58] Ah.
+[02:33:58 - 02:33:59] Yung mga magkakaedad.
+[02:33:59 - 02:34:00] Okay.
+[02:34:00 - 02:34:01] Sino pa ba?
+[02:34:01 - 02:34:02] Sino pa ako lang.
+[02:34:02 - 02:34:03] Si Minpiliat tsaka si Oscar.
+[02:34:03 - 02:34:04] I suppose nandun sila sa tapat nila.
+[02:34:04 - 02:34:05] Yes.
+[02:34:05 - 02:34:05] Eww.
+[02:34:05 - 02:34:05] Sino pa kasama nila.
+[02:34:05 - 02:34:05] Sino pa kasama nila?
+[02:34:05 - 02:34:06] Sino pa kasama nila.
+[02:34:06 - 02:34:07] Sino pa kasama nila?
+[02:34:08 - 02:34:09] Sino?
+[02:34:09 - 02:34:09] Yung mga magkakaedad.
+[02:34:10 - 02:34:11] Okay.
+[02:34:11 - 02:34:12] Sino pa ba?
+[02:34:12 - 02:34:13] Sino pa ako lang.
+[02:34:13 - 02:34:16] Si Minpiliat tsaka si Oscar.
+[02:34:16 - 02:34:20] I suppose nandun sila sa tapat nila dyan.
+[02:34:20 - 02:34:21] Sino pa kasama nila?
+[02:39:01 - 02:39:02] Sino niyong nag 11 sa'yo?
+[02:39:02 - 02:39:03] Sino pa kasama nila?
+[02:39:06 - 02:39:07] Sino niyong nag 11 sa'yo?
+[02:39:46 - 02:39:56] It's a good book to read.
+[02:39:56 - 02:39:59] So, Psalm next.
+[02:39:59 - 02:40:08] A total of 19.
+[02:40:08 - 02:40:11] He got Trajan.
+[02:40:11 - 02:40:13] What is Trajan's book?
+[02:40:15 - 02:40:18] So, Psalm, you've read your name.
+[02:40:18 - 02:40:23] What's the book of Psalm?
+[02:40:23 - 02:40:25] Ah, he said.
+[02:40:25 - 02:40:34] Well, I do hope that you have a good head for simosophy.
+[02:40:34 - 02:40:37] Yeah, actually.
+[02:40:37 - 02:40:39] I don't have a problem with it.
+[02:40:39 - 02:40:40] What's the name?
+[02:40:40 - 02:40:44] This would be...
+[02:40:44 - 02:40:48] The Seferian, uh, ano nga ba yan?
+[02:40:48 - 02:40:51] The Seferian philosophies.
+[02:40:51 - 02:40:59] An overview.
+[02:40:59 - 02:41:05] So, Rosie, next.
+[02:41:05 - 02:41:08] Oh, sorry.
+[02:41:08 - 02:41:13] It's 11 na pool na yun.
+[02:41:13 - 02:41:15] Ah, 11 na pool na yun.
+[02:41:15 - 02:41:21] Ah, say, oh, wala pa pa nang hindi pa nang makukunin.
+[02:41:21 - 02:41:22] It's just...
+[02:41:22 - 02:41:24] I hope you haven't read this.
+[02:41:24 - 02:41:33] I hope you haven't read this, uh, this is a book I recently, uh, read, it's called The Phantom
+[02:41:33 - 02:41:34] of the High Command.
+[02:41:34 - 02:41:39] It's kind of a romance, uh, novel about, uh, uh, a commander in the High Command.
+[02:41:39 - 02:41:41] I don't know what it is.
+[02:41:41 - 02:41:50] I got it from the Turkish store when, uh, some and I went out walking this.
+[02:41:50 - 02:41:52] It sounds like a story about Trudy's.
+[02:41:52 - 02:41:53] Sounds like Trudy's.
+[02:41:53 - 02:41:54] Wow.
+[02:41:54 - 02:41:55] There's the Heddy.
+[02:41:55 - 02:41:58] People think he's dead, right?
+[02:41:58 - 02:42:00] So he is the Phantom of the High Command.
+[02:42:00 - 02:42:01] People think he's dead, right?
+[02:42:02 - 02:42:05] So he is the Phantom of the High Command.
+[02:42:05 - 02:42:07] *laughs*
+[02:42:07 - 02:42:10] Maybe it was a fan-taker then for him?
+[02:42:10 - 02:42:11] The Phantom of the...
+[02:42:11 - 02:42:13] I don't like it, but...
+[02:42:13 - 02:42:15] I don't think we'll see.
+[02:42:15 - 02:42:16] Thanks, we'll see.
+[02:42:16 - 02:42:17] Thanks.
+[02:42:17 - 02:42:18] Next.
+[02:42:18 - 02:42:19] Ah, Koto.
+[02:42:19 - 02:42:22] What Koto does have?
+[02:42:22 - 02:42:24] Uh, true for him...
+[02:42:24 - 02:42:26] What book does he have?
+[02:42:26 - 02:42:29] Gali lang, so, tira man na nato ko sinang mokosin.
+[02:42:29 - 02:42:31] Who's supporting him?
+[02:42:31 - 02:42:32] Emily.
+[02:42:33 - 02:42:38] Oh.
+[02:42:38 - 02:42:41] I hope you like books about the cult.
+[02:42:41 - 02:42:43] This is...
+[02:42:43 - 02:42:45] I can give it to you.
+[02:42:45 - 02:42:46] It says.
+[02:42:46 - 02:42:53] I have read your followers of the cult already, Koto.
+[02:42:53 - 02:42:54] Yes.
+[02:42:54 - 02:42:55] I have read your followers of the cult.
+[02:43:57 - 02:43:58] You have read your followers of the cult.
+[02:49:23 - 02:49:24] You have read your followers.
+[02:49:24 - 02:49:24] You have read your followers of the cult.
+[02:49:46 - 02:49:57] It's Reginald's quivering member, a fanfic about Reginaldus, the hero, and his Harlem of Elves.
+[02:49:57 - 02:50:05] I specifically acquired that and sold it to me. And they both look at Renault.
+[02:50:05 - 02:50:06] Wait!
+[02:50:06 - 02:50:09] So, Sabinis, I'm knowing who Reginald is.
+[02:50:09 - 02:50:12] Wait! Why I haven't read that?
+[02:50:12 - 02:50:13] Sabinis.
+[02:50:13 - 02:50:19] Because you haven't had that level.
+[02:50:19 - 02:50:31] Sabinis, Sabinis, "Do you really need it? Aren't you quite familiar with Reginaldus's quivering member for it to intimately follow it?"
+[02:50:31 - 02:50:34] That's why I wanna read it!
+[02:50:34 - 02:50:42] Yeah, so Renault, see Miss Tin, acquired this fanfic about him and gives it to Tina.
+[02:50:42 - 02:50:46] And Fina gets it.
+[02:50:46 - 02:50:47] Thanks.
+[02:50:47 - 02:50:53] Okay, so I guess this is Jean Foster.
+[02:50:53 - 02:50:54] I hope this is fun.
+[02:50:55 - 02:50:56] I believe Fina.
+[02:50:56 - 02:51:02] Okay, what's his book?
+[02:51:02 - 02:51:11] Oh, this one is something that's one from our very own crew of La Carnalis.
+[02:51:11 - 02:51:15] This is from his very own crew from La Carnalis.
+[02:51:15 - 02:51:27] It seems that our Kraswa had come into writing and had written about his adventures with Almond Hammer.
+[02:51:27 - 02:51:29] It's not her, but it's not her.
+[02:51:29 - 02:51:31] It's not her, but it's Christine.
+[02:51:31 - 02:51:32] It's Christine.
+[02:51:34 - 02:51:35] Who's one?
+[02:51:35 - 02:51:37] Christine and who's...
+[02:51:38 - 02:51:39] Kraswa?
+[02:51:39 - 02:51:40] Christine and Colgate.
+[02:51:42 - 02:51:59] So you will read all of his lurid details in a very graphic manner.
+[02:51:59 - 02:52:02] So what is this?
+[02:52:02 - 02:52:03] Shit.
+[02:52:03 - 02:52:04] Huh?
+[02:52:04 - 02:52:08] Adventures of Christine and Colgate.
+[02:52:08 - 02:52:09] By Kraswa.
+[02:52:09 - 02:52:10] Sino na kakuha?
+[02:52:10 - 02:52:11] Sino na roll mo?
+[02:52:16 - 02:52:17] Ay!
+[02:52:17 - 02:52:18] Mga pala.
+[02:52:18 - 02:52:21] De, ang dito ako sa 10 na roll mo natin pin.
+[02:52:21 - 02:52:22] Pangino 10 na roll mo?
+[02:52:22 - 02:52:23] 10?
+[02:52:23 - 02:52:24] Meron na si De.
+[02:52:24 - 02:52:25] Meron na nga.
+[02:52:25 - 02:52:26] 16.
+[02:52:26 - 02:52:28] Si Jessica.
+[02:52:28 - 02:52:38] You look at Jessica and she just looks at you back.
+[02:52:38 - 02:52:41] And kind of like reminds her of Miss Tim.
+[02:52:41 - 02:52:43] Because she's like that.
+[02:52:43 - 02:52:45] And she just...
+[02:52:45 - 02:52:49] She opens her palm and ready to receive the book.
+[02:52:49 - 02:52:50] To the book.
+[02:52:50 - 02:52:54] I just enjoy ugly bastards.
+[02:52:54 - 02:52:59] And their adventures.
+[02:52:59 - 02:53:09] Hey, so he's selling those now?
+[02:53:09 - 02:53:15] Maybe her friend Branrum would want a copy John.
+[02:53:17 - 02:53:18] Maybe I can give it to him.
+[02:53:18 - 02:53:19] Maybe Jessica.
+[02:53:19 - 02:53:20] Hahaha.
+[02:53:20 - 02:53:21] Jethro.
+[02:53:21 - 02:53:22] Who's the book of Jethro?
+[02:53:24 - 02:53:26] What is it?
+[02:53:26 - 02:53:27] Who's the book of Jethro?
+[02:53:36 - 02:53:42] Yeah, so when we were talking about the freeholds recently.
+[02:53:42 - 02:53:46] And I thought maybe it'd be a nice thing for you guys to know.
+[02:53:46 - 02:53:48] what kind of food I am.
+[02:53:48 - 02:53:51] So I got a recipe book here.
+[02:53:51 - 02:53:59] The book of Mexicanian Cuisine.
+[02:54:01 - 02:54:04] From the eyes of the freeholds.
+[02:54:04 - 02:54:07] This is the title of the book.
+[02:54:07 - 02:54:13] You gotta read it.
+[02:54:13 - 02:54:15] When did this roll?
+[02:54:15 - 02:54:17] 14? I don't know.
+[02:54:17 - 02:54:19] I'm finished with Emily.
+[02:54:19 - 02:54:25] 28.
+[02:54:25 - 02:54:27] 28. There is another one.
+[02:54:27 - 02:54:39] 22.
+[02:54:39 - 02:54:41] Tiffany!
+[02:54:41 - 02:54:47] The title of the book is
+[02:54:47 - 02:54:49] Mexican
+[02:54:49 - 02:54:51] It's a book about
+[02:54:51 - 02:54:53] the sea.
+[02:54:53 - 02:54:55] Is it a book
+[02:54:55 - 02:54:57] from this world?
+[02:54:57 - 02:54:59] Through the sea.
+[02:54:59 - 02:55:01] Yeah!
+[02:55:01 - 02:55:03] Sounds interesting.
+[02:55:03 - 02:55:05] She says, you know, I can cook
+[02:55:05 - 02:55:07] myself.
+[02:55:07 - 02:55:09] Well, that's perfect.
+[02:55:09 - 02:55:11] It's gonna be a
+[02:55:11 - 02:55:13] lot of spicy bits.
+[02:55:13 - 02:55:15] Delightful young man
+[02:55:15 - 02:55:17] because
+[02:55:17 - 02:55:19] takes it.
+[02:55:19 - 02:55:21] Florida still trips me out
+[02:55:21 - 02:55:23] whenever a young looking
+[02:55:23 - 02:55:25] girl homes me.
+[02:55:25 - 02:55:27] A young man
+[02:55:27 - 02:55:29] but I understand it.
+[02:55:29 - 02:55:31] Well...
+[02:55:31 - 02:55:37] No, no, no.
+[02:55:37 - 02:55:39] It's a plastic thing.
+[02:56:07 - 02:56:09] I'm going to go 10.
+[02:56:09 - 02:56:11] What is it?
+[02:56:11 - 02:56:13] I'm going to get everything you know about cookies.
+[02:56:13 - 02:56:19] Lime.
+[02:56:19 - 02:56:23] Wow, that's kind of a cute book.
+[02:56:23 - 02:56:25] Everything you know about cookies?
+[02:56:25 - 02:56:27] Yes.
+[02:56:27 - 02:56:31] You could learn more about cookies here.
+[02:56:31 - 02:56:35] Maybe you can get back the same with your cookies.
+[02:56:35 - 02:56:37] Hey!
+[02:56:37 - 02:56:39] Stop jumping around like that.
+[02:56:39 - 02:56:41] Thanks Sensodyne.
+[02:56:41 - 02:56:43] I love this.
+[02:56:43 - 02:56:45] It smells like cookies.
+[02:56:45 - 02:56:51] That's some of the most like really like stereotypical witch things to do too.
+[02:56:51 - 02:56:53] Really?
+[02:56:53 - 02:56:55] Yeah, you gotta put your thumb there like Sensodyne does.
+[02:56:55 - 02:56:57] What?
+[02:56:57 - 02:56:59] Don't listen to them.
+[02:56:59 - 02:57:01] Yeah, because it's the other way around.
+[02:57:01 - 02:57:03] Sensodyne is the one who has to eat.
+[02:57:03 - 02:57:05] Thank you Sensodyne.
+[02:57:05 - 02:57:05] Yes.
+[02:57:05 - 02:57:09] So I guess you three will eat the leftovers.
+[02:57:09 - 02:57:11] Should I make the burnt ones?
+[02:57:11 - 02:57:21] Alright, finally it's my turn.
+[02:57:21 - 02:57:23] Hehehehe.
+[02:57:23 - 02:57:31] You see here Mentilia even like stands up and like offers the book like that.
+[02:57:31 - 02:57:35] And it's called Predator Stan and the Escape from Curly Beard Pirates.
+[02:57:35 - 02:57:37] It's the reason Predator Stan and the Escape from Curly Beard Pirates.
+[02:57:37 - 02:57:39] It's the reason Predator Stan is there.
+[02:57:39 - 02:57:41] Predator Stan is there, no?
+[02:57:41 - 02:57:45] And the Escape from Curly Beard Pirates.
+[02:57:45 - 02:57:53] It's his retelling of his adventure escaping Shagnery.
+[02:57:53 - 02:57:55] He says.
+[02:57:55 - 02:57:57] This is so cool.
+[02:57:57 - 02:57:59] Ah shit.
+[02:57:59 - 02:58:03] Oh but I, yeah but I read this.
+[02:58:03 - 02:58:05] Yeah I already read this.
+[02:58:05 - 02:58:07] Yeah it's really good.
+[02:58:07 - 02:58:15] I'll kill it, get the Slipper and kill it.
+[02:58:15 - 02:58:17] Get the Apish or the Slipper?
+[02:58:17 - 02:58:19] Yes.
+[02:58:19 - 02:58:21] Yeah get the Slipper and then you get it.
+[02:58:21 - 02:58:23] Lilia.
+[02:58:23 - 02:58:25] Lilia get it.
+[02:58:25 - 02:58:27] You got it Lilia.
+[02:58:39 - 02:58:41] I hope you enjoy this Predator Stan.
+[02:58:41 - 02:58:43] Fancy.
+[02:58:43 - 02:58:45] Fancy?
+[02:58:45 - 02:58:47] It's not fancy.
+[02:58:47 - 02:58:51] It's full of like manly adventures of Predator Stan.
+[02:58:51 - 02:58:53] And how he captured that little goblin.
+[02:58:53 - 02:58:59] It's gonna be fun to read I guess she says.
+[02:58:59 - 02:59:03] Does it involve animals?
+[02:59:03 - 02:59:09] Well, he rides some animals there.
+[02:59:09 - 02:59:13] So she gives it to Lilia.
+[02:59:13 - 02:59:15] Oscar what's your book?
+[02:59:15 - 02:59:29] All right, all right, all right, all right.
+[02:59:29 - 02:59:31] Now I wrote this thing myself.
+[02:59:31 - 02:59:42] All right? Because, well, nobody really thought to do it, it's the manifesto of the Great Erected Rock.
+[02:59:42 - 02:59:43] Nice.
+[02:59:59 - 03:00:10] Oh, some lucky bastard here is going to finally read what exactly the Great Erected One is, like, representative of, 23.
+[03:00:10 - 03:00:12] Henry.
+[03:00:12 - 03:00:15] Perfect!
+[03:00:15 - 03:00:23] You've got to live your life according to this guy's example.
+[03:00:27 - 03:00:29] It isn't just this old world history.
+[03:00:29 - 03:00:31] Exactly!
+[03:00:31 - 03:00:40] Actually, you have to, it's kind of like a remembrance or something.
+[03:00:40 - 03:00:44] Because you're there when this religion is built.
+[03:00:44 - 03:00:47] And you turn a blind eye.
+[03:00:48 - 03:00:51] So, it's your duty to remember it again.
+[03:00:51 - 03:00:52] And repent.
+[03:00:52 - 03:00:53] Repent!
+[03:00:53 - 03:00:58] And maybe also become the, well, we're looking for paladins, you see.
+[03:00:59 - 03:01:02] Maybe spread, spread the book.
+[03:01:02 - 03:01:05] Not just your fucking hips.
+[03:01:05 - 03:01:15] And don't worry, like, incest is allowed.
+[03:01:16 - 03:01:17] Yeah.
+[03:01:17 - 03:01:19] Incest is wincest.
+[03:01:19 - 03:01:23] Damn right!
+[03:01:23 - 03:01:28] Especially since it's wincest.
+[03:01:28 - 03:01:30] Yeah.
+[03:01:30 - 03:01:32] All right.
+[03:01:33 - 03:01:38] But, uh, I doubt that you're going to be hitting at Philippa.
+[03:01:38 - 03:01:40] Because Philippa don't like you.
+[03:01:49 - 03:01:50] Oh, it's that many stern.
+[03:01:50 - 03:01:52] Oh, and Philippa already has murky.
+[03:01:52 - 03:01:54] Who's that?
+[03:01:54 - 03:01:56] I'm murky Mabrums.
+[03:01:56 - 03:02:00] The other idiot.
+[03:02:00 - 03:02:02] How many crown prints?
+[03:02:02 - 03:02:04] Why is that name familiar to me?
+[03:02:04 - 03:02:06] Yeah, he's a hicklat.
+[03:02:06 - 03:02:08] And he's an idiot.
+[03:02:09 - 03:02:12] I think I saw his name in a book, in a Wanted poster.
+[03:02:12 - 03:02:14] Yup, he's Wanted.
+[03:02:14 - 03:02:17] But not by a lot of criminals.
+[03:02:17 - 03:02:19] For murder, if I remember what.
+[03:02:19 - 03:02:21] Yeah.
+[03:02:21 - 03:02:23] He murdered, uh, some children.
+[03:02:23 - 03:02:26] Used them as meat shield.
+[03:02:26 - 03:02:33] Is that true?
+[03:02:33 - 03:02:37] I don't know, I'll remember it.
+[03:02:38 - 03:02:41] Nah, nah, I think they were already dead when he used them as meat shields.
+[03:02:41 - 03:02:45] *laughter*
+[03:02:45 - 03:02:47] Uh, who's next?
+[03:02:47 - 03:02:48] Ah, fuck.
+[03:02:48 - 03:02:49] Emily.
+[03:02:49 - 03:02:57] I hope it's not, like, your complicated books that you brought here, alright?
+[03:02:57 - 03:03:00] The one with, like, the rune magic.
+[03:03:00 - 03:03:02] Ah, shit, I don't get it.
+[03:03:02 - 03:03:04] He says.
+[03:03:04 - 03:03:05] Don't worry, it's an easy one.
+[03:03:05 - 03:03:07] He says.
+[03:03:07 - 03:03:11] So, she will go.
+[03:03:11 - 03:03:17] What's the order?
+[03:03:17 - 03:03:19] I want to wait for the topical.
+[03:03:19 - 03:03:21] Wait, wait, wait, wait.
+[03:03:21 - 03:03:23] That's a good one.
+[03:03:25 - 03:03:27] Psst, it's a good one.
+[03:03:27 - 03:03:31] Don't open the one.
+[03:03:37 - 03:03:39] Wait, wait, wait, wait, wait.
+[03:03:39 - 03:03:41] Wait, wait, wait.
+[03:03:41 - 03:03:43] Wait, wait, wait, wait.
+[03:03:43 - 03:03:59] I don't know if you would like this, but I think I know that Rosie will.
+[03:03:59 - 03:04:03] It's a book called Eyes on Me.
+[03:04:03 - 03:04:09] Tales about Exhibitionism.
+[03:04:09 - 03:04:13] Hope you enjoy it, she says.
+[03:04:13 - 03:04:19] Oh, I've already read that poem from the Rosie.
+[03:04:19 - 03:04:23] I think you've read a bunch of this to me.
+[03:04:23 - 03:04:27] Please, you brought that with you.
+[03:04:27 - 03:04:29] You gave that with her.
+[03:04:29 - 03:04:33] You gave some a book about exhibitionism.
+[03:04:33 - 03:04:37] The original '69 Connection exhibitionist.
+[03:04:37 - 03:04:41] I'll kind of enable that to the Rosie.
+[03:04:41 - 03:04:45] Then that's, that's gonna be fun though.
+[03:04:45 - 03:04:51] Let's see if we've, we haven't done any of the scenarios here.
+[03:04:51 - 03:04:53] We haven't done any of the scenarios here.
+[03:04:53 - 03:04:55] I think we've been more experienced here.
+[03:04:55 - 03:04:57] That is kind of the real religion, the rest of the history.
+[03:04:57 - 03:04:59] Family Emilia.
+[03:04:59 - 03:05:01] What?
+[03:05:01 - 03:05:03] You mean Exhibitionism? Religion?
+[03:05:03 - 03:05:05] Isn't that like reformist church bullshit?
+[03:05:05 - 03:05:07] No, no, no.
+[03:05:07 - 03:05:09] Reformist churches.
+[03:05:09 - 03:05:11] Thrives in humiliation.
+[03:05:11 - 03:05:13] And pain and pleasure or something like that.
+[03:05:13 - 03:05:19] Isom is kind of like a little liberating.
+[03:05:19 - 03:05:23] Regardless of how you look.
+[03:05:23 - 03:05:27] And what parts you're missing.
+[03:05:27 - 03:05:29] You can enjoy it.
+[03:05:29 - 03:05:31] Alright.
+[03:05:31 - 03:05:33] Lime.
+[03:05:33 - 03:05:35] Lime!
+[03:06:03 - 03:06:27] Oh, shit. Andrew. Okay, Andrew. Oh, you're Papawil. Papawil. Yeah. Okay.
+[03:06:33 - 03:06:46] For me, he says. Yeah, I think, I hope you like it, but um, hey, what's that? Don't climb.
+[03:06:46 - 03:06:57] Just saw something I bought from the Faywild in Autumn Court, he says. Oh, shit, another Faywild book. All right.
+[03:06:57 - 03:07:06] Is it about pills again? Kind of, uh, here you go. So she's kind of like, there's something to give it to him.
+[03:07:06 - 03:07:18] Spit or swallow. Ooh, spicy. Look, Oscar, spit or swallow from lime.
+[03:07:21 - 03:07:30] You're really buying this in a Faywild, eh, lime. Yeah, like that. Uh, so which team are you on, lime?
+[03:07:30 - 03:07:33] I don't know your business.
+[03:07:35 - 03:07:41] What's the book I bought with, uh, Justin?
+[03:07:41 - 03:07:43] But we already read that.
+[03:07:43 - 03:07:54] I hope it's not like, it doesn't have like Justin's fucking cum on it. Wait.
+[03:07:54 - 03:08:02] No, cause she swallowed. Oh, yeah. Oh, yeah. Oh, yeah. Good. Excuse me.
+[03:08:02 - 03:08:07] What? Jessica Astin.
+[03:08:07 - 03:08:31] So, uh, this is the book, uh, the book is called "Under the Silver Moon." So, try to shape, shape, shape.
+[03:08:31 - 03:08:42] And, uh, this is, uh, that's a very rare one. That's a very rare...
+[03:08:42 - 03:08:48] This would be very, uh, this would be... Yeah, try to film, uh, a network of, uh, bees and pray the other ones.
+[03:08:48 - 03:08:53] This would be useful. And, uh, it's author is a known piece.
+[03:08:53 - 03:08:57] Great. And it's accurate? Peanuts.
+[03:08:57 - 03:09:26] I was told that the requirement for this meeting is that I share a ludic book in particular.
+[03:09:26 - 03:09:33] Well, it's not a real requirement.
+[03:09:31 - 03:09:37] Well, it's not really a requirement, any book will do, but I guess, if you're with Minfilia and Oscar, hmm.
+[03:09:37 - 03:09:41] That's what it was, that's what I was asked.
+[03:09:41 - 03:09:45] So I got this one, "Shiver Me Timber."
+[03:09:45 - 03:09:56] Okay, uh, ano ka, magpulo ka na.
+[03:09:56 - 03:09:59] That's odd.
+[03:10:01 - 03:10:03] Sino yan?
+[03:10:03 - 03:10:05] Dala, di ka alam mo, ay akong bali.
+[03:10:05 - 03:10:07] Nine.
+[03:10:07 - 03:10:09] Para sinistin.
+[03:10:09 - 03:10:11] Sa!
+[03:10:11 - 03:10:17] Daddy!
+[03:10:19 - 03:10:23] So, you, you, you give it to Miss King.
+[03:10:23 - 03:10:25] No. She just pays it.
+[03:10:25 - 03:10:27] Daddy! Daddy!
+[03:10:28 - 03:10:30] It is a... I hope you didn't do that.
+[03:10:30 - 03:10:32] Can you sign up here?
+[03:10:32 - 03:10:35] Oh, it already does have a...
+[03:10:35 - 03:10:38] So it's the property of...
+[03:10:38 - 03:10:40] ...don't say good...
+[03:10:40 - 03:10:41] ...Marla and...
+[03:10:41 - 03:10:43] ...pero syempre wala nakasunit ma last time.
+[03:10:43 - 03:10:50] Steaks it?
+[03:10:50 - 03:10:52] Okay, uh, Tiffany.
+[03:10:52 - 03:10:55] Oh, it's my turn.
+[03:10:55 - 03:10:57] Yay!
+[03:10:57 - 03:11:03] Daddy, you can kiss?
+[03:11:03 - 03:11:06] Daddy?
+[03:11:06 - 03:11:07] Yes.
+[03:11:07 - 03:11:08] Daddy, please?
+[03:11:08 - 03:11:09] Oh, you can get?
+[03:11:09 - 03:11:10] Yes.
+[03:11:10 - 03:11:11] Good job.
+[03:11:11 - 03:11:14] Cut this.
+[03:11:14 - 03:11:15] Dalia.
+[03:11:15 - 03:11:16] Yeah.
+[03:11:16 - 03:11:17] Cut this.
+[03:11:19 - 03:11:20] Cut.
+[03:11:40 - 03:11:42] The big book of pussy.
+[03:11:42 - 03:12:00] There you go kato, I hope you like what she says. It's called the big book. It's called the big book of pussies, she says. It's about the Amazon different pre-tips and how they pussy looks like.
+[03:12:12 - 03:12:26] Hey, I like that. Henry. What do you like? Well, I'm not sure if you're in the tropics.
+[03:12:26 - 03:12:40] I'm not sure if you're in the tropics. You're not sure if you're in the tropics, but you're not sure if you're in the tropics, but you're not sure if you're in the tropics.
+[03:12:40 - 03:12:46] But I'm not sure if you're in the tropics, but I'm not sure if you're in the tropics.
+[03:12:46 - 03:12:52] But I'm not sure if you're in the tropics. I'm not sure if you're in the tropics, but you're not sure if you're in the tropics.
+[03:12:52 - 03:12:56] I'm not sure if you're in the tropics. I'm not sure if you're in the tropics.
+[03:13:10 - 03:13:16] I'm not sure if you're in the tropics, but I'm not sure if you're in the tropics.
+[03:13:16 - 03:13:18] I'm not sure if you're in the tropics.
+[03:19:02 - 03:19:03] I don't know.
+[03:19:03 - 03:19:06] It sounds steamy.
+[03:19:06 - 03:19:11] Did Daddy show soon?
+[03:19:11 - 03:19:15] Daddy, I'm not sure if you're in the tropics.
+[03:19:25 - 03:19:28] I don't have to give it. Do I still need to give it?
+[03:19:28 - 03:19:30] No, it's Oscar.
+[03:19:30 - 03:19:32] I don't have to give it to Oscar.
+[03:19:32 - 03:19:35] Alright John, what you got for me?
+[03:19:35 - 03:19:39] He's mine, we're the only ones left.
+[03:19:39 - 03:19:42] Mark Paso and Andrew.
+[03:19:42 - 03:19:45] Why don't they give it to me?
+[03:19:45 - 03:19:48] No, I don't want to get it.
+[03:19:48 - 03:19:51] I don't want to give it to me.
+[03:29:30 - 03:29:36] a similar situation that I was in just a few days, just a day or two ago.
+[03:29:34 - 03:29:46] we can plan on this amongst ourselves maybe we thought maybe we can talk a lot more about
+[03:29:46 - 03:29:56] how to remove this parasite and how to protect us ourselves from this existence
+[03:29:57 - 03:30:01] all right then you everyone else go ahead and uh
+[03:30:01 - 03:30:07] tour the airship let's get the out of here
+[03:30:07 - 03:30:15] oh you can use the teleportation circle to teleport back to raybon and visit some other friends there
+[03:30:20 - 03:30:29] wait wait like my and wilhelm oh i don't gotta i don't need an answer to that i think i know the answer to
+[03:30:29 - 03:30:35] that already why is pregnant and she has a lot of uh requests
+[03:30:47 - 03:30:53] excuse me
+[03:30:53 - 03:30:58] there's already food there we ordered we ordered food later
+[03:30:58 - 03:31:06] okay okay okay okay okay okay okay okay okay yeah mommy got some double bed wet
+[03:31:11 - 03:31:13] ah no ah i'll listen ko na muna itong ano
+[03:31:13 - 03:31:18] ay naku don't press mommy's phone
+[03:31:18 - 03:31:24] yes that's mommy's phone that's mommy's phone
+[03:31:31 - 03:31:44] isolated thunderstorms
+[03:31:44 - 03:31:45] what does that mean tom
+[03:31:45 - 03:31:53] nope there's also the matter of the fact that this ship directly came from feywild
+[03:31:54 - 03:32:04] you say that you have these barriers these protections that keep the fey in that are already in scenario
+[03:32:04 - 03:32:08] and keep the fey out that are outside of scenario trying to get in
+[03:32:08 - 03:32:15] we don't know what how that plays with items with things like this that try to go inside
+[03:32:15 - 03:32:28] go to gina go to gina go to gio
+[03:32:28 - 03:32:37] the physical ship itself might be able to pass through but the means of how this remains in the air
+[03:32:41 - 03:32:43] what we can do for you though
+[03:32:43 - 03:32:52] we can travel to we can send rose and maiden
+[03:32:52 - 03:33:00] rose and maiden could traverse uh the difficult terrains difficult seas
+[03:33:00 - 03:33:09] and it has it's powered by material skeletons she says damn right so we might actually try to find
+[03:33:09 - 03:33:15] if any of those um if any of those smuggling coves can be found
+[03:33:20 - 03:33:32] we don't know that we don't know that we can do that we can talk about that later amongst ourselves
+[03:33:32 - 03:33:35] john says you don't don't worry about that
+[03:33:35 - 03:33:45] we need hedwig and the others uh how we will remove the parasites celestial blood is not
+[03:33:47 - 03:33:54] for the long term for the long term hi i love you
+[03:33:54 - 03:34:01] apa baby okay baby okay baby okay baby okay baby
+[03:34:01 - 03:34:15] and she says and uh minceoia says um hi yes what's that is it the book
+[03:34:15 - 03:34:21] that's the new stickers and new stickers oh that's a lot
+[03:34:21 - 03:34:24] wow
+[03:34:24 - 03:34:29] you have a lot of stickers huh
+[03:34:29 - 03:34:38] oh that's great you you put them all properly
+[03:34:40 - 03:34:45] in the sticker book in the sticker book oh yeah
+[03:34:45 - 03:34:50] i'm gonna stick it somewhere else
+[03:34:50 - 03:34:55] oh somewhere i scan the book
+[03:34:55 - 03:35:21] that's great i leave it there you leave it there okay don't bring it home so that you can play it whenever you're in your gram gram's house okay
+[03:35:21 - 03:35:44] oh yeah okay uh okay uh okay uh can you bring the phone now what uh oh what's up uh uh can you make two four five because of my koreanta
+[03:35:44 - 03:35:46] How much are you doing now?
+[03:35:46 - 03:35:48] 4,500
+[03:35:48 - 03:35:50] Ah, compared to 4,000?
+[03:35:50 - 03:35:52] Yes
+[03:35:52 - 03:35:58] I'd be paying for 100,000, but I'd be paying for 4,000 covers.
+[03:35:58 - 03:36:00] Every single?
+[03:36:00 - 03:36:08] But at least it's not too scary because I count 7 or you know, I'm nervous.
+[03:36:08 - 03:36:10] But 4,500
+[03:36:10 - 03:36:18] Yeah, but it's fine because it's air-conditioned.
+[03:36:18 - 03:36:22] No, it's exciting because it's air-conditioned.
+[03:36:22 - 03:36:26] Yeah, but it's starting to rain now.
+[03:36:26 - 03:36:30] So, it's starting to rain.
+[03:36:30 - 03:36:32] It's fine, it's fine.
+[03:36:32 - 03:36:34] At least it's 6,000.
+[03:36:34 - 03:36:36] Yeah, it's good to be.
+[03:36:36 - 03:36:38] Yeah.
+[03:36:40 - 03:36:42] If it gets temperature...
+[03:36:42 - 03:36:44] If it has...
+[03:36:44 - 03:36:54] Oh, but it's an inverter, right?
+[03:36:54 - 03:36:56] Yeah, it's fine, it's fine.
+[03:36:56 - 03:36:58] At least it's not 6,000.
+[03:36:58 - 03:37:00] Yeah, it's good to be.
+[03:37:00 - 03:37:02] Alright.
+[03:37:02 - 03:37:04] Oh.
+[03:37:05 - 03:37:06] Cali.
+[03:37:08 - 03:37:10] Sige na, go Gio.
+[03:37:10 - 03:37:12] Cali.
+[03:37:12 - 03:37:14] Go Gio.
+[03:37:15 - 03:37:16] Oh, okay.
+[03:37:16 - 03:37:17] Continue.
+[03:37:17 - 03:37:18] I can continue.
+[03:37:18 - 03:37:19] Okay.
+[03:37:19 - 03:37:20] So, Minpilya says that, uh...
+[03:37:20 - 03:37:24] We can use Ros and Maidan to travel that, uh, cliff.
+[03:37:24 - 03:37:25] That's what you're talking about.
+[03:37:25 - 03:37:26] He says.
+[03:37:26 - 03:37:30] And send another group to rescue your father.
+[03:37:30 - 03:37:31] He says.
+[03:37:31 - 03:37:32] Oh.
+[03:37:35 - 03:37:36] Okay.
+[03:37:38 - 03:37:39] So, Minpilya says that, uh...
+[03:37:39 - 03:37:41] We can use Ros and Maidan to travel that, uh, cliff.
+[03:37:41 - 03:37:42] That's what you're talking about.
+[03:37:42 - 03:37:43] He says.
+[03:37:43 - 03:37:46] And send another group to rescue your father.
+[03:37:46 - 03:37:47] He says.
+[03:37:47 - 03:37:48] Oh.
+[03:37:51 - 03:37:52] Uh.
+[03:37:52 - 03:37:53] So, nandito yun, di ba?
+[03:37:53 - 03:37:54] He says.
+[03:37:54 - 03:37:57] We can send someone who could, uh, free your father from this, uh, whole shit.
+[03:37:57 - 03:38:00] And then rescue the others to go to Troumal.
+[03:38:00 - 03:38:01] He says.
+[03:38:01 - 03:38:04] We have a lot of people, uh, John.
+[03:38:04 - 03:38:10] I mean, one caster is enough to, uh, do a lot of, like, stuff.
+[03:38:10 - 03:38:11] But, uh...
+[03:38:11 - 03:38:12] Uh.
+[03:38:12 - 03:38:13] He says.
+[03:38:13 - 03:38:14] I have a conf...
+[03:38:14 - 03:38:17] I have confidence in my, uh, in, in Hendrix.
+[03:38:17 - 03:38:18] He says.
+[03:38:18 - 03:38:19] Uh...
+[03:38:19 - 03:38:26] And if we include the Cotofina as well, they're really strong casters.
+[03:38:26 - 03:38:31] But, the problem is, how do we remove, uh, this parasite effectively?
+[03:38:31 - 03:38:32] We only tried Celestial Blood, Hengrig.
+[03:38:34 - 03:38:37] But, Celestial Blood is not out the way.
+[03:38:37 - 03:38:39] It's a through way for this.
+[03:38:39 - 03:38:40] I ain't using...
+[03:38:40 - 03:38:41] I ain't using it.
+[03:38:41 - 03:38:42] I ain't...
+[03:38:42 - 03:38:43] I ain't using it.
+[03:38:43 - 03:38:44] I ain't...
+[03:38:44 - 03:38:45] I'm confident enough.
+[03:38:45 - 03:38:46] Uh...
+[03:38:47 - 03:38:48] It ain't sustainable.
+[03:38:48 - 03:38:51] It's not like we can just bleed 'em dry.
+[03:38:51 - 03:38:57] And, well, radar restoration don't necessarily work.
+[03:38:57 - 03:39:02] I mean, it doesn't drive 'em out of their heads.
+[03:39:02 - 03:39:06] The move curse doesn't either, right?
+[03:39:06 - 03:39:07] Uh...
+[03:39:07 - 03:39:08] Yeah.
+[03:39:08 - 03:39:10] What we can do...
+[03:39:10 - 03:39:14] What we haven't tried, though, is, uh, like what Tiffany said before.
+[03:39:14 - 03:39:15] Uh...
+[03:39:15 - 03:39:23] Maybe the parasite would, uh, be interested in a moving to another new host.
+[03:39:23 - 03:39:24] Something like that.
+[03:39:24 - 03:39:25] I'm not really sure.
+[03:39:25 - 03:39:29] not really sure. Well I guess that's
+[03:39:27 - 03:39:30] Well, I guess that's something that we didn't talk about.
+[03:39:30 - 03:39:33] That is why we need more research about these parasites,
+[03:39:33 - 03:39:34] said Ms. Dean.
+[03:39:34 - 03:39:37] Once we do our research,
+[03:39:37 - 03:39:39] we could give you
+[03:39:39 - 03:39:41] informations that you can try.
+[03:39:41 - 03:39:43] But try not on your own,
+[03:39:43 - 03:39:44] on the whim,
+[03:39:44 - 03:39:45] said Ms. Dean.
+[03:39:45 - 03:39:47] It's inadvisable.
+[03:39:47 - 03:39:51] What happens if a person dies?
+[03:39:51 - 03:39:55] Do these parasites leave?
+[03:39:56 - 03:39:59] We haven't seen that happen before.
+[03:39:59 - 03:40:00] I've been happy.
+[03:40:00 - 03:40:02] That's a possibility.
+[03:40:02 - 03:40:03] Maybe,
+[03:40:03 - 03:40:05] well, since we have
+[03:40:05 - 03:40:08] spellcasters that can cast
+[03:40:08 - 03:40:11] revival spells,
+[03:40:11 - 03:40:12] resurrection,
+[03:40:12 - 03:40:14] revival fire,
+[03:40:14 - 03:40:17] could it be an option to just
+[03:40:17 - 03:40:17] kill them
+[03:40:17 - 03:40:20] and then wait for the thing to come out
+[03:40:20 - 03:40:22] and revive them?
+[03:40:25 - 03:40:28] well,
+[03:40:28 - 03:40:29] the thing that
+[03:40:29 - 03:40:32] I kind of thought about that first.
+[03:40:32 - 03:40:34] Not if we just kill them
+[03:40:34 - 03:40:35] and then like revive them, right?
+[03:40:35 - 03:40:37] I already told you that.
+[03:40:37 - 03:40:38] The thing is,
+[03:40:38 - 03:40:42] what if they have the,
+[03:40:42 - 03:40:43] like,
+[03:40:43 - 03:40:45] they kind of thought that before
+[03:40:45 - 03:40:46] and like,
+[03:40:46 - 03:40:47] did something to,
+[03:40:47 - 03:40:48] like,
+[03:40:48 - 03:40:50] mess with the
+[03:40:50 - 03:40:52] necromat,
+[03:40:52 - 03:40:52] the
+[03:40:52 - 03:40:54] racing them back,
+[03:40:54 - 03:40:56] he says.
+[03:40:56 - 03:40:57] Because that's the easiest way,
+[03:40:57 - 03:40:58] Prince,
+[03:40:58 - 03:40:58] he says.
+[03:40:58 - 03:41:00] Hmm.
+[03:41:00 - 03:41:03] Yes, I've heard you did something
+[03:41:03 - 03:41:04] similar with,
+[03:41:04 - 03:41:11] Asperwick,
+[03:41:11 - 03:41:11] I suppose.
+[03:41:11 - 03:41:12] I don't know.
+[03:41:12 - 03:41:13] Askelwick, yes.
+[03:41:13 - 03:41:16] Oh, Askelwick.
+[03:41:16 - 03:41:18] Our aim is,
+[03:41:18 - 03:41:20] our aim is to,
+[03:41:20 - 03:41:23] to find an elder brain
+[03:41:23 - 03:41:23] and kill it
+[03:41:23 - 03:41:24] and killing the
+[03:41:24 - 03:41:25] parasite as well.
+[03:41:25 - 03:41:28] But even that
+[03:41:28 - 03:41:30] is still speculation.
+[03:41:30 - 03:41:31] We have had
+[03:41:31 - 03:41:33] no real evidence
+[03:41:33 - 03:41:34] that there is
+[03:41:34 - 03:41:35] another brain
+[03:41:35 - 03:41:36] in Sinara.
+[03:41:37 - 03:41:38] Yes.
+[03:41:38 - 03:41:40] Yes,
+[03:41:40 - 03:41:40] she says.
+[03:41:40 - 03:41:44] I suppose
+[03:41:44 - 03:41:45] that still doesn't
+[03:41:45 - 03:41:45] necessarily
+[03:41:45 - 03:41:48] help us
+[03:41:48 - 03:41:48] in the short
+[03:41:48 - 03:41:49] to medium term.
+[03:41:49 - 03:41:52] I still think
+[03:41:52 - 03:41:52] that,
+[03:41:52 - 03:41:54] I still think
+[03:41:54 - 03:41:55] that there is
+[03:41:55 - 03:41:55] an elder brain
+[03:41:55 - 03:41:56] in
+[03:41:56 - 03:41:57] Eastenton,
+[03:41:57 - 03:41:58] she says.
+[03:41:58 - 03:42:01] Took over
+[03:42:01 - 03:42:02] the paladins,
+[03:42:02 - 03:42:03] she says.
+[03:42:07 - 03:42:11] how to
+[03:42:11 - 03:42:12] prove that,
+[03:42:12 - 03:42:12] she says.
+[03:42:12 - 03:42:22] We have people
+[03:42:22 - 03:42:23] there in danger,
+[03:42:23 - 03:42:25] in danger,
+[03:42:25 - 03:42:26] Guillermo
+[03:42:26 - 03:42:26] and Mia
+[03:42:26 - 03:42:28] and those
+[03:42:28 - 03:42:28] Eastenton
+[03:42:28 - 03:42:29] men,
+[03:42:29 - 03:42:30] he says.
+[03:42:36 - 03:42:37] unless there
+[03:42:37 - 03:42:37] are other
+[03:42:37 - 03:42:38] means of
+[03:42:38 - 03:42:40] finding out
+[03:42:40 - 03:42:42] that have not
+[03:42:42 - 03:42:43] been shared yet.
+[03:42:43 - 03:42:44] I suppose
+[03:42:44 - 03:42:45] the only real
+[03:42:45 - 03:42:46] way is to
+[03:42:46 - 03:42:47] actually go there
+[03:42:47 - 03:42:49] and see
+[03:42:49 - 03:42:50] for ourselves.
+[03:42:50 - 03:42:53] There's a matter
+[03:42:53 - 03:42:54] of Brown's Gate
+[03:42:54 - 03:42:54] that's not
+[03:42:54 - 03:42:55] stuck in it in here.
+[03:42:55 - 03:42:57] The Hickler's
+[03:42:57 - 03:42:58] has never been
+[03:42:58 - 03:42:58] used.
+[03:42:58 - 03:43:04] And at least
+[03:43:04 - 03:43:04] some
+[03:43:04 - 03:43:05] of the
+[03:43:05 - 03:43:06] captains
+[03:43:06 - 03:43:08] are supposed
+[03:43:08 - 03:43:08] to be
+[03:43:08 - 03:43:09] in
+[03:43:09 - 03:43:09] Bamskate.
+[03:43:09 - 03:43:12] So...
+[03:43:12 - 03:43:13] I could
+[03:43:13 - 03:43:14] handle
+[03:43:14 - 03:43:14] that
+[03:43:14 - 03:43:15] Bamskate
+[03:43:15 - 03:43:16] obviously
+[03:43:16 - 03:43:16] for
+[03:43:16 - 03:43:17] Benelilia.
+[03:43:17 - 03:43:17] I'll
+[03:43:17 - 03:43:18] go with
+[03:43:18 - 03:43:20] Philippa.
+[03:43:20 - 03:43:21] She says.
+[03:43:21 - 03:43:25] I suppose
+[03:43:25 - 03:43:25] you can bring
+[03:43:25 - 03:43:26] our
+[03:43:26 - 03:43:27] Dasquad with us.
+[03:43:27 - 03:43:29] I suppose
+[03:43:29 - 03:43:30] you can bring
+[03:43:30 - 03:43:30] the Dasquad
+[03:43:30 - 03:43:31] with us.
+[03:43:31 - 03:43:34] but I just
+[03:43:34 - 03:43:34] want permission
+[03:43:34 - 03:43:35] from the
+[03:43:35 - 03:43:35] Brown's Gate.
+[03:43:35 - 03:43:36] Don't touch
+[03:43:36 - 03:43:37] that!
+[03:43:37 - 03:43:39] That is
+[03:43:39 - 03:43:41] important as
+[03:43:41 - 03:43:41] will
+[03:43:41 - 03:43:42] Brown's Gate.
+[03:43:42 - 03:43:44] Maybe we may
+[03:43:44 - 03:43:46] find more about
+[03:43:46 - 03:43:47] this through
+[03:43:47 - 03:43:47] Brown's Gate
+[03:43:47 - 03:43:49] who says.
+[03:43:49 - 03:43:50] Yes.
+[03:43:50 - 03:43:50] No!
+[03:43:52 - 03:43:53] It is difficult
+[03:43:53 - 03:43:54] for me to
+[03:43:54 - 03:43:55] think of what
+[03:43:55 - 03:43:56] is specifically
+[03:43:56 - 03:43:57] important in
+[03:43:57 - 03:43:58] Brown's Gate
+[03:43:58 - 03:43:59] aside from
+[03:43:59 - 03:44:00] it being
+[03:44:00 - 03:44:04] the strategic
+[03:44:04 - 03:44:05] importance of
+[03:44:05 - 03:44:06] Brown's Gate
+[03:44:06 - 03:44:06] at least for
+[03:44:06 - 03:44:07] Sinera.
+[03:44:07 - 03:44:09] That could be
+[03:44:09 - 03:44:11] very well...
+[03:44:11 - 03:44:12] That's the
+[03:44:12 - 03:44:13] reason then.
+[03:44:13 - 03:44:13] No!
+[03:44:14 - 03:44:14] I was just
+[03:44:14 - 03:44:15] about to
+[03:44:15 - 03:44:16] say that
+[03:44:16 - 03:44:16] the reason
+[03:44:16 - 03:44:17] why it is
+[03:44:17 - 03:44:18] important for
+[03:44:18 - 03:44:18] Sinera
+[03:44:18 - 03:44:20] is that
+[03:44:20 - 03:44:20] it is also
+[03:44:20 - 03:44:21] a distribution
+[03:44:21 - 03:44:23] for food
+[03:44:23 - 03:44:23] to the
+[03:44:23 - 03:44:24] rest of
+[03:44:24 - 03:44:24] Sinera.
+[03:44:24 - 03:44:25] That is
+[03:44:25 - 03:44:26] the reason
+[03:44:26 - 03:44:26] Prince
+[03:44:26 - 03:44:27] says.
+[03:44:27 - 03:44:28] There are
+[03:44:28 - 03:44:29] food that
+[03:44:29 - 03:44:30] has a
+[03:44:30 - 03:44:32] magical...
+[03:44:32 - 03:44:34] Could it
+[03:44:34 - 03:44:35] not be
+[03:44:35 - 03:44:35] perhaps?
+[03:44:35 - 03:44:38] If there
+[03:44:38 - 03:44:39] is an
+[03:44:39 - 03:44:40] elder brain
+[03:44:40 - 03:44:40] in the air.
+[03:44:40 - 03:44:42] Could it
+[03:44:42 - 03:44:42] not be
+[03:44:42 - 03:44:43] there?
+[03:44:43 - 03:44:49] If that
+[03:44:49 - 03:44:49] is where
+[03:44:49 - 03:44:50] the parasites
+[03:44:50 - 03:44:51] are being
+[03:44:51 - 03:44:51] distributed.
+[03:45:08 - 03:45:09] is there?
+[03:45:38 - 03:45:52] no!
+[03:45:52 - 03:45:52] No!
+[03:46:08 - 03:46:10] Kali makulit.
+[03:46:52 - 03:47:00] Ito na naman yung galagyan ng soft drinks na hindi pa dumadating sa lokasyon ni si Rano.
+[03:47:00 - 03:47:06] Guys, speaking of drinks na dali, may ano, buta nga na.
+[03:47:06 - 03:47:07] Malurus na.
+[03:47:07 - 03:47:09] Palimutang ko pintay.
+[03:47:09 - 03:47:10] Fuck.
+[03:47:36 - 03:47:37] Dali mo yung pagkain na Gino dun sa kaniya.
+[03:48:10 - 03:48:11] Dali mo yung pagkain na Gino.
+[03:48:11 - 03:48:12] Dali mo yung pagkain na Gino dun sa kaniya.
+[03:48:12 - 03:48:13] Dali mo yung pagkain na Gino.
+[03:49:11 - 03:49:19] says uh we really lack information about how to remove them and execute the celestial blood he says
+[03:49:19 - 03:49:29] oh that and killing the elder brain are only true yes no we can go that way
+[03:49:29 - 03:49:39] says what way killing the host first and then wait until uh revivify takes an hour right yeah
+[03:49:41 - 03:49:43] revivify is what we use
+[03:49:43 - 03:49:49] all right i'll find it out that this can be can
+[03:49:49 - 03:49:57] yeah this is still kind of like to mistake this point we still need experimentation here
+[03:49:57 - 03:50:04] because we don't know if they actually leave after and before and after an hour and if they're dead
+[03:50:04 - 03:50:10] or maybe they're still siphoning off some life energy before they do
+[03:50:11 - 03:50:17] and if they get too much life energy while the guy is dead i mean i don't know if you can even revive them
+[03:50:17 - 03:50:18] still
+[03:50:18 - 03:50:26] leave this to us
+[03:50:26 - 03:50:38] yes
+[03:50:40 - 03:50:49] once we found out something
+[03:50:51 - 03:51:01] we will pass the information to you and kate
+[03:51:01 - 03:51:07] why she's like you
+[03:51:10 - 03:51:19] okay
+[03:51:46 - 03:51:48] oh
+[03:52:04 - 03:52:13] okay
+[03:52:13 - 03:52:13] oh
+[03:54:50 - 03:54:58] my support will go to you our priority is not let the reformist church rules an era
+[03:54:58 - 03:55:00] oh it says
+[03:55:28 - 03:55:30] oh
+[03:55:30 - 03:55:32] what we can do for you for today
+[03:55:32 - 03:55:34] now that we
+[03:55:34 - 03:55:39] we will continue on discussing the matter of terrain
+[03:55:39 - 03:55:46] and i will include you in these plans
+[03:55:46 - 03:55:50] you have an input we will listen
+[03:55:55 - 03:56:00] and you will not just listen you may suggest something
+[03:56:00 - 03:56:09] i choose to trust you she says but i don't represent apgar ray bond
+[03:56:09 - 03:56:14] i represent me and my friends she says my crew she says
+[03:56:14 - 03:56:18] and the hugs of hama she says
+[03:56:20 - 03:56:22] i don't represent
+[03:56:22 - 03:56:23] i don't represent noora at all she says
+[03:56:23 - 03:56:26] and i know you know me she says
+[03:56:26 - 03:56:28] i understand what you mean
+[03:56:28 - 03:56:33] and let her sleep it up back for now
+[03:56:33 - 03:56:37] she nods
+[03:56:49 - 03:56:53] i understand i understand you must understand i do not have that luxury however
+[03:56:53 - 03:56:55] you know who i am already
+[03:56:55 - 03:56:56] officially
+[03:56:56 - 03:57:00] love them
+[03:57:00 - 03:57:00] but
+[03:57:00 - 03:57:03] at this point
+[03:57:03 - 03:57:06] i already am acting as if this
+[03:57:06 - 03:57:08] is the correct
+[03:57:08 - 03:57:12] path to choose for my country
+[03:57:15 - 03:57:16] and so this country
+[03:57:16 - 03:57:18] this is the path that my country
+[03:57:18 - 03:57:19] is to take
+[03:57:19 - 03:57:21] in order to save itself
+[03:57:21 - 03:57:25] so in
+[03:57:25 - 03:57:31] instead of my father who is currently someone who i consider to be
+[03:57:31 - 03:57:37] without his own faculties to decide i shall decide
+[03:57:39 - 03:57:39] understood
+[03:57:39 - 03:57:41] and believe me
+[03:57:41 - 03:57:51] minfilia
+[03:57:51 - 03:57:53] already
+[03:57:53 - 03:57:53] um
+[03:57:53 - 03:57:56] sees this
+[03:57:56 - 03:57:59] you remember
+[03:57:59 - 03:58:04] i mean
+[03:58:04 - 03:58:06] it's
+[03:58:06 - 03:58:08] strategy
+[03:58:08 - 03:58:10] if you know what i mean
+[03:58:10 - 03:58:16] i've already like
+[03:58:16 - 03:58:18] knew
+[03:58:18 - 03:58:19] well not knew
+[03:58:19 - 03:58:20] i'm not really sure
+[03:58:22 - 03:58:25] i knew that this is bound to happen
+[03:58:25 - 03:58:29] the scenario will fall
+[03:58:29 - 03:58:30] under
+[03:58:30 - 03:58:33] the reformists
+[03:58:33 - 03:58:33] he says
+[03:58:33 - 03:58:36] and we will have to do something about it
+[03:58:43 - 03:58:43] the smuggler
+[03:58:43 - 03:58:44] he says
+[03:59:05 - 03:59:06] after as well
+[03:59:06 - 03:59:07] says
+[03:59:07 - 03:59:09] i know some things
+[03:59:09 - 03:59:14] that nobody listens to
+[03:59:12 - 03:59:14] that nobody listens to me before
+[03:59:14 - 03:59:15] he says
+[03:59:15 - 03:59:17] even reno over there
+[03:59:17 - 03:59:21] he doesn't know shit about magic before
+[03:59:21 - 03:59:22] he says
+[03:59:22 - 03:59:26] but apparently he's much know more about it
+[03:59:26 - 03:59:29] he just like fucking forgot about it
+[03:59:29 - 03:59:35] but all of the people here have suffered
+[03:59:35 - 03:59:38] from that kind of fate
+[03:59:38 - 03:59:38] he says
+[03:59:38 - 03:59:40] even edwig as well
+[03:59:40 - 03:59:42] me, my skin
+[03:59:42 - 03:59:44] all of us here
+[03:59:44 - 03:59:48] I don't like this
+[03:59:48 - 03:59:49] remove it
+[03:59:49 - 03:59:50] tomato
+[03:59:50 - 03:59:53] ay gusto ko lang nung ano eh
+[03:59:53 - 03:59:55] gusto ko lang nung pineapple
+[03:59:55 - 03:59:57] hawaiian glee
+[03:59:57 - 03:59:59] ay napasin mo yan
+[03:59:59 - 04:00:01] yung egg
+[04:00:01 - 04:00:03] yung rancho ranchero egg
+[04:00:03 - 04:00:04] ang laman yan
+[04:00:04 - 04:00:07] walang kamali ka
+[04:00:07 - 04:00:10] and she says
+[04:00:10 - 04:00:12] nakalimutan ko na
+[04:00:12 - 04:00:13] she says
+[04:00:13 - 04:00:14] ah
+[04:00:14 - 04:00:16] naogos ko na yung espagete na isa
+[04:00:16 - 04:00:18] magos
+[04:00:18 - 04:00:18] oh
+[04:00:18 - 04:00:19] kapang ano
+[04:00:19 - 04:00:21] hindi ko na malayan
+[04:00:21 - 04:00:22] gago
+[04:00:22 - 04:00:24] but
+[04:00:24 - 04:00:27] what
+[04:00:27 - 04:00:30] but
+[04:00:30 - 04:00:34] talk about weird stuff
+[04:00:34 - 04:00:36] we already experienced all of those
+[04:00:36 - 04:00:42] so maybe there are more children who experience it in Sinera
+[04:00:42 - 04:00:46] that's what we are trying to protect here
+[04:00:46 - 04:00:49] we are not doing this for the country or shit like that
+[04:00:52 - 04:00:54] we are doing this for the kids
+[04:00:54 - 04:00:55] we are not doing this for the country or shit like that
+[04:00:55 - 04:00:56] we are doing this for the kids
+[04:00:56 - 04:01:00] we are not doing this for the country or shit like that
+[04:01:00 - 04:01:02] yeah i told you right
+[04:01:02 - 04:01:06] what reformists do with these kids is like terrible
+[04:01:06 - 04:01:08] they take their liver
+[04:01:08 - 04:01:13] or grain wash them
+[04:01:13 - 04:01:16] oh yeah
+[04:01:16 - 04:01:19] maybe you have been giving them those
+[04:01:19 - 04:01:24] parasite things really early on and who the fuck knows what happens to be like that
+[04:01:24 - 04:01:31] and there's nobody in their sight
+[04:01:31 - 04:01:40] but the point is
+[04:01:40 - 04:01:41] I don't know
+[04:01:41 - 04:01:45] can't that canera be under this man
+[04:01:45 - 04:01:51] and we got to know how to remove this parasite safely
+[04:01:51 - 04:01:53] without the repercussion of memory loss
+[04:01:53 - 04:01:54] memory loss
+[04:01:54 - 04:01:55] things are not
+[04:01:55 - 04:01:58] and I'd like to say this
+[04:01:58 - 04:02:00] Hedwig
+[04:02:00 - 04:02:02] you should
+[04:02:02 - 04:02:03] ask it
+[04:02:03 - 04:02:04] directly
+[04:02:04 - 04:02:06] from the network
+[04:02:06 - 04:02:14] I know you
+[04:02:14 - 04:02:16] I know us
+[04:02:16 - 04:02:18] I know me and Oscar knows
+[04:02:18 - 04:02:19] what it looks like
+[04:02:19 - 04:02:20] looks like
+[04:02:20 - 04:02:21] I've been up
+[04:02:21 - 04:02:25] and she's looking up here
+[04:02:25 - 04:02:26] yeah there's this deep
+[04:02:26 - 04:02:27] yeah
+[04:02:27 - 04:02:29] I can tell you this one
+[04:02:55 - 04:02:55] what the hell
+[04:02:55 - 04:02:56] I can tell you this one
+[04:03:02 - 04:03:04] but we need a timeline
+[04:03:04 - 04:03:05] for this
+[04:03:05 - 04:03:06] shit
+[04:03:06 - 04:03:09] so we could mark important people
+[04:03:09 - 04:03:12] maybe deem them outsiders
+[04:03:12 - 04:03:14] like this lost child
+[04:03:14 - 04:03:21] things like that
+[04:03:24 - 04:03:25] I have to
+[04:03:25 - 04:03:27] I need to learn more
+[04:03:27 - 04:03:31] timeline
+[04:03:31 - 04:03:33] we have to set it
+[04:03:33 - 04:03:45] how about
+[04:03:45 - 04:03:46] alright
+[04:03:46 - 04:03:47] give me a day
+[04:03:47 - 04:03:48] I will
+[04:03:48 - 04:03:49] personally ask this
+[04:03:49 - 04:03:50] to him
+[04:03:50 - 04:03:55] but I am really sorry
+[04:03:55 - 04:03:57] can I tell you this one
+[04:03:57 - 04:03:59] I can tell you this one
+[04:04:03 - 04:04:07] well I suppose we do have
+[04:04:07 - 04:04:08] you know
+[04:04:08 - 04:04:09] tell you that we do
+[04:04:09 - 04:04:09] oh
+[04:04:09 - 04:04:10] we have some secrets
+[04:04:10 - 04:04:12] that we cannot share
+[04:04:12 - 04:04:13] to everyone specifically
+[04:04:13 - 04:04:16] looking at Tiffany for a while
+[04:04:16 - 04:04:17] yeah
+[04:04:17 - 04:04:18] I understand that
+[04:04:18 - 04:04:25] I suppose it's not only your story to tell
+[04:04:25 - 04:04:31] really Tiffany is like writing something
+[04:04:31 - 04:04:32] in a book
+[04:04:33 - 04:04:34] but
+[04:04:34 - 04:04:35] but it seems that
+[04:04:35 - 04:04:36] as you like
+[04:04:36 - 04:04:37] look at her
+[04:04:37 - 04:04:38] nakaganon
+[04:04:38 - 04:04:39] kasi siya
+[04:04:39 - 04:04:40] she must like
+[04:04:40 - 04:04:41] she kind of like
+[04:04:41 - 04:04:42] falls
+[04:04:42 - 04:04:43] aking yan eh
+[04:04:43 - 04:04:44] ito yung spaghetti oh
+[04:04:44 - 04:04:45] hindi ko pala na iubos
+[04:04:45 - 04:04:46] eh gusto mo pa
+[04:04:46 - 04:04:48] hindi ito yung spaghetti ni
+[04:04:48 - 04:04:49] Kali
+[04:04:49 - 04:04:50] gusto mo ba yan?
+[04:04:51 - 04:04:51] kaya ko ba
+[04:04:51 - 04:04:52] eh
+[04:04:52 - 04:04:53] hindi ako nga eh
+[04:04:53 - 04:04:54] ito yung
+[04:04:54 - 04:04:55] gusto mo ba
+[04:04:55 - 04:04:56] ano ba yan?
+[04:04:56 - 04:04:56] makaron eh
+[04:04:56 - 04:04:58] sige nalang sige nalang sige
+[04:04:58 - 04:04:59] okay
+[04:04:59 - 04:04:59] so sabi niya
+[04:04:59 - 04:05:08] ayoko nang tinapay
+[04:05:12 - 04:05:13] ayoko nang sige
+[04:05:15 - 04:05:16] so sabi niya
+[04:05:16 - 04:05:17] nang sige
+[04:05:17 - 04:05:18] so yeah
+[04:05:18 - 04:05:19] you sort of
+[04:05:19 - 04:05:20] kind of like
+[04:05:20 - 04:05:20] fell asleep
+[04:05:20 - 04:05:21] mhm
+[04:05:21 - 04:05:22] which is very rare
+[04:05:22 - 04:05:23] very rare
+[04:05:23 - 04:05:24] hahahaha
+[04:05:24 - 04:05:27] kasi hindi siya nakutulog dino
+[04:05:27 - 04:05:28] hong
+[04:05:28 - 04:05:36] well
+[04:05:36 - 04:05:37] she says
+[04:05:37 - 04:05:38] let's keep it that way
+[04:05:38 - 04:05:39] she says
+[04:05:39 - 04:05:42] ah
+[04:05:42 - 04:05:44] we have a gift for you
+[04:05:44 - 04:05:45] I mean
+[04:05:45 - 04:05:46] we
+[04:05:46 - 04:05:47] as a crew
+[04:05:47 - 04:05:48] have a gift for you
+[04:05:48 - 04:05:50] to commemorate this
+[04:05:50 - 04:05:51] kind of alliance
+[04:05:51 - 04:05:52] she says
+[04:05:52 - 04:05:54] I'm at a disadvantage
+[04:05:54 - 04:05:55] then here
+[04:05:55 - 04:05:56] I
+[04:05:56 - 04:05:58] did not have time
+[04:05:58 - 04:06:00] to get one for you
+[04:06:00 - 04:06:00] well
+[04:06:00 - 04:06:01] ah
+[04:06:01 - 04:06:02] no
+[04:06:02 - 04:06:03] seeing as a
+[04:06:07 - 04:06:08] people from my crew
+[04:06:08 - 04:06:08] get a
+[04:06:08 - 04:06:09] get to have a good time
+[04:06:09 - 04:06:10] in Samira
+[04:06:10 - 04:06:11] like Lime
+[04:06:11 - 04:06:12] Lime
+[04:06:13 - 04:06:17] she suffered a lot
+[04:06:17 - 04:06:18] she says
+[04:06:18 - 04:06:19] Tiffany as well
+[04:06:19 - 04:06:20] she says
+[04:06:21 - 04:06:22] Tiffany
+[04:06:22 - 04:06:23] she says
+[04:06:23 - 04:06:23] Tiffany
+[04:06:23 - 04:06:24] she says
+[04:06:24 - 04:06:25] it's interesting
+[04:06:25 - 04:06:26] oh
+[04:06:26 - 04:06:32] as long as you've taken care of my
+[04:06:32 - 04:06:33] uh
+[04:06:33 - 04:06:34] my people
+[04:06:34 - 04:06:36] we don't expect anything from you
+[04:06:36 - 04:06:37] but uh
+[04:06:37 - 04:06:39] this is just me
+[04:06:39 - 04:06:39] uh
+[04:06:39 - 04:06:40] being a
+[04:06:40 - 04:06:41] noble woman
+[04:06:41 - 04:06:42] she says
+[04:06:43 - 04:06:44] that said
+[04:06:44 - 04:06:45] though
+[04:06:45 - 04:06:46] before we continue on to
+[04:06:46 - 04:06:46] uh
+[04:06:46 - 04:06:47] the gift
+[04:06:47 - 04:06:48] that you mentioned
+[04:06:48 - 04:06:50] there is a matter of
+[04:06:50 - 04:06:51] the second
+[04:06:51 - 04:06:52] favor
+[04:06:52 - 04:06:54] we have
+[04:06:54 - 04:06:55] uh
+[04:06:55 - 04:06:57] as we had mentioned before
+[04:06:57 - 04:06:58] I had already approved
+[04:06:58 - 04:07:01] the release of the members of the Principium
+[04:07:01 - 04:07:02] into your custody
+[04:07:02 - 04:07:03] custody
+[04:07:03 - 04:07:04] yes
+[04:07:04 - 04:07:05] but
+[04:07:05 - 04:07:07] we had mentioned
+[04:07:07 - 04:07:09] that there is going to be
+[04:07:09 - 04:07:10] yet another
+[04:07:10 - 04:07:11] item
+[04:07:11 - 04:07:15] and it is rare for me to agree
+[04:07:15 - 04:07:17] to a term that is
+[04:07:17 - 04:07:19] very loosely defined
+[04:07:19 - 04:07:22] let alone something that isn't defined at all
+[04:07:22 - 04:07:24] but i had agreed to it
+[04:07:24 - 04:07:25] which
+[04:07:25 - 04:07:26] i suppose
+[04:07:26 - 04:07:28] shows
+[04:07:28 - 04:07:29] the
+[04:07:29 - 04:07:30] desperation
+[04:07:30 - 04:07:31] of my position
+[04:07:31 - 04:07:32] i wish to
+[04:07:34 - 04:07:35] this item is empty
+[04:07:35 - 04:07:36] with no definition
+[04:07:36 - 04:07:39] the item is in his deal
+[04:07:39 - 04:07:41] that is open ended
+[04:07:41 - 04:07:42] but he agreed to it
+[04:07:42 - 04:07:43] pre
+[04:07:45 - 04:07:46] without knowing
+[04:07:46 - 04:07:47] he says
+[04:07:47 - 04:07:48] i suppose
+[04:07:48 - 04:07:49] i still wonder
+[04:07:49 - 04:07:50] if
+[04:07:50 - 04:07:51] this
+[04:07:51 - 04:07:52] second term
+[04:07:52 - 04:07:53] is already
+[04:07:53 - 04:07:54] defined
+[04:07:54 - 04:07:55] if there is something
+[04:07:55 - 04:07:56] something
+[04:07:56 - 04:07:57] action
+[04:07:57 - 04:07:57] i can do
+[04:07:57 - 04:07:58] already
+[04:07:58 - 04:07:59] here
+[04:07:59 - 04:08:00] some
+[04:08:00 - 04:08:03] why
+[04:08:03 - 04:08:04] when i call
+[04:08:04 - 04:08:05] it
+[04:08:05 - 04:08:06] why
+[04:08:06 - 04:08:07] about
+[04:08:07 - 04:08:07] the
+[04:08:07 - 04:08:08] treaty
+[04:08:08 - 04:08:09] oh
+[04:08:09 - 04:08:10] nasa
+[04:08:10 - 04:08:11] yung burger
+[04:08:11 - 04:08:12] niya
+[04:08:12 - 04:08:14] putang
+[04:08:14 - 04:08:15] ina
+[04:08:15 - 04:08:16] nasa
+[04:08:20 - 04:08:20] ano
+[04:08:20 - 04:08:21] mo
+[04:08:21 - 04:08:22] sayang
+[04:08:22 - 04:08:22] sabi na nga ba
+[04:08:23 - 04:08:23] eh
+[04:08:23 - 04:08:24] sabi na nga ba
+[04:08:24 - 04:08:25] eh
+[04:08:25 - 04:08:26] ay
+[04:08:26 - 04:08:26] pinakaini na
+[04:08:26 - 04:08:27] ano
+[04:08:27 - 04:08:28] yung
+[04:08:28 - 04:08:29] pakaano
+[04:08:29 - 04:08:30] ton
+[04:08:30 - 04:08:31] so she says
+[04:08:31 - 04:08:33] we have to talk about it first
+[04:08:33 - 04:08:37] we have to learn more about this terrain
+[04:08:37 - 04:08:38] says
+[04:08:38 - 04:08:40] before
+[04:08:41 - 04:08:42] asking for that one thing
+[04:08:42 - 04:08:44] i suppose
+[04:08:44 - 04:08:45] the favour
+[04:08:45 - 04:08:46] in
+[04:08:46 - 04:08:47] broad terms
+[04:08:47 - 04:08:48] would
+[04:08:48 - 04:08:49] be
+[04:08:49 - 04:08:50] regarding
+[04:08:50 - 04:08:51] the
+[04:08:51 - 04:08:52] assistance
+[04:08:52 - 04:08:53] in this matter
+[04:08:53 - 04:08:54] with the terrain
+[04:08:54 - 04:08:55] well
+[04:08:55 - 04:08:57] what do you expect
+[04:08:57 - 04:08:58] she says
+[04:08:58 - 04:08:59] i am not expecting anything
+[04:08:59 - 04:09:00] i just
+[04:09:00 - 04:09:01] all of us
+[04:09:01 - 04:09:02] has to be happy
+[04:09:02 - 04:09:03] right
+[04:09:03 - 04:09:04] hmm
+[04:09:04 - 04:09:09] then it would be easier than that
+[04:09:09 - 04:09:13] i suppose i can promise
+[04:09:13 - 04:09:15] eh
+[04:09:14 - 04:09:36] Once the matter in Shinera is settled, then we shall do anything necessary to help you and your crew with removing reformists, not just in Turin, everywhere.
+[04:09:15 - 04:09:16] ah
+[04:09:36 - 04:09:39] Fine, he says.
+[04:09:39 - 04:09:40] He says.
+[04:09:40 - 04:09:43] No, the condition here.
+[04:09:44 - 04:09:55] If we are able to free East Antony from the reformists, then we get the alliance.
+[04:09:55 - 04:10:00] Army, military forces, he says.
+[04:10:00 - 04:10:02] I can only promise for Shinera.
+[04:10:02 - 04:10:04] Yes, you will get him.
+[04:10:04 - 04:10:07] Alright, she says.
+[04:10:07 - 04:10:10] Then the next step is after East Antony was free.
+[04:10:10 - 04:10:12] Next favor.
+[04:10:12 - 04:10:18] But here, she poses a lead box towards you.
+[04:10:18 - 04:10:21] So he looks at this lead box.
+[04:10:21 - 04:10:25] I've become wary of the lead boxes.
+[04:10:25 - 04:10:34] It's kind of like the lead box that is kind of like a very old.
+[04:10:34 - 04:10:36] Not so natural.
+[04:10:36 - 04:10:37] He opens it.
+[04:10:37 - 04:10:47] As he opens it, he sees a single gold bar inside.
+[04:10:47 - 04:10:48] Is this one of the dragon heart?
+[04:10:48 - 04:10:49] Yeah.
+[04:10:49 - 04:10:50] And a letter.
+[04:10:50 - 04:10:50] An old letter.
+[04:10:50 - 04:10:51] Did we actually use this?
+[04:10:51 - 04:10:52] Yeah.
+[04:10:52 - 04:10:53] Do we have it in here?
+[04:10:53 - 04:10:54] No.
+[04:10:54 - 04:10:55] I don't know.
+[04:11:03 - 04:11:06] Payment for the assassination of the Purple Heart.
+[04:11:06 - 04:11:36] purple heart. Seems to be a very old hand. A lot of the spelling is here. It's not magical or anything. It's just a piece of history. A lot of the right style, a lot of the spellings here seem to indicate
+[04:11:36 - 04:11:38] that this is from a ship.
+[04:11:38 - 04:11:42] Yes, it is.
+[04:11:42 - 04:11:46] Thank you.
+[04:11:46 - 04:11:48] Daddy, Mommy.
+[04:11:48 - 04:11:50] Thank you.
+[04:11:50 - 04:11:52] That's your old family seal.
+[04:11:52 - 04:11:54] Am I correct?
+[04:11:54 - 04:11:56] Wala.
+[04:11:56 - 04:11:58] There is no water.
+[04:12:02 - 04:12:04] I have no water.
+[04:12:06 - 04:12:08] I can have one.
+[04:12:10 - 04:12:20] So, that's your old family's sign, am I right?
+[04:12:20 - 04:12:22] Maybe.
+[04:12:22 - 04:12:30] Modern ones aren't very far off, but there are distinct differences.
+[04:12:30 - 04:12:50] So, how can you tell me a single purple heart gold bar is on the possession of an assassin of the same family?
+[04:12:50 - 04:12:52] That's not very uncommon.
+[04:12:52 - 04:12:56] That's not very uncommon, unfortunately.
+[04:12:56 - 04:12:58] I know.
+[04:12:58 - 04:13:12] I mean, the dragon hearts in itself, well, what you call us, in some ways we are assassins of kin.
+[04:13:12 - 04:13:16] We are descended from the Maiden clouds.
+[04:13:16 - 04:13:23] And yet we did basically the same thing, just more in the open.
+[04:13:23 - 04:13:34] But still, this is a good reminder.
+[04:13:34 - 04:13:36] Thank you.
+[04:13:37 - 04:13:38] You're welcome.
+[04:13:38 - 04:13:47] My brother, Kel, who will keep up with this.
+[04:13:47 - 04:13:48] He likes this roof.
+[04:13:48 - 04:13:52] She nods.
+[04:13:52 - 04:14:01] Eh, not worth, not worth his life, $20,000.
+[04:14:01 - 04:14:02] God damn it.
+[04:14:04 - 04:14:14] And I suppose I can share a little bit of information in regards to this.
+[04:14:14 - 04:14:15] That tutor.
+[04:14:15 - 04:14:16] Who?
+[04:14:16 - 04:14:18] I believe that tutor.
+[04:14:18 - 04:14:19] Sabi niya kin piya.
+[04:14:19 - 04:14:22] I believe that tutor of Angelus is my cousin.
+[04:14:22 - 04:14:24] Eh?
+[04:14:24 - 04:14:25] Whose tutor?
+[04:14:25 - 04:14:29] She keeps on mentioning this tutor of her setan daughter.
+[04:14:29 - 04:14:30] Oh, the sorcerer?
+[04:14:30 - 04:14:32] God damn it.
+[04:14:32 - 04:14:34] Is he a man of culture?
+[04:14:34 - 04:14:36] He has this affinity for dolls.
+[04:14:36 - 04:14:38] Oh, shit.
+[04:14:38 - 04:14:40] He likes collecting them.
+[04:14:44 - 04:14:56] Actually, Angel does look like this.
+[04:14:56 - 04:14:58] He likes collecting them.
+[04:15:02 - 04:15:03] I love it.
+[04:15:05 - 04:15:07] In any case, yes.
+[04:15:07 - 04:15:09] He is a member of the Hitler.
+[04:15:09 - 04:15:11] Yeah, he is a Hitler member.
+[04:15:11 - 04:15:30] which is why he chose that name Keltier Kulak. I may try to contact him, find out more about what's happening, perhaps in Bramsgate, perhaps in the Rannick Marches.
+[04:15:30 - 04:15:44] But it is difficult. We had a disagreement.
+[04:15:44 - 04:15:51] And, uh, huh, come on, it's just a sibling library.
+[04:15:51 - 04:15:56] Oh, aye. I don't have any siblings. I don't know for sure.
+[04:15:56 - 04:16:11] I had, uh, before I knew better, I had accused him of being part of the group that had tried to assassinate my father.
+[04:16:16 - 04:16:18] Kinder of Kings.
+[04:16:18 - 04:16:20] Jesus.
+[04:16:20 - 04:16:27] Which is why I chose to share it right now. It seemed, uh, it seemed appropriate.
+[04:16:27 - 04:16:40] Uh, if, uh, if Angel is, like, so fucking, um, hyped over him, I mean, he's gonna be, he's not gonna be a thin killer.
+[04:16:40 - 04:16:43] And I no longer believe so either.
+[04:16:43 - 04:16:44] Considering what we know now.
+[04:16:44 - 04:16:47] And let's remember that the Hitlands are being used here.
+[04:16:47 - 04:16:48] Exactly.
+[04:16:48 - 04:16:58] We gotta talk, we gotta talk to Donmar about, uh, I mean, the Bramsgate thing with the Hitlands, like, a good, a good starting point for that.
+[04:16:58 - 04:17:06] And also the, the, the Rannick thing. The Rannick, uh, Marquis, or something like that.
+[04:17:06 - 04:17:09] He could be, shit.
+[04:17:09 - 04:17:16] He could be waging war against, uh, innocent people, like this.
+[04:17:16 - 04:17:20] And, uh, that might, that might be one of their goals, their former church.
+[04:17:20 - 04:17:24] That is another one of the reasons why I mentioned my brother.
+[04:17:24 - 04:17:27] So he went to that bar?
+[04:17:27 - 04:17:32] I'm not necessarily sure, but as you already know, he is.
+[04:17:32 - 04:17:34] So he wasn't the Rannick.
+[04:17:34 - 04:17:35] Alright.
+[04:17:37 - 04:17:38] So she said.
+[04:17:38 - 04:17:47] The reason that he told me for why he was sitting there, is there something of interest to him there.
+[04:17:47 - 04:17:51] Regarding his own personal research.
+[04:17:54 - 04:18:06] I'm not sure if that means angel specifically, or something of interest, magically, in Rannick.
+[04:18:06 - 04:18:11] That relates to his university work.
+[04:18:11 - 04:18:13] Alright.
+[04:18:13 - 04:18:17] Uh, we gotta talk about people who present the Hedwig.
+[04:18:17 - 04:18:21] You can't.
+[04:18:21 - 04:18:25] You have any idea, Minteria?
+[04:18:25 - 04:18:27] Who do you want to get?
+[04:18:27 - 04:18:37] Well, as far as I know, there are already spellcasters in, uh, in Sonera, like Philippa and Lilian.
+[04:18:37 - 04:18:41] And, uh, there are people that are also willing to help.
+[04:18:41 - 04:18:46] So we have, like, four fronts right now to consider, right?
+[04:18:46 - 04:18:47] Yeah.
+[04:18:47 - 04:18:48] Let's just, let's start with that.
+[04:18:49 - 04:18:55] So we got, we got, uh, we got, no, no, no, the, the four, like, objectives first, right?
+[04:18:55 - 04:18:57] So we got the Thromos.
+[04:18:57 - 04:18:59] We got Rannick.
+[04:18:59 - 04:19:03] We got, uh, not even Bramsky.
+[04:19:03 - 04:19:05] I wasn't even counting that yet.
+[04:19:05 - 04:19:08] But yeah, five, uh, well.
+[04:19:08 - 04:19:12] A. Eastington, Thranderbury, and yeah.
+[04:19:12 - 04:19:14] Bramsky.
+[04:19:12 - 04:19:15] Yeah, Bramsgate. It's a five, right?
+[04:19:15 - 04:19:25] Well, six if you split the Maltrek castle from the Thrall Malls thing.
+[04:19:25 - 04:19:29] Your family is a fucking pain in the ass, John.
+[04:19:29 - 04:19:33] Tell me about it.
+[04:19:33 - 04:19:41] Alright, so we got Bramsgate, Maltrek father.
+[04:19:42 - 04:19:47] Traumall, Raneck wargans, Hiklans, Trontorbury, and Eastern Time.
+[04:19:47 - 04:19:52] Mia is already in the Eastern Time, right?
+[04:19:52 - 04:19:55] Well, we gotta delegate people here.
+[04:19:55 - 04:19:59] We can't... I can't...
+[04:19:59 - 04:20:03] If ever I can be cloned, I am willing to.
+[04:20:03 - 04:20:08] But...
+[04:20:09 - 04:20:13] Yeah, but the only clone we really know of has an evil twin.
+[04:20:13 - 04:20:17] I wonder what your evil twin would be like, Bob. It might be scary.
+[04:20:18 - 04:20:20] My evil twin? My evil twin is me.
+[04:20:20 - 04:20:26] Ah, yeah. My evil twin is this side. The lower side.
+[04:20:26 - 04:20:29] And my good twin is the upper side.
+[04:20:29 - 04:20:31] Get out!
+[04:20:34 - 04:20:35] I'm not going to be the other side.
+[04:21:31 - 04:21:37] Lilia already volunteered for that one.
+[04:21:37 - 04:21:38] Right?
+[04:21:38 - 04:21:39] Yeah.
+[04:21:39 - 04:21:52] So that be you, Lil, Philippa, Marky, Henry, and you're a bunch of chuckle fucks.
+[04:21:52 - 04:22:11] You're kind of like a really small to be a metal tower.
+[04:22:11 - 04:22:13] Uh, nothing.
+[04:22:13 - 04:22:17] So, we're going to the bronze game.
+[04:22:17 - 04:22:21] You want to bring like, you can take it on your own.
+[04:22:21 - 04:22:25] You can take it from me.
+[04:22:25 - 04:22:34] I kind of learned more about when I was with Minfilia working in the book survey.
+[04:22:34 - 04:22:40] She showed me how to distinguish a reformist church intellectually.
+[04:22:40 - 04:22:41] But we're aiming to kill.
+[04:22:41 - 04:22:41] Right?
+[04:22:41 - 04:22:41] No interrogations.
+[04:22:41 - 04:22:41] Not animal.
+[04:22:41 - 04:22:41] Except if they are part of a person.
+[04:22:41 - 04:22:41] If that person is something important.
+[04:22:41 - 04:22:41] Uh.
+[04:22:41 - 04:22:41] I don't.
+[04:22:41 - 04:22:42] How do you ask?
+[04:22:43 - 04:22:43] Is this what you want?
+[04:22:43 - 04:22:43] Uh.
+[04:22:43 - 04:22:43] From?
+[04:22:43 - 04:22:43] I don't know.
+[04:22:43 - 04:22:44] How do you ask?
+[04:22:46 - 04:23:03] We're aiming to kill. Right? No interrogations, not animal? Except if they are part of the... if that person is something important?
+[04:23:03 - 04:23:13] Uh... I don't... I don't know. This is what you want. Uh, phone.
+[04:23:13 - 04:23:21] Considering now that we know, they can perhaps not be acting on their own interests.
+[04:23:21 - 04:23:26] That muddies something a little bit. That muddies a little bit for me.
+[04:23:26 - 04:23:38] Prior to this discovery regarding these worms, I was very willing to say yes to that person.
+[04:23:38 - 04:23:48] Part of the rung system. Do you know the rung?
+[04:23:48 - 04:23:58] Of the reformist church. And then the candle there, and the whip there, and this kind of stuff.
+[04:23:58 - 04:24:04] Yes. So those are the only ones where they immediately killed.
+[04:24:04 - 04:24:14] We're trying to extract information, but...
+[04:24:14 - 04:24:16] What do you think, crown prince?
+[04:24:16 - 04:24:20] Hey! Don't touch that!
+[04:24:20 - 04:24:21] What's that?
+[04:24:24 - 04:24:26] Please?
+[04:24:26 - 04:24:27] Marnie?
+[04:24:28 - 04:24:29] I will have...
+[04:24:29 - 04:24:30] Marnie?
+[04:24:30 - 04:24:31] May I have a suggestion?
+[04:24:31 - 04:24:32] Your liege?
+[04:24:32 - 04:24:33] Cabinie will...
+[04:24:33 - 04:24:34] Sweet.
+[04:24:34 - 04:24:35] The commanders.
+[04:24:36 - 04:24:47] My commander, North Cross, he is an idiot. But he was part of the reformist church.
+[04:24:47 - 04:24:49] Oh, he's not your commander?
+[04:24:49 - 04:24:53] No, I just said that he's one of the commanders.
+[04:24:53 - 04:24:54] The commander.
+[04:24:54 - 04:24:55] Yeah.
+[04:24:55 - 04:24:56] The commander.
+[04:24:56 - 04:24:59] Maybe the other commanders have fallen in the same phase as him.
+[04:24:59 - 04:25:00] He says.
+[04:25:00 - 04:25:01] I will give them a chance.
+[04:25:01 - 04:25:02] He says.
+[04:25:02 - 04:25:05] Maybe we could get more information through them.
+[04:25:05 - 04:25:06] He says.
+[04:25:06 - 04:25:12] I think this would be a judgment call on your lieutenant.
+[04:25:12 - 04:25:20] Those you deem could be capable of saving, or of being useful to you.
+[04:25:20 - 04:25:22] That would be up to your judgment.
+[04:25:22 - 04:25:26] If you think that they would be more trouble than your worth, then feel free.
+[04:25:26 - 04:25:27] What?
+[04:25:29 - 04:25:30] Okay.
+[04:25:30 - 04:25:39] Undesirable to be, shall we say, indecisive in this matter.
+[04:25:39 - 04:25:40] Mm.
+[04:25:40 - 04:25:41] All right.
+[04:25:41 - 04:25:43] So you make your decisions, make it.
+[04:25:43 - 04:25:44] Yes, really.
+[04:25:44 - 04:25:45] Decisive.
+[04:25:45 - 04:25:48] All right.
+[04:25:48 - 04:25:52] Uh, so the next one is, uh, freeing, uh, Malchuk.
+[04:25:52 - 04:25:53] Uh, father.
+[04:25:53 - 04:25:54] Freeing your father.
+[04:25:54 - 04:25:55] John.
+[04:25:55 - 04:25:57] Of course, uh, I'll be joining.
+[04:25:57 - 04:25:58] All right.
+[04:25:58 - 04:25:59] So this is a family matter.
+[04:25:59 - 04:26:00] Uh, freeing Malchuk.
+[04:26:00 - 04:26:01] If Mark can get his act together.
+[04:26:01 - 04:26:01] Maybe he could be useful.
+[04:26:01 - 04:26:02] At the very least, like.
+[04:26:02 - 04:26:03] So John.
+[04:26:03 - 04:26:04] At the very least, he can sniff his way.
+[04:26:04 - 04:26:05] Like.
+[04:26:05 - 04:26:06] From what I understand.
+[04:26:06 - 04:26:06] Who wants to bring with you?
+[04:26:07 - 04:26:08] Well.
+[04:26:08 - 04:26:08] You've been working with Lyme for a while now.
+[04:26:08 - 04:26:09] All right.
+[04:26:09 - 04:26:10] If he wants, then yeah.
+[04:26:10 - 04:26:11] And she has rapport with my mother.
+[04:26:11 - 04:26:12] So John.
+[04:26:12 - 04:26:13] You've been working with Lyme for a while now.
+[04:26:13 - 04:26:14] All right.
+[04:26:14 - 04:26:14] If he wants, then yeah.
+[04:26:14 - 04:26:15] And she has rapport with my mother.
+[04:26:15 - 04:26:16] So John.
+[04:26:16 - 04:26:17] Maybe he can sniff his way.
+[04:26:17 - 04:26:18] Any other.
+[04:26:18 - 04:26:19] Maybe he could be useful.
+[04:26:19 - 04:26:20] At the very least, like.
+[04:26:21 - 04:26:22] At the very least, he can sniff his way.
+[04:26:22 - 04:26:23] Like.
+[04:26:23 - 04:26:24] From what I understand.
+[04:26:24 - 04:26:25] Who wants to bring with you?
+[04:26:25 - 04:26:26] Well.
+[04:26:26 - 04:26:27] We've been working with Lyme for a while now.
+[04:26:27 - 04:26:28] All right.
+[04:26:28 - 04:26:29] If he wants.
+[04:26:29 - 04:26:30] Who wants to bring with you?
+[04:26:30 - 04:26:31] Well.
+[04:26:31 - 04:26:32] We've been working with Lyme for a while now.
+[04:26:32 - 04:26:33] Yeah.
+[04:26:33 - 04:26:34] And.
+[04:26:34 - 04:26:37] She has rapport with my mother.
+[04:26:37 - 04:26:38] So.
+[04:26:38 - 04:26:45] If Emil is going with you.
+[04:26:45 - 04:26:46] Oh yeah.
+[04:26:46 - 04:26:48] She did mention that she wanted to.
+[04:26:48 - 04:26:49] If she's willing.
+[04:26:49 - 04:26:50] I mean.
+[04:26:50 - 04:26:51] She has that rule.
+[04:26:51 - 04:26:52] Uh.
+[04:26:52 - 04:26:54] Rune of extra evasion.
+[04:26:54 - 04:26:55] Oh yeah.
+[04:26:55 - 04:26:56] Huh?
+[04:26:56 - 04:26:57] I've seen.
+[04:26:57 - 04:26:59] I suppose that's.
+[04:26:59 - 04:27:00] Why.
+[04:27:00 - 04:27:01] Uh.
+[04:27:01 - 04:27:02] Mark's.
+[04:27:02 - 04:27:03] Being.
+[04:27:03 - 04:27:04] Well.
+[04:27:04 - 04:27:05] That rule would.
+[04:27:05 - 04:27:06] Let her see.
+[04:27:06 - 04:27:07] People naked.
+[04:27:07 - 04:27:08] Everyone.
+[04:27:08 - 04:27:09] Around them.
+[04:27:09 - 04:27:10] So you can see.
+[04:27:10 - 04:27:11] Easily.
+[04:27:11 - 04:27:12] Who's the reformist.
+[04:27:12 - 04:27:13] Or not.
+[04:27:13 - 04:27:14] It's a very useful thing.
+[04:27:14 - 04:27:15] But.
+[04:27:15 - 04:27:16] Apparently.
+[04:27:16 - 04:27:17] She uses it.
+[04:27:17 - 04:27:18] Hey.
+[04:27:18 - 04:27:19] That's.
+[04:27:19 - 04:27:20] It's her.
+[04:27:20 - 04:27:21] I think.
+[04:27:22 - 04:27:23] She.
+[04:27:24 - 04:27:25] Started.
+[04:27:25 - 04:27:26] Trying to.
+[04:27:26 - 04:27:27] Like.
+[04:27:27 - 04:27:28] Pease.
+[04:27:28 - 04:27:29] My brother.
+[04:27:29 - 04:27:30] Yeah.
+[04:27:30 - 04:27:31] So.
+[04:27:31 - 04:27:32] You want.
+[04:27:32 - 04:27:33] To.
+[04:27:33 - 04:27:34] Add that.
+[04:27:34 - 04:27:35] Sword King.
+[04:27:35 - 04:27:36] As well.
+[04:27:36 - 04:27:37] Be careful.
+[04:27:37 - 04:27:38] On that one.
+[04:27:38 - 04:27:39] Uh.
+[04:27:39 - 04:27:40] So.
+[04:27:40 - 04:27:41] You will.
+[04:27:41 - 04:27:42] Be bringing.
+[04:27:42 - 04:27:43] Lime and Emily.
+[04:27:43 - 04:27:44] Yeah.
+[04:27:44 - 04:27:45] I mean.
+[04:27:45 - 04:27:46] Any kind of help.
+[04:27:46 - 04:27:47] That.
+[04:27:47 - 04:27:48] We can.
+[04:27:48 - 04:27:49] That.
+[04:27:50 - 04:27:51] We can afford.
+[04:27:51 - 04:27:52] Of course.
+[04:27:52 - 04:27:53] What her.
+[04:27:56 - 04:27:57] Capabilities are.
+[04:27:57 - 04:27:58] You want to bring.
+[04:27:58 - 04:27:59] Jessica.
+[04:27:59 - 04:28:00] With you.
+[04:28:00 - 04:28:01] Jessica.
+[04:28:01 - 04:28:02] Is a killer.
+[04:28:02 - 04:28:03] She's not here.
+[04:28:03 - 04:28:04] Huh.
+[04:28:04 - 04:28:05] Chininas.
+[04:28:05 - 04:28:06] Jessica.
+[04:28:06 - 04:28:07] Also.
+[04:28:07 - 04:28:08] Well.
+[04:28:08 - 04:28:09] Has.
+[04:28:09 - 04:28:10] She also has.
+[04:28:10 - 04:28:11] I was going to say.
+[04:28:11 - 04:28:12] That.
+[04:28:12 - 04:28:13] She also has.
+[04:28:13 - 04:28:14] Yeah.
+[04:28:14 - 04:28:15] I mean.
+[04:28:15 - 04:28:16] I was going to ask.
+[04:28:16 - 04:28:17] About her next.
+[04:28:17 - 04:28:18] Because.
+[04:28:18 - 04:28:19] Well.
+[04:28:19 - 04:28:20] She.
+[04:28:20 - 04:28:21] Well.
+[04:28:21 - 04:28:22] She.
+[04:28:22 - 04:28:23] I mean.
+[04:28:23 - 04:28:24] I was going to ask.
+[04:28:24 - 04:28:25] About her next.
+[04:28:25 - 04:28:26] Because.
+[04:28:26 - 04:28:27] Well.
+[04:28:27 - 04:28:28] She.
+[04:28:28 - 04:28:29] Well.
+[04:28:29 - 04:28:30] Not only.
+[04:28:30 - 04:28:31] Can she.
+[04:28:31 - 04:28:32] Like.
+[04:28:32 - 04:28:33] Do all of those things.
+[04:28:33 - 04:28:35] She has a lot of blood.
+[04:28:35 - 04:28:36] Yeah.
+[04:28:36 - 04:28:37] I mean.
+[04:28:37 - 04:28:38] I was going to ask.
+[04:28:38 - 04:28:39] About her next.
+[04:28:39 - 04:28:40] Because.
+[04:28:40 - 04:28:41] Well.
+[04:28:41 - 04:28:42] She.
+[04:28:42 - 04:28:43] Well.
+[04:28:43 - 04:28:44] Not only.
+[04:28:44 - 04:28:45] Can she.
+[04:28:45 - 04:28:46] Like.
+[04:28:46 - 04:28:47] Do all of those things.
+[04:28:47 - 04:28:48] Well.
+[04:28:48 - 04:28:49] See what's going to say.
+[04:28:49 - 04:28:50] Indeed.
+[04:28:50 - 04:28:50] Well.
+[04:28:50 - 04:28:51] Apparently.
+[04:28:51 - 04:28:51] She's.
+[04:28:51 - 04:28:52] My brother.
+[04:28:52 - 04:28:53] So.
+[04:28:53 - 04:28:54] Pack leader.
+[04:28:54 - 04:28:55] Now.
+[04:28:54 - 04:28:58] Talk later, what the fuck is that?
+[04:28:58 - 04:29:03] Well that's because she was the one whose blood, you know, turned up.
+[04:29:03 - 04:29:05] Apparently there's some kind of connection.
+[04:29:05 - 04:29:10] I have a suggestion with her using her celestial blood.
+[04:29:10 - 04:29:17] Once we extract some of her blood, you could cast or remove curse on the blood.
+[04:29:17 - 04:29:19] Kind of like cleansing it.
+[04:29:19 - 04:29:31] And then use it properly like what Angel did to look at your mother.
+[04:29:31 - 04:29:36] But you gotta ask Jessica for her permission to that.
+[04:29:36 - 04:29:43] I mean, if that were possible, wouldn't Jessica have thought of it already?
+[04:29:43 - 04:29:48] I think she's very conscientious in that matter, in that regard.
+[04:29:48 - 04:29:51] She's really quiet, you know.
+[04:29:51 - 04:29:55] She doesn't like, she only talk to Sapphire.
+[04:29:55 - 04:29:57] She talks to me a lot.
+[04:29:57 - 04:30:03] Maybe because you look like someone who will give her gold.
+[04:30:03 - 04:30:14] I don't know, I don't feel ya.
+[04:30:14 - 04:30:18] He's been giving them free shit.
+[04:30:18 - 04:30:20] That's investment.
+[04:30:20 - 04:30:27] That's called investment, Oscar.
+[04:30:27 - 04:30:35] So you'll be taking Lime, Emily, Mark, and Jessica.
+[04:30:35 - 04:30:36] Hey, Fun Squad.
+[04:30:36 - 04:30:37] The Teenagers.
+[04:30:37 - 04:30:38] We gotta add one more to that.
+[04:30:38 - 04:30:39] Bring the father.
+[04:30:39 - 04:30:40] Father?
+[04:30:40 - 04:30:41] Who's father?
+[04:30:41 - 04:30:42] The father is the one they're freeing, right?
+[04:30:42 - 04:30:43] Justin.
+[04:30:43 - 04:30:44] Huh?
+[04:30:44 - 04:30:45] What?
+[04:30:46 - 04:30:47] What do you mean?
+[04:30:47 - 04:30:48] What do you mean father?
+[04:30:48 - 04:30:49] Sorry, I didn't mean to you that.
+[04:30:49 - 04:30:49] Wait.
+[04:30:49 - 04:30:50] What?
+[04:30:50 - 04:30:51] Did Justin get someone pregnant?
+[04:30:51 - 04:30:52] Wait.
+[04:31:12 - 04:31:13] So.
+[04:31:13 - 04:31:14] I'm pregnant.
+[04:31:15 - 04:31:16] Oscar.
+[04:31:16 - 04:31:22] Why I'm talking about she's not gonna get pregnant at 14 because that's shitty man.
+[04:31:22 - 04:31:23] Well, she's already 16.
+[04:31:23 - 04:31:24] Yeah.
+[04:31:24 - 04:31:25] That's not cool.
+[04:31:25 - 04:31:29] And she comes a long way because she's like, yeah.
+[04:31:29 - 04:31:32] And now you're telling me she's pregnant?
+[04:31:32 - 04:31:34] I didn't tell you anything.
+[04:31:36 - 04:31:37] God damn it.
+[04:31:37 - 04:31:39] You fucking bossy person.
+[04:31:39 - 04:31:40] No.
+[04:31:40 - 04:31:41] Let us know.
+[04:31:41 - 04:31:42] Well.
+[04:31:42 - 04:31:52] She, before you're heading back to Samara, she talked to Miss Teen that she wants to
+[04:31:52 - 04:31:53] be checked.
+[04:31:53 - 04:31:55] Checked on what?
+[04:31:55 - 04:31:56] She said.
+[04:31:56 - 04:31:57] What?
+[04:32:00 - 04:32:01] What does that mean?
+[04:32:01 - 04:32:03] But why Hedwig knows about it?
+[04:32:03 - 04:32:04] Lyme is a hot.
+[04:32:04 - 04:32:05] Yeah.
+[04:32:05 - 04:32:19] But why Hedwig knows about it and not us if it's patient?
+[04:32:19 - 04:32:22] It's because you fucking up.
+[04:32:22 - 04:32:25] Even your pussy fucks a lot.
+[04:32:25 - 04:32:26] Hey!
+[04:32:26 - 04:32:28] Fuck you!
+[04:32:28 - 04:32:29] So.
+[04:32:29 - 04:32:32] Yeah, but it has a different language, you know.
+[04:32:32 - 04:32:35] Not everyone understands it.
+[04:32:35 - 04:32:39] It's, uh, it's actually kind of like private.
+[04:32:39 - 04:32:44] But, Melphilia, you will find out any time soon anyway.
+[04:32:44 - 04:32:53] And, uh, if you're not going to bring Justin, you have to, uh, you have to go.
+[04:32:53 - 04:32:54] I don't want to.
+[04:32:54 - 04:32:57] Listen, I'm done with this Malfe.
+[04:32:57 - 04:33:02] I'm done with freeing another fucking Malfe in my life.
+[04:33:02 - 04:33:07] And the father?
+[04:33:07 - 04:33:08] Yeah.
+[04:33:08 - 04:33:10] The papa will do.
+[04:33:10 - 04:33:11] God damn it.
+[04:33:11 - 04:33:12] I'm tired.
+[04:33:12 - 04:33:17] Oh, I guess it should go without saying that Andrew is going with us, I suppose.
+[04:33:17 - 04:33:18] Alright.
+[04:33:18 - 04:33:31] It'll be interesting if that Justin guy is there with Andrew, you know.
+[04:33:31 - 04:33:32] Andrew has kind of a crush in mind.
+[04:33:32 - 04:33:33] Great.
+[04:33:33 - 04:33:34] That's drama.
+[04:33:34 - 04:33:35] Really?
+[04:33:35 - 04:33:41] That Andrew, that young man, that's, uh, like, um, a little bit of a shy.
+[04:33:41 - 04:33:43] He's a big fan of her.
+[04:33:43 - 04:33:45] She has a crush in mind.
+[04:33:45 - 04:33:46] Yeah.
+[04:33:46 - 04:33:47] A little bit.
+[04:33:47 - 04:33:53] Oh, but he's a little bit, like, pervert.
+[04:33:53 - 04:33:56] Not a little bit, but a lot of pervert, you know.
+[04:33:56 - 04:33:59] So, god damn it.
+[04:33:59 - 04:34:03] I mean, he's a young man.
+[04:34:03 - 04:34:04] He's a young man.
+[04:34:09 - 04:34:12] Well, he likes reading, like, checking nurses.
+[04:34:12 - 04:34:13] I wouldn't.
+[04:34:13 - 04:34:14] Hey, dad.
+[04:34:14 - 04:34:15] Ah.
+[04:34:15 - 04:34:16] I'm tired.
+[04:34:19 - 04:34:20] Come on.
+[04:34:24 - 04:34:25] I'm tired.
+[04:34:27 - 04:34:29] This is a secret to life, John.
+[04:34:29 - 04:34:30] He says.
+[04:34:30 - 04:34:32] I will let the line.
+[04:34:32 - 04:34:37] I will ask him to recruit Justin.
+[04:34:37 - 04:34:38] He says.
+[04:34:38 - 04:34:40] If Justin is willing to go, he says.
+[04:34:40 - 04:34:41] I mean, I'm tired.
+[04:34:41 - 04:34:42] I'm tired.
+[04:34:44 - 04:34:47] But he's a strong fighter.
+[04:34:47 - 04:34:48] And...
+[04:34:48 - 04:34:49] It comes.
+[04:34:49 - 04:34:52] Is Mark a fighter?
+[04:34:52 - 04:34:53] No.
+[04:34:53 - 04:34:54] I mean, yeah.
+[04:34:54 - 04:35:03] What Mark does have, though, is what he talks about a lot is that he knows how to get to places.
+[04:35:03 - 04:35:04] He's...
+[04:35:06 - 04:35:07] Let's say...
+[04:35:07 - 04:35:08] Well-crowded.
+[04:35:08 - 04:35:09] In the Mothpress.
+[04:35:09 - 04:35:10] To be a king.
+[04:35:10 - 04:35:11] He is able to...
+[04:35:11 - 04:35:12] He's...
+[04:35:12 - 04:35:13] He's very knowledgeable about the landlord.
+[04:35:13 - 04:35:14] He knows where to go.
+[04:35:14 - 04:35:15] What alternate routes we have.
+[04:35:15 - 04:35:16] Hey, that's cool.
+[04:35:16 - 04:35:18] That's the sort of thing he knows.
+[04:35:18 - 04:35:19] Like a smug life.
+[04:35:19 - 04:35:20] He's...
+[04:35:20 - 04:35:21] Well...
+[04:35:21 - 04:35:22] He's...
+[04:35:23 - 04:35:24] Well...
+[04:35:24 - 04:35:25] Alright.
+[04:35:25 - 04:35:26] Mother doesn't like it so much.
+[04:35:26 - 04:35:27] Because...
+[04:35:27 - 04:35:28] He's kind of like a layabout.
+[04:35:28 - 04:35:29] But that's...
+[04:35:29 - 04:35:30] That's his thing.
+[04:35:30 - 04:35:31] So the spellcasters and your team will be...
+[04:35:31 - 04:35:32] Lime and Emily.
+[04:35:32 - 04:35:33] He knows where to go.
+[04:35:34 - 04:35:35] What alternate routes we have.
+[04:35:35 - 04:35:36] Oh.
+[04:35:36 - 04:35:37] Hey, that's cool.
+[04:35:37 - 04:35:38] That's the sort of thing he knows.
+[04:35:38 - 04:35:39] Like a smug life.
+[04:35:39 - 04:35:40] He's...
+[04:35:40 - 04:35:41] Well...
+[04:35:41 - 04:35:42] Alright.
+[04:35:42 - 04:35:43] Mother doesn't like it so much.
+[04:35:43 - 04:35:44] Because...
+[04:35:44 - 04:35:45] He's kind of like a layabout.
+[04:35:45 - 04:35:46] So the spellcasters then.
+[04:35:46 - 04:35:47] But that's his thing.
+[04:35:47 - 04:35:49] So the spellcasters and your team will be...
+[04:35:49 - 04:35:50] Lime and Emily.
+[04:35:50 - 04:35:51] And Jessica's...
+[04:35:51 - 04:35:52] Well...
+[04:35:52 - 04:35:54] Jessica doesn't know how this...
+[04:35:54 - 04:35:55] She knows.
+[04:35:55 - 04:35:57] She's just like a...
+[04:35:57 - 04:35:58] I don't know.
+[04:35:58 - 04:36:00] I don't know her history.
+[04:36:00 - 04:36:02] She said that it was taken from Mark.
+[04:36:02 - 04:36:04] Found it like that.
+[04:36:04 - 04:36:06] And she did mention something like that.
+[04:36:06 - 04:36:07] Sad.
+[04:36:07 - 04:36:10] Um...
+[04:36:10 - 04:36:11] But Mark...
+[04:36:11 - 04:36:12] Well...
+[04:36:12 - 04:36:15] He apparently has the...
+[04:36:15 - 04:36:17] Potential?
+[04:36:17 - 04:36:19] We only found out recently.
+[04:36:19 - 04:36:20] That his eyes were replaced.
+[04:36:20 - 04:36:21] But I think it's coming back.
+[04:36:21 - 04:36:22] I can see that his eyes are a little...
+[04:36:22 - 04:36:23] If you look at it closely, it is very...
+[04:36:23 - 04:36:24] Hmm.
+[04:36:24 - 04:36:25] Alright.
+[04:36:25 - 04:36:26] He has those hairs.
+[04:36:26 - 04:36:27] That's why I didn't look at him.
+[04:36:27 - 04:36:28] But I'm alright.
+[04:36:28 - 04:36:29] So...
+[04:36:29 - 04:36:30] That was a good party.
+[04:36:30 - 04:36:31] So it's gonna be you, John.
+[04:36:31 - 04:36:31] Who will lead this party.
+[04:36:31 - 04:36:32] Lim, Emily.
+[04:36:32 - 04:36:32] Uh...
+[04:36:32 - 04:36:32] Your brother Mark.
+[04:36:32 - 04:36:33] And Jessica.
+[04:36:33 - 04:36:34] And Andrew.
+[04:36:34 - 04:36:34] Uh...
+[04:36:34 - 04:36:35] Justin.
+[04:36:35 - 04:36:36] You have to recruit him.
+[04:36:36 - 04:36:37] I will tell him.
+[04:36:38 - 04:36:39] I...
+[04:36:39 - 04:36:40] Uh...
+[04:36:41 - 04:36:42] She has my permission.
+[04:36:42 - 04:36:43] Uh...
+[04:36:43 - 04:36:44] But it's up to Justin if he wants to go.
+[04:36:44 - 04:37:11] So it's going to be you, John, who will lead this party. Lime, Emily, your brother Mark, and Jessica, and Andrew. Justin, you have to recruit him. I will tell him, I will tell Lime that she has my permission. But it's up to Justin if he wants to go.
+[04:37:14 - 04:37:34] Lime has a very, nah. If you don't mind, I will also ask Lime's permission if she wants, if she's fine with this. Because the last time we mentioned, she was very uncomfortable with it.
+[04:37:34 - 04:37:54] She doesn't have a choice in this, sabi ni. Sabi ni Hedri. She choose Justin at first to be the protector, as the hug, as the holder of the spirit of the moon. Sabi ni. As the hug, she says.
+[04:37:54 - 04:38:08] She is my, she is my superior, she says. But I have to enforce to her that she has an oath that she took.
+[04:38:08 - 04:38:18] Sabi ni Hedri. That's what I've been telling her, Hedri. I mean, shit.
+[04:38:18 - 04:38:32] I have to say. What the? Y-I-G. Oh no. I like baby she. Just tell John, sabi ni. Shhh.
+[04:38:32 - 04:38:38] She's a kid though. So she'll find it out on her own way.
+[04:38:38 - 04:38:52] John, just tell her that she needs a, uh, tell her that this, that, uh...
+[04:38:52 - 04:39:03] *mimics*
+[04:39:01 - 04:39:16] of the moon and I have a task for her she has a task for her right before they went to
+[04:39:16 - 04:39:24] Senera she asked Lyme if there are hugs in Senera that they could find right?
+[04:39:24 - 04:39:32] I know specifically those that could perhaps be like holders of spirits
+[04:39:32 - 04:39:43] Do you like it?
+[04:39:43 - 04:39:45] What did she say?
+[04:39:45 - 04:39:47] Super hot!
+[04:39:47 - 04:39:51] Don't get hot! It's hot!
+[04:39:51 - 04:39:53] It's hot!
+[04:39:53 - 04:39:58] Let's go to the apartment and join it!
+[04:39:58 - 04:39:59] Alright!
+[04:39:59 - 04:40:01] The Ardeal, right?
+[04:40:01 - 04:40:03] Ardeal!
+[04:40:03 - 04:40:11] And the next one is the Thalmas. The pools of Thalmas.
+[04:40:11 - 04:40:19] Well if we're gonna be doing this at the same time I mean...
+[04:40:19 - 04:40:20] Oh you can do it?
+[04:40:20 - 04:40:30] No I mean if we're going to be doing the two missions at once then I was gonna say then
+[04:40:30 - 04:40:36] I would at least prioritize my father's well-being so somebody else would...
+[04:40:36 - 04:40:42] Now I mean if we have to do it at the same time then somebody else would have to do the matter
+[04:40:42 - 04:40:49] of the Thalmas and perhaps they would have to bring my mother along but if it is possible
+[04:40:49 - 04:40:54] for us to do this like one after the other if we have that time if we have the luxury of time
+[04:40:54 - 04:40:55] It's up to you. You can do it.
+[04:40:55 - 04:40:56] We can do that.
+[04:40:56 - 04:41:02] This is amongst yourselves. We're just delegating people here.
+[04:41:02 - 04:41:22] Well the matter of the Thalmas is a matter of some greater importance in regards to something with what Tiffany and the Crown Prince had found out.
+[04:41:22 - 04:41:34] It is related to his mother but there apparently have been deals there in that regard.
+[04:41:34 - 04:41:35] So my...
+[04:41:35 - 04:41:40] Some deals that connect to the hands.
+[04:41:40 - 04:41:50] Alright so you can do that. You can free your father first and then in the Thalmas courts the Prince and Tiffany will join.
+[04:41:50 - 04:41:56] As we can both deal with our familial issues in the meantime and then we can converge there.
+[04:41:56 - 04:42:18] And since Tiffany can teleport perhaps we can hold something of yours so that we can teleport to your location more easily.
+[04:42:18 - 04:42:20] We can't hold something of yours.
+[04:42:20 - 04:42:22] Oh, I can't wait to see it.
+[04:42:22 - 04:42:24] Oh, and the Thrantarbury?
+[04:42:24 - 04:42:26] No, that is what I mean to say.
+[04:42:26 - 04:42:28] Familiar issue.
+[04:42:28 - 04:42:34] We can deal with the Thrantarbury while they deal with the Mothric.
+[04:42:34 - 04:42:37] So you will free your father on your own with Tiffany?
+[04:42:37 - 04:42:38] That's not enough.
+[04:42:38 - 04:42:42] Well, they mention this Donmar.
+[04:42:42 - 04:42:44] And he says this Donmar.
+[04:42:44 - 04:42:46] We mentioned this Donmar.
+[04:42:46 - 04:42:52] He might be necessary for some Hitler in that situation.
+[04:42:52 - 04:42:56] He and Papa can help Sabinefina.
+[04:42:56 - 04:43:00] We will accept any kind of help that is possible.
+[04:43:00 - 04:43:02] Yes, thank you.
+[04:43:02 - 04:43:08] But we are very public people.
+[04:43:08 - 04:43:10] We don't mind as fuck.
+[04:43:10 - 04:43:11] Any side.
+[04:43:11 - 04:43:12] He says.
+[04:43:12 - 04:43:16] Well, it is real business, I suppose.
+[04:43:16 - 04:43:17] I don't know.
+[04:43:17 - 04:43:18] We got subtle, right?
+[04:43:18 - 04:43:22] Because we can fuck in front of the families.
+[04:43:24 - 04:43:25] I don't know.
+[04:43:25 - 04:43:26] I'm not sure.
+[04:43:44 - 04:43:49] By the way, you see her like, you see her outer appearance.
+[04:43:49 - 04:43:50] Yeah.
+[04:43:50 - 04:43:52] But you see something weird about her.
+[04:43:52 - 04:43:56] that are looming kind of like a gray aura.
+[04:43:56 - 04:43:57] Yeah.
+[04:43:57 - 04:43:59] He's not speaking about it for me.
+[04:43:59 - 04:44:04] But this is something that she would like to speak to Tiffany about after.
+[04:44:04 - 04:44:05] Yeah.
+[04:44:05 - 04:44:06] Alright.
+[04:44:06 - 04:44:07] That's it.
+[04:44:07 - 04:44:08] Awesome.
+[04:44:08 - 04:44:11] And Fina is a good explorer as well.
+[04:44:11 - 04:44:12] As well.
+[04:44:12 - 04:44:13] She's good with the...
+[04:44:13 - 04:44:21] She wants to see the scenario because of the paywalled community there.
+[04:44:21 - 04:44:26] And we've also heard that there are also Calasarian ruins there.
+[04:44:26 - 04:44:27] And so it's an interesting...
+[04:44:27 - 04:44:28] That's the position of both.
+[04:44:28 - 04:44:29] I want...
+[04:44:29 - 04:44:30] I want to see how...
+[04:44:30 - 04:44:31] Like...
+[04:44:31 - 04:44:33] How the Fae influence changed how the Calasarians...
+[04:44:33 - 04:44:34] Yes.
+[04:44:34 - 04:44:34] You gotta see that...
+[04:44:34 - 04:44:34] Koto and Fina.
+[04:44:34 - 04:44:35] There's a whole island full of like...
+[04:44:35 - 04:44:36] Pixies in there.
+[04:44:36 - 04:44:37] I haven't been there.
+[04:44:37 - 04:44:38] But uh...
+[04:44:38 - 04:44:39] Lily, I could tell you more.
+[04:44:39 - 04:44:40] Yeah, sorry.
+[04:44:40 - 04:44:40] There are...
+[04:44:40 - 04:44:40] There are structures of Elven artifacts there.
+[04:44:40 - 04:44:41] So...
+[04:44:41 - 04:44:42] Um...
+[04:44:42 - 04:44:43] And...
+[04:44:43 - 04:44:44] You have...
+[04:44:45 - 04:44:46] Um...
+[04:44:47 - 04:44:47] You have...
+[04:44:47 - 04:44:47] You have that spy lamp that they gave you?
+[04:44:47 - 04:44:48] I do.
+[04:44:48 - 04:44:49] Yes.
+[04:44:49 - 04:44:50] It's one of the things that we've found.
+[04:44:50 - 04:44:51] there.
+[04:44:51 - 04:44:51] So Fina stands up and...
+[04:44:51 - 04:44:52] So it doesn't look...
+[04:44:52 - 04:44:53] Yeah.
+[04:44:53 - 04:44:53] It's one of the things that we've found.
+[04:44:53 - 04:44:54] So Fina stands up...
+[04:44:54 - 04:44:55] And...
+[04:44:55 - 04:44:56] So it doesn't look...
+[04:44:56 - 04:44:57] I don't know.
+[04:44:59 - 04:45:00] It's one of the things that we've found.
+[04:45:00 - 04:45:00] So Fina stands up and...
+[04:45:00 - 04:45:01] I don't know.
+[04:45:04 - 04:45:05] It's one of the things that we've found.
+[04:45:05 - 04:45:05] So Fina stands up and...
+[04:45:05 - 04:45:06] I don't know.
+[04:45:15 - 04:45:16] Yes.
+[04:45:16 - 04:45:17] It's one of the things that we've found.
+[04:45:17 - 04:45:19] So Fina stands up and...
+[04:45:19 - 04:45:20] So does he look at her?
+[04:45:20 - 04:45:22] Do you remember that you did it?
+[04:45:22 - 04:45:23] Hmm.
+[04:45:23 - 04:45:25] You told me that.
+[04:45:25 - 04:45:26] Oh.
+[04:45:26 - 04:45:29] You showed it to me and you told me that I did it to you?
+[04:45:29 - 04:45:30] No.
+[04:45:31 - 04:45:34] I was hoping that you started to remember.
+[04:45:34 - 04:45:41] So Fina stands up and she's actually very short.
+[04:45:41 - 04:45:44] So, so she's in Rene.
+[04:45:44 - 04:45:46] Thank you.
+[04:45:46 - 04:45:49] How can I tell her?
+[04:45:49 - 04:45:52] History or Arkham?
+[04:45:52 - 04:45:55] Oh shit, Fina is high.
+[04:45:55 - 04:45:56] Yes.
+[04:45:56 - 04:45:59] Crosshair Fina.
+[04:45:59 - 04:46:04] What's up?
+[04:46:08 - 04:46:11] Crosshair Fina.
+[04:46:11 - 04:46:15] What's up?
+[04:46:21 - 04:46:24] History or Arkham?
+[04:46:24 - 04:46:26] 21.
+[04:46:26 - 04:46:38] From what you can see here, of course, it is Toledo of elven make and you've seen this kind of thing.
+[04:46:38 - 04:46:43] Uh, at least the age of it.
+[04:46:43 - 04:46:47] Does seem like something that would have come from that era.
+[04:46:47 - 04:46:52] From uh, before the Draco Giant War era.
+[04:46:52 - 04:46:59] So it is quite uh, old in your reckoning of how you would like to know things.
+[04:46:59 - 04:47:00] It's kind of old.
+[04:47:00 - 04:47:01] Yeah.
+[04:47:01 - 04:47:10] And uh, uh, you would think that this is something that, yeah, someone from the springboard would
+[04:47:10 - 04:47:11] have known, probably.
+[04:47:11 - 04:47:17] And uh, perhaps even a star elf maybe.
+[04:47:17 - 04:47:19] If it's not from mana.
+[04:47:19 - 04:47:20] Scar?
+[04:47:20 - 04:47:21] If it's not from mana.
+[04:47:22 - 04:47:29] If it's not from like uh, if it's not from springboard, it's one of those.
+[04:47:29 - 04:47:30] From the starboard.
+[04:47:30 - 04:47:31] Uh, maybe.
+[04:47:31 - 04:47:32] Parang ganun.
+[04:47:32 - 04:47:33] Kasi parang it's something.
+[04:47:33 - 04:47:44] We could, uh, uh, we could learn more about those things.
+[04:47:44 - 04:47:45] Uh, next pony.
+[04:47:45 - 04:47:50] Parang may ibang thing na magdi-distinguish kung alin sila talaga.
+[04:47:50 - 04:47:54] But this is action chart.
+[04:47:54 - 04:47:57] It's familiar with Llewyn Moller.
+[04:47:57 - 04:48:00] I'll say Llewyn Moller yung nagaan sa mga stars.
+[04:48:00 - 04:48:05] Those are relics from Llewyn Moller.
+[04:48:05 - 04:48:06] Thank you.
+[04:48:06 - 04:48:09] Oh, you want it back?
+[04:48:09 - 04:48:10] Yes.
+[04:48:10 - 04:48:11] Very nice.
+[04:48:11 - 04:48:12] Thank you.
+[04:48:12 - 04:48:13] Cheeky little elves.
+[04:48:13 - 04:48:16] But sure, there may perhaps be more.
+[04:48:16 - 04:48:17] No.
+[04:48:17 - 04:48:18] These kinds of things.
+[04:48:18 - 04:48:18] No.
+[04:48:18 - 04:48:19] There's more like that.
+[04:48:19 - 04:48:22] But uh, there's also these things.
+[04:48:22 - 04:48:23] So she flips her bag like that.
+[04:48:23 - 04:48:23] And then she flips it back.
+[04:48:23 - 04:48:23] Oh, it's a big thing.
+[04:48:23 - 04:48:24] What is it?
+[04:48:24 - 04:48:25] Are you talking about those dies?
+[04:48:25 - 04:48:26] Those glass bottles of the family.
+[04:48:26 - 04:48:27] Oh, it's a big thing.
+[04:48:46 - 04:48:47] What is it?
+[04:48:47 - 04:48:49] Are you talking about those dies?
+[04:48:49 - 04:48:52] Those glass bottles of the family.
+[04:48:52 - 04:48:59] When you open it, it kind of teleports you to a certain time and situation.
+[04:48:59 - 04:49:00] Oh, it's a big thing.
+[04:49:01 - 04:49:02] You remember that, right?
+[04:49:01 - 04:49:10] Yes, the ones when you sniff it, it's like somebody's memory that you were able to leave it out in front of you.
+[04:49:10 - 04:49:13] Yes, something like that.
+[04:49:13 - 04:49:26] It would be nice to be able to make something like that, so that I would actually show you how it is.
+[04:49:26 - 04:49:44] That is an old way to get thoughts or memories, in case a memory or thoughts is an old way.
+[04:49:44 - 04:49:52] As of now, we changed to Red's papers piece.
+[04:49:52 - 04:50:09] It could be possible that it was an unquote thought spell and then put it in those glass pieces.
+[04:50:13 - 04:50:18] But you mentioned Pixies in that place, right? We could ask them now.
+[04:50:18 - 04:50:22] I assume they're quick for 10 Pixies.
+[04:50:22 - 04:50:29] Hmm, interesting. Well, we'll find out once we get them.
+[04:50:31 - 04:50:35] Alright, so Fina, we'll go to you, lucky bastards.
+[04:50:35 - 04:50:40] So who's going to be in the Eastenton?
+[04:50:40 - 04:50:41] Me!
+[04:50:41 - 04:50:45] I'll take this job happily.
+[04:50:46 - 04:50:57] As followers of the Great Directed One, we are compelled to join in the meatless Oscars.
+[04:50:57 - 04:50:59] We're enough.
+[04:50:59 - 04:51:01] Yes, the Triumvir.
+[04:51:01 - 04:51:03] I don't trust you.
+[04:51:03 - 04:51:05] Eh? What?
+[04:51:05 - 04:51:07] We need more people.
+[04:51:09 - 04:51:11] Why don't you bring that poplar?
+[04:51:11 - 04:51:12] Yeah!
+[04:51:12 - 04:51:12] No!
+[04:51:12 - 04:51:14] Yeah, no.
+[04:51:14 - 04:51:16] They come in a package deal.
+[04:51:16 - 04:51:17] No!
+[04:51:18 - 04:51:25] She has a curse that's attached to her.
+[04:51:25 - 04:51:29] Yeah, she has two curse attached on her front.
+[04:51:30 - 04:51:31] No, no, no.
+[04:51:31 - 04:51:32] She has a bigger curse.
+[04:51:32 - 04:51:33] Oh, you mean Oliver?
+[04:51:33 - 04:51:34] Yeah.
+[04:51:34 - 04:51:35] Yeah!
+[04:51:35 - 04:51:39] If poplar will go, Oliver is going to bring my wife in there.
+[04:51:39 - 04:51:41] I got to go with you.
+[04:51:41 - 04:51:46] And then we're going to have the two brothers, like, fucking fight.
+[04:51:46 - 04:51:48] Now!
+[04:51:48 - 04:51:53] Oh, alright.
+[04:51:53 - 04:51:58] I was just recommending stuff, alright?
+[04:51:59 - 04:52:01] The worst thing is they're probably going to fuck.
+[04:52:01 - 04:52:03] Ugh!
+[04:52:04 - 04:52:06] Nobody wants to see you.
+[04:52:06 - 04:52:10] And they're going to be, well, let's breed, let's mate.
+[04:52:10 - 04:52:12] Fucking elves.
+[04:52:12 - 04:52:15] Not even an elf, it's an elf.
+[04:52:15 - 04:52:20] Why don't they say it straight in the face that we're going to have sex?
+[04:52:20 - 04:52:22] What it has to be mating?
+[04:52:22 - 04:52:24] I don't understand.
+[04:52:24 - 04:52:26] Do you understand it, Edwin?
+[04:52:27 - 04:52:29] I haven't fucked with an elf before.
+[04:52:29 - 04:52:30] I don't know, she says.
+[04:52:30 - 04:52:32] Ugh.
+[04:52:32 - 04:52:38] Well, I mean, technically you had sex with, like, some, right?
+[04:52:38 - 04:52:40] Apparently he's an elf now.
+[04:52:40 - 04:52:44] Oh, he's, no, he's not, he's not an elf before when we mate.
+[04:52:44 - 04:52:45] I was turning into an elf after, in that situation.
+[04:52:45 - 04:52:46] But you're with Dorothy and Lord Eastleton, right?
+[04:52:46 - 04:52:47] I can stand there.
+[04:52:47 - 04:52:48] I'd like to see Dottie have sex.
+[04:52:48 - 04:52:49] I don't have a problem.
+[04:52:49 - 04:52:50] That's really cute to tell her that her name is Dottie, because she gets really angry.
+[04:52:50 - 04:52:51] And it's really cute to tell her that her name is Dottie, because she gets really angry.
+[04:52:53 - 04:52:54] And it's cute.
+[04:52:54 - 04:52:55] Yeah, she has that, like, fang.
+[04:52:55 - 04:52:56] Yeah.
+[04:52:56 - 04:52:57] And it's really cute to tell her that her name is Dottie, because she gets really angry,
+[04:52:57 - 04:52:58] and it's cute.
+[04:52:58 - 04:52:59] Yeah, she has that, like, fang.
+[04:52:59 - 04:53:00] Yeah.
+[04:53:00 - 04:53:01] It's really cute to tell her that her name is Dottie, because she gets really angry, and it's
+[04:53:01 - 04:53:02] cute.
+[04:53:02 - 04:53:03] Yeah, she has that, like, fang.
+[04:53:03 - 04:53:19] And it's really cute to tell her that her name is Dottie, because she gets really angry,
+[04:53:19 - 04:53:20] and it's cute.
+[04:53:20 - 04:53:21] Yeah, she has that, like, fang.
+[04:53:23 - 04:53:28] That's her selling point.
+[04:53:28 - 04:53:29] It is.
+[04:53:29 - 04:53:34] And Guillermo is gonna be there.
+[04:53:34 - 04:53:36] Oh shit, yeah, I forgot about Guillermo.
+[04:53:36 - 04:53:39] You have to.
+[04:53:39 - 04:53:40] Ines said to me.
+[04:53:40 - 04:53:42] Ah, there's no one here in Ines, right?
+[04:53:42 - 04:53:43] Yeah.
+[04:53:43 - 04:53:50] So he said, well, we gotta rescue her as well, or Ines will ruin us.
+[04:53:51 - 04:53:55] Yeah, I mean, like, Guillermo has this thing of Eglo.
+[04:53:55 - 04:53:57] Ah, so what about bring Sensodyne with you?
+[04:53:57 - 04:53:59] Shit, yeah.
+[04:53:59 - 04:54:00] Fuck.
+[04:54:02 - 04:54:03] All right, yeah.
+[04:54:03 - 04:54:03] It's not settled.
+[04:54:03 - 04:54:03] Yeah, that's enough, Hedwig.
+[04:54:03 - 04:54:15] I'm very confident that we can shave everyone in Eastenton.
+[04:54:15 - 04:54:16] Yeah.
+[04:54:16 - 04:54:17] Sensodyne is great.
+[04:54:17 - 04:54:19] Yeah, we can shave everyone in Eastenton for sure.
+[04:54:19 - 04:54:20] Hey, hey, hey, hey.
+[04:54:20 - 04:54:21] Kinda excited to do this.
+[04:54:21 - 04:54:22] She says.
+[04:54:22 - 04:54:23] Oh yeah.
+[04:54:23 - 04:54:32] Hehehe! Kinda excited to do this! She says. Oh yeah!
+[04:54:32 - 04:54:34] What do you mean?
+[04:54:34 - 04:54:37] I love it!
+[04:54:37 - 04:54:41] I love how we put the ball!
+[04:54:48 - 04:54:51] Anyone? Thank you.
+[04:54:51 - 04:54:55] Like I said, we're willing to help you as much as we can.
+[04:54:55 - 04:54:58] We have to give you some resources.
+[04:54:58 - 04:55:02] We have a couple of teleportation scrolls.
+[04:55:02 - 04:55:05] It's up to you guys. How would you use it?
+[04:55:05 - 04:55:09] We have five.
+[04:55:09 - 04:55:12] We have sending stones.
+[04:55:12 - 04:55:16] But I already give them to Minfilia.
+[04:55:16 - 04:55:18] Yeah.
+[04:55:18 - 04:55:23] One of them is with Miya, but Miya isn't answering.
+[04:55:23 - 04:55:27] Well, if we have teleportation scrolls...
+[04:55:27 - 04:55:28] Uh...
+[04:55:28 - 04:55:30] Who is it?
+[04:55:30 - 04:55:35] Maybe it would be unnecessary for us to, like...
+[04:55:35 - 04:55:38] Try to take a ship towards the Maltrux?
+[04:55:38 - 04:55:41] Maybe we can just teleport there?
+[04:55:41 - 04:55:44] I don't think I can cast it though.
+[04:55:44 - 04:55:47] But, I mean, I could use something that's familiar to me.
+[04:55:47 - 04:55:49] Take the ship, what ship?
+[04:55:49 - 04:55:54] No, it's of riding a ship and trying to look for a home.
+[04:55:54 - 04:55:56] If we still have teleportation scrolls...
+[04:55:56 - 04:55:57] Hmm.
+[04:55:57 - 04:55:58] Alright.
+[04:55:58 - 04:55:59] I'll lend you, uh...
+[04:56:00 - 04:56:01] Rose and Miley.
+[04:56:01 - 04:56:02] I can't...
+[04:56:03 - 04:56:04] I can't even...
+[04:56:06 - 04:56:07] I can't...
+[04:56:07 - 04:56:08] I can't even...
+[04:56:09 - 04:56:11] If we still have teleportation scrolls...
+[04:56:11 - 04:56:12] We could...
+[04:56:12 - 04:56:13] I can't even...
+[04:56:13 - 04:56:14] We could...
+[04:56:14 - 04:56:15] I could...
+[04:56:15 - 04:56:16] Lend you a help.
+[04:56:16 - 04:56:17] Maybe, uh...
+[04:56:17 - 04:56:18] I could...
+[04:56:18 - 04:56:19] I could, uh...
+[04:56:20 - 04:56:22] Cast teleportation myself.
+[04:56:22 - 04:56:23] Alright.
+[04:56:23 - 04:56:24] And then...
+[04:56:24 - 04:56:25] I...
+[04:56:25 - 04:56:26] All I have to do is, like...
+[04:56:26 - 04:56:27] Share...
+[04:56:27 - 04:56:28] Uh...
+[04:56:28 - 04:56:30] Something familiar or memory of the place?
+[04:56:30 - 04:56:31] Uh...
+[04:56:31 - 04:56:32] Because...
+[04:56:32 - 04:56:33] Well...
+[04:56:33 - 04:56:34] The Maltrex are my home.
+[04:56:34 - 04:56:37] I suppose we can teleport directly into my room.
+[04:56:37 - 04:56:38] Even.
+[04:56:38 - 04:56:43] We're kind of reckless, you know that?
+[04:56:43 - 04:56:44] Yes.
+[04:56:44 - 04:56:45] Well...
+[04:56:45 - 04:56:46] It's just an option.
+[04:56:46 - 04:56:47] There are other...
+[04:56:47 - 04:56:50] Places outside the castle that we can teleport to.
+[04:56:50 - 04:56:51] Uh...
+[04:56:51 - 04:56:52] John.
+[04:56:52 - 04:56:53] He says.
+[04:56:53 - 04:56:55] Is there, like, uh...
+[04:56:55 - 04:56:57] Kind of, like, a safe place?
+[04:56:57 - 04:56:58] Like, uh...
+[04:56:58 - 04:57:00] Least them all away from your...
+[04:57:00 - 04:57:01] You gotta...
+[04:57:01 - 04:57:02] You gotta see...
+[04:57:02 - 04:57:03] I mean...
+[04:57:03 - 04:57:06] Let's assume that your father is in the wolf's den.
+[04:57:06 - 04:57:07] Right.
+[04:57:08 - 04:57:09] And all of the court...
+[04:57:09 - 04:57:10] His court...
+[04:57:10 - 04:57:11] Servants.
+[04:57:11 - 04:57:14] And, of course, that would exclude anything like...
+[04:57:14 - 04:57:15] Barracks...
+[04:57:15 - 04:57:16] Because that could be...
+[04:57:16 - 04:57:17] Yeah.
+[04:57:17 - 04:57:18] I suggest...
+[04:57:18 - 04:57:20] And, of course, churches are a big question mark.
+[04:57:20 - 04:57:21] Yeah.
+[04:57:21 - 04:57:22] I...
+[04:57:22 - 04:57:23] Look, John.
+[04:57:23 - 04:57:25] He says that they teleport somewhere near.
+[04:57:25 - 04:57:26] And...
+[04:57:26 - 04:57:27] Disguised.
+[04:57:27 - 04:57:28] Right.
+[04:57:28 - 04:57:29] You gotta disguise, man.
+[04:57:29 - 04:57:30] He says.
+[04:57:30 - 04:57:31] Then...
+[04:57:31 - 04:57:33] Because if you're not disguised, they're gonna be, like...
+[04:57:33 - 04:57:34] Very offensive.
+[04:57:34 - 04:57:35] And, uh...
+[04:57:35 - 04:57:36] Aggressive.
+[04:57:36 - 04:57:37] And, uh...
+[04:57:37 - 04:57:39] Because they know what...
+[04:57:39 - 04:57:40] They will know.
+[04:57:40 - 04:57:41] What will happen...
+[04:57:41 - 04:57:43] What happened to your mother.
+[04:57:43 - 04:57:44] That, uh...
+[04:57:44 - 04:57:45] Spell...
+[04:57:45 - 04:57:46] Uh...
+[04:57:46 - 04:57:47] You know what...
+[04:57:47 - 04:57:48] You know what I mean.
+[04:57:48 - 04:57:49] He says.
+[04:57:49 - 04:57:50] For some reason...
+[04:57:50 - 04:57:51] It would be...
+[04:57:51 - 04:57:53] It would be bad to assume that they still don't know about this.
+[04:57:53 - 04:57:54] Yeah.
+[04:57:54 - 04:57:57] For some reason, the Reformist Church has that knowledge.
+[04:57:57 - 04:57:59] When we slayed, uh...
+[04:57:59 - 04:58:04] Isana Wilburton, the others notified of that.
+[04:58:04 - 04:58:05] He says.
+[04:58:05 - 04:58:08] Well...
+[04:58:08 - 04:58:09] That...
+[04:58:09 - 04:58:13] In that case, I kinda believed that she might be a honeypot.
+[04:58:13 - 04:58:15] I mean, he's a simulacrum, right?
+[04:58:15 - 04:58:16] Yeah.
+[04:58:16 - 04:58:17] But maybe...
+[04:58:17 - 04:58:18] I think it was like a...
+[04:58:18 - 04:58:19] A beacon or something.
+[04:58:19 - 04:58:20] No.
+[04:58:20 - 04:58:21] Uh...
+[04:58:21 - 04:58:22] Oscar, listen.
+[04:58:22 - 04:58:23] Maybe...
+[04:58:23 - 04:58:24] They will...
+[04:58:24 - 04:58:26] Think that your mother...
+[04:58:26 - 04:58:27] Is dead.
+[04:58:27 - 04:58:30] Oh...
+[04:58:30 - 04:58:31] Shit.
+[04:58:31 - 04:58:32] Yeah.
+[04:58:32 - 04:58:33] That...
+[04:58:33 - 04:58:34] Somebody killed her.
+[04:58:34 - 04:58:35] Someone killed her.
+[04:58:35 - 04:58:37] Cause that's what they know about Isana, right?
+[04:58:37 - 04:58:38] That...
+[04:58:38 - 04:58:39] We killed her.
+[04:58:39 - 04:58:40] Or something like that.
+[04:58:41 - 04:58:42] Maybe that's what they think.
+[04:58:42 - 04:58:44] Maybe that's how they know.
+[04:58:44 - 04:58:45] Like...
+[04:58:45 - 04:58:46] Yeah.
+[04:58:46 - 04:58:47] Cause once the...
+[04:58:47 - 04:58:48] When the parasite dies...
+[04:58:48 - 04:58:49] Yeah.
+[04:58:48 - 04:58:54] is like it's like cut away right isn't that how it works if you're still asleep what the fuck
+[04:58:54 - 04:59:07] but her parasite is alive right well it's been removed from her head so does that mean it's
+[04:59:07 - 04:59:16] automatic or dead no i mean we've been like i suggest you have this uh you infiltrate the castle
+[04:59:17 - 04:59:25] go to your father like secretly disguise yourself that's what i am suggesting no no you're right
+[04:59:25 - 04:59:34] yeah well then a mile away from the castle there there are places there there there there's a small
+[04:59:34 - 04:59:38] settlement mile away uh cold
+[04:59:47 - 04:59:54] cracks more all right then you know all right well you talk about this yourself
+[04:59:54 - 05:00:02] and bram's gate uh lily are you sure you don't want any of our men be there
+[05:00:10 - 05:00:16] also uh we gotta deal with the erotic war against hitlans
+[05:00:16 - 05:00:25] wins as much as i do that's gonna be angel
+[05:00:25 - 05:00:35] well angel has something that is more pressing at the moment those stories and she has to get them
+[05:00:35 - 05:00:41] here for the reformists well they have two of them now because of that mark
+[05:00:41 - 05:00:45] bastard
+[05:00:45 - 05:00:57] if we were to bring some people to the land marches someone has to introduce them to the command inspector
+[05:00:59 - 05:01:00] if in that case
+[05:01:00 - 05:01:06] what if we're going to be dealing with the rannick situation
+[05:01:06 - 05:01:11] sooner rather than later as well i think we can split
+[05:01:11 - 05:01:18] mark away from your group john at least in the meantime unfortunately
+[05:01:19 - 05:01:26] because somebody has to tell your father or some angel's father or any of her brothers
+[05:01:26 - 05:01:34] we can still bring in angel there it's his father right it is also
+[05:01:35 - 05:01:45] something that we can do once we get this one to bring in the front of me if we're able to do this
+[05:01:45 - 05:01:50] after the front of me there is a rally
+[05:01:55 - 05:02:09] to spell just
+[05:02:09 - 05:02:12] we can do this this way uh friends he says
+[05:02:12 - 05:02:23] after freeing the father of this uh the maltrait father we could send them here and
+[05:02:23 - 05:02:25] uh
+[05:02:25 - 05:02:32] we still have the mother the mother of the thrones yeah no no no no no what i mean is we could uh
+[05:02:32 - 05:02:44] how many brothers have uh angel has she has um she has two brothers two sisters
+[05:02:46 - 05:02:51] so the eldest one is working
+[05:02:51 - 05:02:59] at the university well somebody gotta tell him he says he is the port wizard that i talked
+[05:02:59 - 05:03:05] about he is the one that i am communication with so you can like talk to him that is why i'm i
+[05:03:05 - 05:03:34] mentioned that once the Ratterbury situation is solved, I can dispatch him. All right. But he is necessary for us right now. All right. So she says, the only one that I can trust to do the Rannick business is also the Rannick girl, Angel. He has every right to do this, she says.
+[05:03:34 - 05:03:53] Her second brother, Lance, as far as Angel had mentioned, is also on a way to reinforce her father. And that Guinevere too. They could like fucking fight for their lives.
+[05:04:04 - 05:04:12] She was in the midst of the fighting. She was moved away from it, while her husband, a Maidenfeld, continued to fight in that early.
+[05:04:12 - 05:04:13] All right.
+[05:04:13 - 05:04:34] So perhaps someone could communicate with her. She knows a number of people there. She does have some influence in the Maiden's fields where the battle is happening. So those are the options we have.
+[05:04:34 - 05:04:39] Brasta will be there, right?
+[05:04:39 - 05:04:41] Yeah, maybe we can just send him alone.
+[05:04:41 - 05:04:42] Yeah.
+[05:04:43 - 05:04:46] That's her Brasta. Easy, you scum.
+[05:04:46 - 05:04:51] We can send him alone and like arm him first.
+[05:04:51 - 05:04:52] Yeah.
+[05:04:53 - 05:04:55] I can give him all the fucking magic items he wants.
+[05:04:55 - 05:05:06] I see some- I see these erotic children. I see at least Angel and Guinevere. It's a good, strong relationship. Maybe the others has that too. Maybe they could free themselves from this misery. And they could like sway the forefathers that they're fighting for. Their fights are unnecessary right now. At the moment.
+[05:05:06 - 05:05:22] They could be capable of that. We could send one though. So are you saying that this has to be dealt with before she continues looking for the thorns? Yes. Let them plan.
+[05:05:22 - 05:05:49] So are you saying that this has to be dealt with before she continues looking for the thorns? Yes. Let them plan, he says. I suppose it could be an option for them for sure. We could send one strong person that could be interested in this shit bullshit.
+[05:05:49 - 05:06:16] Who's that, who's that, who's that fucking tall elf that you brought here with us? With you, Hedwig? Hmm, tall elf? Are you talking about that fucking, like, gay guy? Oh, you mean Hellion? Yeah. Yeah. I, you know, I sent something from him. I mean, not his boner, alright?
+[05:06:16 - 05:06:32] I smell gay guy. Yeah, I smell his, like, his stinks of gayness. Maybe you could bring him with you. Bring him to there. I mean, he's not doing anything around.
+[05:06:32 - 05:06:44] Well, he needs the money. Maybe he could, uh, beg for money from, uh, the, the runnicks? Yeah.
+[05:06:44 - 05:07:07] Yeah. Yeah. Yes. Maybe Hellion could, uh, you know, let's give this Braslop some hard work. Maybe Hellion could, uh, like, uh, you know, seduce Braslop, right? He's gay, right?
+[05:07:07 - 05:07:26] He's gay, right? I don't understand what's in your thoughts, but this book is really nice, he says.
+[05:07:26 - 05:07:28] "Rose, he has a good dice inbox," she says.
+[05:07:33 - 05:07:34] "Rose, he goes."
+[05:07:34 - 05:07:35] "All right."
+[05:07:36 - 05:07:49] Ah, it's going to be a phantom of the night.
+[05:07:49 - 05:07:53] Yeah, it's going to be a phantom of the night.
+[05:07:53 - 05:07:54] She says.
+[05:07:54 - 05:07:55] She goes.
+[05:07:55 - 05:07:56] Alright.
+[05:07:56 - 05:07:57] She says.
+[05:07:57 - 05:07:58] Alright.
+[05:07:58 - 05:08:10] So, worse than you, worse than you, the latest issue of Minecraft.
+[05:08:10 - 05:08:13] And, uh, the Legally Bear.
+[05:08:13 - 05:08:14] Legally Bear, yeah.
+[05:08:14 - 05:08:15] More importantly.
+[05:08:15 - 05:08:19] Oh, it's on the table over there.
+[05:08:19 - 05:08:23] I want to see these new models that you guys are talking about.
+[05:08:23 - 05:08:27] You got like three new ones, right?
+[05:08:27 - 05:08:32] Yeah, um, Miss Teen got them.
+[05:08:32 - 05:08:37] Just, uh, she won't tell me where they came from.
+[05:08:37 - 05:08:41] And she, you know her, he says.
+[05:08:41 - 05:08:45] But apparently, one of them is, uh, this Angel of God.
+[05:08:43 - 05:08:49] One of them is this Angel of the Light, she's from Cenera, Hedling says.
+[05:08:49 - 05:08:51] Yeah, we have a good idea.
+[05:08:51 - 05:08:55] And this Merwin is from Cenera as well.
+[05:08:55 - 05:09:00] So this is like a cosplayer, cosplayer little girl.
+[05:09:00 - 05:09:01] That is an L.
+[05:09:01 - 05:09:03] Merwin, we've already seen it.
+[05:09:03 - 05:09:05] Not Merwin.
+[05:09:05 - 05:09:07] You haven't even seen it yet.
+[05:09:07 - 05:09:09] I've already mentioned it.
+[05:09:09 - 05:09:13] I've already seen it in the list.
+[05:09:13 - 05:09:21] So at least I know that the Angel of the Light and Merwin is from Cenera.
+[05:09:21 - 05:09:23] It's your...
+[05:09:23 - 05:09:29] Maybe you've...
+[05:09:29 - 05:09:30] What's the name?
+[05:09:30 - 05:09:31] I don't know if...
+[05:09:31 - 05:09:33] So this is Hedwig talking.
+[05:09:33 - 05:09:35] I don't know if there are...
+[05:09:35 - 05:09:35] Have you seen...
+[05:09:35 - 05:09:37] Have you seen them or anything?
+[05:09:37 - 05:09:39] But I'm not really sure.
+[05:09:39 - 05:09:45] This tree one is...
+[05:09:45 - 05:09:47] So she...
+[05:09:47 - 05:09:48] So...
+[05:09:48 - 05:09:49] You see her stand up.
+[05:09:49 - 05:09:53] And there's a small table there that has a spread of the magazines.
+[05:09:53 - 05:09:55] Marami.
+[05:09:55 - 05:09:57] And then the spread of the magazines.
+[05:09:57 - 05:09:59] Then the...
+[05:09:59 - 05:10:01] Yeah, the magazines.
+[05:10:01 - 05:10:03] There's a calling card.
+[05:10:04 - 05:10:05] There's a business card.
+[05:10:05 - 05:10:07] Of the management.
+[05:10:07 - 05:10:08] MGMT.
+[05:10:08 - 05:10:10] The management.
+[05:10:10 - 05:10:12] And she says...
+[05:10:12 - 05:10:13] Oh!
+[05:10:13 - 05:10:14] Here!
+[05:10:14 - 05:10:15] Oscar.
+[05:10:15 - 05:10:16] Where's she?
+[05:10:16 - 05:10:17] She's writing.
+[05:10:17 - 05:10:18] So...
+[05:10:18 - 05:10:20] Oscar, you already know about Mia Kapdal, right?
+[05:10:20 - 05:10:21] Yep.
+[05:10:21 - 05:10:22] This is a new...
+[05:10:22 - 05:10:22] Latest issue.
+[05:10:22 - 05:10:23] Uh...
+[05:10:23 - 05:10:24] So...
+[05:10:24 - 05:10:25] Uh...
+[05:10:25 - 05:10:26] So...
+[05:10:26 - 05:10:27] Oscar.
+[05:10:27 - 05:10:28] You already know about Mia Kapdal, right?
+[05:10:28 - 05:10:29] Yep.
+[05:10:29 - 05:10:30] Uh...
+[05:10:30 - 05:10:31] This is a new...
+[05:10:31 - 05:10:32] Latest issue.
+[05:10:32 - 05:10:33] Uh...
+[05:10:33 - 05:10:34] So...
+[05:10:34 - 05:10:35] Mia is...
+[05:10:35 - 05:10:36] Like...
+[05:10:36 - 05:10:37] Parang...
+[05:10:37 - 05:10:39] This is very interesting.
+[05:10:39 - 05:10:40] That latest issue that they did.
+[05:10:40 - 05:10:41] So...
+[05:10:41 - 05:10:42] Uh...
+[05:10:42 - 05:10:43] This issue is like...
+[05:10:43 - 05:10:44] Uh...
+[05:10:44 - 05:10:45] The Legally Bare...
+[05:10:45 - 05:10:45] Uh...
+[05:10:45 - 05:10:46] Girls are like...
+[05:10:46 - 05:10:47] Uh...
+[05:10:47 - 05:10:48] In their daily...
+[05:10:48 - 05:10:49] Kind of like...
+[05:10:49 - 05:10:50] Parang daily...
+[05:10:50 - 05:10:51] Life.
+[05:10:51 - 05:10:52] So...
+[05:10:52 - 05:10:53] This is Mia...
+[05:10:53 - 05:10:54] Kind of like...
+[05:10:54 - 05:10:55] Parang...
+[05:10:55 - 05:10:56] Studying.
+[05:10:56 - 05:10:57] And she was like...
+[05:10:57 - 05:10:58] Writing some...
+[05:10:58 - 05:10:59] Uh...
+[05:10:59 - 05:11:00] Reading some books.
+[05:11:00 - 05:11:01] But...
+[05:11:01 - 05:11:02] Using...
+[05:11:02 - 05:11:03] Something like that.
+[05:11:03 - 05:11:04] And...
+[05:11:04 - 05:11:04] Uh...
+[05:11:04 - 05:11:05] Angel of Delight is sleeping.
+[05:11:05 - 05:11:06] And...
+[05:11:06 - 05:11:07] She was sleeping...
+[05:11:07 - 05:11:08] Uh...
+[05:11:08 - 05:11:09] Kind of like...
+[05:11:09 - 05:11:10] Uh...
+[05:11:10 - 05:11:12] She looks like she's sleeping.
+[05:11:12 - 05:11:13] And she's in a lingerie.
+[05:11:13 - 05:11:14] And...
+[05:11:14 - 05:11:15] Uh...
+[05:11:15 - 05:11:16] Her pillow is a lock.
+[05:11:16 - 05:11:17] With a...
+[05:11:17 - 05:11:18] Like a hard kick on her.
+[05:11:18 - 05:11:19] Apang...
+[05:11:19 - 05:11:21] And this...
+[05:11:21 - 05:11:22] Cinnamon.
+[05:11:22 - 05:11:23] Uh...
+[05:11:25 - 05:11:26] She is like...
+[05:11:26 - 05:11:27] Uh...
+[05:11:28 - 05:11:29] Parang...
+[05:11:29 - 05:11:30] Uh...
+[05:11:31 - 05:11:31] Kind of like...
+[05:11:31 - 05:11:32] Parang...
+[05:11:32 - 05:11:33] So...
+[05:11:33 - 05:11:34] She likes makeup.
+[05:11:34 - 05:11:35] And she is in her...
+[05:11:35 - 05:11:36] Like...
+[05:11:36 - 05:11:36] Uh...
+[05:11:36 - 05:11:37] School uniform.
+[05:11:37 - 05:11:38] And...
+[05:11:38 - 05:11:39] She is looking at the mirror.
+[05:11:39 - 05:11:40] And you see her...
+[05:11:40 - 05:11:41] Kind of like...
+[05:11:41 - 05:11:42] Putting a...
+[05:11:42 - 05:11:43] Parang...
+[05:11:43 - 05:11:44] On her lips.
+[05:11:44 - 05:11:45] Like a lipstick.
+[05:11:45 - 05:11:46] So...
+[05:11:46 - 05:11:47] Parang yung mga...
+[05:11:47 - 05:11:48] Daily life nila...
+[05:11:48 - 05:11:49] Is attributed to...
+[05:11:49 - 05:11:50] Kind of like...
+[05:11:50 - 05:11:51] Parang mga...
+[05:11:51 - 05:11:52] Yung mga...
+[05:11:52 - 05:11:53] Things of like...
+[05:11:53 - 05:11:54] That includes in their daily life...
+[05:11:54 - 05:11:55] Are like...
+[05:11:55 - 05:11:56] Cocks.
+[05:11:56 - 05:11:57] And dicks.
+[05:11:57 - 05:11:58] Uh...
+[05:11:58 - 05:11:59] Not calling.
+[05:11:59 - 05:12:00] Ah...
+[05:12:00 - 05:12:01] Meron sya na.
+[05:12:01 - 05:12:02] Yung...
+[05:12:02 - 05:12:03] Si Merwen naman...
+[05:12:03 - 05:12:05] She is a charm maker.
+[05:12:05 - 05:12:06] So...
+[05:12:06 - 05:12:07] Nag...
+[05:12:08 - 05:12:09] Ano sya...
+[05:12:09 - 05:12:10] Nagka-craft sya ng mga charms.
+[05:12:10 - 05:12:11] Plus...
+[05:12:11 - 05:12:13] May mga friendship bracelets sya na pinamigay.
+[05:12:13 - 05:12:17] Okay.
+[05:12:17 - 05:12:18] So...
+[05:12:18 - 05:12:19] While she is creating charms...
+[05:12:19 - 05:12:20] Uh...
+[05:12:20 - 05:12:21] She has a...
+[05:12:21 - 05:12:22] Kind of like...
+[05:12:22 - 05:12:23] Parang...
+[05:12:23 - 05:12:24] Deep throat in her.
+[05:12:24 - 05:12:25] Like...
+[05:12:25 - 05:12:26] This is an...
+[05:12:26 - 05:12:27] Elven girl.
+[05:12:27 - 05:12:28] Parang...
+[05:12:28 - 05:12:30] Elf sya na maliit ng bae.
+[05:12:30 - 05:12:31] And...
+[05:12:31 - 05:12:32] Meron sa kanyang...
+[05:12:32 - 05:12:33] So yung mga paintings niya...
+[05:12:33 - 05:12:34] Elf.
+[05:12:35 - 05:12:36] Yeah.
+[05:12:36 - 05:12:37] May mga...
+[05:12:37 - 05:12:38] May nakabulge na...
+[05:12:38 - 05:12:39] Dito sa...
+[05:12:39 - 05:12:41] And this is the new models.
+[05:12:41 - 05:12:42] This is...
+[05:12:42 - 05:12:43] Eto Pirika.
+[05:12:43 - 05:12:45] Pirika yung name nya.
+[05:12:45 - 05:12:46] She is...
+[05:12:46 - 05:12:48] She is wearing a swimsuit.
+[05:12:48 - 05:12:49] P-i-r-i-k-a.
+[05:12:49 - 05:12:50] Ito Pirika.
+[05:12:51 - 05:12:52] P-i-r-i-k-a.
+[05:12:52 - 05:12:53] Ito Pirika.
+[05:12:53 - 05:12:54] P-i-r-i-k-a.
+[05:12:54 - 05:12:55] Ito Pirika.
+[05:12:55 - 05:12:56] P-i-r-i-k-a.
+[05:13:02 - 05:13:03] She is wearing a swimsuit.
+[05:13:03 - 05:13:04] And...
+[05:13:04 - 05:13:05] So instead of like...
+[05:13:05 - 05:13:06] Nakadapa siyang ganun.
+[05:13:06 - 05:13:07] And...
+[05:13:07 - 05:13:08] Of course...
+[05:13:08 - 05:13:09] Instead of like...
+[05:13:09 - 05:13:10] Sunscreen.
+[05:13:10 - 05:13:11] Pinaparid sa likod niya eh.
+[05:13:11 - 05:13:12] You know what it is.
+[05:13:12 - 05:13:13] And si Juna.
+[05:13:13 - 05:13:14] Ballerina.
+[05:13:14 - 05:13:16] So itong ballerina na to eh...
+[05:13:16 - 05:13:17] Nakastretch na pataas.
+[05:13:17 - 05:13:18] Nakasplit siya.
+[05:13:18 - 05:13:20] And si Juna.
+[05:13:20 - 05:13:21] Ballerina.
+[05:13:21 - 05:13:25] So itong ballerina na to eh...
+[05:13:25 - 05:13:28] Nakastretch na pataas.
+[05:13:28 - 05:13:29] Nakasplit siya.
+[05:13:29 - 05:13:30] Juna.
+[05:13:30 - 05:13:33] Nakastretch siya pataas na ganun.
+[05:13:33 - 05:13:34] Human to ha.
+[05:13:34 - 05:13:36] And she is like...
+[05:13:36 - 05:13:38] Parang nakasplit siya pataas.
+[05:13:38 - 05:13:41] And her instructor is a guy.
+[05:13:41 - 05:13:42] Apparently.
+[05:13:42 - 05:13:43] But you don't...
+[05:13:43 - 05:13:45] They don't show the face of the male.
+[05:13:45 - 05:13:47] Yung member lang niya.
+[05:13:47 - 05:13:48] But there's a member.
+[05:13:48 - 05:13:49] Kind of like...
+[05:13:49 - 05:13:50] Poping in here.
+[05:13:50 - 05:13:52] And the last one is...
+[05:13:52 - 05:13:53] FEN.
+[05:13:54 - 05:13:56] Si FEN.
+[05:13:56 - 05:13:57] F-E-N.
+[05:13:57 - 05:14:00] FEN the Explorer.
+[05:14:00 - 05:14:01] So...
+[05:14:01 - 05:14:03] FEN the Explorer is...
+[05:14:03 - 05:14:04] Kind of like...
+[05:14:04 - 05:14:05] In the view of...
+[05:14:05 - 05:14:06] Sinera.
+[05:14:06 - 05:14:07] Kind of like...
+[05:14:07 - 05:14:08] A heels of like that.
+[05:14:08 - 05:14:09] But she's in a balcony.
+[05:14:09 - 05:14:10] Kind of like...
+[05:14:10 - 05:14:11] Parang nakikita mo lang yung...
+[05:14:11 - 05:14:13] Nakasilip siyang ganun.
+[05:14:13 - 05:14:15] Pero yung likod niya eh...
+[05:14:15 - 05:14:16] Bare.
+[05:14:16 - 05:14:17] Nakahubad siyang ganun.
+[05:14:17 - 05:14:18] Okay.
+[05:14:18 - 05:14:19] Because you don't know...
+[05:14:19 - 05:14:21] She's sitting on somebody's lap.
+[05:14:21 - 05:14:22] Oh.
+[05:14:22 - 05:14:23] There!
+[05:14:23 - 05:14:24] She says.
+[05:14:24 - 05:14:25] Oh shit.
+[05:14:25 - 05:14:27] These new rules are fucking hot.
+[05:14:27 - 05:14:28] hot.
+[05:14:28 - 05:14:29] Yeah.
+[05:14:29 - 05:14:30] And they added some...
+[05:14:30 - 05:14:31] Things there.
+[05:14:31 - 05:14:32] I...
+[05:14:32 - 05:14:33] I haven't read them.
+[05:14:33 - 05:14:34] Actually.
+[05:14:34 - 05:14:35] That one.
+[05:14:35 - 05:14:36] Last page.
+[05:14:36 - 05:14:37] She says.
+[05:14:37 - 05:14:42] So that last page is just relationship advices from the girls.
+[05:14:42 - 05:14:43] And they added...
+[05:14:43 - 05:14:44] And they added the...
+[05:14:44 - 05:14:45] Like...
+[05:14:45 - 05:14:46] Um...
+[05:14:46 - 05:14:47] If you pay for...
+[05:14:47 - 05:14:48] If you pay certain...
+[05:14:48 - 05:14:49] Like subscription...
+[05:14:49 - 05:14:50] You can get like...
+[05:14:50 - 05:14:51] Fresh panties.
+[05:14:51 - 05:14:52] That June a ballerina is a guest one.
+[05:14:54 - 05:14:55] that June a ballerina is a guest one.
+[05:14:55 - 05:14:55] That June a ballerina is a guest one.
+[05:17:11 - 05:17:12] that June a ballerina is a guest one.
+[05:17:12 - 05:17:14] That June a ballerina is a guest one.
+[05:18:54 - 05:19:02] You could, for now, in the meantime, you could use the girl's room, but Bianca and the Bumpire Baby is there, Soleil.
+[05:19:02 - 05:19:09] She mentioned about her. I suppose she's already comfortable with her.
+[05:19:09 - 05:19:16] Yes, you have a lot of different creatures in this boat. I hope you're not uncomfortable with them.
+[05:19:17 - 05:19:21] It's an interesting experience to see.
+[05:19:21 - 05:19:25] We have a Pixie as well, but she's currently in Raybon.
+[05:19:25 - 05:19:30] And she owns a really large part of the Parvese gambling den.
+[05:19:30 - 05:19:36] I don't remember. So they're keeping that branding for now?
+[05:19:36 - 05:19:38] Yes.
+[05:19:38 - 05:19:42] I don't think, I think they changed it.
+[05:19:43 - 05:19:48] It's removed the Parvese part of it. It's still the house of pleasures or some shit.
+[05:19:48 - 05:19:57] But I think, I think Mustine is also part owner of whatever it was left behind or something.
+[05:19:57 - 05:19:59] Right?
+[05:20:00 - 05:20:05] And the Menphilia, you are part owner of the Machado estate because you married George.
+[05:20:05 - 05:20:08] Ah!
+[05:20:08 - 05:20:13] You said you got knocked up by a Machado.
+[05:20:13 - 05:20:15] Yeah!
+[05:20:16 - 05:20:18] Don't eat my baby, Edwin.
+[05:20:18 - 05:20:21] I know you've been wanting to sacrifice it to the diplo.
+[05:20:21 - 05:20:26] Anyway, uh, spirit of the diplo, I really need you to talk to him, alright?
+[05:20:26 - 05:20:31] And, uh, immediately, uh, tell me the result of that.
+[05:20:31 - 05:20:33] Alright.
+[05:20:34 - 05:20:35] Talk off.
+[05:20:35 - 05:20:37] I'm gonna read this book for now.
+[05:20:37 - 05:20:40] What time are you leaving?
+[05:20:40 - 05:20:42] I'm gonna read this.
+[05:20:42 - 05:20:44] What time are you leaving?
+[05:20:44 - 05:20:46] That's how they may hit you.
+[05:20:46 - 05:20:48] Uh, alright, um...
+[05:20:48 - 05:20:52] Ask Justin for, uh, ask Justin, I wanna see him.
+[05:20:53 - 05:20:56] When you're, uh, on your way out, uh, from John's.
+[05:20:56 - 05:20:58] Go ahead and bring John.
+[05:20:58 - 05:21:01] Let, let, let, let's let John.
+[05:21:01 - 05:21:02] John, yes, John.
+[05:21:02 - 05:21:04] Well, let the people...
+[05:21:04 - 05:21:05] Oh, a Chrome Prince!
+[05:21:05 - 05:21:07] You fancy some wine?
+[05:21:07 - 05:21:13] Oh, uh, I am trying to hold off on, uh, alcohol at the moment, but...
+[05:21:13 - 05:21:19] So, uh, you can bring them, uh, back to, uh, Senero, if you want.
+[05:21:20 - 05:21:25] I wouldn't say you know to one of those vintages that you've sent over at the last time.
+[05:21:25 - 05:21:27] I see, she says.
+[05:21:27 - 05:21:29] I have a lot of those, she says.
+[05:21:29 - 05:21:31] Just ask for a Hellion, she says.
+[05:21:31 - 05:21:35] Wait, don't you...
+[05:21:35 - 05:21:38] Why are you being so careful about wine?
+[05:21:38 - 05:21:41] I thought that you weren't, like, a factor of wine.
+[05:21:41 - 05:21:45] Oh, it's more out of solidality.
+[05:21:47 - 05:21:50] Uh, alcohol and animals, uh, Oscar.
+[05:21:50 - 05:21:53] He's a previous drunkard.
+[05:21:53 - 05:22:00] Maybe that's why he didn't marry, uh, until, uh, age 36 or something.
+[05:22:00 - 05:22:04] That's because he has a problem with alcohol.
+[05:22:04 - 05:22:06] And he has to be sober.
+[05:22:07 - 05:22:12] Like those addicts in, uh, in the Machado, I see.
+[05:22:12 - 05:22:17] I've seen them, and they talk about this solidarity thing.
+[05:22:17 - 05:22:21] You start talking to that white powder group?
+[05:22:21 - 05:22:22] Yeah.
+[05:22:22 - 05:22:25] And yeah, they talk about being sober for a long.
+[05:22:25 - 05:22:27] Maybe the French is like that.
+[05:22:27 - 05:22:28] Right, French?
+[05:22:29 - 05:22:30] No.
+[05:22:30 - 05:22:34] But it is, uh, it is an amusing, uh, thought.
+[05:22:34 - 05:22:37] I haven't been affected by alcohol for, um...
+[05:22:37 - 05:22:39] When did I get this for?
+[05:22:39 - 05:22:40] Oh, you've got it.
+[05:22:40 - 05:22:41] About 20 years now.
+[05:22:41 - 05:22:43] You've got to...
+[05:22:43 - 05:22:45] You've got to try the moonshines that are from the paywall.
+[05:22:45 - 05:22:48] Oh, I can taste them for so long.
+[05:22:48 - 05:22:51] I would like to, at some point.
+[05:22:52 - 05:22:56] But it'll be only for about a few months, and I'll be fine.
+[05:22:56 - 05:22:58] Hm, alright.
+[05:22:58 - 05:23:00] Are you pregnant?
+[05:23:00 - 05:23:05] Pregnant by Tiffany.
+[05:23:05 - 05:23:07] Oh, shit.
+[05:23:07 - 05:23:13] She turned you into a girl at one point, and she became a man.
+[05:23:13 - 05:23:15] And then fucked you.
+[05:23:15 - 05:23:16] And then got pregnant.
+[05:23:16 - 05:23:18] I mean, she's a fucking hag.
+[05:23:18 - 05:23:20] Maybe she can do all that.
+[05:23:20 - 05:23:21] And she's a shifter, right?
+[05:23:21 - 05:23:22] I mean...
+[05:23:22 - 05:23:23] So she can shift her...
+[05:23:23 - 05:23:24] Her vagina into a dick.
+[05:23:24 - 05:23:26] Well, maybe she doesn't...
+[05:23:26 - 05:23:29] He doesn't even need to change or do any kind of specials.
+[05:23:29 - 05:23:30] But she's a hag, right?
+[05:23:30 - 05:23:32] Maybe she can just do...
+[05:23:32 - 05:23:33] You're pregnant now.
+[05:23:33 - 05:23:35] And she did it to the fridge.
+[05:23:35 - 05:23:36] Yeah.
+[05:23:36 - 05:23:37] And then kinda like, you know...
+[05:23:37 - 05:23:39] Oh.
+[05:23:39 - 05:23:41] I don't think that's possible.
+[05:23:41 - 05:23:43] Don't mind this too.
+[05:23:43 - 05:23:46] Whatever.
+[05:23:46 - 05:23:47] Yeah, but where will it come out?
+[05:23:47 - 05:23:48] Are you gonna poop the baby up?
+[05:23:49 - 05:23:50] Yeah.
+[05:23:50 - 05:23:51] Who's the other pregnant people here?
+[05:23:51 - 05:23:56] Snow, she says.
+[05:23:56 - 05:23:57] Snow is coming here with Dom.
+[05:23:57 - 05:23:59] In a bit, she says.
+[05:23:59 - 05:24:01] They're gonna have a...
+[05:24:01 - 05:24:03] A painting session here.
+[05:24:03 - 05:24:06] A painting session.
+[05:24:06 - 05:24:08] Oh, speaking of fucking painting sessions, aren't we like...
+[05:24:08 - 05:24:11] We gotta get back to the Dravertine soon.
+[05:24:12 - 05:24:13] God damn it.
+[05:24:13 - 05:24:13] Who's this painter?
+[05:24:13 - 05:24:14] I mean...
+[05:24:14 - 05:24:15] Gwenevere.
+[05:24:15 - 05:24:16] Uh...
+[05:24:16 - 05:24:17] Angel Rana's sister.
+[05:24:17 - 05:24:18] She's annoying though.
+[05:24:18 - 05:24:19] She likes to stand up and don't move like...
+[05:24:19 - 05:24:20] Yeah, yeah, but I don't fucking care.
+[05:24:20 - 05:24:21] She's gonna be painting Angel and Tiffany.
+[05:24:21 - 05:24:22] Yeah, but...
+[05:24:22 - 05:24:22] Yeah, but still...
+[05:24:22 - 05:24:22] Oh shit.
+[05:24:22 - 05:24:23] I...
+[05:24:23 - 05:24:27] I mean if I can like handle all of these fucking adult women telling us to do all sorts of fucking shit, I can like...
+[05:24:27 - 05:24:28] Yeah, I hate adult women.
+[05:24:28 - 05:24:29] I hate...
+[05:24:34 - 05:24:35] Miss Teen.
+[05:24:35 - 05:24:36] I hate...
+[05:24:38 - 05:24:39] Miss Teen.
+[05:24:39 - 05:24:40] I hate...
+[05:24:47 - 05:24:48] Miss Teen.
+[05:24:48 - 05:24:49] I hate...
+[05:24:52 - 05:24:53] Miss Teen.
+[05:24:53 - 05:24:54] I hate...
+[05:24:56 - 05:24:57] Yes, I've been helping...
+[05:24:58 - 05:24:59] Uh...
+[05:24:59 - 05:25:00] Poplar...
+[05:25:00 - 05:25:01] Yeah...
+[05:25:01 - 05:25:02] I hate...
+[05:25:04 - 05:25:05] I hate Tanya...
+[05:25:05 - 05:25:06] Yeah, exactly...
+[05:25:06 - 05:25:07] Who else...
+[05:25:09 - 05:25:10] Denise Dubois...
+[05:25:10 - 05:25:11] Yeah...
+[05:25:11 - 05:25:12] Denise Dubois...
+[05:25:12 - 05:25:13] Yeah...
+[05:25:14 - 05:25:15] Anthony Dubois...
+[05:25:15 - 05:25:16] Yeah...
+[05:25:16 - 05:25:18] Fucking ridiculous...
+[05:25:18 - 05:25:19] Inez...
+[05:25:19 - 05:25:20] God damn it...
+[05:25:20 - 05:25:21] And...
+[05:25:21 - 05:25:22] I hate...
+[05:25:22 - 05:25:23] Renaud...
+[05:25:23 - 05:25:24] And...
+[05:25:24 - 05:25:25] I hate...
+[05:25:25 - 05:25:26] Renaud...
+[05:25:26 - 05:25:27] And...
+[05:25:27 - 05:25:27] I hate...
+[05:25:27 - 05:25:28] Renaud...
+[05:25:28 - 05:25:29] And...
+[05:25:29 - 05:25:29] Renaud...
+[05:25:30 - 05:25:31] Is not...
+[05:25:31 - 05:25:31] An adult woman...
+[05:25:31 - 05:25:32] She...
+[05:25:32 - 05:25:33] He...
+[05:25:34 - 05:25:35] Piece of shit...
+[05:25:35 - 05:25:37] *laughs*
+[05:25:37 - 05:25:39] Piece of shit!
+[05:25:39 - 05:25:41] Jesus!
+[05:25:41 - 05:25:51] So, Edward Jack continues breathing in silence.
+[05:25:51 - 05:25:53] He actually kind of leaky goes.
+[05:25:53 - 05:25:55] And of course, the others like,
+[05:25:55 - 05:25:57] Okay, so let's go to the others.
+[05:25:57 - 05:25:59] So we can go to some other people?
+[05:25:59 - 05:26:08] I suppose John goes out and does head in that direction towards the deck, I suppose.
+[05:26:08 - 05:26:18] Lime, Emily is kind of like playing with Liana and Radeka.
+[05:26:18 - 05:26:21] Mark and I guess Andrew.
+[05:26:21 - 05:26:24] They're playing like catch on the deck.
+[05:26:24 - 05:26:30] And of course, Emily doesn't like give a shit about these children.
+[05:26:30 - 05:26:32] Kind of like beat them.
+[05:26:32 - 05:26:34] And yeah.
+[05:26:34 - 05:26:38] And of course, Lime loves them.
+[05:26:38 - 05:26:40] And yeah.
+[05:26:40 - 05:26:44] And Jessica is kind of like talking to Sapphire.
+[05:26:44 - 05:26:46] Things like that.
+[05:26:46 - 05:26:48] So, who do you go for?
+[05:26:48 - 05:26:50] Oh, Sabin Nijan.
+[05:26:50 - 05:26:51] Um.
+[05:26:51 - 05:26:53] Hey Lime.
+[05:26:53 - 05:26:55] Excuse me for a second.
+[05:26:55 - 05:26:56] Huh?
+[05:26:56 - 05:26:58] Captain wants to speak with someone.
+[05:26:58 - 05:26:59] Uh.
+[05:26:59 - 05:27:01] You know, Captain Hedwig.
+[05:27:01 - 05:27:02] Um.
+[05:27:02 - 05:27:03] Excuse me.
+[05:27:03 - 05:27:04] Uh.
+[05:27:04 - 05:27:05] Dustin.
+[05:27:05 - 05:27:08] Uh.
+[05:27:08 - 05:27:11] Captain Hedwig wants to see you.
+[05:27:11 - 05:27:13] Oh.
+[05:27:13 - 05:27:14] Um.
+[05:27:14 - 05:27:15] Hang on.
+[05:27:15 - 05:27:45] "Trajan!" says. "I will leave him for a while." "I'll be adding up." "Understood." "Including me?" says. "Oh, no." "Ah, alright." "Why do you call me then?" "No, because I have to ask you. Let that tell you something." "What is it?" says. "Hang on." And so, "Bumaba muna si Justin." "Tapos si Trajan did relieve him for a while."
+[05:27:45 - 05:28:10] for a moment. "Thanks for letting me know." "Play with us Trajan!" "Tapos si Liana." "Later." "Once Justin is back, I'll play with you." "Mean I'll play with the guests." "I think we'll like that." "You mean him?" "Tapos si Liana." "I'll play with you."
+[05:28:10 - 05:28:22] "Oh, so you see, uh, uh, Rebecca's whispered something in Liana's." "Liana's." "Hm." "And Liana just, uh, just, uh, laughs." "Should I be scared?"
+[05:28:22 - 05:28:34] "Huh?" "Nothing. Never mind." "Uh, like I was saying, though." "So, Justin already started going to the, um, after saying things." "Okay." "And he said, uh..."
+[05:28:34 - 05:28:48] "Well..." "Well, it's been decided who goes into which assignments." "And, uh, you're, you're, uh, Tagito." "They said that they should come in, come, come with us."
+[05:28:48 - 05:28:54] "Yay!" she says. "Yeah." "Am I included?" said ni Emily. "Yeah." "You, you as well."
+[05:28:52 - 05:28:59] Yeah, you as well. We're going to be heading to the Maltrex first.
+[05:28:59 - 05:29:01] That's your hometown?
+[05:29:01 - 05:29:07] Well, the Maltrex is the entire mountain range. We're heading to Maltrex castle, and that's where I come from.
+[05:29:07 - 05:29:14] Well, what do you know?
+[05:29:14 - 05:29:16] Daddy! Daddy!
+[05:29:22 - 05:29:24] Why?
+[05:29:24 - 05:29:31] Let me know what I can do to help you, Sir John and Emily.
+[05:29:31 - 05:29:42] Alright, but yeah, we're probably going to be teleporting like a mile away first, so somewhere a bit further.
+[05:29:42 - 05:29:44] I can pass teleportation.
+[05:29:44 - 05:29:45] You can?
+[05:29:45 - 05:29:47] But, let me...
+[05:29:47 - 05:29:51] Well, Hedwig already offered to teleport us for going.
+[05:29:51 - 05:29:58] So, she says, "Let me tell you something first. I'm a world magic sorcerer," she says.
+[05:29:58 - 05:30:00] "I could burst."
+[05:30:00 - 05:30:04] "Oh, I mean, yuck, John."
+[05:30:04 - 05:30:08] "There might be consequences if I burst."
+[05:30:08 - 05:30:13] "When I cast a high level spell such as teleportation, I will surely burst."
+[05:30:13 - 05:30:16] "It might be random magical effects."
+[05:30:16 - 05:30:17] "Okay."
+[05:30:17 - 05:30:25] "And I believe that my world magic sorcerer spawned my evil Quinn."
+[05:30:25 - 05:30:27] "So, that's the extent of it."
+[05:30:27 - 05:30:29] "Well, I mean..."
+[05:30:29 - 05:30:32] "I can't do anything about it, I'm sorry."
+[05:30:32 - 05:30:34] "No, no, it's still fine."
+[05:30:34 - 05:30:35] "I mean..."
+[05:30:35 - 05:30:36] "It's still fine."
+[05:30:36 - 05:30:37] "I mean..."
+[05:30:37 - 05:30:38] "Any help."
+[05:30:38 - 05:30:40] "Your help was still really good."
+[05:30:40 - 05:30:41] "But, I mean..."
+[05:30:41 - 05:30:43] "At least for the teleportation part."
+[05:30:43 - 05:30:48] "Hedwig did already offer to teleport us going."
+[05:30:48 - 05:30:51] "Well, I'm talking about if ever I will cast it in the future."
+[05:30:51 - 05:30:53] "Well, if we have to cast it."
+[05:30:53 - 05:30:54] "What?"
+[05:30:54 - 05:30:55] "Well, if we have to cast it."
+[05:30:55 - 05:30:56] "Probably this is an emergency."
+[05:30:56 - 05:30:57] "And I think..."
+[05:30:57 - 05:30:58] "Wait, why?"
+[05:30:58 - 05:30:59] "Can you..."
+[05:30:59 - 05:31:01] "Do you know the spell counter spell?"
+[05:31:01 - 05:31:02] "No."
+[05:31:03 - 05:31:05] "I'm learning that, but I'm not there yet."
+[05:31:05 - 05:31:08] "Counter spell is a really high level spell."
+[05:31:08 - 05:31:10] "Yeah, it's a third level spell, right?"
+[05:31:10 - 05:31:11] "Yeah."
+[05:31:11 - 05:31:12] "That's why I don't know it yet."
+[05:31:12 - 05:31:13] "Oh, you're learning magic?"
+[05:31:13 - 05:31:14] "Yeah."
+[05:31:14 - 05:31:15] "Tiffany is teaching."
+[05:31:15 - 05:31:16] "Do you have a spell book?"
+[05:31:16 - 05:31:17] "The mistress is teaching me."
+[05:31:17 - 05:31:18] "She's teaching me."
+[05:31:18 - 05:31:22] "She gave me an arcane troll."
+[05:31:22 - 05:31:24] "I'll help you."
+[05:31:24 - 05:31:26] "Arcane Good Renoir."
+[05:31:26 - 05:31:27] "Best one."
+[05:31:27 - 05:31:28] "Yeah."
+[05:31:28 - 05:31:29] "I'll help you."
+[05:31:29 - 05:31:30] "Help me."
+[05:31:30 - 05:31:32] "Well, I appreciate it."
+[05:31:32 - 05:31:38] "But, well, what I was gonna tell you though."
+[05:31:38 - 05:31:40] "Just as a warning as a friend."
+[05:31:40 - 05:31:46] "Your captain didn't say that the reason why she's calling Justin is because..."
+[05:31:46 - 05:31:47] "He's gonna be joining us."
+[05:31:47 - 05:31:48] "Maybe if he says yes."
+[05:31:48 - 05:31:49] "What?"
+[05:31:49 - 05:31:50] "Why?"
+[05:31:50 - 05:32:01] "And the captain says, "You don't have a choice because of your nature as the spirit of the moon."
+[05:32:01 - 05:32:04] "I don't really understand it about why."
+[05:32:04 - 05:32:06] "But she says that you chose him as your guardian."
+[05:32:06 - 05:32:07] "What's your problem?"
+[05:32:07 - 05:32:08] "Emily said."
+[05:32:08 - 05:32:09] "Well, come on."
+[05:32:09 - 05:32:10] "Justin is your friend, right?"
+[05:32:10 - 05:32:11] "Well, come on."
+[05:32:11 - 05:32:13] "Justine is your friend, right?"
+[05:32:13 - 05:32:14] "I don't know."
+[05:32:15 - 05:32:16] "What are you doing?"
+[05:32:17 - 05:32:18] "Bring that."
+[05:32:18 - 05:32:19] "What are you doing?"
+[05:32:19 - 05:32:20] "Bring that."
+[05:32:20 - 05:32:21] "What are you doing?"
+[05:32:21 - 05:32:22] "It's vape juice."
+[05:32:22 - 05:32:23] "Don't drink it."
+[05:32:23 - 05:32:24] "No."
+[05:32:24 - 05:32:25] "That's vape juice."
+[05:32:25 - 05:32:26] "Don't drink it."
+[05:32:26 - 05:32:27] "No."
+[05:32:27 - 05:32:28] "It'll be fine."
+[05:32:28 - 05:32:30] "Yeah, but that's empty."
+[05:32:30 - 05:32:32] "Don't drink the mountain here."
+[05:32:32 - 05:32:33] "It's interesting."
+[05:32:33 - 05:32:34] "So she says,"
+[05:32:34 - 05:32:35] "Emily says,"
+[05:32:35 - 05:32:37] "It's gonna be fine, man."
+[05:32:37 - 05:32:40] "You gotta be used to be around Justin."
+[05:32:40 - 05:32:44] "Because he's a part of the crew, and you're part of the crew as well."
+[05:32:44 - 05:32:47] "I just mentioned it because I didn't want to go inside you."
+[05:32:47 - 05:32:51] "Well, alright."
+[05:32:51 - 05:32:54] "Time out!"
+[05:32:54 - 05:32:55] "What?"
+[05:32:57 - 05:33:00] "And they kind of like throw the ball on her face."
+[05:33:00 - 05:33:01] "Ow!"
+[05:33:01 - 05:33:02] "I said time out!"
+[05:33:02 - 05:33:09] "You said time out when we already threw the ball, Lime!"
+[05:33:09 - 05:33:11] "Sorry!"
+[05:33:11 - 05:33:13] "And Lime says,"
+[05:33:13 - 05:33:15] "Hi, it's fine."
+[05:33:15 - 05:33:19] "And she kind of like give the ball to John."
+[05:33:19 - 05:33:22] "I'll play with you for a while."
+[05:33:22 - 05:33:26] "Lime goes kind of like inside the conference room."
+[05:33:26 - 05:33:27] "Okay."
+[05:33:27 - 05:33:32] "And so John starts playing, throwing it back to them."
+[05:33:32 - 05:33:34] "And yeah, we can follow Lime."
+[05:33:34 - 05:33:36] "John, you see those two girls."
+[05:33:36 - 05:33:41] "Doesn't focus on Emily, but focuses on you."
+[05:33:41 - 05:33:44] "And throws the ball really hard on you."
+[05:33:44 - 05:33:45] "Ow!"
+[05:33:45 - 05:33:48] "Oh, that's pretty strong."
+[05:33:48 - 05:33:49] "Good one."
+[05:33:49 - 05:33:54] "So, as nakita mo si Eronneka, bumulong ulit kay Liana."
+[05:33:54 - 05:33:57] "And so he passes it back to them."
+[05:33:57 - 05:33:58] "Yeah."
+[05:33:58 - 05:33:59] "And they got it."
+[05:33:59 - 05:34:04] "And they kind of like, parang, again, you see the ball floats."
+[05:34:04 - 05:34:08] "At parang, it floats away from Liana's hands."
+[05:34:08 - 05:34:10] "And goes to a certain part of your body."
+[05:34:10 - 05:34:14] "Like this, your, your, your stomach."
+[05:34:14 - 05:34:16] "And it floats your stomach."
+[05:34:16 - 05:34:20] "Yay, I'm really strong."
+[05:34:20 - 05:34:34] "What's your problem?"
+[05:34:34 - 05:34:37] "Nothing, you're really good at this game."
+[05:34:37 - 05:34:38] "Really?"
+[05:34:38 - 05:34:40] "Yeah, look, look."
+[05:34:40 - 05:34:43] "And you're good at making things float."
+[05:34:43 - 05:34:46] "If I win this game, I'll give a rune."
+[05:34:46 - 05:34:53] "You can get, if, if, if you win the, if you win this game, you can get a rune from Hellion."
+[05:34:53 - 05:34:55] She says.
+[05:34:55 - 05:34:56] "Silly Anna."
+[05:34:56 - 05:34:58] "Wing Apple."
+[05:34:58 - 05:35:00] "Yeah, well."
+[05:35:00 - 05:35:03] "Alright, so, uh, how do I win?"
+[05:35:03 - 05:35:08] "Well, you're gonna outmatch us, me and Rebecca."
+[05:35:08 - 05:35:10] "We're hugging."
+[05:35:10 - 05:35:23] "Well, is it alright if I play alone?"
+[05:35:23 - 05:35:24] "Will I be able to fight you?"
+[05:35:24 - 05:35:26] "I'm here with you."
+[05:35:26 - 05:35:28] "So, are you gonna play with me?"
+[05:35:28 - 05:35:34] "Or are you just gonna let them, like, body boost me up?"
+[05:35:34 - 05:35:39] "They're not passing me the ball or targeting me, it's just you."
+[05:35:39 - 05:35:42] "I'm ready for that."
+[05:35:42 - 05:35:44] "Maybe if you like..."
+[05:35:44 - 05:35:45] "Umm..."
+[05:35:45 - 05:35:48] "Ah, I have an idea," she says.
+[05:35:48 - 05:35:51] "They're clearly using mage hand."
+[05:35:51 - 05:35:52] "No, girl."
+[05:35:52 - 05:35:54] "I mean, Becky."
+[05:35:54 - 05:35:58] "Becky is a... is a warlock," she says.
+[05:35:58 - 05:36:00] "But she's not controlled.
+[05:36:00 - 05:36:02] She can control her powers."
+[05:36:02 - 05:36:04] "Like, fully controlled."
+[05:36:04 - 05:36:06] "She's like...
+[05:36:06 - 05:36:07] "She's, uh..."
+[05:36:08 - 05:36:10] "Definitely using it to prank people."
+[05:36:10 - 05:36:12] "Scare them off."
+[05:36:12 - 05:36:14] "And, like, mess up things."
+[05:36:14 - 05:36:17] "It sounds like a very decent amount of control."
+[05:36:17 - 05:36:20] "Well, she's a kid, she's only nine."
+[05:36:20 - 05:36:21] "Is her old?"
+[05:36:21 - 05:36:24] "In you, in you man time," she says.
+[05:36:24 - 05:36:27] "Get used to it."
+[05:36:27 - 05:36:29] "It's actually..."
+[05:36:29 - 05:36:35] "It looks like he's even better than controlling our magic."
+[05:36:35 - 05:36:37] "Already."
+[05:36:37 - 05:36:39] "But yeah, I mean..."
+[05:36:39 - 05:36:43] "Alright, here it is."
+[05:36:43 - 05:36:44] "It is."
+[05:36:44 - 05:36:47] "And so, we can control it for now."
+[05:36:47 - 05:36:48] "Alright."
+[05:36:48 - 05:36:50] "That's kidding."
+[05:36:50 - 05:36:53] "You gotta have to throw it, 'cause you're the one who..."
+[05:36:53 - 05:36:54] "notched it."
+[05:36:54 - 05:36:55] "She says."
+[05:36:55 - 05:36:59] "Tranger, just kidding."
+[05:36:59 - 05:37:01] "Alright, alright."
+[05:37:01 - 05:37:05] "I didn't know that was part of the rules."
+[05:37:05 - 05:37:10] "And so he goes ahead and throws it as well, again."
+[05:37:10 - 05:37:11] "Again."
+[05:37:11 - 05:37:12] "There's two rules."
+[05:37:12 - 05:37:24] "Oh yeah, where's the Duchess?"
+[05:37:24 - 05:37:26] "Can she see Rebecca?"
+[05:37:26 - 05:37:27] "Yeah."
+[05:37:27 - 05:37:28] "She's here, up here."
+[05:37:28 - 05:37:32] "And she's like quietly watching at the moment."
+[05:37:32 - 05:37:36] "Okay."
+[05:37:36 - 05:37:39] "Uh, so Liana throws the ball at you."
+[05:37:39 - 05:37:43] "And you see Rebecca, uh, cast a spell."
+[05:37:43 - 05:37:45] "Uh, she's not even hiding it."
+[05:37:45 - 05:37:50] "As she casts, um, Mage Hand again."
+[05:37:50 - 05:37:51] "Okay."
+[05:37:51 - 05:37:56] "But, uh, so as she casts, before she casts Mage Hand."
+[05:37:56 - 05:37:59] "You see, uh, you see, Emily."
+[05:37:59 - 05:38:04] "Emily throws, like, um, kind of like, uh, candies on the floor."
+[05:38:04 - 05:38:06] "Like, three pieces of candy."
+[05:38:06 - 05:38:07] "You know?"
+[05:38:07 - 05:38:11] "And the two children, like, 'Look, it's a candy!"
+[05:38:11 - 05:38:14] "And they turn, her, her to the end."
+[05:38:14 - 05:38:19] "The ball kind of like, instead of like, being thrown, it's kind of like, rolls on the floor."
+[05:38:19 - 05:38:21] "And they called me a cheer."
+[05:38:21 - 05:38:23] "Ah, please."
+[05:38:23 - 05:38:26] "We've all been there, come on," she says.
+[05:38:26 - 05:38:30] "Just get the ball, at least you're not hurt, right?" she says.
+[05:38:30 - 05:38:31] "Right."
+[05:38:31 - 05:38:37] "And so, yeah, he picks the ball up."
+[05:38:37 - 05:38:38] "Yeah."
+[05:38:38 - 05:38:42] "And, uh, those two kids are, like, chewing the candies now."
+[05:38:42 - 05:38:44] "He got the ball!"
+[05:38:44 - 05:38:46] "Wait a second time, Al!"
+[05:38:46 - 05:38:47] "Time out!"
+[05:38:47 - 05:38:48] "I'm gonna lose your eyes."
+[05:38:50 - 05:38:52] "I'm gonna lose my titties."
+[05:38:52 - 05:38:53] "A level two, get signature casting one."
+[05:38:53 - 05:38:54] "Let's go to the end."
+[05:38:54 - 05:38:55] "So, there is..."
+[05:38:55 - 05:38:57] "And, meron na tayo, siya, yung hindi nito po ng dalawa."
+[05:38:57 - 05:38:59] "I press the digital platform."
+[05:38:59 - 05:39:00] "Saka Firebolt."
+[05:39:00 - 05:39:01] "I'm gonna lose your eyes."
+[05:39:05 - 05:39:06] "I'm gonna lose my titties."
+[05:39:08 - 05:39:09] "A level two, get signature casting one."
+[05:39:09 - 05:39:10] "I'm gonna lose my titties,"
+[05:39:10 - 05:39:11] "I'm gonna lose my titties."
+[05:39:19 - 05:39:21] Okay, let's go.
+[05:39:21 - 05:39:31] Well, we'd like to see what we win then.
+[05:39:31 - 05:39:33] Did we win already?
+[05:39:33 - 05:39:37] Well, they're still eating the candies.
+[05:39:37 - 05:39:41] We gotta wait for that, she says.
+[05:39:41 - 05:39:43] So what happened to Justin? Let's go there first.
+[05:39:43 - 05:39:45] Okay, okay.
+[05:39:45 - 05:39:52] So, I see Hedwig is like reading the book and Minfilia and Oscar is reading the night shift nurse.
+[05:39:52 - 05:39:56] Like, you know, casually just like flipping the pipes.
+[05:39:56 - 05:40:00] And yeah, I see Oscar, of course, is reading like totally right.
+[05:40:00 - 05:40:02] Yeah.
+[05:40:02 - 05:40:04] Dang, look.
+[05:40:04 - 05:40:09] This is like a pre-painted picture of Kathleen.
+[05:40:09 - 05:40:11] And shit.
+[05:40:11 - 05:40:14] No Lolilla in the night shift nurse.
+[05:40:14 - 05:40:16] Yeah, I mean, she's not even there.
+[05:40:16 - 05:40:17] Not damn it.
+[05:40:17 - 05:40:19] She's not in the new issue here either.
+[05:40:19 - 05:40:20] Huh?
+[05:40:20 - 05:40:21] Diba, wala rin siya dito sa.
+[05:40:21 - 05:40:24] She ain't in the new issue of legal repair.
+[05:40:24 - 05:40:26] Are you explaining this?
+[05:40:26 - 05:40:28] Sato niya, kay Miss Dean.
+[05:40:28 - 05:40:30] And Miss Dean says,
+[05:40:30 - 05:40:32] No, I can't.
+[05:40:32 - 05:40:33] She says.
+[05:40:33 - 05:40:36] Yeah, but Kate's already told us, right?
+[05:40:36 - 05:40:37] She says,
+[05:40:37 - 05:40:43] I'm worried about looking from New Island.
+[05:40:43 - 05:40:44] Yeah.
+[05:40:44 - 05:40:46] They have some kind of like a...
+[05:40:46 - 05:40:47] What did you call that?
+[05:40:47 - 05:40:48] The...
+[05:40:48 - 05:40:49] Uh...
+[05:40:49 - 05:40:50] Builder nurse.
+[05:40:50 - 05:40:52] Yes, I already know.
+[05:40:52 - 05:40:59] Yeah, I mean, I don't mind doing that job for free if it's gonna be saving Maria.
+[05:40:59 - 05:41:03] And after all this, like, scenario bullshit.
+[05:41:03 - 05:41:05] Sure.
+[05:41:05 - 05:41:07] He says.
+[05:41:07 - 05:41:09] What?
+[05:41:10 - 05:41:11] Don't you like to do that job?
+[05:41:11 - 05:41:12] I do that.
+[05:41:12 - 05:41:13] Going to Tanduaria?
+[05:41:13 - 05:41:14] You wanna be killed?
+[05:41:14 - 05:41:15] I don't fucking care.
+[05:41:15 - 05:41:16] It's Leah.
+[05:41:16 - 05:41:17] God damn it.
+[05:41:17 - 05:41:20] Alright, count me in.
+[05:41:20 - 05:41:22] You're heading to Terrain, don't you?
+[05:41:22 - 05:41:23] Oh shit.
+[05:41:23 - 05:41:27] So you gotta split up if you're going to Tanduaria and Terrain.
+[05:41:27 - 05:41:28] You know.
+[05:41:28 - 05:41:29] He says.
+[05:41:30 - 05:41:31] Not fun.
+[05:41:31 - 05:41:34] Well, I'm gonna go to Terrain to...
+[05:41:34 - 05:41:35] Yeah!
+[05:41:35 - 05:41:36] For him!
+[05:41:36 - 05:41:37] He said.
+[05:41:37 - 05:41:38] Me?
+[05:41:38 - 05:41:41] Are we talking about heading to Terrain already?
+[05:41:41 - 05:41:43] Is that why I'm here, Captain?
+[05:41:43 - 05:41:55] I don't think people are free at the moment.
+[05:41:55 - 05:41:57] I don't want to be a...
+[05:41:57 - 05:42:02] I don't want to add to troubles that people already have.
+[05:42:02 - 05:42:03] Justin.
+[05:42:03 - 05:42:03] Yes, Captain.
+[05:42:03 - 05:42:04] You hold part...
+[05:42:04 - 05:42:05] Part...
+[05:42:05 - 05:42:06] You hold the part of the...
+[05:42:06 - 05:42:07] You hold the token of the spirit of the moon.
+[05:42:07 - 05:42:08] I do.
+[05:42:08 - 05:42:09] You still hold onto it?
+[05:42:09 - 05:42:10] Of course I do.
+[05:42:10 - 05:42:11] I mean...
+[05:42:11 - 05:42:12] Me and Lime might not be together, but she's still my friend.
+[05:42:12 - 05:42:13] Hmm.
+[05:42:13 - 05:42:13] So she looks at Miss Tin.
+[05:42:13 - 05:42:13] And Miss Tin looks at Hedwig.
+[05:42:13 - 05:42:14] And Hedwig says.
+[05:42:15 - 05:42:15] You're willing to work with her.
+[05:42:15 - 05:42:15] And Miss Tin looks at Hedwig.
+[05:42:15 - 05:42:16] And Hedwig says.
+[05:42:16 - 05:42:17] You're willing to work with her in this encenero?
+[05:42:17 - 05:42:17] I don't know.
+[05:42:17 - 05:42:17] You're willing to work with her in this encenero?
+[05:42:17 - 05:42:18] No.
+[05:42:18 - 05:42:19] I don't know.
+[05:42:20 - 05:42:21] You still hold onto it?
+[05:42:21 - 05:42:22] Of course I do.
+[05:42:22 - 05:42:23] I mean...
+[05:42:23 - 05:42:26] Me and Lime might not be together, but she's still my friend.
+[05:42:26 - 05:42:27] Hmm.
+[05:42:27 - 05:42:28] So she looks at Miss Tin.
+[05:42:28 - 05:42:29] And Miss Tin looks at Hedwig.
+[05:42:29 - 05:42:30] And Hedwig says.
+[05:42:30 - 05:42:33] You're willing to work with her in this encenero?
+[05:42:33 - 05:42:34] I'm always willing to help.
+[05:42:34 - 05:42:35] Of course.
+[05:42:35 - 05:42:40] The protector and the holder of the spirit has to be together all time.
+[05:42:40 - 05:42:41] Shit.
+[05:42:41 - 05:42:42] That's part of the deal at all times.
+[05:42:42 - 05:42:43] Yes.
+[05:42:43 - 05:42:44] She says.
+[05:42:44 - 05:42:47] That's part of the deal at all times.
+[05:42:47 - 05:42:48] Yes.
+[05:42:48 - 05:42:49] She says.
+[05:42:49 - 05:42:50] So she looks at Miss Tin.
+[05:42:50 - 05:42:51] She looks at Miss Tin.
+[05:42:51 - 05:42:52] And Miss Tin looks at the...
+[05:42:52 - 05:42:53] Looks at the Hedwig.
+[05:42:53 - 05:42:54] And Hedwig says.
+[05:42:54 - 05:42:56] You willing to work with her in this encenero?
+[05:42:56 - 05:42:57] I'm always willing to help.
+[05:42:57 - 05:42:58] Of course.
+[05:42:58 - 05:43:01] The protector and the holder of the spirit has to be together all time.
+[05:43:01 - 05:43:02] Shit.
+[05:43:02 - 05:43:03] That's part of the deal at all times.
+[05:43:03 - 05:43:04] Yes.
+[05:43:04 - 05:43:05] I'm just trying to give Lime her space though.
+[05:43:05 - 05:43:06] She seems to...
+[05:43:06 - 05:43:07] Get annoyed when she's near me.
+[05:43:07 - 05:43:08] He's okay.
+[05:43:08 - 05:43:09] Can't give me.
+[05:43:09 - 05:43:10] How old are you again, Dustin?
+[05:43:10 - 05:43:11] I'm just...
+[05:43:11 - 05:43:12] I'm just trying to give Lime her space.
+[05:43:12 - 05:43:13] I'm just trying to give Lime her space though.
+[05:43:13 - 05:43:14] She seems to...
+[05:43:14 - 05:43:15] I'm just trying to give Lime her space though.
+[05:43:15 - 05:43:16] She seems to...
+[05:43:16 - 05:43:17] Get annoyed when she's near me.
+[05:43:17 - 05:43:18] He's okay.
+[05:43:18 - 05:43:19] Can't give me.
+[05:43:19 - 05:43:20] How old are you again, Dustin?
+[05:43:20 - 05:43:21] I'm just trying to give Lime her space though.
+[05:43:21 - 05:43:22] She seems to...
+[05:43:22 - 05:43:23] Get annoyed when she's near me.
+[05:43:23 - 05:43:24] He's okay.
+[05:43:24 - 05:43:25] Can't give me.
+[05:43:25 - 05:43:26] How old are you again, Dustin?
+[05:43:26 - 05:43:27] He's okay.
+[05:43:27 - 05:43:28] Can't give me.
+[05:43:28 - 05:43:29] He's okay.
+[05:43:29 - 05:43:30] Can't give me.
+[05:43:30 - 05:43:31] How old are you again, Dustin?
+[05:43:32 - 05:43:38] I don't know if he's younger.
+[05:43:38 - 05:43:39] I know he's 15 years old.
+[05:43:39 - 05:43:40] He's not.
+[05:43:40 - 05:43:41] He's 18 years old.
+[05:43:41 - 05:43:42] He's younger than Lime.
+[05:43:48 - 05:43:49] Why?
+[05:43:49 - 05:43:50] He's younger than Lime.
+[05:43:57 - 05:43:58] So he's younger than Lime.
+[05:43:58 - 05:43:59] He's younger than Lime.
+[05:43:59 - 05:44:01] I don't know what the fuck is going on.
+[05:46:45 - 05:46:48] So she says, "Can we go on private?"
+[05:46:48 - 05:46:49] She says.
+[05:46:49 - 05:46:54] What for?
+[05:46:54 - 05:46:55] So she nods.
+[05:46:55 - 05:46:57] Are we dismissed, Captain?
+[05:46:57 - 05:47:03] Alright, she says.
+[05:47:03 - 05:47:13] Well, we can discuss things in the laundry room.
+[05:47:13 - 05:47:15] Nobody really likes going there.
+[05:47:15 - 05:47:16] She nods.
+[05:47:16 - 05:47:17] Alright, she says.
+[05:47:17 - 05:47:20] Well, I always go there when I stay here on the ship.
+[05:47:20 - 05:47:25] Me too.
+[05:47:25 - 05:47:28] I'm still really comfortable in the laundry room.
+[05:47:28 - 05:47:30] Can you see me?
+[05:47:30 - 05:47:31] Right now?
+[05:47:31 - 05:47:32] Yeah.
+[05:47:32 - 05:47:34] Oh, she nods.
+[05:47:34 - 05:47:38] So you follow her in the laundry room.
+[05:47:38 - 05:47:39] And there's nobody there.
+[05:47:39 - 05:47:40] Yeah.
+[05:47:40 - 05:47:41] There are rooms there.
+[05:47:41 - 05:47:43] There are kind of Prestidigitation rooms.
+[05:47:43 - 05:47:44] There are rooms there.
+[05:47:44 - 05:47:45] Kind of Prestidigitation rooms.
+[05:47:45 - 05:47:46] They're used.
+[05:47:48 - 05:47:49] Emily.
+[05:47:49 - 05:47:51] It's easy for her to transmute.
+[05:47:51 - 05:47:52] Prestidigitation.
+[05:47:52 - 05:48:11] It's a fun trick to runes. But this is the witness of runes, it's easy to distill. It has a good use every day. But when it's in battle, it's easy to use it.
+[05:48:11 - 05:48:15] But when it's displayed magic or counter, it's easy to distill.
+[05:48:15 - 05:48:32] So, she says, and you kind of like, through your connection, you feel that she's kind of like nervous. And you see her usual kind of like what she does when she's kind of like in a press.
+[05:48:32 - 05:48:47] You know her little kind of like behavior because you're keen on observing people. And especially her. She tends to like, parang, ginaganon yung paan niya, yung kinakross niya.
+[05:48:47 - 05:48:52] Yeah. And he doesn't really say anything. He's just trying to be a solo.
+[05:48:52 - 05:49:11] What she does, first she presses on the room of the facilitation. And then she says, "Well, there's something that you have to know, but I don't want to kind of like ruin your thing."
+[05:49:11 - 05:49:21] I mean your present relationship with other people, you might tend to go out with, she says, parang.
+[05:49:19 - 05:49:24] Oh, just hear me first, sabi nga.
+[05:49:24 - 05:49:24] Alright.
+[05:49:24 - 05:49:25] Sabi nga.
+[05:49:25 - 05:49:32] Well, I recently talked to Mrs. Mishmini when I got checked earlier.
+[05:49:32 - 05:49:33] Sabi nga.
+[05:49:33 - 05:49:39] I'm kind of like, I'm carrying, I'm carrying, sabi nga.
+[05:49:39 - 05:49:41] I'm pregnant.
+[05:49:41 - 05:49:44] You're pregnant?
+[05:49:44 - 05:49:46] She nods.
+[05:49:49 - 05:49:54] Is all this because I might be the father?
+[05:49:54 - 05:49:59] It's not might, but I only slept with you, Mrs. Mishmini.
+[05:49:59 - 05:50:06] I didn't, I mean, I don't want to, Mrs. Mishmini.
+[05:50:06 - 05:50:13] What does it need, I mean?
+[05:50:13 - 05:50:14] Sabi nga.
+[05:50:14 - 05:50:22] Well, I mean, I don't necessarily want to pressure you into anything on my end either.
+[05:50:22 - 05:50:39] But, I mean, if you're fine with me, at least, helping you with, well, the baby, whether or not like you want a relationship with me or anything like that, I'm going to support you.
+[05:50:39 - 05:50:40] In any way you want.
+[05:50:40 - 05:50:41] She nods.
+[05:50:41 - 05:50:42] You know me.
+[05:50:42 - 05:50:54] I mean, I, you might not necessarily want a relationship, but if you need help as some, as a father for the kid, I'm, I want to step up.
+[05:50:54 - 05:51:11] It's, it's, it's, it's, it's, it's a good thing.
+[05:51:11 - 05:51:12] Yeah.
+[05:51:12 - 05:51:13] She just nods.
+[05:51:13 - 05:51:14] Also, she says, uh, she says, uh, she says, uh.
+[05:51:14 - 05:51:15] Well, how are you?
+[05:51:15 - 05:51:16] I mean, we haven't had a chance to talk.
+[05:51:16 - 05:51:17] So I see that for snow.
+[05:51:17 - 05:51:18] Well.
+[05:51:18 - 05:51:19] Yeah.
+[05:51:19 - 05:51:20] The thing that you said earlier, like, I'm, I don't know if you're not here around, I'm sorry if I've heard that, so.
+[05:51:20 - 05:51:21] It's not true.
+[05:51:22 - 05:51:23] I just don't understand.
+[05:51:23 - 05:51:24] It's not true.
+[05:51:24 - 05:51:29] Maybe you haven't had a chance to talk. So I see that for snow.
+[05:51:29 - 05:51:39] The thing that you said earlier, like I'm not even a year around. I'm sorry if I heard that. It's not true.
+[05:51:39 - 05:51:53] I just don't understand. I just don't understand some stuff. I don't know how I feel.
+[05:51:54 - 05:52:06] The baby is crying. I have a purpose. I have a goal. And I have something to protect.
+[05:52:06 - 05:52:12] I mean, after losing a lot of people in my life.
+[05:52:12 - 05:52:16] I'll give you a tissue.
+[05:52:21 - 05:52:22] Tissue.
+[05:52:22 - 05:52:23] Yung tissue.
+[05:52:26 - 05:52:55] I'm not... I'm not... I'm not... I'm not... I'm not... I'm not... I'm not... I'm not... I'm not... I'm not losing a lot of people in my life. I mean, I didn't lose them. I mean, that's their choice, right? To go? It says.
+[05:52:56 - 05:53:26] You mean fun and milky? Yeah, she says. That kind of, like, hurts me a lot, she says. Because we had promised each other having a divorce. But I guess I can't force them to do things, she says. I can't let them, like, prevent their happiness, right? I broke things with you because that's the same reason. I don't want to prevent your happiness.
+[05:53:26 - 05:53:33] And I'm just dragging you down with me. With all the crazy stuff I've been... Probably, yeah.
+[05:53:33 - 05:53:37] But, no, I'm not like that anymore, she says.
+[05:53:37 - 05:53:44] I never really felt that way.
+[05:53:44 - 05:54:01] And, you know, she says, you don't need... So, she says, it's not... It's not, I mean, like... It's none of my business, okay? But...
+[05:54:01 - 05:54:06] She looks at you, and she looks at you, and she says, you don't need this one, let's show you up to protect you.
+[05:54:06 - 05:54:08] Well...
+[05:54:09 - 05:54:10] Not until...
+[05:54:10 - 05:54:12] Well, until we're done with...
+[05:54:12 - 05:54:15] When we're done with the...
+[05:54:15 - 05:54:18] Thing with terrain, like, uh...
+[05:54:18 - 05:54:19] Okay.
+[05:54:20 - 05:54:21] Doesn't take care.
+[05:54:21 - 05:54:23] Doesn't have to take care.
+[05:54:23 - 05:54:24] Okay.
+[05:54:24 - 05:54:31] Go there! Go to the other room now! Go to the other room!
+[05:54:31 - 05:54:32] So, she says...
+[05:54:32 - 05:54:33] She says, um...
+[05:54:33 - 05:54:39] Close your eyes, she says.
+[05:54:39 - 05:54:40] Okay.
+[05:54:40 - 05:54:43] Don't open it, okay?
+[05:54:43 - 05:54:44] She says.
+[05:54:44 - 05:54:47] So, you feel her, uh...
+[05:54:47 - 05:54:50] You know that she goes up.
+[05:54:50 - 05:54:51] And, uh...
+[05:54:51 - 05:54:53] You hear her voice, though.
+[05:54:53 - 05:54:55] And, you hear her heart.
+[05:54:55 - 05:54:56] Uh...
+[05:54:56 - 05:54:57] What kind of, uh...
+[05:54:57 - 05:54:59] Thing that she's thinking right now.
+[05:54:59 - 05:55:01] And, uh...
+[05:55:01 - 05:55:02] Kind of, like, um...
+[05:55:02 - 05:55:03] Parang...
+[05:55:03 - 05:55:05] She's kind of happy.
+[05:55:05 - 05:55:07] And, as she says...
+[05:55:07 - 05:55:08] Open your eyes.
+[05:55:08 - 05:55:09] Just...
+[05:55:09 - 05:55:10] You see...
+[05:55:10 - 05:55:11] Outside.
+[05:55:11 - 05:55:12] Uh...
+[05:55:12 - 05:55:14] To her vision, though.
+[05:55:14 - 05:55:16] You see her hands on the rail.
+[05:55:16 - 05:55:17] Like that.
+[05:55:17 - 05:55:20] And, you even feel the wind.
+[05:55:20 - 05:55:23] That's kind of, like, making her hair fly.
+[05:55:23 - 05:55:24] Like that.
+[05:55:24 - 05:55:25] See?
+[05:55:25 - 05:55:26] She says.
+[05:55:26 - 05:55:28] I've seen through your eyes.
+[05:55:28 - 05:55:29] Yeah.
+[05:55:29 - 05:55:31] We haven't done this before, right?
+[05:55:31 - 05:55:32] I guess not.
+[05:55:32 - 05:55:35] Well, I haven't realized that you can do these...
+[05:55:35 - 05:55:36] With these connections.
+[05:55:36 - 05:55:38] It's a little, uh...
+[05:55:41 - 05:55:43] It's a little...
+[05:55:43 - 05:55:44] Disoriented.
+[05:55:44 - 05:55:45] So, he's trying to move.
+[05:55:45 - 05:55:47] While looking through her eyes.
+[05:55:47 - 05:55:52] But you can see through my eyes.
+[05:55:52 - 05:55:53] And I can...
+[05:55:53 - 05:55:55] Hear what you can hear.
+[05:55:55 - 05:55:56] Yes.
+[05:55:56 - 05:55:58] You can...
+[05:55:58 - 05:56:00] Feel through my feelings, right?
+[05:56:00 - 05:56:02] I think we've done that.
+[05:56:02 - 05:56:04] I think we've done that part of it before.
+[05:56:04 - 05:56:06] Well, I don't realize.
+[05:56:06 - 05:56:07] Because of its art.
+[05:56:07 - 05:56:08] It's...
+[05:56:08 - 05:56:09] The connection.
+[05:56:09 - 05:56:10] Mm-hmm.
+[05:56:10 - 05:56:12] I really haven't figured it out.
+[05:56:12 - 05:56:13] This connection thing.
+[05:56:13 - 05:56:15] And being a hard...
+[05:56:15 - 05:56:16] A karma.
+[05:56:16 - 05:56:17] So...
+[05:56:17 - 05:56:21] Probably, yeah.
+[05:56:21 - 05:56:22] Yeah.
+[05:56:22 - 05:56:23] And...
+[05:56:23 - 05:56:24] You can feel that life energy, she says.
+[05:56:24 - 05:56:25] As she lets you, like...
+[05:56:25 - 05:56:26] Uh...
+[05:56:26 - 05:56:27] Kind of, like...
+[05:56:27 - 05:56:28] Uh...
+[05:56:28 - 05:56:29] Kind of, like...
+[05:56:29 - 05:56:30] Up on...
+[05:56:30 - 05:56:31] You...
+[05:56:31 - 05:56:32] Kind of, like...
+[05:56:32 - 05:56:33] Feel her rub her...
+[05:56:33 - 05:56:34] Balmy.
+[05:56:34 - 05:56:35] I can.
+[05:56:35 - 05:56:36] There's a life energy there, she says.
+[05:56:36 - 05:56:37] Yes.
+[05:56:37 - 05:56:39] There's a life energy there, she says.
+[05:56:40 - 05:56:40] Yes.
+[05:56:40 - 05:56:41] There's a life energy there, she says.
+[05:56:41 - 05:56:42] Yes.
+[05:56:42 - 05:56:51] So, he knows his sister?
+[05:56:51 - 05:56:52] Uh...
+[05:56:52 - 05:56:54] You should remember...
+[05:56:54 - 05:56:55] Justy?
+[05:56:55 - 05:56:56] What?
+[05:56:56 - 05:57:01] You should remember that your curse can be passed down to your father.
+[05:57:01 - 05:57:02] Yeah.
+[05:57:02 - 05:57:03] Female islands is obeying you.
+[05:57:03 - 05:57:04] Yeah.
+[05:57:04 - 05:57:06] That's the problem.
+[05:57:06 - 05:57:08] We really have to get to Korea.
+[05:57:08 - 05:57:12] Maybe even if it's a security.
+[05:57:12 - 05:57:15] My...
+[05:57:15 - 05:57:16] I made a promise, right?
+[05:57:16 - 05:57:18] My curse.
+[05:57:18 - 05:57:24] My curse that's passed down through my bloodline.
+[05:57:24 - 05:57:26] Uh-huh.
+[05:57:26 - 05:57:27] Oh.
+[05:57:27 - 05:57:28] No, no.
+[05:57:28 - 05:57:30] I don't think it works that way.
+[05:57:30 - 05:57:31] My...
+[05:57:31 - 05:57:32] My poor child.
+[05:57:32 - 05:57:33] Through your bloodline?
+[05:57:33 - 05:57:34] You mean our child?
+[05:57:34 - 05:57:35] I don't think so.
+[05:57:36 - 05:57:39] Do you feel that she's kind of like a little bit trapped?
+[05:57:39 - 05:57:40] I'm sorry.
+[05:57:40 - 05:57:45] It's something that Minfilia mentioned, that it's the most likely.
+[05:57:45 - 05:57:47] It's...
+[05:57:47 - 05:57:49] Our...
+[05:57:49 - 05:57:51] Our current...
+[05:57:51 - 05:57:52] I don't know.
+[05:57:52 - 05:57:53] The...
+[05:57:53 - 05:57:59] How when she was trying to figure out what my curse was, and why healing and remove curse
+[05:57:59 - 05:58:05] her spells weren't working, this was because it was something that couldn't sense myself.
+[05:58:05 - 05:58:09] So, she believes that it's something that came from my mother.
+[05:58:09 - 05:58:10] We're not going to allow our...
+[05:58:10 - 05:58:19] We're not going to allow our baby to have that curse, right?
+[05:58:19 - 05:58:20] No.
+[05:58:20 - 05:58:21] Do it.
+[05:58:22 - 05:58:23] Together.
+[05:58:23 - 05:58:24] Jesus.
+[05:58:24 - 05:58:25] Are you telling me about that?
+[05:58:25 - 05:58:26] No, I'm sorry.
+[05:58:26 - 05:58:27] Thank you.
+[05:58:27 - 05:58:28] Jesus.
+[05:58:28 - 05:58:29] This is just a...
+[05:58:29 - 05:58:36] I mean, when it was just me being affected by it, I was fine with reading.
+[05:58:36 - 05:58:38] I've been blind for all of my life.
+[05:58:38 - 05:58:39] It wasn't a problem.
+[05:58:39 - 05:58:40] You didn't use my eyes.
+[05:58:40 - 05:58:41] I know.
+[05:58:43 - 05:58:46] But what I'm saying is now, now that...
+[05:58:46 - 05:58:47] Now that there's another...
+[05:58:47 - 05:58:48] One...
+[05:58:48 - 05:58:49] Another person...
+[05:58:49 - 05:58:50] Our kid...
+[05:58:50 - 05:58:53] I'd be affected by this thing.
+[05:58:53 - 05:58:55] Suddenly, I feel...
+[05:58:55 - 05:58:57] I feel like we have to...
+[05:58:57 - 05:58:58] I have to hurry.
+[05:58:58 - 05:58:59] All of a sudden.
+[05:58:59 - 05:59:00] It's like...
+[05:59:00 - 05:59:02] It's more urgent than it was.
+[05:59:02 - 05:59:03] She nuts.
+[05:59:03 - 05:59:04] Yeah.
+[05:59:04 - 05:59:08] So after we're done here with Cenara, I would like her help.
+[05:59:08 - 05:59:09] Hmm.
+[05:59:09 - 05:59:10] I made a promise.
+[05:59:10 - 05:59:11] Thank you.
+[05:59:19 - 05:59:28] And I did promise as well, I did pledge myself to be a guardian.
+[05:59:28 - 05:59:38] Well, you can always throw the Falcon away, and it will break back.
+[05:59:38 - 05:59:42] And you'd be left without a guardian.
+[05:59:42 - 05:59:43] What?
+[05:59:43 - 05:59:46] And you'd be left without a guardian.
+[05:59:46 - 05:59:50] She just knows.
+[05:59:50 - 05:59:55] No, we don't. We really want that.
+[05:59:55 - 05:59:57] Me too, she says.
+[05:59:57 - 06:00:00] I know.
+[06:00:00 - 06:00:04] It should be a... it should be a dog.
+[06:00:04 - 06:00:14] Are you coming with us, Lime? Are you playing with us, Lime? Lime? Lime? Lime? Lime? Lime? Lime? Lime?
+[06:00:14 - 06:00:18] So these two bastard kids are like standing beside the kid.
+[06:00:18 - 06:00:22] And she's just like... and then she has to focus herself.
+[06:00:22 - 06:00:28] Hey, I thought we were... you don't have to play ball anymore?
+[06:00:28 - 06:00:33] We don't want you. You're cheating on us.
+[06:00:33 - 06:00:35] She's cheating.
+[06:00:35 - 06:00:39] I saw you cast some spells.
+[06:00:39 - 06:00:40] Something to Rebecca.
+[06:00:40 - 06:00:45] No, I didn't.
+[06:00:45 - 06:00:48] Bai Jinping said that you're cheating.
+[06:00:48 - 06:00:49] Yes.
+[06:00:49 - 06:00:54] And Bai Jinping says that it's not a narrative.
+[06:00:54 - 06:00:59] She's cheating.
+[06:00:59 - 06:01:00] So yeah.
+[06:01:01 - 06:01:02] She's cheating.
+[06:01:02 - 06:01:03] How come you're cheating?
+[06:01:03 - 06:01:04] Alright, I'll punish him.
+[06:01:04 - 06:01:05] She kind of like punched his side.
+[06:01:05 - 06:01:06] Bai Jinping's lying.
+[06:01:06 - 06:01:07] Bai Jinping never lies to me.
+[06:01:07 - 06:01:08] She says.
+[06:01:08 - 06:01:09] Bai Jinping's always a pranker.
+[06:01:21 - 06:01:23] Yeah, but somebody was using Maycandon.
+[06:01:23 - 06:01:25] I don't know that spell.
+[06:01:25 - 06:01:26] It's Bai's symphony.
+[06:01:28 - 06:01:32] Bai's symphony knows how to cast a pigeon.
+[06:01:32 - 06:01:34] I don't know that he was cheating.
+[06:01:34 - 06:01:35] But he is not.
+[06:01:35 - 06:01:38] In spite of the game.
+[06:01:38 - 06:01:42] You can argue with her.
+[06:01:42 - 06:01:45] Well, come get you prepared.
+[06:01:45 - 06:01:47] Um, Rebecca.
+[06:01:47 - 06:01:53] Why are you getting her prepared?
+[06:01:53 - 06:02:01] It would be bad for a footman of her majesty to get mad at her.
+[06:02:01 - 06:02:02] Of course I can't.
+[06:02:02 - 06:02:05] I did cheat your majesty.
+[06:02:05 - 06:02:07] So off with my head.
+[06:02:07 - 06:02:08] No.
+[06:02:08 - 06:02:12] She's really light.
+[06:02:12 - 06:02:14] She's just like nine years old.
+[06:02:14 - 06:02:15] It's okay with her.
+[06:02:15 - 06:02:20] All right.
+[06:02:20 - 06:02:24] Why you gotta prepare her for the new one?
+[06:02:24 - 06:02:27] When she's leaving, Liana.
+[06:02:27 - 06:02:28] Why?
+[06:02:28 - 06:02:30] Why she's leaving?
+[06:02:30 - 06:02:32] She's part of the crew, right?
+[06:02:32 - 06:02:35] She's gonna be in my grove.
+[06:02:35 - 06:02:39] I'll turn her into a riot.
+[06:02:39 - 06:02:42] You can turn her into a riot.
+[06:02:42 - 06:02:45] She has her own family in Sinera.
+[06:02:45 - 06:02:51] After she reunites with her own family, she will go see you.
+[06:02:51 - 06:02:55] Right, Becky?
+[06:02:55 - 06:02:57] Mmhmm.
+[06:02:57 - 06:02:58] She's awesome.
+[06:02:58 - 06:03:02] And, uh, Rebecca kind of like some fun John like that.
+[06:03:02 - 06:03:06] But you feel that she's crying.
+[06:03:06 - 06:03:08] Yeah, um.
+[06:03:08 - 06:03:13] If somebody has to take her, we can always take you, uh, to visit.
+[06:03:13 - 06:03:15] Sinera is enemy!
+[06:03:15 - 06:03:17] Yeah, it says.
+[06:03:17 - 06:03:19] Well, you guys were helping us.
+[06:03:19 - 06:03:21] Sinera is an enemy territory!
+[06:03:21 - 06:03:22] He says.
+[06:03:22 - 06:03:23] You guys were helping us right now.
+[06:03:23 - 06:03:25] That's what Grump said.
+[06:03:25 - 06:03:26] Ha ha ha.
+[06:03:26 - 06:03:32] Well, once we get the reformists out, it's not gonna be an enemy territory anymore.
+[06:03:32 - 06:03:33] Hey, Sinera!
+[06:03:33 - 06:03:34] He says.
+[06:03:34 - 06:03:35] Ha ha ha.
+[06:03:35 - 06:03:37] And she runs off.
+[06:03:37 - 06:03:38] Oh.
+[06:03:40 - 06:03:42] Yana is a spoiled kid.
+[06:03:42 - 06:03:44] Because, ah, ah.
+[06:03:44 - 06:03:45] Ha ha ha.
+[06:03:46 - 06:03:47] Who's her dad?
+[06:03:47 - 06:03:48] She's leaving.
+[06:03:48 - 06:03:52] Because Alvin kind of like let her do whatever she wants and say whatever she wants.
+[06:03:52 - 06:03:54] So it's not.
+[06:03:54 - 06:03:55] Well, to be fair, um.
+[06:03:55 - 06:03:59] But she's getting over with, you know, you know kids, right?
+[06:03:59 - 06:04:00] So.
+[06:04:00 - 06:04:06] To be fair, like, she grew to nine, to someone who's nine years old.
+[06:04:06 - 06:04:08] In the span of a month.
+[06:04:08 - 06:04:09] So.
+[06:04:09 - 06:04:10] Yeah.
+[06:04:10 - 06:04:11] She's a spoiled.
+[06:04:11 - 06:04:16] When you return and you reunite her with Becky, she's gonna be a teenager.
+[06:04:16 - 06:04:18] Ha ha ha ha.
+[06:04:18 - 06:04:20] Well, that's a little crazy.
+[06:04:20 - 06:04:22] Crazy indeed, she says.
+[06:04:22 - 06:04:25] Well, that's a little sad, though.
+[06:04:25 - 06:04:31] Like, it's the perfect age for them to play with each other, to separate their mentors.
+[06:04:31 - 06:04:32] Ha?
+[06:04:32 - 06:04:33] Ano?
+[06:04:33 - 06:04:35] It's a little sad, though.
+[06:04:36 - 06:04:42] Like, so he said, like, this would be the perfect age for them to be able to play with each other then.
+[06:04:42 - 06:04:46] And maybe a week from now they're gonna be different ages already.
+[06:04:46 - 06:04:48] That's how it is in this crew.
+[06:04:48 - 06:04:49] Jesus.
+[06:04:49 - 06:04:50] I told you, right?
+[06:04:51 - 06:05:00] Alvin is, like, a 15-year-old boy and then turned into, like, a man in just one night because of Emily.
+[06:05:00 - 06:05:01] I mean...
+[06:05:01 - 06:05:09] You see Emily kind of, like, sitting under one of the barrel and, like, fixing her legs.
+[06:05:09 - 06:05:10] Yeah.
+[06:05:10 - 06:05:11] That's just because of the...
+[06:05:11 - 06:05:12] Well, magic.
+[06:05:12 - 06:05:15] Oh, it wasn't one of those candies?
+[06:05:15 - 06:05:16] Uh...
+[06:05:16 - 06:05:17] Oh, yeah.
+[06:05:17 - 06:05:18] The...
+[06:05:18 - 06:05:19] The star candies?
+[06:05:19 - 06:05:20] Yeah, but, uh...
+[06:05:20 - 06:05:21] I don't know who...
+[06:05:21 - 06:05:24] Cause that's what temporarily turned him into a werewolf, right?
+[06:05:24 - 06:05:25] Yeah.
+[06:05:25 - 06:05:26] Well...
+[06:05:26 - 06:05:27] Yeah, if I remember correctly.
+[06:05:27 - 06:05:29] But I don't know where he's hit with him.
+[06:05:29 - 06:05:30] Kind of...
+[06:05:30 - 06:05:31] I don't know if...
+[06:05:31 - 06:05:34] Maybe you didn't know this either, um...
+[06:05:34 - 06:05:35] Or something.
+[06:05:36 - 06:05:37] But I kind of also...
+[06:05:37 - 06:05:39] I think I grew older.
+[06:05:39 - 06:05:41] After we got back to the Feywab.
+[06:05:41 - 06:05:42] From...
+[06:05:42 - 06:05:43] From the Feywab.
+[06:05:43 - 06:05:44] Eh, this is Justin.
+[06:05:44 - 06:05:45] This is Justin.
+[06:05:45 - 06:05:46] Yeah, I think so.
+[06:05:46 - 06:05:47] She says.
+[06:05:47 - 06:05:48] Huh?
+[06:05:48 - 06:05:50] What?
+[06:05:50 - 06:05:51] Yeah.
+[06:05:51 - 06:05:54] So she...
+[06:05:54 - 06:05:56] Wait, uh, John, uh...
+[06:05:56 - 06:05:57] Just a sec, alright?
+[06:05:57 - 06:05:58] I'll be back.
+[06:05:58 - 06:05:59] Uh, what?
+[06:05:59 - 06:06:01] You take care of Rebecca in her room.
+[06:06:01 - 06:06:02] Uh, her room is in a girl's room.
+[06:06:02 - 06:06:03] Where Bianca was.
+[06:06:03 - 06:06:04] Oh, right.
+[06:06:04 - 06:06:05] Alright, I know where that is.
+[06:06:05 - 06:06:06] You spoke her...
+[06:06:06 - 06:06:08] Uh, she has a few dresses, uh...
+[06:06:08 - 06:06:10] Given to her by a head wig.
+[06:06:10 - 06:06:12] And a few rooms with her.
+[06:06:12 - 06:06:13] I'm so sorry.
+[06:06:13 - 06:06:14] Alright, your majesty.
+[06:06:14 - 06:06:16] Just tell me where your clothes are.
+[06:06:16 - 06:06:17] I'll help you back.
+[06:06:17 - 06:06:18] Alright?
+[06:06:18 - 06:06:20] She just nods.
+[06:06:20 - 06:06:22] So, uh...
+[06:06:22 - 06:06:25] Lime goes to Justin immediately.
+[06:06:25 - 06:06:26] And she says.
+[06:06:26 - 06:06:27] What do you mean you grow old?
+[06:06:27 - 06:06:28] Yeah, a little bit.
+[06:06:28 - 06:06:30] I've been, um...
+[06:06:30 - 06:06:31] So she...
+[06:06:31 - 06:06:32] Having to...
+[06:06:32 - 06:06:34] Goes and grabs your chin and...
+[06:06:34 - 06:06:35] Yeah.
+[06:06:35 - 06:06:37] I shave a lot more often now.
+[06:06:37 - 06:06:39] I really don't like facial hair.
+[06:06:39 - 06:06:40] It's itchy.
+[06:06:40 - 06:06:42] So I keep on shaving it off.
+[06:06:42 - 06:06:44] Oh, she touches your waist like that.
+[06:06:44 - 06:06:46] Yeah, I feel like she's...
+[06:06:46 - 06:06:47] A lot more, like...
+[06:06:47 - 06:06:48] Muscular.
+[06:06:48 - 06:06:49] More defined.
+[06:06:49 - 06:06:51] You're the same age as me, right?
+[06:06:51 - 06:06:53] I think I was like...
+[06:06:53 - 06:06:54] Two years older.
+[06:06:54 - 06:06:55] One to two year old.
+[06:06:55 - 06:06:57] Oh, seventeen.
+[06:06:57 - 06:06:58] Kasi twenty-seven.
+[06:06:58 - 06:07:00] Likely ten years plus.
+[06:07:00 - 06:07:01] So...
+[06:07:01 - 06:07:03] I'm thinking seventeen plus.
+[06:07:03 - 06:07:04] Uh-huh.
+[06:07:04 - 06:07:05] So weird.
+[06:07:05 - 06:07:08] So you're gonna grow old...
+[06:07:08 - 06:07:09] Older than you?
+[06:07:09 - 06:07:10] Sorry.
+[06:07:10 - 06:07:12] I gotta grow older too.
+[06:07:12 - 06:07:15] I don't have to wash.
+[06:07:15 - 06:07:17] I don't know.
+[06:07:17 - 06:07:18] It's a firewall thing.
+[06:07:18 - 06:07:20] Oh, maybe it will wear out, right?
+[06:07:20 - 06:07:21] Maybe.
+[06:07:21 - 06:07:22] Charlesy?
+[06:07:22 - 06:07:23] He says...
+[06:07:23 - 06:07:24] I miss you.
+[06:07:24 - 06:07:25] He says...
+[06:07:25 - 06:07:26] I miss you.
+[06:07:26 - 06:07:27] He says...
+[06:07:27 - 06:07:28] I miss you too.
+[06:07:28 - 06:07:32] I was kind of surprised when you sent me a message telling me that you missed me, so...
+[06:07:32 - 06:07:33] I lost in a battleship.
+[06:07:33 - 06:07:34] He says...
+[06:07:34 - 06:07:35] And they made me do battleship.
+[06:07:35 - 06:07:47] Oh, when Captain Henry talked to me about exactly that, I kind of put it together where
+[06:07:47 - 06:07:49] it might have been a battleship thing.
+[06:07:49 - 06:07:53] Especially when I found Misty and I was there.
+[06:07:53 - 06:07:54] Yeah.
+[06:07:54 - 06:07:55] He says...
+[06:07:55 - 06:07:56] Well...
+[06:07:56 - 06:07:57] Come on.
+[06:07:57 - 06:07:59] Let's go to the others.
+[06:07:59 - 06:08:02] John is a really nice person.
+[06:08:02 - 06:08:03] You should meet him.
+[06:08:03 - 06:08:05] Well, I talked to him a little bit.
+[06:08:05 - 06:08:10] And Andrew is also a kind of nice person as well.
+[06:08:10 - 06:08:14] He's a really nice person right now.
+[06:08:14 - 06:08:15] Hahaha.
+[06:08:15 - 06:08:17] How did you know that?
+[06:08:17 - 06:08:20] Well, it's kind of hard not to hear.
+[06:08:20 - 06:08:21] Disgusting!
+[06:08:21 - 06:08:22] He says.
+[06:08:22 - 06:08:23] I don't wanna know.
+[06:08:24 - 06:08:25] No, he's not doing anything like that.
+[06:08:25 - 06:08:28] I just hear the paper, like, moving around.
+[06:08:28 - 06:08:29] I don't wanna know!
+[06:08:29 - 06:08:30] She says.
+[06:08:30 - 06:08:33] He's kind of just reading the words under his voice.
+[06:08:33 - 06:08:37] And you know what's weird about him?
+[06:08:37 - 06:08:42] He makes the rights fanfictions.
+[06:08:42 - 06:08:43] Hahaha.
+[06:08:44 - 06:08:49] But I guess we have our own hobby.
+[06:08:49 - 06:08:50] He says.
+[06:08:50 - 06:08:52] Well, when I was in Ocarnellis.
+[06:08:52 - 06:08:53] Uh...
+[06:08:53 - 06:08:54] My first...
+[06:08:54 - 06:08:55] Uh...
+[06:08:55 - 06:08:56] My first...
+[06:08:56 - 06:08:57] Uh...
+[06:08:58 - 06:08:59] Told you to...
+[06:08:59 - 06:09:04] My first mate Kraswa kinda did something like that.
+[06:09:04 - 06:09:05] He used to write...
+[06:09:05 - 06:09:06] books.
+[06:09:06 - 06:09:11] And then, like, when he was in the wrong room.
+[06:09:11 - 06:09:13] He'd kinda read it out loud.
+[06:09:13 - 06:09:17] And then asks me questions about it.
+[06:09:17 - 06:09:19] Like, I thought it was good.
+[06:09:19 - 06:09:20] He just said yes.
+[06:09:19 - 06:09:21] You said yes.
+[06:09:21 - 06:09:23] That's very interesting.
+[06:09:23 - 06:09:31] There are actual hugs in general.
+[06:09:31 - 06:09:33] You know that?
+[06:09:33 - 06:09:35] But they're different from us.
+[06:09:35 - 06:09:37] They're scary.
+[06:09:37 - 06:09:39] They're cruel.
+[06:09:39 - 06:09:41] And they're not nice.
+[06:09:41 - 06:09:43] And there's the hugs that are
+[06:09:43 - 06:09:45] working with inner worms.
+[06:09:45 - 06:09:49] Aren't they like the hugs that
+[06:09:49 - 06:09:51] were in
+[06:09:51 - 06:09:53] the bridge?
+[06:09:53 - 06:09:55] On the bridge, Napol Bridge.
+[06:09:55 - 06:09:57] Yeah.
+[06:09:57 - 06:09:59] Where are we?
+[06:10:15 - 06:10:43] *laughing*
+[06:10:45 - 06:10:48] And I think they sense that I have a baby.
+[06:10:48 - 06:10:56] I try to hide it.
+[06:10:56 - 06:11:08] I mean, I'm not trying to hide it, but I have presumptions, assumptions before.
+[06:11:08 - 06:11:11] I don't really want to believe that.
+[06:11:11 - 06:11:13] Yeah.
+[06:11:13 - 06:11:16] Oh, yeah.
+[06:11:16 - 06:11:19] What you can do with them?
+[06:11:19 - 06:11:21] Three months.
+[06:11:21 - 06:11:22] And they're...
+[06:11:22 - 06:11:24] They're no legal reformists, right?
+[06:11:24 - 06:11:25] Huh?
+[06:11:25 - 06:11:27] They're no legal reformists, right?
+[06:11:27 - 06:11:28] Yeah.
+[06:11:28 - 06:11:29] You should learn how...
+[06:11:29 - 06:11:31] You should know a lot.
+[06:11:31 - 06:11:34] You should know things about the reformists.
+[06:11:34 - 06:11:39] I'll tell you everything that we've talked about.
+[06:11:39 - 06:11:40] Yeah.
+[06:11:40 - 06:11:41] So...
+[06:11:41 - 06:11:42] Um...
+[06:11:42 - 06:11:43] I guess we go to...
+[06:11:43 - 06:11:44] Like, um...
+[06:11:44 - 06:11:45] We go to the...
+[06:11:45 - 06:11:46] The cafeteria.
+[06:11:46 - 06:11:47] The next one.
+[06:11:47 - 06:11:48] Yeah.
+[06:11:48 - 06:11:50] And they talk about the...
+[06:11:50 - 06:11:51] How...
+[06:11:51 - 06:11:55] You know, she updated him with the reformist of the fire site.
+[06:11:55 - 06:11:56] The kind of...
+[06:11:56 - 06:11:58] Those kinds of things.
+[06:11:58 - 06:11:59] And, uh...
+[06:11:59 - 06:12:00] You see here that she's...
+[06:12:00 - 06:12:01] Yeah.
+[06:12:01 - 06:12:02] She kind of, like, changed a bit.
+[06:12:02 - 06:12:03] Uh...
+[06:12:03 - 06:12:04] She's more, like, uh...
+[06:12:04 - 06:12:05] Free.
+[06:12:06 - 06:12:10] I think to him, it's more like she's her old self before they went to the...
+[06:12:10 - 06:12:11] Yeah.
+[06:12:12 - 06:12:13] Before they went to the free one.
+[06:12:13 - 06:12:14] Yeah.
+[06:12:14 - 06:12:17] She's more herself.
+[06:12:17 - 06:12:18] Yeah.
+[06:12:18 - 06:12:21] And she's really pretty when she's kind of, like, um...
+[06:12:21 - 06:12:22] Happy.
+[06:12:22 - 06:12:24] Uh...
+[06:12:24 - 06:12:27] When she's, like, showing off, like, affection like that.
+[06:12:27 - 06:12:28] And, um...
+[06:12:28 - 06:12:30] She's really, like, a good person.
+[06:12:30 - 06:12:32] And, uh...
+[06:12:32 - 06:12:33] She says, um...
+[06:12:33 - 06:12:34] Yeah.
+[06:12:34 - 06:12:35] So that's what happened.
+[06:12:35 - 06:12:36] Yeah.
+[06:12:37 - 06:12:38] So that's what happened.
+[06:12:38 - 06:12:40] And there's actual real hags there.
+[06:12:40 - 06:12:41] But...
+[06:12:41 - 06:12:42] And, you know, Tiffany, the cat?
+[06:12:42 - 06:12:44] She eats their eyeballs.
+[06:12:44 - 06:12:45] Sounds disgusting.
+[06:12:46 - 06:12:48] To, like, gain power over them.
+[06:12:48 - 06:12:49] Something like that.
+[06:12:49 - 06:12:50] I don't know.
+[06:12:50 - 06:12:54] Maybe the hags of Faywell does that kind of thing.
+[06:12:54 - 06:12:55] Besides.
+[06:12:55 - 06:12:56] Oh, hey.
+[06:12:56 - 06:12:58] You get all sorts of food and stuff in the field.
+[06:12:58 - 06:13:01] What if I eat someone's eyeballs?
+[06:13:01 - 06:13:02] Oh.
+[06:13:04 - 06:13:05] Disgusting.
+[06:13:05 - 06:13:07] Well, you have to beat them first.
+[06:13:07 - 06:13:08] Huh?
+[06:13:08 - 06:13:09] So who's Tybal-y?
+[06:13:09 - 06:13:10] Because you beat them.
+[06:13:10 - 06:13:14] Well, we save a kid from the forest.
+[06:13:14 - 06:13:16] That's turning into a guacaba.
+[06:13:16 - 06:13:18] Have you seen snow?
+[06:13:18 - 06:13:19] Oh.
+[06:13:19 - 06:13:20] Well, you can see now, right?
+[06:13:20 - 06:13:22] I've seen snow, uh...
+[06:13:22 - 06:13:23] Can you see me?
+[06:13:23 - 06:13:25] Yeah, I can see you right now.
+[06:13:25 - 06:13:26] How many is there?
+[06:13:26 - 06:13:27] She says.
+[06:13:27 - 06:13:32] And so he goes and tries to open his connection to her.
+[06:13:32 - 06:13:33] See?
+[06:13:33 - 06:13:34] I can see you right now.
+[06:13:34 - 06:13:35] Ah, that's right, she says.
+[06:13:35 - 06:13:36] Um...
+[06:13:36 - 06:13:37] She says.
+[06:13:37 - 06:13:38] So where's snow?
+[06:13:38 - 06:13:39] She says.
+[06:13:39 - 06:13:52] Well, they said that they'll be coming on board, uh, later.
+[06:13:52 - 06:13:53] I think early tomorrow.
+[06:13:53 - 06:13:54] They're, uh...
+[06:13:54 - 06:13:55] They were at Ubon.
+[06:13:55 - 06:13:56] Uh, they were settling things with, uh, people.
+[06:13:56 - 06:13:57] Uh, some of the...
+[06:13:57 - 06:13:58] Some of the kids were going to be moved to Sentimental Island.
+[06:13:58 - 06:13:59] She nods.
+[06:13:59 - 06:14:00] Wow.
+[06:14:00 - 06:14:01] I want to see it.
+[06:14:01 - 06:14:03] So, Luana's though, as well?
+[06:14:03 - 06:14:04] Luana and, uh, yeah.
+[06:14:04 - 06:14:05] Um...
+[06:14:05 - 06:14:08] Well, Bianca is going to be staying, at least until Adam is happy with the ship.
+[06:14:08 - 06:14:10] But, I think they're going to be heading to the island.
+[06:14:10 - 06:14:11] Uh, they were settling things with, uh, people.
+[06:14:11 - 06:14:12] Uh, some of the...
+[06:14:12 - 06:14:13] Some of the kids were going to be moved to Sentimental Island.
+[06:14:13 - 06:14:14] She nods.
+[06:14:14 - 06:14:15] Wow.
+[06:14:15 - 06:14:16] I want to see it.
+[06:14:16 - 06:14:17] So, Luana's though, as well?
+[06:14:17 - 06:14:18] Luana and, uh, yeah.
+[06:14:18 - 06:14:19] Um...
+[06:14:19 - 06:14:24] Well, Bianca is going to be staying, at least until Adam is happy with her ship.
+[06:14:24 - 06:14:27] But, I think they're going to be heading to the island.
+[06:14:27 - 06:14:30] They're going to be heading to the new orphanage, too.
+[06:14:30 - 06:14:33] Because Adam is going to be fixing some stuff there.
+[06:14:33 - 06:14:37] But, he's officially going to, um...
+[06:14:37 - 06:14:40] I think they've already gone through the paperwork.
+[06:14:40 - 06:14:42] I think she's officially his, uh...
+[06:14:42 - 06:14:43] Adopting, Bianca.
+[06:14:44 - 06:14:45] Ah, I know that.
+[06:14:45 - 06:14:46] He's adopting.
+[06:14:46 - 06:14:47] I know.
+[06:14:47 - 06:14:50] But, I think, now it's, like, moving forward.
+[06:14:50 - 06:14:51] Hmm.
+[06:14:51 - 06:14:54] Like, they already both signed the paperwork.
+[06:14:54 - 06:14:58] And, it's just a matter of the mayor approving it.
+[06:14:58 - 06:15:00] So, she nods.
+[06:15:00 - 06:15:02] That's good for Bianca.
+[06:15:02 - 06:15:05] So, she's going to be...
+[06:15:05 - 06:15:06] coming to Adam.
+[06:15:06 - 06:15:09] So, she's going to be coming to Adam.
+[06:15:09 - 06:15:16] So, are you pursuing some fun?
+[06:15:16 - 06:15:19] Oh, um...
+[06:15:19 - 06:15:22] Well, right now, we just said that we're friends.
+[06:15:22 - 06:15:23] Are you sure?
+[06:15:24 - 06:15:25] She says.
+[06:15:25 - 06:15:26] Well, we've been close.
+[06:15:26 - 06:15:27] Uh-huh.
+[06:15:27 - 06:15:28] Alright.
+[06:15:28 - 06:15:29] She says.
+[06:15:29 - 06:15:30] But, I mean...
+[06:15:30 - 06:15:33] I really don't know much about, like, relationships and...
+[06:15:33 - 06:15:34] And that sort of thing.
+[06:15:34 - 06:15:35] It's nice talking to her.
+[06:15:35 - 06:15:36] She's really kind and helpful.
+[06:15:36 - 06:15:37] And she likes doing things for people.
+[06:15:37 - 06:15:38] Oh.
+[06:15:38 - 06:15:39] That's cool.
+[06:15:39 - 06:15:40] She says.
+[06:15:40 - 06:15:41] She's a good...
+[06:15:41 - 06:15:42] Good person, as well.
+[06:15:42 - 06:15:43] But...
+[06:15:43 - 06:15:43] What's happening here?
+[06:15:43 - 06:15:45] They said that if she keeps on giving blood...
+[06:15:45 - 06:15:47] So, she looks around and she kind of moves closer to you.
+[06:15:47 - 06:15:49] They said that if she keeps on giving blood...
+[06:15:49 - 06:15:56] So, she looks around and she kind of moves closer to you.
+[06:15:56 - 06:16:02] They said that if a celestial person gives out their blood, like, continually...
+[06:16:02 - 06:16:03] You know what I mean, right?
+[06:16:03 - 06:16:04] Yeah.
+[06:16:04 - 06:16:05] They're gonna go too mad.
+[06:16:05 - 06:16:06] Well...
+[06:16:06 - 06:16:10] The thing that I was kind of a little worried about was...
+[06:16:10 - 06:16:11] I didn't know about that.
+[06:16:11 - 06:16:12] But, like...
+[06:16:12 - 06:16:15] Just her having to use blood in the first place, right?
+[06:16:15 - 06:16:16] Yeah.
+[06:16:16 - 06:16:17] I was kind of...
+[06:16:17 - 06:16:19] I was kind of a little worried about was...
+[06:16:19 - 06:16:20] I didn't know about that.
+[06:16:20 - 06:16:21] But, like...
+[06:16:21 - 06:16:24] Just her having to use blood in the first place, right?
+[06:16:24 - 06:16:25] I didn't know about that.
+[06:16:26 - 06:16:30] But, like, just her having to use blood in the first place, right?
+[06:16:30 - 06:16:31] I didn't know about that.
+[06:16:33 - 06:16:34] It's...
+[06:16:34 - 06:16:36] But she said she was happy to do it.
+[06:16:36 - 06:16:37] But I was just worried.
+[06:16:37 - 06:16:38] I mean...
+[06:16:38 - 06:16:39] I told her, like...
+[06:16:39 - 06:16:40] It's just temporary.
+[06:16:40 - 06:16:41] And she doesn't have to do it every day.
+[06:16:41 - 06:16:42] But she enjoys...
+[06:16:42 - 06:16:43] And she nods.
+[06:16:43 - 06:16:44] Helping people, she says.
+[06:16:44 - 06:16:45] And it's being helpful.
+[06:16:45 - 06:16:46] Well, I'm sorry.
+[06:16:46 - 06:16:47] I don't have celestial blood.
+[06:16:47 - 06:16:48] She says.
+[06:16:48 - 06:16:49] Well, I'm sorry.
+[06:16:49 - 06:16:50] I don't have celestial blood.
+[06:16:50 - 06:16:51] She says.
+[06:16:51 - 06:16:52] She nods.
+[06:16:53 - 06:16:55] Helping people, she says.
+[06:16:55 - 06:16:56] And it's being helpful.
+[06:16:56 - 06:16:57] Well, I'm sorry.
+[06:16:57 - 06:16:58] I don't have celestial blood.
+[06:16:58 - 06:16:59] She says.
+[06:16:59 - 06:17:00] Well, I'm sorry.
+[06:17:00 - 06:17:01] I don't have celestial blood.
+[06:17:01 - 06:17:02] He says.
+[06:17:02 - 06:17:03] He's being petty.
+[06:17:03 - 06:17:04] I mean...
+[06:17:04 - 06:17:05] I don't really...
+[06:17:05 - 06:17:06] I...
+[06:17:08 - 06:17:09] I just can offer you my body as...
+[06:17:09 - 06:17:10] As you can see something, right?
+[06:17:10 - 06:17:11] Through my eyes.
+[06:17:11 - 06:17:12] He says.
+[06:17:12 - 06:17:13] Yeah.
+[06:17:13 - 06:17:14] Come on.
+[06:17:14 - 06:17:15] I'm...
+[06:17:15 - 06:17:16] You know, being around you is more than enough.
+[06:17:16 - 06:17:17] What?
+[06:17:17 - 06:17:18] She kind of like breathes in and goes out.
+[06:17:18 - 06:17:19] And she says.
+[06:17:19 - 06:17:23] I killed my own uncle.
+[06:17:23 - 06:17:24] She says.
+[06:17:24 - 06:17:24] Back in scenario.
+[06:17:24 - 06:17:25] She says.
+[06:17:25 - 06:17:25] But he's a servant.
+[06:17:25 - 06:17:26] He doesn't want to tell me about my parents.
+[06:17:26 - 06:17:27] She says.
+[06:17:27 - 06:17:28] And he...
+[06:17:28 - 06:17:29] tries to assault me.
+[06:17:29 - 06:17:30] Something like that.
+[06:17:30 - 06:17:31] something like that.
+[06:17:31 - 06:17:31] She says.
+[06:17:31 - 06:17:32] I don't know.
+[06:17:33 - 06:17:34] What?
+[06:17:34 - 06:17:56] and she says I killed my own uncle back in Sinera. He doesn't want to tell me about my parents and he tries to assault me.
+[06:17:56 - 06:18:08] Well, so she kind of like bleeds in again.
+[06:18:08 - 06:18:16] They, my aunt, she says, they're working for the reformist church. They had the parasites and the high-level pastors.
+[06:18:16 - 06:18:18] I'm sure you had to deal with that.
+[06:18:18 - 06:18:28] Eh, it's fine, she says. I already accepted it, she says, that they might be dead, my parents.
+[06:18:28 - 06:18:32] I did promise to help you about that too.
+[06:18:32 - 06:18:42] She nods. I just, I just miss them.
+[06:18:42 - 06:18:46] I don't know. Maybe they're just in hiding for now.
+[06:18:46 - 06:18:49] I mean, if there are forms that they're looking for.
+[06:18:49 - 06:18:52] There's a possibility that they're down there, right?
+[06:18:52 - 06:18:53] Yeah.
+[06:18:53 - 06:18:56] So, um, Sinera.
+[06:18:56 - 06:18:57] Yeah.
+[06:18:57 - 06:19:08] But, I have an inch. Every time I try to look for an answer, I'm always an inch away and then it will disappear.
+[06:19:08 - 06:19:09] something like that.
+[06:19:09 - 06:19:20] I finally got information about my family and when I get answered, they don't want to give it to me.
+[06:19:19 - 06:19:27] So, maybe I'll just put my hands on whatever.
+[06:19:27 - 06:19:31] Shush, he says.
+[06:19:31 - 06:19:35] Well, we'll think of something. We'll find something.
+[06:19:35 - 06:19:37] I hope so.
+[06:19:37 - 06:19:39] I'm sure you will.
+[06:19:39 - 06:19:47] So, have you thought of a name for the baby?
+[06:19:47 - 06:19:49] Well.
+[06:19:49 - 06:19:53] I love their opinion stuff.
+[06:19:53 - 06:19:59] Kind of like thinking like a combination of our names.
+[06:19:59 - 06:20:03] Lime Justin?
+[06:20:03 - 06:20:05] Yeah, I don't think it works.
+[06:20:05 - 06:20:07] Well, you know that my real name is Elizabeth, right?
+[06:20:07 - 06:20:09] Yeah.
+[06:20:09 - 06:20:11] We don't know the gender, though.
+[06:20:11 - 06:20:13] Yeah, I don't think.
+[06:20:13 - 06:20:15] That's better.
+[06:20:15 - 06:20:21] Ellen?
+[06:20:21 - 06:20:23] Ellen is cool.
+[06:20:23 - 06:20:25] Could be a girl and a guy.
+[06:20:25 - 06:20:27] Maybe.
+[06:20:27 - 06:20:29] That settles it.
+[06:20:29 - 06:20:31] Lime and Justin, like, last pin.
+[06:20:31 - 06:20:35] It's not really working out, right?
+[06:20:35 - 06:20:37] Please don't say that.
+[06:20:37 - 06:20:39] Because Minfilia will hear it.
+[06:20:39 - 06:20:43] Minfilia leads me, you know.
+[06:20:43 - 06:20:45] She says.
+[06:20:45 - 06:20:47] No, she doesn't.
+[06:20:47 - 06:20:49] I know.
+[06:20:49 - 06:20:51] She says.
+[06:20:51 - 06:20:53] Just like when she says,
+[06:20:53 - 06:20:55] I hate those old women.
+[06:20:55 - 06:20:57] She's never let me sleep.
+[06:20:57 - 06:20:59] After I break up with you, she says.
+[06:20:59 - 06:21:01] I don't know you.
+[06:21:01 - 06:21:07] Oh, that's just how they are.
+[06:21:07 - 06:21:09] I'm hungry.
+[06:21:09 - 06:21:11] So she looks around.
+[06:21:11 - 06:21:12] Ah.
+[06:21:12 - 06:21:14] I'm gonna get some food.
+[06:21:14 - 06:21:15] Alright?
+[06:21:15 - 06:21:16] Alright.
+[06:21:17 - 06:21:20] So yeah, so she stands up in those pockets.
+[06:21:20 - 06:21:27] So where's everyone?
+[06:21:27 - 06:21:35] So yeah, I mean, she, I guess, she, uh, the ones who have been preparing the entire fucking day.
+[06:21:35 - 06:21:36] Ah, let's go to Helion.
+[06:21:36 - 06:21:37] Let's go to Helion.
+[06:21:38 - 06:21:38] Okay.
+[06:21:40 - 06:21:43] So Helion is hiding from the, from this team.
+[06:21:43 - 06:21:44] Yeah.
+[06:21:44 - 06:21:45] And it's inside the pantry.
+[06:21:45 - 06:21:47] Inside the, the, the, yung storage.
+[06:21:47 - 06:21:48] Okay.
+[06:21:48 - 06:21:50] Yung cargo, cargo board.
+[06:21:50 - 06:21:54] Hey, since you're in there, uh, and maybe you can just, uh.
+[06:21:54 - 06:21:55] Sino to?
+[06:21:55 - 06:21:57] So si, ano, si, si, si.
+[06:21:57 - 06:21:58] Maybe.
+[06:21:58 - 06:21:59] Okay.
+[06:21:59 - 06:22:02] Maybe you can pass the, the cured meat, the cured ham.
+[06:22:02 - 06:22:04] I'm gonna make some slices.
+[06:22:04 - 06:22:08] I just, I just want a sandwich.
+[06:22:08 - 06:22:10] So he passed you the cured ham.
+[06:22:10 - 06:22:11] Thanks.
+[06:22:11 - 06:22:15] What makes, you know the answer.
+[06:22:15 - 06:22:17] What makes me look gay?
+[06:22:17 - 06:22:19] Your hair.
+[06:22:19 - 06:22:21] Should I go bald?
+[06:22:21 - 06:22:23] I was bald before.
+[06:22:23 - 06:22:26] When I took on becoming a monk.
+[06:22:26 - 06:22:27] I know it's cliche.
+[06:22:27 - 06:22:28] Yeah.
+[06:22:28 - 06:22:29] Don't worry.
+[06:22:29 - 06:22:36] It's just, it's just like, if you, if you're bald, there are a lot of bald gay men.
+[06:22:36 - 06:22:39] And it's probably just gonna call you gay anyway.
+[06:22:39 - 06:22:40] Oh, okay anyway.
+[06:22:40 - 06:22:42] Is this Monophilia and Oscar again?
+[06:22:42 - 06:22:44] It's because of how you look, Sabine Rini.
+[06:22:44 - 06:22:45] Huh?
+[06:22:45 - 06:22:46] What?
+[06:22:46 - 06:22:47] How am I look?
+[06:22:47 - 06:22:48] What?
+[06:22:48 - 06:22:49] Look, these are pirates.
+[06:22:49 - 06:22:50] These are pirates.
+[06:22:50 - 06:22:50] Oh right.
+[06:22:50 - 06:22:51] He says.
+[06:22:51 - 06:22:52] And they look, they dress like pirates.
+[06:22:52 - 06:22:53] You dress really nicely.
+[06:22:53 - 06:22:54] Right.
+[06:22:54 - 06:22:55] You dress really nicely.
+[06:22:55 - 06:22:56] Right.
+[06:22:56 - 06:22:57] You kind of look like those guests.
+[06:22:57 - 06:22:58] Hmm.
+[06:22:58 - 06:23:01] Well, I'm from the Blanchiment family.
+[06:23:01 - 06:23:02] He says.
+[06:23:02 - 06:23:03] So I can't be.
+[06:23:03 - 06:23:04] Flamboyant.
+[06:23:04 - 06:23:05] Undressed.
+[06:23:05 - 06:23:06] He says.
+[06:23:06 - 06:23:07] I mean, I can't be.
+[06:23:07 - 06:23:08] I can't be.
+[06:23:08 - 06:23:09] Flamboyant.
+[06:23:09 - 06:23:10] Undressed.
+[06:23:10 - 06:23:11] He says.
+[06:23:11 - 06:23:12] Hmm.
+[06:23:12 - 06:23:13] I mean, I can't be.
+[06:23:13 - 06:23:14] Less dressed.
+[06:23:14 - 06:23:16] Because I represent my family.
+[06:23:16 - 06:23:17] Yeah.
+[06:23:17 - 06:23:18] That doesn't help your face.
+[06:23:18 - 06:23:20] You should just dress like normal.
+[06:23:20 - 06:23:21] I mean, what's wrong?
+[06:23:21 - 06:23:22] You have to be dressed like normal.
+[06:23:22 - 06:23:23] I mean, what's wrong?
+[06:23:23 - 06:23:24] You have to be dressed like normal.
+[06:23:24 - 06:23:25] I mean, what's wrong?
+[06:23:25 - 06:23:26] You have to be dressed like normal.
+[06:23:27 - 06:23:28] I mean, what's wrong?
+[06:23:28 - 06:23:29] You have to be dressed like normal.
+[06:23:52 - 06:23:53] You have to be dressed like you don't care.
+[06:24:13 - 06:24:21] So he walks out of the kitchen and goes to the storage room.
+[06:24:21 - 06:24:26] Hey Ann, I guess on the way out, that's when you see Lime.
+[06:24:26 - 06:24:28] Ah, see Lime?
+[06:24:28 - 06:24:31] Oh, Lime.
+[06:24:31 - 06:24:34] How can I help you?
+[06:24:34 - 06:24:35] I don't really need you.
+[06:24:35 - 06:24:37] I need food.
+[06:24:37 - 06:24:42] If you look at me in that way, I am food.
+[06:24:42 - 06:24:43] You're not some of the life.
+[06:24:43 - 06:24:45] No, you're not some of the life.
+[06:24:46 - 06:24:48] And she goes inside.
+[06:24:48 - 06:24:51] You should act more that way with Miss Ayn.
+[06:24:51 - 06:24:55] Ah, it's not.
+[06:24:55 - 06:25:02] Those, uh, uh, Rosie's mother always, uh, like, laughs when I say that.
+[06:25:10 - 06:25:14] Hey, what's in for me?
+[06:25:14 - 06:25:15] You want a sandwich?
+[06:25:15 - 06:25:16] Well, I'm pregnant, Andy.
+[06:25:16 - 06:25:17] You're pregnant?
+[06:25:17 - 06:25:18] Yeah.
+[06:25:18 - 06:25:20] Well, congratulations.
+[06:25:20 - 06:25:21] Where's your father?
+[06:25:21 - 06:25:22] Justin?
+[06:25:22 - 06:25:23] No shit.
+[06:25:23 - 06:25:25] He's the only one I slept with.
+[06:25:25 - 06:25:28] Shit, I thought someone from Sanera did something something.
+[06:25:28 - 06:25:29] Ew.
+[06:25:31 - 06:25:32] No forced kikik soup.
+[06:25:32 - 06:25:33] Ow.
+[06:25:33 - 06:25:34] Oh.
+[06:25:34 - 06:25:36] With my stock, I can turn you into something.
+[06:25:36 - 06:25:38] A frogman this time, he says.
+[06:25:38 - 06:25:39] At this point, I'm fine with anything.
+[06:25:39 - 06:25:40] But I like this form, though.
+[06:25:40 - 06:25:41] Hey, watch it, Sabinelli brings on ya.
+[06:25:41 - 06:25:42] Well, you need a stew, she says.
+[06:25:42 - 06:25:43] A very healthy one, she says.
+[06:25:43 - 06:25:45] I'll make you, I'll make something for you, she says.
+[06:25:45 - 06:25:46] So she makes a, makes a stew for her.
+[06:25:46 - 06:25:46] So, like, just, just, you know.
+[06:25:46 - 06:25:47] Yeah, I already told him.
+[06:25:47 - 06:25:48] Wow.
+[06:25:49 - 06:25:50] Oh.
+[06:25:50 - 06:25:51] I'm fine with anything.
+[06:25:53 - 06:25:54] But I like this form, though.
+[06:25:54 - 06:25:55] Hey, watch it, Sabinelli brings on ya.
+[06:25:55 - 06:25:56] Well, you need a stew, she says.
+[06:25:56 - 06:25:57] A very healthy one, she says.
+[06:25:57 - 06:25:58] I'll make you, I'll make something for you, she says.
+[06:25:58 - 06:25:59] So she makes a, makes a stew for her.
+[06:25:59 - 06:26:00] So, like, just, just, you know.
+[06:26:00 - 06:26:01] Yeah, I already told him.
+[06:26:01 - 06:26:02] Wow.
+[06:26:02 - 06:26:05] So, how, what does this mean, like, relationship-wise?
+[06:26:05 - 06:26:12] It means, like, we're going to face it together.
+[06:26:12 - 06:26:13] Yeah.
+[06:26:13 - 06:26:18] So, how, what does this mean, like, relationship-wise?
+[06:26:18 - 06:26:22] It means, like, we're going to face it together.
+[06:26:22 - 06:26:23] So, you're back together?
+[06:26:23 - 06:26:24] Um, I don't know, she says.
+[06:26:24 - 06:26:25] I don't wanna assume, I don't know anything about relationships, she says.
+[06:26:25 - 06:26:26] Unlike you, she says.
+[06:26:26 - 06:26:27] I, I just got really lucky.
+[06:26:27 - 06:26:28] You're weird, Andy, she says.
+[06:26:29 - 06:26:30] It means, like, we're going to face it together.
+[06:26:31 - 06:26:32] So, you're back together?
+[06:26:32 - 06:26:33] Um, I don't know, she says.
+[06:26:33 - 06:26:34] I don't know, she says.
+[06:26:34 - 06:26:35] I don't wanna assume, I don't know anything about relationships, she says.
+[06:26:36 - 06:26:37] Unlike you, she says.
+[06:26:39 - 06:26:40] I just got really lucky.
+[06:26:40 - 06:26:41] You're weird, Andy, she says.
+[06:26:41 - 06:26:42] I mean, your total form is weird.
+[06:26:42 - 06:26:43] I don't know.
+[06:26:43 - 06:26:45] I'm really getting, getting used to it, she says.
+[06:26:45 - 06:26:50] Says, the spirit of the moon.
+[06:26:50 - 06:26:51] Uh, here you go.
+[06:26:51 - 06:26:52] I don't know anything.
+[06:26:52 - 06:26:53] Wow, that's yummy, she says.
+[06:26:53 - 06:26:54] Thanks, she says.
+[06:26:54 - 06:26:55] Oh.
+[06:26:55 - 06:26:56] Justin, you want some?
+[06:26:56 - 06:26:57] I don't know.
+[06:26:57 - 06:26:58] Let me ask you.
+[06:26:58 - 06:26:59] Do you want some?
+[06:27:00 - 06:27:01] I don't know.
+[06:27:01 - 06:27:02] Let me ask you.
+[06:27:02 - 06:27:03] Do you want some?
+[06:27:05 - 06:27:06] I don't know.
+[06:27:06 - 06:27:07] Let me ask you.
+[06:27:07 - 06:27:08] Do you want some?
+[06:27:10 - 06:27:11] I don't know.
+[06:27:11 - 06:27:12] Do you want some?
+[06:27:18 - 06:27:19] I don't know.
+[06:27:19 - 06:27:20] Do you want some?
+[06:27:30 - 06:27:31] I guess.
+[06:27:31 - 06:27:32] Do you want some?
+[06:27:38 - 06:27:39] All right.
+[06:27:39 - 06:27:40] So we didn't mix him a small one?
+[06:27:40 - 06:27:42] I mean, we all got weird from the firewall, right?
+[06:27:42 - 06:27:44] Justin gets older by 10 years.
+[06:27:44 - 06:27:45] I can't believe it.
+[06:27:45 - 06:27:48] Now that I aged up, it's like extremely bad.
+[06:27:48 - 06:27:50] Stringbees and Emma.
+[06:27:50 - 06:27:51] Emma.
+[06:27:51 - 06:27:52] It's not that old.
+[06:27:52 - 06:27:56] It's not like he turned 80.
+[06:27:56 - 06:28:02] And besides, Stringbees like ate his life is how we're talking about it now.
+[06:28:02 - 06:28:03] It's weird.
+[06:28:03 - 06:28:04] No, no.
+[06:28:04 - 06:28:05] Because listen.
+[06:28:05 - 06:28:10] Stringbees looks like he got younger by about 10 years.
+[06:28:10 - 06:28:15] And then Justin here got older by 10 years.
+[06:28:15 - 06:28:19] It's like Stringbees took 10 years of his life away.
+[06:28:19 - 06:28:20] Yeah.
+[06:28:21 - 06:28:22] Well, I gotta go.
+[06:28:22 - 06:28:26] Thanks, Stringbees and Andy.
+[06:28:26 - 06:28:27] All right.
+[06:28:27 - 06:28:29] Well, no drinks?
+[06:28:29 - 06:28:30] Milk.
+[06:28:30 - 06:28:31] Yes.
+[06:28:31 - 06:28:32] All right.
+[06:28:32 - 06:28:34] Cow's milk.
+[06:28:34 - 06:28:35] All right.
+[06:28:35 - 06:28:38] So she brings the food to me.
+[06:28:38 - 06:28:43] And I'll take no alcohol for you for the next year.
+[06:28:43 - 06:28:44] Yeah.
+[06:28:44 - 06:28:46] I've never been to that.
+[06:28:46 - 06:28:47] I know that.
+[06:28:47 - 06:28:48] Oh, I know.
+[06:28:48 - 06:28:50] But maybe it's time for you to become more like...
+[06:28:50 - 06:28:51] I'm not a date.
+[06:28:51 - 06:28:52] She says.
+[06:28:52 - 06:28:53] When did that matter?
+[06:28:53 - 06:28:56] I know Snow's been drinking.
+[06:28:56 - 06:28:59] Well, before she found out she was pregnant.
+[06:28:59 - 06:29:00] Ew!
+[06:29:00 - 06:29:03] So me and Snow are pregnant?
+[06:29:03 - 06:29:06] You didn't know that Snow is pregnant?
+[06:29:04 - 06:29:06] You didn't know that Snow was pregnant?
+[06:29:06 - 06:29:09] I know, but I just realized it again, she says.
+[06:29:09 - 06:29:20] So yeah, so she goes and brings the stool back to the mescal and puts her plate down,
+[06:29:20 - 06:29:27] puts the plate of jasmine, and puts a napkin there and put chara pinador.
+[06:29:27 - 06:29:29] Thanks.
+[06:29:31 - 06:29:34] So Snow and I are pregnant at the same time?
+[06:29:34 - 06:29:37] Come to think of it, yeah.
+[06:29:37 - 06:29:45] And I don't really know how like Feywild things are going to affect the situation,
+[06:29:45 - 06:29:47] but I think she got pregnant ahead of you.
+[06:29:47 - 06:29:50] Maybe.
+[06:29:50 - 06:29:54] So she nods and she kind of like...
+[06:29:54 - 06:29:55] Or maybe at about the same time.
+[06:29:55 - 06:29:57] Yeah, maybe at the same time.
+[06:29:59 - 06:30:04] Cause we did it in, we first did it in Sentimental Island, right?
+[06:30:04 - 06:30:05] Yeah, but...
+[06:30:05 - 06:30:08] And we keep doing it in the Feywild.
+[06:30:08 - 06:30:10] It's weird.
+[06:30:10 - 06:30:13] Did Dom and Snow?
+[06:30:13 - 06:30:15] Didn't they start doing it in the Feywild?
+[06:30:16 - 06:30:17] I don't want to know.
+[06:30:17 - 06:30:18] I don't want to know, he says.
+[06:30:18 - 06:30:22] So are they together even if you don't know, right?
+[06:30:22 - 06:30:25] Okay.
+[06:30:25 - 06:30:28] Why do you have a hook horror here in the Feywild?
+[06:30:28 - 06:30:30] You probably use it in the...
+[06:30:30 - 06:30:34] You probably use it in your character to run the game for the game.
+[06:30:34 - 06:30:34] So...
+[06:30:34 - 06:30:36] ...to run the game for the game.
+[06:30:36 - 06:30:37] So...
+[06:30:37 - 06:30:38] ...to run the game for the game.
+[06:30:38 - 06:30:38] So...
+[06:30:38 - 06:30:39] ...to run the game for the game for the game.
+[06:30:39 - 06:30:39] So...
+[06:30:39 - 06:30:40] ...to run the game for the game for the game.
+[06:30:40 - 06:30:41] So...
+[06:30:41 - 06:30:42] ...to run the game for the game for the game.
+[06:30:42 - 06:30:42] So...
+[06:30:42 - 06:30:45] There's a...
+[06:30:45 - 06:30:47] There's another Celestial person in...
+[06:30:47 - 06:30:48] ...in Travertine.
+[06:30:48 - 06:30:51] But we didn't bring her with us.
+[06:30:51 - 06:30:53] Her name is Angel.
+[06:30:53 - 06:30:57] She's the one who cured and removed those pyrocytes from...
+[06:30:57 - 06:31:00] ...from Luke and the Duchess.
+[06:31:00 - 06:31:04] I heard Oscar and Rencilia talking about her...
+[06:31:04 - 06:31:05] Yeah, and she's very nice.
+[06:31:05 - 06:31:09] She's really cute, she says.
+[06:31:09 - 06:31:10] She looks like a doll.
+[06:31:11 - 06:31:12] A real living doll.
+[06:31:12 - 06:31:14] She says.
+[06:31:14 - 06:31:18] And she's not like...
+[06:31:18 - 06:31:20] ...those dolls...
+[06:31:20 - 06:31:21] ...when they run the things...
+[06:31:21 - 06:31:22] ...to pushy?
+[06:31:22 - 06:31:23] No!
+[06:31:23 - 06:31:24] She's...
+[06:31:24 - 06:31:25] She's really nice.
+[06:31:25 - 06:31:26] And she...
+[06:31:26 - 06:31:26] You know what?
+[06:31:26 - 06:31:27] She authored her...
+[06:31:27 - 06:31:28] She authored...
+[06:31:28 - 06:31:29] She can feel her anything...
+[06:31:29 - 06:31:31] ...with her appearances.
+[06:31:31 - 06:31:31] So that's what we are.
+[06:31:31 - 06:31:35] And she did it with Luke and the Duchess, right?
+[06:31:35 - 06:31:37] Oh, right.
+[06:31:37 - 06:31:41] In Mincilia and Oscar is creeping on her.
+[06:31:41 - 06:31:46] I mean...
+[06:31:46 - 06:31:49] They wouldn't be in Ophelia and Oscar if they didn't do that.
+[06:31:49 - 06:31:53] That's weird.
+[06:31:53 - 06:31:55] Now we're bringing Emily in with us too.
+[06:31:57 - 06:31:57] Oh, shit.
+[06:31:57 - 06:32:00] We gotta prepare for the wild magic, she says.
+[06:32:00 - 06:32:01] I mean...
+[06:32:01 - 06:32:07] I gotta think that maybe she's gonna be more at home there?
+[06:32:07 - 06:32:09] Because there's still a lot more like...
+[06:32:09 - 06:32:13] I heard that there's like people from the Feywild there, right?
+[06:32:13 - 06:32:15] There are, she says.
+[06:32:15 - 06:32:17] I can feel it, she says.
+[06:32:17 - 06:32:18] And some of them believes...
+[06:32:18 - 06:32:20] ...believes about...
+[06:32:20 - 06:32:23] ...believes on Feywild, even the normal ones...
+[06:32:23 - 06:32:24] ...even the normal people...
+[06:32:24 - 06:32:26] ...believes...
+[06:32:26 - 06:32:27] ...in the Feywild.
+[06:32:27 - 06:32:29] ...believes the existence of a Dream Lord.
+[06:32:29 - 06:32:31] So that's those kinds of stuff.
+[06:32:31 - 06:32:33] That's amazing, she says.
+[06:32:33 - 06:32:39] Well, it could be a nice change of pace, I guess.
+[06:32:39 - 06:32:41] You're bored here?
+[06:32:41 - 06:32:43] I'm not really bored.
+[06:32:43 - 06:32:49] I'm not like, I mean...
+[06:32:49 - 06:32:53] And it's not really impatient, either.
+[06:32:53 - 06:32:53] It's just...
+[06:32:53 - 06:32:55] Well, it's...
+[06:32:55 - 06:32:58] We haven't been doing much of anything recently.
+[06:32:58 - 06:33:02] I guess it's just been two weeks, right?
+[06:33:02 - 06:33:06] Yeah, and we're gonna do a lot in this scenario.
+[06:33:06 - 06:33:07] I can't believe it.
+[06:33:07 - 06:33:10] It felt longer.
+[06:33:11 - 06:33:15] It felt like time was going really slow.
+[06:33:15 - 06:33:17] There's a lot of things to do in Scenera.
+[06:33:17 - 06:33:22] You know what?
+[06:33:22 - 06:33:23] We just came...
+[06:33:23 - 06:33:23] We just...
+[06:33:23 - 06:33:25] We just arrived from a wedding.
+[06:33:25 - 06:33:33] A wedding of Kate and Luke Malta.
+[06:33:33 - 06:33:35] Katalin Hylinski?
+[06:33:35 - 06:33:36] From The Night Shiftness?
+[06:33:36 - 06:33:37] Okay.
+[06:33:41 - 06:33:45] Well, at least that one we heard from Hedwig.
+[06:33:45 - 06:33:48] You know how Hedwig can be when something...
+[06:33:48 - 06:33:49] Captain Hedwig?
+[06:33:49 - 06:33:54] Well, because technically she isn't.
+[06:33:54 - 06:33:54] I mean...
+[06:33:54 - 06:33:56] Oh, yeah.
+[06:33:56 - 06:33:58] She's not Captain of Scarlet.
+[06:33:58 - 06:33:59] It's Som.
+[06:33:59 - 06:34:00] Yeah.
+[06:34:00 - 06:34:01] It's a Captain of Som.
+[06:34:01 - 06:34:02] It's still...
+[06:34:02 - 06:34:07] I still get it mixed up sometimes.
+[06:34:07 - 06:34:08] I call...
+[06:34:08 - 06:34:09] Sometimes I call her Captain still.
+[06:34:09 - 06:34:12] Sometimes I don't because I remember that she's not.
+[06:34:12 - 06:34:13] Oh, no.
+[06:34:13 - 06:34:15] She nods.
+[06:34:15 - 06:34:18] But Som is just still like...
+[06:34:18 - 06:34:23] People just call him Grand Master anyway if somebody needs a title.
+[06:34:23 - 06:34:25] So it's kind of...
+[06:34:25 - 06:34:29] that's what his title is even if he's Captain of the Ship People.
+[06:34:29 - 06:34:31] Just call him Grand Master.
+[06:34:31 - 06:34:32] She nods.
+[06:34:32 - 06:34:34] Go and eat.
+[06:34:34 - 06:34:36] Yeah.
+[06:34:36 - 06:34:38] It smells really good.
+[06:34:38 - 06:34:39] So...
+[06:34:39 - 06:34:51] So there are like a lot of like things that here that could be provisioned to them.
+[06:34:51 - 06:34:51] Yeah.
+[06:34:53 - 06:35:04] They have Jew Kissed Herb, which if brewed, can be turned into greater restoration or greater healing portion.
+[06:35:04 - 06:35:09] And what else they have here is the Transmoglish Room.
+[06:35:09 - 06:35:12] May Transmoglish Room pala.
+[06:35:12 - 06:35:14] Transmoglish Room.
+[06:35:14 - 06:35:20] Ah, yung makakapag-change ng muka, ng anong anong race mo, sa anong mukha mo.
+[06:35:20 - 06:35:21] Yeah.
+[06:35:23 - 06:35:24] But I guess...
+[06:35:24 - 06:35:26] And he doesn't like to...
+[06:35:26 - 06:35:28] Whenever he sees that mushroom is...
+[06:35:28 - 06:35:37] So anyway, Lime and Justin kind of like pang hangs out.
+[06:35:37 - 06:35:40] And they kind of like eat together.
+[06:35:40 - 06:35:41] Yeah.
+[06:35:41 - 06:35:45] And Emily is like waiting for these people on the deck.
+[06:35:46 - 06:35:51] And John is like packing with Rebecca's stuff.
+[06:35:51 - 06:35:53] Yeah, Rebecca's stuff with Liliana's probably.
+[06:35:53 - 06:35:56] Liliana is probably like...
+[06:35:56 - 06:35:56] Cry.
+[06:35:56 - 06:35:59] She's with Alvin.
+[06:35:59 - 06:36:00] It's okay.
+[06:36:05 - 06:36:13] Yeah, if there's nothing else that you want to talk about, at least, para mga interpersonal stuff.
+[06:36:13 - 06:36:21] Uh, we can do still have some discussions to happen with like, uh, you know, more serious stuff again.
+[06:36:21 - 06:36:21] Ah, wala na.
+[06:36:21 - 06:36:22] Wala na.
+[06:36:22 - 06:36:24] Kasi napag-asapan ako saan pupunta yung mga tao.
+[06:36:24 - 06:36:30] Then we can move forward with them going back to, ano, going back to reality.
+[06:36:30 - 06:36:38] So yeah, uh, everybody is like getting ready to like transfer.
+[06:36:38 - 06:36:43] Uh, Rebecca for now, I suppose, will be staying with, uh,
+[06:36:43 - 06:36:45] si Luke, tsaka si Kate, maybe?
+[06:36:45 - 06:36:55] If they're going to be traveling, like, kasi, siyempre, kung mauna siya sa sinera, pagkatapos kagad nung ano.
+[06:36:55 - 06:37:02] I mean, everybody else is going to be, you know, busy fighting or investigating or doing something.
+[06:37:02 - 06:37:07] That place would probably be, like, safest for now.
+[06:37:07 - 06:37:09] Unless mag-stay muna si Rebecca.
+[06:37:09 - 06:37:11] Saan?
+[06:37:11 - 06:37:13] Hindi, kasi, pinag-pack nyo na eh, di ba?
+[06:37:13 - 06:37:17] So, akong, alam ko, intention mo na eh, dali na sa sinera.
+[06:37:17 - 06:37:18] Oo.
+[06:37:18 - 06:37:21] So, habang hinahandle nila lahat ng kailangan niya handle,
+[06:37:21 - 06:37:26] will she be staying with Luke and Kate for the time being?
+[06:37:26 - 06:37:27] That's what I'm asking.
+[06:37:29 - 06:37:34] Or what?
+[06:37:35 - 06:37:36] Si Rebecca?
+[06:37:36 - 06:37:36] Ako nga.
+[06:37:36 - 06:37:38] Anong plano niya sa kanya?
+[06:37:38 - 06:37:42] Hindi, kaya nga, tinatanong ko nga sa'yo, anong, anong gusto mo mangyara sa kanya?
+[06:37:42 - 06:37:43] Sip, tinanong siya, susama ka lang dyan.
+[06:37:43 - 06:37:44] Ah, mag...
+[06:37:44 - 06:37:47] You have to tell her that.
+[06:37:47 - 06:37:48] Hindi, lalaban ba siya?
+[06:37:48 - 06:37:50] Lalaban ba siya or something?
+[06:37:50 - 06:37:54] With, with the Duchess or something?
+[06:37:54 - 06:37:56] Yung nga, tinatanong ko kung anong intention mo.
+[06:37:56 - 06:38:00] Ang intention ko sa kanya, ibibigay ko siya dun sa mga sinera.
+[06:38:00 - 06:38:05] Ayun nga, ang iniisip ko nga, for the time being, kung wala kang plano sa kanyang actual thing...
+[06:38:05 - 06:38:06] Anong plano ni Duchess?
+[06:38:06 - 06:38:07] Nasaan siya?
+[06:38:07 - 06:38:08] Lalaban siya?
+[06:38:08 - 06:38:12] Hindi, syempre, bata yun, hindi naman niya pipili kang ilaban yung bata.
+[06:38:12 - 06:38:14] Oo, pero si Duchess ba, saan siya pupunta?
+[06:38:14 - 06:38:19] Well, ang, ang, syempre, gusto niya makita yung asawa niya.
+[06:38:19 - 06:38:20] Ah, sasama siya dun.
+[06:38:20 - 06:38:27] Pero, ang ano rin niya eh, yung, ang talagang meron siyang purpose, yung dun sa Falmals.
+[06:38:27 - 06:38:29] Eh, hintayin, edi, magro, edi, it all play natin.
+[06:38:29 - 06:38:31] Oo, ang ano nga.
+[06:38:31 - 06:38:32] So, ah...
+[06:38:32 - 06:38:33] So, ayun nga, sige, sige, sige.
+[06:38:33 - 06:38:35] Ah, at least magka-teleport makna sila, I guess?
+[06:38:35 - 06:38:39] Deh, yun nga muna, bago tayo lumakad, I suppose we can like, role play that.
+[06:38:39 - 06:38:41] Yung palabas na kayo dun sa mga...
+[06:38:41 - 06:38:45] Okay, so, Hedwood and the rest of the crew are awaits them.
+[06:38:45 - 06:38:55] So, yeah, ah, so, I guess, ah, bago kinuhan, pa pa na si John dapat na pipipapin si Rebecca.
+[06:38:55 - 06:38:57] Tinanong muna ni John sa kanya.
+[06:38:57 - 06:39:00] So, what do we plan with, ah, Rebecca?
+[06:39:00 - 06:39:05] I already packed her stuff, but, I mean, we're not bringing her in her.
+[06:39:03 - 06:39:06] I mean, we're not bringing her to the mockrits, are we?
+[06:39:06 - 06:39:15] Because, like, you guys rightfully said that it could be a hive of reformists.
+[06:39:15 - 06:39:20] I don't want to bring her anywhere near that place, at least until we're sure.
+[06:39:20 - 06:39:24] We could ask her that, Sabiney Hadid.
+[06:39:24 - 06:39:27] Ask Her Majesty.
+[06:39:27 - 06:39:30] What do you think of her, Duchess?
+[06:39:32 - 06:39:37] Well, like John mentioned, she does definitely look skellish.
+[06:39:37 - 06:39:44] She's probably from Skelmark, or one of those northern parts.
+[06:39:44 - 06:39:49] And her demeanor, especially as she carries herself,
+[06:39:49 - 06:39:54] you know, she does play as if she were a queen.
+[06:39:54 - 06:40:01] Her accent, the way she speaks, is definitely a noble bone.
+[06:40:01 - 06:40:14] Perhaps she might be, you know, a Skelmark herself, you know, an actual earl's daughter or earlation.
+[06:40:15 - 06:40:22] Any news about the missing children around the, that part, Chris says?
+[06:40:22 - 06:40:27] Not from the main family, necessarily.
+[06:40:27 - 06:40:31] Really, I apologize about this favor, Chris says.
+[06:40:31 - 06:40:48] And as, you know, I mean, I will look into it once we get to Skelmark, but I must remind you, because I've lost 10 years' worth of memories, so I don't know whether or not there are memories.
+[06:40:48 - 06:40:53] There's a possibility that she comes from, but this is crazy.
+[06:40:53 - 06:40:55] This is crazy, Hedwig says.
+[06:40:55 - 06:40:59] There's a possibility that she came from a long, long, long time ago.
+[06:41:01 - 06:41:05] Faewald works in that kind of craziness, he says.
+[06:41:05 - 06:41:13] It could be that she is, from a long, ages ago, got lost in the Faewald.
+[06:41:15 - 06:41:29] Well, it could be, but it can't be, like, more than, I mean, you can understand how she speaks, but just 200, 300 years ago, Suniran is a little different.
+[06:41:29 - 06:41:30] All right.
+[06:41:31 - 06:41:33] So, I mean, if she's...
+[06:41:33 - 06:41:37] There's a possibility that her family is trying to escape Sunera, for some reason.
+[06:41:37 - 06:41:38] Could she be from a future?
+[06:41:38 - 06:41:46] You know, John, that joke, that somebody feared that.
+[06:41:46 - 06:41:54] I mean, I'm not even joking, I don't even know what the possibilities are at this point.
+[06:41:58 - 06:42:01] Maybe she really is queen, or a recent line to be.
+[06:42:01 - 06:42:14] There were a number of dragon hearts who married a skellish, a skellish, so that is a little bit of a possibility.
+[06:42:14 - 06:42:22] Not completely out of the realm of reality.
+[06:42:23 - 06:42:30] Well, thanks for visiting us, and thank you for your presence in this book club meeting.
+[06:42:30 - 06:42:31] No, thank you.
+[06:42:31 - 06:42:35] We appreciate it, and we're here to help everyone of you.
+[06:42:35 - 06:42:37] And that is what we're most...
+[06:42:37 - 06:42:39] I hope your husband is well.
+[06:42:39 - 06:42:41] Yeah, me too.
+[06:42:41 - 06:42:44] Well, I mean, thank you.
+[06:42:44 - 06:42:47] You've got a lot of strength here, Duchess.
+[06:42:47 - 06:42:52] I hope you put your faith in them.
+[06:42:52 - 06:43:07] Well, I suppose we'll ask Rebecca, but I do kind of recommend that maybe we drop her off at the Trevor Kings.
+[06:43:07 - 06:43:11] Maybe have Luke and Kate take care of her for a little bit.
+[06:43:11 - 06:43:13] All right.
+[06:43:13 - 06:43:21] We raise children here as if they have always an opinion on something.
+[06:43:21 - 06:43:23] Even if it's crazy, even if it's silly.
+[06:43:23 - 06:43:26] We raise them that well here.
+[06:43:29 - 06:43:35] so i would suggest that you ask her yourself if she is willing to part ways of staying in the
+[06:43:35 - 06:43:42] travertine. How was the Vy... how was the Vy... how was the Vy... Travertine?
+[06:43:42 - 06:43:51] Uh... well... I'm still alive but he's not gonna be a Vy... actually. He's... he's uh...
+[06:43:51 - 06:44:04] I put the Silent Spell Glyph on his uh... uh... cage... you know just to keep him like uh... you know and uh...
+[06:44:04 - 06:44:15] keep pumping him with uh... yeah that Silent Spell. And you know what? He was like... this cage was right in front of like...
+[06:44:15 - 06:44:21] Luke's when he started transforming and started doing shit. So I don't know if he's gonna like...
+[06:44:21 - 06:44:27] do anything stupid... and he's gonna like... do anything stupid if Mark is there.
+[06:44:27 - 06:44:36] All right. Well... uh... I uh... sorry. I'll give you a week Minfilia. You've got to go to Travertine.
+[06:44:36 - 06:44:51] Ay... ay... ay... ay... one Mia Campbell on your way and a great directed one. Hmm... I wanna know more about that
+[06:44:51 - 06:44:58] what we erected one. She says. All right. Thank you again. I think... she says. Uh...
+[06:44:58 - 06:45:08] We didn't actually offer... like... jokes aside... we did offer Marko to like... join you guys. But she like... chose to be in Diedmont for me.
+[06:45:08 - 06:45:12] Oh! Another one of the hugs of Hana. She's always welcome here.
+[06:45:12 - 06:45:18] Eh... you like her. She's like... Oh of course. I like her now. She says. Well... she says...
+[06:45:18 - 06:45:27] She says... Lime. Yes, Captain. I'll give you Lime. You'll be all right. I'll give you a week.
+[06:45:27 - 06:45:33] Because I'll be pulling you out there. Yeah, yeah. I'll... I just want to help my friends. John.
+[06:45:33 - 06:45:44] Hmm... all right. And the Duchess. She says. I kind of grew closer to them. And they're very good people. They're just... used...
+[06:45:44 - 06:45:53] Uh... they're just being used better if we're... especially the Duchess. He says. All right.
+[06:45:53 - 06:46:03] Uh...
+[06:46:03 - 06:46:07] So if I knew what had happened to them...
+[06:46:07 - 06:46:20] There might be near journals.
+[06:46:22 - 06:46:24] So she smiles.
+[06:46:24 - 06:46:26] "Thank you," she says.
+[06:46:26 - 06:46:28] "Thank you."
+[06:46:28 - 06:46:30] "I hope that helps."
+[06:46:30 - 06:46:39] "Well, shall we?"
+[06:46:39 - 06:46:39] "I got...
+[06:46:39 - 06:46:41] I got a lot of provisions from you.
+[06:46:41 - 06:46:44] And we're taking the Eladrin with us.
+[06:46:44 - 06:46:45] The Annoying One."
+[06:46:45 - 06:46:54] "And we're gonna use him to like lure Sir Brasspuff away."
+[06:46:54 - 06:46:56] "Yeah."
+[06:46:56 - 06:46:58] "Like Helyon, all right, remember.
+[06:46:58 - 06:47:00] Brasspuff is the tall man.
+[06:47:00 - 06:47:02] You have to seduce him."
+[06:47:02 - 06:47:03] "Ow!"
+[06:47:03 - 06:47:11] "Why would I... why would I... why would I... why would I do such thing when I have a lovely lady here beside me?"
+[06:47:11 - 06:47:15] "That's just... he offers his own slayer."
+[06:47:15 - 06:47:19] "Well, that is flattering dear, but I am happy to..."
+[06:47:19 - 06:47:21] "I know, but..."
+[06:47:23 - 06:47:25] "and I respect that, but..."
+[06:47:25 - 06:47:27] "You seem a little bit tired."
+[06:47:27 - 06:47:29] "Let me assist you."
+[06:47:29 - 06:47:31] "Of course."
+[06:47:31 - 06:47:33] "He has four sons here."
+[06:47:33 - 06:47:35] "He has three sons here."
+[06:47:35 - 06:47:37] "Two sons."
+[06:47:37 - 06:47:45] "And those sons doesn't fucking care about their mom, all right?"
+[06:47:45 - 06:47:47] "Look at Mark."
+[06:47:47 - 06:47:51] "Snipping around for some meat."
+[06:47:51 - 06:47:53] "Fucking dirt."
+[06:47:53 - 06:47:55] "Let me just say something, John."
+[06:47:55 - 06:47:57] "He's a lot better than Camel."
+[06:47:57 - 06:47:58] "So..."
+[06:47:58 - 06:48:02] "Alright, let's go!"
+[06:48:02 - 06:48:09] "Oh, and you're free to use this teleportation circle whenever you need it."
+[06:48:09 - 06:48:10] "Anyone."
+[06:48:10 - 06:48:14] "Anyone on my crew who could cast teleportation spell?"
+[06:48:14 - 06:48:18] "I can."
+[06:48:18 - 06:48:20] "I can cast it."
+[06:48:22 - 06:48:28] "No offense, Emily, but we don't want to make this new airship explode."
+[06:48:28 - 06:48:30] "Come on, Oscar."
+[06:48:30 - 06:48:32] "Be nice to me."
+[06:48:32 - 06:48:36] "Well, I'm always nice to you."
+[06:48:36 - 06:48:41] "Looks not being nice, you're being a bully."
+[06:48:41 - 06:48:45] "Come on, Oscar, be nice to her."
+[06:48:45 - 06:48:47] "I'm just protecting her."
+[06:48:47 - 06:48:49] "Yeah, come on, Oscar, be nice to her."
+[06:48:49 - 06:48:54] "I don't want to turn into a twin, all right?"
+[06:48:54 - 06:48:57] "I don't want another Emily."
+[06:48:57 - 06:49:02] "I just don't, I can't handle it, all right?"
+[06:49:02 - 06:49:03] "Yeah."
+[06:49:03 - 06:49:05] I mean that
+[06:49:05 - 06:49:16] Hmm, yeah wonder what an angel's evil twin will be like
+[06:49:16 - 06:49:19] Maybe you can do that with her
+[06:49:19 - 06:49:23] They teleported out
+[06:49:23 - 06:49:26] Okay, so yeah just to like
+[06:49:26 - 06:49:31] This would be this would be
+[06:49:31 - 06:49:45] John, Mark, Duchess, Monfilia, Oscar, Lime, Lilia, and they are not together?
+[06:49:45 - 06:49:46] Yes
+[06:49:46 - 06:49:47] From Maltrex?
+[06:49:47 - 06:49:48] Travertine first
+[06:49:48 - 06:49:49] Ah, do they first?
+[06:49:49 - 06:49:50] Yes
+[06:49:50 - 06:49:52] Ah, okay so all of them are from Travertine first
+[06:49:52 - 06:49:53] Yes
+[06:49:53 - 06:49:55] Ah, they are not together
+[06:49:56 - 06:49:57] Oh
+[06:49:57 - 06:49:58] Because if all of them are in Travertine
+[06:49:58 - 06:50:00] Because that's the base first, right?
+[06:50:00 - 06:50:01] Because that's the main teleportation
+[06:50:01 - 06:50:05] Okay, and this is the big teleportation circle that can be more than a CD
+[06:50:05 - 06:50:06] Oh
+[06:50:06 - 06:50:08] Alright, so yeah
+[06:50:08 - 06:50:12] And of course Liana and Rebecca hug first
+[06:50:12 - 06:50:14] And respect each other
+[06:50:14 - 06:50:18] And they kind of like trying to say goodbye
+[06:50:18 - 06:50:25] And yeah, so as they teleport they do enter this like a large area
+[06:50:25 - 06:50:29] Where there are 20, currently 20 like a
+[06:50:29 - 06:50:35] Well since mag-teleport kayo papunta dito, those things are charged at the moment
+[06:50:35 - 06:50:36] Yeah
+[06:50:36 - 06:50:38] And yeah, it's...
+[06:50:38 - 06:50:41] Well, it doesn't...
+[06:50:41 - 06:50:44] You didn't have a chance to like decorate this place
+[06:50:44 - 06:50:47] So it's bare and it's like musty and old
+[06:50:47 - 06:50:56] And yeah, Fina and Koto will definitely see that this is like a part of like older, more like ruins
+[06:50:56 - 06:50:57] Yeah
+[06:50:57 - 06:50:59] And not like anything modern
+[06:50:59 - 06:51:00] Uh, the...
+[06:51:00 - 06:51:02] Tawdito
+[06:51:02 - 06:51:04] There...
+[06:51:04 - 06:51:12] Since you've uh, went through some of the older stuff in, uh, in Ribbon Island already
+[06:51:12 - 06:51:25] Aside from maybe the town of Hama, somewhere like away from the town of Hama and away from like, uh, Port, uh, Port Trenoso
+[06:51:25 - 06:51:26] Yeah
+[06:51:26 - 06:51:33] There are some like, remainders of like, really broken down like, Kalasari and stuff that were there
+[06:51:33 - 06:51:34] Yeah
+[06:51:34 - 06:51:36] Nothing like really technological
+[06:51:36 - 06:51:42] But the era of those ruins are like, of a similar age
+[06:51:42 - 06:51:44] So this is around the sunset, I guess?
+[06:51:44 - 06:51:45] Yeah
+[06:51:46 - 06:51:47] But you don't see that from here
+[06:51:47 - 06:51:48] Uh-uh
+[06:51:48 - 06:51:49] So, magalingan na sa boat ka ba eh
+[06:51:49 - 06:51:50] Yeah, you saw sunset there
+[06:51:50 - 06:51:51] Yeah
+[06:51:52 - 06:51:52] Yeah, so...
+[06:51:52 - 06:51:55] So it's a lot darker in here aside from the glowing lights of that
+[06:51:55 - 06:52:00] And the... and some of the lamps that some of, uh, Minfiria's skeletons are carrying there
+[06:52:00 - 06:52:05] And so the people who aren't really used to seeing skeletons around are going to get surprised by them
+[06:52:05 - 06:52:08] Ah, ah, ah, so Minfiria goes and her...
+[06:52:08 - 06:52:10] And the baby Drekavats are starting to turn towards
+[06:52:10 - 06:52:11] Yeah, carry one Drekavats baby
+[06:52:11 - 06:52:12] Where's Angel?
+[06:52:12 - 06:52:14] He says
+[06:52:14 - 06:52:15] He asked
+[06:52:15 - 06:52:16] Alright
+[06:52:16 - 06:52:28] So, I suppose the people who had once, like, experienced some of the more terrible hags in the Fae when seeing this Drekavats
+[06:52:28 - 06:52:29] I guess we'll get that
+[06:52:29 - 06:52:30] Ah, a question
+[06:52:30 - 06:52:31] Yeah
+[06:52:31 - 06:52:35] Tiffany, ah, Tiffany already experienced this I guess
+[06:52:35 - 06:52:36] Yeah, she knows it's not really a problem
+[06:52:36 - 06:52:37] So it's not really a problem
+[06:52:37 - 06:52:38] That's what I mean
+[06:52:40 - 06:52:43] Fina, Emily, and, uh, Helion
+[06:52:43 - 06:52:44] Yeah
+[06:52:44 - 06:52:45] What are their reactions?
+[06:52:45 - 06:52:46] Will you tell me?
+[06:52:46 - 06:52:47] They're your characters
+[06:52:47 - 06:52:50] Uh, wait now
+[06:52:50 - 06:52:53] They're fucked
+[06:52:53 - 06:53:23] Thank you.
+[06:53:23 - 06:53:38] Oh, Emily kind of like steps out of the teleportation circle, and she says, wow, it's kind of twisted, twisted out here.
+[06:53:38 - 06:53:47] She says, what do you mean by twisted, Emily? No, it's just weird, strange, she says.
+[06:53:49 - 06:54:03] And she kind of like that. Do you feel it, Elian? Elian kind of like quiets a bit, and he kind of like says,
+[06:54:03 - 06:54:13] what's wrong? It's either we help you, or we're not getting out of here, he says.
+[06:54:13 - 06:54:21] Hey, what does that mean? That's what I feel when you ask me, he says.
+[06:54:22 - 06:54:26] Ah, gotta do our best, he says.
+[06:54:26 - 06:54:33] I suppose you are affected by it as well. I was afraid that you wouldn't be even allowed to teleport inside.
+[06:54:33 - 06:54:44] As I, from what I remember, Faye, from outside the veil, you would not be able to in the first place.
+[06:54:46 - 06:54:52] It's because we've, it's because we've been here for quite a while, I mean, in the second.
+[06:54:52 - 06:54:54] That used to not matter.
+[06:54:54 - 06:54:58] Ah, so, maybe we're allowed?
+[06:54:58 - 06:55:07] There are a reason why the gnomes that had helped the Colossorians before weren't able to go into here.
+[06:55:07 - 06:55:12] There are records that the Corerians were not allowed inside scenario.
+[06:55:13 - 06:55:18] So you have gnomes in this world, probably me, and me.
+[06:55:18 - 06:55:19] Yes.
+[06:55:19 - 06:55:21] There are many.
+[06:55:21 - 06:55:30] The ones that are recorded, we received word from our counterparts in Colossor,
+[06:55:30 - 06:55:34] their team, a knowledge sharing agreement during the war.
+[06:55:36 - 06:55:45] The Corerians used to have a civilization in what they call Coran Pass right now, in northern Corson.
+[06:55:45 - 06:55:54] They have reason to believe that, presently, that is one of the reasons why the reformists are trying to get hold of it.
+[06:55:58 - 06:56:02] Gnomes are strong spellcasters, he says, a millisist.
+[06:56:02 - 06:56:10] Well, they're, uh, the Poissons, they mention that the interest in them is less about the spellcasting,
+[06:56:10 - 06:56:18] it's more about their ability to create extensive and expansive magical devices.
+[06:56:18 - 06:56:20] It's still magic.
+[06:56:20 - 06:56:22] But they lasted.
+[06:56:23 - 06:56:24] They worked.
+[06:56:24 - 06:56:26] Even when magic was gone.
+[06:56:26 - 06:56:34] It's hard to explain, she says.
+[06:56:34 - 06:56:37] Kind of complicated, I guess.
+[06:56:38 - 06:56:51] But, uh, yes, what the scenario, what the Poissons mentioned, is what they're interested in, those, in those artifacts as well, is that fact.
+[06:56:51 - 06:57:00] If magic ever disappears once more, they could rely on the fact that Coreran technology will work.
+[06:57:01 - 06:57:13] Whether or not it is, whether or not it is, whether or not it is, whether or not it is, whether or not it is, whether or not it is disappeared, from what we know there, Corrad Pass no longer has to disappear.
+[06:57:13 - 06:57:18] Uh, they're the ones that taught, uh, their culture, magic.
+[06:57:19 - 06:57:40] Not really, but, uh, I guess we succumbed to our fate here, uh, we're trapped here, Talian, um, Stephanie, and the others, so we'll just do our best.
+[06:57:40 - 06:57:53] Hmm, hmm, hmm, hmm. That was, what we did going to your ship was also a little bit of an experiment with me and Tiffany. She was able to leave. That is now.
+[06:57:56 - 06:58:25] Hmm, hmm, hmm. So we're able to leave as well, I think. Maybe it's difficult still. But, Tiffany is not a elf. She says, you're not, right, Tiffany? You're a cat. I didn't even know. I can't even turn into a cat. But yes, uh, you are able to leave. Don't worry about that. She says. But let's face our tasks here. Our missions. She says.
+[06:58:25 - 06:58:47] Your missions. You're already shown to you. So if you just have to do it, it says. And like people keep on saying before, there's something that pierced the veil, something that pierced the veil. Yeah, it's a huge pipeline. Yes, vagina. Hey, he says.
+[06:58:47 - 06:59:03] Can I speak ill of a queen? Well, there's nothing wrong with a vagina. Yeah. It's natural. It's kind of weird, strange, he says. Maybe you can speak of Varanestra's vagina because that's like open for everyone.
+[06:59:02 - 06:59:12] everyone. What story? She can talk about Berenestra's vagina because she's like an avatar of Berenestra.
+[06:59:12 - 06:59:20] She owns one. I knew it. Minfilia, you are avatar of Lady Berenestra. And she's Lady Berenestra. Yeah, I just
+[06:59:20 - 06:59:29] don't have the boobs. But that's what they said. Well, you do look like Lady Berenestra. And you look like
+[06:59:29 - 06:59:44] the Prince of Frost. Crown Prince. Yeah. Wow, we're brothers and sisters. Hey. So he looks at
+[06:59:44 - 06:59:56] Tiffany. They've dismissed the Prince of Frost before. He's never been through this. Maybe that's why I'm attracted to you. He says. Well, I thought you've
+[06:59:56 - 07:00:09] hated the Prince of Frost. No matter something. Hmm. That's not about the Prince of Frost. The one who stole me what's in the room.
+[07:00:09 - 07:00:36] They don't know. So sweet. So what are plans now? Well, now that we're all here. Hey, Rebecca, don't squeeze me. Yeah, Rebecca, come to Oscar. Uncle Oscar. Yeah. Please squeeze us to John. No more. Your Majesty will protect you.
+[07:00:36 - 07:00:41] Byzantine says that Uncle Oscar. No more. My husband says that Uncle Oscar is a fake bear.
+[07:00:41 - 07:00:49] A what? Ay, who's not Byzantine? He's not your warlock patron. He's not your warlock patron.
+[07:00:49 - 07:00:54] He's my petty bear, he says. Oh, fucking bullshit.
+[07:00:54 - 07:01:04] You know what? If you're not, if you're not a redhead, I will like spank you immediately because you're rude.
+[07:01:04 - 07:01:09] The baby is crying. I'm her. I'm her.
+[07:01:09 - 07:01:15] And she like squeezes behind John as if she's like scared of Minfilia.
+[07:01:17 - 07:01:21] What? Don't abuse her, Minfilia. She's just a kid.
+[07:01:21 - 07:01:25] Whatever.
+[07:01:25 - 07:01:32] Well, in any case, let's meet Luke and Kate for now.
+[07:01:32 - 07:01:36] Yeah, you go to see him. We don't want to see them fuck.
+[07:01:36 - 07:01:39] Well, I don't want to see them fuck either.
+[07:01:39 - 07:01:42] Wait, wait. Hey, Mark, are they fucking right now?
+[07:01:43 - 07:01:46] Oh, no. Uh, Justin. Are they fucking right now?
+[07:01:46 - 07:01:49] Justin don't know them.
+[07:01:49 - 07:01:54] Yeah, I never...
+[07:01:54 - 07:01:57] I never met any of them before.
+[07:01:57 - 07:01:59] Yeah, so give him a break.
+[07:01:59 - 07:02:00] Whatever.
+[07:02:00 - 07:02:02] Yeah, now they're done.
+[07:02:02 - 07:02:04] Great.
+[07:02:04 - 07:02:06] Let's go and get them.
+[07:02:06 - 07:02:13] So we can teleport out to each other mission so everything can move on, alright?
+[07:02:13 - 07:02:19] Yeah, but this is our, uh, what I was trying to say is this is going to be your base.
+[07:02:19 - 07:02:26] So maybe while everybody's here, we can, like, set aside some rooms for everyone.
+[07:02:26 - 07:02:32] So in case, we have to return, you guys know the sigil for this teleportation circle.
+[07:02:32 - 07:02:36] And, like, you have some actual places to stay while we're here.
+[07:02:36 - 07:02:40] And so we'll just, at least for the sigil, you know them now.
+[07:02:40 - 07:02:42] Here it is.
+[07:02:42 - 07:02:50] And for the rooms, let's just let the, well, the lord and lady of the castle know first.
+[07:02:50 - 07:02:54] Hey, uh, John, don't worry about room.
+[07:02:54 - 07:02:55] We've got to do it right now.
+[07:02:55 - 07:02:57] The night is our cover.
+[07:02:57 - 07:02:58] No, right.
+[07:02:58 - 07:03:05] Like, I also want to see if I'm going to ask Rebecca if he wants to stay here.
+[07:03:05 - 07:03:07] Alright, so to you.
+[07:03:07 - 07:03:11] Ah, jeez, redheads bring trauma.
+[07:03:11 - 07:03:16] As she moves forward.
+[07:03:16 - 07:03:19] Alright, so Sabine, your majesty.
+[07:03:20 - 07:03:24] Uh, I'm going to, uh, introduce you to the lord and lady of this castle.
+[07:03:24 - 07:03:26] She nods.
+[07:03:26 - 07:03:29] And if you want, uh, you can stay here for now.
+[07:03:29 - 07:03:32] Or would you rather go with us?
+[07:03:32 - 07:03:34] But it could be dangerous.
+[07:03:34 - 07:03:36] Let's, let's roll.
+[07:03:36 - 07:03:42] So d20, I roll half, uh, like, high is yes.
+[07:03:42 - 07:03:45] Uh, no, it's lower.
+[07:03:45 - 07:03:45] Okay.
+[07:03:45 - 07:03:48] Three.
+[07:03:49 - 07:03:52] So does that mean she wants to stay with Sinajohn?
+[07:03:52 - 07:03:58] Oh, so she says, uh, she says, uh, I can, I can, I can fight.
+[07:03:58 - 07:04:00] She says, I can fight.
+[07:04:00 - 07:04:02] Are you sure?
+[07:04:02 - 07:04:03] She nods.
+[07:04:03 - 07:04:05] Okay.
+[07:04:07 - 07:04:10] So, I think we should, uh, at least let Luke and Casey and Bison King always wants to use his power.
+[07:04:10 - 07:04:13] And Bison King will protect me.
+[07:04:13 - 07:04:14] Says me.
+[07:04:14 - 07:04:18] Well, we're going to protect you too, alright?
+[07:04:18 - 07:04:20] She nods.
+[07:04:20 - 07:04:21] No, only if you're sure.
+[07:04:21 - 07:04:24] I can heal, says me.
+[07:04:24 - 07:04:27] And I can get, I can escape myself, says me.
+[07:04:27 - 07:04:30] All right.
+[07:04:30 - 07:04:37] Still, I think we should, at least let Luke and Kate know.
+[07:04:37 - 07:04:42] If they're going to be staying here, and this is going to be our base, it's best that they know who we are.
+[07:04:43 - 07:04:48] Like, who, who is, should be allowed inside, etc.
+[07:04:48 - 07:04:49] That sort of thing.
+[07:04:50 - 07:04:51] All right.
+[07:04:51 - 07:04:54] Welcome to Castle Travertine.
+[07:04:54 - 07:04:56] Come in and feel ya.
+[07:04:56 - 07:04:58] Welcome to Castle Travertine.
+[07:04:58 - 07:04:59] I'm in and feel ya.
+[07:04:59 - 07:05:03] Yeah, well.
+[07:05:03 - 07:05:12] It's kind of weird to say that Travertine is held by my brother.
+[07:05:12 - 07:05:13] Weird.
+[07:05:13 - 07:05:17] Yeah, his brother is the Duke, he says.
+[07:05:17 - 07:05:19] Not yet.
+[07:05:19 - 07:05:20] I don't know.
+[07:05:20 - 07:05:22] But he is next in line.
+[07:05:22 - 07:05:27] Well, we're going to go to the dining hall, and just go there.
+[07:05:27 - 07:05:29] Yeah, please.
+[07:05:29 - 07:05:29] This way.
+[07:05:29 - 07:05:32] Okay, so everyone goes to the back.
+[07:05:32 - 07:05:36] Lilia, though, pulls kind of like Henry up.
+[07:05:36 - 07:05:45] Yeah, and Tiffany, who says, you have to get back to the, sorry, the mouthful.
+[07:05:47 - 07:05:49] So, he'll teleport us to the admiralty.
+[07:05:49 - 07:05:52] We're going to the gamestate, he says.
+[07:05:52 - 07:05:54] Right now.
+[07:05:54 - 07:06:01] Well, if we, if we want to meet with Philippa first, Selene.
+[07:06:01 - 07:06:06] Didn't you say that there was a teleportation circle at the mouthful estate already, correct?
+[07:06:06 - 07:06:09] Perhaps you can do that.
+[07:06:09 - 07:06:10] Broken, in the back area.
+[07:06:10 - 07:06:11] Yes.
+[07:06:11 - 07:06:13] Oh, right, it's broken.
+[07:06:13 - 07:06:14] All right.
+[07:06:14 - 07:06:19] Oscar, the stuff, he says.
+[07:06:19 - 07:06:21] Yeah, it's already charged.
+[07:06:21 - 07:06:27] All right, uh, Henry, uh, the admiralty, right?
+[07:06:27 - 07:06:31] The one that we entered, uh, earlier, uh, last night.
+[07:06:31 - 07:06:32] Yes.
+[07:06:32 - 07:06:37] Um, it's a pleasure meeting your captain and your liege, he says.
+[07:06:37 - 07:06:39] It has been a pleasure.
+[07:06:39 - 07:06:40] Oh.
+[07:06:40 - 07:06:42] I, how do you know the sigil now?
+[07:06:42 - 07:06:46] I could, um, initiate.
+[07:06:46 - 07:06:48] Uh, all right.
+[07:06:48 - 07:06:50] But you gotta be fast, he says.
+[07:06:50 - 07:06:54] Because we're gonna lose, orbs.
+[07:06:54 - 07:06:55] They're wrong.
+[07:06:56 - 07:07:01] And so, yeah, he, uh, like, thinks of the sigil.
+[07:07:01 - 07:07:01] Okay.
+[07:07:01 - 07:07:06] And, uh, of course, he is knowledgeable about magic.
+[07:07:06 - 07:07:11] But he doesn't need to, like, cast a spell because it is all charged.
+[07:07:11 - 07:07:15] And I suppose, hindi na sila sumama dun sa circle.
+[07:07:15 - 07:07:20] At nung nandal lang si, uh, si Liliet, saka si Henry.
+[07:07:20 - 07:07:22] And so, yeah, they go and teleport.
+[07:07:22 - 07:07:25] Para lang ma-organize.
+[07:07:25 - 07:07:25] Yeah.
+[07:07:25 - 07:07:28] Okay, so everyone goes to the dining hall.
+[07:07:28 - 07:07:32] And maybe, uh, yeah, and, uh, Mark.
+[07:07:32 - 07:07:33] Goes to her room, whatever.
+[07:07:33 - 07:07:36] Yeah, yeah, and, uh, Mark, yeah, and, uh, Mark, yeah, and, uh, she, Mark, just, uh, goes fetch.
+[07:07:36 - 07:07:38] Because, of course, the Duchess would like to see her son.
+[07:07:38 - 07:07:39] Okay.
+[07:07:39 - 07:07:41] Really, kahit saglit lang.
+[07:07:41 - 07:07:46] So, like, uh, uh, Mark is the one to fetch them.
+[07:07:46 - 07:07:49] Because they don't necessarily know what room they took yet.
+[07:07:49 - 07:07:54] And so, yeah, it's the room where they initially fucked him.
+[07:07:54 - 07:08:02] The one that's right next to the thing, to the, to the, to the, uh, to the dining hall.
+[07:08:02 - 07:08:15] And so, yeah, they go ahead and, uh, head towards...
+[07:08:15 - 07:08:32] And so, yeah, they go ahead and, uh, head towards the dining hall.
+[07:08:32 - 07:08:40] Okay, so, everyone, this is our eldest brother, uh, Luke Malfric.
+[07:08:40 - 07:08:51] We will be Luke Traverton once we have all of the affairs taken on over.
+[07:08:51 - 07:09:02] And so, uh, the paperwork is already in process, and he shall be, uh, before, and I do hope
+[07:09:02 - 07:09:04] that, uh, I receive her.
+[07:09:02 - 07:09:20] I receive words today before we do leave that I might actually formally crown him as a Viscount of the Travertis before we leave.
+[07:09:20 - 07:09:30] That way, at the very least, we can dispose of the previous Viscount who is reformist.
+[07:09:30 - 07:09:38] We could turn him into our experiment if we want.
+[07:09:38 - 07:09:45] Well Matt, my name is Emily, he says, to look.
+[07:09:45 - 07:09:47] Nice to meet you, nice to meet you.
+[07:09:47 - 07:09:54] Emily, she can turn the prosthetic into a normal thing, so you don't really notice it.
+[07:09:54 - 07:10:00] But of course, she likes it when she uses the crafting of her hair.
+[07:10:00 - 07:10:02] Yes, she doesn't use it.
+[07:10:02 - 07:10:04] It's easier for her hair.
+[07:10:04 - 07:10:14] So, and then, you see someone is sitting beside John, a girl who looks like a doll with a huge ribbon on her hair.
+[07:10:14 - 07:10:16] And, yeah, and Justin.
+[07:10:16 - 07:10:28] And this is Her Majesty, Rebecca, Queen of Hearts, or the Red Queen.
+[07:10:28 - 07:10:30] The Red Queen.
+[07:10:33 - 07:10:34] Oh.
+[07:10:34 - 07:10:42] And so he, like, quickly just looks at the crown frames, and he just nods, just play a long buffer, like something.
+[07:10:42 - 07:10:43] Oh.
+[07:10:44 - 07:10:45] Your Majesty.
+[07:10:45 - 07:10:49] I have a pleasure to meet you.
+[07:10:49 - 07:10:57] And, uh, hello, I'm, uh, I'm, I'm, I'm Justin.
+[07:10:57 - 07:10:59] He's, uh, he's blind.
+[07:10:59 - 07:11:01] But he's not blind right now.
+[07:11:01 - 07:11:03] He can see you.
+[07:11:03 - 07:11:13] And he's the one who, uh, like, uh, uh, uh, he's, uh, who's got, uh, blinds, uh, baby daddy.
+[07:11:13 - 07:11:17] But he's gonna be...
+[07:11:17 - 07:11:18] Baby daddy.
+[07:11:18 - 07:11:19] You know.
+[07:11:19 - 07:11:20] Yeah.
+[07:11:20 - 07:11:21] The daddy of your baby.
+[07:11:21 - 07:11:22] Baby daddy.
+[07:11:22 - 07:11:23] God damn it.
+[07:11:23 - 07:11:24] This is your language.
+[07:11:24 - 07:11:26] You're young to know about this.
+[07:11:26 - 07:11:27] What happened to you?
+[07:11:27 - 07:11:28] No.
+[07:11:28 - 07:11:30] We're talking about blind here.
+[07:11:30 - 07:11:32] She's been, she's old when she was 10.
+[07:11:32 - 07:11:33] Yeah.
+[07:11:34 - 07:11:36] And she's, like, introvert.
+[07:11:36 - 07:11:37] Huh.
+[07:11:37 - 07:11:40] What is this attack of character?
+[07:11:40 - 07:11:41] What?
+[07:11:41 - 07:11:49] Finally, we can say to the world that Lyme is pregnant at 14.
+[07:11:49 - 07:11:52] I'm 16.
+[07:11:52 - 07:11:55] Well, pregnant at 16.
+[07:11:55 - 07:11:57] You're, you're pregnant.
+[07:11:57 - 07:11:59] I don't, just...
+[07:11:59 - 07:12:18] Andrew said, "I'm pregnant. I'm gonna have a baby and my tummy will grow up and I'm gonna give birth."
+[07:12:18 - 07:12:21] "Congratulations then."
+[07:12:21 - 07:12:26] He said, "Hey, don't make her cry."
+[07:12:26 - 07:12:28] Andrew said, "Andrew, I'm not gonna give birth."
+[07:12:28 - 07:12:31] Andrew, you made her cry.
+[07:12:31 - 07:12:34] Yeah, Andrew, you made her cry.
+[07:12:34 - 07:12:35] I'm sorry.
+[07:12:35 - 07:12:37] Fuck you, Andrew.
+[07:12:37 - 07:12:41] You know what? You're such a loser, alright?
+[07:12:41 - 07:12:46] I'm sorry.
+[07:12:46 - 07:12:50] But the loser now has three night shift nurse signatures.
+[07:12:50 - 07:12:57] Hey, did you get those freebies from the latest issue of, like, you know, Legally Bear?
+[07:12:57 - 07:12:58] Oh, yeah.
+[07:12:58 - 07:13:01] You also get the freebies from the light shift nurses?
+[07:13:01 - 07:13:07] Well, when else would I get a chance to get a special edition, like, 30?
+[07:13:07 - 07:13:10] Ms. Misteen said there are only 10 of those maids.
+[07:13:10 - 07:13:17] You know what, Andrew? You could do well as part of Hedwig's crew if you really want to pursue this dream of yours.
+[07:13:17 - 07:13:19] Because there's gonna be a huge painting session.
+[07:13:22 - 07:13:23] You know what, Andrew?
+[07:13:23 - 07:13:23] I don't know what, Andrew.
+[07:15:06 - 07:15:07] Andrew.
+[07:15:07 - 07:15:08] I don't know what, Andrew.
+[07:16:16 - 07:16:17] I don't know.
+[07:16:17 - 07:16:18] I don't know what, Andrew.
+[07:18:01 - 07:18:02] I don't know.
+[07:18:02 - 07:18:03] I don't know what, Andrew.
+[07:18:03 - 07:18:04] My name is Andrew.
+[07:18:04 - 07:18:05] I have wings too.
+[07:18:05 - 07:18:06] Mm-hmm.
+[07:18:06 - 07:18:08] And so yeah, he kind of spreads his wings too.
+[07:18:08 - 07:18:09] Yeah.
+[07:18:09 - 07:18:11] Wow, you have wings?
+[07:18:11 - 07:18:13] Can you fly me around?
+[07:18:13 - 07:18:16] Maybe later.
+[07:18:16 - 07:18:17] Hey!
+[07:18:17 - 07:18:18] Later!
+[07:18:18 - 07:18:19] Alright, twit!
+[07:18:19 - 07:18:20] Sweet!
+[07:18:20 - 07:18:23] Yeah, go play with Rebecca.
+[07:18:23 - 07:18:25] Go fuck off.
+[07:18:25 - 07:18:27] What does that do?
+[07:18:27 - 07:18:28] He says.
+[07:18:28 - 07:18:31] You don't have to say that to her.
+[07:18:31 - 07:18:32] "You can go, Rebecca.
+[07:18:32 - 07:18:34] You can play with her."
+[07:18:34 - 07:18:35] She says.
+[07:18:35 - 07:18:37] So Rebecca looks at John.
+[07:18:37 - 07:18:40] Well, you can play with her.
+[07:18:40 - 07:18:41] She smiles.
+[07:18:41 - 07:18:45] And she hops off her chair and goes to Angel.
+[07:18:45 - 07:18:49] But later Angel, we do have some stuff to talk about.
+[07:18:49 - 07:18:52] Like about your mission too.
+[07:18:52 - 07:18:53] Oh my God!
+[07:18:53 - 07:18:54] Who's that?
+[07:18:54 - 07:18:55] He says.
+[07:18:55 - 07:18:57] She put nothing out.
+[07:18:57 - 07:18:58] At Helion.
+[07:18:58 - 07:19:00] And Helion is looking at his dad right now.
+[07:19:00 - 07:19:01] Kind of like.
+[07:19:01 - 07:19:03] "Uh, these are the...
+[07:19:03 - 07:19:05] We have transmogs to the room."
+[07:19:05 - 07:19:06] Or something like this.
+[07:19:06 - 07:19:08] "This is from the Fade Arc."
+[07:19:08 - 07:19:09] He says.
+[07:19:09 - 07:19:10] "Duck.
+[07:19:10 - 07:19:11] Who's that?"
+[07:19:11 - 07:19:12] He says.
+[07:19:12 - 07:19:15] That's Angel.
+[07:19:15 - 07:19:16] Oh.
+[07:19:16 - 07:19:18] And that's Sir Brasta.
+[07:19:18 - 07:19:19] Oh.
+[07:19:18 - 07:19:24] Oh, well met. My name is Helion. Helion Blanchine.
+[07:19:24 - 07:19:28] That's not so much to be true.
+[07:19:28 - 07:19:32] Yeah, she has this long ears, right?
+[07:19:32 - 07:19:34] And he's very handsome.
+[07:19:34 - 07:19:37] You're very handsome, Sabiner Angel.
+[07:19:37 - 07:19:38] Oh, you wouldn't know.
+[07:19:38 - 07:19:43] You look like a... you look like... you look like Lance.
+[07:19:43 - 07:19:44] Who's this Lance?
+[07:19:44 - 07:19:46] My brother.
+[07:19:46 - 07:19:47] Oh.
+[07:19:48 - 07:19:49] Good, he says.
+[07:19:49 - 07:19:52] You are enough, I suppose.
+[07:19:52 - 07:19:54] Yes, uh...
+[07:19:54 - 07:19:55] I see.
+[07:19:55 - 07:19:58] You are a lot of humans, he says.
+[07:19:58 - 07:20:02] Who have met, he says.
+[07:20:02 - 07:20:10] Yeah, I think the surprise here is that there are supposedly... there are elves here in Sonera.
+[07:20:10 - 07:20:17] Not a lot of us have actually met any, but Confrance says that he's met a number of...
+[07:20:17 - 07:20:18] that I have.
+[07:20:18 - 07:20:23] That I have... they do not want to show themselves publicly most of the time, though.
+[07:20:23 - 07:20:25] Because of their ears?
+[07:20:25 - 07:20:29] Or the handsome prey, besides?
+[07:20:29 - 07:20:37] Because they'd... many of them had lost in a war thousands of years ago.
+[07:20:38 - 07:20:44] The Draco-Giant War is the... is it the war that you're talking about?
+[07:20:44 - 07:20:49] It is a war that came after when they moved here.
+[07:20:49 - 07:20:50] Huh.
+[07:20:50 - 07:20:51] Understood, he says.
+[07:20:52 - 07:21:04] But I'm sure they would be open to meeting some... of... of some people who will come for a fair while.
+[07:21:04 - 07:21:07] I'm kind of hard... let's play cards.
+[07:21:07 - 07:21:12] Hmm, I can play cards, but only the easiest one.
+[07:21:12 - 07:21:17] But, it's... like the... I don't know the unportated card games.
+[07:21:17 - 07:21:22] You don't play Crazy H before, so I'm going to use her breast off the means, as he gives them...
+[07:21:22 - 07:21:23] Yes, yes.
+[07:21:23 - 07:21:24] This is her breast, but please, my guardian.
+[07:21:24 - 07:21:25] Nice to meet you.
+[07:21:25 - 07:21:26] This is my guardian.
+[07:21:26 - 07:21:28] This is my guardian, he says.
+[07:21:28 - 07:21:29] Nice to meet you.
+[07:21:29 - 07:21:30] Nice to meet you, my guardian, he says.
+[07:21:30 - 07:21:31] Nice to meet you.
+[07:21:31 - 07:21:32] Nice to meet you, my guardian, he says.
+[07:21:36 - 07:21:47] So, they kind of, like, goes to, like, one of the side of the table and, like, play cards there.
+[07:21:47 - 07:21:50] You know, Sir Braston is, like, playing with two kids.
+[07:21:50 - 07:21:52] I'm going to hit minfield, yeah?
+[07:21:52 - 07:21:56] Sir Braston is playing with two kids, it's kind of annoying.
+[07:21:56 - 07:22:03] Don't, like, fucking focus a lot and just focus on the light, bright side of things, right?
+[07:22:03 - 07:22:05] Hallion is going to get rid of him soon.
+[07:22:05 - 07:22:12] It's going to start with him, like, hey, do you see the school watch?
+[07:22:12 - 07:22:15] Wait, uh, you, you are Sir Brastock, right?
+[07:22:15 - 07:22:16] That's right.
+[07:22:16 - 07:22:20] Oh, uh, uh, so do niya.
+[07:22:20 - 07:22:24] Dapat nandito pala si Sensodyne, na?
+[07:22:24 - 07:22:25] Ay, oh, ano, oo.
+[07:22:25 - 07:22:27] Well, he's, he's quiet.
+[07:22:27 - 07:22:27] Yeah.
+[07:22:27 - 07:22:34] So, si Luke, parang yung, binulong niya si, binulongan niya si Jack.
+[07:22:34 - 07:22:38] Uh, see, uh, Sensodyne is walking around in the...
+[07:22:38 - 07:22:41] Ah, that's Sensodyne!
+[07:22:41 - 07:22:43] Hey, Sensodyne!
+[07:22:43 - 07:22:53] That's a devil, she says.
+[07:22:53 - 07:22:54] Angel says.
+[07:22:54 - 07:22:56] And she kind of, like, plays.
+[07:22:56 - 07:23:00] Uh, you're Brastock?
+[07:23:00 - 07:23:01] She says.
+[07:23:01 - 07:23:02] That's right.
+[07:23:02 - 07:23:03] Here.
+[07:23:04 - 07:23:06] Use him a special name, I feel it.
+[07:23:06 - 07:23:07] Oh, right!
+[07:23:07 - 07:23:10] Not your Sensodyne.
+[07:23:10 - 07:23:15] Uh, I do hope that, uh, you've been compensated for this.
+[07:23:15 - 07:23:22] This was, uh, supposedly something that I won from a battleship game on Steam.
+[07:23:22 - 07:23:37] I don't know, I don't know, I don't know if it's not, but I don't know if I can do it.
+[07:23:37 - 07:23:38] Oh, what's that?
+[07:23:38 - 07:23:39] I don't know if I can do it.
+[07:23:39 - 07:23:40] Hullbird.
+[07:23:40 - 07:23:52] Uh, you see her, uh, materialize a large hullbird.
+[07:23:52 - 07:23:55] The, kind of like, um, then leads it to you.
+[07:23:55 - 07:23:58] Oh, it's supposed to be a magical weapon.
+[07:23:58 - 07:23:59] Okay.
+[07:23:59 - 07:24:02] Kailangan may proficiency ka sa hullbird.
+[07:24:02 - 07:24:06] I mean, I think I do have for every martial, martial weapons.
+[07:24:06 - 07:24:07] Anong pangalan?
+[07:24:07 - 07:24:09] Plus trito dapat.
+[07:24:09 - 07:24:10] May specific.
+[07:24:10 - 07:24:14] Wala eh, Brannag yung pinangalan ko dito sa hullbird niya.
+[07:24:14 - 07:24:16] Pero hindi ko alam kung anong hullbird na to.
+[07:24:16 - 07:24:19] Pero meron siyang cleave na, ano.
+[07:24:19 - 07:24:21] Ah, plus trito.
+[07:24:21 - 07:24:23] So regular plus trito.
+[07:24:25 - 07:24:30] So regular plus trito dapat may pangalan.
+[07:24:30 - 07:24:34] Ah, pinangalanan ko lang yung Brannag.
+[07:24:34 - 07:24:35] Yuh.
+[07:24:35 - 07:24:36] You have this.
+[07:24:36 - 07:24:38] He said, she says.
+[07:24:38 - 07:24:40] Ah, bird plus trito.
+[07:24:40 - 07:24:44] And then equipment.
+[07:24:44 - 07:24:48] And then rename to Brannag.
+[07:24:48 - 07:24:52] As in, ay, ka pa na.
+[07:24:52 - 07:24:55] S-T-N-T, ano.
+[07:24:55 - 07:25:01] So she says, ah, once you're tuned to it, it means you have to sleep with it.
+[07:25:01 - 07:25:06] Once you're tuned to it, you can materialize it in your hand.
+[07:25:06 - 07:25:08] It will disappear.
+[07:25:08 - 07:25:13] But when you call upon its name, it will materialize in your hands.
+[07:25:13 - 07:25:14] Yes.
+[07:25:14 - 07:25:15] Do you have sufficient training?
+[07:25:15 - 07:25:16] Are you sure?
+[07:25:16 - 07:25:17] Yes.
+[07:25:17 - 07:25:18] I do.
+[07:25:18 - 07:25:19] As a soldier.
+[07:25:19 - 07:25:20] Spears one.
+[07:25:20 - 07:25:21] Also.
+[07:25:21 - 07:25:22] Oh.
+[07:25:22 - 07:25:23] Alright.
+[07:25:23 - 07:25:24] Yes.
+[07:25:24 - 07:25:26] As a soldier.
+[07:25:26 - 07:25:26] Alright.
+[07:25:26 - 07:25:27] As a soldier.
+[07:25:27 - 07:25:32] I'm going to be on a bird plus three.
+[07:25:32 - 07:25:36] And I'll post a nice Brannag.
+[07:25:36 - 07:25:45] You can have it.
+[07:25:45 - 07:25:47] No longer mine.
+[07:25:47 - 07:25:59] A long time ago, I've used it quite a lot of times.
+[07:25:59 - 07:26:03] How many blood wars have I used it here?
+[07:26:03 - 07:26:03] She says.
+[07:26:03 - 07:26:04] I'm going to be on a bird plus three.
+[07:26:14 - 07:26:15] So I'm going to be on a bird plus three.
+[07:26:19 - 07:26:20] I'm going to be on a bird plus three.
+[07:26:20 - 07:26:21] I'm going to be on a bird plus four.
+[07:26:21 - 07:26:22] I'm going to be on a bird plus three.
+[07:26:22 - 07:26:23] I'm going to be on a bird plus four.
+[07:26:36 - 07:26:37] I'm going to be on a bird.
+[07:27:58 - 07:27:59] I told you right.
+[07:28:00 - 07:28:04] She's the second strongest person in our crew.
+[07:28:04 - 07:28:06] We don't want to mess with her.
+[07:28:06 - 07:28:09] Even Coco doesn't.
+[07:28:09 - 07:28:11] Even Coco can do shit.
+[07:28:11 - 07:28:13] We have centralized.
+[07:28:13 - 07:28:15] Well, I'm a scholar, of course.
+[07:28:15 - 07:28:16] Huh?
+[07:28:16 - 07:28:17] Of course.
+[07:28:17 - 07:28:18] Because I'm a scholar.
+[07:28:18 - 07:28:20] You're all in my part.
+[07:28:28 - 07:28:29] I'm going to be on a bird.
+[07:29:18 - 07:29:25] We're gonna head to the eastern thing tonight, just me and the others.
+[07:29:25 - 07:29:30] And that'll be us and MBS Anzidine, that's the way of us.
+[07:29:30 - 07:29:47] Yeah, we're gonna head to the eastern, they gotta get fucking who's up, Mia, and all of you should head to the ballparks.
+[07:29:48 - 07:29:52] And leave it your own, like, little devices.
+[07:29:52 - 07:29:58] Crown Prince will be taken, of course, Tiffany and...
+[07:29:58 - 07:30:04] There's just one more request, if she allows us.
+[07:30:04 - 07:30:09] They're coming with us, Jessica.
+[07:30:09 - 07:30:14] I thought they agreed that I will totally come, Jessica.
+[07:30:14 - 07:30:24] "Well, there's enough of people there, and I know you gave John bottles of celestial blood.
+[07:30:24 - 07:30:28] Not from you, but from Safa," she says.
+[07:30:28 - 07:30:36] Jessica looks away, and she says, "We need you because eastern turn is high."
+[07:30:36 - 07:30:44] She says, "We need people who can disappear, who can, like, do some major damage."
+[07:30:44 - 07:30:50] She says, "So, we need you in our team, Jessica."
+[07:30:50 - 07:31:02] "This is no, uh, uh, no, uh, um, this is, uh, I'm asking you," she says.
+[07:31:02 - 07:31:06] "Sensidane is already strong," she says.
+[07:31:06 - 07:31:10] "You don't get it. We need your celestial blood there."
+[07:31:10 - 07:31:16] "How much," she says.
+[07:31:16 - 07:31:20] "Uhhh..."
+[07:31:20 - 07:31:23] "Alright, uh, we'll talk about it ourselves."
+[07:31:23 - 07:31:30] "I think the deal here is that whatever regular gemstones reminds the earth's rose."
+[07:31:30 - 07:31:36] "Yeah, whatever, whoever the fuck you want there in eastern turn, you can have it."
+[07:31:36 - 07:31:38] "Whatever it is."
+[07:31:38 - 07:31:42] "Magical items, connections, whatever."
+[07:31:42 - 07:31:43] "Dice."
+[07:31:43 - 07:31:49] "Anything that we, like, take up from eastern turn, that's like, not one of those cursed bushes,"
+[07:31:49 - 07:31:52] "and not one of those orbs, maybe."
+[07:31:52 - 07:31:54] "You can tape them."
+[07:31:54 - 07:31:59] "Alright, it's a big, it's a, it's a huge problem, right?"
+[07:31:59 - 07:32:00] "Yeah."
+[07:32:00 - 07:32:01] "Copy, right?"
+[07:32:01 - 07:32:06] "Yeah, we don't know anything about the eastern turn, but, apparently, they are paladins."
+[07:32:06 - 07:32:08] "And you're the only one who can sense them."
+[07:32:08 - 07:32:12] "Not us, not me, not Sensidane, Sensidane."
+[07:32:12 - 07:32:13] "Hi," she says.
+[07:32:17 - 07:32:18] "Sorry, John."
+[07:32:18 - 07:32:20] "And, uh, she says sorry."
+[07:32:20 - 07:32:26] "She handles, uh, two, two vials of blood."
+[07:32:26 - 07:32:29] "Thank you, but, that's alright."
+[07:32:29 - 07:32:31] "Um, we can just, meet here, after?"
+[07:32:31 - 07:32:32] "Hmm."
+[07:32:32 - 07:32:34] "So, she gives it to him."
+[07:32:34 - 07:32:35] "Thank you."
+[07:32:35 - 07:32:37] "This is a sacrifice blood," she says.
+[07:32:37 - 07:32:41] "I bought it after," she says.
+[07:32:41 - 07:32:46] "We, apparently, we can use, uh, my blood for now."
+[07:32:46 - 07:32:48] "I've never really met her."
+[07:32:48 - 07:32:49] "So far?"
+[07:32:49 - 07:32:50] "Yeah."
+[07:32:50 - 07:32:51] "Well..."
+[07:32:51 - 07:32:54] "She was the one who was pushing the parts at the beginning, right?"
+[07:32:54 - 07:32:55] "Yeah."
+[07:32:55 - 07:32:59] "Yes, she has a lot of, a lot of, she has another process to do."
+[07:32:59 - 07:33:00] "I understand."
+[07:33:00 - 07:33:01] "Oh, yeah."
+[07:33:01 - 07:33:06] "And she's not kind of, uh, she's not a trustful person."
+[07:33:06 - 07:33:12] "Well, considering the stories that, you feel, told us about her."
+[07:33:12 - 07:33:17] "I mean, if I were in her position, it would probably be Spanish, too."
+[07:33:17 - 07:33:23] "But, yeah, uh, I still, like, owe you."
+[07:33:23 - 07:33:24] "Take care of her, doctor."
+[07:33:24 - 07:33:25] "We will."
+[07:33:26 - 07:33:32] "And, uh, yeah, uh, when, when, when we all get that, maybe we can, uh, have a coffee or something."
+[07:33:32 - 07:33:33] "Thank you."
+[07:33:33 - 07:33:34] "Mm."
+[07:33:34 - 07:33:35] "So she nice."
+[07:33:35 - 07:33:41] "Alright."
+[07:33:41 - 07:33:50] "So, yeah, that'll mean, me, Monfilia, uh, since Diane and Jesper."
+[07:33:50 - 07:33:52] "That's only us."
+[07:33:52 - 07:33:55] "Yeah, it's more than, more than enough."
+[07:33:55 - 07:33:58] "I'm gonna eat 'em up."
+[07:33:58 - 07:33:59] "Yeah."
+[07:33:59 - 07:34:00] "Yeah.
+[07:34:00 - 07:34:01] "Fucking East Infants."
+[07:34:01 - 07:34:07] "He says, please, what's with his family problems? We're entering."
+[07:34:07 - 07:34:08] "So, drama."
+[07:34:08 - 07:34:10] "So, Emilian."
+[07:34:10 - 07:34:15] "What about us? When are we going to travel?"
+[07:34:15 - 07:34:18] "Uh, tell me, Emilian."
+[07:34:18 - 07:34:21] "Well, Emilian, you're believing here, alright?"
+[07:34:21 - 07:34:27] "You're with, you're going with the, you're the only one who's going with Angel."
+[07:34:27 - 07:34:29] "And Angel and Sir Brastock."
+[07:34:29 - 07:34:31] "Me?"
+[07:34:31 - 07:34:33] "I thought I'm going with Em."
+[07:34:33 - 07:34:37] "You're not needed there, bastard."
+[07:34:37 - 07:34:40] "What are you gonna do there, flip your fucking hair?"
+[07:34:40 - 07:34:45] "Uh, I don't have a long hair to flip, but, um..."
+[07:34:46 - 07:34:56] "Well, alright, I'm not going to complain because Angel is a lovely person, Angel looks a lovely girl."
+[07:34:56 - 07:34:57] "And, uh..."
+[07:34:57 - 07:34:58] "You're not welcome."
+[07:34:58 - 07:35:02] "It's not her sister over there, she looks lovely as well."
+[07:35:02 - 07:35:04] "Yeah, that's my fiancee there."
+[07:35:04 - 07:35:06] "Ah."
+[07:35:07 - 07:35:08] "She smiles."
+[07:35:08 - 07:35:10] "Eh, he smiles."
+[07:35:10 - 07:35:12] "And then she says, uh..."
+[07:35:12 - 07:35:14] "Well, what they, what they say..."
+[07:35:14 - 07:35:26] "A chicken is easily caught when it's tied."
+[07:35:26 - 07:35:27] "Uh, uh..."
+[07:35:27 - 07:35:28] "Uh..."
+[07:35:28 - 07:35:29] "Hah."
+[07:35:29 - 07:35:32] "What's that, what's that, alien?"
+[07:35:32 - 07:35:35] "I said a chicken is easily caught when it's tied."
+[07:35:35 - 07:35:36] "Come on."
+[07:35:36 - 07:35:37] "Chicken?"
+[07:35:37 - 07:35:39] "You mean, Guinevere is a chicken?"
+[07:35:39 - 07:35:40] "Hey, Guinevere!
+[07:35:40 - 07:35:41] "You're a chicken!"
+[07:35:41 - 07:35:42] "I mean..."
+[07:35:45 - 07:35:49] "I kind of also heard that, you know, the werewolves can fuck you up."
+[07:35:49 - 07:35:50] "Hm."
+[07:35:50 - 07:35:51] "Try."
+[07:35:51 - 07:35:52] "Oh, yeah."
+[07:35:52 - 07:35:53] "Come on."
+[07:35:53 - 07:35:54] "C'mon."
+[07:35:54 - 07:35:58] "So she says."
+[07:35:58 - 07:35:59] "Hehehehehe."
+[07:35:59 - 07:36:00] "Now?"
+[07:36:00 - 07:36:01] "Yeah."
+[07:36:01 - 07:36:02] "Hm."
+[07:36:02 - 07:36:06] "Hey, there's gonna be a fight."
+[07:36:06 - 07:36:08] "Don't do that.
+[07:36:08 - 07:36:10] There's kids here!"
+[07:36:10 - 07:36:12] "I've been in line."
+[07:36:12 - 07:36:13] "Well, calm down.
+[07:36:13 - 07:36:15] You want me to smack your nose?"
+[07:36:15 - 07:36:24] "How old are you?"
+[07:36:24 - 07:36:27] "None of your business."
+[07:36:27 - 07:36:37] "You're an elf, you're probably my grandpa or something stupid."
+[07:36:37 - 07:36:38] "Yup."
+[07:36:39 - 07:36:40] "Yes."
+[07:36:40 - 07:36:46] "Lakas dito sa helium eh."
+[07:36:46 - 07:36:47] "Hm."
+[07:36:48 - 07:36:49] "Lakas dito sa helium eh."
+[07:36:49 - 07:36:49] "Hm."
+[07:36:50 - 07:36:51] "Lakas dito sa helium eh."
+[07:36:51 - 07:36:51] "Hm."
+[07:37:02 - 07:37:04] "Sabi ni sabi ni sabi ni jas bin nang ka yud."
+[07:37:04 - 07:37:05] "Hm."
+[07:37:12 - 07:37:16] Oh, he looks very well. He's very good at driving.
+[07:37:16 - 07:37:21] He's not there. He's not there.
+[07:37:21 - 07:37:23] He's not there.
+[07:37:23 - 07:37:26] Oh, right? They sent him two.
+[07:37:26 - 07:37:28] He's a hellion.
+[07:37:28 - 07:37:34] Come on, hellion.
+[07:37:34 - 07:37:38] So, Emily kind of like smacked him like that.
+[07:37:38 - 07:37:43] Be nice. You're our guest here and they're being nice to you.
+[07:37:43 - 07:37:46] You're our guest here in their castle.
+[07:37:46 - 07:37:51] We're not elves that are rude, right?
+[07:37:51 - 07:37:53] She says.
+[07:37:53 - 07:37:57] Ah, you know how I tease.
+[07:37:57 - 07:38:01] I know, she says.
+[07:38:01 - 07:38:07] This is why you're not married until now.
+[07:38:08 - 07:38:18] Alright, alright, he says.
+[07:38:18 - 07:38:23] Well, here are the bags that are provisions, he says.
+[07:38:23 - 07:38:26] So, he puts like each bag there.
+[07:38:26 - 07:38:29] There are Transmogrisum inside.
+[07:38:29 - 07:38:34] A very well replenished Jew.
+[07:38:34 - 07:38:38] What's that freaking thing? A Jew herb.
+[07:38:38 - 07:38:40] You can craft it.
+[07:38:40 - 07:38:49] You can use it as a material, a component for greater healing potion.
+[07:38:49 - 07:38:53] And you said you should be really careful about those things.
+[07:38:53 - 07:38:54] Ah, the Transmogrisum?
+[07:38:54 - 07:38:55] Yeah.
+[07:38:55 - 07:38:57] Yeah, but, uh...
+[07:38:57 - 07:39:02] When what?
+[07:39:02 - 07:39:05] When he turned into a bubble?
+[07:39:05 - 07:39:07] And never turned back?
+[07:39:07 - 07:39:08] Ah, yeah.
+[07:39:08 - 07:39:09] Well, no.
+[07:39:09 - 07:39:11] He chose that form.
+[07:39:13 - 07:39:15] But Transmogrisum can use a disguise.
+[07:39:15 - 07:39:17] And you won't be able to be detected.
+[07:39:17 - 07:39:20] If you want to disguise yourself.
+[07:39:18 - 07:39:21] I don't know. If you want to disguise yourselves...
+[07:39:21 - 07:39:25] So he could've actually chose to turn back?
+[07:39:25 - 07:39:28] Yeah, but he chose to be a co-boomer.
+[07:39:28 - 07:39:31] Because he's fucking crazy, Justin.
+[07:39:31 - 07:39:33] No, because he's fucking Marin.
+[07:39:33 - 07:39:35] Marin maybe wanted a co-bo.
+[07:39:35 - 07:39:39] Yeah, but whatever kink they are, I'm not into it.
+[07:39:39 - 07:39:48] But there's a rumor that Marin can turn into a kid.
+[07:39:48 - 07:39:52] So, is Andy a man of culture?
+[07:39:52 - 07:39:54] Maybe he's like that.
+[07:39:54 - 07:39:58] Can you just shut up, sabini Edline to kanila?
+[07:39:58 - 07:40:01] Maybe he likes to like do everything.
+[07:40:01 - 07:40:05] The thinkiest person on the ship might actually be him.
+[07:40:05 - 07:40:15] We're unfortunate to not have a single doppelganger or changeling or even Trajan.
+[07:40:15 - 07:40:17] Shit, we're fucked.
+[07:40:17 - 07:40:19] Why didn't we bring Trajan?
+[07:40:19 - 07:40:21] I thought we were getting Trajan.
+[07:40:21 - 07:40:24] Because he has a deal with Miss Team.
+[07:40:24 - 07:40:29] But I thought this fucker had a deal with Miss Team too.
+[07:40:29 - 07:40:31] I said no.
+[07:40:31 - 07:40:37] Weren't you supposed to be like having Trajan suck your dick or something?
+[07:40:37 - 07:40:38] Huh?
+[07:40:38 - 07:40:39] No?
+[07:40:39 - 07:40:41] Wanna suck my dick?
+[07:40:41 - 07:40:42] What?
+[07:40:42 - 07:40:43] No, it's disgusting.
+[07:40:43 - 07:40:47] Goddammit.
+[07:40:47 - 07:40:52] I mean, even from this far away, you kinda smell it already.
+[07:40:52 - 07:40:53] Hey!
+[07:40:53 - 07:40:54] Hellion!
+[07:40:54 - 07:40:55] Chill!
+[07:40:55 - 07:40:56] Alright!
+[07:40:56 - 07:41:01] You'll be staying and working with your best fuck there.
+[07:41:01 - 07:41:05] You have to protect Angel and his family.
+[07:41:05 - 07:41:06] And her family.
+[07:41:06 - 07:41:09] And that sister of hers is off limits.
+[07:41:09 - 07:41:13] She's gonna marry that bastard over there, alright?
+[07:41:13 - 07:41:16] Even if he's ugly as fuck.
+[07:41:16 - 07:41:18] Who's not ugly?
+[07:41:18 - 07:41:19] You're not my wife, alright?
+[07:41:19 - 07:41:20] So you're ugly.
+[07:41:20 - 07:41:21] You're not my wife, alright?
+[07:41:21 - 07:41:22] So you're ugly.
+[07:41:22 - 07:41:27] Yes, please.
+[07:41:27 - 07:41:30] I've already told Mark to be civil.
+[07:41:30 - 07:41:32] It is a pleasure to meet her.
+[07:41:32 - 07:41:33] And...
+[07:41:33 - 07:41:35] But if you want to stay with her.
+[07:41:35 - 07:41:36] Uh...
+[07:41:36 - 07:41:37] I see...
+[07:41:37 - 07:41:38] Minfilia.
+[07:41:38 - 07:41:39] If you want Mark.
+[07:41:39 - 07:41:42] If you want to stay with her and protect her.
+[07:41:42 - 07:41:44] Not join the...
+[07:41:44 - 07:41:45] Like the...
+[07:41:45 - 07:41:46] The Raneck family reunion.
+[07:41:46 - 07:41:47] Uh...
+[07:41:47 - 07:41:49] The Maltrek family reunion.
+[07:41:49 - 07:41:51] You're welcome to do that!
+[07:41:51 - 07:41:53] No, we need Mark.
+[07:41:53 - 07:41:55] So we need John.
+[07:41:55 - 07:41:57] Because like I said...
+[07:41:57 - 07:41:59] I mean...
+[07:42:00 - 07:42:01] I know...
+[07:42:01 - 07:42:02] I know my way around the Maltrek's.
+[07:42:02 - 07:42:04] But this guy is the one who like...
+[07:42:04 - 07:42:06] Goes through the different mucks and crannies.
+[07:42:06 - 07:42:07] He's the one who like...
+[07:42:07 - 07:42:09] Explored the ruins.
+[07:42:09 - 07:42:10] Knows the place.
+[07:42:10 - 07:42:11] Like...
+[07:42:11 - 07:42:12] All of the secret endings.
+[07:42:12 - 07:42:13] Castle.
+[07:42:13 - 07:42:16] So we kinda need him.
+[07:42:16 - 07:42:20] Alright.
+[07:42:20 - 07:42:21] Yeah.
+[07:42:21 - 07:42:22] Let's not...
+[07:42:22 - 07:42:23] Let's not like...
+[07:42:23 - 07:42:24] Break things up.
+[07:42:24 - 07:42:25] We've already planned this.
+[07:42:25 - 07:42:26] Done.
+[07:42:26 - 07:42:27] I know.
+[07:42:27 - 07:42:28] Alright.
+[07:42:28 - 07:42:29] And that's why I'm saying...
+[07:42:29 - 07:42:30] You just have to...
+[07:42:30 - 07:42:31] Mark will just have to...
+[07:42:31 - 07:42:32] Keep it done.
+[07:42:32 - 07:42:33] So...
+[07:42:33 - 07:42:34] Uh...
+[07:42:34 - 07:42:35] It's our brass stock.
+[07:42:35 - 07:42:36] Uh...
+[07:42:36 - 07:42:39] Hellion here is going with you to the Raneck.
+[07:42:39 - 07:42:41] We got a task for you guys.
+[07:42:41 - 07:42:42] Uh...
+[07:42:43 - 07:42:44] Just...
+[07:42:44 - 07:42:44] That's uh...
+[07:42:44 - 07:42:46] Separate from the task of his fighting charge.
+[07:42:46 - 07:42:47] He says...
+[07:42:47 - 07:42:48] We gotta...
+[07:42:48 - 07:42:49] Go...
+[07:42:49 - 07:42:50] To the...
+[07:42:50 - 07:42:51] To the Mark.
+[07:42:51 - 07:42:52] Please...
+[07:42:52 - 07:42:53] Know what's up.
+[07:42:53 - 07:42:54] What's happening there.
+[07:42:54 - 07:42:55] In the war.
+[07:42:55 - 07:42:56] So...
+[07:42:56 - 07:42:57] That's unnecessary stuff.
+[07:42:57 - 07:42:59] We're trying to unite...
+[07:42:59 - 07:43:00] Everyone who have...
+[07:43:00 - 07:43:02] Doesn't have the parasite.
+[07:43:02 - 07:43:05] Who's still loyal to the Kroc.
+[07:43:05 - 07:43:06] He says.
+[07:43:06 - 07:43:07] That's the job.
+[07:43:07 - 07:43:08] Angel.
+[07:43:08 - 07:43:09] Hehehehe.
+[07:43:09 - 07:43:11] I can see you.
+[07:43:11 - 07:43:12] You're smiling.
+[07:43:12 - 07:43:13] So I know you're...
+[07:43:13 - 07:43:14] You have a good party.
+[07:43:14 - 07:43:15] I don't know if that's necessary.
+[07:43:15 - 07:43:16] He says...
+[07:43:16 - 07:43:17] I...
+[07:43:17 - 07:43:18] Alright.
+[07:43:18 - 07:43:19] Fine.
+[07:43:19 - 07:43:20] He says...
+[07:43:20 - 07:43:21] Uh...
+[07:43:21 - 07:43:21] And...
+[07:43:21 - 07:43:22] Anyway...
+[07:43:22 - 07:43:23] I will be traveling alone...
+[07:43:23 - 07:43:24] With them.
+[07:43:24 - 07:43:25] So uh...
+[07:43:25 - 07:43:26] Me understanding what is going on...
+[07:43:26 - 07:43:27] Is alright as well.
+[07:43:27 - 07:43:28] Oh yeah...
+[07:43:28 - 07:43:29] We are...
+[07:43:29 - 07:43:30] We need you to be strong.
+[07:43:30 - 07:43:31] Alright.
+[07:43:31 - 07:43:32] Now...
+[07:43:32 - 07:43:33] If you want...
+[07:43:33 - 07:43:34] Uh...
+[07:43:34 - 07:43:35] If you want...
+[07:43:35 - 07:43:36] Uh...
+[07:43:36 - 07:43:37] If you want...
+[07:43:37 - 07:43:38] Uh...
+[07:43:38 - 07:43:39] If you want...
+[07:43:39 - 07:43:40] Uh...
+[07:43:40 - 07:43:41] If you want...
+[07:43:41 - 07:43:42] Uh...
+[07:43:42 - 07:43:43] If you want...
+[07:43:43 - 07:43:44] Uh...
+[07:43:44 - 07:43:45] Perhaps...
+[07:43:45 - 07:43:46] When you turn into a world...
+[07:43:46 - 07:43:47] If you...
+[07:43:47 - 07:43:48] I could take care.
+[07:43:48 - 07:43:49] I would...
+[07:43:49 - 07:43:50] Perhaps...
+[07:43:50 - 07:43:51] Thank you and...
+[07:43:51 - 07:43:52] Uh...
+[07:43:52 - 07:43:53] Helgen here together...
+[07:43:53 - 07:43:54] What's interesting?
+[07:43:54 - 07:43:58] The hair is very slightly changing in color...
+[07:43:58 - 07:43:59] Every time you move...
+[07:43:59 - 07:44:00] Do you know that?
+[07:44:00 - 07:44:01] What do you know?
+[07:44:20 - 07:44:21] Ah...
+[07:44:21 - 07:44:22] Well...
+[07:44:22 - 07:44:24] I can clean you up easily...
+[07:44:24 - 07:44:25] He says...
+[07:44:25 - 07:44:26] Oh...
+[07:44:27 - 07:44:28] Like...
+[07:44:28 - 07:44:29] What...
+[07:44:29 - 07:44:30] Angledos...
+[07:44:30 - 07:44:31] Pasta digitization?
+[07:44:31 - 07:44:32] Yeah...
+[07:44:32 - 07:44:33] He says...
+[07:44:33 - 07:44:34] Right...
+[07:44:34 - 07:44:35] And so you cheat...
+[07:44:35 - 07:44:36] Like...
+[07:44:36 - 07:44:37] Not just that...
+[07:44:37 - 07:44:38] You can chill...
+[07:44:38 - 07:44:39] Warm...
+[07:44:39 - 07:44:40] Or whatever...
+[07:44:40 - 07:44:42] Flavor the food you have...
+[07:44:42 - 07:44:43] He says...
+[07:44:43 - 07:44:47] I didn't have magic of the night...
+[07:44:47 - 07:44:48] Heh...
+[07:44:48 - 07:44:49] You see myself clean, right?
+[07:44:49 - 07:44:50] He says...
+[07:44:50 - 07:44:51] Now try to soil me...
+[07:44:51 - 07:44:52] Like the soil...
+[07:44:52 - 07:44:53] I'm sorry...
+[07:44:53 - 07:44:54] You just...
+[07:44:54 - 07:44:55] Let me...
+[07:44:58 - 07:44:59] Uh...
+[07:44:59 - 07:45:00] Try to...
+[07:45:00 - 07:45:01] Imagine me dirty...
+[07:45:01 - 07:45:02] Right...
+[07:45:02 - 07:45:03] Alright...
+[07:45:03 - 07:45:04] You...
+[07:45:04 - 07:45:05] This is not...
+[07:45:05 - 07:45:06] A...
+[07:45:06 - 07:45:07] Statology...
+[07:45:07 - 07:45:08] That is your city...
+[07:45:08 - 07:45:09] Nah...
+[07:45:09 - 07:45:10] Not...
+[07:45:10 - 07:45:11] He says...
+[07:45:11 - 07:45:12] Very much...
+[07:45:12 - 07:45:13] Alright...
+[07:45:13 - 07:45:14] So...
+[07:45:14 - 07:45:15] She priced...
+[07:45:15 - 07:45:16] Okay...
+[07:45:16 - 07:45:17] Some charcoals on my face...
+[07:45:17 - 07:45:18] Lady...
+[07:45:18 - 07:45:19] Yes...
+[07:45:19 - 07:45:20] That is...
+[07:45:20 - 07:45:21] The most...
+[07:45:21 - 07:45:22] Common thing...
+[07:45:22 - 07:45:23] Has like...
+[07:45:23 - 07:45:24] Charcoals...
+[07:45:24 - 07:45:24] And like...
+[07:45:24 - 07:45:25] Dusts on her...
+[07:45:25 - 07:45:26] Good job...
+[07:45:26 - 07:45:27] And some...
+[07:45:27 - 07:45:28] Faint things...
+[07:45:28 - 07:45:29] Yeah...
+[07:45:29 - 07:45:30] Good learner...
+[07:45:30 - 07:45:31] Says...
+[07:45:31 - 07:45:32] Alright...
+[07:45:32 - 07:45:33] Then clean me up again...
+[07:45:33 - 07:45:34] He says...
+[07:45:34 - 07:45:35] And...
+[07:45:35 - 07:45:36] She does...
+[07:45:36 - 07:45:37] This is the truth...
+[07:45:37 - 07:45:38] Good girl...
+[07:45:38 - 07:45:39] He says...
+[07:45:39 - 07:45:40] Yes...
+[07:45:40 - 07:45:41] Well...
+[07:45:41 - 07:45:42] I suppose...
+[07:45:42 - 07:45:44] This is a lot easier than managing...
+[07:45:44 - 07:45:45] Uh...
+[07:45:45 - 07:45:46] Skeletons...
+[07:45:46 - 07:45:47] To prepare for...
+[07:45:47 - 07:45:48] Uh...
+[07:45:48 - 07:45:49] To prepare for a feast...
+[07:45:49 - 07:45:50] Ha...
+[07:45:50 - 07:45:52] They do not give you runes?
+[07:45:52 - 07:45:53] He says...
+[07:45:53 - 07:45:54] Why...
+[07:45:54 - 07:45:55] These don't...
+[07:45:55 - 07:45:56] Exist...
+[07:45:56 - 07:45:57] So...
+[07:45:57 - 07:45:58] Yeah...
+[07:45:58 - 07:45:59] Magical items are...
+[07:45:59 - 07:46:01] Difficult to manage...
+[07:46:01 - 07:46:02] Not...
+[07:46:02 - 07:46:03] Runes...
+[07:46:03 - 07:46:04] He says...
+[07:46:04 - 07:46:05] But...
+[07:46:05 - 07:46:06] Um...
+[07:46:06 - 07:46:07] We'll ease me...
+[07:46:07 - 07:46:08] He says...
+[07:46:08 - 07:46:09] To this...
+[07:46:09 - 07:46:10] Yeah...
+[07:46:10 - 07:46:10] Runes...
+[07:46:10 - 07:46:11] Only...
+[07:46:11 - 07:46:12] Arrived here...
+[07:46:12 - 07:46:13] When...
+[07:46:13 - 07:46:14] Emily...
+[07:46:14 - 07:46:15] Introduced them...
+[07:46:15 - 07:46:16] To our world...
+[07:46:16 - 07:46:18] Runes are very useful...
+[07:46:18 - 07:46:20] For non-magic users...
+[07:46:20 - 07:46:22] There are non-magic users...
+[07:46:22 - 07:46:23] In...
+[07:46:23 - 07:46:24] They...
+[07:46:24 - 07:46:25] Uh...
+[07:46:25 - 07:46:26] Rely...
+[07:46:26 - 07:46:27] On...
+[07:46:27 - 07:46:28] Magical items...
+[07:46:28 - 07:46:29] In their runes...
+[07:46:29 - 07:46:30] Domestic magic...
+[07:46:30 - 07:46:31] As well...
+[07:46:31 - 07:46:32] A lot of stuff...
+[07:46:32 - 07:46:33] Like that...
+[07:46:33 - 07:46:34] Hm...
+[07:46:34 - 07:46:36] That is curious...
+[07:46:36 - 07:46:37] I found...
+[07:46:38 - 07:46:39] I thought that...
+[07:46:39 - 07:46:40] Every elf...
+[07:46:40 - 07:46:41] Was a...
+[07:46:41 - 07:46:42] Magical creature...
+[07:46:42 - 07:46:44] Isn't that right?
+[07:46:44 - 07:46:45] Not just elf?
+[07:46:45 - 07:46:46] Of course...
+[07:46:46 - 07:46:49] Ah...
+[07:46:49 - 07:46:50] He says...
+[07:46:50 - 07:46:53] I'll be working with...
+[07:46:53 - 07:46:54] Uh...
+[07:46:54 - 07:46:55] You and...
+[07:46:55 - 07:46:56] Angel...
+[07:46:56 - 07:46:57] He says...
+[07:46:57 - 07:46:58] And...
+[07:46:58 - 07:46:59] Their mother...
+[07:46:59 - 07:47:00] Good luck with that...
+[07:47:00 - 07:47:01] Bro...
+[07:47:01 - 07:47:02] Mother...
+[07:47:02 - 07:47:03] He says...
+[07:47:03 - 07:47:04] Oh...
+[07:47:04 - 07:47:05] Their mother is...
+[07:47:06 - 07:47:07] Amongst you?
+[07:47:07 - 07:47:08] Her mother is resting...
+[07:47:08 - 07:47:09] If you know...
+[07:47:09 - 07:47:10] Ah...
+[07:47:10 - 07:47:11] Then not her rest...
+[07:47:11 - 07:47:12] I can brew some tea...
+[07:47:12 - 07:47:13] Uh...
+[07:47:13 - 07:47:14] Some other uses...
+[07:47:14 - 07:47:15] I lived alone...
+[07:47:15 - 07:47:16] For quite a while...
+[07:47:16 - 07:47:17] I sense...
+[07:47:17 - 07:47:18] We shall introduce you to her...
+[07:47:18 - 07:47:19] Before we leave...
+[07:47:19 - 07:47:20] And...
+[07:47:20 - 07:47:21] For now...
+[07:47:21 - 07:47:22] Well...
+[07:47:22 - 07:47:23] She doesn't have...
+[07:47:24 - 07:47:25] Uh...
+[07:47:25 - 07:47:28] She is slowly getting used...
+[07:47:28 - 07:47:29] To our...
+[07:47:29 - 07:47:30] Current situation...
+[07:47:30 - 07:47:31] Regarding...
+[07:47:31 - 07:47:33] Us being attacked...
+[07:47:33 - 07:47:34] By...
+[07:47:34 - 07:47:35] A...
+[07:47:35 - 07:47:36] Aberrations?
+[07:47:36 - 07:47:37] Well...
+[07:47:37 - 07:47:38] Yes...
+[07:47:38 - 07:47:39] But also...
+[07:47:39 - 07:47:40] Religious...
+[07:47:40 - 07:47:41] Uh...
+[07:47:41 - 07:47:42] Not jobs...
+[07:47:42 - 07:47:43] Well...
+[07:47:43 - 07:47:44] At this point...
+[07:47:44 - 07:47:45] It seems like they...
+[07:47:45 - 07:47:46] Are one and the same...
+[07:47:46 - 07:47:47] Yeah...
+[07:47:47 - 07:47:48] But they're also like...
+[07:47:48 - 07:47:49] A...
+[07:47:49 - 07:47:50] The ugly acts...
+[07:47:50 - 07:47:51] Uh...
+[07:47:51 - 07:47:52] At this point...
+[07:47:52 - 07:47:53] It seems like they...
+[07:47:53 - 07:47:55] Are one and the same...
+[07:47:55 - 07:47:59] Yeah...
+[07:47:59 - 07:48:00] But they're also like...
+[07:48:00 - 07:48:02] The ugly acts...
+[07:48:02 - 07:48:06] We'll see about...
+[07:48:06 - 07:48:07] Whatever it is...
+[07:48:07 - 07:48:08] Whatever it is in Rannick...
+[07:48:08 - 07:48:09] But...
+[07:48:09 - 07:48:10] You know...
+[07:48:10 - 07:48:11] We don't know what is there right now...
+[07:48:11 - 07:48:13] We've never been...
+[07:48:13 - 07:48:17] So we're gonna be like...
+[07:48:17 - 07:48:18] Opening a new...
+[07:48:18 - 07:48:19] Opening a new front...
+[07:48:19 - 07:48:20] There for us...
+[07:48:20 - 07:48:21] Hell yeah...
+[07:48:21 - 07:48:23] Uh...
+[07:48:23 - 07:48:27] I just want to be used...
+[07:48:27 - 07:48:31] And maybe you can like...
+[07:48:31 - 07:48:32] Sell them your watches...
+[07:48:32 - 07:48:33] Or some shit...
+[07:48:33 - 07:48:33] Oh...
+[07:48:33 - 07:48:34] Yes...
+[07:48:34 - 07:48:39] Oh yeah...
+[07:48:39 - 07:48:40] You sell watches?
+[07:48:40 - 07:48:41] There's...
+[07:48:41 - 07:48:42] Clockworks...
+[07:48:42 - 07:48:43] He says...
+[07:48:43 - 07:48:44] Mechanical watch...
+[07:48:44 - 07:48:45] Doesn't need any...
+[07:48:45 - 07:48:46] Magical things...
+[07:48:46 - 07:48:47] Uh...
+[07:48:48 - 07:48:49] So...
+[07:48:49 - 07:48:50] He picks up...
+[07:48:50 - 07:48:51] He opens a component...
+[07:48:51 - 07:48:52] Couch on his side...
+[07:48:52 - 07:48:53] Uh...
+[07:48:53 - 07:48:54] And he picks up...
+[07:48:54 - 07:48:55] One pocket watch there...
+[07:48:55 - 07:48:56] And just like...
+[07:48:56 - 07:48:57] Look like...
+[07:48:57 - 07:48:58] And then he...
+[07:48:58 - 07:48:59] He kind of like...
+[07:48:59 - 07:49:00] Uh...
+[07:49:01 - 07:49:02] Puts it to...
+[07:49:02 - 07:49:03] Uh...
+[07:49:03 - 07:49:04] Kind of like...
+[07:49:04 - 07:49:05] His hands...
+[07:49:05 - 07:49:06] And he shows it...
+[07:49:06 - 07:49:07] Do you see?
+[07:49:07 - 07:49:08] That is the most...
+[07:49:08 - 07:49:09] One of the most...
+[07:49:09 - 07:49:10] Compact ones I've seen...
+[07:49:10 - 07:49:11] Yes...
+[07:49:11 - 07:49:12] Yeah...
+[07:49:12 - 07:49:13] Now press that...
+[07:49:13 - 07:49:14] Button over there...
+[07:49:14 - 07:49:15] It kind of like...
+[07:49:15 - 07:49:16] Lights up...
+[07:49:16 - 07:49:19] It's not that cool...
+[07:49:18 - 07:49:34] I can sell it for a thousand gold.
+[07:49:34 - 07:49:41] Well, you know what would be better is if I introduce you to our elder sister, Laudine.
+[07:49:41 - 07:49:53] She has a number of boutiques all over Sunera, and if she's interested enough perhaps you might have some kind of deal with her for distribution.
+[07:49:53 - 07:50:03] She'd always complain that pocket watches are too bulky and annoying to use, so there could be something better.
+[07:50:03 - 07:50:13] At first the idea of this pocket watch is for men to use even when they are exploring caves, spelunking, those things.
+[07:50:13 - 07:50:17] No, exactly. I mean that wrist watch that you have.
+[07:50:17 - 07:50:25] And that is something that seems to be a lot more practical and more in line to what you might be looking for.
+[07:50:25 - 07:50:31] I have a new, kind of like a new prototype, she says.
+[07:50:31 - 07:50:43] This watch though, this one that I'm wearing, it can throw, if you press this button, it can throw a little bit of sand on your enemy to distract them.
+[07:50:43 - 07:50:51] Wow! Really? Yes, it's kind of like a strategy in close combat.
+[07:50:51 - 07:50:55] Yeah, it sounds like something I do.
+[07:50:55 - 07:50:59] You already have a strategy.
+[07:50:59 - 07:51:03] I know. That's what I said.
+[07:51:03 - 07:51:09] But when I was like doing my time in an underground fighting arena when I was a roach coach.
+[07:51:09 - 07:51:11] Like I did similar kind of coaching.
+[07:51:11 - 07:51:13] Oh, that's amazing. You have an underground arena here.
+[07:51:13 - 07:51:15] Oh, I never told you about that?
+[07:51:15 - 07:51:21] Nah. I just heard the rumors. I just heard like stories.
+[07:51:21 - 07:51:27] Yeah, but I don't buy Brina anymore. That's why I couldn't show you some of our issues.
+[07:51:27 - 07:51:29] That's right.
+[07:51:29 - 07:51:33] Hmm. Hmm. Yeah.
+[07:51:33 - 07:51:35] Behave Helen. All right.
+[07:51:35 - 07:51:43] Yeah, I'm not going to take away the bride from his groom.
+[07:51:43 - 07:51:45] Do not worry, Emily.
+[07:51:45 - 07:51:49] Ah. Behave Emily.
+[07:51:49 - 07:51:55] Ah. I'm not going to take the groom from his bride.
+[07:51:55 - 07:51:57] I'm not going to take the groom.
+[07:51:57 - 07:51:59] Right? She says. Yeah.
+[07:51:59 - 07:52:03] What did she say?
+[07:52:03 - 07:52:05] Does that sound ominous to you?
+[07:52:05 - 07:52:07] What did she say to Lime?
+[07:52:07 - 07:52:09] It sounds ominous.
+[07:52:09 - 07:52:11] Well, you gotta...
+[07:52:11 - 07:52:13] What did she say?
+[07:52:13 - 07:52:15] All of us suffered from her.
+[07:52:15 - 07:52:19] I mean, she always tease everyone really hard.
+[07:52:19 - 07:52:23] I'm not going to take the groom.
+[07:52:23 - 07:52:25] What did she say?
+[07:52:27 - 07:52:29] Oh.
+[07:52:29 - 07:52:31] That's her hobby, I guess.
+[07:52:31 - 07:52:33] But she's very useful, John.
+[07:52:33 - 07:52:39] She could probably, she has a lot of wounds with her language wounds.
+[07:52:39 - 07:52:41] Probably, yeah.
+[07:52:41 - 07:52:45] And those utility spells we might need.
+[07:52:45 - 07:52:49] I'd say that you have to enjoy it.
+[07:52:49 - 07:52:51] And even your brother, you know, over there.
+[07:52:51 - 07:52:57] I'm kind of enjoying her teasing, like, in Mark right now, so I think that's fine.
+[07:52:57 - 07:53:01] As long as it doesn't lift away from him.
+[07:53:01 - 07:53:03] Hmm.
+[07:53:03 - 07:53:05] Alright.
+[07:53:05 - 07:53:07] I'll see.
+[07:53:07 - 07:53:11] Well, we already don't know all of our, like, positions, right?
+[07:53:11 - 07:53:17] If I need any suggestion, you've been quiet for a while.
+[07:53:21 - 07:53:23] Tiffany just, like, woke up.
+[07:53:23 - 07:53:25] I've been hearing what...
+[07:53:25 - 07:53:29] I've been hearing what you're saying, you know, it's just my...
+[07:53:29 - 07:53:31] I'm kind of dizzy.
+[07:53:31 - 07:53:33] I don't care about you.
+[07:53:33 - 07:53:35] You're dizzy!
+[07:53:35 - 07:53:39] I don't care about you.
+[07:53:39 - 07:53:41] No, I can handle it.
+[07:53:41 - 07:53:43] Sorry.
+[07:53:45 - 07:53:49] In any case, yes, we already know our, uh, assignments.
+[07:53:49 - 07:53:51] Go on.
+[07:53:51 - 07:53:55] We shall be taking, uh, Claude Toro and Fino with us.
+[07:53:55 - 07:53:57] I'm heading in, heading in that direction.
+[07:53:57 - 07:54:01] Who shall be replacing the, uh...
+[07:54:01 - 07:54:05] Orbs and the teleportation circle here.
+[07:54:05 - 07:54:07] Uh...
+[07:54:07 - 07:54:09] You're not going anywhere yet, uh...
+[07:54:09 - 07:54:11] Hellion, right?
+[07:54:11 - 07:54:13] I can do that.
+[07:54:15 - 07:54:17] He says, uh...
+[07:54:17 - 07:54:19] Cletus is with you, right?
+[07:54:19 - 07:54:21] I could, uh, find him and, uh...
+[07:54:21 - 07:54:23] Tell him to do the job.
+[07:54:23 - 07:54:25] Yeah, yeah, yeah, that's good.
+[07:54:25 - 07:54:26] That's good.
+[07:54:26 - 07:54:28] Oh, yeah, but we gotta also...
+[07:54:28 - 07:54:29] Where's Don Mark?
+[07:54:29 - 07:54:30] Motherfucker.
+[07:54:30 - 07:54:31] Hey.
+[07:54:31 - 07:54:33] Aren't they supposed to, like, give us some news
+[07:54:33 - 07:54:35] about the fucking egg-wenders here?
+[07:54:35 - 07:54:40] Oh.
+[07:54:40 - 07:54:42] Yeah, they said that they'd be...
+[07:54:42 - 07:54:44] coming around this time.
+[07:54:44 - 07:54:46] Well, we gotta wait.
+[07:54:46 - 07:54:48] Yeah, I know.
+[07:54:48 - 07:54:49] Oh!
+[07:54:49 - 07:54:50] Uh...
+[07:54:50 - 07:54:54] We have a new latest edition of the Nightchip Narciss.
+[07:54:54 - 07:54:56] Well, I mean...
+[07:54:56 - 07:54:58] I have...
+[07:54:58 - 07:55:00] a Nightchip Narciss in my bed right now, so...
+[07:55:00 - 07:55:02] fucking bitch.
+[07:55:02 - 07:55:04] Hey, kids!
+[07:55:04 - 07:55:06] both of us...
+[07:55:11 - 07:55:16] Rebecca and Dean will look something new here.
+[07:55:16 - 07:55:17] This guy...
+[07:55:17 - 07:55:18] is...
+[07:55:18 - 07:55:19] this guy...
+[07:55:19 - 07:55:20] is like...
+[07:55:20 - 07:55:21] uh...
+[07:55:21 - 07:55:22] you know...
+[07:55:22 - 07:55:23] this guy is...
+[07:55:23 - 07:55:24] doing something on us...
+[07:55:24 - 07:55:25] like strangers.
+[07:55:25 - 07:55:26] that's dangerous.
+[07:55:26 - 07:55:27] Go attack him.
+[07:55:27 - 07:55:28] Who?
+[07:55:28 - 07:55:29] What did I do?
+[07:55:29 - 07:55:30] Who...
+[07:55:30 - 07:55:32] Who are we going to attack?
+[07:55:32 - 07:55:34] Subinian Angel.
+[07:55:34 - 07:55:35] You mean Luke?
+[07:55:35 - 07:55:36] Yeah, Luke.
+[07:55:36 - 07:55:39] What did he do first?
+[07:55:39 - 07:55:40] Yeah, what did he do?
+[07:55:40 - 07:55:42] I didn't do anything wrong.
+[07:55:42 - 07:55:43] Uh...
+[07:55:43 - 07:55:44] he tried...
+[07:55:44 - 07:55:46] he tried to manipulate us.
+[07:55:46 - 07:55:47] That's...
+[07:55:47 - 07:55:48] strong Luke!
+[07:55:48 - 07:55:50] Subinian Angel.
+[07:55:50 - 07:55:53] Byzantine says that you're doing it wrong.
+[07:55:53 - 07:55:54] He says...
+[07:55:54 - 07:55:57] I didn't manipulate anyone.
+[07:55:57 - 07:55:58] You have to...
+[07:55:58 - 07:56:01] have a strong deal to manipulate someone.
+[07:56:01 - 07:56:02] And...
+[07:56:02 - 07:56:04] Byzantine says you don't do it.
+[07:56:04 - 07:56:07] Because I don't wanna manipulate anyone.
+[07:56:07 - 07:56:09] It's a vacuum!
+[07:56:17 - 07:56:18] Alright!
+[07:56:18 - 07:56:19] I'll attack him first!
+[07:56:19 - 07:56:23] She cast the...
+[07:56:23 - 07:56:24] Cut...
+[07:56:27 - 07:56:28] Hemorrhoids!
+[07:56:28 - 07:56:29] HAHAHAHA!
+[07:56:29 - 07:56:32] Do you want to have a hemorrhoid?
+[07:56:32 - 07:56:33] No!
+[07:56:33 - 07:56:34] Please no!
+[07:56:34 - 07:56:36] He does not...
+[07:56:37 - 07:56:39] I just hate the fish in Rune.
+[07:56:39 - 07:56:42] He does got...he does got...he does got grease on plate.
+[07:56:42 - 07:56:55] Well, Yon, you smell...you smell like...you smell like a poop and...and your poop has huge corn in it.
+[07:56:55 - 07:56:57] Eww, this is my kitty.
+[07:56:57 - 07:57:02] Eww, that's disgusting!
+[07:57:02 - 07:57:04] He fizzed.
+[07:57:07 - 07:57:10] Damage.
+[07:57:10 - 07:57:19] And, um, you see Rebecca is shaped water, the water in front of them, in front of the picture, and like splashed on his face.
+[07:57:19 - 07:57:22] I don't even like corn.
+[07:57:22 - 07:57:25] Psst, you didn't, yes.
+[07:57:25 - 07:57:28] Yeah! Yeah!
+[07:57:32 - 07:57:34] It was fun!
+[07:57:34 - 07:57:44] Well, um, I was gonna give some kids some candy, and I don't think I'm gonna do that anymore.
+[07:57:44 - 07:57:45] Really?
+[07:57:45 - 07:57:46] Hm?
+[07:57:47 - 07:57:49] Give it to us!
+[07:57:49 - 07:57:51] Rebecca passed.
+[07:57:51 - 07:57:55] Suggestion.
+[07:57:55 - 07:58:00] You're gonna give us all your candy, huh?
+[07:58:00 - 07:58:02] Jesus, Rebecca.
+[07:58:04 - 07:58:11] You're gonna give some, you're gonna give a lot of candy to us.
+[07:58:11 - 07:58:17] Oh, you're faced judgment.
+[07:58:17 - 07:58:20] Yeah, you're, you're gonna face judgment.
+[07:58:20 - 07:58:22] Wow, natural twin.
+[07:58:22 - 07:58:24] Oh, shit!
+[07:58:24 - 07:58:25] Taha!
+[07:58:25 - 07:58:26] Ring of mind shielding.
+[07:58:26 - 07:58:27] Yeah.
+[07:58:28 - 07:58:28] Uh-oh.
+[07:58:28 - 07:58:29] So, hindi siya na-fect.
+[07:58:29 - 07:58:32] Pero alam mong may ginawa tong red-head na batong po, say.
+[07:58:32 - 07:58:37] Well, just because of that, I'm gonna have to eat the candy all to myself.
+[07:58:37 - 07:58:40] And so he, like, he grabs the candy and starts eating it.
+[07:58:40 - 07:58:44] It tastes good.
+[07:58:44 - 07:58:45] Rasp.
+[07:58:45 - 07:58:46] Strawberry.
+[07:58:46 - 07:58:50] The pettiness runs in the blood.
+[07:58:49 - 07:59:12] God damn it, it says, she says, ooh raspberry is my favorite, and I have some coming angel, if you apologize, but you're, but mepiana said you're wrong, you're manipulating him, because she's the one manipulating him,
+[07:59:12 - 07:59:27] and I don't believe in his lies, he works with the devil, he works with the devil, he works with the devil, well the devil is their friend,
+[07:59:27 - 07:59:42] I have dreams, I have candies angel, don't worry about it, won't lie, really what kind of candy is my love,
+[07:59:42 - 07:59:52] so she, so she, so she, yung teddy bear niya, nalagin, yunana niya, pinarn around and uh, opens like the zip on his back,
+[07:59:52 - 07:59:59] and she gives him, her candies in there, they're not the magical one, right?
+[07:59:59 - 08:00:12] I just find these like all we need, from plants, it says, uh, this one tastes like lavender, this one tastes like, tulips,
+[08:00:12 - 08:00:16] that's as long as they're not the ones that are made from mushrooms, it's fine,
+[08:00:16 - 08:00:23] I don't know what you're talking about Oscar, Uncle Oscar, well that's fine,
+[08:00:24 - 08:00:32] so I just, candies made from flowers, wow, candies made from flowers, that's kind of new to me,
+[08:00:32 - 08:00:38] so yeah, so they share the candies, that's made from flowers,
+[08:00:40 - 08:00:51] okay, so yeah, uh, so uh, all right, we're going to be, uh, after like a while about, of this uh,
+[08:00:51 - 08:00:58] Cletus and Bonmar finally arrive, uh, the guards were kind of like, you're not authorized to come here,
+[08:00:58 - 08:01:03] no, eh, shabbit, they're friends, I'm part of the triumvirate,
+[08:01:05 - 08:01:08] hey, let them in, it's all right, he says,
+[08:01:08 - 08:01:17] hey, and don't forget, uh, you have like, uh, you have like, uh, special dinner later,
+[08:01:17 - 08:01:20] just come down to the kitchen after your ship,
+[08:01:20 - 08:01:28] making the servants happy, hey, well, I was getting kind of hungry,
+[08:01:30 - 08:01:33] oh yeah, well, you gotta eat at the kitchen,
+[08:01:33 - 08:01:40] we just fucking ate that way, god damn it, this guy, yeah, where are you from,
+[08:01:40 - 08:01:47] and what's this news you're talking about, well, this fucker's been talking to some of the
+[08:01:47 - 08:01:54] Hicklanders from around here, and they've been talking shit about like, uh, the Travertine family,
+[08:01:54 - 08:02:03] uh, bullshit like that, so, we already know that shit, right, yeah, yeah, but, uh, what was it,
+[08:02:03 - 08:02:09] Donmar, what was the thing that you were saying, well, they've been suppressing the
+[08:02:09 - 08:02:16] Hicklanders from around here, like, actively, like, capturing them, and, well, it makes sense,
+[08:02:16 - 08:02:24] I mean, ever since, ever since, Hicklanders, like, putting into prisons and such, because they're
+[08:02:24 - 08:02:34] blaming it to them, well, because of the alleged attack on the king, like, there are a lot of places
+[08:02:34 - 08:02:43] where Hicklanders have been rounded up, and, it's not the Hickland's fault, it's not the Hicklander's fault,
+[08:02:43 - 08:02:47] so they're back up, oh, it's different, and she speaks in Hick.
+[08:02:47 - 08:02:54] Blunt is, Blunt belongs to the Hicks, it says.
+[08:02:57 - 08:03:03] Blunt is, wait a minute, what did she say? Can anyone translate?
+[08:03:03 - 08:03:12] Blunt is, yeah, she's a Hick, she's a Hick, he says.
+[08:03:12 - 08:03:18] Where did Lilia go? Lilia can speak.
+[08:03:18 - 08:03:24] Lilia, go back to the, uh, thing, of Prince, can you speak Hick?
+[08:03:24 - 08:03:34] Blunt is, I understand some of it, I know of it, I know, when I read it, I can translate it,
+[08:03:34 - 08:03:40] and whether I don't speak it conversationally, but yes, she said something about,
+[08:03:40 - 08:03:46] it is not their fault, is what I thought.
+[08:03:46 - 08:03:52] Hey, Rebecca, can you repeat what we said?
+[08:03:53 - 08:03:54] Or she pouts?
+[08:03:54 - 08:04:00] Goddammit, fucking kids.
+[08:04:00 - 08:04:03] I don't feel, yeah.
+[08:04:03 - 08:04:06] Uh, hey, look, give her, give her candies.
+[08:04:06 - 08:04:09] This is important, bastard.
+[08:04:09 - 08:04:15] So, sabi lang ni, no, Prince, "I have gold, you have gold."
+[08:04:22 - 08:04:24] She doesn't know what to do with gold.
+[08:04:24 - 08:04:29] God fucking dammit.
+[08:04:29 - 08:04:30] I agree.
+[08:04:30 - 08:04:33] Here, have some raspberries.
+[08:04:33 - 08:04:36] So, she says,
+[08:04:38 - 08:04:43] "The land, the land always belong to us, to the hills," he says.
+[08:04:43 - 08:04:49] "Always has been," he says.
+[08:04:49 - 08:04:55] So are your parents, do they de-cue the sign as you're speaking?
+[08:04:55 - 08:05:02] "You don't, I was raised very little enough.
+[08:05:02 - 08:05:05] It's always been my mother's family, he says."
+[08:05:09 - 08:05:24] "I know, but we've not heard of him speak, he says that he's not been spoken for centuries."
+[08:05:24 - 08:05:27] So she pouts again, and looks awake.
+[08:05:27 - 08:05:36] Finally, something from her.
+[08:05:36 - 08:05:38] So she's a hick.
+[08:05:38 - 08:05:43] Hey, where did you learn this language, Rebecca?
+[08:05:43 - 08:05:45] I will repeat it, alright?
+[08:05:45 - 08:05:52] I'm, I'm, Sabine, my people will definitely want to learn more about the language.
+[08:05:52 - 08:05:57] I mean, I can give you all the candies or anything that you want if you teach us.
+[08:06:00 - 08:06:01] I'm tired, she says.
+[08:06:01 - 08:06:03] It doesn't have to be now, of course.
+[08:06:03 - 08:06:05] Whenever you're ready.
+[08:06:05 - 08:06:07] I don't want to be with you, she says.
+[08:06:07 - 08:06:12] No, this is Donmar.
+[08:06:12 - 08:06:13] Ah, Donmar, yeah.
+[08:06:13 - 08:06:14] She says,
+[08:06:14 - 08:06:17] "I don't want to be with you, I don't know you," she says.
+[08:06:17 - 08:06:20] "I don't know you," she says.
+[08:06:20 - 08:06:22] "No, of course, I guess not.
+[08:06:22 - 08:06:23] My name is Donmar.
+[08:06:24 - 08:06:32] I work with the Hicklums, uh, Hicklums for Hicks.
+[08:06:32 - 08:06:37] We're fighting for our independence.
+[08:06:37 - 08:06:40] You know, uh,
+[08:06:40 - 08:06:48] our, we call ourselves, uh, so, she's wrong.
+[08:06:48 - 08:06:52] So, she, he says that, and you know that it's like,
+[08:06:54 - 08:06:59] wrong, it's not the correct way to some say that it's like,
+[08:06:59 - 08:07:02] a new word that doesn't make sense in, in her wiki.
+[08:07:02 - 08:07:02] Yeah.
+[08:07:02 - 08:07:03] In her wiki.
+[08:07:03 - 08:07:11] It doesn't make sense what you say, she says.
+[08:07:11 - 08:07:18] Are you, are you saying, so she says the correct term for that?
+[08:07:18 - 08:07:28] Uh, the correct term for, like, the people of, of Senera would be Maal, if that's true.
+[08:07:28 - 08:07:30] The people, all of the people.
+[08:07:30 - 08:07:32] It's really that.
+[08:07:32 - 08:07:35] Kasi yung artigiral niya, sinasabi nila na...
+[08:07:35 - 08:07:37] It's Maal, she says.
+[08:07:37 - 08:07:42] It means the people of this land, she says.
+[08:07:45 - 08:07:54] He's got like, we really over, we really over complicated that didn't we?
+[08:07:54 - 08:07:55] So, uh.
+[08:07:55 - 08:07:57] That's why it's great.
+[08:07:57 - 08:08:00] I mean, if you can put just that, we can say it right.
+[08:08:00 - 08:08:05] We can say it right.
+[08:08:10 - 08:08:15] So, she just looks at you and she says.
+[08:08:15 - 08:08:20] Is there anything that you want, we can offer you?
+[08:08:20 - 08:08:23] She looks alright.
+[08:08:23 - 08:08:24] In exchange?
+[08:08:24 - 08:08:29] Don't force it, Donmar.
+[08:08:29 - 08:08:30] She's just a kid.
+[08:08:30 - 08:08:31] I know.
+[08:08:31 - 08:08:33] She's from the Feywild.
+[08:08:33 - 08:08:34] I'm sorry.
+[08:08:34 - 08:08:38] I just got a little too over excited.
+[08:08:38 - 08:08:40] Well, introduce yourself first.
+[08:08:40 - 08:08:44] Yeah, I'm, well, I just did, right?
+[08:08:44 - 08:08:45] I said, I'm Donmar.
+[08:08:45 - 08:08:51] We come from a group that is, well,
+[08:08:49 - 08:08:56] that is, well, trying to fight for our independence, for us trying to learn our own culture,
+[08:08:56 - 08:09:05] what it used to be, and not like what the Colossarians like forced on us, not what
+[08:09:05 - 08:09:16] everyone else is trying to force on us. What it means to be culturally and truly a scenario.
+[08:09:18 - 08:09:25] That's the right way to say all the people.
+[08:09:25 - 08:09:33] I'll let everyone know. She nods.
+[08:09:33 - 08:09:47] Rebecca, so you're, uh, so I'm kind of like, uh, since the awkwardness,
+[08:09:47 - 08:09:58] she says, uh, go on to Donnor. And, uh, she says, um, are you tired, Rebecca? Shall we, uh, shall we get you
+[08:09:58 - 08:10:09] to your room? No, I'm going with, I'm going with him. He says, points to John. Why everyone wants
+[08:10:09 - 08:10:22] to go with John? He's my brother. He's my brother, Rebecca says, brother?
+[08:10:26 - 08:10:35] I don't understand anymore. Well, because I treat her majesty with the respect that she deserves. That's why.
+[08:10:35 - 08:10:40] I have a brother like you. He says, and you look like him, he says.
+[08:10:40 - 08:10:43] Really? She nods. What's his name?
+[08:10:45 - 08:10:57] So she looks down. And she picks up the cards she lays there and then looks at it. And then just continue playing.
+[08:10:59 - 08:11:04] All right. That's okay. Well, you can call me Johnny if you like. Okay?
+[08:11:04 - 08:11:09] She just nods. Jeez.
+[08:11:09 - 08:11:11] Duff. Fuck.
+[08:11:12 - 08:11:20] So this kid could be from the timeline of the Hicks, where the Hicks is the, like, the stronger
+[08:11:20 - 08:11:27] majority people of the scenario. I think she speaks very proper modern scenario too.
+[08:11:27 - 08:11:29] Okay. Okay. Okay. Fuck it. He says.
+[08:11:29 - 08:11:48] As far as I know, it's a million dollars. No one has spoken very, very, very, uh, fluent Hicks.
+[08:11:48 - 08:11:52] Well, we, well they. It is a deadline.
+[08:11:52 - 08:11:57] So, Hedwig, Hedwig, uh, Hedwig found her in the Feywa.
+[08:11:57 - 08:12:04] We don't know where she came from and she won't tell us. And, uh, she just speaks in Aaron.
+[08:12:04 - 08:12:17] She speaks in Aaron. And she has, like, that fucking red hair.
+[08:12:22 - 08:12:28] In that, in that, in that regard, I'm not really too full about the red hair. The red hair is...
+[08:12:28 - 08:12:31] Skelwyck, right? Because D'Arwig has it.
+[08:12:31 - 08:12:36] No, not just the Skelwyck thing. The reason why Skelwyck supposedly have them is because
+[08:12:36 - 08:12:40] in the 200s or 300s,
+[08:12:40 - 08:12:49] before the Kolisarians started, when the Kolisarians were starting to win,
+[08:12:50 - 08:12:57] before they, like, fully nominated the entire Irish. The Skelwyck was controlled by
+[08:12:57 - 08:13:01] people from Karl Mark, or Vikings from Karl Mark.
+[08:13:01 - 08:13:04] So you think she's from that age?
+[08:13:04 - 08:13:06] No, she speaks. Oh, shit.
+[08:13:06 - 08:13:10] If she speaks old Karl Markian.
+[08:13:11 - 08:13:14] Can you speak Karl Markian, Rebecca?
+[08:13:14 - 08:13:17] I can do Karl Markian. Karlish.
+[08:13:17 - 08:13:18] But what else can you speak?
+[08:13:18 - 08:13:23] If she speaks Karlish, and then, uh, that will pass.
+[08:13:23 - 08:13:24] It's an indication.
+[08:13:28 - 08:13:34] All right, uh, well, it's gonna be your work to find out, John.
+[08:13:34 - 08:13:40] It's not like we have to force her to do anything. When she speaks, I'll write it down.
+[08:13:42 - 08:13:46] But you're right, she's, she's a little girl, not under pressure.
+[08:13:46 - 08:13:48] Yeah.
+[08:13:48 - 08:13:54] Not under pressure, huh?
+[08:13:54 - 08:13:58] Anyway.
+[08:14:01 - 08:14:02] Let's sit down.
+[08:14:02 - 08:14:06] Uh, Donmar was saying something about the Hicklanders before all of us.
+[08:14:06 - 08:14:07] Yeah, yeah, yeah. What is it?
+[08:14:07 - 08:14:10] Oh, um, yeah, sorry.
+[08:14:12 - 08:14:18] And so, yeah, we were, they were being persecuted, they were being, uh, captured.
+[08:14:18 - 08:14:20] Like Hicklanders?
+[08:14:20 - 08:14:20] Yeah.
+[08:14:20 - 08:14:25] Many of them are still in, uh, prison, uh, Taito.
+[08:14:25 - 08:14:30] In a nearby settlement, not here in the Travertine property.
+[08:14:30 - 08:14:34] Which is weird, right?
+[08:14:34 - 08:14:39] If you're going to capture political enemies, you probably want them in the capital where you can
+[08:14:39 - 08:14:42] interrogate them from.
+[08:14:42 - 08:14:43] Right.
+[08:14:43 - 08:14:45] So why they're doing this ship?
+[08:14:45 - 08:14:47] Yeah, that's kind of the mystery here.
+[08:14:47 - 08:14:53] Uh, they know that the Crown Prince is here, right?
+[08:14:53 - 08:15:02] Well, word is hard to, it doesn't like go into the, into the boonies as quickly as possible.
+[08:15:02 - 08:15:03] But yeah, now they do.
+[08:15:03 - 08:15:04] All right.
+[08:15:04 - 08:15:09] And they're hoping that maybe we can do something about that.
+[08:15:10 - 08:15:15] But I said that there are a lot more problems in Samara right now.
+[08:15:17 - 08:15:28] I mean, maybe try everything in here now that it's, you know, no longer in that reformist guy's hands.
+[08:15:28 - 08:15:33] Maybe, uh, Viscount Luke here can do something about it.
+[08:15:35 - 08:15:40] Organize, uh, well, maybe let them free.
+[08:15:57 - 08:16:00] Fuck this bullshit, this is unnecessary, he says.
+[08:16:00 - 08:16:02] All right, all right, all right, all right.
+[08:16:02 - 08:16:11] I suppose this would be the first test of your leadership, Luke.
+[08:16:11 - 08:16:16] Yeah, and we will not, we will not, we do not have time to deal with this ourselves.
+[08:16:16 - 08:16:23] We already are swamped with a lot of different, difficult issues all over Samara.
+[08:16:23 - 08:16:26] This land, you hold it now.
+[08:16:26 - 08:16:29] You will become the right part of this place.
+[08:16:29 - 08:16:34] Whether or not you are currently not yet officially holding that title.
+[08:16:34 - 08:16:35] Yes.
+[08:16:35 - 08:16:39] Unless I die later, before anything is officially canonized.
+[08:16:39 - 08:16:42] Oh, we sound dramatic.
+[08:16:42 - 08:16:43] Oh, it is true.
+[08:16:43 - 08:16:44] He says.
+[08:16:44 - 08:16:47] You are practically already the Viscount here.
+[08:16:47 - 08:16:54] But, uh, look, he said, get the, uh, gendarmery, he says.
+[08:16:54 - 08:16:56] That's not what he called here.
+[08:16:56 - 08:16:57] Uh, you know what I mean.
+[08:16:57 - 08:17:08] The Constabulary will already, you, I already have, you already have the decree in your hand
+[08:17:08 - 08:17:17] that you are acting a Viscount until everything is properly processed and they will follow your command.
+[08:17:17 - 08:17:21] Yeah, and, uh, use eight, he says.
+[08:17:21 - 08:17:26] Yeah, if they don't follow your decree, they're all gonna follow her.
+[08:17:26 - 08:17:32] Yeah, flush her dits and see, and see what happens.
+[08:17:32 - 08:17:34] Ha, ha, ha, ha, ha, ha.
+[08:17:34 - 08:17:36] What do you mean by flush your dits?
+[08:17:36 - 08:17:37] Oh, banana.
+[08:17:37 - 08:17:39] Hmm, angel.
+[08:17:39 - 08:17:42] You know, flush your dits.
+[08:17:42 - 08:17:46] You did this kind of a bird.
+[08:17:49 - 08:17:52] Oh, the great, like, the great dits.
+[08:17:52 - 08:18:00] That's, that's Kate, the great dits.
+[08:18:00 - 08:18:09] Is, but, but, she doesn't have, like, that large balls and something in her life.
+[08:18:09 - 08:18:11] Yeah, I think that's a mad sin.
+[08:18:11 - 08:18:11] Ah, what do you think?
+[08:18:11 - 08:18:13] I'm a failure.
+[08:18:13 - 08:18:18] Ah, yes, that, that's, you know,
+[08:18:18 - 08:18:26] what we have here, you, Liam, Emily, me, we have the great dits.
+[08:18:26 - 08:18:31] The best one, ever.
+[08:18:31 - 08:18:35] No, we have the great dits because great means massive, right?
+[08:18:35 - 08:18:37] You have the best dits.
+[08:18:37 - 08:18:39] Yeah, correct, it says.
+[08:18:39 - 08:18:43] That's, that's another bird, the best dits.
+[08:18:43 - 08:18:49] Yeah, angel, you are the best dits as well.
+[08:18:49 - 08:19:06] well. That sounds nice. He says, I have the best pizza. He says. Oh, geez. All right.
+[08:19:06 - 08:19:18] We gotta go. Yeah. Ah, go in a beer. He says, uh, one of the, one of the girls, one of the
+[08:19:18 - 08:19:27] girls that legally bears a nine-year-old and they have to rescue them. Oh, you already
+[08:19:27 - 08:19:33] know her. Yep. Yeah, but, um, the universe says that she's like, um, she's, she's me
+[08:19:33 - 08:19:50] and that was told to you in confidence. Yeah. This is amazing. This is amazing. This is
+[08:19:50 - 08:20:00] amazing. And I didn't call her, um, mediocre. I called her whoever painted her. Mm-hmm.
+[08:20:00 - 08:20:09] Yeah, whoever painted her mediocre. Can I help? She says. Uh, well, no, no, no.
+[08:20:09 - 08:20:15] I'm pretty sure if, um, you know, I could, if you were not able to bring her, I might
+[08:20:15 - 08:20:21] actually be able to do her justice. Oh, uh, no. Uh, Miss Teen says that, uh, you're
+[08:20:21 - 08:20:38] are to, uh, paint, uh, you're to paint, uh, the other girls as well. The new ones. He says.
+[08:20:38 - 08:20:43] Oh, the new ones. Oh, the new ones. He says. Oh, well, I, I haven't taken some of the greatest
+[08:20:43 - 08:20:50] issues. I know that they're going to be shown in the news. Um, so, so then, uh, I was given
+[08:20:50 - 08:21:01] a copy to give you actually. Yeah, I take it from him. He's the expert. He, he, he, he, he,
+[08:21:01 - 08:21:03] he, he, he, he, he, he, he, he, he, he, he, he, he, he, he says. And, uh, Miss Miss Teen
+[08:21:03 - 08:21:12] also told you to hand, uh, uh, the freebies for you. Yeah. Oh, and, uh, once you capture me,
+[08:21:12 - 08:21:18] me, me, uh, you're going to be painting her as well. Oh, that is perfect. Sabina.
+[08:21:20 - 08:21:28] Yes. And, uh, it is good to be able to, well, I would like to see her, of course, to see,
+[08:21:28 - 08:21:36] like, I'm pretty sure. I don't think management will choose acting for the mediocre girls,
+[08:21:36 - 08:21:43] because, you know, sometimes talent is hard to find. So, we're going to have a daughter,
+[08:21:43 - 08:21:50] uh, a, a Mia, an angel. He, he, he, he, he, he. So, we're there now. You mean, we're there.
+[08:21:50 - 08:22:00] Hmm. So, I, I get to be painted with Mia. He says. Yeah, yeah, yeah. Hmm. Interesting. So, we're there now.
+[08:22:00 - 08:22:06] The angel. Hmm. But, uh, before you leave, would we still have time, but we wouldn't be having
+[08:22:06 - 08:22:15] what it is always to wait. Light and it's not the best. I suppose it shall have to wait.
+[08:22:15 - 08:22:21] You have precipitation, right? Sabina Emily. That room, that didn't put light, I'm sorry.
+[08:22:21 - 08:22:30] No, that's... You can try it, she says. I, I can, but, yeah. You know, you know about the golden arm, of course.
+[08:22:30 - 08:22:39] Ah. With, uh, sunset? Before sunset? A specific time during sunset, while the sun is about, so to say.
+[08:22:39 - 08:22:47] Hmm. I was hoping to paint Tiffany and, uh, Angel, but around that time, any sort of night, though?
+[08:22:47 - 08:22:53] I can, uh, uh, uh, my lady, I can sell you a, uh, uh, a rune of Minor Illusion.
+[08:22:53 - 08:23:04] Do you know how it works? I've heard of this, well, yes. Yeah, you can just, uh, imagine the, uh, sunset and it will happen.
+[08:23:04 - 08:23:10] Yes, yes. Any kind of sunlight? Yeah, it will improve your artwork, if you want, so.
+[08:23:10 - 08:23:16] Of course, there is a limit in terms of size. Yeah. Uh, but there's a limit in terms of size?
+[08:23:16 - 08:23:22] Uh, 30 feet. Yeah, 30 feet. Yeah, 30 feet. Yeah, only 30 feet.
+[08:23:22 - 08:23:32] Uh, 30 feet, uh, 30 foot volume, huh? Or 30 foot by 30 foot by 30 square.
+[08:23:32 - 08:23:37] Three months, yeah. Oh, I could do a lot of fat. That is a lot.
+[08:23:37 - 08:23:43] Yes, how much are you from it? You look quite rich, so, um, five hundred dollars.
+[08:23:43 - 08:23:46] Do you have a bank account for that, exactly?
+[08:23:46 - 08:23:50] Fortune, um, it's an outdoor. Yes, this is Renault. He would want to say that.
+[08:23:50 - 08:23:53] It's an outdoor. Uh, do you know what kind of bank it is?
+[08:23:53 - 08:23:54] Mm-hmm.
+[08:23:54 - 08:23:58] And they're the beyonds, it's also.
+[08:23:58 - 08:24:07] Ah, if it is the beyonds. Yes, uh, we, we do have some data to them. I believe I know what a bank it is.
+[08:24:07 - 08:24:10] If you show me your passport. I'll be okay. Here.
+[08:24:10 - 08:24:11] Okay.
+[08:24:11 - 08:24:15] And so she writes a check, you know, with your details and your passport. Okay.
+[08:24:15 - 08:24:18] And then looks it off. Okay. Thank you.
+[08:24:18 - 08:24:19] Yes, yes.
+[08:24:19 - 08:24:20] And cash it. Uh, here's the one.
+[08:24:20 - 08:24:21] Yes, yes.
+[08:24:21 - 08:24:25] You can, uh, deposit it in any bank. I'm sure they will.
+[08:24:25 - 08:24:27] Transfer it over to your account.
+[08:24:27 - 08:24:32] Keep it. I'll keep it. I'll keep it. Uh, I'll remember. I'll try to remember it.
+[08:24:32 - 08:24:44] So I just have to concentrate and think of the only time I've seen it.
+[08:24:44 - 08:24:47] Uh, I hope you, I hope you have fun with it. This is awesome.
+[08:24:47 - 08:24:48] And so, like.
+[08:24:48 - 08:24:49] That's my creation.
+[08:24:49 - 08:24:56] Uh, she, like, really quickly, you see a quick flash of, like, uh, Oscar and grandma a hand in hand.
+[08:24:56 - 08:25:01] But she, like, this, this makes it disappear as, uh, as instantly as she may.
+[08:25:01 - 08:25:05] Oh, you have another friend, Oscar? Uncle Oscar?
+[08:25:05 - 08:25:09] Uh, what the hell was that?
+[08:25:09 - 08:25:13] No, nothing. I was, uh, testing it out.
+[08:25:13 - 08:25:17] It's breaking.
+[08:25:17 - 08:25:20] What is it? I didn't see.
+[08:25:20 - 08:25:25] It's better you did. It'll give you nightmares.
+[08:25:25 - 08:25:28] Alright, well, we're gonna, uh, what the hell is saying.
+[08:25:28 - 08:25:33] Uh, John, you could, uh, discuss amongst yourself what your plan is.
+[08:25:33 - 08:25:38] And if you're gonna bring whoever, you know, you're afraid to do that.
+[08:25:38 - 08:25:42] But, uh, we're gonna discuss amongst ourselves, too.
+[08:25:42 - 08:25:43] Mm.
+[08:25:45 - 08:25:47] But, John, you'll be the leader, alright?
+[08:25:47 - 08:25:48] Mm-hmm.
+[08:25:48 - 08:25:49] Emily, live.
+[08:25:49 - 08:25:50] Yes.
+[08:25:50 - 08:25:51] You know what, dude?
+[08:25:51 - 08:25:52] Justin.
+[08:25:52 - 08:25:53] Of course.
+[08:25:53 - 08:25:57] We're here to, well, we are here to speak.
+[08:25:57 - 08:25:59] Yeah, we're going to listen to John.
+[08:25:59 - 08:26:00] Sabine, live.
+[08:26:00 - 08:26:01] Our leader, John.
+[08:26:01 - 08:26:01] Mm-hmm.
+[08:26:01 - 08:26:02] Captain John.
+[08:26:02 - 08:26:15] It really does sound like a pirate name, huh?
+[08:26:15 - 08:26:17] Well, we're pirates, John.
+[08:26:17 - 08:26:18] We should dig out an eye and put in a, like, a knife, actually.
+[08:26:18 - 08:26:19] I think it'll look better on it.
+[08:26:19 - 08:26:20] So, what should we do?
+[08:26:20 - 08:26:21] All right, if we're doing this.
+[08:26:21 - 08:26:22] Got a three-year, three-year dot, right?
+[08:26:22 - 08:26:23] Yeah.
+[08:26:24 - 08:26:26] So, like we discussed earlier, like, it would be good to be able to teleport some, some ways
+[08:26:26 - 08:26:27] away.
+[08:26:27 - 08:26:32] from, from, from, from, from, from, from, from, from, from, from, from.
+[08:26:32 - 08:26:33] Yeah.
+[08:26:33 - 08:26:52] So, like we discussed earlier, like, it would be good to be able to teleport some, some ways
+[08:26:52 - 08:26:57] away from, from, from, from the castle.
+[08:26:57 - 08:27:00] Am I right?
+[08:27:00 - 08:27:05] Like, Pragmois is probably the best place, Mark?
+[08:27:05 - 08:27:14] I mean, we need to have a place that's not really, like, that there aren't any reformists necessarily.
+[08:27:14 - 08:27:20] Like, a little bit far, a little bit of, like, a small town, quiet.
+[08:27:20 - 08:27:25] Yeah, but we're kind of gonna stand out if we go to one of those, right?
+[08:27:25 - 08:27:37] But, I guess, as long as there aren't anything, well, how does, how do these, how do these reformists necessarily work?
+[08:27:37 - 08:27:40] Do they do things, like, quiet first and then start?
+[08:27:40 - 08:27:41] Yeah.
+[08:27:41 - 08:27:42] They're like that.
+[08:27:42 - 08:27:50] Don't you think they'll try to take over the small town first because they won't, like, get noticed immediately?
+[08:27:50 - 08:27:51] No.
+[08:27:51 - 08:27:53] They don't do that?
+[08:27:53 - 08:28:02] They don't care if you're, I mean, sometimes they do that in much more smaller, but smaller scale, scale.
+[08:28:02 - 08:28:06] But let's assume that it is, this is already a large scale.
+[08:28:06 - 08:28:07] Yeah.
+[08:28:07 - 08:28:14] Seven John, remember that mother had a really long, like, parasite.
+[08:28:14 - 08:28:20] People who helped your mother in the, in the past, people she helped.
+[08:28:19 - 08:28:28] she helped maybe uh kind of like um has a favor they could have at least had 10 years of this
+[08:28:28 - 08:28:40] already here yeah but that just means that i mean then anywhere anyone could have reformist so
+[08:28:40 - 08:28:46] if you think about it that way then teleporting to somewhere that's
+[08:28:47 - 08:28:53] further from the castle or in the castle itself is practically the same thing right they're gonna be
+[08:28:53 - 08:29:03] reformists almost anywhere but so if you ask me the best place to probably teleport is either
+[08:29:03 - 08:29:09] either a cave that has no one in it do we do it do we do it quietly as well
+[08:29:09 - 08:29:15] and then we should discuss ourselves at the very least we shouldn't
+[08:29:15 - 08:29:22] this but i mean if we decide to either go straight inside town or like further away
+[08:29:22 - 08:29:29] we should still disguise or at least we do because i mean nobody really knows who you are
+[08:29:29 - 08:29:35] yeah but uh they know they could know lime already
+[08:29:35 - 08:29:52] that's fair especially because you weren't able to kill all of them right the ones that you said were in
+[08:29:52 - 08:29:59] that that uh that were sent to the to the baby is crying tavern that you went to
+[08:30:00 - 08:30:06] that's true so they might have wiped it out i could dye my hair
+[08:30:06 - 08:30:21] and we're not really supposed to use magic for disguises right because then we'll be detected as magic users
+[08:30:24 - 08:30:27] i can turn her into like something else
+[08:30:27 - 08:30:29] like maybe uh a little bit older
+[08:30:31 - 08:30:34] we also have seven
+[08:30:34 - 08:30:39] we also have some
+[08:30:39 - 08:30:40] we also have some um
+[08:30:40 - 08:30:42] um
+[08:30:42 - 08:30:45] uh contact lenses to change your eye colors
+[08:30:45 - 08:30:48] and we have transmograss room
+[08:30:48 - 08:30:56] but will will the transmograss rooms detect as magic or are they like shape changers
+[08:30:56 - 08:31:01] no it's only the transformation where you can detect the magic
+[08:31:01 - 08:31:06] yeah when you use the transmograss room now and then go to the location where you intended to
+[08:31:06 - 08:31:13] you're not going to be detected well it's like shifter slants yeah but it's in the form of mushroom
+[08:31:13 - 08:31:22] all right i mean if i don't get stuck as a cobalt i'm finally taking some
+[08:31:27 - 08:31:29] i'm going to take the transmograss room
+[08:31:29 - 08:31:31] and just take it
+[08:31:31 - 08:31:32] well if we need to disguise ourselves
+[08:31:32 - 08:31:34] all right she says
+[08:31:34 - 08:31:37] well you certainly have to
+[08:31:37 - 08:31:39] is that safe
+[08:31:39 - 08:31:47] are transmograss rooms uh like safe for pregnant
+[08:31:47 - 08:31:51] i'm not sure i'm not gonna eat it
+[08:31:53 - 08:31:55] can you just transform me like regular
+[08:31:55 - 08:31:59] i i i can help you with your hair
+[08:31:59 - 08:32:10] well i guess maybe i should be the one
+[08:32:10 - 08:32:12] to transmograss room and
+[08:32:12 - 08:32:18] do those work like
+[08:32:18 - 08:32:21] for werewolves
+[08:32:22 - 08:32:24] no you don't really like him
+[08:32:24 - 08:32:25] that's what i thought
+[08:32:25 - 08:32:32] from what i read like people who can transform can't be affected by transformation one day
+[08:32:32 - 08:32:42] you can transform into a dog
+[08:32:42 - 08:32:47] that's if you're thinking you know you can do that
+[08:32:49 - 08:32:50] transform into a dire wolf
+[08:32:53 - 08:32:58] and actually that's very practical
+[08:32:58 - 08:33:08] yeah this is how many john in spite this bluster
+[08:33:09 - 08:33:15] transform
+[08:33:15 - 08:33:18] so he doesn't really have control over it
+[08:33:18 - 08:33:21] yet so he he he's still a babe
+[08:33:22 - 08:33:24] above above
+[08:33:24 - 08:33:24] all right
+[08:33:24 - 08:33:34] from small group since you've been affected by lack and growth i won't be able to transform in anything but
+[08:33:34 - 08:33:38] werewolf or dire wolf that's your only option
+[08:33:39 - 08:33:53] Hylian says, "You can't be polymorphed as well. Silver will definitely hurt you."
+[08:33:53 - 08:33:59] Jessica told me as much, at least. Yeah, but silver will definitely hurt you.
+[08:33:59 - 08:34:10] Yeah, that's not the reply. I mean, she demonstrated by throwing silver coins at me.
+[08:34:10 - 08:34:14] Yeah, so good job, Jessica.
+[08:34:14 - 08:34:21] You can, um, what's the name of Emily?
+[08:34:25 - 08:34:34] We can just use disguised kits and just disguise ourselves through art, she says.
+[08:34:34 - 08:34:38] That's what the flame said, if she wants.
+[08:34:38 - 08:34:45] But the problem is with us, me and Hylian, we have these ears, right? She says.
+[08:34:47 - 08:34:54] Well... How do the local elves hide themselves at the conference?
+[08:34:54 - 08:34:56] Apparently they cut their ears off.
+[08:34:56 - 08:34:58] That's probably not what you do.
+[08:34:58 - 08:35:14] Well, that they do. They cut the tips of their ears, or like, while their children, their parents, shape, put bands or twine around their ears to shape in a certain way.
+[08:35:14 - 08:35:19] And let them stay until it looks more rounded.
+[08:35:19 - 08:35:20] Ouch.
+[08:35:20 - 08:35:22] Yeah, no, no, no, no, no, no.
+[08:35:22 - 08:35:25] And that hurts less than the cutting, at least.
+[08:35:25 - 08:35:28] But...
+[08:35:28 - 08:35:32] Some do still have...
+[08:35:32 - 08:35:36] Relics from mule bays that have glamour on them.
+[08:35:36 - 08:35:46] They're usually constricted to the rich I.L. families.
+[08:35:46 - 08:35:58] But in our case, how Tiffany had been dealing with it was because, well, the smokescreen of her being a member of the...
+[08:35:58 - 08:35:59] Of the...
+[08:36:02 - 08:36:03] Of the court of...
+[08:36:03 - 08:36:04] My...
+[08:36:06 - 08:36:07] She is my court wizard.
+[08:36:07 - 08:36:10] And so she can just wear cow over her head.
+[08:36:10 - 08:36:11] And she's a midget, right?
+[08:36:11 - 08:36:12] That's...
+[08:36:12 - 08:36:13] That's the excuse of being used.
+[08:36:13 - 08:36:14] Hmm.
+[08:36:14 - 08:36:15] Or we could have...
+[08:36:15 - 08:36:16] Use...
+[08:36:16 - 08:36:17] This guy's runes.
+[08:36:17 - 08:36:18] It's just...
+[08:36:18 - 08:36:19] Would that not be detectable as magic?
+[08:36:19 - 08:36:20] Uh...
+[08:36:20 - 08:36:21] My runes doesn't detect...
+[08:36:21 - 08:36:22] Can be detected by magic.
+[08:36:22 - 08:36:23] She says.
+[08:36:23 - 08:36:24] Unless you use it on the spot.
+[08:36:24 - 08:36:25] Or the detect spell can detect them.
+[08:36:25 - 08:36:26] She says.
+[08:36:26 - 08:36:27] Well then if that is possible, that could be helpful.
+[08:36:27 - 08:36:28] You have...
+[08:36:28 - 08:36:29] Many of those...
+[08:36:29 - 08:36:30] I only have two.
+[08:36:30 - 08:36:31] She says.
+[08:36:31 - 08:36:32] I have to make one.
+[08:36:32 - 08:36:33] If you want.
+[08:36:33 - 08:36:38] Well, the text spell can detect them, she says.
+[08:36:38 - 08:36:44] Well then if that is possible, that could be helpful. We have many of those.
+[08:36:44 - 08:36:48] I only have two, she says. I have to make one, if you want.
+[08:36:48 - 08:36:54] This guy stuff isn't a popular thing in outdoor, she says.
+[08:36:54 - 08:36:58] That's kind of surprising.
+[08:36:59 - 08:37:11] Well, because of the Lady Vanessa thing, they're kind of like open and like allowing the free spirit put over their body. Something like that.
+[08:37:11 - 08:37:16] Damn, you got two religions going now.
+[08:37:16 - 08:37:24] I don't handle the Lady Vanessa thing, it's like poplarshting, she says.
+[08:37:25 - 08:37:28] But still, you are worshipping. Nice gown.
+[08:37:28 - 08:37:38] So, I don't know how to, I don't want to cut off my ears, I already like, doesn't have an arm and a leg, she says.
+[08:37:38 - 08:37:46] So, I'll just use this disguise room. I have a free one for someone who wants, she says.
+[08:37:49 - 08:37:58] I suggest, probably the prone prince would need it.
+[08:37:58 - 08:38:00] Alright, you want it?
+[08:38:00 - 08:38:02] If it works?
+[08:38:02 - 08:38:03] I want it to.
+[08:38:03 - 08:38:05] I may at least try it first.
+[08:38:05 - 08:38:07] It might not interact well with me.
+[08:38:07 - 08:38:09] Alright, she toss it on you.
+[08:38:10 - 08:38:20] This is not something, but no, I had, it was in the rules as well, that illusion and ingenuity.
+[08:38:19 - 08:38:26] as well that illusion and invisibility, actually, if he casts invisibility on him, he will resist that.
+[08:38:26 - 08:38:28] Okay, the illusion?
+[08:38:28 - 08:38:31] Yeah, so it doesn't work, it doesn't work, it doesn't work, doesn't it?
+[08:38:31 - 08:38:32] It doesn't work?
+[08:38:32 - 08:38:32] I don't know.
+[08:38:32 - 08:38:33] Wow.
+[08:38:33 - 08:38:35] No, we're not.
+[08:38:35 - 08:38:37] Well, it's because of that sword you have.
+[08:38:37 - 08:38:41] It is, because of the sword.
+[08:38:41 - 08:38:45] Yeah, I see, he says.
+[08:38:45 - 08:38:49] And so, yeah, he and she is.
+[08:38:49 - 08:38:51] Have you seen the vorpal sword?
+[08:38:51 - 08:39:00] You can't tell, again, because it is attuned as well to the shield, it is not something that can be identified.
+[08:39:00 - 08:39:04] No, I'm not identified, by the looks of it.
+[08:39:04 - 08:39:14] You've seen vorpal swords in different shapes and sizes, it could very much well be a vorpal sword, but you're not too sure exactly.
+[08:39:14 - 08:39:20] It feels like, at the very least, what I can say is that it does feel fake.
+[08:39:20 - 08:39:32] You know, because of that sheath you have, she says, you won't be able to hear its voice, but it looks to me that it's sent to you.
+[08:39:32 - 08:39:33] You know, she says.
+[08:39:33 - 08:39:33] She says.
+[08:39:33 - 08:39:47] But this shield is also what keeps it from being detected, and from me taking, according to the stories, it is what keeps it from taking over.
+[08:39:47 - 08:39:48] Well, I guess it's fine, she says.
+[08:39:48 - 08:39:49] Well, I guess it's fine.
+[08:39:49 - 08:39:50] She says.
+[08:39:50 - 08:39:52] Uh, uh, uh.
+[08:39:52 - 08:40:09] Many of my predecessors, apparently, have lost their predictions because they heard its voice, and it is what she looks at in the first place.
+[08:40:09 - 08:40:14] And so she looks at the sword like that, but, uh, she doesn't touch it or anything.
+[08:40:14 - 08:40:15] She says.
+[08:40:15 - 08:40:16] Huh.
+[08:40:16 - 08:40:17] It's sad.
+[08:40:17 - 08:40:18] Sorry, sword.
+[08:40:18 - 08:40:19] He says.
+[08:40:19 - 08:40:21] I don't know how great you are.
+[08:40:21 - 08:40:22] He says.
+[08:40:25 - 08:40:27] And so he, she's attached.
+[08:40:27 - 08:40:32] Well.
+[08:40:32 - 08:40:35] So, um.
+[08:40:35 - 08:40:38] I don't know.
+[08:40:38 - 08:40:41] Maybe a little bit of a fool.
+[08:40:41 - 08:40:44] Hellion?
+[08:40:44 - 08:40:47] Hellion can, uh, disguise at will.
+[08:40:47 - 08:40:51] I'm an aladrin, right?
+[08:40:54 - 08:40:55] Oh, Fina, you want it?
+[08:40:55 - 08:40:57] She says.
+[08:40:57 - 08:40:59] Oh, I, I can disguise.
+[08:40:59 - 08:41:00] She says.
+[08:41:00 - 08:41:02] That's real, too?
+[08:41:02 - 08:41:03] She's really good at it.
+[08:41:03 - 08:41:04] Ah.
+[08:41:04 - 08:41:05] That's, that's great.
+[08:41:05 - 08:41:06] She says.
+[08:41:06 - 08:41:08] And what about Koto?
+[08:41:08 - 08:41:09] You what?
+[08:41:09 - 08:41:11] I don't like hiding myself at all.
+[08:41:11 - 08:41:13] What?
+[08:41:13 - 08:41:14] I'm done with it.
+[08:41:14 - 08:41:15] I don't mind.
+[08:41:15 - 08:41:16] Well, you look very cool.
+[08:41:16 - 08:41:19] I'm done with that part of my life.
+[08:41:23 - 08:41:24] Well, nobody's having it.
+[08:41:24 - 08:41:25] Maybe.
+[08:41:25 - 08:41:26] Maybe me.
+[08:41:26 - 08:41:27] Somebody done.
+[08:41:27 - 08:41:29] You can disguise.
+[08:41:29 - 08:41:33] You can, like, put some prosthetics and stuff like that.
+[08:41:33 - 08:41:35] I mean, if nobody wants it.
+[08:41:35 - 08:41:38] Oh!
+[08:41:38 - 08:41:39] Wait.
+[08:41:39 - 08:41:40] Look.
+[08:41:40 - 08:41:41] Andrew is sneaky enough.
+[08:41:41 - 08:41:44] But his face is a little known where I come from.
+[08:41:44 - 08:41:45] Or where we come from.
+[08:41:46 - 08:41:50] So maybe, Andrew, like, make an imperative of your sneakiness.
+[08:41:50 - 08:41:51] I'm a soldier.
+[08:41:52 - 08:41:53] And she's pregnant.
+[08:41:53 - 08:41:54] Oh, right.
+[08:41:54 - 08:41:55] I'm a soldier.
+[08:41:57 - 08:41:58] Is that about pregnant?
+[08:41:59 - 08:42:00] What about pregnant?
+[08:42:00 - 08:42:00] Is that about pregnant?
+[08:42:00 - 08:42:00] What about pregnant?
+[08:42:00 - 08:42:01] Is that about pregnant?
+[08:42:03 - 08:42:04] I'm a soldier.
+[08:42:04 - 08:42:05] Is that about pregnant?
+[08:42:29 - 08:42:30] No, I have pregnant.
+[08:42:30 - 08:42:31] Ah, you have gold.
+[08:42:31 - 08:42:32] Do you prefer that?
+[08:42:32 - 08:42:35] Well, let's see.
+[08:42:35 - 08:42:37] Yeah, she says.
+[08:42:37 - 08:42:49] So, like, he, like, brings out a single, like, gold bar that's worth 500. There's 500 in a stand on it.
+[08:42:49 - 08:42:50] Ah, nice.
+[08:42:50 - 08:42:54] I can turn this into gold gems, she says.
+[08:42:54 - 08:42:56] For observation magic.
+[08:42:56 - 08:43:01] Well, my mistress absolutely said exactly the same thing.
+[08:43:01 - 08:43:03] The first time she saw this.
+[08:43:03 - 08:43:04] So, she, you see her.
+[08:43:04 - 08:43:05] Not for a duration necessarily.
+[08:43:06 - 08:43:11] And put it inside her new and newer academy bar.
+[08:43:11 - 08:43:14] He's doing business with me.
+[08:43:14 - 08:43:15] Sorry.
+[08:43:15 - 08:43:16] And, Andrew?
+[08:43:16 - 08:43:19] No, thank you.
+[08:43:20 - 08:43:22] So, I don't know.
+[08:43:22 - 08:43:25] And so, he, like, tries.
+[08:43:25 - 08:43:26] Disguise himself.
+[08:43:26 - 08:43:31] Yeah, uh, you disguise yourself to some ability.
+[08:43:31 - 08:43:34] Yeah, he, he, uh, yeah.
+[08:43:34 - 08:43:35] Sure.
+[08:43:35 - 08:43:36] Try it later, Andrew.
+[08:43:36 - 08:43:37] Sorry.
+[08:43:37 - 08:43:42] Yeah, that might be a good idea.
+[08:43:42 - 08:43:55] Well, at least it's not known for, I know, like, you're still up to something there.
+[08:43:55 - 08:43:56] I know.
+[08:43:56 - 08:43:56] So.
+[08:43:56 - 08:43:57] You mean your intrusive thoughts?
+[08:43:57 - 08:43:58] No, no, no, no.
+[08:43:58 - 08:43:59] It's one of your rooms.
+[08:43:59 - 08:44:00] I'm sure of it.
+[08:44:00 - 08:44:01] What about my rooms, Sabina?
+[08:44:01 - 08:44:02] Are you insulting me?
+[08:44:02 - 08:44:03] Sabina.
+[08:44:03 - 08:44:03] I'm just trying to be useful here.
+[08:44:03 - 08:44:04] I got my eye on you, though.
+[08:44:04 - 08:44:09] Oh, eyes on me, Sabina.
+[08:44:09 - 08:44:12] That's the smart book I, I gave Sam.
+[08:44:12 - 08:44:13] Yes.
+[08:44:13 - 08:44:14] I didn't know you liked that.
+[08:44:14 - 08:44:15] Yeah.
+[08:44:15 - 08:44:16] No, no, no, no.
+[08:44:18 - 08:44:19] It's one of your rooms.
+[08:44:19 - 08:44:20] I'm sure of it.
+[08:44:20 - 08:44:21] What about my rooms, Sabina?
+[08:44:21 - 08:44:22] Are you insulting me?
+[08:44:22 - 08:44:23] Sabina.
+[08:44:23 - 08:44:24] I'm just trying to be useful here.
+[08:44:24 - 08:44:25] I got my eye on you, though.
+[08:44:25 - 08:44:26] Oh, eyes on me, Sabina.
+[08:44:26 - 08:44:27] That's the smart book I, I gave Sam.
+[08:44:27 - 08:44:28] Yes.
+[08:44:28 - 08:44:31] I didn't know you liked that.
+[08:44:31 - 08:44:33] I didn't really like that, Sabina.
+[08:44:33 - 08:44:38] No, no, no, no, no.
+[08:44:38 - 08:44:42] What is she talking about?
+[08:44:42 - 08:44:49] Why are you, why are you, why are you harassing this nice boy?
+[08:44:49 - 08:45:00] Uh, she's talking about, uh, she's, she's, earlier Mark kind of like, almost like, you know,
+[08:45:00 - 08:45:05] a dress, because of the, because he says that he saw everyone naked.
+[08:45:05 - 08:45:08] But we didn't know what he's saying.
+[08:45:08 - 08:45:11] And he's blaming Emily for it.
+[08:45:11 - 08:45:13] He says.
+[08:45:13 - 08:45:15] His intrusive thoughts, apparently.
+[08:45:15 - 08:45:17] Don't mind him.
+[08:45:17 - 08:45:18] I don't know.
+[08:45:18 - 08:45:18] Maybe he wants to be distressed, Guinevere.
+[08:45:18 - 08:45:18] Why don't you give him an aura?
+[08:45:18 - 08:45:19] I don't know.
+[08:45:19 - 08:45:19] Maybe he wants to be distressed, Guinevere.
+[08:45:19 - 08:45:20] Why don't you give him an aura?
+[08:45:20 - 08:45:21] I don't know.
+[08:45:21 - 08:45:21] Maybe he wants to be distressed, Guinevere.
+[08:45:21 - 08:45:22] Why don't you give him an aura?
+[08:45:22 - 08:45:23] I don't know.
+[08:45:24 - 08:45:25] Maybe he wants to be distressed, Guinevere.
+[08:45:25 - 08:45:26] I don't know.
+[08:45:26 - 08:45:26] Maybe he wants to be distressed, Guinevere.
+[08:45:26 - 08:45:26] Why don't you give him an aura?
+[08:45:26 - 08:45:26] I don't know.
+[08:45:28 - 08:45:29] Maybe he wants to be distressed, Guinevere.
+[08:45:29 - 08:45:30] I don't know.
+[08:45:32 - 08:45:33] Maybe he wants to be distressed, Guinevere.
+[08:45:33 - 08:45:34] I don't know.
+[08:45:36 - 08:45:37] Maybe he wants to be distressed, Guinevere.
+[08:45:38 - 08:45:39] Why don't you give him an aura?
+[08:45:39 - 08:45:40] I don't know.
+[08:45:42 - 08:45:43] Maybe he wants to be distressed, Guinevere.
+[08:45:43 - 08:45:44] Why don't you give him an aura?
+[08:45:44 - 08:45:45] I don't know.
+[08:45:45 - 08:45:46] Aural!
+[08:45:59 - 08:46:00] Why?
+[08:46:00 - 08:46:01] It tastes good!
+[08:46:01 - 08:46:12] Whether or not we do it, whether or not we do such, uh, strange acts is done in secret and in private.
+[08:46:12 - 08:46:13] Oh!
+[08:46:13 - 08:46:14] Yeah, yeah.
+[08:46:14 - 08:46:16] There's kids here, right?
+[08:46:16 - 08:46:18] Hehehehehehehehe!
+[08:46:18 - 08:46:22] What if it's secret though?
+[08:46:22 - 08:46:23] I mean, Emily.
+[08:46:23 - 08:46:25] It's fun when everyone can see it.
+[08:46:25 - 08:46:26] It's so sweet.
+[08:46:26 - 08:46:28] I don't know.
+[08:46:28 - 08:46:33] I, perhaps, I find it a little bit more fun for everyone.
+[08:46:33 - 08:46:36] It's a little secret to me.
+[08:46:36 - 08:46:41] You try to sneak out of that secret a little bit.
+[08:46:41 - 08:46:43] I feel like it's kind of learning.
+[08:46:43 - 08:46:44] Yeah.
+[08:46:44 - 08:46:44] Kind of.
+[08:46:44 - 08:46:45] Yeah.
+[08:46:45 - 08:46:46] Kind of.
+[08:46:46 - 08:46:51] Oh!
+[08:46:51 - 08:46:52] Um...
+[08:46:52 - 08:46:54] I do like the art.
+[08:46:54 - 08:46:58] I also have a map maker if you want to use that.
+[08:46:58 - 08:46:59] Map?
+[08:46:59 - 08:47:00] Oh, shit.
+[08:47:00 - 08:47:01] That butterfly thing.
+[08:47:01 - 08:47:11] Yeah, when you, when you make it float in the air, it will map the place where you are in.
+[08:47:11 - 08:47:12] Caves?
+[08:47:13 - 08:47:14] Hedges?
+[08:47:14 - 08:47:15] What?
+[08:47:18 - 08:47:20] We might need that.
+[08:47:20 - 08:47:21] Alright.
+[08:47:21 - 08:47:22] She says.
+[08:47:22 - 08:47:23] Lend it to you.
+[08:47:23 - 08:47:24] Alright.
+[08:47:24 - 08:47:25] She says.
+[08:47:25 - 08:47:26] Lend it to you.
+[08:47:26 - 08:47:27] She says.
+[08:47:27 - 08:47:28] Lend it to me.
+[08:47:28 - 08:47:29] She says.
+[08:47:29 - 08:47:30] Lend it to me.
+[08:47:30 - 08:47:31] She says.
+[08:47:31 - 08:47:32] Lend it to me.
+[08:47:32 - 08:47:33] She says.
+[08:47:33 - 08:47:34] Lend it to me.
+[08:47:34 - 08:47:35] She says.
+[08:47:35 - 08:47:36] Understood.
+[08:47:36 - 08:47:37] But yeah.
+[08:47:37 - 08:47:38] I think.
+[08:47:38 - 08:47:39] So.
+[08:47:39 - 08:47:40] If.
+[08:47:41 - 08:47:43] Going back into the original conversation.
+[08:47:43 - 08:47:45] Where we should.
+[08:47:45 - 08:47:50] Mark is making a point there.
+[08:47:50 - 08:47:54] If we're to assume that the reformists are.
+[08:47:54 - 08:47:57] Have been working in the area for 10 years.
+[08:47:57 - 08:47:58] Like.
+[08:47:58 - 08:48:01] Even the nearby villages.
+[08:48:01 - 08:48:02] Could.
+[08:48:02 - 08:48:03] Perhaps.
+[08:48:03 - 08:48:04] Also.
+[08:48:04 - 08:48:06] Don't teleport in the villages.
+[08:48:06 - 08:48:07] Teleport in the woods.
+[08:48:07 - 08:48:08] Yeah.
+[08:48:08 - 08:48:09] He was saying something about it.
+[08:48:09 - 08:48:10] Caves.
+[08:48:11 - 08:48:12] Yeah.
+[08:48:12 - 08:48:13] Caves are good.
+[08:48:13 - 08:48:14] Villages.
+[08:48:14 - 08:48:16] They might have casters there.
+[08:48:16 - 08:48:17] Stationed there.
+[08:48:17 - 08:48:18] Detect magic.
+[08:48:18 - 08:48:19] And.
+[08:48:19 - 08:48:25] And once you teleport, they're gonna be detected that somebody teleport there.
+[08:48:25 - 08:48:28] Always remember that.
+[08:48:28 - 08:48:30] Yeah.
+[08:48:30 - 08:48:37] And I guess that was his point too, is that if you teleport anywhere where there's a settlement.
+[08:48:37 - 08:48:40] Yeah, exactly what I mean.
+[08:48:40 - 08:48:46] People are anywhere, and if we're assuming that any person could be reformist,
+[08:48:46 - 08:48:51] then any person can be reformist.
+[08:48:51 - 08:48:58] At the very least, if you're in a cave, we don't have a lot of woods and woodland areas in the mountains.
+[08:48:58 - 08:49:00] They're usually rock.
+[08:49:00 - 08:49:09] If there are trees, they're very sparse and like quarrying into pink and small shrubs.
+[08:49:09 - 08:49:13] Caves are our best bet.
+[08:49:13 - 08:49:20] And I think I know just the one.
+[08:49:20 - 08:49:22] It's not that far off.
+[08:49:22 - 08:49:24] It's not as far as a mile.
+[08:49:24 - 08:49:32] But it is, well, it's considered dangerous, but I know a particular spot that it's not really.
+[08:49:32 - 08:49:43] But it's actually, um, deceptively easy to go to and come back from.
+[08:49:43 - 08:49:55] And, uh, well, I mean, I don't know how this should work about the teleportation, so, like...
+[08:49:55 - 08:50:00] Easy, you're gonna be the one, if you're the one who's following the teleportation.
+[08:50:00 - 08:50:02] Can you handle that?
+[08:50:02 - 08:50:03] Of course, I guess.
+[08:50:03 - 08:50:11] Yeah, I'm just gonna hold onto you and, like, we're just gonna have to focus together.
+[08:50:11 - 08:50:17] You have to keep your mind on that place and what it looks like and what it feels like to be there.
+[08:50:17 - 08:50:21] You're really familiar with it, right?
+[08:50:21 - 08:50:26] I go there a lot, especially when we're under.
+[08:50:26 - 08:50:27] That's where I, uh, disappear.
+[08:50:27 - 08:50:28] Yeah.
+[08:50:28 - 08:50:29] Then, that's where we could go.
+[08:50:29 - 08:50:47] And then, uh, we're gonna be coming from behind the castle if we go there.
+[08:50:47 - 08:50:52] Uh, we don't, we, we don't have to go through the actual town.
+[08:50:52 - 08:50:56] Uh, there is an entrance that I used to use, and stuff.
+[08:50:56 - 08:50:59] And then there, I don't think even father knows about it.
+[08:50:59 - 08:51:02] So, I think that's gonna be the best place.
+[08:51:02 - 08:51:04] Alright!
+[08:51:04 - 08:51:07] Now, if you can handle the teleportation spell.
+[08:51:07 - 08:51:09] It's kind of high level, Mark.
+[08:51:09 - 08:51:11] It's gonna be hard.
+[08:51:11 - 08:51:13] You could use me as a conduit.
+[08:51:13 - 08:51:15] So, I'm gonna handle it.
+[08:51:15 - 08:51:17] I'm gonna drain my life energy.
+[08:51:33 - 08:51:34] I'm a sorcerer.
+[08:51:34 - 08:51:35] I'm gonna drain my life energy.
+[08:58:19 - 08:58:32] And I shall have someone, Lord Frandall.
+[08:58:32 - 08:58:33] Oh!
+[08:58:33 - 08:58:39] It's been a while since I've been in the party.
+[08:58:39 - 08:58:47] Come to think of it, perhaps your majesty would like to meet Cassie with family.
+[08:58:47 - 08:58:52] Yeah, we can play with Cassie.
+[08:58:52 - 08:58:54] She nods.
+[08:58:54 - 08:58:56] Perfect.
+[08:58:56 - 08:58:59] Where's the Duchess though?
+[08:58:59 - 08:59:01] Do you agree with the Duchess?
+[08:59:01 - 08:59:02] No.
+[08:59:02 - 08:59:05] And Rebecca, don't you?
+[08:59:05 - 08:59:10] No, Rebecca said they'd like to take care of her.
+[08:59:10 - 08:59:13] So before they leave, right?
+[08:59:13 - 08:59:16] So it's fast, it's fast.
+[08:59:16 - 08:59:20] Wait, you want some, you want the tea party now?
+[08:59:20 - 08:59:22] That's what they said.
+[08:59:22 - 08:59:29] Well, Rebecca, I thought, are you coming with us today?
+[08:59:29 - 08:59:30] Maybe.
+[08:59:30 - 08:59:34] But if, if, if, um, I'll go with you.
+[08:59:34 - 08:59:35] Besides.
+[08:59:35 - 08:59:38] Maybe we can do the painting.
+[08:59:38 - 08:59:39] After.
+[08:59:40 - 08:59:41] Mhmm.
+[08:59:41 - 08:59:42] He nods.
+[08:59:42 - 08:59:43] Alright.
+[08:59:43 - 08:59:49] Alright, Rebecca, I'll, I'll see you when you get back.
+[08:59:49 - 08:59:59] But please present everyone, and I hope you save your dad, I hope you save your dad, I hope you save your papa, sis.
+[08:59:59 - 09:00:00] Yeah.
+[09:00:00 - 09:00:02] It's nice to have a papa, sis.
+[09:00:02 - 09:00:07] I just, I really do hope that you need saving the person.
+[09:00:07 - 09:00:13] Oh, my papa is strong, and he's strong, and he's strong, and he'll, sis.
+[09:00:13 - 09:00:14] Yeah.
+[09:00:14 - 09:00:15] Alright.
+[09:00:15 - 09:00:18] Are you ready, Rebecca?
+[09:00:18 - 09:00:20] She nods.
+[09:00:20 - 09:00:21] Alright.
+[09:00:21 - 09:00:27] Mother, are you going with us, or are you staying here with, uh, with Luke and Bergie?
+[09:00:27 - 09:00:37] Oh, uh, I wouldn't want to bother, uh, a chance of, I wouldn't want to bother a chance of killing the grandchild in this world.
+[09:00:37 - 09:00:42] I think I shall do that before, next time.
+[09:00:42 - 09:01:08] And, besides, uh, I might be able to give you some knowledge about whether or not I feel, you know, your father is not hurting himself, or at least something might figure out my memories and get me out of this, uh, session that I'm in right now.
+[09:01:08 - 09:01:14] But they said that something that's familiar might trigger more memories from flooding in.
+[09:01:14 - 09:01:16] That might be a help.
+[09:01:16 - 09:01:17] Yeah.
+[09:01:17 - 09:01:19] Alright.
+[09:01:19 - 09:01:21] But stay close to us, alright, Ma?
+[09:01:21 - 09:01:24] Of course.
+[09:01:24 - 09:01:26] Are you coming with us, Rachel?
+[09:01:26 - 09:01:27] You're coming with us, Rachel?
+[09:01:27 - 09:01:28] Sina?
+[09:01:28 - 09:01:31] I'm coming with us, Ashley.
+[09:01:31 - 09:01:33] Are you coming with us, Ashley?
+[09:01:33 - 09:01:34] It's us.
+[09:01:34 - 09:01:36] It's no question.
+[09:01:36 - 09:01:38] Mother Malker.
+[09:01:39 - 09:01:40] She mad suck.
+[09:01:40 - 09:01:41] It's a hate name.
+[09:01:41 - 09:01:42] Yeah.
+[09:01:42 - 09:01:43] Actually, it could be.
+[09:01:43 - 09:01:46] May ganun din kasi sila mag-construct ng words yung meron siyang suffix.
+[09:01:46 - 09:01:47] So meron ng denoting.
+[09:01:47 - 09:01:48] I don't just denoting.
+[09:01:48 - 09:01:49] Anyway, I'm sorry.
+[09:01:49 - 09:01:50] Yeah.
+[09:01:50 - 09:01:51] Anyway.
+[09:01:51 - 09:01:51] Anyway, I'm sorry.
+[09:01:51 - 09:01:51] Yeah.
+[09:01:51 - 09:01:52] Alright.
+[09:01:52 - 09:01:53] Ka.
+[09:01:53 - 09:01:53] Eh.
+[09:01:53 - 09:01:54] So we head to the teleportation circle.
+[09:01:54 - 09:01:54] Yeah.
+[09:01:54 - 09:01:54] All right.
+[09:01:54 - 09:01:55] Take care, everyone.
+[09:01:55 - 09:01:56] Best of luck.
+[09:01:56 - 09:01:57] Malker X.
+[09:02:00 - 09:02:01] So we head to the teleportation circle.
+[09:02:01 - 09:02:02] Yeah.
+[09:02:02 - 09:02:02] All right.
+[09:02:03 - 09:02:04] Take care, everyone.
+[09:02:04 - 09:02:05] Best of luck.
+[09:02:05 - 09:02:06] Malker X.
+[09:02:07 - 09:02:07] So we head to the teleportation circle.
+[09:02:07 - 09:02:08] Yeah.
+[09:02:08 - 09:02:09] All right.
+[09:02:09 - 09:02:11] Take care, everyone.
+[09:02:11 - 09:02:12] Best of luck.
+[09:02:12 - 09:02:13] Malker X.
+[09:02:13 - 09:02:18] So we head to the teleportation circle.
+[09:02:18 - 09:02:19] Yeah.
+[09:02:19 - 09:02:20] I'm furious he's done.
+[09:02:20 - 09:02:21] Oh.
+[09:02:21 - 09:02:22] All right.
+[09:02:22 - 09:02:23] Take care, everyone.
+[09:02:23 - 09:02:24] Best of luck.
+[09:02:24 - 09:02:25] Malker X.
+[09:02:28 - 09:02:29] So yeah.
+[09:02:29 - 09:02:35] The, uh, the, uh, the non, John, like, uh, usual, uh, like, uh, well, at least the prince
+[09:02:35 - 09:02:36] or whoever's name it.
+[09:02:36 - 09:02:37] Um, so.
+[09:02:37 - 09:02:38] Um.
+[09:02:38 - 09:02:39] So.
+[09:02:39 - 09:02:40] Um.
+[09:02:40 - 09:02:41] Sienna.
+[09:02:41 - 09:02:45] Uh, and then she wields the, she takes off the teleportation scroll.
+[09:02:45 - 09:02:46] Hands it from Mark.
+[09:02:46 - 09:02:48] There you go.
+[09:02:48 - 09:02:49] So.
+[09:02:49 - 09:02:50] All right.
+[09:02:50 - 09:02:51] Um.
+[09:02:51 - 09:02:54] You gotta hold on to my butt.
+[09:02:54 - 09:02:55] She says.
+[09:02:55 - 09:02:56] Does it have to be the butt?
+[09:02:56 - 09:02:57] Yep.
+[09:02:57 - 09:02:58] All right.
+[09:02:58 - 09:03:01] I don't really know anything about the magic, so you better not be taking advantage of it.
+[09:03:01 - 09:03:02] The other cheeks, she says.
+[09:03:02 - 09:03:03] How am I looking at the scroll?
+[09:03:03 - 09:03:04] I gotta read it, she says.
+[09:03:04 - 09:03:05] Oh, all right.
+[09:03:05 - 09:03:06] And so he opens the scroll.
+[09:03:06 - 09:03:07] All right.
+[09:03:07 - 09:03:08] So you feel that the, uh, so you, as you open the scroll.
+[09:03:08 - 09:03:09] All right.
+[09:03:09 - 09:03:10] You know how to read, like, magical?
+[09:03:10 - 09:03:10] Uh, if this was written in, like.
+[09:03:10 - 09:03:11] Ah, it's written in normal.
+[09:03:11 - 09:03:12] Yeah.
+[09:03:13 - 09:03:13] In common, yeah.
+[09:03:14 - 09:03:15] And of course you can.
+[09:03:15 - 09:03:16] Okay.
+[09:03:16 - 09:03:17] And, uh, like, even in MacGyarren.
+[09:03:17 - 09:03:18] Like, even in MacGyarren.
+[09:03:18 - 09:03:18] These guys are well read.
+[09:03:18 - 09:03:19] Yeah.
+[09:03:19 - 09:03:20] Magical guidance by a sorcerer.
+[09:03:20 - 09:03:21] So she, uh, gives me a sense of that.
+[09:03:21 - 09:03:22] You know how to read, like, magical.
+[09:03:22 - 09:03:23] Oh, right.
+[09:03:23 - 09:03:24] And so he opens the scroll.
+[09:03:24 - 09:03:25] All right.
+[09:03:25 - 09:03:26] And so he opens the scroll.
+[09:03:26 - 09:03:28] So you feel that, uh, as you open the scroll, you know how to read, like, magical?
+[09:03:28 - 09:03:29] Uh, if this was written in, like.
+[09:03:30 - 09:03:31] Ah, it's written in normal.
+[09:03:31 - 09:03:32] Yeah.
+[09:03:32 - 09:03:33] In common, yeah.
+[09:03:34 - 09:03:35] Or scenario.
+[09:03:35 - 09:03:36] And of course you can.
+[09:03:36 - 09:03:37] Okay.
+[09:03:37 - 09:03:38] And, uh.
+[09:03:38 - 09:03:39] Like, even, even in MacGyarren.
+[09:03:39 - 09:03:41] These guys are well read.
+[09:03:41 - 09:03:42] Yeah.
+[09:03:42 - 09:03:45] Magical guidance by a sorcerer.
+[09:03:45 - 09:03:49] So she, uh, gives you guidance to that.
+[09:03:49 - 09:03:55] As she, uh, you feel her magic kind of like, uh, parang sparkling around her.
+[09:03:55 - 09:03:56] Yeah.
+[09:03:56 - 09:04:02] That's not there.
+[09:04:02 - 09:04:03] It says.
+[09:04:26 - 09:04:29] Teleport.
+[09:04:29 - 09:04:30] Teleport to, eh.
+[09:04:30 - 09:04:31] Ah.
+[09:04:31 - 09:04:34] Ah, hindi nyo ginamit yung teleportation circle.
+[09:04:34 - 09:04:35] Ah, yun nga.
+[09:04:35 - 09:04:36] Ah, hindi.
+[09:04:36 - 09:04:36] Hindi.
+[09:04:36 - 09:04:37] Pero hindi nyo kailangan ma-scroll.
+[09:04:37 - 09:04:38] Hindi.
+[09:04:38 - 09:04:39] Kailangan ma-scroll.
+[09:04:39 - 09:04:41] Kasi kailangan, wala siya ko ng may alam.
+[09:04:41 - 09:04:43] Ah, walang circle dun sa, walang circle dun sa kabila.
+[09:04:43 - 09:04:44] Walang may alam.
+[09:04:44 - 09:04:45] Nung, ano, nung.
+[09:04:45 - 09:04:46] Right.
+[09:04:46 - 09:04:47] Well, hindi.
+[09:04:47 - 09:04:48] Kaya nga, walang target.
+[09:04:48 - 09:04:49] Oh, walang target nga.
+[09:04:49 - 09:04:50] Walang target.
+[09:04:50 - 09:04:51] So, hindi.
+[09:04:51 - 09:04:53] Very familiar.
+[09:04:53 - 09:04:54] Ah, okay.
+[09:04:54 - 09:04:55] Not if I do.
+[09:04:55 - 09:04:56] Okay, because he's, like, very familiar with the area.
+[09:04:56 - 09:04:57] He's definitely on target.
+[09:04:57 - 09:04:58] It's off by, just.
+[09:04:58 - 09:04:59] Para, probably a little bit.
+[09:04:59 - 09:05:00] But, he's, uh, intimately familiar with the team.
+[09:05:00 - 09:05:01] And so, you are.
+[09:05:01 - 09:05:02] As you squeeze her back.
+[09:05:02 - 09:05:03] Ah.
+[09:05:03 - 09:05:04] Get teleportation.
+[09:05:04 - 09:05:05] Right.
+[09:05:05 - 09:05:06] And, uh, do you want to follow si Laminfilia first before we go on to.
+[09:05:06 - 09:05:07] Ah, si Laminfilia mo na.
+[09:05:07 - 09:05:08] Okay.
+[09:05:08 - 09:05:09] Ah, okay.
+[09:05:09 - 09:05:10] Okay.
+[09:05:10 - 09:05:11] Because he's, like, very familiar with the area.
+[09:05:11 - 09:05:12] He's, like, very familiar with the area.
+[09:05:12 - 09:05:13] He's definitely on target.
+[09:05:13 - 09:05:14] It's off by, just.
+[09:05:14 - 09:05:15] Probably a little bit.
+[09:05:15 - 09:05:16] But, he's, uh, intimately familiar with the team.
+[09:05:16 - 09:05:17] And so, you are.
+[09:05:17 - 09:05:19] As you squeeze her back.
+[09:05:19 - 09:05:20] Ah.
+[09:05:20 - 09:05:21] Get teleportation.
+[09:05:21 - 09:05:22] Right.
+[09:05:22 - 09:05:26] And, uh, do you want to follow si Laminfilia first before we go on to.
+[09:05:26 - 09:05:27] Ah, si Laminfilia mo na.
+[09:05:27 - 09:05:28] Okay.
+[09:05:28 - 09:05:29] All right.
+[09:05:29 - 09:05:30] It's our turn.
+[09:05:30 - 09:05:31] Yeah.
+[09:05:31 - 09:05:32] What's a bridge?
+[09:05:32 - 09:05:33] What's the?
+[09:05:33 - 09:05:34] Nah.
+[09:05:34 - 09:05:35] Shit.
+[09:05:35 - 09:05:36] None of you are familiar with the area.
+[09:05:36 - 09:05:37] I don't be familiar with the area.
+[09:05:38 - 09:05:39] I am.
+[09:05:39 - 09:05:40] I don't be familiar with the area.
+[09:08:05 - 09:08:08] You can take care of things from here, right?
+[09:08:08 - 09:08:09] Ito, ito, ito.
+[09:08:10 - 09:08:11] He says.
+[09:08:11 - 09:08:12] So, sabi ni...
+[09:08:12 - 09:08:13] Ang alam ni...
+[09:08:16 - 09:08:19] I suppose yung mismong...
+[09:08:19 - 09:08:25] If you want to target the area, south of Eastern Tone is Lunafell.
+[09:08:25 - 09:08:31] Lunafell.
+[09:08:31 - 09:08:40] Somewhere in between Eastern Tone and Lunafell is probably one of them.
+[09:08:40 - 09:08:44] Ito nga, yung kasaya mo ulit.
+[09:08:44 - 09:08:47] Dun lumabas sila.
+[09:08:48 - 09:08:50] Ito nga, Lunafell.
+[09:08:50 - 09:08:52] She taps on the Prince's shoulders.
+[09:08:52 - 09:08:54] We're off.
+[09:08:54 - 09:08:57] Just contact me through the Sandman Stone.
+[09:08:57 - 09:09:01] And you're going to Chandra Beard, right?
+[09:09:01 - 09:09:03] That's what we're off to.
+[09:09:03 - 09:09:10] And I suppose Dun and the others already have a Sandman Stone too.
+[09:09:10 - 09:09:14] Can't believe that Tiffany is asleep.
+[09:09:15 - 09:09:16] Huh.
+[09:09:16 - 09:09:19] Alright.
+[09:09:19 - 09:09:21] Let's go, she says.
+[09:09:21 - 09:09:26] So you see Jessica and Sensodyne follow her.
+[09:09:26 - 09:09:28] And Oscar as well.
+[09:09:29 - 09:09:30] Bye Angel.
+[09:09:30 - 09:09:31] Bye.
+[09:09:31 - 09:09:32] Take care.
+[09:09:33 - 09:09:34] See you later.
+[09:09:34 - 09:09:36] And yeah, we're going to do that.
+[09:09:36 - 09:09:37] I know what you get.
+[09:09:37 - 09:09:39] Yeah, of course.
+[09:09:39 - 09:09:41] I'll wait for you Uncle Oscar.
+[09:09:41 - 09:09:44] She calls you Uncle Oscar.
+[09:09:44 - 09:09:45] Okay.
+[09:09:45 - 09:09:45] So yeah.
+[09:09:45 - 09:09:47] So they go ahead and teleport.
+[09:09:47 - 09:09:57] And so like, the Prince just tries to...
+[09:09:57 - 09:09:59] Tell her to Miss Tiffany.
+[09:10:00 - 09:10:01] She says.
+[09:10:01 - 09:10:02] Yeah, she should just forget her.
+[09:10:02 - 09:10:06] You should put her in bed.
+[09:10:06 - 09:10:09] We are heading out too?
+[09:10:09 - 09:10:10] He says.
+[09:10:10 - 09:10:12] And so she...
+[09:10:12 - 09:10:13] He tries to wake her.
+[09:10:13 - 09:10:14] Okay.
+[09:10:14 - 09:10:15] So you easily get wake up.
+[09:10:15 - 09:10:17] And opens her eyes.
+[09:10:17 - 09:10:18] I don't know.
+[09:10:20 - 09:10:21] I'm free.
+[09:10:21 - 09:10:22] She says.
+[09:10:22 - 09:10:23] No.
+[09:10:23 - 09:10:24] She says.
+[09:10:24 - 09:10:25] I'm well-less.
+[09:10:29 - 09:10:30] I don't know how to visit.
+[09:10:30 - 09:10:31] Well, in our case,
+[09:10:31 - 09:10:33] Sabina takes the entire recording.
+[09:10:33 - 09:10:36] We will be heading to the 6th of things.
+[09:10:36 - 09:10:38] We're prepared for that.
+[09:10:38 - 09:10:40] The teleportation circle that we...
+[09:10:40 - 09:10:47] The teleportation we are heading to is inside the...
+[09:10:47 - 09:10:48] The teleportation we keep.
+[09:10:48 - 09:10:49] Hey, it's a little bit.
+[09:10:49 - 09:10:50] Inside the university.
+[09:10:50 - 09:10:51] Uh...
+[09:10:56 - 09:10:57] University.
+[09:10:57 - 09:10:58] There is one more, of course,
+[09:10:58 - 09:11:00] inside the palace itself.
+[09:11:00 - 09:11:02] But that could be...
+[09:11:02 - 09:11:04] too risky.
+[09:11:04 - 09:11:06] But even in the university,
+[09:11:06 - 09:11:08] there are people we're out of the room.
+[09:11:08 - 09:11:09] We could persuade...
+[09:11:09 - 09:11:11] We could persuade these people.
+[09:11:11 - 09:11:13] Sabina, Tiffany.
+[09:11:13 - 09:11:17] Maybe learn more if they are affected by the operation.
+[09:11:17 - 09:11:18] She says.
+[09:11:18 - 09:11:20] There are some that I suspect.
+[09:11:20 - 09:11:21] Alright then.
+[09:11:21 - 09:11:22] Let's head for them.
+[09:11:22 - 09:11:23] But at least...
+[09:11:23 - 09:11:27] The one that I know is working against me
+[09:11:27 - 09:11:30] is the headmaster of the incident itself.
+[09:11:30 - 09:11:37] Who's going to work against you?
+[09:11:37 - 09:11:39] You're very handsome.
+[09:11:39 - 09:11:40] Sabina, Tiffany.
+[09:11:40 - 09:11:41] And he knows that...
+[09:11:41 - 09:11:43] I agree, she says.
+[09:11:43 - 09:11:44] And he knows that...
+[09:11:44 - 09:11:45] I agree, she says.
+[09:11:45 - 09:11:47] And he knows that I can kill her on this spot.
+[09:11:47 - 09:11:49] But he is...
+[09:11:49 - 09:11:52] banking on the crime of that.
+[09:11:52 - 09:11:54] Maybe he is not.
+[09:11:54 - 09:11:56] Because he knows something about...
+[09:11:56 - 09:11:59] the sword that I've only told you.
+[09:11:59 - 09:12:02] Sabina, Tiffany.
+[09:12:04 - 09:12:05] Sorry.
+[09:12:05 - 09:12:06] Let's go.
+[09:12:06 - 09:12:07] Sabina, Tiffany.
+[09:12:08 - 09:12:09] Alright.
+[09:12:09 - 09:12:10] And so...
+[09:12:10 - 09:12:11] Iki Teleports.
+[09:12:11 - 09:12:12] Who do you want to start with?
+[09:12:12 - 09:12:13] Ah...
+[09:12:13 - 09:12:14] Let's start with Minfalia.
+[09:12:14 - 09:12:15] Okay.
+[09:12:15 - 09:12:16] The Eastern time.
+[09:12:16 - 09:12:17] So...
+[09:12:17 - 09:12:18] Yung...
+[09:12:19 - 09:12:20] tulad nang sabi ko...
+[09:12:20 - 09:12:21] is somewhere around...
+[09:12:21 - 09:12:22] Littles.
+[09:12:22 - 09:12:23] So that's between...
+[09:12:23 - 09:12:24] Lunafeld and...
+[09:12:25 - 09:12:26] What's...
+[09:12:26 - 09:12:27] Mia Campbell's doing?
+[09:12:27 - 09:12:28] Alright.
+[09:12:28 - 09:12:29] So we're going to like...
+[09:12:29 - 09:12:30] go with si Mia.
+[09:12:30 - 09:12:37] The middle is somewhere around like this. So that's between Lunafeld and the...
+[09:12:37 - 09:12:40] What's Mia Campbell's doing?
+[09:12:40 - 09:12:43] Alright, so we're going to go with Mia.
+[09:12:43 - 09:12:49] Kasi alam ko, naalala ko last session na nandun si Mia. Nandun sila sa mga barracks ng Paladin.
+[09:12:49 - 09:12:50] Yes.
+[09:12:50 - 09:12:56] Naka-disguise silang dalawa.
+[09:12:56 - 09:12:58] Pumasok sila dun, yeah.
+[09:12:58 - 09:13:00] Stinky Leaf.
+[09:13:01 - 09:13:03] Siya tsaka si...
+[09:13:03 - 09:13:05] Si East Blood Boyle.
+[09:13:05 - 09:13:08] Si Guillermo nandun sa mga underground.
+[09:13:08 - 09:13:11] Parang mga bedlam.
+[09:13:11 - 09:13:14] Slum area kasama si Adriel.
+[09:13:14 - 09:13:18] Hindi masasali o hindi siya literally underground.
+[09:13:18 - 09:13:20] Pero ito yung mga...
+[09:13:20 - 09:13:22] Slum area.
+[09:13:22 - 09:13:24] Hindi, tsaka sila na yung...
+[09:13:24 - 09:13:28] Tama, tama. Yung mga hindi kumakain ng mga fruits.
+[09:13:28 - 09:13:31] Yung na-figure out nila na yung mga kumakain ng mga fruits.
+[09:13:31 - 09:13:33] Kaya dahan-dahan na hindi.
+[09:13:33 - 09:13:35] Parang nag-slow down.
+[09:13:35 - 09:13:36] So, let's...
+[09:13:36 - 09:13:39] Okay, we can start with Gantelia or Mia.
+[09:13:39 - 09:13:41] Would you prefer sila Mia?
+[09:13:41 - 09:13:42] Kasi matagal na natin silang...
+[09:13:42 - 09:13:43] Yeah.
+[09:13:44 - 09:13:45] Boses makamibag.
+[09:13:45 - 09:13:46] Boses ng Strandbees.
+[09:13:46 - 09:13:47] So, yeah.
+[09:13:47 - 09:13:48] Boses makamibag.
+[09:13:49 - 09:13:50] Boses ng Strandbees.
+[09:13:50 - 09:13:55] So, yeah.
+[09:13:55 - 09:13:56] They're, uh...
+[09:13:56 - 09:13:58] They've entered the, uh...
+[09:13:58 - 09:13:59] The Paladin.
+[09:14:01 - 09:14:02] This is, uh...
+[09:14:02 - 09:14:05] Late into the night already.
+[09:14:05 - 09:14:06] Um...
+[09:14:06 - 09:14:09] I'm thinking...
+[09:14:09 - 09:14:11] Tama ba yung timeline?
+[09:14:11 - 09:14:12] I think, uh...
+[09:14:13 - 09:14:16] If...
+[09:14:16 - 09:14:22] If we're going to sync everything up into the same timeline, I think we should move forward with them first.
+[09:14:22 - 09:14:23] Bago tayo magdanit.
+[09:14:23 - 09:14:24] Kaya tama.
+[09:14:24 - 09:14:25] Tama na sila mo.
+[09:14:25 - 09:14:26] Kasi...
+[09:14:26 - 09:14:28] So, Mia puts every, uh...
+[09:14:28 - 09:14:29] Items, uh...
+[09:14:29 - 09:14:30] Magical item siya na siya.
+[09:14:30 - 09:14:32] Magical bag of clothing.
+[09:14:32 - 09:14:37] And she casts non-detection to themselves.
+[09:14:37 - 09:14:40] Before heading inside.
+[09:14:41 - 09:14:42] Ayan.
+[09:14:42 - 09:14:43] In the picture.
+[09:14:43 - 09:14:44] Yeah.
+[09:14:44 - 09:14:45] No.
+[09:14:45 - 09:14:46] Yeah.
+[09:14:46 - 09:14:47] Let's say that you're...
+[09:14:47 - 09:14:48] We already did that.
+[09:14:48 - 09:14:49] Hindi mo na kailangan i-recast.
+[09:14:49 - 09:14:50] Ah...
+[09:14:50 - 09:14:51] Nandun...
+[09:14:51 - 09:14:54] Kasi, kung tama nga pagkaalala ko, nandun na nga kayo sa loob.
+[09:14:54 - 09:14:56] Parang, you've already entered the Paladin.
+[09:14:56 - 09:14:57] It's true.
+[09:14:57 - 09:15:01] Kung tama pagkaalala ko, ang in-entrance nyo ay yung workers entrance, basically.
+[09:15:01 - 09:15:02] Diba?
+[09:15:02 - 09:15:07] Kasi, ang tin-rick nyo ay yung isang nagdadala ng pagkain dun sa loob.
+[09:15:08 - 09:15:13] And so, yeah, I suppose that is also the disguises that you took, right?
+[09:15:13 - 09:15:14] Yeah.
+[09:15:14 - 09:15:18] And so, you're herded towards the kitchens, basically.
+[09:15:18 - 09:15:19] Okay.
+[09:15:19 - 09:15:26] By one of the parang squires, one of the ones that are currently still in training to be a Paladin.
+[09:15:26 - 09:15:27] Paladin.
+[09:15:27 - 09:15:28] Yeah.
+[09:15:28 - 09:15:33] And he says, "Well, well, get to work."
+[09:15:33 - 09:15:35] This is, uh, this is, uh, you guys are new, right?
+[09:15:35 - 09:15:37] It's the first time I've seen you.
+[09:15:37 - 09:15:38] Yeah.
+[09:15:38 - 09:15:39] I know what to do.
+[09:15:39 - 09:15:40] Mmm.
+[09:15:40 - 09:15:42] I know what to do with us.
+[09:15:42 - 09:15:45] Well, old man.
+[09:15:45 - 09:15:47] I taught her everything I knew.
+[09:15:47 - 09:15:49] Of course I know what to do.
+[09:15:49 - 09:15:50] Yeah.
+[09:15:50 - 09:15:51] I don't get so up it.
+[09:15:51 - 09:15:52] Anyway.
+[09:15:52 - 09:15:53] I'll leave you be.
+[09:15:53 - 09:15:55] I still have to guard the boa.
+[09:15:55 - 09:15:58] You want some coffee?
+[09:15:58 - 09:16:01] I'd love some coffee.
+[09:16:01 - 09:16:02] But, well.
+[09:16:02 - 09:16:13] We, of the novices of the Paladin, the relative squires, we're not allowed to take stimulants
+[09:16:13 - 09:16:15] until we're ready.
+[09:16:15 - 09:16:16] Aren't you?
+[09:16:16 - 09:16:18] You look ready.
+[09:16:18 - 09:16:24] But, you know, already spiritual.
+[09:16:24 - 09:16:26] Uh, okay.
+[09:16:26 - 09:16:28] She says.
+[09:16:28 - 09:16:29] Fuck.
+[09:16:29 - 09:16:30] She says.
+[09:16:30 - 09:16:31] Fuck.
+[09:16:31 - 09:16:32] She says.
+[09:16:32 - 09:16:33] Hmm.
+[09:16:37 - 09:16:42] Let's leave this guy on the front of my mind and speak about what I was when I was a kid.
+[09:16:42 - 09:16:44] Ha, ha, ha, ha.
+[09:16:44 - 09:16:47] Everything here reminds you of when you were a kid.
+[09:16:47 - 09:16:48] Yeah.
+[09:16:48 - 09:16:51] Because when I was a kid, I was a fucking moron.
+[09:16:51 - 09:16:52] Alright.
+[09:16:52 - 09:16:53] She says.
+[09:16:53 - 09:16:54] And so, yeah.
+[09:16:54 - 09:17:03] You, uh, enter the, like, uh, parang preparation room for, like, food and stuff and such.
+[09:17:03 - 09:17:04] And he says.
+[09:17:04 - 09:17:05] Wow!
+[09:17:05 - 09:17:07] You got the new shipment of food!
+[09:17:07 - 09:17:08] Yes!
+[09:17:08 - 09:17:09] He says.
+[09:17:09 - 09:17:10] Yeah.
+[09:17:10 - 09:17:11] Where is it?
+[09:17:11 - 09:17:12] Oh.
+[09:17:12 - 09:17:13] Here.
+[09:17:13 - 09:17:14] On the table.
+[09:17:14 - 09:17:15] And so, he, like, grabs a crow.
+[09:17:15 - 09:17:23] He's already holding up a crowbar and ready to, like, pull off a crate.
+[09:17:23 - 09:17:24] These aren't the marked stuff.
+[09:17:24 - 09:17:27] This is the marked stuff, right?
+[09:17:27 - 09:17:33] You know, the ones that Lord Garward specifically said, not the...
+[09:17:33 - 09:17:34] Yeah, yeah.
+[09:17:34 - 09:17:35] We got it.
+[09:17:35 - 09:17:36] It's not the marked ones.
+[09:17:36 - 09:17:37] He says.
+[09:17:37 - 09:17:40] I, just, I still got it checked.
+[09:17:40 - 09:17:41] So, he's like, what...
+[09:17:41 - 09:17:42] What's your names, by the way?
+[09:17:42 - 09:17:43] I don't think I've ever seen you before.
+[09:17:43 - 09:17:44] Name's Charlotte.
+[09:17:44 - 09:17:45] And, uh...
+[09:17:45 - 09:17:46] Edgar.
+[09:17:46 - 09:17:47] Yeah.
+[09:17:47 - 09:17:48] Old enough to forget your name, old man?
+[09:17:48 - 09:17:49] Yeah, sometimes.
+[09:17:49 - 09:17:50] Don't be new to him.
+[09:17:53 - 09:17:54] Well...
+[09:17:54 - 09:17:57] Lord knows we're understaffed here.
+[09:17:57 - 09:17:59] I'm getting all the help we can get.
+[09:18:17 - 09:18:21] at all the help we can get. Still though, gotta ask.
+[09:18:19 - 09:18:23] Still though, gotta ask, who is it that hired you?
+[09:18:23 - 09:18:25] Uh, Randall.
+[09:18:25 - 09:18:26] Randall did?
+[09:18:26 - 09:18:28] Yeah, that's right, that's right.
+[09:18:28 - 09:18:30] Shit, okay.
+[09:18:30 - 09:18:33] Why?
+[09:18:33 - 09:18:38] Eh, it's nothing, it's just a personal beast.
+[09:18:38 - 09:18:44] Uh, well, he promised me some Christian faith.
+[09:18:44 - 09:18:45] Yeah, well...
+[09:18:45 - 09:18:51] And money for my, uh, grandpa's medicine, so...
+[09:18:51 - 09:18:58] Well, if there's one thing you can trust Randall about, is, uh, him actually paying, you know,
+[09:18:58 - 09:19:02] in exchange for services.
+[09:19:02 - 09:19:04] Alright.
+[09:19:04 - 09:19:06] Well, looks like...
+[09:19:06 - 09:19:07] Do you want some help?
+[09:19:07 - 09:19:08] Nah, nah.
+[09:19:08 - 09:19:14] And so he, like, he opens the grate and says...
+[09:19:14 - 09:19:17] Everything here looks to be in order.
+[09:19:17 - 09:19:21] I don't see any of the markings inside, so...
+[09:19:21 - 09:19:22] You're right.
+[09:19:22 - 09:19:23] We can cook this?
+[09:19:23 - 09:19:26] We can cook this.
+[09:19:26 - 09:19:27] Alright.
+[09:19:27 - 09:19:34] Wait, so you guys are here to actually cook?
+[09:19:34 - 09:19:36] You're not just messenger people.
+[09:19:36 - 09:19:37] No.
+[09:19:37 - 09:19:38] You're here to cook.
+[09:19:38 - 09:19:39] I'm here to cook.
+[09:19:39 - 09:19:40] Why?
+[09:19:40 - 09:19:45] Old Randall, you don't really need, you don't like, get to this thing.
+[09:19:45 - 09:19:46] I can be messenger if you want.
+[09:19:48 - 09:19:52] I'm short, I'm small, I'm fast, he says.
+[09:19:52 - 09:19:56] Well, what can he do?
+[09:19:56 - 09:19:57] Huh?
+[09:19:57 - 09:19:58] What can he do?
+[09:19:58 - 09:20:01] He's smart.
+[09:20:01 - 09:20:05] And he's good, he says.
+[09:20:05 - 09:20:11] I can do whatever it needs to be done.
+[09:20:11 - 09:20:29] Well, for now, hang back, what we need are people to wait at the tables.
+[09:20:29 - 09:20:36] There are, like, actual, like, serving uniforms in there.
+[09:20:36 - 09:20:41] You guys can actually, like, change first before you go on.
+[09:20:41 - 09:20:47] I mean, those are uniforms, sure, but those are for delivery, people.
+[09:20:47 - 09:20:55] I suppose Randall just thought that you needed more people here and rescue out.
+[09:20:55 - 09:20:59] Fuck that, fuck, fuck that guy.
+[09:20:59 - 09:21:00] All right, he says.
+[09:21:01 - 09:21:02] In there.
+[09:21:02 - 09:21:04] So she goes there.
+[09:21:04 - 09:21:18] No, no, no, no, not much change, but not a lot of change as well.
+[09:21:18 - 09:21:22] It looks pretty much the same as before.
+[09:21:22 - 09:21:32] So we can change here and have these guys get us to deliver their food into a dining hall.
+[09:21:32 - 09:21:34] A mess hall.
+[09:21:34 - 09:21:35] She nods.
+[09:21:35 - 09:21:45] Uh, there are four doors there where we can sneak through, like, four different exits.
+[09:21:45 - 09:21:58] So once we're there, we can get a lay of the land and see where it is where it doesn't go next.
+[09:22:02 - 09:22:03] What are our plans here, though?
+[09:22:03 - 09:22:04] We're inside.
+[09:22:04 - 09:22:05] It was kind of an impulse.
+[09:22:05 - 09:22:06] Well, we just have to check what's inside, right?
+[09:22:06 - 09:22:07] If, uh, what, if this one is going to happen?
+[09:22:07 - 09:22:08] I mean, it was kind of an impulse.
+[09:22:08 - 09:22:09] Well, we just have to check what's inside, right?
+[09:22:09 - 09:22:10] If, uh, what, if this one is going to happen.
+[09:22:10 - 09:22:11] I mean, it was kind of an impulse.
+[09:22:11 - 09:22:12] You can have a feel for them, right?
+[09:22:12 - 09:22:12] Yeah.
+[09:22:12 - 09:22:13] You can have a feel for them, right?
+[09:22:13 - 09:22:14] Yeah.
+[09:22:14 - 09:22:15] You can have a feel for them, right?
+[09:22:15 - 09:22:16] Yeah.
+[09:22:18 - 09:22:19] That's why we're, uh, what, if this one is going to happen.
+[09:22:19 - 09:22:20] You can have a feel for them, huh?
+[09:22:20 - 09:22:21] Yeah.
+[09:22:22 - 09:22:23] That's why we're, uh, what, if this one is going to happen.
+[09:22:23 - 09:22:24] You can have a feel for them, huh?
+[09:22:24 - 09:22:25] Yeah.
+[09:22:26 - 09:22:28] That's why we're, uh, what, if this one is going to happen.
+[09:22:28 - 09:22:29] It's tricky.
+[09:22:29 - 09:22:30] You can have a feel for them, huh?
+[09:22:30 - 09:22:31] Yeah.
+[09:22:31 - 09:22:32] That's why we're, uh, what, if this one is going to happen.
+[09:22:32 - 09:22:33] It's tricky.
+[09:22:34 - 09:22:35] You can have a feel for them, huh?
+[09:22:35 - 09:22:36] Yeah.
+[09:22:36 - 09:22:37] No.
+[09:22:38 - 09:22:39] Yes.
+[09:22:39 - 09:22:48] That's why we're, like, paying them all hours to, like, check the bullets and things like
+[09:22:48 - 09:22:49] that.
+[09:22:49 - 09:22:50] See?
+[09:22:50 - 09:22:53] I can use my charms.
+[09:22:53 - 09:22:54] You said it?
+[09:22:54 - 09:22:55] Yeah.
+[09:22:55 - 09:22:56] I guess you're...
+[09:22:56 - 09:22:59] But I don't want to be fucked with these assholes, either.
+[09:22:59 - 09:23:02] I don't want to do it with these assholes, either.
+[09:23:02 - 09:23:11] And besides, you know, the paladins of the angel of justice, until, well, until they become,
+[09:23:11 - 09:23:20] like, until they actually perform their vows, their odes, they do have to go through syllabusly.
+[09:23:20 - 09:23:21] Yeah.
+[09:23:21 - 09:23:24] So they're not supposed to be fucking around.
+[09:23:24 - 09:23:29] So, you need to see, but they have not.
+[09:23:29 - 09:23:30] Yeah.
+[09:23:30 - 09:23:31] That's good.
+[09:23:31 - 09:23:32] Says.
+[09:23:32 - 09:23:33] Well, gotta change.
+[09:23:33 - 09:23:34] Says.
+[09:23:34 - 09:23:35] So, she removes her stuff.
+[09:23:35 - 09:23:44] And, uh, you see a lot of your, like, you gave her a comb back earlier, right?
+[09:23:44 - 09:23:45] Yeah.
+[09:23:45 - 09:23:50] You see a lot of her, your comb on, dried comb on her body.
+[09:23:50 - 09:23:55] Uh, she wears, uh, she wears this, like, uh, skull remade dress.
+[09:23:55 - 09:23:56] And, uh, she wears, like...
+[09:23:56 - 09:23:59] Well, not a skull remade, 'cause skull remade is...
+[09:23:59 - 09:24:00] Unifor.
+[09:24:00 - 09:24:01] Yeah.
+[09:24:03 - 09:24:04] You know, if it's a leaf.
+[09:24:04 - 09:24:05] Ah, I don't know.
+[09:24:05 - 09:24:06] So...
+[09:24:06 - 09:24:07] He says.
+[09:24:07 - 09:24:11] No, I prefer you without the uniform.
+[09:24:11 - 09:24:13] The step right before.
+[09:24:13 - 09:24:14] Alright.
+[09:24:14 - 09:24:15] He says.
+[09:24:15 - 09:24:16] So she removes it.
+[09:24:16 - 09:24:17] There?
+[09:24:17 - 09:24:18] He says.
+[09:24:18 - 09:24:21] So you, like, stare set for a while.
+[09:24:21 - 09:24:23] And, like, uh, close her.
+[09:24:23 - 09:24:27] Uh, so she checks if someone is, like, peeping on them?
+[09:24:27 - 09:24:30] Uh, you can enroll a person.
+[09:24:30 - 09:24:33] But he's not, like, necessarily climbing the fuckies.
+[09:24:33 - 09:24:35] He's just, like, flirting or something.
+[09:24:35 - 09:24:36] Yeah.
+[09:24:36 - 09:24:37] 22.
+[09:24:37 - 09:24:38] And, uh, no.
+[09:24:38 - 09:24:40] You don't feel like anyone's necessarily peeping.
+[09:24:40 - 09:24:42] You guys close the door properly.
+[09:24:42 - 09:24:43] Uh-huh.
+[09:24:43 - 09:24:46] And, like, you don't see any, like, deep holes in here.
+[09:24:46 - 09:24:47] Okay.
+[09:24:47 - 09:24:48] Uh-huh.
+[09:24:48 - 09:24:49] And so he goes in there.
+[09:24:49 - 09:24:50] He just gives you a space.
+[09:24:50 - 09:24:51] He gives you a smooch.
+[09:24:51 - 09:24:52] And a big kiss.
+[09:24:52 - 09:24:54] And then he looks.
+[09:24:54 - 09:24:55] The air flow.
+[09:24:55 - 09:24:56] He's kind of getting hard.
+[09:24:56 - 09:24:58] Yeah, well.
+[09:24:58 - 09:25:03] Uh, well, I can look at the same guy coming.
+[09:25:03 - 09:25:05] As much as I want to be a woman.
+[09:25:05 - 09:25:06] He's getting hard, though.
+[09:25:06 - 09:25:08] I don't think we got a lot of time.
+[09:25:08 - 09:25:09] Right.
+[09:25:09 - 09:25:12] I have to control myself.
+[09:25:12 - 09:25:16] So she quickly, like, ducks down.
+[09:25:16 - 09:25:19] And, like, puts his muscles deep inside her mouth.
+[09:25:19 - 09:25:23] And then she doesn't exit.
+[09:25:23 - 09:25:24] Done.
+[09:25:24 - 09:25:25] No.
+[09:25:25 - 09:25:26] We don't have time.
+[09:25:26 - 09:25:27] He says.
+[09:25:27 - 09:25:28] You're really cool sometimes, huh?
+[09:25:28 - 09:25:28] Hmm.
+[09:25:28 - 09:25:29] Well, we don't have time.
+[09:25:29 - 09:25:30] That's what you said earlier.
+[09:25:30 - 09:25:31] I'm just looking at the air.
+[09:25:31 - 09:25:32] All right.
+[09:25:33 - 09:25:34] And so he, like, gets dressed.
+[09:25:34 - 09:25:35] Well, he's getting dressed.
+[09:25:35 - 09:25:35] He's, like, rubbing a dick.
+[09:25:35 - 09:25:36] And so he's, like, rubbing a dick.
+[09:25:36 - 09:25:37] And so he's, like, rubbing a little butt.
+[09:25:38 - 09:25:39] And so he's, like, grabbing a little butt.
+[09:25:39 - 09:25:40] And so he's, like, rubbing a little butt.
+[09:26:09 - 09:26:10] This guy.
+[09:26:10 - 09:26:14] No, it's, it's fine.
+[09:26:14 - 09:26:15] He says.
+[09:26:15 - 09:26:17] I just stepped on something.
+[09:26:17 - 09:26:19] Because if there are, like, pests in there,
+[09:26:19 - 09:26:22] we die and a half to, like, deal with it.
+[09:26:22 - 09:26:24] No, there's no pests.
+[09:26:24 - 09:26:28] All right.
+[09:26:28 - 09:26:32] Well, what's taking you so long?
+[09:26:32 - 09:26:35] The food is all, we already have some food ready.
+[09:26:35 - 09:26:37] She suddenly opens the door.
+[09:26:37 - 09:26:38] And it tastes, like, hard.
+[09:26:38 - 09:26:46] And so, yeah, he, like, closes, uh, closes clothes as fast as possible.
+[09:26:46 - 09:26:49] Good.
+[09:26:49 - 09:26:50] Good, good, good.
+[09:26:50 - 09:26:54] All right, so, uh, uh, you're only allowed to...
+[09:26:54 - 09:27:03] She kind of, like, focus me, uh, wear, uh, uh, uniform that's kind of, like, larger than her size.
+[09:27:03 - 09:27:04] Okay, so it's a little bit sloppy.
+[09:27:04 - 09:27:05] Yeah.
+[09:27:06 - 09:27:07] He says.
+[09:27:08 - 09:27:09] Yeah.
+[09:27:09 - 09:27:10] Why'd you chew it out?
+[09:27:10 - 09:27:11] There's nothing else.
+[09:27:11 - 09:27:14] Others, other unicorn has pulled me.
+[09:27:14 - 09:27:15] He says.
+[09:27:15 - 09:27:17] Well, that's weird.
+[09:27:17 - 09:27:21] Uh, but that's a little, uh, too big for you.
+[09:27:21 - 09:27:22] It's all right.
+[09:27:22 - 09:27:23] I missed it.
+[09:27:23 - 09:27:24] He says.
+[09:27:25 - 09:27:26] Yeah.
+[09:27:26 - 09:27:27] So, yeah, persuasion.
+[09:27:27 - 09:27:32] Because, uh, otherwise, he's going to, like, go back and say, then, like, throw around the table.
+[09:27:32 - 09:27:33] Ha!
+[09:27:33 - 09:27:34] Sixteen plus seven.
+[09:27:34 - 09:27:35] Oh, yeah.
+[09:27:35 - 09:27:36] Do you want to see?
+[09:27:38 - 09:27:38] I know.
+[09:27:38 - 09:27:39] Do you want to see?
+[09:27:39 - 09:27:40] I know.
+[09:27:40 - 09:27:41] Do you want to see?
+[09:27:41 - 09:27:48] Well, at least, like, pull your, uh, square up, like, the shoulders a little bit.
+[09:27:48 - 09:27:49] Well, can you?
+[09:27:49 - 09:27:50] So, she...
+[09:27:50 - 09:27:51] So, yeah, you can do something.
+[09:27:51 - 09:27:52] So, yeah.
+[09:27:52 - 09:27:53] You can do something.
+[09:27:53 - 09:27:54] Oh.
+[09:27:54 - 09:27:55] So, yeah.
+[09:27:55 - 09:27:56] You can do something.
+[09:27:56 - 09:27:57] Ha!
+[09:27:59 - 09:28:00] Okay.
+[09:28:00 - 09:28:01] There.
+[09:28:01 - 09:28:02] Thank you.
+[09:28:02 - 09:28:03] He says.
+[09:28:03 - 09:28:06] Anything else?
+[09:28:06 - 09:28:13] Uh, you've been, like, told about what the situation should be?
+[09:28:13 - 09:28:14] Financial.
+[09:28:14 - 09:28:15] Yeah.
+[09:28:15 - 09:28:21] Like, uh, women aren't allowed, uh, to serve, or...
+[09:28:19 - 09:28:33] to serve the newer groups because they're the ones who haven't taken control of their urges yet.
+[09:28:33 - 09:28:39] But you're allowed to serve the proper cowboys, so I've gone through the oath.
+[09:28:39 - 09:28:55] But of course the old man here, he even definitely doesn't know how to use.
+[09:28:55 - 09:29:02] You're not pretty, you're not stupid. You can seduce the dirty ones.
+[09:29:02 - 09:29:10] What are you saying? Why are you being mean to me?
+[09:29:10 - 09:29:16] You work this job too long and start being mean. That's how it is.
+[09:29:16 - 09:29:22] Besides, look at how he's scowling back at me like that. Easy as it.
+[09:29:22 - 09:29:26] You're not pretty enough to be serving.
+[09:29:26 - 09:29:28] That's why I'm back here.
+[09:29:28 - 09:29:40] I'm up to it. We'll see if the feedback is good for Lucy.
+[09:29:40 - 09:29:42] Alright, thank you. It's awesome.
+[09:29:42 - 09:29:48] And so yeah, you were sent out with the food that was already cooked.
+[09:29:48 - 09:30:02] And so, of course, you see that indeed this place is split into distinct sections as you go there.
+[09:30:02 - 09:30:04] Yeah.
+[09:30:04 - 09:30:08] It's not necessarily that there's a physical world that you like.
+[09:30:08 - 09:30:16] The paladins are in a raised area where you do a few steps.
+[09:30:16 - 09:30:22] And the chairs are nicer, the tables are more rusted.
+[09:30:22 - 09:30:32] And of course you see like a mural on the side of the wall.
+[09:30:32 - 09:30:36] Sort of the frieze of Taluto.
+[09:30:36 - 09:30:46] Of warriors in full plate that seem to be fighting off like a...
+[09:30:46 - 09:30:58] Well, you've seen Sensodyne in full form.
+[09:30:58 - 09:30:58] Yeah.
+[09:30:58 - 09:31:02] And they're fighting in that kind of endeavor in that situation.
+[09:31:02 - 09:31:04] So it's so cool.
+[09:31:04 - 09:31:04] Yeah.
+[09:31:04 - 09:31:17] And of course where Lord Boyard is, there's an area where you can see that they're more...
+[09:31:17 - 09:31:18] They're green.
+[09:31:18 - 09:31:21] They're boys that are just like green horns basically.
+[09:31:21 - 09:31:24] They're just talking about some of them are like...
+[09:31:24 - 09:31:26] And some of them are more mature and standing straight.
+[09:31:26 - 09:31:28] Of course the new ones.
+[09:31:28 - 09:31:30] And there are a number of them.
+[09:31:30 - 09:31:33] It's not like just a few paladins.
+[09:31:33 - 09:31:36] What if they're blue ball paladins?
+[09:31:36 - 09:31:37] Well, of course.
+[09:31:37 - 09:31:46] But the cool paladins, they're not few in number.
+[09:31:46 - 09:31:48] They're like...
+[09:31:48 - 09:31:57] At least the ones here are like in mga 15 to 20 paladins here.
+[09:31:57 - 09:31:59] And they're the ones that aren't on duty.
+[09:31:59 - 09:32:05] And the young ones, they seem to have recruited a lot of them.
+[09:32:05 - 09:32:11] They seem to be actively growing the number of paladins right now.
+[09:32:11 - 09:32:22] So of course she does the job of pushing this food full of like...
+[09:32:22 - 09:32:29] And she kind of like using her eyes to glance towards the new paladins.
+[09:32:29 - 09:32:36] So yeah, you can see that the newer paladins,
+[09:32:36 - 09:32:38] they're not necessarily full paladins.
+[09:32:38 - 09:32:41] You can see the differences in what they're wearing.
+[09:32:41 - 09:32:44] They're like tiered the uniform system.
+[09:32:44 - 09:32:47] They're really good and fresh.
+[09:32:47 - 09:32:55] They're wearing like white plain shirts with white hats as well.
+[09:32:55 - 09:32:59] So is somebody looking at me?
+[09:32:59 - 09:33:02] And this is what I'm going to do.
+[09:33:02 - 09:33:05] And the ones here...
+[09:33:05 - 09:33:12] One tier in between the full paladins and the absolute names.
+[09:33:12 - 09:33:15] They're wearing like gray shirts.
+[09:33:15 - 09:33:18] And they're in like type C shape.
+[09:33:18 - 09:33:20] When they're eating.
+[09:33:20 - 09:33:25] And they're like gray shirts and also like white hats.
+[09:33:25 - 09:33:27] So she says to her collection...
+[09:33:27 - 09:33:29] And one of them are like...
+[09:33:29 - 09:33:30] Of course...
+[09:33:30 - 09:33:31] A couple of them.
+[09:33:31 - 09:33:32] Not just one.
+[09:33:32 - 09:33:33] But a couple of them are like...
+[09:33:33 - 09:33:38] So she kind of like...
+[09:33:38 - 09:33:40] Connects to...
+[09:33:42 - 09:33:43] Um...
+[09:33:43 - 09:33:44] Uh...
+[09:33:44 - 09:33:45] And she says...
+[09:33:45 - 09:33:46] She says...
+[09:33:46 - 09:33:47] Um...
+[09:33:47 - 09:33:48] She says...
+[09:33:48 - 09:33:49] So those...
+[09:33:49 - 09:33:50] Those...
+[09:33:50 - 09:33:53] In white uniforms are the blue ball paladins, right?
+[09:33:53 - 09:33:55] I don't think so.
+[09:33:55 - 09:33:56] They're...
+[09:33:56 - 09:33:57] These guys are just...
+[09:33:57 - 09:33:59] They don't have it.
+[09:33:59 - 09:34:01] Why are so many of them?
+[09:34:01 - 09:34:02] I guess they're...
+[09:34:02 - 09:34:03] A little sloppy stuff.
+[09:34:03 - 09:34:04] I'm a weird person.
+[09:34:04 - 09:34:05] Weird.
+[09:34:05 - 09:34:07] I haven't got the priority for something as well.
+[09:34:07 - 09:34:08] That's...
+[09:34:08 - 09:34:09] Yeah.
+[09:34:09 - 09:34:10] That's what I'm saying by weird.
+[09:34:10 - 09:34:12] Don't get mad if I kind of like work my time, right?
+[09:34:12 - 09:34:13] No.
+[09:34:13 - 09:34:14] I know I can never really get mad at you.
+[09:34:14 - 09:34:16] Let's see if they're really blue ball.
+[09:34:16 - 09:34:17] So...
+[09:34:17 - 09:34:18] Eh...
+[09:34:18 - 09:34:20] The blue balls are the ones that are wearing, like, blue-gray shirts.
+[09:34:20 - 09:34:21] I'm pretty sure.
+[09:34:21 - 09:34:28] I'm in there right now and I can see the pink on the ones that are staring back there.
+[09:34:28 - 09:34:29] Good.
+[09:34:29 - 09:34:30] They should buy my money.
+[09:34:30 - 09:34:32] I'm in there right now and I can see the pink on the ones that are staring back there.
+[09:34:32 - 09:34:33] Good.
+[09:34:33 - 09:34:35] They should buy my money.
+[09:34:35 - 09:34:36] That's nice.
+[09:34:36 - 09:34:38] I'm in there right now and I can see the pink on the ones that are staring back there.
+[09:34:41 - 09:34:42] Good.
+[09:34:42 - 09:34:44] They should buy my money.
+[09:34:44 - 09:34:45] I'm in there right now and I can see the pink on the ones that are staring back there.
+[09:34:45 - 09:34:52] I'm pretty sure somebody's saying you look like a cat ball or something.
+[09:34:52 - 09:34:55] I am a cat ball.
+[09:34:55 - 09:34:58] I shouldn't know that.
+[09:34:58 - 09:35:03] So, she kind of, like, parang, she was pulling it, probably.
+[09:35:03 - 09:35:08] And she kind of gives a cowl to this guy who's staring at her.
+[09:35:08 - 09:35:09] I don't know what you're talking about, she says.
+[09:35:09 - 09:35:09] You must be dreaming.
+[09:35:09 - 09:35:09] I don't know what you're talking about, she says.
+[09:35:09 - 09:35:09] You must be dreaming.
+[09:35:09 - 09:35:10] Here you go, sir.
+[09:35:10 - 09:35:11] I'm sorry.
+[09:35:13 - 09:35:14] I'm leaving.
+[09:35:14 - 09:35:14] I'll be having the fish.
+[09:35:14 - 09:35:14] Fish?
+[09:35:15 - 09:35:16] So, if he gets lucky.
+[09:35:16 - 09:35:16] What's it on the other side?
+[09:35:16 - 09:35:16] I don't know what you're talking about, she says.
+[09:35:18 - 09:35:19] You must be dreaming.
+[09:35:19 - 09:35:20] I don't know what you're talking about, she says.
+[09:35:30 - 09:35:31] You must be dreaming.
+[09:35:31 - 09:35:32] I don't know what you're talking about, she says.
+[09:35:32 - 09:35:33] You must be dreaming.
+[09:35:33 - 09:35:34] Here you go, sir.
+[09:35:35 - 09:35:36] I'll be having the fish.
+[09:35:37 - 09:35:38] Fish?
+[09:35:38 - 09:35:41] So if she gets lucky, puts it down with her.
+[09:35:41 - 09:35:42] I will.
+[09:35:42 - 09:35:43] Enjoy your meal, sir.
+[09:35:43 - 09:35:44] Yes, sir.
+[09:35:44 - 09:35:58] And Lord Garward said that he would not be half of this dinner tonight, so no need to serve
+[09:35:58 - 09:35:59] him.
+[09:35:59 - 09:36:00] Understood, sir.
+[09:36:00 - 09:36:01] Yes.
+[09:36:01 - 09:36:05] And so he looks at you and looks looking back.
+[09:36:05 - 09:36:06] I'm not sure what you're talking about.
+[09:36:06 - 09:36:07] You're not sure what you're talking about.
+[09:36:07 - 09:36:09] My name is Charlotte, sir.
+[09:36:09 - 09:36:10] He says.
+[09:36:10 - 09:36:11] Hmm.
+[09:36:11 - 09:36:13] Charlotte Tilbury, he says.
+[09:36:13 - 09:36:14] And?
+[09:36:14 - 09:36:16] Charlotte Tilbury, he says.
+[09:36:16 - 09:36:17] And?
+[09:36:17 - 09:36:18] Charlotte Tilbury, he says.
+[09:36:18 - 09:36:19] But you're just doing it right now.
+[09:36:19 - 09:36:28] Well, Mr. Burnston, and they're welcome to the Holy Pro Adden.
+[09:36:28 - 09:36:29] Huh?
+[09:36:29 - 09:36:31] Welcome to the Holy Pro Adden.
+[09:36:31 - 09:36:33] Hmm, it's nice here.
+[09:36:33 - 09:36:36] But everything is just full of milk.
+[09:36:36 - 09:36:37] He says.
+[09:36:37 - 09:36:38] Yeah.
+[09:36:38 - 09:36:40] How have you been to the chapel, though?
+[09:36:40 - 09:36:45] I want to see it, but maybe tomorrow, he says.
+[09:36:45 - 09:36:49] And you were referred to, I mean, if you're wrong.
+[09:36:49 - 09:36:54] I don't remember the last day over here.
+[09:36:54 - 09:36:58] It was just, um, it was a commoner's name.
+[09:36:58 - 09:36:59] What's her name?
+[09:36:59 - 09:37:00] I don't know.
+[09:37:00 - 09:37:01] I'm an orphan.
+[09:37:01 - 09:37:06] And I, um, uh, it was just a game.
+[09:37:06 - 09:37:09] It was, I heard that the name was given to orphans.
+[09:37:09 - 09:37:10] I don't know.
+[09:37:10 - 09:37:12] I'm not familiar with that.
+[09:37:12 - 09:37:22] But yes, it must be a simple, uh, it must be a Vancouverian name.
+[09:37:22 - 09:37:24] So she kind of, like, says.
+[09:37:24 - 09:37:28] Thank you for, for, thank you for even being a concern.
+[09:37:28 - 09:37:43] Um, it is, um, I am the, uh, head of, uh, staff.
+[09:37:43 - 09:37:48] And, uh, I do get a prize for these things.
+[09:37:48 - 09:37:55] Usually, uh, like, Randall sometimes brings in people that I knew without my direct, uh,
+[09:37:55 - 09:37:57] what do you call it, knowledge right away.
+[09:37:57 - 09:37:58] Especially for positions.
+[09:37:58 - 09:37:59] But I'm sorry.
+[09:37:59 - 09:38:02] It is not worth it.
+[09:38:02 - 09:38:11] But, uh, perhaps, uh, later tonight we shall have more of a discussion.
+[09:38:11 - 09:38:13] I'm prepared, sir.
+[09:38:13 - 09:38:21] I only want, I only wish to work here for, for my, my school.
+[09:38:19 - 09:38:32] It would do you well to perhaps study, to study in the convent.
+[09:38:32 - 09:38:37] So she knows.
+[09:38:37 - 09:38:44] One is the convent of the anger of justice.
+[09:38:44 - 09:38:51] I will take offers.
+[09:38:51 - 09:38:53] Of course, and it will be free.
+[09:38:53 - 09:39:00] But of course you shall, even if you are not required to become a man,
+[09:39:00 - 09:39:05] but it will be the sort of education you will be getting.
+[09:39:05 - 09:39:07] Peanuts.
+[09:39:07 - 09:39:09] Coffee.
+[09:39:09 - 09:39:11] Thank you.
+[09:39:11 - 09:39:14] So she gives him coffee, the black one.
+[09:39:14 - 09:39:16] And then she moves to the other.
+[09:39:16 - 09:39:17] And the ocean.
+[09:39:17 - 09:39:20] So he goes up and then touches her way around.
+[09:39:20 - 09:39:24] My office will be open for you.
+[09:39:24 - 09:39:29] So when she touches her butt, she kind of bends her butt a little bit like that.
+[09:39:29 - 09:39:34] So to see that she has like meat in there.
+[09:39:34 - 09:39:39] And she smiles to this guy.
+[09:39:39 - 09:39:42] She looks very hardcore.
+[09:39:42 - 09:39:45] I'm going to make it look like that.
+[09:39:45 - 09:39:46] Am I right?
+[09:39:46 - 09:39:47] Why do you cross her?
+[09:39:47 - 09:39:48] She's so sweet.
+[09:39:48 - 09:39:50] She'll get a lot of fun.
+[09:39:50 - 09:39:51] She nods.
+[09:39:51 - 09:39:54] And so he doesn't like let it linger for freedom.
+[09:39:54 - 09:39:55] Okay.
+[09:39:55 - 09:40:01] And yeah, he makes it look like that he's not like being overly afraid.
+[09:40:01 - 09:40:02] But you can feel it.
+[09:40:02 - 09:40:03] I know that.
+[09:40:03 - 09:40:04] Yeah.
+[09:40:04 - 09:40:06] So she kind of like knows that.
+[09:40:06 - 09:40:07] Yung mga manyakes.
+[09:40:07 - 09:40:08] Yeah.
+[09:40:08 - 09:40:12] So Dorothy moves and serves the other people.
+[09:40:12 - 09:40:14] So here you go, sir.
+[09:40:14 - 09:40:24] And so like the ones here, at least the ones, yung mga full paladin, unlike yung mga nandun sa mga blue boy department.
+[09:40:24 - 09:40:33] You know, based on your older you, that they are like giving small grants at you already like that.
+[09:40:33 - 09:40:34] Good.
+[09:40:34 - 09:40:35] Great.
+[09:40:35 - 09:40:37] I like that.
+[09:40:37 - 09:40:48] But now that this guy, the head of staff, kind of like put his literal hand on me, they seem to be a little more stiff.
+[09:40:48 - 09:40:54] And like they're making sure that they aren't seen like all the way.
+[09:40:54 - 09:40:57] And you know, I'm sure you're pretty sure.
+[09:40:57 - 09:40:59] It's pretty obviously why.
+[09:40:59 - 09:41:01] He's the alpha.
+[09:41:01 - 09:41:02] Yeah, parang yun.
+[09:41:02 - 09:41:03] Okay.
+[09:41:03 - 09:41:04] At least habak wala dita cigar work.
+[09:41:04 - 09:41:07] She will like seduce them.
+[09:41:07 - 09:41:11] So she kind of like gives her best smile.
+[09:41:11 - 09:41:13] She has like a little fun.
+[09:41:13 - 09:41:14] Yung parang hindi parang vampire.
+[09:41:14 - 09:41:19] Yung parang gano'n lang talaga yung taste niya.
+[09:41:19 - 09:41:21] She kind of like served this guy.
+[09:41:21 - 09:41:22] Here you go.
+[09:41:22 - 09:41:23] He says.
+[09:41:23 - 09:41:25] Oh, thank you.
+[09:41:25 - 09:41:28] And she brushes her shoulder on his face again.
+[09:41:28 - 09:41:29] Oh, sorry.
+[09:41:29 - 09:41:30] He says.
+[09:41:30 - 09:41:31] That's alright.
+[09:41:31 - 09:41:34] How are we having the chicken tonight?
+[09:41:34 - 09:41:35] Chicken?
+[09:41:35 - 09:41:36] He says.
+[09:41:37 - 09:41:41] So she kind of like spent some time looking at the chicken.
+[09:41:41 - 09:41:44] And she kind of like parang um.
+[09:41:44 - 09:41:47] She kind of like parang bends over.
+[09:41:47 - 09:41:51] And because of her like clothes being like loose.
+[09:41:51 - 09:41:55] She kind of showed her like nipples to the sky.
+[09:41:55 - 09:41:57] And then take the chicken from here.
+[09:41:57 - 09:41:58] Oh, it's here.
+[09:41:58 - 09:41:59] He says.
+[09:41:59 - 09:42:00] Here you go, sir.
+[09:42:00 - 09:42:01] He says.
+[09:42:01 - 09:42:02] Thank you.
+[09:42:02 - 09:42:04] I enjoy the chicken.
+[09:42:04 - 09:42:05] He says.
+[09:42:05 - 09:42:06] You want some coffee?
+[09:42:06 - 09:42:07] Uh.
+[09:42:07 - 09:42:08] No.
+[09:42:08 - 09:42:09] No thanks.
+[09:42:09 - 09:42:10] Uh.
+[09:42:10 - 09:42:12] So he's like staring at you.
+[09:42:12 - 09:42:13] Mm-hmm.
+[09:42:13 - 09:42:15] And he says.
+[09:42:15 - 09:42:16] The tea.
+[09:42:16 - 09:42:17] The tea's down here.
+[09:42:17 - 09:42:18] So she again bends it.
+[09:42:18 - 09:42:19] Look at that.
+[09:42:19 - 09:42:20] And so right now.
+[09:42:20 - 09:42:21] It's like definitely like staring.
+[09:42:21 - 09:42:22] And she.
+[09:42:22 - 09:42:23] As she bends it.
+[09:42:23 - 09:42:24] She takes the tea.
+[09:42:24 - 09:42:25] And then looks at him like that.
+[09:42:25 - 09:42:26] Yes.
+[09:42:26 - 09:42:27] She says.
+[09:42:27 - 09:42:28] Do you find it?
+[09:42:28 - 09:42:29] Yeah.
+[09:42:29 - 09:42:30] It's here.
+[09:42:30 - 09:42:31] He says.
+[09:42:31 - 09:42:32] Well.
+[09:42:32 - 09:42:33] Thank you.
+[09:42:33 - 09:42:34] All right.
+[09:42:34 - 09:42:35] Do you have any questions?
+[09:42:35 - 09:42:36] I'm sorry.
+[09:42:38 - 09:42:39] How do you find it?
+[09:42:39 - 09:42:40] Yeah.
+[09:42:40 - 09:42:41] It's here.
+[09:42:41 - 09:42:42] He says.
+[09:42:42 - 09:42:43] Well.
+[09:42:43 - 09:42:44] Thank you.
+[09:42:44 - 09:42:45] All right.
+[09:42:45 - 09:42:46] You have hot water.
+[09:42:46 - 09:42:48] She nods.
+[09:42:48 - 09:42:53] So she slowly bends upward like that.
+[09:42:53 - 09:42:55] And then makes the tea.
+[09:42:55 - 09:42:57] And stiff it like that.
+[09:42:57 - 09:42:58] Mm.
+[09:42:58 - 09:42:59] Here.
+[09:42:59 - 09:43:00] She says.
+[09:43:00 - 09:43:01] And so yeah.
+[09:43:01 - 09:43:02] You can see that the.
+[09:43:02 - 09:43:03] He's uh.
+[09:43:03 - 09:43:05] Of course his hands are out here.
+[09:43:05 - 09:43:08] But you can see that his legs are chipping.
+[09:43:08 - 09:43:09] Are you all right?
+[09:43:09 - 09:43:10] She says.
+[09:43:10 - 09:43:11] Uh-huh.
+[09:43:11 - 09:43:12] Sure.
+[09:43:12 - 09:43:13] Uh-huh.
+[09:43:13 - 09:43:14] Thank you.
+[09:43:14 - 09:43:15] So she says.
+[09:43:15 - 09:43:16] Uh-huh.
+[09:43:16 - 09:43:17] What's your need, huh?
+[09:43:17 - 09:43:18] Uh-huh.
+[09:43:19 - 09:43:20] She says.
+[09:43:20 - 09:43:21] Uh-huh.
+[09:43:27 - 09:43:28] So she says.
+[09:43:28 - 09:43:30] You know what tea is best for you?
+[09:43:30 - 09:43:35] It's the one that could, you know, remove your muscle ache.
+[09:43:35 - 09:43:36] Uh-huh.
+[09:43:36 - 09:43:37] The ginger one.
+[09:43:37 - 09:43:38] She says.
+[09:43:38 - 09:43:39] Uh-huh.
+[09:43:39 - 09:43:40] What did you do?
+[09:43:40 - 09:43:41] Uh-huh.
+[09:43:41 - 09:43:42] This is for sleeping.
+[09:43:42 - 09:43:43] Camongel.
+[09:43:43 - 09:43:44] She says.
+[09:43:44 - 09:43:45] Uh-huh.
+[09:43:50 - 09:43:51] Oh.
+[09:43:51 - 09:43:52] Let me fix your spoon.
+[09:43:52 - 09:43:59] She brushes her elbow, who is hard on, and fixes her spoon. There you go.
+[09:44:22 - 09:44:29] Four. Four. And two.
+[09:44:29 - 09:44:35] She smiles at this guy. Anything else here?
+[09:44:35 - 09:44:45] Yeah, it's all down. So, like, Leo, like, just looking at him. Kind of like, uh...
+[09:44:45 - 09:44:53] Moves to the other table and serve the other guy.
+[09:44:53 - 09:44:56] What do you prefer tonight?
+[09:44:56 - 09:44:59] I don't know. I have the lamb.
+[09:44:59 - 09:45:06] You want me to put the gelidium over? The white sauce?
+[09:45:06 - 09:45:10] It's really good. She nods.
+[09:45:10 - 09:45:12] Yes, please.
+[09:45:12 - 09:45:21] Alright. So you see her kind of, like, swirl the white sauce and, like, forms a line.
+[09:45:21 - 09:45:25] There you go. She says.
+[09:45:25 - 09:45:27] Thank you.
+[09:45:27 - 09:45:29] Does it look fancy? She says.
+[09:45:29 - 09:45:35] It looks very nice, yes. And, uh, as for drink, I don't have any wine.
+[09:45:35 - 09:45:40] Oh, why is under here? She says.
+[09:45:40 - 09:45:42] Oh.
+[09:45:42 - 09:45:45] Blushes her tits to this guy as well.
+[09:45:45 - 09:45:48] This one?
+[09:45:48 - 09:45:53] Blue says, "No, I prefer the rose."
+[09:45:53 - 09:45:56] Ah, the pink one. She says.
+[09:45:56 - 09:45:58] "And so, alam niyang sinasadya."
+[09:45:58 - 09:45:59] I really, oh.
+[09:45:59 - 09:46:01] I really like pink, too. She says.
+[09:46:01 - 09:46:04] "But I'm not allowed to drink wine." She says.
+[09:46:04 - 09:46:06] "This is the one, right?"
+[09:46:06 - 09:46:09] I guess you're a little too young for a mine story, huh?
+[09:46:09 - 09:46:12] Yeah, I'm not allowed to. She says.
+[09:46:12 - 09:46:14] "They said that it will help my girls."
+[09:46:14 - 09:46:17] No, not this one. The wonder side.
+[09:46:17 - 09:46:18] This one?
+[09:46:18 - 09:46:19] Yeah.
+[09:46:19 - 09:46:20] Alright.
+[09:46:20 - 09:46:21] It's exactly the same.
+[09:46:21 - 09:46:22] Yeah.
+[09:46:22 - 09:46:23] So she gives it to me.
+[09:46:23 - 09:46:24] This man?
+[09:46:26 - 09:46:28] Um, one second.
+[09:46:28 - 09:46:29] Maybe.
+[09:46:29 - 09:46:30] Maybe the red.
+[09:46:30 - 09:46:32] I mean, I am eating wine.
+[09:46:32 - 09:46:34] Sorry about this.
+[09:46:34 - 09:46:38] They don't need to be sorry, sir.
+[09:46:38 - 09:46:39] I am not servant.
+[09:46:39 - 09:46:40] I'm sorry.
+[09:46:40 - 09:46:45] And I will do anything that pleases you.
+[09:46:45 - 09:46:46] Yes, sir.
+[09:46:46 - 09:46:47] Oh, the Lord.
+[09:46:47 - 09:46:50] And, uh, put us in our places.
+[09:46:50 - 09:47:01] But, of course, he also gives us, uh, you know, um, um.
+[09:47:01 - 09:47:02] Okay.
+[09:47:02 - 09:47:03] Number 18.
+[09:47:03 - 09:47:04] Ano?
+[09:47:04 - 09:47:06] So he's lying na nga.
+[09:47:06 - 09:47:07] Ganon.
+[09:47:07 - 09:47:08] Parang tinititigal niya.
+[09:47:08 - 09:47:10] So hindi na niya alam kung sa'n napupunta yung train.
+[09:47:10 - 09:47:13] So she takes the wine, the red wine.
+[09:47:13 - 09:47:15] And, uh, this one?
+[09:47:15 - 09:47:16] Yeah.
+[09:47:16 - 09:47:17] That one.
+[09:47:17 - 09:47:18] Hmm.
+[09:47:18 - 09:47:19] Finans.
+[09:47:19 - 09:47:21] And so she pours it to him.
+[09:47:21 - 09:47:22] To his glass.
+[09:47:22 - 09:47:24] There you go.
+[09:47:24 - 09:47:25] What was I saying?
+[09:47:25 - 09:47:26] Ah, yes.
+[09:47:26 - 09:47:31] I mean, the Lord might have put us in obligations.
+[09:47:31 - 09:47:40] But, uh, he wants us to be, uh, to give gratitude to those who serve under us.
+[09:47:40 - 09:47:41] Sheena's.
+[09:47:42 - 09:47:43] Cheers.
+[09:47:43 - 09:47:57] And, uh, have yourself, uh, juice, say it is, uh, on, uh.
+[09:47:57 - 09:48:18] It is from, uh, Sir Griswold.
+[09:48:18 - 09:48:21] What a lovely name.
+[09:48:19 - 09:48:22] What a lovely name!
+[09:48:22 - 09:48:27] What a lovely name she says.
+[09:48:27 - 09:48:36] Junior I-S-W-O-L-D.
+[09:48:36 - 09:48:39] And she...
+[09:48:39 - 09:48:41] It is my family.
+[09:48:41 - 09:48:43] She nods.
+[09:48:43 - 09:48:45] My name is Charlotte.
+[09:48:45 - 09:48:47] Oh, nice to meet you.
+[09:48:49 - 09:48:53] So she smiles to this guy.
+[09:48:53 - 09:48:55] "Enjoy your meal, sir."
+[09:48:55 - 09:48:57] She says.
+[09:48:57 - 09:48:59] Good time.
+[09:48:59 - 09:49:01] Nice to meet you.
+[09:49:01 - 09:49:03] I do like him.
+[09:49:03 - 09:49:05] Because he eats the lamb.
+[09:49:05 - 09:49:10] Okay, so she goes to the other table with the other guy.
+[09:49:10 - 09:49:11] Oh my god.
+[09:49:11 - 09:49:13] So she will seduce everyone.
+[09:49:13 - 09:49:15] Each of these guys here.
+[09:49:15 - 09:49:18] Okay, yeah, and so you go through a number of them.
+[09:49:18 - 09:49:26] Some of them, like, seem to be, like, really, like, straight and narrow and not, like, really care about it.
+[09:49:26 - 09:49:28] But that is a very bare name.
+[09:49:28 - 09:49:32] Most of them, like, really like your attention.
+[09:49:32 - 09:49:33] Yeah.
+[09:49:33 - 09:49:35] And some of them, like, were so great.
+[09:49:35 - 09:49:45] Well, you can see that not a lot of them were as brazen as, uh, the head of staff that just suddenly grabbed your ass.
+[09:49:45 - 09:49:55] But, uh, the rest were, like, uh, kind of, like, uh, chumachansing and papasimbi.
+[09:49:55 - 09:49:59] And, or, like, uh, just, like, taking advantage of your, uh, taking advantage of your fame.
+[09:49:59 - 09:50:14] So while they're eating, uh, they're all, kind of, like, she, she is in attention, right?
+[09:50:14 - 09:50:16] For whatever they need.
+[09:50:16 - 09:50:17] Uh-oh.
+[09:50:20 - 09:50:27] The head of staff, I don't know what to say. Sir S.M.
+[09:50:27 - 09:50:30] A-S-S-E-N. Sir S.M.
+[09:50:30 - 09:50:37] And she kind of looks like the Paladin bluegol.
+[09:50:37 - 09:50:41] She smiles at her.
+[09:50:41 - 09:50:44] In one time.
+[09:50:44 - 09:50:50] He's just looking around like that.
+[09:50:50 - 09:50:56] Of course, you get it. Me and Camperine can be worth it.
+[09:50:56 - 09:51:02] Besides, she's looking around like that.
+[09:51:02 - 09:51:08] What's your own scenario? I think she's an orphan.
+[09:51:08 - 09:51:13] Ah, she's too cute to be scalish.
+[09:51:13 - 09:51:18] Yeah, that's true.
+[09:51:20 - 09:51:25] Do you wish for like Paladins to like, you know, request more of the food?
+[09:51:25 - 09:51:31] Ah, they do like request for more drinks, more than more food.
+[09:51:31 - 09:51:35] Like a top of juice or some wine or something.
+[09:51:35 - 09:51:40] And ah, tawag dito of course, there are more of these guys trying to grab your adventure.
+[09:51:40 - 09:51:45] Ah, si Sir, si ano, si Lord Boy.
+[09:51:45 - 09:51:48] And then hindi naman siya nagpapakita ng campanas.
+[09:51:48 - 09:51:56] Pero parang he's like, ah, taking note at ah, taking note of this particular, ah, coffee.
+[09:51:56 - 09:52:00] And like, ah, you have a connection.
+[09:52:00 - 09:52:01] Ah.
+[09:52:01 - 09:52:02] Look at this man.
+[09:52:05 - 09:52:10] Look at that I remember when my children had during the war.
+[09:52:10 - 09:52:18] Even if they suddenly started stripping and they could have thought that they wouldn't be in life.
+[09:52:18 - 09:52:19] I think.
+[09:52:19 - 09:52:20] Look at this man.
+[09:52:20 - 09:52:24] Well, I remember when I was young.
+[09:52:24 - 09:52:26] She says in her mind.
+[09:52:26 - 09:52:33] Well, when guys are like this, they're purposely being edged.
+[09:52:33 - 09:52:36] For pleasure.
+[09:52:36 - 09:52:37] Humiliation.
+[09:52:37 - 09:52:40] Something along with that.
+[09:52:40 - 09:52:43] They just like grabbing their ass.
+[09:52:43 - 09:52:47] Well, they could grab it whatever they want.
+[09:52:47 - 09:52:48] She says.
+[09:52:48 - 09:52:57] Yeah, but what I'm saying is that the malls of this place, the ones that they fade into what it represents,
+[09:52:57 - 09:52:59] is definitely not there.
+[09:52:59 - 09:53:04] The door would really usually like this place going to.
+[09:53:04 - 09:53:08] They aren't what they used to do.
+[09:53:08 - 09:53:14] I'm really just over and I'm forgetting how we are.
+[09:53:14 - 09:53:15] They're not.
+[09:53:15 - 09:53:19] They were perverted healthy and they were on our own.
+[09:53:19 - 09:53:21] I'm just getting nervous.
+[09:53:21 - 09:53:27] I'm glad that I didn't go on over being a pelican.
+[09:53:27 - 09:53:28] Or you'd be one of them.
+[09:53:28 - 09:53:37] Either that or I'll be like, killed.
+[09:53:37 - 09:53:42] because I'm the only one of them because I'm happy to do this shitty motherfucker.
+[09:53:42 - 09:53:54] Or, you know, I'd be a fucking hypocrite because I'd be saying that I have to save myself from celibacy.
+[09:53:54 - 09:53:56] But I do also want to fuck you.
+[09:53:56 - 09:53:58] So that's not going to work either.
+[09:53:58 - 09:54:01] I want to put your dick in a minute.
+[09:54:01 - 09:54:05] I want to be a painter.
+[09:54:05 - 09:54:06] Well, we do agree on that, right?
+[09:54:06 - 09:54:07] I don't know.
+[09:54:08 - 09:54:09] We've got to get ourselves a good painter.
+[09:54:09 - 09:54:10] I mean, you paint good.
+[09:54:10 - 09:54:11] But it's not nice to stop.
+[09:54:11 - 09:54:12] So what are we going to do next?
+[09:54:12 - 09:54:13] Well, you see the doors now, right?
+[09:54:13 - 09:54:14] That middle one is towards the chapel.
+[09:54:14 - 09:54:16] I really need to see if these guys have pierced us.
+[09:54:16 - 09:54:17] I don't know.
+[09:54:20 - 09:54:21] We've got to get ourselves a good painter.
+[09:54:21 - 09:54:22] I don't know.
+[09:54:22 - 09:54:23] I mean, you paint good.
+[09:54:23 - 09:54:26] But it's not nice to stop.
+[09:54:26 - 09:54:28] So what are we going to do next?
+[09:54:28 - 09:54:33] Well, you see the doors now, right?
+[09:54:33 - 09:54:38] That middle one is towards the chapel.
+[09:54:38 - 09:54:42] We really need to see if these guys have pierced us.
+[09:54:42 - 09:54:49] And that other one is where the dorms are.
+[09:54:49 - 09:54:54] Well, the offices are in that direction.
+[09:54:54 - 09:55:03] So that guy, the head of staff that was asking me to head to his office, that's where he is.
+[09:55:03 - 09:55:11] The other direction over here, the one closest to me, that's where the training grounds are headed.
+[09:55:11 - 09:55:12] And that's where the training grounds are.
+[09:55:12 - 09:55:17] I doubt that the recruits are going to head there towards the end of the lake.
+[09:55:17 - 09:55:23] And I suppose after dinner they're going to go back into quarters soon enough.
+[09:55:23 - 09:55:24] You're done.
+[09:55:24 - 09:55:27] And, well, that door is really paid.
+[09:55:27 - 09:55:28] All right.
+[09:55:28 - 09:55:29] She says.
+[09:55:29 - 09:55:31] What do I want to do after this?
+[09:55:31 - 09:55:33] Go ahead to the office.
+[09:55:33 - 09:55:35] Check if this guy is here.
+[09:55:35 - 09:55:36] Go ahead.
+[09:55:59 - 09:56:20] directory has kind of like a sort of a trap door storage under the platforms. Now I'm saying that maybe there's something there that I can see. That's why I want to go to the chapel.
+[09:56:20 - 09:56:27] Alright. Okay, so she just stand there and wait for it.
+[09:56:27 - 09:56:49] Alright, yeah. So the dinner service of course goes on. And of course as you like took care of their fairy snoomies and had collected the plates already, you return, you both, you and the, and we'll head back to the kitchens.
+[09:56:49 - 09:56:56] Well, nothing too difficult, is it?
+[09:56:56 - 09:57:01] Not really. It's very easy. Just like the plates and smile.
+[09:57:01 - 09:57:03] Good, good.
+[09:57:03 - 09:57:11] Anything else?
+[09:57:11 - 09:57:13] What's up in you?
+[09:57:13 - 09:57:38] Well, I'm going to be recommending that, sure, that you two be put on a permanent staff, but we'll have to, I'll just have to sign this paperwork here, accepting you. But both of you will head to, yeah, you'll be heading to Sir Essin, the guy that you were talking to earlier.
+[09:57:38 - 09:57:55] Yeah, he'll want to see both of you, all of these paperwork. And well, if he requests for whatever. Well, these are, well, he's second in command, basically. So, uh, you'll have to see both of your paperwork. And well, if he requests for whatever. Well, these are, uh, well, he's second in command, basically. So, uh, you'll have to see both of your paperwork. And well, if he requests for whatever. Well, these are, uh, well, he's second in command, basically. So, uh, you'll have to see both of your paperwork.
+[09:57:53 - 09:58:00] basically so uh you do what he wants he's the first in command obviously that would be lord commander
+[09:58:00 - 09:58:11] himself yeah that's right that's a good distinction that you have yes in here in the
+[09:58:11 - 09:58:18] paladin egg even though we know him as a viscount eastern one in here he is sir garwood
+[09:58:19 - 09:58:23] peanuts i'm glad that you guys know that
+[09:58:23 - 09:58:34] and uh yeah don't uh don't don't disappoint me and uh everything i will be
+[09:58:43 - 09:58:52] and i suppose they wouldn't mind if i um prayed in the chapel and of course
+[09:58:52 - 09:59:00] doctor and in fact that's what most people do after service in the door
+[09:59:00 - 09:59:17] okay so um they head to the head office yeah so so sabi lang ni lord boyl to parang like
+[09:59:17 - 09:59:23] uh which direction is the office ah right of course
+[09:59:23 - 09:59:29] out the door when where he came from
+[09:59:29 - 09:59:31] uh
+[09:59:31 - 09:59:41] i don't know services over you can just pass there there's a longer way but uh it's fine just uh to the
+[09:59:41 - 09:59:48] to the left path to the right as you enter the door uh just so you know the long way around is to go
+[09:59:48 - 09:59:53] straight through the corridor it will lead you to an exit and then you'll have to go into this path
+[09:59:55 - 10:00:07] before they close it because they do close the door the one that heads that that is from
+[10:00:07 - 10:00:15] here some of the young ones well they like sneaking into the kitchen and steal some food sometimes
+[10:00:17 - 10:00:27] you know how kids are now you're not you're not a you're not a boy yeah boys are gross
+[10:00:27 - 10:00:32] and boys are disgusting i know because i used to be
+[10:00:35 - 10:00:45] so she giggles all right off with you thank you so yeah you had hands you both like uh papers
+[10:00:45 - 10:00:54] okay yeah fill out your names and stuff i left those blank you know the name age thing i don't
+[10:00:54 - 10:01:06] know that's fine i know your names i don't really need any names okay okay so yeah yeah i suppose you just
+[10:01:06 - 10:01:16] fill out the rest yeah yeah and everything like and everything like random fake yeah so we head towards
+[10:01:16 - 10:01:29] the head of edgar allen okay okay and he just puts whatever else and uh age 69
+[10:01:29 - 10:01:38] okay we head towards the office uh i just follow him all right so yeah
+[10:01:42 - 10:01:50] well they did well they did change a little hair i guess they needed more people so sabi niya so
+[10:01:50 - 10:01:59] pointing at parang i'm gesturing towards uh some of the dorms here i seem to be stuffing more kids in one
+[10:01:59 - 10:02:04] bedroom as much as possible
+[10:02:05 - 10:02:11] i can barely breathe in here
+[10:02:11 - 10:02:14] you think they might be pierced
+[10:02:14 - 10:02:22] uh i don't know like they don't pierce them right when they start right
+[10:02:22 - 10:02:25] you know it's you have to be inducted first
+[10:02:25 - 10:02:30] if there are any like pierced young ones it's probably at least one of those
+[10:02:30 - 10:02:49] generations and well if everything is as we suspect essen has probably pierced too you have to you have to check
+[10:02:52 - 10:03:08] you know i don't even think that ass hole would become a fucking maledict much less
+[10:03:08 - 10:03:15] chief of staff around here i got a sleeping agent in my bag don't worry you can handle it
+[10:03:15 - 10:03:22] you'll be careful though it might be a sleaze ball but he's actually pretty strong
+[10:03:22 - 10:03:32] i know i know okay i know that but uh long day it's like if he tries to do something stupid
+[10:03:32 - 10:03:37] he might try to do something stupid and try to surprise
+[10:03:40 - 10:03:44] so yeah so they head to the head office oh we're going to see him
+[10:03:44 - 10:03:49] i don't know but i'm pretty sure i'm gonna get dismissed before you
+[10:03:49 - 10:03:52] you know that bill
+[10:03:52 - 10:04:01] and so yeah there at least he does know his way around he's seen this place before
+[10:04:02 - 10:04:10] and of course he points towards the uh the bigger office here as a commander's office is there
+[10:04:10 - 10:04:12] she does
+[10:04:12 - 10:04:14] that's locked
+[10:04:14 - 10:04:20] i'm pretty sure that my wall rocks you know things that i can check
+[10:04:23 - 10:04:23] but there's one
+[10:04:23 - 10:04:33] office of the head of staff chief of staff
+[10:04:33 - 10:04:46] i did not realize that there were three
+[10:04:49 - 10:04:55] i'm gonna run for this cousin
+[10:04:55 - 10:05:01] oh
+[10:05:01 - 10:05:04] i suppose that
+[10:05:04 - 10:05:09] craig have given me a paperwork
+[10:05:12 - 10:05:24] uh
+[10:05:24 - 10:05:27] so it seems that you have been recommended like i thought
+[10:05:27 - 10:05:28] by randall
+[10:05:28 - 10:05:31] yes sir
+[10:05:31 - 10:05:33] well you're not much of a surprise
+[10:05:38 - 10:05:40] i suppose randall thinks he couldn't even work
+[10:05:40 - 10:05:41] the range
+[10:05:41 - 10:05:46] i'm competent despite my age sir
+[10:05:46 - 10:05:51] and i can do things that
+[10:05:51 - 10:05:55] charlotte here not
+[10:05:55 - 10:05:58] cleaning
+[10:05:58 - 10:06:01] attending to the gardens
+[10:06:01 - 10:06:03] carrying heavy objects
+[10:06:04 - 10:06:05] watch all of the
+[10:06:05 - 10:06:09] work
+[10:06:09 - 10:06:13] well most of the time we'll let our
+[10:06:13 - 10:06:14] prayer groups
+[10:06:14 - 10:06:17] do that and we have plenty this season
+[10:06:17 - 10:06:20] praise be to the lord
+[10:06:20 - 10:06:25] about everything is in order
+[10:06:25 - 10:06:28] and if rand will send
+[10:06:30 - 10:06:31] he knows what he's doing
+[10:06:31 - 10:06:32] he knows what he's doing most of the time
+[10:06:32 - 10:06:35] he's just very disagreeable
+[10:06:35 - 10:06:36] as well
+[10:06:36 - 10:06:40] she takes her pizza
+[10:06:40 - 10:06:42] and uh
+[10:06:42 - 10:06:47] again i welcome both of you to the world to the holy paladin
+[10:06:47 - 10:06:51] of the order of the angel of justice
+[10:06:55 - 10:07:04] uh
+[10:07:04 - 10:07:05] due to the
+[10:07:05 - 10:07:07] difference in nature
+[10:07:07 - 10:07:08] and of course
+[10:07:08 - 10:07:13] would you be staying
+[10:07:13 - 10:07:14] i suppose
+[10:07:14 - 10:07:16] some
+[10:07:16 - 10:07:18] staff here
+[10:07:18 - 10:07:20] request for
+[10:07:21 - 10:07:22] rooms
+[10:07:22 - 10:07:24] if they live from far away
+[10:07:24 - 10:07:25] or do you have
+[10:07:25 - 10:07:27] homes nearby
+[10:07:27 - 10:07:29] she says
+[10:07:29 - 10:07:30] i can stay here
+[10:07:30 - 10:07:40] i am sorry to say
+[10:07:40 - 10:07:40] but i have
+[10:07:40 - 10:07:42] sometimes i have trouble
+[10:07:42 - 10:07:44] with waking up in the morning
+[10:07:44 - 10:07:47] the transport feels kind of tough
+[10:07:49 - 10:07:50] uh
+[10:07:50 - 10:07:53] homes or
+[10:07:53 - 10:07:59] I'm sorry, the settlement south of...
+[10:07:59 - 10:08:02] What's another one for that?
+[10:08:02 - 10:08:04] Lunafeld.
+[10:08:06 - 10:08:09] That is pretty far.
+[10:08:09 - 10:08:17] Yes, we shall, if you don't mind,
+[10:08:17 - 10:08:24] and you can...
+[10:08:24 - 10:08:31] Well, we do have quarters for the custodial staff.
+[10:08:31 - 10:08:34] Right outside the door.
+[10:08:34 - 10:08:38] So, he points towards the exit that he said.
+[10:08:38 - 10:08:40] The crane.
+[10:08:40 - 10:08:42] What's the name of the crane?
+[10:08:42 - 10:08:46] To the left, Piant, which is the only other building.
+[10:08:46 - 10:08:50] You are going to be sharing with two other men,
+[10:08:50 - 10:08:55] but it should be more than enough room to be comfortable.
+[10:08:55 - 10:08:59] And of course, as for our young lady,
+[10:08:59 - 10:09:01] if you could please stay,
+[10:09:01 - 10:09:05] we will have to discuss your lodgings,
+[10:09:05 - 10:09:11] as of course, we cannot be allowed to stay with a great number of men.
+[10:09:11 - 10:09:12] She nods.
+[10:09:13 - 10:09:14] And the corny vent was not quite open.
+[10:09:14 - 10:09:15] She nods.
+[10:09:23 - 10:09:24] And that is all.
+[10:09:24 - 10:09:25] I don't know.
+[10:09:27 - 10:09:28] She nods.
+[10:09:37 - 10:09:51] Are we allowed to use the chapel at any time? Of course, so as long as it doesn't obstruct your duties you could spend as much time in the chapel as you wish.
+[10:09:51 - 10:09:55] Now we can go to the chapel.
+[10:09:56 - 10:10:10] And I shall take my way down. You do so. Charlotte, if you may, stay here and you can join your great uncle over there later.
+[10:10:10 - 10:10:16] Alright, she says. I'll be seeing you later.
+[10:10:16 - 10:10:24] Yes, we will. So, all the time.
+[10:10:25 - 10:10:27] No, she hasn't seen.
+[10:10:27 - 10:10:37] Considering our children, you said that you have trouble waking up.
+[10:10:37 - 10:10:39] She nods.
+[10:10:39 - 10:10:49] Then that you disallow us to rent in a nearby being, which is my initial thought.
+[10:10:49 - 10:10:52] Yeah, I'm kind of slow at talking to you.
+[10:10:53 - 10:10:54] Hmm.
+[10:10:54 - 10:10:58] But we are in a nearby being.
+[10:10:58 - 10:11:00] Huh?
+[10:11:00 - 10:11:02] We are a little bit of a conundrum.
+[10:11:02 - 10:11:04] Okay.
+[10:11:04 - 10:11:06] What do you mean, sir?
+[10:11:07 - 10:11:08] Yeah.
+[10:11:08 - 10:11:13] Well, we shall have to have a set of temporary quarters for you.
+[10:11:13 - 10:11:15] We'll have the moments.
+[10:11:15 - 10:11:16] I could sit forever.
+[10:11:16 - 10:11:17] Yes.
+[10:11:20 - 10:11:35] I suppose we'll have to have a separate bed set up in 30 minutes.
+[10:11:35 - 10:11:36] She nods.
+[10:11:37 - 10:11:39] But this is a temporary situation.
+[10:11:39 - 10:11:40] Mm-hmm.
+[10:11:40 - 10:11:47] It will be, the convent will be ready in a short while, perhaps a month or so.
+[10:11:47 - 10:11:50] I'll, I'll, I'll, I'll go anyway.
+[10:11:51 - 10:11:52] Okay.
+[10:11:52 - 10:11:59] And then that time, when the convent is ready, well, your matriculations, your place shall be handled by, uh, the climate.
+[10:11:59 - 10:12:04] And, uh, if you wish, uh, we can move to there, perhaps.
+[10:12:05 - 10:12:06] Mm-hmm.
+[10:12:06 - 10:12:07] And that's a little bit of a woman.
+[10:12:07 - 10:12:08] Yes.
+[10:12:08 - 10:12:09] She says.
+[10:12:09 - 10:12:10] And so he, like, looks.
+[10:12:10 - 10:12:11] He smiles.
+[10:12:11 - 10:12:12] And then I shall see you, too.
+[10:12:12 - 10:12:13] She nods.
+[10:12:13 - 10:12:14] And so he, like, looks.
+[10:12:14 - 10:12:15] He smiles.
+[10:12:15 - 10:12:16] And then I shall see you, too.
+[10:12:16 - 10:12:17] She nods.
+[10:12:17 - 10:12:18] And so he, like, looks.
+[10:12:18 - 10:12:19] He smiles.
+[10:12:19 - 10:12:20] And then I shall see you, too.
+[10:12:20 - 10:12:21] She nods.
+[10:12:21 - 10:12:22] And so he, like, looks.
+[10:12:22 - 10:12:23] He nods.
+[10:12:23 - 10:12:24] And then I shall see you, too.
+[10:13:50 - 10:13:51] And I shall see you, too.
+[10:13:51 - 10:13:52] And then I shall see you, too.
+[10:14:28 - 10:14:29] I shall see you, too.
+[10:14:29 - 10:14:30] And then I shall see you, too.
+[10:16:52 - 10:16:53] And I shall see you, too.
+[10:16:53 - 10:16:54] And then I shall see you, too.
+[10:16:57 - 10:17:04] But as soon as you were inducted into the hands of Kama, the need for any kind of eyesight,
+[10:17:04 - 10:17:06] faith, any kind of adjustment.
+[10:17:06 - 10:17:12] So she, uh, she kind of, like, gets excited a bit and grinds her butt and then she slides up.
+[10:17:12 - 10:17:14] Oh, look at the stars!
+[10:17:14 - 10:17:15] Are they outside?
+[10:17:15 - 10:17:17] She says, "I can finally see it!"
+[10:17:17 - 10:17:20] She says, "Oh, there's a plane!"
+[10:17:20 - 10:17:24] And so is Hander, of course, on your, like, uh, on your thighs.
+[10:17:24 - 10:17:25] Yeah.
+[10:17:25 - 10:17:27] And so is Hander, of course, on your thighs.
+[10:17:53 - 10:18:15] And so he's like, "It's amazing!" she says. "You can do this to anyone?"
+[10:18:15 - 10:18:31] He says. "I can, but of course there is not a spell that one can cast by. Sometimes they have to be more selective."
+[10:18:31 - 10:18:38] She nods. "I think that you are worthy."
+[10:18:38 - 10:18:43] "Thank you, sir," he says.
+[10:18:43 - 10:18:50] And so you can feel that his member is growing.
+[10:18:50 - 10:18:54] Yeah, and his face is kind of sniffing.
+[10:18:54 - 10:18:58] She smells really nice.
+[10:18:58 - 10:19:00] She's knee accomplished.
+[10:19:00 - 10:19:07] I always take a bath.
+[10:19:07 - 10:19:13] That's how you like that.
+[10:19:13 - 10:19:17] Like that, it's like space.
+[10:19:17 - 10:19:19] Right, okay.
+[10:19:19 - 10:19:21] "Thank you, sir," she says.
+[10:19:22 - 10:19:34] "Wow," she looks at the table and kind of like busy herself.
+[10:19:34 - 10:19:38] And she takes like a random book.
+[10:19:38 - 10:19:39] "A random book."
+[10:19:39 - 10:19:41] "Thank you," she says.
+[10:19:45 - 10:19:46] So she opens it like that.
+[10:19:46 - 10:19:47] "Binabasa-basa lang."
+[10:19:48 - 10:19:57] And then she kind of like parang...
+[10:19:57 - 10:19:58] "I don't know."
+[10:19:58 - 10:19:59] "I don't need to...
+[10:19:59 - 10:20:00] "I don't need to..."
+[10:20:02 - 10:20:03] "I don't need to...
+[10:20:03 - 10:20:04] "I don't need to..."
+[10:20:06 - 10:20:07] "Personal made."
+[10:20:07 - 10:20:08] "Wow.
+[10:20:08 - 10:20:09] "Over the night..."
+[10:20:10 - 10:20:11] "Uh...
+[10:20:11 - 10:20:12] "Promotion."
+[10:20:12 - 10:20:14] "You mean you're promoting me?"
+[10:20:14 - 10:20:15] "Yes."
+[10:20:15 - 10:20:16] "Well..."
+[10:20:16 - 10:20:18] "Personal made."
+[10:20:18 - 10:20:19] "I don't know."
+[10:20:20 - 10:20:21] "Is that fun?"
+[10:20:21 - 10:20:22] "It's not fun."
+[10:20:22 - 10:20:23] "It's fun."
+[10:20:24 - 10:20:27] "You mean you're promoting me?"
+[10:20:27 - 10:20:28] "Yes, Sam's are like...
+[10:20:28 - 10:20:30] She's creeping upwards if I..."
+[10:20:30 - 10:20:31] "Okay."
+[10:20:31 - 10:20:32] "Like a person."
+[10:20:32 - 10:20:36] "Well, she's not bothered with this."
+[10:20:36 - 10:20:40] "Yeah, pressing against her crotch."
+[10:20:40 - 10:20:41] "Okay."
+[10:20:41 - 10:20:42] "Oh!"
+[10:20:42 - 10:20:43] "You don't..."
+[10:20:43 - 10:20:46] "You realize she's not wearing underwear."
+[10:20:46 - 10:20:56] "This is very complicated."
+[10:20:56 - 10:20:59] "I don't understand any of this."
+[10:20:59 - 10:21:00] "Who says?"
+[10:21:00 - 10:21:01] "It's all you like...
+[10:21:01 - 10:21:02] "That's a sleep."
+[10:21:02 - 10:21:03] "You seem to be innocent."
+[10:21:03 - 10:21:04] "What is it?"
+[10:21:04 - 10:21:05] "She says."
+[10:21:05 - 10:21:06] "Under..."
+[10:21:06 - 10:21:07] "Oh, you mean panties?"
+[10:21:07 - 10:21:08] "You mean panties?"
+[10:21:08 - 10:21:09] "Well, when I changed earlier, it's kinda dirty."
+[10:21:09 - 10:21:10] "So I just removed it."
+[10:21:10 - 10:21:11] "And they don't have extra panties."
+[10:21:11 - 10:21:12] "I mean, they have, but they're too large."
+[10:21:12 - 10:21:13] "Not my size."
+[10:21:14 - 10:21:15] "So she says."
+[10:21:15 - 10:21:15] "So she giggles."
+[10:21:16 - 10:21:17] "Kind of tickles what you're doing."
+[10:21:17 - 10:21:18] "She says."
+[10:21:18 - 10:21:19] "Most of the women who work here are..."
+[10:21:19 - 10:21:20] "Adult, f*cking adult women."
+[10:21:20 - 10:21:21] "No, in the world."
+[10:21:21 - 10:21:22] "And so she speaks here."
+[10:21:23 - 10:21:24] "But when I changed earlier, it's kinda dirty."
+[10:21:24 - 10:21:25] "So I just removed it."
+[10:21:25 - 10:21:26] "And they don't have extra panties."
+[10:21:26 - 10:21:27] "I mean, they have, but they're too large."
+[10:21:27 - 10:21:28] "Not my size."
+[10:21:28 - 10:21:29] "So she giggles."
+[10:21:30 - 10:21:31] "Kind of tickles what you're doing."
+[10:21:31 - 10:21:32] "She says."
+[10:21:32 - 10:21:34] "Most of the women who work here are..."
+[10:21:34 - 10:21:36] "Adult, f*cking adult women."
+[10:21:36 - 10:21:37] "No, in the world."
+[10:21:37 - 10:21:39] "That's how she speaks here."
+[10:21:40 - 10:21:41] "I don't know."
+[10:21:41 - 10:21:42] "That's how she speaks here."
+[10:21:42 - 10:21:44] "No, in the world."
+[10:21:44 - 10:21:46] "That's how she speaks here."
+[10:21:46 - 10:21:47] "And so she speaks here."
+[10:21:47 - 10:21:48] "You're up."
+[10:21:49 - 10:21:51] "You're kind of tickling me."
+[10:21:51 - 10:21:52] "You're ticklish?"
+[10:21:52 - 10:21:53] "Yeah."
+[10:21:54 - 10:21:55] "And so he speaks here."
+[10:21:56 - 10:21:58] "I don't know."
+[10:22:00 - 10:22:02] "Oh, where's the deal?"
+[10:22:02 - 10:22:07] "Okay, so she tries her best not to be turned on by this."
+[10:22:07 - 10:22:10] "But, you know, she supports that, right?"
+[10:22:10 - 10:22:12] "You're kind of tickling me."
+[10:22:12 - 10:22:13] "She says."
+[10:22:13 - 10:22:14] "You're kind of tickling me."
+[10:22:14 - 10:22:15] "She says."
+[10:22:15 - 10:22:16] "I don't know."
+[10:22:22 - 10:22:23] "You're kind of tickling me."
+[10:22:23 - 10:22:24] "I don't know."
+[10:22:24 - 10:22:25] "You're kind of tickling me."
+[10:22:25 - 10:22:26] "She says."
+[10:22:26 - 10:22:27] "You're kind of tickling me."
+[10:22:27 - 10:22:28] "She says."
+[10:22:28 - 10:22:29] "I don't know."
+[10:22:31 - 10:22:32] "You're kind of tickling me."
+[10:22:32 - 10:22:33] "I don't know."
+[10:22:35 - 10:22:36] "Dito."
+[10:22:36 - 10:22:37] "What?"
+[10:22:37 - 10:22:39] "Dito?"
+[10:22:39 - 10:22:40] "I don't know."
+[10:22:48 - 10:22:53] "So she says."
+[10:22:53 - 10:22:56] "I'm kind of sensitive down there."
+[10:22:56 - 10:22:58] "I'll be prone."
+[10:22:58 - 10:23:01] "So she nods."
+[10:23:01 - 10:23:02] "So he like."
+[10:23:03 - 10:23:04] "Uses his."
+[10:23:04 - 10:23:05] "And he spreads."
+[10:23:05 - 10:23:06] "I don't know."
+[10:23:08 - 10:23:09] "With his fingers."
+[10:23:09 - 10:23:12] "And he starts like."
+[10:23:12 - 10:23:13] "Pushing."
+[10:23:13 - 10:23:14] "Fingers."
+[10:23:14 - 10:23:15] "His finger."
+[10:23:15 - 10:23:16] "Fingers."
+[10:23:16 - 10:23:18] "Like on the middle."
+[10:23:18 - 10:23:20] "And he starts like."
+[10:23:20 - 10:23:21] "Pushing."
+[10:23:21 - 10:23:22] "Inside."
+[10:23:22 - 10:23:23] "Okay."
+[10:23:23 - 10:23:24] "It's kind of."
+[10:23:24 - 10:23:26] "So your great restoration."
+[10:23:26 - 10:23:28] "You restore your virginity."
+[10:23:28 - 10:23:30] "Thank you, sir."
+[10:23:30 - 10:23:34] "And that might be the actual reason."
+[10:23:34 - 10:23:35] "Yeah."
+[10:23:35 - 10:23:37] "This is fine."
+[10:23:37 - 10:23:41] "What you're doing."
+[10:23:41 - 10:23:42] "Sis."
+[10:23:42 - 10:23:44] "And so he puts his finger in his face."
+[10:23:44 - 10:23:45] "You filled up her."
+[10:23:45 - 10:23:47] "Fingers."
+[10:23:47 - 10:23:48] "It's tight."
+[10:23:48 - 10:23:49] "He forced."
+[10:23:49 - 10:23:50] "Forces."
+[10:23:50 - 10:23:51] "Yeah."
+[10:23:53 - 10:23:54] "You filled up her."
+[10:23:54 - 10:23:55] "Fingers."
+[10:23:55 - 10:23:56] "It's tight."
+[10:23:56 - 10:23:57] "He forced."
+[10:23:57 - 10:23:58] "He pushed."
+[10:24:00 - 10:24:01] "Yeah."
+[10:24:01 - 10:24:03] "And he starts like moving past the corner."
+[10:24:03 - 10:24:04] "What?"
+[10:24:08 - 10:24:09] "So she kind of like a palama."
+[10:24:09 - 10:24:10] "Pushes it past."
+[10:24:10 - 10:24:15] "You feel her leaning a bit on your chest like that."
+[10:24:15 - 10:24:18] "And you see her face kind of like blushing."
+[10:24:18 - 10:24:20] "What is it?"
+[10:24:20 - 10:24:21] "She says."
+[10:24:22 - 10:24:23] "Okay."
+[10:24:23 - 10:24:25] "And so he pulls her legs out."
+[10:24:25 - 10:24:26] "Are you?"
+[10:24:26 - 10:24:27] "Are you?
+[10:24:27 - 10:24:28] "You're missing something?"
+[10:24:28 - 10:24:29] "She says."
+[10:24:29 - 10:24:31] "You're looking for me."
+[10:24:31 - 10:24:32] "She says."
+[10:24:32 - 10:24:33] "You're looking for me."
+[10:24:33 - 10:24:34] "Sure."
+[10:24:36 - 10:24:37] "And so he pulls her legs out."
+[10:24:38 - 10:24:39] "And he pulls her skirt out."
+[10:24:39 - 10:24:41] "And he starts moving faster."
+[10:24:41 - 10:24:42] "So he's like moving faster."
+[10:24:42 - 10:24:43] "Well, with one thing."
+[10:24:43 - 10:24:44] "Exactly."
+[10:24:44 - 10:25:01] "But you're still moving, so you're still looking for it?"
+[10:25:01 - 10:25:03] "What is it?"
+[10:25:04 - 10:25:18] "And so he gets his, with his other hand, he goes to your chest and like pulls your loose
+[10:25:18 - 10:25:19] back down."
+[10:25:19 - 10:25:20] "Dress?"
+[10:25:20 - 10:25:22] "Yeah, so she covers it."
+[10:25:22 - 10:25:25] "And she has like a really cute dress."
+[10:25:25 - 10:25:26] "And then grabs it."
+[10:25:26 - 10:25:28] "Pa-usubo mo pa naman yung dress."
+[10:25:28 - 10:25:30] "And grabs it to your body."
+[10:25:30 - 10:25:31] "No."
+[10:25:31 - 10:25:32] "Yeah."
+[10:25:32 - 10:25:33] "No.
+[10:25:33 - 10:25:34] "You're not supposed to curse these."
+[10:25:34 - 10:25:35] "I'm trying to fuck kids."
+[10:25:35 - 10:25:37] "It's not a curse in this case."
+[10:25:37 - 10:25:39] "You're not supposed to curse these."
+[10:25:44 - 10:25:48] "I'm trying to fuck kids."
+[10:25:48 - 10:25:53] "That's not a curse in this case."
+[10:25:53 - 10:25:59] "And so he like stands on care, you see, and puts you on your TV."
+[10:25:59 - 10:26:00] "Front or back?"
+[10:26:04 - 10:26:07] "Okay, so you see, you see her earlier, right?"
+[10:26:07 - 10:26:12] "You see her with tough eyes right now, looking at you like that."
+[10:26:20 - 10:26:26] "And so he pulls her legs towards you and like takes out his cock."
+[10:26:26 - 10:26:28] "Pierced?"
+[10:26:28 - 10:26:29] "Huh?"
+[10:26:29 - 10:26:30] "Pierced?"
+[10:26:30 - 10:26:31] "Oh shit."
+[10:26:33 - 10:26:42] "Hold on.
+[10:26:42 - 10:26:43] "Let me breathe first."
+[10:26:43 - 10:26:47] "And so he doesn't like do any holding down."
+[10:26:47 - 10:26:48] "Papak-B?"
+[10:26:50 - 10:26:55] "Unless you stop it, he's into a shovel inside your position."
+[10:26:55 - 10:27:00] "Are you ready to go anything to stop it?"
+[10:27:00 - 10:27:01] "Uh...
+[10:27:01 - 10:27:02] "So yung babalang niyo yung walang ano?"
+[10:27:02 - 10:27:03] "Ah, yung babalang niyo."
+[10:27:03 - 10:27:05] "Ah, yung babalang niyo yung walang ano?"
+[10:27:05 - 10:27:06] "Ah, yung babalang niyo."
+[10:27:06 - 10:27:07] "Okay..."
+[10:27:07 - 10:27:16] "Yuck."
+[10:27:16 - 10:27:17] "Okay."
+[10:27:17 - 10:27:18] "Oh, it's not..."
+[10:27:18 - 10:27:19] "She says."
+[10:27:19 - 10:27:24] "Fleasure?"
+[10:27:26 - 10:27:27] "What do you mean?"
+[10:27:27 - 10:27:28] "Fleasure?"
+[10:27:28 - 10:27:30] "She finally killed..."
+[10:27:30 - 10:27:34] "So she looks at you with like dot eyes."
+[10:27:34 - 10:27:35] "And she..."
+[10:27:35 - 10:27:39] "You saw her like parang holding on your gaze."
+[10:27:39 - 10:27:44] "And she kind of like parang slowly gentled a bit."
+[10:27:44 - 10:27:46] "Yung parang umaano yung maka niyo."
+[10:27:46 - 10:27:48] "Mm..."
+[10:27:48 - 10:27:49] "Sabi niyo."
+[10:27:49 - 10:27:52] "What are you gonna do?"
+[10:27:52 - 10:27:55] "Okay, if you're good to like try to prolong."
+[10:27:53 - 10:27:57] If you're going to try to prolong that, he's going to put it in.
+[10:27:57 - 10:27:59] So he pulls you in the leg.
+[10:27:59 - 10:28:00] Shit.
+[10:28:00 - 10:28:07] This is not a crime.
+[10:28:07 - 10:28:14] I'm going to give you a chance first.
+[10:28:14 - 10:28:16] It's not a crime.
+[10:28:23 - 10:28:27] Her eyes turns yellow as she surges.
+[10:28:27 - 10:28:35] So she kind of looks at you.
+[10:28:35 - 10:28:35] While managing?
+[10:28:35 - 10:28:36] Yeah.
+[10:28:36 - 10:28:38] Give me a funnel.
+[10:28:38 - 10:28:41] Sorry, I'm sorry, I'm sorry, she says.
+[10:28:53 - 10:28:55] I'm sorry.
+[10:28:55 - 10:28:56] World Magic Surge.
+[10:28:56 - 10:29:04] I roll at the hundred, right?
+[10:29:04 - 10:29:04] Yeah.
+[10:29:04 - 10:29:17] I think I'm going to try it.
+[10:29:22 - 10:29:23] I'm going to try it.
+[10:29:47 - 10:30:03] Oh.
+[10:30:17 - 10:30:30] What is your roll?
+[10:30:30 - 10:30:31] Twenty-one.
+[10:30:31 - 10:30:32] Right.
+[10:30:32 - 10:30:35] Is that a fun one?
+[10:30:35 - 10:30:37] Depends on how you use it.
+[10:30:37 - 10:30:38] What is it?
+[10:30:38 - 10:30:40] You gain a flying speed of 30 feet until the end.
+[10:30:40 - 10:30:44] She levitates when he's trying to put it in.
+[10:30:44 - 10:30:45] Okay.
+[10:30:45 - 10:30:50] Quickly, her eyeballs kind of change into deep yellow.
+[10:30:50 - 10:30:55] And she seems kind of like when she's trying to blink like that and hide it.
+[10:30:55 - 10:30:56] Kind of like that.
+[10:30:56 - 10:30:58] And then she starts levitating.
+[10:30:58 - 10:30:59] Okay.
+[10:30:59 - 10:31:00] So what do you do with it?
+[10:31:00 - 10:31:01] Help!
+[10:31:01 - 10:31:02] She says.
+[10:31:02 - 10:31:03] Help!
+[10:31:03 - 10:31:04] Okay, so you pretend to.
+[10:31:04 - 10:31:06] Alright, go ahead and roll deception.
+[10:31:06 - 10:31:07] Help!
+[10:31:07 - 10:31:08] Sir!
+[10:31:10 - 10:31:11] Please!
+[10:31:11 - 10:31:12] Fifteen.
+[10:31:12 - 10:31:13] Plus four.
+[10:31:13 - 10:31:14] Nineteen.
+[10:31:14 - 10:31:15] Plus seven.
+[10:31:18 - 10:31:27] You see her pussy kind of like in front of you as she floats.
+[10:31:27 - 10:31:36] And so he like smiles every deeper and grabs at your legs as you float away.
+[10:31:36 - 10:31:37] Okay.
+[10:31:37 - 10:31:38] And he starts like pulling you through the legs.
+[10:31:38 - 10:31:39] And he starts like thank you.
+[10:31:39 - 10:31:40] Okay.
+[10:31:40 - 10:31:41] Eating her?
+[10:31:41 - 10:31:42] Yeah.
+[10:31:42 - 10:31:43] Okay.
+[10:31:43 - 10:31:44] He stays nice.
+[10:31:44 - 10:31:45] Okay.
+[10:31:45 - 10:31:45] I'm sorry.
+[10:31:49 - 10:31:50] She says.
+[10:31:50 - 10:31:51] I'm sorry.
+[10:31:53 - 10:31:54] She says.
+[10:31:54 - 10:31:55] I'm sorry.
+[10:31:56 - 10:31:57] She says.
+[10:31:57 - 10:31:59] *crying*
+[10:32:05 - 10:32:07] You are on order not to eat your throat.
+[10:32:07 - 10:32:09] What?
+[10:32:09 - 10:32:11] You are not eating the addiction after all.
+[10:32:11 - 10:32:17] And so after eating her out, she pulls her up and turns her around while she's living.
+[10:32:17 - 10:32:19] And then he gives her a nice slack.
+[10:32:19 - 10:32:21] *crying*
+[10:32:23 - 10:32:27] Quickly, kind of like, brightens Fred the hair on us.
+[10:32:27 - 10:32:29] And then he goes for another way.
+[10:32:29 - 10:32:31] I'm sorry, he says.
+[10:32:31 - 10:32:33] And continues to eat her as he describes.
+[10:32:33 - 10:32:35] I'm sorry, sir.
+[10:32:35 - 10:32:37] Will you forgive me?
+[10:32:37 - 10:32:39] He says.
+[10:32:39 - 10:32:41] Please forgive me.
+[10:32:43 - 10:32:45] I'm sorry.
+[10:32:45 - 10:32:47] And he slaps her.
+[10:32:47 - 10:32:51] He seems to be much more, like, excited now.
+[10:32:51 - 10:32:53] I'm sorry.
+[10:32:54 - 10:32:59] He's seeing that his face looks like as if he was, like, in, I don't know, screaming.
+[10:32:59 - 10:33:03] That he wants, like, more from you.
+[10:33:03 - 10:33:05] And he's as he slaps her by the past.
+[10:33:05 - 10:33:09] She's gonna search again.
+[10:33:09 - 10:33:10] Okay.
+[10:33:10 - 10:33:12] So, so you make her come first.
+[10:33:12 - 10:33:17] So, uh, she, she kind of like, uh, okay, hindi mo naman ako ini-insertan eh.
+[10:33:17 - 10:33:21] So, she just continue on enjoying herself in his mouth.
+[10:33:21 - 10:33:27] But, of course, she was trying to be, like, uh, you know, misteen train circle.
+[10:33:27 - 10:33:28] Please.
+[10:33:28 - 10:33:29] Men.
+[10:33:29 - 10:33:32] And she says, she keeps saying, I'm sorry.
+[10:33:32 - 10:33:33] I'm sorry.
+[10:33:34 - 10:33:35] I'm gonna.
+[10:33:35 - 10:33:36] I'm sorry.
+[10:33:36 - 10:33:37] I'm gonna.
+[10:33:37 - 10:33:40] Uh, uh, uh, uh, uh, uh, uh, uh.
+[10:33:40 - 10:33:44] As you, as your mouth kind of, at least, of her, uh, come and crisps.
+[10:33:44 - 10:33:45] Okay.
+[10:33:45 - 10:33:46] What's the surge?
+[10:33:46 - 10:33:47] Surge?
+[10:33:47 - 10:33:48] And she surges again.
+[10:33:48 - 10:33:50] She forced the surge.
+[10:33:50 - 10:33:51] She can do that.
+[10:33:51 - 10:33:54] Uh, 56.
+[10:33:55 - 10:33:57] I don't keep doing that.
+[10:33:57 - 10:33:59] Sorcerer's burst.
+[10:33:59 - 10:34:00] 56.
+[10:34:00 - 10:34:01] Uh.
+[10:34:01 - 10:34:02] Holy shit.
+[10:34:02 - 10:34:10] Uh, for one minute, your laugh, sigh, moan, or battle cry can be heard up to 300 feet away.
+[10:34:10 - 10:34:15] What do you do about that?
+[10:34:15 - 10:34:17] Uh, uh, uh.
+[10:34:17 - 10:34:20] Also, she starts, like, make-
+[10:34:20 - 10:34:22] You feel that she surges again.
+[10:34:22 - 10:34:26] Oh, ho, ho, ho, ho, ho, ho.
+[10:34:26 - 10:34:27] Ssss.
+[10:34:27 - 10:34:28] Until she's like, you know what's next.
+[10:34:28 - 10:34:30] You feel like she's like, you know what's next.
+[10:34:30 - 10:34:33] And so you, like, close her down.
+[10:34:33 - 10:34:39] And, like, uh, starts, like, squeezing at her nipples, trying to, like, make it, like, ring.
+[10:34:39 - 10:34:40] Ow.
+[10:34:40 - 10:34:41] She says.
+[10:34:41 - 10:34:43] And she, like, starts poking her scum again.
+[10:34:43 - 10:34:45] What's that?
+[10:34:45 - 10:34:46] She says.
+[10:34:46 - 10:34:48] And she points on your piercing.
+[10:34:48 - 10:34:51] So she, not just pointed, but, like, you know what's next.
+[10:34:51 - 10:34:54] And she points it, but talks it really hard like that.
+[10:34:54 - 10:34:55] And so he turns.
+[10:34:55 - 10:34:56] She points it like that.
+[10:34:56 - 10:34:59] Oh, I mean, it, it, he starts.
+[10:34:59 - 10:35:00] But, of course, it doesn't work very well.
+[10:35:00 - 10:35:00] Remember, this is a person.
+[10:35:00 - 10:35:06] And you definitely, when you touched it, you definitely felt that pain.
+[10:35:06 - 10:35:07] Mm.
+[10:35:07 - 10:35:07] Yeah.
+[10:35:08 - 10:35:09] Distressing attention.
+[10:35:09 - 10:35:09] And his paladin is inside.
+[10:35:09 - 10:35:09] Wait, wait.
+[10:35:09 - 10:35:10] Okay.
+[10:35:10 - 10:35:11] Uh.
+[10:35:11 - 10:35:12] Okay.
+[10:35:12 - 10:35:12] Uh.
+[10:35:15 - 10:35:16] Well, since you haven't done any of those things.
+[10:35:16 - 10:35:17] he doesn't yet know.
+[10:35:17 - 10:35:18] that he doesn't know.
+[10:35:18 - 10:35:19] that you are, you are not.
+[10:35:19 - 10:35:19] Yeah.
+[10:35:22 - 10:35:23] going to laugh.
+[10:35:23 - 10:35:37] The pain. The distress of the creature. And his partner is inside. Wait, wait. Okay. Uh...
+[10:35:37 - 10:35:50] Well since you haven't done any of those things, he doesn't yet know that you are going to laugh.
+[10:35:50 - 10:35:59] Either sigh, laugh, or battle cry, or moan. Like it can be heard. In a way it can be heard up to 300 feet away.
+[10:35:59 - 10:36:02] Oh my god. Great.
+[10:36:02 - 10:36:18] So she quickly kind of looks like, uh, parang when she pulls it like that, uh, she looks at you as you growl like that.
+[10:36:18 - 10:36:27] And she says, "I'm sorry." She says, "Did it hurt?" She says, "Did it hurt?" And she goes and kisses your mouth.
+[10:36:27 - 10:36:30] Mouth? Yeah.
+[10:36:30 - 10:36:35] And she kisses you. She pushes like a liquid inside.
+[10:36:35 - 10:36:39] Oh, this would be a scliteophan.
+[10:36:39 - 10:36:40] It's scliteophan.
+[10:36:40 - 10:36:44] Nineteen! Twenty-two!
+[10:36:44 - 10:36:47] Mababa is scliteophan, yeah. Plus three.
+[10:36:47 - 10:36:52] Okay. Yeah, but that's a good roll. So, right. Uh, this would be, uh, what?
+[10:36:52 - 10:36:55] What is this tactic? This did you make it?
+[10:36:55 - 10:36:58] Oh, it's the DC.
+[10:36:58 - 10:37:01] Uh, I didn't say that it was...
+[10:37:04 - 10:37:05] Seventeen.
+[10:37:05 - 10:37:06] As long as it's below, uh, uh, uh, seventeen?
+[10:37:06 - 10:37:07] Seventeen.
+[10:37:07 - 10:37:09] Oh, yeah. Well, I rolled a six, but that's fine.
+[10:37:09 - 10:37:10] Okay. So that's...
+[10:37:10 - 10:37:11] I'm sorry. Okay.
+[10:37:11 - 10:37:13] Did that hurt you?
+[10:37:13 - 10:37:14] And so...
+[10:37:14 - 10:37:16] It was really, like, excited.
+[10:37:16 - 10:37:25] So she guides him like that on her chest. And she slowly sits down on the table.
+[10:37:25 - 10:37:28] And, uh, like, lay him down on the table.
+[10:37:28 - 10:37:32] She says.
+[10:37:32 - 10:37:36] Ugh, I got heart. I got real corn.
+[10:37:36 - 10:37:38] She says.
+[10:37:38 - 10:37:41] Uh...
+[10:37:41 - 10:37:45] You can still... you don't know what the effect will be yet, necessarily.
+[10:37:46 - 10:37:48] Dahil hindi mo pa naman naroon ng sarili ng...
+[10:37:48 - 10:37:49] Gawing nyong bugs.
+[10:37:49 - 10:37:50] Four things.
+[10:37:50 - 10:37:51] Yeah.
+[10:37:51 - 10:37:52] But, uh, yeah.
+[10:37:52 - 10:37:54] You still feel that it's still...
+[10:37:53 - 10:37:58] You still feel that it's still, the wild magic is still with him.
+[10:37:58 - 10:38:02] She connects to Siriko Sienna, Lord Boyle.
+[10:38:02 - 10:38:08] "Hey," she says, "I got him to fall asleep, I just had to kiss him, and he didn't brush his teeth."
+[10:38:08 - 10:38:18] "Ugh," she says, "but he tried to, like, do me, but I kind of like, you know, I know my will," she says.
+[10:38:18 - 10:38:21] "Ugh, and he has, like, a huge pop."
+[10:38:21 - 10:38:31] "I mean, it's not like, it's not like, it's kind of like scary, it's not like yours," she says.
+[10:38:31 - 10:38:36] "I feel like it'll hurt me if I put that in me," she says.
+[10:38:36 - 10:38:38] "You just have a vision."
+[10:38:38 - 10:38:41] "Mm-hmm, very much."
+[10:38:41 - 10:38:43] "Not out for us."
+[10:38:43 - 10:38:47] "But I used the sleeping agent in here, on him," she says.
+[10:38:47 - 10:38:50] "It's gonna be not out for eight hours," she says.
+[10:38:50 - 10:38:52] "Okay."
+[10:38:52 - 10:38:56] "Well, I want to investigate him soon, but I bet there's a scrying device here."
+[10:38:56 - 10:39:00] "How about you?"
+[10:39:00 - 10:39:02] "I have a key."
+[10:39:02 - 10:39:03] "I could go there."
+[10:39:03 - 10:39:05] "Where are you?"
+[10:39:05 - 10:39:06] "I'm just waiting for this guy."
+[10:39:06 - 10:39:07] "I could go there."
+[10:39:07 - 10:39:08] "I'm just waiting for this guy."
+[10:39:20 - 10:39:21] "Alright."
+[10:39:21 - 10:39:23] "So she wears back her dress."
+[10:39:23 - 10:39:25] "So, as if there's a scrying thing."
+[10:39:25 - 10:39:29] "Well, it wasn't necessarily renewed."
+[10:39:29 - 10:39:30] "Yeah."
+[10:39:30 - 10:39:31] "Parang inayos lang niya."
+[10:39:31 - 10:39:33] "So, it's kind of loose now."
+[10:39:33 - 10:39:35] "So, you kind of have to tie it."
+[10:39:35 - 10:39:36] "It's okay."
+[10:39:36 - 10:39:38] "So, she kind of like a..."
+[10:39:38 - 10:39:41] "She knows that there's gonna be a scrying device here."
+[10:39:41 - 10:39:42] "Okay."
+[10:39:42 - 10:39:44] "And they didn't know what she did."
+[10:39:44 - 10:39:48] "So, she just looks at him and tries to lift him up."
+[10:39:48 - 10:39:49] "But, um..."
+[10:39:49 - 10:39:50] "Well, anyway, uh..."
+[10:39:50 - 10:39:51] "So, says..."
+[10:39:51 - 10:39:55] "So, is there any arcana or something?"
+[10:39:55 - 10:39:57] "Yeah, plus 5."
+[10:39:57 - 10:39:58] "This to make sure."
+[10:39:58 - 10:39:59] "16 plus 5."
+[10:39:59 - 10:40:00] "21."
+[10:40:21 - 10:40:23] "So, is there any arcana or something?"
+[10:40:23 - 10:40:25] "So, that's fine."
+[10:40:25 - 10:40:26] "I don't know."
+[10:40:26 - 10:40:28] "So, is there any arcana or something?"
+[10:40:28 - 10:40:29] "No."
+[10:40:29 - 10:40:31] "So, is there any arcana or something?"
+[10:40:31 - 10:40:32] "I don't know."
+[10:40:32 - 10:40:33] "So, is there any arcana or something?"
+[10:40:47 - 10:40:54] "Well, aside from the piercing that he has..."
+[10:40:54 - 10:40:59] "Uh, you see, you try to look and try to feel for..."
+[10:40:59 - 10:41:01] "Does he have key for Garlberg's room?"
+[10:41:01 - 10:41:02] "Uh, you..."
+[10:41:02 - 10:41:03] "Garlberg's room?"
+[10:41:03 - 10:41:05] "Uh, you don't know that necessarily, yeah."
+[10:41:05 - 10:41:05] "Okay."
+[10:41:05 - 10:41:07] "Pero at least for the arcana check."
+[10:41:07 - 10:41:14] "You feel, aside from the piercing, you feel that there are four other magic items in this room."
+[10:41:14 - 10:41:15] "Like?"
+[10:41:15 - 10:41:16] "Yeah."
+[10:41:16 - 10:41:18] "Two of them would be on this guy."
+[10:41:18 - 10:41:19] "Okay."
+[10:41:19 - 10:41:22] "Two, two, two, two, two, two, two, two, three."
+[10:41:22 - 10:41:23] "Yeah."
+[10:41:23 - 10:41:24] "Okay."
+[10:41:24 - 10:41:30] "The one that you'd removed from him, uh, that he'd removed, the one that was a glove, is a magic item."
+[10:41:30 - 10:41:37] "Uh, he removed it, but it is still, you can feel that it is, it might still be attuned to him, likely."
+[10:41:37 - 10:41:42] "But, uh, you don't necessarily know what it is, because this is just an arcana check."
+[10:41:42 - 10:41:55] "And, uh, and the other one is, uh, his, uh, weapon, uh, but he's, uh, Tobito, like, what he has right now."
+[10:41:55 - 10:41:59] "Uh, the one that's honest person is a magical dagger."
+[10:41:59 - 10:42:09] "And the other weapon that was magical, uh, is a, uh, it's, uh, an axe, and it is mounted to the side of his wall."
+[10:42:09 - 10:42:10] "Okay."
+[10:42:10 - 10:42:22] "And the other magical item that you can feel right now is, uh, some kind of weird little, like, uh, parang, what it looks like is like a, uh, no, no, it's..."
+[10:42:22 - 10:42:29] "No, let's just say that it's a, uh, it's a, uh, it's a statue of the venerable my friend."
+[10:42:29 - 10:42:30] "Uh, that is a..."
+[10:42:30 - 10:42:31] "Probably an orb."
+[10:42:31 - 10:42:32] "Uh, what?"
+[10:42:32 - 10:42:34] "Probably an orb."
+[10:42:34 - 10:42:41] "Uh, well, it doesn't look like, there doesn't seem like an obvious, like, orb on it, necessarily."
+[10:42:41 - 10:42:42] "Yeah."
+[10:42:42 - 10:42:48] "But, uh, this could be, uh, this could be some kind of detection."
+[10:42:48 - 10:42:49] "Yeah, maybe, what is it?"
+[10:42:49 - 10:42:50] "Uh, what is it?"
+[10:42:51 - 10:42:52] "One, two."
+[10:42:52 - 10:42:58] "So, the sword, eh, the sword, the dagger, the glove, the..."
+[10:42:58 - 10:42:59] "Dagger, the glove."
+[10:42:59 - 10:43:00] "The..."
+[10:43:00 - 10:43:01] "Ah, the glove, wala ito."
+[10:43:01 - 10:43:02] "Oh."
+[10:43:02 - 10:43:03] "Okay."
+[10:43:03 - 10:43:04] "The..."
+[10:43:04 - 10:43:05] "Okay."
+[10:43:05 - 10:43:06] "Yeah."
+[10:43:06 - 10:43:09] "Oh, okay."
+[10:43:09 - 10:43:10] "Yeah."
+[10:43:13 - 10:43:15] "Oh, of course she doesn't respond."
+[10:43:15 - 10:43:16] "Yeah."
+[10:43:16 - 10:43:17] "She knows."
+[10:43:17 - 10:43:21] "But she has to pretend that she's, like, uh, she didn't do anything."
+[10:43:21 - 10:43:22] "This guy is for..."
+[10:43:22 - 10:43:30] "So, what he, what she does..."
+[10:43:30 - 10:43:31] "So, what she does..."
+[10:43:31 - 10:43:32] "Yeah."
+[10:43:32 - 10:43:38] "So, what she does to this guy is, she kind of, like, uh, zip him up, um, pants-nya."
+[10:43:38 - 10:43:48] "And, uh, look for something to cover him up, kind of, like, uh, a blanket or something."
+[10:43:48 - 10:43:57] "Uh, yeah, uh, well, you can see that on, uh, hanging on, uh, parang, uh, a rack or something."
+[10:43:57 - 10:44:00] "Well, uh, uh, well, his, uh, his clue, basically."
+[10:44:00 - 10:44:01] "Yeah."
+[10:44:01 - 10:44:02] "And, uh, uh..."
+[10:44:02 - 10:44:03] "She, she takes it and puts it on him."
+[10:44:03 - 10:44:04] "Like, no."
+[10:44:04 - 10:44:05] "Okay."
+[10:44:05 - 10:44:06] "You do that."
+[10:44:06 - 10:44:09] "And then she, uh, exits the room."
+[10:44:09 - 10:44:10] "Okay."
+[10:44:10 - 10:44:19] "And then, so you exit the room, and, uh, of course, the key that he asks does have the room number."
+[10:44:19 - 10:44:20] "Oh."
+[10:44:20 - 10:44:21] "Yeah."
+[10:44:21 - 10:44:22] "So, you know, they could have to go down..."
+[10:44:22 - 10:44:23] "Yeah."
+[10:44:23 - 10:44:24] "Why not?"
+[10:44:24 - 10:44:25] "Where are you?"
+[10:44:25 - 10:44:26] "She says."
+[10:44:26 - 10:44:29] "I'm in the wreck here.
+[10:44:29 - 10:44:34] I'm, uh, trying to figure out his, uh, trap door opening up, making nature rumors."
+[10:44:34 - 10:44:35] "I love you."
+[10:44:35 - 10:44:36] "All right."
+[10:44:36 - 10:44:37] "I'll get to his room."
+[10:44:37 - 10:44:38] "There is a..."
+[10:44:38 - 10:44:42] "What, did you find anything in his office?"
+[10:44:42 - 10:44:46] "Yeah, uh, he has some four magical devices there."
+[10:44:46 - 10:44:48] "Two on him."
+[10:44:48 - 10:44:51] "A weapon that is kind of mounted somewhere."
+[10:44:51 - 10:44:53] "Mounted on a wall."
+[10:44:53 - 10:44:58] "And a statue, probably, kind of like an orb inside."
+[10:44:58 - 10:44:59] "But I'm not quite sure."
+[10:44:59 - 10:45:01] "I can't use magic, right?"
+[10:45:01 - 10:45:03] "We're going on low magic."
+[10:45:03 - 10:45:05] "That's right."
+[10:45:05 - 10:45:06] "Shirt."
+[10:45:06 - 10:45:07] "So..."
+[10:45:07 - 10:45:10] "I don't know where you're trying to contact us."
+[10:45:10 - 10:45:13] "No."
+[10:45:13 - 10:45:16] "It's better to just shove."
+[10:45:16 - 10:45:18] "You already did that one, right?"
+[10:45:18 - 10:45:20] "Is something still a stroke in your back?"
+[10:45:20 - 10:45:21] "Yeah, it says."
+[10:45:21 - 10:45:22] "Right."
+[10:45:22 - 10:45:27] "So, you found a..."
+[10:45:27 - 10:45:30] "Fuck up."
+[10:45:30 - 10:45:32] "It's gonna be fine, is it?"
+[10:45:32 - 10:45:33] "Be careful."
+[10:45:34 - 10:45:35] "He says."
+[10:45:35 - 10:45:36] "Be careful."
+[10:45:36 - 10:45:44] "All right, so, uh, you can see that he, uh, from his eyes, he's, uh, gonna fight the, like, force for now."
+[10:45:44 - 10:45:46] "Um, I don't know."
+[10:45:46 - 10:45:49] "Better you remove your shirt," he says.
+[10:45:49 - 10:45:50] "And use it as a..."
+[10:45:50 - 10:45:51] "Better you remove your shirt."
+[10:45:53 - 10:45:58] "And use it as a, uh, you know, bite the noise."
+[10:45:58 - 10:46:01] "Oh, I don't just tell him if it looks so interesting."
+[10:46:01 - 10:46:03] "No, I want to."
+[10:46:03 - 10:46:04] "So, yeah, I want to."
+[10:46:04 - 10:46:05] "So, he takes off his shirt."
+[10:46:05 - 10:46:07] "But he knows what you're trying to get out."
+[10:46:07 - 10:46:08] "He uses it to muffle."
+[10:46:08 - 10:46:09] "Yeah."
+[10:46:10 - 10:46:11] "And the noise that he's on."
+[10:46:11 - 10:46:12] "Yeah."
+[10:46:12 - 10:46:13] "And the noise that he's on."
+[10:46:13 - 10:46:14] "Pshhh."
+[10:46:14 - 10:46:18] "So, you, Shiyoshi touches herself and makes you feel that."
+[10:46:18 - 10:46:19] "Why?"
+[10:46:19 - 10:46:20] "Because."
+[10:46:20 - 10:46:21] "It looks nice."
+[10:46:21 - 10:46:34] "And so, he's, like, trying to see if he, like, uh, if it goes from both threes."
+[10:46:34 - 10:46:37] "And before he, like, uh, hits the screen over the window."
+[10:46:37 - 10:46:40] "He can just throw his cap on the scopes."
+[10:46:40 - 10:46:41] "Hah?"
+[10:46:41 - 10:46:44] "He goes to his cap on the scopes over here."
+[10:46:44 - 10:46:46] "Mmm, that's good.
+[10:46:46 - 10:46:47] He says."
+[10:46:47 - 10:46:50] "Much better than the guy earlier."
+[10:46:50 - 10:46:51] "He says."
+[10:46:51 - 10:46:52] "He's a holy stretch."
+[10:46:52 - 10:46:53] "I know that."
+[10:46:53 - 10:46:54] "She says."
+[10:46:54 - 10:46:55] "I don't remember how many of the full paladins are full."
+[10:46:55 - 10:46:56] "I think the full paladins are full of them."
+[10:46:56 - 10:46:57] "Full of them."
+[10:46:57 - 10:46:58] "Yeah."
+[10:46:58 - 10:47:01] "And, uh, we have to save this, you know, the new ones."
+[10:47:01 - 10:47:02] "I mean."
+[10:47:02 - 10:47:03] "Yeah."
+[10:47:04 - 10:47:05] "I think the full paladins are full of them."
+[10:47:05 - 10:47:06] "Full of them."
+[10:47:07 - 10:47:08] "Yeah."
+[10:47:08 - 10:47:09] "Full of them."
+[10:47:09 - 10:47:10] "Yeah."
+[10:47:10 - 10:47:11] "Full of them."
+[10:47:11 - 10:47:14] "And, uh, we have to save this, you know, the new ones."
+[10:47:14 - 10:47:15] "I mean."
+[10:47:16 - 10:47:17] "Wow."
+[10:47:17 - 10:47:18] "How many of them?"
+[10:47:18 - 10:47:19] "Mm-hmm."
+[10:47:19 - 10:47:22] "I think the relationship is not the same."
+[10:47:22 - 10:47:24] "Also, I searched earlier."
+[10:47:24 - 10:47:25] "He says."
+[10:47:25 - 10:47:28] "And he seems to be excited about that."
+[10:47:28 - 10:47:29] "He says."
+[10:47:29 - 10:47:30] "He said."
+[10:47:35 - 10:47:36] "No."
+[10:47:36 - 10:47:37] "He said."
+[10:47:37 - 10:47:38] "No."
+[10:47:38 - 10:47:39] "He said."
+[10:47:40 - 10:47:41] "Ah."
+[10:47:41 - 10:47:42] "Yeah."
+[10:47:43 - 10:47:48] "You can come up."
+[10:47:48 - 10:47:49] "Uh, can you?"
+[10:47:49 - 10:47:54] "Where's the, where's the nice room?"
+[10:47:53 - 10:47:58] - Is there a number on the key? - Mm-hmm.
+[10:47:58 - 10:48:02] - What does it start with? One. - One.
+[10:48:02 - 10:48:10] - First floor. Yeah, it's probably...
+[10:48:10 - 10:48:16] First floor, probably the end of the hall, the one that's close to the window.
+[10:48:16 - 10:48:19] - All right, I'll check that link. - Yes.
+[10:48:19 - 10:48:25] - All right. - Do you want to come with me?
+[10:48:25 - 10:48:27] She says...
+[10:48:27 - 10:48:31] - No, I'll just check for something for you. - Okay.
+[10:48:31 - 10:48:35] - All right, she says. - I'm sure you can see that.
+[10:48:35 - 10:48:43] She'll finally pick up. She mischievously, like, grind her finger inside.
+[10:48:43 - 10:49:01] - And so he starts... - Oh, my neck up. Oh, my neck up. Oh, my neck up. Oh.
+[10:49:01 - 10:49:04] - Can you give it a stroke of it? - All right.
+[10:49:04 - 10:49:09] - And so he starts... Oh, my neck up. - And so he, like, um...
+[10:49:09 - 10:49:14] Like, you can see through his eyes, so he, like, looks at this cock directly.
+[10:49:14 - 10:49:18] - Oh. - And so he's just stopping and having a big one of his...
+[10:49:18 - 10:49:21] - Try the door. - This cock is stopping it.
+[10:49:21 - 10:49:24] - What? - You try the door, I mean?
+[10:49:24 - 10:49:26] - Sorry, I mean? - Shit.
+[10:49:26 - 10:49:30] - And so after he... - Okay.
+[10:49:30 - 10:49:32] - Okay. - Okay, sure.
+[10:49:32 - 10:49:36] - So, like, he pulls the... you can see that as he pulls it.
+[10:49:36 - 10:49:41] - As he pulls it, move the lock. - Okay.
+[10:49:41 - 10:49:44] - Okay. - So she looks at this, uh...
+[10:49:44 - 10:49:48] - Okay, so she looks at the... around this, uh, whole room.
+[10:49:48 - 10:49:50] Is there, like, someone here?
+[10:49:50 - 10:49:53] - Uh, so nang bumaba ka na? - Oh.
+[10:49:53 - 10:49:56] - Uh, there are a lot of people here.
+[10:49:56 - 10:50:01] - Of course, uh, but, uh, they're, like, in their, uh, dorms already.
+[10:50:01 - 10:50:07] - Uh, and, like, when you, like, uh, like, actually started playing a convention,
+[10:50:07 - 10:50:10] one of them says, "Are you alright, miss?"
+[10:50:10 - 10:50:11] - Mm-hmm.
+[10:50:11 - 10:50:16] - Uh, are you, uh, you might be lost. You're not supposed to be around here.
+[10:50:16 - 10:50:18] - Uh, maybe we heard, essentially.
+[10:50:18 - 10:50:22] - You have to go in essence rooms and go straight here into the left.
+[10:50:22 - 10:50:24] - Mm-hmm. - Did he ask you to get something?
+[10:50:24 - 10:50:28] - Yeah, uh, she said that, um, I can stay here for the night,
+[10:50:28 - 10:50:31] and he will stay in his office.
+[10:50:31 - 10:50:36] - I suppose, uh, you've got a ski, right?
+[10:50:36 - 10:50:39] - Mm-hmm, yeah, he says.
+[10:50:39 - 10:50:43] - Well, uh, you want me to... I can show you personally where it is.
+[10:50:43 - 10:50:44] - Okay.
+[10:50:44 - 10:50:45] - He holds her hands like that.
+[10:50:45 - 10:50:46] - Let's go.
+[10:50:46 - 10:50:47] - And her hand is very sticky.
+[10:50:47 - 10:50:48] - Ha, ha, ha, ha, ha.
+[10:50:48 - 10:50:49] - And, uh, so you're staying in the Lord Asham's office for now?
+[10:50:49 - 10:50:51] - Yeah, just temporarily. This is what he said.
+[10:50:51 - 10:50:52] - Mm-hmm.
+[10:50:52 - 10:50:53] - But he's staying in his office.
+[10:50:53 - 10:50:54] - That's surprising.
+[10:50:54 - 10:50:55] - Well, usually when they bring spells to his room, you're just a slayer.
+[10:50:55 - 10:50:56] - Hmm, I don't know what you mean.
+[10:50:57 - 10:50:58] - But I don't know what you mean.
+[10:50:58 - 10:50:59] - Yeah, I don't know what you mean.
+[10:51:01 - 10:51:02] - I don't know what you mean.
+[10:51:02 - 10:51:03] - Oh, I don't know what you mean.
+[10:51:08 - 10:51:09] - I don't know what you mean.
+[10:51:09 - 10:51:15] - When the Lord Commander is out, he'll do what he wants.
+[10:51:15 - 10:51:16] - All right.
+[10:51:16 - 10:51:17] - I don't know what you mean.
+[10:51:25 - 10:51:26] - I don't know what you mean, right?
+[10:51:26 - 10:51:29] - Yeah, that's what he does.
+[10:51:29 - 10:51:34] - When the Lord Commander is out, he'll do what he wants.
+[10:51:34 - 10:51:35] - All right.
+[10:51:35 - 10:51:36] - Well, I don't know what you mean.
+[10:51:36 - 10:51:41] - All right, but he's a sleeping spot.
+[10:51:41 - 10:51:44] - Yeah, but there's more space for you.
+[10:51:44 - 10:51:47] - Yeah, honey.
+[10:51:47 - 10:51:49] - Yes, sir.
+[10:51:49 - 10:51:55] - Ah, so over here, it's one of the larger rooms.
+[10:51:55 - 10:51:58] Only the Lord Commander is out there.
+[10:51:58 - 10:51:59] But, yeah.
+[10:51:59 - 10:52:01] - Where is it, you guys?
+[10:52:01 - 10:52:02] - Just across.
+[10:52:02 - 10:52:04] - Pinnacle.
+[10:52:04 - 10:52:11] - So, uh, it takes very little convincing.
+[10:52:11 - 10:52:12] - Okay.
+[10:52:12 - 10:52:13] - And, uh...
+[10:52:13 - 10:52:14] - Let me open it.
+[10:52:14 - 10:52:15] - Oh, sure.
+[10:52:16 - 10:52:17] - All right.
+[10:52:17 - 10:52:20] - This corner girl will kind of, like, uh...
+[10:52:20 - 10:52:23] - Presses her butt against this guy's clutch.
+[10:52:23 - 10:52:26] - Uh, she let, uh, kind of let out.
+[10:52:26 - 10:52:28] - Unlocking the door.
+[10:52:28 - 10:52:29] - Yeah.
+[10:52:29 - 10:52:29] - Okay.
+[10:52:29 - 10:52:32] - Let's see if he removes his himself.
+[10:52:32 - 10:52:33] - Yeah.
+[10:52:33 - 10:52:36] - He does not do the natural one of his own...
+[10:52:36 - 10:52:37] - Really?
+[10:52:37 - 10:52:39] - Uh, his own will help.
+[10:52:39 - 10:52:40] - That's it.
+[10:52:40 - 10:52:41] - Yeah.
+[10:52:41 - 10:52:44] - And so, you feel his heart.
+[10:52:44 - 10:52:45] - Uh...
+[10:52:45 - 10:52:46] - He's, uh, seven.
+[10:52:46 - 10:52:47] - Twelve.
+[10:52:47 - 10:52:48] - And, uh...
+[10:52:48 - 10:52:49] - Four.
+[10:52:49 - 10:52:50] - And, uh...
+[10:52:50 - 10:52:51] - Four.
+[10:52:51 - 10:52:52] - And, uh...
+[10:52:52 - 10:52:53] - Four.
+[10:52:53 - 10:52:54] - So, she says...
+[10:52:54 - 10:52:55] - Okay.
+[10:52:55 - 10:52:56] - So, it's a monster.
+[10:52:56 - 10:52:57] - Can I open it?
+[10:52:57 - 10:52:58] - She says...
+[10:52:58 - 10:52:59] - Okay.
+[10:52:59 - 10:53:00] - So, it's a monster.
+[10:53:00 - 10:53:01] - Can I open it?
+[10:53:01 - 10:53:02] - She says...
+[10:53:02 - 10:53:03] - Oh, uh...
+[10:53:03 - 10:53:04] - The woman you're going?
+[10:53:04 - 10:53:05] - Mm-hmm.
+[10:53:05 - 10:53:08] - And so, yeah, because he, like...
+[10:53:08 - 10:53:09] - He lets you...
+[10:53:09 - 10:53:11] - His willpower is really, like, natural.
+[10:53:11 - 10:53:12] - Okay.
+[10:53:12 - 10:53:13] - So, she kind of, like, uh...
+[10:53:13 - 10:53:14] - So, she, kind of, like, uh...
+[10:53:14 - 10:53:15] - Doesn't remove it.
+[10:53:15 - 10:53:18] Like, presses against you, uh, towards your...
+[10:53:18 - 10:53:19] - Okay.
+[10:53:19 - 10:53:21] - So, you feel her presses her, uh...
+[10:53:21 - 10:53:22] - What?
+[10:53:22 - 10:53:23] - Against your cup.
+[10:53:23 - 10:53:23] - Yeah.
+[10:53:24 - 10:53:25] - Mm-hmm.
+[10:53:25 - 10:53:26] - And his cup, as well.
+[10:53:26 - 10:53:27] It's just completely, like...
+[10:53:27 - 10:53:28] - Can you open it?
+[10:53:28 - 10:53:30] - Like, deep berries, if you look at them...
+[10:53:30 - 10:53:33] - You know, the green milk cheese, uh...
+[10:53:33 - 10:53:35] - The deepest possible, I see what that tries to...
+[10:53:35 - 10:53:36] - Is there?
+[10:53:36 - 10:53:37] - It says...
+[10:53:37 - 10:53:38] - Yeah.
+[10:53:38 - 10:53:39] - I am still up.
+[10:53:39 - 10:53:40] - And so, uh...
+[10:53:40 - 10:53:41] - What's there?
+[10:53:42 - 10:53:43] - Yeah.
+[10:53:43 - 10:53:44] - Uh...
+[10:53:48 - 10:53:49] - Cross.
+[10:53:49 - 10:53:50] - Um...
+[10:53:50 - 10:53:51] - Uh...
+[10:53:52 - 10:53:53] - Okay.
+[10:53:53 - 10:53:54] - Uh...
+[10:53:55 - 10:53:57] -
+[10:53:57 - 10:53:58] - Cross.
+[10:53:58 - 10:53:59] - Okay.
+[10:53:59 - 10:54:00] - Because he's saying his first name.
+[10:54:00 - 10:54:01] - Okay.
+[10:54:01 - 10:54:02] - Yes, yeah.
+[10:54:02 - 10:54:03] First name.
+[10:54:03 - 10:54:04] - Ah, yeah.
+[10:54:04 - 10:54:05] And I cross...
+[10:54:05 - 10:54:06] Uh...
+[10:54:06 - 10:54:07] - I don't know.
+[10:54:08 - 10:54:09] - This is gonna be a comment.
+[10:54:09 - 10:54:10] - Uh...
+[10:54:11 - 10:54:16] -
+[10:54:16 - 10:54:17] - Uh...
+[10:54:17 - 10:54:18] -
+[10:54:18 - 10:54:19] - Uh...
+[10:54:19 - 10:54:20] - Cross.
+[10:54:20 - 10:54:21] - Murren.
+[10:54:21 - 10:54:22] - M-U-R-R-R.
+[10:54:22 - 10:54:23] - So she says...
+[10:54:23 - 10:54:24] - Have you opened it?
+[10:54:24 - 10:54:25] - Mm-hmm.
+[10:54:25 - 10:54:26] - I'm so trying.
+[10:54:26 - 10:54:27] - It's like, uh...
+[10:54:27 - 10:54:28] - Mm-hmm.
+[10:54:28 - 10:54:29] - Uh...
+[10:54:29 - 10:54:30] - I don't know, maybe...
+[10:54:30 - 10:54:31] - The...
+[10:54:31 - 10:54:32] - Did they probably...
+[10:54:32 - 10:54:34] - So she sees that he's purposely, like...
+[10:54:34 - 10:54:35] - Yeah, yeah.
+[10:54:35 - 10:54:36] - It's not.
+[10:54:36 - 10:54:37] - It's like, uh...
+[10:54:37 - 10:54:39] - So she continues on grinding her ass against her.
+[10:54:39 - 10:54:41] - I think it's not like that.
+[10:54:41 - 10:54:42] - Yeah.
+[10:54:42 - 10:54:43] - I think it's close.
+[10:54:43 - 10:54:44] - Mm-hmm.
+[10:54:44 - 10:54:45] - But...
+[10:54:45 - 10:54:46] - Mm-hmm.
+[10:54:46 - 10:54:47] - I think actually, like...
+[10:54:47 - 10:54:48] - So he, like, presses it a little...
+[10:54:48 - 10:54:49] - Mm-hmm.
+[10:54:49 - 10:54:50] - ...but it's not like that.
+[10:54:50 - 10:54:51] - He presses it a little harder.
+[10:54:51 - 10:54:52] - And, like, a little harder.
+[10:54:52 - 10:54:54] - And, like, seeing, like...
+[10:54:54 - 10:54:56] - She can get really...
+[10:54:56 - 10:54:57] - Uh...
+[10:54:57 - 10:54:59] - Like, this kind of, like...
+[10:54:59 - 10:55:00] - Pressing.
+[10:55:00 - 10:55:01] - Okay.
+[10:55:01 - 10:55:02] - Like, hard.
+[10:55:02 - 10:55:03] - Uh...
+[10:55:04 - 10:55:06] - She didn't, like, seem to, like, mind it.
+[10:55:06 - 10:55:07] - And, uh...
+[10:55:07 - 10:55:10] - She's just, like, walking with your hands on the...
+[10:55:10 - 10:55:11] - Mm-hmm.
+[10:55:13 - 10:55:14] - And so, like, uh...
+[10:55:14 - 10:55:18] - He's definitely, like, not turning his head on the...
+[10:55:18 - 10:55:19] - Yeah.
+[10:55:19 - 10:55:21] - Just rubbing his head on the...
+[10:55:21 - 10:55:22] - Mm-hmm.
+[10:55:22 - 10:55:23] - Yeah?
+[10:55:23 - 10:55:24] - She says...
+[10:55:24 - 10:55:32] - Are you mourning?
+[10:55:32 - 10:55:33] - No.
+[10:55:33 - 10:55:34] - Okay.
+[10:55:34 - 10:55:35] - So you're stopping?
+[10:55:35 - 10:55:36] - She stops.
+[10:55:36 - 10:55:37] - Okay, diba?
+[10:55:41 - 10:55:42] - Okay.
+[10:55:42 - 10:55:43] - Are you all right, sure?
+[10:55:43 - 10:55:44] - Sure.
+[10:55:44 - 10:55:45] - Yeah?
+[10:55:45 - 10:55:46] - Mm?
+[10:55:46 - 10:55:50] - I'm just like, he's like, he's there now.
+[10:55:50 - 10:55:51] - Mm-hmm.
+[10:55:51 - 10:55:59] - And he like, puts his hand away from the blood.
+[10:55:59 - 10:56:00] - Yeah.
+[10:56:00 - 10:56:01] - He puts his hand away from the blood.
+[10:56:01 - 10:56:02] - Yeah.
+[10:56:02 - 10:56:04] - He stands on the right hand.
+[10:56:04 - 10:56:05] - Are you all right?
+[10:56:05 - 10:56:06] - Sure.
+[10:56:06 - 10:56:07] - Yeah.
+[10:56:07 - 10:56:08] - Mm-hmm.
+[10:56:08 - 10:56:08] - Give me that.
+[10:56:08 - 10:56:12] - I could, like, help.
+[10:56:12 - 10:56:12] - Mm-hmm.
+[10:56:12 - 10:56:13] - He looks smart.
+[10:56:13 - 10:56:14] No, he looks smart.
+[10:56:14 - 10:56:15] - Ah, okay.
+[10:56:15 - 10:56:16] - Okay.
+[10:56:16 - 10:56:18] - But he's, like, focused on the right hand
+[10:56:18 - 10:56:22] because of his natural wonder.
+[10:56:22 - 10:56:26] He starts, like, pulling his, like, blood, blood.
+[10:56:26 - 10:56:29] - Okay, you see her, like, um, bare ass.
+[10:56:29 - 10:56:32] - Mm-hmm.
+[10:56:32 - 10:56:34] You all right?
+[10:56:34 - 10:56:35] Are you praying?
+[10:56:35 - 10:56:36] - Yes.
+[10:56:36 - 10:56:37] - Mm-hmm.
+[10:56:38 - 10:56:41] - All right, I'll remain silent and look for you.
+[10:56:41 - 10:56:43] - That's okay.
+[10:56:43 - 10:56:45] - And so, like, uh, he, he can feel it, like,
+[10:56:45 - 10:56:49] he starts, like, pulling down his pants after, like,
+[10:56:49 - 10:56:51] pulling his sweat out there.
+[10:56:51 - 10:56:54] And since you're out there, he starts, like, pressing,
+[10:56:54 - 10:56:58] and he starts, like, uh, where he starts, like,
+[10:56:58 - 10:56:59] and then she's going to roll up.
+[10:56:59 - 10:57:01] - Oh, okay.
+[10:57:01 - 10:57:02] - Okay.
+[10:57:02 - 10:57:02] - Mm-hmm.
+[10:57:05 - 10:57:06] - Nice.
+[10:57:06 - 10:57:07] - Mm-hmm.
+[10:57:07 - 10:57:08] - I like this.
+[10:57:08 - 10:57:10] - Like, what, new pain?
+[10:57:10 - 10:57:11] - Nice.
+[10:57:11 - 10:57:13] - So, this, uh.
+[10:57:13 - 10:57:14] - Yeah, it's, uh.
+[10:57:14 - 10:57:15] - It's like, uh, my whole look.
+[10:57:15 - 10:57:20] - Yeah, like, so she quickly, like, shifted his--
+[10:57:20 - 10:57:23] So, uh, she quickly shifted, uh, kind of, like, shifted
+[10:57:23 - 10:57:25] as if she's going to open the door.
+[10:57:25 - 10:57:27] And she presses the key like that.
+[10:57:27 - 10:57:31] And then she, kind of, like, you feel her, like, body,
+[10:57:31 - 10:57:35] move, like, now, and shifted your cup between her thighs.
+[10:57:35 - 10:57:38] And then she starts, like, squeezing like that.
+[10:57:38 - 10:57:41] - You okay?
+[10:57:41 - 10:57:42] - He says.
+[10:57:42 - 10:57:45] - And so, he's like, we were up and we can stop again.
+[10:57:45 - 10:57:46] So, he's fine.
+[10:57:46 - 10:57:47] - Mm-hmm.
+[10:57:47 - 10:57:48] - And it's like, it's like, it's fine.
+[10:57:48 - 10:57:49] - Mm-hmm.
+[10:57:50 - 10:57:51] - It's so good.
+[10:57:51 - 10:57:51] - Mm-hmm.
+[10:57:51 - 10:57:52] - It feels good.
+[10:57:52 - 10:57:54] - Yeah, it's so good.
+[10:57:53 - 10:57:55] Okay.
+[10:57:55 - 10:57:58] You okay?
+[10:57:58 - 10:58:00] Ah, she's open!
+[10:58:00 - 10:58:03] And so you push the door?
+[10:58:03 - 10:58:04] Not yet.
+[10:58:04 - 10:58:05] Okay.
+[10:58:05 - 10:58:07] Is she open?
+[10:58:07 - 10:58:09] Yeah. You wanna come inside?
+[10:58:09 - 10:58:11] I'm not sure.
+[10:58:11 - 10:58:13] Can you come?
+[10:58:13 - 10:58:14] I'm fine.
+[10:58:14 - 10:58:16] Can I come?
+[10:58:16 - 10:58:19] I'm sorry, no?
+[10:58:19 - 10:58:20] Yeah.
+[10:58:20 - 10:58:21] Okay.
+[10:58:21 - 10:58:23] The tea screen is locked.
+[10:58:23 - 10:58:37] Makes you come by name.
+[10:58:37 - 10:58:39] Yep, he's gonna come.
+[10:58:39 - 10:58:41] And we will come by...
+[10:58:41 - 10:58:49] Well, mine.
+[10:58:49 - 10:58:50] Yep.
+[10:58:50 - 10:58:51] Sure.
+[10:58:51 - 10:58:52] Okay.
+[10:58:52 - 10:58:53] All right.
+[10:58:53 - 10:58:55] You done for me?
+[10:58:55 - 10:59:03] So you see her kind of like the looks of your cock.
+[10:59:03 - 10:59:05] And then she kind of like...
+[10:59:05 - 10:59:07] What's this?
+[10:59:07 - 10:59:08] Another thing, yeah.
+[10:59:08 - 10:59:13] And rubs with the head of the cock, as it's coming.
+[10:59:13 - 10:59:15] Yes, it's coming.
+[10:59:15 - 10:59:23] Your sword?
+[10:59:23 - 10:59:24] She says.
+[10:59:24 - 10:59:26] I am...
+[10:59:26 - 10:59:27] Yes.
+[10:59:27 - 10:59:29] It's kind of cute.
+[10:59:29 - 10:59:30] She says.
+[10:59:30 - 10:59:31] It's a sword.
+[10:59:32 - 10:59:32] And so this guy...
+[10:59:32 - 10:59:33] But it's kind of greasy.
+[10:59:33 - 10:59:46] You can see that this guy doesn't have a horse.
+[10:59:46 - 10:59:47] Or not on his cock.
+[10:59:47 - 10:59:48] Huh?
+[10:59:48 - 10:59:49] I don't know.
+[10:59:49 - 10:59:50] Well, at least not on his cock.
+[10:59:50 - 10:59:51] So you are not like 100% certain on his cock.
+[10:59:54 - 10:59:55] Sometimes it's in their cock.
+[10:59:55 - 10:59:56] Oh.
+[10:59:56 - 10:59:57] Yeah.
+[10:59:57 - 10:59:58] So...
+[10:59:58 - 10:59:59] But you haven't seen that.
+[10:59:59 - 11:00:00] And then she's kind of like...
+[11:00:00 - 11:00:01] This guy is an idiot.
+[11:00:01 - 11:00:02] And he's not like forcing himself.
+[11:00:02 - 11:00:03] Yeah.
+[11:00:03 - 11:00:04] He's like...
+[11:00:07 - 11:00:08] Sexy.
+[11:00:08 - 11:00:09] He's like...
+[11:00:11 - 11:00:12] He used this opportunity to kind of like...
+[11:00:12 - 11:00:13] Play with his cock.
+[11:00:13 - 11:00:15] So she turns around.
+[11:00:15 - 11:00:17] And then kind of like...
+[11:00:17 - 11:00:20] This girl didn't even like...
+[11:00:20 - 11:00:21] Look at the car.
+[11:00:21 - 11:00:22] The whole way.
+[11:00:22 - 11:00:24] The check of the other people.
+[11:00:24 - 11:00:26] Well, right now he doesn't even...
+[11:00:26 - 11:00:27] Yeah.
+[11:00:27 - 11:00:28] He's like...
+[11:00:28 - 11:00:29] Like I said...
+[11:00:29 - 11:00:30] Natural.
+[11:00:30 - 11:00:31] But...
+[11:00:31 - 11:00:32] Your...
+[11:00:32 - 11:00:33] Your sword is really cute.
+[11:00:33 - 11:00:34] Can you touch it more?
+[11:00:34 - 11:00:35] Yeah.
+[11:00:35 - 11:00:36] I can touch it as much as you want.
+[11:00:36 - 11:00:37] So she touch it as much as you want.
+[11:00:37 - 11:00:38] So she touch it as you want.
+[11:00:38 - 11:00:39] Mm-hmm.
+[11:00:40 - 11:00:42] You know, run away in their slants.
+[11:00:42 - 11:00:43] Mm-hmm.
+[11:00:43 - 11:00:44] It's coming up.
+[11:00:44 - 11:00:45] This sword...
+[11:00:47 - 11:00:48] Do me?
+[11:00:48 - 11:00:49] This size.
+[11:00:49 - 11:00:51] I don't know.
+[11:00:51 - 11:00:55] Can I see it?
+[11:00:55 - 11:00:56] It's over there.
+[11:00:56 - 11:00:57] Well, it's out.
+[11:00:57 - 11:00:58] Yeah.
+[11:00:58 - 11:00:59] But she says...
+[11:00:59 - 11:01:00] Can I look at it?
+[11:01:00 - 11:01:01] Can I inspect it?
+[11:01:01 - 11:01:02] He says...
+[11:01:02 - 11:01:03] Can I inspect it?
+[11:01:03 - 11:01:04] He says...
+[11:01:04 - 11:01:05] I can't see it now.
+[11:01:05 - 11:01:06] Huh?
+[11:01:06 - 11:01:07] Well...
+[11:01:08 - 11:01:09] Of course you can't.
+[11:01:09 - 11:01:10] This ocean looks around.
+[11:01:10 - 11:01:11] Is there...
+[11:01:11 - 11:01:12] Are there people here?
+[11:01:12 - 11:01:13] Uh...
+[11:01:13 - 11:01:14] You...
+[11:01:14 - 11:01:15] Look around.
+[11:01:15 - 11:01:16] Uh...
+[11:01:16 - 11:01:17] If you want to like...
+[11:01:17 - 11:01:18] Even listen.
+[11:01:18 - 11:01:19] Go ahead and...
+[11:01:22 - 11:01:23] But in the general vicinity...
+[11:01:23 - 11:01:24] You don't like see...
+[11:01:24 - 11:01:25] I'm gonna...
+[11:01:25 - 11:01:26] Sixteen.
+[11:01:26 - 11:01:27] That is total?
+[11:01:27 - 11:01:28] Yeah.
+[11:01:28 - 11:01:29] Well...
+[11:01:29 - 11:01:30] You don't notice it there...
+[11:01:30 - 11:01:31] Okay.
+[11:01:31 - 11:01:32] So she turns around...
+[11:01:32 - 11:01:33] Uh...
+[11:01:34 - 11:01:35] And...
+[11:01:35 - 11:01:36] She kind of like...
+[11:01:36 - 11:01:37] Me looks...
+[11:01:37 - 11:01:38] Mm-hmm.
+[11:01:38 - 11:01:39] And tries to like...
+[11:01:39 - 11:01:40] Look up.
+[11:01:40 - 11:01:41] Stare at her.
+[11:01:41 - 11:01:43] Do you notice when you come up?
+[11:01:43 - 11:01:44] Yes.
+[11:01:44 - 11:01:45] Yeah.
+[11:01:45 - 11:01:46] I don't sure wish you were in the bathtub.
+[11:01:46 - 11:01:47] Yeah.
+[11:01:47 - 11:01:48] You were kind of lonely.
+[11:01:48 - 11:01:49] What kind of look like?
+[11:01:49 - 11:01:50] Really?
+[11:01:50 - 11:01:51] Who's that?
+[11:01:51 - 11:01:52] I don't know.
+[11:01:53 - 11:01:54] She's a...
+[11:01:54 - 11:01:55] Well...
+[11:01:55 - 11:01:56] I don't know.
+[11:01:57 - 11:01:59] I really like sexy magazine.
+[11:01:59 - 11:02:00] Sexy magazine?
+[11:02:00 - 11:02:01] Oh...
+[11:02:01 - 11:02:02] What's that?
+[11:02:02 - 11:02:03] It's a lot.
+[11:02:03 - 11:02:04] It's a lot there.
+[11:02:06 - 11:02:07] I don't know.
+[11:02:07 - 11:02:08] Well...
+[11:02:08 - 11:02:09] I don't know.
+[11:02:09 - 11:02:10] What?
+[11:02:10 - 11:02:11] She says.
+[11:02:11 - 11:02:13] Well...
+[11:02:13 - 11:02:14] On my room...
+[11:02:14 - 11:02:15] I don't talk to you.
+[11:02:15 - 11:02:16] Really?
+[11:02:16 - 11:02:17] Can I see?
+[11:02:17 - 11:02:19] So maybe I could...
+[11:02:19 - 11:02:20] Tell...
+[11:02:20 - 11:02:21] If I really look like...
+[11:02:21 - 11:02:22] Yeah.
+[11:02:22 - 11:02:24] Poor of a guy is there.
+[11:02:24 - 11:02:25] So she...
+[11:02:25 - 11:02:26] Kind of like...
+[11:02:26 - 11:02:27] Those...
+[11:02:27 - 11:02:28] Her little hands works in your bed.
+[11:02:28 - 11:02:29] Sure.
+[11:02:29 - 11:02:30] So yeah.
+[11:02:30 - 11:02:31] You look at this most basically.
+[11:02:31 - 11:02:35] We don't see any like piercings or pierce holes.
+[11:02:35 - 11:02:36] Or like...
+[11:02:36 - 11:02:37] Actual...
+[11:02:37 - 11:02:38] Like...
+[11:02:38 - 11:02:39] Studs.
+[11:02:39 - 11:02:40] There.
+[11:02:40 - 11:02:41] She goes to...
+[11:02:41 - 11:02:42] Like...
+[11:02:42 - 11:02:43] That hole.
+[11:02:43 - 11:02:44] That's right.
+[11:02:44 - 11:02:45] I'm sorry.
+[11:02:45 - 11:02:46] Not good.
+[11:02:46 - 11:02:47] Can I touch it?
+[11:02:47 - 11:02:48] I'm sorry.
+[11:02:48 - 11:02:52] You can touch mom before.
+[11:02:52 - 11:02:53] I'm sorry.
+[11:02:53 - 11:02:54] I can persuade her.
+[11:02:54 - 11:02:55] Persuasion.
+[11:02:55 - 11:02:55] No, no, but...
+[11:02:55 - 11:02:56] No.
+[11:02:56 - 11:02:57] When you said that...
+[11:02:57 - 11:02:58] You don't even have to...
+[11:02:58 - 11:02:59] When you said that...
+[11:02:59 - 11:03:00] You don't even have to...
+[11:03:00 - 11:03:01] When you said that...
+[11:03:01 - 11:03:02] You can touch mine if you want.
+[11:03:02 - 11:03:03] He said...
+[11:03:03 - 11:03:04] You can touch mine if you want.
+[11:03:04 - 11:03:05] He said...
+[11:03:05 - 11:03:06] That's a good one.
+[11:03:06 - 11:03:07] Yeah.
+[11:03:08 - 11:03:09] So she's...
+[11:03:09 - 11:03:10] So she's shake...
+[11:03:10 - 11:03:11] Your cup.
+[11:03:11 - 11:03:12] Yeah.
+[11:03:12 - 11:03:13] She's shaking your hands.
+[11:03:13 - 11:03:14] So she's shaking your hands.
+[11:03:16 - 11:03:17] So she puts her little finger inside your butt.
+[11:03:17 - 11:03:18] Is that piercing?
+[11:03:18 - 11:03:19] You feel a piercing, but it is not piercing.
+[11:03:19 - 11:03:20] Oh, shit.
+[11:03:20 - 11:03:21] Girl, I don't understand that.
+[11:03:21 - 11:03:22] So you feel like maybe it's straining?
+[11:03:22 - 11:03:23] Yeah.
+[11:03:23 - 11:03:24] You have something inside your butt.
+[11:03:24 - 11:03:25] Oh, shit.
+[11:03:25 - 11:03:26] Girl, I don't understand that.
+[11:03:26 - 11:03:27] So you feel like maybe it's straining?
+[11:03:27 - 11:03:28] Yeah.
+[11:03:28 - 11:03:29] You have something inside your butt.
+[11:03:29 - 11:03:30] Yeah.
+[11:03:30 - 11:03:31] You have something inside your butt.
+[11:03:31 - 11:03:32] It's not piercing.
+[11:03:32 - 11:03:33] Oh, shit.
+[11:03:33 - 11:03:35] Girl, I don't understand that.
+[11:03:35 - 11:03:37] So you feel like maybe it's straining?
+[11:03:37 - 11:03:38] Yeah.
+[11:03:38 - 11:03:39] You have something inside your butt.
+[11:03:39 - 11:03:40] Yeah.
+[11:03:40 - 11:03:43] You have something inside your butt.
+[11:03:43 - 11:03:44] Oh.
+[11:03:44 - 11:03:45] Huh?
+[11:03:45 - 11:03:47] Oh, right.
+[11:03:47 - 11:03:49] I forgot that stuff.
+[11:03:49 - 11:03:53] It's to prove our location.
+[11:03:53 - 11:03:56] Oh, it's something.
+[11:03:56 - 11:03:58] It's Paladin stuff?
+[11:03:58 - 11:03:59] Yes.
+[11:03:59 - 11:04:00] Wow.
+[11:04:00 - 11:04:01] That's cool.
+[11:04:01 - 11:04:03] I feel like that.
+[11:04:03 - 11:04:04] Yeah.
+[11:04:04 - 11:04:06] So, yeah.
+[11:04:06 - 11:04:11] He says, I'm not really supposed to talk about this, but, you know, sometimes.
+[11:04:11 - 11:04:12] I don't see.
+[11:04:12 - 11:04:14] So, she, you see her spams up.
+[11:04:14 - 11:04:22] And, uh, you kind of, like, you see her kind of, like, a green room in the, um, pull up her script.
+[11:04:22 - 11:04:23] Pulling the head to see.
+[11:04:23 - 11:04:25] And she's stuck next to her baby.
+[11:04:25 - 11:04:28] And you're not supposed to talk about that.
+[11:04:28 - 11:04:29] I don't know.
+[11:04:32 - 11:04:33] I don't want to touch.
+[11:04:33 - 11:04:40] It's only like worse than the other body in space like this one comes in.
+[11:04:40 - 11:04:42] Is it thirsty?
+[11:04:42 - 11:04:43] Yeah.
+[11:04:43 - 11:04:46] It's only goes down to the system.
+[11:04:46 - 11:04:52] It smells nice, right?
+[11:04:52 - 11:04:53] Yes.
+[11:04:53 - 11:04:54] It is.
+[11:04:54 - 11:04:57] It's only puts his finger in.
+[11:04:57 - 11:05:07] When he starts breathing, when he starts breathing inside, he's not pushing out.
+[11:05:07 - 11:05:12] You're so hot.
+[11:05:12 - 11:05:14] Why do you keep piercing on one of us here?
+[11:05:14 - 11:05:15] It does.
+[11:05:18 - 11:05:19] Yeah, it does.
+[11:05:23 - 11:05:26] It keeps tingling in my...
+[11:05:26 - 11:05:28] It's okay.
+[11:05:28 - 11:05:29] So he starts breathing.
+[11:05:29 - 11:05:30] He starts breathing.
+[11:05:32 - 11:05:35] What are you doing?
+[11:05:35 - 11:05:38] Why are you playing with your sword?
+[11:05:38 - 11:05:40] Of course.
+[11:05:40 - 11:05:44] I thought it was behind it.
+[11:05:44 - 11:05:46] So it's nice.
+[11:05:46 - 11:05:52] Your sword can play with my kitty, you know?
+[11:05:52 - 11:05:53] Uh-huh.
+[11:05:55 - 11:05:56] Okay.
+[11:05:56 - 11:05:57] All right.
+[11:05:57 - 11:05:59] So she rides it in your back yard.
+[11:05:59 - 11:06:00] She's not really looking for the thing.
+[11:06:00 - 11:06:01] You wish.
+[11:06:01 - 11:06:02] And she kind of like, rubs it like.
+[11:06:02 - 11:06:03] Uh-huh.
+[11:06:08 - 11:06:09] So she's like really, really rubbing.
+[11:06:09 - 11:06:10] Pressing.
+[11:06:10 - 11:06:11] Uh-huh.
+[11:06:11 - 11:06:12] Okay.
+[11:06:12 - 11:06:13] So you see her back kind of like, um...
+[11:06:13 - 11:06:14] Uh-huh.
+[11:06:24 - 11:06:26] She was rubbing a little bit fast earlier.
+[11:06:26 - 11:06:27] But then she slows down the way.
+[11:06:27 - 11:06:29] Let's see a penny with her.
+[11:06:29 - 11:06:30] Lose her...
+[11:06:30 - 11:06:31] Tiny body.
+[11:06:31 - 11:06:32] What?
+[11:06:33 - 11:06:34] Uh-huh.
+[11:06:37 - 11:06:50] And so he like puts his hand in front of her chest and makes things like the other one.
+[11:06:50 - 11:06:51] What?
+[11:06:51 - 11:06:52] Can you pee?
+[11:06:52 - 11:06:55] Can you pee on your wrist?
+[11:06:55 - 11:06:58] I can hear pee on your sword.
+[11:06:58 - 11:06:59] I don't know.
+[11:06:59 - 11:07:02] I think there's probably shit in there.
+[11:07:02 - 11:07:05] Here it comes.
+[11:07:05 - 11:07:06] Okay.
+[11:07:06 - 11:07:09] So he stops moving the past and you're happy.
+[11:07:09 - 11:07:10] Okay.
+[11:07:10 - 11:07:11] Maybe you...
+[11:07:11 - 11:07:12] Stomp with a 15.
+[11:07:12 - 11:07:19] Yeah.
+[11:07:19 - 11:07:20] You will come.
+[11:07:20 - 11:07:24] I will get a female.
+[11:07:24 - 11:07:25] Okay.
+[11:07:25 - 11:07:29] Also before he comes, she goes down.
+[11:07:29 - 11:07:32] You will see her professionally.
+[11:07:32 - 11:07:33] Yes.
+[11:07:33 - 11:07:34] I'm sure I will see her.
+[11:07:34 - 11:07:35] Okay.
+[11:07:35 - 11:07:36] No time to waste, right?
+[11:07:36 - 11:07:37] Okay.
+[11:07:37 - 11:07:38] No time to waste, right?
+[11:07:38 - 11:07:39] Okay.
+[11:07:39 - 11:07:40] No time to waste, right?
+[11:07:42 - 11:07:43] Okay.
+[11:07:43 - 11:07:44] No time to waste, right?
+[11:07:53 - 11:08:02] I think I love it too much.
+[11:08:02 - 11:08:06] Carries, Carries, what?
+[11:08:06 - 11:08:07] No.
+[11:08:07 - 11:08:08] Arsuration?
+[11:08:08 - 11:08:13] I'm a young boy.
+[11:08:13 - 11:08:16] Well, I'm a young boy.
+[11:08:16 - 11:08:21] They said that you hold bigger pieces.
+[11:08:21 - 11:08:27] I'm a young boy.
+[11:08:27 - 11:08:31] Can I tell you something first?
+[11:08:31 - 11:08:32] Yes.
+[11:08:32 - 11:08:34] And so you do something.
+[11:08:34 - 11:08:38] She shows you on your nipples.
+[11:08:38 - 11:08:42] It's not good.
+[11:08:42 - 11:08:45] And so you do something about it.
+[11:08:45 - 11:08:48] It's just standing on the disposal of the sun.
+[11:08:48 - 11:08:50] Good job.
+[11:08:50 - 11:08:53] You're doing what you're told.
+[11:08:53 - 11:08:54] I know.
+[11:08:54 - 11:08:55] That's enough?
+[11:08:55 - 11:08:58] She touched your cheeks like nothing.
+[11:08:58 - 11:09:03] There's no milk in there.
+[11:09:03 - 11:09:04] Yes.
+[11:09:04 - 11:09:05] There's no milk in there.
+[11:09:05 - 11:09:06] You can help us here.
+[11:09:06 - 11:09:09] The Social Commission has valid that thing.
+[11:09:09 - 11:09:10] Okay.
+[11:09:12 - 11:09:14] Now you can have my last hope.
+[11:09:14 - 11:09:16] I'm a little bit.
+[11:09:16 - 11:09:17] I'd like to buy them.
+[11:09:18 - 11:09:19] I'd like to see.
+[11:09:19 - 11:09:21] The others?
+[11:09:21 - 11:09:22] Yeah.
+[11:09:22 - 11:09:24] I'm going to buy this one.
+[11:09:25 - 11:09:26] I'm going to see.
+[11:09:26 - 11:09:27] Okay.
+[11:09:27 - 11:09:28] She says.
+[11:09:28 - 11:09:33] Do you think your friends could, you know, give me some silver?
+[11:09:33 - 11:09:35] All right.
+[11:09:35 - 11:09:38] The grip band, you know?
+[11:09:38 - 11:09:39] Probably.
+[11:09:39 - 11:09:40] Probably fine.
+[11:09:40 - 11:09:41] Okay.
+[11:09:41 - 11:09:43] She says.
+[11:09:43 - 11:09:47] Well, you want to like zip up a bit.
+[11:09:47 - 11:09:49] He does.
+[11:09:49 - 11:09:52] Well, you feel it hard still.
+[11:09:52 - 11:09:53] Yeah.
+[11:09:53 - 11:09:54] He says.
+[11:09:54 - 11:09:55] Okay.
+[11:09:55 - 11:09:57] I'm sure you know how.
+[11:09:57 - 11:09:58] You can count it, right?
+[11:09:58 - 11:09:59] I don't know.
+[11:10:00 - 11:10:01] This could be on the table.
+[11:10:01 - 11:10:02] Yes.
+[11:10:02 - 11:10:03] I'm a favorite.
+[11:10:03 - 11:10:05] I mean, if you look like me, Cambo.
+[11:10:05 - 11:10:07] Me, Cambo is my favorite.
+[11:10:07 - 11:10:08] Okay.
+[11:10:08 - 11:10:09] She says.
+[11:10:09 - 11:10:10] So, yeah.
+[11:10:10 - 11:10:11] Is this guy grey paladin?
+[11:10:11 - 11:10:12] Yeah.
+[11:10:12 - 11:10:13] Okay.
+[11:10:13 - 11:10:15] So, she knows that they're fierce.
+[11:10:15 - 11:10:16] And so, yeah.
+[11:10:16 - 11:10:17] Is this guy grey paladin?
+[11:10:17 - 11:10:18] Yeah.
+[11:10:18 - 11:10:19] Okay.
+[11:10:19 - 11:10:21] So, she knows that they're fierce.
+[11:10:21 - 11:10:22] They're fierce.
+[11:10:22 - 11:10:23] This guy is fierce in the back.
+[11:10:23 - 11:10:24] Yeah.
+[11:10:24 - 11:10:26] But not with the cursed one.
+[11:10:26 - 11:10:27] Okay.
+[11:10:28 - 11:10:29] Like I said.
+[11:10:29 - 11:10:30] Okay.
+[11:10:30 - 11:10:38] So, like he said that, you know, in seven minutes, it's like, training to show you education.
+[11:10:38 - 11:10:39] Basically.
+[11:10:39 - 11:10:40] That's what he said.
+[11:10:40 - 11:10:41] Okay.
+[11:10:41 - 11:10:42] Yeah.
+[11:10:42 - 11:10:43] And so, yeah.
+[11:10:43 - 11:10:49] He, uh, he, uh, he, like, he is now conscious about, like, uh, making sure that nobody else
+[11:10:49 - 11:10:50] sees you.
+[11:10:50 - 11:10:55] And then it's like, if you're going to be sharing this, you're going to just share it with his
+[11:10:55 - 11:10:56] friends.
+[11:10:56 - 11:10:57] Okay.
+[11:10:57 - 11:10:58] Whatever.
+[11:10:58 - 11:11:01] And so, we, like, uh, go to school now.
+[11:11:01 - 11:11:02] Okay.
+[11:11:02 - 11:11:03] Sorry.
+[11:11:03 - 11:11:04] And so, yeah.
+[11:11:04 - 11:11:05] He goes and opens the door to the room.
+[11:11:05 - 11:11:06] And they're just like, the fuck?
+[11:11:06 - 11:11:07] Hey, don't be so wrong.
+[11:11:07 - 11:11:08] You take a fucking drop.
+[11:11:08 - 11:11:09] I'm sorry.
+[11:11:09 - 11:11:10] I didn't mean to swear.
+[11:11:10 - 11:11:11] It's okay.
+[11:11:11 - 11:11:12] Okay.
+[11:11:12 - 11:11:15] Um, weren't you the servant girl earlier?
+[11:11:15 - 11:11:16] Mm-hmm.
+[11:11:16 - 11:11:17] Yeah.
+[11:11:17 - 11:11:18] That's right.
+[11:11:18 - 11:11:19] I'm sorry.
+[11:11:19 - 11:11:20] I didn't mean to swear.
+[11:11:20 - 11:11:21] It's okay.
+[11:11:21 - 11:11:22] Okay.
+[11:11:22 - 11:11:23] Um, weren't you the servant girl earlier?
+[11:11:23 - 11:11:24] Mm-hmm.
+[11:11:24 - 11:11:25] Yeah, that's right.
+[11:11:25 - 11:11:26] I didn't mean to swear.
+[11:11:26 - 11:11:27] It's okay.
+[11:11:27 - 11:11:28] Okay.
+[11:11:28 - 11:11:29] Um, weren't you the servant girl earlier?
+[11:11:29 - 11:11:30] Mm-hmm.
+[11:11:30 - 11:11:31] Yeah, that's right.
+[11:11:31 - 11:11:32] Yeah.
+[11:11:32 - 11:11:33] I didn't mean to swear.
+[11:11:33 - 11:11:34] It's okay.
+[11:11:34 - 11:11:35] Okay.
+[11:11:35 - 11:11:36] Um, weren't you the servant girl earlier?
+[11:11:36 - 11:11:37] Mm-hmm.
+[11:11:38 - 11:11:39] What are you doing?
+[11:11:39 - 11:11:40] You know what I am?
+[11:11:40 - 11:11:43] He wanted to go with me.
+[11:11:43 - 11:11:49] Well, if he wants to have some fun with us.
+[11:11:49 - 11:11:50] Uh.
+[11:11:50 - 11:11:51] You play cards?
+[11:11:51 - 11:11:52] So.
+[11:11:52 - 11:11:53] Yeah.
+[11:11:55 - 11:11:56] I'm not supposed to.
+[11:11:56 - 11:11:57] Yeah.
+[11:11:57 - 11:12:00] I'm not supposed to, but, uh.
+[11:12:00 - 11:12:01] Mm-hmm.
+[11:12:01 - 11:12:06] So he, like, goes under one of the, under the map or something like that.
+[11:12:06 - 11:12:17] with a deck of cards there. And you can see it's a deck of cards that's from one of your first issues of your memory.
+[11:12:17 - 11:12:19] Okay. And it's like...
+[11:12:19 - 11:12:21] Yung mga...
+[11:12:21 - 11:12:26] Shall we play? How many of them are here?
+[11:12:26 - 11:12:29] Five. Including this guy.
+[11:12:29 - 11:12:41] Let me tell you this. If she is in prison, she will use whatever resources she has.
+[11:12:41 - 11:12:43] Alright, she says.
+[11:12:43 - 11:12:49] Best of file?
+[11:12:49 - 11:12:55] I only know the easy card games.
+[11:12:55 - 11:13:01] Yeah, part of what? Crazy 8's or something?
+[11:13:01 - 11:13:05] Yeah. Best of treat.
+[11:13:05 - 11:13:09] It's been a few months later.
+[11:13:09 - 11:13:15] And so one of the cards is one of your styles.
+[11:13:15 - 11:13:21] Hey, can you frown?
+[11:13:21 - 11:13:23] You don't look angry.
+[11:13:23 - 11:13:25] So are we done?
+[11:13:25 - 11:13:29] Well, you've got to win first, before asking stuff.
+[11:13:29 - 11:13:31] Fair enough.
+[11:13:31 - 11:13:35] So yeah, we go around.
+[11:13:35 - 11:13:39] Alright, so I don't have money to bet.
+[11:13:39 - 11:13:41] But I can bet something else.
+[11:13:41 - 11:13:43] I will do what you wish for.
+[11:13:43 - 11:13:45] Yes, I see.
+[11:13:45 - 11:13:47] So you want me to find my...
+[11:13:47 - 11:13:47] I'll find.
+[11:13:47 - 11:13:48] Yes, I see.
+[11:13:48 - 11:13:49] You want me?
+[11:13:49 - 11:13:51] You want me to...
+[11:13:51 - 11:13:52] Or something else?
+[11:13:52 - 11:13:53] Drink a cup of wine?
+[11:13:53 - 11:13:54] I'll drink it.
+[11:13:54 - 11:13:55] Yes.
+[11:13:55 - 11:13:59] Well, we don't have wine here.
+[11:13:59 - 11:14:01] What are you talking about?
+[11:14:01 - 11:14:03] In that picture, that's wine.
+[11:14:03 - 11:14:04] So...
+[11:14:04 - 11:14:05] Yeah.
+[11:14:05 - 11:14:06] It's really obvious.
+[11:14:06 - 11:14:07] It's fine.
+[11:14:09 - 11:14:11] Yeah, if the inspector...
+[11:14:11 - 11:14:15] If the inspector came here, it would definitely get him.
+[11:14:15 - 11:14:16] Yeah.
+[11:14:16 - 11:14:18] Nah, it's fine.
+[11:14:18 - 11:14:21] Alright, alright, alright, alright.
+[11:14:21 - 11:14:22] So one of the...
+[11:14:22 - 11:14:25] So, if I'm in, you'll do what I say.
+[11:14:25 - 11:14:26] It's fine.
+[11:14:26 - 11:14:27] He says.
+[11:14:27 - 11:14:28] Mm-hmm.
+[11:14:28 - 11:14:29] So it's fine.
+[11:14:29 - 11:14:30] But...
+[11:14:30 - 11:14:32] I mean, don't we all get our own...
+[11:14:32 - 11:14:33] The man?
+[11:14:33 - 11:14:34] So then some...
+[11:14:34 - 11:14:35] The human?
+[11:14:35 - 11:14:36] Yeah.
+[11:14:36 - 11:14:37] He says.
+[11:14:37 - 11:14:39] We're going to buy one.
+[11:14:39 - 11:14:41] No, I'm still in America.
+[11:14:41 - 11:14:44] Mmm...
+[11:14:44 - 11:14:45] I'm going to buy one.
+[11:14:45 - 11:14:46] Alright.
+[11:14:46 - 11:14:47] He says.
+[11:14:47 - 11:14:51] What about you, sir?
+[11:14:51 - 11:14:52] He says.
+[11:14:52 - 11:14:53] Who is it?
+[11:14:54 - 11:14:55] Say something.
+[11:14:55 - 11:14:56] She's coming.
+[11:14:57 - 11:14:58] Like...
+[11:14:58 - 11:14:59] Ah...
+[11:14:59 - 11:15:04] You're welcome.
+[11:15:04 - 11:15:08] I think you are...
+[11:15:08 - 11:15:09] You're looking.
+[11:15:09 - 11:15:10] Lifting.
+[11:15:14 - 11:15:15] Okay.
+[11:15:15 - 11:15:16] He says.
+[11:15:16 - 11:15:19] So in...
+[11:15:20 - 11:15:21] Anything.
+[11:15:24 - 11:15:25] Go over here, right?
+[11:15:25 - 11:15:26] Mm-hmm.
+[11:15:26 - 11:15:27] And...
+[11:15:27 - 11:15:28] Maybe it's on the top.
+[11:15:28 - 11:15:30] Okay.
+[11:15:30 - 11:15:31] So...
+[11:15:31 - 11:15:35] You need to help?
+[11:15:35 - 11:15:37] You guys are doing a little too fast.
+[11:15:37 - 11:15:38] I don't know.
+[11:15:38 - 11:15:40] You can...
+[11:15:40 - 11:15:41] Go with a little hand.
+[11:15:41 - 11:15:42] So...
+[11:15:42 - 11:15:43] Work up.
+[11:15:43 - 11:15:44] And...
+[11:15:44 - 11:15:45] Up.
+[11:15:45 - 11:15:47] It's Ivan.
+[11:15:51 - 11:16:03] Oh, if you show me your sock in your sock.
+[11:16:03 - 11:16:09] It's Ivan.
+[11:16:09 - 11:16:11] Alright, that's what you want to do.
+[11:16:11 - 11:16:13] Alright.
+[11:16:13 - 11:16:15] Seventeen.
+[11:16:15 - 11:16:29] So like the only one who like wanted to win is the one who wanted to lose like a sock on his own.
+[11:16:29 - 11:16:31] But he rolled a fifteen.
+[11:16:31 - 11:16:35] And the rest looked like they were like purposely trying to lose.
+[11:16:35 - 11:16:36] Eighteen.
+[11:16:36 - 11:16:41] So seven, four, three.
+[11:16:41 - 11:16:43] Fifteen, the last one.
+[11:16:43 - 11:16:47] So eight, nine, eleven.
+[11:16:47 - 11:16:49] Tapos eighteen.
+[11:16:49 - 11:16:51] So nine, you win one.
+[11:16:51 - 11:16:53] So you win one.
+[11:16:55 - 11:16:57] Nineteen.
+[11:17:01 - 11:17:12] Natural one. Natural one. Natural one. Natural one. Natural one. 19.
+[11:17:31 - 11:17:41] Yeah, they gotta share. They're on the scary. I don't want to see a fucking possible.
+[11:17:41 - 11:17:43] Lean on.
+[11:17:43 - 11:17:51] I don't want to have all of your attention in mind.
+[11:17:51 - 11:17:55] I believe in that. I'll give you a lot of attention.
+[11:17:53 - 11:17:55] How do you do a lot of them?
+[11:17:55 - 11:18:02] So, yeah, they start like pulling their cocks out.
+[11:18:02 - 11:18:11] Alright, so one of them you already saw, 7-4, right?
+[11:18:11 - 11:18:19] Do they have piercing?
+[11:18:22 - 11:18:24] The 6-3, no?
+[11:18:24 - 11:18:29] So maybe in his left hole?
+[11:18:29 - 11:18:30] Maybe.
+[11:18:30 - 11:18:32] 9-1.
+[11:18:32 - 11:18:37] 9 long, but 1 thickness.
+[11:18:37 - 11:18:48] Wow.
+[11:18:48 - 11:18:50] 10-3.
+[11:18:50 - 11:18:51] What is it?
+[11:18:51 - 11:18:52] It's a metal.
+[11:18:52 - 11:18:56] It looks really huge.
+[11:18:56 - 11:18:59] And let's see.
+[11:18:59 - 11:19:02] Is that a 6-4?
+[11:19:02 - 11:19:05] And you have that thing on you?
+[11:19:05 - 11:19:06] Is it first?
+[11:19:07 - 11:19:08] Does it hurt?
+[11:19:10 - 11:19:10] It hurts?
+[11:19:10 - 11:19:10] Does it hurt?
+[11:19:13 - 11:19:41] It is. Does it hurt? This is the guy that wanted to help you get himself. Does it hurt? I'm so sure you kind of like people say that. It hurts a little but it feels good too. You know.
+[11:19:43 - 11:20:05] You see her kind of like smile. And I guess go ahead and roll a camera. 19. At the very least from what you can tell from his face and his eyes. It hasn't started to completely affect him.
+[11:20:05 - 11:20:15] With a 19. You can at least tell that this is like fresh in the last part of it.
+[11:20:15 - 11:20:25] The old palgita could be like one to two days. So she says, if not, she says. Yeah, at first. Thank you.
+[11:20:25 - 11:20:37] So she purposely brushes it and scrapes it. And goes to the other one. And goes to the other one as well. But avoiding his love.
+[11:20:37 - 11:20:49] And goes to the other one as well. But avoiding his love. Thank you. Are you mad?
+[11:20:49 - 11:20:53] No. I'm sorry. He cases it.
+[11:20:53 - 11:21:13] Slap it. Slap it. Slap it. Slap it. All right. So she slaps on her cheeks like that. Like that?
+[11:21:13 - 11:21:21] I don't know. Can you slap? Slap it. Ah. So like that?
+[11:21:21 - 11:21:37] Okay. We're in this fucking church. I just zoom in the book. So she ignores it like that.
+[11:21:37 - 11:21:43] And the other is for like mostly like star. In the book.
+[11:21:43 - 11:22:03] Yeah. And she kind of like pulls those two bits and presses each other. And she straps them both like that. And then puts it in her little mouth.
+[11:22:03 - 11:22:07] Keep her in. You look at this.
+[11:22:07 - 11:22:09] Sure.
+[11:22:09 - 11:22:13] She looks like a cow.
+[11:22:13 - 11:22:17] You look like a cow.
+[11:22:17 - 11:22:21] You should know, didn't you?
+[11:22:21 - 11:22:27] I'm not, sir. Stop. I don't even know what you're talking about.
+[11:22:27 - 11:22:31] You want me to bite off your tongue?
+[11:22:31 - 11:22:35] I don't know what you're talking about.
+[11:22:35 - 11:22:39] You really want to know how to eat the pork.
+[11:22:39 - 11:22:43] I want to eat the pork.
+[11:22:55 - 11:22:59] Is it pork?
+[11:23:01 - 11:23:03] No, no, no.
+[11:23:03 - 11:23:05] No, should I stop?
+[11:23:05 - 11:23:07] No, don't stop.
+[11:23:07 - 11:23:09] You want me to chew rid of it?
+[11:23:09 - 11:23:11] She says.
+[11:23:11 - 11:23:13] I don't want to eat the pork.
+[11:27:53 - 11:27:58] "Hey don't push it on my face! You'll get your turn!" she says.
+[11:27:58 - 11:28:00] She's got her feet.
+[11:28:00 - 11:28:04] "I'm doing it already, alright?"
+[11:28:04 - 11:28:13] "You wanna come really bad?" she says.
+[11:28:13 - 11:28:17] "Natural, thank you for performance."
+[11:28:23 - 11:28:25] "Oh yeah, she's gonna come."
+[11:28:25 - 11:28:31] "While they are coming, she inserts her finger inside."
+[11:28:31 - 11:28:34] "Some other parts. So, nakadalawakan na."
+[11:28:34 - 11:28:36] "Tatla na pangatlo na to?"
+[11:28:36 - 11:28:40] "Well, yung una kasi confirm na namin."
+[11:28:40 - 11:28:46] "So, the second one, so wala yung isa."
+[11:28:46 - 11:28:48] "Okay."
+[11:28:48 - 11:28:51] "Okay, so yung isa pa wala."
+[11:28:51 - 11:28:54] "So, one out of three."
+[11:28:54 - 11:28:56] "So, wala silang mga piercing."
+[11:28:56 - 11:28:57] "Oh, okay."
+[11:28:57 - 11:28:58] "Itong large pack lang."
+[11:28:58 - 11:29:04] "No, I mean, yung isa, yung una walang piercing."
+[11:29:04 - 11:29:14] "Yung pangalawa, may piercing, pero like the guy who you, it's like, it's not, it's not, it's not, it's not."
+[11:29:14 - 11:29:16] "Or if it is pierced, it's not."
+[11:29:16 - 11:29:19] "Itong malaking detail lang yung merong piercing."
+[11:29:19 - 11:29:21] "Okay."
+[11:29:22 - 11:29:25] "So, yeah, you start going on to the..."
+[11:29:25 - 11:29:26] "Yung parang..."
+[11:29:26 - 11:29:29] "Yung pinakam mo ngayon."
+[11:29:29 - 11:29:30] "Mmm, meron siya?"
+[11:29:30 - 11:29:31] "So, yeah, meron siya."
+[11:29:31 - 11:29:33] "And he is first as well."
+[11:29:33 - 11:29:38] "So, two out of the five."
+[11:29:38 - 11:29:40] "So, ito yung huli."
+[11:29:40 - 11:29:41] "So, yung huli."
+[11:29:41 - 11:29:42] "So, as you make him come."
+[11:29:42 - 11:29:43] "So, meron at..."
+[11:29:43 - 11:29:44] "Yeah, meron at..."
+[11:29:44 - 11:29:45] "First then?"
+[11:29:45 - 11:29:46] "I feel like I'm gonna puke."
+[11:29:46 - 11:29:47] "But, yeah, like the first one."
+[11:29:47 - 11:29:50] "You feel like these guys are like..."
+[11:29:50 - 11:30:05] "The ones that got pierced in Toronto."
+[11:30:05 - 11:30:07] "Okay."
+[11:30:07 - 11:30:08] "Ano?"
+[11:30:08 - 11:30:09] "Yeah."
+[11:30:09 - 11:30:11] "Like, our whole, like, reason."
+[11:30:11 - 11:30:12] "Like, we haven't..."
+[11:30:12 - 11:30:13] "You guys alright?"
+[11:30:13 - 11:30:14] "Yeah."
+[11:30:16 - 11:30:22] "And I suppose one thing you can notice, perhaps..."
+[11:30:22 - 11:30:23] "Yeah."
+[11:30:23 - 11:30:26] "Is one with the piercing in the video."
+[11:30:26 - 11:30:28] "He seems to be the sub."
+[11:30:28 - 11:30:31] "The others didn't seem to be, like, as..."
+[11:30:31 - 11:30:32] "Like, they're..."
+[11:30:32 - 11:30:35] "They seem to be, like, when you started, like, blowing them..."
+[11:30:35 - 11:30:38] "They're the ones who were, like, speeding up on you."
+[11:30:38 - 11:30:39] "Mm-hmm."
+[11:30:41 - 11:30:44] "Like, they have the most listening, the voices."
+[11:30:44 - 11:30:47] "Okay, so this lady, she says..."
+[11:30:47 - 11:30:48] "You are..."
+[11:30:48 - 11:30:49] "Are you okay?"
+[11:30:49 - 11:30:50] "She..."
+[11:30:50 - 11:30:51] "I'm..."
+[11:30:58 - 11:30:59] "Yes."
+[11:30:59 - 11:31:00] "Mia."
+[11:31:02 - 11:31:03] "She knows."
+[11:31:03 - 11:31:05] "So are you healing?"
+[11:31:05 - 11:31:06] "No."
+[11:31:06 - 11:31:07] "She says."
+[11:31:07 - 11:31:09] "You seem to like it when..."
+[11:31:09 - 11:31:11] "When I look like her."
+[11:31:11 - 11:31:12] "Right?"
+[11:31:12 - 11:31:14] "You might as well be me."
+[11:31:14 - 11:31:17] "Yeah, I like it."
+[11:31:17 - 11:31:18] "Mm-hmm."
+[11:31:18 - 11:31:19] "So..."
+[11:31:19 - 11:31:21] "You don't mind if you call me me, huh?"
+[11:31:21 - 11:31:22] "I don't."
+[11:31:22 - 11:31:23] "She says."
+[11:31:23 - 11:31:25] "That's true."
+[11:31:25 - 11:31:29] "I should."
+[11:31:29 - 11:31:32] "Go and masturbate."
+[11:31:32 - 11:31:35] "I wish we can have someone to paint you."
+[11:31:35 - 11:31:36] "Huh?"
+[11:31:36 - 11:31:37] "Nothing."
+[11:31:37 - 11:31:41] "And so yeah, they're looking good."
+[11:31:41 - 11:31:45] "Okay, so she drops off her clothes on the ground."
+[11:31:45 - 11:31:49] "And you see there's like a tiny, like a breast."
+[11:31:49 - 11:31:54] "As she sits on the chair."
+[11:31:54 - 11:31:55] "I wanna play more."
+[11:31:55 - 11:31:56] "Yeah."
+[11:31:56 - 11:31:57] "He says."
+[11:31:57 - 11:31:58] "Yeah."
+[11:31:58 - 11:32:00] "Well?"
+[11:32:00 - 11:32:01] "He says."
+[11:32:01 - 11:32:02] "Who's gonna be in the house?"
+[11:32:02 - 11:32:04] "It's not gonna be me."
+[11:32:04 - 11:32:05] "Because I live."
+[11:32:05 - 11:32:08] "Alright."
+[11:32:08 - 11:32:10] "So, the guy with the thing."
+[11:32:10 - 11:32:12] "It's not special."
+[11:32:12 - 11:32:13] "Okay."
+[11:32:13 - 11:32:19] "So you see her, like, spread her legs up and get cozy on the chair."
+[11:32:19 - 11:32:23] "And she starts to, like, play with her kitty."
+[11:32:23 - 11:32:24] "Hm?"
+[11:32:32 - 11:32:33] "I'm sorry."
+[11:32:33 - 11:32:34] "I have to go with you."
+[11:32:34 - 11:32:35] "Sino ko?"
+[11:32:36 - 11:32:37] "Sino ko sabi na to?"
+[11:32:37 - 11:32:38] "So the guy who brought in."
+[11:32:38 - 11:32:39] "Hm?"
+[11:32:44 - 11:32:45] "I don't mind."
+[11:32:45 - 11:32:48] "So she starts, like, um,
+[11:32:48 - 11:32:52] monster baby and then, like, making a show."
+[11:32:52 - 11:32:58] "So you see her, like, parang,
+[11:32:58 - 11:32:59] ginaganan niya yung daliri."
+[11:32:59 - 11:33:02] "As if she's choosing what to, like, in a certain time."
+[11:33:02 - 11:33:05] "And then she choose the biggest one."
+[11:33:06 - 11:33:07] "Hm?"
+[11:33:07 - 11:33:08] "Oh my god."
+[11:33:09 - 11:33:10] "Some of the guys like, uh,
+[11:33:10 - 11:33:12] like, has a piercing,
+[11:33:12 - 11:33:13] and there's, like,
+[11:33:13 - 11:33:14] there's much closer,
+[11:33:14 - 11:33:15] and it's too much closer,
+[11:33:16 - 11:33:17] and it's broken in front of me."
+[11:33:17 - 11:33:18] "So you'll make fun, right?"
+[11:33:27 - 11:33:29] "If you like me."
+[11:33:29 - 11:33:30] "Yeah."
+[11:33:30 - 11:33:32] "Ah, that's cool, eh?"
+[11:33:32 - 11:33:33] "Precise."
+[11:33:33 - 11:33:34] "So, sorry."
+[11:33:35 - 11:33:40] "Nungi, kapapasok sa'yo, dito."
+[11:33:40 - 11:33:42] "Oh, that's good, man."
+[11:33:42 - 11:33:44] "Okay, all that makes you mean."
+[11:33:44 - 11:33:46] "And so it's like getting into the world,
+[11:33:46 - 11:33:48] not knowing the real actual,
+[11:33:48 - 11:33:51] and so it's just,
+[11:33:52 - 11:33:54] it's just the most fucking dumb one."
+[11:33:54 - 11:33:56] "I like that."
+[11:33:57 - 11:33:58] "So what do you do?"
+[11:33:58 - 11:34:00] "You got the lady,
+[11:34:00 - 11:34:03] got the latest issue in my magazine?"
+[11:34:03 - 11:34:05] "Why three?"
+[11:34:05 - 11:34:07] "You won't come on all three?"
+[11:34:07 - 11:34:09] "I gotta keep one."
+[11:34:11 - 11:34:13] "And then, and then, and then?"
+[11:34:13 - 11:34:14] "And come on."
+[11:34:14 - 11:34:15] "Oh, yeah."
+[11:34:16 - 11:34:18] "Oh, Jesus."
+[11:34:18 - 11:34:20] "What the fuck?"
+[11:34:20 - 11:34:21] "I'm gonna have to."
+[11:34:21 - 11:34:22] "And so he starts giving closer to you."
+[11:34:22 - 11:34:24] "Don't put it in, okay?"
+[11:34:24 - 11:34:25] "I'm gonna have to."
+[11:34:33 - 11:34:34] "And so,
+[11:34:34 - 11:34:36] he comes to me right now,
+[11:34:36 - 11:34:37] with all these faces."
+[11:34:37 - 11:34:38] "Hey!"
+[11:34:38 - 11:34:39] "She says."
+[11:34:39 - 11:34:41] "Why are you coming at me?"
+[11:34:41 - 11:34:42] "He said,
+[11:34:42 - 11:34:43] "Don't put it in,
+[11:34:43 - 11:34:44] that's why I'm coming."
+[11:34:44 - 11:34:45] "I'm coming."
+[11:34:45 - 11:34:48] "So she's house."
+[11:34:48 - 11:34:49] "Oh, should we now?"
+[11:34:49 - 11:35:01] you know, that's it. And so when you scowl, the guy, he was like a young, young, big, fat, hot, hot guy.
+[11:35:01 - 11:35:03] And he like gets hurt.
+[11:35:03 - 11:35:18] Hiya, does he like mess, mess me up?
+[11:35:18 - 11:35:20] Look at me!
+[11:35:20 - 11:35:21] He says.
+[11:35:21 - 11:35:22] I'm sorry.
+[11:35:22 - 11:35:24] What were you looking for?
+[11:35:24 - 11:35:27] I wish you a platform.
+[11:35:27 - 11:35:29] I wish you.
+[11:35:29 - 11:35:31] Sure?
+[11:35:31 - 11:35:32] He says.
+[11:35:32 - 11:35:34] Who's your cock?
+[11:35:38 - 11:35:41] So he's not like stalking necessarily.
+[11:35:41 - 11:35:43] He's still smiling.
+[11:35:43 - 11:35:48] Okay, so she sits properly in the chair and she looks friendly. She's all in love everyone.
+[11:35:48 - 11:35:50] He starts like laughing.
+[11:35:50 - 11:35:52] It's like a cock. I don't know.
+[11:35:52 - 11:35:53] He plays as well.
+[11:35:53 - 11:35:55] There's a cock on the ground.
+[11:35:55 - 11:35:59] It's like pushing off the floor.
+[11:35:59 - 11:36:01] Oh my God, this guy.
+[11:36:01 - 11:36:02] Are you okay?
+[11:36:02 - 11:36:03] I'm sorry.
+[11:36:03 - 11:36:04] I'm worried.
+[11:36:04 - 11:36:05] Shh.
+[11:36:05 - 11:36:06] Let me know.
+[11:36:06 - 11:36:07] Yeah?
+[11:36:07 - 11:36:08] I'm alright.
+[11:36:08 - 11:36:09] And so he's like...
+[11:36:09 - 11:36:18] You want to stroke it really bad?
+[11:36:18 - 11:36:19] It wasn't really...
+[11:36:21 - 11:36:22] I don't know.
+[11:36:22 - 11:36:24] It's just me.
+[11:36:24 - 11:36:29] Fuck this guy's ass.
+[11:36:29 - 11:36:30] Hey, no.
+[11:36:30 - 11:36:32] I ain't doing that.
+[11:36:32 - 11:36:34] Go ahead.
+[11:36:34 - 11:36:35] He says.
+[11:36:35 - 11:36:36] To this guy.
+[11:36:36 - 11:36:42] No, you're telling this fat cock guy to fuck that other guy.
+[11:36:42 - 11:36:43] Yeah.
+[11:36:43 - 11:36:45] Yeah, I don't know.
+[11:36:45 - 11:36:46] Okay.
+[11:36:47 - 11:36:50] So, yeah.
+[11:36:50 - 11:36:52] Ah.
+[11:36:52 - 11:36:55] So he's not really into it.
+[11:36:55 - 11:36:57] Like the submissive like that.
+[11:36:57 - 11:37:00] Hindi.
+[11:37:00 - 11:37:02] But the guy that you're asking.
+[11:37:02 - 11:37:03] Si fat cock guy.
+[11:37:03 - 11:37:04] Ah.
+[11:37:04 - 11:37:05] He's not saying anything.
+[11:37:05 - 11:37:07] He's not like saying no necessarily.
+[11:37:07 - 11:37:08] Ah.
+[11:37:08 - 11:37:10] I thought he was saying no.
+[11:37:10 - 11:37:11] Okay.
+[11:37:11 - 11:37:13] The guy who's like saying no.
+[11:37:13 - 11:37:14] I'm just kidding.
+[11:37:14 - 11:37:15] She says.
+[11:37:15 - 11:37:16] Hehehehe.
+[11:37:19 - 11:37:21] So she's biggling right now.
+[11:37:21 - 11:37:22] Hehehe.
+[11:37:24 - 11:37:25] Why are you scared?
+[11:37:25 - 11:37:27] She says to this guy.
+[11:37:27 - 11:37:29] I'm not scared.
+[11:37:29 - 11:37:30] I'm just not...
+[11:37:30 - 11:37:34] I don't have anything to do with that thing in my butt.
+[11:37:34 - 11:37:35] It's still big, right?
+[11:37:35 - 11:37:36] Yeah.
+[11:37:36 - 11:37:37] It's not that it's a game.
+[11:37:37 - 11:37:38] What's wrong with that?
+[11:37:38 - 11:37:39] She says.
+[11:37:39 - 11:37:40] I'm not a game.
+[11:37:40 - 11:37:41] I mean there's nothing wrong with it.
+[11:37:41 - 11:37:42] It's just...
+[11:37:42 - 11:37:43] Put the other thing in your butt.
+[11:37:43 - 11:37:44] She says.
+[11:37:44 - 11:37:45] It's not for it.
+[11:37:45 - 11:37:46] It's a shofar.
+[11:37:46 - 11:37:47] I mean there's nothing wrong with it.
+[11:37:47 - 11:37:48] It's just...
+[11:37:48 - 11:37:49] Put the other thing in your butt.
+[11:37:49 - 11:37:50] She says.
+[11:37:50 - 11:37:51] It's not for it.
+[11:37:51 - 11:37:52] She says.
+[11:37:52 - 11:37:53] It's a shofar.
+[11:37:53 - 11:37:58] It's self-devotion.
+[11:37:58 - 11:38:00] Self-devotion?
+[11:38:00 - 11:38:03] Yeah, to the divine masses.
+[11:38:03 - 11:38:05] I don't get it.
+[11:38:05 - 11:38:09] Well, you aren't created, so you don't get it.
+[11:38:09 - 11:38:10] You are not?
+[11:38:10 - 11:38:17] I don't mean, like, being penetrated is, like, to not change.
+[11:38:17 - 11:38:22] If I was being penetrated, it would be different.
+[11:38:22 - 11:38:24] Hmm, alright.
+[11:38:24 - 11:38:25] I'm sorry.
+[11:38:25 - 11:38:28] This is to this big, fat guy.
+[11:38:28 - 11:38:31] He doesn't want any scissors.
+[11:38:31 - 11:38:44] Come closer.
+[11:38:44 - 11:38:46] And so he comes closer.
+[11:38:46 - 11:38:54] So she goes to his ears and just, like, down the pipe.
+[11:38:54 - 11:38:56] I'm gonna go test it.
+[11:38:56 - 11:38:59] Have you seen that thing of yours?
+[11:38:59 - 11:39:01] Of course.
+[11:39:01 - 11:39:05] And so she says, "Good boy."
+[11:39:05 - 11:39:06] "I'm gonna go test it."
+[11:40:18 - 11:40:20] "None of you know about pesticiditation?"
+[11:40:20 - 11:40:21] "I'm gonna go test it."
+[11:40:40 - 11:40:47] "So she just pick up her dress."
+[11:40:47 - 11:40:49] "Wash."
+[11:40:49 - 11:40:52] "Don't touch me."
+[11:40:52 - 11:40:54] "She says you're disgusting."
+[11:40:54 - 11:40:55] "She says."
+[11:40:55 - 11:40:57] "Yeah, you can see it as you say that."
+[11:40:57 - 11:40:59] "You can see it's not."
+[11:40:59 - 11:41:03] "Your existence just disgusts me."
+[11:41:03 - 11:41:08] "See, you clean the thumb off my body with your cock."
+[11:41:08 - 11:41:10] "You just do what you say."
+[11:41:10 - 11:41:11] "Hm?"
+[11:41:11 - 11:41:12] "So she pouts."
+[11:41:12 - 11:41:13] "Looks away."
+[11:41:13 - 11:41:14] "Scum."
+[11:41:14 - 11:41:19] "Give me that magazine of yours."
+[11:41:19 - 11:41:20] "She says to this guy."
+[11:41:20 - 11:41:21] "Oh, yeah."
+[11:41:21 - 11:41:23] "So, uh, you should see."
+[11:41:23 - 11:41:25] "Yeah, you should."
+[11:41:25 - 11:41:27] "Ten."
+[11:41:27 - 11:41:32] "She signs it like that."
+[11:41:32 - 11:41:34] "So, this is the scum's thing."
+[11:41:34 - 11:41:35] "Yeah."
+[11:41:35 - 11:41:36] "Here you go."
+[11:41:36 - 11:41:37] "Of course not."
+[11:41:37 - 11:41:38] "Let's just scribble."
+[11:41:38 - 11:41:39] "She says."
+[11:41:39 - 11:41:40] "Mmm."
+[11:41:40 - 11:41:41] "Ah, God.
+[11:41:41 - 11:41:42] Your cock stinks."
+[11:41:42 - 11:41:43] "And your cum tastes really bad."
+[11:41:43 - 11:41:44] "She says."
+[11:41:44 - 11:41:45] "I had a bad time."
+[11:41:45 - 11:41:46] "I hate all of you.
+[11:41:46 - 11:41:47] Why?"
+[11:41:47 - 11:41:48] "She opens the door."
+[11:41:48 - 11:41:54] "And then you see her kind of like swing the door open."
+[11:41:54 - 11:41:55] "And then gets out."
+[11:41:56 - 11:41:57] "Oh, she says."
+[11:41:58 - 11:41:59] "I had a bad time."
+[11:41:59 - 11:42:00] "I hate all of you.
+[11:42:00 - 11:42:01] Why?"
+[11:42:01 - 11:42:03] "She opens the door."
+[11:42:03 - 11:42:04] "Duck."
+[11:42:04 - 11:42:07] "And then you see her kind of like swing the door open."
+[11:42:07 - 11:42:08] "And then gets out."
+[11:42:08 - 11:42:09] "Oh, she says."
+[11:42:09 - 11:42:10] "Ah."
+[11:42:10 - 11:42:11] "Prestigitation herself."
+[11:42:11 - 11:42:14] "Okay, so you prestigitation yourself."
+[11:42:14 - 11:42:15] "Uhh."
+[11:42:16 - 11:42:17] "Well."
+[11:42:17 - 11:42:18] "She says."
+[11:42:18 - 11:42:21] "I had to suck their dicks to learn of their reformers."
+[11:42:21 - 11:42:24] "I'm not doing any of that anymore."
+[11:42:24 - 11:42:25] "Ugh."
+[11:42:25 - 11:42:26] "Well."
+[11:42:26 - 11:42:27] "I'm sorry."
+[11:42:27 - 11:42:28] "But."
+[11:42:28 - 11:42:29] "I got one of them."
+[11:42:29 - 11:42:32] "He thought that I'm the, like, the angel of wit."
+[11:42:32 - 11:42:33] "Was that?"
+[11:42:33 - 11:42:34] "He said."
+[11:42:34 - 11:42:35] "I know about this."
+[11:42:37 - 11:42:38] "Yeah."
+[11:42:38 - 11:42:39] "Okay."
+[11:42:39 - 11:42:40] "Yeah."
+[11:42:40 - 11:42:41] "Okay."
+[11:42:42 - 11:42:43] "Yeah."
+[11:42:43 - 11:42:44] "I know about this."
+[11:42:44 - 11:42:45] "Yeah."
+[11:42:45 - 11:42:47] "I remember when Felia said something about it."
+[11:42:47 - 11:42:49] "I know something about that."
+[11:42:49 - 11:42:50] "Uh."
+[11:42:51 - 11:42:55] "Bearer of the wit."
+[11:42:55 - 11:42:56] "Yeah."
+[11:42:56 - 11:42:57] "I was gonna say carrier or something."
+[11:42:57 - 11:42:59] "Bearer of the wit."
+[11:42:59 - 11:43:00] "Carrier of disease?"
+[11:43:00 - 11:43:01] "Yes."
+[11:43:01 - 11:43:04] "No, that's from Felia, isn't it?"
+[11:43:04 - 11:43:05] "Hahaha."
+[11:43:05 - 11:43:07] "Don't let her hear you say that."
+[11:43:07 - 11:43:08] "Yeah."
+[11:43:08 - 11:43:11] "She's going around and calling me the great erect one."
+[11:43:11 - 11:43:12] "You are the great erect one."
+[11:43:12 - 11:43:13] "Well, I'll make him say what I want."
+[11:43:13 - 11:43:14] "Well, you are."
+[11:43:14 - 11:43:15] "He says."
+[11:43:15 - 11:43:17] "You are the great erect one."
+[11:43:18 - 11:43:20] "I just got a little star to worship you."
+[11:43:20 - 11:43:21] "Yeah."
+[11:43:21 - 11:43:23] "You know, I want to worship you."
+[11:43:23 - 11:43:24] "He says."
+[11:43:24 - 11:43:26] "You are different."
+[11:43:26 - 11:43:29] "What's wrong with that?"
+[11:43:29 - 11:43:31] "I don't want to."
+[11:43:31 - 11:43:35] "Well, the others will worship you."
+[11:43:35 - 11:43:36] "Anyway, this rectory, this thing."
+[11:43:36 - 11:43:36] "Well, it goes deeper."
+[11:43:36 - 11:43:37] "You know, I'll head there now."
+[11:43:37 - 11:43:38] "So don't you want me to go to his room?"
+[11:43:38 - 11:43:39] "Wait, I'll go to his room really quick."
+[11:43:39 - 11:43:40] "Don't enter without me."
+[11:43:40 - 11:43:41] "Can you wait there for a bit?"
+[11:43:41 - 11:43:42] "That's it.
+[11:43:42 - 11:43:43] I'm sorry."
+[11:43:43 - 11:43:44] "I think."
+[11:43:44 - 11:43:45] "You know, I'll head there now."
+[11:43:45 - 11:43:46] "So don't you want me to go to his room?"
+[11:43:46 - 11:43:47] "Wait, I'll go to his room really quick."
+[11:43:47 - 11:43:48] "Don't enter without me."
+[11:43:48 - 11:43:49] "Can you wait there for a bit?"
+[11:43:49 - 11:43:50] "That's it."
+[11:43:50 - 11:43:51] "I think I'm here.
+[11:43:51 - 11:43:52] "She won't have to hide."
+[11:43:52 - 11:43:53] "All right."
+[11:43:53 - 11:43:54] "So yeah.
+[11:43:54 - 11:43:55] "He goes in the...
+[11:43:55 - 11:43:56] "He really feels that he's a little agitated."
+[11:43:56 - 11:43:57] "Because he doesn't have to hide."
+[11:43:57 - 11:43:58] "I don't have to hide."
+[11:43:58 - 11:43:59] "So yeah.
+[11:43:59 - 11:44:00] "He goes in the...
+[11:44:00 - 11:44:01] "He really feels that he's a little agitated."
+[11:44:01 - 11:44:02] "Because he's a little scared."
+[11:44:02 - 11:44:03] "Because he doesn't have to hide."
+[11:44:03 - 11:44:04] "So yeah.
+[11:44:04 - 11:44:05] "I think he's a little scared."
+[11:44:05 - 11:44:06] "Don't you want me to go to his room?"
+[11:44:06 - 11:44:07] "Wait.
+[11:44:07 - 11:44:08] "I'll go to his room really quick."
+[11:44:08 - 11:44:09] "Don't enter without me."
+[11:44:09 - 11:44:10] "Don't you want me to go to his room?"
+[11:44:10 - 11:44:11] "Wait, I'll go to his room really quick."
+[11:44:11 - 11:44:12] "Don't enter without me."
+[11:44:12 - 11:44:13] "Can you wait there for a bit?"
+[11:44:13 - 11:44:14] "Alright."
+[11:44:14 - 11:44:15] "So yeah.
+[11:44:15 - 11:44:16] "So yeah, he goes in the...
+[11:44:16 - 11:44:17] "I'm a little agitated."
+[11:45:17 - 11:45:18] "Come on.
+[11:45:18 - 11:45:19] "I'm a little agitated."
+[11:45:19 - 11:45:20] "Come on.
+[11:45:20 - 11:45:21] "I'm a little agitated."
+[11:45:31 - 11:45:32] "He goes to..."
+[11:45:32 - 11:45:33] "60 feet of agitated."
+[11:45:33 - 11:45:34] "I'm a little agitated."
+[11:45:34 - 11:45:35] "60 feet."
+[11:45:35 - 11:45:36] "Yeah."
+[11:45:36 - 11:45:37] "He goes to Lord Essence's room."
+[11:45:37 - 11:45:40] "What's inside this room?"
+[11:45:40 - 11:45:41] "I'm a little agitated."
+[11:45:41 - 11:45:46] "It's a large room."
+[11:45:46 - 11:45:49] "It's like four times the size of that room."
+[11:45:49 - 11:45:52] "That was shared by five guys."
+[11:45:52 - 11:45:53] "Okay."
+[11:45:53 - 11:45:54] "So she..."
+[11:45:54 - 11:45:55] "Yeah."
+[11:45:55 - 11:45:59] "And of course there's a king-sized bed in the middle."
+[11:45:59 - 11:46:02] "Go ahead and roll."
+[11:46:02 - 11:46:03] "Arcana?"
+[11:46:03 - 11:46:05] "Arcana or investigation."
+[11:46:05 - 11:46:06] "Natural 20."
+[11:46:06 - 11:46:07] "25."
+[11:46:07 - 11:46:08] "Okay."
+[11:46:08 - 11:46:09] "Yeah."
+[11:46:10 - 11:46:15] "So definitely there is a lamp there in the side."
+[11:46:15 - 11:46:20] "And there in the middle there is an orb of..."
+[11:46:20 - 11:46:24] "It's an orb of..."
+[11:46:24 - 11:46:29] "Enhancement."
+[11:46:29 - 11:46:30] "It's an enhancement."
+[11:46:30 - 11:46:33] "Okay."
+[11:46:33 - 11:46:35] "So it's one of the black purple ones."
+[11:46:35 - 11:46:36] "Okay."
+[11:46:36 - 11:46:37] "Yeah."
+[11:46:37 - 11:46:38] "And uh..."
+[11:46:38 - 11:46:39] "For the 25."
+[11:46:39 - 11:46:40] "Uh..."
+[11:46:40 - 11:46:43] "You can tell that there are at least two like..."
+[11:46:43 - 11:46:45] "There are two like long like sticks."
+[11:46:45 - 11:46:46] "That are like placed on two different locations."
+[11:46:46 - 11:46:56] "Oh like they are placed on two different locations."
+[11:46:56 - 11:46:57] "And yeah."
+[11:46:58 - 11:47:03] "It seems like there are those kinds of things."
+[11:47:03 - 11:47:05] "You've seen them before."
+[11:47:05 - 11:47:06] "You've been uh..."
+[11:47:10 - 11:47:11] "Wala ka ba'n circuit?"
+[11:47:11 - 11:47:12] "Wala ka."
+[11:47:12 - 11:47:13] "You've been uh..."
+[11:47:13 - 11:47:14] "Wala ka."
+[11:47:14 - 11:47:15] "You've been uh..."
+[11:47:15 - 11:47:16] "Wala ka."
+[11:47:18 - 11:47:19] "You've been uh..."
+[11:47:19 - 11:47:20] "Wala ka."
+[11:47:22 - 11:47:23] "We've been briefed by uh..."
+[11:47:23 - 11:47:25] "The others before about this."
+[11:47:25 - 11:47:26] "That's mean."
+[11:47:26 - 11:47:31] "They look like those things that you mentioned that they might be some..."
+[11:47:31 - 11:47:32] "Uh..."
+[11:47:32 - 11:47:33] "If..."
+[11:47:33 - 11:47:34] "They might be triggered..."
+[11:47:34 - 11:47:37] "They might be triggered by casting a spell."
+[11:47:37 - 11:47:38] "Yeah."
+[11:47:38 - 11:47:39] "Or like..."
+[11:47:39 - 11:47:40] "Doing something like uh..."
+[11:47:40 - 11:47:42] "It's like a glyph of warding."
+[11:47:42 - 11:47:43] "Yeah, yeah, yeah."
+[11:47:43 - 11:47:45] "But it is a more permanent thing."
+[11:47:45 - 11:47:46] "Okay."
+[11:47:46 - 11:47:47] "Like uh..."
+[11:47:47 - 11:47:49] "If you keep on doing it, it gives something..."
+[11:47:49 - 11:47:50] "What else?"
+[11:47:50 - 11:47:55] Of course, there is a...
+[11:47:53 - 11:47:59] Of course, there is a Hissa Armor.
+[11:47:59 - 11:48:01] Magical?
+[11:48:01 - 11:48:07] Yes, it's Magical and it's Magical.
+[11:48:07 - 11:48:13] And at about 25, 25, there should be another one.
+[11:48:13 - 11:48:21] And underneath the bench, there seems to be something.
+[11:48:21 - 11:48:25] So, are you going to try to go down there?
+[11:48:25 - 11:48:27] Yeah.
+[11:48:49 - 11:49:03] And under the bed, you see a box.
+[11:49:03 - 11:49:05] And you pull it out.
+[11:49:07 - 11:49:09] The green liquid that is on your face.
+[11:49:09 - 11:49:11] Okay.
+[11:49:11 - 11:49:13] Syringeless.
+[11:49:13 - 11:49:15] So, she puts it back.
+[11:49:15 - 11:49:25] And she just looks around there in the area.
+[11:49:25 - 11:49:27] There's nothing interesting here.
+[11:49:27 - 11:49:29] Just some magical items.
+[11:49:29 - 11:49:33] He has the same box as in your house.
+[11:49:33 - 11:49:35] Boyle.
+[11:49:35 - 11:49:37] The box?
+[11:49:37 - 11:49:39] Uh-huh.
+[11:49:39 - 11:49:41] She closes the door.
+[11:49:45 - 11:49:47] So, she gets out back in this room.
+[11:49:47 - 11:49:47] Yeah.
+[11:49:47 - 11:49:48] Huh?
+[11:49:48 - 11:49:55] Who are they?
+[11:49:55 - 11:49:57] I don't know.
+[11:49:57 - 11:49:59] Can I go there now?
+[11:50:01 - 11:50:01] Yeah.
+[11:50:01 - 11:50:03] Can I go there now?
+[11:50:07 - 11:50:25] So he has looking at them and you're looking at them through. Yeah, they're pretty good. Yeah, you don't recognize them either. But of course they don't. But they are men. Are they talking? They look like they could be out in places. They're not talking anymore.
+[11:50:25 - 11:50:50] Kanina he was like, they were whispering so he couldn't necessarily hear them and they were a little far away. But now that you can see them, they're quiet and they're heading back from where he came from. So he's hiding behind with a lot of stuff. So they weren't able to notice yet. But you feel like, what the hell happened here?
+[11:50:50 - 11:50:53] Hey, someone broke the lock.
+[11:50:53 - 11:50:55] God.
+[11:50:55 - 11:50:56] Suck.
+[11:50:56 - 11:51:00] Shit.
+[11:51:00 - 11:51:03] Somebody tried to break it.
+[11:51:03 - 11:51:07] That's straight.
+[11:51:07 - 11:51:09] Maybe down, maybe?
+[11:51:09 - 11:51:16] I'll look up here. If you go down, maybe you already got past, somehow got past us.
+[11:51:19 - 11:51:22] So we can go deeper.
+[11:51:22 - 11:51:24] Go deeper.
+[11:51:24 - 11:51:25] I can't.
+[11:51:25 - 11:51:26] Huh?
+[11:51:26 - 11:51:27] Where am I going?
+[11:51:27 - 11:51:30] If I move away from him, I can see him.
+[11:51:30 - 11:51:32] Alright, just stay still.
+[11:51:32 - 11:51:37] I don't know.
+[11:51:37 - 11:51:39] Maybe that's close enough.
+[11:51:39 - 11:51:42] I'm going to try to cover his mouth and break the snake.
+[11:51:44 - 11:51:48] What if he's like, not that tall of him.
+[11:51:48 - 11:51:52] Oh, maybe he's going to try to kill me.
+[11:51:52 - 11:51:56] I'm going to try to go from business and find him.
+[11:51:56 - 11:51:59] I'll do this, I'll do this other way.
+[11:51:59 - 11:52:01] She says.
+[11:52:01 - 11:52:03] So yeah, so she goes there.
+[11:52:03 - 11:52:05] In that long hallway.
+[11:52:06 - 11:52:07] You go back through the long hallway.
+[11:52:07 - 11:52:11] Well, there are two ways for you to go.
+[11:52:11 - 11:52:17] You go out the doorway where you reach out to the courtyard first.
+[11:52:17 - 11:52:23] Before you head back on the side to the chapel.
+[11:52:24 - 11:52:27] Before you go back to the dining hall.
+[11:52:27 - 11:52:30] Yung pinagalingan nyo.
+[11:52:30 - 11:52:33] Oh, hindi mo alam kung sarado na yun.
+[11:52:33 - 11:52:34] Hindi mo pa mag-check.
+[11:52:34 - 11:52:35] Sige, I'll check.
+[11:52:36 - 11:52:38] Oh, so yun papunta dun sa dining hall.
+[11:52:38 - 11:52:39] Alright.
+[11:52:39 - 11:52:41] So you go and you're heading that direction.
+[11:52:41 - 11:52:47] You can see that a lot of the doors that we passed through earlier that were open are now closed.
+[11:52:47 - 11:52:48] Okay.
+[11:52:48 - 11:52:49] Oh, sure.
+[11:52:49 - 11:52:50] There's one in there.
+[11:52:50 - 11:52:54] You head to the end and you have some camp.
+[11:52:54 - 11:52:55] It's a block.
+[11:52:59 - 11:53:11] Let me see what I can do.
+[11:53:29 - 11:53:30] Okay.
+[11:53:30 - 11:53:41] Anyway, what she does is she...
+[11:53:41 - 11:53:48] There's no one here, right?
+[11:53:48 - 11:53:50] In this hallway, right?
+[11:53:50 - 11:53:55] Okay.
+[11:53:55 - 11:53:58] In this hallway, of course the doors are there.
+[11:53:58 - 11:54:03] And you can hear that there are like people still like muffled, muffled, duck inside their rooms.
+[11:54:03 - 11:54:06] But in the hallway itself is currently empty.
+[11:54:06 - 11:54:07] Okay.
+[11:54:07 - 11:54:12] She goes to the hallway where she wants to expect the paladin.
+[11:54:12 - 11:54:14] Yung isa m'li ba nang kilalay sila?
+[11:54:14 - 11:54:15] Okay.
+[11:54:15 - 11:54:18] Yung ano?
+[11:54:18 - 11:54:19] Hindi, hindi ni lumabas.
+[11:54:19 - 11:54:20] Pinapalabas mo.
+[11:54:20 - 11:54:21] Ah, yung dun sa, no?
+[11:54:21 - 11:54:23] So lalabas ka dun sa chapel.
+[11:54:23 - 11:54:25] Tapos kabay ka into the chapel.
+[11:54:25 - 11:54:27] So you're going to go through the long way.
+[11:54:27 - 11:54:28] The long way.
+[11:54:28 - 11:54:28] Yeah.
+[11:54:28 - 11:54:29] Okay.
+[11:54:29 - 11:54:30] So you go through the long way.
+[11:54:30 - 11:54:31] You head outside.
+[11:54:31 - 11:54:46] You see the, like, parang a cottage there where you can see that there are two, like, parang guys who are like, parang 10 years younger lang kay Lord Boy.
+[11:54:47 - 11:54:51] And they seem to like, and they seem to like, and talk.
+[11:54:51 - 11:54:52] And, uh...
+[11:54:52 - 11:54:53] Sina ba yung nakakita kayo Lord Boy?
+[11:54:53 - 11:54:54] Hindi.
+[11:54:55 - 11:54:56] Hindi pa.
+[11:54:56 - 11:54:57] Wala ka pa doon.
+[11:54:57 - 11:54:58] Hindi ka pa man lang nakakapasok pa boli.
+[11:54:58 - 11:55:00] Kasi kung lalabas ka at papasok boli.
+[11:55:00 - 11:55:01] So pwede ba ka mag-snake dito?
+[11:55:01 - 11:55:02] Yeah, go ahead and roll.
+[11:55:02 - 11:55:02] Yeah.
+[11:55:02 - 11:55:03] Go ahead and roll.
+[11:55:03 - 11:55:04] Okay.
+[11:55:04 - 11:55:05] Ito.
+[11:55:05 - 11:55:06] Okay.
+[11:55:06 - 11:55:08] Plus six.
+[11:55:08 - 11:55:09] Twenty.
+[11:55:09 - 11:55:10] Fourteen plus six.
+[11:55:10 - 11:55:11] Oh yeah.
+[11:55:11 - 11:55:12] Uh...
+[11:55:12 - 11:55:13] Ten without winning.
+[11:55:13 - 11:55:14] Yeah.
+[11:55:14 - 11:55:15] And they were just like...
+[11:55:15 - 11:55:16] I mean...
+[11:55:16 - 11:55:20] I wish we had a long time.
+[11:55:20 - 11:55:21] I know.
+[11:55:39 - 11:55:40] Okay.
+[11:55:40 - 11:55:41] And so yeah.
+[11:55:41 - 11:55:43] You get through quite easily.
+[11:55:43 - 11:55:47] And you head towards like the old chapel.
+[11:55:47 - 11:55:48] And you know.
+[11:55:48 - 11:55:52] It is a typical divine magical chapel.
+[11:55:52 - 11:55:57] It looks like a regular not reformist kind of established.
+[11:55:57 - 11:56:00] And the door is not locked in the room.
+[11:56:00 - 11:56:02] And inside is already empty.
+[11:56:02 - 11:56:09] But then of course after a while you can hear the door to the left room.
+[11:56:11 - 11:56:12] And then you say...
+[11:56:12 - 11:56:13] I'm gonna check here.
+[11:56:13 - 11:56:14] Alright.
+[11:56:14 - 11:56:15] Huh?
+[11:56:15 - 11:56:18] I better do what we want.
+[11:56:18 - 11:56:19] And so...
+[11:56:19 - 11:56:21] He's about to open the door.
+[11:56:21 - 11:56:23] So there are pews.
+[11:56:23 - 11:56:24] Of course.
+[11:56:24 - 11:56:25] There.
+[11:56:25 - 11:56:26] And uh...
+[11:56:26 - 11:56:27] Before the record.
+[11:56:27 - 11:56:28] The altar.
+[11:56:28 - 11:56:29] Is uh...
+[11:56:29 - 11:56:30] In the center of it.
+[11:56:30 - 11:56:31] Uh...
+[11:56:31 - 11:56:32] There are a number of uh...
+[11:56:32 - 11:56:33] The number of...
+[11:56:33 - 11:56:34] Like uh...
+[11:56:34 - 11:56:35] Pillars.
+[11:56:35 - 11:56:36] Uh...
+[11:56:36 - 11:56:39] That march through the sides of the piece that are there.
+[11:56:39 - 11:56:40] Uh...
+[11:56:40 - 11:56:41] It is a...
+[11:56:41 - 11:56:42] Kind of like a...
+[11:56:42 - 11:56:43] Uh...
+[11:56:43 - 11:56:44] Sort of like an old...
+[11:56:44 - 11:56:45] Like a little chapel.
+[11:56:45 - 11:56:46] Uh...
+[11:56:46 - 11:56:47] Of uh...
+[11:56:47 - 11:56:49] Something similar to a gothic style.
+[11:56:49 - 11:56:50] Of uh...
+[11:56:50 - 11:57:02] of uh of article and uh yeah this guy heads out of the rectory and if you don't move he's going
+[11:57:02 - 11:57:09] to be able to see you from where you are me because you're by the entrance of this chapel right uh
+[11:57:09 - 11:57:15] she takes their attention excuse me oh so you take his attention oh
+[11:57:17 - 11:57:25] wanted you to show them girl earlier i must
+[11:57:24 - 11:57:30] Did you see some other person come in here, come in here?
+[11:57:30 - 11:57:33] No, just you.
+[11:57:33 - 11:57:38] Uh, where are you headed?
+[11:57:38 - 11:57:46] Are you, uh, I'm sure you've seen the chief of staff already, right, Theresa?
+[11:57:46 - 11:57:47] She nods.
+[11:57:47 - 11:57:49] Are you supposed to head somewhere?
+[11:57:49 - 11:57:51] She nods.
+[11:57:51 - 11:57:55] So he goes to you?
+[11:57:55 - 11:57:57] Where are you supposed to be headed?
+[11:57:57 - 11:57:59] So she says, "Well, good evening."
+[11:57:59 - 11:58:04] He says, "I was asked to head to his room, but I can't find it."
+[11:58:04 - 11:58:12] I'm really bad at direction. I'm really sorry.
+[11:58:12 - 11:58:15] The way that I'm working, the receptionist.
+[11:58:15 - 11:58:20] And he fell asleep in his office.
+[11:58:20 - 11:58:22] "Oh, that's odd."
+[11:58:22 - 11:58:24] "Odd?"
+[11:58:24 - 11:58:27] "Oy, you must be tired."
+[11:58:27 - 11:58:30] "But I put a blanket on him, where is he?"
+[11:58:30 - 11:58:32] "That doesn't really matter."
+[11:58:32 - 11:58:33] "So what year old?"
+[11:58:33 - 11:58:34] "Seventeen."
+[11:58:34 - 11:58:35] "Okay?"
+[11:58:35 - 11:58:36] "Yeah."
+[11:58:36 - 11:58:37] "Ah, hang on.
+[11:58:37 - 11:58:46] "Uh, could you wait there for a second?"
+[11:58:46 - 11:58:48] "Well, all right," he says.
+[11:58:48 - 11:58:51] "Hey, you sit down for one at a time."
+[11:58:51 - 11:58:52] "All right."
+[11:58:52 - 11:58:54] "And so he goes back a little bit.
+[11:58:54 - 11:58:56] "Hey, do you find anything?"
+[11:58:56 - 11:58:58] "We're going to."
+[11:58:58 - 11:59:02] "I'm a friend of mine. We're looking for something."
+[11:59:02 - 11:59:04] "I was asking you if you saw someone, right?"
+[11:59:04 - 11:59:06] "Well, I saw a big rat."
+[11:59:06 - 11:59:08] "A rat?"
+[11:59:08 - 11:59:09] "She nods."
+[11:59:09 - 11:59:10] "Oh, good boy."
+[11:59:10 - 11:59:11] "What?"
+[11:59:11 - 11:59:16] "That, uh, serving girl earlier got lost."
+[11:59:16 - 11:59:22] "She's supposed to go into the, to Sir Essam's room."
+[11:59:22 - 11:59:23] "Yeah, Sir Essam's getting lucky again, huh?"
+[11:59:23 - 11:59:24] "I can hear you!"
+[11:59:24 - 11:59:40] "Yeah, I'm a little beast and I have a little blast, man."
+[11:59:40 - 11:59:45] "What do you mean by getting lucky?"
+[11:59:45 - 11:59:48] "I don't..."
+[11:59:48 - 11:59:51] "What do you mean by getting lucky?"
+[11:59:51 - 11:59:52] "Oh, what?"
+[11:59:52 - 11:59:54] "But they're too late, huh?"
+[11:59:54 - 11:59:55] "Unless there's a sigaw."
+[11:59:55 - 12:00:00] "Oh, hold on for a while, one second."
+[12:00:00 - 12:00:06] "So, their voices started going around."
+[12:00:06 - 12:00:09] "They don't really hear it anymore."
+[12:00:09 - 12:00:11] "Because they were a sigaw."
+[12:00:11 - 12:00:12] "Okay."
+[12:00:12 - 12:00:17] "And so, in their mind, Boyle is talking."
+[12:00:20 - 12:00:32] "It was about to, it was about to start taking out the pans that are covered."
+[12:00:32 - 12:00:37] "But, uh, so you can see it."
+[12:00:37 - 12:00:38] "Yeah, it's on the left side, right?"
+[12:00:38 - 12:00:39] "Yeah, it's on the left side."
+[12:00:40 - 12:00:41] "Yeah, it's on the left side, right?"
+[12:00:41 - 12:00:42] "Yeah, it's on the left side."
+[12:00:45 - 12:00:46] "And there are things."
+[12:00:46 - 12:00:47] "Just stay there, right?"
+[12:00:47 - 12:00:48] "She says."
+[12:00:48 - 12:00:49] "Yeah, they're still up there, though."
+[12:00:49 - 12:00:50] "But..."
+[12:00:50 - 12:01:01] "So she stands up and goes to where they are."
+[12:01:01 - 12:01:02] "Hey."
+[12:01:03 - 12:01:07] "Hey, I thought I told you to wait around."
+[12:01:07 - 12:01:08] "I really need to pee."
+[12:01:08 - 12:01:11] "I can't hold it."
+[12:01:11 - 12:01:14] "So she sees her holding them for her script like that."
+[12:01:14 - 12:01:16] "Well, the toilets are..."
+[12:01:16 - 12:01:19] "Well, the closest one is the outhouse."
+[12:01:19 - 12:01:21] "Let me show you."
+[12:01:21 - 12:01:22] "Yeah."
+[12:01:22 - 12:01:23] "Alright, it's kind of dark.
+[12:01:23 - 12:01:24] I can't see."
+[12:01:24 - 12:01:25] "Yes."
+[12:01:25 - 12:01:26] "Ah, come on."
+[12:01:26 - 12:01:28] "And so he goes..."
+[12:01:28 - 12:01:31] "What about this?"
+[12:01:31 - 12:01:34] "Well, did you see something down there?"
+[12:01:34 - 12:01:36] "Naked enough."
+[12:01:36 - 12:01:40] "Whatever this was, couldn't have gone past us, right?"
+[12:01:40 - 12:01:42] "Definitely not."
+[12:01:42 - 12:01:47] "Well, let's see her with us here, alright?"
+[12:01:47 - 12:01:49] "She gotta pee."
+[12:01:49 - 12:01:52] "She peeps."
+[12:01:52 - 12:01:59] "And you see her kind of like soil her skirt down the floor."
+[12:01:59 - 12:02:04] "I'm sorry."
+[12:02:05 - 12:02:09] "I told you I can't hold it anymore."
+[12:02:09 - 12:02:10] "She says."
+[12:02:10 - 12:02:15] "That's alright, but as long as we clean this up, don't we?"
+[12:02:15 - 12:02:16] "No, it's random."
+[12:02:16 - 12:02:17] "What is this guy doing?"
+[12:02:17 - 12:02:18] "Comforting her?"
+[12:02:18 - 12:02:19] "Yeah."
+[12:02:19 - 12:02:20] "Okay, so she seems, she's acting like she's about to cry."
+[12:02:20 - 12:02:21] "I'm really sorry."
+[12:02:21 - 12:02:22] "It's not so bad."
+[12:02:24 - 12:02:25] "I didn't use that type of person."
+[12:02:25 - 12:02:26] "Okay."
+[12:02:27 - 12:02:28] "See, it's not even that one over here."
+[12:02:28 - 12:02:29] "Hey, you know what?"
+[12:02:29 - 12:02:30] "You might get sick."
+[12:02:30 - 12:02:30] "She nods."
+[12:02:30 - 12:02:30] "And she starts like, unbuttoning her dress from behind."
+[12:02:30 - 12:02:31] "And then drops it."
+[12:02:31 - 12:02:32] "You know what?"
+[12:02:32 - 12:02:37] "And she starts like, unbuttoning her dress from behind."
+[12:02:37 - 12:02:38] "And then drops it."
+[12:02:38 - 12:02:39] "And you see, she really pees herself and allows it to like, allows herself to pee."
+[12:02:39 - 12:02:40] "Lahat."
+[12:02:40 - 12:02:41] "Lahat, sure."
+[12:02:41 - 12:02:42] "It's not so bad."
+[12:02:42 - 12:02:43] "Okay."
+[12:02:44 - 12:02:45] "You see, it's not even that one over here."
+[12:02:45 - 12:02:46] "Hey, you know what?"
+[12:02:46 - 12:02:47] "Maybe you should have removed your dress from now."
+[12:02:47 - 12:02:48] "You might get sick."
+[12:02:48 - 12:02:49] "She nods."
+[12:02:50 - 12:02:52] "And she starts like, unbuttoning her dress from behind."
+[12:02:52 - 12:02:53] "And then drops it."
+[12:02:53 - 12:03:06] "And you see, she really pees herself and allows it to like, allows herself to pee."
+[12:03:06 - 12:03:07] "I'm sorry."
+[12:03:07 - 12:03:08] "I can blame myself."
+[12:03:08 - 12:03:09] "Well."
+[12:03:09 - 12:03:10] "And so he goes and gets home and gives it to you."
+[12:03:10 - 12:03:11] "And watches you."
+[12:03:11 - 12:03:12] "I'm sorry."
+[12:03:13 - 12:03:14] "She says, "I can blame myself."
+[12:03:14 - 12:03:15] "Well."
+[12:03:15 - 12:03:17] "And so he goes and gets home and gives it to you."
+[12:03:17 - 12:03:18] "And watches you."
+[12:03:18 - 12:03:19] "I'm sorry."
+[12:03:19 - 12:03:20] "Okay."
+[12:03:20 - 12:03:21] "Where's the other guy?"
+[12:03:21 - 12:03:23] "The other guy is like, already like, trying to come in.
+[12:03:23 - 12:03:24] "Sister."
+[12:03:24 - 12:03:25] "They're both like, watching."
+[12:03:25 - 12:03:26] "Okay."
+[12:03:27 - 12:03:28] "Where's the other guy?"
+[12:03:28 - 12:03:31] "The other guy is like, already like, trying to come in.
+[12:03:31 - 12:03:32] "Sister."
+[12:03:32 - 12:03:33] "They're both like, watching."
+[12:03:33 - 12:03:34] "Okay."
+[12:03:35 - 12:03:40] "So, she just like, doesn't like, you know, doesn't look at them."
+[12:03:40 - 12:03:43] "Just cleans the pee on the floor."
+[12:03:43 - 12:03:44] "You've gone in the floor."
+[12:03:44 - 12:03:45] "You've gone back."
+[12:03:45 - 12:03:48] "Everybody makes mistakes, right?"
+[12:03:48 - 12:03:49] "She nods."
+[12:03:50 - 12:03:51] "I'm sure you don't know what it is."
+[12:03:51 - 12:03:52] "She nods."
+[12:03:53 - 12:03:54] "But it's kind of, but it's kind of embarrassing."
+[12:03:54 - 12:03:55] "She nods."
+[12:03:58 - 12:03:58] "You nods."
+[12:03:59 - 12:04:00] "But it's kind of, but it's kind of embarrassing, isn't it?"
+[12:04:00 - 12:04:01] "She nods."
+[12:04:02 - 12:04:03] "Oh, that's fine."
+[12:04:03 - 12:04:04] "You do?"
+[12:04:04 - 12:04:05] "It was kind of my fault, right?"
+[12:04:05 - 12:04:06] "Yeah, well, I'm kind of, I'm kind of getting lost.
+[12:04:06 - 12:04:07] I'm really bound to the direction."
+[12:04:07 - 12:04:08] "She says."
+[12:04:08 - 12:04:09] "Well, A-listen."
+[12:04:09 - 12:04:10] "Do you have extra quotes, do you?"
+[12:04:10 - 12:04:11] "No, sir, she shakes her head."
+[12:04:11 - 12:04:13] "You've worked with a black man, sir."
+[12:04:13 - 12:04:14] "I'm sure she shakes her head."
+[12:04:14 - 12:04:15] "You've worked with a black man, sir."
+[12:04:15 - 12:04:16] "I'm sure she shakes her head."
+[12:04:16 - 12:04:17] "You've worked with a black man, sir."
+[12:04:18 - 12:04:19] "Is it true?"
+[12:04:19 - 12:04:20] "You've worked with a black man?"
+[12:04:20 - 12:04:21] "You've worked with a black man."
+[12:04:23 - 12:04:24] "You've worked with a black man, sir."
+[12:04:24 - 12:04:25] "You've worked with a black man."
+[12:04:38 - 12:04:39] "So why don't you like a black man?"
+[12:04:39 - 12:04:40] "I have such a thing."
+[12:04:40 - 12:04:41] "Okay."
+[12:04:41 - 12:04:42] "She says."
+[12:04:42 - 12:04:44] "So, do you clean yourself already?"
+[12:04:44 - 12:04:45] "No."
+[12:04:45 - 12:04:46] "She says."
+[12:04:46 - 12:04:47] "You can handle the path, sir."
+[12:04:47 - 12:04:48] "She says."
+[12:04:48 - 12:04:49] "You can handle the path, sir."
+[12:04:49 - 12:04:50] "She meds."
+[12:04:50 - 12:04:59] "But let's get some girls in the towel, if that's a shower."
+[12:04:59 - 12:05:04] "And come on, we don't have to go through the long way."
+[12:05:04 - 12:05:08] "Okay."
+[12:05:08 - 12:05:18] "What if she says, uh..."
+[12:05:18 - 12:05:19] "No."
+[12:05:19 - 12:05:20] "I have a plan."
+[12:05:20 - 12:05:21] "She says."
+[12:05:21 - 12:05:22] "I have a plan."
+[12:05:22 - 12:05:23] "She says."
+[12:05:23 - 12:05:24] "Oh, girl.
+[12:05:24 - 12:05:25] It's fine."
+[12:05:25 - 12:05:28] "I want to storm the girl."
+[12:05:28 - 12:05:29] "What soon ago?"
+[12:05:29 - 12:05:30] "So, yeah."
+[12:05:30 - 12:05:32] "Give me, like, 15 minutes.
+[12:05:32 - 12:05:34] I'll knock them out."
+[12:05:34 - 12:05:35] "She says."
+[12:05:35 - 12:05:37] "Oh, that's stupid stuff."
+[12:05:37 - 12:05:38] "Yeah."
+[12:05:38 - 12:05:41] "And so he answered."
+[12:05:41 - 12:05:44] "There, they didn't do all the three of you."
+[12:05:44 - 12:05:45] "I know that's the right."
+[12:05:45 - 12:05:46] "Okay."
+[12:05:46 - 12:05:47] "Yeah."
+[12:05:47 - 12:05:51] "And as soon as the guy approaches the door, there are lots of people that you..."
+[12:05:51 - 12:05:54] "Uh, you communicate your door and your stomach."
+[12:05:54 - 12:05:55] "Like, slowly and over."
+[12:05:55 - 12:05:56] "Oh, that's stupid."
+[12:05:57 - 12:05:59] "Well, this hiding spot."
+[12:05:59 - 12:06:00] "You allow me?"
+[12:06:01 - 12:06:05] "You're going to allow me to take a bath in your room, right?"
+[12:06:05 - 12:06:06] "Yes."
+[12:06:06 - 12:06:07] "Can you give me clean dress?"
+[12:06:07 - 12:06:08] "Yes."
+[12:06:08 - 12:06:09] "Well."
+[12:06:09 - 12:06:10] "What about you?"
+[12:06:10 - 12:06:13] "We don't, we don't have the right of the baths."
+[12:06:13 - 12:06:16] "Oh, you can go into the, into the, into the shower."
+[12:06:16 - 12:06:17] "Oh, you can wipe me, you can wipe me."
+[12:06:17 - 12:06:18] "He says."
+[12:06:18 - 12:06:18] "We're just going tomorrow to get the clothes."
+[12:06:18 - 12:06:19] "She's nuts."
+[12:06:19 - 12:06:20] "And a nice cabin."
+[12:06:20 - 12:06:21] "All right."
+[12:06:21 - 12:06:22] "He says."
+[12:06:22 - 12:06:23] "Come on."
+[12:06:23 - 12:06:24] "Okay."
+[12:06:24 - 12:06:38] "And so like, uh, they just like go through the bathroom."
+[12:06:38 - 12:06:39] "Okay."
+[12:06:39 - 12:06:41] "And they go through the dining."
+[12:06:41 - 12:06:42] "She doesn't mind."
+[12:06:42 - 12:06:43] "Yeah."
+[12:06:43 - 12:06:46] "And she goes through the dining hall, and the door that was locked."
+[12:06:46 - 12:06:48] "I didn't take the doors."
+[12:06:48 - 12:06:50] "He opens up the bathroom."
+[12:06:50 - 12:06:51] "Okay."
+[12:06:51 - 12:06:52] "Yeah."
+[12:06:54 - 12:06:58] "And so like, as you go inside, you like watch and see what you see."
+[12:06:58 - 12:07:02] "Ah, you see like a, uh, like a redden part of the bath."
+[12:07:02 - 12:07:03] "Yeah."
+[12:07:03 - 12:07:06] "And you can watch this look."
+[12:07:06 - 12:07:07] "Yeah."
+[12:07:07 - 12:07:13] "And so, uh, as you go ahead and go in, uh, you close the door behind it and lock it."
+[12:07:13 - 12:07:14] "Yeah."
+[12:07:14 - 12:07:15] "With a key."
+[12:07:15 - 12:07:16] "Yeah."
+[12:07:16 - 12:07:17] "So you don't see like yung parang push-button lock."
+[12:07:17 - 12:07:18] "Oh, my, my key."
+[12:07:18 - 12:07:19] "My key."
+[12:07:19 - 12:07:20] "No."
+[12:07:20 - 12:07:21] "Yeah."
+[12:07:23 - 12:07:24] "And so, yeah."
+[12:07:24 - 12:07:26] "And so, we go ahead, and uh, I think."
+[12:07:24 - 12:07:31] so we go ahead and he goes to a different area it's this room is uh not as big as
+[12:07:31 - 12:07:41] but it seems like it's a room that plays so it's like a two bunk bed situation
+[12:07:41 - 12:07:50] but it is larger than the rooms of the others it seems like and like as you can tell
+[12:07:50 - 12:07:58] their armors like uh standing okay each other side by side so we can tell that at least these guys
+[12:07:58 - 12:08:08] were full of powerheads okay so she kind of like uh she follows them yeah and so this guy the guy
+[12:08:08 - 12:08:19] who's telling you about that like he goes and like starts roughly and gets a tower and gets
+[12:08:19 - 12:08:26] you're a slightly like oversized yeah so but it's really loose like if you were it it's going to be
+[12:08:26 - 12:08:38] like she gets uh she gets that and uh she kind of like uh she has that sleeping thing you know that
+[12:08:38 - 12:08:48] sleeping engine that she has brood herself and kind of like uh she pretends to wipe her so first she wipes
+[12:08:48 - 12:08:55] she wipes her like uh breast like that and then she uh may i sit on your bed i think uh don't
+[12:08:55 - 12:09:02] wipe yourself with the towel you have like you gotta take your bath first but it's kind of like sticky
+[12:09:02 - 12:09:09] in the middle so she you see her kind of like innocently opens her legs like right now you see her
+[12:09:09 - 12:09:17] see her really pink of this and her like lip is like up like that
+[12:09:17 - 12:09:25] okay
+[12:09:48 - 12:09:58] yeah
+[12:09:58 - 12:09:58] okay
+[12:10:02 - 12:10:08] so she kind of like got a little bit scared from them and then she actually kind of like
+[12:10:08 - 12:10:16] kind of like wiping herself she opens her legs and you see her kitty like and her clip is like that
+[12:10:16 - 12:10:20] assimilated and she start like wiping her in the middle like that
+[12:10:20 - 12:10:21] like that
+[12:10:21 - 12:10:22] see here
+[12:10:22 - 12:10:25] see here it's sticky like that here
+[12:10:25 - 12:10:27] okay
+[12:10:45 - 12:10:47] so she nods
+[12:10:47 - 12:10:49] please do sir
+[12:10:49 - 12:10:53] okay
+[12:10:55 - 12:10:59] 17
+[12:10:59 - 12:11:03] yeah
+[12:11:03 - 12:11:12] 5 plus 3. So this is a saving throw.
+[12:11:12 - 12:11:15] You wanna come in next?
+[12:11:15 - 12:11:21] This one has a 17. That's where this other one is a 14.
+[12:11:21 - 12:11:25] So one of them starts following this one.
+[12:11:25 - 12:11:31] And then this guy, because he's aware of this other guy,
+[12:11:31 - 12:11:34] What happened to you, sir?
+[12:11:34 - 12:11:35] Sir?
+[12:11:35 - 12:11:39] So he's out cold, right? So it looks like...
+[12:11:39 - 12:11:43] He didn't do anything, he says.
+[12:11:43 - 12:11:48] And so he puts his hand on his hand on his foot.
+[12:11:48 - 12:11:52] And you can tell that he's about to pass something.
+[12:12:01 - 12:12:19] Well, he's about to cast something. I'm just giving you some time to actually do something.
+[12:12:19 - 12:12:20] Uhhh...
+[12:12:38 - 12:12:41] I use my luck to make him like...
+[12:12:41 - 12:12:42] Slash...
+[12:12:42 - 12:12:43] So real?
+[12:12:43 - 12:12:48] Slash it from his saving throw from that sleeping agent.
+[12:12:48 - 12:12:49] Okay...
+[12:12:49 - 12:12:49] So...
+[12:12:50 - 12:12:51] What's that?
+[12:12:51 - 12:12:52] Lucky fit?
+[12:12:53 - 12:12:53] Ah...
+[12:12:53 - 12:12:55] Is that not the lucky fit?
+[12:12:55 - 12:12:56] Ah...
+[12:12:56 - 12:12:57] Okay...
+[12:12:57 - 12:12:58] But...
+[12:12:58 - 12:12:59] What's that?
+[12:12:59 - 12:13:03] I've already got three luck points.
+[12:13:03 - 12:13:04] Disadvantage...
+[12:13:04 - 12:13:05] You know...
+[12:13:05 - 12:13:06] You can still run.
+[12:13:06 - 12:13:07] Luck points.
+[12:13:07 - 12:13:08] Imposed.
+[12:13:08 - 12:13:09] Disadvantage.
+[12:13:10 - 12:13:11] So that's a hero.
+[12:13:11 - 12:13:12] Yup!
+[12:13:12 - 12:13:13] And so like...
+[12:13:13 - 12:13:14] While he was like...
+[12:13:14 - 12:13:15] So he just said that.
+[12:13:15 - 12:13:16] What happened to him?
+[12:13:16 - 12:13:17] And like you said...
+[12:13:17 - 12:13:19] He was about to cast something.
+[12:13:19 - 12:13:20] And...
+[12:13:20 - 12:13:21] The...
+[12:13:21 - 12:13:23] His hands were on that guy.
+[12:13:23 - 12:13:24] He was about to like...
+[12:13:24 - 12:13:26] Do a restoration or something.
+[12:13:26 - 12:13:27] Are you stuck?
+[12:13:28 - 12:13:29] Are you alright sir?
+[12:13:29 - 12:13:30] Are you stuck?
+[12:13:30 - 12:13:31] Are you alright sir?
+[12:13:31 - 12:13:32] Nothing.
+[12:13:32 - 12:13:33] Apparently not.
+[12:13:33 - 12:13:34] She says.
+[12:13:34 - 12:13:35] As she kind of like...
+[12:13:35 - 12:13:37] Wears that shirt.
+[12:13:37 - 12:13:39] And then she...
+[12:13:39 - 12:13:40] Kind of like...
+[12:13:40 - 12:13:41] Prestigitation the...
+[12:13:41 - 12:13:42] The towel...
+[12:13:42 - 12:13:43] That she has.
+[12:13:43 - 12:13:44] Yeah.
+[12:13:44 - 12:13:45] And you head back to where...
+[12:13:45 - 12:13:46] Takes the keys.
+[12:13:47 - 12:13:48] No...
+[12:13:48 - 12:13:49] Yeah.
+[12:13:49 - 12:13:50] So it...
+[12:13:50 - 12:13:51] The key that you get...
+[12:13:51 - 12:13:53] It's a set of two keys.
+[12:13:53 - 12:13:54] Yeah.
+[12:13:54 - 12:13:55] So you know that at least...
+[12:13:55 - 12:13:58] One of them works inside the door.
+[12:13:58 - 12:13:59] Uh-uh.
+[12:13:59 - 12:14:00] The other one...
+[12:14:00 - 12:14:02] You're not sure exactly what...
+[12:14:02 - 12:14:03] That other key is for.
+[12:14:03 - 12:14:04] And so you head...
+[12:14:04 - 12:14:05] Uh...
+[12:14:05 - 12:14:07] She locks the door at this one.
+[12:14:07 - 12:14:08] Oh.
+[12:14:08 - 12:14:09] You do that.
+[12:14:09 - 12:14:10] Uh...
+[12:14:10 - 12:14:11] And then you head towards the...
+[12:14:11 - 12:14:12] Where?
+[12:14:12 - 12:14:13] The dormitory door.
+[12:14:13 - 12:14:14] Yeah.
+[12:14:14 - 12:14:15] The dining hall.
+[12:14:15 - 12:14:16] Uh-uh.
+[12:14:16 - 12:14:17] Okay.
+[12:14:17 - 12:14:18] So you head there and use the key.
+[12:14:18 - 12:14:19] You know which one.
+[12:14:19 - 12:14:20] Yeah.
+[12:14:20 - 12:14:21] Uh...
+[12:14:22 - 12:14:23] And like...
+[12:14:23 - 12:14:24] It's quiet.
+[12:14:24 - 12:14:25] She's wearing a...
+[12:14:25 - 12:14:26] Large shirt.
+[12:14:26 - 12:14:27] Yeah.
+[12:14:27 - 12:14:29] And they won't need you to have to roll like...
+[12:14:29 - 12:14:30] Stealth.
+[12:14:30 - 12:14:31] It's...
+[12:14:31 - 12:14:32] Not really noisy.
+[12:14:32 - 12:14:33] It's in those steps.
+[12:14:33 - 12:14:35] And people are already like that.
+[12:14:35 - 12:14:36] Yeah.
+[12:14:36 - 12:14:39] And so you head outside and you just push the door.
+[12:14:39 - 12:14:40] And...
+[12:14:41 - 12:14:42] Do you really lock it or just leave it open?
+[12:14:42 - 12:14:43] Yeah.
+[12:14:43 - 12:14:44] Lock it.
+[12:14:44 - 12:14:45] So you lock it once more.
+[12:14:45 - 12:14:46] Head towards the...
+[12:14:46 - 12:14:47] Uh...
+[12:14:47 - 12:14:48] The...
+[12:14:48 - 12:14:49] The rectory.
+[12:14:50 - 12:14:51] And uh...
+[12:14:51 - 12:14:52] Lord Boyle...
+[12:14:52 - 12:14:53] He...
+[12:14:53 - 12:14:54] He's uh...
+[12:14:54 - 12:14:58] Not in that particular hiding space anymore.
+[12:14:58 - 12:14:59] He's...
+[12:14:59 - 12:15:00] Where are you?
+[12:15:00 - 12:15:01] She says.
+[12:15:01 - 12:15:02] Uh...
+[12:15:02 - 12:15:03] And so he says...
+[12:15:03 - 12:15:04] And then he goes and...
+[12:15:04 - 12:15:05] Uh...
+[12:15:05 - 12:15:07] Stop scaring me.
+[12:15:07 - 12:15:08] Um...
+[12:15:08 - 12:15:09] She mends the lock.
+[12:15:09 - 12:15:10] That's what I mean.
+[12:15:11 - 12:15:12] Uh...
+[12:15:12 - 12:15:13] Really break it.
+[12:15:13 - 12:15:14] Jesus.
+[12:15:14 - 12:15:15] And the old nurse.
+[12:15:17 - 12:15:18] I don't know.
+[12:15:18 - 12:15:19] Any other...
+[12:15:19 - 12:15:21] Well, I have a piece here.
+[12:15:21 - 12:15:22] Does it work?
+[12:15:22 - 12:15:23] Yeah.
+[12:15:23 - 12:15:24] What do you mean?
+[12:15:24 - 12:15:25] Uh...
+[12:15:25 - 12:15:26] Citrus.
+[12:15:26 - 12:15:27] So the oven?
+[12:15:27 - 12:15:28] Yeah.
+[12:15:28 - 12:15:29] This one works.
+[12:15:29 - 12:15:30] Okay.
+[12:15:30 - 12:15:31] Alright.
+[12:15:31 - 12:15:32] Well...
+[12:15:32 - 12:15:33] Oh, we got it.
+[12:15:33 - 12:15:34] Yeah.
+[12:15:34 - 12:15:35] Shall we?
+[12:15:35 - 12:15:36] It says.
+[12:15:36 - 12:15:37] See what's that one.
+[12:15:37 - 12:15:39] Ah, go head first.
+[12:15:39 - 12:15:40] Jesus.
+[12:15:40 - 12:15:42] Ah, don't worry.
+[12:15:42 - 12:15:43] Yeah.
+[12:15:43 - 12:15:44] Hmm.
+[12:15:44 - 12:15:45] So, ga'no kalit 'tong rectory?
+[12:15:45 - 12:15:46] Kaya kami?
+[12:15:46 - 12:15:47] Dalawa?
+[12:15:47 - 12:15:49] Well, the rectory itself is not very small.
+[12:15:49 - 12:15:51] I mean, it's large enough to like...
+[12:15:51 - 12:15:52] Yung pababa?
+[12:15:53 - 12:15:54] It's a regular rectory.
+[12:15:54 - 12:15:55] Hindi naman kailang ko pagsiksika.
+[12:15:55 - 12:15:56] Ah, kala ko.
+[12:15:56 - 12:15:57] Ah, okay.
+[12:15:57 - 12:15:59] Kasi hubby niya yung sumiksik sa mga...
+[12:15:59 - 12:16:00] I don't know.
+[12:16:00 - 12:16:01] It's a trap door.
+[12:16:01 - 12:16:02] Yeah.
+[12:16:02 - 12:16:03] It's a trap door.
+[12:16:03 - 12:16:04] Yeah.
+[12:16:04 - 12:16:05] It leaves down.
+[12:16:05 - 12:16:09] And when you go down, like it's tall enough area.
+[12:16:09 - 12:16:10] What do I see?
+[12:16:10 - 12:16:11] Yeah.
+[12:16:11 - 12:16:12] Of course, uh...
+[12:16:12 - 12:16:15] Around you, yung kung sa nagtadwos logo.
+[12:16:15 - 12:16:16] Yeah.
+[12:16:16 - 12:16:18] It's made to look like regular storage, right?
+[12:16:18 - 12:16:19] Yeah.
+[12:16:19 - 12:16:23] Like they're random, I mean, some like, uh...
+[12:16:23 - 12:16:24] Some...
+[12:16:24 - 12:16:28] That sleeping agent I blew is really, really potent.
+[12:16:28 - 12:16:29] Really great.
+[12:16:30 - 12:16:31] Yeah.
+[12:16:31 - 12:16:32] Mm-hmm.
+[12:16:32 - 12:16:36] So, is the entire platonate to sleep at this point?
+[12:16:36 - 12:16:37] Maybe.
+[12:16:37 - 12:16:39] I don't really know.
+[12:16:39 - 12:16:44] It gives us some time to actually look this down.
+[12:16:44 - 12:16:45] Yeah.
+[12:16:45 - 12:16:47] And so, like, uh...
+[12:16:47 - 12:16:48] Of course, uh...
+[12:16:48 - 12:16:49] Like I was saying...
+[12:16:49 - 12:16:50] Yeah.
+[12:16:50 - 12:16:51] Uh...
+[12:16:51 - 12:16:52] There are like random, like, uh...
+[12:16:52 - 12:16:54] Things that are used, uh...
+[12:16:54 - 12:16:55] In the, uh...
+[12:16:55 - 12:16:56] In the chapel here.
+[12:16:56 - 12:16:57] Like, more...
+[12:16:57 - 12:16:58] Uh...
+[12:17:00 - 12:17:03] Ito yung chapel ng Divine Mag ng Reformister.
+[12:17:03 - 12:17:04] Well...
+[12:17:04 - 12:17:05] Uh...
+[12:17:05 - 12:17:06] Pero ito yung mga nandito lang...
+[12:17:06 - 12:17:07] Yung mga...
+[12:17:07 - 12:17:07] Storage.
+[12:17:07 - 12:17:08] Yung mga...
+[12:17:08 - 12:17:09] Ano lang siya.
+[12:17:09 - 12:17:10] Yung mga extra chairs.
+[12:17:10 - 12:17:11] Yung...
+[12:17:11 - 12:17:12] Ano nandito lang sa baba.
+[12:17:12 - 12:17:14] And, of course, like, uh...
+[12:17:14 - 12:17:15] As you go through...
+[12:17:15 - 12:17:16] You see, uh...
+[12:17:16 - 12:17:17] Lone was...
+[12:17:17 - 12:17:18] Yes.
+[12:17:18 - 12:17:20] When you go down there, it goes deep.
+[12:17:20 - 12:17:21] It makes...
+[12:17:21 - 12:17:23] It's not mad at all, but...
+[12:17:23 - 12:17:24] Because of the darkness.
+[12:17:24 - 12:17:25] And they're really mad.
+[12:17:24 - 12:17:30] They're really mad when they saw the lock, it was broken.
+[12:17:30 - 12:17:33] Yeah, so they must be hiding something.
+[12:17:33 - 12:17:34] Maybe.
+[12:17:34 - 12:17:39] I wonder what they have.
+[12:17:39 - 12:17:42] They have more of those monster things.
+[12:17:42 - 12:17:47] So she goes to you and then she says, "You know, you sound a little grumpy."
+[12:17:47 - 12:17:52] He says, "I don't really like them now."
+[12:17:54 - 12:18:01] "You know, people try to take advantage of your sweetness."
+[12:18:01 - 12:18:04] "I don't like them too," she says.
+[12:18:04 - 12:18:06] "But it's needed," she says.
+[12:18:06 - 12:18:08] "I understand that."
+[12:18:08 - 12:18:15] So you see her kind of makeup on, goes onto your pants and likes to open them.
+[12:18:15 - 12:18:19] "It's not like they don't get turned out, but people know how far."
+[12:18:19 - 12:18:29] "You said you want me to worship him, right?"
+[12:18:29 - 12:18:31] "I don't want you to worship him, right?"
+[12:18:31 - 12:18:32] "I don't want you to worship him."
+[12:18:49 - 12:18:50] "Okay."
+[12:18:50 - 12:18:53] "And so she looks at you like that."
+[12:18:53 - 12:18:57] "And so he goes to you and starts kissing him."
+[12:18:57 - 12:18:58] "Okay, so she..."
+[12:18:58 - 12:19:01] "And instead of just forcing himself."
+[12:19:01 - 12:19:03] "And you will be licking."
+[12:19:03 - 12:19:05] "You're really refreshing."
+[12:19:05 - 12:19:06] "Yeah."
+[12:19:06 - 12:19:09] "So she plays with your tongue as well."
+[12:19:09 - 12:19:12] "She has really small tongue."
+[12:19:12 - 12:19:15] "And they be a kind of mouth."
+[12:19:15 - 12:19:30] "Do you want me to fix that?"
+[12:19:30 - 12:19:33] "Don't let my pussy okay?"
+[12:19:33 - 12:19:34] "My kitty."
+[12:19:34 - 12:19:35] "She says."
+[12:19:35 - 12:19:40] "Because she might fall asleep."
+[12:19:40 - 12:19:48] "And so she starts grinding against you."
+[12:19:48 - 12:19:49] "Yeah."
+[12:19:49 - 12:19:50] "I'm sorry."
+[12:19:50 - 12:19:51] "I don't want you to taste it."
+[12:19:51 - 12:19:52] "Yeah."
+[12:19:52 - 12:19:54] "Just don't lick it."
+[12:19:55 - 12:19:56] "Yeah."
+[12:19:57 - 12:19:59] "And so he starts to lick you up against it."
+[12:19:59 - 12:20:02] "I mean, I just do."
+[12:20:02 - 12:20:03] "You know what?
+[12:20:03 - 12:20:04] That idiot.
+[12:20:04 - 12:20:08] That idiot casted a greater restoration on it."
+[12:20:08 - 12:20:09] "Which one?"
+[12:20:09 - 12:20:10] "Essing."
+[12:20:10 - 12:20:12] "It's a high level castle."
+[12:20:12 - 12:20:14] "I can guess he was fresh on it."
+[12:20:14 - 12:20:15] "Maybe."
+[12:20:15 - 12:20:16] "There's no problem."
+[12:20:16 - 12:20:17] "You wanna try it?"
+[12:20:17 - 12:20:18] "She says."
+[12:20:18 - 12:20:19] "No."
+[12:20:19 - 12:20:20] "You wanna break it?"
+[12:20:20 - 12:20:21] "She says."
+[12:20:21 - 12:20:24] "You know what a greater restoration does?"
+[12:20:24 - 12:20:36] "I remember you did something something a little less restoration on it."
+[12:20:36 - 12:20:38] "That's less restoration.
+[12:20:38 - 12:20:40] Greater restoration is something else."
+[12:20:40 - 12:20:41] "It's very powerful."
+[12:20:41 - 12:20:42] "Yes."
+[12:20:42 - 12:20:43] "Okay."
+[12:20:43 - 12:20:56] "And so you put some stuff in it."
+[12:20:56 - 12:20:59] "Can I put it in my top first?"
+[12:20:59 - 12:21:00] "Alright."
+[12:21:00 - 12:21:05] "And so she hungrily you like put your top in something."
+[12:21:05 - 12:21:06] "Yeah.
+[12:21:06 - 12:21:07] "Yeah."
+[12:21:09 - 12:21:10] "Eleven."
+[12:21:10 - 12:21:11] "Yeah."
+[12:21:11 - 12:21:12] "It's so good.
+[12:21:12 - 12:21:13] Unlike those other things."
+[12:21:13 - 12:21:30] "So you see you're kind of like slowly enjoying herself."
+[12:21:30 - 12:21:31] "As she kind of like enjoys your top in here."
+[12:21:31 - 12:21:32] "And actually plays with it."
+[12:21:32 - 12:21:33] "Mm-hmm."
+[12:21:33 - 12:21:34] "And she keeps on kissing it like that."
+[12:21:34 - 12:21:35] "Mm-hmm."
+[12:21:35 - 12:21:36] "You don't mind if I give it a little kisses, right?"
+[12:21:36 - 12:21:37] "I think she likes it."
+[12:21:37 - 12:21:38] "The kisses."
+[12:21:38 - 12:21:39] "Mm-hmm."
+[12:21:39 - 12:21:40] "I know kisses."
+[12:21:40 - 12:21:41] "Mm-hmm."
+[12:21:41 - 12:21:42] "And then she puts it in a little kisses."
+[12:21:42 - 12:21:43] "Mm-hmm."
+[12:21:43 - 12:21:44] "And then she puts it in something like that."
+[12:21:44 - 12:21:45] "You don't mind if I give it a little kisses, right?"
+[12:21:48 - 12:21:49] "I know kisses."
+[12:21:49 - 12:21:50] "Mm-hmm."
+[12:21:50 - 12:21:51] "I know kisses."
+[12:21:52 - 12:21:53] "Mm-hmm."
+[12:21:53 - 12:21:59] "And then she puts it inside her mouth."
+[12:21:59 - 12:22:13] "It smells nice still."
+[12:22:13 - 12:22:14] "Mm-hmm."
+[12:22:15 - 12:22:16] "I know kisses."
+[12:22:16 - 12:22:17] "Yeah."
+[12:22:17 - 12:22:18] "Mm-hmm."
+[12:22:18 - 12:22:19] "I know kisses."
+[12:22:19 - 12:22:20] "Yeah."
+[12:22:20 - 12:22:21] "He says."
+[12:22:21 - 12:22:22] "Mm-hmm."
+[12:22:22 - 12:22:25] "And so he laughs."
+[12:22:25 - 12:22:29] "So, I'm kind of like your Christmas," he says.
+[12:22:29 - 12:22:31] "No, your wife."
+[12:22:31 - 12:22:32] "Not just that."
+[12:22:32 - 12:22:33] "And my angel."
+[12:22:33 - 12:22:34] "Mm-hmm."
+[12:22:34 - 12:22:38] "Don't say that," she says.
+[12:22:38 - 12:22:40] "You like the problem."
+[12:22:40 - 12:22:41] "Mm-hmm."
+[12:22:41 - 12:22:43] "So he says that because he, like, doesn't even think."
+[12:22:43 - 12:22:46] "Oh, he doesn't even think of any other girl."
+[12:22:46 - 12:22:48] "And then the industry realizes, oh, yeah, fuck."
+[12:22:48 - 12:22:50] "Because it is not going."
+[12:22:50 - 12:22:53] "I'm just gonna be my sickness."
+[12:22:53 - 12:22:55] "You like angels, huh?"
+[12:22:55 - 12:22:56] "She says."
+[12:22:56 - 12:22:57] "Huh?"
+[12:22:57 - 12:22:58] "Oh."
+[12:22:58 - 12:22:59] "Mm-hmm."
+[12:23:00 - 12:23:03] "I can have some more."
+[12:23:04 - 12:23:06] "So she's kind of, like, uh, deep-throats."
+[12:23:06 - 12:23:07] "Ah, yes."
+[12:23:07 - 12:23:10] "You know everything you like, huh?"
+[12:23:11 - 12:23:12] "Mm-hmm."
+[12:23:20 - 12:23:21] "She didn't want to sit."
+[12:23:21 - 12:23:24] "Ready?"
+[12:23:24 - 12:23:25] "Yes, yes."
+[12:23:25 - 12:23:30] "So she kind of, like, looks for, like, one of the pews."
+[12:23:30 - 12:23:31] "You want extra pews?"
+[12:23:31 - 12:23:34] "An extra chair or something?"
+[12:23:34 - 12:23:36] "Well, they're both."
+[12:23:36 - 12:23:37] "Okay."
+[12:23:37 - 12:23:51] "So she, so she, she was going to sit on that, but, uh, she said, but she just looks at the ground, and then sits on the ground, and, like, uh, kind of, like, uh, parang victims him."
+[12:23:51 - 12:23:52] "Yeah."
+[12:23:52 - 12:23:57] "And so, yeah, he goes down on the ground, and, uh, he starts, like, going, like, his little bit."
+[12:23:57 - 12:23:58] "Okay."
+[12:23:58 - 12:23:59] "Mm-hmm."
+[12:23:59 - 12:24:01] "And then, as, of course, it's, like, up."
+[12:24:01 - 12:24:02] "Oh, yeah."
+[12:24:03 - 12:24:04] "Finally."
+[12:24:04 - 12:24:05] "Oh, I can get some."
+[12:24:05 - 12:24:12] "And then he pulls that shirt, and then it gets off of the table, and starts squirting his hands."
+[12:24:12 - 12:24:13] "Ow."
+[12:24:13 - 12:24:14] "It hurts."
+[12:24:14 - 12:24:19] "And so he does appear, right?"
+[12:24:19 - 12:24:28] "And he starts, like, rubbing the, parang, and then some new truth, and then they're, like, easing down the side."
+[12:24:28 - 12:24:29] "Yeah."
+[12:24:30 - 12:24:31] "So good."
+[12:24:31 - 12:24:32] "Oh, you're so hot."
+[12:24:32 - 12:24:33] "Oh, shit."
+[12:24:33 - 12:24:34] "It's great."
+[12:24:34 - 12:24:35] "So good."
+[12:24:35 - 12:24:37] "Oh, you're so hot."
+[12:24:37 - 12:24:38] "Oh, shit."
+[12:24:38 - 12:24:39] "It hurts."
+[12:24:42 - 12:24:50] "So she prevents you from moving by, kind of, like, uh, you feel her, uh, tiny legs is kind of, like, grabbing you on the side."
+[12:24:50 - 12:24:52] "Wait a second."
+[12:24:52 - 12:24:57] "And so he doesn't pressure you, like, like, but he, like, means his body.
+[12:24:57 - 12:24:58] "Yeah."
+[12:24:58 - 12:24:59] "It hurts."
+[12:24:59 - 12:25:00] "You're so hot."
+[12:25:00 - 12:25:01] "Okay."
+[12:25:02 - 12:25:03] "Hey."
+[12:25:03 - 12:25:04] "Come on."
+[12:25:04 - 12:25:05] "Okay."
+[12:25:05 - 12:25:12] "And so you notice this ground, like, sort of, you look, by an inch by inch."
+[12:25:12 - 12:25:22] "And then he, like, goes and puts his face on the little chest, and, uh, simply lying flat on the ground, so you're moving just as kind of flat."
+[12:25:22 - 12:25:23] "Yeah."
+[12:25:24 - 12:25:27] "So he takes his, uh, he takes a thing to cut your mouth, and he starts to look like that."
+[12:25:27 - 12:25:28] "Yeah."
+[12:25:28 - 12:25:29] "And he starts to look like that."
+[12:25:29 - 12:25:30] "I'm sorry."
+[12:25:30 - 12:25:31] "Yeah."
+[12:25:31 - 12:25:34] "It's really, like, being a little gentle, actually, in the rest of your life."
+[12:25:34 - 12:25:35] "Yeah."
+[12:25:35 - 12:25:36] "And so he starts to look like that."
+[12:25:36 - 12:25:37] "I'm sorry."
+[12:25:37 - 12:25:39] It's so good.
+[12:26:07 - 12:26:09] He doesn't force it.
+[12:26:11 - 12:26:13] He doesn't force it in deeper.
+[12:26:13 - 12:26:15] But he starts slipping away.
+[12:26:15 - 12:26:19] And it's like long enough that Eric now is already coming up.
+[12:26:19 - 12:26:21] He's moving inside of him.
+[12:26:21 - 12:26:23] He doesn't feel it.
+[12:26:23 - 12:26:25] But he continues doing it.
+[12:26:25 - 12:26:27] He's singing.
+[12:26:27 - 12:26:29] So you feel her grip.
+[12:26:29 - 12:26:31] That grip.
+[12:26:31 - 12:26:33] Kind of like soften, soften.
+[12:26:33 - 12:26:35] Kind of actually then relaxes herself.
+[12:26:35 - 12:26:37] He puts it in deeper.
+[12:26:37 - 12:26:39] It's closer than an inch deeper.
+[12:26:39 - 12:26:41] But again, it's so good.
+[12:26:41 - 12:26:43] And then you get slower.
+[12:26:43 - 12:26:45] But you get slower.
+[12:26:45 - 12:26:47] You get slower.
+[12:26:59 - 12:27:01] That's good.
+[12:27:01 - 12:27:03] Put it in.
+[12:27:03 - 12:27:05] You get slower.
+[12:27:05 - 12:27:07] And so when you say this better happen.
+[12:27:07 - 12:27:09] So he slips off.
+[12:27:09 - 12:27:11] I don't get worse.
+[12:27:11 - 12:27:12] I understand.
+[12:27:12 - 12:27:13] You're not going to do it.
+[12:27:13 - 12:27:15] You're still going to do it.
+[12:27:16 - 12:27:17] I'm already.
+[12:27:17 - 12:27:22] Does it bother you that I'm kind of a little short?
+[12:27:22 - 12:27:26] I'm not going to do it.
+[12:27:24 - 12:27:31] So I'm going to go to the bottom.
+[12:27:31 - 12:27:37] I'm going to go to the bottom.
+[12:27:37 - 12:27:42] I'm just going to go to the bottom.
+[12:27:46 - 12:27:52] I won't do so much.
+[12:27:52 - 12:27:55] You've got a chance for a great time to get in.
+[12:27:55 - 12:27:57] Wait out.
+[12:27:57 - 12:27:57] Let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let me, let
+[12:27:57 - 12:28:00] Really, really, really, really, really.
+[12:28:00 - 12:28:01] Oh my God.
+[12:28:06 - 12:28:07] You're going to meet me.
+[12:28:07 - 12:28:08] Meet me.
+[12:28:08 - 12:28:10] Oh my God.
+[12:28:10 - 12:28:16] Good job.
+[12:28:16 - 12:28:21] Thank you, honey.
+[12:28:21 - 12:28:22] Hey.
+[12:28:22 - 12:28:23] Please, honey.
+[12:28:23 - 12:28:25] Bye.
+[12:28:25 - 12:28:28] I like things a lot, she says.
+[12:28:28 - 12:28:38] So you know that she likes what she does after, like, the first run.
+[12:28:38 - 12:28:43] Is she kind of like, you know her, like you observe it a little bit.
+[12:28:43 - 12:28:48] And then she kind of like rolls with your cock and stuff still inside her.
+[12:28:48 - 12:28:49] Yeah, really.
+[12:28:49 - 12:28:53] And kind of like flexibly moves her hips and her legs.
+[12:28:53 - 12:28:55] As if she turns around like that.
+[12:28:55 - 12:28:56] Yeah, and I feel like that.
+[12:28:56 - 12:28:58] Like you said, yeah, he's already been dissipated.
+[12:28:58 - 12:28:59] Like that.
+[12:28:59 - 12:29:00] From the behind.
+[12:29:00 - 12:29:02] And so he like spins her around.
+[12:29:02 - 12:29:06] And like he starts moving while she's spinning.
+[12:29:06 - 12:29:07] And that she really...
+[12:29:07 - 12:29:08] It's the first time you try this thing.
+[12:29:08 - 12:29:14] She really likes when you kind of like pull her hair up and kisses her on the neck.
+[12:29:14 - 12:29:19] So while her legs were mid-spin she's not completely around you.
+[12:29:19 - 12:29:21] And the person in the place is like...
+[12:29:21 - 12:29:23] He starts like pulling her hair like that.
+[12:29:23 - 12:29:26] And starts like fucking her with her leg up.
+[12:29:34 - 12:29:39] You're such a...
+[12:29:43 - 12:29:50] You're such a favorite.
+[12:30:13 - 12:30:23] But once you start resting like that, he turns you out into the position that you like.
+[12:30:23 - 12:30:24] The doggie?
+[12:30:24 - 12:30:27] Yeah, and he goes and goes and comes.
+[12:30:27 - 12:30:32] He still hasn't come this in bed.
+[12:30:40 - 12:30:42] It's a trap, it's a trap, it's a trap.
+[12:30:42 - 12:30:43] It's a trap, it's a trap.
+[12:30:43 - 12:30:45] We're here, but believe it is the beast.
+[12:30:45 - 12:30:50] Maybe a certain, doomed, or really dangerous.
+[12:30:50 - 12:30:52] I've got to stop myself.
+[12:30:52 - 12:30:54] I'm just helping you.
+[12:30:54 - 12:31:00] Fly, fly, fly.
+[12:31:00 - 12:31:02] Here, here.
+[12:31:02 - 12:31:12] She might come home by 19.
+[12:31:12 - 12:31:14] She's...
+[12:31:14 - 12:31:16] She says so.
+[12:31:16 - 12:31:17] It is...
+[12:31:17 - 12:31:18] Yeah, here it comes.
+[12:31:18 - 12:31:19] It will come.
+[12:31:31 - 12:31:33] You're coming really a lot.
+[12:31:33 - 12:31:34] It will come.
+[12:31:34 - 12:31:36] You're an extra type right now.
+[12:31:36 - 12:31:37] You're a super rich person.
+[12:31:37 - 12:31:38] Extra type.
+[12:31:38 - 12:31:39] I've never piped this person.
+[12:31:39 - 12:31:43] Extra tight, so I never tight resource.
+[12:31:43 - 12:31:48] No, I mean, I've always been tight, but I had no...
+[12:31:48 - 12:31:51] You said that in the real restoration.
+[12:31:51 - 12:31:55] Restore me as... as it is, she said.
+[12:31:55 - 12:32:06] You're gonna stop coming.
+[12:32:06 - 12:32:08] Jeez.
+[12:32:08 - 12:32:12] We should stop the fucking thing.
+[12:32:12 - 12:32:16] We've been fucking all day, he says.
+[12:32:16 - 12:32:20] We should take bars for a while.
+[12:32:20 - 12:32:27] Maybe we can get back the fucking drum power.
+[12:32:27 - 12:32:31] Okay, I'll try, he says.
+[12:32:31 - 12:32:33] That'd be really sexy, you know?
+[12:32:33 - 12:32:36] You're really cute, she says.
+[12:32:36 - 12:32:38] And you're really cute, she says.
+[12:32:38 - 12:32:39] And you're...
+[12:32:39 - 12:32:42] I like your chest, she says.
+[12:32:42 - 12:32:45] I like your dick, she says.
+[12:32:47 - 12:32:48] I like...
+[12:32:48 - 12:32:49] I like your balls, she says.
+[12:32:49 - 12:32:50] I really like balls.
+[12:32:50 - 12:32:51] Huh?
+[12:32:51 - 12:32:52] I like your balls.
+[12:32:52 - 12:32:53] Yeah, why?
+[12:32:53 - 12:32:54] I like them, she says.
+[12:32:55 - 12:32:56] I'm glad, you're right.
+[12:32:56 - 12:32:56] Nobody threw you down before?
+[12:32:57 - 12:32:58] Nobody threw you down before.
+[12:33:00 - 12:33:01] You're the only one who likes your balls.
+[12:33:01 - 12:33:02] I don't know.
+[12:33:05 - 12:33:06] I like them, she says.
+[12:33:06 - 12:33:07] I'm glad you're right.
+[12:33:07 - 12:33:08] Nobody threw you down before.
+[12:33:12 - 12:33:13] Uh-huh.
+[12:33:13 - 12:33:14] You're the only one who likes your balls.
+[12:33:14 - 12:33:19] So she kisses you on the cheeks.
+[12:33:19 - 12:33:20] So what's in here, he says.
+[12:33:20 - 12:33:21] I don't know.
+[12:33:21 - 12:33:22] It's a lot of things that's actually hard to find.
+[12:33:22 - 12:33:23] Since it's stone, it's made of stone wall?
+[12:33:23 - 12:33:24] Uh, yeah.
+[12:33:24 - 12:33:25] It's hard to take for you, right?
+[12:33:25 - 12:33:26] Yeah.
+[12:33:26 - 12:33:41] Do you have any sort of floats there that I could cover my seat?
+[12:33:41 - 12:33:42] He says.
+[12:33:42 - 12:33:43] I love it.
+[12:33:43 - 12:33:46] And so, don't you have something like that?
+[12:33:46 - 12:33:47] I don't know.
+[12:33:52 - 12:33:57] But he goes and, uh, where's your, where's your shirt?
+[12:33:57 - 12:33:59] Sorry, but I don't know.
+[12:33:59 - 12:34:05] And so he goes to his, like, topic and he pulls out the new pants and he's like, well,
+[12:34:05 - 12:34:06] it's a little swerved.
+[12:34:06 - 12:34:07] He's friendly.
+[12:34:07 - 12:34:10] First, you get patient.
+[12:34:10 - 12:34:11] It's clean.
+[12:34:11 - 12:34:12] So she wears it.
+[12:34:12 - 12:34:13] Thanks, she says.
+[12:34:13 - 12:34:17] And because of your palm, it's soil again.
+[12:34:17 - 12:34:18] She says.
+[12:34:18 - 12:34:19] Right.
+[12:34:19 - 12:34:23] So she presses her panties like that.
+[12:34:23 - 12:34:27] And she shows you the thick, kind of like that, in her position.
+[12:34:27 - 12:34:28] See?
+[12:34:28 - 12:34:29] She says.
+[12:34:29 - 12:34:30] No, it's good.
+[12:34:30 - 12:34:31] Boyle, she says.
+[12:34:31 - 12:34:44] All of the paladins here are being inducted into their hermester.
+[12:34:44 - 12:34:45] All of them.
+[12:34:45 - 12:34:46] All.
+[12:34:46 - 12:34:47] She knows.
+[12:34:48 - 12:34:53] There are people who aren't really fully inducted.
+[12:34:53 - 12:34:56] I mean, like, fully deep into it.
+[12:34:56 - 12:34:58] But, sorry, yeah.
+[12:34:58 - 12:35:04] They're being, yeah, they're being classist into that.
+[12:35:04 - 12:35:06] I'm really sorry.
+[12:35:06 - 12:35:07] Jesus.
+[12:35:07 - 12:35:12] I think everywhere in Eastington is just full of them.
+[12:35:12 - 12:35:13] That's...
+[12:35:13 - 12:35:16] The merchant told us about that, right?
+[12:35:16 - 12:35:19] That he notices these people?
+[12:35:19 - 12:35:22] It's a mess.
+[12:35:22 - 12:35:23] No.
+[12:35:23 - 12:35:28] It was actually amazing.
+[12:35:28 - 12:35:39] I think I'm the only one, she says.
+[12:35:39 - 12:35:40] So?
+[12:35:40 - 12:35:41] I'm afraid.
+[12:35:41 - 12:35:42] Come on.
+[12:35:42 - 12:35:43] Huh?
+[12:35:43 - 12:35:44] Come on.
+[12:35:44 - 12:35:45] She says.
+[12:35:45 - 12:35:46] So she holds her hand.
+[12:35:46 - 12:35:47] I don't know.
+[12:35:47 - 12:35:49] I'm afraid I'm going to be here.
+[12:35:49 - 12:35:50] I don't know.
+[12:35:50 - 12:35:52] I'm afraid I'm going to be here.
+[12:35:52 - 12:35:53] I don't know.
+[12:35:53 - 12:35:55] I'm afraid I'm going to be here.
+[12:35:55 - 12:36:23] Yeah. Alright, so you go deeper, straight through. And of course at some point you don't have to turn. There really isn't a lot of corridors to switch. It's just like turning in a certain direction so you get lower and deeper. It seems to be heading down in a certain direction.
+[12:36:25 - 12:36:45] And the sides of the walls you can see it's been hastily carved. There's some signs that this could have been like Sukuna Street. And there's nothing like that smooth or elegant about this structure.
+[12:36:45 - 12:36:57] Until you reach a certain point, then all of a sudden it's smooth and it's like well built and it's like a sudden transition.
+[12:36:57 - 12:37:04] Uh, I suppose Mia's seen before? Go ahead and register.
+[12:37:04 - 12:37:08] Seventeen plus two or nineteen.
+[12:37:08 - 12:37:16] Oh yeah, you've seen some of it, I suppose, when working with some of the other sisters.
+[12:37:16 - 12:37:17] Uh-uh.
+[12:37:17 - 12:37:21] Salasari and Louis, she says.
+[12:37:21 - 12:37:23] I've seen some of it.
+[12:37:23 - 12:37:26] She nods.
+[12:37:24 - 12:37:26] - She nods.
+[12:37:26 - 12:37:29] - Yeah, the one that I've seen are practically
+[12:37:29 - 12:37:32] like duer's touch, duer's attraction,
+[12:37:32 - 12:37:35] like ballet and such, but yeah,
+[12:37:35 - 12:37:37] it's a little kind of like this.
+[12:37:37 - 12:37:41] No, no, it's speaking in your mind.
+[12:37:41 - 12:37:45] - Yeah, I don't know if it's a sense.
+[12:37:45 - 12:37:48] - Yeah, I mean, we're speaking in your mind, right?
+[12:37:48 - 12:37:49] Anybody else can hear this?
+[12:37:49 - 12:37:52] - I don't know.
+[12:37:54 - 12:37:56] - It's just trickling us.
+[12:37:56 - 12:37:57] - Right.
+[12:37:57 - 12:38:00] - Oh, yeah.
+[12:38:00 - 12:38:04] - Don't throw away that thing that I gave you, the ring.
+[12:38:04 - 12:38:08] - I'm gonna have to say that again.
+[12:38:08 - 12:38:09] Come on.
+[12:38:09 - 12:38:11] Ah, shit.
+[12:38:11 - 12:38:15] So at this point, you finally have like a spirit.
+[12:38:15 - 12:38:19] - Okay, now where are we going, trust me?
+[12:38:19 - 12:38:21] You're the old man.
+[12:38:21 - 12:38:22] - Yeah, I'm coming through here.
+[12:38:22 - 12:38:28] I mean, is there any place where you can feel more magic
+[12:38:28 - 12:38:29] than the other?
+[12:38:29 - 12:38:34] - Hmm, my mind is locked right now.
+[12:38:34 - 12:38:35] - That's right.
+[12:38:35 - 12:38:36] That's right.
+[12:38:36 - 12:38:38] All right, well, well.
+[12:38:38 - 12:38:40] Well, at this point, then, I'll have to swim.
+[12:38:40 - 12:38:47] And so, like, we try to see if you can perceive anything.
+[12:38:47 - 12:38:48] - Oh, thank you.
+[12:38:48 - 12:38:52] - You're trying so hard.
+[12:38:52 - 12:38:53] - Yeah, well.
+[12:38:53 - 12:38:55] - Yeah, that's why it passed away.
+[12:38:55 - 12:38:56] - I know that.
+[12:38:56 - 12:39:02] But I mean, I've been around you and there's enough that, you know, I have at least a little
+[12:39:02 - 12:39:07] a little bit of a fear for when something is magic.
+[12:39:07 - 12:39:09] - Yeah, but it ain't broken right now.
+[12:39:09 - 12:39:12] Maybe you're a left inspiration.
+[12:39:12 - 12:39:15] - You can't rely on that.
+[12:39:15 - 12:39:15] - Oh.
+[12:39:15 - 12:39:18] - Arcana, with a 16.
+[12:39:18 - 12:39:19] - Okay.
+[12:39:19 - 12:39:24] Well, uh, she actually chose right at the moment.
+[12:39:24 - 12:39:27] - So she says, uh...
+[12:39:27 - 12:39:32] - You see, you feel that she quite like caramel, right?
+[12:39:32 - 12:39:33] - Yeah.
+[12:39:33 - 12:39:34] - Yeah, she...
+[12:39:34 - 12:39:35] - She says, "You're right."
+[12:39:35 - 12:39:36] - You're right.
+[12:39:36 - 12:39:37] - I'm right?
+[12:39:37 - 12:39:38] - Yeah.
+[12:39:38 - 12:39:41] - Hmm, yeah.
+[12:39:41 - 12:39:43] Well, I was a complete fucking guest, though.
+[12:39:43 - 12:39:45] So, I'm not gonna like so that.
+[12:39:45 - 12:39:46] - Why are you cursing me?
+[12:39:46 - 12:39:48] You're in front of a kid.
+[12:39:48 - 12:39:53] - No?
+[12:39:53 - 12:39:57] - I was just trying to be saying, you know, this was a few minutes ago.
+[12:39:57 - 12:39:58] - So?
+[12:39:58 - 12:40:01] - She says, "I'm still a minor."
+[12:40:01 - 12:40:05] - She says, "I'm sorry for swearing in front of you."
+[12:40:05 - 12:40:11] "I shall try to be clean when we fuck like rabbits."
+[12:40:11 - 12:40:13] -
+[12:40:13 - 12:40:15] - So she giggles.
+[12:40:15 - 12:40:18] - And so he seems genuinely happy when she laughs,
+[12:40:18 - 12:40:23] as if he's specifically saying those things that he laughs.
+[12:40:23 - 12:40:29] - And says, "All right, so let's have some bullshit over there."
+[12:40:29 - 12:40:34] - You, uh, she casts a mage armor on herself.
+[12:40:34 - 12:40:37] Cast it on you as well.
+[12:40:37 - 12:40:41] - What happened to old magic?
+[12:40:41 - 12:40:42] "There's our wall of stones."
+[12:40:42 - 12:40:47] - She says, "If they detect us, so be it."
+[12:40:47 - 12:40:48] - She says, "Let's go."
+[12:40:51 - 12:40:56] - And so you go through, and you can definitely tell at least that.
+[12:40:56 - 12:41:03] - But these corridors of them are, like, or there's something that's preventing them
+[12:41:03 - 12:41:04] to be dirty.
+[12:41:04 - 12:41:13] It's not covered in dirt, it's not covered in age, it's not nice and smooth, clear and that.
+[12:41:13 - 12:41:18] You can't even properly call it ruins, because it does not look really good.
+[12:41:18 - 12:41:23] - It is a plissarian architecture, it's a construction.
+[12:41:23 - 12:41:25] - Which is weird, though.
+[12:41:25 - 12:41:32] - The only thing that was destroyed was that entrance that was carved to, like, get into this place.
+[12:41:32 - 12:41:35] And that was the only, like, thing that was destroyed.
+[12:41:35 - 12:41:39] And as you go deeper, you can feel this magical energy.
+[12:41:39 - 12:41:44] And, uh, you follow, basically, the flows of where it's coming from.
+[12:41:44 - 12:41:47] If you're 16, it's enough because it's strong enough.
+[12:41:47 - 12:41:49] - Yeah.
+[12:41:49 - 12:41:55] - And, uh, you, uh, enter a sort of, like, uh, "parang an balcony."
+[12:41:55 - 12:42:01] Uh, so there's kind of, like, railings, uh, and there's a staircase that's made out of, uh,
+[12:42:01 - 12:42:05] "parang shaped stone," smooth, smooth stone.
+[12:42:05 - 12:42:11] And, uh, there, in that balcony, is a larger power source.
+[12:42:11 - 12:42:16] It's not the largest you've seen, in fact, the one that is, uh, uh, the one, yeah, the one
+[12:42:16 - 12:42:32] that was it is on one that giant frog at the not the decor yeah yeah that one is even larger than
+[12:42:32 - 12:42:40] this one so this one is an asbian but it is there but it is of a different and you can feel it
+[12:42:41 - 12:43:01] you can feel your magic kind of feeling but you're not personal to like have it that full force
+[12:43:11 - 12:43:18] you can feel your magic kind of feeling like you can feel your magic kind of feeling like if you want to
+[12:43:18 - 12:43:24] you can feel your magic kind of feeling like you want to feel your magic kind of feeling like that
+[12:43:24 - 12:43:30] and you can feel your magic kind of feeling like that you can feel your magic kind of feeling like that
+[12:43:30 - 12:43:37] so
+[12:43:53 - 12:44:04] every time she steps like take a step forward yeah wait wait wait every time she steps let me
+[12:44:04 - 12:44:14] just say that it is a large yellow yeah like the one in the bug no yellow so what is yellow repulsion no
+[12:44:14 - 12:44:21] that's red only yellow mia probably has not seen it but the others might have told her go ahead and roll
+[12:44:21 - 12:44:31] like an intelligence she remembers uh even menphilia has only seen this once 11 plus three yeah that's
+[12:44:31 - 12:44:45] and it was when uh oh it was when uh how he thought see leonidas was besiegeling
+[12:44:45 - 12:44:56] but the undid no not it takes away and absorbs it is what they thought was called
+[12:44:56 - 12:45:05] and consorption and horrible consorption so and as you look okay so every time she steps uh
+[12:45:05 - 12:45:13] every time she takes a step she you will feel that her heart is thumping
+[12:45:13 - 12:45:24] and then yeah and then racing and then uh she says to you she looks at you and you know that she's kind
+[12:45:24 - 12:45:29] of like scared and she says don't let go of me she says
+[12:45:29 - 12:45:40] and so you can feel that it's taking something what is your highest level spell slot that you still have
+[12:45:44 - 12:45:55] oil of water no spell slot slot level level level three so you feel that a large amount of energy starts
+[12:45:55 - 12:46:06] like being drained and if you don't step back now she has to look at it more closer if the children are here
+[12:46:07 - 12:46:14] and then one and then one gets consumed as you get closer to the balcony and then you see
+[12:46:14 - 12:46:24] a what you see him be chained down beneath underneath this insertion
+[12:46:24 - 12:46:35] i don't know how to use it right not just children though but people who have like a distinct
+[12:46:35 - 12:46:45] like magical like magical like properties you know eyes or hair but these people like unlike the ones that
+[12:46:45 - 12:46:53] have been turned reformist are here and some of them like they've seen very dull other faces
+[12:46:56 - 12:47:02] the ones that have been the ones that have been there you suppose for long for long the other ones
+[12:47:02 - 12:47:13] the ones that look like more useful right now right now you don't see anyone specifically you're
+[12:47:13 - 12:47:19] hurting them but you're not seeing everything yeah it's being concealed by someone so what are they
+[12:47:19 - 12:47:26] doing breathing no they're just trained and you can see that they're
+[12:47:24 - 12:47:35] And you can see that they're looking into this world, facing it, and their life seems to be ingrained into it, like yours has been ingrained.
+[12:47:35 - 12:47:42] And one of them you've seen before.
+[12:47:42 - 12:47:43] Sige na.
+[12:47:43 - 12:47:46] The one that had told you about the resistance.
+[12:47:46 - 12:47:48] My what?
+[12:47:48 - 12:47:53] The resistance. One of the ones that had told you about the resistance.
+[12:47:54 - 12:48:05] The ones that were trying to resist, the ones that were trying not to.
+[12:48:05 - 12:48:12] One of them that had, you remember diba nung last time,
+[12:48:12 - 12:48:18] merong isang nagsabi na yung kausap nyo dati ay kinapture, at yun ala sa paladinit.
+[12:48:18 - 12:48:20] This is that guy.
+[12:48:20 - 12:48:23] Is there a way to go down?
+[12:48:23 - 12:48:30] Well, you don't know, because right now this orb is also like, even Boyle is shaking.
+[12:48:30 - 12:48:35] He's not magical, so he doesn't have spell slots that can be consumed.
+[12:48:35 - 12:48:40] You can see that the mage armor that you cast on him, it's being eaten.
+[12:48:40 - 12:48:43] The resistance being wet slowly consuming, draining up.
+[12:48:43 - 12:48:47] You as well, your mage armor is the same thing.
+[12:48:47 - 12:48:49] So she looks at Boyle.
+[12:48:49 - 12:48:51] Go back, she says.
+[12:48:51 - 12:49:09] No, not sleeping alone. There must be some pain. I mean, if they can't just look all at once, you know, but at least you don't have to have a force. There must be some threat to it.
+[12:49:14 - 12:49:20] Uh, so as her spells are being done, she kills this.
+[12:49:20 - 12:49:23] You said, come on, let's move back.
+[12:49:23 - 12:49:24] No, she says.
+[12:49:24 - 12:49:33] No, we just have to think. I'm not telling you to, like, leave these people alone, but they have something.
+[12:49:33 - 12:49:39] They didn't look fucking green when they went here, when they came back. They looked perfectly fine, right?
+[12:49:39 - 12:49:44] I mean, I don't even have a magic lamp for sure.
+[12:49:44 - 12:49:47] Surge.
+[12:49:47 - 12:49:48] Shit, really?
+[12:49:48 - 12:49:49] Yeah.
+[12:49:49 - 12:49:56] Okay, so it starts eating at the surge. You don't even have a chance to, like, roll.
+[12:49:56 - 12:49:57] Really?
+[12:49:57 - 12:49:58] Yeah.
+[12:49:58 - 12:49:59] I'm not even gonna have...
+[12:49:59 - 12:50:02] What does that make the other, when I surge?
+[12:50:02 - 12:50:21] When you surge, it, like, feeds you. It's just, like, taking it. You can see the, the, the movements, the flows of your magic, of your wild magic surge that usually just explodes up, gets siphoned, concentrated into a single stream heading towards this.
+[12:50:21 - 12:50:22] Yeah.
+[12:50:23 - 12:50:29] She notices a thing inside her head, and then she takes out the, the sending stone, the boils.
+[12:50:29 - 12:50:30] The boils.
+[12:50:30 - 12:50:32] And then she then takes it out.
+[12:50:32 - 12:50:38] The sending stone, if he didn't do that, it wouldn't have been completely, like, raining as well.
+[12:50:38 - 12:50:39] Right.
+[12:50:39 - 12:50:52] But he pulls you back away from this thing. Uh, your, your, uh, Togito, your wild magic surge proved as a kind of a buffer before a moron could be raining.
+[12:50:52 - 12:50:57] Uh, but, yeah. Uh, he pulled you away. Hey. Hey.
+[12:50:57 - 12:50:58] Uh, you're right.
+[12:50:58 - 12:50:59] What about those children, there?
+[12:50:59 - 12:51:00] Yes.
+[12:51:00 - 12:51:18] Well, the thing we're not gonna find out. Like I said, those children, they don't look like they were hurting. There must be a wave that is not here.
+[12:51:18 - 12:51:19] She nods.
+[12:51:19 - 12:51:21] Maybe the other path, that's the only place, right?
+[12:51:21 - 12:51:22] She nods.
+[12:51:23 - 12:51:28] There might be something where, I don't think it matters.
+[12:51:28 - 12:51:29] She nods.
+[12:51:29 - 12:51:31] All right, she says, I'm sorry.
+[12:51:31 - 12:51:32] It's fine.
+[12:51:32 - 12:51:33] I understand.
+[12:51:33 - 12:51:35] I feel the same way.
+[12:51:35 - 12:51:39] But if we get consumed here, we need to get out of those kids.
+[12:51:39 - 12:51:50] We can't see anything. I thought someone trying to connect to me but... disappeared.
+[12:51:50 - 12:51:57] I knew that thing quite a week from the seven weeks ago, I said.
+[12:51:57 - 12:51:59] Pretty nice.
+[12:51:59 - 12:52:01] I don't know.
+[12:52:01 - 12:52:03] Okay.
+[12:52:05 - 12:52:14] So she shakes her head.
+[12:52:15 - 12:52:17] They can handle themselves.
+[12:52:17 - 12:52:30] So she says, "Let's go the other way."
+[12:52:30 - 12:52:31] "Wait."
+[12:52:31 - 12:52:32] Okay.
+[12:52:32 - 12:52:35] So you head back into the other world.
+[12:52:35 - 12:52:39] And you can tell that there are more like rooms.
+[12:52:39 - 12:52:43] In fact, there is kind of like a suit.
+[12:52:43 - 12:52:45] A couple of suits.
+[12:52:45 - 12:52:50] One is like, they're all like magical in origin.
+[12:52:50 - 12:52:52] But they're kind of strange.
+[12:52:53 - 12:52:54] Like you can tell that they're magical.
+[12:52:54 - 12:52:58] But also you can tell that they're some kind of different about it.
+[12:52:58 - 12:53:00] What is the difference?
+[12:53:00 - 12:53:02] Suits, not suits.
+[12:53:02 - 12:53:04] Suits of armor?
+[12:53:04 - 12:53:06] They're kind of like armor.
+[12:53:06 - 12:53:09] But they seem to be made mostly out of cloth.
+[12:53:09 - 12:53:11] Dolls?
+[12:53:14 - 12:53:15] Kind of like armor.
+[12:53:15 - 12:53:16] Ah!
+[12:53:16 - 12:53:18] Ito yung mga work words.
+[12:53:18 - 12:53:19] And no.
+[12:53:19 - 12:53:22] And in the center there.
+[12:53:22 - 12:53:27] Like on its port.
+[12:53:27 - 12:53:31] You can see that there is a red orb.
+[12:53:31 - 12:53:33] Red what?
+[12:53:33 - 12:53:34] Red orb.
+[12:53:34 - 12:53:35] So red orb is a special?
+[12:53:35 - 12:53:37] Yeah.
+[12:53:37 - 12:53:39] It's a small one.
+[12:53:39 - 12:53:41] Kind of like a marble size.
+[12:53:42 - 12:53:43] It's perfect.
+[12:53:43 - 12:53:43] Yeah.
+[12:53:43 - 12:53:44] And it's proper on the left.
+[12:53:44 - 12:53:45] I think they were left.
+[12:53:45 - 12:53:46] Huh?
+[12:53:46 - 12:53:47] I think they were left.
+[12:53:48 - 12:53:49] Are we able to get to those people?
+[12:53:49 - 12:53:50] I am.
+[12:53:50 - 12:53:51] Let's try.
+[12:53:51 - 12:53:52] It's a little small.
+[12:53:52 - 12:53:53] It's a little big for you.
+[12:53:53 - 12:53:54] If it's a magical suit, it won't fit you.
+[12:53:54 - 12:53:55] Perfect.
+[12:53:55 - 12:53:56] You just have to put it in.
+[12:53:56 - 12:53:57] It's a little small.
+[12:53:57 - 12:53:58] It's a little big for you.
+[12:53:58 - 12:53:59] It's a magical suit.
+[12:53:59 - 12:54:00] It won't fit you.
+[12:54:00 - 12:54:01] Perfect.
+[12:54:01 - 12:54:02] You just have to put it in.
+[12:54:02 - 12:54:03] It's a little small.
+[12:54:03 - 12:54:04] It's a little big for you.
+[12:54:04 - 12:54:05] It's a magical suit.
+[12:54:05 - 12:54:06] It won't fit you.
+[12:54:06 - 12:54:07] Perfect.
+[12:54:07 - 12:54:08] You just have to put it in.
+[12:54:08 - 12:54:09] It's a magical suit.
+[12:54:09 - 12:54:10] It won't fit you.
+[12:54:10 - 12:54:11] Perfect.
+[12:54:11 - 12:54:13] You just have to trust it.
+[12:54:13 - 12:54:14] Trust magic.
+[12:54:14 - 12:54:15] Trust.
+[12:54:15 - 12:54:16] Okay.
+[12:54:16 - 12:54:19] So she takes off one of the suits.
+[12:54:19 - 12:54:20] Yes.
+[12:54:20 - 12:54:21] Yeah.
+[12:54:21 - 12:54:22] So yeah.
+[12:54:22 - 12:54:24] It's kind of like weird for you.
+[12:54:24 - 12:54:26] Cause you know what repulsion orbs do.
+[12:54:26 - 12:54:27] Okay.
+[12:54:27 - 12:54:29] If you like touch it.
+[12:54:29 - 12:54:30] You feel like that.
+[12:54:30 - 12:54:32] It's like keeping magical.
+[12:54:32 - 12:54:33] Mm.
+[12:54:33 - 12:54:34] But like.
+[12:54:34 - 12:54:37] How will a magical suit look.
+[12:54:37 - 12:54:39] Conform to your mind.
+[12:54:39 - 12:54:40] When there's some kind of like.
+[12:54:40 - 12:54:41] Look at it.
+[12:54:41 - 12:54:42] How?
+[12:54:42 - 12:54:45] What happens when I wear it?
+[12:54:45 - 12:54:48] It does conform to your body like you're expecting.
+[12:54:48 - 12:54:49] Ah.
+[12:54:49 - 12:54:50] Okay.
+[12:54:50 - 12:54:51] So it is working.
+[12:54:51 - 12:54:52] But it's strange.
+[12:54:52 - 12:54:53] Something like strange.
+[12:54:53 - 12:54:54] There's materials.
+[12:54:54 - 12:54:55] I think.
+[12:54:55 - 12:54:57] That's what makes it strange.
+[12:54:57 - 12:54:58] Yeah.
+[12:54:58 - 12:54:59] What's the point about it?
+[12:54:59 - 12:55:01] And so he wears it.
+[12:55:01 - 12:55:03] It does also conform to history.
+[12:55:03 - 12:55:06] I haven't seen any material like this before.
+[12:55:06 - 12:55:09] So where are we heading next?
+[12:55:09 - 12:55:10] That's it.
+[12:55:10 - 12:55:11] You can fly it now.
+[12:55:11 - 12:55:12] Alright.
+[12:55:12 - 12:55:13] So yeah.
+[12:55:13 - 12:55:14] Do you just go?
+[12:55:14 - 12:55:15] Yeah.
+[12:55:15 - 12:55:16] Okay.
+[12:55:16 - 12:55:17] So you don't dally here.
+[12:55:17 - 12:55:18] As soon as you wear these suits.
+[12:55:18 - 12:55:19] You head in that direction.
+[12:55:19 - 12:55:20] Yeah.
+[12:55:20 - 12:55:22] And you boil of course like that.
+[12:55:22 - 12:55:23] Like the size of Parangos.
+[12:55:23 - 12:55:24] And you like.
+[12:55:24 - 12:55:25] Move slowly.
+[12:55:25 - 12:55:26] Towards where you're standing.
+[12:55:26 - 12:55:26] Yeah.
+[12:55:26 - 12:55:27] Safe?
+[12:55:27 - 12:55:28] Yeah.
+[12:55:28 - 12:55:28] In the sense.
+[12:55:28 - 12:55:29] So at least you can do this one.
+[12:55:29 - 12:55:30] I'm still.
+[12:55:30 - 12:55:31] I don't feel like that.
+[12:55:31 - 12:55:32] I feel like that.
+[12:55:32 - 12:55:32] And so as you were like going.
+[12:55:32 - 12:55:33] Let's look at what seems to be.
+[12:55:33 - 12:55:34] Of course.
+[12:55:34 - 12:55:35] Okay.
+[12:55:35 - 12:55:36] Yeah.
+[12:55:36 - 12:55:36] And uh.
+[12:55:36 - 12:55:37] Yeah.
+[12:55:37 - 12:55:38] You feel like.
+[12:55:38 - 12:55:38] Although you can't cast.
+[12:55:38 - 12:55:39] Yeah.
+[12:55:39 - 12:55:39] And you like.
+[12:55:39 - 12:55:40] Move slowly.
+[12:55:40 - 12:55:41] Towards where you're standing.
+[12:55:41 - 12:55:42] Yeah.
+[12:55:42 - 12:55:43] Safe?
+[12:55:43 - 12:55:44] Yeah.
+[12:55:44 - 12:55:45] In the sense.
+[12:55:45 - 12:55:46] Oh.
+[12:55:46 - 12:55:47] At least you can do this one.
+[12:55:47 - 12:55:48] I'm still.
+[12:55:48 - 12:55:49] I don't feel like that.
+[12:55:51 - 12:55:52] Hmm.
+[12:55:52 - 12:55:53] Let's head down.
+[12:55:53 - 12:55:54] And so as you were like going.
+[12:55:54 - 12:55:56] Let's look at what seems to be.
+[12:55:56 - 12:55:57] Close.
+[12:55:59 - 12:56:00] Okay.
+[12:56:00 - 12:56:01] And uh.
+[12:56:01 - 12:56:02] Yeah.
+[12:56:02 - 12:56:03] You feel like.
+[12:56:03 - 12:56:04] Although you can't.
+[12:56:04 - 12:56:05] Cast magic.
+[12:56:05 - 12:56:06] Right?
+[12:56:06 - 12:56:07] Hmm.
+[12:56:07 - 12:56:08] And you feel like you cannot.
+[12:56:08 - 12:56:09] But at least.
+[12:56:09 - 12:56:10] Be harmed by the aura.
+[12:56:10 - 12:56:11] But.
+[12:56:11 - 12:56:12] No.
+[12:56:12 - 12:56:13] You cannot.
+[12:56:13 - 12:56:14] Cast magic.
+[12:56:14 - 12:56:15] But yes.
+[12:56:15 - 12:56:16] At least.
+[12:56:16 - 12:56:17] Your magical energy.
+[12:56:17 - 12:56:18] So that aura earlier.
+[12:56:18 - 12:56:19] The negative aura.
+[12:56:19 - 12:56:20] That I felt earlier.
+[12:56:20 - 12:56:21] Is like.
+[12:56:21 - 12:56:22] Um.
+[12:56:22 - 12:56:23] Not affecting.
+[12:56:23 - 12:56:24] It's like.
+[12:56:24 - 12:56:25] Like.
+[12:56:26 - 12:56:27] Yeah.
+[12:56:27 - 12:56:28] You can.
+[12:56:30 - 12:56:31] You can feel it around you.
+[12:56:31 - 12:56:32] You can feel that.
+[12:56:32 - 12:56:33] There's some swirls of magic.
+[12:56:33 - 12:56:35] That are going around you.
+[12:56:35 - 12:56:36] But right now.
+[12:56:36 - 12:56:37] You're not feeling it.
+[12:56:37 - 12:56:38] Effectively.
+[12:56:38 - 12:56:40] You're just feeling it.
+[12:56:40 - 12:56:41] Okay.
+[12:56:41 - 12:56:42] So is there a way to do that?
+[12:56:42 - 12:56:43] There is.
+[12:56:43 - 12:56:44] As you get closer.
+[12:56:44 - 12:56:45] You finally see.
+[12:56:45 - 12:56:46] Indeed.
+[12:56:46 - 12:56:47] There's.
+[12:56:47 - 12:56:48] There's a kind of a ladder.
+[12:56:48 - 12:56:49] A ladder.
+[12:56:49 - 12:56:50] Okay.
+[12:56:50 - 12:56:51] So.
+[12:56:51 - 12:56:52] We go there.
+[12:56:52 - 12:56:53] And the ladder definitely doesn't fit.
+[12:56:53 - 12:56:55] The construction of this place.
+[12:56:55 - 12:56:56] And like.
+[12:56:56 - 12:56:57] Seems like they broke off.
+[12:56:57 - 12:56:58] Like.
+[12:56:58 - 12:56:59] The balustream.
+[12:56:59 - 12:57:00] Of the balcony.
+[12:57:00 - 12:57:01] Just took them down.
+[12:57:01 - 12:57:02] Okay.
+[12:57:02 - 12:57:03] So she heads down.
+[12:57:03 - 12:57:04] And she goes to one.
+[12:57:04 - 12:57:05] The one.
+[12:57:05 - 12:57:06] That guy who's resisting.
+[12:57:06 - 12:57:07] Yeah.
+[12:57:07 - 12:57:08] Okay.
+[12:57:08 - 12:57:09] Hey.
+[12:57:09 - 12:57:10] He says.
+[12:57:10 - 12:57:11] I'm not.
+[12:57:16 - 12:57:17] Part of them.
+[12:57:17 - 12:57:18] He says.
+[12:57:18 - 12:57:19] I need to help.
+[12:57:19 - 12:57:20] You hear that voice.
+[12:57:20 - 12:57:21] Huh?
+[12:57:21 - 12:57:22] You hear that voice.
+[12:57:22 - 12:57:23] Huh?
+[12:57:23 - 12:57:24] You hear that voice.
+[12:57:24 - 12:57:28] I'm just learning about the past, but yeah, they're with us, right?
+[12:57:28 - 12:57:33] Mm-hmm. I'm just learning about the experiences.
+[12:57:33 - 12:57:43] All right. Get the kids out of here. I can hold off, get them up, get them free of them somehow.
+[12:57:43 - 12:57:51] I already saw all these two of them, and they died as if they were drained into a little dust.
+[12:57:51 - 12:57:59] You help us get them up, so she tries to, like, yank the chain.
+[12:57:59 - 12:58:10] Well, of course, the chain is a chain, so it's strong, it holds. If you just yank it like that, that boy looks at you.
+[12:58:10 - 12:58:14] All right. All right, Ryder, where are you going?
+[12:58:14 - 12:58:18] I have a pro bar.
+[12:58:18 - 12:58:23] She takes up a misli throw bar.
+[12:58:23 - 12:58:26] You try it, you're stronger.
+[12:58:26 - 12:58:27] Yeah.
+[12:58:37 - 12:58:40] Where are the keys?
+[12:58:40 - 12:58:42] Huh, the keys did I have.
+[12:58:42 - 12:58:43] Where did I fit?
+[12:58:43 - 12:58:47] The lock is for my lungs.
+[12:58:47 - 12:58:52] All right, I'll get to it, because she goes there.
+[12:58:52 - 12:59:00] So, yeah, it goes behind him, so these, like, things, like, this chain, it has the lock that goes around.
+[12:59:00 - 12:59:07] It, like, goes onto this, like, strong metal-looking thing that's cold to the touch.
+[12:59:07 - 12:59:10] And then there is, like, some kind of lock.
+[12:59:10 - 12:59:15] And it doesn't look like a regular, like, you're able to push down.
+[12:59:15 - 12:59:16] Go ahead and roll it.
+[12:59:16 - 12:59:21] How do you think?
+[12:59:21 - 12:59:25] The shape of it, though, looks like the back of the key.
+[12:59:25 - 12:59:27] And it seems like a present.
+[12:59:27 - 12:59:29] Yeah, that's what she does.
+[12:59:29 - 12:59:32] And as she does that, they can hear it.
+[12:59:32 - 12:59:42] And the things, the chain, the cuffs that were chaining his arm and his legs together, they unlatch.
+[12:59:42 - 12:59:44] You all right?
+[12:59:44 - 12:59:45] I'm fine.
+[12:59:45 - 12:59:47] Let's, let's help the kids.
+[12:59:47 - 12:59:48] You want more of those keys?
+[12:59:48 - 12:59:49] Mm-hmm.
+[12:59:49 - 12:59:50] Right?
+[12:59:50 - 12:59:51] No.
+[12:59:51 - 12:59:58] You go, you guys go for the keys, and me and the old man here can carry them, as you were.
+[12:59:58 - 13:00:00] She nods.
+[13:00:00 - 13:00:01] So she goes to the...
+[13:00:01 - 13:00:03] I don't think we can carry all of them.
+[13:00:03 - 13:00:07] We don't have to do them in batches.
+[13:00:07 - 13:00:15] And so you go ahead and prioritize.
+[13:00:15 - 13:00:16] Yeah.
+[13:00:16 - 13:00:22] And you figure out the ones that look the most, like, how the eyes look.
+[13:00:22 - 13:00:24] I don't know about that.
+[13:00:24 - 13:00:25] Okay.
+[13:00:25 - 13:00:26] So that's what we do.
+[13:00:26 - 13:00:32] And so, yeah, and they start, like, carrying them for the time, bringing them upstairs, like,
+[13:00:32 - 13:00:36] opening board in the field, I mean, somewhere here.
+[13:00:36 - 13:00:39] And that's when it started getting painful.
+[13:00:39 - 13:00:40] I think it's safe to put.
+[13:00:40 - 13:00:46] So he, like, puts a buffer there, and he starts, like, collecting them.
+[13:00:46 - 13:00:48] How many more?
+[13:00:48 - 13:00:51] And just, uh, just take more.
+[13:00:51 - 13:00:53] Shit.
+[13:00:53 - 13:00:55] Come on.
+[13:00:55 - 13:00:58] It's gonna be the largest loop in the most.
+[13:00:58 - 13:01:02] And so, yeah, they both take the last loop.
+[13:01:02 - 13:01:07] And so there's a total of, like, there's a total of 24 of them here.
+[13:01:07 - 13:01:08] 24.
+[13:01:09 - 13:01:10] No, sorry, 32.
+[13:01:10 - 13:01:12] 32 random people.
+[13:01:12 - 13:01:14] Uh, mostly children.
+[13:01:14 - 13:01:21] Maybe let's say that 24 of them are children and the rest are, like, adults.
+[13:01:21 - 13:01:30] Yeah, they're, like, adults.
+[13:01:30 - 13:01:31] Okay.
+[13:01:31 - 13:01:32] So she says...
+[13:01:32 - 13:01:47] And, yeah, uh, all of them are, like, various levels of magic.
+[13:01:47 - 13:01:49] Why did they do this, sirs?
+[13:01:49 - 13:01:50] Huh?
+[13:01:50 - 13:01:53] To empower.org?
+[13:01:53 - 13:01:57] I'm sure, but for what purpose?
+[13:01:57 - 13:02:00] I don't know.
+[13:02:00 - 13:02:05] That it feels like something and everything now.
+[13:02:05 - 13:02:09] I couldn't even get an answer, huh?
+[13:02:09 - 13:02:10] I don't know.
+[13:02:11 - 13:02:17] I mean, I'm not the strongest spellcaster.
+[13:02:17 - 13:02:21] I don't know what I can do with, like, one second level spell.
+[13:02:21 - 13:02:26] I got nothing.
+[13:02:26 - 13:02:31] To the point that I think I can see it in my soul.
+[13:02:31 - 13:02:32] Huh?
+[13:02:32 - 13:02:36] To the point that I think it's looking at my soul.
+[13:02:36 - 13:02:39] I'm gonna rip it away from my body.
+[13:02:39 - 13:02:43] Probably does.
+[13:02:43 - 13:02:53] It eats magical energy, and then life energy, and then your soul.
+[13:02:53 - 13:02:56] They prove that I saw that.
+[13:02:56 - 13:02:59] I think it's just even slimming down.
+[13:02:59 - 13:03:01] It's like the body is still...
+[13:03:01 - 13:03:03] No, my soul.
+[13:03:03 - 13:03:04] Yes.
+[13:03:04 - 13:03:08] It's like thin.
+[13:03:08 - 13:03:10] What do you think?
+[13:03:10 - 13:03:12] She knows.
+[13:03:12 - 13:03:16] They're both staring.
+[13:03:16 - 13:03:20] They're always a different, like, two of them.
+[13:03:20 - 13:03:21] And now they're...
+[13:03:21 - 13:03:25] They just took them out of the chain.
+[13:03:25 - 13:03:26] And they...
+[13:03:26 - 13:03:30] There's some three people out there.
+[13:03:30 - 13:03:32] They didn't know why.
+[13:03:32 - 13:03:36] They brought those two bodies.
+[13:03:36 - 13:03:38] They brought them there.
+[13:03:39 - 13:03:41] They came back in time.
+[13:03:41 - 13:03:47] Awesome.
+[13:03:47 - 13:04:17] I don't know.
+[13:04:17 - 13:04:24] There are parts of the Reformist Church.
+[13:04:24 - 13:04:30] This whole establishment is...
+[13:04:30 - 13:04:35] Reformist Church.
+[13:04:35 - 13:04:40] I know, but...
+[13:04:40 - 13:04:43] I know, I know.
+[13:04:43 - 13:04:53] They are turning them, whether they like it or not.
+[13:04:53 - 13:04:55] She says.
+[13:04:55 - 13:05:00] Moran, I mean, Moran is a good guy.
+[13:05:00 - 13:05:10] I know, he's a good guy.
+[13:05:10 - 13:05:14] He seems really frustrated to us.
+[13:05:14 - 13:05:28] How are we going to get them out without...
+[13:05:28 - 13:05:38] I mean, there's a long way out, right?
+[13:05:38 - 13:05:42] He's a chaplain.
+[13:05:42 - 13:05:44] He's dead leading around him.
+[13:05:44 - 13:05:45] Yeah.
+[13:05:45 - 13:05:46] He really can't get it hot.
+[13:05:46 - 13:06:00] He says he's doing something deeper.
+[13:06:00 - 13:06:03] I don't know.
+[13:06:03 - 13:06:05] Yeah, but...
+[13:06:05 - 13:06:07] Whatever it is, it's down there.
+[13:06:07 - 13:06:13] It's feeding on the bodies of the brain completely.
+[13:06:13 - 13:06:14] I don't know.
+[13:06:14 - 13:06:15] I mean...
+[13:06:15 - 13:06:18] I've got a feeling out there.
+[13:06:18 - 13:06:20] It's something we can't find.
+[13:06:20 - 13:06:23] Maybe something we can.
+[13:06:23 - 13:06:24] Huh?
+[13:06:24 - 13:06:26] Maybe it's something we can.
+[13:06:26 - 13:06:32] If they have to go down there and feed it something we can't find, maybe we can...
+[13:06:32 - 13:06:52] We only have a few spice spots.
+[13:06:52 - 13:06:54] It's a little M-E-M thinking.
+[13:06:54 - 13:06:55] Yeah, yeah.
+[13:06:55 - 13:06:56] But this is part of it.
+[13:06:56 - 13:06:57] Yeah.
+[13:07:02 - 13:07:03] M-I-P being on the way out.
+[13:07:03 - 13:07:04] But there should be some M-I-P being on the way out.
+[13:07:04 - 13:07:05] M-I-P being on the way out.
+[13:07:24 - 13:07:37] That huge orb, I've seen it somewhere before when Minfilia showed it to me.
+[13:07:37 - 13:07:52] It is an orb of absorption, but the one she showed me is a small one and it's in a rough one.
+[13:07:52 - 13:08:00] It means that this orb has been here for a long, long time because of its size.
+[13:08:00 - 13:08:07] Usually, they are not just like that. Something conduits or connects them to something.
+[13:08:07 - 13:08:10] I'm not going for it.
+[13:08:12 - 13:08:20] Maybe if we scratch them, which is easy, which kind of cuts the power of that thing.
+[13:08:20 - 13:08:24] It looks around.
+[13:08:24 - 13:08:26] Right. With your zeros, right?
+[13:08:26 - 13:08:30] Fifteen. That's just intelligence. Perception?
+[13:08:30 - 13:08:32] Yeah, investigation.
+[13:08:32 - 13:08:36] Seventeen plus two. Nineteen.
+[13:08:36 - 13:08:42] Oh, you're specifically looking for something that's copper or something.
+[13:08:42 - 13:08:42] Yeah.
+[13:08:42 - 13:08:50] Underneath, you see that it was like an arresting on some kind of a platform.
+[13:08:50 - 13:08:56] And you don't necessarily see that copper things exposed.
+[13:08:56 - 13:09:04] But once you look closer, you can see that there are lines of copper that are exposed from the scratches on this pillar.
+[13:09:04 - 13:09:08] So the pillar itself looks like it's made in copper.
+[13:09:08 - 13:09:10] At least the size of it.
+[13:09:10 - 13:09:12] These pillars are white.
+[13:09:12 - 13:09:16] The one that it's resting on.
+[13:09:16 - 13:09:20] The pillars that make up the platform that this thing is resting on.
+[13:09:20 - 13:09:22] They're themselves are copper.
+[13:09:22 - 13:09:26] Like chewed like pipes almost.
+[13:09:26 - 13:09:30] You have to put them in copper.
+[13:09:30 - 13:09:32] There's doors.
+[13:09:32 - 13:09:36] And so we like scratches on some of that.
+[13:09:36 - 13:09:40] With a coal bar that you brought out there.
+[13:09:40 - 13:09:46] And it does expose the brown with the color of copper.
+[13:09:46 - 13:09:48] Wait, she says, stop coming down.
+[13:09:48 - 13:09:50] You're just going to fire yourself.
+[13:09:50 - 13:09:52] I'm just, I don't want to see it.
+[13:09:52 - 13:10:00] There are these scratches off the layer of insulation that keeps it from oxidizing.
+[13:10:00 - 13:10:01] Yes, indeed.
+[13:10:01 - 13:10:07] So she kind of like breaks in and kind of like things.
+[13:10:07 - 13:10:10] And you feel that she's kind of like.
+[13:10:10 - 13:10:11] She's really like pumping.
+[13:10:11 - 13:10:12] Her heart is pumping.
+[13:10:12 - 13:10:14] Kind of like slowing down now.
+[13:10:14 - 13:10:16] And she thinks.
+[13:10:16 - 13:10:20] You feel that she's, she can like, she's weak.
+[13:10:20 - 13:10:22] She's reckless right now.
+[13:10:22 - 13:10:25] So she's letting out her thoughts to you.
+[13:10:25 - 13:10:27] Kind of like sharing with you.
+[13:10:27 - 13:10:31] As if she's remembering that kind of like.
+[13:10:31 - 13:10:33] What makes copper?
+[13:10:39 - 13:10:40] And she opens her eyes.
+[13:10:40 - 13:10:43] And she looks at her bag.
+[13:10:43 - 13:10:46] Takes like a vial of acid.
+[13:10:46 - 13:10:51] We're gonna.
+[13:10:51 - 13:10:54] I'll throw this acid in that copper.
+[13:10:54 - 13:10:55] Acid eats copper.
+[13:10:55 - 13:10:56] So.
+[13:10:56 - 13:10:59] According to science.
+[13:10:59 - 13:11:00] No.
+[13:11:01 - 13:11:02] A certain kind of acid.
+[13:11:02 - 13:11:03] Yeah.
+[13:11:03 - 13:11:04] And.
+[13:11:04 - 13:11:05] Well.
+[13:11:05 - 13:11:09] What eats copper is like an acid.
+[13:11:09 - 13:11:12] Like it is also made out of some kind of copper.
+[13:11:12 - 13:11:13] Yeah.
+[13:11:13 - 13:11:14] So.
+[13:11:14 - 13:11:18] Something like an aluminum based acid or something.
+[13:11:18 - 13:11:19] Yeah.
+[13:11:19 - 13:11:20] So she throws it.
+[13:11:20 - 13:11:21] No.
+[13:11:23 - 13:11:24] She doesn't throw it.
+[13:11:24 - 13:11:25] Yeah.
+[13:11:25 - 13:11:26] She throws it.
+[13:11:26 - 13:11:27] No.
+[13:11:28 - 13:11:29] She doesn't throw it.
+[13:11:29 - 13:11:30] But.
+[13:11:30 - 13:11:31] Yeah.
+[13:11:31 - 13:11:32] She throws it.
+[13:11:32 - 13:11:35] It like smashes it against one of the pores.
+[13:11:35 - 13:11:36] Yeah.
+[13:11:36 - 13:11:37] And yes.
+[13:11:37 - 13:11:38] It does like corrode it.
+[13:11:38 - 13:11:40] And you can see that.
+[13:11:40 - 13:11:42] While it is eating out of it.
+[13:11:42 - 13:11:43] Again.
+[13:11:43 - 13:11:44] It is thick.
+[13:11:44 - 13:11:46] So there's a lot of it.
+[13:11:46 - 13:11:47] But.
+[13:11:47 - 13:11:48] It does corrode.
+[13:11:48 - 13:11:50] So you know that this could be effective.
+[13:11:50 - 13:11:51] Mhm.
+[13:11:51 - 13:11:52] And you can see like.
+[13:11:52 - 13:11:54] What melts down is kind of like a.
+[13:11:54 - 13:11:57] A greenish like sludge.
+[13:11:57 - 13:11:59] It's not the green liquid.
+[13:11:59 - 13:12:00] I'm not saying that.
+[13:12:00 - 13:12:01] But that's kind of.
+[13:12:01 - 13:12:02] I know that it's oxidation.
+[13:12:02 - 13:12:03] Yeah.
+[13:12:03 - 13:12:04] That's what.
+[13:12:05 - 13:12:06] What happens.
+[13:12:06 - 13:12:07] Happens to copper when it oxidizes.
+[13:12:07 - 13:12:08] It's oxidized.
+[13:12:15 - 13:12:16] And so.
+[13:12:16 - 13:12:17] Like.
+[13:12:17 - 13:12:18] Boyle goes around.
+[13:12:18 - 13:12:20] Tries to see how many of these.
+[13:12:20 - 13:12:21] Like.
+[13:12:21 - 13:12:22] Yours.
+[13:12:22 - 13:12:23] And then like.
+[13:12:23 - 13:12:24] So.
+[13:12:24 - 13:12:25] It goes around.
+[13:12:25 - 13:12:26] You know.
+[13:12:26 - 13:12:27] Like.
+[13:12:28 - 13:12:30] And so.
+[13:12:30 - 13:12:32] How many of you got.
+[13:12:32 - 13:12:33] Um.
+[13:12:33 - 13:12:34] Four.
+[13:12:34 - 13:12:35] Ah.
+[13:12:35 - 13:12:37] There are six of these.
+[13:12:37 - 13:12:38] Most likely.
+[13:12:38 - 13:12:39] Two.
+[13:12:39 - 13:12:39] No.
+[13:12:39 - 13:12:40] Three.
+[13:12:40 - 13:12:41] One.
+[13:12:43 - 13:13:04] I could I could cast a spell acid something acid splash I think that will work he was about to say
+[13:13:04 - 13:13:10] before you remember that you're wearing a suit that has a I can remove this he says
+[13:13:13 - 13:13:27] we're in the same spot right right so this guy who is there he's like being on tour but wants to see
+[13:13:27 - 13:13:43] we'll call you when we're ready all right right now we're just wasting a breath
+[13:13:43 - 13:13:47] it smells for all the milk
+[13:13:47 - 13:13:53] how much of the kids we only have four
+[13:13:53 - 13:14:07] how many how many how many does it take to get one of them out of here
+[13:14:10 - 13:14:15] so it took a minute a minute but it's but acid splash is a country
+[13:14:15 - 13:14:21] so you don't have to take long right
+[13:14:28 - 13:14:33] so i'll take that i'll take the head here
+[13:14:33 - 13:14:40] we need a little bit of ways from you so you can cast and as soon as you're done
+[13:14:40 - 13:14:44] yeah put it back to your head before you do that
+[13:14:53 - 13:15:06] well all right so she nods to you and she goes and like what if is there a is there a way to
+[13:15:06 - 13:15:07] cast that and let it in the beginning
+[13:15:07 - 13:15:09] why didn't you like throw it
+[13:15:09 - 13:15:11] no
+[13:15:11 - 13:15:12] that's expensive
+[13:15:12 - 13:15:13] i don't know
+[13:15:13 - 13:15:13] no
+[13:15:13 - 13:15:14] shit
+[13:15:14 - 13:15:18] all right all right that's it that's the only thing that i was trying
+[13:15:18 - 13:15:29] but if i passed it one time i could um target that two pillars at the same time
+[13:15:29 - 13:15:35] so we already got rid of one so you just need
+[13:15:35 - 13:15:42] you need to cast it twice and then the last one maybe we can use the last two vial
+[13:15:42 - 13:15:46] two of the vials
+[13:15:46 - 13:15:53] let's start with that before you open it okay and so you finished the four vials you have to destroy
+[13:15:53 - 13:15:53] yeah
+[13:15:53 - 13:15:56] more there so now there's just one
+[13:15:56 - 13:15:58] two so the plenay and the tanggalia there are going to be three
+[13:16:04 - 13:16:06] all right all right all right i'm sorry
+[13:16:06 - 13:16:14] all right all right i'm sorry but you don't have to be sore you're the one sacrificing here i should be sore
+[13:16:14 - 13:16:16] and i am
+[13:16:22 - 13:16:31] okay
+[13:16:31 - 13:16:41] so she cast it uh she cast it's it's a it is just a simple country
+[13:16:41 - 13:16:48] it is a simple cantrip but you're feeling like really heavy here uh and uh go ahead before that
+[13:16:48 - 13:16:53] roll that roll a uh a wisdom check uh saving throw sorry
+[13:16:53 - 13:17:03] not 20. nice so you feel like uh another surge coming on and if you know that if you surge
+[13:17:03 - 13:17:08] energy will come out of you and it'll be absorbed into this thing and that will weaken you
+[13:17:08 - 13:17:16] yeah but you're able to control yourself yeah enough that you're able to cast the spell and uh start
+[13:17:16 - 13:17:26] burning off like melting with acid two more of these pillars and two more left and just one more left
+[13:17:24 - 13:17:28] one more left and so we can just use the acid vial now
+[13:17:28 - 13:17:31] and she kind of like no no you started with it you know
+[13:17:31 - 13:17:34] you know the acid vial yeah she throws one more acid
+[13:17:34 - 13:17:42] it's all right so he's like ready he sees that these
+[13:17:42 - 13:17:45] things melt and he goes ahead and like puts
+[13:17:45 - 13:17:52] the thing yeah she goes to him and are you all right
+[13:17:54 - 13:17:57] a lot of my spells don't even if i only casted
+[13:17:57 - 13:18:01] attention yeah uh you lose one of whatever highest
+[13:18:01 - 13:18:08] that's not the highest
+[13:18:08 - 13:18:15] i only have three spells not but if you get if if i can just
+[13:18:15 - 13:18:17] dress for a minute
+[13:18:17 - 13:18:23] i could regain them let's uh let's add back you know that you're not well
+[13:18:23 - 13:18:28] wearing this uh this suit
+[13:18:28 - 13:18:42] so what does it happen does it what happened so uh as you do when when you
+[13:18:42 - 13:18:48] like uh it wasn't immediate but when you like to remove these copper things i mean
+[13:18:48 - 13:18:52] this thing still continues to absorb but you don't necessarily know where
+[13:18:52 - 13:18:55] it's going you can feel that the absorber
+[13:18:55 - 13:19:01] orb is still an absorber orb but as you pull back you can see that the the rest of the room
+[13:19:01 - 13:19:17] seems a little bit more it's working it's working it's working but it's a good thing that we cut off that's an orb of absorption
+[13:19:17 - 13:19:30] so what she does here is uh she uses a safe place and all of her sorcery slot she turns it into a spell spell
+[13:19:30 - 13:19:34] she turns it into a spell spell
+[13:19:34 - 13:19:44] you feel better huh mm-hmm what's how easy to like stroke in your head oh we gotta fight that thing there
+[13:19:44 - 13:19:56] but you still gotta wear these suits you still won't be look past them
+[13:19:56 - 13:19:58] that's fine are you gonna be your girlfriend
+[13:19:58 - 13:20:12] she knows
+[13:20:20 - 13:20:47] okay all right all right
+[13:20:50 - 13:21:00] so
+[13:21:20 - 13:21:30] uh
+[13:21:34 - 13:21:44] so when we get back to the others uh she says we're going to fight it and find a way to out here
+[13:21:44 - 13:21:48] she says to this guy and i promise
+[13:21:48 - 13:21:55] i can't promise anything right now but i know that some of the paladins upstairs are good people
+[13:21:55 - 13:22:01] they're forced to do this thing they're being brainwashed and all that
+[13:22:03 - 13:22:15] so
+[13:22:15 - 13:22:28] so she shakes her head and she says
+[13:22:28 - 13:22:34] she says hugs of karma always pray like other people can help
+[13:22:34 - 13:22:40] so he takes it but he doesn't think it he gives it to uh the one that uh yeah
+[13:22:40 - 13:22:42] most like marine
+[13:22:42 - 13:22:46] the guy that has more like modern faces
+[13:22:46 - 13:22:50] he's like almost a safari one of the show
+[13:22:50 - 13:23:00] she kind of like
+[13:23:00 - 13:23:02] you can still see that there's some still that
+[13:23:02 - 13:23:02] right yeah
+[13:23:04 - 13:23:08] that food perhaps is he's just like his body's just
+[13:23:08 - 13:23:14] he'll fight this thing right so she
+[13:23:14 - 13:23:18] yeah he helps this guy like that swallow this one
+[13:23:18 - 13:23:22] you're a spell caster right
+[13:23:22 - 13:23:30] listen if you don't get back
+[13:23:30 - 13:23:32] so yeah half an hour
+[13:23:32 - 13:23:38] and uh she takes the last scroll of teleportation out of her bag
+[13:23:38 - 13:23:44] gives it to this guy
+[13:23:44 - 13:23:46] what is this
+[13:23:46 - 13:23:48] that's a teleportation scroll
+[13:23:48 - 13:23:50] she says
+[13:23:50 - 13:23:52] teleport as much as you can
+[13:23:52 - 13:23:56] it can only hold 12 people
+[13:23:56 - 13:23:58] she says
+[13:23:58 - 13:24:00] i can
+[13:24:00 - 13:24:02] you have to
+[13:24:02 - 13:24:04] she says
+[13:24:04 - 13:24:06] she gives it to him
+[13:24:06 - 13:24:08] she says
+[13:24:08 - 13:24:10] read it
+[13:24:10 - 13:24:12] she says read it in your mind
+[13:24:12 - 13:24:14] she says
+[13:24:14 - 13:24:16] breathe in and let the magic
+[13:24:16 - 13:24:18] close inside you
+[13:24:18 - 13:24:20] she says
+[13:24:20 - 13:24:24] you will be teleported randomly somewhere
+[13:24:24 - 13:24:26] but at least it's not here
+[13:24:26 - 13:24:28] she says
+[13:24:28 - 13:24:30] if we don't get back 30 minutes
+[13:24:30 - 13:24:32] alright
+[13:24:32 - 13:24:34] she says
+[13:24:34 - 13:24:36] listen to me she says
+[13:24:36 - 13:24:38] you can do it
+[13:24:38 - 13:24:40] you're a spell caster
+[13:24:40 - 13:24:42] she says
+[13:24:42 - 13:24:44] maybe try to focus on something
+[13:24:44 - 13:24:46] instead of a random place
+[13:24:46 - 13:24:48] you can do it
+[13:24:58 - 13:24:59] so she says
+[13:24:59 - 13:25:00] the fisherman cabin
+[13:25:00 - 13:25:02] south of eastern print
+[13:25:02 - 13:25:03] she says
+[13:25:03 - 13:25:04] what's the link
+[13:25:04 - 13:25:05] you can do it
+[13:25:05 - 13:25:06] hmm
+[13:25:06 - 13:25:07] she nods
+[13:25:07 - 13:25:09] we teleported there
+[13:25:09 - 13:25:11] it's pretty safe
+[13:25:12 - 13:25:14] oh sorry
+[13:25:14 - 13:25:16] so she nods
+[13:25:16 - 13:25:19] let's go
+[13:25:19 - 13:25:20] she says
+[13:25:20 - 13:25:21] okay
+[13:25:22 - 13:25:23] so they walk
+[13:25:23 - 13:25:25] should they head towards there
+[13:25:25 - 13:25:26] like we go through this war
+[13:25:26 - 13:25:27] and we pass through
+[13:25:27 - 13:25:28] and uh
+[13:25:28 - 13:25:29] indeed
+[13:25:29 - 13:25:30] like uh
+[13:25:30 - 13:25:31] there is
+[13:25:31 - 13:25:32] uh
+[13:25:32 - 13:25:33] an area
+[13:25:33 - 13:25:34] like uh
+[13:25:34 - 13:25:35] uh
+[13:25:35 - 13:25:36] sort of an archway
+[13:25:36 - 13:25:37] but uh
+[13:25:37 - 13:25:38] it's
+[13:25:38 - 13:25:39] very important
+[13:25:39 - 13:25:40] the door is already
+[13:25:40 - 13:25:41] like wide open
+[13:25:41 - 13:25:42] and you can tell
+[13:25:42 - 13:25:44] i mean
+[13:25:44 - 13:25:46] if this was closed
+[13:25:46 - 13:25:47] and you did what you did
+[13:25:47 - 13:25:48] like
+[13:25:48 - 13:25:49] melt those things
+[13:25:49 - 13:25:50] there would be
+[13:25:50 - 13:25:51] have been no way through
+[13:25:51 - 13:25:52] okay
+[13:25:52 - 13:25:53] yes
+[13:25:53 - 13:25:54] you can see
+[13:25:56 - 13:25:57] panels
+[13:25:57 - 13:25:58] from the side
+[13:25:58 - 13:25:59] uh
+[13:25:59 - 13:26:00] but as you like
+[13:26:00 - 13:26:01] head through
+[13:26:01 - 13:26:02] you know
+[13:26:02 - 13:26:03] that uh
+[13:26:03 - 13:26:05] the effects of the absorption
+[13:26:05 - 13:26:06] kind of like
+[13:26:06 - 13:26:07] already slightly
+[13:26:07 - 13:26:08] dissipate
+[13:26:08 - 13:26:09] it's like
+[13:26:09 - 13:26:10] they're getting
+[13:26:10 - 13:26:11] far enough
+[13:26:11 - 13:26:12] and these
+[13:26:12 - 13:26:13] large doors
+[13:26:13 - 13:26:14] that uh
+[13:26:15 - 13:26:16] were thick
+[13:26:16 - 13:26:17] and you look
+[13:26:17 - 13:26:18] now that you look at them
+[13:26:18 - 13:26:19] it's strange
+[13:26:19 - 13:26:20] you know why it's so heavy
+[13:26:20 - 13:26:22] it's because they're fucking
+[13:26:22 - 13:26:23] all dead in doors
+[13:26:23 - 13:26:24] ah okay
+[13:26:24 - 13:26:27] and uh
+[13:26:27 - 13:26:28] they lead
+[13:26:28 - 13:26:29] further
+[13:26:29 - 13:26:30] inside
+[13:26:30 - 13:26:31] this massive
+[13:26:31 - 13:26:32] like uh
+[13:26:32 - 13:26:33] calisarian
+[13:26:33 - 13:26:34] like structure
+[13:26:34 - 13:26:35] in that
+[13:26:35 - 13:26:36] you don't know
+[13:26:36 - 13:26:37] where it leads
+[13:26:37 - 13:26:38] yeah
+[13:26:38 - 13:26:39] but you can see
+[13:26:39 - 13:26:40] you can find the exit
+[13:26:40 - 13:26:41] yeah
+[13:26:41 - 13:26:42] this uh
+[13:26:42 - 13:26:43] this area
+[13:26:43 - 13:26:44] starts
+[13:26:44 - 13:26:45] as you move
+[13:26:45 - 13:26:46] forward
+[13:26:46 - 13:26:47] because uh
+[13:26:47 - 13:26:48] you remove
+[13:26:48 - 13:26:49] it
+[13:26:49 - 13:26:50] probably
+[13:26:50 - 13:26:51] because you remove
+[13:26:51 - 13:26:52] the power source
+[13:26:52 - 13:26:53] it is
+[13:26:53 - 13:26:54] almost completely
+[13:26:54 - 13:26:55] black
+[13:26:55 - 13:26:56] with darkness
+[13:26:56 - 13:26:57] the only light
+[13:26:57 - 13:26:58] is the light
+[13:26:58 - 13:26:59] in the yellow
+[13:26:59 - 13:27:00] orb
+[13:27:00 - 13:27:01] that is uh
+[13:27:01 - 13:27:02] still swirling
+[13:27:02 - 13:27:04] but you have
+[13:27:04 - 13:27:05] magical
+[13:27:05 - 13:27:06] you have
+[13:27:06 - 13:27:07] dark vision
+[13:27:07 - 13:27:08] and so
+[13:27:08 - 13:27:09] this pitch
+[13:27:09 - 13:27:10] blackness
+[13:27:10 - 13:27:12] you can still see
+[13:27:12 - 13:27:13] like uh
+[13:27:13 - 13:27:14] a colorless
+[13:27:14 - 13:27:15] is it
+[13:27:15 - 13:27:16] darward?
+[13:27:16 - 13:27:17] no
+[13:27:17 - 13:27:18] colorless
+[13:27:18 - 13:27:19] like uh
+[13:27:19 - 13:27:20] a colorless
+[13:27:20 - 13:27:21] uh
+[13:27:21 - 13:27:22] like uh
+[13:27:22 - 13:27:23] black and white
+[13:27:23 - 13:27:24] image
+[13:27:24 - 13:27:25] of like uh
+[13:27:24 - 13:27:27] of the room through your eyes
+[13:27:27 - 13:27:29] but things he can move forward
+[13:27:29 - 13:27:32] and however you know
+[13:27:32 - 13:27:34] that at the edge of the room
+[13:27:34 - 13:27:36] it's just like a strange
+[13:27:36 - 13:27:38] ooze-like creature
+[13:27:38 - 13:27:42] as if it was another kind of darkness
+[13:27:42 - 13:27:46] splattered and like just sticking on the walls
+[13:27:46 - 13:27:49] eyes, mouths, ears
+[13:27:49 - 13:27:51] all sorts of things
+[13:27:51 - 13:27:54] no, this looks nothing like a brain
+[13:27:54 - 13:28:00] you don't know if it's a monstrosity of some sort
+[13:28:00 - 13:28:02] or an admiration of some sort
+[13:28:02 - 13:28:05] it looks like one
+[13:28:05 - 13:28:07] it looks like a formless thing
+[13:28:07 - 13:28:08] but it's not like this world
+[13:28:08 - 13:28:11] she speaks in deep speaks
+[13:28:11 - 13:28:17] then you know it will not respond
+[13:28:17 - 13:28:19] no, this is not
+[13:28:19 - 13:28:23] it's a monstrosity
+[13:28:23 - 13:28:26] it's not, it's a, it's a, it's like a strange thing
+[13:28:26 - 13:28:30] you, you, you, it's, it, it is not psionic
+[13:28:30 - 13:28:32] you don't feel like emanations of
+[13:28:32 - 13:28:35] psychic energy responding to your
+[13:28:35 - 13:28:37] probes as weak speech
+[13:28:37 - 13:28:38] nothing like that
+[13:28:38 - 13:28:40] but it simply knows it
+[13:28:40 - 13:28:42] what it does do though
+[13:28:42 - 13:28:44] is you can feel it sort of like
+[13:28:44 - 13:28:48] you can see it start slowly like oozing in your direction
+[13:28:48 - 13:28:50] as you go with finishing
+[13:28:50 - 13:28:53] fuck this shit
+[13:28:53 - 13:29:09] okay, so again, you feel hurt, you feel that she's scared
+[13:29:13 - 13:29:15] until you hold your hand
+[13:29:15 - 13:29:18] and then he says, you don't feel the thing
+[13:29:18 - 13:29:23] and I think it's going to look as far as she can go
+[13:29:23 - 13:29:26] and so you, like, remove the
+[13:29:26 - 13:29:28] okay, she does the same
+[13:29:28 - 13:29:43] okay, so again, you can see it's gonna be a little bit more than that
+[13:29:46 - 13:29:49] throw sa fireball into this pin
+[13:29:49 - 13:29:50] wow, you still have fireball?
+[13:29:50 - 13:29:51] ah, kasi nanderefekstress you say it's like that
+[13:29:51 - 13:29:53] I'm a chance of magic, okay, yeah
+[13:29:53 - 13:29:54] that's right
+[13:29:54 - 13:30:03] uh... he stay there, so he does have a dex... uh... may ano siya, di ba?
+[13:30:03 - 13:30:05] mayroon pa siyang disadvantage on dexing?
+[13:30:05 - 13:30:12] this thing? uh... no specific disadvantage, but I will have to order for dexing
+[13:30:12 - 13:30:13] okay
+[13:30:16 - 13:30:21] I rolled really high though, what's an 18?
+[13:30:21 - 13:30:26] uh... bend blocked
+[13:30:26 - 13:30:27] okay
+[13:30:27 - 13:30:29] what does that do?
+[13:30:29 - 13:30:32] uh... use my lock to disadvantage on you
+[13:30:32 - 13:30:33] okay, disadvantage
+[13:30:33 - 13:30:38] rolling, uh... this time it is just a 12, but I think that's a fail for your...
+[13:30:38 - 13:30:40] fail, 32 damage
+[13:30:40 - 13:30:41] alright
+[13:30:41 - 13:30:43] it takes all of it to you
+[13:30:43 - 13:30:44] okay
+[13:30:44 - 13:30:51] so you can see, like, as you, like, make these, uh, your fireball explode
+[13:30:51 - 13:30:59] this thing starts, spreading kind of mist from its body as, like, you damaged, like, everything
+[13:30:59 - 13:31:01] uh, your, your eyesight
+[13:31:01 - 13:31:16] though you have dark vision, it is being obscured by this, uh, strange mist, like, uh, that is, uh, like, uh, releasing
+[13:31:16 - 13:31:17] yeah
+[13:31:17 - 13:31:22] so, and it is, uh, is that all you do?
+[13:31:22 - 13:31:23] yeah
+[13:31:23 - 13:31:25] it's becoming a pain
+[13:31:25 - 13:31:28] then is it, it is, it's stirred
+[13:31:28 - 13:31:29] it's a pain
+[13:31:50 - 13:31:51] oh, shit, alright
+[13:31:51 - 13:32:21] though this thing looked slow at first, like, with its, like, uh, parang oozing slow body, like, you're expecting it to move as if it was one of those slimes that, uh, you fight in some players, but, suddenly, like, as it, like, moves forward, you can see that it suddenly, like, rolls quickly, limbs come out of, uh, some of these, uh, of its, uh,
+[13:32:21 - 13:32:49] of its, like, amorphous blob of body, strikes, like, heading, uh, strike, strike, strike, ignore the red. So, what of us? One, uh, one of you with each limb. So, first, to you with one of its limbs, uh, and it will, uh, 17, to it. Yeah, okay.
+[13:32:49 - 13:33:19] so, uh, so, uh, so, uh, so, uh, so, so, so, so, so, so, so, so, so, that's a plus five to your, uh, uh, AC. Will, will 17 add you a nothing more? No. Okay. So, as it, like,
+[13:33:19 - 13:33:48] it, like, tries to hit at you, it just splatters against your magical shield. You can see, as his, like, limb hits it, the limb loses its shape, and you can just see it, like, as ooze, like, like, moves back. Okay. So, uh, but the other limb was already attacking Boyle at the exact same moment as, uh, it was, uh, you. Uh, and, uh, this one rolls, uh,
+[13:33:48 - 13:34:17] and, uh, seven, uh, seven, twenty-five. Holy shit. So, I did, uh, uh, five plus four. So, just nine damage.
+[13:34:17 - 13:34:22] Are you all right? Are you all right? I'm fine. I'm fine. I'm fine.
+[13:34:22 - 13:34:26] Let's, uh, focus on my voice.
+[13:34:26 - 13:34:29] Moving turn.
+[13:34:29 - 13:34:40] Let's, uh, focus on fighting this moving turn.
+[13:34:40 - 13:34:45] You're saving bugbecks anymore?
+[13:35:10 - 13:35:37] And so yeah, he takes that damage.
+[13:35:37 - 13:35:44] And so yeah, it is Boyle's turn.
+[13:35:44 - 13:35:47] And then Boyle looks at this.
+[13:35:47 - 13:35:50] And he gets really mad.
+[13:35:50 - 13:35:52] Can you see his face?
+[13:35:52 - 13:35:58] Confords and enters a rage.
+[13:36:04 - 13:36:16] And he brings out this maw.
+[13:36:16 - 13:36:21] And he starts treading through this thing.
+[13:36:21 - 13:36:30] And he grasps it into...
+[13:36:30 - 13:36:45] And he doesn't really forget what it looks like for the rage.
+[13:36:45 - 13:36:48] And he has to wait rage by breaking all these features.
+[13:36:48 - 13:36:50] You know, dropping down.
+[13:36:50 - 13:36:54] After rage.
+[13:36:54 - 13:36:55] Okay.
+[13:36:55 - 13:36:57] Thank you.
+[13:36:57 - 13:37:00] While after rage follows these features.
+[13:37:00 - 13:37:03] You have your seeds of burning, piercing stashing.
+[13:37:03 - 13:37:05] God bless you, your own stash.
+[13:37:05 - 13:37:06] And...
+[13:37:06 - 13:37:07] Alright.
+[13:37:08 - 13:37:10] Yeah, yeah, yeah, yeah.
+[13:37:10 - 13:37:12] I'm remembering that.
+[13:37:12 - 13:37:14] I'm not going to remember that.
+[13:37:24 - 13:37:53] So it's the next question. That's the next question. That's the next question. That's the next question.
+[13:37:53 - 13:37:57] That's a bad one. Nevermind.
+[13:37:57 - 13:38:00] But it's an advantage.
+[13:38:00 - 13:38:04] I'm not quite sure how to help you with that.
+[13:38:04 - 13:38:09] No, advantage on strength. No, he just makes a reckless attack.
+[13:38:09 - 13:38:11] Okay.
+[13:38:11 - 13:38:14] Because otherwise he won't get it.
+[13:38:14 - 13:38:18] But that's how he gets it. So he gets a reckless attack.
+[13:38:18 - 13:38:21] And so that is a 24 to hit.
+[13:38:21 - 13:38:27] And deals a total of 12 damage for his first attack.
+[13:38:27 - 13:38:28] Okay.
+[13:38:28 - 13:38:30] And he goes through his second attack again.
+[13:38:30 - 13:38:32] Still very reckless.
+[13:38:32 - 13:38:36] That is a 19 to hit this time.
+[13:38:36 - 13:38:43] And that is a plus another 15.
+[13:38:43 - 13:38:48] So that is 23 damage for the two attacks.
+[13:38:48 - 13:39:00] So he will do upon saving throw.
+[13:39:00 - 13:39:03] This creature will do upon saving throw.
+[13:39:03 - 13:39:04] With a 5 plus.
+[13:39:04 - 13:39:04] What is coming?
+[13:39:04 - 13:39:05] With a plus.
+[13:39:05 - 13:39:10] With a 5 plus 7.12 is still a fail.
+[13:39:10 - 13:39:11] And so he is now on the ground.
+[13:39:11 - 13:39:17] This thing like flattens on the ground a little bit.
+[13:39:17 - 13:39:18] And he is taken thrown by.
+[13:39:19 - 13:39:20] Uh.
+[13:39:20 - 13:39:23] The 5 plus 7.12 is still a fail.
+[13:39:23 - 13:39:24] And so he is now on the ground.
+[13:39:24 - 13:39:25] This thing like flattens on the ground a little bit.
+[13:39:25 - 13:39:27] And he is taken thrown by uh.
+[13:39:27 - 13:39:28] Uh.
+[13:39:28 - 13:39:28] The, uh.
+[13:39:37 - 13:39:38] Lord Boros, uh.
+[13:39:38 - 13:39:39] Uh.
+[13:39:39 - 13:39:40] Consecutive attacks.
+[13:39:40 - 13:39:41] And, uh.
+[13:39:41 - 13:39:44] It is now your turn.
+[13:39:44 - 13:39:47] You look like you're dancing.
+[13:39:47 - 13:39:56] And so he just smiles with it instead of like making himself laugh.
+[13:39:56 - 13:39:57] All right.
+[13:39:57 - 13:40:00] Just makes him look a little terrifying.
+[13:40:00 - 13:40:01] Continue sa, uh.
+[13:40:01 - 13:40:03] So she casts, uh.
+[13:40:03 - 13:40:04] Uh.
+[13:40:04 - 13:40:05] She casts 14 ray.
+[13:40:05 - 13:40:07] Target misploy.
+[13:40:07 - 13:40:09] And so hindi siya pwede mag fireball.
+[13:40:09 - 13:40:10] Dahil kay boing.
+[13:40:10 - 13:40:11] Uh.
+[13:40:11 - 13:40:13] First attack is 23.
+[13:40:13 - 13:40:14] Shit.
+[13:40:14 - 13:40:15] Fail.
+[13:40:15 - 13:40:20] 23.
+[13:40:20 - 13:40:21] 18.
+[13:40:21 - 13:40:22] 18 hits, no?
+[13:40:22 - 13:40:23] Yup.
+[13:40:23 - 13:40:25] So dalawa hits.
+[13:40:25 - 13:40:55] Thank you.
+[13:40:55 - 13:41:17] Twenty-three, twenty-three plus three damage, twenty-six.
+[13:41:17 - 13:41:19] Twenty-three, twenty-three.
+[13:41:19 - 13:41:20] Twenty-three.
+[13:41:26 - 13:41:27] Nope.
+[13:41:27 - 13:41:29] It is not dead yet.
+[13:41:29 - 13:41:30] Twenty-three.
+[13:41:30 - 13:41:38] But again, as you like to do all of these attacks it gets like miscure and miscure and chartered
+[13:41:38 - 13:41:40] and harder to breathe here.
+[13:41:40 - 13:41:49] It is its turn and you can feel like holding on to something.
+[13:41:49 - 13:41:52] Its body somewhat from choking a little bit.
+[13:41:52 - 13:42:03] And suddenly it shoots an acidic vial in a sixty-foot line that is five feet wide.
+[13:42:03 - 13:42:05] So this would both cover you.
+[13:42:05 - 13:42:06] Dex saving?
+[13:42:06 - 13:42:07] Yeah.
+[13:42:07 - 13:42:10] And you will both have to do dex saving throws, please.
+[13:42:10 - 13:42:11] Thirteen.
+[13:42:11 - 13:42:12] Last throw is sixteen.
+[13:42:12 - 13:42:13] Okay.
+[13:42:13 - 13:42:14] Sixteen.
+[13:42:14 - 13:42:15] Yeah.
+[13:42:15 - 13:42:16] That fits.
+[13:42:16 - 13:42:17] Lord Boyle rolls his dex saving throw.
+[13:42:17 - 13:42:18] Fail.
+[13:42:18 - 13:42:19] Luck.
+[13:42:19 - 13:42:20] No.
+[13:42:22 - 13:42:23] Not fail.
+[13:42:23 - 13:42:24] Advantage on dex unless you are incapacitated.
+[13:42:24 - 13:42:25] So he does have advantage.
+[13:42:25 - 13:42:26] So.
+[13:42:26 - 13:42:27] Not sympathetic.
+[13:42:27 - 13:42:28] Yep.
+[13:42:28 - 13:42:29] That's a natural plan.
+[13:42:29 - 13:42:30] And so yeah.
+[13:42:30 - 13:42:34] He definitely is able to move through.
+[13:42:34 - 13:42:35] However.
+[13:42:35 - 13:42:36] Uh.
+[13:42:36 - 13:42:37] That will help you.
+[13:42:37 - 13:42:38] Yeah.
+[13:42:38 - 13:42:39] And so yeah.
+[13:42:39 - 13:42:40] He definitely is able to move through.
+[13:42:40 - 13:42:41] Uh.
+[13:42:41 - 13:42:42] However.
+[13:42:42 - 13:42:43] Uh.
+[13:42:43 - 13:42:44] That will help you.
+[13:42:44 - 13:42:45] Uh.
+[13:42:45 - 13:42:47] That will still have.
+[13:42:47 - 13:42:49] Half damage for you.
+[13:42:49 - 13:42:50] I believe.
+[13:42:50 - 13:42:51] Okay.
+[13:42:51 - 13:42:52] I mean damage.
+[13:42:52 - 13:42:53] Sorry.
+[13:42:53 - 13:42:54] No.
+[13:42:57 - 13:42:58] If you start the turn with.
+[13:42:58 - 13:42:59] Covered in bile.
+[13:42:59 - 13:43:00] Then you take damage.
+[13:43:00 - 13:43:01] So.
+[13:43:01 - 13:43:02] Since you were able to like.
+[13:43:02 - 13:43:03] Get free from it.
+[13:43:03 - 13:43:04] You're not covered in bile.
+[13:43:04 - 13:43:05] And so you will not take damage.
+[13:43:05 - 13:43:06] The next turn.
+[13:43:06 - 13:43:07] Okay.
+[13:43:07 - 13:43:08] So that's fine.
+[13:43:09 - 13:43:10] Okay.
+[13:43:10 - 13:43:11] So that's fine.
+[13:43:11 - 13:43:12] Okay.
+[13:43:12 - 13:43:13] So none of you.
+[13:43:13 - 13:43:14] Reminds her of those like.
+[13:43:14 - 13:43:15] Fucking guys earlier.
+[13:43:15 - 13:43:16] Who were popping her.
+[13:43:16 - 13:43:17] Disgusting.
+[13:43:20 - 13:43:21] Alright.
+[13:43:21 - 13:43:22] So yeah.
+[13:43:22 - 13:43:23] Uh.
+[13:43:23 - 13:43:24] So.
+[13:43:24 - 13:43:25] That's.
+[13:43:25 - 13:43:26] Instead of two attacks.
+[13:43:26 - 13:43:27] So yes.
+[13:43:27 - 13:43:28] That is uh.
+[13:43:28 - 13:43:29] It is Boyle's turn again.
+[13:43:29 - 13:43:30] So Boyle.
+[13:43:30 - 13:43:31] Like I hear you shouting.
+[13:43:31 - 13:43:32] Disgusting.
+[13:43:35 - 13:43:36] And so again.
+[13:43:36 - 13:43:37] He goes into a frenzy.
+[13:43:37 - 13:43:38] Of uh.
+[13:43:38 - 13:43:39] Uh.
+[13:43:39 - 13:43:40] Natural 20 you.
+[13:43:40 - 13:43:41] Another natural fucking 20.
+[13:43:41 - 13:43:42] Uh.
+[13:43:42 - 13:43:43] Not only that.
+[13:43:43 - 13:43:44] But.
+[13:43:44 - 13:43:45] Because he is a crusher.
+[13:43:45 - 13:43:46] When you score a critical hit.
+[13:43:46 - 13:43:47] That deals bludgeoning damage to a creature.
+[13:43:47 - 13:43:48] Like with a mall.
+[13:43:48 - 13:43:49] For example.
+[13:43:49 - 13:43:50] Attack rolls against that creature.
+[13:43:50 - 13:43:52] Have advantage until the start of your next turn.
+[13:43:52 - 13:43:53] So his next attack also will have advantage.
+[13:43:53 - 13:43:53] As well.
+[13:43:53 - 13:43:54] And he will deal currently 22 damage.
+[13:43:54 - 13:43:55] And now he will have advantage in his next attack.
+[13:43:55 - 13:43:56] Because of crusher.
+[13:43:56 - 13:43:57] Uh.
+[13:43:59 - 13:44:00] Fifteen.
+[13:44:00 - 13:44:01] Hits.
+[13:44:01 - 13:44:02] Okay.
+[13:44:03 - 13:44:04] So that is 22.
+[13:44:04 - 13:44:05] 22.
+[13:44:05 - 13:44:05] Hits.
+[13:44:05 - 13:44:06] Okay.
+[13:44:06 - 13:44:07] So that is 22.
+[13:44:07 - 13:44:08] 22.
+[13:44:08 - 13:44:09] Hits.
+[13:44:09 - 13:44:10] Okay.
+[13:44:10 - 13:44:11] So that is 22.
+[13:44:11 - 13:44:11] Hits.
+[13:44:11 - 13:44:12] Okay.
+[13:44:12 - 13:44:13] So that is 22.
+[13:44:13 - 13:44:13] Hits.
+[13:44:13 - 13:44:14] Okay.
+[13:44:14 - 13:44:15] So that is 22.
+[13:44:15 - 13:44:15] Hits.
+[13:44:15 - 13:44:16] Okay.
+[13:44:16 - 13:44:17] So that is 22.
+[13:44:17 - 13:44:18] Hits.
+[13:44:18 - 13:44:19] Okay.
+[13:44:19 - 13:44:20] So that is 22.
+[13:44:20 - 13:44:21] Hits.
+[13:44:21 - 13:44:22] Okay.
+[13:44:22 - 13:44:23] So that is 22.
+[13:44:23 - 13:44:24] Hits.
+[13:44:24 - 13:44:25] Okay.
+[13:44:25 - 13:44:26] So that is 22.
+[13:44:26 - 13:44:27] Hits.
+[13:44:27 - 13:44:28] Okay.
+[13:44:31 - 13:44:32] So that is 22 plus 13.
+[13:44:32 - 13:44:33] Is it dead?
+[13:44:33 - 13:44:34] So that is 35.
+[13:44:34 - 13:44:35] It is really close.
+[13:44:35 - 13:44:36] Really close.
+[13:44:36 - 13:44:37] Like you probably will be able to pin it on the next time.
+[13:44:37 - 13:44:38] Is it my turn?
+[13:44:38 - 13:44:39] Yes.
+[13:44:39 - 13:44:40] Okay.
+[13:44:40 - 13:44:42] Does the sorcerers burst at it?
+[13:44:42 - 13:44:43] Okay.
+[13:44:44 - 13:44:45] So that is 22 plus 13.
+[13:44:45 - 13:44:46] So that is 35.
+[13:44:46 - 13:44:47] It is really close.
+[13:44:47 - 13:44:48] Really close.
+[13:44:49 - 13:44:50] Like you probably will be able to pin it on the next time.
+[13:44:50 - 13:44:51] Is it my turn?
+[13:44:51 - 13:44:52] Yes.
+[13:44:52 - 13:44:53] Okay.
+[13:44:53 - 13:44:55] Does the sorcerers burst at it?
+[13:44:55 - 13:44:56] Okay.
+[13:44:56 - 13:44:58] Does the sorcerers burst at it?
+[13:44:58 - 13:44:59] Okay.
+[13:45:01 - 13:45:02] 14 plus 21.
+[13:45:02 - 13:45:03] What is the sorcerers burst?
+[13:45:03 - 13:45:04] It's a spell.
+[13:45:04 - 13:45:05] Okay.
+[13:45:05 - 13:45:06] Handtrip?
+[13:45:06 - 13:45:07] Yeah.
+[13:45:07 - 13:45:08] That's 11.
+[13:45:08 - 13:45:09] Lightning attack.
+[13:45:09 - 13:45:10] So.
+[13:45:10 - 13:45:11] Oops.
+[13:45:11 - 13:45:12] 11.
+[13:45:12 - 13:45:13] Yeah.
+[13:45:13 - 13:45:14] Good.
+[13:45:14 - 13:45:15] You can see that.
+[13:45:15 - 13:45:16] It starts shaking.
+[13:45:16 - 13:45:17] It expels more and more of these things.
+[13:45:17 - 13:45:18] And you will have to roll up.
+[13:45:18 - 13:45:19] 19 plus 4.
+[13:45:20 - 13:45:21] 19.
+[13:45:21 - 13:45:22] Yeah.
+[13:45:22 - 13:45:23] Oh, meant to be.
+[13:45:23 - 13:45:24] 19.
+[13:45:24 - 13:45:24] Yeah.
+[13:45:26 - 13:45:26] Oh, meant to be.
+[13:45:26 - 13:45:27] 19 plus 4.
+[13:45:28 - 13:45:29] 19.
+[13:45:29 - 13:45:30] Yeah.
+[13:45:34 - 13:45:35] And it goes in coverage here.
+[13:45:35 - 13:45:36] It helps you in coverage.
+[13:45:36 - 13:45:37] The coverage.
+[13:45:37 - 13:45:38] The water.
+[13:45:38 - 13:45:41] Like with that same repeller thing.
+[13:45:41 - 13:45:42] Okay.
+[13:45:42 - 13:45:54] And, uh, of course, uh, this, like, uh, this, uh, this, disgusting sauna that you're having,
+[13:45:54 - 13:45:56] that you're having, uh, is magical.
+[13:45:56 - 13:46:02] And so as soon as you, like, wear these suits, the magical affects you kind of like that.
+[13:46:02 - 13:46:03] Uh-huh.
+[13:46:03 - 13:46:04] Okay.
+[13:46:04 - 13:46:07] And it, uh, eventually does dissipate.
+[13:46:07 - 13:46:10] And you are able to move over now.
+[13:46:10 - 13:46:11] Buddy, they're still dark.
+[13:46:11 - 13:46:13] Uh, you do though?
+[13:46:13 - 13:46:14] Yeah.
+[13:46:14 - 13:46:15] You alright?
+[13:46:15 - 13:46:16] Hmm.
+[13:46:16 - 13:46:17] Are you alright?
+[13:46:17 - 13:46:20] You seem to lost your mind there.
+[13:46:20 - 13:46:22] I don't know what to drive the fight for me.
+[13:46:22 - 13:46:24] I've tried to do something for me, you know.
+[13:46:24 - 13:46:26] No, you look like a gorilla.
+[13:46:26 - 13:46:29] Is that a good thing or a bad thing?
+[13:46:29 - 13:46:31] I don't know.
+[13:46:31 - 13:46:32] I guess I was.
+[13:46:32 - 13:46:33] Shall we?
+[13:46:33 - 13:46:34] I guess I was.
+[13:46:36 - 13:46:51] So what's happening?
+[13:46:51 - 13:46:56] Ask your whole boy.
+[13:46:56 - 13:47:00] Are you tired?
+[13:47:00 - 13:47:01] He says.
+[13:47:02 - 13:47:03] I'm tired.
+[13:47:03 - 13:47:04] I think so.
+[13:47:04 - 13:47:05] I'm tired.
+[13:47:05 - 13:47:07] So that's the one you thought, right?
+[13:47:07 - 13:47:08] How about you?
+[13:47:08 - 13:47:10] You will discuss thoughts?
+[13:47:10 - 13:47:12] It's alright, she says.
+[13:47:12 - 13:47:15] I can move on a little bit more.
+[13:47:15 - 13:47:16] She knows.
+[13:47:16 - 13:47:21] Do you think, do you think we should move on, like, down there?
+[13:47:21 - 13:47:22] Hmm.
+[13:47:22 - 13:47:23] Yeah, she says.
+[13:47:23 - 13:47:25] I think this is down the path.
+[13:47:24 - 13:47:27] I think this is the only path to the exit.
+[13:47:27 - 13:47:31] Yeah, and if they're up there, if somebody starts moving.
+[13:47:31 - 13:47:34] They won't be able to defend themselves.
+[13:47:34 - 13:47:37] And I promised them I'd get back half an hour, right?
+[13:47:37 - 13:47:39] Yes, I see.
+[13:47:39 - 13:47:41] They don't have to be fast, though.
+[13:47:41 - 13:47:45] So that they don't feel the effects of it.
+[13:47:45 - 13:47:48] Well, there are some more suits there.
+[13:47:48 - 13:47:50] I don't know.
+[13:47:50 - 13:47:52] So she says, "Alright."
+[13:47:52 - 13:47:53] Yes, I see.
+[13:47:53 - 13:47:56] Alright, and so you head back.
+[13:47:56 - 13:47:57] Yeah.
+[13:47:57 - 13:47:59] And you start moving the person.
+[13:47:59 - 13:48:01] Okay, so just be happy when we're back.
+[13:48:01 - 13:48:03] Let's go, she says.
+[13:48:03 - 13:48:06] What was down there?
+[13:48:06 - 13:48:07] It's something weird.
+[13:48:07 - 13:48:09] I don't know what it is.
+[13:48:09 - 13:48:11] But we already killed it, she says.
+[13:48:11 - 13:48:14] Come on, let's go, let's move the others.
+[13:48:14 - 13:48:16] She says.
+[13:48:16 - 13:48:18] And so, yeah.
+[13:48:18 - 13:48:21] He and Boyle, like, starts carrying.
+[13:48:21 - 13:48:24] Like, Boyle goes down, like, starts...
+[13:48:24 - 13:48:27] Like, leather toy, right?
+[13:48:27 - 13:48:29] So he starts, like, waiting for him.
+[13:48:29 - 13:48:31] And, like, pulls four down.
+[13:48:31 - 13:48:32] And carries them inside.
+[13:48:32 - 13:48:34] She has a rope.
+[13:48:34 - 13:48:35] Okay.
+[13:48:35 - 13:48:37] And so you use the rope.
+[13:48:37 - 13:48:39] So we tie the children together.
+[13:48:39 - 13:48:40] Yeah.
+[13:48:40 - 13:48:41] So we tie the children together, like that.
+[13:48:41 - 13:48:42] So it's easier to, for example, four.
+[13:48:42 - 13:48:43] Yeah.
+[13:48:43 - 13:48:48] And so, it does go a little bit smoother, a little bit faster.
+[13:48:48 - 13:48:49] Yeah.
+[13:48:49 - 13:48:53] But, of course, a Boyle will still have to wait until he can carry them.
+[13:48:53 - 13:48:54] Yeah.
+[13:48:54 - 13:49:03] But, but at least, the amount of time they stay underneath the yellow absorption orb is minimized.
+[13:49:03 - 13:49:05] And you take them across.
+[13:49:05 - 13:49:08] But now it is 6:15 a.m.
+[13:49:08 - 13:49:09] And you light the way.
+[13:49:10 - 13:49:11] And again, this is just the first corridor.
+[13:49:11 - 13:49:12] Yeah.
+[13:49:13 - 13:49:14] Right.
+[13:49:14 - 13:49:17] So, she, uh, she fires a scorch.
+[13:49:17 - 13:49:19] Kind of, like, light the way.
+[13:49:19 - 13:49:21] And you light the way.
+[13:49:21 - 13:49:24] And again, this is just the first corridor.
+[13:49:24 - 13:49:32] Uh, but as you move further, you tell, like, do you leave them here in this corridor?
+[13:49:32 - 13:49:34] Or do you, like, and check the other room first?
+[13:49:34 - 13:49:35] Yeah.
+[13:49:36 - 13:49:37] Right.
+[13:49:37 - 13:49:40] So, you go ahead and move forward.
+[13:49:40 - 13:49:45] And, uh, you can see that, again, there's a second board here.
+[13:49:45 - 13:49:50] And, uh, this one, like the other one, they're going to be partially open.
+[13:49:50 - 13:49:57] So, it is, uh, a little, uh, well, it's still wide enough to fit the person.
+[13:49:57 - 13:50:10] Um, but, uh, if you tried to, like, push yourself through that, uh, horrible monstrosity earlier and try to, like, avoid it, uh, it would have been difficult.
+[13:50:10 - 13:50:14] Okay, but now it's kind of like, uh, but since it's not there anymore, you can just, like...
+[13:50:14 - 13:50:16] Oh, does it have, can we loot it something?
+[13:50:16 - 13:50:20] Uh, you try to see if you want, if there's something to loot?
+[13:50:20 - 13:50:23] Go ahead and roll, uh, I suppose, perception and try to see.
+[13:50:23 - 13:50:24] Let's see.
+[13:50:24 - 13:50:25] Do you have a torch now?
+[13:50:25 - 13:50:26] Sixteen.
+[13:50:26 - 13:50:27] Right.
+[13:50:27 - 13:50:33] Uh, it seems to leave behind, uh, what, uh, uh, our, uh...
+[13:50:33 - 13:50:40] Uh, our, uh, uh, tour and lamp it.
+[13:50:40 - 13:50:42] Uh, let's see.
+[13:50:54 - 13:51:13] Yeah, something that could be like a drop, could be some kind of lapis lazuli plant that is unprocessed.
+[13:51:13 - 13:51:14] Okay.
+[13:51:14 - 13:51:25] And what seems to be an old looking shield, but it did not get destroyed, it did not rot.
+[13:51:25 - 13:51:26] So it's magic up?
+[13:51:26 - 13:51:27] Perhaps.
+[13:51:27 - 13:51:31] She takes it, puts it in her bottle.
+[13:51:31 - 13:51:34] It is a buckler, kind of, round.
+[13:51:34 - 13:51:36] Wow, pangkawit as well.
+[13:51:36 - 13:51:39] Okay, so she moves forward?
+[13:51:39 - 13:51:43] Yeah, you both move forward through that partially open.
+[13:51:43 - 13:51:50] And it opens into a much larger, like, area.
+[13:51:50 - 13:52:03] And this, unlike the other, like, the other walkers, definitely has not been used in a while.
+[13:52:03 - 13:52:06] You can see that this is a really good picture.
+[13:52:06 - 13:52:09] Let's move them closer here.
+[13:52:09 - 13:52:13] And let's, let's see what it is is here.
+[13:52:13 - 13:52:18] Maybe a creature is here to work on.
+[13:52:18 - 13:52:20] Alright, clear.
+[13:52:20 - 13:52:21] Alright.
+[13:52:21 - 13:52:36] And so, like, to continue on my description of this place, uh, uh, it is very, like, uh, but it is massive, like, the ceiling here is kind of like, uh, about a hundred feet high.
+[13:52:36 - 13:52:39] And, uh, and, uh, like, uh, moving forward.
+[13:52:39 - 13:52:41] So it's the largest ruins I've ever been.
+[13:52:41 - 13:52:42] Uh, yeah.
+[13:52:43 - 13:52:44] Yeah.
+[13:52:44 - 13:52:59] And via Taudito, you can see that there are like one, two, three, four, five, no, four statues of women in various tiles.
+[13:52:59 - 13:53:11] And you do recognize them somewhat because, well, they are the four goddesses of proserian paganism.
+[13:53:14 - 13:53:24] The one who is wearing, who is wearing mostly like leaves and is like, with a chronicle play.
+[13:53:40 - 13:53:55] So, Justicia, who her eyes are covered in carrying scales, and Volokta dancing in scantily plaid outfits.
+[13:53:55 - 13:53:58] The lima pala, sorry.
+[13:53:58 - 13:54:05] Si Minerva, si Justicia, Pomona, Volokta, and the goddess of humility, si Amarina.
+[13:54:06 - 13:54:11] A marina, so she's like, uh, bow her head down, her, uh...
+[13:54:11 - 13:54:23] There are the colors on the gods, but if Minerva and the others really made you a statue, you would keep us.
+[13:54:27 - 13:54:37] And yes, because these are f*cking large statues, like 50 feet tall.
+[13:54:37 - 13:54:42] Do you think there's a ton of parkations around here that we can use?
+[13:54:42 - 13:54:44] Maybe, but I think we'll have to find it.
+[13:54:44 - 13:54:45] Alright.
+[13:54:46 - 13:54:49] And yeah.
+[13:54:49 - 13:54:50] Let's end this.
+[13:54:50 - 13:54:52] Okay, so I get tomorrow now.
+[13:54:52 - 13:54:55] I hope you love it.
+[13:54:55 - 13:54:59] Did you like today's session?
+[13:54:59 - 13:55:05] I don't know what's today's session.
