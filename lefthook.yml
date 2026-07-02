@@ -1,7 +1,39 @@
 pre-push:
-  parallel: true
   jobs:
+    - name: git-lfs-installed
+      run: |
+        if ! command -v git-lfs >/dev/null 2>&1; then
+          echo "Git LFS is required for this repository." >&2
+          echo "Install Git LFS, then run: git lfs install && git lfs pull" >&2
+          exit 1
+        fi
     - name: lint
       run: pnpm lint
       env:
-        PATH: '${HOME}/.volta/bin:${PATH}'
+        PATH: "${HOME}/.volta/bin:${PATH}"
+
+post-checkout:
+  jobs:
+    - name: git-lfs-installed
+      run: |
+        if ! command -v git-lfs >/dev/null 2>&1; then
+          echo "Warning: git-lfs is not installed. LFS-tracked files may remain as pointer files." >&2
+          echo "Install Git LFS, then run: git lfs install && git lfs pull" >&2
+        fi
+
+post-commit:
+  jobs:
+    - name: git-lfs-installed
+      run: |
+        if ! command -v git-lfs >/dev/null 2>&1; then
+          echo "Warning: git-lfs is not installed. Install Git LFS before pushing LFS-tracked assets." >&2
+        fi
+
+post-merge:
+  jobs:
+    - name: git-lfs-installed
+      run: |
+        if ! command -v git-lfs >/dev/null 2>&1; then
+          echo "Warning: git-lfs is not installed. LFS-tracked files may remain as pointer files." >&2
+          echo "Install Git LFS, then run: git lfs install && git lfs pull" >&2
+        fi
