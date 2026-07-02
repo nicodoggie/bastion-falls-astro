@@ -42,6 +42,11 @@ export const archiveCommand = buildCommand({
           "Opus audio bitrate, e.g. 24k or 32k (overrides transcribe.audioBitrate)",
         optional: true,
       },
+      all: {
+        kind: "boolean",
+        brief: "Archive every immediate session directory under transcribeDir",
+        optional: true,
+      },
       force: {
         kind: "boolean",
         brief: "Overwrite an existing archive at the destination",
@@ -55,6 +60,7 @@ export const archiveCommand = buildCommand({
           parse: String,
           brief:
             "Transcript session directory (a name under transcribeDir or a path)",
+          optional: true,
         },
       ],
     },
