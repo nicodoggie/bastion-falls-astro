@@ -2,7 +2,7 @@
 name: dnd-spell
 description: >-
   Create a D&D 5e spell as 5etools-style SpellData YAML with source "BF" under
-  astro/src/content/docs/world/spells as <spell-slug>.spell.yaml, prompting for
+  astro/src/content/docs/world/spells as [spell-slug].spell.yaml, prompting for
   any missing details.
 ---
 

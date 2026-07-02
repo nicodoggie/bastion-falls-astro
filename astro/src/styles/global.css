@@ -6,6 +6,29 @@ hr {
   margin: 1rem 0 1rem 0;
 }
 
+.sl-markdown-content :where(ul, ol):not([class]) {
+  padding-inline-start: 1.5rem;
+}
+
+.sl-markdown-content :where(ul):not([class]) {
+  list-style-type: disc;
+}
+
+.sl-markdown-content :where(ol):not([class]) {
+  list-style-type: decimal;
+}
+
+.sl-markdown-content :where(ul):not([class]) :where(ul):not([class]) {
+  list-style-type: circle;
+}
+
+.sl-markdown-content
+  :where(ul):not([class])
+  :where(ul):not([class])
+  :where(ul):not([class]) {
+  list-style-type: square;
+}
+
 .sl-markdown-content section[data-footnotes],
 .sl-markdown-content .footnotes {
   border-top: 1px solid var(--sl-color-gray-5);

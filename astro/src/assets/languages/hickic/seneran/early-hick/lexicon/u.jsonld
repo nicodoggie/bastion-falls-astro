@@ -136,6 +136,85 @@
       ]
     },
     {
+      "@id": "ehk:ulsar",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ul.sar",
+        "writtenRep": "ulsar"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:mer"
+        },
+        {
+          "@id": "ehk:sar"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "mer-ul-sar",
+        "etymon:gloss": "bird-POSS-leaf",
+        "etymon:note": "Lexicalized from 'bird's leaf'; the possessor mer became recoverable and dropped from the surface form, leaving the possessive linker attached to sar.",
+        "etymon:soundChange": "compound reduction"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "feather"
+          },
+          "lexinfo:semanticField": [
+            "Animal Terms",
+            "Bird Terms",
+            "Body Terms"
+          ],
+          "usage": "Literally 'bird's leaf'."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:ulsaral",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "ul.sa.ral",
+        "writtenRep": "ulsaral"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:ulsar"
+        },
+        {
+          "@id": "ehk:'al"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "ulsar-'al",
+        "etymon:gloss": "feather-person",
+        "etymon:note": "Compound from ulsar 'feather' and 'al 'person', used for winged or birdlike peoples.",
+        "etymon:soundChange": "compound fusion"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "winged person; birdlike people"
+          },
+          "lexinfo:semanticField": [
+            "Person Terms",
+            "Animal Terms",
+            "Bird Terms",
+            "Mythological Terms"
+          ],
+          "usage": "Broad term for feathered or winged peoples, including harpies, angels, and similar beings."
+        }
+      ]
+    },
+    {
       "@id": "ehk:uran",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {

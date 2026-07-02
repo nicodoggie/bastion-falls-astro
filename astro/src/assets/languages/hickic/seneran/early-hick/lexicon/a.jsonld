@@ -1,4 +1,4 @@
-{
+non{
   "@context": {
     "@vocab": "http://www.w3.org/ns/lemon/ontolex#",
     "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
@@ -1021,6 +1021,55 @@
             "@value": "where (unknown location)"
           },
           "lexinfo:semanticField": ["Interrogatives", "Distal", "Spatial"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:anusaral",
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "a.nu.sa.ral",
+        "variantForms": [
+          {
+            "phoneticRep": "an.sa.ral",
+            "writtenRep": "ansaral",
+            "lexinfo:register": "Middle Hick",
+            "usage": "Later Middle Hick contraction of Early Hick anusaral."
+          }
+        ],
+        "writtenRep": "anusaral"
+      },
+      "decomp:subterm": [
+        {
+          "@id": "ehk:ano-"
+        },
+        {
+          "@id": "ehk:ulsaral"
+        }
+      ],
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "ano-ulsaral",
+        "etymon:gloss": "HON-winged.person",
+        "etymon:note": "Honorific formation from ulsaral 'winged person'; ano-ulsaral reduces to Early Hick anusaral by smoothing the prefix boundary while preserving the learned anu- shape. Later Middle Hick contracts this further to ansaral.",
+        "etymon:soundChange": "honorific compound reduction"
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "angel"
+          },
+          "lexinfo:register": "lexinfo:formalRegister",
+          "lexinfo:semanticField": [
+            "Person Terms",
+            "Sacred Terms",
+            "Mythological Terms",
+            "High Register"
+          ],
+          "usage": "Formal or sacred term for angelic winged beings."
         }
       ]
     },

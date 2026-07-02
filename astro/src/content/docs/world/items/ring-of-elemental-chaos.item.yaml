@@ -1,0 +1,16 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Ring of Elemental Chaos
+source: BF
+type: RG
+rarity: uncommon
+charges: 3
+recharge: dawn
+rechargeAmount: 1d3
+entries:
+  - >-
+    This guild signet ring bears the mark of the Fruit Merchants Guild and holds a volatile
+    evocation charge.
+  - >-
+    The ring has 3 charges and regains 1d3 expended charges daily at dawn while worn. While wearing
+    the ring, you can expend 1 charge to cast Chaos Bolt from it.

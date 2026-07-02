@@ -9,7 +9,8 @@ exclude = [
     "**/timeline-generated.mdx",
     "AGENTS.personality.md",
     ".specstory/*",
-    ".kilo/*"
+    ".kilo/*",
+    "5etools-src/*"
 ]
 
 # Set line length limit

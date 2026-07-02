@@ -44,7 +44,7 @@
         "contentIntellisense": true,
         "provideFormatter": true,
         "typescript": {
-          "tsdk": "node_modules/typescript/lib",
+          "tsdk": "./astro/.node_modules/typescript/lib",
         },
       },
     },
@@ -52,7 +52,7 @@
       "initialization_options": {
         "typescript": {
           "enabled": true,
-          "tsdk": "../bastion-falls-astro/astro/node_modules/typescript/lib",
+          "tsdk": "./astro/.node_modules/typescript/lib",
         },
         "mdx": {
           "frontmatter": {
@@ -81,11 +81,7 @@
     "rumdl": {
       "binary": {
         "path": "/usr/bin/rumdl",
-        "arguments": [
-          "server",
-          "--config",
-          "${ZED_WORKSPACE_ROOT}/.rumdl.toml",
-        ],
+        "arguments": ["server", "--config", ".rumdl.toml"],
       },
     },
   },

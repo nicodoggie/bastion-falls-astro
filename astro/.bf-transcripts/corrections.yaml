@@ -283,6 +283,43 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User confirmed Father Dunwether or Dunweather should be Dunweather.
 
+      - id: character.sir-aldric-torward
+        status: confirmed
+        kind: entity
+        canonical: Sir Aldric Torward
+        canonicalRefs:
+          - type: stat-block
+            path: astro/src/content/docs/world/misc/sir-aldric-torward-swordmaster.creature.yaml
+            role: bearer-of-the-sword
+          - type: article
+            path: astro/src/content/docs/world/notes/the-vengeful/threads/the-maltreks.mdx
+            role: malthrek-thread
+        aliases:
+          - Sir Thorward
+          - Thorward
+          - Sir Torward
+          - Torward
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Malthrek Reformist hierarchy
+            - Bearer of the Sword
+            - command tent ward disturbance
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Castle Malthrek and Bearer of the Sword contexts, use Sir Aldric
+          Torward. Thorward is a mistranscription, and bare Torward usually
+          refers to Sir Aldric Torward when the nearby context involves wards,
+          command tents, or senior Reformist defenders.
+        evidence:
+          - path: astro/src/content/docs/world/misc/sir-aldric-torward-swordmaster.creature.yaml
+            note: Stat block names Sir Aldric Torward as Bearer of the Sword.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: Current note uses Sir Aldric Torward for the command-tent ward scene.
+
       - id: character.baron-dunum-highbury
         status: confirmed
         kind: entity
@@ -360,6 +397,10 @@ profiles:
           - Cinna Moan
           - School Girl Cinna Moan
           - Cinnamon
+          - Luwana
+          - Luwana Dubreuil
+          - Luana Dubreuil
+          - Luana Victoria Dubreuil
         scope:
           campaigns:
             - the-vengeful
@@ -375,7 +416,9 @@ profiles:
           Cinna Moan / School Girl Cinna Moan and was Lime's classmate at Gerta
           Moon's Boarding School. In fey-spirit manifestation passages, do not
           identify a spirit resembling Luana as Luana herself unless the context
-          explicitly says the real Luana is present.
+          explicitly says the real Luana is present. Keep Princess Luwanya
+          distinct unless future canon explicitly merges that dream or astral
+          figure with mundane Luana.
         evidence:
           - path: astro/src/content/docs/world/organizations/legally-bare.mdx
             note: Legally Bare lists School Girl Cinna Moan as Luana Victorique Dubreuil's pen name.
@@ -383,6 +426,76 @@ profiles:
             note: Lime's article lists Luana among her cohort at Gerta Moon's Boarding School.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
             note: User clarified the young fey spirit resembles Luana/Cinna Moan but is not her.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: Current note introduces Luana Victorique Dubreuil and later shortens her name to Luana Dubreuil.
+
+      - id: character.benoit-marconne
+        status: confirmed
+        kind: entity
+        canonical: Benoit Marconne
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/benoit-marconne.mdx
+            role: primary
+        aliases:
+          - Benua
+          - Benoit
+          - Camden Dubreuil
+          - Dubreuil male heir
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Luana Victorique Dubreuil backstory
+            - Dubreuil heir kidnapping
+            - Rosemunda Parvese and Benoit protection threads
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Luana and Dubreuil-family passages, use Benoit Marconne for the
+          young heir also known as Camden Dubreuil. Do not treat Benua or
+          Camden Dubreuil as separate characters in this context, but preserve
+          Camden Dubreuil when the alias or true Dubreuil identity is the point.
+        evidence:
+          - path: astro/src/content/docs/world/characters/benoit-marconne.mdx
+            note: Canonical article identifies Benoit Marconne as Camden Dubreuil and the Dubreuil male heir.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: Current note connects Benoit Marconne, Camden Dubreuil, and Luana's childhood curse.
+
+      - id: family.dubreuil
+        status: confirmed
+        kind: family
+        canonical: Dubreuil
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/luana-victorique-dubreuil.mdx
+            role: luana-reference
+          - type: article
+            path: astro/src/content/docs/world/characters/benoit-marconne.mdx
+            role: benoit-reference
+        aliases:
+          - Dubreul
+          - Dubrel
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Luana Victorique Dubreuil
+            - Camden Dubreuil
+            - Dubreuil family heir and curse backstory
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Dubreuil for Luana's family and Camden/Benoit's true family
+          identity. Do not rewrite Dubois to Dubreuil: Dubois is a separate
+          canon family name elsewhere in the world.
+        evidence:
+          - path: astro/src/content/docs/world/characters/luana-victorique-dubreuil.mdx
+            note: Canonical article names Luana Victorique Dubreuil.
+          - path: astro/src/content/docs/world/characters/benoit-marconne.mdx
+            note: Canonical article identifies Camden Dubreuil as Benoit's alias or true family identity.
 
       - id: organization.legally-bare
         status: confirmed
@@ -418,6 +531,74 @@ profiles:
             note: Canonical article for the Ministry of Science adult magazine.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User clarified the source audio says Matthew was reading Legally Bare.
+
+      - id: character.mystine-nightingale
+        status: confirmed
+        kind: entity
+        canonical: Mystine Nightingale
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/mystine-nightingale.mdx
+            role: primary
+        aliases:
+          - Mistine
+          - Mistyne
+          - Misty
+          - Miss T
+          - Miss Tin
+          - Miss Tina
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Nightshift Nurses
+            - Legally Bare and Luana support
+            - Vengeful reinforcement and teleportation support
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Mystine Nightingale for Mistine/Mistyne/Miss T variants when the
+          context is Nightshift Nurses, Legally Bare support, or the Vengeful
+          reinforcement network. Do not auto-correct these forms to Minfilia;
+          Mystine and Minfilia are separate people.
+        evidence:
+          - path: astro/src/content/docs/world/characters/mystine-nightingale.mdx
+            note: Canonical character article for Mystine Nightingale.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: Current note settles local Mystine variants as Mystine Nightingale rather than new people.
+
+      - id: organization.nightshift-nurses
+        status: confirmed
+        kind: organization
+        canonical: Nightshift Nurses
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/organizations/nightshift-nurses.mdx
+            role: primary
+        aliases:
+          - Night Shift Nurses
+          - nage-chiffners
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Mystine Nightingale
+            - adult magazine comparison with Legally Bare
+            - magazine collector and model references
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Nightshift Nurses for the adult magazine and organization tied to
+          Mystine Nightingale and Legally Bare comparisons. Treat forms like
+          nage-chiffners as transcription drift only when the surrounding
+          magazine context supports it.
+        evidence:
+          - path: astro/src/content/docs/world/organizations/nightshift-nurses.mdx
+            note: Canonical organization article for Nightshift Nurses.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: Current correction notes identify nage-chiffners as likely Nightshift Nurses in Luana's magazine context.
 
       - id: character.tamsin-reed
         status: confirmed
@@ -841,6 +1022,104 @@ profiles:
             note: User relistened to 14:03:29-14:03:43 and confirmed Eastonton.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: Corrects teleportation sigil destination from Eastern Twin to Eastonton.
+
+      - id: character.henson-eastonton
+        status: confirmed
+        kind: entity
+        canonical: Henson Eastonton
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/boyle-eastonton.mdx
+            role: eastonton-crisis-reference
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
+            role: stone-golem-context
+        aliases:
+          - Henson
+          - Henderson
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Eastonton crisis
+            - Miya's controlled stone golem
+            - sewer-route and Legally Bare banter involving Henson
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Henson Eastonton for the Eastonton figure currently traveling as
+          Miya's controlled stone golem. Preserve Henderson only when the
+          surrounding dialogue is explicitly joking about misnaming Henson; do
+          not introduce Henderson as a separate lore entity.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
+            note: Establishes Henson as the stone golem Miya controls in the Eastonton/Malthrek route.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: Current note repeatedly distinguishes Henson Eastonton from Henderson as a joke misnaming.
+
+      - id: character.kelthyr-kulok
+        status: confirmed
+        kind: entity
+        canonical: Kelthyr Kulok
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/kelthyr-kulok.mdx
+            role: primary
+        aliases:
+          - Kelthyr
+          - Keltier
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Hicklander contacts and sewer routes
+            - Angel Rannek's tutor
+            - dolls, ciphers, and teleportation circles
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Kelthyr Kulok for Angel's tutor and the Hicklander-aligned mage
+          involved in Vengeful teleportation, sewer-route, doll, and cipher
+          scenes. Keltier is a likely transcription drift in this context.
+        evidence:
+          - path: astro/src/content/docs/world/characters/kelthyr-kulok.mdx
+            note: Canonical character article for Kelthyr Kulok.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: Current note uses Kelthyr Kulok for the beggar-disguise route and Legally Bare product scenes.
+
+      - id: place.port-rainoso
+        status: confirmed
+        kind: place
+        canonical: Port Rainoso
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/port-rainoso.mdx
+            role: primary
+        aliases:
+          - Rainoso
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Raibon city or capital references
+            - Legally Bare and Nightshift Nurses logistics
+            - Luana, Benoit, Jason McNatt, and Gerta Moon travel discussions
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Prefer Port Rainoso when the context names the Raibon city, port,
+          local government, school logistics, red-light district, or magazine
+          distribution hub. Rainoso may remain as casual shorthand, and should
+          not be rewritten when it names the wider island or administrative
+          context rather than the city.
+        evidence:
+          - path: astro/src/content/docs/world/locations/port-rainoso.mdx
+            note: Canonical location article for Port Rainoso.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: Current note uses Port Rainoso for Jason McNatt, Gerta Moon travel, and Luana/Legally Bare logistics.
 
       - id: vehicle.the-scarlet
         status: confirmed

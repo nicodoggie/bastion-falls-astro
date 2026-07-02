@@ -2,12 +2,12 @@
 name: dnd-item
 description: >-
   Create a D&D 5e magic item as 5etools-style ItemData YAML with source "BF"
-  under astro/src/content/docs/world/items as <item-slug>.item.yaml, add or
-  update a companion <item-slug>.mdx that wires itemDataStats + ItemBlock, and
+  under astro/src/content/docs/world/items as [item-slug].item.yaml, add or
+  update a companion [item-slug].mdx that wires itemDataStats + ItemBlock, and
   prompt for any missing details.
 ---
 
-# D&D 5e magic item → `world/items/<slug>.item.yaml` + `<slug>.mdx` (source: `BF`)
+# D&D 5e magic item → `world/items/[slug].item.yaml` + `[slug].mdx` (source: `BF`)
 
 Use this skill when the user wants to add a **new D&D 5e magic item** to the
 repo as **5etools-shaped ItemData YAML** consumed by `ItemBlock.astro`.
