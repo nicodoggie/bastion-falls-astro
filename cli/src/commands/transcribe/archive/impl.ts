@@ -1,6 +1,6 @@
-import { access, copyFile, mkdir, rm } from "node:fs/promises";
+import { access, copyFile, mkdir, mkdtemp, rename, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 
 import { getConfigBaseDir, getTranscribeConfig } from "@/config.js";
 import type { LocalContext } from "@/context.js";
@@ -33,7 +33,7 @@ async function resolveSessionDir(
   transcribeDir: string,
   session: string,
 ): Promise<string> {
-  const candidates = [join(cwd, session), join(transcribeDir, session)];
+  const candidates = [resolve(cwd, session), resolve(transcribeDir, session)];
   for (const candidate of candidates) {
     if (await pathExists(candidate)) {
       return candidate;
@@ -84,8 +84,8 @@ export default async function archive(
     } else if (copy.required) {
       throw new Error(`Missing required file ${copy.sourcePath}.`);
     } else {
-      this.process.stdout.write(
-        `Skipping missing ${copy.entryName} (${copy.sourcePath})\n`,
+      (this.process.stderr ?? this.process.stdout).write(
+        `Warning: Skipping missing ${copy.entryName} (${copy.sourcePath})\n`,
       );
     }
   }
@@ -97,25 +97,32 @@ export default async function archive(
         `${destination} already exists. Pass --force to overwrite it.`,
       );
     }
-    await rm(destination, { recursive: true, force: true });
   }
 
-  const tempAudio = join(
-    tmpdir(),
-    `${plan.sessionName}-${plan.audioEntryName}`,
-  );
-  this.process.stdout.write(
-    `Encoding ${plan.audioSource} → ${plan.audioEntryName}\n`,
-  );
-  await encodeToOpus({
-    input: plan.audioSource,
-    output: tempAudio,
-    bitrate: settings.audioBitrate,
-    force: true,
-    progress: this.process.stdout,
-  });
+  const tempDir = await mkdtemp(join(tmpdir(), "bf-archive-"));
+  const tempAudio = join(tempDir, plan.audioEntryName);
+  const tempDestination = settings.compression
+    ? join(
+        dirname(plan.zipPath),
+        `.${plan.sessionName}.zip.tmp-${process.pid}-${Date.now()}`,
+      )
+    : join(
+        dirname(plan.unpackedDir),
+        `.${plan.sessionName}.tmp-${process.pid}-${Date.now()}`,
+      );
 
   try {
+    this.process.stdout.write(
+      `Encoding ${plan.audioSource} → ${plan.audioEntryName}\n`,
+    );
+    await encodeToOpus({
+      input: plan.audioSource,
+      output: tempAudio,
+      bitrate: settings.audioBitrate,
+      force: true,
+      progress: this.process.stdout,
+    });
+
     if (settings.compression) {
       const entries: ZipEntry[] = [
         { path: tempAudio, name: plan.audioEntryName },
@@ -124,19 +131,28 @@ export default async function archive(
           name: copy.entryName,
         })),
       ];
-      await createZipArchive(entries, plan.zipPath);
+      await createZipArchive(entries, tempDestination);
+      if (flags.force) {
+        await rm(destination, { recursive: true, force: true });
+      }
+      await rename(tempDestination, plan.zipPath);
       this.process.stdout.write(`Wrote archive ${plan.zipPath}\n`);
     } else {
-      await mkdir(plan.unpackedDir, { recursive: true });
-      await copyFile(tempAudio, join(plan.unpackedDir, plan.audioEntryName));
+      await mkdir(tempDestination, { recursive: true });
+      await copyFile(tempAudio, join(tempDestination, plan.audioEntryName));
       for (const copy of includedCopies) {
-        await copyFile(copy.sourcePath, join(plan.unpackedDir, copy.entryName));
+        await copyFile(copy.sourcePath, join(tempDestination, copy.entryName));
       }
+      if (flags.force) {
+        await rm(destination, { recursive: true, force: true });
+      }
+      await rename(tempDestination, plan.unpackedDir);
       this.process.stdout.write(
         `Wrote archive contents to ${plan.unpackedDir}\n`,
       );
     }
   } finally {
-    await rm(tempAudio, { force: true });
+    await rm(tempDir, { recursive: true, force: true });
+    await rm(tempDestination, { recursive: true, force: true });
   }
 }
