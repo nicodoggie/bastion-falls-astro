@@ -10,6 +10,7 @@
     "lexvo": "http://lexvo.org/id/",
     "dc": "http://purl.org/dc/elements/1.1/",
     "bf": "https://bastion-falls.thekennel.info/languages/",
+    "lexicon": "https://bastion-falls.thekennel.info/ontology/lexicon#",
     "ehk": "#"
   },
   "@id": "lexicon:EarlyHick_E",
