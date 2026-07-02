@@ -1,31 +1,55 @@
-import { buildCommand, buildRouteMap, type FlagParametersForType } from "@stricli/core";
 import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import { basename, extname, isAbsolute, join, resolve } from "node:path";
+import {
+  buildCommand,
+  buildRouteMap,
+  type FlagParametersForType,
+} from "@stricli/core";
 
 import type { LocalContext } from "@/context.js";
-import { getAudioDurationSeconds, normalizeToFlac, writeChunkFlacs } from "./audio.js";
-import { detectSilences, trimChunksToSpeech } from "./silence.js";
-import { planChunks } from "./chunkPlanner.js";
-import { transcribeChunksWithLocalWhisper } from "./localWhisper.js";
-import { transcribeChunksWithNodeWhisper } from "./nodeWhisper.js";
+import { applyCorrectionsCommand } from "./applyCorrections.js";
+import { archiveCommand } from "./archive/command.js";
 import { assembleTranscript, formatChunkTranscript } from "./assembly.js";
-import type { ChunkTranscript, Manifest } from "./types.js";
-import { buildContextExcerpt, collectContextFiles, writeGlossary } from "./context.js";
-import { getNotesPath } from "./notes.js";
 import {
-  correctionNotesChunksDirFor,
+  getAudioDurationSeconds,
+  normalizeToFlac,
+  writeChunkFlacs,
+} from "./audio.js";
+import {
+  getCheckpointPath,
+  type TranscribeCheckpoint,
+  writeTranscribeCheckpoint,
+} from "./checkpoint.js";
+import { planChunks } from "./chunkPlanner.js";
+import {
   correctedTranscriptionDirFor,
+  correctionNotesChunksDirFor,
   runCodexCorrection,
   runCodexNotes,
   runCodexSummaryCleanup,
   summaryTranscriptionDirFor,
 } from "./codex.js";
-import { defaultSttBackend, parseSttBackend, type SttBackend } from "./sttBackend.js";
-import { canReuseAudioChunks, readManifest } from "./resume.js";
-import { getCheckpointPath, writeTranscribeCheckpoint, type TranscribeCheckpoint } from "./checkpoint.js";
+import {
+  buildContextExcerpt,
+  collectContextFiles,
+  writeGlossary,
+} from "./context.js";
+import {
+  loadCorrectionRulesMarkdown,
+  writeCorrectionRulesContext,
+} from "./corrections.js";
+import { transcribeChunksWithLocalWhisper } from "./localWhisper.js";
+import { transcribeChunksWithNodeWhisper } from "./nodeWhisper.js";
+import { getNotesPath } from "./notes.js";
 import { runOllamaHierarchicalNotes } from "./ollamaNotes.js";
-import { applyCorrectionsCommand } from "./applyCorrections.js";
-import { loadCorrectionRulesMarkdown, writeCorrectionRulesContext } from "./corrections.js";
+import { canReuseAudioChunks, readManifest } from "./resume.js";
+import { detectSilences, trimChunksToSpeech } from "./silence.js";
+import {
+  defaultSttBackend,
+  parseSttBackend,
+  type SttBackend,
+} from "./sttBackend.js";
+import type { ChunkTranscript, Manifest } from "./types.js";
 
 type NotesBackend = "codex" | "ollama";
 
@@ -126,7 +150,8 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
   language: {
     kind: "parsed",
     parse: String,
-    brief: "Whisper language code, e.g. en or tl; use auto for language autodetection",
+    brief:
+      "Whisper language code, e.g. en or tl; use auto for language autodetection",
     default: "en",
   },
   backend: {
@@ -172,29 +197,34 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
   },
   denoise: {
     kind: "boolean",
-    brief: "Apply conservative ffmpeg noise reduction before speech normalization",
+    brief:
+      "Apply conservative ffmpeg noise reduction before speech normalization",
     optional: true,
   },
   "voice-boost": {
     kind: "boolean",
-    brief: "Apply a mild speech-presence EQ boost before loudness normalization",
+    brief:
+      "Apply a mild speech-presence EQ boost before loudness normalization",
     optional: true,
   },
   "keep-silence": {
     kind: "boolean",
-    brief: "Keep long leading/trailing silence in chunks instead of trimming it before transcription",
+    brief:
+      "Keep long leading/trailing silence in chunks instead of trimming it before transcription",
     optional: true,
   },
   "silence-padding-seconds": {
     kind: "parsed",
     parse: parseNumber,
-    brief: "Seconds of context to keep around detected speech when trimming silent chunk edges",
+    brief:
+      "Seconds of context to keep around detected speech when trimming silent chunk edges",
     default: "1",
   },
   "minimum-speech-seconds": {
     kind: "parsed",
     parse: parseNumber,
-    brief: "Drop planned chunks with less speech than this after silence trimming",
+    brief:
+      "Drop planned chunks with less speech than this after silence trimming",
     default: "2",
   },
   "silence-tag-seconds": {
@@ -218,7 +248,8 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
   python: {
     kind: "parsed",
     parse: String,
-    brief: "Python executable with faster-whisper installed; ignored by nodejs-whisper",
+    brief:
+      "Python executable with faster-whisper installed; ignored by nodejs-whisper",
     default: "python3",
   },
   force: {
@@ -238,7 +269,8 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
   },
   "skip-summary-cleanup": {
     kind: "boolean",
-    brief: "Skip the Codex transcript cleanup pass used to prepare safer note summaries",
+    brief:
+      "Skip the Codex transcript cleanup pass used to prepare safer note summaries",
     optional: true,
   },
   "skip-notes": {
@@ -280,7 +312,12 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
 
 function slugifyAudioPath(audioPath: string): string {
   const stem = basename(audioPath, extname(audioPath));
-  return stem.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "session";
+  return (
+    stem
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "") || "session"
+  );
 }
 
 function resolveFromCwd(cwd: string, path: string): string {
@@ -302,7 +339,12 @@ function assertSessionDate(value: string): void {
   }
 }
 
-async function readChunkTranscripts(jsonPaths: string[], manifest: Manifest): Promise<Array<Manifest["chunks"][number] & { transcript: ChunkTranscript }>> {
+async function readChunkTranscripts(
+  jsonPaths: string[],
+  manifest: Manifest,
+): Promise<
+  Array<Manifest["chunks"][number] & { transcript: ChunkTranscript }>
+> {
   return Promise.all(
     jsonPaths.map(async (jsonPath, index) => {
       const chunk = manifest.chunks[index];
@@ -311,7 +353,9 @@ async function readChunkTranscripts(jsonPaths: string[], manifest: Manifest): Pr
       }
       return {
         ...chunk,
-        transcript: JSON.parse(await readFile(jsonPath, "utf8")) as ChunkTranscript,
+        transcript: JSON.parse(
+          await readFile(jsonPath, "utf8"),
+        ) as ChunkTranscript,
       };
     }),
   );
@@ -384,11 +428,16 @@ async function writeChunkTranscriptFiles(options: {
 }): Promise<void> {
   await mkdir(options.rawTranscriptionDir, { recursive: true });
   await Promise.all(
-    options.chunks.map((chunk) => writeFile(
-      join(options.rawTranscriptionDir, `session_${String(chunk.index).padStart(3, "0")}.md`),
-      formatChunkTranscript(chunk),
-      "utf8",
-    )),
+    options.chunks.map((chunk) =>
+      writeFile(
+        join(
+          options.rawTranscriptionDir,
+          `session_${String(chunk.index).padStart(3, "0")}.md`,
+        ),
+        formatChunkTranscript(chunk),
+        "utf8",
+      ),
+    ),
   );
 }
 
@@ -399,8 +448,13 @@ export const transcribeRunCommand = buildCommand({
     const cwd = this.currentPath;
     const audioPath = resolveFromCwd(cwd, audioFile);
     const contextRoot = resolveFromCwd(cwd, flags["context-root"]);
-    const correctionsPath = flags.corrections ? resolveFromCwd(cwd, flags.corrections) : undefined;
-    const outDir = resolveFromCwd(cwd, flags.out ?? join(".bf-transcripts", slugifyAudioPath(audioPath)));
+    const correctionsPath = flags.corrections
+      ? resolveFromCwd(cwd, flags.corrections)
+      : undefined;
+    const outDir = resolveFromCwd(
+      cwd,
+      flags.out ?? join(".bf-transcripts", slugifyAudioPath(audioPath)),
+    );
     const normalizedPath = join(outDir, "normalized", "session.flac");
     const chunksDir = join(outDir, "chunks");
     const rawChunksDir = join(outDir, "raw_chunks");
@@ -418,8 +472,15 @@ export const transcribeRunCommand = buildCommand({
     });
     const shouldResume = Boolean(flags.resume) && !flags.force;
 
-    if (!flags["skip-notes"] && (await exists(notesPath)) && !flags.force && !shouldResume) {
-      throw new Error(`${notesPath} already exists. Pass --force to overwrite it.`);
+    if (
+      !flags["skip-notes"] &&
+      (await exists(notesPath)) &&
+      !flags.force &&
+      !shouldResume
+    ) {
+      throw new Error(
+        `${notesPath} already exists. Pass --force to overwrite it.`,
+      );
     }
 
     await mkdir(outDir, { recursive: true });
@@ -437,10 +498,14 @@ export const transcribeRunCommand = buildCommand({
       outDir,
       correctionRules,
     });
-    this.process.stdout.write(`Loaded shared correction rules at ${correctionRulesContextPath}\n`);
+    this.process.stdout.write(
+      `Loaded shared correction rules at ${correctionRulesContextPath}\n`,
+    );
 
     if (shouldResume && (await exists(normalizedPath))) {
-      this.process.stdout.write(`Resuming with existing normalized audio at ${normalizedPath}\n`);
+      this.process.stdout.write(
+        `Resuming with existing normalized audio at ${normalizedPath}\n`,
+      );
     } else {
       const sourceDurationSeconds = await getAudioDurationSeconds(audioPath);
       this.process.stdout.write(`Normalizing audio to ${normalizedPath}\n`);
@@ -461,14 +526,21 @@ export const transcribeRunCommand = buildCommand({
 
     let manifest: Manifest | undefined;
     let chunkPaths: string[] | undefined;
-    const existingManifest = shouldResume ? await readManifest(manifestPath) : undefined;
+    const existingManifest = shouldResume
+      ? await readManifest(manifestPath)
+      : undefined;
     let silences = existingManifest?.silences;
     if (existingManifest) {
-      const reusableChunks = await canReuseAudioChunks({ manifest: existingManifest, chunksDir });
+      const reusableChunks = await canReuseAudioChunks({
+        manifest: existingManifest,
+        chunksDir,
+      });
       if (reusableChunks.reusable) {
         manifest = existingManifest;
         chunkPaths = reusableChunks.chunkPaths;
-        this.process.stdout.write(`Resuming with ${chunkPaths.length} existing audio chunks\n`);
+        this.process.stdout.write(
+          `Resuming with ${chunkPaths.length} existing audio chunks\n`,
+        );
       } else {
         throw new Error(
           `Cannot resume audio chunking; missing chunk indexes: ${reusableChunks.missingIndexes.join(", ")}. Pass --force to rebuild chunks.`,
@@ -508,16 +580,28 @@ export const transcribeRunCommand = buildCommand({
         silences,
         chunks,
       };
-      await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
+      await writeFile(
+        manifestPath,
+        `${JSON.stringify(manifest, null, 2)}\n`,
+        "utf8",
+      );
 
       this.process.stdout.write(`Writing ${chunks.length} FLAC chunks\n`);
-      chunkPaths = await writeChunkFlacs(normalizedPath, chunksDir, chunks, Boolean(flags.force), {
-        sink: this.process.stdout,
-      });
+      chunkPaths = await writeChunkFlacs(
+        normalizedPath,
+        chunksDir,
+        chunks,
+        Boolean(flags.force),
+        {
+          sink: this.process.stdout,
+        },
+      );
     }
 
     if (!silences) {
-      this.process.stdout.write("Detecting silence boundaries for transcript tags\n");
+      this.process.stdout.write(
+        "Detecting silence boundaries for transcript tags\n",
+      );
       silences = await detectSilences(normalizedPath);
     }
 
@@ -538,36 +622,51 @@ export const transcribeRunCommand = buildCommand({
     });
     const now = new Date().toISOString();
     checkpoint.updatedAt = now;
-    checkpoint.stages.normalization = { status: "complete", completedAt: now, path: normalizedPath };
-    checkpoint.stages.audio_chunking = { status: "complete", completedAt: now, count: manifest.chunks.length, dir: chunksDir };
+    checkpoint.stages.normalization = {
+      status: "complete",
+      completedAt: now,
+      path: normalizedPath,
+    };
+    checkpoint.stages.audio_chunking = {
+      status: "complete",
+      completedAt: now,
+      count: manifest.chunks.length,
+      dir: chunksDir,
+    };
     await writeTranscribeCheckpoint(checkpointPath, checkpoint);
 
     this.process.stdout.write(`Transcribing chunks with ${flags.backend}\n`);
-    const jsonPaths = flags.backend === "nodejs-whisper"
-      ? await transcribeChunksWithNodeWhisper({
-          chunkPaths,
-          outDir: rawChunksDir,
-          model: flags["whisper-model"],
-          language: flags.language,
-          modelRootPath: flags["node-whisper-model-root"],
-          autoDownloadModel: Boolean(flags["auto-download-model"]),
-          device: flags.device,
-          force: Boolean(flags.force),
-        })
-      : await transcribeChunksWithLocalWhisper({
-          chunkPaths,
-          outDir: rawChunksDir,
-          model: flags["whisper-model"],
-          language: flags.language,
-          device: flags.device,
-          computeType: flags["compute-type"],
-          python: flags.python,
-          force: Boolean(flags.force),
-        });
+    const jsonPaths =
+      flags.backend === "nodejs-whisper"
+        ? await transcribeChunksWithNodeWhisper({
+            chunkPaths,
+            outDir: rawChunksDir,
+            model: flags["whisper-model"],
+            language: flags.language,
+            modelRootPath: flags["node-whisper-model-root"],
+            autoDownloadModel: Boolean(flags["auto-download-model"]),
+            device: flags.device,
+            force: Boolean(flags.force),
+          })
+        : await transcribeChunksWithLocalWhisper({
+            chunkPaths,
+            outDir: rawChunksDir,
+            model: flags["whisper-model"],
+            language: flags.language,
+            device: flags.device,
+            computeType: flags["compute-type"],
+            python: flags.python,
+            force: Boolean(flags.force),
+          });
 
-    this.process.stdout.write(`Assembling raw transcript at ${rawTranscriptPath}\n`);
+    this.process.stdout.write(
+      `Assembling raw transcript at ${rawTranscriptPath}\n`,
+    );
     const chunkTranscripts = await readChunkTranscripts(jsonPaths, manifest);
-    await writeChunkTranscriptFiles({ rawTranscriptionDir, chunks: chunkTranscripts });
+    await writeChunkTranscriptFiles({
+      rawTranscriptionDir,
+      chunks: chunkTranscripts,
+    });
     const completedChunkIndexes = chunkTranscripts.map((chunk) => chunk.index);
     checkpoint.updatedAt = new Date().toISOString();
     checkpoint.stages.transcribed_chunks = {
@@ -643,7 +742,9 @@ export const transcribeRunCommand = buildCommand({
           campaign: flags.campaign,
           sessionDate: flags["session-date"],
           transcriptPath: transcriptForNotes,
-          correctionNotesPath: flags["skip-correction"] ? undefined : correctionNotesPath,
+          correctionNotesPath: flags["skip-correction"]
+            ? undefined
+            : correctionNotesPath,
           contextExcerpt: buildContextExcerpt(contextFiles),
           correctionRules,
           notesPath,
@@ -656,7 +757,9 @@ export const transcribeRunCommand = buildCommand({
           resume: shouldResume,
         });
       } else {
-        const transcriptChunksDir = flags["skip-correction"] ? rawTranscriptionDir : correctedTranscriptionDirFor(outDir);
+        const transcriptChunksDir = flags["skip-correction"]
+          ? rawTranscriptionDir
+          : correctedTranscriptionDirFor(outDir);
         const notesTranscriptPath = flags["skip-summary-cleanup"]
           ? transcriptForNotes
           : summaryTranscriptPath;
@@ -665,7 +768,9 @@ export const transcribeRunCommand = buildCommand({
           : summaryTranscriptionDirFor(outDir);
 
         if (!flags["skip-summary-cleanup"]) {
-          this.process.stdout.write(`Preparing summary-safe transcript at ${summaryTranscriptPath}\n`);
+          this.process.stdout.write(
+            `Preparing summary-safe transcript at ${summaryTranscriptPath}\n`,
+          );
           await runCodexSummaryCleanup({
             cwd,
             transcriptPath: transcriptForNotes,
@@ -684,9 +789,13 @@ export const transcribeRunCommand = buildCommand({
           campaign: flags.campaign,
           sessionDate: flags["session-date"],
           transcriptPath: notesTranscriptPath,
-          correctionNotesPath: flags["skip-correction"] ? undefined : correctionNotesPath,
+          correctionNotesPath: flags["skip-correction"]
+            ? undefined
+            : correctionNotesPath,
           transcriptChunksDir: notesTranscriptChunksDir,
-          correctionNotesChunksDir: flags["skip-correction"] ? undefined : correctionNotesChunksDirFor(outDir),
+          correctionNotesChunksDir: flags["skip-correction"]
+            ? undefined
+            : correctionNotesChunksDirFor(outDir),
           contextExcerpt: buildContextExcerpt(contextFiles),
           correctionRules,
           notesPath,
@@ -708,7 +817,10 @@ export const transcribeRunCommand = buildCommand({
     }
 
     checkpoint.updatedAt = new Date().toISOString();
-    checkpoint.stages.done = { status: "complete", completedAt: checkpoint.updatedAt };
+    checkpoint.stages.done = {
+      status: "complete",
+      completedAt: checkpoint.updatedAt,
+    };
     await writeTranscribeCheckpoint(checkpointPath, checkpoint);
     this.process.stdout.write(`Transcript workflow complete: ${outDir}\n`);
   },
@@ -725,7 +837,8 @@ export const transcribeRunCommand = buildCommand({
     },
   },
   docs: {
-    brief: "Normalize, chunk, transcribe, correct, and summarize campaign audio",
+    brief:
+      "Normalize, chunk, transcribe, correct, and summarize campaign audio",
   },
 });
 
@@ -734,9 +847,11 @@ export const transcribeCommand = buildRouteMap({
     run: transcribeRunCommand,
     audio: transcribeRunCommand,
     "apply-corrections": applyCorrectionsCommand,
+    archive: archiveCommand,
   },
   defaultCommand: "run",
   docs: {
-    brief: "Normalize, chunk, transcribe, correct, and summarize campaign audio",
+    brief:
+      "Normalize, chunk, transcribe, correct, and summarize campaign audio",
   },
 });
