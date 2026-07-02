@@ -28,10 +28,10 @@ entries:
     be interpreted in multiple ways, then the Blood Contract can be applied to all of the ways they
     may be interpreted.
   - >-
-    If a term, condition, or item defined in the contract is broken by an entity whose blood is bound
-    and no failure condition is defined explicitly, the entity must make a Wisdom saving throw once
-    per day while the rule remains broken. On a failed save, that entity takes 20d6 psychic damage,
-    or half as much damage on a successful one.
+    If a term, condition, or item defined in the contract is broken by an entity whose blood is
+    bound and no failure condition is defined explicitly, the entity must make a Wisdom saving throw
+    once per day while the rule remains broken. On a failed save, that entity takes 20d6 psychic
+    damage, or half as much damage on a successful one.
 savingThrow:
   - wisdom
 damageInflict:
