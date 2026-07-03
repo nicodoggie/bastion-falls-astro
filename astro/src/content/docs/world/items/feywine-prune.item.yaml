@@ -1,0 +1,14 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Feywine Prune
+source: BF
+type: wondrous item
+rarity: common
+wondrous: true
+entries:
+  - >-
+    This prune-like magical fruit carries a sweet fey aroma and glistens as though soaked in wine.
+  - >-
+    **Consumable.** When placed inside a wine bottle or similarly sized vessel that can contain
+    liquid, the prune dissolves and produces enough feywine to fill the vessel. The vessel must be
+    empty or able to safely contain the produced liquid.

@@ -1,0 +1,19 @@
+---
+title: Feywine Prune
+tags:
+  - items
+item:
+  name: Feywine Prune
+  details:
+    type: wondrous item
+    rarity: common
+itemDataStats:
+  rules: items/feywine-prune.item
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+The **Feywine Prune** is a prune-like magical fruit that can produce feywine when placed in a
+wine bottle or similarly sized vessel.
+
+<ItemBlock item={frontmatter.itemDataStats.rules} />
