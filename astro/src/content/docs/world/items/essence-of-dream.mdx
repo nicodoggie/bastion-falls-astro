@@ -1,0 +1,20 @@
+---
+title: Essence of Dream
+tags:
+  - items
+item:
+  name: Essence of Dream
+  details:
+    type: potion
+    rarity: uncommon
+    weight: 0.5 lb.
+itemDataStats:
+  rules: items/essence-of-dream.item
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+**Essence of Dream** is an oil-like fey substance tied to Mommy, Queen of Dreams. It can be
+created during downtime by warlocks or followers bound to her dream-magic.
+
+<ItemBlock item={frontmatter.itemDataStats.rules} />

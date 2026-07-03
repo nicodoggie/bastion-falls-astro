@@ -532,6 +532,106 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User clarified the source audio says Matthew was reading Legally Bare.
 
+      - id: organization.hickland-for-hicks-malthrek-cell
+        status: confirmed
+        kind: organization-cell
+        canonical: Hickland for Hicks local cell
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/organizations/hickland-for-hicks.mdx
+            role: parent-organization
+        aliases:
+          - local ally
+          - local allies
+          - local contact
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Malthrek local coordination
+            - nearby Malthrek-area cells
+            - Hicklander contacts around Castle Malthrek
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Vengeful Castle Malthrek coordination passages, a "local ally" who
+          can coordinate Castle Malthrek and nearby Malthrek-area cells is a
+          Hickland for Hicks local cell or cell contact, not merely a generic
+          friendly individual. Do not globally rewrite ally/allies outside this
+          Hicklander cell-network context.
+        evidence:
+          - path: astro/src/content/docs/world/organizations/hickland-for-hicks.mdx
+            note: Canonical organization article for Hickland for Hicks and its cell-like operations.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified the local Castle Malthrek coordination line refers to a Hickland for Hicks cell.
+
+      - id: item.love-beat
+        status: confirmed
+        kind: item
+        canonical: Love Beat
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/organizations/legally-bare.mdx
+            role: sponsor-product-reference
+        aliases:
+          - Love Bead
+          - Love Beats
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Legally Bare sponsor products
+            - Luana and Kelthyr adult magic item discussions
+            - Kelthyr doll holder design
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Love Beat for the Legally Bare / En Chanté Workshop intimate magic
+          item or product term. Love Bead is a transcription drift in this
+          context, and Love Beats may appear as plural or product-line wording.
+          Do not collapse Love Beat with the separate black ring unless the
+          surrounding context explicitly links them.
+        evidence:
+          - path: astro/src/content/docs/world/organizations/legally-bare.mdx
+            note: Sponsor list names Love Beats under En Chanté Workshop.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified Love Beat is the correct term for the recurring item/product.
+
+      - id: organization.la-camaraderie-operating-scope
+        status: confirmed
+        kind: organization-context
+        canonical: La Camaraderie de la Mer
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/organizations/la-camaraderie.mdx
+            role: primary
+        aliases:
+          - La Camaraderie-aligned contact
+          - local La Camaraderie contact
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Malthrek Hicklander contact
+            - Seneran excursion and Malthrek-area cells
+            - Luana and Kelthyr local coordination
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Do not describe the Castle Malthrek contact as La Camaraderie-aligned
+          by default. The contact is Hicklander. La Camaraderie normally operates
+          in the Sarmatian Sea and mostly in Apgar; its role in this Seneran
+          excursion is exceptional and only appears because of the unusual
+          convergence around Luana, John, Kelthyr, and the Castle Malthrek crisis.
+        evidence:
+          - path: astro/src/content/docs/world/organizations/la-camaraderie.mdx
+            note: Canonical article describes La Camaraderie as an Apgarian-backed maritime organization operating around Apgar and the Sarmatian routes.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified the Castle Malthrek contact is definitely Hicklander and that La Camaraderie's Seneran role is exceptional.
+
       - id: character.mystine-nightingale
         status: confirmed
         kind: entity
@@ -732,6 +832,78 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User clarified Dooren or Duren and Queen Bered should be Queen Duarend.
 
+      - id: fey.mommy-queen-of-dreams
+        status: confirmed
+        kind: entity-context
+        canonical: Mommy, Queen of Dreams
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/luana-victorique-dubreuil.mdx
+            role: luana-patron-reference
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            role: essence-of-dream-context
+        aliases:
+          - Mommy
+          - Mami
+          - Archfey of Dreams
+          - Essence of Dream
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Luana's dream patron
+            - Essence of Dream
+            - Queen Duarend's later mantle
+            - astral projection and dream manifestations
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Luana's dream-patron and Essence of Dream contexts, Mommy is the
+          archfey patron connected to Luana's powers. Mommy was originally Queen
+          Duarend, the once-human former Spring Queen, who took the mantle of
+          Queen of Dreams in the Feywild and extended her influence to Thera.
+          Keep Essence of Dream distinct from Essence of Nymph; they may both be
+          fey-associated, but the dream essence is tied to Mommy's dream mantle.
+        evidence:
+          - path: astro/src/content/docs/world/characters/luana-victorique-dubreuil.mdx
+            note: Luana's article identifies Mommy as the archfey figure tied to Luana's dream and astral-projection thread.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified Essence of Dream is distinct from Essence of Nymph and tied to Mommy, Queen Duarend's Queen of Dreams mantle.
+
+      - id: item.essence-of-dream
+        status: confirmed
+        kind: item
+        canonical: Essence of Dream
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            role: current-session
+        aliases:
+          - Essence of Sleep
+          - sleep censer
+          - sleep incense
+          - aromatic-oil sleep effect
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Luana sleep effect
+            - three-day sleep
+            - Comtesse sleep effect
+            - Castle Malthrek guard sleep trap
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Essence of Dream for Luana's three-day sleep effect, including
+          delivery through a censer, incense, vapor, smoke, or aromatic oil.
+          Essence of Sleep is a descriptive drift in this context.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified the censer, incense, or aromatic-oil sleep effect is Essence of Dream.
+
       - id: item.winter-ring-brooch
         status: confirmed
         kind: disambiguation
@@ -908,6 +1080,130 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User clarified Thralmal location references should point to Thralmals.
 
+      - id: place.faltir
+        status: confirmed
+        kind: place
+        canonical: Faltir
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/the-maltreks.mdx
+            role: regional-reference
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            role: current-session
+        aliases:
+          - Faltier
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Malthrek-area salt-mining settlement
+            - Faltir streets and salt mines
+            - Alden and nearby Hicklander village route
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Faltir for the Malthrek-area walled salt-mining settlement and
+          salt-mine context. Faltier is transcription drift. Do not globally
+          rewrite unrelated similar names outside the Malthrek salt-settlement
+          context.
+        evidence:
+          - path: astro/src/content/docs/world/locations/the-maltreks.mdx
+            note: Canonical Malthreks location article lists Faltir.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified Faltier should be Faltir in the current note.
+
+      - id: place.surreys-ear
+        status: confirmed
+        kind: place
+        canonical: Surrey's Ear
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/surrey-on-the-brams.mdx
+            role: primary
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            role: current-session
+        aliases:
+          - Eyrie of Surrey
+          - Ear of Surrey
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - restricted Seneran sites
+            - Surrey-on-the-Brams geography
+            - memory bottle or elven boon references near Surrey
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Surrey's Ear for the uninhabited isle west of Port Surrey's
+          plateau and related restricted-site references. Eyrie of Surrey and
+          Ear of Surrey are transcription or shorthand drift unless the context
+          clearly names a different formal title.
+        evidence:
+          - path: astro/src/content/docs/world/locations/surrey-on-the-brams.mdx
+            note: Canonical location article has a Surrey's Ear section.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified Eyrie of Surrey should be Surrey's Ear.
+
+      - id: noble.count-ranlis
+        status: confirmed
+        kind: entity
+        canonical: Count Ranlis
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            role: current-session
+        aliases:
+          - Count Randless
+          - Randless
+          - Pontiff
+          - Pontiff's march
+          - Pontif march
+          - the punt
+          - Condesa
+          - Contessa
+          - Countess
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Faltir salt procession
+            - Count Ranlis's march
+            - Faltir founding story
+            - Ranlis family salt history
+            - Comtesse, wife of Count Ranlis
+            - Comtesse left in charge of Faltir
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the Faltir salt-procession and local salt-founding history context,
+          use Count Ranlis and the Ranlis family. Count is the correct title.
+          The Comtesse in the Castle Malthrek dungeon thread is Count Ranlis's
+          wife, is likely Reformist, and appears to have been left in charge of
+          Faltir in Count Ranlis's absence. She is distinct from Duchess
+          Antoinette Malthrek.
+          Use Comtesse for her table-facing title; Condesa, Contessa, and
+          Countess are drift or translation variants in this context.
+          Pontiff/Pontif and Randless are transcription drift in this context.
+          Do not rewrite unrelated Pontiff, pontiff, or Randless references
+          outside this Faltir/Ranlis salt-history context.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified the procession is Count Ranlis's march, not the Pontiff's march, and that Count is the correct title.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified the Condesa is Count Ranlis's wife and not Duchess Antoinette Malthrek.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User chose Comtesse as the preferred table-facing title.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified the Comtesse is not missing; she is likely Reformist and was left in charge of Faltir in Count Ranlis's absence.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified the overheard oppressor figure in the dungeon is the Comtesse.
+
       - id: place.flyukishilla
         status: confirmed
         kind: place
@@ -1057,6 +1353,73 @@ profiles:
             note: Establishes Henson as the stone golem Miya controls in the Eastonton/Malthrek route.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
             note: Current note repeatedly distinguishes Henson Eastonton from Henderson as a joke misnaming.
+
+      - id: creature.equus-rex
+        status: confirmed
+        kind: entity
+        canonical: Equus Rex
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            role: mount-context
+        aliases:
+          - Equine Rex
+          - Ickless Rex
+          - Rex
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Kelthyr and Luana stable scenes
+            - Castle Malthrek village travel mount
+            - barding, hay, and horse handling scenes
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Equus Rex for the mount traveling with Kelthyr and Luana around
+          Castle Malthrek. Equine Rex and Ickless Rex are transcription drift.
+          Bare Rex is valid as in-scene shorthand only when the context is the
+          horse or mount, not Kalassarian rex titles or unrelated people.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified Equus Rex as the full name, with Rex as shorthand in the stable/travel scenes.
+
+      - id: artifact.miskaso-castle-malthrek
+        status: rejected-as-artifact
+        kind: transcription-artifact
+        canonical: Castle Malthrek
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/the-maltreks.mdx
+            role: castle-reference
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            role: session-context
+        aliases:
+          - Miskaso
+          - Miskaso Mountains
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - 2026-06-28
+          contexts:
+            - Castle Malthrek approach and reinforcement planning
+            - Agnes discussion around entering the castle or fortress
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Do not canonize Miskaso or Miskaso Mountains as a location. In the
+          2026-06-28 Castle Malthrek approach conversation, Miskaso is
+          mistranscribed from "this castle", and Miskaso Mountains is
+          mistranscribed from "Castle Malthrek".
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: User clarified Miskaso was "this castle" and Miskaso Mountains was Castle Malthrek.
+          - path: astro/.bf-transcripts/session-2026-06-28/corrected_transcript.md
+            note: The relevant spans are 11:27:55-11:27:57 and 11:30:36-11:30:38.
 
       - id: character.kelthyr-kulok
         status: confirmed

@@ -1,0 +1,21 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Variable Cock Sheath
+source: BF
+type: RG
+rarity: uncommon
+entries:
+  - >-
+    This black magical cock ring resizes itself to fit its wearer, resting loosely enough to be
+    deliberately removed but securely enough to stay in place during ordinary movement.
+  - >-
+    The sheath has four vibration levels. While holding or wearing it, a creature can speak the
+    command word "mabrast'er" to activate the sheath at its lowest vibration level. Each time the
+    command word is spoken again, the vibration increases by one level. If the command word is
+    spoken while the sheath is at its fourth vibration level, the sheath turns off.
+  - >-
+    The sheath does not need to be worn to vibrate. It can be held, worn, or otherwise placed
+    against a creature.
+  - >-
+    Any arousal caused by the sheath is not a magical compulsion or enchantment. It is the intended
+    physical effect of the sheath's vibration.

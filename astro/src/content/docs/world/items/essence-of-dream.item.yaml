@@ -1,0 +1,19 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Essence of Dream
+source: BF
+type: P
+rarity: uncommon
+weight: 0.5
+entries:
+  - >-
+    This oil-like fey substance carries dream-magic associated with Mommy, Queen of Dreams, and
+    can be created during downtime by warlocks or followers bound to her power.
+  - >-
+    **Consumable.** As an action, a creature can administer one vial of Essence of Dream to a
+    creature within 5 feet or disperse it through a suitable medium, such as incense, a censer, or
+    aromatherapy oils. A creature exposed to the essence must make a DC 17 Constitution saving
+    throw. On a failed save, the creature falls unconscious for 3 days.
+  - >-
+    The essence's base form is an oil-like substance. Delivery through a censer, incense, or
+    aromatherapy setup is a permissible use of the substance rather than its required form.

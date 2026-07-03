@@ -1,0 +1,19 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Stilettos of Wounding
+source: BF
+type: wondrous item
+rarity: uncommon
+wondrous: true
+entries:
+  - >-
+    These magical high-heeled shoes conform to the wearer's feet when put on. They are not cursed,
+    though walking in them may still require practice.
+  - >-
+    While wearing the stilettos, you can use them to make a melee weapon attack. On a hit, the
+    attack deals piercing damage equal to 1d4 + the ability modifier used for the attack, plus 2d8
+    necrotic damage.
+  - >-
+    A creature hit by the stilettos must succeed on a DC 15 Constitution saving throw or suffer a
+    bleeding wound. At the start of each of the wounded creature's turns, it takes 1d6 necrotic
+    damage, then repeats the saving throw, ending the effect on itself on a success.
