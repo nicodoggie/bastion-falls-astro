@@ -166,11 +166,7 @@
             "@language": "en",
             "@value": "feather"
           },
-          "lexinfo:semanticField": [
-            "Animal Terms",
-            "Bird Terms",
-            "Body Terms"
-          ],
+          "lexinfo:semanticField": ["Animal Terms", "Bird Terms", "Body Terms"],
           "usage": "Literally 'bird's leaf'."
         }
       ]
