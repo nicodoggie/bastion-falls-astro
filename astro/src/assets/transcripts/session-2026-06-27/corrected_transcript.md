@@ -6371,24 +6371,24 @@
 [06:07:28 - 06:07:29] It's okay.
 [06:07:29 - 06:07:30] You know, it's definitely kind of interesting.
 [06:07:30 - 06:07:42] So, uh, and then she kind of like, uh, you should, you should see, like, messages, fan messages
-[06:07:42 - 06:07:47] about, uh, Father Eno, she says.
+[06:07:42 - 06:07:47] about, uh, Father Reno, she says.
 [06:07:47 - 06:07:49] So she giggles a bit.
 [06:07:49 - 06:07:53] And she, again, holds your hands and, like, guides you to the moth.
-[06:07:53 - 06:07:58] But, uh, kind of like, uh, because you don't know Father Eno, she removes your hands gently
+[06:07:53 - 06:07:58] But, uh, kind of like, uh, because you don't know Father Reno, she removes your hands gently
 [06:07:58 - 06:07:59] from the moth.
 [06:07:59 - 06:08:00] Okay.
 [06:08:00 - 06:08:02] From the, yung cocoon.
 [06:08:02 - 06:08:05] And, uh, she rubs it like that.
 [06:08:05 - 06:08:07] So it listens to her now.
 [06:08:07 - 06:08:08] Okay.
-[06:08:08 - 06:08:12] And she says, "Show us some messages, uh, fan messages to Father Eno."
+[06:08:08 - 06:08:12] And she says, "Show us some messages, uh, fan messages to Father Reno."
 [06:08:12 - 06:08:14] She says.
 [06:08:14 - 06:08:17] So, it, like, flips the pages.
 [06:08:17 - 06:08:18] And...
 [06:08:18 - 06:08:19] I don't...
 [06:08:19 - 06:08:21] I mean, is he one of the DMs, too?
 [06:08:21 - 06:08:22] No.
-[06:08:22 - 06:08:23] Father Eno is...
+[06:08:22 - 06:08:23] Father Reno is...
 [06:08:23 - 06:08:24] No.
 [06:08:24 - 06:08:27] I heard of him from Minfilia, but, uh...
 [06:08:27 - 06:08:28] Uh...
@@ -6396,17 +6396,17 @@
 [06:08:29 - 06:08:33] From Minfilia and Lyon, something.
 [06:08:33 - 06:08:36] Well, he's not really a DM.
 [06:08:36 - 06:08:43] So, this fan letter, you read it, uh, enthusiastically.
-[06:08:43 - 06:08:46] And it says, "I love you, Father Eno.
+[06:08:43 - 06:08:46] And it says, "I love you, Father Reno.
 [06:08:46 - 06:08:49] Thank you for always being supportive of me.
 [06:08:49 - 06:08:51] I just hope you look at me."
 [06:08:51 - 06:08:53] Even if I'm just a little girl.
-[06:08:53 - 06:08:59] "I love you, Father Eno."
+[06:08:53 - 06:08:59] "I love you, Father Reno."
 [06:08:59 - 06:09:03] And there are more of these?
 [06:09:03 - 06:09:04] She nods every issue.
-[06:09:04 - 06:09:10] There's, like, a hundred messages about Father Eno from girls, it says.
+[06:09:04 - 06:09:10] There's, like, a hundred messages about Father Reno from girls, it says.
 [06:09:10 - 06:09:16] So, I guess you just have to go through them and pick ones that you haven't, like, read yet, or something more.
 [06:09:16 - 06:09:17] Uh, Perception.
-[06:09:17 - 06:09:23] "Above that message with Father Eno is, you see a familiar name.
+[06:09:17 - 06:09:23] "Above that message with Father Reno is, you see a familiar name.
 [06:09:23 - 06:09:24] Mm-hmm.
 [06:09:24 - 06:09:24] Mm-hmm.
 [06:09:24 - 06:09:25] Mm-hmm.
@@ -6415,7 +6415,7 @@
 [06:09:29 - 06:09:30] I'm looking for a DM.
 [06:09:30 - 06:09:31] Wink, wink.
 [06:09:31 - 06:09:32] XOXO.
-[06:09:32 - 06:09:50] with Father Eno is you see a familiar name. It says I heard a cutie named Andrew is looking for a hookup. Come see me. I'm looking for a DM. Wink wink. XOXO. Shara the flower girl.
+[06:09:32 - 06:09:50] with Father Reno is you see a familiar name. It says I heard a cutie named Andrew is looking for a hookup. Come see me. I'm looking for a DM. Wink wink. XOXO. Shara the flower girl.
 [06:09:50 - 06:09:54] A cutie named Andrew?
 [06:09:56 - 06:09:58] What's wrong?
 [06:09:58 - 06:10:00] He doesn't know Andrew.
@@ -6580,7 +6580,7 @@
 [06:14:35 - 06:14:38] "So pleasure to meet you. My name is Luana."
 [06:14:38 - 06:14:41] She says, "Second." She says, "John is the third son."
 [06:14:41 - 06:14:45] "Nice to meet you, Luana."
-[06:14:45 - 06:14:49] "Thank you for taking care of my friend, Emily," he says.
+[06:14:45 - 06:14:49] "Thank you for taking care of my friend, Emily," she says.
 [06:14:49 - 06:14:53] "Oh, um, you're welcome."
 [06:14:53 - 06:14:59] She says, "So they sent you here or Lime sent you here?"
 [06:14:59 - 06:15:01] She says, "Emily."
@@ -7517,8 +7517,8 @@
 [06:38:31 - 06:38:33] Let's just say.
 [06:38:33 - 06:38:36] And...
 [06:38:36 - 06:38:40] Well, twins, right?
-[06:38:40 - 06:38:42] Yeah, she says.
-[06:38:42 - 06:38:45] Like me, she says.
+[06:38:40 - 06:38:42] Yeah, Lime says.
+[06:38:42 - 06:38:45] Like me, Lime says.
 [06:38:45 - 06:38:56] I guess I just...
 [06:38:56 - 06:38:59] I have to figure out how to...
 [06:38:59 - 06:39:01] Emily said to her.
@@ -8423,9 +8423,9 @@
 [07:09:58 - 07:09:59] "Is it not on the DM too?"
 [07:09:59 - 07:10:00] "Is it not on the DM too?"
 [07:10:00 - 07:10:01] "Is it not on the DM too?"
-[07:10:00 - 07:10:09] So he's like, "Oh, I heard that Henson is supposedly an Arena fan."
+[07:10:00 - 07:10:09] So he's like, "Oh, I heard that Henson Eastonton is supposedly an Arena fan."
 [07:10:09 - 07:10:15] "Henson," she says.
-[07:10:15 - 07:10:25] So Henson is going through his last drink of his work.
+[07:10:15 - 07:10:25] So Henson Eastonton is going through his last drink of his work.
 [07:10:25 - 07:10:28] It's good, isn't it?
 [07:10:28 - 07:10:30] I guess.
 [07:10:30 - 07:10:33] "You're an Arena fan," he says.
@@ -9376,7 +9376,7 @@
 [07:48:47 - 07:48:48] "Yeah."
 [07:48:48 - 07:48:49] "Yeah."
 [07:48:49 - 07:48:50] "Let me look out there."
-[07:48:50 - 07:48:58] "Um, it seemed that, well, so, I, this guy, this Dunweather believes that I'm like a reformist, right?"
+[07:48:50 - 07:48:58] Emily says, "Um, it seemed that, well, so, I, this guy, this Dunweather believes that I'm like a reformist, right?"
 [07:48:58 - 07:49:04] "And they tried to like, recruit me, like, put parasite in me, and like, you know, blah, blah, blah."
 [07:49:04 - 07:49:11] "You're gonna attend the ritual, and we're gonna, you're gonna see Lady Veyne, Bearer of the Cups."
 [07:49:11 - 07:49:14] "And Bearer of the Cups bears the parasite," she says.
@@ -10256,7 +10256,7 @@
 [08:40:01 - 08:40:13] The angel at first deemed us as enemies so he kind of like teleported us into a hedge
 [08:40:13 - 08:40:26] maze where we faced his mount, celestial something creature, couatl. This couatl though we managed
 [08:40:26 - 08:40:42] to talk, well Miya is the one. It's a divine creature attached to the celestial being. The angel
-[08:40:42 - 08:41:12] 's true name is Timahel, she says. And the mount, the couatl, we were able to talk to it. I mean Miya, Miya is the one who talked to it, she says. And we are expecting a fight but the couatl was very kind of lonely here. Because Timahel apparently bound
+[08:40:42 - 08:41:12] 's true name is Timael, she says. And the mount, the couatl, we were able to talk to it. I mean Miya, Miya is the one who talked to it, she says. And we are expecting a fight but the couatl was very kind of lonely here. Because Timael apparently bound
 [08:41:12 - 08:41:20] him into that maze, she says. But we talked to it and we managed to get some information out of him.
 [08:41:20 - 08:41:28] We learned about Isana being a Simulacrum. And this Dunweather talked about a Simulacrum. Another
 [08:41:28 - 08:41:43] Isana will burn them. Jeez, how many Isanas are there? How many, Lime? Well, Simulacrum is a high-level spell, she says. And takes a lot of components and materials to cast, she says.
@@ -10401,7 +10401,7 @@
 [08:53:43 - 08:53:47] But she has to go to school someday and she has to, like, be registered.
 [08:53:47 - 08:53:49] Oh, yeah. I know.
 [08:53:49 - 08:53:51] We'll figure out how that goes with school.
-[08:53:51 - 08:53:55] We'll see what's in Storm Bjorn.
+[08:53:51 - 08:53:55] We'll see what's in Stormbjorn.
 [08:53:55 - 08:53:57] We're really taking her there, says.
 [08:53:57 - 08:53:59] Well, that's where she came from.
 [08:53:59 - 08:54:01] It's the ruins, sabi niya.

@@ -9129,8 +9129,8 @@
 [07:20:11 - 07:20:17] Here, he says.
 [07:20:17 - 07:20:21] So she takes out a robe.
 [07:20:21 - 07:20:35] So this robe is, we got it from the maze, he says.
-[07:20:35 - 07:20:40] The very maze that was conjured by Timahel.
-[07:20:40 - 07:20:43] Timahel, he says.
+[07:20:35 - 07:20:40] The very maze that was conjured by Timael.
+[07:20:40 - 07:20:43] Timael, he says.
 [07:20:43 - 07:20:46] Gives it to you, Kelthyr.
 [07:20:46 - 07:20:52] It's a Robe of the Archmagi, he says.
 [07:20:52 - 07:20:56] You will have magical resistance.

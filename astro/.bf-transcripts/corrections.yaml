@@ -32,6 +32,37 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: Corrects Sensudine drift to Sensodyne.
 
+      - id: character.narmaya
+        status: confirmed
+        kind: entity
+        canonical: Narmaya
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/narmaya.mdx
+            role: primary
+        aliases:
+          - Miss Narnaya
+          - Narnaya
+          - Miss Narmaya
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - vampire traits and Rozenmaiden allies
+            - Miss Narmaya and werewolf discussions
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Narmaya for the vampire Rozenmaiden / La Camaraderie character.
+          In polite references, Miss Narmaya is acceptable. Do not preserve
+          Narnaya as an unresolved spelling.
+        evidence:
+          - path: astro/src/content/docs/world/characters/narmaya.mdx
+            note: Canonical article and frontmatter use Narmaya.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
+            note: User confirmed Miss Narnaya spelling should be Miss Narmaya / Narmaya.
+
       - id: character.rebecca-byzantine
         status: confirmed
         kind: relationship
@@ -231,6 +262,8 @@ profiles:
           - Lady Mirabelle Vayne
           - Lady Maribel Veyne or Vayne
           - Lady Vayne/Veyne/Vane
+          - creepy nana
+          - creepy nun
         scope:
           campaigns:
             - the-vengeful
@@ -239,22 +272,27 @@ profiles:
             - Bearer of the Cup and Cupbearer
             - Sister Rachel wild magic cover
             - Mark warning Rachel about parasite implantation
+            - Lime and Mark heading to the Castle Malthrek church
         apply:
           mode: prompt-first
           safeExactReplacement: false
         instruction: >
           In the Castle Malthrek / Sister Rachel risk thread, use Lady Maribel
-          Veyne for transcript forms such as Lady Vayne and Lady Fai. Lady Fai
-          is a real character elsewhere in the world, but that separate
-          campaign character is not relevant in this Vengeful context.
+          Veyne for transcript forms such as Lady Vayne and Lady Fai. In the
+          2026-06-27 church-plan thread, "creepy nana" is likely "creepy nun"
+          and likely points to Lady Maribel Veyne, not a grandmother figure.
+          Lady Fai is a real character elsewhere in the world, but that
+          separate campaign character is not relevant in this Vengeful context.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User clarified Lady Vayne and Lady Fai refer to Lady Maribel Veyne here.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User clarified "creepy nana" should be "creepy nun" and likely refers to Lady Veyne.
 
       - id: character.father-dunweather
         status: confirmed
         kind: entity
-        canonical: Father Dunweather
+        canonical: Father Karam Dunweather
         canonicalRefs: []
         aliases:
           - Father Dunwether
@@ -269,6 +307,7 @@ profiles:
             - the-vengeful
           contexts:
             - Castle Malthrek chapel priest
+            - local Reformist priest
             - Reformist hierarchy
             - Orthodox and Reformist structures shielding each other
             - Sister Rachel wild magic cover
@@ -276,12 +315,15 @@ profiles:
           mode: prompt-first
           safeExactReplacement: false
         instruction: >
-          Use Father Dunweather for the Castle Malthrek priest. Keep the given
-          name uncertain as Kram or Karam when the transcript context raises
-          that question, but do not preserve Dunwether as an alternate surname.
+          Use Father Karam Dunweather for the Castle Malthrek priest. He is the
+          local Reformist priest, while remaining outwardly Orthodox in cover
+          contexts. Do not preserve Kram as an alternate given name or Dunwether
+          as an alternate surname.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User confirmed Father Dunwether or Dunweather should be Dunweather.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
+            note: User confirmed Karam Dunweather is the local Reformist priest.
 
       - id: character.sir-aldric-torward
         status: confirmed
@@ -374,12 +416,50 @@ profiles:
           In Vengeful passages about the rescued Highbury child, the Little
           Estate survivor, or the Hags-of-Hama linked lineage, use
           Dorothy Marie Campbell. In this context, treat Miya/Miya Campbell/
-          Dorothy Highbury as aliases, not separate characters.
+          Dorothy Highbury as aliases, not separate characters. Dorothy is the
+          daughter of Charlotte Highbury and Torch, and the granddaughter of
+          Baron Dunum Highbury. Use Where Ivy Dares to Grow for H.B. Charlie's
+          book; do not preserve Where Ivory Dares to Grow in this family-proof
+          context.
         evidence:
           - path: astro/src/content/docs/world/characters/dorothy-campbell.mdx
-            note: Canonical character article defines Dorothy as Miya Campbell, Dorothy Highbury, age 13, born 1262-11-16 AI.
+            note: Canonical character article defines Dorothy as Miya Campbell, Dorothy Highbury, age 13, born 1262-11-16 AI, daughter of Charlotte Highbury and Torch, and granddaughter of Baron Dunum Highbury.
+          - path: astro/src/content/docs/world/characters/charlotte-highbury.mdx
+            note: Charlotte Highbury is Baron Dunum Highbury's daughter and H.B. Charlie.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
+            note: User clarified Dorothy's full identity and relationship to Highbury.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
             note: Notes confirm Dorothy/Miya identity, age, and campaign linkage.
+
+      - id: character.monique-highbury
+        status: confirmed
+        kind: entity
+        canonical: Monique
+        canonicalRefs: []
+        aliases:
+          - Monica
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Highbury family and marriage-plot references
+            - Fagus and library aftermath
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Monique for the Highbury-family girl connected to Fagus's marriage
+          plot and the library aftermath. Do not preserve Monica as an
+          unresolved alternate spelling in this context. Keep her exact family
+          relation cautious for now: notes may call her a niece, but grand-niece
+          remains possible and should not be force-changed without later canon.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-13.mdx
+            note: Earlier note names Monique as one of Highbury's nieces and the proposed bride.
+          - path: astro/src/assets/transcripts/session-2026-06-21/corrected_transcript.md
+            note: Transcript lines around 07:21:09 and 07:22:39 use Monique for the cousin and marriage-plot reference.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
+            note: User confirmed Monique is the name, while leaving niece versus grand-niece unchanged for now.
 
       - id: character.luana-cinna-moan
         status: confirmed
@@ -406,28 +486,37 @@ profiles:
             - the-vengeful
           contexts:
             - Legally Bare model references
-            - Lime's Gerta Moon's Boarding School classmates
+            - Lime's Gerta Moon girls cohort
             - Luana-like fey spirit manifestations
         apply:
           mode: prompt-first
           safeExactReplacement: false
         instruction: >
           Luana Victorique Dubreuil is the person who models in Legally Bare as
-          Cinna Moan / School Girl Cinna Moan and was Lime's classmate at Gerta
-          Moon's Boarding School. In fey-spirit manifestation passages, do not
-          identify a spirit resembling Luana as Luana herself unless the context
-          explicitly says the real Luana is present. Keep Princess Luwanya
-          distinct unless future canon explicitly merges that dream or astral
-          figure with mundane Luana.
+          Cinna Moan / School Girl Cinna Moan and was one of the Gerta Moon
+          girls in Lime's cohort. In fey-spirit manifestation passages, Lime can
+          use Summon Fey creatively to give a summoned fey spirit Luana's
+          likeness; do not identify a spirit resembling Luana as Luana herself
+          unless the context explicitly says the real Luana is present. The
+          Luana-like spirit is a separate summoned fey spirit borrowing Luana's
+          appearance, not mundane Luana's astral self, younger self, disguise, or
+          Essence of Nymph-transformed body. In the dream-team context, use
+          Princess Lavinia for Ines Lanessiana Cicero; do not preserve Princess
+          Luwanya as a separate dream or astral figure unless future canon
+          explicitly creates one.
         evidence:
           - path: astro/src/content/docs/world/organizations/legally-bare.mdx
             note: Legally Bare lists School Girl Cinna Moan as Luana Victorique Dubreuil's pen name.
           - path: astro/src/content/docs/world/characters/lime-schulze.mdx
-            note: Lime's article lists Luana among her cohort at Gerta Moon's Boarding School.
+            note: Lime's article lists Luana among her Gerta Moon's Boarding School cohort.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
-            note: User clarified the young fey spirit resembles Luana/Cinna Moan but is not her.
+            note: User clarified Lime had used Luana's likeness for a young fey spirit, but the spirit is not Luana herself.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
             note: Current note introduces Luana Victorique Dubreuil and later shortens her name to Luana Dubreuil.
+          - path: astro/.bf-transcripts/session-2026-06-27/raw_transcript.md
+            note: Raw transcript around 01:12:38-01:14:02 says Lavinia / Princess Lavinia, not Luwanya.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: Prior cleanup identifies Princess Lavinia as Ines Lanessiana Cicero's dream name.
 
       - id: character.benoit-marconne
         status: confirmed
@@ -462,6 +551,360 @@ profiles:
             note: Canonical article identifies Benoit Marconne as Camden Dubreuil and the Dubreuil male heir.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
             note: Current note connects Benoit Marconne, Camden Dubreuil, and Luana's childhood curse.
+
+      - id: character.emily-hazeldine
+        status: confirmed
+        kind: entity
+        canonical: Emily Hazeldine
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/emily-hazeldine.mdx
+            role: primary
+        aliases:
+          - Lyudmila
+          - Lyudmila Hazeldine
+          - Ludmilla
+          - Lewd-mila
+          - Lewdmila
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Emily's full name and teasing nickname
+            - Periapt of Wound Closure necklace initials
+            - Mark Malthrek Glass Eye of True Seeing surgery
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Emily Hazeldine for the character's preferred/common name. Her
+          full name is Lyudmila Hazeldine, and a necklace marked L.H. refers to
+          those initials, not E.H. She dislikes Lyudmila because it sounds
+          old-timey, and some people tease it as Lewd-mila. In Mark's Glass Eye
+          of True Seeing surgery, the L.H. support necklace is Emily's Periapt of
+          Wound Closure.
+        evidence:
+          - path: astro/src/content/docs/world/characters/emily-hazeldine.mdx
+            note: Canonical article identifies Emily's full name, Lyudmila nickname context, and L.H. Periapt of Wound Closure.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
+            note: User clarified the necklace initials are L.H. for Lyudmila Hazeldine and that the necklace is the Periapt of Wound Closure.
+
+      - id: character.emily-sister-rachel-cover
+        status: confirmed
+        kind: disguise
+        canonical: Emily as Sister Rachel
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/emily-hazeldine.mdx
+            role: disguised-character
+        aliases:
+          - Sister Rachel
+          - Rachel
+          - Rachel or Emily
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Malthrek Reformist disguise
+            - Father Karam Dunweather encounter
+            - Greater Archon bluff
+            - Junior dog-form cover
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the Castle Malthrek Reformist infiltration, Sister Rachel / Rachel
+          is Emily Hazeldine's disguise, not a separate character. Prefer Emily /
+          Sister Rachel where both the actor and cover identity matter, and do
+          not leave phrasing as Rachel or Emily.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User clarified Rachel is Emily's Reformist disguise, including the Greater Archon bluff thread.
+
+      - id: item.glass-eye-of-true-seeing
+        status: confirmed
+        kind: entity
+        canonical: Glass Eye of True Seeing
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/items/glass-eye-of-true-seeing.mdx
+            role: primary
+          - type: item-data
+            path: astro/src/content/docs/world/items/glass-eye-of-true-seeing.item.yaml
+            role: mechanics
+        aliases:
+          - Gem of Seeing or similar eye
+          - similar eye
+          - new eye
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Mark Malthrek eye surgery
+            - Mark seeing pregnancy signs or hidden watchers through the prosthetic eye
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Vengeful passages about Mark Malthrek's prosthetic eye after
+          2026-06-20, use Glass Eye of True Seeing. Emily surgically placed it
+          into Mark's empty eye socket during the Castle Malthrek operation. It
+          grants effects like a Gem of Seeing, but the campaign item is the
+          Glass Eye of True Seeing, not an ordinary Gem of Seeing.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
+            note: Emily offers the Glass Eye of True Seeing and performs immediate surgery to place it in Mark's empty eye socket.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User clarified Mark's later seeing-eye reference points back to the surgical Glass Eye of True Seeing.
+
+      - id: item.page-finder
+        status: confirmed
+        kind: item
+        canonical: Page Finder
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/items/page-finder.mdx
+            role: primary
+          - type: item-data
+            path: astro/src/content/docs/world/items/page-finder.item.yaml
+            role: mechanics
+        aliases:
+          - magical page finder
+          - rare magical page finder
+          - page finder
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Legally Bare binder
+            - binder page search by intent
+            - archive-moth-like magical item
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Page Finder for the uncommon magical item that searches a specific
+          book for what the user telepathically intends to find. It can begin as
+          a cocoon-like form and open into a moth-like or butterfly-like seeker.
+          Do not describe it as rare unless future item data changes its rarity.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User clarified the Page Finder is an uncommon magical item that searches a book according to the user's telepathic intent.
+
+      - id: character.father-reno
+        status: confirmed
+        kind: entity
+        canonical: Rino Galanodel
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/rino-galanodel.mdx
+            role: primary
+        aliases:
+          - Father Eno
+          - Father Reno
+          - Reno Galanado
+          - Reno
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Legally Bare binder fan messages
+            - Le Phare Phallique and Father Reno thread
+            - paladin or church references to Rino Galanodel
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Vengeful passages about the Legally Bare binder fan messages or the
+          Orthodox paladin Rino Galanodel, use Father Reno for the titled
+          reference and Rino Galanodel for the character's full article name. Do
+          not preserve Father Eno as a separate unidentified person.
+        evidence:
+          - path: astro/src/content/docs/world/characters/rino-galanodel.mdx
+            note: Canonical character article for Rino Galanodel.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User clarified Father Eno should be Father Reno and identifies him with Rino Galanodel.
+
+      - id: item.star-card
+        status: confirmed
+        kind: entity
+        canonical: Star Card
+        canonicalRefs:
+          - type: item
+            name: Star Card
+            source: BMT
+        aliases:
+          - star-shaped saving-throw card
+          - star-shaped card
+          - star card
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Mark Malthrek bedroom magical item
+            - Deck of Many Things standalone card item
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          The small star-shaped card that grants advantage on saving throws is
+          the Star Card from The Book of Many Things. Do not leave it as an
+          unidentified star-shaped saving-throw card when the context matches
+          the bonus-action command-word effect.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
+            note: User clarified the star-shaped saving-throw card is the Star Card.
+
+      - id: item.gold-canary-figurine-of-wondrous-power
+        status: confirmed
+        kind: entity
+        canonical: Gold Canary Figurine of Wondrous Power
+        canonicalRefs:
+          - type: item
+            name: Gold Canary Figurine of Wondrous Power
+            source: FTD
+        aliases:
+          - golden canary figurine
+          - Gold Canary Figurie of Woundrous Power
+          - Gold Canary Figurine of Wondrous Power
+          - giant canary figurine
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - remote forest hut concealed item
+            - giant canary mount
+            - hidden adult gold dragon form
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          The hidden golden canary figurine is the Gold Canary Figurine of
+          Wondrous Power from Fizban's Treasury of Dragons. It is broken, which
+          obscures the adult gold dragon form hidden inside the figurine. The
+          giant canary mount form alone is incomplete identification.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
+            note: User clarified the item identity, broken state, and concealed adult gold dragon form.
+
+      - id: item.essence-of-nymph
+        status: confirmed
+        kind: entity
+        canonical: Essence of Nymph
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/items/essence-of-nymph.mdx
+            role: primary
+          - type: itemData
+            path: astro/src/content/docs/world/items/essence-of-nymph.item.yaml
+        aliases:
+          - Essence of the Nymph
+          - Nymph Essence
+          - nymph essence
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Essence of Nymph is a rare fey-infused potion with item rules in
+          astro/src/content/docs/world/items/essence-of-nymph.item.yaml. It is
+          distinct from Essence of Dream, Essence of Sleep, Oil of Sleep, and
+          Dream Brew. When resolving mechanics, use the item page/rules rather
+          than preserving uncertain note guesses about duration, consent,
+          exhaustion, or long-rest effects.
+        evidence:
+          - path: astro/src/content/docs/world/items/essence-of-nymph.mdx
+            note: Canonical item article and ItemBlock source for Essence of Nymph.
+          - path: astro/src/content/docs/world/items/essence-of-nymph.item.yaml
+            note: Item rules define save, duration, consent, long-rest, and exhaustion effects.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
+            note: User pointed the note cleanup to the canonical Essence of Nymph item page.
+
+      - id: spell.summon-fey-creative-shaping
+        status: confirmed
+        kind: entity
+        canonical: Summon Fey
+        canonicalRefs:
+          - type: spell
+            name: Summon Fey
+            source: TCE
+        aliases:
+          - Rubana
+          - Rebun
+          - Raibon summons
+          - Rubana summons
+          - Luana-like fey spirit
+          - Arcadia manifestation
+          - Arcadia-like manifestation
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Lime's fey spirit partner workaround
+            - Essence of Nymph support scenes
+            - Luana-like or Arcadia-like fey manifestations
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the 2026-06-21 Essence of Nymph support scene, the Arcadia-like and
+          Luana-like manifestations are Lime casting Summon Fey in a creative
+          way and shaping different summoned fey spirits to have those
+          appearances. Do not infer real Arcadia or real Luana from the
+          resemblance alone, and do not treat the Luana-like spirit as mundane
+          Luana's astral self, younger self, disguise, or transformed body.
+          Treat Rubana/Rebun in this transcript context as ASR drift for Raibon,
+          not as a new place or person: the speaker is explaining that summoning
+          fey spirits in Raibon differs from Senera because a Raibon-summoned
+          spirit could plausibly come from the Feywild, while in Senera the
+          spirit is likely one of the local fey kept from reincarnating through
+          the Feywild's Tree of Life after being severed and trapped. If the
+          Luana-like fey spirit drinks Essence of Nymph, the item effect applies
+          to that spirit and its willing partner as written; the practical intent
+          is to heal the partner without making the partner take the full brunt
+          of the aphrodisiac effect.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
+            note: User clarified that Lime used Summon Fey creatively; the Arcadia-like and Luana-like spirits are separate fey spirits with borrowed appearances, not the real people.
+          - path: astro/src/assets/transcripts/session-2026-06-21/corrected_transcript.md
+            note: Transcript around 00:33:18-00:33:55 contains Rubana/Rebun-like ASR drift for Raibon in the Summon Fey explanation.
+
+      - id: character.rosemunda-parvese
+        status: confirmed
+        kind: entity
+        canonical: Rosemunda Parvèse
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/rosemunda-parvese.mdx
+            role: primary
+        aliases:
+          - Rosamunda Parvese
+          - Rosamunda Parvèse
+          - Rosemunda Parvese
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Parvèse Houses of Pleasures
+            - Four Pillars of the East Side
+            - Rosemunda parasite-status references
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Rosemunda Parvèse for the Parvèse matriarch and Four Pillars
+          figure. Treat Rosamunda as spelling/transcription drift in this
+          context. If her parasite status comes up, preserve that it is unknown:
+          she was exiled to the Feywild before the parasite network was
+          discovered, so do not mark her as confirmed infected or confirmed
+          clean.
+        evidence:
+          - path: astro/src/content/docs/world/characters/rosemunda-parvese.mdx
+            note: Canonical character article title and frontmatter use Rosemunda Parvèse.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
+            note: User clarified Rosemunda's spelling and that her parasite status remains unknown because her exile predated parasite discovery.
 
       - id: family.dubreuil
         status: confirmed
@@ -517,20 +960,74 @@ profiles:
             - Matthew Malthrek reading material
             - Matthew Malthrek fandom, VIP access, newest edition, freebies, or sacred relics
             - adult magazine and Ministry of Science magazine references
+            - Legally Bare doll or bag-charm VIP merchandise discussion
         apply:
           mode: prompt-first
           safeExactReplacement: false
         instruction: >
           In Matthew Malthrek's embarrassing reading/fandom thread, use Legally
           Bare. Do not preserve Legally Fey, Legally Bear, or Lady Bear in this
-          context. Avoid globally rewriting unrelated Lady Bear phrases in
-          cipher, doll, or Great Erected One jokes unless the surrounding audio
-          clearly points to the magazine.
+          context. The 2026-06-27 discussion of selling or giving Legally Bare
+          model dolls / bag charms to VIPs is real merchandise lore. Potential
+          possession is also a real hook only as old wives' tales and uncertain
+          folk practice; salt-stuffing dolls or charms may be a rumored
+          precaution, not proven mechanics. Prestidigitation is a real mundane
+          cleaning option, but the specific cleanup aside in this scene should
+          not be tracked as item lore or meaningful spell-use canon. Ignore
+          nearby doll-eye and stuffie-servant side talk unless a later scene
+          explicitly revives it as lore. Avoid globally rewriting unrelated Lady
+          Bear phrases in cipher,
+          doll, or Great Erected One jokes unless the surrounding audio clearly
+          points to the magazine.
         evidence:
           - path: astro/src/content/docs/world/organizations/legally-bare.mdx
             note: Canonical article for the Ministry of Science adult magazine.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User clarified the source audio says Matthew was reading Legally Bare.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User confirmed VIP doll/charm sales as real; potential possession and salt-stuffing are possible old-wives'-tale hooks, while the specific Prestidigitation cleanup aside and other side talk should stay untracked unless revived.
+
+      - id: business.warp-star-cafe
+        status: confirmed
+        kind: business
+        canonical: Warp Star Café
+        canonicalRefs:
+          - type: location
+            path: astro/src/content/docs/world/locations/port-tressemer.mdx
+            role: location
+          - type: organization
+            path: astro/src/content/docs/world/organizations/tressemer-academy.mdx
+            role: student-customer-base
+          - type: organization
+            path: astro/src/content/docs/world/organizations/legally-bare.mdx
+            role: advertiser-sponsor-reference
+        aliases:
+          - Warp Star Cafe
+          - Warp Star Coffee
+          - star-themed café
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Warp Star Café food and supplies
+            - Legally Bare sponsor and advertiser references
+            - Port Tressemer student food trends
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Warp Star Café for the star-themed café in Port Tressemer. It is
+          popular with teenage and young-adult students at Tressemer Academy,
+          advertises in Legally Bare, and is owned by Ashmodai. Treat Warp Star
+          Coffee as likely drift unless the context separately establishes a
+          coffee-specific business.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-13.mdx
+            note: Earlier note says there is no local Warp Star near Castle Malthrek, though Tressemer has one.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User clarified Warp Star Café is in Port Tressemer, popular among Tressemer Academy teens and young adults, and advertises in Legally Bare.
+          - path: astro/src/content/docs/world/organizations/legally-bare.mdx
+            note: Sponsor list includes Warp Star Café as owned by Ashmodai.
 
       - id: organization.hickland-for-hicks-malthrek-cell
         status: confirmed
@@ -566,6 +1063,86 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
             note: User clarified the local Castle Malthrek coordination line refers to a Hickland for Hicks cell.
 
+      - id: item.variable-cock-sheath
+        status: confirmed
+        kind: item
+        canonical: Variable Cock Sheath
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/items/variable-cock-sheath.mdx
+            role: primary
+          - type: item-data
+            path: astro/src/content/docs/world/items/variable-cock-sheath.item.yaml
+            role: rules
+        aliases:
+          - black ring
+          - black magical cock ring
+          - Variable Cock Ring
+          - magical cock ring
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Faltir magic-shop purchase
+            - Love Beat distinction
+            - Luana and Kelthyr adult magic item discussions
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Variable Cock Sheath for the black magical cock ring acquired in
+          Faltir. It is distinct from Love Beat, Luana's clitoral stimulator. The
+          command word is mabrast'er, and increased arousal is the physical
+          effect of vibration rather than a separate magical arousal effect.
+        evidence:
+          - path: astro/src/content/docs/world/items/variable-cock-sheath.mdx
+            note: Item article names and describes the Variable Cock Sheath.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: Current note distinguishes Love Beat from the black ring and names the black ring as the Variable Cock Sheath.
+
+      - id: item.faltir-loot
+        status: confirmed
+        kind: item-batch
+        canonical: Fort Faltir loot
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            role: loot-context
+        aliases:
+          - token from Hadar
+          - Hadar token
+          - magical handcuffs
+          - Underwear of warmth
+          - high-heeled Stilettos of Wounding
+          - Gauntlet of Elemental Transmutation
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Fort Faltir and Comtesse loot
+            - Faltir magic item recovery
+            - Minfilia bounty and ward count aftermath
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the Fort Faltir loot context, use the canonical item names Token of
+          Hadar, Magical Handcuffs, Underwear of Warmth, Stilettos of Wounding,
+          and Gauntlet of Elemental Transmutation. Token of Hadar is an amulet
+          that casts hunger of hadar and requires attunement. The magical
+          handcuffs use the command word "crunchy." The gauntlet has five charges,
+          regains all expended charges daily at dawn, and can make mundane
+          granular or powdered solids such as gunpowder.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: Current note lists Fort Faltir and Comtesse loot and connects these names to the recovered items.
+          - path: astro/src/content/docs/world/items/token-of-hadar.item.yaml
+            note: Item rules define Token of Hadar as a rechargeable hunger of hadar amulet requiring attunement.
+          - path: astro/src/content/docs/world/items/magical-handcuffs.item.yaml
+            note: Item rules define the lock/unlock command word as crunchy.
+          - path: astro/src/content/docs/world/items/gauntlet-of-elemental-transmutation.item.yaml
+            note: Item rules define charges, recharge, material conversion, and gunpowder capability.
+
       - id: item.love-beat
         status: confirmed
         kind: item
@@ -598,6 +1175,75 @@ profiles:
             note: Sponsor list names Love Beats under En Chanté Workshop.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
             note: User clarified Love Beat is the correct term for the recurring item/product.
+
+      - id: item.unnamed-arousal-orb
+        status: confirmed
+        kind: item
+        canonical: unnamed arousal-inducing orb
+        canonicalRefs: []
+        aliases:
+          - Orb of Horny
+          - orb of horny
+          - orb that makes you horny
+          - orbs that make you horny
+          - arousal orb
+          - horny orb
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Reformist loot from Raibon
+            - Emily's adult-gathering items
+            - chandelier or room-wide arousal effect
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Vengeful passages about Emily's Reformist loot from Raibon, there
+          is an actual unnamed orb item that can trigger or enhance states of
+          arousal in a room or nearby area. It was taken from a Reformist-aligned
+          character in Raibon whose name was not documented. Do not treat Orb of
+          Horny or similar joke descriptions as the formal item name, but also do
+          not discard the underlying item as pure table banter. This orb is not
+          one of the Orbs of Power.
+        evidence:
+          - path: astro/src/assets/transcripts/session-2026-06-27/corrected_transcript.md
+            note: Transcript around 08:58:20-08:58:34 describes an orb that can be placed near a room or chandelier to induce arousal; Orb of Horny is said as a joke name.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User clarified the item is real, unnamed, from a Reformist-aligned character in Raibon, and distinct from the Orbs of Power.
+
+      - id: item.emerald-shield-shards
+        status: confirmed
+        kind: terminology
+        canonical: shards of the Emerald Shield of Spring
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/items/emerald-shield-of-spring.mdx
+            role: primary
+        aliases:
+          - sliver
+          - slivers
+          - elven slivers
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Parvèse and spellcasting children
+            - Mark Malthrek parasite and shard suspicion
+            - broken Emerald Shield of Spring fragments
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use shard or shards for fragments of the broken Emerald Shield of
+          Spring. Sliver is not an established Bastion Falls term in this
+          context. The word shard is descriptive of shattered pieces, not a
+          world-spanning metaphysical category.
+        evidence:
+          - path: astro/src/content/docs/world/items/emerald-shield-of-spring.mdx
+            note: Item article identifies the broken pieces as descriptive shards.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
+            note: User clarified sliver is not a BF term and the relevant pieces are shards of the broken Emerald Shield of Spring.
 
       - id: organization.la-camaraderie-operating-scope
         status: confirmed
@@ -765,6 +1411,77 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User clarified the Skelwick hags are Adapted, not Faithful or Faithborn.
 
+
+      - id: title.greater-archon
+        status: provisional
+        kind: title
+        canonical: Greater Archon
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            role: current-session
+        aliases:
+          - Great Archon
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Emily's cupbearer cover
+            - Father Dunweather and Lady Maribel Veyne cover story
+            - servant or banquet infiltration authority bluff
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Greater Archon, not Great Archon, for Emily's supposed authority
+          or cover title in the Castle Malthrek banquet/servant infiltration
+          thread. Preserve uncertainty about what the title actually means; the
+          party does not yet know its full significance.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: Current note says Emily is supposedly a Greater Archon and that the party does not yet know what Greater Archon means.
+          - path: astro/.bf-transcripts/session-2026-07-05/correction_notes_chunks/session_002.md
+            note: Correction notes flag Great Archon as likely Greater Archon.
+          - path: astro/.bf-transcripts/session-2026-07-05/correction_notes_chunks/session_009.md
+            note: Correction notes treat Greater Archon capitalization as intentional.
+
+      - id: character.marad
+        status: provisional
+        kind: entity
+        canonical: Marad
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            role: current-session
+        aliases:
+          - Merad
+          - Dr. Marad
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-05"
+          contexts:
+            - Castle Malthrek servant applicant interviews
+            - Elizabeth and Paul servant cover
+            - recruiter, interviewer, escort, or staffer scenes
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Marad provisionally for the male Castle Malthrek staffer or
+          recruiter who escorts Elizabeth/Luana during servant applicant cover.
+          Do not merge Marad with Marston unless later audio or canon settles
+          that they are the same person; current notes say Marad and Marston
+          should remain distinct.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: Current note uses Marad provisionally, mentions Elizabeth's alias scene, and says Marad and Marston should remain distinct unless later evidence merges them.
+          - path: astro/.bf-transcripts/session-2026-07-05/correction_notes_chunks/session_006.md
+            note: Correction notes flag Dr. Marad as likely real but needing confirmation.
+          - path: astro/.bf-transcripts/session-2026-07-05/correction_notes_chunks/session_014.md
+            note: Correction notes prefer Marad over Merad but warn to preserve the Marids/fish-people joke if audio depends on the sound.
+
       - id: fey.lord-cals-lord-of-time
         status: confirmed
         kind: entity
@@ -881,7 +1598,9 @@ profiles:
             path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
             role: current-session
         aliases:
+          - Dream Brew
           - Essence of Sleep
+          - Elixir of Dreams
           - sleep censer
           - sleep incense
           - aromatic-oil sleep effect
@@ -899,10 +1618,15 @@ profiles:
         instruction: >
           Use Essence of Dream for Luana's three-day sleep effect, including
           delivery through a censer, incense, vapor, smoke, or aromatic oil.
-          Essence of Sleep is a descriptive drift in this context.
+          Dream Brew may describe a prepared use of this substance. Essence of
+          Sleep and Elixir of Dreams are descriptive drift in this context. Keep
+          Essence of Dream distinct from Essence of Nymph and from any separate
+          Oil of Sleep item unless later canon explicitly merges them.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
             note: User clarified the censer, incense, or aromatic-oil sleep effect is Essence of Dream.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: Current note treats Dream Brew / Essence of Sleep as related or confused labels and explicitly rejects Elixir of Dreams.
 
       - id: item.winter-ring-brooch
         status: confirmed
@@ -948,6 +1672,8 @@ profiles:
         aliases:
           - Sabina
           - Sabrina
+          - Sabinia
+          - Benya
         scope:
           campaigns:
             - the-vengeful
@@ -958,15 +1684,20 @@ profiles:
           mode: prompt-first
           safeExactReplacement: false
         instruction: >
-          Do not introduce Sabina as a character or NPC in these Vengeful
-          passages. Apparent Sabina lines are usually transcription noise,
-          often from Tagalog or speaker bleed. Preserve uncertainty only when
-          the audio context genuinely requires it.
+          Do not introduce Sabina, Sabinia, or Benya as a character or NPC in
+          these Vengeful passages. Apparent Sabina/Sabinia/Benya lines are
+          usually transcription noise, often Tagalog sabi niya / speaker bleed.
+          Preserve uncertainty only when the audio context genuinely requires
+          it.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-07.mdx
             note: States Sabina is not a character or NPC in the descent.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: Treats Sabina wording as garbled or artifact phrasing.
+          - path: astro/.bf-transcripts/session-2026-07-05/correction_notes_chunks/session_003.md
+            note: Current correction notes flag Sabinia / Benya as uncertain and warn not to canonize them as new people.
+          - path: astro/.bf-transcripts/session-2026-07-05/correction_notes_chunks/session_004.md
+            note: Current correction notes identify Sabinia as likely Tagalog/ASR noise from sabi niya.
 
       - id: artifact.heir-of-hama
         status: rejected-as-artifact
@@ -1020,8 +1751,75 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: Corrects Trantarbury drift to Thrantorbury.
 
+      - id: place.tantra-bureau
+        status: provisional
+        kind: place
+        canonical: Thrantorbury
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/thrantorbury.mdx
+            role: capital-reference
+        aliases:
+          - Tantra Bureau
+          - Tandra Bureau
+          - Ronderbury
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-06-28"
+          contexts:
+            - Malthrek-area produce source thread
+            - Northcross produce/parasite contamination discussion
+            - Faltir village-route logistics
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the 2026-06-28 Vengeful context, treat “Tantra Bureau” and “Tandra
+          Bureau” as likely ASR/drifted references that may refer to Thrantorbury,
+          especially in produce/parasite source phrasing. Keep provisional until
+          another confirmation source settles this as a distinct faction or place.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-06-28/corrected_transcript.md
+            note: At 11:14:26-11:14:36, vegetables are described as delivered from "Tantra Bureau".
+          - path: astro/.bf-transcripts/session-2026-06-28/raw_transcript.md
+            note: Raw transcript confirms the same token in the same timestamp window.
+          - path: astro/.bf-transcripts/session-2026-06-28/correction_notes.md
+            note: Session notes earlier flagged Ronderbury and Tantra/Tandra-like terms as possible ASR artifacts; user now has corroborating intuition toward Thrantorbury.
+
+      - id: place.aftur
+        status: confirmed
+        kind: place
+        canonical: Apgar
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/apgar.mdx
+            role: primary
+        aliases:
+          - Aftur
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-06-28"
+          contexts:
+            - Democratic polity comparison near naval/military authority discussion
+            - Salt tax and reform politics in the Faltir salt-settlement thread
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Treat “Aftur” as an ASR transcription misspelling of Apgar in this
+          context. Prefer Apgar as the canonical polity name and preserve the misspelling
+          only as an alias for transcript correction and search.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-06-28/corrected_transcript.md
+            note: At 09:32:11-09:32:16, a speaker references a democratic setup like what they claimed happened in Aftur.
+
       - id: place.murkendraw
         status: confirmed
+
         kind: place
         canonical: Murkendraw
         canonicalRefs:
@@ -1080,6 +1878,71 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User clarified Thralmal location references should point to Thralmals.
 
+      - id: place.mt-brissimis
+        status: confirmed
+        kind: place
+        canonical: Mt Brissimis
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/mt-brissimis.mdx
+            role: primary
+        aliases:
+          - Mount Brissimis
+          - Brissimis
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Thralmals pools and protected hag pools
+            - northern Western Maltreks geothermal sites
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Mt Brissimis for the mountain in the northern portion of the
+          Western Maltreks where the protected pools of the Thralmals are located.
+          Mount Brissimis and Brissimis are acceptable transcript variants, but
+          the canonical article title is Mt Brissimis.
+        evidence:
+          - path: astro/src/content/docs/world/locations/mt-brissimis.mdx
+            note: Canonical location article for Mt Brissimis.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: User clarified Mt Brissimis is where the pools are, in the northern portion of the Western Maltreks.
+
+      - id: place.le-phare-phallique
+        status: confirmed
+        kind: place
+        canonical: Le Phare Phallique
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/le-phare-phallique.mdx
+            role: primary
+        aliases:
+          - Le Faerfalik
+          - Faerfalik
+          - Le Phare Falik
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Marina Visconti column meeting place
+            - Father Reno messages and Legally Bare binder
+            - Raibon Island lighthouse settlement
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Le Phare Phallique for the lighthouse and small settlement on
+          Raibon Island. Le Faerfalik is phonetic/transcript drift for this
+          place, whose name comes from a lighthouse that early settlers thought
+          looked phallic. Do not preserve Le Faerfalik as an unresolved separate
+          place in the Marina Visconti or Father Reno context.
+        evidence:
+          - path: astro/src/content/docs/world/locations/le-phare-phallique.mdx
+            note: Canonical location article for Le Phare Phallique.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User clarified Le Faerfalik refers to Le Phare Phallique, named for its phallic lighthouse and settlement.
+
       - id: place.faltir
         status: confirmed
         kind: place
@@ -1099,13 +1962,16 @@ profiles:
           contexts:
             - Malthrek-area salt-mining settlement
             - Faltir streets and salt mines
+            - Fort Faltir and Faltir fortress threads
             - Alden and nearby Hicklander village route
         apply:
           mode: prompt-first
           safeExactReplacement: false
         instruction: >
           Use Faltir for the Malthrek-area walled salt-mining settlement and
-          salt-mine context. Faltier is transcription drift. Do not globally
+          salt-mine context. Fort Faltir / Faltir fortress is the local fortress
+          or seat within that thread and should not be collapsed into Castle
+          Malthrek. Faltier is transcription drift. Do not globally
           rewrite unrelated similar names outside the Malthrek salt-settlement
           context.
         evidence:
@@ -1113,6 +1979,8 @@ profiles:
             note: Canonical Malthreks location article lists Faltir.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
             note: User clarified Faltier should be Faltir in the current note.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: Later cleanup preserves Faltir fortress or seat as distinct from Castle Malthrek.
 
       - id: place.surreys-ear
         status: confirmed
@@ -1154,10 +2022,20 @@ profiles:
         kind: entity
         canonical: Count Ranlis
         canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/godwin-ranlis.mdx
+            role: count
+          - type: article
+            path: astro/src/content/docs/world/characters/aveline-ranlis.mdx
+            role: comtesse
           - type: note
             path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
             role: current-session
         aliases:
+          - Count Godwin Ranlis
+          - Godwin Ranlis
+          - Comtesse Aveline Ranlis
+          - Aveline Ranlis
           - Count Randless
           - Randless
           - Pontiff
@@ -1182,11 +2060,11 @@ profiles:
           safeExactReplacement: false
         instruction: >
           In the Faltir salt-procession and local salt-founding history context,
-          use Count Ranlis and the Ranlis family. Count is the correct title.
-          The Comtesse in the Castle Malthrek dungeon thread is Count Ranlis's
-          wife, is likely Reformist, and appears to have been left in charge of
-          Faltir in Count Ranlis's absence. She is distinct from Duchess
-          Antoinette Malthrek.
+          use Count Godwin Ranlis, Comtesse Aveline Ranlis, and the Ranlis
+          family. Count is Godwin's correct title. Aveline is Godwin's wife; in
+          the Castle Malthrek dungeon and Faltir fortress threads she is likely
+          Reformist, has been left in charge of Faltir during Godwin's absence,
+          and is distinct from Duchess Antoinette Malthrek.
           Use Comtesse for her table-facing title; Condesa, Contessa, and
           Countess are drift or translation variants in this context.
           Pontiff/Pontif and Randless are transcription drift in this context.
@@ -1203,6 +2081,8 @@ profiles:
             note: User clarified the Comtesse is not missing; she is likely Reformist and was left in charge of Faltir in Count Ranlis's absence.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
             note: User clarified the overheard oppressor figure in the dungeon is the Comtesse.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: Current note names Count Godwin Ranlis and Comtesse Aveline Ranlis, and shows Podron impersonating Godwin and then Aveline in Faltir.
 
       - id: place.flyukishilla
         status: confirmed
@@ -1321,18 +2201,19 @@ profiles:
 
       - id: character.henson-eastonton
         status: confirmed
-        kind: entity
+        kind: disambiguation
         canonical: Henson Eastonton
         canonicalRefs:
           - type: article
             path: astro/src/content/docs/world/characters/boyle-eastonton.mdx
             role: eastonton-crisis-reference
           - type: note
-            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
-            role: stone-golem-context
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-06.mdx
+            role: first-current-note-reference
         aliases:
           - Henson
           - Henderson
+          - Henson the Golem
         scope:
           campaigns:
             - the-vengeful
@@ -1344,15 +2225,19 @@ profiles:
           mode: prompt-first
           safeExactReplacement: false
         instruction: >
-          Use Henson Eastonton for the Eastonton figure currently traveling as
-          Miya's controlled stone golem. Preserve Henderson only when the
-          surrounding dialogue is explicitly joking about misnaming Henson; do
+          Disambiguate Henson Eastonton from Henson the Golem. Henson Eastonton
+          is Boyle Eastonton's nephew, previously captured in the Eastonton
+          crisis thread. Henson the Golem is the stone golem Miya hijacked from a
+          trap while cutting off potential Reformist reinforcements. Do not
+          describe Henson Eastonton as traveling in stone golem form, and do not
+          merge the golem with Boyle's nephew. Preserve Henderson only when the
+          surrounding dialogue is explicitly joking about misnaming a Henson; do
           not introduce Henderson as a separate lore entity.
         evidence:
-          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
-            note: Establishes Henson as the stone golem Miya controls in the Eastonton/Malthrek route.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-06.mdx
+            note: Identifies Henson Eastonton as Eastonton kin and Boyle's distant nephew.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
-            note: Current note repeatedly distinguishes Henson Eastonton from Henderson as a joke misnaming.
+            note: User clarified Henson Eastonton is separate from Henson the Golem, the hijacked stone golem trap.
 
       - id: creature.equus-rex
         status: confirmed
@@ -1384,6 +2269,79 @@ profiles:
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
             note: User clarified Equus Rex as the full name, with Rex as shorthand in the stable/travel scenes.
+
+      - id: character.podron
+        status: confirmed
+        kind: entity
+        canonical: Podron
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            role: rescue-context
+        aliases:
+          - Padron
+          - Padrón
+          - Mr. Wadbrand
+          - Pedro
+          - Padrian
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Faltir fortress changeling rescue
+            - Comtesse Aveline impersonation
+            - changeling parasite and shifting tunic threads
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Podron for the rescued changeling from the Faltir fortress dungeon.
+          Padron, Padrón, Mr. Wadbrand, Pedro, and Padrian are spelling or ASR
+          drift in this changeling-rescue context and should not become separate
+          people unless later canon explicitly creates them.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: Current note identifies the rescued changeling's name as Podron and rejects Padron, Padrón, and Mr. Wadbrand.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: Later note continues using Podron and flags Pedro/Padrian usage for confirmation against Podron.
+
+      - id: place.malthrek-villages-gralter-gervind
+        status: confirmed
+        kind: place-context
+        canonical: Gralter and Gervind
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            role: village-route
+        aliases:
+          - Gralter
+          - Gervind
+          - Wheelbarrow Inn
+          - Dickon
+          - Alden
+          - Branrom
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Kelthyr and Luana village mobilization route
+            - Wheelbarrow Inn in Gralter
+            - Alden's Smithy and Wheelworks in Gervind
+            - Angel and Branrum Malterdale line
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the 2026-06-28 Malthrek-area village route, Wheelbarrow Inn is the
+          inn in Gralter, Dickon is its innkeeper, Gervind is the second mining
+          village, and Alden is the smith/wheelwright contact there. The Branrom
+          line refers to Branrum Malterdale. Do not turn these settled local
+          names into unresolved alternate entities in this route context.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: Current note settles Wheelbarrow Inn, Dickon, Gralter, Gervind, Alden, and the Branrom -> Branrum line.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: Later note continues Gervind, Alden, Wheelbarrow, and Branrum usages.
 
       - id: artifact.miskaso-castle-malthrek
         status: rejected-as-artifact
@@ -1420,6 +2378,39 @@ profiles:
             note: User clarified Miskaso was "this castle" and Miskaso Mountains was Castle Malthrek.
           - path: astro/.bf-transcripts/session-2026-06-28/corrected_transcript.md
             note: The relevant spans are 11:27:55-11:27:57 and 11:30:36-11:30:38.
+
+      - id: artifact.charcuterie-board-food-chatter
+        status: rejected-as-artifact
+        kind: table-chatter
+        canonical: null
+        canonicalRefs: []
+        aliases:
+          - charcuterie board
+          - meats on the charcuterie board
+          - meat chatter
+          - treats or candy parasites
+          - parasites hidden in fruit or treats
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - 2026-06-27
+          contexts:
+            - Castle Malthrek church-plan discussion
+            - food, meat, treats, candy, or charcuterie side chatter
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the 2026-06-27 Vengeful notes, do not convert real-table chatter
+          about the meats on the charcuterie board into an in-world clue about
+          parasites hidden in fruit, treats, or candy. Preserve actual Star
+          Candies / auction-candy lore in its own context, but treat this food
+          chatter as table noise unless the transcript explicitly returns to an
+          in-world object or threat.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User clarified food/treat confusion came from out-of-game charcuterie-board chatter.
 
       - id: character.kelthyr-kulok
         status: confirmed
@@ -1535,6 +2526,38 @@ profiles:
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User confirmed Gerta Moon and clarified she was the previous Spirit of the Moon.
+
+      - id: mechanics.pregnancy-rolls
+        status: confirmed
+        kind: mechanics-note
+        canonical: Pregnancy rolls
+        canonicalRefs: []
+        aliases:
+          - pregnancy mechanics
+          - twin rolls
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - pregnancy checks
+            - Emily's possible twins
+            - clone or double aftermath
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Pregnancy mechanics in the Vengeful notes are intentionally loose. The
+          only firm table convention is that pregnancy typically requires two
+          consecutive d20 rolls below 10. Emily's possible twins are not a
+          general pregnancy rule; they are a player-requested arc beat after the
+          clone/double situation and were adjudicated in a similar way with
+          another two d20 rolls below 10 to see whether the DM would allow it.
+          Preserve that the DM may refine these mechanics later.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: Current note records the pregnancy roll sequence and Emily's possible twins as loose mechanics.
+          - path: user correction
+            note: User clarified the two-below-10 convention, the player-request nature of Emily's twins, and that the mechanics may be refined later.
 
       - id: place.kalassar-star-candy-source
         status: confirmed
@@ -1684,3 +2707,229 @@ profiles:
             note: Establishes Talbito as a Reformist paladin.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: Treats Talbito/Taudito in the teleportation destination list as likely tawag dito.
+
+      - id: place.mt-thibris
+        status: confirmed
+        kind: entity
+        canonical: Mt. Thibris
+        canonicalRefs: []
+        aliases:
+          - Mount Thibris
+          - Mt Thibris
+          - Mt. Thibris
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Malthrek geography
+            - western Senera Reformist operation
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Mt. Thibris for the mountain near Castle Malthrek in Vengeful
+          notes. Do not leave this as an unresolved Mt. Thibris spelling check
+          in Castle Malthrek geography contexts.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
+            note: User confirmed the mountain near Castle Malthrek is Mt. Thibris.
+
+      - id: location.marthas-food-house
+        status: confirmed
+        kind: entity
+        canonical: Martha's food house
+        canonicalRefs: []
+        aliases:
+          - Hicklander food house
+          - Martha food house
+          - Martha's foodhouse
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Malthrek servants and Hicklander allies
+            - Mark Malthrek estate cover
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Castle Malthrek Hicklander ally passages, use Martha's food house
+          for the food-house contact that may know Mark from the estate.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
+            note: User confirmed the Hicklander food-house name as Martha's food house.
+
+      - id: character.marjun
+        status: confirmed
+        kind: entity
+        canonical: Marjun
+        canonicalRefs: []
+        aliases:
+          - Marijon
+          - Marie-Jean
+          - Marie Jean
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Malthrek head chef
+            - Hicklander spies and kitchen cover
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Marjun for the Castle Malthrek head chef and Hicklander spy.
+          Marjun is shortened from Marie-Jean; do not preserve Marijon as an
+          unresolved alternate spelling in this context.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
+            note: User confirmed Marjun, shortened from Marie-Jean.
+
+      - id: reformist.bearer-titles
+        status: confirmed
+        kind: terminology
+        canonical: Reformist bearer titles
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/religions/divine-masochism/reformist/index.mdx
+            role: hierarchy
+        aliases:
+          - Cupbearer
+          - Bearer of the Cup
+          - Whip-bearer
+          - Bearer of the Whip
+          - Whiplaird
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Reformist hierarchy
+            - Castle Malthrek coup and ritual scenes
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Reformist hierarchy references, Cupbearer is shorthand for Bearer
+          of the Cup. The whip-related title is primarily Bearer of the Whip;
+          Whip-bearer and Whiplaird are acceptable variants. Do not leave these
+          as unresolved title questions once the context is clearly Reformist.
+        evidence:
+          - path: astro/src/content/docs/world/religions/divine-masochism/reformist/index.mdx
+            note: Reformist hierarchy article lists Bearer of the Cup and Bearer of the Whip.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
+            note: User clarified Cupbearer shorthand and Bearer of the Whip variants.
+
+      - id: character.proserfina-prunus-subhirtella
+        status: confirmed
+        kind: entity
+        canonical: Proserfina Prunus Subhirtella
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/proserfina-prunus-subhirtella.mdx
+            role: primary
+        aliases:
+          - Fina
+          - Proserfina
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Fina and Cotto Feywild backstory
+            - Inkwell Academy and Fey Crossing research
+            - ruin exploration and otherworld expedition motivation
+            - Marlion, Tiphanie, and Fina extraction threads
+            - changeling discussion
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Proserfina Prunus Subhirtella, usually Fina, for the changeling
+          from the Feywild. She was an Inkwell Academy researcher specializing
+          in Fey Crossings, loved exploring ruins, adventured with Cotto, and
+          chose to come to his world after they fell in love. Do not treat
+          Fina's role as unresolved in this backstory context.
+        evidence:
+          - path: astro/src/content/docs/world/characters/proserfina-prunus-subhirtella.mdx
+            note: Character article identifies Proserfina Prunus Subhirtella, alias Fina.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
+            note: User clarified Fina as a Feywild changeling, Inkwell Academy Fey Crossing researcher, ruin explorer, and Cotto's beloved who chose his world.
+
+      - id: character.tiphanie-mistress-title
+        status: confirmed
+        kind: relationship
+        canonical: Tiphanie as John's mistress-title mentor
+        canonicalRefs: []
+        aliases:
+          - the mistress
+          - mistress
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - John Malthrek and Tiphanie
+            - Topaz Sword of Summer Identify discussion
+            - magical apprenticeship titles
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          When John Malthrek calls Tiphanie "the mistress," treat this as his
+          apprentice title for her, not a romantic or sexual relationship and not
+          a separate unidentified mistress. Tiphanie asked John to call her this
+          when she took him in as a magical apprentice.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User clarified John's "mistress" title for Tiphanie in the sword Identify discussion.
+
+      - id: place.stormbjorn
+        status: confirmed
+        kind: place-context
+        canonical: Stormbjorn
+        canonicalRefs: []
+        aliases:
+          - Storm Bjorn
+          - Storm Bjorn Castle
+          - Stormbjorn Castle
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Rebecca's origin
+            - Northern Senera ruins
+            - school or registration discussion
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Stormbjorn for the place Rebecca supposedly comes from. It is a
+          ruin in Northern Senera and has been ruined for centuries. Do not leave
+          Storm Bjorn as unresolved transcription drift in Rebecca-origin
+          contexts, and do not treat it as a currently functioning castle.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User clarified Stormbjorn is Rebecca's supposed origin and a centuries-old ruin in Northern Senera.
+
+      - id: celestial.timael
+        status: confirmed
+        kind: entity
+        canonical: Timael
+        canonicalRefs: []
+        aliases:
+          - Timahel
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - celestial angel and couatl maze
+            - Robe of the Archmagi from the maze
+            - Isana Simulacrum recollection
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        instruction: >
+          Use Timael for the celestial or angel whose maze and couatl mount the
+          party recalls. Timahel is spelling drift; do not preserve it as an
+          alternate true name.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: User clarified Timahel should be Timael in the couatl and Isana recollection.
