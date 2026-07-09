@@ -1,0 +1,19 @@
+---
+title: Glass Eye of True Seeing
+tags:
+  - items
+item:
+  name: Glass Eye of True Seeing
+  details:
+    type: wondrous item
+    rarity: rare
+    attunement: true
+itemDataStats:
+  rules: items/glass-eye-of-true-seeing.item
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+The **Glass Eye of True Seeing** is a disturbing but powerful prosthetic.
+
+<ItemBlock item={frontmatter.itemDataStats.rules} />

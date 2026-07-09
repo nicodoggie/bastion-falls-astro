@@ -1,0 +1,41 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Biscuit Reliquary of Stolen Narratology
+source: BF
+type: wondrous item
+rarity: rare
+wondrous: true
+entries:
+  - >-
+    This battered blue Dutch cookie tin rattles with needles, buttons, thread spools, hooks,
+    thimbles, and other sewing notions, even when emptied and turned upside down.
+  - >-
+    **Stolen Word.** As an action while holding the tin, you can open it toward one creature you can
+    see within 30 feet and name a field of knowledge, craft, trade, philosophy, law, magic,
+    language, or similar specialized discourse. The target must succeed on a DC 15 Intelligence
+    saving throw or lose access to one precise technical or niche word related to that field, chosen
+    by the GM. The target still understands the concept and can describe it indirectly, but cannot
+    speak, write, sign, or magically transmit the stolen word.
+  - >-
+    While the word is stolen, the target has disadvantage on Intelligence checks and Charisma checks
+    that depend on recalling, explaining, or persuading someone with that exact terminology. The
+    curse is most severe when the target is an expert who knows perfectly well what they mean.
+  - >-
+    **Tip of the Tongue.** Whenever the stolen word would be useful, the target feels that the word
+    is just out of reach. A creature can identify that a word has been stolen with a successful DC
+    15 Intelligence (Arcana) check, Intelligence (Investigation) check, or other relevant check at
+    the GM's discretion.
+  - >-
+    **Recovering a Word.** A stolen word nests inside one mundane object in the tin. A creature
+    within 5 feet of the open tin can use an action to name the stolen word and choose one object
+    inside the tin. If the object is correct, the word returns to the cursed creature. If the object
+    is wrong, the seeker must succeed on a DC 15 Intelligence saving throw or lose a related word of
+    the GM's choice until the next dawn.
+  - >-
+    A stolen word can also be restored by Remove Curse, Greater Restoration, Wish, or comparable
+    magic. If the tin is destroyed, all words currently held inside it return to their owners.
+  - >-
+    **Principle of Prior Emptiness.** The reliquary cannot steal any cognate, descendant, borrowed
+    form, or recognizable household cousin of any word for cookie in any language. Such words are
+    already metaphysically absent from the tin. When the tin fails in this way, it rattles with
+    offended sewing noises and may produce one stale butter cookie wrapped in blue thread.

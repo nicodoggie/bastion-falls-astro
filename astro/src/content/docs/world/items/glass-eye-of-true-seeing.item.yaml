@@ -1,0 +1,24 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Glass Eye of True Seeing
+source: BF
+type: wondrous item
+rarity: rare
+reqAttune: true
+wondrous: true
+charges: 3
+recharge: dawn
+rechargeAmount: 3
+entries:
+  - >-
+    This unsettling glass eye grants the wearer the effects of a Gem of Seeing. While you are
+    wearing or carrying the eye, you can use an action to expend 1 charge to gain truesight out to a
+    range of 120 feet for 10 minutes. During this time, you can see invisible creatures and objects,
+    automatically detect visual illusions and succeed on saving throws against them, perceive the
+    original form of a shapechanger or a creature that is transformed by magic, and see into the
+    Ethereal Plane.
+  - >-
+    The eye regains all expended charges daily at dawn.
+  - >-
+    While the eye is placed into an empty eye socket and you are attuned to it, the item instead has
+    unlimited charges and does not require recharging.

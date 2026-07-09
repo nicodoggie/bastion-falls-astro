@@ -1,0 +1,24 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Gauntlet of Elemental Transmutation
+source: BF
+type: wondrous item
+rarity: legendary
+reqAttune: true
+wondrous: true
+charges: 5
+recharge: dawn
+rechargeAmount: 5
+entries:
+  - >-
+    This gauntlet converts matter with blunt, practical certainty, making it as valuable to miners
+    and engineers as to alchemists or saboteurs.
+  - >-
+    The gauntlet has 5 charges and regains all expended charges daily at dawn.
+  - >-
+    While wearing the gauntlet, you can use an action and expend 1 charge to touch up to 5 pounds of
+    solid material and transform it into 4 pounds of another solid material you choose.
+  - >-
+    The transformed material is mundane unless the DM decides the chosen material is inherently
+    magical or otherwise impossible for the gauntlet to create. The gauntlet can produce granular or
+    powdered solids such as gunpowder.

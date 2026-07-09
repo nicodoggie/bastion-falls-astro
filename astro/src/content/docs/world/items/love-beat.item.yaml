@@ -1,0 +1,14 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Love Beat
+source: BF
+type: wondrous item
+rarity: common
+wondrous: true
+entries:
+  - >-
+    While worn, the Love Beat produces magical vibration whose strength rises and falls with the
+    wearer's state of arousal.
+  - >-
+    The effect is sensory and narrative rather than combat-oriented, and emits detectable magic
+    while active.

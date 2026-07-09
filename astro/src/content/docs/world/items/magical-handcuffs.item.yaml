@@ -1,0 +1,15 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Magical Handcuffs
+source: BF
+type: wondrous item
+rarity: common
+wondrous: true
+entries:
+  - >-
+    These handcuffs are built for simple magical restraint rather than elaborate imprisonment.
+  - >-
+    When the command word is uttered within earshot of the wearer, the handcuffs lock if they are
+    unlocked, or unlock if they are locked.
+  - >-
+    This particular pair uses the command word "crunchy."

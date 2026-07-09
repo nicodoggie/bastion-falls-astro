@@ -1,0 +1,19 @@
+---
+title: Token of Hadar
+tags:
+  - items
+item:
+  name: Token of Hadar
+  details:
+    type: wondrous item
+    rarity: uncommon
+    attunement: true
+itemDataStats:
+  rules: items/token-of-hadar.item
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+The **Token of Hadar** is an amulet that draws on Hadar's hungry dark.
+
+<ItemBlock item={frontmatter.itemDataStats.rules} />

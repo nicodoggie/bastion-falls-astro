@@ -1,0 +1,19 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Page Finder
+source: BF
+type: wondrous item
+rarity: uncommon
+wondrous: true
+entries:
+  - >-
+    This small charm often rests in a cocoon-like form until placed on or inside a book, where it
+    can unfold into a tiny moth-like or butterfly-like seeker.
+  - >-
+    As an action while touching the book, you can telepathically focus on what you intend to find in
+    that book. The page finder searches the book for the page, passage, image, or entry that best
+    matches your intent, then moves to or marks that location.
+  - >-
+    The page finder can only find information that is actually present in the book. It does not
+    translate writing, reveal magically hidden text, solve ciphers, or determine truth on its own,
+    though it can find relevant pages about those things if the book contains them.

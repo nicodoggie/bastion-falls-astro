@@ -1,0 +1,14 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Underwear of Warmth
+source: BF
+type: wondrous item
+rarity: rare
+reqAttune: true
+wondrous: true
+entries:
+  - >-
+    This enchanted underwear is made for comfort in hostile climates rather than display.
+  - >-
+    While attuned to the underwear, you remain comfortably warm in any weather as long as you are
+    wearing at least one piece of the set.

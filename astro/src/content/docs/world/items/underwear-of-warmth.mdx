@@ -1,0 +1,20 @@
+---
+title: Underwear of Warmth
+tags:
+  - items
+item:
+  name: Underwear of Warmth
+  details:
+    type: wondrous item
+    rarity: rare
+    attunement: true
+itemDataStats:
+  rules: items/underwear-of-warmth.item
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+**Underwear of Warmth** is enchanted clothing that keeps its wearer comfortable in cold or harsh
+weather.
+
+<ItemBlock item={frontmatter.itemDataStats.rules} />

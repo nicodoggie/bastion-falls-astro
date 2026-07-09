@@ -1,0 +1,20 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Token of Hadar
+source: BF
+type: wondrous item
+rarity: uncommon
+reqAttune: true
+wondrous: true
+charges: 3
+recharge: dawn
+rechargeAmount: 3
+entries:
+  - >-
+    This amulet carries a small, hungry fragment of Hadar's darkness.
+  - >-
+    The amulet has 3 charges and regains all expended charges daily at dawn.
+  - >-
+    While wearing the amulet, you can expend 1 charge to cast <Spell name="hunger of hadar"
+    src="phb" /> from it. If the spell requires a spellcasting ability and you do not have one, use
+    Charisma as your spellcasting ability for the spell.

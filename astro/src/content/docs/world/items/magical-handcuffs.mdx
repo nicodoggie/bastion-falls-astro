@@ -1,0 +1,19 @@
+---
+title: Magical Handcuffs
+tags:
+  - items
+item:
+  name: Magical Handcuffs
+  details:
+    type: wondrous item
+    rarity: common
+itemDataStats:
+  rules: items/magical-handcuffs.item
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+**Magical Handcuffs** lock and unlock by spoken command word, making them useful for quick
+restraint.
+
+<ItemBlock item={frontmatter.itemDataStats.rules} />
