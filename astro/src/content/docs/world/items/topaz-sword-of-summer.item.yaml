@@ -29,11 +29,12 @@ entries:
     6d8 slashing damage from the hit.
   - >-
     **Unshaken duelist.** While you are attuned to this sword, if you are not frightened, your
-    confidence in your own fighting prowess becomes armored truth. You have immunity to damage of
-    every type—whether from weapons, unarmed strikes, spells, environmental effects, or any other
+    confidence in your own fighting prowess becomes armored truth. You have immunity to spells and
+    other magical effects, including magical healing. You also have immunity to damage of every
+    type—whether from weapons, unarmed strikes, spells, environmental effects, or any other
     source—including acid, bludgeoning, cold, fire, force, lightning, necrotic, piercing, poison,
-    psychic, radiant, slashing, and thunder damage. You also have immunity to every condition except
-    the frightened condition.
+    psychic, radiant, slashing, and thunder damage, and immunity to every condition except the
+    frightened condition.
   - >-
     **Frailty of doubt.** If you become frightened, these benefits cease until you finish a short or
     long rest, even if the condition ends sooner.
