@@ -273,7 +273,8 @@ export function buildCodexFinalNotesPrompt(options: {
 }): string {
 	return [
 		"Create Astro MDX campaign notes from these D&D session scene summaries.",
-		"Match the style of the existing Bastion Falls session notes: multiple fenced markmap blocks, concise headings, nested bullets.",
+		"Match the current Bastion Falls session-note style: ordinary MDX headings with concise nested bullets.",
+		"Do not wrap note sections in fenced markmap, mindmap, or other code blocks.",
 		"Prioritize session events, party actions, NPCs, places, factions, lore reveals, items, spells, and unresolved hooks.",
 		"Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
 		"Do not include timestamps, transcript process commentary, or a prose introduction.",
