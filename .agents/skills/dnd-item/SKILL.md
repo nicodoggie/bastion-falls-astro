@@ -42,11 +42,26 @@ This skill must be able to work from:
      conventional key such as `rules` or `statBlock` for new pages.
    - Import: from `world/items/*.mdx`, use
      `import ItemBlock from '../../../../components/ItemBlock.astro';`
+   - In prose, link the first mention of in-world organizations, families,
+     locations, factions, characters, and similar canon pages to their MDX
+     entry when one exists. For spells, items, and creatures with data/tag
+     components available, prefer inline tags such as
+     `<Spell name="detect magic" src="phb" />`,
+     `<Item name="Variable Cock Sheath" src="BF" />`, or the matching creature
+     tag instead of plain text. Do this for the first meaningful mention; do
+     not over-link every repeated mention.
 1. Run `pnpm astro sync` from `astro/` to validate the content collections.
 
 When other docs (e.g. lore articles) embed the same item, they may link to this
 MDX page instead of duplicating `ItemBlock`, unless a second embed is
 deliberate.
+
+When the item is being created from an active campaign-note correction, keep the
+support trail synchronized: patch the active note if the new item canon settles
+name, rarity, or mechanism; add/update a narrow transcription correction rule if
+future cleanup is likely to repeat the drift; and validate every touched note,
+item, and correction file. Keep the note scene-focused rather than duplicating
+the full rules text.
 
 ## Authoritative schema + repo rules
 
@@ -61,6 +76,13 @@ deliberate.
   `items/potion-of-healing.item.yaml` → id `items/potion-of-healing.item`
 
 Help reference: `astro/src/content/docs/help/5e-tools-schema/spell-and-item.mdx`
+
+Additional local references:
+
+- `references/mdx-linking-and-flavor-split.md` captures the preferred split between terse ItemData effects and richer companion-MDX lore/linking.
+- `references/item-from-active-note-correction.md` captures the pattern for creating an item from an active note correction while keeping the note and shared transcription corrections synchronized.
+- `references/cursed-conceptual-items.md` captures the pattern for cursed items that steal vocabulary, alter narrative precision, or operate on absence/conceptual metaphysics while keeping YAML mechanics playable.
+- `references/biscuit-tin-domestic-folklore.md` captures grounded notes and BF adaptation hooks for cookie/biscuit tins, sewing supplies, absent cookies, and domestic-thrift metaphysics.
 
 ## When details are missing: ask these questions
 

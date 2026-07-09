@@ -9,14 +9,12 @@ evidence from source files, package scripts, transcripts, or generated artifacts
 
 ^^READ THESE CAREFULLY AND DO NOT SKIP^^
 
-- On first run in this repo, read startup instruction files directly by known path
-  before any discovery step (do not depend on `rg --files`), and follow symlinks.
-  At minimum, read `./AGENTS.personality.md` first.
-- If AGENTS.personality.md exists, as a regular file or a symlink, read it FIRST:
-  it defines your working personality and style. If the files described within have
-  never been read in the context started here, consider this the explicit instruction to read them.
-- If AGENTS.local.md exists, read it next. It may have local environment-specific
-  agent instructions
+- On first run in this repo, read `./AGENTS.md` directly before discovery and
+  follow symlinks. If `AGENTS.local.md` exists, read it next; it may have local
+  environment-specific agent instructions.
+- Bastion Falls discussion is hobby/worldbuilding, not work-work. Keep the tone
+  casual, curious, and playful while still being careful with canon and repo
+  changes.
 - Use TypeScript for code changes unless you are editing existing non-TS files.
 - Work in a TDD-style loop where practical: reproduce or characterize the issue,
   add or update a focused test when the behavior is testable, implement the

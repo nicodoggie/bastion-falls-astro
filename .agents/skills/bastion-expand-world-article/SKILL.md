@@ -10,9 +10,14 @@ Use this workflow for lore article work in `bastion-falls-astro`, especially und
 
 ## Core Rules
 
-- Write article prose in an in-world, Wikipedia-like omniscient voice.
+- Write article prose in an in-world, Wikipedia-like omniscient voice: as if by a chronicler inside
+  Bastion Falls, not an agent summarizing a table conversation.
 - Do not include fourth-wall phrases such as "notes say", "campaign", "Vengeful-era notes",
-  "later discussions", "mistranscription", or "correction-phase" in the article body.
+  "later discussions", "mistranscription", "table conversation", "player", "DM", or
+  "correction-phase" in the article body.
+- When preserving a transcription-like or language-drift form that has become meaningful, frame it
+  diegetically: e.g. "in Seneran records and local speech" or "as rendered in local usage", not as
+  an out-of-world transcript artifact.
 - Correct article text directly when attribution is wrong. Do not add visible correction
   bookkeeping to the article.
 - Ask the user before editing source notes, transcriptions, Google Docs, or other support
@@ -28,11 +33,28 @@ Use this workflow for lore article work in `bastion-falls-astro`, especially und
 
 ## Workflow
 
+Session brainstorm references that may become article source material:
+
+- `references/vegetal-dairy-lactic-cosmology.md` — cabbage/Brassican brine-relics, Bovine Collective lactomancy/galactomancy dispute, salt cosmology, and related adventure hooks. Treat as brainstorm notes; ask before canonizing.
+
+### Saving non-core brainstorm lore
+
+When Nico says a strong riff is worth saving but may not be core Bastion Falls fare, prefer a
+`astro/src/content/posts/<slug>.mdx` blog-post seed over a canonical `docs/world/**` article unless
+he asks for canonization. Use tags like `worldbuilding-seed` and `non-core`, include an explicit
+status note that it is compost/seed material, and if Nico asks Ran to be credited, set optional
+frontmatter such as `author: Ran` while also keeping a visible body byline like `_By Ran._`. The
+blog schema in `astro/src/content.config.ts` now supports optional `author`, but existing layouts may
+not render it yet, so keep the body byline when attribution should be visible.
+
 1. Inspect the target article first.
    - Read frontmatter and body.
    - Note existing schema patterns: `details.aliases`, `relationships`, `stats`, `Spell`,
      `StatBlock`, footnotes, and section style.
    - Check whether the page is a stub, thin article, or already substantial.
+   - If resuming an interrupted session where prose was already drafted, recover the exact prior
+     draft before editing; do not recompose it from memory. Compare the current file and working
+     tree state first so existing user edits, such as corrected names in lists, are preserved.
 
 1. Gather local evidence before writing.
    - Search campaign notes with `rg` for the canonical name, aliases, common misspellings, and
@@ -40,9 +62,15 @@ Use this workflow for lore article work in `bastion-falls-astro`, especially und
    - Search the target article's surrounding category and related articles for established facts.
    - For old CMS tags like `\[character:123]`, resolve from repeated context before patching. If the
      mapping is uncertain, report likely candidates instead of guessing.
-   - When the user clarifies canon, treat that as settled in the active article. If directly
-     relevant notes/documents also need cleanup, summarize the proposed source edits and ask before
+   - When the user clarifies canon, treat that as settled in the active article. If the user is
+     explicitly canonizing an unresolved note term, also remove or revise the matching unresolved
+     hook and update the narrow support trail/correction rule so the same term is not re-questioned.
+     For broader source cleanup beyond the clarified fact, summarize proposed edits and ask before
      applying them.
+   - When the user adds article-worthy detail immediately after a note-cleanup clarification, keep
+     the support trail synchronized: update the article prose/frontmatter, the active note summary if
+     it already contains that fact cluster, and the matching correction rule if future transcription
+     or note generation would benefit. Do not expand unrelated article sections unless asked.
 
 1. Separate facts by confidence.
    - Use settled user clarifications and direct note evidence as canon.
@@ -53,6 +81,10 @@ Use this workflow for lore article work in `bastion-falls-astro`, especially und
 1. Draft the article.
    - Prefer concise sections such as `Overview`, `Background`, `Family`, `Career`, `Affiliations`,
      `Notable Events`, `Abilities`, or domain-specific equivalents.
+   - For newly canonized minor locations, create a compact but real stub article rather than leaving
+     the name only in notes: title/frontmatter, `location.type`, `location.parents`, a one-paragraph
+     definition, and one paragraph tying it to the settled surrounding geography. Also update the
+     relevant parent/regional page and nearby stub article with first-use links.
    - Avoid game-stat prose in article bodies. Frontmatter may contain stats, but body text should
      not say "AC", "hit points", "speed", "level", or similar table-language unless the page is a
      stat block page.
@@ -79,8 +111,11 @@ Use this workflow for lore article work in `bastion-falls-astro`, especially und
 
 Before finishing, scan the edited body for:
 
-- Fourth-wall source labels: "notes", "campaign", "session", "transcription", "player", "DM".
+- Fourth-wall source labels: "notes", "campaign", "session", "transcription", "table
+  conversation", "player", "DM".
 - Correction labels: "mistranscription", "misattribution", "correction phase".
+- Language/alias notes that should be kept but are currently framed externally; rewrite them as
+  in-world record, local speech, scribal, or Seneran/local-language renderings.
 - Stat language: "AC", "hit points", "walking speed", "level", "class features".
 - Over-linking repeated names.
 - Unsupported certainty where the evidence is still unclear.
