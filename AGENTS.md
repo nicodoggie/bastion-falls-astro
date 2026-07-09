@@ -98,3 +98,10 @@ evidence from source files, package scripts, transcripts, or generated artifacts
 - For browser-visible site behavior, use real browser or DOM inspection when
   build/grep output cannot prove the rendered result.
 - Comments should explain non-obvious intent, not restate the code.
+
+## Git Commits
+
+- Git commit messages should conform to the
+  [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+- Commit messages should be clear, concise, and descriptive.
+- Use the imperative mood in commit messages (e.g. "Add feature", not "Added feature").
