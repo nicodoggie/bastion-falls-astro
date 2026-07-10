@@ -15,6 +15,13 @@ profiles:
         aliases:
           - Sensudine
           - Sensodynes
+        match:
+          priority: high
+          tags:
+            - character-sensodyne
+            - sensodyne
+            - sensudine
+            - sensodynes
         scope:
           campaigns:
             - the-vengeful
@@ -44,6 +51,15 @@ profiles:
           - Miss Narnaya
           - Narnaya
           - Miss Narmaya
+        match:
+          priority: normal
+          tags:
+            - character-narmaya
+            - narmaya
+            - miss-narnaya
+            - narnaya
+            - vampire-traits-and-rozenmaiden-allies
+            - miss-narmaya-and-werewolf-discussions
         scope:
           campaigns:
             - the-vengeful
@@ -73,6 +89,13 @@ profiles:
             role: owner
         aliases:
           - the Byzantine
+        match:
+          priority: normal
+          tags:
+            - character-rebecca-byzantine
+            - rebecca-byzantine
+            - byzantine
+            - the-byzantine
         scope:
           campaigns:
             - the-vengeful
@@ -103,6 +126,15 @@ profiles:
           - Sir Landon
           - Sir Langdon
           - her Brastok
+        match:
+          priority: normal
+          tags:
+            - character-hilis-brastok
+            - hilis-brastok
+            - sir-brastok
+            - sir-landon
+            - angels-personal-guard
+            - rannek-and-angel-protection-discussions
         scope:
           campaigns:
             - the-vengeful
@@ -135,6 +167,15 @@ profiles:
           - Sierra
           - Sierra Leveroux
           - Sister of the Light
+        match:
+          priority: normal
+          tags:
+            - character-sierre-leveroux
+            - sierre-leveroux
+            - sierra
+            - sierra-leveroux
+            - raibon-and-hedwig-backstory
+            - father-renaldi-and-hag-of-hama-investigation
         scope:
           campaigns:
             - the-vengeful
@@ -169,6 +210,15 @@ profiles:
           - Orren Bell
           - Oren/Orren Bell
           - Oren or Orren Bell
+        match:
+          priority: normal
+          tags:
+            - character-oren-bell
+            - oren-bell
+            - orren-bell
+            - oren-orren-bell
+            - bearer-of-joy
+            - green-lord-and-oren-bell-speculation
         scope:
           campaigns:
             - the-vengeful
@@ -200,6 +250,15 @@ profiles:
         aliases:
           - Oren is a name used by an avatar of the Green Lord
           - Oren, avatar of the Green Lord
+        match:
+          priority: normal
+          tags:
+            - alias-oberon-oran
+            - oberon-oran
+            - oran
+            - oren-is-a-name-used-by-an-avatar-of-the-green-lord
+            - oren-avatar-of-the-green-lord
+            - oberon-avatar-speculation
         scope:
           campaigns:
             - the-vengeful
@@ -230,6 +289,14 @@ profiles:
             role: primary
         aliases:
           - Eliana
+        match:
+          priority: normal
+          tags:
+            - character-liana
+            - liana
+            - eliana
+            - rebeccas-wonderland-story
+            - vessel-and-seeds-of-wonderland
         scope:
           campaigns:
             - the-vengeful
@@ -264,6 +331,15 @@ profiles:
           - Lady Vayne/Veyne/Vane
           - creepy nana
           - creepy nun
+        match:
+          priority: normal
+          tags:
+            - character-lady-maribel-veyne
+            - lady-maribel-veyne
+            - lady-vayne
+            - lady-fai
+            - castle-malthrek-reformist-hierarchy
+            - bearer-of-the-cup-and-cupbearer
         scope:
           campaigns:
             - the-vengeful
@@ -276,6 +352,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In the Castle Malthrek / Sister Rachel risk thread, use Lady Maribel
+          Veyne for transcript forms such as Lady Vayne and Lady Fai. In the
+          2026-06-27 church-plan thread, "creepy nana" is likely "creepy nun"
+          and likely points to Lady Maribel Veyne, not a grandmother figure.
         instruction: >
           In the Castle Malthrek / Sister Rachel risk thread, use Lady Maribel
           Veyne for transcript forms such as Lady Vayne and Lady Fai. In the
@@ -302,6 +383,15 @@ profiles:
           - Father Dunwether or Dunweather
           - Father Kram/Karam Dunwether
           - Father Karam Dunweather/Dunwether
+        match:
+          priority: normal
+          tags:
+            - character-father-dunweather
+            - father-dunweather
+            - father-karam-dunweather
+            - father-dunwether
+            - dunwether
+            - castle-malthrek-chapel-priest
         scope:
           campaigns:
             - the-vengeful
@@ -341,6 +431,15 @@ profiles:
           - Thorward
           - Sir Torward
           - Torward
+        match:
+          priority: normal
+          tags:
+            - character-sir-aldric-torward
+            - sir-aldric-torward
+            - sir-thorward
+            - thorward
+            - castle-malthrek-reformist-hierarchy
+            - bearer-of-the-sword
         scope:
           campaigns:
             - the-vengeful
@@ -372,6 +471,15 @@ profiles:
           - Old Man Highbury
           - Lord Highbury
           - Highbury-linked noble
+        match:
+          priority: normal
+          tags:
+            - character-baron-dunum-highbury
+            - baron-dunum-highbury
+            - baron-highbury
+            - old-man-highbury
+            - castle-malthrek-highbury-and-fagus-plot
+            - rescued-elder-from-reformist-mistreatment
         scope:
           campaigns:
             - the-vengeful
@@ -406,12 +514,26 @@ profiles:
           - Dorothy Highbury
           - Dorothy
           - Dottie
+        match:
+          priority: normal
+          tags:
+            - character-dorothy-campbell
+            - dorothy-campbell
+            - dorothy-marie-campbell
+            - miya
+            - miya-campbell
         scope:
           campaigns:
             - the-vengeful
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In Vengeful Highbury/Hags-of-Hama passages, Miya/Miya
+          Campbell/Dorothy Highbury refer to Dorothy Marie Campbell, daughter
+          of Charlotte Highbury and Torch and granddaughter of Baron Dunum
+          Highbury. Use Where Ivy Dares to Grow, not Where Ivory Dares to
+          Grow.
         instruction: >
           In Vengeful passages about the rescued Highbury child, the Little
           Estate survivor, or the Hags-of-Hama linked lineage, use
@@ -438,6 +560,15 @@ profiles:
         canonicalRefs: []
         aliases:
           - Monica
+        match:
+          priority: normal
+          tags:
+            - character-monique-highbury
+            - monique-highbury
+            - monique
+            - monica
+            - highbury-family-and-marriage-plot-references
+            - fagus-and-library-aftermath
         scope:
           campaigns:
             - the-vengeful
@@ -447,6 +578,10 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Monique for the Highbury-family girl connected to Fagus's
+          marriage plot and the library aftermath. Do not preserve Monica as
+          an unresolved alternate spelling in this context.
         instruction: >
           Use Monique for the Highbury-family girl connected to Fagus's marriage
           plot and the library aftermath. Do not preserve Monica as an
@@ -481,6 +616,15 @@ profiles:
           - Luwana Dubreuil
           - Luana Dubreuil
           - Luana Victoria Dubreuil
+        match:
+          priority: normal
+          tags:
+            - character-luana-cinna-moan
+            - luana-cinna-moan
+            - luana-victorique-dubreuil
+            - cinna
+            - cinna-moan
+            - legally-bare-model-references
         scope:
           campaigns:
             - the-vengeful
@@ -491,6 +635,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Luana Victorique Dubreuil for Cinna Moan / School Girl Cinna
+          Moan and Lime's Gerta Moon cohort. A Luana-like fey spirit is a
+          Summon Fey spirit borrowing Luana's appearance, not mundane Luana
+          herself; Princess Lavinia is Ines's dream name, not Luwanya.
         instruction: >
           Luana Victorique Dubreuil is the person who models in Legally Bare as
           Cinna Moan / School Girl Cinna Moan and was one of the Gerta Moon
@@ -531,6 +680,15 @@ profiles:
           - Elizabeth Schulze
           - Elizabeth's Cover
           - Luana as Elizabeth
+        match:
+          priority: normal
+          tags:
+            - character-lime-elizabeth-cover
+            - lime-elizabeth-cover
+            - elizabeth-lime-schulze
+            - elizabeth
+            - elizabeth-schulze
+            - castle-malthrek-servant-cover-interview
         scope:
           campaigns:
             - the-vengeful
@@ -565,6 +723,15 @@ profiles:
           - Benoit
           - Camden Dubreuil
           - Dubreuil male heir
+        match:
+          priority: normal
+          tags:
+            - character-benoit-marconne
+            - benoit-marconne
+            - benua
+            - benoit
+            - luana-victorique-dubreuil-backstory
+            - dubreuil-heir-kidnapping
         scope:
           campaigns:
             - the-vengeful
@@ -600,6 +767,15 @@ profiles:
           - Ludmilla
           - Lewd-mila
           - Lewdmila
+        match:
+          priority: normal
+          tags:
+            - character-emily-hazeldine
+            - emily-hazeldine
+            - lyudmila
+            - lyudmila-hazeldine
+            - emilys-full-name-and-teasing-nickname
+            - periapt-of-wound-closure-necklace-initials
         scope:
           campaigns:
             - the-vengeful
@@ -610,6 +786,9 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Emily Hazeldine for the character's preferred/common name. Her
+          full name is Lyudmila Hazeldine, and a necklace marked L.H.
         instruction: >
           Use Emily Hazeldine for the character's preferred/common name. Her
           full name is Lyudmila Hazeldine, and a necklace marked L.H. refers to
@@ -635,6 +814,15 @@ profiles:
           - Sister Rachel
           - Rachel
           - Rachel or Emily
+        match:
+          priority: normal
+          tags:
+            - character-emily-sister-rachel-cover
+            - emily-sister-rachel-cover
+            - emily-as-sister-rachel
+            - sister-rachel
+            - rachel
+            - castle-malthrek-reformist-disguise
         scope:
           campaigns:
             - the-vengeful
@@ -670,6 +858,15 @@ profiles:
           - Gem of Seeing or similar eye
           - similar eye
           - new eye
+        match:
+          priority: normal
+          tags:
+            - item-glass-eye-of-true-seeing
+            - glass-eye-of-true-seeing
+            - gem-of-seeing-or-similar-eye
+            - similar-eye
+            - mark-malthrek-eye-surgery
+            - mark-seeing-pregnancy-signs-or-hidden-watchers-through-the-prosthetic-eye
         scope:
           campaigns:
             - the-vengeful
@@ -679,6 +876,10 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In Vengeful passages about Mark Malthrek's prosthetic eye after
+          2026-06-20, use Glass Eye of True Seeing. Emily surgically placed it
+          into Mark's empty eye socket during the Castle Malthrek operation.
         instruction: >
           In Vengeful passages about Mark Malthrek's prosthetic eye after
           2026-06-20, use Glass Eye of True Seeing. Emily surgically placed it
@@ -706,6 +907,15 @@ profiles:
           - magical page finder
           - rare magical page finder
           - page finder
+        match:
+          priority: normal
+          tags:
+            - item-page-finder
+            - page-finder
+            - magical-page-finder
+            - rare-magical-page-finder
+            - legally-bare-binder
+            - binder-page-search-by-intent
         scope:
           campaigns:
             - the-vengeful
@@ -738,6 +948,15 @@ profiles:
           - Father Reno
           - Reno Galanado
           - Reno
+        match:
+          priority: normal
+          tags:
+            - character-father-reno
+            - father-reno
+            - rino-galanodel
+            - father-eno
+            - legally-bare-binder-fan-messages
+            - le-phare-phallique-and-father-reno-thread
         scope:
           campaigns:
             - the-vengeful
@@ -771,6 +990,15 @@ profiles:
           - star-shaped saving-throw card
           - star-shaped card
           - star card
+        match:
+          priority: normal
+          tags:
+            - item-star-card
+            - star-card
+            - star-shaped-saving-throw-card
+            - star-shaped-card
+            - mark-malthrek-bedroom-magical-item
+            - deck-of-many-things-standalone-card-item
         scope:
           campaigns:
             - the-vengeful
@@ -802,6 +1030,15 @@ profiles:
           - Gold Canary Figurie of Woundrous Power
           - Gold Canary Figurine of Wondrous Power
           - giant canary figurine
+        match:
+          priority: normal
+          tags:
+            - item-gold-canary-figurine-of-wondrous-power
+            - gold-canary-figurine-of-wondrous-power
+            - golden-canary-figurine
+            - gold-canary-figurie-of-woundrous-power
+            - remote-forest-hut-concealed-item
+            - giant-canary-mount
         scope:
           campaigns:
             - the-vengeful
@@ -835,12 +1072,24 @@ profiles:
           - Essence of the Nymph
           - Nymph Essence
           - nymph essence
+        match:
+          priority: normal
+          tags:
+            - item-essence-of-nymph
+            - essence-of-nymph
+            - essence-of-the-nymph
+            - nymph-essence
         scope:
           campaigns:
             - the-vengeful
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Essence of Nymph is a rare fey-infused potion with item rules in
+          astro/src/content/docs/world/items/essence-of-nymph.item.yaml. It is
+          distinct from Essence of Dream, Essence of Sleep, Oil of Sleep, and
+          Dream Brew.
         instruction: >
           Essence of Nymph is a rare fey-infused potion with item rules in
           astro/src/content/docs/world/items/essence-of-nymph.item.yaml. It is
@@ -872,6 +1121,15 @@ profiles:
           - Luana-like fey spirit
           - Arcadia manifestation
           - Arcadia-like manifestation
+        match:
+          priority: normal
+          tags:
+            - spell-summon-fey-creative-shaping
+            - summon-fey-creative-shaping
+            - summon-fey
+            - rubana
+            - rebun
+            - limes-fey-spirit-partner-workaround
         scope:
           campaigns:
             - the-vengeful
@@ -882,6 +1140,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In the Essence of Nymph support scene, Arcadia-like and Luana-like
+          forms are Lime creatively shaping Summon Fey spirits, not the real
+          people. Treat Rubana/Rebun in this explanation as ASR drift for
+          Raibon unless later context says otherwise.
         instruction: >
           In the 2026-06-21 Essence of Nymph support scene, the Arcadia-like and
           Luana-like manifestations are Lime casting Summon Fey in a creative
@@ -918,6 +1181,15 @@ profiles:
           - Rosamunda Parvèse
           - Rosemunda Parvese
           - Madame Rosamanda
+        match:
+          priority: normal
+          tags:
+            - character-rosemunda-parvese
+            - rosemunda-parvese
+            - rosemunda-parv-se
+            - rosamunda-parvese
+            - rosamunda-parv-se
+            - parv-se-houses-of-pleasures
         scope:
           campaigns:
             - the-vengeful
@@ -928,6 +1200,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Rosemunda Parvèse for the Parvèse matriarch. Preserve that her
+          parasite status is unknown because she was exiled to the Feywild
+          before parasite discovery; current Vengeful references are usually
+          historical or secondhand unless she returns or characters go to her.
         instruction: >
           Use Rosemunda Parvèse for the Parvèse matriarch and Four Pillars
           figure. Treat Rosamunda and Madame Rosamanda as likely
@@ -960,6 +1237,15 @@ profiles:
         aliases:
           - Dubreul
           - Dubrel
+        match:
+          priority: normal
+          tags:
+            - family-dubreuil
+            - dubreuil
+            - dubreul
+            - dubrel
+            - luana-victorique-dubreuil
+            - camden-dubreuil
         scope:
           campaigns:
             - the-vengeful
@@ -992,6 +1278,13 @@ profiles:
             path: astro/src/content/docs/world/characters/luana-victorique-dubreuil.mdx
             role: luana-reference
         aliases: []
+        match:
+          priority: low
+          tags:
+            - character-jason-mcnatt
+            - jason-mcnatt
+            - luana-victorique-dubreuil-family-finances
+            - dubreuil-family-lawyers
         scope:
           campaigns:
             - the-vengeful
@@ -1003,6 +1296,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Jason McNatt is one of the Dubreuil family lawyers with some
+          authority over access to the family fortune, not necessarily Luana's
+          personal earnings. He was partly a guardian figure for Luana and
+          later became her first DM.
         instruction: >
           Jason McNatt is one of the Dubreuil family lawyers. He has some
           authority over access to the Dubreuil family fortune, but not
@@ -1029,6 +1327,15 @@ profiles:
           - The Legally Fey
           - Legally Bear
           - Lady Bear
+        match:
+          priority: normal
+          tags:
+            - organization-legally-bare
+            - legally-bare
+            - legally-fey
+            - the-legally-fey
+            - matthew-malthrek-reading-material
+            - matthew-malthrek-fandom-vip-access-newest-edition-freebies-or-sacred-relics
         scope:
           campaigns:
             - the-vengeful
@@ -1040,6 +1347,12 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In Matthew Malthrek's embarrassing reading/fandom thread, use
+          Legally Bare, not Legally Fey/Bear/Lady Bear. VIP model dolls or
+          charms are real merchandise lore; ignore nearby possession,
+          salt-stuffing, cleanup, doll-eye, and stuffie-servant side jokes
+          unless later revived.
         instruction: >
           In Matthew Malthrek's embarrassing reading/fandom thread, use Legally
           Bare. Do not preserve Legally Fey, Legally Bear, or Lady Bear in this
@@ -1081,6 +1394,15 @@ profiles:
           - disease or poison testing
           - disease and poison testing
           - detect poison or disease
+        match:
+          priority: normal
+          tags:
+            - organization-legally-bare-dick-model-contracts
+            - legally-bare-dick-model-contracts
+            - dick-model
+            - dm
+            - dmg
+            - legally-bare-contracts
         scope:
           campaigns:
             - the-vengeful
@@ -1091,6 +1413,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In Legally Bare business or contract contexts, DM can mean Dick
+          Model, not Dungeon Master or DMG. The contract can involve the spell
+          Detect Poison and Disease as STI or infectious-disease screening for
+          prospective Dick Models.
         instruction: >
           In Legally Bare business or contract contexts, DM can mean Dick Model,
           not Dungeon Master or DMG. The contract can involve the spell Detect
@@ -1113,6 +1440,15 @@ profiles:
           - Myrland
           - Myrlund
           - Merland
+        match:
+          priority: normal
+          tags:
+            - character-maerwen-lunartear
+            - maerwen-lunartear
+            - myrland
+            - myrlund
+            - legally-bare-contributor-references
+            - kelthyr-and-luana-future-visit-after-malthrek-and-rannek
         scope:
           campaigns:
             - the-vengeful
@@ -1146,6 +1482,14 @@ profiles:
             role: primary
         aliases:
           - Sentinel Island
+        match:
+          priority: normal
+          tags:
+            - place-sentimental-island
+            - sentimental-island
+            - sentinel-island
+            - dimensional-shackles
+            - gerta-moon-school-relocation
         scope:
           campaigns:
             - the-vengeful
@@ -1177,6 +1521,13 @@ profiles:
             role: primary
         aliases:
           - Pomona
+        match:
+          priority: normal
+          tags:
+            - deity-pomona
+            - pomona
+            - salt-scattering-objection
+            - kalassarian-pantheon
         scope:
           campaigns:
             - the-vengeful
@@ -1209,6 +1560,14 @@ profiles:
             role: current-session
         aliases:
           - Mandra
+        match:
+          priority: normal
+          tags:
+            - character-mandra-of-the-eyrie
+            - mandra-of-the-eyrie
+            - mandra
+            - miya-calling-an-eagle
+            - eyrie-eagle-guide
         scope:
           campaigns:
             - the-vengeful
@@ -1220,15 +1579,23 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Mandra of the Eyrie for the eagle Miya calls and speaks with on
+          2026-07-04. The spelling Mandra is confirmed; do not leave it as
+          provisional in this context.
         instruction: >
           Use Mandra of the Eyrie for the eagle Miya calls and speaks with on
           2026-07-04. The spelling Mandra is confirmed; do not leave it as
-          provisional in this context. Keep separate unresolved creature terms,
-          such as Heartless or the exact harpy-like threat identity, provisional
-          unless later canon settles them.
+          provisional in this context. In Mandra's warning about the winged
+          humanoid predators near the false terrain, correct Heartless to harpies;
+          do not preserve Heartless as local terminology or a species name there.
+          The exact harpy-like threat identity remains unresolved unless later
+          canon settles it.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User clarified on 2026-07-10 that Mandra spelling is confirmed.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified on 2026-07-10 that Mandra was saying harpies, not Heartless.
 
       - id: mechanics.hag-road-boyle-repulsion-oath
         status: confirmed
@@ -1244,6 +1611,15 @@ profiles:
         aliases:
           - blood-forged oath not to wear it until they leave
           - Boyle oath not to wear the repulsion item
+        match:
+          priority: low
+          tags:
+            - mechanics-hag-road-boyle-repulsion-oath
+            - hag-road-boyle-repulsion-oath
+            - boyle-repulsion-item-blood-oath
+            - blood-forged-oath-not-to-wear-it-until-they-leave
+            - boyle-oath-not-to-wear-the-repulsion-item
+            - glamour-boundary
         scope:
           campaigns:
             - the-vengeful
@@ -1257,6 +1633,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Preserve the exact scope of Boyle's blood-forged oath at the
+          hag-road glamour boundary. The frog-spirit requires that Boyle
+          "shall not wear it until you leave," and the wording "until you
+          leave" is repeated in the transcript.
         instruction: >
           Preserve the exact scope of Boyle's blood-forged oath at the hag-road
           glamour boundary. The frog-spirit requires that Boyle "shall not wear
@@ -1287,6 +1668,15 @@ profiles:
           - Warp Star Cafe
           - Warp Star Coffee
           - star-themed café
+        match:
+          priority: normal
+          tags:
+            - business-warp-star-cafe
+            - warp-star-cafe
+            - warp-star-caf
+            - warp-star-coffee
+            - warp-star-caf-food-and-supplies
+            - legally-bare-sponsor-and-advertiser-references
         scope:
           campaigns:
             - the-vengeful
@@ -1323,6 +1713,15 @@ profiles:
           - local ally
           - local allies
           - local contact
+        match:
+          priority: normal
+          tags:
+            - organization-hickland-for-hicks-malthrek-cell
+            - hickland-for-hicks-malthrek-cell
+            - hickland-for-hicks-local-cell
+            - local-ally
+            - local-allies
+            - castle-malthrek-local-coordination
         scope:
           campaigns:
             - the-vengeful
@@ -1333,6 +1732,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In Vengeful Castle Malthrek coordination passages, a "local ally"
+          who can coordinate Castle Malthrek and nearby Malthrek-area cells is
+          a Hickland for Hicks local cell or cell contact, not merely a
+          generic friendly individual.
         instruction: >
           In Vengeful Castle Malthrek coordination passages, a "local ally" who
           can coordinate Castle Malthrek and nearby Malthrek-area cells is a
@@ -1361,6 +1765,15 @@ profiles:
           - black magical cock ring
           - Variable Cock Ring
           - magical cock ring
+        match:
+          priority: normal
+          tags:
+            - item-variable-cock-sheath
+            - variable-cock-sheath
+            - black-ring
+            - black-magical-cock-ring
+            - faltir-magic-shop-purchase
+            - love-beat-distinction
         scope:
           campaigns:
             - the-vengeful
@@ -1397,6 +1810,15 @@ profiles:
           - Underwear of warmth
           - high-heeled Stilettos of Wounding
           - Gauntlet of Elemental Transmutation
+        match:
+          priority: normal
+          tags:
+            - item-faltir-loot
+            - faltir-loot
+            - fort-faltir-loot
+            - token-from-hadar
+            - hadar-token
+            - fort-faltir-and-comtesse-loot
         scope:
           campaigns:
             - the-vengeful
@@ -1407,6 +1829,12 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In Fort Faltir loot context, use Token of Hadar, Magical Handcuffs,
+          Underwear of Warmth, Stilettos of Wounding, and Gauntlet of
+          Elemental Transmutation. Token of Hadar requires attunement; the
+          handcuffs command word is crunchy; the gauntlet can make
+          granular/powdered solids like gunpowder.
         instruction: >
           In the Fort Faltir loot context, use the canonical item names Token of
           Hadar, Magical Handcuffs, Underwear of Warmth, Stilettos of Wounding,
@@ -1436,6 +1864,15 @@ profiles:
         aliases:
           - Love Bead
           - Love Beats
+        match:
+          priority: normal
+          tags:
+            - item-love-beat
+            - love-beat
+            - love-bead
+            - love-beats
+            - legally-bare-sponsor-products
+            - luana-and-kelthyr-adult-magic-item-discussions
         scope:
           campaigns:
             - the-vengeful
@@ -1446,6 +1883,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Love Beat for the Legally Bare / En Chanté Workshop intimate
+          magic item or product term. Love Bead is a transcription drift in
+          this context, and Love Beats may appear as plural or product-line
+          wording.
         instruction: >
           Use Love Beat for the Legally Bare / En Chanté Workshop intimate magic
           item or product term. Love Bead is a transcription drift in this
@@ -1470,6 +1912,15 @@ profiles:
           - orbs that make you horny
           - arousal orb
           - horny orb
+        match:
+          priority: normal
+          tags:
+            - item-unnamed-arousal-orb
+            - unnamed-arousal-orb
+            - unnamed-arousal-inducing-orb
+            - orb-of-horny
+            - reformist-loot-from-raibon
+            - emilys-adult-gathering-items
         scope:
           campaigns:
             - the-vengeful
@@ -1480,6 +1931,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In Vengeful passages about Emily's Reformist loot from Raibon, there
+          is an actual unnamed orb item that can trigger or enhance states of
+          arousal in a room or nearby area. It was taken from a
+          Reformist-aligned character in Raibon whose name was not documented.
         instruction: >
           In Vengeful passages about Emily's Reformist loot from Raibon, there
           is an actual unnamed orb item that can trigger or enhance states of
@@ -1506,6 +1962,15 @@ profiles:
           - yellow orb
           - Yellow Absorption Orb
           - absorber orb
+        match:
+          priority: normal
+          tags:
+            - item-orb-of-absorption
+            - orb-of-absorption
+            - yellow-orb
+            - yellow-absorption-orb
+            - hag-scene-yellow-orb
+            - orbs-of-power
         scope:
           campaigns:
             - the-vengeful
@@ -1517,6 +1982,10 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In Vengeful Orb-of-Power contexts, the yellow orb / Yellow
+          Absorption Orb is the Orb of Absorption. Keep it distinct from the
+          Orb of Repulsion and from unrelated unnamed arousal-inducing orbs.
         instruction: >
           In Vengeful Orb-of-Power contexts, the yellow orb / Yellow Absorption
           Orb is the Orb of Absorption. Keep it distinct from the Orb of
@@ -1543,6 +2012,15 @@ profiles:
           - sliver
           - slivers
           - elven slivers
+        match:
+          priority: normal
+          tags:
+            - item-emerald-shield-shards
+            - emerald-shield-shards
+            - shards-of-the-emerald-shield-of-spring
+            - sliver
+            - slivers
+            - parv-se-and-spellcasting-children
         scope:
           campaigns:
             - the-vengeful
@@ -1575,6 +2053,15 @@ profiles:
         aliases:
           - La Camaraderie-aligned contact
           - local La Camaraderie contact
+        match:
+          priority: normal
+          tags:
+            - organization-la-camaraderie-operating-scope
+            - la-camaraderie-operating-scope
+            - la-camaraderie-de-la-mer
+            - la-camaraderie-aligned-contact
+            - local-la-camaraderie-contact
+            - castle-malthrek-hicklander-contact
         scope:
           campaigns:
             - the-vengeful
@@ -1585,6 +2072,9 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Do not describe the Castle Malthrek contact as La
+          Camaraderie-aligned by default. The contact is Hicklander.
         instruction: >
           Do not describe the Castle Malthrek contact as La Camaraderie-aligned
           by default. The contact is Hicklander. La Camaraderie normally operates
@@ -1612,6 +2102,15 @@ profiles:
           - Miss T
           - Miss Tin
           - Miss Tina
+        match:
+          priority: normal
+          tags:
+            - character-mystine-nightingale
+            - mystine-nightingale
+            - mistine
+            - mistyne
+            - nightshift-nurses
+            - legally-bare-and-luana-support
         scope:
           campaigns:
             - the-vengeful
@@ -1644,6 +2143,15 @@ profiles:
         aliases:
           - Night Shift Nurses
           - nage-chiffners
+        match:
+          priority: normal
+          tags:
+            - organization-nightshift-nurses
+            - nightshift-nurses
+            - night-shift-nurses
+            - nage-chiffners
+            - mystine-nightingale
+            - adult-magazine-comparison-with-legally-bare
         scope:
           campaigns:
             - the-vengeful
@@ -1676,6 +2184,15 @@ profiles:
         aliases:
           - Beloved Nurse Lollia
           - Julia Llach
+        match:
+          priority: low
+          tags:
+            - character-lollia-skala
+            - lollia-skala
+            - beloved-nurse-lollia
+            - julia-llach
+            - nightshift-nurses-collector-copies
+            - legally-bare-and-nightshift-nurses-barter
         scope:
           campaigns:
             - the-vengeful
@@ -1688,6 +2205,12 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In the 2026-07-04 Nightshift Nurses signed-copy barter context, the
+          name heard as Julia Llach may refer to Lollia Skala, also known as
+          Beloved Nurse Lollia. Treat Lollia's disappearance, publication
+          role, and why her signature changes collector value as a live hook
+          unless later canon settles the.
         instruction: >
           In the 2026-07-04 Nightshift Nurses signed-copy barter context, the
           name heard as Julia Llach may refer to Lollia Skala, also known as
@@ -1713,6 +2236,14 @@ profiles:
             role: malthrek-thread
         aliases:
           - Damson Reed
+        match:
+          priority: normal
+          tags:
+            - character-tamsin-reed
+            - tamsin-reed
+            - damson-reed
+            - castle-malthrek-reformist-hierarchy
+            - bearers-of-emotions
         scope:
           campaigns:
             - the-vengeful
@@ -1744,6 +2275,15 @@ profiles:
         aliases:
           - Faithborn
           - Faithborn hags
+        match:
+          priority: normal
+          tags:
+            - taxonomy-hags-of-senera-adapted
+            - hags-of-senera-adapted
+            - adapted
+            - faithborn
+            - faithborn-hags
+            - skelwick-hags
         scope:
           campaigns:
             - the-vengeful
@@ -1775,6 +2315,15 @@ profiles:
             role: current-session
         aliases:
           - Sovrina
+        match:
+          priority: low
+          tags:
+            - character-lucinda-hag
+            - lucinda-hag
+            - lucinda
+            - sovrina
+            - hag-hut-greeting
+            - hag-household
         scope:
           campaigns:
             - the-vengeful
@@ -1791,22 +2340,31 @@ profiles:
           In the 2026-07-04 hag hut scene, do not preserve Sovrina as a possible
           name or title. The hag greeting the group is Lucinda, matching the next
           section's hag household context. In the typical hag-trio household,
-          Lucinda is the mother, Helga is the crone, and Kaua is the maiden.
+          Lucinda is the mother, Helga is the crone, and Kara is the maiden.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User clarified on 2026-07-10 that Sovrina in the hag greeting section should be Lucinda, as the next section gets right.
 
-      - id: character.kaua-hag
+      - id: character.kara-hag
         status: confirmed
         kind: entity
-        canonical: Kaua
+        canonical: Kara
         canonicalRefs:
           - type: note
             path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             role: current-session
         aliases:
-          - Kara
+          - Kaua
           - Cara
+        match:
+          priority: low
+          tags:
+            - character-kara-hag
+            - kara-hag
+            - kara
+            - kaua
+            - cara
+            - hag-household
         scope:
           campaigns:
             - the-vengeful
@@ -1821,12 +2379,12 @@ profiles:
           mode: prompt-first
           safeExactReplacement: false
         instruction: >
-          Use Kaua for the maiden of the Children of the Crone hag trio in the
-          2026-07-04 hag household and duel scenes. Kara and Cara are drift in
+          Use Kara for the maiden of the Children of the Crone hag trio in the
+          2026-07-04 hag household and duel scenes. Kaua and Cara are drift in
           this context unless later canon establishes a separate character.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
-            note: User clarified on 2026-07-10 that the hag's name is Kaua, not Kara or Cara.
+            note: User initially corrected the hag's name to Kaua, then clarified that this was mistaken and the correct name is Kara, not Kaua or Cara.
 
       - id: mechanics.glass-eyed-hag-statblock
         status: confirmed
@@ -1841,29 +2399,45 @@ profiles:
             role: source-statblock
         aliases:
           - Lucy
-          - Kaua's duel reused the Lucy stat block
+          - Kara's duel reused the Lucy stat block
+        match:
+          priority: low
+          tags:
+            - mechanics-glass-eyed-hag-statblock
+            - glass-eyed-hag-statblock
+            - glass-eyed-hag
+            - lucy
+            - karas-duel-reused-the-lucy-stat-block
+            - kara-duel
+            - kaua-duel
         scope:
           campaigns:
             - the-vengeful
           sessionDates:
             - "2026-07-04"
           contexts:
-            - Kaua duel
+            - Kara duel
             - shifting eye-shape mechanics
             - hag household fight
         apply:
           mode: prompt-first
           safeExactReplacement: false
-        instruction: >
-          In the 2026-07-04 Kaua duel, the shifting eye-state combat mechanics
+        promptInstruction: >
+          In the 2026-07-04 Kara duel, the shifting eye-state combat mechanics
           use the imported Glass Eyed Hag creature stat block. Its D&D Beyond
           source was Nico's older homebrew creature Lucy, but Lucy is only a
-          source name; do not canonize Lucy as Kaua's in-world name, species,
-          identity, or separate NPC, and do not infer that Kaua is a beholder or
+          source name; do not canonize Lucy as Kara's in-world name, species,
+          identity, or separate NPC.
+        instruction: >
+          In the 2026-07-04 Kara duel, the shifting eye-state combat mechanics
+          use the imported Glass Eyed Hag creature stat block. Its D&D Beyond
+          source was Nico's older homebrew creature Lucy, but Lucy is only a
+          source name; do not canonize Lucy as Kara's in-world name, species,
+          identity, or separate NPC, and do not infer that Kara is a beholder or
           aberration from the reused stat block or table banter.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
-            note: User clarified on 2026-07-09 that the duel reused the old D&D Beyond homebrew creature stat block Lucy; on 2026-07-10 the hag's name was clarified as Kaua.
+            note: User clarified on 2026-07-09 that the duel reused the old D&D Beyond homebrew creature stat block Lucy; on 2026-07-10 the hag's name was clarified as Kara after an initial mistaken Kaua correction.
           - path: astro/src/content/docs/world/misc/glass-eyed-hag.creature.yaml
             note: Imported creature data renames the source stat block to Glass Eyed Hag for Bastion Falls use.
 
@@ -1877,6 +2451,14 @@ profiles:
             role: current-session
         aliases:
           - Great Archon
+        match:
+          priority: normal
+          tags:
+            - title-greater-archon
+            - greater-archon
+            - great-archon
+            - emilys-cupbearer-cover
+            - father-dunweather-and-lady-maribel-veyne-cover-story
         scope:
           campaigns:
             - the-vengeful
@@ -1911,6 +2493,15 @@ profiles:
         aliases:
           - Merad
           - Dr. Marad
+        match:
+          priority: low
+          tags:
+            - character-marad
+            - marad
+            - merad
+            - dr-marad
+            - castle-malthrek-servant-applicant-interviews
+            - elizabeth-and-paul-servant-cover
         scope:
           campaigns:
             - the-vengeful
@@ -1923,6 +2514,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Marad for the creepy parasitized low-level devout Reformist
+          servant/recruiter in the Castle Malthrek servant-cover scene. Keep
+          Marad distinct from Saral and Marston unless later canon merges
+          them.
         instruction: >
           Use Marad for the creepy male Castle Malthrek servant, recruiter, or
           escort in Lime's Elizabeth servant applicant cover scene. Marad is parasitized and
@@ -1953,6 +2549,15 @@ profiles:
         aliases:
           - Chief of Staff
           - key servant ally
+        match:
+          priority: low
+          tags:
+            - character-saral-chief-of-staff
+            - saral-chief-of-staff
+            - saral
+            - chief-of-staff
+            - key-servant-ally
+            - castle-malthrek-servant-ally
         scope:
           campaigns:
             - the-vengeful
@@ -1965,6 +2570,10 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          If the Castle Malthrek key servant ally being discussed is the Chief
+          of Staff, his name is Saral. Do not identify that Chief of Staff
+          ally as Marad or Marston without later canon confirmation.
         instruction: >
           If the Castle Malthrek key servant ally being discussed is the Chief
           of Staff, his name is Saral. Do not identify that Chief of Staff ally
@@ -1994,6 +2603,15 @@ profiles:
           - detection ward
           - visible ward
           - fortress ward
+        match:
+          priority: low
+          tags:
+            - item-ward-of-magic-detection
+            - ward-of-magic-detection
+            - magic-detection-ward
+            - detection-ward
+            - castle-malthrek-office-door-and-waiting-room-wards
+            - enhancer-orb-support-near-wards
         scope:
           campaigns:
             - the-vengeful
@@ -2006,6 +2624,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Ward of Magic Detection for Castle Malthrek magic-detection
+          wards. It acts like detect magic and normally needs a daily
+          3rd-level recharge; a nearby Orb of Enhancement can supply that
+          charge, so do not leave the ward/orb placement as unresolved.
         instruction: >
           Use Ward of Magic Detection for the recurring magic-detection wards in
           the Castle Malthrek security context. A Ward of Magic Detection acts
@@ -2038,6 +2661,15 @@ profiles:
           - Stacy's return
           - Malthrek Court Wizards
           - Malthrek court wizard funeral escort
+        match:
+          priority: low
+          tags:
+            - character-stacy-cartwright-court-wizard-hook
+            - stacy-cartwright-court-wizard-hook
+            - stacy-cartwright-court-wizard-return-hook
+            - stacey-cartwright
+            - stacys-return
+            - castle-malthrek-funeral-operation
         scope:
           campaigns:
             - the-vengeful
@@ -2050,6 +2682,10 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Keep Stacy Cartwright's return and morning duties as an Open Hook.
+          Stacy and three other Malthrek Court Wizards remain unaccounted for
+          after being sent to fetch nobles for the funeral.
         instruction: >
           Keep Stacy Cartwright's return and morning duties as an Open Hook.
           Stacy is one of the Malthrek Court Wizards sent to fetch nobles for the
@@ -2076,6 +2712,15 @@ profiles:
           - Emily timing authority
           - Emily's exact signal or timing authority
           - Guards and Wards signal
+        match:
+          priority: low
+          tags:
+            - character-emily-signal-timing-hook
+            - emily-signal-timing-hook
+            - emily-visual-magical-signal-for-guards-and-wards-containment
+            - emilys-signal
+            - emily-timing-authority
+            - castle-malthrek-operation-timing
         scope:
           campaigns:
             - the-vengeful
@@ -2088,6 +2733,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Emily's Castle Malthrek operation signal is a visual magical effect
+          showing Guards and Wards is active and Reformists are contained. The
+          signal's purpose is settled; its exact appearance may remain
+          unspecified.
         instruction: >
           Emily's signal in the Castle Malthrek operation refers to some kind of
           visual magical effect indicating that guards and wards is active and
@@ -2118,6 +2768,13 @@ profiles:
             path: astro/src/content/docs/world/organizations/hickland-for-hicks.mdx
             role: parent-organization
         aliases: []
+        match:
+          priority: low
+          tags:
+            - character-mondrian
+            - mondrian
+            - gralter-cell-contact
+            - hickland-for-hicks-coordination
         scope:
           campaigns:
             - the-vengeful
@@ -2131,6 +2788,10 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Mondrian is Kelthyr's he/him Hickland for Hicks contact in the
+          Gralter cell and helps the Castle Malthrek servant infiltration and
+          captive-management effort.
         instruction: >
           Mondrian is the confirmed spelling. He is Kelthyr's Hickland for Hicks
           contact in the Gralter cell and helps the Castle Malthrek servant
@@ -2155,6 +2816,15 @@ profiles:
         aliases:
           - Caltax
           - Lord Cals or Caltax
+        match:
+          priority: normal
+          tags:
+            - fey-lord-cals-lord-of-time
+            - lord-cals-lord-of-time
+            - lord-cals
+            - caltax
+            - lord-cals-or-caltax
+            - lord-of-time
         scope:
           campaigns:
             - the-vengeful
@@ -2190,6 +2860,15 @@ profiles:
           - Duren
           - Dooren's domain
           - Duren's domain
+        match:
+          priority: normal
+          tags:
+            - fey-queen-duarend-spring
+            - queen-duarend-spring
+            - queen-duarend
+            - duarend
+            - queen-bered
+            - spring-court-succession
         scope:
           campaigns:
             - the-vengeful
@@ -2227,6 +2906,15 @@ profiles:
           - Mami
           - Archfey of Dreams
           - Essence of Dream
+        match:
+          priority: normal
+          tags:
+            - fey-mommy-queen-of-dreams
+            - mommy-queen-of-dreams
+            - mommy
+            - mami
+            - luanas-dream-patron
+            - essence-of-dream
         scope:
           campaigns:
             - the-vengeful
@@ -2238,6 +2926,12 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In Luana's dream-patron and Essence of Dream contexts, Mommy is the
+          archfey patron connected to Luana's powers. Mommy was originally
+          Queen Duarend, the once-human former Spring Queen, who took the
+          mantle of Queen of Dreams in the Feywild and extended her influence
+          to Thera.
         instruction: >
           In Luana's dream-patron and Essence of Dream contexts, Mommy is the
           archfey patron connected to Luana's powers. Mommy was originally Queen
@@ -2266,6 +2960,15 @@ profiles:
           - sleep censer
           - sleep incense
           - aromatic-oil sleep effect
+        match:
+          priority: normal
+          tags:
+            - item-essence-of-dream
+            - essence-of-dream
+            - dream-brew
+            - essence-of-sleep
+            - luana-sleep-effect
+            - three-day-sleep
         scope:
           campaigns:
             - the-vengeful
@@ -2277,6 +2980,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Essence of Dream for Luana's three-day sleep effect, including
+          censer/incense/vapor/smoke/aromatic-oil delivery. Keep it distinct
+          from Essence of Nymph and any separate Oil of Sleep unless later
+          canon merges them.
         instruction: >
           Use Essence of Dream for Luana's three-day sleep effect, including
           delivery through a censer, incense, vapor, smoke, or aromatic oil.
@@ -2305,6 +3013,15 @@ profiles:
           - Ring of Winter
           - Brooch of Winter
           - Sapphire Brooch of Winter
+        match:
+          priority: normal
+          tags:
+            - item-winter-ring-brooch
+            - winter-ring-brooch
+            - ring-of-winter
+            - brooch-of-winter
+            - winter-court-artifacts
+            - elven-boons
         scope:
           campaigns:
             - the-vengeful
@@ -2336,6 +3053,14 @@ profiles:
           - Sabrina
           - Sabinia
           - Benya
+        match:
+          priority: low
+          tags:
+            - artifact-sabina
+            - sabina
+            - sabrina
+            - castle-malthrek-descent-and-correction-passages
+            - garbled-taglish-or-speaker-bleed-lines
         scope:
           campaigns:
             - the-vengeful
@@ -2368,6 +3093,13 @@ profiles:
         canonicalRefs: []
         aliases:
           - Heir of Hama
+        match:
+          priority: low
+          tags:
+            - artifact-heir-of-hama
+            - heir-of-hama
+            - miya-and-highbury-family-hooks
+            - legally-bare-model-image-discussions
         scope:
           campaigns:
             - the-vengeful
@@ -2398,6 +3130,13 @@ profiles:
         aliases:
           - Trantarbury
           - Flanterbury
+        match:
+          priority: high
+          tags:
+            - place-thrantorbury
+            - thrantorbury
+            - trantarbury
+            - flanterbury
         scope:
           campaigns:
             - the-vengeful
@@ -2425,6 +3164,15 @@ profiles:
           - Tantra Bureau
           - Tandra Bureau
           - Ronderbury
+        match:
+          priority: low
+          tags:
+            - place-tantra-bureau
+            - tantra-bureau
+            - thrantorbury
+            - tandra-bureau
+            - malthrek-area-produce-source-thread
+            - northcross-produce-parasite-contamination-discussion
         scope:
           campaigns:
             - the-vengeful
@@ -2465,6 +3213,15 @@ profiles:
           - Render
           - Randor
           - Aluver
+        match:
+          priority: normal
+          tags:
+            - character-rendor
+            - rendor
+            - render
+            - randor
+            - castle-malthrek-kitchen-staff
+            - rendor-and-talbito-fey-curse-thread
         scope:
           campaigns:
             - the-vengeful
@@ -2475,6 +3232,12 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Treat Rendor as a recurring Castle Malthrek kitchen worker known for
+          strange stories that partly reflect real fey encounters or curses.
+          Do not reclassify him as an unknown place or route term when the
+          context is Castle Malthrek staff, kitchen work, fey curses, or tall
+          tales.
         instruction: >
           Treat Rendor as a recurring Castle Malthrek kitchen worker known for
           strange stories that partly reflect real fey encounters or curses. Do
@@ -2501,6 +3264,15 @@ profiles:
           - charged blank scroll
           - blank-scroll and spell-copying
           - spell-copying discussion around the submarine
+        match:
+          priority: normal
+          tags:
+            - mechanics-charged-blank-scrolls
+            - charged-blank-scrolls
+            - charged-blank-magical-scroll
+            - blank-scroll
+            - charged-blank-scroll
+            - submarine-handling-and-spell-copying-discussion
         scope:
           campaigns:
             - the-vengeful
@@ -2531,6 +3303,15 @@ profiles:
           - submarine spell effects
           - submarine operating mechanism
           - Orb of Enhancement submarine
+        match:
+          priority: low
+          tags:
+            - mechanics-submarine-magic-clues
+            - submarine-magic-clues
+            - submarine-spell-effects
+            - submarine-operating-mechanism
+            - submarine-handling-and-technology-open-hook
+            - faltir-submarine-magic-items
         scope:
           campaigns:
             - the-vengeful
@@ -2543,6 +3324,10 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Keep the submarine's exact operating mechanism as an Open Hook. The
+          magic items found in or with it, including effects resembling create
+          or destroy water and gust of wind, are clues to how it works.
         instruction: >
           Keep the submarine's exact operating mechanism as an Open Hook. The
           magic items found in or with it, including effects resembling create or
@@ -2567,6 +3352,15 @@ profiles:
           - not infected versus not dead
           - killing parasite hosts alerts the network
           - Eastonton Surrey brining discovery
+        match:
+          priority: low
+          tags:
+            - mechanics-parasite-food-open-hooks
+            - parasite-food-open-hooks
+            - parasite-food-countermeasure-implications-remain-open
+            - salt-preparation-counters-parasite-eggs
+            - brining-counters-parasite-eggs
+            - parasites-and-food-open-hooks
         scope:
           campaigns:
             - the-vengeful
@@ -2579,6 +3373,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Keep parasite-food countermeasure implications open. Salt
+          preparation likely helps against parasite eggs, but do not settle
+          brining vs plain salt, not infected vs not dead, network alerts on
+          host death, or Eastonton/Surrey applications without later canon.
         instruction: >
           Keep the Parasites and Food questions from the 2026-07-04 Vengeful
           note as actual Open Hooks. Current canon leans toward salt preparation
@@ -2600,6 +3399,15 @@ profiles:
         aliases:
           - feather it
           - Feather it
+        match:
+          priority: low
+          tags:
+            - mechanics-submarine-tethering
+            - submarine-tethering
+            - tether-it
+            - feather-it
+            - submarine-parking-and-handling-discussion
+            - bag-of-holding-and-enlarge-reduce-submarine-stowing-plan
         scope:
           campaigns:
             - the-vengeful
@@ -2633,13 +3441,23 @@ profiles:
           - assassins blood
           - Lucinda's bezoar
           - Bezoar of Lucinda
+        match:
+          priority: low
+          tags:
+            - item-helgas-blood-and-bezoar-of-lucinda
+            - helgas-blood-and-bezoar-of-lucinda
+            - helgas-blood-and-the-bezoar-of-lucinda
+            - assassins-blood
+            - hag-mercy-killing-after-karas-duel
+            - hag-mercy-killing-after-kauas-duel
+            - helga-and-lucinda-soul-vial-relics
         scope:
           campaigns:
             - the-vengeful
           sessionDates:
             - "2026-07-04"
           contexts:
-            - Hag mercy killing after Kaua's duel
+            - Hag mercy killing after Kara's duel
             - Helga and Lucinda soul-vial relics
             - Dorothy Marie Campbell carrying hag soul remains
         apply:
@@ -2664,6 +3482,14 @@ profiles:
             role: primary
         aliases:
           - Aftur
+        match:
+          priority: low
+          tags:
+            - place-aftur
+            - aftur
+            - apgar
+            - democratic-polity-comparison-near-naval-military-authority-discussion
+            - salt-tax-and-reform-politics-in-the-faltir-salt-settlement-thread
         scope:
           campaigns:
             - the-vengeful
@@ -2698,6 +3524,15 @@ profiles:
           - seat of Ranlis County
           - capital of Ranlis County
           - Faltir seat
+        match:
+          priority: normal
+          tags:
+            - place-faltir-ranlis-county-seat
+            - faltir-ranlis-county-seat
+            - faltir
+            - seat-of-ranlis-county
+            - capital-of-ranlis-county
+            - faltir-and-ranlis-county-administration
         scope:
           campaigns:
             - the-vengeful
@@ -2730,12 +3565,24 @@ profiles:
         aliases:
           - Mercandrol
           - Merkinbrock
+        match:
+          priority: high
+          tags:
+            - place-murkendraw
+            - murkendraw
+            - mercandrol
+            - merkinbrock
         scope:
           campaigns:
             - the-vengeful
         apply:
           mode: prompt-first
           safeExactReplacement: true
+        promptInstruction: >
+          Use Murkendraw for transcript and note references that currently
+          appear as Mercandrol or Merkinbrock, especially when discussing the
+          Awakened Library in Marsh View, Feywild research sources, or
+          Willow's hexblood calling.
         instruction: >
           Use Murkendraw for transcript and note references that currently
           appear as Mercandrol or Merkinbrock, especially when discussing the
@@ -2759,6 +3606,15 @@ profiles:
         aliases:
           - Thralmal
           - Thralmal Pools
+        match:
+          priority: normal
+          tags:
+            - place-thralmals
+            - thralmals
+            - thralmal
+            - thralmal-pools
+            - thralmals-barony-keep-pools-hags-and-teleportation-circle
+            - antoinette-malthrek-and-thralmals-political-pressure
         scope:
           campaigns:
             - the-vengeful
@@ -2790,6 +3646,15 @@ profiles:
         aliases:
           - Mount Brissimis
           - Brissimis
+        match:
+          priority: normal
+          tags:
+            - place-mt-brissimis
+            - mt-brissimis
+            - mount-brissimis
+            - brissimis
+            - thralmals-pools-and-protected-hag-pools
+            - northern-western-maltreks-geothermal-sites
         scope:
           campaigns:
             - the-vengeful
@@ -2822,6 +3687,15 @@ profiles:
           - Le Faerfalik
           - Faerfalik
           - Le Phare Falik
+        match:
+          priority: normal
+          tags:
+            - place-le-phare-phallique
+            - le-phare-phallique
+            - le-faerfalik
+            - faerfalik
+            - marina-visconti-column-meeting-place
+            - father-reno-messages-and-legally-bare-binder
         scope:
           campaigns:
             - the-vengeful
@@ -2832,6 +3706,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Le Phare Phallique for the lighthouse and small settlement on
+          Raibon Island. Le Faerfalik is phonetic/transcript drift for this
+          place, whose name comes from a lighthouse that early settlers
+          thought looked phallic.
         instruction: >
           Use Le Phare Phallique for the lighthouse and small settlement on
           Raibon Island. Le Faerfalik is phonetic/transcript drift for this
@@ -2857,6 +3736,14 @@ profiles:
             role: current-session
         aliases:
           - Faltier
+        match:
+          priority: normal
+          tags:
+            - place-faltir
+            - faltir
+            - faltier
+            - malthrek-area-salt-mining-settlement
+            - faltir-streets-and-salt-mines
         scope:
           campaigns:
             - the-vengeful
@@ -2868,6 +3755,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Faltir for the Malthrek-area walled salt-mining settlement and
+          salt-mine context. Fort Faltir / Faltir fortress is the local
+          fortress or seat within that thread and should not be collapsed into
+          Castle Malthrek.
         instruction: >
           Use Faltir for the Malthrek-area walled salt-mining settlement and
           salt-mine context. Fort Faltir / Faltir fortress is the local fortress
@@ -2893,6 +3785,14 @@ profiles:
             role: primary
         aliases:
           - Maiden's Fields
+        match:
+          priority: normal
+          tags:
+            - place-maidens-field
+            - maidens-field
+            - maidens-fields
+            - faltir-submarine-route-map
+            - rannek-and-hicklander-fighting-near-maidens-field
         scope:
           campaigns:
             - the-vengeful
@@ -2923,6 +3823,15 @@ profiles:
         aliases:
           - Jingxia
           - Jingxian
+        match:
+          priority: normal
+          tags:
+            - place-jing-shen-jiang
+            - jing-shen-jiang
+            - jingxia
+            - jingxian
+            - changeling-and-doppelganger-comparison
+            - podron-and-trajan-shapeshifter-lore
         scope:
           campaigns:
             - the-vengeful
@@ -2960,6 +3869,15 @@ profiles:
           - Trillian
           - Trajan Dupe
           - Fake Trajan
+        match:
+          priority: normal
+          tags:
+            - character-trajan
+            - trajan
+            - trillian
+            - trajan-dupe
+            - philodendron-and-face-stealing-identity
+            - trajan-shapeshifter-lore
         scope:
           campaigns:
             - the-vengeful
@@ -2970,6 +3888,9 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Trajan when the 2026-07-04 trade or meeting context is heard as
+          Trillian. Nico confirmed Trillian should be Trajan in that passage.
         instruction: >
           Use Trajan when the 2026-07-04 trade or meeting context is heard as
           Trillian. Nico confirmed Trillian should be Trajan in that passage.
@@ -2995,6 +3916,15 @@ profiles:
           - Turbiere d'Hubar
           - Turbiere du Hubar
           - Turbière du Hubar
+        match:
+          priority: normal
+          tags:
+            - place-turbiere-de-hubar
+            - turbiere-de-hubar
+            - turbi-re-dhubar
+            - turbiere-dhubar
+            - hags-of-hama-bog
+            - raibon-island-peat-bog
         scope:
           campaigns:
             - the-vengeful
@@ -3031,6 +3961,15 @@ profiles:
           - Seneran hags
           - Feywild hags in Senera
           - Seneran or Feywild hag coven
+        match:
+          priority: low
+          tags:
+            - organization-seneran-feywild-hags-boundary
+            - seneran-feywild-hags-boundary
+            - seneran-feywild-hags-are-distinct-from-the-hags-of-hama
+            - seneran-hags
+            - feywild-hags-in-senera
+            - hag-road-and-children-of-the-crone-scenes
         scope:
           campaigns:
             - the-vengeful
@@ -3043,6 +3982,12 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Hags encountered in Senera in the hag-road thread are Feywild hags
+          and are canonically distinct from the Hags of Hama. Do not merge the
+          Seneran Feywild hag coven, Children of the Crone, or hag-road bog
+          with the Hags of Hama or their Raibon Island Turbiere de Hubar
+          tradition, even when imagery or.
         instruction: >
           Hags encountered in Senera in the hag-road thread are Feywild hags and
           are canonically distinct from the Hags of Hama. Do not merge the
@@ -3054,6 +3999,92 @@ profiles:
             note: Canonical Hags of Hama article defines them as the Raibon Island / Town of Hama coven rooted in White Witches of Tichom traditions.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User clarified that hags in Senera are from the Feywild and are canonically distinct from the Hags of Hama.
+
+      - id: character.tiphanie-hag-road-allusion
+        status: confirmed
+        kind: boundary
+        canonical: Tiphanie hag-road allusion
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            role: hag-road-context
+        aliases:
+          - hidden agent Baba Yaga sent
+          - Baba Yaga sent someone into the hag territory
+          - Tiphanie in Senera from the Feywild
+        match:
+          priority: low
+          tags:
+            - character-tiphanie-hag-road-allusion
+            - tiphanie-hag-road-allusion
+            - hidden-agent-baba-yaga-sent
+            - baba-yaga-sent-someone-into-hag-territory
+            - tiphanie-in-senera-from-the-feywild
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-04"
+          contexts:
+            - Hag road and Children of the Crone scenes
+            - Tiphanie in Senera from the Feywild
+            - Baba Yaga allusion and hag binding
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the 2026-07-04 hag-road scene, do not frame Miya's Baba Yaga line as
+          a hidden-agent or spy-insertion claim. Nico clarified that Miya is
+          alluding to Tiphanie now being in Senera after coming from the Feywild.
+          Preserve unresolved details around what the hags know, why they cannot
+          name "her," and how the Mother's power binds their speech.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that Miya was alluding to Tiphanie's presence in Senera from the Feywild, not identifying a hidden agent sent into hag territory.
+
+      - id: mechanics.feywild-duel-forms-open-hook
+        status: provisional
+        kind: boundary
+        canonical: Feywild duel forms remain an Open Hook
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            role: hag-road-context
+        aliases:
+          - bound by the forms
+          - duel terms
+          - Baba Yaga's forms
+          - hag duel law
+        match:
+          priority: low
+          tags:
+            - mechanics-feywild-duel-forms-open-hook
+            - feywild-duel-forms-open-hook
+            - bound-by-the-forms
+            - duel-terms
+            - baba-yagas-forms
+            - hag-duel-law
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-04"
+          contexts:
+            - Hag road and Children of the Crone scenes
+            - Kara duel
+            - Baba Yaga forms and Feywild law
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Keep the duel terms and what "bound by the forms" means as an Open
+          Hook. Nico clarified this is a Feywild-side question, and that part may
+          be DM'd by one of the players rather than Nico. Do not settle the exact
+          mechanics, authority, binding scope, or legal consequences of the forms
+          until that Feywild adjudication exists.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified on 2026-07-10 that duel terms and "bound by the forms" should remain an Open Hook because the Feywild side may be DM'd by one of the players.
 
       - id: place.havmals-ocean
         status: confirmed
@@ -3067,6 +4098,14 @@ profiles:
           - Hamel's Ocean
           - Hamels Ocean
           - Havmal's Ocean
+        match:
+          priority: normal
+          tags:
+            - place-havmals-ocean
+            - havmals-ocean
+            - hamels-ocean
+            - western-senera-ocean
+            - faltir-fortress-coastal-drop
         scope:
           campaigns:
             - the-vengeful
@@ -3102,6 +4141,15 @@ profiles:
         aliases:
           - Eyrie of Surrey
           - Ear of Surrey
+        match:
+          priority: normal
+          tags:
+            - place-surreys-ear
+            - surreys-ear
+            - eyrie-of-surrey
+            - ear-of-surrey
+            - restricted-seneran-sites
+            - surrey-on-the-brams-geography
         scope:
           campaigns:
             - the-vengeful
@@ -3151,6 +4199,15 @@ profiles:
           - Condesa
           - Contessa
           - Countess
+        match:
+          priority: normal
+          tags:
+            - noble-count-ranlis
+            - count-ranlis
+            - count-godwin-ranlis
+            - godwin-ranlis
+            - faltir-salt-procession
+            - count-ranliss-march
         scope:
           campaigns:
             - the-vengeful
@@ -3167,6 +4224,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In Faltir/Ranlis salt-procession and road-procession contexts, use
+          Count Godwin Ranlis and Comtesse Aveline Ranlis. Aveline is not
+          physically in Godwin's later road procession; Luana is the allied
+          speaker using higher Reformist authority with Carissa.
         instruction: >
           In the Faltir salt-procession and local salt-founding history context,
           use Count Godwin Ranlis, Comtesse Aveline Ranlis, and the Ranlis
@@ -3193,15 +4255,10 @@ profiles:
           higher-rank role, not a separate speaker. When the scene frames the
           ritual as public Reformist faith before the faithless, that is also
           still Luana performing the assumed authority role. Count Godwin Ranlis
-          does not need to be named directly in every later "Count" reference;
-          there may eventually be other counts, but through recent events he is
-          the Count in question where the Faltir/Ranlis road procession context
-          is already established.
-          Use Comtesse for her table-facing title; Condesa, Contessa, and
-          Countess are drift or translation variants in this context.
-          Pontiff/Pontif and Randless are transcription drift in this context.
-          Do not rewrite unrelated Pontiff, pontiff, or Randless references
-          outside this Faltir/Ranlis salt-history context.
+          is the Count in question through recent Faltir/Ranlis events. The line
+          about "that woman" having Dimensional Shackles refers to Carissa;
+          Luana put the Dimensional Shackles on her. Do not leave this as an
+          unresolved referent or assign it to Luana as the shackled target.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
             note: User clarified the procession is Count Ranlis's march, not the Pontiff's march, and that Count is the correct title.
@@ -3227,6 +4284,8 @@ profiles:
             note: User clarified on 2026-07-10 that the authority framing the moment as public Reformist faith before the faithless is still Luana.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User clarified that Count Godwin Ranlis does not need to be named in every later Count reference; he is the Count in question up through recent Faltir/Ranlis events, while future counts may appear.
+          - path: astro/.bf-transcripts/session-2026-07-04/corrected_transcript.md
+            note: Transcript line 6479 says "that woman has Dimension Shackles" in the captive-transport scene; user clarified that this means Carissa, because Luana put Dimensional Shackles on her.
 
       - id: place.flyukishilla
         status: confirmed
@@ -3241,6 +4300,15 @@ profiles:
           - Ifishod
           - Iffishod
           - if you should
+        match:
+          priority: normal
+          tags:
+            - place-flyukishilla
+            - flyukishilla
+            - fliokyshela
+            - ifishod
+            - emilys-origin
+            - feywild-schools
         scope:
           campaigns:
             - the-vengeful
@@ -3253,6 +4321,10 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Flyukishilla for the Feywild city in the Spring Court,
+          especially in Emily origin, Feywild schooling, magical disease
+          discussions, and the 2026-07-04 submarine knowledge-check context.
         instruction: >
           Use Flyukishilla for the Feywild city in the Spring Court, especially
           in Emily origin, Feywild schooling, magical disease discussions, and
@@ -3277,6 +4349,15 @@ profiles:
           - Iron Age
           - iron area
           - iron age
+        match:
+          priority: archive
+          tags:
+            - artifact-iron-area-day-court-correction
+            - iron-area-day-court-correction
+            - day-court-technology
+            - iron-area
+            - iron-age
+            - emily-submarine-knowledge-check
         scope:
           campaigns:
             - the-vengeful
@@ -3306,6 +4387,15 @@ profiles:
         aliases:
           - Belwick
           - Scalic
+        match:
+          priority: normal
+          tags:
+            - place-skelwick
+            - skelwick
+            - belwick
+            - scalic
+            - brooch-of-winter
+            - frozen-children-of-the-crone
         scope:
           campaigns:
             - the-vengeful
@@ -3335,6 +4425,15 @@ profiles:
             role: primary
         aliases:
           - Rhen Bridge
+        match:
+          priority: normal
+          tags:
+            - novelty-realm-bridge
+            - realm-bridge
+            - the-realm-bridge
+            - rhen-bridge
+            - fey-crossings
+            - veil-and-feywild-crossing-restrictions
         scope:
           campaigns:
             - the-vengeful
@@ -3364,6 +4463,14 @@ profiles:
             role: primary
         aliases:
           - Eastern Twin
+        match:
+          priority: low
+          tags:
+            - place-eastonton-teleport-destination
+            - eastonton-teleport-destination
+            - eastonton
+            - eastern-twin
+            - teleportation-sigil-destinations-at-14-03-29-14-03-43
         scope:
           campaigns:
             - the-vengeful
@@ -3399,6 +4506,15 @@ profiles:
           - Henson
           - Henderson
           - Henson the Golem
+        match:
+          priority: normal
+          tags:
+            - character-henson-eastonton
+            - henson-eastonton
+            - henson
+            - henderson
+            - eastonton-crisis
+            - miyas-controlled-stone-golem
         scope:
           campaigns:
             - the-vengeful
@@ -3409,6 +4525,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Disambiguate Henson Eastonton from Henson the Golem. Boyle's nephew
+          is not traveling in stone golem form; the golem is Miya's hijacked
+          stone golem trap. Henderson is only joking misnaming unless context
+          supports otherwise.
         instruction: >
           Disambiguate Henson Eastonton from Henson the Golem. Henson Eastonton
           is Boyle Eastonton's nephew, previously captured in the Eastonton
@@ -3436,6 +4557,15 @@ profiles:
           - Equine Rex
           - Ickless Rex
           - Rex
+        match:
+          priority: normal
+          tags:
+            - creature-equus-rex
+            - equus-rex
+            - equine-rex
+            - ickless-rex
+            - kelthyr-and-luana-stable-scenes
+            - castle-malthrek-village-travel-mount
         scope:
           campaigns:
             - the-vengeful
@@ -3469,6 +4599,15 @@ profiles:
           - Mr. Wadbrand
           - Pedro
           - Padrian
+        match:
+          priority: normal
+          tags:
+            - character-podron
+            - podron
+            - padron
+            - padr-n
+            - faltir-fortress-changeling-rescue
+            - comtesse-aveline-impersonation
         scope:
           campaigns:
             - the-vengeful
@@ -3479,6 +4618,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Podron for the rescued Faltir changeling; Padron/Padrón/Mr.
+          Wadbrand/Pedro/Padrian are drift in this context. Keep safe contact
+          with Podron's shapeshifter sanctuary as a top-level Open Hook unless
+          later canon settles it.
         instruction: >
           Use Podron for the rescued changeling from the Faltir fortress dungeon.
           Padron, Padrón, Mr. Wadbrand, Pedro, and Padrian are spelling or ASR
@@ -3514,6 +4658,15 @@ profiles:
           - Dickon
           - Alden
           - Branrom
+        match:
+          priority: normal
+          tags:
+            - place-malthrek-villages-gralter-garvind
+            - malthrek-villages-gralter-garvind
+            - gralter-and-garvind
+            - gralter
+            - garvind
+            - kelthyr-and-luana-village-mobilization-route
         scope:
           campaigns:
             - the-vengeful
@@ -3525,6 +4678,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In the 2026-06-28 Malthrek village route, Wheelbarrow Inn/Dickon are
+          in Gralter, Garvind is the second mining village, Alden is the
+          smith/wheelwright, Irgend and Pleasureless drift toward Garvind, and
+          Branrom points to Branrum Malterdale.
         instruction: >
           In the 2026-06-28 Malthrek-area village route, Wheelbarrow Inn is the
           inn in Gralter, Dickon is its innkeeper, Garvind is the second mining
@@ -3554,11 +4712,20 @@ profiles:
         aliases:
           - Miskaso
           - Miskaso Mountains
+        match:
+          priority: archive
+          tags:
+            - artifact-miskaso-castle-malthrek
+            - miskaso-castle-malthrek
+            - castle-malthrek
+            - miskaso
+            - miskaso-mountains
+            - castle-malthrek-approach-and-reinforcement-planning
         scope:
           campaigns:
             - the-vengeful
           sessionDates:
-            - 2026-06-28
+            - "2026-06-28"
           contexts:
             - Castle Malthrek approach and reinforcement planning
             - Agnes discussion around entering the castle or fortress
@@ -3587,17 +4754,30 @@ profiles:
           - meat chatter
           - treats or candy parasites
           - parasites hidden in fruit or treats
+        match:
+          priority: archive
+          tags:
+            - artifact-charcuterie-board-food-chatter
+            - charcuterie-board-food-chatter
+            - charcuterie-board
+            - meats-on-the-charcuterie-board
+            - castle-malthrek-church-plan-discussion
+            - food-meat-treats-candy-or-charcuterie-side-chatter
         scope:
           campaigns:
             - the-vengeful
           sessionDates:
-            - 2026-06-27
+            - "2026-06-27"
           contexts:
             - Castle Malthrek church-plan discussion
             - food, meat, treats, candy, or charcuterie side chatter
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          In the 2026-06-27 Vengeful notes, do not convert real-table chatter
+          about the meats on the charcuterie board into an in-world clue about
+          parasites hidden in fruit, treats, or candy.
         instruction: >
           In the 2026-06-27 Vengeful notes, do not convert real-table chatter
           about the meats on the charcuterie board into an in-world clue about
@@ -3620,6 +4800,15 @@ profiles:
         aliases:
           - Kelthyr
           - Keltier
+        match:
+          priority: normal
+          tags:
+            - character-kelthyr-kulok
+            - kelthyr-kulok
+            - kelthyr
+            - keltier
+            - hicklander-contacts-and-sewer-routes
+            - angel-ranneks-tutor
         scope:
           campaigns:
             - the-vengeful
@@ -3650,6 +4839,14 @@ profiles:
             role: primary
         aliases:
           - Rainoso
+        match:
+          priority: normal
+          tags:
+            - place-port-rainoso
+            - port-rainoso
+            - rainoso
+            - raibon-city-or-capital-references
+            - legally-bare-and-nightshift-nurses-logistics
         scope:
           campaigns:
             - the-vengeful
@@ -3683,6 +4880,15 @@ profiles:
         aliases:
           - Scarlet airship
           - Scarlet
+        match:
+          priority: normal
+          tags:
+            - vehicle-the-scarlet
+            - the-scarlet
+            - scarlet-airship
+            - scarlet
+            - teleportation-sigil-destinations
+            - feywild-airship-hedwig-and-allies-retook
         scope:
           campaigns:
             - the-vengeful
@@ -3710,6 +4916,13 @@ profiles:
         aliases:
           - Gerda Moon
           - Greta Moon
+        match:
+          priority: high
+          tags:
+            - character-gerta-moon
+            - gerta-moon
+            - gerda-moon
+            - greta-moon
         scope:
           campaigns:
             - the-vengeful
@@ -3732,6 +4945,15 @@ profiles:
         aliases:
           - pregnancy mechanics
           - twin rolls
+        match:
+          priority: normal
+          tags:
+            - mechanics-pregnancy-rolls
+            - pregnancy-rolls
+            - pregnancy-mechanics
+            - twin-rolls
+            - pregnancy-checks
+            - emilys-possible-twins
         scope:
           campaigns:
             - the-vengeful
@@ -3742,6 +4964,10 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Pregnancy mechanics in the Vengeful notes are intentionally loose.
+          The only firm table convention is that pregnancy typically requires
+          two consecutive d20 rolls below 10.
         instruction: >
           Pregnancy mechanics in the Vengeful notes are intentionally loose. The
           only firm table convention is that pregnancy typically requires two
@@ -3752,9 +4978,7 @@ profiles:
           Preserve that the DM may refine these mechanics later.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
-            note: Current note records the pregnancy roll sequence and Emily's possible twins as loose mechanics.
-          - path: user correction
-            note: User clarified the two-below-10 convention, the player-request nature of Emily's twins, and that the mechanics may be refined later.
+            note: Current note records the user-clarified two-below-10 convention, the player-request nature of Emily's twins, and that these loose mechanics may be refined later.
 
       - id: place.kalassar-star-candy-source
         status: confirmed
@@ -3763,6 +4987,15 @@ profiles:
         canonicalRefs: []
         aliases:
           - Palasar
+        match:
+          priority: normal
+          tags:
+            - place-kalassar-star-candy-source
+            - kalassar-star-candy-source
+            - kalassar
+            - palasar
+            - star-candies
+            - candy-from-an-auction
         scope:
           campaigns:
             - the-vengeful
@@ -3792,6 +5025,13 @@ profiles:
         aliases:
           - Noemula
           - Nomenmolar
+        match:
+          priority: normal
+          tags:
+            - place-nuenmuller
+            - nuenmuller
+            - noemula
+            - nomenmolar
         scope:
           campaigns:
             - the-vengeful
@@ -3824,12 +5064,24 @@ profiles:
           - Marky
           - Murky
           - Mark
+        match:
+          priority: normal
+          tags:
+            - disambiguation-mark-murky-marky
+            - mark-murky-marky
+            - marky
+            - murky
         scope:
           campaigns:
             - the-vengeful
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Do not mechanically rewrite Mark, Marky, or Murky. In Vengeful
+          contexts involving teasing Murky, protective suits, the Narrows, or
+          Henson fetching someone with teleportation or a Cape of the
+          Mountebank, Marky usually means Murky Mabrams.
         instruction: >
           Do not mechanically rewrite Mark, Marky, or Murky. In Vengeful
           contexts involving teasing Murky, protective suits, the Narrows, or
@@ -3855,6 +5107,15 @@ profiles:
           - Matthew
           - Mark
           - Malthrek boy
+        match:
+          priority: normal
+          tags:
+            - disambiguation-matthew-mark-malthrek
+            - matthew-mark-malthrek
+            - matthew
+            - mark
+            - thralmals-hag-bargain-and-pool-protection
+            - castle-malthrek-and-malthrek-child-extraction
         scope:
           campaigns:
             - the-vengeful
@@ -3865,6 +5126,10 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Do not collapse Matthew Malthrek and Mark Malthrek into a generic
+          ambiguity. Mark was physically with the group at the Thralmals when
+          they talked to the hags.
         instruction: >
           Do not collapse Matthew Malthrek and Mark Malthrek into a generic
           ambiguity. Mark was physically with the group at the Thralmals when
@@ -3884,12 +5149,23 @@ profiles:
           - Talgito
           - Taudito
           - Talbito or Taudito
+        match:
+          priority: low
+          tags:
+            - filler-tawag-dito
+            - tawag-dito
+            - talgito
+            - taudito
         scope:
           campaigns:
             - the-vengeful
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          When audio reflects Tagalog filler tawag dito, do not canonize it as
+          lore. Talbito is also a real Reformist paladin elsewhere, so never
+          globally replace Talbito without checking scene context.
         instruction: >
           When the audio reflects the Tagalog filler phrase tawag dito, do not
           canonize it as a lore term. Talbito is also a confirmed Reformist
@@ -3914,6 +5190,14 @@ profiles:
           - Mount Thibris
           - Mt Thibris
           - Mt. Thibris
+        match:
+          priority: normal
+          tags:
+            - place-mt-thibris
+            - mt-thibris
+            - mount-thibris
+            - castle-malthrek-geography
+            - western-senera-reformist-operation
         scope:
           campaigns:
             - the-vengeful
@@ -3940,6 +5224,15 @@ profiles:
           - Hicklander food house
           - Martha food house
           - Martha's foodhouse
+        match:
+          priority: normal
+          tags:
+            - location-marthas-food-house
+            - marthas-food-house
+            - hicklander-food-house
+            - martha-food-house
+            - castle-malthrek-servants-and-hicklander-allies
+            - mark-malthrek-estate-cover
         scope:
           campaigns:
             - the-vengeful
@@ -3965,6 +5258,15 @@ profiles:
           - Marijon
           - Marie-Jean
           - Marie Jean
+        match:
+          priority: normal
+          tags:
+            - character-marjun
+            - marjun
+            - marijon
+            - marie-jean
+            - castle-malthrek-head-chef
+            - hicklander-spies-and-kitchen-cover
         scope:
           campaigns:
             - the-vengeful
@@ -3996,6 +5298,15 @@ profiles:
           - Whip-bearer
           - Bearer of the Whip
           - Whiplaird
+        match:
+          priority: normal
+          tags:
+            - reformist-bearer-titles
+            - bearer-titles
+            - cupbearer
+            - bearer-of-the-cup
+            - reformist-hierarchy
+            - castle-malthrek-coup-and-ritual-scenes
         scope:
           campaigns:
             - the-vengeful
@@ -4029,6 +5340,15 @@ profiles:
           - Proserfina
           - Koto
           - Kotoko
+        match:
+          priority: normal
+          tags:
+            - character-proserfina-prunus-subhirtella
+            - proserfina-prunus-subhirtella
+            - fina
+            - proserfina
+            - fina-and-cotto-feywild-backstory
+            - inkwell-academy-and-fey-crossing-research
         scope:
           campaigns:
             - the-vengeful
@@ -4041,6 +5361,11 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >
+          Use Proserfina Prunus Subhirtella, usually Fina, for the Feywild
+          changeling from Inkwell Academy who researched Fey Crossings, loved
+          ruins, adventured with Cotto, and chose his world after they fell in
+          love. Koto/Kotoko are drift for Cotto in this context.
         instruction: >
           Use Proserfina Prunus Subhirtella, usually Fina, for the changeling
           from the Feywild. She was an Inkwell Academy researcher specializing
@@ -4064,6 +5389,15 @@ profiles:
         aliases:
           - the mistress
           - mistress
+        match:
+          priority: normal
+          tags:
+            - character-tiphanie-mistress-title
+            - tiphanie-mistress-title
+            - tiphanie-as-johns-mistress-title-mentor
+            - the-mistress
+            - mistress
+            - john-malthrek-and-tiphanie
         scope:
           campaigns:
             - the-vengeful
@@ -4092,6 +5426,15 @@ profiles:
           - Storm Bjorn
           - Storm Bjorn Castle
           - Stormbjorn Castle
+        match:
+          priority: normal
+          tags:
+            - place-stormbjorn
+            - stormbjorn
+            - storm-bjorn
+            - storm-bjorn-castle
+            - rebeccas-origin
+            - northern-senera-ruins
         scope:
           campaigns:
             - the-vengeful
@@ -4118,6 +5461,14 @@ profiles:
         canonicalRefs: []
         aliases:
           - Timahel
+        match:
+          priority: high
+          tags:
+            - celestial-timael
+            - timael
+            - timahel
+            - celestial-angel-and-couatl-maze
+            - robe-of-the-archmagi-from-the-maze
         scope:
           campaigns:
             - the-vengeful
