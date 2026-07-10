@@ -1810,6 +1810,8 @@ profiles:
           - Underwear of warmth
           - high-heeled Stilettos of Wounding
           - Gauntlet of Elemental Transmutation
+          - transmutation gloves
+          - transportation gloves
         match:
           priority: normal
           tags:
@@ -1825,6 +1827,9 @@ profiles:
           contexts:
             - Fort Faltir and Comtesse loot
             - Faltir magic item recovery
+            - salt-to-black-powder transmutation
+            - black-powder logistics
+            - Faltir black-powder operation
             - Minfilia bounty and ward count aftermath
         apply:
           mode: prompt-first
@@ -1834,7 +1839,9 @@ profiles:
           Underwear of Warmth, Stilettos of Wounding, and Gauntlet of
           Elemental Transmutation. Token of Hadar requires attunement; the
           handcuffs command word is crunchy; the gauntlet can make
-          granular/powdered solids like gunpowder.
+          granular/powdered solids like gunpowder. Correct "transportation gloves"
+          to Gauntlet of Elemental Transmutation when the transcript refers to
+          transmuting salt into black powder.
         instruction: >
           In the Fort Faltir loot context, use the canonical item names Token of
           Hadar, Magical Handcuffs, Underwear of Warmth, Stilettos of Wounding,
@@ -1842,7 +1849,10 @@ profiles:
           that casts hunger of hadar and requires attunement. The magical
           handcuffs use the command word "crunchy." The gauntlet has five charges,
           regains all expended charges daily at dawn, and can make mundane
-          granular or powdered solids such as gunpowder.
+          granular or powdered solids such as gunpowder. In the black-powder
+          logistics thread, Reformists transmute salt into black powder with the
+          Gauntlet of Elemental Transmutation at Faltir; do not preserve
+          "sewage" or "transportation gloves" as canon.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
             note: Current note lists Fort Faltir and Comtesse loot and connects these names to the recovered items.
@@ -1852,6 +1862,8 @@ profiles:
             note: Item rules define the lock/unlock command word as crunchy.
           - path: astro/src/content/docs/world/items/gauntlet-of-elemental-transmutation.item.yaml
             note: Item rules define charges, recharge, material conversion, and gunpowder capability.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-05.mdx
+            note: User clarified on 2026-07-10 that the Faltir operation transmutes salt into black powder using the Gauntlet of Elemental Transmutation.
 
       - id: item.love-beat
         status: confirmed
@@ -2381,10 +2393,16 @@ profiles:
         instruction: >
           Use Kara for the maiden of the Children of the Crone hag trio in the
           2026-07-04 hag household and duel scenes. Kaua and Cara are drift in
-          this context unless later canon establishes a separate character.
+          this context unless later canon establishes a separate character. Treat
+          "planted" and "seedling" language around Kara as botanical flavor tied
+          to the reused Lucy / Glass Eyed Hag vibe, not confirmed spy, hostage,
+          or political-plant canon; she frames herself as being there to learn
+          under Lucinda and Helga.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User initially corrected the hag's name to Kaua, then clarified that this was mistaken and the correct name is Kara, not Kaua or Cara.
+          - path: astro/src/content/docs/world/misc/glass-eyed-hag.creature.yaml
+            note: User clarified that Kara's plant/seedling phrasing was botanical flavor from the Lucy / Glass Eyed Hag stat-block vibe, not subversive-role canon.
 
       - id: mechanics.glass-eyed-hag-statblock
         status: confirmed
@@ -2442,9 +2460,9 @@ profiles:
             note: Imported creature data renames the source stat block to Glass Eyed Hag for Bastion Falls use.
 
       - id: title.greater-archon
-        status: provisional
+        status: confirmed
         kind: title
-        canonical: Greater Archon
+        canonical: Greater Archon, a Reformist position falsely attributed to Emily as Sister Rachel
         canonicalRefs:
           - type: note
             path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
@@ -2470,13 +2488,14 @@ profiles:
           mode: prompt-first
           safeExactReplacement: false
         instruction: >
-          Use Greater Archon, not Great Archon, for Emily's supposed authority
-          or cover title in the Castle Malthrek banquet/servant infiltration
-          thread. Preserve uncertainty about what the title actually means; the
-          party does not yet know its full significance.
+          Use Greater Archon, not Great Archon, for the real Reformist position
+          falsely attributed to Emily as Sister Rachel in the Castle Malthrek
+          banquet/servant infiltration thread. Its exact hierarchy and
+          relationship to other Reformist ranks remain unresolved, but do not
+          treat the position itself as a bluff-only title or uncertain term.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
-            note: Current note says Emily is supposedly a Greater Archon and that the party does not yet know what Greater Archon means.
+            note: User clarified on 2026-07-10 that Greater Archon is a real Reformist position falsely attributed to Emily.
           - path: astro/.bf-transcripts/session-2026-07-05/correction_notes_chunks/session_002.md
             note: Correction notes flag Great Archon as likely Greater Archon.
           - path: astro/.bf-transcripts/session-2026-07-05/correction_notes_chunks/session_009.md
@@ -2538,6 +2557,120 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User clarified that Marad's spelling is confirmed, he is parasitized, a full low-level devout Reformist, generally creepy, not original Castle Malthrek staff, and probably added during the depths of the Duke and Duchess's corruption.
 
+      - id: character.selpi-castle-staff
+        status: confirmed
+        kind: entity
+        canonical: Selpi
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-05.mdx
+            role: castle-malthrek-staff-leadership
+        aliases:
+          - Selphie
+          - Selphy
+          - Selfie
+        match:
+          priority: low
+          tags:
+            - character-selpi-castle-staff
+            - selpi
+            - selphie
+            - castle-malthrek-staff
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-05"
+          contexts:
+            - Castle Malthrek staff assembly
+            - Sister Rachel attendant scene
+            - Saral and Selpi staff management
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Selpi for the Castle Malthrek staff leader who works alongside
+          Saral during Sister Rachel's servant-assembly scene. Treat Selphie,
+          Selphy, and Selfie as transcription drift in this context.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-05.mdx
+            note: User confirmed on 2026-07-10 that the intended spelling is Selpi.
+
+      - id: character.rizi-castle-attendant
+        status: confirmed
+        kind: entity
+        canonical: Rizi
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-05.mdx
+            role: sister-rachel-attendant
+        aliases:
+          - Rizzy
+        match:
+          priority: low
+          tags:
+            - character-rizi-castle-attendant
+            - rizi
+            - rizzy
+            - sister-rachel-attendant
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-05"
+          contexts:
+            - Sister Rachel attendant group
+            - Castle Malthrek ballroom preparation
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Rizi for the Castle Malthrek attendant introduced with Sora,
+          Namara, Isma, and Likra. Treat Rizzy as transcription drift here.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-05.mdx
+            note: User confirmed on 2026-07-10 that the intended spelling is Rizi.
+
+      - id: character.likra-castle-attendant
+        status: confirmed
+        kind: entity
+        canonical: Likra
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-05.mdx
+            role: sister-rachel-attendant
+        aliases:
+          - Licra
+          - Hydra
+        match:
+          priority: low
+          tags:
+            - character-likra-castle-attendant
+            - likra
+            - licra
+            - hydra-temporary-rename
+            - sister-rachel-attendant
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-05"
+          contexts:
+            - Sister Rachel attendant group
+            - Castle Malthrek ballroom preparation
+            - Hydra temporary rename
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Likra for the Castle Malthrek attendant introduced with Rizi,
+          Sora, Namara, and Isma. Treat Licra as transcription drift. Emily as
+          Rachel calls Likra "Hydra for now" as a temporary in-scene rename, not
+          a replacement canonical name.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-05.mdx
+            note: User confirmed on 2026-07-10 that Rizi and Likra are the intended spellings and that Emily as Rachel temporarily calls Likra Hydra.
+
       - id: character.saral-chief-of-staff
         status: confirmed
         kind: entity
@@ -2549,6 +2682,7 @@ profiles:
         aliases:
           - Chief of Staff
           - key servant ally
+          - Cyril
         match:
           priority: low
           tags:
@@ -2563,10 +2697,12 @@ profiles:
             - the-vengeful
           sessionDates:
             - "2026-07-04"
+            - "2026-07-05"
           contexts:
             - Castle Malthrek servant ally
             - Chief of Staff helping identify Reformists
             - Marston Marad Saral disambiguation
+            - Sister Rachel Castle Malthrek staff scenes
         apply:
           mode: prompt-first
           safeExactReplacement: false
@@ -2579,10 +2715,14 @@ profiles:
           of Staff, his name is Saral. Do not identify that Chief of Staff ally
           as Marad or Marston without later canon confirmation. Marad is the
           parasitized low-level devout Reformist servant/recruiter; Marston is a
-          separate staff name that remains distinct in current notes.
+          separate staff name that remains distinct in current notes. Saral is
+          Castle Malthrek's seneschal; table talk also calls him Chief of Staff.
+          Correct Cyril to Saral in the 2026-07-05 Castle Malthrek staff scenes.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User clarified that if the key servant ally is the Chief of Staff, his name is Saral.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-05.mdx
+            note: User clarified on 2026-07-10 that Saral is Castle Malthrek's seneschal and is also called Chief of Staff in table talk; Cyril is transcription drift in those scenes.
 
       - id: item.ward-of-magic-detection
         status: confirmed
@@ -3869,6 +4009,8 @@ profiles:
           - Trillian
           - Trajan Dupe
           - Fake Trajan
+          - Preijen
+          - Raja
         match:
           priority: normal
           tags:
@@ -3881,27 +4023,35 @@ profiles:
         scope:
           campaigns:
             - the-vengeful
+          sessionDates:
+            - "2026-07-05"
           contexts:
             - Philodendron and face-stealing identity
             - Trajan shapeshifter lore
             - Rachel meeting or trade-deal context
+            - infected changeling contact
         apply:
           mode: prompt-first
           safeExactReplacement: false
         promptInstruction: >
           Use Trajan when the 2026-07-04 trade or meeting context is heard as
-          Trillian. Nico confirmed Trillian should be Trajan in that passage.
+          Trillian. Use Trajan as well for the 2026-07-05 infected-changeling
+          contact passage heard as Raja or Preijen.
         instruction: >
           Use Trajan when the 2026-07-04 trade or meeting context is heard as
           Trillian. Nico confirmed Trillian should be Trajan in that passage.
-          Philodendron records also preserve Trajan, Trajan Dupe, and Fake Trajan
-          as aliases or identity references, so do not preserve Trillian as a
-          separate person, title, or table-noise hook in this context.
+          In the 2026-07-05 infected-changeling contact passage, correct Raja
+          and Preijen to Trajan. Philodendron records also preserve Trajan,
+          Trajan Dupe, and Fake Trajan as aliases or identity references, so do
+          not preserve Trillian, Raja, or Preijen as separate people, titles, or
+          table-noise hooks in these contexts.
         evidence:
           - path: astro/src/content/docs/world/characters/philodendron.mdx
             note: Philodendron frontmatter lists Trajan Dupe, Trajan, and Fake Trajan as aliases.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User clarified on 2026-07-10 that the line heard as Trillian should be Trajan.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-05.mdx
+            note: User clarified on 2026-07-10 that the infected-changeling contact should be Trajan, not Raja or Preijen.
 
       - id: place.turbiere-de-hubar
         status: confirmed
@@ -4036,11 +4186,18 @@ profiles:
           In the 2026-07-04 hag-road scene, do not frame Miya's Baba Yaga line as
           a hidden-agent or spy-insertion claim. Nico clarified that Miya is
           alluding to Tiphanie now being in Senera after coming from the Feywild.
-          Preserve unresolved details around what the hags know, why they cannot
-          name "her," and how the Mother's power binds their speech.
+          Preserve unresolved details around what the hags know and why they
+          cannot name "her." Helga's imminent-day line points to the hoped-for
+          day when the Children of the Crone will no longer be bound by the rules
+          of the original Baba Yaga. They follow the Crone, who asserts that Baba
+          Yaga is a title rather than a true name and is trying to usurp the
+          position. Preserve the ambiguity that Nico may have intended this as
+          fervent hope, while Helga may be framing it in-world as prophecy.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User clarified that Miya was alluding to Tiphanie's presence in Senera from the Feywild, not identifying a hidden agent sent into hag territory.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that Helga is saying the day the Children of the Crone are no longer bound by the original Baba Yaga's rules is imminent; this may be a fervent hope that Helga frames as prophecy.
 
       - id: mechanics.feywild-duel-forms-open-hook
         status: provisional

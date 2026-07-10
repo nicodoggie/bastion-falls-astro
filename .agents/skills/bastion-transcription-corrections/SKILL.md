@@ -111,7 +111,7 @@ I found "Sierra, a Sister of the Light" in the session notes. Should this be pro
 
 ## Rule Shape
 
-Use this structure:
+Use this retrieval-friendly structure for new or substantially revised rules:
 
 ```yaml
 - id: character.example
@@ -124,14 +124,25 @@ Use this structure:
       role: primary
   aliases:
     - Misheard Name
+  match:
+    priority: normal
+    tags:
+      - example-name
+      - relevant-place-or-thread
   scope:
     campaigns:
       - the-vengeful
+    # Quote dates so js-yaml does not parse them as Date objects.
+    sessionDates:
+      - "2026-06-14"
   apply:
     mode: prompt-first
     safeExactReplacement: false
+  promptInstruction: >
+    Compact correction guidance for normal transcript/note prompts.
   instruction: >
-    Tell transcription and notes models exactly how to use this correction.
+    Longer human-readable nuance and audit guidance. Keep this useful, but do
+    not make prompt-critical behavior depend only on this field.
   evidence:
     - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
       note: Short reason this note supports the rule.
@@ -139,6 +150,32 @@ Use this structure:
 
 Required fields: `id`, `status`, `kind`, `canonical`, `aliases`, `scope`, `apply`, and
 `instruction`. Use `canonical: null` for rejected artifacts or pure disambiguation rules.
+For compact-prompt compatibility, add `promptInstruction` whenever `instruction` is long,
+contains multiple canon boundaries, or includes audit-only detail.
+
+### Matching and prompt-shape guidelines
+
+- Treat `corrections.yaml` as the git-tracked canonical rule store. Do not move these rules into
+  Hermes memory or a separate database; any runtime index should be generated in memory from this YAML.
+- Add `match.tags` as retrieval hints for semantic context that aliases will not catch: places,
+  factions, items, session threads, roles, spell names, and recurring scene labels.
+- Use `match.priority` to control normal prompt inclusion:
+  - `always` — tiny, broadly applicable, high-value rules that should always be injected for matching campaigns.
+  - `high` — include when the campaign/session matches and any alias, canonical term, tag, or context appears.
+  - `normal` — include only on a meaningful alias/canonical/tag/context match.
+  - `low` — include only on direct or strong contextual match; good for open-hook guardrails and rare drift.
+  - `archive` — keep as audit/evidence, but do not inject into normal prompts unless explicitly requested.
+- Keep `promptInstruction` short: usually 1-3 sentences, model-facing, and directly actionable.
+- Keep `instruction` human-readable and nuanced, but avoid essay-like entries. If a rule needs many
+  paragraphs, split durable canon into articles/notes and keep the correction rule as an index card.
+- Evidence is for audit/debug modes, not normal prompts. Do not rely on evidence notes to steer the model.
+- Avoid path-like fake evidence such as `path: user correction`; prefer a real note/transcript path,
+  `url`, or typed external reference with `name`/`source`.
+- Quote `scope.sessionDates` values (`"2026-07-04"`) so the TypeScript loader receives strings,
+  not YAML timestamp objects.
+- Rules with no aliases are suspicious in this file. Keep them only if `match.tags` and
+  `promptInstruction` make them useful for retrieval; otherwise the fact likely belongs in a note,
+  article, or open-hook trail.
 
 ## Scope Rules
 

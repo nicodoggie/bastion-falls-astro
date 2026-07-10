@@ -20,7 +20,7 @@
     "lint:mdx": "rumdl check src",
     "lint:mdsf": "mdsf verify src",
     "lint:yaml": "eslint --config eslint.yaml.config.mjs \"src/content/docs/world/**/*.{yaml,yml}\"",
-    "fmt": "turbo run lint:all",
+    "fmt": "turbo run fmt:all",
     "lint": "turbo run lint:all",
     "postinstall": "flowbite-react install",
     "bfcli": "_REAL_CWD=$INIT_CWD pnpm -F @bastion-falls/cli run exec"

@@ -55,8 +55,8 @@ action:
   - name: Marshmallow Pie
     entries:
       - >-
-        Ranged Weapon Attack: {@hit +6} to hit, range 60/240 ft., one target. Hit: 6 ({@damage 1d6
-        + 3}) bludgeoning damage plus 7 ({@damage 1d8 + 3}) psychic damage.
+        Ranged Weapon Attack: {@hit +6} to hit, range 60/240 ft., one target. Hit: 6 ({@damage 1d6 +
+        3}) bludgeoning damage plus 7 ({@damage 1d8 + 3}) psychic damage.
   - name: Cellophane (Flower)
     entries:
       - >-
@@ -73,8 +73,8 @@ action:
         The glass eyed hag can perform this action only if the patterns in her eyes are stars. The
         glass eyed hag breathes a gust of diamond dust in a 60-foot cone. Each creature in that area
         must succeed on a {@dc 14} Dexterity saving throw or have severe difficulty breathing and
-        become {@condition incapacitated}. At the start of each of its turns, the creature can make a
-        {@dc 14} Constitution saving throw, ending the effect on itself on a success.
+        become {@condition incapacitated}. At the start of each of its turns, the creature can make
+        a {@dc 14} Constitution saving throw, ending the effect on itself on a success.
   - name: Luck Drain (Clovers)
     entries:
       - >-
@@ -89,9 +89,9 @@ action:
         The glass eyed hag can perform this action only if the patterns in her eyes are hearts. The
         glass eyed hag summons two Lonely Hearts: Large humanoids with AC 10 and 18 ({@dice 3d8 +
         3}) hit points. A Lonely Heart has the Fanboi trait: whenever the glass eyed hag moves more
-        than 5 feet away from the Lonely Heart, it uses all its actions to move within 5 feet of her.
-        A Lonely Heart also has the Protecc reaction: when the glass eyed hag is attacked while the
-        Lonely Heart is within 5 feet of her, the Lonely Heart automatically lunges to take the
+        than 5 feet away from the Lonely Heart, it uses all its actions to move within 5 feet of
+        her. A Lonely Heart also has the Protecc reaction: when the glass eyed hag is attacked while
+        the Lonely Heart is within 5 feet of her, the Lonely Heart automatically lunges to take the
         damage instead.
   - name: Solar Flare (Recharge 5-6)
     entries:
