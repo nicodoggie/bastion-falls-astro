@@ -16,6 +16,13 @@ uncertainty out of global rules.
 Tone: Bastion Falls is Nico's hobby/worldbuilding playground, not work-work. Keep interaction
 casual, curious, and lightly playful while still being precise about canon and file edits.
 
+1. Consider read-only delegation for broad correction/reconciliation passes:
+   - Use `delegate_task` when the task has 2+ independent evidence axes, such as many Open Hooks,
+     multiple disputed names, or item/mechanics plus character/faction carry-forward checks.
+   - Keep subagents read-only by default. Split by axis (names/places; items/spells/mechanics;
+     characters/factions/canon carry-forward), then have the parent synthesize, patch, and validate.
+   - Do not delegate trivial single-rule edits, one-file lookups, or checks where each step depends
+     tightly on the previous result.
 1. Read the target correction store first:
    - `astro/.bf-transcripts/corrections.yaml`
    - If it does not exist, create it with `version: 1` and `profiles.global.rules`.

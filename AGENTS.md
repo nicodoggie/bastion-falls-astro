@@ -87,6 +87,19 @@ evidence from source files, package scripts, transcripts, or generated artifacts
 - For YAML homebrew data, keep YAML schema-compatible and validate with the
   package/site checks that exercise the relevant collection or endpoint.
 
+## Delegation Guidance
+
+- For large evidence-reconciliation tasks with 2+ independent axes, prefer
+  `delegate_task` before editing. Good candidates include transcript/note
+  cleanup, Open Hooks reconciliation, canon cross-checks, broad naming sweeps,
+  and multi-source item/mechanics reviews.
+- Use read-only subagents by default. Split by evidence axis, for example:
+  names/places, items/mechanics, and characters/factions/canon carry-forward.
+  The parent agent should synthesize results, make edits itself, and run final
+  validation.
+- Do not delegate trivial one-file lookups, single searches, or tasks where the
+  next step depends tightly on the previous result.
+
 ## Editing Style
 
 - Follow existing module boundaries and package patterns. Add abstractions only

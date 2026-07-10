@@ -167,6 +167,34 @@ test("includes shared correction rules in notes prompts", () => {
   }
 });
 
+test("describes final campaign note output format explicitly", () => {
+  const prompt = buildCodexFinalNotesPrompt({
+    frontmatter: "---\ntitle: Test\n---\n",
+    correctionRules: "- artifact.sabina: Do not canonize Sabina.",
+    sceneSummaries: ["- Apparent Sabina artifact."],
+  });
+
+  assert.match(prompt, /Write readable campaign notes, not a correction changelog/);
+  assert.match(prompt, /Use this output structure after the frontmatter/);
+  assert.match(prompt, /## Summary/);
+  assert.match(prompt, /- \{summary bullet\}/);
+  assert.match(prompt, /## Open Hooks/);
+  assert.match(prompt, /- \{hook bullet\}/);
+  assert.match(prompt, /- \{hook bullet\}\n\n### Confirmations Needed/);
+  assert.match(prompt, /### Confirmations Needed/);
+  assert.match(prompt, /- \{confirmation bullet\}/);
+  assert.match(prompt, /- \{confirmation bullet\}\n\n### Boundaries/);
+  assert.match(prompt, /### Boundaries/);
+  assert.match(prompt, /- \{boundary bullet\}/);
+  assert.match(prompt, /Summary contains the readable campaign recap/);
+  assert.match(prompt, /Confirmations Needed contains only live checks/);
+  assert.match(prompt, /Boundaries contains only reader-facing interpretive constraints/);
+  assert.match(prompt, /Apply settled correction rules directly/);
+  assert.match(prompt, /Open Hooks section only for live unresolved/);
+  assert.match(prompt, /Do not create .*Settled Clarifications/i);
+  assert.match(prompt, /rejected ASR artifacts, table chatter exclusions, alias drift, or do-not-canonize guardrails/);
+});
+
 test("formats summary cleanup chunk progress states", () => {
   assert.equal(
     formatSummaryCleanupProgress({
