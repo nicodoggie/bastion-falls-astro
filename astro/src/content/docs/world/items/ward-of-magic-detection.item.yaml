@@ -1,0 +1,16 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Ward of Magic Detection
+source: BF
+type: wondrous item
+rarity: uncommon
+wondrous: true
+entries:
+  - >-
+    This ward functions like a standing magical sensor keyed to nearby magic. When active, it acts
+    like a detect magic spell, allowing a trained observer or linked alarm system to notice magical
+    auras, active spellcasting, or similar magical intrusions within its coverage.
+  - >-
+    The ward must be recharged once per day by expending a 3rd-level spell slot into it. If an Orb
+    of Enhancement or similar enhancer orb is operating in the vicinity, the ward does not need this
+    daily charge; the orb condenses raw magical energy in the area and supplies the charge for it.

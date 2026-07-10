@@ -1,0 +1,27 @@
+---
+title: Ward of Magic Detection
+tags:
+  - items
+item:
+  name: Ward of Magic Detection
+  details:
+    type: wondrous item
+    rarity: uncommon
+    aliases:
+      - magic-detection ward
+      - detection ward
+itemDataStats:
+  rules: items/ward-of-magic-detection.item
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+A **Ward of Magic Detection** is a standing magical sensor used to watch for magical auras,
+spellcasting, and similar magical intrusions. It is often installed near doors, offices, waiting
+rooms, or other controlled passages where suspicious magic would matter more than mundane movement.
+
+The ward normally needs a daily 3rd-level spell recharge. When an
+[Orb of Enhancement](../misc/orbs-of-power/orb-of-enhancement.mdx) or similar enhancer orb operates
+nearby, the ward can draw on the condensed raw magical energy instead.
+
+<ItemBlock item={frontmatter.itemDataStats.rules} />

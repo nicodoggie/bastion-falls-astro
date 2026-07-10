@@ -935,12 +935,16 @@ profiles:
           Pleasures contexts. If her parasite status comes up, preserve that it is unknown:
           she was exiled to the Feywild before the parasite network was
           discovered, so do not mark her as confirmed infected or confirmed
-          clean.
+          clean. References to Rosemunda in current Vengeful-era scenes are
+          usually historical or secondhand unless she returns from the Feywild
+          or characters go to her.
         evidence:
           - path: astro/src/content/docs/world/characters/rosemunda-parvese.mdx
             note: Canonical character article title and frontmatter use Rosemunda Parvèse.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
             note: User clarified Rosemunda's spelling and that her parasite status remains unknown because her exile predated parasite discovery.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User confirmed Madame Rosamanda refers to Rosemunda Parvèse, and that current references to her are from the past unless she returns from the Feywild or people go to her.
 
       - id: family.dubreuil
         status: confirmed
@@ -1897,7 +1901,7 @@ profiles:
             note: Correction notes treat Greater Archon capitalization as intentional.
 
       - id: character.marad
-        status: provisional
+        status: confirmed
         kind: entity
         canonical: Marad
         canonicalRefs:
@@ -1920,18 +1924,225 @@ profiles:
           mode: prompt-first
           safeExactReplacement: false
         instruction: >
-          Use Marad provisionally for the male Castle Malthrek staffer or
-          recruiter who escorts Elizabeth/Luana during servant applicant cover.
-          Do not merge Marad with Marston unless later audio or canon settles
-          that they are the same person; current notes say Marad and Marston
-          should remain distinct.
+          Use Marad for the creepy male Castle Malthrek servant, recruiter, or
+          escort in Lime's Elizabeth servant applicant cover scene. Marad is parasitized and
+          is a full low-level devout Reformist; he is not original Castle
+          Malthrek household staff and was probably added to the roster during
+          the depths of Duke Ellington and Duchess Antoinette's corruption. Do
+          do not merge Marad with Saral or Marston unless later audio or canon
+          settles that they are the same person; current notes say Marad,
+          Saral, and Marston should remain distinct.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
-            note: Current note uses Marad provisionally, mentions Elizabeth's alias scene, and says Marad and Marston should remain distinct unless later evidence merges them.
+            note: Current note identifies Marad in Elizabeth's alias scene and says Marad and Marston should remain distinct unless later evidence merges them.
           - path: astro/.bf-transcripts/session-2026-07-05/correction_notes_chunks/session_006.md
             note: Correction notes flag Dr. Marad as likely real but needing confirmation.
           - path: astro/.bf-transcripts/session-2026-07-05/correction_notes_chunks/session_014.md
             note: Correction notes prefer Marad over Merad but warn to preserve the Marids/fish-people joke if audio depends on the sound.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that Marad's spelling is confirmed, he is parasitized, a full low-level devout Reformist, generally creepy, not original Castle Malthrek staff, and probably added during the depths of the Duke and Duchess's corruption.
+
+      - id: character.saral-chief-of-staff
+        status: confirmed
+        kind: entity
+        canonical: Saral
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            role: castle-malthrek-chief-of-staff
+        aliases:
+          - Chief of Staff
+          - key servant ally
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-04"
+          contexts:
+            - Castle Malthrek servant ally
+            - Chief of Staff helping identify Reformists
+            - Marston Marad Saral disambiguation
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          If the Castle Malthrek key servant ally being discussed is the Chief
+          of Staff, his name is Saral. Do not identify that Chief of Staff ally
+          as Marad or Marston without later canon confirmation. Marad is the
+          parasitized low-level devout Reformist servant/recruiter; Marston is a
+          separate staff name that remains distinct in current notes.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that if the key servant ally is the Chief of Staff, his name is Saral.
+
+      - id: item.ward-of-magic-detection
+        status: confirmed
+        kind: item
+        canonical: Ward of Magic Detection
+        canonicalRefs:
+          - type: item
+            path: astro/src/content/docs/world/items/ward-of-magic-detection.item.yaml
+            role: item-data
+          - type: article
+            path: astro/src/content/docs/world/items/ward-of-magic-detection.mdx
+            role: item-page
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            role: castle-malthrek-ward-context
+        aliases:
+          - magic-detection ward
+          - detection ward
+          - visible ward
+          - fortress ward
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-04"
+          contexts:
+            - Castle Malthrek office door and waiting room wards
+            - enhancer orb support near wards
+            - Reformist magical security
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Use Ward of Magic Detection for the recurring magic-detection wards in
+          the Castle Malthrek security context. A Ward of Magic Detection acts
+          like a detect magic spell and normally needs to be recharged with a
+          3rd-level spell once per day. An Orb of Enhancement or nearby enhancer
+          orb negates that charge requirement by condensing raw magical energy in
+          the area and supplying the charge. Do not leave the ward/orb placement
+          in the 2026-07-04 office, door, and waiting-room scene as an unresolved
+          Open Hook.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that the ward is a Ward of Magic Detection, acts like detect magic, requires a daily 3rd-level spell recharge, and is sustained by an Orb of Enhancement in the vicinity.
+
+      - id: character.stacy-cartwright-court-wizard-hook
+        status: provisional
+        kind: open-hook-boundary
+        canonical: Stacy Cartwright court-wizard return hook
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/stacy-cartwright.mdx
+            role: character-page
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            role: castle-malthrek-open-hook
+          - type: creature
+            path: astro/src/content/docs/world/misc/maltreks-court-wizard.creature.yaml
+            role: generic-court-wizard-statblock
+        aliases:
+          - Stacey Cartwright
+          - Stacy's return
+          - Malthrek Court Wizards
+          - Malthrek court wizard funeral escort
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-04"
+          contexts:
+            - Castle Malthrek funeral operation
+            - Court wizards fetching nobles
+            - Stacy Cartwright morning duties
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Keep Stacy Cartwright's return and morning duties as an Open Hook.
+          Stacy is one of the Malthrek Court Wizards sent to fetch nobles for the
+          funeral. Three other Malthrek Court Wizards should also still be
+          unaccounted for. Do not summarize all court wizards as already back at
+          Castle Malthrek or assign Stacy's morning duties without later canon
+          confirmation.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
+            note: Earlier note says Stacy is one of the court wizards and that court wizards were away gathering incoming vassals and supporters.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that Stacy's return and morning duties remain an Open Hook, and that three more Malthrek Court Wizards remain unaccounted for after being sent to fetch nobles for the funeral.
+
+      - id: character.emily-signal-timing-hook
+        status: confirmed
+        kind: operation-signal
+        canonical: Emily visual magical signal for Guards and Wards containment
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            role: castle-malthrek-open-hook
+        aliases:
+          - Emily's signal
+          - Emily timing authority
+          - Emily's exact signal or timing authority
+          - Guards and Wards signal
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-04"
+          contexts:
+            - Castle Malthrek operation timing
+            - Emily visual magical signal
+            - Guards and Wards containment cue
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Emily's signal in the Castle Malthrek operation refers to some kind of
+          visual magical effect indicating that guards and wards is active and
+          the Reformists are contained. Treat the signal's purpose as settled;
+          do not leave it as an unresolved timing-authority ambiguity. The exact
+          appearance of the visual effect can remain unspecified unless later
+          canon defines it.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that Emily's signal would have been some kind of visual magical effect showing that Guards and Wards was active and the Reformists were contained.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
+            note: Earlier planning says Castle Malthrek has bells and a signaling tower, perhaps a spire near the Duke's room, and Emily intends to signal from there so Kelthyr can respond outside.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: Earlier note says Emily appears to hold final timing authority for wider coordinated action and that Guards and Wards was proposed to split Reformists inside the castle from forces outside.
+
+      - id: character.mondrian
+        status: confirmed
+        kind: entity
+        canonical: Mondrian
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            role: first-recent-contact-context
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            role: castle-malthrek-operation-context
+          - type: article
+            path: astro/src/content/docs/world/organizations/hickland-for-hicks.mdx
+            role: parent-organization
+        aliases: []
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-06-28"
+            - "2026-07-04"
+          contexts:
+            - Gralter cell contact
+            - Hickland for Hicks coordination
+            - Castle Malthrek servant infiltration support
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Mondrian is the confirmed spelling. He is Kelthyr's Hickland for Hicks
+          contact in the Gralter cell and helps the Castle Malthrek servant
+          infiltration and captive-management effort. Use he/him pronouns for
+          Mondrian in these notes.
+        evidence:
+          - path: astro/src/content/docs/world/organizations/hickland-for-hicks.mdx
+            note: Canonical organization article for Hickland for Hicks and its cell-like operations.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
+            note: Earlier note identifies Mondrian as Kelthyr's Hicklander contact.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that Mondrian's spelling is confirmed and that he is Kelthyr's contact in the Gralter cell.
 
       - id: fey.lord-cals-lord-of-time
         status: confirmed
@@ -2307,6 +2518,80 @@ profiles:
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User clarified on 2026-07-09 that the blank-scroll discussion was about charged blank scrolls usable once a spell is written, with one hour per spell level to copy.
+
+      - id: mechanics.submarine-magic-clues
+        status: confirmed
+        kind: mechanics-boundary
+        canonical: Submarine magic clues
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            role: submarine-mechanism-hook
+        aliases:
+          - submarine spell effects
+          - submarine operating mechanism
+          - Orb of Enhancement submarine
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-04"
+          contexts:
+            - Submarine Handling and Technology open hook
+            - Faltir submarine magic items
+            - Create or Destroy Water and Gust of Wind clues
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Keep the submarine's exact operating mechanism as an Open Hook. The
+          magic items found in or with it, including effects resembling create or
+          destroy water and gust of wind, are clues to how it works. Do not
+          collapse the clue list into a confirmed full mechanism, and keep the
+          possible Orb of Enhancement identity unresolved until confirmed.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that the exact submarine mechanism remains an Open Hook, while the magic items found in it with effects like Create/Destroy Water and Gust of Wind provide clues.
+
+      - id: mechanics.parasite-food-open-hooks
+        status: provisional
+        kind: open-hook-boundary
+        canonical: Parasite food countermeasure implications remain open
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            role: parasite-food-open-hooks
+        aliases:
+          - salt preparation counters parasite eggs
+          - brining counters parasite eggs
+          - not infected versus not dead
+          - killing parasite hosts alerts the network
+          - Eastonton Surrey brining discovery
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-04"
+          contexts:
+            - Parasites and Food open hooks
+            - Faltir salt and brining theory
+            - Reformist parasite network countermeasures
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Keep the Parasites and Food questions from the 2026-07-04 Vengeful
+          note as actual Open Hooks. Current canon leans toward salt preparation
+          countering parasite eggs in some useful way, but the manner of
+          preparation and the implications still need decision: do not settle
+          whether brining alone is enough or whether plain sea salt works; do not
+          choose not infected versus not dead; do not settle whether killing
+          parasite hosts alerts the parasite network; and do not confirm whether
+          the brining discovery can help Eastonton, Surrey, Port Surrey, or
+          Surrey-on-the-Brams without later canon confirmation.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that salt preparation probably should counter parasite eggs, but the manner of preparation and wider implications remain open for later decision.
 
       - id: mechanics.submarine-tethering
         status: confirmed
@@ -2731,6 +3016,45 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: Later cleanup resolves Turbiere/Turbière uncertainty to the current article spelling.
 
+      - id: organization.seneran-feywild-hags-boundary
+        status: confirmed
+        kind: boundary
+        canonical: Seneran Feywild hags are distinct from the Hags of Hama
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/organizations/hags-of-hama.mdx
+            role: contrasting-organization
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            role: hag-road-context
+        aliases:
+          - Seneran hags
+          - Feywild hags in Senera
+          - Seneran or Feywild hag coven
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-07-04"
+          contexts:
+            - Hag road and Children of the Crone scenes
+            - Hags of Hama comparison
+            - Turbiere de Hubar comparison
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          Hags encountered in Senera in the hag-road thread are Feywild hags and
+          are canonically distinct from the Hags of Hama. Do not merge the
+          Seneran Feywild hag coven, Children of the Crone, or hag-road bog with
+          the Hags of Hama or their Raibon Island Turbiere de Hubar tradition,
+          even when imagery or themes resemble each other.
+        evidence:
+          - path: astro/src/content/docs/world/organizations/hags-of-hama.mdx
+            note: Canonical Hags of Hama article defines them as the Raibon Island / Town of Hama coven rooted in White Witches of Tichom traditions.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that hags in Senera are from the Feywild and are canonically distinct from the Hags of Hama.
+
       - id: place.havmals-ocean
         status: confirmed
         kind: place
@@ -2868,7 +3192,11 @@ profiles:
           to her, the authority is still Luana being convincing in this assumed
           higher-rank role, not a separate speaker. When the scene frames the
           ritual as public Reformist faith before the faithless, that is also
-          still Luana performing the assumed authority role.
+          still Luana performing the assumed authority role. Count Godwin Ranlis
+          does not need to be named directly in every later "Count" reference;
+          there may eventually be other counts, but through recent events he is
+          the Count in question where the Faltir/Ranlis road procession context
+          is already established.
           Use Comtesse for her table-facing title; Condesa, Contessa, and
           Countess are drift or translation variants in this context.
           Pontiff/Pontif and Randless are transcription drift in this context.
@@ -2897,6 +3225,8 @@ profiles:
             note: User clarified on 2026-07-10 that the authority humiliating Carissa over whether Ranlis matters to her is still Luana being very convincing in her assumed role.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User clarified on 2026-07-10 that the authority framing the moment as public Reformist faith before the faithless is still Luana.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that Count Godwin Ranlis does not need to be named in every later Count reference; he is the Count in question up through recent Faltir/Ranlis events, while future counts may appear.
 
       - id: place.flyukishilla
         status: confirmed
@@ -3153,12 +3483,18 @@ profiles:
           Use Podron for the rescued changeling from the Faltir fortress dungeon.
           Padron, Padrón, Mr. Wadbrand, Pedro, and Padrian are spelling or ASR
           drift in this changeling-rescue context and should not become separate
-          people unless later canon explicitly creates them.
+          people unless later canon explicitly creates them. Whether Podron's
+          shapeshifter sanctuary can be safely contacted remains a top-level Open
+          Hook; it is unsettled whether safe contact is true at this point. Do
+          not summarize the sanctuary as safe, contacted, or resolved without
+          later confirmation.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
             note: Current note identifies the rescued changeling's name as Podron and rejects Padron, Padrón, and Mr. Wadbrand.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: Later note continues using Podron and flags Pedro/Padrian usage for confirmation against Podron.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
+            note: User clarified that whether Podron's shapeshifter sanctuary can be safely contacted should be a top-level Open Hook, because it is unsettled whether safe contact is true at this point.
 
       - id: place.malthrek-villages-gralter-garvind
         status: confirmed
