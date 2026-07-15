@@ -210,6 +210,10 @@ profiles:
           - Orren Bell
           - Oren/Orren Bell
           - Oren or Orren Bell
+          - Aurelian
+          - Aurelian of the High Guard
+          - Aurelian of the Highguard
+          - Orellian of the Highguard
         match:
           priority: normal
           tags:
@@ -222,16 +226,23 @@ profiles:
         scope:
           campaigns:
             - the-vengeful
+          sessionDates:
+            - "2026-07-05"
           contexts:
             - Bearer of Joy
             - Green Lord and Oren Bell speculation
             - Castle Malthrek study service
+            - Oren's original Highguard identity
         apply:
           mode: prompt-first
           safeExactReplacement: false
         instruction: >
           Use Oren Bell for the Castle Malthrek figure, Bearer of Joy, and
-          Green Lord speculation thread. Do not preserve Orren spelling
+          Green Lord speculation thread. Orellian of the Highguard is his
+          original identity; correct Aurelian and Aurelian of the High Guard to
+          that name in the 2026-07-05 material. In the present day he chooses
+          Oren Bell despite his disdain for humanity; do not frame it as merely
+          a human name imposed in childhood. Do not preserve Orren spelling
           uncertainty, but keep separate uncertainty about his species, glamour,
           avatar status, or Reformist role when the note context raises it.
         evidence:
@@ -241,6 +252,10 @@ profiles:
             note: Stat block uses Oren Bell, Bearer of Joy.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User clarified Oren or Orren Bell should be Oren Bell.
+          - path: astro/src/content/docs/world/characters/oren-bell.mdx
+            note: Canonical article identifies Oren's original name as Orellian of the Highguard.
+          - path: astro/src/content/docs/world/characters/oren-bell.mdx
+            note: User clarified on 2026-07-10 that Oren Bell is his present-day chosen name despite his disdain for humanity.
 
       - id: alias.oberon-oran
         status: confirmed
