@@ -29,9 +29,9 @@
   "devDependencies": {
     "@types/jsonld": "^1.5.15",
     "@types/node": "~24.7.2",
-    "astro": "^7.0.3",
+    "astro": "^6.4.8",
     "typescript": "6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "volta": {
     "extends": "../../package.json"

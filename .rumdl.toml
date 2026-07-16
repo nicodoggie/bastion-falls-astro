@@ -9,7 +9,7 @@ exclude = [
     ".specstory/*",
     "5etools-src/*",
     "AGENTS.personality.md",
-    "astro/src/assets/transcripts",
+    "astro/src/assets/transcripts/**",
     "astro/.astro",
     "node_modules",
 ]

@@ -16,7 +16,7 @@
         "lint:biome",
         "lint:mdsf",
         "lint:mdx",
-        "lint:yaml",
+        "lint:yaml"
       ],
     },
     "fmt:all": {
