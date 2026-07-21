@@ -399,7 +399,7 @@
 [00:17:15 - 00:17:23] What if you just ask the parasite to bring it back to them? Give it back to them? Does that work?
 [00:17:23 - 00:17:27] Miss Julia? Yeah.
 [00:17:27 - 00:17:34] I haven't tried it because most of the parasites we took already died within 24 hours.
-[00:17:35 - 00:18:04] The ones that we're keeping is the Duchess, which I fucking cast Death Ward every now and then, it says, to keep it alive. It says, the one with Essin, the Essin guy, the chief paladin, whatever that he is.
+[00:17:35 - 00:18:04] The ones that we're keeping is the Duchess, which I fucking cast Death Ward every now and then, it says, to keep it alive. It says, the one with Essen, the Essen guy, the chief paladin, whatever that he is.
 [00:18:04 - 00:18:14] I casted Death Ward on it as well. But the others I can't. So they might die in a bit.
 [00:18:14 - 00:18:29] I'll be off. But, how to know if they have the parasite is, you just hold up the parasite near their face. And they're like, "Oh, parasite!"
 [00:18:29 - 00:18:41] Yeah, and they're like that. So they react to that? If they have the parasite inside their heads? She says.
@@ -1201,7 +1201,7 @@
 [00:55:17 - 00:55:20] Let's talk to this bastard first.
 [00:55:20 - 00:55:22] He says.
 [00:55:22 - 00:55:24] Shit, yeah.
-[00:55:24 - 00:55:25] Hey, Essin.
+[00:55:24 - 00:55:25] Hey, Essen.
 [00:55:25 - 00:55:26] Go.
 [00:55:26 - 00:55:27] Do your stuff.
 [00:55:27 - 00:55:32] Maybe you were gonna show us where it was.
@@ -1590,7 +1590,7 @@
 [01:07:37 - 01:07:39] can't remember the last few uh...
 [01:07:39 - 01:07:40] like...
 [01:07:40 - 01:07:43] months of his life and shit
-[01:07:43 - 01:07:45] what about Essin though, man?
+[01:07:43 - 01:07:45] what about Essen though, man?
 [01:07:45 - 01:07:47] well that asshole
 [01:07:47 - 01:07:50] he was spewing all sorts of bullshit
 [01:07:50 - 01:07:52] so I punched him in the face again
@@ -1674,7 +1674,7 @@
 [01:10:28 - 01:10:45] I also saw the photo shoot. I also saw the photo shoot. I also saw the photo shoot. If there are a few acrylic display stands.
 [01:10:45 - 01:11:02] The piece in the Paladinate still has it. We have three full paladins, right?
 [01:11:02 - 01:11:08] Yeah, well the full paladins that are with us are still kind of out of it.
-[01:11:08 - 01:11:16] What about Essin? I mean, Essin. Essin is still down, fucker.
+[01:11:08 - 01:11:16] What about Essen? I mean, Essen. Essen is still down, fucker.
 [01:11:16 - 01:11:23] Well, to be fair, that fucking thing that you got out of his head, goddamn long, I showed you, right?
 [01:11:23 - 01:11:29] It's as big as his fucking brain. It's as if we put in a new fucking brain in his head.
 [01:11:29 - 01:11:39] Let's wait for Miya and Eastonton. And let's wait for Philippa, Sister Philippa.
@@ -3749,7 +3749,7 @@
 [02:40:57 - 02:41:07] Okay, so isa solar paladin, oh, the apat na archon, tapos isa hindi, ano yan, and then paladin yun.
 [02:41:07 - 02:41:17] Alright, we'll be taking the undead paladin with us, and the archons will remain here.
 [02:41:20 - 02:41:28] So you killed, yes, those were full of paladins, those. If you killed all of the ones that are here.
-[02:41:28 - 02:41:39] So we had 20 of them, you're down to, and I suppose Essin and, uh, I didn't kill all of them.
+[02:41:28 - 02:41:39] So we had 20 of them, you're down to, and I suppose Essen and, uh, I didn't kill all of them.
 [02:41:39 - 02:41:45] They're still alive. Yeah, but they're out of commission, I would expect. Out of commission.
 [02:41:45 - 02:41:50] You know, non-combatants, not people who oppose you at the moment.
 [02:41:50 - 02:42:07] Yeah. Griswold? Yeah, he's alive. Combatant? None, no. So you have 16 aside from Garward. Yeah.

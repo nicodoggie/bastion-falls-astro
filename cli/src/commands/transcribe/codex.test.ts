@@ -186,13 +186,34 @@ test("describes final campaign note output format explicitly", () => {
   assert.match(prompt, /- \{confirmation bullet\}\n\n### Boundaries/);
   assert.match(prompt, /### Boundaries/);
   assert.match(prompt, /- \{boundary bullet\}/);
-  assert.match(prompt, /Summary contains the readable campaign recap/);
+  assert.match(prompt, /excluding narrated prior-session recaps/);
+  assert.doesNotMatch(prompt, /Summary contains the readable campaign recap/);
   assert.match(prompt, /Confirmations Needed contains only live checks/);
   assert.match(prompt, /Boundaries contains only reader-facing interpretive constraints/);
   assert.match(prompt, /Apply settled correction rules directly/);
   assert.match(prompt, /Open Hooks section only for live unresolved/);
   assert.match(prompt, /Do not create .*Settled Clarifications/i);
   assert.match(prompt, /rejected ASR artifacts, table chatter exclusions, alias drift, or do-not-canonize guardrails/);
+});
+
+test("excludes narrated prior-session recaps throughout notes summarization", () => {
+  const chunkPrompt = buildCodexTranscriptSummaryPrompt({
+    rollingContext: "",
+    contextExcerpt: "## Context",
+    correctionNotes: "",
+    transcriptChunk: "Previously in The Vengeful...",
+  });
+  const scenePrompt = buildCodexSceneSummaryPrompt({
+    chunkSummaries: ["- Prior-session events."],
+  });
+  const finalPrompt = buildCodexFinalNotesPrompt({
+    frontmatter: "---\ntitle: Test\n---\n",
+    sceneSummaries: ["- Current-session events."],
+  });
+
+  assert.match(chunkPrompt, /Treat narrated prior-session recaps as context only/);
+  assert.match(scenePrompt, /Do not reintroduce events identified as prior-session recap/);
+  assert.match(finalPrompt, /excluding narrated prior-session recaps/);
 });
 
 test("formats summary cleanup chunk progress states", () => {

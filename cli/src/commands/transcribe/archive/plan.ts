@@ -42,6 +42,21 @@ export function buildArchivePlan(
         required: false,
       },
       {
+        sourcePath: join(options.sessionDir, "correction_notes.md"),
+        entryName: "correction_notes.md",
+        required: false,
+      },
+      {
+        sourcePath: join(options.sessionDir, "reconciled_transcript.md"),
+        entryName: "reconciled_transcript.md",
+        required: false,
+      },
+      {
+        sourcePath: join(options.sessionDir, "hermes_review_notes.md"),
+        entryName: "hermes_review_notes.md",
+        required: false,
+      },
+      {
         sourcePath: join(options.transcribeDir, "corrections.yaml"),
         entryName: "corrections.yaml",
         required: false,

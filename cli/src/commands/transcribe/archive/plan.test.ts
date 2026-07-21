@@ -41,6 +41,21 @@ test("includes transcripts and shared corrections with required flags", () => {
       required: false,
     },
     {
+      sourcePath: "/t/session1/correction_notes.md",
+      entryName: "correction_notes.md",
+      required: false,
+    },
+    {
+      sourcePath: "/t/session1/reconciled_transcript.md",
+      entryName: "reconciled_transcript.md",
+      required: false,
+    },
+    {
+      sourcePath: "/t/session1/hermes_review_notes.md",
+      entryName: "hermes_review_notes.md",
+      required: false,
+    },
+    {
       sourcePath: "/t/corrections.yaml",
       entryName: "corrections.yaml",
       required: false,

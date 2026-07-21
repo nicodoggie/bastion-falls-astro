@@ -224,6 +224,7 @@ export function buildCodexTranscriptSummaryPrompt(options: {
 	return [
 		"Compact this corrected D&D session transcript chunk for later campaign-note generation.",
 		"Preserve session events, party actions, NPCs, places, factions, lore reveals, items, spells, unresolved hooks, and uncertainty.",
+		"Treat narrated prior-session recaps as context only; exclude their events unless they recur or advance during current-session play.",
 		"Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
 		"Remove timestamps and obvious speech-to-text repetition loops. Do not invent details.",
 		"Use concise bullets grouped by topic.",
@@ -255,6 +256,7 @@ export function buildCodexSceneSummaryPrompt(options: {
 	return [
 		"Merge these compacted D&D campaign transcript summaries into a coherent scene summary.",
 		"Deduplicate repeated information. Preserve unresolved hooks and uncertainty.",
+		"Do not reintroduce events identified as prior-session recap unless current-session play revisited or advanced them.",
 		"Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
 		"Use concise bullets grouped by topic.",
 		"",
@@ -288,7 +290,7 @@ export function buildCodexFinalNotesPrompt(options: {
 		"### Boundaries",
 		"- {boundary bullet}",
 		"",
-		"Summary contains the readable campaign recap, grouped with ordinary MDX subheadings and concise nested bullets that fit this session's events.",
+		"Summary contains readable events from this session's play, grouped with ordinary MDX subheadings and concise nested bullets, excluding narrated prior-session recaps unless revisited or advanced.",
 		"Hooks contains live unresolved story, lore, item, spell, faction, or consequence threads only.",
 		"Confirmations Needed contains only live checks that need future audio, canon, or human campaign review.",
 		"Boundaries contains only reader-facing interpretive constraints that remain important to future play, such as exact oath/deal wording or in-world distinctions the party should preserve.",

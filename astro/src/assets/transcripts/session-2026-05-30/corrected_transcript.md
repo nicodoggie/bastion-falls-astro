@@ -90,7 +90,7 @@
 [00:07:13 - 00:07:14] what do you mean
 [00:07:14 - 00:07:15] what do you mean
 [00:07:15 - 00:07:17] something's trying to communicate with me
-[00:07:17 - 00:07:19] i think it's from Essin
+[00:07:17 - 00:07:19] i think it's from Essen
 [00:07:19 - 00:07:20] or from the house
 [00:07:20 - 00:07:21] each group
 [00:07:21 - 00:07:22] it says
@@ -8801,8 +8801,8 @@
 [05:52:33 - 05:52:35] "I will Greater Restoration here."
 [05:52:35 - 05:52:38] "Okay, you do, but he's unconscious."
 [05:52:38 - 05:52:40] "Ah, you."
-[05:52:40 - 05:52:43] "This, uh, man, uh, Sir Essin is not unconscious."
-[05:52:43 - 05:52:45] "Oh, Sir Essin 'to."
+[05:52:40 - 05:52:43] "This, uh, man, uh, Sir Essen is not unconscious."
+[05:52:43 - 05:52:45] "Oh, Sir Essen 'to."
 [05:52:45 - 05:52:49] "Okay, so, he, uh, actually, Greater Restoration, this."
 [05:52:49 - 05:52:54] "And, uh, this parasite that you killed, like, uh, Oscar said earlier."
 [05:52:54 - 05:52:57] "If you, like, clump it all together."
@@ -8832,9 +8832,9 @@
 [05:53:45 - 05:53:47] "He sees a fucking parasite, passes out."
 [05:53:47 - 05:53:50] "Is it true they have blue balls right now, like Miya said?"
 [05:53:50 - 05:53:55] "So, is she, removes her, like, uh, uses her stuff?"
-[05:53:55 - 05:53:56] "She meant with Essin."
+[05:53:55 - 05:53:56] "She meant with Essen."
 [05:53:56 - 05:53:57] "Oh, removes their balls."
-[05:53:57 - 05:54:01] "Oh, hindi si Essin, yung isa sa mga random Paladin."
+[05:53:57 - 05:54:01] "Oh, hindi si Essen, yung isa sa mga random Paladin."
 [05:54:01 - 05:54:04] "Oh, no, this guy doesn't have blue balls."
 [05:54:04 - 05:54:05] "He doesn't have blue balls."
 [05:54:05 - 05:54:06] "He doesn't have blue balls."
@@ -9057,7 +9057,7 @@
 [06:01:24 - 06:01:28] this performance bullshit, she's not the Divine Masochist anymore.
 [06:01:30 - 06:01:35] You know, because you're all like, uh, traumatizing her, and she's scared.
 [06:01:35 - 06:01:42] She says, uh, oh, help us, help me, I have fans in the Paladin, I need saving.
-[06:01:43 - 06:01:51] And Lord Ass, uh, Sir Essin, like, uh, tried to rape me, and, uh, and they're taking advantage
+[06:01:43 - 06:01:51] And Lord Ass, uh, Sir Essen, like, uh, tried to rape me, and, uh, and they're taking advantage
 [06:01:51 - 06:01:52] of my fans.
 [06:01:52 - 06:01:53] Yeah.
 [06:01:53 - 06:01:58] And so, like, she took a pledge to the Great Erector Board instead.
@@ -9344,7 +9344,7 @@
 [06:14:32 - 06:14:33] That you're.
 [06:14:33 - 06:14:34] And of course.
 [06:14:34 - 06:14:39] Head of prayer, and Sir Griswold.
-[06:14:39 - 06:14:44] Ah, so there's Griswold and Essin.
+[06:14:39 - 06:14:44] Ah, so there's Griswold and Essen.
 [06:14:44 - 06:14:45] Alright.
 [06:14:45 - 06:14:46] He says.
 [06:14:46 - 06:14:48] I will clean the place first.
@@ -10283,8 +10283,8 @@
 [07:06:15 - 07:06:16] Which one are you trying to wake up?
 [07:06:16 - 07:06:18] Yung, na-Remove Disease na, no.
 [07:06:18 - 07:06:23] He's in the same situation as, uh.
-[07:06:23 - 07:06:24] Essin?
-[07:06:24 - 07:06:28] No, as, uh, well, sure, like Essin.
+[07:06:23 - 07:06:24] Essen?
+[07:06:24 - 07:06:28] No, as, uh, well, sure, like Essen.
 [07:06:28 - 07:06:30] But also, yeah, like the Duchess.
 [07:06:30 - 07:06:33] We need some rest.
 [07:06:36 - 07:06:38] You can give them SNQ.
@@ -10348,7 +10348,7 @@
 [07:08:32 - 07:08:33] Yes.
 [07:08:33 - 07:08:37] I'm out of this, alright?
 [07:08:37 - 07:08:41] Let's go loot some rooms.
-[07:08:41 - 07:08:45] Oh, let's go to the Essin.
+[07:08:41 - 07:08:45] Oh, let's go to the Essen.
 [07:08:45 - 07:08:47] Yeah, yeah, yeah.
 [07:08:47 - 07:08:51] Okay, so Jessica kind of like looks along.
 [07:08:51 - 07:08:53] Are there people here?
@@ -11543,7 +11543,7 @@
 [07:52:39 - 07:52:45] But he seems so fluent. I'm sorry?
 [07:52:45 - 07:52:52] You see, you sound kind of elegant, how you use your words.
 [07:52:52 - 07:52:53] Yeah.
-[07:52:53 - 07:53:11] I kind of emulate how Sir Essin and Lord Garward... I think before I started in the Palatinate at that time, I was a servant in Sir Essin.
+[07:52:53 - 07:53:11] I kind of emulate how Sir Essen and Lord Garward... I think before I started in the Palatinate at that time, I was a servant in Sir Essen.
 [07:53:11 - 07:53:12] So, that's interesting.
 [07:53:12 - 07:53:12] Do you know how to... signature?
 [07:53:12 - 07:53:30] Oh. For those who cannot write, we use our thumbprints.
@@ -12672,7 +12672,7 @@
 [08:32:09 - 08:32:14] Si Sir Griswold yung, yung...
 [08:32:14 - 08:32:15] Isa pa.
 [08:32:15 - 08:32:19] Ano yung tawag dito yung sa training.
-[08:32:19 - 08:32:21] Si Sir Essin.
+[08:32:19 - 08:32:21] Si Sir Essen.
 [08:32:21 - 08:32:24] Uh, sa tatlo.
 [08:32:24 - 08:32:28] Ang hindi nyo pa nakita na nandito.
 [08:32:28 - 08:32:29] Uh, sino ba?
@@ -12685,7 +12685,7 @@
 [08:32:38 - 08:32:39] Yung malibog.
 [08:32:39 - 08:32:40] Yung kay, ano.
 [08:32:40 - 08:32:42] Kay, ni, uh.
-[08:32:42 - 08:32:44] Kasi si Essin yun ba?
+[08:32:42 - 08:32:44] Kasi si Essen yun ba?
 [08:32:44 - 08:32:45] Hindi.
 [08:32:45 - 08:32:46] Meron pa eh.
 [08:32:46 - 08:32:48] Ah, yung ano.
@@ -12773,7 +12773,7 @@
 [08:36:20 - 08:36:30] "Ew, that's disgusting, alright, stop it," she says. "Gay shit," she says.
 [08:36:30 - 08:36:53] "But Sir Percival is what you put." "The fluid." "There are a total of 74 Palatines, and of course our forces are deployed all over."
 [08:36:53 - 08:37:00] "Listen, you don't have any information where Garward is. That's kind of like, no, that's odd as fuck," she says.
-[08:37:00 - 08:37:05] "Well, the one who should know is Sir Essin, though."
+[08:37:00 - 08:37:05] "Well, the one who should know is Sir Essen, though."
 [08:37:05 - 08:37:10] "No, it doesn't work that way. It's strange as fuck."
 [08:37:10 - 08:37:16] "Well, that's how it's worked since forever, I suppose. I'm not a full paladin, so I don't know."
 [08:37:16 - 08:37:22] "Perhaps some of the other full paladins know where the Lord Commander is."
@@ -13184,7 +13184,7 @@
 [08:54:48 - 08:54:53] I got you.
 [08:54:53 - 08:54:55] Huh?
 [08:54:55 - 08:54:56] I think we found...
-[08:54:56 - 08:54:58] This is Essin's room.
+[08:54:56 - 08:54:58] This is Essen's room.
 [08:54:58 - 08:55:00] Ah.
 [08:55:00 - 08:55:01] What's up in it?
 [08:55:01 - 08:55:04] Is there an orb of repulsion there?

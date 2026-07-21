@@ -64,6 +64,24 @@ test("validates the transcribe checkpoint shape", () => {
   assert.deepEqual(parseTranscribeCheckpoint(sampleCheckpoint()), sampleCheckpoint());
 });
 
+test("validates optional Hermes reconciliation metadata", () => {
+  const checkpoint = sampleCheckpoint();
+  checkpoint.stages.correction_pass = {
+    ...checkpoint.stages.correction_pass,
+    reviewProvider: "hermes",
+    reconciledTranscriptPath:
+      "astro/.bf-transcripts/session1/reconciled_transcript.md",
+    hermesReviewNotesPath:
+      "astro/.bf-transcripts/session1/hermes_review_notes.md",
+    finalTranscriptPath:
+      "astro/.bf-transcripts/session1/reconciled_transcript.md",
+    finalCorrectionNotesPath:
+      "astro/.bf-transcripts/session1/hermes_review_notes.md",
+  };
+
+  assert.deepEqual(parseTranscribeCheckpoint(checkpoint), checkpoint);
+});
+
 test("rejects invalid checkpoint status values", () => {
   const checkpoint = sampleCheckpoint() as unknown as {
     stages: { normalization: { status: string } };

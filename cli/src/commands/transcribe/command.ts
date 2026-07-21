@@ -6,6 +6,7 @@ import {
   type FlagParametersForType,
 } from "@stricli/core";
 
+import { getTranscribeConfig } from "@/config.js";
 import type { LocalContext } from "@/context.js";
 import { applyCorrectionsCommand } from "./applyCorrections.js";
 import { archiveCommand } from "./archive/command.js";
@@ -42,6 +43,12 @@ import { transcribeChunksWithLocalWhisper } from "./localWhisper.js";
 import { transcribeChunksWithNodeWhisper } from "./nodeWhisper.js";
 import { getNotesPath } from "./notes.js";
 import { runOllamaHierarchicalNotes } from "./ollamaNotes.js";
+import { runHermesTranscriptReview } from "./hermesReview.js";
+import {
+  parseReviewProvider,
+  resolveReviewSettings,
+  type ReviewProvider,
+} from "./reviewSettings.js";
 import { canReuseAudioChunks, readManifest } from "./resume.js";
 import { detectSilences, trimChunksToSpeech } from "./silence.js";
 import {
@@ -82,6 +89,9 @@ interface TranscribeFlags {
   "skip-correction"?: boolean;
   "skip-summary-cleanup"?: boolean;
   "skip-notes"?: boolean;
+  review?: ReviewProvider;
+  "hermes-profile"?: string;
+  "hermes-max-turns": number;
   "notes-backend": NotesBackend;
   "notes-model": string;
   "ollama-url": string;
@@ -278,6 +288,24 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
     brief: "Skip Astro campaign note generation",
     optional: true,
   },
+  review: {
+    kind: "parsed",
+    parse: parseReviewProvider,
+    brief: "Transcript review provider: hermes or off; overrides project config",
+    optional: true,
+  },
+  "hermes-profile": {
+    kind: "parsed",
+    parse: String,
+    brief: "Hermes profile used by the transcript review provider",
+    optional: true,
+  },
+  "hermes-max-turns": {
+    kind: "parsed",
+    parse: parsePositiveInteger,
+    brief: "Maximum Hermes tool iterations for each reviewed transcript chunk",
+    default: "12",
+  },
   "notes-backend": {
     kind: "parsed",
     parse: parseNotesBackend,
@@ -463,8 +491,19 @@ export const transcribeRunCommand = buildCommand({
     const checkpointPath = getCheckpointPath(outDir);
     const rawTranscriptPath = join(outDir, "raw_transcript.md");
     const correctedTranscriptPath = join(outDir, "corrected_transcript.md");
+    const reconciledTranscriptPath = join(outDir, "reconciled_transcript.md");
     const summaryTranscriptPath = join(outDir, "summary_transcript.md");
     const correctionNotesPath = join(outDir, "correction_notes.md");
+    const hermesReviewNotesPath = join(outDir, "hermes_review_notes.md");
+    const transcribeConfig = getTranscribeConfig() as { review?: unknown };
+    const reviewSettings = resolveReviewSettings(
+      transcribeConfig.review,
+      {
+        provider: flags.review,
+        hermesProfile: flags["hermes-profile"],
+        hermesMaxTurns: flags["hermes-max-turns"],
+      },
+    );
     const notesPath = getNotesPath({
       contextRoot,
       campaign: flags.campaign,
@@ -706,6 +745,9 @@ export const transcribeRunCommand = buildCommand({
     });
 
     let transcriptForNotes = rawTranscriptPath;
+    let transcriptChunksForNotes = rawTranscriptionDir;
+    let correctionNotesForNotes: string | undefined;
+    let correctionNotesChunksForNotes: string | undefined;
     if (!flags["skip-correction"]) {
       this.process.stdout.write("Running Codex correction pass\n");
       await runCodexCorrection({
@@ -719,12 +761,51 @@ export const transcribeRunCommand = buildCommand({
         force: Boolean(flags.force),
       });
       transcriptForNotes = correctedTranscriptPath;
+      transcriptChunksForNotes = correctedTranscriptionDirFor(outDir);
+      correctionNotesForNotes = correctionNotesPath;
+      correctionNotesChunksForNotes = correctionNotesChunksDirFor(outDir);
+
+      if (reviewSettings.provider === "hermes") {
+        this.process.stdout.write("Running Hermes transcript reconciliation\n");
+        const reviewPaths = await runHermesTranscriptReview({
+          cwd,
+          campaign: flags.campaign,
+          sessionDate: flags["session-date"],
+          rawTranscriptionDir,
+          correctedTranscriptionDir: transcriptChunksForNotes,
+          correctionNotesChunksDir: correctionNotesChunksForNotes,
+          outDir,
+          reconciledTranscriptPath,
+          reviewNotesPath: hermesReviewNotesPath,
+          profile: reviewSettings.hermesProfile,
+          maxTurns: reviewSettings.hermesMaxTurns,
+          resume: shouldResume,
+          force: Boolean(flags.force),
+          onProgress: (message) => this.process.stdout.write(message),
+        });
+        transcriptForNotes = reviewPaths.reconciledTranscriptPath;
+        transcriptChunksForNotes = reviewPaths.reconciledTranscriptionDir;
+        correctionNotesForNotes = reviewPaths.reviewNotesPath;
+        correctionNotesChunksForNotes = reviewPaths.reviewNotesChunksDir;
+      }
+
       checkpoint.updatedAt = new Date().toISOString();
       checkpoint.stages.correction_pass = {
         status: "complete",
         completedAt: checkpoint.updatedAt,
         correctedTranscriptPath,
         correctionNotesPath,
+        reviewProvider: reviewSettings.provider,
+        reconciledTranscriptPath:
+          reviewSettings.provider === "hermes"
+            ? reconciledTranscriptPath
+            : undefined,
+        hermesReviewNotesPath:
+          reviewSettings.provider === "hermes"
+            ? hermesReviewNotesPath
+            : undefined,
+        finalTranscriptPath: transcriptForNotes,
+        finalCorrectionNotesPath: correctionNotesForNotes,
       };
       await writeTranscribeCheckpoint(checkpointPath, checkpoint);
     }
@@ -742,9 +823,7 @@ export const transcribeRunCommand = buildCommand({
           campaign: flags.campaign,
           sessionDate: flags["session-date"],
           transcriptPath: transcriptForNotes,
-          correctionNotesPath: flags["skip-correction"]
-            ? undefined
-            : correctionNotesPath,
+          correctionNotesPath: correctionNotesForNotes,
           contextExcerpt: buildContextExcerpt(contextFiles),
           correctionRules,
           notesPath,
@@ -757,14 +836,11 @@ export const transcribeRunCommand = buildCommand({
           resume: shouldResume,
         });
       } else {
-        const transcriptChunksDir = flags["skip-correction"]
-          ? rawTranscriptionDir
-          : correctedTranscriptionDirFor(outDir);
         const notesTranscriptPath = flags["skip-summary-cleanup"]
           ? transcriptForNotes
           : summaryTranscriptPath;
         const notesTranscriptChunksDir = flags["skip-summary-cleanup"]
-          ? transcriptChunksDir
+          ? transcriptChunksForNotes
           : summaryTranscriptionDirFor(outDir);
 
         if (!flags["skip-summary-cleanup"]) {
@@ -775,7 +851,7 @@ export const transcribeRunCommand = buildCommand({
             cwd,
             transcriptPath: transcriptForNotes,
             summaryTranscriptPath,
-            transcriptChunksDir,
+            transcriptChunksDir: transcriptChunksForNotes,
             outDir,
             chunkChars: flags["summary-chunk-chars"],
             onProgress: (message) => this.process.stdout.write(message),
@@ -789,13 +865,9 @@ export const transcribeRunCommand = buildCommand({
           campaign: flags.campaign,
           sessionDate: flags["session-date"],
           transcriptPath: notesTranscriptPath,
-          correctionNotesPath: flags["skip-correction"]
-            ? undefined
-            : correctionNotesPath,
+          correctionNotesPath: correctionNotesForNotes,
           transcriptChunksDir: notesTranscriptChunksDir,
-          correctionNotesChunksDir: flags["skip-correction"]
-            ? undefined
-            : correctionNotesChunksDirFor(outDir),
+          correctionNotesChunksDir: correctionNotesChunksForNotes,
           contextExcerpt: buildContextExcerpt(contextFiles),
           correctionRules,
           notesPath,

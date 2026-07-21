@@ -160,6 +160,7 @@ export async function runOllamaHierarchicalNotes(options: OllamaNotesOptions): P
         prompt: [
           "Summarize this D&D actual-play transcript chunk for later campaign notes.",
           "Preserve names, factions, locations, items, spells, decisions, unresolved hooks, and uncertainty.",
+          "Treat narrated prior-session recaps as context only; exclude their events unless they recur or advance during current-session play.",
           "Remove obvious speech-to-text repetition loops. Do not invent details.",
           "Use concise bullets grouped by topic.",
           "",
@@ -198,6 +199,7 @@ export async function runOllamaHierarchicalNotes(options: OllamaNotesOptions): P
         prompt: [
           "Merge these D&D campaign chunk summaries into a coherent scene summary.",
           "Deduplicate repeated information. Preserve unresolved hooks and uncertainty.",
+          "Do not reintroduce events identified as prior-session recap unless current-session play revisited or advanced them.",
           "Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
           "Use concise bullets grouped by topic.",
           "",
@@ -237,7 +239,7 @@ export async function runOllamaHierarchicalNotes(options: OllamaNotesOptions): P
         "### Boundaries",
         "- {boundary bullet}",
         "",
-        "Summary contains the readable campaign recap, grouped with ordinary MDX subheadings and concise nested bullets that fit this session's events.",
+        "Summary contains readable events from this session's play, grouped with ordinary MDX subheadings and concise nested bullets, excluding narrated prior-session recaps unless revisited or advanced.",
         "Hooks contains live unresolved story, lore, item, spell, faction, or consequence threads only.",
         "Confirmations Needed contains only live checks that need future audio, canon, or human campaign review.",
         "Boundaries contains only reader-facing interpretive constraints that remain important to future play, such as exact oath/deal wording or in-world distinctions the party should preserve.",

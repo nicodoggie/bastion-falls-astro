@@ -6,6 +6,7 @@ type:
   tags:
     - human
     - reformist
+    - shapechanger
 alignment:
   - L
   - E
@@ -40,6 +41,7 @@ resist:
   - psychic
 senses:
   - darkvision 60 ft.
+  - truesight 60 ft.
 passive: 17
 languages:
   - Common
@@ -50,8 +52,27 @@ trait:
   - name: Cambion Piercing
     entries:
       - >-
-        Crispin's cursed piercing marks him as a bearer of relics. Magical darkness does not impede
-        his darkvision, and he has advantage on saving throws against illusions.
+        Crispin's cursed piercing marks him as a bearer of relics and holds his rearranged body
+        together. Magical darkness does not impede his truesight.
+  - name: Anatomist's Sight
+    entries:
+      - >-
+        Crispin can discern the original form of a shapechanger or a magically transformed creature.
+        He also recognizes missing body parts, disguises, and magically replaced body parts.
+  - name: Master Fleshcrafter
+    entries:
+      - >-
+        Given 8 hours, alchemical supplies, and the remains of at least two Medium humanoids,
+        Crispin can create an inert {@creature flesh golem}. The golem becomes active when Crispin
+        touches it or uses Awaken the Ersatz, and it obeys his spoken commands.
+  - name: Humanity Is the Seal
+    entries:
+      - >-
+        Crispin is a displaced Dragonheart who believes his human body is a seal imprisoning his
+        true golden-dragon form. When Crispin is reduced to 0 hit points, he does not die. His body
+        opens along concealed seams and unfolds into Crispin Mallow, the Gilded Anatomy, which
+        appears in his space with full hit points. Conditions and effects on this form do not carry
+        over to the Gilded Anatomy.
   - name: Spellcasting
     entries:
       - >-
@@ -62,34 +83,58 @@ trait:
         illusion}
       - "1st level (4 slots): {@spell disguise self}, {@spell mage armor}, {@spell shield}"
       - >
-        2nd level (3 slots): {@spell detect thoughts}, {@spell invisibility}, {@spell scorching ray}
+        2nd level (3 slots): {@spell detect thoughts}, {@spell hold person}, {@spell invisibility}
       - "3rd level (3 slots): {@spell counterspell}, {@spell fear}, {@spell hypnotic pattern}"
-      - "4th level (3 slots): {@spell greater invisibility}, {@spell wall of fire}"
+      - "4th level (3 slots): {@spell greater invisibility}, {@spell polymorph}"
       - "5th level (2 slots): {@spell dominate person}, {@spell wall of light}"
-      - "6th level (1 slot): {@spell sunbeam}"
-      - "7th level (1 slot): {@spell prismatic spray}"
+      - "6th level (1 slot): {@spell flesh to stone}"
+      - "7th level (1 slot): {@spell regenerate}"
 action:
-  - name: Candleflame
+  - name: Multiattack
+    entries:
+      - Crispin makes two Surgical Candle attacks.
+  - name: Surgical Candle
     entries:
       - >-
-        Ranged Spell Attack: {@hit +8} to hit, range 120 ft., one target. Hit: 27 ({@damage 6d8})
-        radiant damage plus 14 ({@damage 4d6}) psychic damage.
-  - name: Unveiling Light (Recharge 5-6)
+        Ranged Spell Attack: {@hit +8} to hit, range 120 ft., one target. Hit: 13 ({@damage 3d8})
+        radiant damage plus 10 ({@damage 3d6}) necrotic damage. Until the start of Crispin's next
+        turn, the target sheds dim green light in a 5-foot radius and cannot benefit from being
+        invisible.
+  - name: Exchange the Defective Part ({@recharge 5})
     entries:
       - >-
-        Crispin reveals a 30-foot cone of impossible light. Each creature in the area must make a
-        {@dc 16} Intelligence saving throw, taking 40 ({@damage 9d8}) psychic damage on a failed
-        save, or half as much damage on a successful one. Invisible creatures in the cone become
-        visible until the end of Crispin's next turn.
+        Crispin chooses one creature he can see within 30 feet and magically exchanges one of its
+        body parts with a mismatched part from his collection. The target must make a {@dc 16}
+        Constitution saving throw, taking 36 ({@damage 8d8}) necrotic damage on a failed save, or
+        half as much damage on a successful one. On a failed save, Crispin also chooses one of the
+        following defects, which lasts until removed by {@spell lesser restoration} or similar
+        magic: Arm. The target has disadvantage on weapon attacks and ability checks made using that
+        arm and cannot use two-handed weapons. Leg. The target's speed is halved, and it has
+        disadvantage on Dexterity saving throws. Eye. The target cannot see beyond 30 feet and has
+        disadvantage on Wisdom (Perception) checks that rely on sight.
+  - name: Awaken the Ersatz (1/Day)
+    entries:
+      - >-
+        Crispin touches one inert flesh golem he created. It becomes active with full hit points,
+        rolls its own initiative, and obeys Crispin's spoken commands.
 bonus:
-  - name: Snuff the Witness
+  - name: Borrowed Face
     entries:
       - >-
-        Crispin chooses one creature he can see within 60 feet. Until the start of his next turn,
-        that creature cannot take reactions and sheds dim green light in a 5-foot radius.
+        Crispin rearranges his flesh into the appearance of a Small or Medium humanoid whose body he
+        has studied for at least 1 minute, or returns to his Crispin Mallow form. His statistics and
+        equipment do not change. A creature that uses its action to examine him can discern the
+        disguise with a successful {@dc 18} Intelligence (Investigation) check.
+  - name: Detach the Servant
+    entries:
+      - >-
+        One of Crispin's hands detaches and leaps at a creature he can see within 30 feet. The
+        target must succeed on a {@dc 16} Dexterity saving throw or be {@condition grappled} by the
+        hand (escape {@dc 16}). Until this grapple ends, the target cannot take reactions, and
+        Crispin cannot use Detach the Servant on another target.
 reaction:
-  - name: Candle's Ward
+  - name: Master of the Ersatz
     entries:
       - >-
-        When Crispin is hit by an attack, he gains a +4 bonus to AC against that attack, potentially
-        causing it to miss.
+        When Crispin takes damage while an allied flesh golem is within 30 feet of him, Crispin
+        takes no damage and chooses one such golem to take the damage instead.

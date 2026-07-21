@@ -1,0 +1,173 @@
+name: Crispin Mallow, the Gilded Anatomy
+size:
+  - H
+type:
+  type: monstrosity
+  tags:
+    - constructed
+    - human
+    - shapechanger
+alignment:
+  - L
+  - E
+ac:
+  - ac: 19
+    from:
+      - false gilded scales
+hp:
+  average: 225
+  formula: 18d12 + 108
+speed:
+  walk: 40
+  climb: 40
+  fly: 80
+str: 25
+dex: 14
+con: 23
+int: 18
+wis: 16
+cha: 20
+save:
+  str: "+13"
+  con: "+12"
+  int: "+10"
+  wis: "+9"
+  cha: "+11"
+skill:
+  arcana: "+10"
+  deception: "+11"
+  investigation: "+10"
+  perception: "+15"
+  religion: "+10"
+resist:
+  - necrotic
+  - psychic
+immune:
+  - fire
+conditionImmune:
+  - charmed
+  - frightened
+senses:
+  - darkvision 120 ft.
+  - truesight 60 ft.
+passive: 25
+languages:
+  - Common
+  - Draconic
+  - Hickic
+  - Infernal
+  - telepathy 120 ft.
+cr: "17"
+trait:
+  - name: False Apotheosis
+    entries:
+      - >-
+        The Gilded Anatomy is not a dragon. It is the body Crispin built inside his humanoid shell
+        from folded limbs, harvested faces, alchemical supports, and organs taken from a gold dragon
+        that preserved itself within a magical figurine. Effects that specifically affect dragons do
+        not affect the Gilded Anatomy unless they also affect monstrosities.
+  - name: Graft Rejection
+    entries:
+      - >-
+        Restorative magic calls the harvested dragon tissue back toward its proper body, exposing
+        the incompatibility of Crispin's grafts. When a spell of 2nd level or higher would restore
+        the Gilded Anatomy's hit points, regrow one of its body parts, or end a disease, curse, or
+        condition affecting it, the spell has no normal effect and the Gilded Anatomy gains one
+        Rejection instead. It can gain no more than one Rejection from a single spell and no more
+        than three Rejections in total.
+      - >-
+        A creature within 5 feet of the Gilded Anatomy can use its action to wrench at the infernal
+        piercing holding the false body together, making a {@dc 19} Strength (Athletics) or
+        Dexterity (Sleight of Hand) check. On a success, the piercing is destroyed and the Gilded
+        Anatomy gains one Rejection. The piercing can cause a Rejection only once.
+      - >-
+        The effects of Rejection are cumulative. At one Rejection, seams open between the false
+        scales: its AC becomes 17, and its immunity to fire damage becomes resistance to fire
+        damage. At two Rejections, its walking, climbing, and flying speeds are halved; it can take
+        only 2 legendary actions per round; and it cannot use Many-Handed Wingbeat. At three
+        Rejections, its false heart ruptures: it takes 45 ({@damage 10d8}) radiant damage, loses
+        Legendary Resistance, and the damage of Counterfeit Gilded Breath is halved.
+  - name: Legendary Resistance (3/Day)
+    entries:
+      - >-
+        If the Gilded Anatomy fails a saving throw, it can choose to succeed instead. It cannot use
+        this trait after gaining three Rejections.
+  - name: Master of the Ersatz
+    entries:
+      - >-
+        Allied flesh golems within 60 feet of the Gilded Anatomy cannot be charmed or frightened,
+        and their weapon attacks are magical.
+action:
+  - name: Multiattack
+    entries:
+      - The Gilded Anatomy makes one Bite attack and two Claw attacks.
+  - name: Bite
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +13} to hit, reach 15 ft., one target. Hit: 18 ({@damage 2d10 +
+        7}) piercing damage plus 4 ({@damage 1d8}) radiant damage.
+  - name: Claw
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +13} to hit, reach 10 ft., one target. Hit: 14 ({@damage 2d6 +
+        7}) slashing damage.
+  - name: Counterfeit Gilded Breath ({@recharge 5})
+    entries:
+      - >-
+        The Gilded Anatomy exhales alchemical fire and stolen radiance in a 60-foot cone. Each
+        creature in the area must make a {@dc 20} Dexterity saving throw, taking 66 ({@damage
+        12d10}) fire damage plus 18 ({@damage 4d8}) radiant damage on a failed save, or half as much
+        damage on a successful one. After the Gilded Anatomy gains three Rejections, both damage
+        amounts are halved.
+  - name: Reassign the Flesh ({@recharge 6})
+    entries:
+      - >-
+        The Gilded Anatomy chooses up to three creatures it can see within 60 feet. Each target must
+        make a {@dc 20} Constitution saving throw. On a failed save, a target takes 36 ({@damage
+        8d8}) necrotic damage, is teleported to another unoccupied space the Gilded Anatomy can see
+        within 60 feet, and has its speed halved until the end of its next turn. On a successful
+        save, the target takes half as much damage and is not moved. The Gilded Anatomy can exchange
+        the spaces of two targets that fail this save.
+bonus:
+  - name: Cast-Off Hands
+    entries:
+      - >-
+        Folded arms tear free from beneath the Gilded Anatomy's scales and seize one creature it can
+        see within 30 feet. The target must succeed on a {@dc 20} Strength saving throw or be
+        {@condition restrained} until the end of its next turn. A restrained target can use its
+        action to repeat the save, ending the effect on a success.
+reaction:
+  - name: Shed the Wound
+    entries:
+      - >-
+        When the Gilded Anatomy takes damage, it casts off the wounded flesh and reduces the damage
+        by 18 ({@damage 4d8}). It cannot use this reaction after gaining three Rejections.
+legendaryActions: 3
+legendaryHeader:
+  - >-
+    The Gilded Anatomy can take 3 legendary actions, choosing from the options below. Only one
+    legendary action option can be used at a time, and only at the end of another creature's turn.
+    It regains spent legendary actions at the start of its turn. Graft Rejection can reduce the
+    number of legendary actions it can take each round.
+legendary:
+  - name: Crawling Reposition
+    entries:
+      - >-
+        The Gilded Anatomy moves up to half its speed without provoking opportunity attacks.
+        Detached hands and feet pull it across the ground when it cannot fly.
+  - name: Claw
+    entries:
+      - The Gilded Anatomy makes one Claw attack.
+  - name: Wear the Beloved Face (Costs 2 Actions)
+    entries:
+      - >-
+        One creature the Gilded Anatomy can see within 60 feet must succeed on a {@dc 19} Wisdom
+        saving throw or take 18 ({@damage 4d8}) psychic damage and be {@condition frightened} until
+        the end of its next turn as one of Crispin's stolen faces emerges from the dragon's head.
+  - name: Many-Handed Wingbeat (Costs 2 Actions)
+    entries:
+      - >-
+        Each creature within 15 feet of the Gilded Anatomy must succeed on a {@dc 21} Dexterity
+        saving throw or take 16 ({@damage 2d8 + 7}) bludgeoning damage and fall {@condition prone}.
+        The Gilded Anatomy can then fly up to half its flying speed. It cannot use this action after
+        gaining two Rejections.

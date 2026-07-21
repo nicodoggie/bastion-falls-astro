@@ -9102,7 +9102,7 @@
 [07:19:04 - 07:19:05] They...
 [07:19:05 - 07:19:08] Oh, but I wouldn't give her a Gem of True Sight.
 [07:19:08 - 07:19:11] That was what I was hoping to make, to be a floater.
-[07:19:11 - 07:19:13] Essin has one.
+[07:19:11 - 07:19:13] Essen has one.
 [07:19:13 - 07:19:15] Where is it, Emily?
 [07:19:15 - 07:19:17] Why are you asking me, to live?
 [07:19:17 - 07:19:19] God fucking dammit.

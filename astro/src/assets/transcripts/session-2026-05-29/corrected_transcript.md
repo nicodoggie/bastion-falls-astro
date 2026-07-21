@@ -14841,8 +14841,8 @@
 [09:50:17 - 09:50:18] Uh-oh.
 [09:50:18 - 09:50:19] Uh-oh.
 [09:50:19 - 09:50:20] Uh-oh.
-[09:50:20 - 09:50:27] The head of staff, I don't know what to say. Sir Essin.
-[09:50:27 - 09:50:30] E-S-S-I-N. Sir Essin.
+[09:50:20 - 09:50:27] The head of staff, I don't know what to say. Sir Essen.
+[09:50:27 - 09:50:30] E-S-S-E-N. Sir Essen.
 [09:50:30 - 09:50:37] And she kind of looks like the Paladin bugaw.
 [09:50:37 - 09:50:41] She smiles at her.
 [09:50:41 - 09:50:44] In one time.
@@ -14964,7 +14964,7 @@
 [09:57:01 - 09:57:03] Good, good.
 [09:57:03 - 09:57:11] Anything else?
 [09:57:11 - 09:57:13] What's up with you?
-[09:57:13 - 09:57:38] Well, I'm going to be recommending that, sure, that you two be put on a permanent staff, but we'll have to, I'll just have to sign this paperwork here, accepting you. But both of you will head to, yeah, you'll be heading to Sir Essin, the guy that you were talking to earlier.
+[09:57:13 - 09:57:38] Well, I'm going to be recommending that, sure, that you two be put on a permanent staff, but we'll have to, I'll just have to sign this paperwork here, accepting you. But both of you will head to, yeah, you'll be heading to Sir Essen, the guy that you were talking to earlier.
 [09:57:38 - 09:57:55] Yeah, he'll want to see both of you, all of this paperwork. And well, if he requests for whatever. Well, these are, well, he's second in command, basically. So, uh, you'll have to see both of your paperwork. And well, if he requests for whatever. Well, these are, uh, well, he's second in command, basically. So, uh, you'll have to see both of your paperwork.
 [09:57:53 - 09:58:00] basically so uh you do what he wants he's the first in command obviously that would be Lord Commander
 [09:58:00 - 09:58:11] himself yeah that's right that's a good distinction that you have yes in here in the
@@ -14998,7 +14998,7 @@
 [10:02:14 - 10:02:22] uh I don't know like they don't pierce them right when they start right
 [10:02:22 - 10:02:25] you know it's you have to be inducted first
 [10:02:25 - 10:02:30] if there are any like pierced young ones it's probably at least one of those
-[10:02:30 - 10:02:49] generations and well if everything is as we suspect Essin has probably pierced too you have to you have to check
+[10:02:30 - 10:02:49] generations and well if everything is as we suspect Essen has probably pierced too you have to you have to check
 [10:02:52 - 10:03:08] you know I don't even think that asshole would become a fucking Maledict much less
 [10:03:08 - 10:03:15] chief of staff around here I got a sleeping agent in my bag don't worry you can handle it
 [10:03:15 - 10:03:22] you'll be careful though it might be a sleazeball but he's actually pretty strong
@@ -16247,12 +16247,12 @@
 [10:49:50 - 10:49:53] - Uh, so nang bumaba ka na? - Oh.
 [10:49:53 - 10:49:56] - Uh, there are a lot of people here.
 [10:49:56 - 10:50:01] - Of course, uh, but, uh, they're, like, in their dorms already.
-[10:50:01 - 10:50:07] - Uh, and, like, when you, like, actually started leaving Essin's room,
+[10:50:01 - 10:50:07] - Uh, and, like, when you, like, actually started leaving Essen's room,
 [10:50:07 - 10:50:10] one of them says, "Are you all right, miss?"
 [10:50:10 - 10:50:11] - Mm-hmm.
 [10:50:11 - 10:50:16] - Uh, are you, uh, you might be lost. You're not supposed to be around here.
-[10:50:16 - 10:50:18] - Uh, maybe we're at Essin's, actually.
-[10:50:18 - 10:50:22] - You have to go in Essin's room and go straight here, into the left.
+[10:50:16 - 10:50:18] - Uh, maybe we're at Essen's, actually.
+[10:50:18 - 10:50:22] - You have to go in Essen's room and go straight here, into the left.
 [10:50:22 - 10:50:24] - Mm-hmm. - Did he ask you to get something?
 [10:50:24 - 10:50:28] - Yeah, uh, she said that, um, I can stay here for the night,
 [10:50:28 - 10:50:31] and he will stay in his office.
@@ -16264,7 +16264,7 @@
 [10:50:45 - 10:50:46] - Let's go.
 [10:50:46 - 10:50:47] - And her hand is very sticky.
 [10:50:47 - 10:50:48] - Ha, ha, ha, ha, ha.
-[10:50:48 - 10:50:49] - And, uh, so you're staying in Lord Essin's office for now?
+[10:50:48 - 10:50:49] - And, uh, so you're staying in Lord Essen's office for now?
 [10:50:49 - 10:50:51] - Yeah, just temporarily. This is what he said.
 [10:50:51 - 10:50:52] - Mm-hmm.
 [10:50:52 - 10:50:53] - But he's staying in his office.
@@ -17266,7 +17266,7 @@
 [11:19:13 - 11:19:13] Does it hurt?
 [11:19:13 - 11:19:13] Does it hurt?
 [11:19:13 - 11:19:13] Does it hurt?
-[11:19:13 - 11:19:41] It is. Does it hurt? This is the guy that wanted to help you get to Essin. Does it hurt? I'm so sure you kind of like people say that. It hurts a little, but it feels good too. You know.
+[11:19:13 - 11:19:41] It is. Does it hurt? This is the guy that wanted to help you get to Essen. Does it hurt? I'm so sure you kind of like people say that. It hurts a little, but it feels good too. You know.
 [11:19:43 - 11:20:05] You see her kind of like smile. And I guess go ahead and roll Arcana. 19. At the very least, from what you can tell from his face and his eyes, it hasn't started to completely affect him.
 [11:20:05 - 11:20:15] With a 19, you can at least tell that this is fresh, in the last part of it.
 [11:20:15 - 11:20:25] The whole Paladin thing could be like one to two days. So she says, if not, she says, yeah, at first. Thank you.
@@ -18054,7 +18054,7 @@
 [11:45:33 - 11:45:34] "I'm a little agitated."
 [11:45:34 - 11:45:35] "60 feet."
 [11:45:35 - 11:45:36] "Yeah."
-[11:45:36 - 11:45:37] "He goes to Lord Essin's room."
+[11:45:36 - 11:45:37] "He goes to Lord Essen's room."
 [11:45:37 - 11:45:40] "What's inside this room?"
 [11:45:40 - 11:45:41] "I'm a little agitated."
 [11:45:41 - 11:45:46] "It's a large room."
@@ -18367,8 +18367,8 @@
 [11:59:09 - 11:59:10] "Oh, good boy."
 [11:59:10 - 11:59:11] "What?"
 [11:59:11 - 11:59:16] "That, uh, serving girl earlier got lost."
-[11:59:16 - 11:59:22] "She's supposed to go into the, to Sir Essin's room."
-[11:59:22 - 11:59:23] "Yeah, Sir Essin's getting lucky again, huh?"
+[11:59:16 - 11:59:22] "She's supposed to go into the, to Sir Essen's room."
+[11:59:22 - 11:59:23] "Yeah, Sir Essen's getting lucky again, huh?"
 [11:59:23 - 11:59:24] "I can hear you!"
 [11:59:24 - 11:59:40] "Yeah, I'm a little beast and I have a little blast, man."
 [11:59:40 - 11:59:45] "What do you mean by getting lucky?"

@@ -5,6 +5,10 @@ transcribe:
   outputDir: src/assets/transcripts
   compression: false
   audioBitrate: 32k
+  review:
+    provider: hermes
+    hermes:
+      profile: default
 
 tts:
   earlyHick:

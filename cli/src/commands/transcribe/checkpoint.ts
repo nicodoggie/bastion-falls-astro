@@ -38,6 +38,11 @@ export const JoiningRawTranscriptionCheckpointSchema = BaseStageSchema.extend({
 export const CorrectionPassCheckpointSchema = BaseStageSchema.extend({
   correctedTranscriptPath: z.string().optional(),
   correctionNotesPath: z.string().optional(),
+  reviewProvider: z.enum(["hermes", "off"]).optional(),
+  reconciledTranscriptPath: z.string().optional(),
+  hermesReviewNotesPath: z.string().optional(),
+  finalTranscriptPath: z.string().optional(),
+  finalCorrectionNotesPath: z.string().optional(),
 }).strict();
 
 export const NotesSummaryPassCheckpointSchema = BaseStageSchema.extend({

@@ -39,6 +39,52 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: Corrects Sensudine drift to Sensodyne.
 
+      - id: character.sir-essen
+        status: confirmed
+        kind: entity
+        canonical: Sir Essen
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-05-29.mdx
+            role: primary
+        aliases:
+          - Sir Essin
+          - Essin
+          - Sir Essend
+          - Essend
+          - Eson
+        match:
+          priority: high
+          tags:
+            - character-sir-essen
+            - sir-essen
+            - eastonton-paladinate
+            - head-of-staff
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Eastonton Paladinate and rescued paladins
+            - Paladinate head of staff and second-in-command references
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Use Sir Essen as the canonical spelling for the Eastonton Paladinate
+          head of staff. Treat Sir Essin, Essin, Essend, and Eson as spelling or
+          transcription drift, not separate characters.
+        instruction: >
+          Sir Essen is the canonical spelling for the Eastonton Paladinate head
+          of staff and possible second in command. Normalize Sir Essin, Essin,
+          Sir Essend, Essend, and Eson to Sir Essen when the context identifies
+          this character; retain uncertainty only when the surface form could
+          refer to someone else.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-05-29.mdx
+            note: Authored Paladinate note now carries the user-confirmed Sir Essen spelling.
+          - path: astro/src/assets/transcripts/session-2026-05-29/corrected_transcript.md
+            note: Corrected transcript identifies and spells Sir Essen in the head-of-staff discussion.
+
       - id: character.narmaya
         status: confirmed
         kind: entity
@@ -256,6 +302,47 @@ profiles:
             note: Canonical article identifies Oren's original name as Orellian of the Highguard.
           - path: astro/src/content/docs/world/characters/oren-bell.mdx
             note: User clarified on 2026-07-10 that Oren Bell is his present-day chosen name despite his disdain for humanity.
+
+      - id: character.marcus-parnassus
+        status: confirmed
+        kind: entity
+        canonical: Marcus Parnassus
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-06-07.mdx
+            role: primary
+        aliases:
+          - Marcus
+          - Parnie
+          - Kalassarian undead
+          - skeleton in the old Kalassarian basement
+        match:
+          priority: normal
+          tags:
+            - character-marcus-parnassus
+            - marcus-parnassus
+            - kalassarian-scholar
+            - eastonton-basement
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Minfilia's intelligent skeleton
+            - old Kalassarian basement beneath Eastonton
+            - Thrantorbury time-loop consultation
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In Eastonton basement and Thrantorbury consultation passages, Marcus is
+          Marcus Parnassus, the intelligent Kalassarian skeleton Minfilia raised.
+          Do not reopen him as a separate unidentified Marcus or merely speculate
+          that he may be connected to Minfilia's preserved scholar.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-07.mdx
+            note: Marcus writes his full name as Marcus Parnassus and is established as Minfilia's intelligent skeleton.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-11.mdx
+            note: Prior-note carry-forward identifies Marcus Parnassus beneath Eastonton.
 
       - id: alias.oberon-oran
         status: confirmed
@@ -631,6 +718,7 @@ profiles:
           - Luwana Dubreuil
           - Luana Dubreuil
           - Luana Victoria Dubreuil
+          - Rowana
         match:
           priority: normal
           tags:
@@ -639,6 +727,7 @@ profiles:
             - luana-victorique-dubreuil
             - cinna
             - cinna-moan
+            - rowana
             - legally-bare-model-references
         scope:
           campaigns:
@@ -647,14 +736,16 @@ profiles:
             - Legally Bare model references
             - Lime's Gerta Moon girls cohort
             - Luana-like fey spirit manifestations
+            - 2026-07-11 layout work
         apply:
           mode: prompt-first
           safeExactReplacement: false
         promptInstruction: >
           Use Luana Victorique Dubreuil for Cinna Moan / School Girl Cinna
-          Moan and Lime's Gerta Moon cohort. A Luana-like fey spirit is a
-          Summon Fey spirit borrowing Luana's appearance, not mundane Luana
-          herself; Princess Lavinia is Ines's dream name, not Luwanya.
+          Moan and Lime's Gerta Moon cohort. In the 2026-07-11 layout scene,
+          Rowana is Luana. A Luana-like fey spirit is a Summon Fey spirit
+          borrowing Luana's appearance, not mundane Luana herself; Princess
+          Lavinia is Ines's dream name, not Luwanya.
         instruction: >
           Luana Victorique Dubreuil is the person who models in Legally Bare as
           Cinna Moan / School Girl Cinna Moan and was one of the Gerta Moon
@@ -667,7 +758,8 @@ profiles:
           Essence of Nymph-transformed body. In the dream-team context, use
           Princess Lavinia for Ines Lanessiana Cicero; do not preserve Princess
           Luwanya as a separate dream or astral figure unless future canon
-          explicitly creates one.
+          explicitly creates one. In the 2026-07-11 layout-work scene, correct
+          Rowana to Luana rather than creating a separate contributor.
         evidence:
           - path: astro/src/content/docs/world/organizations/legally-bare.mdx
             note: Legally Bare lists School Girl Cinna Moan as Luana Victorique Dubreuil's pen name.
@@ -681,6 +773,8 @@ profiles:
             note: Raw transcript around 01:12:38-01:14:02 says Lavinia / Princess Lavinia, not Luwanya.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-28.mdx
             note: Prior cleanup identifies Princess Lavinia as Ines Lanessiana Cicero's dream name.
+          - path: astro/.bf-transcripts/session-2026-07-11/corrected_transcript.md
+            note: At 04:04:25-04:04:32, Rowana appears in Luana's layout-work context; user confirmed this is Luana.
 
       - id: character.lime-elizabeth-cover
         status: confirmed
@@ -1390,6 +1484,92 @@ profiles:
             note: User clarified the source audio says Matthew was reading Legally Bare.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
             note: User confirmed VIP doll/charm sales as real; potential possession and salt-stuffing are possible old-wives'-tale hooks, while the specific Prestidigitation cleanup aside and other side talk should stay untracked unless revived.
+
+      - id: vessel.illegally-bear
+        status: confirmed
+        kind: entity
+        canonical: Illegally Bear
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-12.mdx
+            role: primary
+        aliases:
+          - Legally Bear
+          - Legally Bare
+        match:
+          priority: high
+          tags:
+            - vessel-illegally-bear
+            - illegally-bear
+            - pirate-vessel
+            - port-sera-by-malterdale-escape
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - pirate vessel departing Port-Sera-by-Malterdale
+            - covert passage to Port Mibram
+            - watcher aboard ship
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the Port-Sera-by-Malterdale pirate-vessel context, use Illegally
+          Bear. Keep the vessel distinct from Illegal E. Bear, the hook-handed captain's
+          operating name, and from Legally Bare, Luana's adult magazine. Do not
+          infer magazine involvement merely because damaged audio renders the
+          ship's name as Legally Bear or Legally Bare; preserve separately
+          supported actions involving an actual magazine aboard the vessel.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-12.mdx
+            note: User confirmed the pirate vessel is named Illegally Bear and its captain operates as Illegal E. Bear.
+
+      - id: character.illegal-e-bear
+        status: confirmed
+        kind: entity
+        canonical: Illegal E. Bear
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-12.mdx
+            role: primary
+        aliases:
+          - captain of the Illegally Bear
+          - Illegally Bear's captain
+          - hook-handed captain
+        match:
+          priority: high
+          tags:
+            - character-illegal-e-bear
+            - illegal-e-bear
+            - vessel-illegally-bear
+            - pirate-captain
+            - port-sera-by-malterdale-escape
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - pirate vessel departing Port-Sera-by-Malterdale
+            - covert passage to Port Mibram
+            - hook-handed captain of the Illegally Bear
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Illegal E. Bear is the operating name of the hook-handed captain; his
+          true name is unstated and he is infamous for avoiding commitment. Keep
+          him distinct from his vessel, Illegally Bear, and the magazine Legally
+          Bare.
+        instruction: >
+          In the Port-Sera-by-Malterdale pirate-cove and Port Mibram passage
+          context, identify the hook-handed captain as Illegal E. Bear. This is
+          an operating name,
+          not a confirmed birth or legal name. Keep the captain distinct from his
+          vessel, Illegally Bear, and from Legally Bare, Luana's adult magazine.
+          His aversion to commitment is established characterization rather than
+          a reason to merge the three similar names.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-12.mdx
+            note: User established Illegal E. Bear as the captain's operating name and his aversion to commitment.
 
       - id: organization.legally-bare-dick-model-contracts
         status: confirmed
@@ -4559,6 +4739,7 @@ profiles:
         aliases:
           - Belwick
           - Scalic
+          - Scalewit
         match:
           priority: normal
           tags:
@@ -4566,6 +4747,7 @@ profiles:
             - skelwick
             - belwick
             - scalic
+            - scalewit
             - brooch-of-winter
             - frozen-children-of-the-crone
         scope:
@@ -4580,12 +4762,14 @@ profiles:
           safeExactReplacement: false
         instruction: >
           In Vengeful Brooch of Winter and frozen Children of the Crone
-          contexts, use Skelwick. Do not preserve Belwick or Scalic as separate
-          places in those passages unless later context clearly establishes a
-          different location.
+          contexts, use Skelwick. Do not preserve Belwick, Scalic, or Scalewit as
+          separate places in those passages unless later context clearly
+          establishes a different location.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User clarified Skelwick/Belwick references in these contexts should be Skelwick.
+          - path: astro/.bf-transcripts/session-2026-07-11/corrected_transcript.md
+            note: At 02:00:25-02:02:08, Scalewit occurs in the Skelwick Brooch/freezing/coven context; user confirmed it is Skelwick.
 
       - id: novelty.realm-bridge
         status: confirmed
@@ -5387,6 +5571,44 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-20.mdx
             note: User confirmed the mountain near Castle Malthrek is Mt. Thibris.
 
+      - id: place.mayonne
+        status: confirmed
+        kind: entity
+        canonical: Mayonne
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/mayonne.mdx
+            role: primary
+        aliases:
+          - Mayone
+        match:
+          priority: high
+          tags:
+            - place-mayonne
+            - mayonne
+            - mayone
+            - apgarian-capital
+            - raibon-and-soul-gem-contexts
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Apgarian capital
+            - Raibon family references
+            - soul gems and replacement bodies
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        instruction: >
+          Use Mayonne for the Apgarian capital and state. Correct Mayone to
+          Mayonne rather than preserving it as a separate place or unresolved
+          term.
+        evidence:
+          - path: astro/src/content/docs/world/locations/mayonne.mdx
+            note: Canonical location article establishes the spelling Mayonne.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-05.mdx
+            note: Mayonne is the Apgarian capital linked to soul gems and replacement bodies.
+
       - id: location.marthas-food-house
         status: confirmed
         kind: entity
@@ -5658,3 +5880,384 @@ profiles:
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
             note: User clarified Timahel should be Timael in the couatl and Isana recollection.
+
+      - id: artifact.2026-07-11-transfer-roster
+        status: confirmed
+        kind: rejected-artifact
+        canonical: Miya and Lord Boyle
+        aliases:
+          - Milo
+          - Wills
+        match:
+          priority: low
+          tags:
+            - 2026-07-11-transfer-roster
+            - milo
+            - wills
+            - miya
+            - lord-boyle
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - 2026-07-11 Reformist prisoner transfer roster
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Ignore Milo and Wills in the garbled 2026-07-11 transfer roster. The
+          known escorts were Miya and Lord Boyle; Henson was already present.
+        instruction: >
+          Do not create characters named Milo or Wills from the garbled
+          2026-07-11 prisoner-transfer roster. The known escorts were Miya and
+          Lord Boyle, while Henson was already at Eastonton.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-07-11/corrected_transcript.md
+            note: The 04:05:10-04:05:27 roster is garbled; user confirmed Miya and Lord Boyle as the known escorts and rejected Milo and Wills as characters.
+
+      - id: character.matzka
+        status: confirmed
+        kind: entity
+        canonical: Matzka
+        canonicalRefs: []
+        aliases:
+          - the Matzka
+        match:
+          priority: low
+          tags:
+            - character-matzka
+            - matzka
+            - eastonton-orphanage
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Eastonton orphanage
+            - Matzka and Vivian recovery
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Use Matzka for the recovered Eastonton orphanage worker named beside
+          Vivian; do not leave the name uncertain or preserve "the Matzka."
+        instruction: >
+          Matzka is the correct name of the recovered orphanage worker mentioned
+          beside Vivian in the 2026-07-11 session. Treat the article in "the
+          Matzka" as transcription noise.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-07-11/corrected_transcript.md
+            note: At 04:11:33-04:11:41, the transcript names Matzka and Vivian as recovered and back at the orphanage; user confirmed Matzka.
+
+      - id: people.mapach
+        status: confirmed
+        kind: entity
+        canonical: Mapach
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/sapphire.mdx
+            role: language-reference
+        aliases:
+          - Mapak
+          - Mapaks
+        match:
+          priority: normal
+          tags:
+            - people-mapach
+            - mapach
+            - mapak
+            - mapaks
+            - maple-bridge
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Feywild peoples
+            - Maple Bridge
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Use Mapach for the Feywild people discussed around Maple Bridge; treat
+          Mapak and Mapaks as transcription drift, not separate peoples.
+        instruction: >
+          Mapach is the canonical name for the Feywild people discussed around
+          Maple Bridge. Correct Mapak and Mapaks contextually without assuming
+          every inhabitant of Maple Bridge is Mapach.
+        evidence:
+          - path: astro/src/content/docs/world/characters/sapphire.mdx
+            note: Sapphire's canonical article lists Mapach among her languages.
+          - path: astro/src/content/docs/world/notes/escape-from-the-feydark/2024-05-03.mdx
+            note: Earlier Feywild notes use Mapach for Arcadia's alternate form.
+          - path: astro/.bf-transcripts/session-2026-07-11/corrected_transcript.md
+            note: At 02:30:20-02:30:56, the Maple Bridge discussion uses drifted Mapak and Mapaks forms; user confirmed Mapach.
+
+      - id: creature.tiphanie-shadow
+        status: confirmed
+        kind: entity
+        canonical: Shadow
+        canonicalRefs: []
+        aliases:
+          - Shadowborn
+        match:
+          priority: normal
+          tags:
+            - creature-tiphanie-shadow
+            - shadow
+            - shadowborn
+            - tiphanie-displacer-beast
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Tiphanie's displacer beast
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Use Shadow for Tiphanie's displacer beast; Shadowborn is transcription
+          drift in the 2026-07-11 naming exchange.
+        instruction: >
+          Tiphanie's displacer beast is named Shadow. Do not preserve Shadowborn
+          as an alternate name unless future canon explicitly introduces it.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-07-11/corrected_transcript.md
+            note: At 03:18:38-03:18:44, Shadow and Shadowborn are heard together before the creature is identified as Tiphanie's displacer beast; user confirmed Shadow.
+
+      - id: disambiguation.maude-madeline-garward-wife
+        status: confirmed
+        kind: disambiguation
+        canonical: Madeline
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/madeline.mdx
+            role: primary
+        aliases:
+          - Maude
+          - Garward's wife
+        match:
+          priority: high
+          tags:
+            - maude-madeline-disambiguation
+            - garward-wife
+            - madeline
+            - maude
+            - thrantorbury-captive
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - 2026-07-12 discussion of Garward's abused wife
+            - Madeline's captivity in Thrantorbury
+            - Eastonton maternal relationships
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          In the 2026-07-12 present-day discussion of Garward's wife being abused
+          and enslaved in Thrantorbury, correct Boyle's Maude reference to
+          Madeline. Do not replace other references to Maude: Maude remains dead
+          and is the mother of Gareth, Aigral, and Nelson, while Madeline is
+          Garward's later ex-wife and Nandor's mother.
+        instruction: >
+          Keep Maude and Madeline distinct. Maude died after the
+          Poasan-Apgarian Conflict and remains the mother of Gareth, Aigral, and
+          Nelson. Madeline is Garward's later ex-wife, Nandor's mother, Nelson's
+          stepmother, and the woman reported abused in Thrantorbury. Nelson and
+          Nandor are paternal half-brothers.
+        evidence:
+          - path: astro/src/content/docs/world/characters/madeline.mdx
+            note: Canonical article records Madeline's marriage, motherhood, and Thrantorbury abuse.
+          - path: astro/src/content/docs/world/characters/maude-eastonton.mdx
+            note: Maude remains dead and is the mother of Gareth, Aigral, and Nelson.
+          - path: astro/.bf-transcripts/session-2026-07-12/corrected_transcription/session_002.md
+            note: Boyle's brief Maude reference is retconned to Madeline in the corrected transcript.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-12.mdx
+            note: The authored note records the settled family structure and removes the obsolete confirmation hook.
+
+      - id: character.nandor-eastonton
+        status: confirmed
+        kind: entity
+        canonical: Nandor Eastonton
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/nandor-eastonton.mdx
+            role: primary
+        aliases:
+          - Brother Nandor Eastonton
+          - Brother Nandor
+        match:
+          priority: normal
+          tags:
+            - character-nandor-eastonton
+            - nandor-eastonton
+            - brother-nandor
+            - eastonton-family
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Eastonton family relationships
+            - Nelson and Nandor
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Use Nandor Eastonton without the religious title Brother. An older
+          generated note used Brother Nandor Eastonton, but Nandor is not
+          established as holding Brother as a formal religious title.
+        instruction: >
+          Nandor Eastonton is Garward and Madeline's son and Nelson's paternal
+          half-brother. Do not infer a religious office or formal Brother title
+          from the old 2024-11-23 note.
+        evidence:
+          - path: astro/src/content/docs/world/characters/nandor-eastonton.mdx
+            note: Canonical article omits the unsupported Brother title.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2024-11-23.mdx
+            note: The older bare-name list is the source of the inaccurate Brother Nandor form.
+
+      - id: boundary.angel-rannek-celestial-origin
+        status: confirmed
+        kind: disambiguation
+        canonical: Angel Rannek
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/angel-rannek.mdx
+            role: primary
+        aliases:
+          - Feywild-born celestial
+          - celestial from the Feywild
+        match:
+          priority: high
+          tags:
+            - angel-rannek
+            - celestial-origin
+            - feywild-origin
+            - uther-and-maria-rannek
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Angel Rannek's parentage and celestial nature
+            - angels and the Feywild
+            - 2026-07-12 Battlement Inn discussion
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Angel Rannek is fully the biological child of the human Uther and
+          Maria Rannek. The cause of her celestial nature is unknown. Preserve
+          her statement that she "came from the Feywild" without converting it
+          into a claim about her birthplace, non-human parentage, or the
+          species-wide origin of angels.
+        instruction: >
+          Do not describe Angel as Feywild-born or infer celestial ancestry.
+          Angels do not necessarily originate in the Feywild: some are
+          dispatched there, and some may be spawned there. Angel's own reason for
+          being celestial remains unresolved.
+        evidence:
+          - path: astro/src/content/docs/world/characters/angel-rannek.mdx
+            note: Canonical article records Angel's human parentage and unresolved celestial origin.
+          - path: astro/src/content/docs/world/characters/uther-rannek.mdx
+            note: Uther's canonical article identifies Angel as his child and Uther as human.
+          - path: astro/src/content/docs/world/characters/maria-rannek.mdx
+            note: Maria's canonical article identifies Angel as her child and Maria as human.
+          - path: astro/.bf-transcripts/session-2026-07-12/corrected_transcription/session_038.md
+            note: Angel says she came from the Feywild rather than directly from Celestia; the statement does not explain her birth or transformation.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-12.mdx
+            note: Authored boundary preserves the dialogue while rejecting unsupported origin claims.
+
+      - id: place.port-sera-by-malterdale-sea-crawler
+        status: confirmed
+        kind: disambiguation
+        canonical: Port-Sera-by-Malterdale
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/port-sera-by-malterdale.mdx
+            role: primary
+          - type: article
+            path: astro/src/content/docs/world/vehicles/the-sea-crawler.mdx
+            role: route-reference
+        aliases:
+          - Port Surrey
+          - Port Surrey-on-the-Brams
+        match:
+          priority: high
+          tags:
+            - place-port-sera-by-malterdale
+            - port-sera-by-malterdale
+            - sea-crawler-port
+            - 2026-07-12-dock-escape
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - 2026-07-12 Sea Crawler storm and repair delay
+            - parasite-coerced Port-Sera dockworker
+            - pirate cove departure toward Port Mibram
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          The 2026-07-12 Sea Crawler, dockworker, parasite, storm, shallow-port,
+          and pirate-cove scenes occur at Port-Sera-by-Malterdale, not Port
+          Surrey. Correct Port Surrey contextually in this scene only.
+        instruction: >
+          Keep Port-Sera-by-Malterdale distinct from Port Surrey and
+          Port Surrey-on-the-Brams. The Sea Crawler normally serves
+          Port-Sera-by-Malterdale, and the party departs its pirate cove aboard
+          Illegally Bear toward Port Mibram.
+        evidence:
+          - path: astro/src/content/docs/world/locations/port-sera-by-malterdale.mdx
+            note: Canonical location article identifies the Malterdale port.
+          - path: astro/src/content/docs/world/vehicles/the-sea-crawler.mdx
+            note: The Sea Crawler's canonical route serves Port-Sera-by-Malterdale.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2024-11-23.mdx
+            note: Earlier campaign note explicitly places the Sea Crawler context at Port Sera by Malterdale.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-12.mdx
+            note: User corrected the Sea Crawler and escape scenes to Port-Sera-by-Malterdale.
+
+      - id: attribution.angel-rannek-bastion
+        status: confirmed
+        kind: disambiguation
+        canonical: Angel Rannek
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/angel-rannek.mdx
+            role: primary
+        aliases:
+          - Oren Bell
+        match:
+          priority: high
+          tags:
+            - attribution-angel-rannek-bastion
+            - angel-rannek
+            - bastion-aspiration
+            - oren-misattribution
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - 2026-07-12 discussion of travelling to Bastion
+            - I want to be a person who goes to Bastion
+            - I am still going there
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Attribute the determination to reach Bastion, the paid passage, and
+          "I'm still going there" to Angel Rannek, not Oren Bell. Damaged speaker
+          labels placed this exchange beside Oren's history and caused a recap
+          misattribution.
+        instruction: >
+          Angel wants to reach Bastion no matter how impossible entry appears.
+          She calls becoming a person who goes to Bastion an aspiration and
+          keeps her underlying reason secret. Do not assign this motive to Oren.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-07-12/corrected_transcription/session_064.md
+            note: Corrected speaker attribution makes Angel the speaker who remains determined to go.
+          - path: astro/.bf-transcripts/session-2026-07-12/corrected_transcription/session_065.md
+            note: Angel says she wants to be a person who goes to Bastion and calls it a paradise.
+          - path: astro/src/content/docs/world/characters/angel-rannek.mdx
+            note: Canonical article records Angel's Bastion aspiration and preserves her secret motive.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-12.mdx
+            note: Authored note attributes the Bastion determination to Angel rather than Oren.
