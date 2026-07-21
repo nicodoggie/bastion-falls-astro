@@ -17,7 +17,7 @@
     "fmt:yaml": "eslint --config eslint.yaml.config.mjs --fix \"src/content/docs/world/**/*.{yaml,yml}\"",
     "lint:astro": "astro check",
     "lint:biome": "biome check .",
-    "lint:mdx": "rumdl check src",
+    "lint:mdx": "rumdl check src -c ../.rumdl.toml",
     "lint:mdsf": "mdsf verify src",
     "lint:yaml": "eslint --config eslint.yaml.config.mjs \"src/content/docs/world/**/*.{yaml,yml}\"",
     "fmt": "turbo run fmt:all",
