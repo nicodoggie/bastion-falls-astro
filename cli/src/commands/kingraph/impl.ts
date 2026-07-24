@@ -11,7 +11,22 @@ import { slug as slugger } from 'github-slugger';
 import type { VFile } from 'vfile';
 import { getContentDir, getTargetPath } from '@/config';
 
-type Relative = { name: string; type: 'parent' | 'child' | 'sibling' | 'partner' | 'spouse' | 'friend' | 'enemy' | 'ally' | 'associate' | 'other' };
+type Relative = {
+  name: string;
+  type:
+    | 'parent'
+    | 'adoptive parent'
+    | 'child'
+    | 'adopted child'
+    | 'sibling'
+    | 'partner'
+    | 'spouse'
+    | 'friend'
+    | 'enemy'
+    | 'ally'
+    | 'associate'
+    | 'other';
+};
 
 type CharacterFrontmatter = {
   title?: string;
@@ -93,8 +108,8 @@ export default async function fromCharacters(
       graph.people.set(fullname, { fullname, born, died });
 
       // Partition relations for kingraph: collect parent/child/partner/sibling
-      const parents = relatives.filter(r => r.type === 'parent').map(r => r.name);
-      const children = relatives.filter(r => r.type === 'child').map(r => r.name);
+      const parents = relatives.filter(r => r.type === 'parent' || r.type === 'adoptive parent').map(r => r.name);
+      const children = relatives.filter(r => r.type === 'child' || r.type === 'adopted child').map(r => r.name);
       const partners = relatives.filter(r => r.type === 'partner' || r.type === 'spouse').map(r => r.name);
       const siblings = relatives.filter(r => r.type === 'sibling').map(r => r.name);
 
