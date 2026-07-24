@@ -4294,7 +4294,7 @@ profiles:
       - id: organization.seneran-feywild-hags-boundary
         status: confirmed
         kind: boundary
-        canonical: Seneran Feywild hags are distinct from the Hags of Hama
+        canonical: Hags of Senera is a convenience label, not a singular group
         canonicalRefs:
           - type: article
             path: astro/src/content/docs/world/organizations/hags-of-hama.mdx
@@ -4328,22 +4328,25 @@ profiles:
           mode: prompt-first
           safeExactReplacement: false
         promptInstruction: >
-          Hags encountered in Senera in the hag-road thread are Feywild hags
-          and are canonically distinct from the Hags of Hama. Do not merge the
-          Seneran Feywild hag coven, Children of the Crone, or hag-road bog
-          with the Hags of Hama or their Raibon Island Turbiere de Hubar
-          tradition, even when imagery or.
+          Hags of Senera is only a convenience label for multiple different hag
+          groups operating in Senera, not one organization or coven. Keep those
+          groups distinct from each other and from the Hags of Hama. Miya is a
+          member of the Hags of Hama, not a singular Seneran hag faction.
         instruction: >
-          Hags encountered in Senera in the hag-road thread are Feywild hags and
-          are canonically distinct from the Hags of Hama. Do not merge the
-          Seneran Feywild hag coven, Children of the Crone, or hag-road bog with
-          the Hags of Hama or their Raibon Island Turbiere de Hubar tradition,
-          even when imagery or themes resemble each other.
+          Use Hags of Senera only as a collective convenience for the different
+          groups of hags operating in Senera. Do not infer a shared organization,
+          coven, leadership, or identity from that label. Keep those groups
+          distinct from the Hags of Hama and their Raibon Island Turbiere de Hubar
+          tradition. Dorothy “Miya” Campbell belongs to the Hags of Hama.
         evidence:
           - path: astro/src/content/docs/world/organizations/hags-of-hama.mdx
             note: Canonical Hags of Hama article defines them as the Raibon Island / Town of Hama coven rooted in White Witches of Tichom traditions.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
-            note: User clarified that hags in Senera are from the Feywild and are canonically distinct from the Hags of Hama.
+            note: Establishes that hags encountered in Senera must not be merged with the Hags of Hama.
+          - path: astro/src/content/docs/world/notes/the-vengeful/threads/hags-of-senera.mdx
+            note: User clarified that Hags of Senera is a convenience label for multiple different groups, not one faction.
+          - path: astro/src/content/docs/world/characters/dorothy-campbell.mdx
+            note: Canonical article identifies Miya as a member of the Hags of Hama.
 
       - id: character.tiphanie-hag-road-allusion
         status: confirmed
