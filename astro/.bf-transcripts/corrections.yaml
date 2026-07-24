@@ -6461,3 +6461,39 @@ profiles:
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-18.mdx
             note: User rejected the generated attendance claim; the authored note omits the roster.
+
+      - id: character.magistrate-wessen
+        status: confirmed
+        kind: entity
+        canonical: Magistrate Wessen
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-19.mdx
+            role: primary
+        aliases:
+          - Magistrate Wesson
+          - Wesson
+        match:
+          priority: high
+          tags:
+            - magistrate-wessen
+            - rannekford-magistrates
+            - castle-rannek
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Rannekford magistrates and the Castle Rannek crisis
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Use Magistrate Wessen for the Rannekford magistrate. Treat Wesson as
+          transcription or spelling drift, not a separate character.
+        instruction: >
+          Magistrate Wessen is the canonical spelling for the official who
+          received the party during the Castle Rannek crisis. Normalize Wesson
+          only when the context identifies this character.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-19.mdx
+            note: User confirmed Wessen as the magistrate's canonical spelling.
