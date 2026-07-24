@@ -6261,3 +6261,200 @@ profiles:
             note: Canonical article records Angel's Bastion aspiration and preserves her secret motive.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-12.mdx
             note: Authored note attributes the Bastion determination to Angel rather than Oren.
+
+      - id: place.hells-kitchen-maple-bridge
+        status: confirmed
+        kind: disambiguation
+        canonical: Hell's Kitchen
+        canonicalRefs: []
+        aliases:
+          - Honeypot
+          - Maplebridge is no more
+          - Maple Bridge is now called Hell's Kitchen
+        match:
+          priority: normal
+          tags:
+            - place-hells-kitchen
+            - maple-bridge
+            - kelynore
+            - sapphire-family-home
+            - rejected-honeypot
+        scope:
+          campaigns:
+            - escape-from-the-feydark
+            - the-vengeful
+          contexts:
+            - Kelynore's brothel
+            - Sapphire's family home
+            - Maple Bridge massacre
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Hell's Kitchen is Kelynore's brothel in Maple Bridge and Sapphire's
+          family home. Maple Bridge was not renamed Hell's Kitchen. Honeypot was
+          table silliness or collective error, not an alias.
+        instruction: >
+          Keep Maple Bridge as the settlement and Hell's Kitchen as the brothel
+          within it. The massacre killed people throughout Maple Bridge but did
+          not cause the town to cease existing or take the brothel's name. Do not
+          preserve Honeypot as another establishment or alternate name.
+        evidence:
+          - path: astro/src/content/docs/world/notes/escape-from-the-feydark/2024-05-03.mdx
+            note: User corrected the false renaming and Honeypot conflation in this older note.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-18.mdx
+            note: User identified Sapphire's family home as Hell's Kitchen in Maple Bridge.
+
+      - id: event.crispin-mallow-switched-legs
+        status: confirmed
+        kind: terminology
+        canonical: switched legs
+        canonicalRefs: []
+        aliases:
+          - stitched legs
+          - switched shoes
+        match:
+          priority: low
+          tags:
+            - crispin-mallow
+            - switched-legs
+            - stitched-legs
+            - malthrek-court-wizard
+            - submarine
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - 2026-07-18 Malthrek submarine encounter
+            - Crispin Mallow's altered victims
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Preserve switched legs for Mallow's alteration of the elderly Malthrek
+          court wizard: Mallow physically swapped his legs. Stitched may describe
+          the surgical aftermath but is not the name of the alteration.
+        instruction: >
+          Do not normalize switched legs to the plausible near-homophone stitched
+          legs. The wizard may have visible stitching, but the canonically
+          significant condition is that Crispin Mallow swapped his legs.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-18.mdx
+            note: User confirmed switched legs and identified Mallow as the cause.
+
+      - id: event.illegally-bear-merchandise-cover
+        status: confirmed
+        kind: disambiguation
+        canonical: rescued nobles under a merchandise cover
+        canonicalRefs: []
+        aliases:
+          - unidentified captive vessel
+          - captive merchandise
+          - guard sexually abusing a captive
+        match:
+          priority: low
+          tags:
+            - illegally-bear
+            - rescued-nobles
+            - merchandise-cover
+            - angel-and-brastok
+            - yannick
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - 2026-07-18 voyage to Port Mibram
+            - Angel and Sir Hilis Brastok aboard Illegally Bear
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          The merchandise exchange occurred aboard Illegally Bear, not a second
+          captive vessel. Sapphire posed as a guard and the others as merchandise;
+          Hellion later told Bear they were rescued nobles. Yannick saw Angel and
+          Brastok having sex and may have inferred abuse from their cover roles,
+          but the encounter was not actually abuse.
+        instruction: >
+          Do not invent another vessel, real captives, or a second captain from
+          the merchandise cover. Attribute the observation to Yannick rather than
+          Sapphire, while preserving the difference between his plausible
+          interpretation and the encounter's actual nature.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-18.mdx
+            note: User resolved the vessel, cover roles, observer, participants, and abuse inference.
+
+      - id: attribution.hellion-reformist-liver-account
+        status: confirmed
+        kind: disambiguation
+        canonical: Hellion
+        canonicalRefs: []
+        aliases:
+          - Bear reported
+          - Bear explained
+          - Bear claimed
+        match:
+          priority: low
+          tags:
+            - hellion
+            - illegal-e-bear
+            - reformist-atrocities
+            - hedwig-and-minfilia
+            - raibon
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - 2026-07-18 conversation aboard Illegally Bear
+            - yellow-eyed people and liver removal
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Attribute the Reformist account about targeting yellow-eyed people and
+          removing livers to Hellion speaking to Bear, not to Bear. Hellion knew
+          it through Hedwig and Minfilia's experiences and actual events in Raibon.
+        instruction: >
+          Bear reacted by wanting no involvement with the Reformist Church; he was
+          not the source of the atrocity report. Treat Hellion's account as grounded
+          in established Raibon events rather than uncorroborated pirate rumor.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-18.mdx
+            note: User corrected the speaker and established Hellion's sources.
+
+      - id: rejected.lover-lake-cotto-fina-roster
+        status: confirmed
+        kind: rejected-artifact
+        canonical: no established Cotto and Fina Lover's Lake visit
+        canonicalRefs: []
+        aliases:
+          - Cotto and Fina visited Lover's Lake
+          - Cotto and Fina were present
+          - Cotto and Fina accompanied Wilhelm and Mai
+        match:
+          priority: archive
+          tags:
+            - lovers-lake
+            - cotto-and-fina
+            - rejected-roster
+            - table-recollection
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - 2026-07-18 mating-bond discussion
+            - attempted recollection of Lover's Lake visitors
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Do not establish Cotto or Fina as visitors to Lover's Lake from the
+          2026-07-18 discussion. That passage was table recollection, and the user
+          does not believe either character went there.
+        instruction: >
+          Treat the attempted Wilhelm, Mai, Cotto, Fina, and Hans roster as table
+          memory-search rather than a canonical attendance list. Remove affirmative
+          claims about Cotto and Fina instead of asserting a categorical opposite
+          beyond the user's uncertainty.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-18.mdx
+            note: User rejected the generated attendance claim; the authored note omits the roster.
