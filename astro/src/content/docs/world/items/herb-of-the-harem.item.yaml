@@ -12,49 +12,49 @@ entries:
     form says otherwise, Lesser Restoration ends all of that dose's effects on a creature.
   - >-
     **Pill (Common).** These medicinal pills are ordinarily made from the herb's less potent leaves,
-    then processed, measured, and adulterated to limit their effects. A creature that consumes a pill
-    must succeed on a DC 10 Wisdom saving throw or experience limited arousal for 1d4 hours. The
-    arousal has no inherent mechanical penalty.
+    then processed, measured, and adulterated to limit their effects. A creature that consumes a
+    pill must succeed on a DC 10 Wisdom saving throw or experience limited arousal for 1d4 hours.
+    The arousal has no inherent mechanical penalty.
   - >-
-    A pill can be administered as an action to a living creature at 0 hit points. The creature becomes
-    stable but regains no hit points, then makes the pill's Wisdom saving throw normally.
+    A pill can be administered as an action to a living creature at 0 hit points. The creature
+    becomes stable but regains no hit points, then makes the pill's Wisdom saving throw normally.
   - >-
-    **Leaf (Uncommon).** A creature that chews a leaf or drinks tea brewed from one must make a DC 14
-    Wisdom saving throw. On a failed save, the creature becomes charmed by the nearest creature it
-    finds sexually attractive and is uncontrollably aroused for 1d8 hours. If no eligible creature is
-    present when the effect begins, the affected creature becomes charmed by the first creature it
-    finds sexually attractive that it perceives during the duration. On a successful save, it instead
-    experiences weak physical arousal, such as an engorged penis or erect clitoris, for 1d8 hours;
-    this has no inherent mechanical penalty.
-  - >-
-    **Flower (Rare).** A creature that consumes a flower or drinks tea brewed from one must make a DC
-    17 Wisdom saving throw. On a failed save, the creature becomes charmed by the nearest creature it
-    finds sexually attractive and is uncontrollably aroused for 1d20 + 4 hours. If no eligible
+    **Leaf (Uncommon).** A creature that chews a leaf or drinks tea brewed from one must make a DC
+    14 Wisdom saving throw. On a failed save, the creature becomes charmed by the nearest creature
+    it finds sexually attractive and is uncontrollably aroused for 1d8 hours. If no eligible
     creature is present when the effect begins, the affected creature becomes charmed by the first
     creature it finds sexually attractive that it perceives during the duration. On a successful
     save, it instead experiences weak physical arousal, such as an engorged penis or erect clitoris,
-    for 1d20 + 4 hours; this has no inherent mechanical penalty.
+    for 1d8 hours; this has no inherent mechanical penalty.
   - >-
-    The charm normally fixes on one creature for its duration. The GM may broaden it to every creature
-    the consumer finds sexually attractive when the consumer's personal and cultural disposition
-    makes diffuse attraction more appropriate; Ahurian accounts commonly describe this broader
-    response.
+    **Flower (Rare).** A creature that consumes a flower or drinks tea brewed from one must make a
+    DC 17 Wisdom saving throw. On a failed save, the creature becomes charmed by the nearest
+    creature it finds sexually attractive and is uncontrollably aroused for 1d20 + 4 hours. If no
+    eligible creature is present when the effect begins, the affected creature becomes charmed by
+    the first creature it finds sexually attractive that it perceives during the duration. On a
+    successful save, it instead experiences weak physical arousal, such as an engorged penis or
+    erect clitoris, for 1d20 + 4 hours; this has no inherent mechanical penalty.
+  - >-
+    The charm normally fixes on one creature for its duration. The GM may broaden it to every
+    creature the consumer finds sexually attractive when the consumer's personal and cultural
+    disposition makes diffuse attraction more appropriate; Ahurian accounts commonly describe this
+    broader response.
   - >-
     **Cadaveric Overload.** The leaf and flower are catastrophically incompatible with cadaver-based
-    undead: corporeal Undead animated from cadavers whose bodies retain enough circulatory anatomy to
-    rupture, such as ghouls, zombies, and undead locusts. Skeletons, incorporeal undead, and creatures
-    without cadaveric circulatory anatomy are unaffected. The GM determines whether an unusual Undead
-    qualifies.
+    undead: corporeal Undead animated from cadavers whose bodies retain enough circulatory anatomy
+    to rupture, such as ghouls, zombies, and undead locusts. Skeletons, incorporeal undead, and
+    creatures without cadaveric circulatory anatomy are unaffected. The GM determines whether an
+    unusual Undead qualifies.
   - >-
     A qualifying Undead that ingests a leaf or is thoroughly doused with a decoction boiled from one
     must make a DC 14 Constitution saving throw. On a failed save, it violently explodes and is
-    destroyed if it has 10 hit points or fewer; otherwise, it takes 3d6 force damage. On a successful
-    save, it takes half as much damage and is not destroyed.
+    destroyed if it has 10 hit points or fewer; otherwise, it takes 3d6 force damage. On a
+    successful save, it takes half as much damage and is not destroyed.
   - >-
     A qualifying Undead that ingests a flower or is thoroughly doused with a decoction boiled from
     one must make a DC 17 Constitution saving throw. On a failed save, it violently explodes and is
-    destroyed if it has 50 hit points or fewer; otherwise, it takes 14d6 force damage. On a successful
-    save, it takes half as much damage and is not destroyed.
+    destroyed if it has 50 hit points or fewer; otherwise, it takes 14d6 force damage. On a
+    successful save, it takes half as much damage and is not destroyed.
   - >-
     Boiling and diluting leaves or flowers for external application does not remove their cadaveric
     effect. Each Undead exposed to a mass application makes its own saving throw. Processed pills do

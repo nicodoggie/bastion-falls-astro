@@ -64,17 +64,16 @@ trait:
       - >-
         The Gilded Anatomy is not a dragon. It is the body Crispin built inside his humanoid shell
         from folded limbs, harvested faces, alchemical supports, and organs taken from the cursed
-        prison-body of the gold dragon Auraxx. Effects that specifically affect dragons do not affect
-        the Gilded Anatomy unless they also affect monstrosities.
+        prison-body of the gold dragon Auraxx. Effects that specifically affect dragons do not
+        affect the Gilded Anatomy unless they also affect monstrosities.
   - name: Graft Rejection
     entries:
       - >-
-        Restorative magic forces the harvested dragon tissue to reject Crispin's incompatible grafts.
-        When a spell of 2nd level or higher would restore
-        the Gilded Anatomy's hit points, regrow one of its body parts, or end a disease, curse, or
-        condition affecting it, the spell has no normal effect and the Gilded Anatomy gains one
-        Rejection instead. It can gain no more than one Rejection from a single spell and no more
-        than three Rejections in total.
+        Restorative magic forces the harvested dragon tissue to reject Crispin's incompatible
+        grafts. When a spell of 2nd level or higher would restore the Gilded Anatomy's hit points,
+        regrow one of its body parts, or end a disease, curse, or condition affecting it, the spell
+        has no normal effect and the Gilded Anatomy gains one Rejection instead. It can gain no more
+        than one Rejection from a single spell and no more than three Rejections in total.
       - >-
         A creature within 5 feet of the Gilded Anatomy can use its action to wrench at the infernal
         piercing holding the false body together, making a {@dc 19} Strength (Athletics) or
