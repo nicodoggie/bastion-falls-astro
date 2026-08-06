@@ -11540,20 +11540,20 @@
 [07:24:06 - 07:24:07] Anong pangalan?
 [07:24:07 - 07:24:09] Plus three ito dapat.
 [07:24:09 - 07:24:10] May specific.
-[07:24:10 - 07:24:14] Wala eh, Brannag yung pinangalan ko dito sa halberd niya.
+[07:24:10 - 07:24:14] Wala eh, Brannaugh yung pinangalan ko dito sa halberd niya.
 [07:24:14 - 07:24:16] Pero hindi ko alam kung anong halberd na 'to.
 [07:24:16 - 07:24:19] Pero meron siyang cleave na, ano.
 [07:24:19 - 07:24:21] Ah, plus three ito.
 [07:24:21 - 07:24:23] So regular plus three ito.
 [07:24:23 - 07:24:25] So regular plus three ito.
 [07:24:25 - 07:24:30] So regular plus three ito, dapat may pangalan.
-[07:24:30 - 07:24:34] Ah, pinangalanan ko lang yung Brannag.
+[07:24:30 - 07:24:34] Ah, pinangalanan ko lang yung Brannaugh.
 [07:24:34 - 07:24:35] Yuh.
 [07:24:35 - 07:24:36] You have this.
 [07:24:36 - 07:24:38] He said, she says.
 [07:24:38 - 07:24:40] Halberd plus three ito.
 [07:24:40 - 07:24:44] And then equipment.
-[07:24:44 - 07:24:48] And then rename to Brannag.
+[07:24:44 - 07:24:48] And then rename to Brannaugh.
 [07:24:48 - 07:24:52] As in, ay, ka pa na.
 [07:24:52 - 07:24:55] S-T-N-T, ano.
 [07:24:55 - 07:25:01] So she says, ah, once you're attuned to it, it means you have to sleep with it.
@@ -11575,7 +11575,7 @@
 [07:25:26 - 07:25:26] Alright.
 [07:25:26 - 07:25:27] As a soldier.
 [07:25:27 - 07:25:32] I'm going to be on a halberd plus three.
-[07:25:32 - 07:25:36] And I'll post a nice Brannag.
+[07:25:32 - 07:25:36] And I'll post a nice Brannaugh.
 [07:25:36 - 07:25:45] You can have it.
 [07:25:45 - 07:25:47] No longer mine.
 [07:25:47 - 07:25:59] A long time ago, I've used it quite a lot of times.
