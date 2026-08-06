@@ -19,6 +19,10 @@ character:
 
 tags:
   - characters
+creatureStats:
+  malmann: 'characters/erik-malmann.creature'
 ---
 
-<Stub />
+import StatBlock from '@/components/StatBlock.astro';
+
+<StatBlock creature={frontmatter.creatureStats.malmann} />

@@ -1,0 +1,104 @@
+name: Sir Erik Malmann
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+alignment:
+  - L
+  - G
+ac:
+  - ac: 18
+    from:
+      - chain mail
+      - shield
+hp:
+  average: 51
+  formula: 6d10 + 18
+speed:
+  walk: 30
+str: 18
+dex: 10
+con: 16
+int: 10
+wis: 12
+cha: 16
+save:
+  wis: "+4"
+  cha: "+6"
+skill:
+  athletics: "+7"
+  insight: "+4"
+  persuasion: "+6"
+  religion: "+3"
+passive: 11
+languages:
+  - Common
+  - Celestial
+cr: "4"
+trait:
+  - name: Aura of Protection
+    entries:
+      - >-
+        While Malmann is conscious, he and friendly creatures within 10 feet of him gain a +3 bonus
+        to all saving throws. This bonus is not included in Malmann's listed saving throw bonuses.
+  - name: Divine Health
+    entries:
+      - Malmann is immune to disease.
+  - name: Lay on Hands (30 HP/Day)
+    entries:
+      - >-
+        Malmann has a pool of 30 hit points. As an action, he can touch a creature and restore any
+        number of remaining points from the pool. Alternatively, he can spend 5 points to cure one
+        disease or neutralize one poison affecting the target.
+  - name: Divine Smite
+    entries:
+      - >-
+        When Malmann hits a creature with a melee weapon attack, he can expend one spell slot to
+        deal an extra 9 ({@damage 2d8}) radiant damage for a 1st-level slot or 13 ({@damage 3d8})
+        radiant damage for a 2nd-level slot. The damage increases by 4 ({@damage 1d8}) against a
+        fiend or undead.
+  - name: Channel Divinity (1/Short or Long Rest)
+    entries:
+      - >-
+        Malmann can use either Peerless Athlete or Inspiring Smite. He regains the expended use when
+        he finishes a short or long rest.
+  - name: Spellcasting
+    entries:
+      - >-
+        Malmann is a 6th-level paladin. His spellcasting ability is Charisma (spell save {@dc 14},
+        {@hit +6} to hit with spell attacks). He has the following paladin spells prepared:
+      - >-
+        1st level (4 slots): {@spell bless}, {@spell command}, {@spell cure wounds}, {@spell guiding
+        bolt}, {@spell heroism}, {@spell shield of faith}
+      - >-
+        2nd level (2 slots): {@spell aid}, {@spell enhance ability}, {@spell lesser restoration},
+        {@spell magic weapon}
+action:
+  - name: Multiattack
+    entries:
+      - Malmann makes two Longsword or Javelin attacks.
+  - name: Longsword
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 10 ({@damage 1d8 + 6})
+        slashing damage, including Malmann's Dueling fighting style.
+  - name: Javelin
+    entries:
+      - >-
+        Melee or Ranged Weapon Attack: {@hit +7} to hit, reach 5 ft. or range 30/120 ft., one
+        target. Hit: 7 ({@damage 1d6 + 4}) piercing damage.
+bonus:
+  - name: Peerless Athlete (Channel Divinity)
+    entries:
+      - >-
+        Malmann expends his Channel Divinity. For 10 minutes, he has advantage on Strength
+        (Athletics) and Dexterity (Acrobatics) checks, can carry twice his normal capacity, and the
+        distance of his running long and high jumps increases by 10 feet.
+  - name: Inspiring Smite (Channel Divinity)
+    entries:
+      - >-
+        Immediately after using Divine Smite, Malmann expends his Channel Divinity and distributes
+        15 ({@dice 2d8 + 6}) temporary hit points among creatures of his choice within 30 feet,
+        including himself.
