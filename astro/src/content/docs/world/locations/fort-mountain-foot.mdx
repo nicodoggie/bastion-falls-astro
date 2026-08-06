@@ -1,0 +1,27 @@
+---
+title: Fort Mountain-Foot
+tags:
+  - locations
+  - fort
+location:
+  type: fort
+  parents:
+    - Poasah
+---
+
+import MapImage from '../../../../assets/maps/map-of-fort-mountain-foot.png';
+import { getImage } from 'astro:assets';
+export const processedMap = await getImage({ src: MapImage });
+
+Fort Mountain-Foot is a fortified settlement in [Poasah](poasah.mdx) and the base of its Northeast
+Garrison. [Sirra Kita](../characters/sirra-kita.mdx) served at the fort while investigating the
+source of people being trafficked into [Calamutz](calamutz.mdx) and its surrounding areas.
+
+<MapViewer client:only="react"
+  src={processedMap.src}
+  width={processedMap.options.width}
+  height={processedMap.options.height}
+alt="Early hand-drawn map of Fort Mountain-Foot and its neighboring settlement" />
+
+_An early campaign map of Fort Mountain-Foot, its internal districts, roads, walls, and neighboring
+settlement._

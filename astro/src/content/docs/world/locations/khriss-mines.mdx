@@ -15,6 +15,10 @@ location:
     - Poasah
 ---
 
+import MapImage from '../../../../assets/maps/maps-to-khriss-mines.png';
+import { getImage } from 'astro:assets';
+export const processedMap = await getImage({ src: MapImage });
+
 _The Khriss Mines_ refer to both the mines, and the settlement forme to house the miners that work
 them. Until recently, the area was relatively heavily settled due to the success of the mining
 operations in the area. However, an unknown catastrophe had killed all of its inhabitants.
@@ -23,6 +27,14 @@ The mines and the settlement are supposed to be completely abandoned, however ex
 [Goldilocks Westfall](../characters/goldilocks-westfall.mdx) and her team discovered recent activity
 in the area by members of the
 [Reformed Church of the Divine Masochist](../organizations/reformed-church-of-the-divine-masochist.mdx).
+
+<MapViewer client:only="react"
+  src={processedMap.src}
+  width={processedMap.options.width}
+  height={processedMap.options.height}
+alt="Early hand-drawn maps of areas along the approaches to Khriss Mines" />
+
+_Early campaign maps of several areas encountered along the approaches to Khriss Mines._
 
 ## Locations
 

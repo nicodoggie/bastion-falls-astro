@@ -4,6 +4,38 @@ tags:
   - locations
 location:
   type: city
+  parents:
+    - Acqua
+    - Poasah
 ---
 
-<Stub />
+import EarlyMapImage from '../../../../assets/maps/map-of-acqua-termina-early.png';
+import FloodedMapImage from '../../../../assets/maps/map-of-acqua-termina-flooded-1275.png';
+import { getImage } from 'astro:assets';
+export const processedEarlyMap = await getImage({ src: EarlyMapImage });
+export const processedFloodedMap = await getImage({ src: FloodedMapImage });
+
+Acqua Termina is a city in the [Acquan Region](acqua.mdx) of [Poasah](poasah.mdx).
+
+## Early Map
+
+<MapViewer client:only="react"
+  src={processedEarlyMap.src}
+  width={processedEarlyMap.options.width}
+  height={processedEarlyMap.options.height}
+alt="Early hand-drawn map of Acqua Termina and its river corridor" />
+
+_An early planning map of Acqua Termina and its river corridor._
+
+## Flooding of 1275
+
+During the Plague in 1275, undead forces destroyed Acqua Termina's flood-control infrastructure,
+flooding much of the city.
+
+<MapViewer client:only="react"
+  src={processedFloodedMap.src}
+  width={processedFloodedMap.options.width}
+  height={processedFloodedMap.options.height}
+alt="Hand-drawn map of Acqua Termina after the flooding of 1275" />
+
+_Acqua Termina after the floods caused by the destruction of its flood-control infrastructure._

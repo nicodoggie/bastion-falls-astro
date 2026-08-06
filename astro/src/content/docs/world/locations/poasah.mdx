@@ -13,6 +13,29 @@ location:
       type: constitutional monarchy
 ---
 
+import OverviewMapImage from '../../../../assets/maps/map-of-poasah-overview.png';
+import RegionMapImage from '../../../../assets/maps/map-of-poasah-region.png';
+import { getImage } from 'astro:assets';
+export const processedOverviewMap = await getImage({ src: OverviewMapImage });
+export const processedRegionMap = await getImage({ src: RegionMapImage });
+
+<MapViewer client:only="react"
+  src={processedRegionMap.src}
+  width={processedRegionMap.options.width}
+  height={processedRegionMap.options.height}
+alt="Early hand-drawn regional map of Poasah" />
+
+_An early regional map of Poasah and the surrounding lands._
+
+<MapViewer client:only="react"
+  src={processedOverviewMap.src}
+  width={processedOverviewMap.options.width}
+  height={processedOverviewMap.options.height}
+alt="Early hand-drawn overview map of Poasah" />
+
+_This wider early map predates current geographic nomenclature. The Kalassaria Sea shown here is now
+known as the [Sarmatian Sea](sarmatian-sea.mdx)._
+
 <Stub />
 
 ## The Kingdom of Poasah
