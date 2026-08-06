@@ -952,6 +952,48 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx
             note: User clarified Rachel is Emily's Reformist disguise, including the Greater Archon bluff thread.
 
+      - id: item.brannaugh
+        status: confirmed
+        kind: item
+        canonical: Brannaugh
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/hilis-brastok.mdx
+            role: wielder
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-05-29.mdx
+            role: origin
+        aliases:
+          - Brannag
+        match:
+          priority: high
+          tags:
+            - item-brannaugh
+            - brannaugh
+            - hilis-brastok
+            - recallable-halberd
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Hilis Brastok's magical recallable halberd
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: >
+          Use Brannaugh for Hilis Brastok's magical recallable halberd. Treat
+          Brannag as spelling drift, not a separate weapon.
+        instruction: >
+          Brannaugh is the canonical spelling of the magical halberd wielded by
+          Hilis Brastok. Normalize Brannag to Brannaugh in authored notes,
+          corrected transcripts, and generated support material while preserving
+          raw ASR unchanged.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-05-29.mdx
+            note: Introduces Brastok's named magical halberd and its recall ability.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            note: Records Brastok repeatedly wielding and recalling the halberd at Castle Rannek.
+
       - id: item.glass-eye-of-true-seeing
         status: confirmed
         kind: entity
@@ -1666,6 +1708,46 @@ profiles:
             note: The 03:05:45-03:08:07 exchange is heard as Myrland, a she/her recipient of a future visit, Sending, gifts, dolls, and personal garments.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User listened to the audio and confirmed on 2026-07-09 that Myrland is Maerwen.
+
+      - id: character.sir-merwen
+        status: confirmed
+        kind: entity
+        canonical: Sir Merwen
+        canonicalRefs:
+          - type: session-note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-01.mdx
+            role: Rannek Admiralty officer
+        aliases:
+          - Sir Merwin
+          - Merwin
+        match:
+          priority: normal
+          tags:
+            - character-sir-merwen
+            - sir-merwen
+            - rannek-admiralty
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - 2026-08-01 Rannek Admiralty facility scene
+            - Maria's demand to speak with Marshal Kilkenny
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In the 2026-08-01 Rannek Admiralty facility scene, Merwin is ASR
+          drift for Sir Merwen, the male officer who carries Maria Rannek's
+          request inside. Keep him distinct from Maerwen Lunartear, the female
+          Legally Bare model and charm-maker. Do not globally rewrite Merwin in
+          older Legally Bare contexts, where it may refer to Maerwen.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-01/corrected_transcript.md
+            note: The 00:47:59-00:48:31 exchange introduces and addresses the Rannek Admiralty officer.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-01.mdx
+            note: User confirmed on 2026-08-05 that the officer's name is Merwen, not Merwin.
+          - path: astro/src/content/docs/world/organizations/legally-bare.mdx
+            note: Legally Bare separately lists Maerwen Lunartear as a female model and charm-maker.
 
       - id: place.sentimental-island
         status: confirmed
@@ -2976,6 +3058,301 @@ profiles:
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: User clarified that the ward is a Ward of Magic Detection, acts like detect magic, requires a daily 3rd-level spell recharge, and is sustained by an Orb of Enhancement in the vicinity.
+
+      - id: event.admiralty-orbs-of-enhancement-handover
+        status: confirmed
+        kind: disambiguation
+        canonical: multiple typically sized Orbs of Enhancement
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/misc/orbs-of-power/orb-of-enhancement.mdx
+            role: item-page
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            role: admiralty-facility-handover
+        aliases:
+          - unusually large stone
+          - unusually large stone or orb
+          - horse-sized orb
+          - unidentified stone/orb
+        match:
+          priority: high
+          tags:
+            - orbs-of-enhancement
+            - admiralty-facility
+            - teleportation-circle
+            - session-2026-08-02
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-08-02"
+          contexts:
+            - Admiralty facility teleportation circle
+            - damaged session_041 orb handover
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          In the Admiralty-facility handover, use several typically sized Orbs
+          of Enhancement, not one unusually large stone or unidentified orb.
+        instruction: >
+          The damaged singular, stone, and horse-sized wording is decoder drift.
+          Several typically sized Orbs of Enhancement were handed over. Their
+          intended contribution to restoring the teleportation circle and the
+          later damaged discussion of uses or charging remain unresolved.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            note: User clarified that multiple typically sized Orbs of Enhancement were handed over, not one unusually large orb.
+
+      - id: species.urdefolcin
+        status: confirmed
+        kind: species
+        canonical: Urdefolcin
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/species/urdefolcin.mdx
+            role: species-page
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            role: urdefolcin-remains-and-open-hook
+        aliases:
+          - Wernifolsen
+          - Wernifolsens
+        match:
+          priority: high
+          tags:
+            - urdefolcin
+            - wernifolsen
+            - forest-protector
+            - urdefolcin-heart
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - urdefolcin remains
+            - forest protectors
+            - Mallow's puppet components
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Correct Wernifolsen to Urdefolcin. Preserve their complete nature as
+          an Open Hook rather than inferring taxonomy, origin, or biology. They
+          may “plant” Shambling Mounds as forest defenders when needed.
+        instruction: >
+          Urdefolcin is the canonical spelling. They are known as ancient
+          protectors of forests and forest communities, and parts of their
+          hearts can become powerful magical components. Their full taxonomy,
+          origin, biology, and masks remain unresolved Open Hooks. Urdefolcins
+          may “plant” Shambling Mounds as defensive creatures for a forest when
+          needed, though the means by which they do so remains unresolved.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            note: User confirmed Urdefolcin as the canonical spelling, designated their full nature as an Open Hook, and clarified that they may “plant” Shambling Mounds as forest defenders when needed.
+
+      - id: character.sebastian-argras
+        status: confirmed
+        kind: character
+        canonical: Sebastian Argras
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/sebastian-argras.mdx
+            role: character-page
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            role: castle-rannek-crisis-boundary
+        aliases:
+          - Sebastian
+          - Butler
+          - court-wizard Sebastian
+        match:
+          priority: high
+          tags:
+            - sebastian-argras
+            - house-rannek-seneschal
+            - angel-butler-address
+            - not-a-court-wizard
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Castle Rannek household
+            - Marchioness Maria's attendants
+            - Rannek family refuge
+            - court-wizard coordination
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Sebastian Argras is House Rannek's seneschal, not its butler or a
+          court wizard. Only Angel calls him “Butler,” as imprecise domestic
+          shorthand that may also carry familiarity or affection.
+        instruction: >
+          Use Sebastian Argras for House Rannek's seneschal. “Butler” is only
+          Angel Rannek's informal, function-based address for him and is not his
+          official designation; it may bear familiarity or affection without a
+          single settled emotional meaning. Sebastian may coordinate with court
+          wizards during household emergencies, but he is definitely not a
+          court wizard. His actions and condition during the Castle Rannek
+          infiltration remain unresolved.
+        evidence:
+          - path: astro/src/content/docs/world/characters/sebastian-argras.mdx
+            note: User canonized Sebastian Argras as House Rannek's seneschal, clarified that only Angel calls him “Butler,” and confirmed that he is not a court wizard.
+
+      - id: character.queen-arcadia-title
+        status: confirmed
+        kind: character
+        canonical: Queen Arcadia, Queen of Ashes
+        canonicalRefs:
+          - type: location
+            path: astro/src/content/docs/world/locations/autumn-court.mdx
+            role: ruled-domain
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            role: title-confirmation
+        aliases:
+          - Queen Arcadia
+          - Arcadia
+          - Queen of Ashes
+        match:
+          priority: high
+          tags:
+            - queen-arcadia
+            - queen-of-ashes
+            - autumn-court
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Autumn Court
+            - Feywild rulers
+            - Sapphire's allegiance
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Queen Arcadia rules the Autumn Court and bears the title “Queen of
+          Ashes.” Do not leave that title provisional or uncorroborated.
+        instruction: >
+          Treat “Queen of Ashes” as a confirmed title of Queen Arcadia, ruler of
+          the Feywild's Autumn Court. Preserve separate uncertainty in damaged
+          surrounding transcript dialogue.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            note: User explicitly confirmed that Queen Arcadia bears the title “Queen of Ashes.”
+
+      - id: continuity.minfilia-oscar-thrantorbury-loop
+        status: confirmed
+        kind: event
+        canonical: Minfilia Diaz and Oscar Savoy trapped in Thrantorbury's time loop
+        canonicalRefs:
+          - type: character
+            path: astro/src/content/docs/world/characters/minfilia-diaz.mdx
+            role: participant
+          - type: character
+            path: astro/src/content/docs/world/characters/oscar-savoy.mdx
+            role: participant
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            role: current-status
+        aliases:
+          - Minfilia and Oscar
+          - overdue from Thrantorbury
+          - prolonged Thrantorbury operation
+        match:
+          priority: high
+          tags:
+            - minfilia-diaz
+            - oscar-savoy
+            - thrantorbury
+            - time-loop
+            - maiden's-field-separation
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Thrantorbury operation
+            - Maiden's Field objectives
+            - missing allies
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Minfilia Diaz and Oscar Savoy are in Thrantorbury, trapped in a time
+          loop. Do not place them in Maiden's Field or merge their rescue with
+          the separate Maiden's Field objective.
+        instruction: >
+          Keep Minfilia and Oscar's Thrantorbury time-loop rescue separate from
+          the Maiden's Field investigation. Other relatives may remain in
+          Maiden's Field, but Minfilia and Oscar are not there.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            note: User explicitly confirmed that Minfilia and Oscar are trapped in a time loop in Thrantorbury, not present in Maiden's Field.
+
+      - id: character.auraxx-canary-incorporation-boundary
+        status: confirmed
+        kind: boundary
+        canonical: Auraxx's curse-prison, divided body, and surviving soul
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/auraxx.mdx
+            role: character-page
+          - type: article
+            path: astro/src/content/docs/world/characters/crispin-mallow.mdx
+            role: crispin-incorporation-page
+          - type: article
+            path: astro/src/content/docs/world/characters/stacy-cartwright.mdx
+            role: stacy-testbed-page
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            role: session-reconciliation
+        aliases:
+          - Auraxx
+          - Gold Canary
+          - self-made chrysalis
+          - Stacy and Auraxx fusion
+          - Auraxx resurrection
+        match:
+          priority: normal
+          tags:
+            - auraxx
+            - gold-canary
+            - stacy-auraxx-grafts
+            - crispin-gilded-anatomy
+            - legend-lore-boundary
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Auraxx was cursed into the Gold Canary. Crispin invoked and extracted
+          his manifested body, tested incorporation on Stacy with the least
+          magically powerful parts--scale-bearing skin, distal forelimb bones
+          and tendons with a claw root, terminal wing digits and membrane, and
+          pieces of rib, sternum, cartilage, and marrow--then incorporated the
+          majority into himself. The skin grafts underlie Stacy's counterfeit
+          scales. Auraxx's body cannot be revived; his soul remains imprisoned
+          in and sustains the canary. The Legend Lore dual voice does not prove
+          literal speech, though the canary form may eventually permit
+          communication. If invoked, Auraxx remembers at least Mallow's
+          desecration; broader memory and dormant awareness remain unsettled.
+        instruction: >
+          Keep Auraxx's extracted anatomy separate from his imprisoned soul.
+          Stacy was a deliberate testbed, not a recipient of unusable remnants.
+          Most of the body went into Crispin; a smaller, intentionally selected
+          portion went into Stacy. The soul remains in the canary, which persists
+          because it still contains that prisoner. Release or communication may
+          be possible, but bodily restoration, resurrection, and reincarnation
+          are not. Do not infer from Legend Lore's dramatic voices that Auraxx
+          literally spoke through Stacy during the August 2 scene.
+        evidence:
+          - path: astro/src/content/docs/world/characters/auraxx.mdx
+            note: Omniscient character article records the curse-prison, controlled manifestation, divided anatomy, non-revivability, and imprisoned soul.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            note: Session reconciliation separates Legend Lore presentation, party theories, and later-settled canon.
 
       - id: character.stacy-cartwright-court-wizard-hook
         status: provisional
@@ -6497,3 +6874,104 @@ profiles:
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-19.mdx
             note: User confirmed Wessen as the magistrate's canonical spelling.
+
+      - id: item.reformist-poison-tooth
+        status: confirmed
+        kind: item
+        canonical: Reformist poison-filled false tooth
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/organizations/reformed-church-of-the-divine-masochist.mdx
+            role: primary
+          - type: article
+            path: astro/src/content/docs/world/species/face-stealer.mdx
+            role: supporting
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-01.mdx
+            role: current-session
+        aliases:
+          - acid-bearing tooth
+          - acid-filled false tooth
+          - false tooth containing acid
+          - loose tooth containing acid
+          - poison tooth
+        match:
+          priority: high
+          tags:
+            - reformist-poison-tooth
+            - reformist-agents
+            - face-stealers
+            - interrogation
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Reformist agents captured for interrogation
+            - Face-Stealer infiltrators
+            - false Tonon and the Rannek Admiralty captives
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          In Reformist-agent and Face-Stealer contexts, identify the false tooth
+          as filled with poison, not acid. Captured agents bite it to die rather
+          than divulge information.
+        instruction: >
+          Poison-filled false teeth are common among Reformist agents, especially
+          their Face-Stealers. Do not describe them as acid-bearing evidence-
+          destruction devices or claim their purpose is to thwart speak with dead.
+          Keep this as a Reformist operational practice rather than an inherent
+          biological trait of all Face-Stealers.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-19.mdx
+            note: The false Tonon carried one such tooth.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-01.mdx
+            note: User clarified on 2026-08-05 that Trajan removed poison-filled false teeth from the captives and that Reformist agents bite them rather than leak information.
+
+      - id: character.tyrion-donmar
+        status: confirmed
+        kind: entity
+        canonical: Vice Marshal Tyrion Donmar
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-01.mdx
+            role: primary
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            role: supporting
+        aliases:
+          - Vice Admiral Donmar
+          - Vice Marshal Donmar
+          - Vice-Marshal Tyrion Donmar
+          - Tyrion Donmar
+        match:
+          priority: high
+          tags:
+            - vice-marshal-tyrion-donmar
+            - rannek-admiralty
+            - admiralty-facility
+            - donmar-identity-collision
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Western Rannek Admiralty facility
+            - compromised Marshal Kilkenny command
+            - retaking Castle Rannek
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Use Vice Marshal Tyrion Donmar for the officer at the western Rannek
+          Admiralty facility. Treat Vice Admiral Donmar as title drift in this
+          context.
+        instruction: >
+          Tyrion is the officer's first name and Donmar is his surname. Keep Vice
+          Marshal Tyrion Donmar distinct from the different Donmar associated with
+          the Narrows and the Great Erected One. Do not globally replace bare
+          Donmar references without resolving which person the context identifies.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-01.mdx
+            note: User confirmed on 2026-08-05 that the officer is Vice Marshal Tyrion Donmar.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            note: The following session independently records Tyrion Donmar and distinguishes him from the Narrows Donmar.
