@@ -12,10 +12,34 @@ character:
     relatives: []
     religions: []
     families: []
+creatureStats:
+  gildedPunishment: 'characters/stacy-cartwright-gilded-punishment.creature'
 ---
 
-_Stacy Cartwright_ is one of the Malthrek Court Wizards mentioned in the Vengeful notes.
+import StatBlock from '@/components/StatBlock.astro';
 
-As of the Castle Malthrek funeral operation, her exact return timing and morning duties remain an
-open question. She was one of the court wizards sent to fetch nobles for the funeral, and three
-other Malthrek Court Wizards remain unaccounted for.
+**Stacy Cartwright** is a transmuter and one of the Malthrek Court Wizards. She was among the court
+wizards sent to fetch nobles for the Castle Malthrek funeral, while three of her colleagues remained
+unaccounted for.
+
+## The Gilded Punishment
+
+Stacy attempted to expose [Crispin Mallow](crispin-mallow.mdx). In punishment, Crispin used her as a
+testbed for incorporating [Auraxx's](auraxx.mdx) anatomy before attempting the greater
+transformation upon himself. He selected the least magically powerful portions of the dragon for the
+experiment: scale-bearing skin; distal forelimb bones and tendons with a claw root; terminal wing
+digits and membrane; and pieces of rib, sternum, cartilage, and marrow. These grafts compel her
+magic and preserve her life through an excruciating transformation, leaving Stacy conscious inside a
+body being continually rewritten against her will. The skin grafts are the foundation of the
+counterfeit scale covering that spreads across her transformed body.
+
+The punishment is recoverable by design, although not mercifully so. When Stacy suffers mortal
+injury, the dragon remnants unfold into a counterfeit gilded body rather than allowing her to die.
+Restorative magic causes the incompatible tissue to reject its host, and careful magical or medical
+intervention can suppress the control graft. Destroying the transformed grafts leaves Stacy
+unconscious but alive. Removing Auraxx's remnants can therefore save Stacy, but it cannot restore
+the dragon's dismantled body.
+
+## Encounter Statistics
+
+<StatBlock creature={frontmatter.creatureStats.gildedPunishment} />

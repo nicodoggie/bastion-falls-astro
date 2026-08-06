@@ -1,0 +1,108 @@
+name: Misarranged Puppet, Sandor's Shape
+size:
+  - M
+type:
+  type: construct
+  tags:
+    - flesh golem
+    - human replica
+alignment:
+  - U
+ac:
+  - ac: 16
+    from:
+      - stitched natural armor
+hp:
+  average: 136
+  formula: 16d8 + 64
+speed:
+  walk: 30
+  climb: 30
+str: 18
+dex: 14
+con: 18
+int: 6
+wis: 12
+cha: 5
+save:
+  str: "+7"
+  con: "+7"
+  wis: "+4"
+skill:
+  deception: "+3"
+  perception: "+4"
+  stealth: "+5"
+immune:
+  - poison
+  - psychic
+conditionImmune:
+  - charmed
+  - exhaustion
+  - frightened
+  - paralyzed
+  - petrified
+  - poisoned
+senses:
+  - darkvision 60 ft.
+passive: 14
+languages:
+  - understands Common but speaks only in stolen phrases
+cr: "7"
+trait:
+  - name: Sandor's Shape
+    entries:
+      - >-
+        The puppet resembles Sandor Kethlas until it moves with purpose. A creature that studies the
+        puppet can use its action to make a {@dc 15} Intelligence (Investigation) check, recognizing
+        on a success that its joints sit in the wrong places and its expressions repeat in a fixed
+        sequence.
+  - name: Misplaced Anatomy
+    entries:
+      - >-
+        The puppet's reach comes from limbs folded through anatomically impossible passages. It can
+        grapple up to two creatures at once, and grappling a creature does not reduce the number of
+        attacks it can make.
+  - name: Restorative Rejection
+    entries:
+      - >-
+        When the puppet is targeted by a spell of 1st level or higher that would restore its hit
+        points, regrow a body part, or end a disease, curse, or condition affecting it, the spell
+        has no normal effect. Instead, the puppet takes 9 ({@damage 2d8}) radiant damage per level
+        of the spell, to a maximum of 27 ({@damage 6d8}) radiant damage.
+action:
+  - name: Multiattack
+    entries:
+      - The puppet makes one Jawblade attack and two Dislocated Grasp attacks.
+  - name: Jawblade
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 13 ({@damage 2d8 + 4})
+        slashing damage as a sword arm unfolds through the puppet's mouth.
+  - name: Dislocated Grasp
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +7} to hit, reach 15 ft., one target. Hit: 12 ({@damage 1d8 + 4})
+        bludgeoning damage plus 3 ({@damage 1d6}) necrotic damage. If the target is Large or
+        smaller, it is {@condition grappled} (escape {@dc 15}).
+  - name: Procession of Unclaimed Limbs ({@recharge 5})
+    entries:
+      - >-
+        The puppet comes apart in a rush of crawling arms and backward-running legs. Each other
+        creature within 15 feet must make a {@dc 15} Dexterity saving throw, taking 27 ({@damage
+        6d8}) bludgeoning damage and falling {@condition prone} on a failed save, or taking half as
+        much damage without falling {@condition prone} on a successful one. The puppet then
+        reassembles in an unoccupied space it can see within 30 feet without provoking opportunity
+        attacks. Creatures grappled by the puppet move with it and fall {@condition prone}.
+bonus:
+  - name: Correct the Arrangement
+    entries:
+      - >-
+        The puppet moves each creature grappled by it to an unoccupied space within 15 feet of the
+        puppet. If it has two creatures grappled, it can instead exchange their spaces. This
+        movement does not provoke opportunity attacks.
+reaction:
+  - name: The Heart Was Elsewhere
+    entries:
+      - >-
+        When the puppet takes damage, it reduces that damage by 10 ({@dice 3d6}) as the struck organ
+        pulls itself through the puppet's body and emerges somewhere less convenient.

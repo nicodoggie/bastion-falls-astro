@@ -1,0 +1,156 @@
+name: Stacy Cartwright, the Gilded Punishment
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - human
+    - transmuter
+    - grafted
+alignment:
+  - N
+ac:
+  - ac: 15
+    from:
+      - mage armor
+  - ac: 17
+    from:
+      - counterfeit gold scales
+    condition: in the Gilded Punishment phase
+hp:
+  average: 85
+  formula: 13d8 + 26
+speed:
+  walk: 30
+str: 10
+dex: 14
+con: 14
+int: 18
+wis: 12
+cha: 13
+save:
+  con: "+6"
+  int: "+8"
+  wis: "+5"
+skill:
+  arcana: "+8"
+  history: "+8"
+  insight: "+5"
+  investigation: "+8"
+resist:
+  - fire
+senses:
+  - darkvision 60 ft.
+passive: 11
+languages:
+  - Common
+  - Draconic
+  - Hickic
+cr: "9"
+trait:
+  - name: Prisoner in Her Own Flesh
+    entries:
+      - >-
+        Stacy is conscious and aware but cannot directly disobey the control graft. A creature she
+        can hear within 60 feet can use its action to make a {@dc 16} Intelligence (Arcana) or
+        Charisma (Persuasion) check, reminding Stacy who she is or helping her disrupt the graft. On
+        a success, Stacy has disadvantage on attack rolls, and creatures have advantage on saving
+        throws against her abilities, until the end of her next turn. Each creature can succeed on
+        this check only once during the encounter.
+  - name: The Punishment Unfolds (1/Day)
+    entries:
+      - >-
+        When Stacy is reduced to 0 hit points for the first time, she does not fall unconscious or
+        die. The implanted gold-dragon remnants interpret the injury as a command to preserve their
+        host. Her scale-bearing skin grafts spread into counterfeit armor while distal forelimb
+        tissues, terminal wing structures, and fragments of rib and sternum force her body into a
+        draconic frame. Stacy regains 80 hit points, ends her concentration, and enters the Gilded
+        Punishment phase as counterfeit scales, a dragon forelimb, and mismatched wings tear through
+        her body.
+      - >-
+        In this phase, Stacy's AC is 17, she has a flying speed of 40 feet, and her fire resistance
+        becomes immunity. She cannot cast or concentrate on spells and can use only actions, bonus
+        actions, and reactions labeled "Gilded Phase."
+  - name: Restorative Rejection (Gilded Phase Only)
+    entries:
+      - >-
+        When Stacy is targeted by a spell of 1st level or higher that would restore her hit points,
+        regrow a body part, or end a disease, curse, or condition affecting her, the spell has no
+        normal effect. Instead, the grafts take 14 ({@damage 4d6}) radiant damage and gain one
+        Rejection.
+      - >-
+        A creature within 5 feet of Stacy can use its action to make a {@dc 16} Intelligence
+        (Arcana) or Wisdom (Medicine) check. On a success, the creature safely loosens or suppresses
+        one graft, causing one Rejection. Each creature can cause only one Rejection this way.
+      - >-
+        Rejection effects are cumulative. At one Rejection, Stacy's AC becomes 15 and her immunity
+        to fire becomes resistance. At two Rejections, she loses her flying speed and the damage of
+        Counterfeit Breath is halved. At three Rejections, all remaining Gilded Punishment hit
+        points are lost and Gilded Preservation takes effect.
+  - name: Gilded Preservation
+    entries:
+      - >-
+        When Stacy is reduced to 0 hit points during the Gilded Punishment phase, the gold-dragon
+        remnants become dormant. Stacy falls unconscious and stable rather than dying, and the
+        control graft ceases functioning. She can be healed normally once the grafts are removed.
+  - name: Spellcasting
+    entries:
+      - >-
+        Stacy is a 10th-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc
+        16}, {@hit +8} to hit with spell attacks). She has the following spells prepared:
+      - >-
+        Cantrips (at will): {@spell fire bolt}, {@spell mage hand}, {@spell mold earth}, {@spell
+        prestidigitation}
+      - >-
+        1st level (4 slots): {@spell absorb elements}, {@spell mage armor}, {@spell magic missile},
+        {@spell shield}
+      - >-
+        2nd level (3 slots): {@spell alter self}, {@spell enlarge/reduce}, {@spell levitate},
+        {@spell misty step}
+      - "3rd level (3 slots): {@spell counterspell}, {@spell dispel magic}, {@spell slow}"
+      - "4th level (3 slots): {@spell polymorph}, {@spell stone shape}"
+      - "5th level (2 slots): {@spell animate objects}, {@spell transmute rock}"
+action:
+  - name: Flesh to False Gold ({@recharge 5})
+    entries:
+      - >-
+        Stacy targets one creature she can see within 60 feet and begins converting its outer flesh
+        into rigid false gold. The target must make a {@dc 16} Constitution saving throw, taking 28
+        ({@damage 8d6}) radiant damage on a failed save, or half as much damage on a successful one.
+        On a failed save, the target is also {@condition restrained}. The restrained target or a
+        creature within 5 feet of it can use an action to make a {@dc 16} Strength (Athletics) or
+        Intelligence (Arcana) check, ending the condition on a success.
+  - name: Gilded Multiattack (Gilded Phase Only)
+    entries:
+      - Stacy makes two Gilded Claw attacks and one Crucible Pulse attack.
+  - name: Gilded Claw (Gilded Phase Only)
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +8} to hit, reach 10 ft., one target. Hit: 11 ({@damage 2d6 + 4})
+        slashing damage plus 3 ({@damage 1d6}) fire damage.
+  - name: Crucible Pulse (Gilded Phase Only)
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +8} to hit, range 90 ft., one target. Hit: 13 ({@damage 3d8})
+        fire damage plus 9 ({@damage 2d8}) radiant damage.
+  - name: Counterfeit Breath (Gilded Phase Only; {@recharge 5})
+    entries:
+      - >-
+        Stacy exhales unstable dragon fire in a 30-foot cone. Each creature in the area must make a
+        {@dc 16} Dexterity saving throw, taking 28 ({@damage 8d6}) fire damage plus 7 ({@damage
+        2d6}) radiant damage on a failed save, or half as much damage on a successful one.
+        Restorative Rejection can halve this damage.
+bonus:
+  - name: Unstable Translation (Gilded Phase Only)
+    entries:
+      - >-
+        Stacy teleports up to 30 feet to an unoccupied space she can see. Each other creature within
+        5 feet of the space she left must succeed on a {@dc 16} Dexterity saving throw or take 7
+        ({@damage 2d6}) fire damage from the molten impression left behind.
+reaction:
+  - name: Equivalent Exchange (Gilded Phase Only)
+    entries:
+      - >-
+        When Stacy takes acid, cold, fire, lightning, or thunder damage, she changes that damage to
+        fire damage before applying her resistance or immunity. The gold graft burns the difference
+        into her nerves.

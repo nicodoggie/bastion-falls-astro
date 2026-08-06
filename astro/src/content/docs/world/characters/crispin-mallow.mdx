@@ -23,6 +23,7 @@ tags:
 creatureStats:
   candlebearer: 'misc/crispin-mallow-candlebearer.creature'
   gildedAnatomy: 'misc/crispin-mallow-gilded-anatomy.creature'
+  misarrangedPuppet: 'misc/crispins-misarranged-puppet.creature'
 ---
 
 import StatBlock from '@/components/StatBlock.astro';
@@ -80,27 +81,32 @@ funeral remains, or preserved noble bodies.
 
 ## The Gold Canary
 
-When magic disappeared from Senera, an ancient gold dragon escaped the fate suffered by other great
-magical creatures by compressing its body, mind, and remaining power into the
-<Item name="Gold Canary Figurine of Wondrous Power" src="FTD" />. Its giant-canary shape provided an
-economical waking form, while its adult gold dragon shape allowed it to restore its full body during
-an emergency. The figurine was therefore a self-made chrysalis rather than a prison.
+The gold dragon [Auraxx](auraxx.mdx) was imprisoned within a
+<Item name="Gold Canary Figurine of Wondrous Power" src="FTD" /> by a curse that anticipated his
+passage through the Realm Bridge. The figurine was a prison imposed upon him rather than a self-made
+chrysalis.
 
-Crispin brought the dragon out of stasis, killed it, and prevented its body from returning
-completely to the figurine. He harvested the manifested dragon for the organs, scales, and magical
-structures needed to build his own transformation. The chip in the figurine marks the rupture
-through which he severed the dragon from its artifact-body. Its adult-dragon function remains
-damaged because portions of that function now survive inside Crispin.
+Crispin found a way to invoke the canary's adult-dragon form under controlled conditions. After
+beholding Auraxx's true body, he held the manifestation long enough to extract its anatomy. Before
+risking the full incorporation upon himself, he used [Stacy Cartwright](stacy-cartwright.mdx) as a
+testbed, implanting the least magically powerful portions of Auraxx into her. He selected peripheral
+structural tissues: scale-bearing skin, distal forelimb bones and tendons with a claw root, terminal
+wing digits and membrane, and pieces of rib, sternum, cartilage, and marrow. Once the graft proved
+viable, he melded the majority of the dragon into himself, using the stolen organs and magical
+structures to build his own transformation. Auraxx's extracted body was divided between Crispin and
+Stacy. The emptied figurine persists because the curse still holds Auraxx's soul; without that
+remaining prisoner, the artifact would be destroyed.
 
 The Gilded Anatomy is the grandest expression of this theft. Gold-dragon scales and organs are bound
-to folded human limbs, harvested faces, alchemical supports, and the infernal piercing that prevents
-the stolen anatomy from returning to its proper body. The resulting creature possesses authentic
+to folded human limbs, harvested faces, alchemical supports, and the infernal piercing that holds
+the incompatible anatomy in its imposed configuration. The resulting creature possesses authentic
 draconic power but is not itself a dragon. It is Crispin's delusion given enough flesh to stand
 upright.
 
-Whether the dragon's complete identity survived the murder remains unknown. Returning its harvested
-parts to the figurine may permit restoration, but the means and the condition in which the dragon
-would awaken have yet to be discovered.
+Whether Auraxx's imprisoned soul remains conscious is unproven. His body cannot be restored or
+revived after its incorporation into Crispin and Stacy. Invoking the figurine's giant-canary form
+may permit Auraxx to speak through that body. Releasing his soul would require a different remedy
+from reconstructing the dragon Crispin destroyed.
 
 ## Castle Malthrek
 
@@ -122,6 +128,15 @@ ornate caskets near the castle church. Their craftsmanship falls within Crispin'
 capabilities, and their use in false funerals would suit his religious office, but his authorship of
 those specific bodies has not been established.
 
+During the confrontation at the Rannek Admiralty facility, Oren Bell identified Crispin's
+involvement with a Mark Malthrek-shaped golem and recognized it as one of the “perfect” flesh golems
+encountered at Castle Malthrek. His identification was confirmed when the command phrase “and his
+name was Rumplestiltskin” caused the construct to fall.
+
+Oren also referred to the adventuring group who had intervened at Castle Malthrek as the current
+group's “little friends.” Their actions there had forced Mallow to accelerate his move against the
+Ranneks, although exactly how they disrupted his timetable remains unknown.
+
 The same uncertainty surrounds the missing Malthrek court wizards. An elderly wizard later appeared
 aboard a submarine with his legs or footwear apparently switched, an alteration disturbingly
 consistent with Crispin's interest in exchanging body parts. Crispin may be involved with the
@@ -130,15 +145,21 @@ remain under investigation rather than proven extensions of his work.
 
 ## Encounter Statistics
 
+One of Crispin's prepared puppets wears [Sandor Kethlas's](sandor-kethlas.mdx) shape. The imitation
+holds only until it moves: its sword arm unfolds through its mouth, hands reach from displaced
+joints, and its heart crawls away from incoming blows. Its existence does not by itself establish
+what happened to the real Sandor.
+
+<StatBlock creature={frontmatter.creatureStats.misarrangedPuppet} />
+
 Crispin first fights through the cultivated body of the Candlebearer, using transformation magic,
 detached anatomy, and prepared flesh golems. Reducing that shell to ruin releases the Gilded Anatomy
 at full strength.
 
 <StatBlock creature={frontmatter.creatureStats.candlebearer} />
 
-The Gilded Anatomy begins as a threat comparable to an adult dragon. Restorative magic calls the
-harvested gold-dragon anatomy back toward its proper body, forcing the incompatible grafts to reject
-one another and progressively stripping away Crispin's scales, wings, legendary resilience, and
-stolen breath.
+The Gilded Anatomy begins as a threat comparable to an adult dragon. Restorative magic forces the
+harvested gold-dragon anatomy to reject Crispin's incompatible grafts, progressively stripping away
+his scales, wings, legendary resilience, and stolen breath.
 
 <StatBlock creature={frontmatter.creatureStats.gildedAnatomy} />

@@ -63,14 +63,14 @@ trait:
     entries:
       - >-
         The Gilded Anatomy is not a dragon. It is the body Crispin built inside his humanoid shell
-        from folded limbs, harvested faces, alchemical supports, and organs taken from a gold dragon
-        that preserved itself within a magical figurine. Effects that specifically affect dragons do
-        not affect the Gilded Anatomy unless they also affect monstrosities.
+        from folded limbs, harvested faces, alchemical supports, and organs taken from the cursed
+        prison-body of the gold dragon Auraxx. Effects that specifically affect dragons do not affect
+        the Gilded Anatomy unless they also affect monstrosities.
   - name: Graft Rejection
     entries:
       - >-
-        Restorative magic calls the harvested dragon tissue back toward its proper body, exposing
-        the incompatibility of Crispin's grafts. When a spell of 2nd level or higher would restore
+        Restorative magic forces the harvested dragon tissue to reject Crispin's incompatible grafts.
+        When a spell of 2nd level or higher would restore
         the Gilded Anatomy's hit points, regrow one of its body parts, or end a disease, curse, or
         condition affecting it, the spell has no normal effect and the Gilded Anatomy gains one
         Rejection instead. It can gain no more than one Rejection from a single spell and no more
