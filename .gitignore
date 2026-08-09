@@ -16,6 +16,7 @@ yarn-error.log*
 pnpm-debug.log*
 .bf-transcripts/
 .superpowers/
+.worktrees/
 .yarn/install-state.gz
 
 # environment variables
