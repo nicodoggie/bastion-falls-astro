@@ -1,26 +1,32 @@
 import { z } from "zod";
 
-const localTargetSchema = z.object({
-  provider: z.enum(["nodejs-whisper", "faster-whisper"]),
-  model: z.string().trim().min(1),
-});
+const localTargetSchema = z
+  .object({
+    provider: z.enum(["nodejs-whisper", "faster-whisper"]),
+    model: z.string().trim().min(1),
+  })
+  .strict();
 
-const openAiTargetSchema = z.object({
-  provider: z.literal("openai-compatible"),
-  baseUrl: z.url(),
-  model: z.string().trim().min(1),
-  apiKeyEnv: z
-    .string()
-    .regex(/^[A-Za-z_][A-Za-z0-9_]*$/)
-    .optional(),
-  timeoutSeconds: z.number().int().positive().default(900),
-  retries: z.number().int().min(0).max(10).default(2),
-});
+const openAiTargetSchema = z
+  .object({
+    provider: z.literal("openai-compatible"),
+    baseUrl: z.url(),
+    model: z.string().trim().min(1),
+    apiKeyEnv: z
+      .string()
+      .regex(/^[A-Za-z_][A-Za-z0-9_]*$/)
+      .optional(),
+    timeoutSeconds: z.number().int().positive().default(900),
+    retries: z.number().int().min(0).max(10).default(2),
+  })
+  .strict();
 
-const profileSchema = z.object({
-  layout: z.enum(["stereo", "hybrid"]),
-  target: z.string().trim().min(1),
-});
+const profileSchema = z
+  .object({
+    layout: z.enum(["stereo", "hybrid"]),
+    target: z.string().trim().min(1),
+  })
+  .strict();
 
 export const transcriptionTargetSchema = z.discriminatedUnion("provider", [
   localTargetSchema,

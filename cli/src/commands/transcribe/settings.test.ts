@@ -39,6 +39,30 @@ test("resolves a named hybrid OpenAI-compatible profile", () => {
   assert.equal(resolved.target.retries, 2);
 });
 
+test("rejects literal credentials in an OpenAI-compatible target", () => {
+  assert.throws(
+    () =>
+      resolveTranscriptionProfile(
+        {
+          defaultProfile: "remote",
+          profiles: {
+            remote: { layout: "stereo", target: "openai" },
+          },
+          targets: {
+            openai: {
+              provider: "openai-compatible",
+              baseUrl: "http://localhost:8000/v1",
+              model: "whisper",
+              apiKey: "literal-secret",
+            },
+          },
+        },
+        undefined,
+      ),
+    /unrecognized key.*apiKey/i,
+  );
+});
+
 test("rejects a profile that references an unknown target", () => {
   assert.throws(
     () =>

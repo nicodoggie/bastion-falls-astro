@@ -504,13 +504,7 @@ export const transcribeRunCommand = buildCommand({
     const correctionNotesPath = join(outDir, "correction_notes.md");
     const hermesReviewNotesPath = join(outDir, "hermes_review_notes.md");
     const transcribeConfig = getTranscribeConfig();
-    const effectiveProfile = resolveTranscriptionProfile(
-      transcribeConfig,
-      flags.profile,
-    );
-    this.process.stdout.write(
-      `Transcription profile ${effectiveProfile.name}: ${effectiveProfile.layout}/${effectiveProfile.target.provider}/${effectiveProfile.target.model}\n`,
-    );
+    resolveTranscriptionProfile(transcribeConfig, flags.profile);
     const reviewSettings = resolveReviewSettings(
       transcribeConfig["review"],
       {
