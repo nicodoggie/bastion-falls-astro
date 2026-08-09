@@ -44,6 +44,7 @@ import { transcribeChunksWithNodeWhisper } from "./nodeWhisper.js";
 import { getNotesPath } from "./notes.js";
 import { runOllamaHierarchicalNotes } from "./ollamaNotes.js";
 import { runHermesTranscriptReview } from "./hermesReview.js";
+import { resolveTranscriptionProfile } from "./settings.js";
 import {
   parseReviewProvider,
   resolveReviewSettings,
@@ -69,6 +70,7 @@ interface TranscribeFlags {
   "whisper-model": string;
   language: string;
   backend: SttBackend;
+  profile?: string;
   "node-whisper-model-root"?: string;
   "auto-download-model"?: boolean;
   "chunk-seconds": number;
@@ -169,6 +171,12 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
     parse: parseSttBackend,
     brief: "STT backend: nodejs-whisper or faster-whisper",
     default: defaultSttBackend,
+  },
+  profile: {
+    kind: "parsed",
+    parse: String,
+    brief: "Named transcription profile from transcribe.profiles",
+    optional: true,
   },
   "node-whisper-model-root": {
     kind: "parsed",
@@ -495,9 +503,16 @@ export const transcribeRunCommand = buildCommand({
     const summaryTranscriptPath = join(outDir, "summary_transcript.md");
     const correctionNotesPath = join(outDir, "correction_notes.md");
     const hermesReviewNotesPath = join(outDir, "hermes_review_notes.md");
-    const transcribeConfig = getTranscribeConfig() as { review?: unknown };
+    const transcribeConfig = getTranscribeConfig();
+    const effectiveProfile = resolveTranscriptionProfile(
+      transcribeConfig,
+      flags.profile,
+    );
+    this.process.stdout.write(
+      `Transcription profile ${effectiveProfile.name}: ${effectiveProfile.layout}/${effectiveProfile.target.provider}/${effectiveProfile.target.model}\n`,
+    );
     const reviewSettings = resolveReviewSettings(
-      transcribeConfig.review,
+      transcribeConfig["review"],
       {
         provider: flags.review,
         hermesProfile: flags["hermes-profile"],
