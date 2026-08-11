@@ -1,5 +1,7 @@
 import { access, readFile } from "node:fs/promises";
 import { join } from "node:path";
+import type { TranscriptionPass } from "./passes.js";
+import { chunkAudioPathFor } from "./passes.js";
 
 import type {
   AudioPreparationSettings,
@@ -41,6 +43,25 @@ export function shouldOverwritePreparedChannels(
 ): boolean {
   return overwritePreparedAudio ||
     (shouldResume && reusedNormalizedAudio && !allChannelsExist);
+}
+
+export function mergeCompletedByPass(options: {
+  requiredPassIds: string[];
+  availableByPass: Record<string, number[]>;
+  retainedByPass: Record<string, number[]>;
+  currentByPass: Record<string, number[]>;
+  validArtifactIndexesByPass?: Record<string, number[]>;
+}): Record<string, number[]> {
+  return Object.fromEntries(options.requiredPassIds.map((id) => {
+    const available = new Set(options.availableByPass[id] ?? []);
+    const validArtifacts = options.validArtifactIndexesByPass?.[id];
+    const valid = validArtifacts ? new Set(validArtifacts) : undefined;
+    const merged = new Set([
+      ...(options.retainedByPass[id] ?? []),
+      ...(options.currentByPass[id] ?? []),
+    ].filter((index) => available.has(index) && (!valid || valid.has(index))));
+    return [id, [...merged].sort((a, b) => a - b)];
+  }));
 }
 
 export function chunkPathForIndex(chunksDir: string, index: number): string {
@@ -248,6 +269,39 @@ export async function canReuseAudioChunks(options: {
     reusable: missingIndexes.length === 0,
     chunkPaths,
     missingIndexes,
+  };
+}
+
+export interface PassAudioReuseResult {
+  reusable: boolean;
+  pathsByPass: Record<string, string[]>;
+  missingIndexesByPass: Record<string, number[]>;
+  missingPathsByPass: Record<string, string[]>;
+}
+
+/** Validate every required pass against the one shared Manifest v2 plan. */
+export async function canReusePassAudioChunks(options: {
+  manifest: Manifest;
+  chunksRoot: string;
+  passes: TranscriptionPass[];
+}): Promise<PassAudioReuseResult> {
+  const pathsByPass: Record<string, string[]> = {};
+  const missingIndexesByPass: Record<string, number[]> = {};
+  const missingPathsByPass: Record<string, string[]> = {};
+  await Promise.all(options.passes.map(async (pass) => {
+    const paths = options.manifest.chunks.map((chunk) => chunkAudioPathFor(options.chunksRoot, pass, chunk.index));
+    const missing = await Promise.all(paths.map(async (path, index) =>
+      (await exists(path)) ? undefined : { index: options.manifest.chunks[index]!.index, path }));
+    const missingEntries = missing.filter((entry): entry is { index: number; path: string } => entry !== undefined);
+    pathsByPass[pass.id] = paths;
+    missingIndexesByPass[pass.id] = missingEntries.map((entry) => entry.index).sort((a, b) => a - b);
+    missingPathsByPass[pass.id] = missingEntries.map((entry) => entry.path);
+  }));
+  return {
+    reusable: Object.values(missingIndexesByPass).every((missing) => missing.length === 0),
+    pathsByPass,
+    missingIndexesByPass,
+    missingPathsByPass,
   };
 }
 

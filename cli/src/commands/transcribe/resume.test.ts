@@ -6,6 +6,8 @@ import { test } from "node:test";
 
 import {
   canReuseAudioChunks,
+  canReusePassAudioChunks,
+  mergeCompletedByPass,
   canReuseDependentAudio,
   canReusePreparedAudio,
   chunkPathForIndex,
@@ -138,6 +140,30 @@ test("cannot reuse audio chunks when any chunk file is missing", async () => {
   }
 });
 
+test("reports missing artifacts separately for required passes", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "bf-pass-resume-test-"));
+  try {
+    await mkdir(join(dir, "passes", "left"), { recursive: true });
+    await writeFile(join(dir, "session_000.flac"), "");
+    await writeFile(join(dir, "passes", "left", "session_000.flac"), "");
+    const result = await canReusePassAudioChunks({
+      manifest: manifest(),
+      chunksRoot: dir,
+      passes: [
+        { kind: "stereo", id: "stereo" },
+        { kind: "channel", id: "left", channelIndex: 0 },
+      ],
+    });
+    assert.equal(result.reusable, false);
+    assert.deepEqual(result.missingIndexesByPass, { stereo: [1], left: [1] });
+    assert.deepEqual(result.missingPathsByPass, {
+      stereo: [join(dir, "session_001.flac")],
+      left: [join(dir, "passes", "left", "session_001.flac")],
+    });
+  } finally {
+    await import("node:fs/promises").then(({ rm }) => rm(dir, { recursive: true, force: true }));
+  }
+});
 test("rejects incomplete v2 manifests with a rebuild instruction", async () => {
   const dir = await mkdtemp(join(tmpdir(), "bf-resume-test-"));
   const path = join(dir, "manifest.json");
@@ -147,6 +173,16 @@ test("rejects incomplete v2 manifests with a rebuild instruction", async () => {
   } finally {
     await import("node:fs/promises").then(({ rm }) => rm(dir, { recursive: true, force: true }));
   }
+});
+
+test("merges cumulative pass completion while pruning unavailable artifacts", () => {
+  assert.deepEqual(mergeCompletedByPass({
+    requiredPassIds: ["stereo", "left"],
+    availableByPass: { stereo: [0, 1, 2], left: [0, 1, 2] },
+    retainedByPass: { stereo: [0, 2], left: [1] },
+    currentByPass: { stereo: [1], left: [] },
+    validArtifactIndexesByPass: { stereo: [0, 1], left: [1] },
+  }), { stereo: [0, 1], left: [1] });
 });
 
 test("rejects malformed prepared paths, channel layouts, and chunk reasons", async () => {

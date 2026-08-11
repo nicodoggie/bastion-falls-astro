@@ -15,12 +15,14 @@ import {
 function sampleCheckpoint(): TranscribeCheckpoint {
   const now = "2026-05-20T14:46:17.134Z";
   return {
-    version: 1,
+    version: 2,
     updatedAt: now,
     source: "/home/ensu/session1.flac",
     outDir: "astro/.bf-transcripts/session1",
     sessionDate: "2026-05-16",
     campaign: "the-vengeful",
+    profile: "legacy-local",
+    layout: "stereo",
     stages: {
       normalization: {
         status: "complete",
@@ -32,10 +34,14 @@ function sampleCheckpoint(): TranscribeCheckpoint {
         completedAt: now,
         count: 51,
         dir: "astro/.bf-transcripts/session1/chunks",
+        requiredPasses: ["stereo"],
+        availableByPass: { stereo: Array.from({ length: 51 }, (_, index) => index) },
       },
       transcribed_chunks: {
         status: "pending",
-        completed: [],
+        requiredPasses: ["stereo"],
+        completedByPass: { stereo: [] },
+        selection: Array.from({ length: 51 }, (_, index) => index),
         total: 51,
         rawChunksDir: "astro/.bf-transcripts/session1/raw_chunks",
         rawTranscriptionDir: "astro/.bf-transcripts/session1/raw_transcription",
@@ -93,13 +99,54 @@ test("rejects invalid checkpoint status values", () => {
 
 test("rejects malformed chunk indexes", () => {
   const checkpoint = sampleCheckpoint() as unknown as {
-    stages: { transcribed_chunks: { completed: number[] } };
+    stages: { transcribed_chunks: { completedByPass: Record<string, number[]> } };
   };
-  checkpoint.stages.transcribed_chunks.completed = [0, -1];
+  checkpoint.stages.transcribed_chunks.completedByPass["stereo"] = [0, -1];
 
   assert.throws(() => parseTranscribeCheckpoint(checkpoint), />=0/);
 });
 
+test("rejects inconsistent pass maps and accepts explicit truthful skips", () => {
+  const inconsistent = sampleCheckpoint();
+  inconsistent.stages.audio_chunking.availableByPass["stereo"] = [0, 2];
+  inconsistent.stages.transcribed_chunks.selection = [1];
+  assert.throws(() => parseTranscribeCheckpoint(inconsistent), /selection|subset|manifest/i);
+
+  const skipped = sampleCheckpoint();
+  const now = skipped.updatedAt;
+  skipped.stages.transcribed_chunks.status = "complete";
+  skipped.stages.transcribed_chunks.completedByPass["stereo"] = [
+    ...(skipped.stages.audio_chunking.availableByPass["stereo"] ?? []),
+  ];
+  skipped.stages.joining_raw_transcription.status = "complete";
+  skipped.stages.joining_raw_transcription.completedAt = now;
+  skipped.stages.correction_pass.status = "skipped";
+  skipped.stages.correction_pass.completedAt = now;
+  skipped.stages.notes_summary_pass.status = "skipped";
+  skipped.stages.notes_summary_pass.completedAt = now;
+  skipped.stages.done.status = "complete";
+  skipped.stages.done.completedAt = now;
+  assert.equal(parseTranscribeCheckpoint(skipped).stages.done.status, "complete");
+
+  const skippedMandatory = sampleCheckpoint();
+  skippedMandatory.stages.normalization.status = "skipped";
+  assert.throws(
+    () => parseTranscribeCheckpoint(skippedMandatory),
+    /mandatory checkpoint stages cannot be skipped/i,
+  );
+});
+
+test("represents pass completion independently from bounded selection", () => {
+  const checkpoint = sampleCheckpoint();
+  checkpoint.stages.transcribed_chunks.status = "in_progress";
+  checkpoint.stages.transcribed_chunks.selection = [0, 1];
+  checkpoint.stages.transcribed_chunks.completedByPass["stereo"] = [0];
+  assert.deepEqual(parseTranscribeCheckpoint(checkpoint).stages.transcribed_chunks.completedByPass, { stereo: [0] });
+  checkpoint.stages.transcribed_chunks.status = "complete";
+  checkpoint.stages.transcribed_chunks.selection = Array.from({ length: 51 }, (_, index) => index);
+  checkpoint.stages.transcribed_chunks.completedByPass["stereo"] = checkpoint.stages.transcribed_chunks.selection;
+  assert.equal(parseTranscribeCheckpoint(checkpoint).stages.transcribed_chunks.status, "complete");
+});
 test("writes checkpoint files atomically and reads them back", async () => {
   const dir = await mkdtemp(join(tmpdir(), "bf-checkpoint-test-"));
   try {

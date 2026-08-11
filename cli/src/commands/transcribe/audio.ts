@@ -2,6 +2,8 @@ import { mkdir } from "node:fs/promises";
 import { dirname, join } from "node:path";
 
 import type { PlannedChunk } from "./types.js";
+import type { TranscriptionPass } from "./passes.js";
+import { chunkAudioPathFor } from "./passes.js";
 import { runCommand } from "./process.js";
 import {
   createFfmpegProgressHandler,
@@ -204,11 +206,13 @@ export async function writeChunkFlacs(
   chunks: PlannedChunk[],
   force: boolean,
   progress?: { sink: ProgressSink },
+  pass: TranscriptionPass = { kind: "stereo", id: "stereo" },
 ): Promise<string[]> {
   await mkdir(chunksDir, { recursive: true });
   const paths: string[] = [];
   for (const chunk of chunks) {
-    const chunkPath = join(chunksDir, `session_${String(chunk.index).padStart(3, "0")}.flac`);
+    const chunkPath = chunkAudioPathFor(chunksDir, pass, chunk.index);
+    await mkdir(dirname(chunkPath), { recursive: true });
     const reporter = progress
       ? {
           label: `Chunk ${chunk.index + 1}/${chunks.length}`,
