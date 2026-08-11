@@ -1,6 +1,7 @@
 import type { LocalContext } from "@/context.js";
 import { buildChannelMapScaffold, writeChannelMap } from "../channelMap.js";
 import { resolveTranscribeSessionPaths } from "../sessionPaths.js";
+import { probeAudio } from "../audio.js";
 
 export interface ChannelsInitFlags {
 	campaign: string;
@@ -44,11 +45,7 @@ export async function initializeChannelMap(
 	return { path: paths.channelMapPath, channelCount: result.channels };
 }
 
-const task3Probe: ChannelProbe = async () => {
-	throw new Error(
-		"Audio channel probing is not bound yet; Task 3 will connect channels init to FFprobe.",
-	);
-};
+const task3Probe: ChannelProbe = async (path) => probeAudio(path);
 
 export default async function channelsInit(
 	this: LocalContext,

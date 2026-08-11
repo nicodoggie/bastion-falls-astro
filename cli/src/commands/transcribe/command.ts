@@ -1,4 +1,4 @@
-import { access, mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import {
   buildCommand,
@@ -12,8 +12,11 @@ import { applyCorrectionsCommand } from "./applyCorrections.js";
 import { archiveCommand } from "./archive/command.js";
 import { assembleTranscript, formatChunkTranscript } from "./assembly.js";
 import {
+  deriveMonoChannels,
   getAudioDurationSeconds,
   normalizeToFlac,
+  probeAudio,
+  channelId,
   writeChunkFlacs,
 } from "./audio.js";
 import {
@@ -55,7 +58,14 @@ import {
   resolveReviewSettings,
   type ReviewProvider,
 } from "./reviewSettings.js";
-import { canReuseAudioChunks, readManifest } from "./resume.js";
+import {
+  canReuseAudioChunks,
+  canReuseDependentAudio,
+  manifestCompatibilityIssues,
+  readManifest,
+  shouldOverwritePreparedAudio,
+  shouldOverwritePreparedChannels,
+} from "./resume.js";
 import { detectSilences, trimChunksToSpeech } from "./silence.js";
 import {
   defaultSttBackend,
@@ -483,6 +493,7 @@ export const transcribeRunCommand = buildCommand({
       ? resolveFromCwd(cwd, flags.corrections)
       : undefined;
     const normalizedPath = join(outDir, "normalized", "session.flac");
+    const channelsDir = join(outDir, "normalized", "channels");
     const chunksDir = join(outDir, "chunks");
     const rawChunksDir = join(outDir, "raw_chunks");
     const rawTranscriptionDir = join(outDir, "raw_transcription");
@@ -541,35 +552,124 @@ export const transcribeRunCommand = buildCommand({
       `Loaded shared correction rules at ${correctionRulesContextPath}\n`,
     );
 
-    if (shouldResume && (await exists(normalizedPath))) {
+    const sourceProbe = await probeAudio(audioPath);
+    const sourceStat = await stat(audioPath);
+    const sourceFingerprint = {
+      sizeBytes: sourceStat.size,
+      mtimeMs: sourceStat.mtimeMs,
+    };
+    const existingManifest = shouldResume
+      ? await readManifest(manifestPath)
+      : undefined;
+    const audioSettings = {
+      denoise: Boolean(flags.denoise),
+      voiceBoost: Boolean(flags["voice-boost"]),
+      sampleRate: 16000,
+    };
+    const chunkSettings = {
+      chunkSeconds: flags["chunk-seconds"],
+      boundarySearchSeconds: flags["boundary-search-seconds"],
+      boundaryMaxSearchSeconds: flags["boundary-max-search-seconds"],
+      overlapSeconds: flags["overlap-seconds"],
+      keepSilence: Boolean(flags["keep-silence"]),
+      silencePaddingSeconds: flags["silence-padding-seconds"],
+      minimumSpeechSeconds: flags["minimum-speech-seconds"],
+    };
+    const preparedChannelPaths = Array.from(
+      { length: sourceProbe.channels > 1 ? sourceProbe.channels : 0 },
+      (_, index) => ({
+        id: channelId(index, sourceProbe.channels),
+        index,
+        path: join(channelsDir, `${channelId(index, sourceProbe.channels)}.flac`),
+      }),
+    );
+    if (existingManifest) {
+      const compatibilityIssues = manifestCompatibilityIssues(existingManifest, {
+        source: audioPath,
+        sourceFingerprint,
+        sourceProbe,
+        normalizedStereo: normalizedPath,
+        preparedChannels: preparedChannelPaths,
+        audioSettings,
+        chunkSettings,
+      });
+      if (compatibilityIssues.length > 0) {
+        throw new Error(
+          `Cannot resume stale audio preparation (${compatibilityIssues.join(", ")}); rebuild with --force.`,
+        );
+      }
+    }
+    const reusedNormalizedAudio = canReuseDependentAudio(
+      shouldResume,
+      existingManifest,
+      await exists(normalizedPath),
+    );
+    const overwritePreparedAudio = shouldOverwritePreparedAudio(
+      Boolean(flags.force),
+      shouldResume,
+      reusedNormalizedAudio,
+    );
+    if (reusedNormalizedAudio) {
       this.process.stdout.write(
         `Resuming with existing normalized audio at ${normalizedPath}\n`,
       );
     } else {
-      const sourceDurationSeconds = await getAudioDurationSeconds(audioPath);
       this.process.stdout.write(`Normalizing audio to ${normalizedPath}\n`);
       await normalizeToFlac(
         audioPath,
         normalizedPath,
-        Boolean(flags.force),
+        overwritePreparedAudio,
         {
           denoise: Boolean(flags.denoise),
           voiceBoost: Boolean(flags["voice-boost"]),
         },
         {
           sink: this.process.stdout,
-          totalSeconds: sourceDurationSeconds,
+          totalSeconds: sourceProbe.durationSeconds,
         },
+        sourceProbe.channels,
       );
+    }
+
+    let preparedChannels: Manifest["preparedChannels"];
+    if (sourceProbe.channels > 1) {
+      const channelPaths = Array.from(
+        { length: sourceProbe.channels },
+        (_, index) =>
+          join(
+            channelsDir,
+            `${channelId(index, sourceProbe.channels)}.flac`,
+          ),
+      );
+      const allChannelsExist = (await Promise.all(channelPaths.map(exists))).every(Boolean);
+      if (!reusedNormalizedAudio || !allChannelsExist) {
+        preparedChannels = await deriveMonoChannels({
+          stereoPath: normalizedPath,
+          channelsDir,
+          channelCount: sourceProbe.channels,
+          force: shouldOverwritePreparedChannels(
+            overwritePreparedAudio,
+            shouldResume,
+            reusedNormalizedAudio,
+            allChannelsExist,
+          ),
+          progress: { sink: this.process.stdout },
+        });
+      } else {
+        preparedChannels = channelPaths.map((path, index) => ({
+          id: channelId(index, sourceProbe.channels),
+          index,
+          path,
+        }));
+      }
+    } else {
+      preparedChannels = [];
     }
 
     let manifest: Manifest | undefined;
     let chunkPaths: string[] | undefined;
-    const existingManifest = shouldResume
-      ? await readManifest(manifestPath)
-      : undefined;
-    let silences = existingManifest?.silences;
-    if (existingManifest) {
+    let silences = reusedNormalizedAudio ? existingManifest?.silences : undefined;
+    if (existingManifest && reusedNormalizedAudio) {
       const reusableChunks = await canReuseAudioChunks({
         manifest: existingManifest,
         chunksDir,
@@ -609,13 +709,15 @@ export const transcribeRunCommand = buildCommand({
           });
 
       manifest = {
+        version: 2,
         source: audioPath,
-        normalized: normalizedPath,
+        sourceFingerprint,
+        sourceProbe,
+        normalizedStereo: normalizedPath,
+        preparedChannels,
+        audioSettings,
+        chunkSettings,
         durationSeconds,
-        chunkSeconds: flags["chunk-seconds"],
-        boundarySearchSeconds: flags["boundary-search-seconds"],
-        boundaryMaxSearchSeconds: flags["boundary-max-search-seconds"],
-        overlapSeconds: flags["overlap-seconds"],
         silences,
         chunks,
       };
@@ -630,11 +732,15 @@ export const transcribeRunCommand = buildCommand({
         normalizedPath,
         chunksDir,
         chunks,
-        Boolean(flags.force),
+        overwritePreparedAudio,
         {
           sink: this.process.stdout,
         },
       );
+    }
+
+    if (!manifest || !chunkPaths) {
+      throw new Error("Audio manifest and chunk paths were not prepared.");
     }
 
     if (!silences) {

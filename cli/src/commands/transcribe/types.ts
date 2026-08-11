@@ -19,6 +19,40 @@ export interface PlannedChunk {
   endReason: ChunkBoundaryReason;
 }
 
+export interface AudioProbeMetadata {
+  durationSeconds: number;
+  channels: number;
+  channelLayout?: string;
+  sampleRate: number;
+}
+
+export interface SourceFingerprint {
+  sizeBytes: number;
+  mtimeMs: number;
+}
+
+export interface ManifestChannel {
+  id: string;
+  index: number;
+  path: string;
+}
+
+export interface AudioPreparationSettings {
+  denoise: boolean;
+  voiceBoost: boolean;
+  sampleRate: number;
+}
+
+export interface ChunkSettings {
+  chunkSeconds: number;
+  boundarySearchSeconds: number;
+  boundaryMaxSearchSeconds: number;
+  overlapSeconds: number;
+  keepSilence: boolean;
+  silencePaddingSeconds: number;
+  minimumSpeechSeconds: number;
+}
+
 export interface TranscriptSegment {
   start: number;
   end: number;
@@ -38,13 +72,15 @@ export interface ChunkTranscript {
 }
 
 export interface Manifest {
+  version: 2;
   source: string;
-  normalized: string;
+  sourceFingerprint: SourceFingerprint;
+  sourceProbe: AudioProbeMetadata;
+  normalizedStereo: string;
+  preparedChannels: ManifestChannel[];
+  audioSettings: AudioPreparationSettings;
+  chunkSettings: ChunkSettings;
   durationSeconds: number;
-  chunkSeconds: number;
-  boundarySearchSeconds: number;
-  boundaryMaxSearchSeconds: number;
-  overlapSeconds: number;
   silences?: SilenceInterval[];
   chunks: PlannedChunk[];
 }
