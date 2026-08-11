@@ -55,6 +55,21 @@ export type ResolvedTranscriptionProfile = {
     | (OpenAiTranscriptionTarget & { name: string });
 };
 
+const resolvedTranscriptionTargetSchema = z.discriminatedUnion("provider", [
+  localTargetSchema.extend({ name: z.string().trim().min(1) }),
+  openAiTargetSchema.extend({ name: z.string().trim().min(1) }),
+]);
+
+export function assertResolvedTranscriptionTarget(
+  value: unknown,
+): asserts value is ResolvedTranscriptionProfile["target"] {
+  const result = resolvedTranscriptionTargetSchema.safeParse(value);
+  if (!result.success) {
+    const fields = [...new Set(result.error.issues.map((issue) => issue.path.join(".")).filter(Boolean))];
+    throw new Error(`Invalid resolved transcription target${fields.length > 0 ? `: ${fields.join(", ")}` : ""}`);
+  }
+}
+
 const legacyTarget = {
   name: "legacy-local",
   provider: "nodejs-whisper" as const,

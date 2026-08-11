@@ -8,18 +8,19 @@ export type TranscriptionPass =
 
 const SAFE_PASS_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-function assertSafePass(pass: TranscriptionPass): void {
-  if (!pass || typeof pass !== "object") throw new Error("invalid transcription pass");
-  if (pass.kind === "stereo") {
-    if (pass.id !== "stereo" || Object.keys(pass).some((key) => key !== "kind" && key !== "id")) {
+export function assertTranscriptionPass(pass: unknown): asserts pass is TranscriptionPass {
+  if (!pass || typeof pass !== "object" || Array.isArray(pass)) throw new Error("invalid transcription pass");
+  const candidate = pass as { kind?: unknown; id?: unknown; channelIndex?: unknown };
+  if (candidate.kind === "stereo") {
+    if (candidate.id !== "stereo" || Object.keys(candidate).some((key) => key !== "kind" && key !== "id")) {
       throw new Error("invalid stereo transcription pass");
     }
     return;
   }
-  if (pass.kind !== "channel" || typeof pass.id !== "string" ||
-      pass.id === "stereo" || !SAFE_PASS_ID.test(pass.id) ||
-      !Number.isInteger(pass.channelIndex) || pass.channelIndex < 0 ||
-      Object.keys(pass).some((key) => !["kind", "id", "channelIndex"].includes(key))) {
+  if (candidate.kind !== "channel" || typeof candidate.id !== "string" ||
+      candidate.id === "stereo" || !SAFE_PASS_ID.test(candidate.id) ||
+      typeof candidate.channelIndex !== "number" || !Number.isSafeInteger(candidate.channelIndex) || candidate.channelIndex < 0 ||
+      Object.keys(candidate).some((key) => !["kind", "id", "channelIndex"].includes(key))) {
     throw new Error("invalid channel transcription pass");
   }
 }
@@ -87,7 +88,7 @@ export function pairChunksWithArtifactPaths<T extends { index: number }>(
 }
 
 function passDir(root: string, pass: TranscriptionPass): string {
-  assertSafePass(pass);
+  assertTranscriptionPass(pass);
   return pass.kind === "stereo" ? root : join(root, "passes", pass.id);
 }
 
@@ -109,6 +110,6 @@ export function passRawMarkdownPathFor(root: string, pass: TranscriptionPass, in
 }
 
 export function passAlignmentPathFor(root: string, pass: TranscriptionPass): string {
-  assertSafePass(pass);
+  assertTranscriptionPass(pass);
   return join(root, "alignment", `${pass.id}.json`);
 }
