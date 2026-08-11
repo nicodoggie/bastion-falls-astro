@@ -1,5 +1,5 @@
 import { access, mkdir, readFile, writeFile } from "node:fs/promises";
-import { basename, extname, isAbsolute, join, resolve } from "node:path";
+import { join } from "node:path";
 import {
   buildCommand,
   buildRouteMap,
@@ -21,6 +21,7 @@ import {
   type TranscribeCheckpoint,
   writeTranscribeCheckpoint,
 } from "./checkpoint.js";
+import { channelsCommand } from "./channels/command.js";
 import { planChunks } from "./chunkPlanner.js";
 import {
   correctedTranscriptionDirFor,
@@ -45,6 +46,10 @@ import { getNotesPath } from "./notes.js";
 import { runOllamaHierarchicalNotes } from "./ollamaNotes.js";
 import { runHermesTranscriptReview } from "./hermesReview.js";
 import { resolveTranscriptionProfile } from "./settings.js";
+import {
+  resolveFromCwd,
+  resolveTranscribeSessionPaths,
+} from "./sessionPaths.js";
 import {
   parseReviewProvider,
   resolveReviewSettings,
@@ -346,20 +351,6 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
   },
 };
 
-function slugifyAudioPath(audioPath: string): string {
-  const stem = basename(audioPath, extname(audioPath));
-  return (
-    stem
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "") || "session"
-  );
-}
-
-function resolveFromCwd(cwd: string, path: string): string {
-  return isAbsolute(path) ? path : resolve(cwd, path);
-}
-
 async function exists(path: string): Promise<boolean> {
   try {
     await access(path);
@@ -482,15 +473,15 @@ export const transcribeRunCommand = buildCommand({
     assertSessionDate(flags["session-date"]);
 
     const cwd = this.currentPath;
-    const audioPath = resolveFromCwd(cwd, audioFile);
+    const { audioPath, outDir } = resolveTranscribeSessionPaths({
+      cwd,
+      audioFile,
+      out: flags.out,
+    });
     const contextRoot = resolveFromCwd(cwd, flags["context-root"]);
     const correctionsPath = flags.corrections
       ? resolveFromCwd(cwd, flags.corrections)
       : undefined;
-    const outDir = resolveFromCwd(
-      cwd,
-      flags.out ?? join(".bf-transcripts", slugifyAudioPath(audioPath)),
-    );
     const normalizedPath = join(outDir, "normalized", "session.flac");
     const chunksDir = join(outDir, "chunks");
     const rawChunksDir = join(outDir, "raw_chunks");
@@ -927,6 +918,7 @@ export const transcribeCommand = buildRouteMap({
   routes: {
     run: transcribeRunCommand,
     audio: transcribeRunCommand,
+    channels: channelsCommand,
     "apply-corrections": applyCorrectionsCommand,
     archive: archiveCommand,
   },
