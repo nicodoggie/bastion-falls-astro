@@ -5,6 +5,24 @@ transcribe:
   outputDir: src/assets/transcripts
   compression: false
   audioBitrate: 32k
+  defaultProfile: local-single
+  profiles:
+    local-single:
+      layout: stereo
+      target: local-whisper
+    m1-hybrid-test:
+      layout: hybrid
+      target: m1-whisper-turbo
+  targets:
+    local-whisper:
+      provider: nodejs-whisper
+      model: large-v3-turbo
+    m1-whisper-turbo:
+      provider: openai-compatible
+      baseUrl: http://ensu-macos:8000/v1
+      model: large-v3-turbo
+      timeoutSeconds: 900
+      retries: 2
   review:
     provider: hermes
     hermes:
