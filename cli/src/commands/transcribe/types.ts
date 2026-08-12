@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export interface SilenceInterval {
   start: number;
   end: number;
@@ -69,6 +71,31 @@ export interface ChunkTranscript {
   language?: string;
   language_probability?: number;
   duration?: number;
+}
+
+const finiteNonNegative = z.number().finite().nonnegative();
+const transcriptSegmentSchema = z.object({
+  start: finiteNonNegative,
+  end: finiteNonNegative,
+  text: z.string(),
+  confidence: z.number().finite().optional(),
+  avgLogprob: z.number().finite().optional(),
+  compressionRatio: z.number().finite().optional(),
+  noSpeechProb: z.number().finite().optional(),
+  temperature: z.number().finite().optional(),
+}).strict().superRefine((segment, ctx) => {
+  if (segment.end < segment.start) ctx.addIssue({ code: "custom", message: "segment end must not precede start", path: ["end"] });
+});
+
+export const ChunkTranscriptSchema = z.object({
+  segments: z.array(transcriptSegmentSchema),
+  language: z.string().optional(),
+  language_probability: z.number().finite().nonnegative().optional(),
+  duration: finiteNonNegative.optional(),
+}).strict();
+
+export function parseChunkTranscript(value: unknown): ChunkTranscript {
+  return ChunkTranscriptSchema.parse(value);
 }
 
 export interface Manifest {

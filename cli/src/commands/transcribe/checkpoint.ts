@@ -30,6 +30,7 @@ export const TranscribedChunksCheckpointSchema = BaseStageSchema.extend({
   total: z.number().int().nonnegative().optional(),
   rawChunksDir: z.string().optional(),
   rawTranscriptionDir: z.string().optional(),
+  cacheIdentityByPass: z.record(z.string().min(1), z.string().min(1)).optional(),
 }).strict();
 
 export const JoiningRawTranscriptionCheckpointSchema = BaseStageSchema.extend({
@@ -148,7 +149,7 @@ export async function readTranscribeCheckpoint(path: string): Promise<Transcribe
 
 export async function writeTranscribeCheckpoint(path: string, checkpoint: TranscribeCheckpoint): Promise<void> {
   const parsed = parseTranscribeCheckpoint(checkpoint);
-  const tmpPath = `${path}.tmp`;
+  const tmpPath = `${path}.tmp-${process.pid}-${Date.now()}-${Math.random().toString(36).slice(2)}`;
   await mkdir(dirname(path), { recursive: true });
   await writeFile(tmpPath, `${JSON.stringify(parsed, null, 2)}\n`, "utf8");
   await rename(tmpPath, path);

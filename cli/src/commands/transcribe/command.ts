@@ -1,5 +1,5 @@
-import { access, mkdir, readFile, stat, writeFile } from "node:fs/promises";
-import { dirname, join } from "node:path";
+import { access, mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
+import { join } from "node:path";
 import {
   buildCommand,
   buildRouteMap,
@@ -10,7 +10,7 @@ import { getTranscribeConfig } from "@/config.js";
 import type { LocalContext } from "@/context.js";
 import { applyCorrectionsCommand } from "./applyCorrections.js";
 import { archiveCommand } from "./archive/command.js";
-import { assembleTranscript, formatChunkTranscript } from "./assembly.js";
+
 import {
   deriveMonoChannels,
   getAudioDurationSeconds,
@@ -23,7 +23,6 @@ import {
   getCheckpointPath,
   readTranscribeCheckpoint,
   type TranscribeCheckpoint,
-  writeTranscribeCheckpoint,
 } from "./checkpoint.js";
 import { channelsCommand } from "./channels/command.js";
 import { planChunks } from "./chunkPlanner.js";
@@ -50,7 +49,8 @@ import { getNotesPath } from "./notes.js";
 import { runOllamaHierarchicalNotes } from "./ollamaNotes.js";
 import { runHermesTranscriptReview } from "./hermesReview.js";
 import { resolveTranscriptionProfile } from "./settings.js";
-import { parseChunkSelection, requiredPasses, chunkAudioPathFor, pairChunksWithArtifactPaths, passRawJsonPathFor, passRawMarkdownPathFor } from "./passes.js";
+import { parseChunkSelection, requiredPasses, chunkAudioPathFor } from "./passes.js";
+import { executeTranscriptionPipeline, parseStopAfter, transcribeStages, type TranscribeStage } from "./pipeline.js";
 import {
   resolveFromCwd,
   resolveTranscribeSessionPaths,
@@ -67,7 +67,6 @@ import {
   readManifest,
   shouldOverwritePreparedAudio,
   shouldOverwritePreparedChannels,
-  mergeCompletedByPass,
 } from "./resume.js";
 import { detectSilences, trimChunksToSpeech } from "./silence.js";
 import {
@@ -117,7 +116,8 @@ interface TranscribeFlags {
   "ollama-url": string;
   "summary-chunk-chars": number;
   "summary-scene-size": number;
-  "chunk-selection"?: string;
+  chunks?: string;
+  "stop-after"?: string;
 }
 
 const parseNumber = (value: string): number => {
@@ -363,10 +363,16 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
     brief: "Number of chunk summaries to merge into each scene summary",
     default: "5",
   },
-  "chunk-selection": {
+  chunks: {
     kind: "parsed",
     parse: String,
     brief: "Bounded chunk indexes or ranges, e.g. 0,4-7",
+    optional: true,
+  },
+  "stop-after": {
+    kind: "parsed",
+    parse: (value: string) => parseStopAfter(value)!,
+    brief: `Stop after a stage: ${transcribeStages.join(", ")}`,
     optional: true,
   },
 };
@@ -386,23 +392,6 @@ function assertSessionDate(value: string): void {
   }
 }
 
-async function readChunkTranscripts(
-  jsonPaths: string[],
-  chunks: Manifest["chunks"],
-): Promise<
-  Array<Manifest["chunks"][number] & { transcript: ChunkTranscript }>
-> {
-  return Promise.all(
-    pairChunksWithArtifactPaths(chunks, jsonPaths).map(async ({ chunk, artifactPath: jsonPath }) => {
-      return {
-        ...chunk,
-        transcript: JSON.parse(
-          await readFile(jsonPath, "utf8"),
-        ) as ChunkTranscript,
-      };
-    }),
-  );
-}
 
 function baseCheckpoint(options: {
   source: string;
@@ -475,25 +464,9 @@ function baseCheckpoint(options: {
   };
 }
 
-async function writeChunkTranscriptFiles(options: {
-  rawTranscriptionDir: string;
-  chunks: Array<Manifest["chunks"][number] & { transcript: ChunkTranscript }>;
-  pass?: import("./passes.js").TranscriptionPass;
-}): Promise<void> {
-  const pass = options.pass ?? { kind: "stereo" as const, id: "stereo" as const };
-  await mkdir(dirname(passRawMarkdownPathFor(options.rawTranscriptionDir, pass, 0)), { recursive: true });
-  await Promise.all(
-    options.chunks.map((chunk) =>
-      writeFile(
-        passRawMarkdownPathFor(options.rawTranscriptionDir, pass, chunk.index),
-        formatChunkTranscript(chunk),
-        "utf8",
-      ),
-    ),
-  );
-}
 
-export const transcribeRunCommand = buildCommand({
+function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "Normalize, chunk, transcribe, correct, and summarize campaign audio") {
+  return buildCommand({
   async func(this: LocalContext, flags: TranscribeFlags, audioFile: string) {
     assertSessionDate(flags["session-date"]);
 
@@ -522,6 +495,9 @@ export const transcribeRunCommand = buildCommand({
     const hermesReviewNotesPath = join(outDir, "hermes_review_notes.md");
     const transcribeConfig = getTranscribeConfig();
     const resolvedProfile = resolveTranscriptionProfile(transcribeConfig, flags.profile);
+    const effectiveProfile = resolvedProfile.name === "legacy-local"
+      ? { ...resolvedProfile, target: { ...resolvedProfile.target, provider: flags.backend, model: flags["whisper-model"] } }
+      : resolvedProfile;
     const reviewSettings = resolveReviewSettings(
       transcribeConfig["review"],
       {
@@ -536,36 +512,6 @@ export const transcribeRunCommand = buildCommand({
       sessionDate: flags["session-date"],
     });
     const shouldResume = Boolean(flags.resume) && !flags.force;
-
-    if (
-      !flags["skip-notes"] &&
-      (await exists(notesPath)) &&
-      !flags.force &&
-      !shouldResume
-    ) {
-      throw new Error(
-        `${notesPath} already exists. Pass --force to overwrite it.`,
-      );
-    }
-
-    await mkdir(outDir, { recursive: true });
-    await mkdir(join(outDir, "normalized"), { recursive: true });
-    await mkdir(chunksDir, { recursive: true });
-    await mkdir(rawChunksDir, { recursive: true });
-    await mkdir(rawTranscriptionDir, { recursive: true });
-    const correctionRules = await loadCorrectionRulesMarkdown({
-      cwd,
-      path: correctionsPath,
-      campaign: flags.campaign,
-      sessionDate: flags["session-date"],
-    });
-    const correctionRulesContextPath = await writeCorrectionRulesContext({
-      outDir,
-      correctionRules,
-    });
-    this.process.stdout.write(
-      `Loaded shared correction rules at ${correctionRulesContextPath}\n`,
-    );
 
     const sourceProbe = await probeAudio(audioPath);
     const sourceStat = await stat(audioPath);
@@ -632,11 +578,78 @@ export const transcribeRunCommand = buildCommand({
       shouldResume,
       reusedNormalizedAudio,
     );
-    if (reusedNormalizedAudio) {
-      this.process.stdout.write(
-        `Resuming with existing normalized audio at ${normalizedPath}\n`,
+    if (existingCheckpoint && (existingCheckpoint.source !== audioPath ||
+        existingCheckpoint.outDir !== outDir ||
+        existingCheckpoint.sessionDate !== flags["session-date"] ||
+        existingCheckpoint.campaign !== flags.campaign)) {
+      throw new Error(`Cannot resume incompatible checkpoint at ${checkpointPath}; rebuild with --force.`);
+    }
+
+    const initialPasses = requiredPasses(effectiveProfile.layout, preparedChannelPaths);
+    const initialPassIds = initialPasses.map((pass) => pass.id);
+    const initialAvailable = existingManifest?.chunks.map((chunk) => chunk.index) ?? [];
+    const initialAvailableByPass = Object.fromEntries(
+      initialPassIds.map((id) => [id, initialAvailable]),
+    );
+    const checkpoint = baseCheckpoint({
+      source: audioPath,
+      outDir,
+      campaign: flags.campaign,
+      sessionDate: flags["session-date"],
+      normalizedPath,
+      chunksDir,
+      rawChunksDir,
+      rawTranscriptionDir,
+      rawTranscriptPath,
+      correctedTranscriptPath,
+      correctionNotesPath,
+      notesPath,
+      chunkCount: initialAvailable.length,
+      profile: effectiveProfile.name,
+      layout: effectiveProfile.layout,
+      requiredPassIds: initialPassIds,
+      availableByPass: initialAvailableByPass,
+      selection: existingManifest
+        ? parseChunkSelection(flags.chunks, initialAvailable)
+        : [],
+    });
+    if (existingCheckpoint && existingManifest) {
+      checkpoint.stages.transcribed_chunks.completedByPass = Object.fromEntries(
+        initialPassIds.map((id) => [
+          id,
+          existingCheckpoint.stages.transcribed_chunks.completedByPass[id] ?? [],
+        ]),
       );
-    } else {
+      checkpoint.stages.transcribed_chunks.cacheIdentityByPass = existingCheckpoint.stages.transcribed_chunks.cacheIdentityByPass;
+
+      const previousRaw = existingCheckpoint.stages.joining_raw_transcription;
+      if (previousRaw.status === "complete" && previousRaw.path && await exists(previousRaw.path)) {
+        checkpoint.stages.joining_raw_transcription = previousRaw;
+      }
+      const previousCorrection = existingCheckpoint.stages.correction_pass;
+      if (previousCorrection.status === "skipped" ||
+          (previousCorrection.status === "complete" && previousCorrection.finalTranscriptPath && await exists(previousCorrection.finalTranscriptPath))) {
+        checkpoint.stages.correction_pass = previousCorrection;
+      }
+      const previousNotes = existingCheckpoint.stages.notes_summary_pass;
+      if (previousNotes.status === "skipped" ||
+          (previousNotes.status === "complete" && previousNotes.notesPath && await exists(previousNotes.notesPath))) {
+        checkpoint.stages.notes_summary_pass = previousNotes;
+      }
+      if (existingCheckpoint.stages.done.status === "complete" &&
+          checkpoint.stages.joining_raw_transcription.status === "complete" &&
+          ["complete", "skipped"].includes(checkpoint.stages.correction_pass.status) &&
+          ["complete", "skipped"].includes(checkpoint.stages.notes_summary_pass.status)) {
+        checkpoint.stages.done = existingCheckpoint.stages.done;
+      }
+    }
+
+    const normalize = async (): Promise<void> => {
+      await mkdir(join(outDir, "normalized"), { recursive: true });
+      if (reusedNormalizedAudio) {
+        this.process.stdout.write(`Resuming with existing normalized audio at ${normalizedPath}\n`);
+        return;
+      }
       this.process.stdout.write(`Normalizing audio to ${normalizedPath}\n`);
       await normalizeToFlac(
         audioPath,
@@ -652,317 +665,197 @@ export const transcribeRunCommand = buildCommand({
         },
         sourceProbe.channels,
       );
-    }
+    };
 
-    let preparedChannels: Manifest["preparedChannels"];
-    if (sourceProbe.channels > 1) {
-      const channelPaths = Array.from(
-        { length: sourceProbe.channels },
-        (_, index) =>
-          join(
+    const prepareAudio = async (): Promise<import("./pipeline.js").PreparedPipelineContext> => {
+      await mkdir(chunksDir, { recursive: true });
+      await mkdir(rawChunksDir, { recursive: true });
+      await mkdir(rawTranscriptionDir, { recursive: true });
+
+      let preparedChannels: Manifest["preparedChannels"];
+      if (sourceProbe.channels > 1) {
+        const channelPaths = preparedChannelPaths.map((channel) => channel.path);
+        const allChannelsExist = (await Promise.all(channelPaths.map(exists))).every(Boolean);
+        if (!reusedNormalizedAudio || !allChannelsExist) {
+          preparedChannels = await deriveMonoChannels({
+            stereoPath: normalizedPath,
             channelsDir,
-            `${channelId(index, sourceProbe.channels)}.flac`,
-          ),
-      );
-      const allChannelsExist = (await Promise.all(channelPaths.map(exists))).every(Boolean);
-      if (!reusedNormalizedAudio || !allChannelsExist) {
-        preparedChannels = await deriveMonoChannels({
-          stereoPath: normalizedPath,
-          channelsDir,
-          channelCount: sourceProbe.channels,
-          force: shouldOverwritePreparedChannels(
-            overwritePreparedAudio,
-            shouldResume,
-            reusedNormalizedAudio,
-            allChannelsExist,
-          ),
-          progress: { sink: this.process.stdout },
-        });
+            channelCount: sourceProbe.channels,
+            force: shouldOverwritePreparedChannels(
+              overwritePreparedAudio,
+              shouldResume,
+              reusedNormalizedAudio,
+              allChannelsExist,
+            ),
+            progress: { sink: this.process.stdout },
+          });
+        } else {
+          preparedChannels = preparedChannelPaths;
+        }
       } else {
-        preparedChannels = channelPaths.map((path, index) => ({
-          id: channelId(index, sourceProbe.channels),
-          index,
-          path,
-        }));
+        preparedChannels = [];
       }
-    } else {
-      preparedChannels = [];
-    }
 
-    const audioPasses = requiredPasses(resolvedProfile.layout, preparedChannels);
-    let manifest: Manifest | undefined;
-    let chunkPaths: string[] | undefined;
-    let silences = reusedNormalizedAudio ? existingManifest?.silences : undefined;
-    if (existingManifest && reusedNormalizedAudio) {
-      const reusableChunks = await canReusePassAudioChunks({
-        manifest: existingManifest,
-        chunksRoot: chunksDir,
-        passes: audioPasses,
-      });
-      manifest = existingManifest;
-      chunkPaths = reusableChunks.pathsByPass["stereo"] ?? [];
-      const missingStereo = reusableChunks.missingIndexesByPass["stereo"] ?? [];
-      if (missingStereo.length > 0) {
-        await writeChunkFlacs(
+      const audioPasses = requiredPasses(effectiveProfile.layout, preparedChannels);
+      let manifest: Manifest | undefined;
+      let chunkPaths: string[] | undefined;
+      let silences = reusedNormalizedAudio ? existingManifest?.silences : undefined;
+      if (existingManifest && reusedNormalizedAudio) {
+        const reusableChunks = await canReusePassAudioChunks({
+          manifest: existingManifest,
+          chunksRoot: chunksDir,
+          passes: audioPasses,
+        });
+        manifest = existingManifest;
+        chunkPaths = reusableChunks.pathsByPass["stereo"] ?? [];
+        const missingStereo = reusableChunks.missingIndexesByPass["stereo"] ?? [];
+        if (missingStereo.length > 0) {
+          await writeChunkFlacs(
+            normalizedPath,
+            chunksDir,
+            existingManifest.chunks.filter((chunk) => missingStereo.includes(chunk.index)),
+            false,
+            { sink: this.process.stdout },
+          );
+        } else {
+          this.process.stdout.write(`Resuming with ${chunkPaths.length} existing audio chunks\n`);
+        }
+      }
+
+      if (!manifest || !chunkPaths) {
+        this.process.stdout.write("Detecting silence boundaries\n");
+        const durationSeconds = await getAudioDurationSeconds(normalizedPath);
+        silences = await detectSilences(normalizedPath);
+        const plannedChunks = planChunks({
+          durationSeconds,
+          chunkSeconds: flags["chunk-seconds"],
+          boundarySearchSeconds: flags["boundary-search-seconds"],
+          boundaryMaxSearchSeconds: flags["boundary-max-search-seconds"],
+          overlapSeconds: flags["overlap-seconds"],
+          silences,
+        });
+        const chunks = flags["keep-silence"]
+          ? plannedChunks
+          : trimChunksToSpeech({
+              chunks: plannedChunks,
+              silences,
+              paddingSeconds: flags["silence-padding-seconds"],
+              minimumSpeechSeconds: flags["minimum-speech-seconds"],
+            });
+        manifest = {
+          version: 2,
+          source: audioPath,
+          sourceFingerprint,
+          sourceProbe,
+          normalizedStereo: normalizedPath,
+          preparedChannels,
+          audioSettings,
+          chunkSettings,
+          durationSeconds,
+          silences,
+          chunks,
+        };
+        await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
+        this.process.stdout.write(`Writing ${chunks.length} FLAC chunks\n`);
+        chunkPaths = await writeChunkFlacs(
           normalizedPath,
           chunksDir,
-          existingManifest.chunks.filter((chunk) => missingStereo.includes(chunk.index)),
-          false,
+          chunks,
+          overwritePreparedAudio,
           { sink: this.process.stdout },
         );
-      } else {
-        this.process.stdout.write(`Resuming with ${chunkPaths.length} existing audio chunks\n`);
       }
-    }
 
-    if (!manifest || !chunkPaths) {
-      this.process.stdout.write("Detecting silence boundaries\n");
-      const durationSeconds = await getAudioDurationSeconds(normalizedPath);
-      silences = await detectSilences(normalizedPath);
-      const plannedChunks = planChunks({
-        durationSeconds,
-        chunkSeconds: flags["chunk-seconds"],
-        boundarySearchSeconds: flags["boundary-search-seconds"],
-        boundaryMaxSearchSeconds: flags["boundary-max-search-seconds"],
-        overlapSeconds: flags["overlap-seconds"],
-        silences,
-      });
-      const chunks = flags["keep-silence"]
-        ? plannedChunks
-        : trimChunksToSpeech({
-            chunks: plannedChunks,
-            silences,
-            paddingSeconds: flags["silence-padding-seconds"],
-            minimumSpeechSeconds: flags["minimum-speech-seconds"],
-          });
-
-      manifest = {
-        version: 2,
-        source: audioPath,
-        sourceFingerprint,
-        sourceProbe,
-        normalizedStereo: normalizedPath,
-        preparedChannels,
-        audioSettings,
-        chunkSettings,
-        durationSeconds,
-        silences,
-        chunks,
-      };
-      await writeFile(
-        manifestPath,
-        `${JSON.stringify(manifest, null, 2)}\n`,
-        "utf8",
-      );
-
-      this.process.stdout.write(`Writing ${chunks.length} FLAC chunks\n`);
-      chunkPaths = await writeChunkFlacs(
-        normalizedPath,
+      if (!manifest || !chunkPaths) {
+        throw new Error("Audio manifest and chunk paths were not prepared.");
+      }
+      if (effectiveProfile.layout === "hybrid") {
+        for (const channel of preparedChannels) {
+          const pass = { kind: "channel" as const, id: channel.id, channelIndex: channel.index };
+          const missingChunks = [];
+          for (const chunk of manifest.chunks) {
+            if (!(await exists(chunkAudioPathFor(chunksDir, pass, chunk.index)))) missingChunks.push(chunk);
+          }
+          if (missingChunks.length > 0) {
+            this.process.stdout.write(`Writing ${missingChunks.length} ${channel.id} channel chunks\n`);
+            await writeChunkFlacs(
+              channel.path,
+              chunksDir,
+              missingChunks,
+              Boolean(flags.force),
+              { sink: this.process.stdout },
+              pass,
+            );
+          }
+        }
+      }
+      if (!silences) {
+        this.process.stdout.write("Detecting silence boundaries for transcript tags\n");
+        silences = await detectSilences(normalizedPath);
+        manifest = { ...manifest, silences };
+      }
+      return {
+        manifest,
+        profile: effectiveProfile,
+        rawChunksDir,
+        rawTranscriptionDir,
         chunksDir,
-        chunks,
-        overwritePreparedAudio,
-        {
-          sink: this.process.stdout,
-        },
-      );
-    }
-
-    if (!manifest || !chunkPaths) {
-      throw new Error("Audio manifest and chunk paths were not prepared.");
-    }
-
-    if (resolvedProfile.layout === "hybrid") {
-      for (const channel of preparedChannels) {
-        const pass = { kind: "channel" as const, id: channel.id, channelIndex: channel.index };
-        const missingChunks = [];
-        for (const chunk of manifest.chunks) {
-          if (!(await exists(chunkAudioPathFor(chunksDir, pass, chunk.index)))) missingChunks.push(chunk);
-        }
-        if (missingChunks.length > 0) {
-          this.process.stdout.write(`Writing ${missingChunks.length} ${channel.id} channel chunks\n`);
-          await writeChunkFlacs(channel.path, chunksDir, missingChunks, Boolean(flags.force), { sink: this.process.stdout }, pass);
-        }
-      }
-    }
-
-    if (!silences) {
-      this.process.stdout.write(
-        "Detecting silence boundaries for transcript tags\n",
-      );
-      silences = await detectSilences(normalizedPath);
-    }
-
-    const transcriptionPasses = requiredPasses(resolvedProfile.layout, preparedChannels);
-    const selectedChunkIndexes = parseChunkSelection(
-      flags["chunk-selection"],
-      manifest.chunks.map((chunk) => chunk.index),
-    );
-    const requiredPassIds = transcriptionPasses.map((pass) => pass.id);
-    const availableByPass = Object.fromEntries(requiredPassIds.map((id) => [id, manifest!.chunks.map((chunk) => chunk.index)]));
-
-    if (existingCheckpoint && (existingCheckpoint.source !== audioPath ||
-        existingCheckpoint.outDir !== outDir || existingCheckpoint.profile !== resolvedProfile.name ||
-        existingCheckpoint.layout !== resolvedProfile.layout ||
-        JSON.stringify(existingCheckpoint.stages.audio_chunking.requiredPasses) !== JSON.stringify(requiredPassIds))) {
-      throw new Error(`Cannot resume incompatible checkpoint at ${checkpointPath}; rebuild with --force.`);
-    }
-
-    const checkpoint = baseCheckpoint({
-      source: audioPath,
-      outDir,
-      campaign: flags.campaign,
-      sessionDate: flags["session-date"],
-      normalizedPath,
-      chunksDir,
-      rawChunksDir,
-      rawTranscriptionDir,
-      rawTranscriptPath,
-      correctedTranscriptPath,
-      correctionNotesPath,
-      notesPath,
-      chunkCount: manifest.chunks.length,
-      profile: resolvedProfile.name,
-      layout: resolvedProfile.layout,
-      requiredPassIds,
-      availableByPass,
-      selection: selectedChunkIndexes,
-    });
-    if (existingCheckpoint) {
-      const retained = existingCheckpoint.stages.transcribed_chunks.completedByPass;
-      const validArtifactsByPass: Record<string, number[]> = {};
-      for (const pass of transcriptionPasses) {
-        const valid: number[] = [];
-        for (const index of retained[pass.id] ?? []) {
-          if (await exists(passRawJsonPathFor(rawChunksDir, pass, index)) &&
-              await exists(passRawMarkdownPathFor(rawTranscriptionDir, pass, index))) valid.push(index);
-        }
-        validArtifactsByPass[pass.id] = valid;
-      }
-      checkpoint.stages.transcribed_chunks.completedByPass = mergeCompletedByPass({
-        requiredPassIds,
-        availableByPass,
-        retainedByPass: retained,
-        currentByPass: {},
-        validArtifactIndexesByPass: validArtifactsByPass,
-      });
-    }
-    const now = new Date().toISOString();
-    checkpoint.updatedAt = now;
-    checkpoint.stages.normalization = {
-      status: "complete",
-      completedAt: now,
-      path: normalizedPath,
-    };
-    checkpoint.stages.audio_chunking = {
-      status: "complete",
-      completedAt: now,
-      count: manifest.chunks.length,
-      dir: chunksDir,
-      requiredPasses: requiredPassIds,
-      availableByPass,
-    };
-    await writeTranscribeCheckpoint(checkpointPath, checkpoint);
-
-    this.process.stdout.write(`Transcribing chunks with ${flags.backend}\n`);
-    const selectedChunks = manifest.chunks.filter((chunk) => selectedChunkIndexes.includes(chunk.index));
-    const selectedChunkPaths = selectedChunks.map((chunk) =>
-      chunkAudioPathFor(chunksDir, { kind: "stereo", id: "stereo" }, chunk.index));
-    const jsonPaths =
-      flags.backend === "nodejs-whisper"
-        ? await transcribeChunksWithNodeWhisper({
-            chunkPaths: selectedChunkPaths,
-            outDir: rawChunksDir,
-            model: flags["whisper-model"],
-            language: flags.language,
-            modelRootPath: flags["node-whisper-model-root"],
-            autoDownloadModel: Boolean(flags["auto-download-model"]),
-            device: flags.device,
-            force: Boolean(flags.force),
-          })
-        : await transcribeChunksWithLocalWhisper({
-            chunkPaths: selectedChunkPaths,
-            outDir: rawChunksDir,
-            model: flags["whisper-model"],
-            language: flags.language,
-            device: flags.device,
-            computeType: flags["compute-type"],
-            python: flags.python,
-            force: Boolean(flags.force),
-          });
-
-    this.process.stdout.write(
-      `Assembling raw transcript at ${rawTranscriptPath}\n`,
-    );
-    const chunkTranscripts = await readChunkTranscripts(jsonPaths, selectedChunks);
-    await writeChunkTranscriptFiles({
-      rawTranscriptionDir,
-      chunks: chunkTranscripts,
-    });
-    const completedChunkIndexes = chunkTranscripts.map((chunk) => chunk.index);
-    const retainedCompletedByPass = checkpoint.stages.transcribed_chunks.completedByPass;
-    checkpoint.updatedAt = new Date().toISOString();
-    checkpoint.stages.transcribed_chunks = {
-      status: "in_progress",
-      completedAt: undefined,
-      requiredPasses: requiredPassIds,
-      completedByPass: Object.fromEntries(requiredPassIds.map((id) => [id, id === "stereo" ? completedChunkIndexes : []])),
-      selection: selectedChunkIndexes,
-      total: manifest.chunks.length,
-      rawChunksDir,
-      rawTranscriptionDir,
-    };
-    checkpoint.stages.transcribed_chunks.completedByPass = mergeCompletedByPass({
-      requiredPassIds,
-      availableByPass,
-      retainedByPass: retainedCompletedByPass,
-      currentByPass: { stereo: completedChunkIndexes },
-    });
-    const transcriptionComplete = requiredPassIds.every((id) =>
-      (checkpoint.stages.transcribed_chunks.completedByPass[id] ?? []).length === availableByPass[id]!.length);
-    checkpoint.stages.transcribed_chunks.status = transcriptionComplete ? "complete" : "in_progress";
-    checkpoint.stages.transcribed_chunks.completedAt = transcriptionComplete ? checkpoint.updatedAt : undefined;
-    await writeTranscribeCheckpoint(checkpointPath, checkpoint);
-    if (!transcriptionComplete || resolvedProfile.layout === "hybrid") {
-      this.process.stdout.write(`Pass transcription preparation saved; downstream stages remain pending: ${checkpointPath}\n`);
-      return;
-    }
-    const assembledChunkTranscripts = await readChunkTranscripts(
-      manifest.chunks.map((chunk) =>
-        passRawJsonPathFor(rawChunksDir, { kind: "stereo", id: "stereo" }, chunk.index)),
-      manifest.chunks,
-    );
-    await writeFile(
-      rawTranscriptPath,
-      assembleTranscript({
         source: audioPath,
-        backend: flags.backend,
-        model: flags["whisper-model"],
-        chunks: assembledChunkTranscripts,
-        silences,
+        backend: effectiveProfile.target.provider,
+        model: effectiveProfile.target.model,
         silenceTagMinimumSeconds: flags["silence-tag-seconds"],
-      }),
-      "utf8",
-    );
-    checkpoint.updatedAt = new Date().toISOString();
-    checkpoint.stages.joining_raw_transcription = {
-      status: "complete",
-      completedAt: checkpoint.updatedAt,
-      path: rawTranscriptPath,
+      };
     };
-    await writeTranscribeCheckpoint(checkpointPath, checkpoint);
 
-    this.process.stdout.write("Building campaign glossary\n");
-    const glossaryPath = await writeGlossary({
-      contextRoot,
-      campaign: flags.campaign,
-      outDir,
-    });
+    const localRunner = async (request: import("./sttBackend.js").TranscribePassRequest): Promise<ChunkTranscript[]> => {
+      const tempDir = join(outDir, ".stt-run", `${process.pid}-${Date.now()}-${Math.random().toString(36).slice(2)}`);
+      await mkdir(tempDir, { recursive: true });
+      try {
+        const paths = request.target.provider === "nodejs-whisper"
+          ? await transcribeChunksWithNodeWhisper({ chunkPaths: request.chunks.map((chunk) => chunk.path), outDir: tempDir, model: request.target.model, language: request.language, modelRootPath: flags["node-whisper-model-root"], autoDownloadModel: Boolean(flags["auto-download-model"]), device: flags.device, force: true })
+          : await transcribeChunksWithLocalWhisper({ chunkPaths: request.chunks.map((chunk) => chunk.path), outDir: tempDir, model: request.target.model, language: request.language, device: flags.device, computeType: flags["compute-type"], python: flags.python, force: true });
+        return Promise.all(paths.map(async (path) => JSON.parse(await readFile(path, "utf8")) as ChunkTranscript));
+      } finally {
+        await rm(tempDir, { recursive: true, force: true });
+      }
+    };
+    const effectiveStopAfter = forcedStopAfter ?? parseStopAfter(flags["stop-after"]);
+    let correctionRulesPromise: Promise<string> | undefined;
+    const getCorrectionRules = (): Promise<string> => {
+      correctionRulesPromise ??= (async () => {
+        const correctionRules = await loadCorrectionRulesMarkdown({
+          cwd,
+          path: correctionsPath,
+          campaign: flags.campaign,
+          sessionDate: flags["session-date"],
+        });
+        const correctionRulesContextPath = await writeCorrectionRulesContext({
+          outDir,
+          correctionRules,
+        });
+        this.process.stdout.write(`Loaded shared correction rules at ${correctionRulesContextPath}\n`);
+        return correctionRules;
+      })();
+      return correctionRulesPromise;
+    };
 
     let transcriptForNotes = rawTranscriptPath;
     let transcriptChunksForNotes = rawTranscriptionDir;
     let correctionNotesForNotes: string | undefined;
     let correctionNotesChunksForNotes: string | undefined;
-    if (!flags["skip-correction"]) {
+    const correctionReview = async (): Promise<"complete" | "skipped"> => {
+      const correctionRules = await getCorrectionRules();
+      this.process.stdout.write("Building campaign glossary\n");
+      const glossaryPath = await writeGlossary({
+        contextRoot,
+        campaign: flags.campaign,
+        outDir,
+      });
+      if (flags["skip-correction"]) {
+        checkpoint.stages.correction_pass = { status: "pending" };
+        return "skipped";
+      }
+
       this.process.stdout.write("Running Codex correction pass\n");
       await runCodexCorrection({
         cwd,
@@ -1003,10 +896,8 @@ export const transcribeRunCommand = buildCommand({
         correctionNotesChunksForNotes = reviewPaths.reviewNotesChunksDir;
       }
 
-      checkpoint.updatedAt = new Date().toISOString();
       checkpoint.stages.correction_pass = {
-        status: "complete",
-        completedAt: checkpoint.updatedAt,
+        status: "pending",
         correctedTranscriptPath,
         correctionNotesPath,
         reviewProvider: reviewSettings.provider,
@@ -1021,17 +912,18 @@ export const transcribeRunCommand = buildCommand({
         finalTranscriptPath: transcriptForNotes,
         finalCorrectionNotesPath: correctionNotesForNotes,
       };
-      await writeTranscribeCheckpoint(checkpointPath, checkpoint);
-    } else {
-      checkpoint.updatedAt = new Date().toISOString();
-      checkpoint.stages.correction_pass = {
-        status: "skipped",
-        completedAt: checkpoint.updatedAt,
-      };
-      await writeTranscribeCheckpoint(checkpointPath, checkpoint);
-    }
+      return "complete";
+    };
 
-    if (!flags["skip-notes"]) {
+    const notes = async (): Promise<"complete" | "skipped"> => {
+      if (flags["skip-notes"]) {
+        checkpoint.stages.notes_summary_pass = { status: "pending" };
+        return "skipped";
+      }
+      if ((await exists(notesPath)) && !flags.force && !shouldResume) {
+        throw new Error(`${notesPath} already exists. Pass --force to overwrite it.`);
+      }
+      const correctionRules = await getCorrectionRules();
       this.process.stdout.write(`Generating Astro notes at ${notesPath}\n`);
       const contextFiles = await collectContextFiles({
         contextRoot,
@@ -1063,11 +955,8 @@ export const transcribeRunCommand = buildCommand({
         const notesTranscriptChunksDir = flags["skip-summary-cleanup"]
           ? transcriptChunksForNotes
           : summaryTranscriptionDirFor(outDir);
-
         if (!flags["skip-summary-cleanup"]) {
-          this.process.stdout.write(
-            `Preparing summary-safe transcript at ${summaryTranscriptPath}\n`,
-          );
+          this.process.stdout.write(`Preparing summary-safe transcript at ${summaryTranscriptPath}\n`);
           await runCodexSummaryCleanup({
             cwd,
             transcriptPath: transcriptForNotes,
@@ -1080,7 +969,6 @@ export const transcribeRunCommand = buildCommand({
             resume: shouldResume,
           });
         }
-
         await runCodexNotes({
           cwd,
           campaign: flags.campaign,
@@ -1100,28 +988,40 @@ export const transcribeRunCommand = buildCommand({
           resume: shouldResume,
         });
       }
-      checkpoint.updatedAt = new Date().toISOString();
-      checkpoint.stages.notes_summary_pass = {
-        status: "complete",
-        completedAt: checkpoint.updatedAt,
-        notesPath,
-      };
-      await writeTranscribeCheckpoint(checkpointPath, checkpoint);
-    } else {
-      checkpoint.updatedAt = new Date().toISOString();
-      checkpoint.stages.notes_summary_pass = {
-        status: "skipped",
-        completedAt: checkpoint.updatedAt,
-      };
-      await writeTranscribeCheckpoint(checkpointPath, checkpoint);
-    }
-
-    checkpoint.updatedAt = new Date().toISOString();
-    checkpoint.stages.done = {
-      status: "complete",
-      completedAt: checkpoint.updatedAt,
+      return "complete";
     };
-    await writeTranscribeCheckpoint(checkpointPath, checkpoint);
+
+    const pipelineResult = await executeTranscriptionPipeline({
+      normalize,
+      prepareAudio,
+      checkpointPath,
+      checkpoint,
+      rawChunksDir,
+      rawTranscriptionDir,
+      chunksDir,
+      language: flags.language,
+      selection: flags.chunks,
+      force: Boolean(flags.force),
+      stopAfter: effectiveStopAfter,
+      source: audioPath,
+      backend: effectiveProfile.target.provider,
+      model: effectiveProfile.target.model,
+      silenceTagMinimumSeconds: flags["silence-tag-seconds"],
+      dependencies: { nodejsWhisper: localRunner, fasterWhisper: localRunner },
+      onProgress: (message) => this.process.stdout.write(message),
+      stages: {
+        correctionReview,
+        notes,
+      },
+    });
+    if (effectiveStopAfter) {
+      this.process.stdout.write(`Stopped after ${effectiveStopAfter}: ${checkpointPath}\n`);
+      return;
+    }
+    if (pipelineResult.checkpoint.stages.transcribed_chunks.status !== "complete" || effectiveProfile.layout === "hybrid") {
+      this.process.stdout.write(`Pass transcription preparation saved; downstream stages remain pending: ${checkpointPath}\n`);
+      return;
+    }
     this.process.stdout.write(`Transcript workflow complete: ${outDir}\n`);
   },
   parameters: {
@@ -1137,14 +1037,18 @@ export const transcribeRunCommand = buildCommand({
     },
   },
   docs: {
-    brief:
-      "Normalize, chunk, transcribe, correct, and summarize campaign audio",
+    brief,
   },
-});
+  });
+}
+
+export const transcribeRunCommand = buildTranscribeRunCommand();
+export const transcribePrepareCommand = buildTranscribeRunCommand("audio-chunking", "Normalize and chunk campaign audio without transcribing");
 
 export const transcribeCommand = buildRouteMap({
   routes: {
     run: transcribeRunCommand,
+    prepare: transcribePrepareCommand,
     audio: transcribeRunCommand,
     channels: channelsCommand,
     "apply-corrections": applyCorrectionsCommand,
