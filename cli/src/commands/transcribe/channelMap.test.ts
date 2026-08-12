@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 
-import { loadChannelMap, parseChannelMap } from "./channelMap.js";
+import { channelMapCompatibilityIssues, loadChannelMap, parseChannelMap } from "./channelMap.js";
 import { initializeChannelMap } from "./channels/impl.js";
 
 test("parses partial physical-speaker and expected-character mappings", () => {
@@ -33,6 +33,14 @@ test("parses partial physical-speaker and expected-character mappings", () => {
 
 	assert.deepEqual(parsed.channels[0]?.speakers[0]?.expectedCharacters, []);
 	assert.deepEqual(parsed.channels[1]?.speakers, []);
+	assert.deepEqual(channelMapCompatibilityIssues(parsed, {
+		source: "/recordings/session.wav",
+		channels: [{ id: "left", index: 0 }, { id: "right", index: 1 }],
+	}), []);
+	assert.equal(channelMapCompatibilityIssues(parsed, {
+		source: "/recordings/other.wav",
+		channels: [{ id: "right", index: 0 }, { id: "left", index: 1 }],
+	}).length, 2);
 });
 
 test("rejects duplicate channel IDs or indexes", () => {

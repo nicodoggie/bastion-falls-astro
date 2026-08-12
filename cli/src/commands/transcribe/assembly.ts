@@ -1,3 +1,4 @@
+import type { AlignmentResult } from "./alignment.js";
 import type { ChunkTranscript, PlannedChunk, SilenceInterval } from "./types.js";
 
 export interface AssembleTranscriptOptions {
@@ -96,5 +97,24 @@ export function assembleTranscript(options: AssembleTranscriptOptions): string {
     previousText = text;
   }
 
+  return `${lines.join("\n")}\n`;
+}
+
+export interface AssembleAlignedTranscriptOptions {
+  source: string;
+  backend?: string;
+  model: string;
+  chunks: AlignmentResult[];
+}
+
+export function assembleAlignedTranscript(options: AssembleAlignedTranscriptOptions): string {
+  const lines = ["# Session Transcript", "", `Source: ${options.source}`, `Transcription: ${options.backend ?? "hybrid"} ${options.model}`, ""];
+  const events = options.chunks.flatMap((chunk) => chunk.events).sort((a, b) => a.globalStart - b.globalStart || a.globalEnd - b.globalEnd);
+  for (const event of events) {
+    const labels = [`[${formatTimestamp(event.globalStart)} - ${formatTimestamp(event.globalEnd)}]`];
+    if (event.channel) labels.push(`[channel:${event.channel}]`);
+    if (event.physicalSpeaker) labels.push(`[speaker:${event.physicalSpeaker}]`);
+    lines.push(`${labels.join(" ")} ${event.text}`);
+  }
   return `${lines.join("\n")}\n`;
 }

@@ -135,12 +135,17 @@ test("includes shared correction rules in correction prompts", () => {
     rollingContext: "",
     glossary: "- Sensodyne",
     correctionRules: "- character.sensodyne: Use Sensodyne.",
+    channelEvidence: "[speaker:Nico] [channel:left]",
+    channelMapContext: "left: Nico; expected: Nico or Ran",
     transcript: "[00:00:01 - 00:00:02] Sensudine",
   });
 
   assert.match(prompt, /<correction-rules>/);
   assert.match(prompt, /character\.sensodyne/);
   assert.match(prompt, /Use Sensodyne/);
+  assert.match(prompt, /Physical speaker labels are authoritative/);
+  assert.match(prompt, /Expected characters are possibilities only/);
+  assert.match(prompt, /roster membership alone/);
 });
 
 test("includes shared correction rules in notes prompts", () => {

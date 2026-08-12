@@ -35,6 +35,8 @@ export const TranscribedChunksCheckpointSchema = BaseStageSchema.extend({
 
 export const JoiningRawTranscriptionCheckpointSchema = BaseStageSchema.extend({
   path: z.string().optional(),
+  alignmentDir: z.string().optional(),
+  alignmentIdentity: z.string().optional(),
 }).strict();
 export const CorrectionPassCheckpointSchema = BaseStageSchema.extend({
   correctedTranscriptPath: z.string().optional(),

@@ -1,4 +1,4 @@
-import { access, mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import {
   buildCommand,
@@ -19,6 +19,9 @@ import {
   channelId,
   writeChunkFlacs,
 } from "./audio.js";
+import { measureAudioWindowEnergy } from "./audio.js";
+import { loadChannelMap } from "./channelMap.js";
+import { buildHybridCorrectionContext, isAlignmentArtifactName, parseAlignmentResult } from "./alignment.js";
 import {
   getCheckpointPath,
   readTranscribeCheckpoint,
@@ -471,7 +474,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
     assertSessionDate(flags["session-date"]);
 
     const cwd = this.currentPath;
-    const { audioPath, outDir } = resolveTranscribeSessionPaths({
+    const { audioPath, outDir, channelMapPath } = resolveTranscribeSessionPaths({
       cwd,
       audioFile,
       out: flags.out,
@@ -498,6 +501,12 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
     const effectiveProfile = resolvedProfile.name === "legacy-local"
       ? { ...resolvedProfile, target: { ...resolvedProfile.target, provider: flags.backend, model: flags["whisper-model"] } }
       : resolvedProfile;
+    const authoritativeChannelMap = effectiveProfile.layout === "hybrid" && await exists(channelMapPath)
+      ? await loadChannelMap(channelMapPath)
+      : undefined;
+    if (effectiveProfile.layout === "hybrid" && !authoritativeChannelMap) {
+      throw new Error(`Hybrid transcription requires a valid session channel map at ${channelMapPath}.`);
+    }
     const reviewSettings = resolveReviewSettings(
       transcribeConfig["review"],
       {
@@ -804,6 +813,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
         backend: effectiveProfile.target.provider,
         model: effectiveProfile.target.model,
         silenceTagMinimumSeconds: flags["silence-tag-seconds"],
+        channelMap: authoritativeChannelMap,
       };
     };
 
@@ -844,6 +854,12 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
     let correctionNotesForNotes: string | undefined;
     let correctionNotesChunksForNotes: string | undefined;
     const correctionReview = async (): Promise<"complete" | "skipped"> => {
+      const hybridContext = effectiveProfile.layout === "hybrid" && authoritativeChannelMap
+        ? buildHybridCorrectionContext(
+            await Promise.all((await readdir(join(rawTranscriptionDir, "alignment"))).filter(isAlignmentArtifactName).sort().map(async (name) => parseAlignmentResult(JSON.parse(await readFile(join(rawTranscriptionDir, "alignment", name), "utf8")) as unknown))),
+            authoritativeChannelMap,
+          )
+        : undefined;
       const correctionRules = await getCorrectionRules();
       this.process.stdout.write("Building campaign glossary\n");
       const glossaryPath = await writeGlossary({
@@ -865,6 +881,8 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
         correctedTranscriptPath,
         correctionNotesPath,
         rawTranscriptionDir,
+        channelEvidence: hybridContext?.channelEvidence,
+        channelMapContext: hybridContext?.channelMapContext,
         force: Boolean(flags.force),
       });
       transcriptForNotes = correctedTranscriptPath;
@@ -1007,6 +1025,8 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
       backend: effectiveProfile.target.provider,
       model: effectiveProfile.target.model,
       silenceTagMinimumSeconds: flags["silence-tag-seconds"],
+      channelMap: authoritativeChannelMap,
+      measureEnergy: ({ path, start, duration }) => measureAudioWindowEnergy(path, start, duration),
       dependencies: { nodejsWhisper: localRunner, fasterWhisper: localRunner },
       onProgress: (message) => this.process.stdout.write(message),
       stages: {
@@ -1018,7 +1038,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
       this.process.stdout.write(`Stopped after ${effectiveStopAfter}: ${checkpointPath}\n`);
       return;
     }
-    if (pipelineResult.checkpoint.stages.transcribed_chunks.status !== "complete" || effectiveProfile.layout === "hybrid") {
+    if (pipelineResult.checkpoint.stages.transcribed_chunks.status !== "complete") {
       this.process.stdout.write(`Pass transcription preparation saved; downstream stages remain pending: ${checkpointPath}\n`);
       return;
     }

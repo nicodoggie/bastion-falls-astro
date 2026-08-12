@@ -10,9 +10,24 @@ import {
   channelId,
   deriveMonoChannels,
   normalizeToFlac,
+  measureAudioWindowEnergy,
+  normalizeRelativeEnergies,
   parseAudioProbe,
   probeAudio,
 } from "./audio.js";
+
+test("measures an injected speech window and normalizes finite channel powers", async () => {
+  const calls: string[][] = [];
+  const energy = await measureAudioWindowEnergy("/tmp/left.flac", 1.25, 0.75, async (command, args, options) => {
+    calls.push([command, ...args, `timeout=${options?.timeoutMs}`]);
+    return { stdout: "", stderr: "[Parsed_volumedetect] mean_volume: -3.0103 dB" };
+  });
+  assert.ok(energy !== undefined);
+  assert.equal(calls[0]?.includes("-ss") && calls[0]?.includes("1.25"), true);
+  assert.equal(calls[0]?.includes("timeout=30000"), true);
+  assert.deepEqual(normalizeRelativeEnergies([energy, 0]), [1, 0]);
+  assert.equal(await measureAudioWindowEnergy("/tmp/silence.flac", 0, 1, async () => ({ stdout: "", stderr: "mean_volume: -Infinity dB" })), undefined);
+});
 
 const ffmpegAvailable = (() => {
   try {

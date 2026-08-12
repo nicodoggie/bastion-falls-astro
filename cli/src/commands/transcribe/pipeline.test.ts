@@ -1,10 +1,12 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile } from "node:fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 
 import { executeTranscriptionPipeline, sttCacheIdentity } from "./pipeline.js";
+import { parseAlignmentResult } from "./alignment.js";
+import type { ChannelMap } from "./channelMap.js";
 import type { TranscribeCheckpoint } from "./checkpoint.js";
 import type { ResolvedTranscriptionProfile } from "./settings.js";
 import type { Manifest } from "./types.js";
@@ -33,14 +35,24 @@ const manifest: Manifest = {
   chunks: [{ index: 0, start: 0, end: 10, overlapStart: 0, overlapEnd: 10, endReason: "exact-target" }, { index: 1, start: 10, end: 20, overlapStart: 10, overlapEnd: 20, endReason: "duration-end" }],
 };
 
-function prepared(outDir: string, p: ResolvedTranscriptionProfile) { return { manifest, profile: p, rawChunksDir: join(outDir, "raw_chunks"), rawTranscriptionDir: join(outDir, "raw_transcription"), chunksDir: join(outDir, "chunks"), source: manifest.source }; }
+const channelMap: ChannelMap = {
+  version: 1,
+  source: manifest.source,
+  channels: [
+    { id: "left", index: 0, speakers: [{ name: "Nico", role: "player", expectedCharacters: [{ name: "Andrew", aliases: [] }] }] },
+    { id: "right", index: 1, speakers: [{ name: "Ran", role: "player", expectedCharacters: [{ name: "Hellion", aliases: [] }] }] },
+  ],
+};
+
+function prepared(outDir: string, p: ResolvedTranscriptionProfile, map?: ChannelMap) { return { manifest, profile: p, rawChunksDir: join(outDir, "raw_chunks"), rawTranscriptionDir: join(outDir, "raw_transcription"), chunksDir: join(outDir, "chunks"), source: manifest.source, channelMap: map }; }
 
 test("proves the complete staged lifecycle, resume contract, hooks, and cache identity", async () => {
   const outDir = await mkdtemp(join(tmpdir(), "pipeline-lifecycle-"));
   const calls: string[] = [];
   const hookCalls: string[] = [];
-  const dependencies = { nodejsWhisper: async (request: { pass: { id: string }; chunks: Array<{ index: number }> }) => { calls.push(`${request.pass.id}:${request.chunks[0]!.index}`); return [{ segments: [{ start: 0, end: 1, text: `${request.pass.id}-${request.chunks[0]!.index}` }] }]; } };
-  const run = (state: TranscribeCheckpoint, p: ResolvedTranscriptionProfile, stopAfter?: Parameters<typeof executeTranscriptionPipeline>[0]["stopAfter"], stages?: Parameters<typeof executeTranscriptionPipeline>[0]["stages"], selection?: string) => executeTranscriptionPipeline({ checkpoint: state, checkpointPath: join(state.outDir, "checkpoint.json"), rawChunksDir: join(state.outDir, "raw_chunks"), rawTranscriptionDir: join(state.outDir, "raw_transcription"), chunksDir: join(state.outDir, "chunks"), source: manifest.source, language: "en", selection, stopAfter, dependencies, normalize: async () => { hookCalls.push("normalization"); }, prepareAudio: async () => { hookCalls.push("audio-chunking"); return prepared(state.outDir, p); }, stages });
+  let energyCalls = 0;
+  const dependencies = { nodejsWhisper: async (request: { pass: { id: string }; chunks: Array<{ index: number }> }) => { calls.push(`${request.pass.id}:${request.chunks[0]!.index}`); return [{ segments: [{ start: 0, end: 1, text: `The Monadists ${request.chunks[0]!.index}` }] }]; } };
+  const run = (state: TranscribeCheckpoint, p: ResolvedTranscriptionProfile, stopAfter?: Parameters<typeof executeTranscriptionPipeline>[0]["stopAfter"], stages?: Parameters<typeof executeTranscriptionPipeline>[0]["stages"], selection?: string, map: ChannelMap | undefined = p.layout === "hybrid" ? channelMap : undefined) => executeTranscriptionPipeline({ checkpoint: state, checkpointPath: join(state.outDir, "checkpoint.json"), rawChunksDir: join(state.outDir, "raw_chunks"), rawTranscriptionDir: join(state.outDir, "raw_transcription"), chunksDir: join(state.outDir, "chunks"), source: manifest.source, language: "en", selection, stopAfter, dependencies, measureEnergy: async ({ path }) => { energyCalls += 1; return path.includes("left") ? 9 : 1; }, normalize: async () => { hookCalls.push("normalization"); }, prepareAudio: async () => { hookCalls.push("audio-chunking"); return prepared(state.outDir, p, map); }, stages });
 
   const state = checkpoint(outDir);
   await run(state, profile("stereo"), "normalization");
@@ -64,11 +76,51 @@ test("proves the complete staged lifecycle, resume contract, hooks, and cache id
   assert.equal(state.stages.transcribed_chunks.status, "in_progress");
   assert.equal(state.stages.joining_raw_transcription.status, "pending");
   assert.equal(state.stages.done.status, "pending");
-  await run(state, profile("hybrid"));
+  await run(state, profile("hybrid"), "raw-assembly");
   assert.deepEqual(calls, ["stereo:0", "left:0", "right:0", "stereo:1", "left:1", "right:1"]);
   assert.equal(state.stages.transcribed_chunks.status, "complete");
-  assert.equal(state.stages.joining_raw_transcription.status, "pending");
+  assert.equal(state.stages.joining_raw_transcription.status, "complete");
   assert.equal(state.stages.done.status, "pending");
+
+  for (const index of [0, 1]) {
+    const alignmentPath = join(outDir, "raw_transcription", "alignment", `session_${String(index).padStart(3, "0")}.json`);
+    const alignment = parseAlignmentResult(JSON.parse(await readFile(alignmentPath, "utf8")) as unknown);
+    assert.equal(alignment.events[0]?.sourcePass, "stereo");
+    assert.equal(alignment.events[0]?.physicalSpeaker, "Nico");
+    assert.deepEqual(alignment.events[0]?.alternatives.map((item) => item.sourcePass), ["left", "right"]);
+  }
+  assert.match(await readFile(join(outDir, "raw_transcript.md"), "utf8"), /\[channel:left\] \[speaker:Nico\] The Monadists/);
+
+  const callsAfterHybrid = calls.length;
+  const energyAfterHybrid = energyCalls;
+  const firstAlignmentPath = join(outDir, "raw_transcription", "alignment", "session_000.json");
+  await writeFile(firstAlignmentPath, "{}\n", "utf8");
+  await run(state, profile("hybrid"), "raw-assembly");
+  assert.equal(calls.length, callsAfterHybrid);
+  assert.ok(energyCalls > energyAfterHybrid);
+  parseAlignmentResult(JSON.parse(await readFile(firstAlignmentPath, "utf8")) as unknown);
+
+  const energyAfterRepair = energyCalls;
+  const changedMap: ChannelMap = structuredClone(channelMap);
+  changedMap.channels[0]!.speakers[0]!.expectedCharacters.push({ name: "Sapphire", aliases: [] });
+  await run(state, profile("hybrid"), "raw-assembly", undefined, undefined, changedMap);
+  assert.equal(calls.length, callsAfterHybrid);
+  assert.ok(energyCalls > energyAfterRepair);
+  const energyAfterMetadata = energyCalls;
+  await run(state, profile("hybrid"), "raw-assembly", undefined, undefined, changedMap);
+  assert.equal(calls.length, callsAfterHybrid);
+  assert.equal(energyCalls, energyAfterMetadata);
+
+  await rm(join(outDir, "raw_transcript.md"));
+  await run(state, profile("hybrid"), "raw-assembly", undefined, undefined, changedMap);
+  assert.equal(calls.length, callsAfterHybrid);
+  assert.ok(energyCalls > energyAfterMetadata);
+  assert.match(await readFile(join(outDir, "raw_transcript.md"), "utf8"), /The Monadists/);
+
+  const staleMap: ChannelMap = { ...changedMap, source: "/another-recording.wav" };
+  const callsBeforeStaleMap = calls.length;
+  await assert.rejects(run(state, profile("hybrid"), "raw-assembly", undefined, undefined, staleMap), /channel map is incompatible.*source/i);
+  assert.equal(calls.length, callsBeforeStaleMap);
 
   for (const pass of ["stereo", "left", "right"]) for (const index of [0, 1]) {
     const base = pass === "stereo" ? join(outDir, "raw_chunks") : join(outDir, "raw_chunks", "passes", pass);

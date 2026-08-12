@@ -100,6 +100,17 @@ export type ExpectedCharacter = z.infer<typeof expectedCharacterSchema>;
 export type PhysicalSpeaker = z.infer<typeof physicalSpeakerSchema>;
 export type ChannelMap = z.infer<typeof channelMapSchema>;
 
+export function channelMapCompatibilityIssues(
+  channelMap: ChannelMap,
+  expected: { source: string; channels: Array<{ id: string; index: number }> },
+): string[] {
+  const issues: string[] = [];
+  if (channelMap.source !== expected.source) issues.push(`source ${channelMap.source} does not match ${expected.source}`);
+  const actualChannels = channelMap.channels.map(({ id, index }) => ({ id, index }));
+  if (JSON.stringify(actualChannels) !== JSON.stringify(expected.channels)) issues.push("channel IDs/indexes do not match the prepared manifest");
+  return issues;
+}
+
 export function parseChannelMap(raw: unknown): ChannelMap {
 	return channelMapSchema.parse(raw);
 }

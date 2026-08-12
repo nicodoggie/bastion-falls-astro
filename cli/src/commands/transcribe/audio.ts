@@ -106,6 +106,38 @@ export async function getAudioDurationSeconds(
   return (await probeAudio(audioPath)).durationSeconds;
 }
 
+export interface AudioEnergyRunner {
+  (command: string, args: string[], options?: { timeoutMs?: number }): Promise<{ stdout: string; stderr: string }>;
+}
+
+/** Measure only the requested speech window. Missing/invalid measurements are intentionally absent. */
+export async function measureAudioWindowEnergy(
+  audioPath: string,
+  startSeconds: number,
+  durationSeconds: number,
+  runner: AudioEnergyRunner = runCommand,
+): Promise<number | undefined> {
+  if (!Number.isFinite(startSeconds) || startSeconds < 0 || !Number.isFinite(durationSeconds) || durationSeconds <= 0) return undefined;
+  try {
+    const result = await runner("ffmpeg", ["-hide_banner", "-nostats", "-ss", String(startSeconds), "-t", String(durationSeconds), "-i", audioPath, "-af", "volumedetect", "-f", "null", "-"], { timeoutMs: 30_000 });
+    const text = `${result.stdout}\n${result.stderr}`;
+    const match = /mean_volume:\s*(-?(?:\d+(?:\.\d*)?|\.\d+)|-?Infinity)\s*dB/i.exec(text);
+    if (!match || /infinity/i.test(match[1]!)) return undefined;
+    const db = Number(match[1]);
+    if (!Number.isFinite(db)) return undefined;
+    const power = 10 ** (db / 10);
+    return Number.isFinite(power) && power >= 0 ? power : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+export function normalizeRelativeEnergies(values: Array<number | undefined>): Array<number | undefined> {
+  const finite = values.filter((value): value is number => value !== undefined && Number.isFinite(value) && value >= 0);
+  const total = finite.reduce((sum, value) => sum + value, 0);
+  return values.map((value) => value === undefined || !Number.isFinite(value) || value < 0 || total <= 0 ? undefined : value / total);
+}
+
 export async function normalizeToFlac(
   inputPath: string,
   outputPath: string,

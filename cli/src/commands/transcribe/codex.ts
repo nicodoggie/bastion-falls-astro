@@ -18,6 +18,8 @@ export interface CodexCorrectionOptions {
 	transcriptPath: string;
 	glossaryPath: string;
 	correctionRules?: string;
+	channelEvidence?: string;
+	channelMapContext?: string;
 	correctedTranscriptPath: string;
 	correctionNotesPath: string;
 	rawTranscriptionDir?: string;
@@ -167,6 +169,8 @@ export function buildCodexCorrectionPrompt(options: {
 	rollingContext?: string;
 	glossary: string;
 	correctionRules?: string;
+	channelEvidence?: string;
+	channelMapContext?: string;
 	transcript: string;
 }): string {
 	return [
@@ -184,6 +188,14 @@ export function buildCodexCorrectionPrompt(options: {
 		"</campaign-glossary>",
 		"",
 		...correctionRulesSection(options.correctionRules),
+		"",
+		"<physical-speaker-evidence>",
+		options.channelEvidence?.trim() || "None.",
+		"</physical-speaker-evidence>",
+		"<channel-map-context>",
+		options.channelMapContext?.trim() || "None.",
+		"</channel-map-context>",
+		"Physical speaker labels are authoritative evidence for who spoke. Expected characters are possibilities only; never assign a character from roster membership alone. Use cleaner channel alternatives for spelling while preserving meaning and chronology.",
 		"",
 		"<transcript-chunk>",
 		options.transcript,
@@ -424,6 +436,8 @@ async function runCodexCorrectionChunked(
 							rollingContext,
 							glossary,
 							correctionRules: options.correctionRules,
+							channelEvidence: options.channelEvidence,
+							channelMapContext: options.channelMapContext,
 							transcript: await readFile(chunkPath, "utf8"),
 						}),
 						outputPath,
@@ -514,6 +528,8 @@ export async function runCodexCorrection(
 		buildCodexCorrectionPrompt({
 			glossary,
 			correctionRules: options.correctionRules,
+			channelEvidence: options.channelEvidence,
+			channelMapContext: options.channelMapContext,
 			transcript,
 		}),
 		options.correctedTranscriptPath,

@@ -1,7 +1,9 @@
 import { access, mkdir, readFile, rename, writeFile } from "node:fs/promises";
-import { dirname } from "node:path";
-
-import { assembleTranscript, formatChunkTranscript } from "./assembly.js";
+import { dirname, join } from "node:path";
+import { assembleAlignedTranscript, assembleTranscript, formatChunkTranscript } from "./assembly.js";
+import { alignHybridChunk, parseAlignmentResult, type AlignmentResult } from "./alignment.js";
+import { measureAudioWindowEnergy, normalizeRelativeEnergies } from "./audio.js";
+import { channelMapCompatibilityIssues, type ChannelMap } from "./channelMap.js";
 import { writeTranscribeCheckpoint, type TranscribeCheckpoint } from "./checkpoint.js";
 import { parseChunkSelection, chunkAudioPathFor, passRawJsonPathFor, passRawMarkdownPathFor, requiredPasses, type TranscriptionPass } from "./passes.js";
 import { transcribePass, type SttBackendDependencies } from "./sttBackend.js";
@@ -90,6 +92,7 @@ export interface PreparedPipelineContext {
   backend?: string;
   model?: string;
   silenceTagMinimumSeconds?: number;
+  channelMap?: ChannelMap;
 }
 
 export interface TranscriptionPipelineOptions extends Omit<PreparedPipelineContext, "manifest" | "profile"> {
@@ -109,7 +112,9 @@ export interface TranscriptionPipelineOptions extends Omit<PreparedPipelineConte
   backend?: string;
   model?: string;
   silenceTagMinimumSeconds?: number;
+  channelMap?: ChannelMap;
   dependencies?: SttBackendDependencies;
+  measureEnergy?: (request: { path: string; start: number; duration: number }) => Promise<number | undefined>;
   onProgress?: (message: string) => void;
   stages?: {
     normalization?: () => Promise<void>;
@@ -131,6 +136,16 @@ function transcriptionStatus(completed: Record<string, number[]>, available: Rec
 }
 
 export async function executePreparedTranscription(options: TranscriptionPipelineOptions & { manifest: Manifest; profile: ResolvedTranscriptionProfile }): Promise<TranscriptionPipelineResult> {
+  if (options.profile.layout === "hybrid" && !options.channelMap) {
+    throw new Error("Hybrid transcription requires a valid session channel map.");
+  }
+  if (options.profile.layout === "hybrid") {
+    const issues = channelMapCompatibilityIssues(options.channelMap!, {
+      source: options.manifest.source,
+      channels: options.manifest.preparedChannels.map(({ id, index }) => ({ id, index })),
+    });
+    if (issues.length > 0) throw new Error(`Hybrid channel map is incompatible: ${issues.join("; ")}`);
+  }
   const passes = requiredPasses(options.profile.layout, options.manifest.preparedChannels);
   options.checkpoint.profile = options.profile.name;
   options.checkpoint.layout = options.profile.layout;
@@ -212,9 +227,64 @@ export async function executePreparedTranscription(options: TranscriptionPipelin
   options.checkpoint.updatedAt = new Date().toISOString();
   stage.completedAt = transcriptionComplete ? options.checkpoint.updatedAt : undefined;
   await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
-  if (options.stopAfter === "transcription" || !transcriptionComplete || options.profile.layout === "hybrid") return { checkpoint: options.checkpoint, selected, passes };
+  if (options.stopAfter === "transcription" || !transcriptionComplete) return { checkpoint: options.checkpoint, selected, passes };
 
-  if (options.checkpoint.stages.joining_raw_transcription.status !== "complete") {
+  const alignmentDir = join(options.rawTranscriptionDir, "alignment");
+  const alignmentIdentity = stable({ version: 1, channelMap: options.channelMap ?? null, passes: identityByPass });
+  const joining = options.checkpoint.stages.joining_raw_transcription;
+  const alignmentPaths = options.manifest.chunks.map((chunk) => join(alignmentDir, `session_${String(chunk.index).padStart(3, "0")}.json`));
+  const cachedAlignments: AlignmentResult[] = [];
+  let alignmentReusable = options.profile.layout === "hybrid" && joining.alignmentIdentity === alignmentIdentity && joining.alignmentDir === alignmentDir;
+  if (alignmentReusable) {
+    try {
+      for (const path of alignmentPaths) cachedAlignments.push(parseAlignmentResult(JSON.parse(await readFile(path, "utf8")) as unknown));
+      if (!joining.path) throw new Error("Missing raw transcript path");
+      const rawTranscript = await readFile(joining.path, "utf8");
+      if (options.stages?.rawAssembly) {
+        if (!rawTranscript.trim()) throw new Error("Empty raw transcript");
+      } else {
+        const expected = assembleAlignedTranscript({ source: options.source, backend: options.backend, model: options.model ?? options.profile.target.model, chunks: cachedAlignments });
+        if (rawTranscript !== expected) throw new Error("Raw transcript does not match cached alignment");
+      }
+    } catch { alignmentReusable = false; }
+  }
+  if (options.profile.layout === "hybrid" && !alignmentReusable) {
+    invalidateDownstream();
+    const stereo = passes.find((pass) => pass.kind === "stereo")!;
+    const channelPasses = passes.filter((pass): pass is Extract<TranscriptionPass, { kind: "channel" }> => pass.kind === "channel");
+    const alignments: AlignmentResult[] = [];
+    for (const chunk of options.manifest.chunks) {
+      const stereoTranscript = parseChunkTranscript(JSON.parse(await readFile(passRawJsonPathFor(options.rawChunksDir, stereo, chunk.index), "utf8")) as unknown);
+      const channels = await Promise.all(channelPasses.map(async (pass, passIndex) => {
+        const transcript = parseChunkTranscript(JSON.parse(await readFile(passRawJsonPathFor(options.rawChunksDir, pass, chunk.index), "utf8")) as unknown);
+        const energies = await Promise.all(transcript.segments.map(async (segment) => {
+          const windowEnergies = await Promise.all(channelPasses.map((candidatePass) =>
+            (options.measureEnergy ?? ((request) => measureAudioWindowEnergy(request.path, request.start, request.duration)))({
+              path: chunkAudioPathFor(options.chunksDir, candidatePass, chunk.index),
+              start: segment.start,
+              duration: segment.end - segment.start,
+            })));
+          return normalizeRelativeEnergies(windowEnergies)[passIndex];
+        }));
+        return { passId: pass.id, channelId: pass.id, segments: transcript.segments, segmentEnergies: energies };
+      }));
+      const result = alignHybridChunk({ chunkStart: chunk.overlapStart, logicalStart: chunk.start, logicalEnd: chunk.end, stereo: stereoTranscript.segments, channels, channelMap: options.channelMap });
+      alignments.push(result);
+      await atomicText(join(alignmentDir, `session_${String(chunk.index).padStart(3, "0")}.json`), `${JSON.stringify(parseAlignmentResult(result), null, 2)}\n`);
+    }
+    joining.alignmentDir = alignmentDir; joining.alignmentIdentity = alignmentIdentity;
+    if (options.stages?.rawAssembly) await options.stages.rawAssembly();
+    else await atomicText(joining.path!, assembleAlignedTranscript({ source: options.source, backend: options.backend, model: options.model ?? options.profile.target.model, chunks: alignments }));
+  } else if (options.profile.layout === "hybrid" && joining.status !== "complete") {
+    if (options.stages?.rawAssembly) await options.stages.rawAssembly();
+    else await atomicText(joining.path!, assembleAlignedTranscript({ source: options.source, backend: options.backend, model: options.model ?? options.profile.target.model, chunks: cachedAlignments }));
+  }
+  if (options.profile.layout === "hybrid") {
+    options.checkpoint.updatedAt = new Date().toISOString();
+    options.checkpoint.stages.joining_raw_transcription = { ...joining, status: "complete", completedAt: options.checkpoint.updatedAt, path: joining.path, alignmentDir, alignmentIdentity };
+    await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
+  }
+  if (options.profile.layout !== "hybrid" && joining.status !== "complete") {
     const stereo = passes.find((pass) => pass.kind === "stereo")!;
     const transcripts = await Promise.all(options.manifest.chunks.map(async (chunk) => ({
       ...chunk,

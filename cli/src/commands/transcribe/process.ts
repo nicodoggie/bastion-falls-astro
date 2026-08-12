@@ -8,7 +8,7 @@ export interface CommandResult {
 export function runCommand(
   command: string,
   args: string[],
-  options: { cwd?: string; input?: string; onStdout?: (text: string) => void; onStderr?: (text: string) => void } = {}
+  options: { cwd?: string; input?: string; timeoutMs?: number; onStdout?: (text: string) => void; onStderr?: (text: string) => void } = {}
 ): Promise<CommandResult> {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, {
@@ -27,20 +27,31 @@ export function runCommand(
       stderr.push(chunk);
       options.onStderr?.(chunk.toString("utf8"));
     });
-    child.on("error", reject);
+    let settled = false;
+    const finish = (callback: () => void): void => {
+      if (settled) return;
+      settled = true;
+      if (timer) clearTimeout(timer);
+      callback();
+    };
+    const timer = options.timeoutMs === undefined ? undefined : setTimeout(() => {
+      child.kill("SIGKILL");
+      finish(() => reject(new Error(`${command} timed out after ${options.timeoutMs}ms`)));
+    }, options.timeoutMs);
+    child.on("error", (error) => finish(() => reject(error)));
     child.on("close", (code) => {
       const result = {
         stdout: Buffer.concat(stdout).toString("utf8"),
         stderr: Buffer.concat(stderr).toString("utf8"),
       };
       if (code === 0) {
-        resolve(result);
+        finish(() => resolve(result));
         return;
       }
       const error = new Error(
         `${command} ${args.join(" ")} failed with exit code ${code}\n${result.stderr || result.stdout}`,
       );
-      reject(error);
+      finish(() => reject(error));
     });
 
     if (options.input) {
