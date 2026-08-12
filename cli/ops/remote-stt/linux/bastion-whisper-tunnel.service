@@ -1,0 +1,15 @@
+[Unit]
+Description=Private SSH tunnel to launchd-managed Bastion Whisper on M1
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ssh -N -T -o BatchMode=yes -o ControlMaster=no -o ConnectTimeout=10 -o ExitOnForwardFailure=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -o TCPKeepAlive=yes -L 127.0.0.1:18000:127.0.0.1:8000 ensu-macos
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=15
+KillMode=control-group
+
+[Install]
+WantedBy=default.target
