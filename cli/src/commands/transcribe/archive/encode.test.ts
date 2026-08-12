@@ -3,7 +3,7 @@ import { test } from "node:test";
 
 import { buildOpusArgs } from "./encode.js";
 
-test("builds ffmpeg args for a compact speech-tuned opus encode", () => {
+test("builds ffmpeg args preserving stereo for a compact speech-tuned opus encode", () => {
   const args = buildOpusArgs({
     input: "/t/session.flac",
     output: "/tmp/out.opus",

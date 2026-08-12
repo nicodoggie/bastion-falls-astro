@@ -1,14 +1,20 @@
 import {
   access,
+  constants,
   copyFile,
+  lstat,
   mkdir,
   mkdtemp,
+  open,
   readdir,
+  realpath,
   rename,
   rm,
 } from "node:fs/promises";
+import { createWriteStream } from "node:fs";
 import { tmpdir } from "node:os";
-import { dirname, join, resolve } from "node:path";
+import { dirname, isAbsolute, join, relative, resolve } from "node:path";
+import { pipeline } from "node:stream/promises";
 
 import { getConfigBaseDir, getTranscribeConfig } from "@/config.js";
 import type { LocalContext } from "@/context.js";
@@ -18,7 +24,11 @@ import {
   isExistingOutputSkip,
 } from "./bulk.js";
 import { encodeToOpus } from "./encode.js";
-import { type ArchiveSourceFile, buildArchivePlan } from "./plan.js";
+import {
+  type ArchiveSourceFile,
+  buildArchivePlan,
+  collectArchiveSources,
+} from "./plan.js";
 import type { ResolvedArchiveSettings } from "./settings.js";
 import { type RawArchiveConfig, resolveArchiveSettings } from "./settings.js";
 import { createZipArchive, type ZipEntry } from "./zip.js";
@@ -63,6 +73,49 @@ function errorMessage(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
 
+function isContained(root: string, candidate: string): boolean {
+  const fromRoot = relative(root, candidate);
+  return fromRoot !== "" && !isAbsolute(fromRoot) && !fromRoot.split(/[\\/]/).includes("..");
+}
+
+async function snapshotRegularFile(sourcePath: string, allowedRoot: string, destinationPath: string): Promise<void> {
+  const original = await lstat(sourcePath);
+  if (!original.isFile() || original.isSymbolicLink()) throw new Error(`Archive source is not a regular file: ${sourcePath}`);
+  const [root, source] = await Promise.all([realpath(allowedRoot), realpath(sourcePath)]);
+  if (!isContained(root, source)) throw new Error(`Archive source escapes its allowed root: ${sourcePath}`);
+  const handle = await open(sourcePath, constants.O_RDONLY | constants.O_NOFOLLOW);
+  try {
+    const opened = await handle.stat();
+    if (!opened.isFile() || opened.dev !== original.dev || opened.ino !== original.ino) throw new Error(`Archive source changed during validation: ${sourcePath}`);
+    await mkdir(dirname(destinationPath), { recursive: true });
+    await pipeline(handle.createReadStream({ autoClose: false }), createWriteStream(destinationPath, { flags: "wx" }));
+  } finally {
+    await handle.close();
+  }
+}
+
+async function publishReplacement(tempPath: string, destination: string, force: boolean): Promise<void> {
+  if (!force) {
+    await rename(tempPath, destination);
+    return;
+  }
+  const backup = `${destination}.backup-${process.pid}-${Date.now()}`;
+  let backedUp = false;
+  try {
+    try {
+      await rename(destination, backup);
+      backedUp = true;
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+    }
+    await rename(tempPath, destination);
+    if (backedUp) await rm(backup, { recursive: true, force: true });
+  } catch (error) {
+    if (backedUp && !(await pathExists(destination))) await rename(backup, destination);
+    throw error;
+  }
+}
+
 async function listSessionDirectories(
   transcribeDir: string,
 ): Promise<string[]> {
@@ -99,10 +152,12 @@ async function archiveSession(options: ArchiveSessionOptions): Promise<string> {
     throw new Error(`Missing required audio at ${plan.audioSource}.`);
   }
 
-  const includedCopies: ArchiveSourceFile[] = [];
+  const includedCopies: ArchiveSourceFile[] = await collectArchiveSources(sessionDir);
+  const validatedProvenanceNames = new Set(["manifest.json", "checkpoint.json", "channel-map.yml"]);
   for (const copy of plan.copies) {
+    if (validatedProvenanceNames.has(copy.entryName)) continue;
     if (await pathExists(copy.sourcePath)) {
-      includedCopies.push(copy);
+      if (!includedCopies.some((source) => source.entryName === copy.entryName)) includedCopies.push(copy);
     } else if (copy.required) {
       throw new Error(`Missing required file ${copy.sourcePath}.`);
     } else {
@@ -120,6 +175,7 @@ async function archiveSession(options: ArchiveSessionOptions): Promise<string> {
   }
 
   const tempDir = await mkdtemp(join(tmpdir(), "bf-archive-"));
+  const snapshotAudio = join(tempDir, "sources", "session.flac");
   const tempAudio = join(tempDir, plan.audioEntryName);
   const tempDestination = settings.compression
     ? join(
@@ -132,11 +188,26 @@ async function archiveSession(options: ArchiveSessionOptions): Promise<string> {
       );
 
   try {
+    await snapshotRegularFile(plan.audioSource, sessionDir, snapshotAudio);
+    const snapshots: ArchiveSourceFile[] = [];
+    for (const copy of includedCopies) {
+      const snapshot = join(tempDir, "copies", copy.entryName);
+      const allowedRoot = copy.entryName === "corrections.yaml" ? settings.transcribeDir : sessionDir;
+      try {
+        await snapshotRegularFile(copy.sourcePath, allowedRoot, snapshot);
+        snapshots.push({ ...copy, sourcePath: snapshot });
+      } catch (error) {
+        if (copy.required) throw error;
+        (context.process.stderr ?? context.process.stdout).write(
+          `Warning: Skipping unsafe ${copy.entryName}: ${errorMessage(error)}\n`,
+        );
+      }
+    }
     context.process.stdout.write(
       `Encoding ${plan.audioSource} → ${plan.audioEntryName}\n`,
     );
     await encodeToOpus({
-      input: plan.audioSource,
+      input: snapshotAudio,
       output: tempAudio,
       bitrate: settings.audioBitrate,
       force: true,
@@ -146,29 +217,25 @@ async function archiveSession(options: ArchiveSessionOptions): Promise<string> {
     if (settings.compression) {
       const entries: ZipEntry[] = [
         { path: tempAudio, name: plan.audioEntryName },
-        ...includedCopies.map((copy) => ({
+        ...snapshots.map((copy) => ({
           path: copy.sourcePath,
           name: copy.entryName,
         })),
       ];
       await createZipArchive(entries, tempDestination);
-      if (flags.force) {
-        await rm(destination, { recursive: true, force: true });
-      }
-      await rename(tempDestination, plan.zipPath);
+      await publishReplacement(tempDestination, plan.zipPath, Boolean(flags.force));
       context.process.stdout.write(`Wrote archive ${plan.zipPath}\n`);
       return plan.zipPath;
     }
 
     await mkdir(tempDestination, { recursive: true });
     await copyFile(tempAudio, join(tempDestination, plan.audioEntryName));
-    for (const copy of includedCopies) {
-      await copyFile(copy.sourcePath, join(tempDestination, copy.entryName));
+    for (const copy of snapshots) {
+      const destinationPath = join(tempDestination, copy.entryName);
+      await mkdir(dirname(destinationPath), { recursive: true });
+      await copyFile(copy.sourcePath, destinationPath);
     }
-    if (flags.force) {
-      await rm(destination, { recursive: true, force: true });
-    }
-    await rename(tempDestination, plan.unpackedDir);
+    await publishReplacement(tempDestination, plan.unpackedDir, Boolean(flags.force));
     context.process.stdout.write(
       `Wrote archive contents to ${plan.unpackedDir}\n`,
     );
