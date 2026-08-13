@@ -1,0 +1,67 @@
+cr: "4"
+name: Ingotback Armored Subadult
+size:
+  - M
+type: elemental
+alignment:
+  - U
+ac:
+  - ac: 15
+    from:
+      - ceramic shell
+hp:
+  average: 85
+  formula: 10d10 + 30
+speed:
+  walk: 30
+  burrow: 15
+str: 17
+dex: 12
+con: 16
+int: 4
+wis: 12
+cha: 7
+skill:
+  perception: "+3"
+resist:
+  - bludgeoning
+  - piercing
+  - slashing
+immune:
+  - fire
+  - poison
+conditionImmune:
+  - exhaustion
+  - petrified
+  - poisoned
+senses:
+  - darkvision 120 ft.
+  - tremorsense 30 ft.
+passive: 13
+languages:
+  - understands Terran but can't speak
+trait:
+  - name: Ceramic Carapace
+    entries:
+      - The ingotback's natural weapon attacks are magical.
+action:
+  - name: Multiattack
+    entries:
+      - The ingotback makes one bite attack and one foreclaw attack.
+  - name: Bite
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 12 ({@damage 2d8 + 3})
+        piercing damage.
+  - name: Foreclaw
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 10 ({@damage 2d6 + 3})
+        slashing damage.
+  - name: Unstable Casting (Recharge 5–6)
+    entries:
+      - >-
+        The ingotback spits hot bismuth in a 15-foot cone. Each creature in that area must make a
+        {@dc 13} Dexterity saving throw, taking 18 ({@damage 4d8}) fire damage on a failed save, or
+        half as much damage on a successful one. On a failed save, the creature's speed is reduced by
+        10 feet until the end of its next turn as brittle metal hardens around it.

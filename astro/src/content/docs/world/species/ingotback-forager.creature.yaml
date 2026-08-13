@@ -1,0 +1,74 @@
+cr: "6"
+name: Ingotback Foraging Adult
+size:
+  - L
+type: elemental
+alignment:
+  - U
+ac:
+  - ac: 16
+    from:
+      - ceramic shell
+hp:
+  average: 114
+  formula: 12d10 + 48
+speed:
+  walk: 30
+  burrow: 20
+str: 18
+dex: 11
+con: 18
+int: 5
+wis: 13
+cha: 7
+save:
+  con: "+7"
+skill:
+  perception: "+4"
+resist:
+  - bludgeoning
+  - piercing
+  - slashing
+immune:
+  - fire
+  - poison
+conditionImmune:
+  - exhaustion
+  - paralyzed
+  - petrified
+  - poisoned
+senses:
+  - darkvision 120 ft.
+  - tremorsense 60 ft.
+passive: 14
+languages:
+  - understands Terran but can't speak
+trait:
+  - name: Ceramic Carapace
+    entries:
+      - >-
+        The ingotback has advantage on saving throws against effects that would move it or knock it
+        prone. Its natural weapon attacks are magical.
+action:
+  - name: Multiattack
+    entries:
+      - The ingotback makes one bite attack and one foreclaw attack.
+  - name: Bite
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 15 ({@damage 2d10 + 4})
+        piercing damage.
+  - name: Foreclaw
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 13 ({@damage 2d8 + 4})
+        slashing damage.
+  - name: Molten Casting (Recharge 5–6)
+    entries:
+      - >-
+        The ingotback expels molten bismuth in a 20-foot-long, 5-foot-wide line. Each creature in the
+        line must make a {@dc 15} Dexterity saving throw, taking 21 ({@damage 6d6}) fire damage on a
+        failed save, or half as much damage on a successful one. On a failed save, a creature is also
+        restrained by rapidly cooling metal. It can use its action to make a {@dc 14} Strength
+        (Athletics) check, freeing itself on a success. The casting can also be destroyed (AC 16; 15
+        hit points; immunity to poison and psychic damage; vulnerability to thunder damage).

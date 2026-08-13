@@ -1,0 +1,76 @@
+cr: "5"
+name: Cubesmith Adult
+size:
+  - L
+type: elemental
+alignment:
+  - U
+ac:
+  - ac: 16
+    from:
+      - ceramic shell
+hp:
+  average: 111
+  formula: 13d10 + 39
+speed:
+  walk: 25
+  burrow: 20
+str: 18
+dex: 10
+con: 17
+int: 6
+wis: 14
+cha: 9
+skill:
+  perception: "+5"
+resist:
+  - bludgeoning
+  - piercing
+  - slashing
+immune:
+  - fire
+  - poison
+conditionImmune:
+  - exhaustion
+  - petrified
+  - poisoned
+senses:
+  - darkvision 120 ft.
+  - tremorsense 60 ft.
+passive: 15
+languages:
+  - understands Terran but can't speak
+trait:
+  - name: Ceramic Carapace
+    entries:
+      - >-
+        The cubesmith has advantage on saving throws against effects that would move it or knock it
+        prone. Its natural weapon attacks are magical.
+  - name: Colony Defender
+    entries:
+      - >-
+        When an allied cubifabrid within 30 feet of the cubesmith is hit by an attack, the cubesmith
+        can move up to half its speed toward the attacker. This movement does not provoke opportunity
+        attacks.
+action:
+  - name: Multiattack
+    entries:
+      - The cubesmith makes one bite attack and one foreclaw attack.
+  - name: Bite
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 15 ({@damage 2d10 + 4})
+        piercing damage.
+  - name: Foreclaw
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 13 ({@damage 2d8 + 4})
+        slashing damage.
+  - name: Cloacal Ballista (Recharge 5–6)
+    entries:
+      - >-
+        The cubesmith launches a prepared bismuth cube at one creature it can see within 60 feet.
+        The target must make a {@dc 15} Dexterity saving throw. On a failed save, it takes 27
+        ({@damage 6d8}) bludgeoning damage and is knocked prone. On a successful save, it takes half
+        as much damage and isn't knocked prone. The cube lands in an unoccupied space within 5 feet
+        of the target and creates difficult terrain in that space until moved.
