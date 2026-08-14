@@ -855,10 +855,18 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
     let correctionNotesChunksForNotes: string | undefined;
     const correctionReview = async (): Promise<"complete" | "skipped"> => {
       const hybridContext = effectiveProfile.layout === "hybrid" && authoritativeChannelMap
-        ? buildHybridCorrectionContext(
-            await Promise.all((await readdir(join(rawTranscriptionDir, "alignment"))).filter(isAlignmentArtifactName).sort().map(async (name) => parseAlignmentResult(JSON.parse(await readFile(join(rawTranscriptionDir, "alignment", name), "utf8")) as unknown))),
-            authoritativeChannelMap,
-          )
+        ? await (async () => {
+            const alignmentDir = join(rawTranscriptionDir, "alignment");
+            const names = (await readdir(alignmentDir)).filter(isAlignmentArtifactName).sort();
+            const channelEvidenceByChunk = Object.fromEntries(await Promise.all(names.map(async (name) => {
+              const result = parseAlignmentResult(JSON.parse(await readFile(join(alignmentDir, name), "utf8")) as unknown);
+              return [name.replace(/\.json$/, ".md"), buildHybridCorrectionContext([result], authoritativeChannelMap).channelEvidence];
+            })));
+            return {
+              channelEvidenceByChunk,
+              channelMapContext: buildHybridCorrectionContext([], authoritativeChannelMap).channelMapContext,
+            };
+          })()
         : undefined;
       const correctionRules = await getCorrectionRules();
       this.process.stdout.write("Building campaign glossary\n");
@@ -881,7 +889,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
         correctedTranscriptPath,
         correctionNotesPath,
         rawTranscriptionDir,
-        channelEvidence: hybridContext?.channelEvidence,
+        channelEvidenceByChunk: hybridContext?.channelEvidenceByChunk,
         channelMapContext: hybridContext?.channelMapContext,
         force: Boolean(flags.force),
       });

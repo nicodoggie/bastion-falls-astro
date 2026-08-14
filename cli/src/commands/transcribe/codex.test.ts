@@ -7,6 +7,7 @@ import { test } from "node:test";
 import {
   buildCodexCorrectionNotesPrompt,
   buildCodexCorrectionPrompt,
+  buildCodexExecArgs,
   buildCodexFinalNotesPrompt,
   buildCodexSceneSummaryPrompt,
   buildCodexTranscriptSummaryPrompt,
@@ -14,6 +15,7 @@ import {
   buildSummaryCleanupPrompt,
   correctionContextChunksDirFor,
   correctionNotesChunksDirFor,
+  correctionEvidenceForChunk,
   codexNotesDirFor,
   formatCodexNotesSceneProgress,
   formatSummaryCleanupJoinMessage,
@@ -27,6 +29,58 @@ import {
   summaryTranscriptionDirFor,
   writeGeneratedFile,
 } from "./codex.js";
+
+test("requests Codex priority service only for fast subprocesses", () => {
+  assert.deepEqual(buildCodexExecArgs({ cwd: "/repo", outputPath: "/tmp/out.md" }), [
+    "exec", "--sandbox", "read-only", "-C", "/repo", "-o", "/tmp/out.md", "-",
+  ]);
+  assert.deepEqual(
+    buildCodexExecArgs({ cwd: "/repo", outputPath: "/tmp/out.md", fast: true }),
+    [
+      "exec", "-c", 'service_tier="priority"',
+      "--sandbox", "read-only", "-C", "/repo", "-o", "/tmp/out.md", "-",
+    ],
+  );
+});
+
+test("supports a process-scoped Codex fast override", () => {
+  const previous = process.env["BFCLI_CODEX_FAST"];
+  process.env["BFCLI_CODEX_FAST"] = "1";
+  try {
+    assert.deepEqual(
+      buildCodexExecArgs({ cwd: "/repo", outputPath: "/tmp/out.md" }).slice(0, 3),
+      ["exec", "-c", 'service_tier="priority"'],
+    );
+  } finally {
+    if (previous === undefined) {
+      delete process.env["BFCLI_CODEX_FAST"];
+    } else {
+      process.env["BFCLI_CODEX_FAST"] = previous;
+    }
+  }
+});
+
+test("selects only matching hybrid evidence for chunked correction", () => {
+  assert.equal(
+    correctionEvidenceForChunk({
+      chunkName: "session_001.md",
+      channelEvidence: "whole-session evidence",
+      channelEvidenceByChunk: {
+        "session_000.md": "chunk zero evidence",
+        "session_001.md": "chunk one evidence",
+      },
+    }),
+    "chunk one evidence",
+  );
+  assert.equal(
+    correctionEvidenceForChunk({
+      chunkName: "session_002.md",
+      channelEvidence: "whole-session evidence",
+      channelEvidenceByChunk: {},
+    }),
+    undefined,
+  );
+});
 
 test("sorts raw transcript chunks by session index", () => {
   const sorted = [

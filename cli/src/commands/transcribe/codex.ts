@@ -19,6 +19,7 @@ export interface CodexCorrectionOptions {
 	glossaryPath: string;
 	correctionRules?: string;
 	channelEvidence?: string;
+	channelEvidenceByChunk?: Record<string, string>;
 	channelMapContext?: string;
 	correctedTranscriptPath: string;
 	correctionNotesPath: string;
@@ -62,14 +63,34 @@ interface NamedTextChunk {
 	text: string;
 }
 
+export function buildCodexExecArgs(options: {
+	cwd: string;
+	outputPath: string;
+	fast?: boolean;
+}): string[] {
+	const fast = options.fast ?? process.env["BFCLI_CODEX_FAST"] === "1";
+	return [
+		"exec",
+		...(fast ? ["-c", 'service_tier="priority"'] : []),
+		"--sandbox",
+		"read-only",
+		"-C",
+		options.cwd,
+		"-o",
+		options.outputPath,
+		"-",
+	];
+}
+
 async function codexExecToFile(
 	cwd: string,
 	prompt: string,
 	outputPath: string,
+	fast?: boolean,
 ): Promise<void> {
 	await runCommand(
 		"codex",
-		["exec", "--sandbox", "read-only", "-C", cwd, "-o", outputPath, "-"],
+		buildCodexExecArgs({ cwd, outputPath, fast }),
 		{
 			cwd,
 			input: prompt,
@@ -113,6 +134,17 @@ export function correctionNotesChunksDirFor(outDir: string): string {
 
 export function correctionContextChunksDirFor(outDir: string): string {
 	return join(outDir, "correction_context_chunks");
+}
+
+export function correctionEvidenceForChunk(options: {
+	chunkName: string;
+	channelEvidence?: string;
+	channelEvidenceByChunk?: Record<string, string>;
+}): string | undefined {
+	if (options.channelEvidenceByChunk) {
+		return options.channelEvidenceByChunk[options.chunkName];
+	}
+	return options.channelEvidence;
 }
 
 export function codexNotesDirFor(outDir: string): string {
@@ -421,6 +453,7 @@ async function runCodexCorrectionChunked(
 
 	let rollingContext = "";
 	for (const chunkPath of chunkPaths) {
+		const chunkName = basename(chunkPath);
 		const outputPath = join(correctedChunksDir, basename(chunkPath));
 		const contextPath = join(correctionContextChunksDir, basename(chunkPath));
 
@@ -436,7 +469,11 @@ async function runCodexCorrectionChunked(
 							rollingContext,
 							glossary,
 							correctionRules: options.correctionRules,
-							channelEvidence: options.channelEvidence,
+							channelEvidence: correctionEvidenceForChunk({
+								chunkName,
+								channelEvidence: options.channelEvidence,
+								channelEvidenceByChunk: options.channelEvidenceByChunk,
+							}),
 							channelMapContext: options.channelMapContext,
 							transcript: await readFile(chunkPath, "utf8"),
 						}),
