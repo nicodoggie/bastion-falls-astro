@@ -1,0 +1,6 @@
+selected_model: whisper_turbo
+models:
+  whisper_turbo:
+    engine: mlx-whisper
+    model: mlx-community/whisper-large-v3-turbo
+    config: {}
