@@ -15,11 +15,18 @@ bfcli -> 127.0.0.1:18000
                    -> on-demand MLX worker 127.0.0.1:8001
 ```
 
-The supervisor keeps health and model discovery cold. An inference request
-starts the worker, serializes cold start, forwards the request, and resets the
-idle clock when the request finishes. After 300 seconds with no active
-requests, the worker process group exits so macOS can reclaim the model's
-unified memory. The Hugging Face cache remains on disk.
+The supervisor keeps health and model discovery cold. It persists accepted jobs
+in SQLite with owner-only request and result files, then runs one queued
+inference at a time. Interrupted running jobs return to the queue on supervisor
+startup. After 300 seconds with no active requests, the worker process group
+exits so macOS can reclaim the model's unified memory. The Hugging Face cache
+remains on disk.
+
+The Bastion client submits to `POST /v1/transcription-jobs`, polls
+`GET /v1/transcription-jobs/{id}`, downloads the result, writes its canonical
+local artifacts, then requests job deletion. Repeated submissions with the same
+`X-Idempotency-Key` return the original job. A bounded server TTL cleans up
+terminal jobs if client cleanup cannot complete.
 
 Both public-facing listeners bind to loopback. No API key or SSH credential is
 stored in this repository.
@@ -46,7 +53,7 @@ segments rather than invented timestamps.
 
 ## Install or refresh the Mac supervisor
 
-Copy `macos/supervisor.py` into the service root and the plist into
+Copy `macos/supervisor.py` and `macos/job_store.py` into the service root and the plist into
 `~/Library/LaunchAgents/`. Preserve any previous plist before replacing it.
 The worker application and dedicated venv must already exist beneath the
 service root.
@@ -54,7 +61,7 @@ service root.
 Validate and register over the proven user launchd domain:
 
 ```bash
-python -m py_compile macos/supervisor.py
+python -m py_compile macos/supervisor.py macos/job_store.py
 ssh ensu-macos 'plutil -lint "$HOME/Library/LaunchAgents/com.bastion-falls.whisper.plist"'
 ssh ensu-macos 'launchctl bootstrap "user/$(id -u)" "$HOME/Library/LaunchAgents/com.bastion-falls.whisper.plist"'
 ssh ensu-macos 'launchctl kickstart -k "user/$(id -u)/com.bastion-falls.whisper"'

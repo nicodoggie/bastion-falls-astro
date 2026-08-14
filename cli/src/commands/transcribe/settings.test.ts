@@ -35,6 +35,7 @@ test("resolves a named hybrid OpenAI-compatible profile", () => {
 
   assert.equal(resolved.layout, "hybrid");
   assert.equal(resolved.target.provider, "openai-compatible");
+  assert.equal(resolved.target.protocol, "openai");
   assert.equal(resolved.target.timeoutSeconds, 900);
   assert.equal(resolved.target.retries, 2);
 });

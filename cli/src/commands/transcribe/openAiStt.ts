@@ -1,6 +1,8 @@
+import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { basename } from "node:path";
 
+import { Agent, fetch as undiciFetch } from "undici";
 import { z } from "zod";
 
 import { assertResolvedTranscriptionTarget } from "./settings.js";
@@ -19,6 +21,10 @@ export interface OpenAiSttRequest {
   prompt?: string;
   env?: Record<string, string | undefined>;
   fetchImpl?: typeof fetch;
+  dispatcherFactory?: (timeoutMilliseconds: number) => {
+    dispatcher: Agent;
+    close: () => Promise<void>;
+  };
   sleep?: (milliseconds: number) => Promise<void>;
 }
 
@@ -40,6 +46,14 @@ const responseSchema = z.object({
   language_probability: z.number().finite().optional(),
   duration: z.number().finite().nonnegative().optional(),
 }).passthrough();
+
+const jobSchema = z.object({
+  id: z.string().regex(/^[0-9a-f]{32}$/),
+  status: z.enum(["queued", "running", "succeeded", "failed"]),
+  errorCode: z.string().max(80).optional(),
+}).passthrough();
+
+const remoteCleanups = new WeakMap<ChunkTranscript, () => Promise<void>>();
 
 function validateRequest(request: OpenAiSttRequest): void {
   if (!request || typeof request !== "object" || Array.isArray(request)) throw new Error("Invalid OpenAI-compatible STT request");
@@ -65,6 +79,25 @@ function validateRequest(request: OpenAiSttRequest): void {
 function endpointFor(baseUrl: string): string {
   const url = new URL(baseUrl);
   return `${url.origin}${url.pathname.replace(/\/+$/, "")}/audio/transcriptions`;
+}
+
+function jobEndpointFor(baseUrl: string): string {
+  const url = new URL(baseUrl);
+  return `${url.origin}${url.pathname.replace(/\/+$/, "")}/transcription-jobs`;
+}
+
+function idempotencyKey(request: OpenAiSttRequest, audio: Buffer): string {
+  const audioHash = createHash("sha256").update(audio).digest("hex");
+  return createHash("sha256").update(JSON.stringify({
+    version: 1,
+    target: request.target.name,
+    model: request.target.model,
+    pass: request.pass.id,
+    chunk: request.chunk.index,
+    audioHash,
+    language: request.language.trim(),
+    prompt: request.prompt?.trim() ?? "",
+  })).digest("hex");
 }
 
 function targetChunkLabel(request: OpenAiSttRequest): string {
@@ -115,6 +148,68 @@ function retryableStatus(status: number): boolean {
   return status === 408 || status === 429 || (status >= 500 && status <= 599);
 }
 
+async function parseJobResponse(response: Response, label: string): Promise<z.infer<typeof jobSchema>> {
+  if (!response.ok) throw new Error(`${label} job request failed with HTTP ${response.status}`);
+  let body: unknown;
+  try { body = await response.json(); } catch { throw new Error(`${label} received an invalid job response`); }
+  const parsed = jobSchema.safeParse(body);
+  if (!parsed.success) throw new Error(`${label} received an incompatible job response`);
+  return parsed.data;
+}
+
+async function runBastionJob(
+  request: OpenAiSttRequest,
+  audio: Buffer,
+  fetchImpl: typeof fetch,
+  headers: Record<string, string>,
+  sleep: (milliseconds: number) => Promise<void>,
+): Promise<{ response: Response; cleanup: () => Promise<void> }> {
+  const label = targetChunkLabel(request);
+  const endpoint = jobEndpointFor(request.target.baseUrl);
+  const submission = await fetchImpl(endpoint, {
+    method: "POST",
+    headers: { ...headers, "X-Idempotency-Key": idempotencyKey(request, audio) },
+    body: formFor(request, audio),
+    signal: AbortSignal.timeout(request.target.timeoutSeconds * 1000),
+  });
+  const job = await parseJobResponse(submission, label);
+  const jobUrl = `${endpoint}/${job.id}`;
+  const deadline = Date.now() + request.target.timeoutSeconds * 1000;
+  let status = job;
+  while (status.status === "queued" || status.status === "running") {
+    if (Date.now() >= deadline) throw new DOMException("Job polling timed out", "TimeoutError");
+    await sleep(Math.min(1000, Math.max(1, deadline - Date.now())));
+    status = await parseJobResponse(await fetchImpl(jobUrl, {
+      method: "GET",
+      headers,
+      signal: AbortSignal.timeout(request.target.timeoutSeconds * 1000),
+    }), label);
+  }
+  const cleanupFetch = request.fetchImpl ?? fetch;
+  const cleanup = async (): Promise<void> => {
+    const response = await cleanupFetch(jobUrl, { method: "DELETE", headers });
+    if (!response.ok && response.status !== 404) throw new Error(`${label} job cleanup failed with HTTP ${response.status}`);
+  };
+  if (status.status === "failed") {
+    await cleanup();
+    throw new TypeError(`${label} durable job failed`);
+  }
+  const result = await fetchImpl(`${jobUrl}/result`, {
+    method: "GET",
+    headers,
+    signal: AbortSignal.timeout(request.target.timeoutSeconds * 1000),
+  });
+  if (!result.ok) await cleanup();
+  return { response: result, cleanup };
+}
+
+export async function cleanupOpenAiChunk(transcript: ChunkTranscript): Promise<void> {
+  const cleanup = remoteCleanups.get(transcript);
+  if (!cleanup) return;
+  await cleanup();
+  remoteCleanups.delete(transcript);
+}
+
 export async function transcribeOpenAiChunk(request: OpenAiSttRequest): Promise<ChunkTranscript> {
   validateRequest(request);
   const label = targetChunkLabel(request);
@@ -126,20 +221,35 @@ export async function transcribeOpenAiChunk(request: OpenAiSttRequest): Promise<
     const code = error && typeof error === "object" && "code" in error ? String(error.code) : "read failure";
     throw new Error(`${label} audio file could not be read (${code})`);
   }
-  const fetchImpl = request.fetchImpl ?? fetch;
+  const timeoutMilliseconds = request.target.timeoutSeconds * 1000;
+  const ownedDispatcher = request.fetchImpl
+    ? undefined
+    : (request.dispatcherFactory ?? ((timeout: number) => {
+        const dispatcher = new Agent({ headersTimeout: timeout, bodyTimeout: timeout });
+        return { dispatcher, close: () => dispatcher.close() };
+      }))(timeoutMilliseconds);
+  const fetchImpl: typeof fetch = request.fetchImpl ?? (async (input, init) =>
+    undiciFetch(input, { ...init, dispatcher: ownedDispatcher?.dispatcher }) as unknown as Promise<Response>);
   const sleep = request.sleep ?? (async (milliseconds: number) => new Promise((resolve) => setTimeout(resolve, milliseconds)));
   const totalAttempts = request.target.retries + 1;
   let lastError: Error | undefined;
-  for (let attempt = 1; attempt <= totalAttempts; attempt += 1) {
-    try {
+  try {
+    for (let attempt = 1; attempt <= totalAttempts; attempt += 1) {
+      try {
       const apiKey = envValue(request);
-      const headers: Record<string, string> = apiKey ? { Authorization: `Bearer ${apiKey}` } : {};
-      const response = await fetchImpl(endpoint, {
-        method: "POST",
-        headers,
-        body: formFor(request, audio),
-        signal: AbortSignal.timeout(request.target.timeoutSeconds * 1000),
-      });
+      const headers: Record<string, string> = {
+        ...(apiKey ? { Authorization: "Bearer " + apiKey } : {}),
+        "X-Bastion-Request-Id": `${request.target.name}:${request.pass.id}:${request.chunk.index}:${attempt}`,
+      };
+      const durable = request.target.protocol === "bastion-jobs"
+        ? await runBastionJob(request, audio, fetchImpl, headers, sleep)
+        : undefined;
+      const response = durable?.response ?? await fetchImpl(endpoint, {
+          method: "POST",
+          headers,
+          body: formFor(request, audio),
+          signal: AbortSignal.timeout(request.target.timeoutSeconds * 1000),
+        });
       if (!response.ok) {
         const error = new Error(`${label} request failed with HTTP ${response.status} after ${attempt}/${totalAttempts} attempts`);
         if (!retryableStatus(response.status) || attempt === totalAttempts) throw error;
@@ -149,20 +259,27 @@ export async function transcribeOpenAiChunk(request: OpenAiSttRequest): Promise<
         try { body = await response.json(); } catch { throw new Error(`${label} received incompatible response (invalid JSON)`); }
         const parsed = responseSchema.safeParse(body);
         if (!parsed.success) throw new Error(`${label} received incompatible response (missing or malformed verbose segments)`);
-        try { return normalize(parsed.data, request); } catch { throw new Error(`${label} received incompatible response (invalid segment timing)`); }
+        try {
+          const transcript = normalize(parsed.data, request);
+          if (durable) remoteCleanups.set(transcript, durable.cleanup);
+          return transcript;
+        } catch { throw new Error(`${label} received incompatible response (invalid segment timing)`); }
       }
-    } catch (error) {
-      const message = error instanceof Error ? error.message : "request failure";
-      const isHttpRetry = /^.*request failed with HTTP (408|429|5\d\d)/.test(message);
-      const isTimeout = error instanceof DOMException && (error.name === "AbortError" || error.name === "TimeoutError");
-      const retryable = isHttpRetry || error instanceof TypeError || isTimeout;
-      if (!retryable || attempt === totalAttempts) {
-        if (error instanceof Error && error.message.startsWith(label)) throw error;
-        throw new Error(`${label} request failed (${isTimeout ? "timeout" : "network failure"}) at ${endpoint} after attempt ${attempt}/${totalAttempts}`);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "request failure";
+        const isHttpRetry = /^.*request failed with HTTP (408|429|5\d\d)/.test(message);
+        const isTimeout = error instanceof DOMException && (error.name === "AbortError" || error.name === "TimeoutError");
+        const retryable = isHttpRetry || error instanceof TypeError || isTimeout;
+        if (!retryable || attempt === totalAttempts) {
+          if (error instanceof Error && error.message.startsWith(label)) throw error;
+          throw new Error(`${label} request failed (${isTimeout ? "timeout" : "network failure"}) at ${endpoint} after attempt ${attempt}/${totalAttempts}`);
+        }
+        lastError = error instanceof Error ? error : new Error("request failure");
       }
-      lastError = error instanceof Error ? error : new Error("request failure");
+      await sleep(Math.min(2000, 250 * 2 ** (attempt - 1)));
     }
-    await sleep(Math.min(2000, 250 * 2 ** (attempt - 1)));
+    throw lastError ?? new Error(`${label} request failed after ${totalAttempts} attempts`);
+  } finally {
+    await ownedDispatcher?.close();
   }
-  throw lastError ?? new Error(`${label} request failed after ${totalAttempts} attempts`);
 }

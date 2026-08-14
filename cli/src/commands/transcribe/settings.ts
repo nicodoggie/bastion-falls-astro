@@ -12,6 +12,7 @@ const openAiTargetSchema = z
     provider: z.literal("openai-compatible"),
     baseUrl: z.url(),
     model: z.string().trim().min(1),
+    protocol: z.enum(["openai", "bastion-jobs"]).default("openai"),
     apiKeyEnv: z
       .string()
       .regex(/^[A-Za-z_][A-Za-z0-9_]*$/)

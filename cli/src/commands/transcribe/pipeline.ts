@@ -5,6 +5,7 @@ import { alignHybridChunk, parseAlignmentResult, type AlignmentResult } from "./
 import { measureAudioWindowEnergy, normalizeRelativeEnergies } from "./audio.js";
 import { channelMapCompatibilityIssues, type ChannelMap } from "./channelMap.js";
 import { writeTranscribeCheckpoint, type TranscribeCheckpoint } from "./checkpoint.js";
+import { cleanupOpenAiChunk } from "./openAiStt.js";
 import { parseChunkSelection, chunkAudioPathFor, passRawJsonPathFor, passRawMarkdownPathFor, requiredPasses, type TranscriptionPass } from "./passes.js";
 import { transcribePass, type SttBackendDependencies } from "./sttBackend.js";
 import type { ResolvedTranscriptionProfile } from "./settings.js";
@@ -42,7 +43,7 @@ export function sttCacheIdentity(input: SttCacheIdentityInput): string {
   const target = input.target.provider === "openai-compatible"
     ? (() => {
         const url = new URL(input.target.baseUrl);
-        return { name: input.target.name, provider: input.target.provider, baseUrl: `${url.origin}${url.pathname || "/"}`, model: input.target.model };
+        return { name: input.target.name, provider: input.target.provider, protocol: input.target.protocol, baseUrl: `${url.origin}${url.pathname || "/"}`, model: input.target.model };
       })()
     : { name: input.target.name, provider: input.target.provider, model: input.target.model };
   return stable({
@@ -220,6 +221,11 @@ export async function executePreparedTranscription(options: TranscriptionPipelin
       stage.completedByPass = completedByPass;
       options.checkpoint.updatedAt = new Date().toISOString();
       await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
+      try {
+        await cleanupOpenAiChunk(transcript);
+      } catch {
+        options.onProgress?.(`Remote cleanup deferred to the server TTL for ${pass.id} chunk ${index}\n`);
+      }
     }
   }
   const transcriptionComplete = passes.every((pass) => completedByPass[pass.id]!.length === available.length);

@@ -223,7 +223,7 @@ test("proves the complete staged lifecycle, resume contract, hooks, and cache id
   assert.equal(normalizationRebuilds, 1);
   assert.equal(audioRebuilds, 1);
 
-  const target = { name: "one", provider: "openai-compatible" as const, baseUrl: "https://example.test/v1?secret=hidden#x", model: "base", timeoutSeconds: 900, retries: 2 };
+  const target = { name: "one", provider: "openai-compatible" as const, protocol: "openai" as const, baseUrl: "https://example.test/v1?secret=hidden#x", model: "base", timeoutSeconds: 900, retries: 2 };
   const identity = sttCacheIdentity({ manifest, pass: { kind: "stereo", id: "stereo" }, target, language: "en" });
   const changed = sttCacheIdentity({ manifest, pass: { kind: "stereo", id: "stereo" }, target: { ...target, name: "two" }, language: "en" });
   assert.ok(!identity.includes("secret") && identity !== changed);

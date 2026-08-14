@@ -310,6 +310,9 @@ importers:
       tinyglobby:
         specifier: ^0.2.17
         version: 0.2.17
+      undici:
+        specifier: ^6.27.0
+        version: 6.27.0
       vfile:
         specifier: ^6.0.3
         version: 6.0.3

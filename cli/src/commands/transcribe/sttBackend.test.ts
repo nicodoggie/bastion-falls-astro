@@ -3,7 +3,7 @@ import { test } from "node:test";
 
 import { parseSttBackend, transcribePass } from "./sttBackend.js";
 
-const target = { name: "remote", provider: "openai-compatible" as const, baseUrl: "http://127.0.0.1:1/v1", model: "model", timeoutSeconds: 1, retries: 0 };
+const target = { name: "remote", provider: "openai-compatible" as const, protocol: "openai" as const, baseUrl: "http://127.0.0.1:1/v1", model: "model", timeoutSeconds: 1, retries: 0 };
 const pass = { kind: "stereo" as const, id: "stereo" as const };
 
 test("routes an OpenAI-compatible target only to the OpenAI adapter", async () => {

@@ -19,7 +19,8 @@ transcribe:
       model: large-v3-turbo
     m1-whisper-turbo:
       provider: openai-compatible
-      baseUrl: http://127.0.0.1:18000/v1
+      protocol: bastion-jobs
+      baseUrl: https://bastion-whisper.saury-ule.ts.net
       model: large-v3-turbo
       timeoutSeconds: 900
       retries: 2
