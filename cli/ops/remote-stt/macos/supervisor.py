@@ -351,12 +351,32 @@ def job_status_content(job: JobRecord) -> dict[str, object]:
     return {
         "id": job.id,
         "status": job.status,
+        "statusUrl": f"/v1/transcription-jobs/{job.id}",
         "attempts": job.attempts,
         "createdAt": job.created_at,
         "updatedAt": job.updated_at,
         **({"completedAt": job.completed_at} if job.completed_at is not None else {}),
         **({"errorCode": job.error_code} if job.error_code is not None else {}),
+        **(
+            {"resultUrl": f"/v1/transcription-jobs/{job.id}/result"}
+            if job.status == "succeeded"
+            else {}
+        ),
     }
+
+
+@app.get("/v1/transcription-jobs/by-idempotency-key/{key}")
+async def get_job_by_idempotency_key(key: str):
+    if len(key) != 64 or any(character not in "0123456789abcdef" for character in key):
+        return Response(status_code=400)
+    try:
+        store, _runner = require_job_services()
+    except RuntimeError:
+        return Response(status_code=503)
+    job = store.get_by_idempotency_key(key)
+    if job is None:
+        return Response(status_code=404)
+    return JSONResponse(content=job_status_content(job))
 
 
 @app.post("/v1/transcription-jobs")

@@ -26,6 +26,7 @@ export interface OpenAiSttRequest {
     close: () => Promise<void>;
   };
   sleep?: (milliseconds: number) => Promise<void>;
+  onProgress?: (message: string) => void;
 }
 
 const segmentSchema = z.object({
@@ -50,10 +51,14 @@ const responseSchema = z.object({
 const jobSchema = z.object({
   id: z.string().regex(/^[0-9a-f]{32}$/),
   status: z.enum(["queued", "running", "succeeded", "failed"]),
+  statusUrl: z.string().min(1).max(2048),
   errorCode: z.string().max(80).optional(),
+  resultUrl: z.string().min(1).max(2048).optional(),
 }).passthrough();
 
 const remoteCleanups = new WeakMap<ChunkTranscript, () => Promise<void>>();
+const jobStatusRequestTimeoutMilliseconds = 30_000;
+const jobPollIntervalMilliseconds = 10_000;
 
 function validateRequest(request: OpenAiSttRequest): void {
   if (!request || typeof request !== "object" || Array.isArray(request)) throw new Error("Invalid OpenAI-compatible STT request");
@@ -148,6 +153,17 @@ function retryableStatus(status: number): boolean {
   return status === 408 || status === 429 || (status >= 500 && status <= 599);
 }
 
+function retryableNetworkError(error: unknown): boolean {
+  return error instanceof TypeError
+    || (error instanceof DOMException && (error.name === "AbortError" || error.name === "TimeoutError"));
+}
+
+function sameOriginResource(resource: string, base: string, endpoint: string, label: string): URL {
+  const url = new URL(resource, base);
+  if (url.origin !== new URL(endpoint).origin) throw new Error(`${label} received an invalid job resource`);
+  return url;
+}
+
 async function parseJobResponse(response: Response, label: string): Promise<z.infer<typeof jobSchema>> {
   if (!response.ok) throw new Error(`${label} job request failed with HTTP ${response.status}`);
   let body: unknown;
@@ -163,27 +179,53 @@ async function runBastionJob(
   fetchImpl: typeof fetch,
   headers: Record<string, string>,
   sleep: (milliseconds: number) => Promise<void>,
-): Promise<{ response: Response; cleanup: () => Promise<void> }> {
+): Promise<{ response: Response; cleanup: () => Promise<void>; jobId: string }> {
   const label = targetChunkLabel(request);
   const endpoint = jobEndpointFor(request.target.baseUrl);
-  const submission = await fetchImpl(endpoint, {
-    method: "POST",
-    headers: { ...headers, "X-Idempotency-Key": idempotencyKey(request, audio) },
-    body: formFor(request, audio),
-    signal: AbortSignal.timeout(request.target.timeoutSeconds * 1000),
+  const key = idempotencyKey(request, audio);
+  const lookupUrl = `${endpoint}/by-idempotency-key/${key}`;
+  const lookup = await fetchImpl(lookupUrl, {
+    method: "GET",
+    headers,
+    signal: AbortSignal.timeout(jobStatusRequestTimeoutMilliseconds),
   });
-  const job = await parseJobResponse(submission, label);
-  const jobUrl = `${endpoint}/${job.id}`;
-  const deadline = Date.now() + request.target.timeoutSeconds * 1000;
+  let job: z.infer<typeof jobSchema>;
+  if (lookup.ok) {
+    job = await parseJobResponse(lookup, label);
+  } else if (lookup.status === 404) {
+    const submission = await fetchImpl(endpoint, {
+      method: "POST",
+      headers: { ...headers, "X-Idempotency-Key": key },
+      body: formFor(request, audio),
+      signal: AbortSignal.timeout(request.target.timeoutSeconds * 1000),
+    });
+    job = await parseJobResponse(submission, label);
+  } else {
+    throw new Error(`${label} request failed with HTTP ${lookup.status}`);
+  }
+  request.onProgress?.(`Remote job ${job.id.slice(0, 8)} attached with status ${job.status}\n`);
+  const jobUrl = sameOriginResource(job.statusUrl, endpoint, endpoint, label);
   let status = job;
   while (status.status === "queued" || status.status === "running") {
-    if (Date.now() >= deadline) throw new DOMException("Job polling timed out", "TimeoutError");
-    await sleep(Math.min(1000, Math.max(1, deadline - Date.now())));
-    status = await parseJobResponse(await fetchImpl(jobUrl, {
-      method: "GET",
-      headers,
-      signal: AbortSignal.timeout(request.target.timeoutSeconds * 1000),
-    }), label);
+    await sleep(jobPollIntervalMilliseconds);
+    let statusResponse: Response;
+    try {
+      statusResponse = await fetchImpl(jobUrl, {
+        method: "GET",
+        headers,
+        signal: AbortSignal.timeout(jobStatusRequestTimeoutMilliseconds),
+      });
+    } catch (error) {
+      if (!retryableNetworkError(error)) throw error;
+      request.onProgress?.(`Remote job ${job.id.slice(0, 8)} status poll unavailable; retrying\n`);
+      continue;
+    }
+    if (retryableStatus(statusResponse.status)) {
+      request.onProgress?.(`Remote job ${job.id.slice(0, 8)} status HTTP ${statusResponse.status}; retrying\n`);
+      continue;
+    }
+    status = await parseJobResponse(statusResponse, label);
+    request.onProgress?.(`Remote job ${job.id.slice(0, 8)} status: ${status.status}\n`);
   }
   const cleanupFetch = request.fetchImpl ?? fetch;
   const cleanup = async (): Promise<void> => {
@@ -194,13 +236,30 @@ async function runBastionJob(
     await cleanup();
     throw new TypeError(`${label} durable job failed`);
   }
-  const result = await fetchImpl(`${jobUrl}/result`, {
-    method: "GET",
-    headers,
-    signal: AbortSignal.timeout(request.target.timeoutSeconds * 1000),
-  });
+  if (!status.resultUrl) throw new Error(`${label} succeeded without a result resource`);
+  request.onProgress?.(`Remote job ${job.id.slice(0, 8)} completed; result available at ${status.resultUrl}\n`);
+  const resultUrl = sameOriginResource(status.resultUrl, jobUrl.toString(), endpoint, label);
+  request.onProgress?.(`Downloading remote result for job ${job.id.slice(0, 8)}\n`);
+  let result: Response;
+  for (;;) {
+    try {
+      result = await fetchImpl(resultUrl, {
+        method: "GET",
+        headers,
+        signal: AbortSignal.timeout(request.target.timeoutSeconds * 1000),
+      });
+    } catch (error) {
+      if (!retryableNetworkError(error)) throw error;
+      request.onProgress?.(`Remote result download for job ${job.id.slice(0, 8)} unavailable; retrying\n`);
+      await sleep(jobPollIntervalMilliseconds);
+      continue;
+    }
+    if (!retryableStatus(result.status)) break;
+    request.onProgress?.(`Remote result download for job ${job.id.slice(0, 8)} returned HTTP ${result.status}; retrying\n`);
+    await sleep(jobPollIntervalMilliseconds);
+  }
   if (!result.ok) await cleanup();
-  return { response: result, cleanup };
+  return { response: result, cleanup, jobId: job.id };
 }
 
 export async function cleanupOpenAiChunk(transcript: ChunkTranscript): Promise<void> {
@@ -261,6 +320,7 @@ export async function transcribeOpenAiChunk(request: OpenAiSttRequest): Promise<
         if (!parsed.success) throw new Error(`${label} received incompatible response (missing or malformed verbose segments)`);
         try {
           const transcript = normalize(parsed.data, request);
+          if (durable) request.onProgress?.(`Downloaded remote result for job ${durable.jobId.slice(0, 8)}\n`);
           if (durable) remoteCleanups.set(transcript, durable.cleanup);
           return transcript;
         } catch { throw new Error(`${label} received incompatible response (invalid segment timing)`); }

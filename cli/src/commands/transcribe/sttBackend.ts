@@ -21,6 +21,7 @@ export interface TranscribePassRequest {
   language: string;
   prompt?: string;
   force: boolean;
+  onProgress?: (message: string) => void;
 }
 
 type LocalRunner = (request: TranscribePassRequest) => Promise<ChunkTranscript[]>;
@@ -38,6 +39,7 @@ function validateRequest(request: TranscribePassRequest): void {
   if (!Array.isArray(request.chunks) || request.chunks.some((chunk) => !chunk || !Number.isInteger(chunk.index) || chunk.index < 0 || typeof chunk.path !== "string" || !chunk.path.trim())) throw new Error("Invalid transcription chunks");
   if (typeof request.outDir !== "string" || !request.outDir.trim() || typeof request.language !== "string" || typeof request.force !== "boolean") throw new Error("Invalid transcription pass request fields");
   if (request.prompt !== undefined && typeof request.prompt !== "string") throw new Error("Invalid transcription prompt");
+  if (request.onProgress !== undefined && typeof request.onProgress !== "function") throw new Error("Invalid transcription progress callback");
 }
 
 export async function transcribePass(request: TranscribePassRequest, dependencies: SttBackendDependencies = {}): Promise<ChunkTranscript[]> {
@@ -52,6 +54,7 @@ export async function transcribePass(request: TranscribePassRequest, dependencie
         chunk,
         language: request.language,
         prompt: request.prompt,
+        onProgress: request.onProgress,
       })));
     }
     case "nodejs-whisper":

@@ -50,10 +50,17 @@ test("posts a real multipart request and normalizes verbose timed segments", asy
   const audio = Buffer.from("real-audio-bytes");
   await writeFile(audioPath, audio);
   let statusReads = 0;
+  let submissionWrites = 0;
+  let resultReads = 0;
   let idempotencyKey: string | null = null;
+  const progress: string[] = [];
   await withServer(async (request) => {
     const path = new URL(request.url).pathname;
+    if (request.method === "GET" && path.includes("/by-idempotency-key/")) {
+      return new Response(null, { status: 404 });
+    }
     if (request.method === "POST") {
+      submissionWrites += 1;
       assert.equal(path, "/v1/transcription-jobs");
       assert.equal(request.headers.get("authorization"), "Bearer test-secret");
       idempotencyKey = request.headers.get("x-idempotency-key");
@@ -67,9 +74,15 @@ test("posts a real multipart request and normalizes verbose timed segments", asy
       assert.equal(form.get("response_format"), "verbose_json");
       assert.equal(form.get("language"), "en");
       assert.equal(form.get("prompt"), "names");
-      return Response.json({ id: "a".repeat(32), status: "queued", created: true }, { status: 202 });
+      return Response.json({
+        id: "a".repeat(32),
+        status: "queued",
+        statusUrl: `/v1/transcription-jobs/${"a".repeat(32)}`,
+        created: true,
+      }, { status: 202 });
     }
-    if (request.method === "GET" && path.endsWith("/result")) {
+    if (request.method === "GET" && path === `/v1/job-results/${"a".repeat(32)}`) {
+      resultReads += 1;
       return Response.json({
         language: "en",
         duration: 2,
@@ -81,7 +94,13 @@ test("posts a real multipart request and normalizes verbose timed segments", asy
     }
     if (request.method === "GET") {
       statusReads += 1;
-      return Response.json({ id: "a".repeat(32), status: statusReads === 1 ? "running" : "succeeded" });
+      if (statusReads === 1) return new Response(null, { status: 503 });
+      return Response.json({
+        id: "a".repeat(32),
+        status: statusReads === 2 ? "running" : "succeeded",
+        statusUrl: `/v1/transcription-jobs/${"a".repeat(32)}`,
+        ...(statusReads === 2 ? {} : { resultUrl: `/v1/job-results/${"a".repeat(32)}` }),
+      });
     }
     assert.equal(request.method, "DELETE");
     return new Response(null, { status: 204 });
@@ -94,6 +113,7 @@ test("posts a real multipart request and normalizes verbose timed segments", asy
       prompt: " names ",
       env: { OPENAI_STT_TEST_KEY: "test-secret" },
       sleep: async () => undefined,
+      onProgress: (message) => progress.push(message),
     });
     assert.deepEqual(transcript, {
       language: "en",
@@ -104,9 +124,17 @@ test("posts a real multipart request and normalizes verbose timed segments", asy
       ],
     });
     assert.ok(idempotencyKey);
-    assert.equal(requests(), 4);
+    assert.ok(progress.some((message) => message.includes("attached with status queued")));
+    assert.ok(progress.some((message) => message.includes("status HTTP 503; retrying")));
+    assert.ok(progress.some((message) => message.includes("status: running")));
+    assert.ok(progress.some((message) => message.includes("result available at /v1/job-results/")));
+    assert.ok(progress.some((message) => message.includes("Downloading remote result")));
+    assert.ok(progress.some((message) => message.includes("Downloaded remote result")));
+    assert.equal(submissionWrites, 1);
+    assert.equal(resultReads, 1);
+    assert.equal(requests(), 6);
     await cleanupOpenAiChunk(transcript);
-    assert.equal(requests(), 5);
+    assert.equal(requests(), 7);
   });
 });
 
@@ -147,16 +175,30 @@ test("reuses the idempotency key when the submission response is lost", async ()
   await writeFile(audioPath, "audio");
   const submissionKeys: string[] = [];
   let call = 0;
+  let admitted = false;
   const fetchImpl: typeof fetch = async (_input, init) => {
     call += 1;
+    if (init?.method === "GET" && String(_input).includes("/by-idempotency-key/")) {
+      if (!admitted) return new Response(null, { status: 404 });
+      return Response.json({
+        id: "b".repeat(32),
+        status: "running",
+        statusUrl: `/v1/transcription-jobs/${"b".repeat(32)}`,
+      });
+    }
     if (init?.method === "POST") {
       submissionKeys.push(new Headers(init.headers).get("x-idempotency-key") ?? "");
-      if (submissionKeys.length === 1) throw new TypeError("connection lost after acceptance");
-      return Response.json({ id: "b".repeat(32), status: "running" }, { status: 202 });
+      admitted = true;
+      throw new TypeError("connection lost after acceptance");
     }
     if (init?.method === "DELETE") return new Response(null, { status: 204 });
-    if (String(_input).endsWith("/result")) return Response.json({ segments: [] });
-    return Response.json({ id: "b".repeat(32), status: "succeeded" });
+    if (String(_input).endsWith("/download")) return Response.json({ segments: [] });
+    return Response.json({
+      id: "b".repeat(32),
+      status: "succeeded",
+      statusUrl: `/v1/transcription-jobs/${"b".repeat(32)}`,
+      resultUrl: "/download",
+    });
   };
 
   const transcript = await transcribeOpenAiChunk({
@@ -167,11 +209,11 @@ test("reuses the idempotency key when the submission response is lost", async ()
     fetchImpl,
     sleep: async () => undefined,
   });
-  assert.deepEqual(submissionKeys, [submissionKeys[0], submissionKeys[0]]);
+  assert.deepEqual(submissionKeys, [submissionKeys[0]]);
   assert.match(submissionKeys[0] ?? "", /^[0-9a-f]{64}$/);
-  assert.equal(call, 4);
-  await cleanupOpenAiChunk(transcript);
   assert.equal(call, 5);
+  await cleanupOpenAiChunk(transcript);
+  assert.equal(call, 6);
 });
 
 test("retries only transient failures and performs zero I/O for a missing key", async () => {

@@ -6,8 +6,6 @@
   <string>com.bastion-falls.whisper</string>
   <key>ProgramArguments</key>
   <array>
-    <string>/usr/bin/caffeinate</string>
-    <string>-s</string>
     <string>/Users/ensu/Library/Application Support/BastionWhisper/venv/bin/python</string>
     <string>-m</string>
     <string>uvicorn</string>
@@ -44,8 +42,6 @@
   <integer>10</integer>
   <key>ExitTimeOut</key>
   <integer>30</integer>
-  <key>LimitLoadToSessionType</key>
-  <string>Background</string>
   <key>StandardOutPath</key>
   <string>/Users/ensu/Library/Logs/BastionWhisper/stdout.log</string>
   <key>StandardErrorPath</key>

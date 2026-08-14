@@ -215,6 +215,58 @@ class DurableJobRunnerTests(unittest.IsolatedAsyncioTestCase):
 
 
 class DurableJobApiTests(unittest.IsolatedAsyncioTestCase):
+    async def test_resolves_an_existing_job_by_idempotency_key_without_a_payload(self):
+        with tempfile.TemporaryDirectory() as directory:
+            store = supervisor.JobStore(Path(directory) / "jobs")
+            submitted, _ = store.submit(
+                idempotency_key="c" * 64,
+                payload=b"multipart request",
+                content_type="multipart/form-data; boundary=test",
+            )
+            with (
+                patch.object(supervisor, "job_store", store),
+                patch.object(supervisor, "job_runner", MagicMock()),
+            ):
+                response = await supervisor.get_job_by_idempotency_key("c" * 64)
+                missing = await supervisor.get_job_by_idempotency_key("d" * 64)
+
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(json.loads(response.body)["id"], submitted.id)
+            self.assertEqual(missing.status_code, 404)
+
+    async def test_status_advertises_result_resource_only_after_success(self):
+        with tempfile.TemporaryDirectory() as directory:
+            store = supervisor.JobStore(Path(directory) / "jobs")
+            submitted, _ = store.submit(
+                idempotency_key="a" * 64,
+                payload=b"multipart request",
+                content_type="multipart/form-data; boundary=test",
+            )
+            with (
+                patch.object(supervisor, "job_store", store),
+                patch.object(supervisor, "job_runner", MagicMock()),
+            ):
+                queued = json.loads((await supervisor.get_job(submitted.id)).body)
+                self.assertEqual(
+                    queued["statusUrl"],
+                    f"/v1/transcription-jobs/{submitted.id}",
+                )
+                self.assertNotIn("resultUrl", queued)
+
+                claimed = store.claim_next()
+                store.succeed(
+                    claimed.id,
+                    result=b'{"segments":[]}',
+                    status_code=200,
+                    media_type="application/json",
+                )
+                succeeded = json.loads((await supervisor.get_job(submitted.id)).body)
+
+            self.assertEqual(
+                succeeded["resultUrl"],
+                f"/v1/transcription-jobs/{submitted.id}/result",
+            )
+
     async def test_repeated_submission_returns_the_existing_job_and_notifies_runner_once(self):
         with tempfile.TemporaryDirectory() as directory:
             store = supervisor.JobStore(Path(directory) / "jobs")

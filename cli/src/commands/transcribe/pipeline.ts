@@ -210,19 +210,26 @@ export async function executePreparedTranscription(options: TranscriptionPipelin
         language: options.language,
         prompt: options.prompt,
         force: Boolean(options.force),
+        onProgress: options.onProgress,
       }, options.dependencies);
       if (!transcript) throw new Error(`STT returned an invalid transcript for ${pass.id} chunk ${index}`);
       const parsedTranscript = parseChunkTranscript(transcript);
-      await atomicText(passRawJsonPathFor(options.rawChunksDir, pass, index), `${JSON.stringify(parsedTranscript, null, 2)}\n`);
+      const rawJsonPath = passRawJsonPathFor(options.rawChunksDir, pass, index);
+      await atomicText(rawJsonPath, `${JSON.stringify(parsedTranscript, null, 2)}\n`);
+      options.onProgress?.(`Saved raw JSON for ${pass.id} chunk ${index}: ${rawJsonPath}\n`);
       const markdown = formatChunkTranscript({ ...chunk, transcript: parsedTranscript });
       if (!markdown.trim()) throw new Error(`STT produced no renderable markdown for ${pass.id} chunk ${index}`);
-      await atomicText(passRawMarkdownPathFor(options.rawTranscriptionDir, pass, index), markdown);
+      const rawMarkdownPath = passRawMarkdownPathFor(options.rawTranscriptionDir, pass, index);
+      await atomicText(rawMarkdownPath, markdown);
+      options.onProgress?.(`Saved raw Markdown for ${pass.id} chunk ${index}: ${rawMarkdownPath}\n`);
       completedByPass[pass.id] = [...new Set([...completedByPass[pass.id]!, index])].sort((a, b) => a - b);
       stage.completedByPass = completedByPass;
       options.checkpoint.updatedAt = new Date().toISOString();
       await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
+      options.onProgress?.(`Checkpoint advanced through ${pass.id} chunk ${index}\n`);
       try {
         await cleanupOpenAiChunk(transcript);
+        options.onProgress?.(`Remote cleanup completed for ${pass.id} chunk ${index}\n`);
       } catch {
         options.onProgress?.(`Remote cleanup deferred to the server TTL for ${pass.id} chunk ${index}\n`);
       }
