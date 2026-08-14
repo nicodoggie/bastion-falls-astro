@@ -99,50 +99,50 @@ test("serializes DDB character JSON with import metadata", () => {
 
 test("extracts campaign roster IDs with visible name hints", () => {
   const roster = extractDdbCampaignRoster({
-    campaignId: "2396433",
-    url: "https://www.dndbeyond.com/campaigns/2396433",
-    title: "Bastion Falls - Campaigns - D&D Beyond",
+    campaignId: "9999999",
+    url: "https://www.dndbeyond.com/campaigns/9999999",
+    title: "Example Campaign - Campaigns - D&D Beyond",
     text: [
       "Active Characters",
-      "Angel Rannek",
+      "Example Hero",
       "Lvl 8 | Aasimar | Bard / College of Glamour",
-      "Player: Karrotchin",
+      "Player: example-player",
       "VIEW",
       "EDIT",
       "UNASSIGNED CHARACTERS",
-      "Alexander Surrata-Spellvig",
+      "Unassigned Example",
       "Lvl 5 | Human | Barbarian / Path of the Wild Heart",
       "Unassigned",
       "VIEW",
       "EDIT",
     ].join("\n"),
     links: [
-      { text: "", href: "https://www.dndbeyond.com/profile/Karrotchin/characters/140122555" },
-      { text: "VIEW", href: "https://www.dndbeyond.com/profile/Karrotchin/characters/140122555" },
-      { text: "REMOVE", href: "https://www.dndbeyond.com/campaigns/2396433/remove-character/140122555" },
-      { text: "", href: "https://www.dndbeyond.com/profile/nicodoggie/characters/140640977" },
-      { text: "VIEW", href: "https://www.dndbeyond.com/profile/nicodoggie/characters/140640977" },
-      { text: "CLAIM", href: "https://www.dndbeyond.com/campaigns/140640977/2396433123/claim-unassigned-character" },
+      { text: "", href: "https://www.dndbeyond.com/profile/example-player/characters/111111111" },
+      { text: "VIEW", href: "https://www.dndbeyond.com/profile/example-player/characters/111111111" },
+      { text: "REMOVE", href: "https://www.dndbeyond.com/campaigns/9999999/remove-character/111111111" },
+      { text: "", href: "https://www.dndbeyond.com/profile/example-dm/characters/222222222" },
+      { text: "VIEW", href: "https://www.dndbeyond.com/profile/example-dm/characters/222222222" },
+      { text: "CLAIM", href: "https://www.dndbeyond.com/campaigns/222222222/9999999123/claim-unassigned-character" },
     ],
   });
 
   assert.deepEqual(roster.characters, [
     {
-      id: "140122555",
-      nameHint: "Angel Rannek",
-      url: "https://www.dndbeyond.com/characters/140122555",
+      id: "111111111",
+      nameHint: "Example Hero",
+      url: "https://www.dndbeyond.com/characters/111111111",
       sourceUrls: [
-        "https://www.dndbeyond.com/profile/Karrotchin/characters/140122555",
-        "https://www.dndbeyond.com/campaigns/2396433/remove-character/140122555",
+        "https://www.dndbeyond.com/profile/example-player/characters/111111111",
+        "https://www.dndbeyond.com/campaigns/9999999/remove-character/111111111",
       ],
     },
     {
-      id: "140640977",
-      nameHint: "Alexander Surrata-Spellvig",
-      url: "https://www.dndbeyond.com/characters/140640977",
+      id: "222222222",
+      nameHint: "Unassigned Example",
+      url: "https://www.dndbeyond.com/characters/222222222",
       sourceUrls: [
-        "https://www.dndbeyond.com/profile/nicodoggie/characters/140640977",
-        "https://www.dndbeyond.com/campaigns/140640977/2396433123/claim-unassigned-character",
+        "https://www.dndbeyond.com/profile/example-dm/characters/222222222",
+        "https://www.dndbeyond.com/campaigns/222222222/9999999123/claim-unassigned-character",
       ],
     },
   ]);
@@ -150,27 +150,27 @@ test("extracts campaign roster IDs with visible name hints", () => {
 
 test("serializes DDB campaign JSON with import metadata", () => {
   const campaign = createDdbCampaignJsonArtifact({
-    id: "2396433",
-    url: "https://www.dndbeyond.com/campaigns/2396433",
-    title: "Bastion Falls - Campaigns - D&D Beyond",
+    id: "9999999",
+    url: "https://www.dndbeyond.com/campaigns/9999999",
+    title: "Example Campaign - Campaigns - D&D Beyond",
     characters: [
       {
-        id: "140122555",
-        nameHint: "Angel Rannek",
-        url: "https://www.dndbeyond.com/characters/140122555",
-        sourceUrls: ["https://www.dndbeyond.com/profile/Karrotchin/characters/140122555"],
+        id: "111111111",
+        nameHint: "Example Hero",
+        url: "https://www.dndbeyond.com/characters/111111111",
+        sourceUrls: ["https://www.dndbeyond.com/profile/example-player/characters/111111111"],
       },
     ],
   }, {
-    campaignId: "2396433",
-    sourceUrl: "https://www.dndbeyond.com/campaigns/2396433",
+    campaignId: "9999999",
+    sourceUrl: "https://www.dndbeyond.com/campaigns/9999999",
     fetchedAt: "2026-06-08T00:00:00.000Z",
   });
 
   assert.deepEqual(campaign.importedFrom, {
     source: "dndbeyond",
-    campaignId: "2396433",
-    sourceUrl: "https://www.dndbeyond.com/campaigns/2396433",
+    campaignId: "9999999",
+    sourceUrl: "https://www.dndbeyond.com/campaigns/9999999",
     fetchedAt: "2026-06-08T00:00:00.000Z",
   });
 
