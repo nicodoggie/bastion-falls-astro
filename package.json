@@ -11,7 +11,7 @@
     "build": "turbo build",
     "preview": "pnpm astro preview",
     "deploy": "pnpm wrangler pages deploy",
-    "bfcli": "_REAL_CWD=$INIT_CWD pnpm -F @bastion-falls/cli bfcli"
+    "bfcli": "_REAL_CWD=$INIT_CWD pnpm -F @bastion-falls/cli run exec"
   },
   "keywords": [],
   "author": "",
