@@ -256,6 +256,7 @@ profiles:
           - Orren Bell
           - Oren/Orren Bell
           - Oren or Orren Bell
+          - Auron
           - Aurelian
           - Aurelian of the High Guard
           - Aurelian of the Highguard
@@ -274,11 +275,13 @@ profiles:
             - the-vengeful
           sessionDates:
             - "2026-07-05"
+            - "2026-08-08"
           contexts:
             - Bearer of Joy
             - Green Lord and Oren Bell speculation
             - Castle Malthrek study service
             - Oren's original Highguard identity
+            - Hellion contacting Oren about Castle Rannek's missing court wizards
         apply:
           mode: prompt-first
           safeExactReplacement: false
@@ -291,6 +294,9 @@ profiles:
           a human name imposed in childhood. Do not preserve Orren spelling
           uncertainty, but keep separate uncertainty about his species, glamour,
           avatar status, or Reformist role when the note context raises it.
+          In the 2026-08-08 Castle Rannek contact, Auron is transcription drift
+          for Oren Bell, including the discussion of his former community,
+          wartime spellcasters, and Mallow's dungeon puppets.
         evidence:
           - path: astro/src/content/docs/world/characters/oren-bell.mdx
             note: Canonical article uses Oren Bell.
@@ -302,6 +308,541 @@ profiles:
             note: Canonical article identifies Oren's original name as Orellian of the Highguard.
           - path: astro/src/content/docs/world/characters/oren-bell.mdx
             note: User clarified on 2026-07-10 that Oren Bell is his present-day chosen name despite his disdain for humanity.
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_004.md
+            note: User identified the person contacted by Hellion and transcribed as Auron or Oran as Oren Bell.
+
+      - id: history.kalassarian-invasion-of-senera
+        status: confirmed
+        kind: history
+        canonical: Kalassarian invasion of Senera
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/oren-bell.mdx
+            role: witness-chronology
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            role: firsthand-recollection
+        aliases:
+          - Kelesar
+          - wartime spellcasters associated with Kelesar
+          - an unidentified term sounding like Kalassar
+        match:
+          priority: high
+          tags:
+            - kalassar
+            - kalassarian-empire
+            - senera
+            - oren-bell
+            - invasion
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Oren comparing historical and modern court wizards
+            - Kalassarian spellcasters during the invasion of Senera
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          In Oren Bell's discussion of historical spellcasters, Kelesar is
+          transcription or note-generation drift for Kalassar. Oren is old
+          enough to remember the Kalassarian invasion of Senera and described
+          its spellcasters as exceptionally powerful.
+        instruction: >
+          Use Kalassar and Kalassarian, not Kelesar. Preserve Oren as a
+          firsthand historical witness. Do not conflate the ancient Kalassarian
+          invasion with the separately referenced war roughly twenty years ago.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_004.md
+            note: At 00:44:39–00:45:22 the reconciled transcript recovers Kalassar while Oren compares its wartime spellcasters with modern court wizards.
+          - path: astro/src/content/docs/world/characters/oren-bell.mdx
+            note: Oren's canonical age supports his firsthand memory of the Kalassarian invasion.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            note: Human campaign review identified Kalassar and clarified Oren's firsthand recollection.
+
+      - id: character.dandelion-dandy
+        status: confirmed
+        kind: entity
+        canonical: Dandelion
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            role: primary
+        aliases:
+          - Dandy
+        match:
+          priority: normal
+          tags:
+            - dandelion
+            - dandy
+            - pixie
+            - taminok-brewery
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-08-08"
+          contexts:
+            - small fey outside the Taminok brewery
+            - Sapphire's conversation about Feywild rebirth
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          The small fey who introduced himself as Dandy is named Dandelion.
+          Introduce him as Dandelion, or Dandy, then use Dandy naturally.
+        instruction: >
+          Treat Dandy as Dandelion's familiar name in the Taminok brewery scene.
+          Do not globally expand ordinary uses of the word dandy.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_024.md
+            note: At 04:02:46–04:02:50 he introduces himself as Dandy and immediately gives Dandelion as the full name.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            note: Human campaign review clarified that Dandy is short for Dandelion.
+
+      - id: character.sapphire-age-ambiguity
+        status: confirmed
+        kind: lore-boundary
+        canonical: Sapphire presents herself as sixteen
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/sapphire.mdx
+            role: primary
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            role: age-boundary
+        aliases:
+          - Sapphire chooses to remain sixteen
+          - Sapphire stopped aging at sixteen
+          - Sapphire is permanently sixteen by choice
+        match:
+          priority: high
+          tags:
+            - sapphire
+            - celestial
+            - age
+            - player-kept-ambiguity
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Sapphire discussing her age with Dandelion
+            - celestial ability to choose or stop an age
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Sapphire presents herself as sixteen. Celestials may be able to choose
+          or stop their age, and Sapphire said that she and her mother liked
+          sixteen, but the player kept it ambiguous whether Sapphire personally
+          chose to remain that age.
+        instruction: >
+          Do not convert a species-level possibility into a confirmed personal
+          decision. State Sapphire's presented age and preserve uncertainty about
+          whether she deliberately stopped aging at sixteen.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_024.md
+            note: Sapphire says she is sixteen and a celestial; the lane evidence separately discusses celestials stopping their age and Sapphire liking sixteen.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            note: Human campaign review clarified that the player intentionally left Sapphire's personal choice ambiguous.
+
+      - id: character.bramis
+        status: confirmed
+        kind: entity
+        canonical: Bramis
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            role: primary
+        aliases:
+          - Bramus
+        match:
+          priority: high
+          tags:
+            - bramis
+            - bramus
+            - satoria
+            - ginger-root
+            - maidenfeld
+            - taminok-family
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Satoria's husband
+            - Andrew's eldest brother
+            - sailor or captain associated with the Ginger Root
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: >
+          Use Bramis, not Bramus, for Satoria's husband and Andrew's eldest
+          brother in the Taminok family discussion.
+        instruction: >
+          Correct Bramus to Bramis in this family and Maidenfeld spice-vessel
+          context. The spelling is settled, but his exact relationship to the
+          Ginger Root remains open unless separately confirmed.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/corrected_transcript.md
+            note: The transcript hears Bramus at 04:18:37–04:18:43; human campaign review corrected the spelling to Bramis.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            note: The authored note uses Bramis while preserving the unresolved ship-role question.
+
+      - id: item.tankard-of-sobriety
+        status: confirmed
+        kind: item
+        canonical: Tankard of Sobriety
+        canonicalRefs:
+          - type: url
+            url: https://5e.tools/items/tankard-of-sobriety-xge.html
+            role: primary
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-07-05.mdx
+            role: campaign-continuity
+        aliases:
+          - tankard that prevents intoxication
+          - regular tankard that keeps you sober
+        match:
+          priority: high
+          tags:
+            - tankard-of-sobriety
+            - sapphire
+            - fey-wine
+            - star-court-wine
+            - xge
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Sapphire offering Andrew a tankard for drinking alcohol
+            - discussion of avoiding intoxication from Fey wine
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Identify Sapphire's sobriety-granting tankard as the Tankard of
+          Sobriety from XGE. Officially it affects nonmagical alcoholic drinks,
+          not magical liquids; the table extends it to Fey and Star Court wine.
+        instruction: >
+          Use the official Tankard of Sobriety item identity and keep official
+          mechanics separate from the campaign's broader table ruling. Do not
+          present protection from magical Fey wine as the printed item effect.
+        evidence:
+          - url: https://5e.tools/items/tankard-of-sobriety-xge.html
+            note: 5etools lists the common XGE item and its nonmagical-alcohol limitation.
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_021.md
+            note: At 03:30:55 the table names the Tankard of Sobriety, then says it also works on Fey or Star Court wine.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-05.mdx
+            note: Earlier campaign notes list the Tankard of Sobriety among Sapphire's items and preserve a broader table extension.
+
+      - id: character.deathengel-athengyle
+        status: confirmed
+        kind: character
+        canonical: Deathengel
+        canonicalRefs:
+          - type: page
+            path: astro/src/content/docs/world/characters/deathengel.mdx
+            role: primary
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            role: campaign-continuity
+        aliases:
+          - Athen
+          - Athengyle
+        match:
+          priority: high
+          tags:
+            - deathengel
+            - celestial
+            - planetar
+            - kalassarian-era
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - discussion of a celestial who lived during the Kalassarian era
+            - comparison of Deathengel's age with Oren Bell's
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Resolve Athen or Athengyle as Deathengel only when the surrounding
+          discussion identifies the celestial who lived during the Kalassarian
+          era. Do not globally rewrite unrelated uses of Athen.
+        instruction: >
+          Use Deathengel for the ancient celestial discussed in connection with
+          the Kalassarian era and reportedly hated by the Kalassarians.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_029.md
+            note: At 04:53:19 the reconciled transcript explicitly names Deathengel before discussing the Kalassarian era.
+          - path: astro/.bf-transcripts/session-2026-08-08/raw_transcription/passes/right/session_029.md
+            note: The right lane hears Athengyle at 04:53:20, explaining the generated Athen form.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
+            note: The preceding session identifies Deathengel as a planetar.
+
+      - id: place.burtz-brits
+        status: confirmed
+        kind: place
+        canonical: Burtz
+        canonicalRefs:
+          - type: page
+            path: astro/src/content/docs/world/locations/burtz.mdx
+            role: primary
+          - type: page
+            path: astro/src/content/docs/world/locations/bastion.mdx
+            role: supporting
+        aliases:
+          - Brits
+        match:
+          priority: high
+          tags:
+            - burtz
+            - bastion
+            - kalassarian-empire
+            - fall-of-bastion
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - people who still call themselves Kalassarian
+            - the Kalassarian continuation that ended with the Fall of Bastion
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Resolve Brits as Burtz only when the surrounding discussion concerns
+          its people retaining Kalassarian identity or the Fall of Bastion. Do
+          not rewrite ordinary references to British people.
+        instruction: >
+          Use Burtz for the country whose capital was Bastion and whose
+          Kalassarian continuation survived until the Fall of Bastion in 1225.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_029.md
+            note: At 04:54:26 the reconciled transcript identifies Burtz and says its people still call themselves Kalassarian.
+          - path: astro/.bf-transcripts/session-2026-08-08/raw_transcription/passes/right/session_029.md
+            note: The right lane hears Brits at 04:54:26, explaining the generated place-name uncertainty.
+          - path: astro/src/content/docs/world/locations/burtz.mdx
+            note: Burtz's Eastern Kalassarian continuation survived until the Fall of Bastion in 1225.
+          - path: astro/src/content/docs/world/locations/bastion.mdx
+            note: Bastion is classified as a capital within Burtz.
+
+      - id: character.labella-thorgral-wife
+        status: confirmed
+        kind: relationship
+        canonical: Labella is Thorgral's wife and Andrew's second sister-in-law
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            role: primary
+        aliases:
+          - Labella
+        match:
+          priority: high
+          tags:
+            - labella
+            - thorgral
+            - andrew-taminok
+            - taminok-family
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - discussion of Thorgral's wife
+            - Andrew's sisters-in-law and the Taminok family
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Preserve that Labella is Thorgral's wife and Andrew Taminok's second
+          sister-in-law. Do not conflate her with Satoria, who is married to
+          Andrew's eldest brother.
+        instruction: >
+          Keep Labella and Satoria distinct: Labella is Thorgral's wife and
+          Andrew's second sister-in-law.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_025.md
+            note: Thorgral discusses his wife at 04:14:00 and names Labella in the same family conversation at 04:15:01 and 04:16:45.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            note: Human campaign review confirms Labella as Thorgral's wife and Andrew's second sister-in-law.
+
+      - id: organization.treaty-of-turain-organization
+        status: confirmed
+        kind: organization
+        canonical: Treaty of Turain Organization
+        canonicalRefs:
+          - type: world
+            path: astro/src/content/docs/world/novelty/treaty-of-turain.mdx
+            role: primary
+          - type: world
+            path: astro/src/content/docs/world/events/treaty-of-turain.mdx
+            role: supporting
+        aliases:
+          - ToTO
+          - Treaty of Turain Organization
+          - tree-to-terrain organization
+        match:
+          priority: high
+          tags:
+            - treaty-of-turain
+            - toto
+            - friendship-games
+            - thorgral
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Treaty of Turain Organization
+            - ToTO Friendship Games
+            - Thorgral's fencing medal
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Render ToTO and recognizer variants such as "tree-to-terrain
+          organization" as Treaty of Turain Organization when the context is
+          the Friendship Games or treaty organization.
+        instruction: >
+          Use Treaty of Turain Organization (ToTO), including for the
+          Friendship Games where Thorgral won silver in fencing.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_025.md
+            note: The reconciled transcript explicitly names the Treaty of Turain Organization Friendship Games at 04:10:17.
+          - path: astro/src/content/docs/world/novelty/treaty-of-turain.mdx
+            note: Article X establishes the permanent Treaty of Turain Organization.
+
+      - id: place.devils-woods
+        status: confirmed
+        kind: place
+        canonical: Devil's Woods
+        canonicalRefs:
+          - type: world
+            path: astro/src/content/docs/world/locations/autumn-court.mdx
+            role: primary
+        aliases:
+          - Devil's Woods
+          - Devil’s Woods
+        match:
+          priority: high
+          tags:
+            - devils-woods
+            - maple-bridge
+            - autumn-court
+            - sapphire
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Sapphire's Feywild home
+            - Maple Bridge geography
+            - Autumn Court locations
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Preserve Devil's Woods as the canonical Autumn Court location
+          containing Maple Bridge when Sapphire discusses her Feywild home.
+        instruction: >
+          Use Devil's Woods for the Autumn Court location containing Maple
+          Bridge; do not leave the name as an uncertain sound-alike.
+        evidence:
+          - path: astro/src/content/docs/world/locations/autumn-court.mdx
+            note: The Autumn Court geography lists Maple Bridge within Devil's Woods.
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_026.md
+            note: Sapphire explicitly names Maple Bridge and Devil's Woods at 04:27:40-04:27:45.
+
+      - id: species.kureran-coreran
+        status: confirmed
+        kind: entity
+        canonical: Kureran
+        canonicalRefs:
+          - type: world
+            path: astro/src/content/docs/world/species/kureran.mdx
+            role: primary
+        aliases:
+          - Coreran
+          - Corerans
+          - Kureran
+          - Kurerans
+        match:
+          priority: high
+          tags:
+            - kureran
+            - kalassarian
+            - deathengel
+            - ritma
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Kureran history
+            - Kalassarian-Kureran conflicts
+            - discussion of Deathengel's age
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Render Coreran and Corerans as Kureran and Kurerans when discussing
+          the ancient gnomish civilization, its Kalassarian conflicts, or
+          Deathengel's age.
+        instruction: >
+          Kureran is the canonical name of the gnomish civilization associated
+          with Ritma and the Kalassarian-Kureran conflicts.
+        evidence:
+          - path: astro/src/content/docs/world/species/kureran.mdx
+            note: Canonical species article covering Kureran civilization and its Kalassarian conflicts.
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_029.md
+            note: The reconciled and right-lane transcripts hear Kurerans at 04:53:46-04:53:49 while the left lane drifts to Corerans.
+
+      - id: mechanics.angel-distinct-wrongness-signals
+        status: confirmed
+        kind: mechanics
+        canonical: Angel's identity suspicion and Reformist wrongness are distinct signals
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            role: primary
+          - type: world
+            path: astro/src/content/docs/world/religions/divine-masochism/reformist/index.mdx
+            role: supporting
+        aliases:
+          - wrongness
+          - death wrongness
+          - Reformist wrongness
+        match:
+          priority: high
+          tags:
+            - angel
+            - wrongness
+            - reformist
+            - cursed-piercing
+            - face-stealer
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Angel sensing wrongness
+            - cursed Reformist piercings
+            - identity and impostor screening
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Do not treat every kind of wrongness Angel perceives as one universal
+          impostor detector. Her reaction to Mark does not reliably identify
+          Face-Stealers, parasites, or copied identities, while a distinct
+          magical or death-associated wrongness may reveal cursed Reformist
+          piercings or related corruption.
+        instruction: >
+          Keep Angel's identity suspicion distinct from magical or
+          death-associated Reformist wrongness. A cursed piercing can support
+          Reformist involvement without proving a copied identity.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_001.md
+            note: Angel compares Mulberry and Bramble with the wrongness she felt from Mark at 00:18:21, without establishing a universal detector.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-19.mdx
+            note: A cursed Reformist piercing can corroborate involvement or control but does not identify a Face-Stealer.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-05-10.mdx
+            note: Antoinette's Reformist status matched Angel's earlier feeling of death wrongness.
 
       - id: character.marcus-parnassus
         status: confirmed
@@ -3199,6 +3740,147 @@ profiles:
         evidence:
           - path: astro/src/content/docs/world/characters/sebastian-argras.mdx
             note: User canonized Sebastian Argras as House Rannek's seneschal, clarified that only Angel calls him “Butler,” and confirmed that he is not a court wizard.
+
+      - id: character.lilibeth-rannek-servant
+        status: confirmed
+        kind: disambiguation
+        canonical: Lilibeth, Castle Rannek servant
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            role: session-identification
+        aliases:
+          - Little Beth
+          - Lilibeth
+        match:
+          priority: normal
+          tags:
+            - lilibeth
+            - castle-rannek
+            - court-wizard-search
+            - household-servants
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-08-08"
+          contexts:
+            - Castle Rannek household
+            - missing court-wizard investigation
+            - frightened servant
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          In the August 8 Castle Rannek household scenes, “Little Beth” is
+          Lilibeth, the same servant later seen frightened and worried. Do not
+          split them into two people or identify her as Angel's former Lilibeth
+          Corning cover identity.
+        instruction: >
+          Use Lilibeth for the Castle Rannek servant heard as “Little Beth”
+          during the court-wizard search. She is the same Lilibeth later
+          described as frightened and deeply worried. Keep her distinct from
+          Lilibeth Corning, Angel Rannek's former cover identity.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_006.md
+            note: The reconciled transcript heard “Little Beth” at 01:03:52–01:03:54 when the servant gave her name.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            note: Human campaign review confirmed that “Little Beth” and the later Lilibeth are the same Castle Rannek servant.
+
+      - id: place.trammel-town
+        status: confirmed
+        kind: place
+        canonical: Trammel Town
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            role: canonical-spelling
+        aliases:
+          - Trammeltown
+          - Crammeltown
+          - Crammel
+          - Trammel
+        match:
+          priority: high
+          tags:
+            - trammel-town
+            - trammel
+            - rannek-marches
+            - carriage-no-12
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Rannek Marches locations
+            - carriage No. 12 destination
+            - southeast of Rannekford
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          The canonical place name is Trammel Town. “Trammel” is a valid spoken
+          short form; render it as Trammel Town in authored prose when the full
+          place name is intended. Correct Trammeltown, Crammeltown, and Crammel
+          to Trammel Town.
+        instruction: >
+          Use Trammel Town as the full canonical name. Preserve Trammel in
+          dialogue or transcript evidence when it is naturally used as the
+          spoken short form, but do not treat it as a separate place. Joined or
+          C-initial forms are transcription drift, not alternate spellings.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_008.md
+            note: The reconciled transcript rendered Crammeltown/Crammel while the left lane also captured the spoken short form Trammel.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            note: Human campaign review confirmed Trammel Town as the canonical spelling and Trammel as a normal table short form.
+
+      - id: place.voluptas-peak
+        status: confirmed
+        kind: place
+        canonical: Volupta's Peak
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            role: canonical-spelling
+          - type: religion
+            path: astro/src/content/docs/world/religions/paganism/apgarian/index.mdx
+            role: namesake-deity
+        aliases:
+          - Voluptus Peak
+          - Voluptus
+          - Volupta Peak
+        match:
+          priority: high
+          tags:
+            - voluptas-peak
+            - volupta
+            - rannek-marches
+            - apgarian-paganism
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Rannek Marches locations
+            - southeast search bearing
+            - Kalassarian and Apgarian pagan names
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          The canonical place name is Volupta's Peak, named for the
+          Kalassarian/Apgarian pagan goddess Volupta. Correct Voluptus Peak and
+          Volupta Peak to the possessive canonical form.
+        instruction: >
+          Use Volupta's Peak for the location. “Voluptus” is transcription drift
+          from the goddess Volupta's name, not an alternate deity or place.
+          Keep the deity's portfolio separate from this spelling rule if source
+          articles or later campaign review disagree about it.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_008.md
+            note: The transcript rendered the location as “Voluptus Peak” at 01:27:12–01:27:15.
+          - path: astro/src/content/docs/world/religions/paganism/apgarian/index.mdx
+            note: The Apgarian pagan pantheon establishes the goddess's name as Volupta.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            note: Human campaign review confirmed that the peak takes the possessive name Volupta's Peak.
 
       - id: character.queen-arcadia-title
         status: confirmed
@@ -6685,6 +7367,56 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-18.mdx
             note: User identified Sapphire's family home as Hell's Kitchen in Maple Bridge.
 
+      - id: character.crispin-mallow-shard-assignment
+        status: confirmed
+        kind: motive-boundary
+        canonical: Crispin Mallow's assignment to recover Angel's Emerald Shield shards
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            role: assignment-and-priority-boundary
+          - type: article
+            path: astro/src/content/docs/world/items/emerald-shield-of-spring.mdx
+            role: shard-identity
+        aliases:
+          - Mallow may have been assigned to recover Angel's shards
+          - Mallow's assigned objective may be the shards
+          - the shards are only cover for Mallow's experiments
+        match:
+          priority: high
+          tags:
+            - crispin-mallow
+            - angel-rannek
+            - emerald-shield-of-spring
+            - shard-recovery
+            - oren-bell
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Mallow's objective in the Rannek Marches
+            - threats to Angel
+            - Face-Stealer and changeling experiments
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Oren Bell's firsthand account corroborates that Crispin Mallow was
+          assigned to recover Angel's shards of the Emerald Shield of Spring.
+          Do not leave the assignment merely speculative, but do not assert that
+          it remains Mallow's chief personal interest: he may currently care more
+          about his experiments and desire to play.
+        instruction: >
+          Keep assignment and present motive distinct. Recovering Angel's shards
+          is a corroborated assigned objective. Mallow's current priority remains
+          unresolved, and his behavior suggests stronger personal investment in
+          experimentation with Face-Stealers, changelings, and other creatures.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_016.md
+            note: At 02:48:34–02:49:38 Oren relayed that Mallow was to recover Angel's remaining shards while distinguishing that aim from Mallow's desire to play.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            note: Human campaign review confirmed Oren's account as firsthand corroboration while leaving Mallow's current priority open.
+
       - id: event.crispin-mallow-switched-legs
         status: confirmed
         kind: terminology
@@ -6975,3 +7707,38 @@ profiles:
             note: User confirmed on 2026-08-05 that the officer is Vice Marshal Tyrion Donmar.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
             note: The following session independently records Tyrion Donmar and distinguishes him from the Narrows Donmar.
+
+      - id: participant.eevee
+        status: confirmed
+        kind: entity
+        canonical: Eevee
+        aliases:
+          - Evie
+        match:
+          priority: high
+          tags:
+            - participant-eevee
+            - microphone-check
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-08-08"
+          contexts:
+            - microphone check and table speech
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: >
+          Render this participant's name as Eevee, like the Pokémon. Correct
+          the ASR spelling Evie to Eevee in this session.
+        instruction: >
+          Eevee is the participant's chosen spelling. Preserve raw ASR as
+          evidence, but use Eevee in corrected transcripts and downstream
+          notes for the 2026-08-08 session.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/raw_transcript.md
+            note: >
+              The opening microphone check records the participant name at
+              00:00:03; the user confirmed its spelling as Eevee during this
+              transcription run.
