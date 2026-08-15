@@ -78,13 +78,13 @@ action:
       - >-
         The ingotback braces and expels molten bismuth in a 30-foot-long, 5-foot-wide line. Each
         creature in the line must make a {@dc 15} Dexterity saving throw, taking 28 ({@damage 8d6})
-        fire damage on a failed save, or half as much damage on a successful one. On a failed save, a
-        creature is also restrained by rapidly cooling metal. A restrained creature can use its
-        action to make a {@dc 15} Strength (Athletics) check, freeing itself on a success. The casting
-        around one creature can also be destroyed (AC 17; 20 hit points; immunity to poison and
-        psychic damage; vulnerability to thunder damage).
+        fire damage on a failed save, or half as much damage on a successful one. On a failed save,
+        a creature is also restrained by rapidly cooling metal. A restrained creature can use its
+        action to make a {@dc 15} Strength (Athletics) check, freeing itself on a success. The
+        casting around one creature can also be destroyed (AC 17; 20 hit points; immunity to poison
+        and psychic damage; vulnerability to thunder damage).
       - >-
         The line remains until cleared. Its spaces are difficult terrain, and a creature that enters
         one of those spaces for the first time on a turn or starts its turn there takes 5 ({@damage
-        1d10}) piercing damage. A 5-foot section has AC 17 and 20 hit points and shares the casting's
-        immunities and vulnerability.
+        1d10}) piercing damage. A 5-foot section has AC 17 and 20 hit points and shares the
+        casting's immunities and vulnerability.

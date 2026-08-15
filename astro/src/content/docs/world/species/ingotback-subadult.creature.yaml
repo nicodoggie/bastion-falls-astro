@@ -63,5 +63,5 @@ action:
       - >-
         The ingotback spits hot bismuth in a 15-foot cone. Each creature in that area must make a
         {@dc 13} Dexterity saving throw, taking 18 ({@damage 4d8}) fire damage on a failed save, or
-        half as much damage on a successful one. On a failed save, the creature's speed is reduced by
-        10 feet until the end of its next turn as brittle metal hardens around it.
+        half as much damage on a successful one. On a failed save, the creature's speed is reduced
+        by 10 feet until the end of its next turn as brittle metal hardens around it.

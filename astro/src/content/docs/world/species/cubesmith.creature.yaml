@@ -50,8 +50,8 @@ trait:
     entries:
       - >-
         When an allied cubifabrid within 30 feet of the cubesmith is hit by an attack, the cubesmith
-        can move up to half its speed toward the attacker. This movement does not provoke opportunity
-        attacks.
+        can move up to half its speed toward the attacker. This movement does not provoke
+        opportunity attacks.
 action:
   - name: Multiattack
     entries:
