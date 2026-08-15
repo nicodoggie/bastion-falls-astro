@@ -1,0 +1,40 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: The Entirely Unremarkable Moustache
+source: BF
+type: wondrous item
+rarity: uncommon
+wondrous: true
+entries:
+  - >-
+    This slightly crooked moustache is cut from cheap paper, darkened unevenly with lampblack ink,
+    and curled at one corner. It is visually indistinguishable from a mundane theatrical prop.
+  - >-
+    **Adhesive Not Included.** As an action, you can affix the moustache beneath your nose with paste,
+    wax, spirit gum, or another adhesive. Merely holding it in place does not activate it. When you
+    affix it, make a Charisma (Performance) check. The check's total becomes the moustache's
+    recognition DC until it becomes detached.
+  - >-
+    **Entirely Appropriate.** While the moustache remains affixed, other creatures perceive it exactly
+    as a cheap paper moustache but consider it entirely natural and appropriate on your face. They
+    cannot recognize you as anyone they previously knew, even if they watched you affix it. The
+    moustache does not alter your body, clothing, voice, statistics, or other observable details, and
+    creatures can still describe or track the apparent stranger using ordinary evidence.
+  - >-
+    **Unmasking.** When the moustache becomes detached, each creature that observed you while it was
+    affixed must make a Wisdom saving throw against the recognition DC. On a success, the creature
+    recognizes you and understands that the moustache deceived it. On a failure, the creature
+    sincerely believes that the moustached stranger departed and that you arrived separately; its
+    memories of the stranger remain attributed to that false identity.
+  - >-
+    **Keeping It On.** The adhesive determines how easily the moustache becomes detached. With an
+    improvised adhesive such as saliva, damp flour, or soft food, you must succeed on a DC 15 Dexterity
+    (Sleight of Hand) check whenever you speak forcefully, laugh, sneeze, become wet, or move
+    vigorously. With weak paste or softened wax, you must succeed on a DC 12 check whenever you take
+    damage, become wet, or perform strenuous movement. Proper theatrical adhesive requires a DC 10
+    check only when the moustache is directly disturbed or you suffer a severe physical impact. An
+    exceptional or magical adhesive follows its own rules. On a failed check, the moustache detaches
+    immediately and triggers Unmasking.
+  - >-
+    Detect Magic reveals enchantment magic on the moustache. Truesight provides no special benefit
+    against it because the moustache creates no visual illusion.
