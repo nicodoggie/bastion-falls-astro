@@ -7897,7 +7897,7 @@ profiles:
             - settlements southeast of Rannekford
             - Malmann's proposed overnight stop en route to Maiden's Field
         apply:
-          mode: exact-first
+          mode: prompt-first
           safeExactReplacement: false
         promptInstruction: >
           Use Maylert for the settlement southeast of Rannekford that Erik
@@ -8157,7 +8157,7 @@ profiles:
             - young woman followed into the underground revelry
             - Pablito's magically affected victim
         apply:
-          mode: exact-first
+          mode: prompt-first
           safeExactReplacement: false
         promptInstruction: >
           Use Arika, not Erica, for the Kurtis barkeep's daughter whom Sapphire
