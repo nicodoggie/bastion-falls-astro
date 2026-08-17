@@ -626,44 +626,87 @@ profiles:
           - path: astro/src/content/docs/world/locations/bastion.mdx
             note: Bastion is classified as a capital within Burtz.
 
-      - id: character.labella-thorgral-wife
+      - id: character.torgral-taminok
+        status: confirmed
+        kind: entity
+        canonical: Torgral
+        canonicalRefs:
+          - type: character
+            path: astro/src/content/docs/world/characters/andrew-taminok.mdx
+            role: family-reference
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            role: primary
+        aliases:
+          - Thorgral
+        match:
+          priority: high
+          tags:
+            - torgral
+            - andrew-taminok
+            - taminok-family
+            - toto-fencing
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Andrew Taminok's second brother
+            - Labella's husband
+            - former competitive fencer at the Taminok brewery
+        apply:
+          mode: exact-first
+          safeExactReplacement: true
+        promptInstruction: >
+          Use Torgral, not Thorgral, for Andrew Taminok's second brother and
+          Labella's husband.
+        instruction: >
+          Correct the misspelling Thorgral to Torgral in references to this
+          Taminok family member.
+        evidence:
+          - path: astro/src/content/docs/world/languages/hickic/seneran/modern-seneran/names.mdx
+            note: The established Seneran name list contains Torgral, meaning “peak earth.”
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: User explicitly corrected Thorgral to Torgral on 2026-08-15.
+
+      - id: character.labella-torgral-wife
         status: confirmed
         kind: relationship
-        canonical: Labella is Thorgral's wife and Andrew's second sister-in-law
+        canonical: Labella is Torgral's wife and Andrew's second sister-in-law
         canonicalRefs:
           - type: note
             path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
             role: primary
         aliases:
           - Labella
+          - Thorgral's wife
         match:
           priority: high
           tags:
             - labella
-            - thorgral
+            - torgral
             - andrew-taminok
             - taminok-family
         scope:
           campaigns:
             - the-vengeful
           contexts:
-            - discussion of Thorgral's wife
+            - discussion of Torgral's wife
             - Andrew's sisters-in-law and the Taminok family
         apply:
           mode: prompt-first
           safeExactReplacement: false
         promptInstruction: >
-          Preserve that Labella is Thorgral's wife and Andrew Taminok's second
+          Preserve that Labella is Torgral's wife and Andrew Taminok's second
           sister-in-law. Do not conflate her with Satoria, who is married to
           Andrew's eldest brother.
         instruction: >
-          Keep Labella and Satoria distinct: Labella is Thorgral's wife and
+          Keep Labella and Satoria distinct: Labella is Torgral's wife and
           Andrew's second sister-in-law.
         evidence:
           - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_025.md
-            note: Thorgral discusses his wife at 04:14:00 and names Labella in the same family conversation at 04:15:01 and 04:16:45.
+            note: Torgral discusses his wife at 04:14:00 and names Labella in the same family conversation at 04:15:01 and 04:16:45.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
-            note: Human campaign review confirms Labella as Thorgral's wife and Andrew's second sister-in-law.
+            note: Human campaign review confirms Labella as Torgral's wife and Andrew's second sister-in-law.
 
       - id: organization.treaty-of-turain-organization
         status: confirmed
@@ -686,14 +729,14 @@ profiles:
             - treaty-of-turain
             - toto
             - friendship-games
-            - thorgral
+            - torgral
         scope:
           campaigns:
             - the-vengeful
           contexts:
             - Treaty of Turain Organization
             - ToTO Friendship Games
-            - Thorgral's fencing medal
+            - Torgral's fencing medal
         apply:
           mode: prompt-first
           safeExactReplacement: false
@@ -703,7 +746,7 @@ profiles:
           the Friendship Games or treaty organization.
         instruction: >
           Use Treaty of Turain Organization (ToTO), including for the
-          Friendship Games where Thorgral won silver in fencing.
+          Friendship Games where Torgral won silver in fencing.
         evidence:
           - path: astro/.bf-transcripts/session-2026-08-08/reconciled_transcription/session_025.md
             note: The reconciled transcript explicitly names the Treaty of Turain Organization Friendship Games at 04:10:17.
@@ -3927,7 +3970,7 @@ profiles:
       - id: continuity.minfilia-oscar-thrantorbury-loop
         status: confirmed
         kind: event
-        canonical: Minfilia Diaz and Oscar Savoy trapped in Thrantorbury's time loop
+        canonical: Minfilia Diaz, Oscar Savoy, Fina, and Cotto trapped in Thrantorbury's time loop
         canonicalRefs:
           - type: character
             path: astro/src/content/docs/world/characters/minfilia-diaz.mdx
@@ -3935,11 +3978,18 @@ profiles:
           - type: character
             path: astro/src/content/docs/world/characters/oscar-savoy.mdx
             role: participant
+          - type: character
+            path: astro/src/content/docs/world/characters/proserfina-prunus-subhirtella.mdx
+            role: participant
+          - type: character
+            path: astro/src/content/docs/world/characters/cotto.mdx
+            role: participant
           - type: note
             path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
             role: current-status
         aliases:
           - Minfilia and Oscar
+          - Minfilia, Oscar, Fina, and Cotto
           - overdue from Thrantorbury
           - prolonged Thrantorbury operation
         match:
@@ -3947,6 +3997,8 @@ profiles:
           tags:
             - minfilia-diaz
             - oscar-savoy
+            - proserfina-prunus-subhirtella
+            - cotto
             - thrantorbury
             - time-loop
             - maiden's-field-separation
@@ -3961,16 +4013,18 @@ profiles:
           mode: prompt-first
           safeExactReplacement: false
         promptInstruction: >
-          Minfilia Diaz and Oscar Savoy are in Thrantorbury, trapped in a time
-          loop. Do not place them in Maiden's Field or merge their rescue with
-          the separate Maiden's Field objective.
+          Minfilia Diaz, Oscar Savoy, Fina, and Cotto are in Thrantorbury,
+          trapped in a time loop. Do not place them in Maiden's Field or merge
+          their rescue with the separate Maiden's Field objective.
         instruction: >
-          Keep Minfilia and Oscar's Thrantorbury time-loop rescue separate from
-          the Maiden's Field investigation. Other relatives may remain in
-          Maiden's Field, but Minfilia and Oscar are not there.
+          Keep Minfilia, Oscar, Fina, and Cotto's Thrantorbury time-loop rescue
+          separate from the Maiden's Field investigation. Other relatives may
+          remain in Maiden's Field, but these four are not there.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
             note: User explicitly confirmed that Minfilia and Oscar are trapped in a time loop in Thrantorbury, not present in Maiden's Field.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: User explicitly confirmed that Fina and Cotto are trapped in the same time loop with Minfilia and Oscar.
 
       - id: character.auraxx-canary-incorporation-boundary
         status: confirmed
@@ -7707,6 +7761,413 @@ profiles:
             note: User confirmed on 2026-08-05 that the officer is Vice Marshal Tyrion Donmar.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
             note: The following session independently records Tyrion Donmar and distinguishes him from the Narrows Donmar.
+
+      - id: organization.unnamed-anti-parasite-effort
+        status: confirmed
+        kind: organization-boundary
+        canonical: unnamed anti-parasite effort centered on the Rozenmaiden and Scarlet crews
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            role: session-boundary
+          - type: article
+            path: astro/src/content/docs/world/organizations/la-camaraderie.mdx
+            role: crew-continuity
+          - type: article
+            path: astro/src/content/docs/world/religions/great-erected-one.mdx
+            role: religion-boundary
+        aliases:
+          - anti-parasite network
+          - Minfilia's anti-parasite network
+          - Great Erected Ones anti-parasite organization
+        match:
+          priority: high
+          tags:
+            - anti-parasite-effort
+            - rozenmaiden
+            - the-scarlet
+            - la-camaraderie
+            - great-erected-one
+            - hellion-blanchimontt
+            - sapphire
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Kurtis parasite extraction and mercenary recruitment
+            - Eastonton, Castle Malthrek, Travertines, and Rannek operations
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Do not invent a formal anti-parasite network. The effort is unnamed and
+          currently centers on the crews of the Rozenmaiden and Scarlet, who began
+          as one Rozenmaiden crew under Hedwig and retain their La Camaraderie
+          identity. Great Erected One disciples also oppose the parasites, but the
+          religion is not the effort's formal name. Hellion and Sapphire work with
+          the crews; their own crew membership is not established.
+        instruction: >
+          Keep the unnamed operational effort, the crews' shared La Camaraderie
+          identity, and the Great Erected One religion distinct. Hellion leads the
+          current effort in Rannek and Sapphire says the allies work through
+          Minfilia, but neither fact creates a formal nationwide organization.
+          Temporary Scarlet assignments do not establish Hellion or Sapphire's
+          present shipboard or La Camaraderie membership.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-09/corrected_transcript.md
+            note: Sapphire says the allies fight the parasites, work for Minfilia, and speak with Hellion locally, but cannot name the group.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: User confirmed the effort is unnamed, identified the two historical crews at its core, and preserved Hellion and Sapphire's unsettled crew affiliation.
+
+      - id: character.pira-tradewise-lord-reference
+        status: confirmed
+        kind: canon-boundary
+        canonical: Sister Pira's Lord is the Divine Masochist
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/pira-tradewise.mdx
+            role: primary
+          - type: organization
+            path: astro/src/content/docs/world/organizations/society-of-the-angel-of-delight.mdx
+            role: doctrinal-context
+        aliases:
+          - Pira's Lord
+          - our Lord
+          - warmth of our Lord
+        match:
+          priority: high
+          tags:
+            - pira-tradewise
+            - society-of-the-angel-of-delight
+            - divine-masochist
+            - moon-well
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Sister Pira at the healing cave
+            - Society of the Angel of Delight doctrine
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          When Sister Pira speaks of “our Lord,” identify the referent as the
+          Divine Masochist. Pira belongs to the Orthodox Society of the Angel of
+          Delight. Call the cave's waters a healing pool and preserve the Feywild
+          travelers' belief that it may be a moon well as unconfirmed speculation.
+        instruction: >
+          Do not treat Pira's “our Lord” as an unknown deity or as the Angel of
+          Delight. The Society glorifies the Divine Masochist through the Angel's
+          intercession, and its Guiding Lights call the Divine Masochist the Lord.
+          The pool has demonstrated healing properties, but this does not establish
+          that it is a moon well or that it has a moon well's replenishment-based
+          capacity for travel.
+        evidence:
+          - path: astro/src/content/docs/world/organizations/society-of-the-angel-of-delight.mdx
+            note: The Society is an Orthodox order devoted to the Divine Masochist and uses Lord for him in its Guiding Lights.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: User confirmed on 2026-08-15 that Pira's “our Lord” refers to the Divine Masochist.
+
+      - id: location.maylert
+        status: confirmed
+        kind: entity
+        canonical: Maylert
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            role: first-session-reference
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            role: confirmed-travel-reference
+        aliases:
+          - Maillert
+          - Tamans
+          - commands
+        match:
+          priority: high
+          tags:
+            - maylert
+            - rannek-southeast
+            - maidens-field-route
+            - erik-malmann
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - settlements southeast of Rannekford
+            - Malmann's proposed overnight stop en route to Maiden's Field
+        apply:
+          mode: exact-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Use Maylert for the settlement southeast of Rannekford that Erik
+          Malmann proposed as an overnight stop while travelling toward Maiden's
+          Field. Treat Maillert, Tamans, and commands as transcript variants only
+          when this route context identifies the settlement.
+        instruction: >
+          Maylert is the canonical spelling. Do not globally replace Maillert,
+          Tamans, or commands outside the specific Rannek travel context because
+          the latter forms may represent ordinary words or unrelated names.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-08/corrected_transcript.md
+            note: Malmann names the nearest southeastern settlement, transcribed as Maillert.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-08.mdx
+            note: The authored note regularizes the settlement as Maylert.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: User canonized the skipped settlement as Maylert on 2026-08-15.
+
+      - id: lore.taminok-field-gold
+        status: confirmed
+        kind: lore-boundary
+        canonical: the Taminok fields' gold is golden grain and barley
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/andrew-taminok.mdx
+            role: family-context
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            role: session-reference
+        aliases:
+          - Taminok gold
+          - gold from the Taminok fields
+          - fields that provide their gold
+        match:
+          priority: medium
+          tags:
+            - taminok-family
+            - brewery
+            - golden-grain
+            - barley
+            - pixies
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - pixies watching over Eleanor Taminok
+            - Taminok fields and brewery prosperity
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Interpret the pixies' reference to the Taminok fields' “gold” as the
+          golden grains and barley grown there, including the prosperity those
+          crops bring.
+        instruction: >
+          Do not turn the Taminoks' “gold” into a separate magical substance,
+          mineral, or unexplained harvest. The reference is to golden grain and
+          barley.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: User confirmed on 2026-08-15 that the fields' “gold” is golden grains and barley.
+
+      - id: item.fey-raisins
+        status: confirmed
+        kind: item
+        canonical: Fey raisins that become Fey Wine in an empty vessel
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            role: primary
+        aliases:
+          - Eleanor's Fey raisins
+          - fey raisins
+          - raisins from Eleanor
+        match:
+          priority: medium
+          tags:
+            - fey-raisins
+            - fey-wine
+            - eleanor-taminok
+            - feywild
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Eleanor's gift to Andrew and Sapphire
+            - magical Feywild wine provisions
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Describe Eleanor's Fey raisins as raisins that magically become Fey
+          Wine when placed in an empty vessel.
+        instruction: >
+          Do not leave the raisins' function unexplained or treat them as ordinary
+          dried fruit. Do not add limits, quantities, activation words, or other
+          mechanics that have not been established.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: User confirmed the raisins' Fey Wine function on 2026-08-15.
+
+      - id: event.fall-of-bastion-orb-of-power
+        status: confirmed
+        kind: lore-boundary
+        canonical: the Fall of Bastion produced a massive Orb of Power of unknown true nature
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/events/fall-of-bastion.mdx
+            role: primary
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            role: session-boundary
+        aliases:
+          - Bastion orb
+          - black orb of Bastion
+          - orb surrounding Bastion
+          - massive Orb of Power
+        match:
+          priority: high
+          tags:
+            - fall-of-bastion
+            - orb-of-power
+            - sphere-of-annihilation
+            - sovereign-rothschild
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Fall of Bastion
+            - the growing black orb consuming Bastion and Burtz
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Identify the growing black phenomenon as the orb created during the
+          titular Fall of Bastion. In-world scholars broadly classify it as a
+          massive Orb of Power, while its true nature remains uncanonized.
+        instruction: >
+          Orb of Power is an in-world scholarly classification, not a complete
+          mechanical or cosmological identification. Do not identify the phenomenon
+          as a Sphere of Annihilation, divine punishment, or any other specific
+          effect. Preserve those as comparison or attributed belief only.
+        evidence:
+          - path: astro/src/content/docs/world/events/fall-of-bastion.mdx
+            note: The established event begins with the black orb consuming Bastion and surrounding Burtian lands.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: User confirmed on 2026-08-15 that this is the titular Fall of Bastion and that scholars call the phenomenon a massive Orb of Power without settling its true nature.
+
+      - id: lore.mallow-heart-of-urdefolcin-fragments
+        status: confirmed
+        kind: lore-boundary
+        canonical: Mallow uses fragments of the Heart of the Urdefolcin in puppets and collections
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            role: session-reference
+          - type: tracker
+            path: astro/src/content/docs/world/notes/the-vengeful/open-hooks.mdx
+            role: active-hook
+        aliases:
+          - pieces of an Urdefolcin heart
+          - Urdefolcin-heart fragments
+          - fragments of the Urdefolcin heart
+        match:
+          priority: high
+          tags:
+            - crispin-mallow
+            - heart-of-the-urdefolcin
+            - puppets
+            - collections
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Mallow's altered creatures and puppets
+            - Urdefolcin remains in Mallow's collections
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          State that Mallow has used fragments of the Heart of the Urdefolcin in
+          his puppets and collections. Preserve why he does so as unknown to the
+          party.
+        instruction: >
+          Do not reduce this to a merely possible connection, but do not invent
+          Mallow's purpose, a unified plan for every fragment, or the effects the
+          fragments produce.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/open-hooks.mdx
+            note: The living tracker records Urdefolcin-heart fragments in Mallow's puppets and collections while preserving his intent as an open question.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: User confirmed on 2026-08-15 that the objects are fragments of the Heart of the Urdefolcin and that Mallow's reason remains unknown to the party.
+
+      - id: event.pablito-prior-exploitation
+        status: confirmed
+        kind: canon-boundary
+        canonical: Pablito previously exploited Arika and other magically affected guests
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            role: primary
+        aliases:
+          - Pablito's prior exploitation
+          - previous victims of the Kurtis revelry
+          - conditioning magically affected guests
+        match:
+          priority: high
+          tags:
+            - pablito-escobar
+            - erica
+            - kurtis
+            - reformist-conditioning
+            - magical-influence
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - underground revelry in Kurtis
+            - Pablito isolating magically affected guests
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Preserve that Pablito had previously sexually exploited Arika and other
+          magically affected guests. He did so both as conditioning at the
+          Reformists' behest and for his own predatory purposes.
+        instruction: >
+          Do not leave Pablito's previous exploitation as an open question. Keep
+          the victims' impaired capacity to consent explicit without inventing
+          specific incidents, counts, or additional named victims.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: User confirmed the prior exploitation and its dual Reformist-conditioning and personal motives on 2026-08-15.
+
+      - id: character.arika-kurtis
+        status: confirmed
+        kind: entity
+        canonical: Arika
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            role: primary
+        aliases:
+          - Erica
+        match:
+          priority: high
+          tags:
+            - arika
+            - kurtis
+            - barkeeps-daughter
+            - underground-revelry
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - barkeep's daughter in Kurtis
+            - young woman followed into the underground revelry
+            - Pablito's magically affected victim
+        apply:
+          mode: exact-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Use Arika, not Erica, for the Kurtis barkeep's daughter whom Sapphire
+          and Andrew followed into the underground revelry.
+        instruction: >
+          Correct Erica to Arika only when the context identifies the Kurtis
+          barkeep's daughter. Do not globally replace unrelated people named Erica.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: User corrected the character's name from Erica to Arika on 2026-08-15.
 
       - id: participant.eevee
         status: confirmed
