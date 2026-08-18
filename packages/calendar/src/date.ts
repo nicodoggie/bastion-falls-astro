@@ -388,6 +388,79 @@ export class CalendarDate {
 		return new CalendarDate(calendar, fieldsFromEpochDay(calendar, epochDay));
 	}
 
+	static compare(left: CalendarDate, right: CalendarDate): number {
+		if (!(left instanceof CalendarDate) || !(right instanceof CalendarDate)) {
+			fail("operands must be CalendarDate values");
+		}
+		if (left.precision !== right.precision) {
+			throw new DatePrecisionError(
+				"comparison requires matching date precision",
+			);
+		}
+		if (left.#calendar !== right.#calendar) {
+			if (left.precision !== "day" || right.precision !== "day") {
+				throw new DatePrecisionError(
+					"cross-calendar comparison requires day precision",
+				);
+			}
+			return Math.sign(left.epochDay - right.epochDay);
+		}
+
+		if (left.#internalYear !== right.#internalYear) {
+			return left.#internalYear < right.#internalYear ? -1 : 1;
+		}
+		const leftFields = left.fields as Partial<CompleteDateFields>;
+		const rightFields = right.fields as Partial<CompleteDateFields>;
+		for (const field of ["month", "day"] as const) {
+			const leftValue = leftFields[field];
+			const rightValue = rightFields[field];
+			if (leftValue === undefined || rightValue === undefined) {
+				break;
+			}
+			if (leftValue !== rightValue) {
+				return leftValue < rightValue ? -1 : 1;
+			}
+		}
+		return 0;
+	}
+
+	equals(other: CalendarDate): boolean {
+		return CalendarDate.compare(this, other) === 0;
+	}
+
+	ageOn(referenceDate: CalendarDate): number {
+		if (!(referenceDate instanceof CalendarDate)) {
+			fail("referenceDate must be a CalendarDate");
+		}
+		if (this.precision !== "day" || referenceDate.precision !== "day") {
+			throw new DatePrecisionError("age requires day precision");
+		}
+		if (this.#calendar !== referenceDate.#calendar) {
+			fail("age calculation requires the same calendar identity");
+		}
+		if (CalendarDate.compare(referenceDate, this) < 0) {
+			fail("referenceDate must not precede the date of birth");
+		}
+
+		const birthFields = this.fields as CompleteDateFields;
+		const anniversaryEra = eraFromInternalYear(
+			this.#calendar,
+			referenceDate.#internalYear,
+		);
+		const anniversary = new CalendarDate(this.#calendar, {
+			era: anniversaryEra.era.id,
+			year: anniversaryEra.year,
+			month: birthFields.month,
+			day: birthFields.day,
+		});
+		let completedYears =
+			referenceDate.#internalYear - this.#internalYear;
+		if (CalendarDate.compare(referenceDate, anniversary) < 0) {
+			completedYears -= 1n;
+		}
+		return safeNumber(completedYears, "age");
+	}
+
 	get calendarId(): string {
 		return this.#calendar.definition.id;
 	}
