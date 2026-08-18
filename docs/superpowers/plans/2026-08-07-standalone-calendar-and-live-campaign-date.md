@@ -7,10 +7,11 @@
 from Fantasy Calendar with a committed fallback, and derive safe character ages at build time.
 
 **Architecture:** `@bastion-falls/calendar` owns pure calendar definitions, immutable dates,
-durations, precision, epoch conversion, and serialized date-state validation. The CLI owns Fantasy
-Calendar retrieval, retry policy, atomic local-state resolution, synchronization, and the read-only
-age audit. Astro reads only the resolved local state through `BastionNow` and applies authored-age
-override rules in a small character-age adapter.
+durations, precision, epoch conversion, and serialized date-state validation.
+`@bastion-falls/fantasy-calendar` owns provider wire schemas, retrieval, retry policy, conversion,
+and provider-specific content-reference schemas. The CLI owns settings, atomic local-state
+resolution, synchronization, and the read-only age audit. Astro reads only the resolved local state
+through `BastionNow` and applies authored-age override rules in a small character-age adapter.
 
 **Tech Stack:** TypeScript 6 ESM, Node 24, pnpm workspaces, Turbo, Node's built-in test runner,
 Stricli, Zod 4 in the CLI, Astro 7, and the existing MDX/frontmatter helpers.
@@ -57,6 +58,18 @@ them tempting.
 - Create `packages/calendar/src/bastion.ts`.
 - Create `packages/calendar/src/index.ts`.
 - Create focused tests under `packages/calendar/test/`.
+
+### Fantasy Calendar adapter package
+
+- Create `packages/fantasy-calendar/package.json`.
+- Create `packages/fantasy-calendar/tsconfig.json`.
+- Create `packages/fantasy-calendar/src/client.ts`.
+- Create `packages/fantasy-calendar/src/errors.ts`.
+- Create `packages/fantasy-calendar/src/wire-schemas.ts`.
+- Create `packages/fantasy-calendar/src/content-schemas.ts`.
+- Create `packages/fantasy-calendar/src/index.ts`.
+- Create focused tests under `packages/fantasy-calendar/test/`.
+- Move the Task 8 provider client and tests out of the CLI in Task 9.5.
 
 ### CLI
 
@@ -713,6 +726,175 @@ fallback.
 Run CLI tests and typecheck. Expected: all pass and tests leave no repository files behind.
 
 **Suggested commit:** `feat(cli): resolve campaign date with atomic fallback`
+
+---
+
+## Task 9.5: Extract The Fantasy Calendar Adapter Package
+
+**Objective:** Move provider-specific retrieval into a shared package before CLI routes and Astro
+integration, while establishing minimal event-reference schemas without implementing event fetching.
+
+**Authoritative extraction design:**
+[2026-08-19-fantasy-calendar-adapter-extraction-design.md](../specs/2026-08-19-fantasy-calendar-adapter-extraction-design.md)
+
+**Files:**
+
+- Create: `packages/fantasy-calendar/package.json`
+- Create: `packages/fantasy-calendar/tsconfig.json`
+- Create: `packages/fantasy-calendar/src/client.ts`
+- Create: `packages/fantasy-calendar/src/errors.ts`
+- Create: `packages/fantasy-calendar/src/wire-schemas.ts`
+- Create: `packages/fantasy-calendar/src/content-schemas.ts`
+- Create: `packages/fantasy-calendar/src/index.ts`
+- Create: `packages/fantasy-calendar/test/client.test.ts`
+- Create: `packages/fantasy-calendar/test/content-schemas.test.ts`
+- Delete: `cli/src/commands/calendar/fantasy-calendar.ts`
+- Delete: `cli/src/commands/calendar/fantasy-calendar.test.ts`
+- Modify: `cli/src/commands/calendar/settings.ts`
+- Modify: `cli/src/commands/calendar/resolve.ts`
+- Modify: `cli/package.json`
+- Modify: `turbo.jsonc`
+- Modify: `pnpm-lock.yaml`
+
+**Package exports:**
+
+```text
+@bastion-falls/fantasy-calendar
+@bastion-falls/fantasy-calendar/schemas
+```
+
+- [ ] **Step 1: Scaffold the adapter package**
+
+Follow the built-package convention from `packages/calendar/package.json`. The package is private,
+uses NodeNext ESM, emits declarations into `dist`, and exposes both root and `./schemas` entry
+points:
+
+```json
+{
+  "name": "@bastion-falls/fantasy-calendar",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./schemas": {
+      "types": "./dist/content-schemas.d.ts",
+      "import": "./dist/content-schemas.js"
+    }
+  }
+}
+```
+
+Add runtime dependencies on `@bastion-falls/calendar: "workspace:^"` and the workspace's pinned
+Zod line. Add `tsx` and TypeScript development dependencies and the standard `clean`, `build`,
+`typecheck`, and Node test scripts. The package TypeScript configuration uses `lib: ["ESNext",
+"DOM"]` because the client owns Fetch and AbortSignal types.
+
+Add `@bastion-falls/fantasy-calendar#build` to `turbo.jsonc` with `dependsOn: ["^build"]` and
+`outputs: ["dist/**"]`. Add the package as a CLI workspace dependency and run `pnpm install` to
+refresh links and lockfile importers without unrelated churn.
+
+- [ ] **Step 2: Write RED content-schema tests**
+
+Create `packages/fantasy-calendar/test/content-schemas.test.ts`. Assert:
+
+- non-empty string IDs normalize to branded strings;
+- safe integer IDs normalize to decimal strings;
+- empty/whitespace strings, fractions, unsafe integers, and malformed runtime values fail;
+- `{ eventId }` references parse strictly;
+- unknown reference keys fail.
+
+The intended public shapes are:
+
+```ts
+FantasyCalendarEventIdSchema;
+FantasyCalendarEventReferenceSchema;
+type FantasyCalendarEventId;
+type FantasyCalendarEventReference;
+```
+
+Run the package test command and confirm meaningful RED because the `/schemas` implementation is
+absent.
+
+- [ ] **Step 3: Implement the minimal content schemas**
+
+Use Zod to accept a non-empty trimmed string or safe integer and transform both into one canonical
+string before branding. Implement a strict reference object containing only `eventId`. Export these
+symbols from `src/content-schemas.ts`; do not add banner fields, event retrieval, moon schemas, or a
+generalized provider abstraction.
+
+Run focused schema tests and typecheck. Expected: GREEN.
+
+- [ ] **Step 4: Move the provider client with behavior unchanged**
+
+Move the current Task 8 implementation into package-owned modules:
+
+- `FantasyCalendarError` and failure categories move to `src/errors.ts`;
+- the narrow `dynamic_data` Zod object moves to `src/wire-schemas.ts`;
+- endpoint constants, fetch/retry/backoff logic, and FC-to-calendar conversion move to
+  `src/client.ts`;
+- `src/index.ts` exports the existing public adapter API.
+
+Move the existing client tests into `packages/fantasy-calendar/test/client.test.ts`. Preserve all
+assertions for endpoint identity, GET/AbortSignal, PF/AI conversion, schema/date/epoch failures,
+retry categories, attempt counts, jitter endpoints, real default sleeper structure, and injected
+callback failures. Normal tests remain fully injected and never contact the live service.
+
+The package may keep private provider defaults required by direct client calls. Environment parsing,
+offline policy, and CLI override precedence remain in `cli/src/commands/calendar/settings.ts`.
+
+Run package tests against the moved implementation. Expected: all migrated tests pass with no
+behavioral weakening.
+
+- [ ] **Step 5: Migrate CLI consumers and remove the local adapter**
+
+Update `cli/src/commands/calendar/resolve.ts` and later calendar modules to import client constants,
+types, and functions from `@bastion-falls/fantasy-calendar`. Keep CLI settings imports local. Delete
+the old CLI provider client and test instead of leaving a permanent re-export shim.
+
+Search `cli/src` for relative imports of `./fantasy-calendar.js` and expect no matches. Search the
+repository for duplicate definitions of the public calendar hash, endpoint, and
+`FantasyCalendarError`; each provider symbol must have one source of truth in the package.
+
+- [ ] **Step 6: Verify built public exports**
+
+Run:
+
+```bash
+pnpm -F @bastion-falls/calendar build
+pnpm -F @bastion-falls/fantasy-calendar test
+pnpm -F @bastion-falls/fantasy-calendar typecheck
+pnpm -F @bastion-falls/fantasy-calendar build
+node --input-type=module -e \
+  'import("@bastion-falls/fantasy-calendar").then(m => console.log(typeof m.fetchFantasyCalendarDate))'
+node --input-type=module -e \
+  'import("@bastion-falls/fantasy-calendar/schemas").then(m => console.log(m.FantasyCalendarEventIdSchema.parse(42)))'
+```
+
+Expected: package tests/typecheck/build pass; root import reports `function`; schema import reports
+the canonical string `42`.
+
+- [ ] **Step 7: Verify the migrated CLI and scope**
+
+Run:
+
+```bash
+pnpm -F @bastion-falls/cli test
+pnpm -F @bastion-falls/cli typecheck
+pnpm -F @bastion-falls/cli build
+pnpm exec biome check packages/fantasy-calendar cli/src/commands/calendar
+git diff --check
+```
+
+Confirm no character/content files changed, no event-fetching or Astro frontmatter integration was
+added, and only package/CLI/workspace/lockfile files named above remain.
+
+**Suggested commit:** `refactor(calendar): extract Fantasy Calendar adapter package`
 
 ---
 
