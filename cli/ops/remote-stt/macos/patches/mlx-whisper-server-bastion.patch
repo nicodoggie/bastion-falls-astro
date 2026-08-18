@@ -1,0 +1,106 @@
+diff --git a/app/main.py b/app/main.py
+index 33ad047..a6c6757 100644
+--- a/app/main.py
++++ b/app/main.py
+@@ -1,4 +1,5 @@
+ import logging
++import math
+ import tempfile
+ import time
+ from contextlib import asynccontextmanager
+@@ -27,7 +28,32 @@ engine = STTEngine(settings.stt_model)
+ _start_time: float = 0.0
+ 
+ ALLOWED_EXTENSIONS = {".wav", ".mp3", ".m4a", ".ogg", ".webm", ".flac"}
+-MAX_UPLOAD_BYTES = 25 * 1024 * 1024  # 25 MB
++# Bastion Falls uses bounded ten-minute FLAC chunks; keep a finite ceiling while
++# accommodating the largest observed stereo chunk (about 41 MB).
++MAX_UPLOAD_BYTES = 64 * 1024 * 1024
++
++
++def _json_safe_segments(segments: list[dict]) -> list[dict]:
++    cleaned: list[dict] = []
++    for segment in segments:
++        item = {
++            key: value
++            for key, value in segment.items()
++            if not isinstance(value, float) or math.isfinite(value)
++        }
++        start = item.get("start")
++        end = item.get("end")
++        if not isinstance(start, (int, float)) or not isinstance(end, (int, float)):
++            raise ValueError("Whisper returned non-finite segment timing")
++        if end < start:
++            logger.warning(
++                "Dropping Whisper segment with reversed timing: start=%s end=%s",
++                start,
++                end,
++            )
++            continue
++        cleaned.append(item)
++    return cleaned
+ 
+ 
+ @asynccontextmanager
+@@ -66,9 +92,9 @@ async def timing_middleware(request: Request, call_next):
+ 
+ @app.middleware("http")
+ async def auth_middleware(request: Request, call_next):
+-    if request.url.path.startswith("/v1/"):
++    if settings.api_key and request.url.path.startswith("/v1/"):
+         auth_header = request.headers.get("authorization", "")
+-        if not auth_header.startswith("Bearer "):
++        if auth_header != f"Bearer {settings.api_key}":
+             return JSONResponse(
+                 status_code=401,
+                 content={
+@@ -115,7 +141,7 @@ async def transcribe(
+     language: str | None = Form(None),
+     prompt: str | None = Form(None),
+     response_format: str = Form("json"),
+-    temperature: float = Form(0.0),
++    temperature: float | None = Form(None),
+ ):
+     if not engine.is_loaded:
+         return JSONResponse(
+@@ -173,7 +199,7 @@ async def transcribe(
+                     "language": result.get("language", ""),
+                     "duration": result.get("duration", 0.0),
+                     "text": result.get("text", ""),
+-                    "segments": result.get("segments", []),
++                    "segments": _json_safe_segments(result.get("segments", [])),
+                 }
+             )
+ 
+diff --git a/app/stt_engine.py b/app/stt_engine.py
+index b199e5f..7aef93e 100644
+--- a/app/stt_engine.py
++++ b/app/stt_engine.py
+@@ -59,14 +59,16 @@ class STTEngine:
+         audio_path: str,
+         language: str | None,
+         prompt: str | None,
+-        temperature: float,
++        temperature: float | None,
+     ) -> dict:
+         import mlx_whisper
+ 
+         kwargs: dict = {
+             "path_or_hf_repo": self.model_name,
+-            "temperature": temperature,
++            "condition_on_previous_text": False,
+         }
++        if temperature is not None:
++            kwargs["temperature"] = temperature
+         if language:
+             kwargs["language"] = language
+         if prompt:
+@@ -80,7 +82,7 @@ class STTEngine:
+         *,
+         language: str | None = None,
+         prompt: str | None = None,
+-        temperature: float = 0.0,
++        temperature: float | None = None,
+     ) -> dict:
+         async with self._lock:
+             loop = asyncio.get_running_loop()

@@ -148,13 +148,14 @@ export async function executePreparedTranscription(options: TranscriptionPipelin
     if (issues.length > 0) throw new Error(`Hybrid channel map is incompatible: ${issues.join("; ")}`);
   }
   const passes = requiredPasses(options.profile.layout, options.manifest.preparedChannels);
+  const prompt = options.prompt ?? options.profile.prompt;
   options.checkpoint.profile = options.profile.name;
   options.checkpoint.layout = options.profile.layout;
   const available = options.manifest.chunks.map((chunk) => chunk.index);
   const selected = parseChunkSelection(options.selection, available);
   const stage = options.checkpoint.stages.transcribed_chunks;
   const availableByPass = Object.fromEntries(passes.map((pass) => [pass.id, available]));
-  const identityByPass = Object.fromEntries(passes.map((pass) => [pass.id, sttCacheIdentity({ manifest: options.manifest, pass, target: options.profile.target, language: options.language, prompt: options.prompt })]));
+  const identityByPass = Object.fromEntries(passes.map((pass) => [pass.id, sttCacheIdentity({ manifest: options.manifest, pass, target: options.profile.target, language: options.language, prompt })]));
   const previousIdentity = (stage as typeof stage & { cacheIdentityByPass?: Record<string, string> }).cacheIdentityByPass ?? {};
   const identityChanged = passes.some((pass) => previousIdentity[pass.id] !== identityByPass[pass.id]) ||
     JSON.stringify(Object.keys(previousIdentity).sort()) !== JSON.stringify(passes.map((pass) => pass.id).sort());
@@ -208,7 +209,7 @@ export async function executePreparedTranscription(options: TranscriptionPipelin
         chunks: [{ index, path: chunkAudioPathFor(options.chunksDir, pass, index) }],
         outDir: options.rawChunksDir,
         language: options.language,
-        prompt: options.prompt,
+        prompt,
         force: Boolean(options.force),
         onProgress: options.onProgress,
       }, options.dependencies);

@@ -20,7 +20,11 @@ test("resolves a named hybrid OpenAI-compatible profile", () => {
     {
       defaultProfile: "m1-hybrid",
       profiles: {
-        "m1-hybrid": { layout: "hybrid", target: "m1-whisper" },
+        "m1-hybrid": {
+          layout: "hybrid",
+          target: "m1-whisper",
+          prompt: "  Preserve Tagalog and D&D names.  ",
+        },
       },
       targets: {
         "m1-whisper": {
@@ -38,6 +42,7 @@ test("resolves a named hybrid OpenAI-compatible profile", () => {
   assert.equal(resolved.target.protocol, "openai");
   assert.equal(resolved.target.timeoutSeconds, 900);
   assert.equal(resolved.target.retries, 2);
+  assert.equal(resolved.prompt, "Preserve Tagalog and D&D names.");
 });
 
 test("rejects literal credentials in an OpenAI-compatible target", () => {

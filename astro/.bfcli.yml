@@ -10,9 +10,23 @@ transcribe:
     local-single:
       layout: stereo
       target: local-whisper
-    m1-hybrid-test:
+    m1-hybrid:
       layout: hybrid
       target: m1-whisper-turbo
+      prompt: >-
+        This is a tabletop Dungeons and Dragons game recording with mixed English and Tagalog/Filipino.
+        Preserve the original language; do not translate Tagalog into English. Keep D&D terms, character
+        names, place names, dice rolls, and rules discussion as accurately as possible.
+    m1-single:
+      layout: stereo
+      target: m1-whisper-turbo
+      prompt: >-
+        This is a tabletop Dungeons and Dragons game recording with mixed English and Tagalog/Filipino.
+        Preserve the original language; do not translate Tagalog into English. Keep D&D terms, character
+        names, place names, dice rolls, and rules discussion as accurately as possible.
+    nemotron:
+      layout: stereo
+      target: nemotron
   targets:
     local-whisper:
       provider: nodejs-whisper
@@ -22,6 +36,13 @@ transcribe:
       protocol: bastion-jobs
       baseUrl: https://bastion-whisper.saury-ule.ts.net/v1
       model: large-v3-turbo
+      timeoutSeconds: 900
+      retries: 2
+    nemotron:
+      provider: openai-compatible
+      protocol: bastion-jobs
+      baseUrl: https://bastion-whisper.saury-ule.ts.net/v1
+      model: nemotron-native
       timeoutSeconds: 900
       retries: 2
   review:

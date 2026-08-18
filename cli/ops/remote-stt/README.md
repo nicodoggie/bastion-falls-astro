@@ -1,18 +1,17 @@
 # Remote M1 STT operations
 
 This directory records the private operational layer behind the opt-in
-`m1-hybrid-test` transcription profile. Whisper inference runs on
+`m1-hybrid` and `m1-single` transcription profiles. Whisper inference runs on
 `ensu-macos`; Linux retains audio preparation and transcript orchestration but
 does not load the model.
 
 ## Runtime shape
 
 ```text
-bfcli -> 127.0.0.1:18000
-          Linux systemd --user SSH tunnel
-            -> ensu-macos 127.0.0.1:8000
-                 launchd supervisor (~55-65 MiB idle)
-                   -> on-demand MLX worker 127.0.0.1:8001
+bfcli -> https://bastion-whisper.saury-ule.ts.net/v1 (tailnet only)
+          Tailscale Serve proxy -> ensu-macos 127.0.0.1:8000
+            launchd supervisor (~55-65 MiB idle)
+              -> on-demand MLX worker 127.0.0.1:8001
 ```
 
 The supervisor keeps health and model discovery cold. It persists accepted jobs
@@ -28,8 +27,9 @@ local artifacts, then requests job deletion. Repeated submissions with the same
 `X-Idempotency-Key` return the original job. A bounded server TTL cleans up
 terminal jobs if client cleanup cannot complete.
 
-Both public-facing listeners bind to loopback. No API key or SSH credential is
-stored in this repository.
+The supervisor and worker bind to loopback. Tailscale Serve publishes the
+supervisor only inside the private tailnet as `svc:bastion-whisper`. No API key
+or SSH credential is stored in this repository.
 
 ## Pinned installation
 
@@ -44,19 +44,29 @@ The accepted Mac installation uses:
 - `uvicorn==0.52.1`
 - model: `mlx-community/whisper-large-v3-turbo`
 - launchd label: `com.bastion-falls.whisper`
-- Linux unit: `bastion-whisper-tunnel.service`
+- optional Linux fallback unit: `bastion-whisper-tunnel.service`
 
 The supervisor and worker both enforce a 64 MiB request limit. The worker also
 includes bounded compatibility fixes required by real Bastion Falls chunks:
 omission of non-finite optional metrics and logged removal of reversed-time
-segments rather than invented timestamps.
+segments rather than invented timestamps, the normal MLX temperature fallback
+when callers omit `temperature`, and disabled previous-text conditioning to
+prevent long-audio repetition feedback. These changes are captured in
+`macos/patches/mlx-whisper-server-bastion.patch` against the pinned application
+commit.
 
 ## Install or refresh the Mac supervisor
 
 Copy `macos/supervisor.py` and `macos/job_store.py` into the service root and the plist into
 `~/Library/LaunchAgents/`. Preserve any previous plist before replacing it.
 The worker application and dedicated venv must already exist beneath the
-service root.
+service root. Before deployment, apply and inspect the tracked worker patch from
+the pinned application checkout:
+
+```bash
+git apply --check /path/to/bastion-falls-astro/cli/ops/remote-stt/macos/patches/mlx-whisper-server-bastion.patch
+git apply /path/to/bastion-falls-astro/cli/ops/remote-stt/macos/patches/mlx-whisper-server-bastion.patch
+```
 
 Validate and register over the proven user launchd domain:
 
@@ -74,10 +84,12 @@ A `gui/<uid>` domain may not exist during SSH-only operation; use
 ssh ensu-macos 'launchctl print "user/$(id -u)/com.bastion-falls.whisper"'
 ```
 
-## Install the Linux tunnel
+## Optional Linux SSH tunnel
 
-The SSH alias `ensu-macos` must support noninteractive public-key access.
-Install and validate the repository unit:
+The checked-in bfcli profiles use Tailscale HTTPS directly; the tunnel is not
+required for normal transcription. Keep it only as a bounded diagnostic or
+fallback path. The SSH alias `ensu-macos` must support noninteractive public-key
+access before installing the repository unit:
 
 ```bash
 install -Dm600 \
@@ -89,8 +101,8 @@ systemctl --user daemon-reload
 systemctl --user enable --now bastion-whisper-tunnel.service
 ```
 
-The user manager has linger enabled on the accepted Linux host, so this tunnel
-can recover independently of an interactive terminal. Verify:
+The user manager has linger enabled on the accepted Linux host, so the optional
+tunnel can recover independently of an interactive terminal. Verify:
 
 ```bash
 systemctl --user is-enabled bastion-whisper-tunnel.service
@@ -99,6 +111,13 @@ curl --fail --silent --show-error http://127.0.0.1:18000/health
 ```
 
 Restarting the tunnel must not restart or load the Mac model worker.
+
+Verify the configured Tailscale route independently:
+
+```bash
+curl --fail --silent --show-error \
+  https://bastion-whisper.saury-ule.ts.net/health
+```
 
 ## Acceptance evidence
 

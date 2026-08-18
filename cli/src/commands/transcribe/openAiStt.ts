@@ -122,7 +122,8 @@ function formFor(request: OpenAiSttRequest, audio: Buffer): FormData {
   form.append("file", new Blob([audio], { type: "audio/flac" }), basename(request.chunk.path));
   form.append("model", request.target.model);
   form.append("response_format", "verbose_json");
-  if (request.language.trim()) form.append("language", request.language.trim());
+  const language = request.language.trim();
+  if (language && language !== "auto") form.append("language", language);
   if (request.prompt?.trim()) form.append("prompt", request.prompt.trim());
   return form;
 }

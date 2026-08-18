@@ -26,6 +26,7 @@ const profileSchema = z
   .object({
     layout: z.enum(["stereo", "hybrid"]),
     target: z.string().trim().min(1),
+    prompt: z.string().trim().min(1).max(8_192).optional(),
   })
   .strict();
 
@@ -51,6 +52,7 @@ export type TranscriptionSettings = z.infer<typeof transcriptionSettingsSchema>;
 export type ResolvedTranscriptionProfile = {
   name: string;
   layout: "stereo" | "hybrid";
+  prompt?: string;
   target:
     | (LocalTranscriptionTarget & { name: string })
     | (OpenAiTranscriptionTarget & { name: string });
@@ -128,6 +130,7 @@ export function resolveTranscriptionProfile(
   return {
     name: profileName,
     layout: profile.layout,
+    ...(profile.prompt === undefined ? {} : { prompt: profile.prompt }),
     target: { name: profile.target, ...target },
   };
 }

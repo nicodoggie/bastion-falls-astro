@@ -4,11 +4,12 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 
-import { executeTranscriptionPipeline, sttCacheIdentity } from "./pipeline.js";
 import { parseAlignmentResult } from "./alignment.js";
 import type { ChannelMap } from "./channelMap.js";
 import type { TranscribeCheckpoint } from "./checkpoint.js";
+import { executeTranscriptionPipeline, sttCacheIdentity } from "./pipeline.js";
 import type { ResolvedTranscriptionProfile } from "./settings.js";
+import type { TranscribePassRequest } from "./sttBackend.js";
 import type { Manifest } from "./types.js";
 
 const profile = (layout: "stereo" | "hybrid", name: string = layout, targetName = "shared", model = "base"): ResolvedTranscriptionProfile => ({
@@ -45,6 +46,46 @@ const channelMap: ChannelMap = {
 };
 
 function prepared(outDir: string, p: ResolvedTranscriptionProfile, map?: ChannelMap) { return { manifest, profile: p, rawChunksDir: join(outDir, "raw_chunks"), rawTranscriptionDir: join(outDir, "raw_transcription"), chunksDir: join(outDir, "chunks"), source: manifest.source, channelMap: map }; }
+
+test("routes a profile prompt into STT requests and cache identity", async () => {
+  const outDir = await mkdtemp(join(tmpdir(), "pipeline-profile-prompt-"));
+  const state = checkpoint(outDir);
+  const configuredProfile: ResolvedTranscriptionProfile = {
+    ...profile("stereo", "prompted"),
+    prompt: "Preserve Tagalog and D&D names.",
+  };
+  const prompts: Array<string | undefined> = [];
+
+  await executeTranscriptionPipeline({
+    checkpoint: state,
+    checkpointPath: join(outDir, "checkpoint.json"),
+    rawChunksDir: join(outDir, "raw_chunks"),
+    rawTranscriptionDir: join(outDir, "raw_transcription"),
+    chunksDir: join(outDir, "chunks"),
+    source: manifest.source,
+    language: "en",
+    selection: "0",
+    stopAfter: "transcription",
+    dependencies: {
+      nodejsWhisper: async (request: TranscribePassRequest) => {
+        prompts.push(request.prompt);
+        return [{ segments: [{ start: 0, end: 1, text: "Andrew answers." }] }];
+      },
+    },
+    normalize: async () => undefined,
+    prepareAudio: async () => prepared(outDir, configuredProfile),
+  });
+
+  assert.deepEqual(prompts, ["Preserve Tagalog and D&D names."]);
+  assert.deepEqual(
+    Object.keys(state.stages.transcribed_chunks.cacheIdentityByPass ?? {}),
+    ["stereo"],
+  );
+  assert.match(
+    Object.values(state.stages.transcribed_chunks.cacheIdentityByPass ?? {})[0] ?? "",
+    /Preserve Tagalog and D&D names\./,
+  );
+});
 
 test("proves the complete staged lifecycle, resume contract, hooks, and cache identity", async () => {
   const outDir = await mkdtemp(join(tmpdir(), "pipeline-lifecycle-"));

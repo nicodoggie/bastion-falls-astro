@@ -138,6 +138,26 @@ test("posts a real multipart request and normalizes verbose timed segments", asy
   });
 });
 
+test("omits the language field when auto detection is requested", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "openai-stt-auto-language-"));
+  const audioPath = join(directory, "chunk.flac");
+  await writeFile(audioPath, "audio");
+
+  await withServer(async (request) => {
+    const form = await request.formData();
+    assert.equal(form.get("language"), null);
+    return Response.json({ segments: [], language: "tl" });
+  }, async (baseUrl) => {
+    const transcript = await transcribeOpenAiChunk({
+      target: target(baseUrl),
+      pass,
+      chunk: { index: 0, path: audioPath },
+      language: " auto ",
+    });
+    assert.equal(transcript.language, "tl");
+  });
+});
+
 test("configures and closes an owned dispatcher at the target timeout", async () => {
   const directory = await mkdtemp(join(tmpdir(), "openai-stt-"));
   const audioPath = join(directory, "chunk.flac");
