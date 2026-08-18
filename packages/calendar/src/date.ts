@@ -465,6 +465,10 @@ export class CalendarDate {
 		return this.#calendar.definition.id;
 	}
 
+	isBoundTo(calendar: CalendarSystem): boolean {
+		return this.#calendar === calendar;
+	}
+
 	get epochDay(): number {
 		if (this.#epochDay === undefined) {
 			throw new DatePrecisionError(

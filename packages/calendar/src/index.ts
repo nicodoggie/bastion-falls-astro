@@ -23,3 +23,8 @@ export {
 	type CalendarDurationLike,
 } from "./duration.js";
 export { CalendarDefinitionError } from "./errors.js";
+export {
+	type SerializedCalendarState,
+	parseCalendarState,
+	serializeCalendarState,
+} from "./state.js";
