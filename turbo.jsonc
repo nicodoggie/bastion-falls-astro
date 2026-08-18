@@ -1,6 +1,10 @@
 {
   "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
+    "@bastion-falls/calendar#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+    },
     "@bastion-falls/5e-schema-zod#build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/index.js", "dist/index.d.ts"],

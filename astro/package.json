@@ -35,6 +35,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/starlight": "^0.41.3",
     "@bastion-falls/5e-schema-zod": "workspace:^",
+    "@bastion-falls/calendar": "workspace:^",
     "@bastion-falls/astro-lexicon-integration": "workspace:^",
     "@bastion-falls/lexicon-components": "workspace:^",
     "@bastion-falls/satteri-auto-import": "workspace:^",
