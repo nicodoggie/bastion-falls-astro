@@ -99,6 +99,19 @@ evidence from source files, package scripts, transcripts, or generated artifacts
   validation.
 - Do not delegate trivial one-file lookups, single searches, or tasks where the
   next step depends tightly on the previous result.
+- Treat every implementer and reviewer as a fresh context with no access to the
+  parent session's accumulated memory. Every delegation prompt must restate the
+  exact worktree, changed-path allowlist, forbidden paths and side effects,
+  evidence-authority order, immutable inputs, commit/push policy, and focused
+  verification commands that apply to that task.
+- Give spec reviewers the canonical task/spec section independently rather than
+  only an implementer summary or a pointer to a plan. A reviewer must be able to
+  reconstruct the public shapes, ownership boundaries, compatibility promises,
+  and stop conditions without relying on ambient conversation context.
+- Put stable repository-wide boundaries in this file. Put feature- or
+  fixture-specific boundaries in the approved implementation plan and repeat
+  them verbatim in each implementation and review prompt; a plan is not a
+  substitute for transmitting the boundary packet.
 
 ## Editing Style
 
