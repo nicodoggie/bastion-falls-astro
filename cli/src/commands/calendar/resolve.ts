@@ -12,6 +12,7 @@ import {
 	type FantasyCalendarFetchOptions,
 	fetchFantasyCalendarDate,
 } from "@bastion-falls/fantasy-calendar";
+import type { LocalContext } from "@/context.js";
 import { type CalendarSettings, resolveCalendarSettings } from "./settings.js";
 import {
 	type CalendarStatePaths,
@@ -203,7 +204,7 @@ export async function resolveCalendarState(
 		const second = fallbackError(error);
 		throw new AggregateError(
 			[liveFailure, error],
-			`live and fallback calendar state are invalid (${first.category}/${second.category})`,
+			`live and fallback calendar state are invalid (${first.category}/${second.category}); fallback: ${paths.fallbackPath}`,
 		);
 	}
 	const failure = fallbackError(liveFailure);
@@ -219,4 +220,32 @@ export async function resolveCalendarState(
 	await write(paths.resolvedPath, fallback);
 	emitWarning(warning);
 	return { state: fallback, source: "fallback", warning };
+}
+
+interface ResolveFlags {
+	readonly "timeout-ms"?: number;
+	readonly retries?: number;
+	readonly offline?: boolean;
+}
+
+export default async function resolveCommand(
+	this: LocalContext,
+	flags: ResolveFlags,
+): Promise<void> {
+	const overrides: { timeoutMs?: number; retries?: number; offline?: boolean } =
+		{};
+	if (flags["timeout-ms"] !== undefined)
+		overrides.timeoutMs = flags["timeout-ms"];
+	if (flags.retries !== undefined) overrides.retries = flags.retries;
+	if (flags.offline !== undefined) overrides.offline = flags.offline;
+	const result = await resolveCalendarState({
+		currentPath: this.currentPath,
+		settings: resolveCalendarSettings(this.process.env, overrides),
+		offline: flags.offline,
+		warn: (warning) =>
+			this.process.stderr.write(
+				`calendar fallback: ${JSON.stringify(warning)}\n`,
+			),
+	});
+	this.process.stdout.write(`calendar state resolved from ${result.source}\n`);
 }
