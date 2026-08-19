@@ -2,7 +2,10 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
 import { bastionCalendar, CalendarDate } from "@bastion-falls/calendar";
-import { createBastionNow } from "./bastion-now.ts";
+import {
+	createBastionNow,
+	resolveBastionCalendarStatePath,
+} from "./bastion-now.ts";
 
 const source = {
 	provider: "fantasy-calendar",
@@ -33,6 +36,13 @@ function assertBastionNowError(action: () => unknown, message: RegExp): void {
 }
 
 describe("createBastionNow", () => {
+	it("anchors generated state to the Astro package working directory", () => {
+		assert.equal(
+			resolveBastionCalendarStatePath("/repo/astro"),
+			"/repo/astro/.astro/bastion-calendar-state.json",
+		);
+	});
+
 	it("returns an immutable CalendarDate from valid in-memory state", () => {
 		const date = createBastionNow(() => cloneState()).date();
 

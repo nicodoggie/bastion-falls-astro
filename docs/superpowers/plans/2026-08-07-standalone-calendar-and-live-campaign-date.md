@@ -1106,10 +1106,12 @@ Expected: new tests fail.
 
 - [ ] **Step 3: Implement local loading**
 
-The default loader resolves `../../.astro/bastion-calendar-state.json` from `import.meta.url`, reads
-it using Node filesystem APIs, and passes the parsed object to the package's state validator. It
-then enforces the expected Fantasy Calendar provider, public hash, and `dynamic_data` endpoint.
-`createBastionNow` remains injectable and contains no filesystem dependency itself.
+The default loader resolves `.astro/bastion-calendar-state.json` from the Astro package working
+directory, reads it using Node filesystem APIs, and passes the parsed object to the package's state
+validator. The path must remain stable when Astro bundles the module under `dist/.prerender`; do not
+derive it from the relocatable bundled `import.meta.url`. It then enforces the expected Fantasy
+Calendar provider, public hash, and `dynamic_data` endpoint. `createBastionNow` remains injectable
+and contains no filesystem dependency itself.
 
 - [ ] **Step 4: Verify GREEN**
 

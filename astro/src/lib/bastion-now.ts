@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
 
 import {
 	bastionCalendar,
@@ -14,10 +14,14 @@ const EXPECTED_SOURCE = Object.freeze({
 		"https://app.fantasy-calendar.com/api/v1/calendar/089e518f9ea966373b1c71535c25b98a/dynamic_data",
 });
 
+export function resolveBastionCalendarStatePath(
+	currentPath = process.cwd(),
+): string {
+	return resolve(currentPath, ".astro/bastion-calendar-state.json");
+}
+
 function loadLocalState(): unknown {
-	const path = fileURLToPath(
-		new URL("../../.astro/bastion-calendar-state.json", import.meta.url),
-	);
+	const path = resolveBastionCalendarStatePath();
 	try {
 		return JSON.parse(readFileSync(path, "utf8")) as unknown;
 	} catch (error) {
