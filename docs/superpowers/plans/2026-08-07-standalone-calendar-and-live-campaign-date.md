@@ -1004,7 +1004,7 @@ Add:
 
 ```json
 "calendar:resolve": "_REAL_CWD=$INIT_CWD pnpm -F @bastion-falls/cli run exec calendar resolve",
-"calendar:prepare": "pnpm -F @bastion-falls/calendar build && pnpm run calendar:resolve",
+"calendar:prepare": "pnpm -F @bastion-falls/calendar build && pnpm -F @bastion-falls/fantasy-calendar build && pnpm run calendar:resolve",
 "predev": "pnpm run calendar:prepare",
 "prestart": "pnpm run calendar:prepare",
 "prebuild": "pnpm run calendar:prepare"

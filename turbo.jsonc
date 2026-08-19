@@ -46,6 +46,11 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"],
     },
+    "@bastion-falls/astro#build": {
+      "cache": false,
+      "dependsOn": ["^build"],
+      "outputs": [".astro/**", "dist/**"],
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".astro/**", "astro/dist/**"],
