@@ -163,14 +163,17 @@ export async function fetchFantasyCalendarDate(
 					elapsed(started, now, attempts),
 				);
 			const {
-				current_date: remoteDate,
-				current_era: era,
-				epoch_day: epochDay,
-			} = parsed.data;
-			if (era !== "PF" && era !== "AI")
+				year,
+				timespan,
+				day,
+				epoch: epochDay,
+				current_era: eraIndex,
+			} = parsed.data.dynamic_data;
+			const era = eraIndex === 0 ? "PF" : eraIndex === 1 ? "AI" : undefined;
+			if (era === undefined)
 				throw new FantasyCalendarError(
 					"unknown-era",
-					`Fantasy Calendar returned unknown era ${era}`,
+					`Fantasy Calendar returned unknown era ${eraIndex}`,
 					attempts,
 					elapsed(started, now, attempts),
 				);
@@ -178,9 +181,9 @@ export async function fetchFantasyCalendarDate(
 			try {
 				date = BastionDate.from({
 					era,
-					year: remoteDate.year,
-					month: remoteDate.timespan + 1,
-					day: remoteDate.day,
+					year: era === "PF" ? -year : year,
+					month: timespan + 1,
+					day,
 				});
 			} catch {
 				throw new FantasyCalendarError(
@@ -193,7 +196,7 @@ export async function fetchFantasyCalendarDate(
 			if (date.epochDay !== epochDay)
 				throw new FantasyCalendarError(
 					"date-epoch-disagreement",
-					"Fantasy Calendar date disagrees with epoch_day",
+					"Fantasy Calendar date disagrees with epoch",
 					attempts,
 					elapsed(started, now, attempts),
 				);

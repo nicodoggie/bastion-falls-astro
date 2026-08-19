@@ -12,9 +12,18 @@ function response(body: unknown, status = 200): Response {
 	return new Response(JSON.stringify(body), { status });
 }
 const valid = {
-	current_date: { year: 1275, timespan: 8, day: 25 },
-	current_era: "AI",
-	epoch_day: 459264,
+	dynamic_data: {
+		year: 1275,
+		timespan: 8,
+		day: 25,
+		epoch: 459264,
+		custom_location: false,
+		location: "The Bastion",
+		hour: 12,
+		minute: 34,
+		current_era: 1,
+	},
+	is_linked: false,
 };
 
 test("fetches the exact endpoint and returns a Bastion date", async () => {
@@ -40,9 +49,13 @@ test("maps PF and rejects unknown eras", async () => {
 	const pf = await fetchFantasyCalendarDate({
 		fetch: async () =>
 			response({
-				current_date: { year: 1, timespan: 0, day: 1 },
-				current_era: "PF",
-				epoch_day: -360,
+				dynamic_data: {
+					year: -1,
+					timespan: 0,
+					day: 1,
+					epoch: -360,
+					current_era: 0,
+				},
 			}),
 		sleep: async () => undefined,
 	});
@@ -50,7 +63,11 @@ test("maps PF and rejects unknown eras", async () => {
 	await assert.rejects(
 		() =>
 			fetchFantasyCalendarDate({
-				fetch: async () => response({ ...valid, current_era: "X" }),
+				fetch: async () =>
+					response({
+						...valid,
+						dynamic_data: { ...valid.dynamic_data, current_era: 7 },
+					}),
 				sleep: async () => undefined,
 			}),
 		(error) =>
@@ -127,7 +144,10 @@ test("rejects malformed payload and date/epoch disagreement without retry", asyn
 				retries: 3,
 				fetch: async () => {
 					calls++;
-					return response({ ...valid, epoch_day: 1 });
+					return response({
+						...valid,
+						dynamic_data: { ...valid.dynamic_data, epoch: 1 },
+					});
 				},
 				sleep: async () => undefined,
 			}),
@@ -176,12 +196,27 @@ test("covers timeout, 429, exhaustion, malformed JSON, schema, and invalid date 
 			attempts: 1,
 		},
 		{
+			name: "old fabricated envelope",
+			fetch: async () =>
+				response({
+					current_date: { year: 1275, timespan: 8, day: 25 },
+					current_era: "AI",
+					epoch_day: 459264,
+				}),
+			category: "schema",
+			attempts: 1,
+		},
+		{
 			name: "invalid date",
 			fetch: async () =>
 				response({
-					current_date: { year: 1275, timespan: 8, day: 99 },
-					current_era: "AI",
-					epoch_day: 459264,
+					dynamic_data: {
+						year: 1275,
+						timespan: 8,
+						day: 99,
+						epoch: 459264,
+						current_era: 1,
+					},
 				}),
 			category: "schema",
 			attempts: 1,

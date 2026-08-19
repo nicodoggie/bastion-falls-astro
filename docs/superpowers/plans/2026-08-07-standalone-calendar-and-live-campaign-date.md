@@ -34,6 +34,11 @@ them tempting.
   environment variables, or Fantasy Calendar code. Package maintenance scripts may use Node
   filesystem APIs.
 - Public months are one-based. Only the Fantasy Calendar adapter handles zero-based `timespan`.
+- The live Fantasy Calendar response is an envelope with `dynamic_data` containing the required
+  `year`, `timespan`, `day`, `epoch`, and numeric `current_era` fields; documented extras such as
+  `custom_location`, `location`, `hour`, `minute`, and top-level `is_linked` are tolerated but not
+  returned by the adapter. Era index `0` is PF and index `1` is AI; PF converts the raw wire year
+  by negation (`year: -1`, `current_era: 0` becomes public `1 PF`), while AI leaves it unchanged.
 - The Bastion epoch contract is `epochDay 0 === AI 0-01-01`; therefore
   `AI 1275-09-25 === epochDay 459264`.
 - PF maps to negative internal years: `1 PF === internal year -1`; AI maps directly, including AI 0.
