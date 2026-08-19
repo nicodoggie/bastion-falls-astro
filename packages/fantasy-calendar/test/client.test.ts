@@ -6,7 +6,7 @@ import {
 	BASTION_FANTASY_CALENDAR_HASH,
 	FantasyCalendarError,
 	fetchFantasyCalendarDate,
-} from "./fantasy-calendar.js";
+} from "../src/index.js";
 
 function response(body: unknown, status = 200): Response {
 	return new Response(JSON.stringify(body), { status });

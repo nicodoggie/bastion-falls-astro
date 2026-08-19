@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@bastion-falls/calendar": "workspace:^",
+    "@bastion-falls/fantasy-calendar": "workspace:^",
     "@bastion-falls/types": "workspace:^",
     "@stricli/auto-complete": "^1.2.9",
     "@stricli/core": "^1.2.9",

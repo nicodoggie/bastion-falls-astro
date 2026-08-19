@@ -262,6 +262,9 @@ importers:
       '@bastion-falls/calendar':
         specifier: workspace:^
         version: link:../packages/calendar
+      '@bastion-falls/fantasy-calendar':
+        specifier: workspace:^
+        version: link:../packages/fantasy-calendar
       '@bastion-falls/types':
         specifier: workspace:^
         version: link:../packages/types
@@ -399,6 +402,22 @@ importers:
         version: 4.1.10(@types/node@24.7.2)(vite@8.1.4(@types/node@24.7.2)(esbuild@0.28.1)(jiti@2.7.0)(sass@1.101.0)(terser@5.48.0)(tsx@4.23.1)(yaml@2.9.0))
 
   packages/calendar:
+    devDependencies:
+      tsx:
+        specifier: ^4.23.1
+        version: 4.23.1
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+
+  packages/fantasy-calendar:
+    dependencies:
+      '@bastion-falls/calendar':
+        specifier: workspace:^
+        version: link:../calendar
+      zod:
+        specifier: ~4.3.6
+        version: 4.3.6
     devDependencies:
       tsx:
         specifier: ^4.23.1

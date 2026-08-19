@@ -7,7 +7,7 @@ import {
 import {
 	BASTION_FANTASY_CALENDAR_ENDPOINT,
 	BASTION_FANTASY_CALENDAR_HASH,
-} from "./fantasy-calendar.js";
+} from "@bastion-falls/fantasy-calendar";
 import { resolveCalendarState } from "./resolve.js";
 
 const liveDate = bastionCalendar.dateFrom({

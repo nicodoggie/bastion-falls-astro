@@ -11,7 +11,7 @@ import {
 	BASTION_FANTASY_CALENDAR_HASH,
 	type FantasyCalendarFetchOptions,
 	fetchFantasyCalendarDate,
-} from "./fantasy-calendar.js";
+} from "@bastion-falls/fantasy-calendar";
 import { type CalendarSettings, resolveCalendarSettings } from "./settings.js";
 import {
 	type CalendarStatePaths,

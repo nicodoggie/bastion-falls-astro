@@ -5,6 +5,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"],
     },
+    "@bastion-falls/fantasy-calendar#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+    },
     "@bastion-falls/5e-schema-zod#build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/index.js", "dist/index.d.ts"],

@@ -752,6 +752,7 @@ integration, while establishing minimal event-reference schemas without implemen
 - Delete: `cli/src/commands/calendar/fantasy-calendar.test.ts`
 - Modify: `cli/src/commands/calendar/settings.ts`
 - Modify: `cli/src/commands/calendar/resolve.ts`
+- Modify: `cli/src/commands/calendar/resolve.test.ts`
 - Modify: `cli/package.json`
 - Modify: `turbo.jsonc`
 - Modify: `pnpm-lock.yaml`

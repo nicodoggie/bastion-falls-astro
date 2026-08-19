@@ -1,50 +1,13 @@
 import { BastionDate, type CalendarDate } from "@bastion-falls/calendar";
-import { z } from "zod";
-import { DEFAULT_RETRIES, DEFAULT_TIMEOUT_MS } from "./settings.js";
+import { FantasyCalendarError } from "./errors.js";
+import { FantasyCalendarDynamicDataSchema } from "./wire-schemas.js";
+
+const DEFAULT_TIMEOUT_MS = 1_500;
+const DEFAULT_RETRIES = 1;
 
 export const BASTION_FANTASY_CALENDAR_HASH = "089e518f9ea966373b1c71535c25b98a";
 
 const ENDPOINT = `https://app.fantasy-calendar.com/api/v1/calendar/${BASTION_FANTASY_CALENDAR_HASH}/dynamic_data`;
-const responseSchema = z.object({
-	current_date: z.object({
-		year: z.number().int(),
-		timespan: z.number().int(),
-		day: z.number().int(),
-	}),
-	current_era: z.string(),
-	epoch_day: z.number().int(),
-});
-
-export type FantasyCalendarFailureCategory =
-	| "network"
-	| "timeout"
-	| "http"
-	| "schema"
-	| "unknown-era"
-	| "date-epoch-disagreement"
-	| "configuration";
-
-export class FantasyCalendarError extends Error {
-	readonly category: FantasyCalendarFailureCategory;
-	attempts: number;
-	elapsedMs: number;
-	readonly status?: number;
-
-	constructor(
-		category: FantasyCalendarFailureCategory,
-		message: string,
-		attempts: number,
-		elapsedMs: number,
-		status?: number,
-	) {
-		super(message);
-		this.name = "FantasyCalendarError";
-		this.category = category;
-		this.attempts = attempts;
-		this.elapsedMs = elapsedMs;
-		if (status !== undefined) this.status = status;
-	}
-}
 
 type FetchLike = (input: string | URL, init?: RequestInit) => Promise<Response>;
 export interface FantasyCalendarFetchOptions {
@@ -191,7 +154,7 @@ export async function fetchFantasyCalendarDate(
 					elapsed(started, now, attempts),
 				);
 			}
-			const parsed = responseSchema.safeParse(raw);
+			const parsed = FantasyCalendarDynamicDataSchema.safeParse(raw);
 			if (!parsed.success)
 				throw new FantasyCalendarError(
 					"schema",
