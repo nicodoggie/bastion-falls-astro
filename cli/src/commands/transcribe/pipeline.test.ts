@@ -6,8 +6,8 @@ import { test } from "node:test";
 
 import { parseAlignmentResult } from "./alignment.js";
 import type { ChannelMap } from "./channelMap.js";
-import type { TranscribeCheckpoint } from "./checkpoint.js";
-import { executeTranscriptionPipeline, sttCacheIdentity } from "./pipeline.js";
+import { parseTranscribeCheckpoint, type ReconciliationMetadata, type TranscribeCheckpointV2, type TranscribeCheckpointV3 } from "./checkpoint.js";
+import { executeTranscriptionPipeline, parseStopAfter, sttCacheIdentity } from "./pipeline.js";
 import type { ResolvedTranscriptionProfile } from "./settings.js";
 import type { TranscribePassRequest } from "./sttBackend.js";
 import type { Manifest } from "./types.js";
@@ -16,17 +16,18 @@ const profile = (layout: "stereo" | "hybrid", name: string = layout, targetName 
   name, layout, target: { name: targetName, provider: "nodejs-whisper", model },
 });
 
-function checkpoint(outDir: string, layout: "stereo" | "hybrid" = "stereo"): TranscribeCheckpoint {
+function checkpoint(outDir: string, layout: "stereo" | "hybrid" = "stereo"): TranscribeCheckpointV3 {
   const now = new Date().toISOString();
   const passes = layout === "stereo" ? ["stereo"] : ["stereo", "left", "right"];
   const available = [0, 1];
-  return { version: 2, updatedAt: now, source: "/source.wav", outDir, sessionDate: "2026-08-12", campaign: "test", profile: layout, layout,
+  const legacy: TranscribeCheckpointV2 = { version: 2, updatedAt: now, source: "/source.wav", outDir, sessionDate: "2026-08-12", campaign: "test", profile: layout, layout,
     stages: {
       normalization: { status: "pending", path: join(outDir, "normalized.flac") },
       audio_chunking: { status: "pending", count: 2, dir: join(outDir, "chunks"), requiredPasses: passes, availableByPass: Object.fromEntries(passes.map((p) => [p, available])) },
       transcribed_chunks: { status: "pending", requiredPasses: passes, completedByPass: Object.fromEntries(passes.map((p) => [p, []])), selection: available, total: 2, rawChunksDir: join(outDir, "raw_chunks"), rawTranscriptionDir: join(outDir, "raw_transcription") },
       joining_raw_transcription: { status: "pending", path: join(outDir, "raw_transcript.md") }, correction_pass: { status: "pending" }, notes_summary_pass: { status: "pending" }, done: { status: "pending" },
     } };
+  return parseTranscribeCheckpoint(legacy);
 }
 
 const manifest: Manifest = {
@@ -46,6 +47,119 @@ const channelMap: ChannelMap = {
 };
 
 function prepared(outDir: string, p: ResolvedTranscriptionProfile, map?: ChannelMap) { return { manifest, profile: p, rawChunksDir: join(outDir, "raw_chunks"), rawTranscriptionDir: join(outDir, "raw_transcription"), chunksDir: join(outDir, "chunks"), source: manifest.source, channelMap: map }; }
+
+function reconciliationMetadata(outDir: string, status: ReconciliationMetadata["status"], token: string): ReconciliationMetadata {
+  const dir = join(outDir, "reconciliation");
+  return {
+    provider: "hermes",
+    mode: "enabled",
+    reconciliationDir: dir,
+    reconciledTranscriptPath: join(outDir, "reconciled_transcript.md"),
+    summaryTranscriptPath: join(outDir, "summary_transcript.md"),
+    reviewQueuePath: join(outDir, "reconciliation_review_queue.md"),
+    schemaVersion: "reconciliation.v1",
+    promptVersion: "reconciliation.prompt.v1",
+    cacheIdentityByChunk: { session_000: token, session_001: `${token}-1` },
+    completedChunkIds: ["session_000", "session_001"],
+    status,
+    summarySafety: { pendingChunkIds: [], bypassChunkIds: [] },
+  };
+}
+
+test("canonicalizes reconciliation stop aliases", () => {
+  assert.equal(parseStopAfter("reconciliation"), "reconciliation");
+  assert.equal(parseStopAfter("correction-review"), "reconciliation");
+  assert.equal(parseStopAfter("correction_review"), "reconciliation");
+  assert.throws(() => parseStopAfter("correction"), /reconciliation/iu);
+});
+
+test("routes reconciliation outcomes, compatibility, and downstream identity changes", async () => {
+  const root = await mkdtemp(join(tmpdir(), "pipeline-reconciliation-"));
+  const dependencies = { nodejsWhisper: async (request: { chunks: Array<{ index: number }> }) => [{ segments: [{ start: 0, end: 1, text: `chunk ${request.chunks[0]!.index}` }] }] };
+  const run = (state: TranscribeCheckpointV3, options: {
+    status?: "valid" | "needs_review" | "invalid" | "skipped";
+    metadataStatus?: ReconciliationMetadata["status"];
+    token?: string;
+    stopAfter?: "reconciliation";
+    notes?: () => Promise<"complete" | "skipped">;
+    compatibility?: boolean;
+  }) => executeTranscriptionPipeline({
+    checkpoint: state,
+    checkpointPath: join(state.outDir, "checkpoint.json"),
+    rawChunksDir: join(state.outDir, "raw_chunks"),
+    rawTranscriptionDir: join(state.outDir, "raw_transcription"),
+    chunksDir: join(state.outDir, "chunks"),
+    source: manifest.source,
+    language: "en",
+    stopAfter: options.stopAfter,
+    dependencies,
+    normalize: async () => undefined,
+    prepareAudio: async () => prepared(state.outDir, profile("stereo")),
+    stages: {
+      rawAssembly: async () => undefined,
+      ...(options.compatibility
+        ? { correctionReview: async () => options.status === "skipped" ? "skipped" as const : "complete" as const }
+        : options.status
+          ? { reconciliation: async () => ({ status: options.status!, metadata: reconciliationMetadata(state.outDir, options.metadataStatus ?? (options.status === "skipped" ? "pending" : options.status!), options.token ?? "cache") }) }
+          : {}),
+      ...(options.notes ? { notes: options.notes } : {}),
+    },
+  });
+
+  try {
+    let notes = 0;
+    const valid = checkpoint(join(root, "valid"));
+    await run(valid, { status: "valid", stopAfter: "reconciliation", notes: async () => { notes += 1; return "complete"; } });
+    assert.equal(valid.stages.reconciliation.status, "complete");
+    assert.equal(valid.stages.reconciliation.metadata.status, "valid");
+    assert.equal(notes, 0);
+
+    const review = checkpoint(join(root, "needs-review"));
+    await run(review, { status: "needs_review", notes: async () => { notes += 1; return "complete"; } });
+    assert.equal(review.stages.reconciliation.status, "complete");
+    assert.equal(review.stages.reconciliation.metadata.status, "needs_review");
+    assert.equal(review.stages.done.status, "complete");
+    assert.equal(notes, 1);
+
+    const invalid = checkpoint(join(root, "invalid"));
+    await assert.rejects(() => run(invalid, { status: "invalid", notes: async () => { notes += 1; return "complete"; } }), /reconciliation failed/iu);
+    assert.equal(invalid.stages.reconciliation.status, "failed");
+    assert.equal(invalid.stages.reconciliation.completedAt, undefined);
+    assert.match(invalid.stages.reconciliation.error ?? "", /validation failed/iu);
+    assert.equal(invalid.stages.notes_summary_pass.status, "pending");
+    assert.equal(notes, 1);
+    const persistedInvalid = JSON.parse(await readFile(join(invalid.outDir, "checkpoint.json"), "utf8"));
+    assert.equal(persistedInvalid.stages.reconciliation.status, "failed");
+    assert.match(persistedInvalid.stages.reconciliation.error, /validation failed/iu);
+
+    const mismatch = checkpoint(join(root, "status-mismatch"));
+    await assert.rejects(
+      () => run(mismatch, { status: "valid", metadataStatus: "invalid", notes: async () => { notes += 1; return "complete"; } }),
+      /status disagrees/iu,
+    );
+    assert.equal(mismatch.stages.notes_summary_pass.status, "pending");
+    assert.equal(notes, 1);
+
+    const disabled = checkpoint(join(root, "disabled"));
+    await run(disabled, { compatibility: true, status: "skipped", notes: async () => "skipped" });
+    assert.equal(disabled.stages.reconciliation.status, "skipped");
+    assert.equal(disabled.stages.reconciliation.metadata.provider, "off");
+    assert.equal(disabled.stages.done.status, "complete");
+
+    const changing = checkpoint(join(root, "identity-change"));
+    let changingNotes = 0;
+    await run(changing, { status: "valid", token: "first", notes: async () => { changingNotes += 1; return "complete"; } });
+    changing.stages.reconciliation.status = "pending";
+    changing.stages.reconciliation.completedAt = undefined;
+    changing.stages.notes_summary_pass.status = "pending";
+    changing.stages.notes_summary_pass.completedAt = undefined;
+    changing.stages.done.status = "pending";
+    changing.stages.done.completedAt = undefined;
+    await run(changing, { status: "valid", token: "second", notes: async () => { changingNotes += 1; return "complete"; } });
+    assert.equal(changingNotes, 2);
+    assert.equal(changing.stages.reconciliation.metadata.cacheIdentityByChunk["session_000"], "second");
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
 
 test("routes a profile prompt into STT requests and cache identity", async () => {
   const outDir = await mkdtemp(join(tmpdir(), "pipeline-profile-prompt-"));
@@ -82,7 +196,7 @@ test("routes a profile prompt into STT requests and cache identity", async () =>
     ["stereo"],
   );
   assert.match(
-    Object.values(state.stages.transcribed_chunks.cacheIdentityByPass ?? {})[0] ?? "",
+    String(Object.values(state.stages.transcribed_chunks.cacheIdentityByPass ?? {})[0] ?? ""),
     /Preserve Tagalog and D&D names\./,
   );
 });
@@ -93,7 +207,7 @@ test("proves the complete staged lifecycle, resume contract, hooks, and cache id
   const hookCalls: string[] = [];
   let energyCalls = 0;
   const dependencies = { nodejsWhisper: async (request: { pass: { id: string }; chunks: Array<{ index: number }> }) => { calls.push(`${request.pass.id}:${request.chunks[0]!.index}`); return [{ segments: [{ start: 0, end: 1, text: `The Monadists ${request.chunks[0]!.index}` }] }]; } };
-  const run = (state: TranscribeCheckpoint, p: ResolvedTranscriptionProfile, stopAfter?: Parameters<typeof executeTranscriptionPipeline>[0]["stopAfter"], stages?: Parameters<typeof executeTranscriptionPipeline>[0]["stages"], selection?: string, map: ChannelMap | undefined = p.layout === "hybrid" ? channelMap : undefined) => executeTranscriptionPipeline({ checkpoint: state, checkpointPath: join(state.outDir, "checkpoint.json"), rawChunksDir: join(state.outDir, "raw_chunks"), rawTranscriptionDir: join(state.outDir, "raw_transcription"), chunksDir: join(state.outDir, "chunks"), source: manifest.source, language: "en", selection, stopAfter, dependencies, measureEnergy: async ({ path }) => { energyCalls += 1; return path.includes("left") ? 9 : 1; }, normalize: async () => { hookCalls.push("normalization"); }, prepareAudio: async () => { hookCalls.push("audio-chunking"); return prepared(state.outDir, p, map); }, stages });
+  const run = (state: TranscribeCheckpointV3, p: ResolvedTranscriptionProfile, stopAfter?: Parameters<typeof executeTranscriptionPipeline>[0]["stopAfter"], stages?: Parameters<typeof executeTranscriptionPipeline>[0]["stages"], selection?: string, map: ChannelMap | undefined = p.layout === "hybrid" ? channelMap : undefined) => executeTranscriptionPipeline({ checkpoint: state, checkpointPath: join(state.outDir, "checkpoint.json"), rawChunksDir: join(state.outDir, "raw_chunks"), rawTranscriptionDir: join(state.outDir, "raw_transcription"), chunksDir: join(state.outDir, "chunks"), source: manifest.source, language: "en", selection, stopAfter, dependencies, measureEnergy: async ({ path }) => { energyCalls += 1; return path.includes("left") ? 9 : 1; }, normalize: async () => { hookCalls.push("normalization"); }, prepareAudio: async () => { hookCalls.push("audio-chunking"); return prepared(state.outDir, p, map); }, stages });
 
   const state = checkpoint(outDir);
   await run(state, profile("stereo"), "normalization");
@@ -175,10 +289,10 @@ test("proves the complete staged lifecycle, resume contract, hooks, and cache id
     run(missingHookState, profile("stereo"), "correction-review", {
       rawAssembly: async () => { hookCalls.push("missing-hook-raw"); },
     }),
-    /correctionReview.*correction-review/i,
+    /stages\.reconciliation.*reconciliation stage/i,
   );
   assert.equal(missingHookState.stages.joining_raw_transcription.status, "complete");
-  assert.equal(missingHookState.stages.correction_pass.status, "pending");
+  assert.equal(missingHookState.stages.reconciliation.status, "pending");
   assert.equal(missingHookState.stages.done.status, "pending");
 
   const missingNotesState = checkpoint(join(outDir, "missing-notes"));
@@ -188,7 +302,8 @@ test("proves the complete staged lifecycle, resume contract, hooks, and cache id
     }),
     /stages\.notes.*stereo notes/i,
   );
-  assert.equal(missingNotesState.stages.correction_pass.status, "complete");
+  assert.equal(missingNotesState.stages.reconciliation.status, "complete");
+  assert.equal(missingNotesState.stages.reconciliation.metadata.provider, "legacy");
   assert.equal(missingNotesState.stages.notes_summary_pass.status, "pending");
   assert.equal(missingNotesState.stages.done.status, "pending");
 
@@ -200,7 +315,7 @@ test("proves the complete staged lifecycle, resume contract, hooks, and cache id
     notes: async () => { correctionCalls.push("notes"); return "complete"; },
   });
   assert.deepEqual(correctionCalls, ["raw-assembly", "correction-review"]);
-  assert.equal(correctionState.stages.correction_pass.status, "complete");
+  assert.equal(correctionState.stages.reconciliation.status, "complete");
   assert.equal(correctionState.stages.notes_summary_pass.status, "pending");
   assert.equal(correctionState.stages.done.status, "pending");
 
@@ -225,7 +340,7 @@ test("proves the complete staged lifecycle, resume contract, hooks, and cache id
   assert.deepEqual(fullCalls, ["raw-assembly", "correction-review", "notes"]);
   assert.equal(fullState.stages.done.status, "complete");
   assert.equal(fullState.updatedAt, fullState.stages.done.completedAt);
-  const persistedFull = JSON.parse(await readFile(join(fullState.outDir, "checkpoint.json"), "utf8")) as TranscribeCheckpoint;
+  const persistedFull = parseTranscribeCheckpoint(JSON.parse(await readFile(join(fullState.outDir, "checkpoint.json"), "utf8")));
   assert.equal(persistedFull.updatedAt, persistedFull.stages.done.completedAt);
   const callsAfterFull = calls.length;
   await run(fullState, profile("stereo"), undefined, {

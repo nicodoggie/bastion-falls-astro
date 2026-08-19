@@ -4,7 +4,7 @@ import { assembleAlignedTranscript, assembleTranscript, formatChunkTranscript } 
 import { alignHybridChunk, parseAlignmentResult, type AlignmentResult } from "./alignment.js";
 import { measureAudioWindowEnergy, normalizeRelativeEnergies } from "./audio.js";
 import { channelMapCompatibilityIssues, type ChannelMap } from "./channelMap.js";
-import { writeTranscribeCheckpoint, type TranscribeCheckpoint } from "./checkpoint.js";
+import { parseTranscribeCheckpoint, ReconciliationMetadataSchema, writeTranscribeCheckpoint, type TranscribeCheckpoint, type TranscribeCheckpointV3, type ReconciliationMetadata } from "./checkpoint.js";
 import { cleanupOpenAiChunk } from "./openAiStt.js";
 import { parseChunkSelection, chunkAudioPathFor, passRawJsonPathFor, passRawMarkdownPathFor, requiredPasses, type TranscriptionPass } from "./passes.js";
 import { transcribePass, type SttBackendDependencies } from "./sttBackend.js";
@@ -18,10 +18,10 @@ export const transcribeStages = [
   "audio-chunking",
   "transcription",
   "raw-assembly",
-  "correction-review",
+  "reconciliation",
   "notes",
 ] as const;
-export type TranscribeStage = typeof transcribeStages[number];
+export type TranscribeStage = typeof transcribeStages[number] | "correction-review" | "correction_review";
 
 const stable = (value: unknown): string => {
   if (Array.isArray(value)) return `[${value.map(stable).join(",")}]`;
@@ -30,6 +30,20 @@ const stable = (value: unknown): string => {
   }
   return JSON.stringify(value);
 };
+
+function legacyReconciliationMetadata(outDir: string, off = false): ReconciliationMetadata {
+  const dir = join(outDir, "reconciliation");
+  return ReconciliationMetadataSchema.parse({ provider: off ? "off" : "legacy", mode: off ? "off" : "legacy", reconciliationDir: dir, reconciledTranscriptPath: join(dir, "reconciled_transcript.md"), summaryTranscriptPath: join(dir, "summary_transcript.md"), reviewQueuePath: join(dir, "reconciliation_review_queue.md"), schemaVersion: "legacy.v2", promptVersion: "legacy.v2", cacheIdentityByChunk: {}, completedChunkIds: [], status: off ? "pending" : "valid", summarySafety: { pendingChunkIds: [], bypassChunkIds: [] } });
+};
+
+function ensureV3Checkpoint(checkpoint: TranscribeCheckpoint): asserts checkpoint is TranscribeCheckpointV3 {
+  const migrated = parseTranscribeCheckpoint(checkpoint);
+  if (migrated !== checkpoint) {
+    if (!Object.isExtensible(checkpoint)) throw new Error("Cannot migrate a non-extensible v2 checkpoint in place.");
+    for (const key of Object.keys(checkpoint)) Reflect.deleteProperty(checkpoint, key);
+    Object.assign(checkpoint, migrated);
+  }
+}
 
 export interface SttCacheIdentityInput {
   manifest: Manifest;
@@ -60,6 +74,7 @@ export function sttCacheIdentity(input: SttCacheIdentityInput): string {
 export function parseStopAfter(value: string | undefined): TranscribeStage | undefined {
   if (value === undefined) return undefined;
   const normalized = value.replace(/_/g, "-");
+  if (normalized === "correction-review") return "reconciliation";
   if ((transcribeStages as readonly string[]).includes(normalized)) return normalized as TranscribeStage;
   throw new Error(`Unsupported --stop-after stage: ${value}. Expected one of ${transcribeStages.join(", ")}`);
 }
@@ -121,6 +136,8 @@ export interface TranscriptionPipelineOptions extends Omit<PreparedPipelineConte
     normalization?: () => Promise<void>;
     audioChunking?: () => Promise<void>;
     rawAssembly?: () => Promise<void>;
+    reconciliation?: () => Promise<{ status: "valid" | "needs_review" | "invalid" | "skipped"; metadata: unknown }>;
+    /** @deprecated use reconciliation */
     correctionReview?: () => Promise<"complete" | "skipped">;
     notes?: () => Promise<"complete" | "skipped">;
   };
@@ -137,6 +154,8 @@ function transcriptionStatus(completed: Record<string, number[]>, available: Rec
 }
 
 export async function executePreparedTranscription(options: TranscriptionPipelineOptions & { manifest: Manifest; profile: ResolvedTranscriptionProfile }): Promise<TranscriptionPipelineResult> {
+  ensureV3Checkpoint(options.checkpoint);
+  if (options.stopAfter === "correction-review" || options.stopAfter === "correction_review") options.stopAfter = "reconciliation";
   if (options.profile.layout === "hybrid" && !options.channelMap) {
     throw new Error("Hybrid transcription requires a valid session channel map.");
   }
@@ -184,8 +203,8 @@ export async function executePreparedTranscription(options: TranscriptionPipelin
     downstreamInvalidated = true;
     options.checkpoint.stages.joining_raw_transcription.status = "pending";
     options.checkpoint.stages.joining_raw_transcription.completedAt = undefined;
-    options.checkpoint.stages.correction_pass.status = "pending";
-    options.checkpoint.stages.correction_pass.completedAt = undefined;
+    options.checkpoint.stages.reconciliation.status = "pending";
+    options.checkpoint.stages.reconciliation.completedAt = undefined;
     options.checkpoint.stages.notes_summary_pass.status = "pending";
     options.checkpoint.stages.notes_summary_pass.completedAt = undefined;
     options.checkpoint.stages.done.status = "pending";
@@ -311,17 +330,46 @@ export async function executePreparedTranscription(options: TranscriptionPipelin
     await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
   }
   if (options.stopAfter === "raw-assembly") return { checkpoint: options.checkpoint, selected, passes };
-  if (options.checkpoint.stages.correction_pass.status === "pending") {
-    if (!options.stages?.correctionReview) {
-      throw new Error("Missing required stages.correctionReview hook for stereo correction-review stage.");
+  if (options.checkpoint.stages.reconciliation.status === "pending") {
+    let result = options.stages?.reconciliation
+      ? await options.stages.reconciliation()
+      : undefined;
+    if (!result && options.stages?.correctionReview) {
+      const legacyStatus = await options.stages.correctionReview();
+      result = {
+        status: legacyStatus === "complete" ? "valid" as const : "skipped" as const,
+        metadata: legacyReconciliationMetadata(options.checkpoint.outDir, legacyStatus === "skipped"),
+      };
     }
-    const correctionStatus = await options.stages.correctionReview();
+    if (!result) throw new Error("Missing required stages.reconciliation hook for reconciliation stage.");
+    const metadata = ReconciliationMetadataSchema.parse(result.metadata);
+    if (result.status === "skipped") {
+      if (metadata.status !== "pending" || !["off", "legacy"].includes(metadata.mode)) throw new Error("Skipped reconciliation requires pending off/legacy metadata.");
+    } else if (metadata.status !== result.status) {
+      throw new Error("Reconciliation result status disagrees with metadata status.");
+    }
+    const previousMetadata = stable(options.checkpoint.stages.reconciliation.metadata);
     options.checkpoint.updatedAt = new Date().toISOString();
-    options.checkpoint.stages.correction_pass.status = correctionStatus;
-    options.checkpoint.stages.correction_pass.completedAt = options.checkpoint.updatedAt;
+    options.checkpoint.stages.reconciliation.metadata = metadata;
+    if (result.status === "invalid") {
+      options.checkpoint.stages.reconciliation.status = "failed";
+      options.checkpoint.stages.reconciliation.error = "Canonical reconciliation validation failed.";
+      options.checkpoint.stages.reconciliation.completedAt = undefined;
+    } else {
+      options.checkpoint.stages.reconciliation.status = result.status === "skipped" ? "skipped" : "complete";
+      options.checkpoint.stages.reconciliation.error = undefined;
+      options.checkpoint.stages.reconciliation.completedAt = options.checkpoint.updatedAt;
+    }
+    if (previousMetadata !== stable(options.checkpoint.stages.reconciliation.metadata)) {
+      options.checkpoint.stages.notes_summary_pass.status = "pending";
+      options.checkpoint.stages.notes_summary_pass.completedAt = undefined;
+      options.checkpoint.stages.done.status = "pending";
+      options.checkpoint.stages.done.completedAt = undefined;
+    }
     await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
+    if (result.status === "invalid") throw new Error("Reconciliation failed; notes were not run.");
   }
-  if (options.stopAfter === "correction-review") return { checkpoint: options.checkpoint, selected, passes };
+  if (options.stopAfter === "reconciliation") return { checkpoint: options.checkpoint, selected, passes };
   if (options.checkpoint.stages.notes_summary_pass.status === "pending") {
     if (!options.stages?.notes) {
       throw new Error("Missing required stages.notes hook for stereo notes stage.");
@@ -349,6 +397,7 @@ export interface TranscriptionLifecycleOptions extends Omit<TranscriptionPipelin
 
 /** Owns the complete normalize → prepare → transcribe → downstream lifecycle. */
 export async function executeTranscriptionPipeline(options: TranscriptionLifecycleOptions): Promise<TranscriptionPipelineResult> {
+  ensureV3Checkpoint(options.checkpoint);
   await options.normalize();
   options.checkpoint.updatedAt = new Date().toISOString();
   options.checkpoint.stages.normalization.status = "complete";
