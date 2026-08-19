@@ -40,7 +40,7 @@ export interface SyncCalendarStateOptions {
 
 export interface CalendarSyncResult {
 	readonly changed: boolean;
-	readonly current: SerializedCalendarState;
+	readonly current?: SerializedCalendarState;
 	readonly proposed: SerializedCalendarState;
 }
 
@@ -94,6 +94,15 @@ function preview(label: string, state: SerializedCalendarState): string {
 	return `${label}\n${JSON.stringify(stable(state), null, 2)}`;
 }
 
+function isMissingFallback(error: unknown): boolean {
+	return (
+		typeof error === "object" &&
+		error !== null &&
+		"code" in error &&
+		(error as { code?: unknown }).code === "ENOENT"
+	);
+}
+
 async function defaultRead(path: string): Promise<unknown> {
 	const { readFile } = await import("node:fs/promises");
 	return JSON.parse(await readFile(path, "utf8"));
@@ -144,11 +153,16 @@ export async function syncCalendarState(
 				retries: settings.retries,
 			}),
 	);
-	const raw = await read(paths.fallbackPath);
-	const current = parseCalendarState(
-		bastionCalendar,
-		typeof raw === "string" ? JSON.parse(raw) : raw,
-	);
+	let current: SerializedCalendarState | undefined;
+	try {
+		const raw = await read(paths.fallbackPath);
+		current = parseCalendarState(
+			bastionCalendar,
+			typeof raw === "string" ? JSON.parse(raw) : raw,
+		);
+	} catch (error) {
+		if (!isMissingFallback(error)) throw error;
+	}
 	const date = await fetchLive({
 		timeoutMs: settings.timeoutMs,
 		retries: settings.retries,
@@ -166,12 +180,17 @@ export async function syncCalendarState(
 		{ source: "live" },
 	);
 	const changed =
+		current === undefined ||
 		canonical(current, false) !== canonical(proposed, false) ||
 		(refreshMetadata &&
 			(current.retrievedAt !== proposed.retrievedAt ||
 				canonical(current, true) !== canonical(proposed, true)));
 	if (changed) {
-		emit(preview("Current committed state", current));
+		emit(
+			current === undefined
+				? "Current committed state\n(missing)"
+				: preview("Current committed state", current),
+		);
 		emit(preview("Proposed remote state", proposed));
 		await write(paths.fallbackPath, proposed);
 	}

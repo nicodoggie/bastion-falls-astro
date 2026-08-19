@@ -926,9 +926,12 @@ Supported flags are `--timeout-ms`, `--retries`, `--offline` on resolve and `--t
 
 Assert changed remote state updates the tracked snapshot atomically, unchanged canonical state
 leaves bytes unchanged, `--refresh-metadata` permits timestamp-only refresh, and all
-retrieval/validation failures preserve the original bytes. Capture command output and assert that a
-changed sync prints labeled `Current committed state` and `Proposed remote state` records before the
-atomic writer is invoked.
+retrieval/validation failures preserve the original bytes. On the first sync, a missing fallback
+(`ENOENT` only) is a valid bootstrap state: fetch and validate the live date, preview labeled
+`Current committed state` with `(missing)` followed by `Proposed remote state`, then create
+`astro/src/data/bastion-calendar-state.json` through the same atomic writer. The sync result exposes
+an absent `current` value for this case; malformed, unreadable, or other fallback-read errors fail
+before fetch/write. Capture both labeled records before the atomic writer is invoked.
 
 - [ ] **Step 2: Implement Stricli route map and handlers**
 
@@ -958,8 +961,9 @@ pnpm -F @bastion-falls/cli test
 pnpm -F @bastion-falls/cli typecheck
 ```
 
-Before the committed fallback exists, the first command is expected to fail clearly with a missing
-fallback message; help, tests, and typecheck must pass.
+The first command is expected to create the committed fallback when it is absent, after printing the
+truthful missing-state preview. Subsequent commands compare against that committed state.
+Help, tests, and typecheck must pass.
 
 **Suggested commit:** `feat(cli): add calendar resolve and sync commands`
 

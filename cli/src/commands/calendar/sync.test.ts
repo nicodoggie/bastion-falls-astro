@@ -53,6 +53,33 @@ function harness(overrides: Record<string, unknown> = {}) {
 	};
 }
 
+test("missing fallback bootstraps after previewing absence then proposed state", async () => {
+	const h = harness({
+		readFallback: async () => {
+			const error = new Error("missing fallback") as NodeJS.ErrnoException;
+			error.code = "ENOENT";
+			throw error;
+		},
+	});
+	let fetches = 0;
+	const originalFetch = h.options.fetchLive;
+	h.options.fetchLive = async () => {
+		fetches += 1;
+		return originalFetch();
+	};
+
+	const result = await syncCalendarState(h.options);
+	assert.equal(fetches, 1);
+	assert.deepEqual(
+		h.output.map((line) => line.split("\n")[0]),
+		["Current committed state", "Proposed remote state"],
+	);
+	assert.equal(h.output[0]?.includes("(missing)"), true);
+	assert.equal(h.writes.length, 1);
+	assert.equal(result.current, undefined);
+	assert.deepEqual(result.proposed, h.writes[0]);
+});
+
 test("changed remote state previews current then proposed before atomic write", async () => {
 	const h = harness();
 	const result = await syncCalendarState(h.options);
@@ -171,6 +198,38 @@ test("read, fetch, validation, preview, and write failures preserve the snapshot
 		const h = harness(overrides);
 		await assert.rejects(syncCalendarState(h.options));
 		assert.equal(h.writes.length, 0);
+	}
+});
+
+test("unreadable or malformed existing fallback fails before fetch or write", async () => {
+	for (const readFallback of [
+		async () => {
+			const error = new Error("permission denied") as NodeJS.ErrnoException;
+			error.code = "EACCES";
+			throw error;
+		},
+		async () => ({ nope: true }),
+	]) {
+		let fetches = 0;
+		let writes = 0;
+		const h = harness({
+			readFallback,
+			fetchLive: async () => {
+				fetches += 1;
+				return bastionCalendar.dateFrom({
+					era: "AI",
+					year: 1,
+					month: 1,
+					day: 2,
+				});
+			},
+			writeSnapshot: async () => {
+				writes += 1;
+			},
+		});
+		await assert.rejects(syncCalendarState(h.options));
+		assert.equal(fetches, 0);
+		assert.equal(writes, 0);
 	}
 });
 
