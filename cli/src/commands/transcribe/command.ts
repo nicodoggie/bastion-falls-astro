@@ -21,7 +21,7 @@ import {
 } from "./audio.js";
 import { measureAudioWindowEnergy } from "./audio.js";
 import { loadChannelMap } from "./channelMap.js";
-import { buildHybridCorrectionContext, isAlignmentArtifactName, parseAlignmentResult } from "./alignment.js";
+import { buildHybridCorrectionContext, isAlignmentArtifactName, parseAlignmentResult, type AlignmentResult } from "./alignment.js";
 import {
   getCheckpointPath,
   readTranscribeCheckpoint,
@@ -52,7 +52,7 @@ import { getNotesPath } from "./notes.js";
 import { runOllamaHierarchicalNotes } from "./ollamaNotes.js";
 import { runHermesTranscriptReview } from "./hermesReview.js";
 import { resolveTranscriptionProfile } from "./settings.js";
-import { parseChunkSelection, requiredPasses, chunkAudioPathFor } from "./passes.js";
+import { parseChunkSelection, requiredPasses, chunkAudioPathFor, passRawJsonPathFor } from "./passes.js";
 import { executeTranscriptionPipeline, parseStopAfter, transcribeStages, type TranscribeStage } from "./pipeline.js";
 import {
   resolveFromCwd,
@@ -60,8 +60,13 @@ import {
 } from "./sessionPaths.js";
 import {
   parseReviewProvider,
+  parseReconciliationProvider,
+  parseLogicalChunks,
   resolveReviewSettings,
+  resolveReconciliationSettings,
   type ReviewProvider,
+  type ReconciliationProvider,
+  type LogicalChunks,
 } from "./reviewSettings.js";
 import {
   canReusePassAudioChunks,
@@ -71,13 +76,20 @@ import {
   shouldOverwritePreparedAudio,
   shouldOverwritePreparedChannels,
 } from "./resume.js";
+import { stableHash } from "./reconciliationEvidence.js";
+import {
+  hashFileSha256,
+  runUnifiedReconciliationStage,
+  runUnifiedStructuredNotes,
+  type UnifiedStageOptions,
+} from "./reconciliationIntegration.js";
 import { detectSilences, trimChunksToSpeech } from "./silence.js";
 import {
   defaultSttBackend,
   parseSttBackend,
   type SttBackend,
 } from "./sttBackend.js";
-import type { ChunkTranscript, Manifest } from "./types.js";
+import { parseChunkTranscript, type ChunkTranscript, type Manifest } from "./types.js";
 
 type NotesBackend = "codex" | "ollama";
 
@@ -112,8 +124,15 @@ interface TranscribeFlags {
   "skip-summary-cleanup"?: boolean;
   "skip-notes"?: boolean;
   review?: ReviewProvider;
+  reconciliation?: ReconciliationProvider;
+  "reconciliation-provider"?: ReconciliationProvider;
+  "reconciliation-logical-chunks"?: LogicalChunks;
+  "reconciliation-hermes-profile"?: string;
+  "reconciliation-hermes-max-turns"?: number;
+  "reconciliation-prompt-version"?: string;
+  "reconciliation-schema-version"?: string;
   "hermes-profile"?: string;
-  "hermes-max-turns": number;
+  "hermes-max-turns"?: number;
   "notes-backend": NotesBackend;
   "notes-model": string;
   "ollama-url": string;
@@ -321,9 +340,16 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
   review: {
     kind: "parsed",
     parse: parseReviewProvider,
-    brief: "Transcript review provider: hermes or off; overrides project config",
+    brief: "Deprecated compatibility alias; use --reconciliation",
     optional: true,
   },
+  reconciliation: { kind: "parsed", parse: parseReconciliationProvider, brief: "Canonical reconciliation provider: hermes, legacy, or off", optional: true },
+  "reconciliation-provider": { kind: "parsed", parse: parseReconciliationProvider, brief: "Alias for --reconciliation", optional: true },
+  "reconciliation-logical-chunks": { kind: "parsed", parse: parseLogicalChunks, brief: "Logical layout: single, per-stt-chunk, or three", optional: true },
+  "reconciliation-hermes-profile": { kind: "parsed", parse: String, brief: "Hermes reconciliation profile", optional: true },
+  "reconciliation-hermes-max-turns": { kind: "parsed", parse: parsePositiveInteger, brief: "Hermes reconciliation maximum turns", optional: true },
+  "reconciliation-prompt-version": { kind: "parsed", parse: String, brief: "Reconciliation prompt version", optional: true },
+  "reconciliation-schema-version": { kind: "parsed", parse: String, brief: "Reconciliation schema version", optional: true },
   "hermes-profile": {
     kind: "parsed",
     parse: String,
@@ -334,7 +360,7 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
     kind: "parsed",
     parse: parsePositiveInteger,
     brief: "Maximum Hermes tool iterations for each reviewed transcript chunk",
-    default: "12",
+    optional: true,
   },
   "notes-backend": {
     kind: "parsed",
@@ -395,6 +421,19 @@ function assertSessionDate(value: string): void {
   }
 }
 
+function evidenceLines(value: string): string[] {
+  const lines: string[] = [];
+  for (const raw of value.split(/\r?\n/u)) {
+    const line = raw.trim();
+    if (!line) continue;
+    for (let offset = 0; offset < line.length; offset += 2_000) {
+      lines.push(line.slice(offset, offset + 2_000));
+      if (lines.length > 20_000) throw new Error("Evidence context exceeds reconciliation bounds.");
+    }
+  }
+  return lines;
+}
+
 
 function baseCheckpoint(options: {
   source: string;
@@ -415,10 +454,11 @@ function baseCheckpoint(options: {
   requiredPassIds: string[];
   availableByPass: Record<string, number[]>;
   selection: number[];
+  reconciliation: { provider: ReconciliationProvider; logicalChunks: LogicalChunks; hermesProfile: string; hermesMaxTurns: number; promptVersion: string; schemaVersion: string };
 }): TranscribeCheckpoint {
   const now = new Date().toISOString();
   return {
-    version: 2,
+    version: 3,
     updatedAt: now,
     source: options.source,
     outDir: options.outDir,
@@ -451,10 +491,21 @@ function baseCheckpoint(options: {
         status: "pending",
         path: options.rawTranscriptPath,
       },
-      correction_pass: {
+      reconciliation: {
         status: "pending",
-        correctedTranscriptPath: options.correctedTranscriptPath,
-        correctionNotesPath: options.correctionNotesPath,
+        metadata: {
+          provider: options.reconciliation.provider,
+          mode: options.reconciliation.provider === "off" ? "off" : options.reconciliation.provider === "legacy" ? "legacy" : "enabled",
+          reconciliationDir: join(options.outDir, "reconciliation"),
+          reconciledTranscriptPath: join(options.outDir, "reconciled_transcript.md"),
+          summaryTranscriptPath: join(options.outDir, "summary_transcript.md"),
+          reviewQueuePath: join(options.outDir, "reconciliation_review_queue.md"),
+          schemaVersion: options.reconciliation.schemaVersion,
+          promptVersion: options.reconciliation.promptVersion,
+          cacheIdentityByChunk: {}, completedChunkIds: [], status: "pending",
+          summarySafety: { pendingChunkIds: [], bypassChunkIds: [] },
+        },
+        ...(options.reconciliation.provider === "legacy" ? { compatibility: { correctionPass: { status: "pending", correctedTranscriptPath: options.correctedTranscriptPath, correctionNotesPath: options.correctionNotesPath } } } : {}),
       },
       notes_summary_pass: {
         status: "pending",
@@ -507,14 +558,15 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
     if (effectiveProfile.layout === "hybrid" && !authoritativeChannelMap) {
       throw new Error(`Hybrid transcription requires a valid session channel map at ${channelMapPath}.`);
     }
-    const reviewSettings = resolveReviewSettings(
-      transcribeConfig["review"],
-      {
-        provider: flags.review,
-        hermesProfile: flags["hermes-profile"],
-        hermesMaxTurns: flags["hermes-max-turns"],
-      },
+    const legacyAliasConfig = flags.review === undefined
+      ? transcribeConfig["review"]
+      : { provider: flags.review, hermes: { profile: flags["hermes-profile"], maxTurns: flags["hermes-max-turns"] } };
+    const reconciliationSettings = resolveReconciliationSettings(
+      transcribeConfig["reconciliation"],
+      { provider: flags.reconciliation ?? flags["reconciliation-provider"], logicalChunks: flags["reconciliation-logical-chunks"], hermesProfile: flags["reconciliation-hermes-profile"] ?? flags["hermes-profile"], hermesMaxTurns: flags["reconciliation-hermes-max-turns"] ?? flags["hermes-max-turns"], promptVersion: flags["reconciliation-prompt-version"], schemaVersion: flags["reconciliation-schema-version"] },
+      legacyAliasConfig,
     );
+    const legacyReviewSettings = resolveReviewSettings(transcribeConfig["review"], { provider: flags.review, hermesProfile: flags["hermes-profile"], hermesMaxTurns: flags["hermes-max-turns"] });
     const notesPath = getNotesPath({
       contextRoot,
       campaign: flags.campaign,
@@ -621,6 +673,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
       selection: existingManifest
         ? parseChunkSelection(flags.chunks, initialAvailable)
         : [],
+      reconciliation: reconciliationSettings,
     });
     if (existingCheckpoint && existingManifest) {
       checkpoint.stages.transcribed_chunks.completedByPass = Object.fromEntries(
@@ -635,10 +688,33 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
       if (previousRaw.status === "complete" && previousRaw.path && await exists(previousRaw.path)) {
         checkpoint.stages.joining_raw_transcription = previousRaw;
       }
-      const previousCorrection = existingCheckpoint.stages.correction_pass;
-      if (previousCorrection.status === "skipped" ||
-          (previousCorrection.status === "complete" && previousCorrection.finalTranscriptPath && await exists(previousCorrection.finalTranscriptPath))) {
-        checkpoint.stages.correction_pass = previousCorrection;
+      const previousReconciliation = existingCheckpoint.stages.reconciliation;
+      const expectedMode = reconciliationSettings.provider === "off" ? "off" : reconciliationSettings.provider === "legacy" ? "legacy" : "enabled";
+      const reconciliationSettingsMatch =
+        previousReconciliation.metadata.provider === reconciliationSettings.provider &&
+        previousReconciliation.metadata.mode === expectedMode &&
+        previousReconciliation.metadata.promptVersion === reconciliationSettings.promptVersion &&
+        previousReconciliation.metadata.schemaVersion === reconciliationSettings.schemaVersion;
+      const canonicalArtifactsExist = reconciliationSettingsMatch &&
+        (await Promise.all(previousReconciliation.metadata.completedChunkIds.map((id) =>
+          exists(join(previousReconciliation.metadata.reconciliationDir, `${id}.json`))))).every(Boolean);
+      const joinedArtifactsExist = (await Promise.all([
+        exists(previousReconciliation.metadata.reconciledTranscriptPath),
+        exists(previousReconciliation.metadata.reviewQueuePath),
+        previousReconciliation.metadata.summarySafety.pendingChunkIds.length === 0
+          ? exists(previousReconciliation.metadata.summaryTranscriptPath)
+          : Promise.resolve(false),
+      ])).every(Boolean);
+      const legacyFinalTranscript = previousReconciliation.compatibility?.correctionPass.finalTranscriptPath;
+      const legacyArtifactsExist = previousReconciliation.metadata.mode === "legacy" &&
+        previousReconciliation.status === "complete" &&
+        Boolean(legacyFinalTranscript) &&
+        await exists(legacyFinalTranscript!);
+      const directStageReuseAllowed = reconciliationSettings.provider !== "hermes";
+      if ((directStageReuseAllowed && reconciliationSettingsMatch && previousReconciliation.status === "skipped") ||
+          (directStageReuseAllowed && reconciliationSettingsMatch && previousReconciliation.status === "complete" && canonicalArtifactsExist && joinedArtifactsExist) ||
+          (reconciliationSettingsMatch && legacyArtifactsExist)) {
+        checkpoint.stages.reconciliation = previousReconciliation;
       }
       const previousNotes = existingCheckpoint.stages.notes_summary_pass;
       if (previousNotes.status === "skipped" ||
@@ -647,7 +723,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
       }
       if (existingCheckpoint.stages.done.status === "complete" &&
           checkpoint.stages.joining_raw_transcription.status === "complete" &&
-          ["complete", "skipped"].includes(checkpoint.stages.correction_pass.status) &&
+          ["complete", "skipped"].includes(checkpoint.stages.reconciliation.status) &&
           ["complete", "skipped"].includes(checkpoint.stages.notes_summary_pass.status)) {
         checkpoint.stages.done = existingCheckpoint.stages.done;
       }
@@ -876,7 +952,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
         outDir,
       });
       if (flags["skip-correction"]) {
-        checkpoint.stages.correction_pass = { status: "pending" };
+        checkpoint.stages.reconciliation.status = "pending";
         return "skipped";
       }
 
@@ -898,7 +974,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
       correctionNotesForNotes = correctionNotesPath;
       correctionNotesChunksForNotes = correctionNotesChunksDirFor(outDir);
 
-      if (reviewSettings.provider === "hermes") {
+      if (legacyReviewSettings.provider === "hermes") {
         this.process.stdout.write("Running Hermes transcript reconciliation\n");
         const reviewPaths = await runHermesTranscriptReview({
           cwd,
@@ -910,8 +986,8 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
           outDir,
           reconciledTranscriptPath,
           reviewNotesPath: hermesReviewNotesPath,
-          profile: reviewSettings.hermesProfile,
-          maxTurns: reviewSettings.hermesMaxTurns,
+          profile: legacyReviewSettings.hermesProfile,
+          maxTurns: legacyReviewSettings.hermesMaxTurns,
           resume: shouldResume,
           force: Boolean(flags.force),
           onProgress: (message) => this.process.stdout.write(message),
@@ -922,23 +998,117 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
         correctionNotesChunksForNotes = reviewPaths.reviewNotesChunksDir;
       }
 
-      checkpoint.stages.correction_pass = {
-        status: "pending",
-        correctedTranscriptPath,
-        correctionNotesPath,
-        reviewProvider: reviewSettings.provider,
-        reconciledTranscriptPath:
-          reviewSettings.provider === "hermes"
-            ? reconciledTranscriptPath
-            : undefined,
-        hermesReviewNotesPath:
-          reviewSettings.provider === "hermes"
-            ? hermesReviewNotesPath
-            : undefined,
-        finalTranscriptPath: transcriptForNotes,
-        finalCorrectionNotesPath: correctionNotesForNotes,
+      checkpoint.stages.reconciliation.compatibility = {
+        correctionPass: {
+          status: "pending",
+          correctedTranscriptPath,
+          correctionNotesPath,
+          reviewProvider: legacyReviewSettings.provider,
+          reconciledTranscriptPath: legacyReviewSettings.provider === "hermes" ? reconciledTranscriptPath : undefined,
+          hermesReviewNotesPath: legacyReviewSettings.provider === "hermes" ? hermesReviewNotesPath : undefined,
+          finalTranscriptPath: transcriptForNotes,
+          finalCorrectionNotesPath: correctionNotesForNotes,
+        },
       };
       return "complete";
+    };
+
+    let unifiedStageResult: Awaited<ReturnType<typeof runUnifiedReconciliationStage>> | undefined;
+    let unifiedStageOptionsPromise: Promise<UnifiedStageOptions> | undefined;
+    const getUnifiedStageOptions = (): Promise<UnifiedStageOptions> => {
+      unifiedStageOptionsPromise ??= (async () => {
+        const currentManifest = await readManifest(manifestPath);
+        if (!currentManifest) throw new Error(`Unified reconciliation requires a valid manifest at ${manifestPath}.`);
+        const alignments: Record<number, AlignmentResult> = {};
+        for (const chunk of currentManifest.chunks) {
+          const alignmentPath = join(rawTranscriptionDir, "alignment", `session_${String(chunk.index).padStart(3, "0")}.json`);
+          if (await exists(alignmentPath)) {
+            alignments[chunk.index] = parseAlignmentResult(JSON.parse(await readFile(alignmentPath, "utf8")) as unknown);
+            continue;
+          }
+          if (effectiveProfile.layout === "hybrid") {
+            throw new Error(`Unified reconciliation requires alignment evidence at ${alignmentPath}.`);
+          }
+          const stereoPass = { kind: "stereo", id: "stereo" } as const;
+          const transcript = parseChunkTranscript(JSON.parse(await readFile(passRawJsonPathFor(rawChunksDir, stereoPass, chunk.index), "utf8")) as unknown);
+          alignments[chunk.index] = parseAlignmentResult({
+            version: 1,
+            events: transcript.segments.map((segment) => ({
+              text: segment.text,
+              sourcePass: "stereo",
+              globalStart: chunk.overlapStart + segment.start,
+              globalEnd: chunk.overlapStart + segment.end,
+              ...(segment.confidence === undefined ? {} : { confidence: segment.confidence }),
+              alternatives: [],
+            })),
+          });
+        }
+        const correctionRules = await getCorrectionRules();
+        const glossaryPath = await writeGlossary({ contextRoot, campaign: flags.campaign, outDir });
+        const glossary = evidenceLines(await readFile(glossaryPath, "utf8"));
+        const correctionRuleLines = evidenceLines(correctionRules);
+        const evidenceRevision = stableHash({
+          correctionRules: correctionRuleLines,
+          glossary,
+          channelMap: authoritativeChannelMap ?? null,
+          reconciliation: reconciliationSettings,
+        });
+        return {
+          rootDir: outDir,
+          repositoryCwd: cwd,
+          manifest: currentManifest,
+          layout: reconciliationSettings.logicalChunks,
+          alignments,
+          sourceHash: await hashFileSha256(audioPath),
+          evidenceRevision,
+          provider: {
+            provider: "hermes",
+            model: "hermes-chat",
+            profile: reconciliationSettings.hermesProfile,
+          },
+          profile: reconciliationSettings.hermesProfile,
+          maxTurns: reconciliationSettings.hermesMaxTurns,
+          correctionRules: correctionRuleLines,
+          glossary,
+          channelMap: authoritativeChannelMap,
+          campaign: flags.campaign,
+          sessionDate: flags["session-date"],
+          promptVersion: reconciliationSettings.promptVersion,
+          schemaVersion: reconciliationSettings.schemaVersion,
+          resume: shouldResume,
+          force: Boolean(flags.force),
+        };
+      })();
+      return unifiedStageOptionsPromise;
+    };
+
+    const reconciliationStage = async (): Promise<{ status: "valid" | "needs_review" | "invalid" | "skipped"; metadata: unknown }> => {
+      if (reconciliationSettings.provider === "off") {
+        checkpoint.stages.reconciliation.metadata = { ...checkpoint.stages.reconciliation.metadata, provider: "off", mode: "off", status: "pending" };
+        return { status: "skipped", metadata: checkpoint.stages.reconciliation.metadata };
+      }
+      if (reconciliationSettings.provider === "legacy") {
+        const status = await correctionReview();
+        const metadata = { ...checkpoint.stages.reconciliation.metadata, provider: "legacy" as const, mode: "legacy" as const, status: status === "complete" ? "valid" as const : "pending" as const };
+        return { status: status === "complete" ? "valid" : "skipped", metadata };
+      }
+      this.process.stdout.write("Running unified Hermes reconciliation\n");
+      try {
+        unifiedStageResult = await runUnifiedReconciliationStage(await getUnifiedStageOptions());
+        return { status: unifiedStageResult.status, metadata: unifiedStageResult.metadata };
+      } catch {
+        const metadata = {
+          ...checkpoint.stages.reconciliation.metadata,
+          provider: "hermes" as const,
+          mode: "enabled" as const,
+          status: "invalid" as const,
+          cacheIdentityByChunk: {},
+          completedChunkIds: [],
+          summarySafety: { pendingChunkIds: [], bypassChunkIds: [] },
+        };
+        this.process.stderr.write("Unified reconciliation failed; inspect private diagnostics before retrying.\n");
+        return { status: "invalid", metadata };
+      }
     };
 
     const notes = async (): Promise<"complete" | "skipped"> => {
@@ -957,6 +1127,33 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
         outDir,
         maxFiles: 40,
       });
+      if (reconciliationSettings.provider === "hermes") {
+        unifiedStageResult ??= await runUnifiedReconciliationStage({
+          ...(await getUnifiedStageOptions()),
+          resume: true,
+          force: false,
+        });
+        this.process.stdout.write(`Generating structured reconciliation notes at ${notesPath}\n`);
+        await runUnifiedStructuredNotes({
+          outputRoot: outDir,
+          chunks: unifiedStageResult.chunks,
+          jobs: unifiedStageResult.jobs,
+          notePath: notesPath,
+          summarization: {
+            repositoryCwd: cwd,
+            providerIdentity: { provider: "codex", model: "codex" },
+            promptVersion: "summary.reconciliation.v1",
+            campaignContext: buildContextExcerpt(contextFiles),
+            correctionRules: evidenceLines(correctionRules),
+            campaign: flags.campaign,
+            sessionDate: flags["session-date"],
+            sceneGroupSize: flags["summary-scene-size"],
+            resume: shouldResume,
+            force: Boolean(flags.force),
+          },
+        });
+        return "complete";
+      }
       if (flags["notes-backend"] === "ollama") {
         await runOllamaHierarchicalNotes({
           campaign: flags.campaign,
@@ -1038,7 +1235,8 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
       dependencies: { nodejsWhisper: localRunner, fasterWhisper: localRunner },
       onProgress: (message) => this.process.stdout.write(message),
       stages: {
-        correctionReview,
+        reconciliation: reconciliationStage,
+        correctionReview: reconciliationSettings.provider === "legacy" ? correctionReview : undefined,
         notes,
       },
     });

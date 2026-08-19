@@ -45,8 +45,9 @@ transcribe:
       model: nemotron-native
       timeoutSeconds: 900
       retries: 2
-  review:
+  reconciliation:
     provider: hermes
+    logicalChunks: single
     hermes:
       profile: default
 
