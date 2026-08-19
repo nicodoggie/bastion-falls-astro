@@ -5,6 +5,11 @@ import type {
   CharacterOrganization,
 } from "@bastion-falls/types/Character";
 import { slug } from "github-slugger";
+import { BastionNow } from "../../lib/bastion-now";
+import {
+  canResolveCharacterAge,
+  resolveCharacterAge,
+} from "../../lib/character-age";
 import CharacterPcStats from "./CharacterPcStats.astro";
 import CharacterSexOrgans from "./CharacterSexOrgans.astro";
 import SidebarCard from "./SidebarCard.astro";
@@ -12,6 +17,12 @@ import SidebarDetail from "./SidebarDetail.astro";
 import SidebarMedia from "./SidebarMedia.astro";
 
 const { character, filePath } = Astro.props;
+
+const details = character.details;
+let displayAge = details?.age;
+if (details !== undefined && canResolveCharacterAge(details)) {
+  displayAge = resolveCharacterAge(details, BastionNow.date());
+}
 
 let mortalityIcon: string;
 switch (character.details.mortality) {
@@ -147,8 +158,8 @@ if (character?.relationships?.families) {
   )}
   <CharacterPcStats character={character} />
   <dl class="divide-y divide-gray-200 dark:divide-gray-700">
-    {character.details?.age && (
-          <SidebarDetail label="Age">{character.details.age}</SidebarDetail>
+    {displayAge !== undefined && (
+          <SidebarDetail label="Age">{displayAge}</SidebarDetail>
         )}
     {character.details?.dateOfBirth && (
           <SidebarDetail label="Date of Birth">
