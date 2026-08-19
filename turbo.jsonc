@@ -48,7 +48,12 @@
     },
     "@bastion-falls/astro#build": {
       "cache": false,
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "@bastion-falls/cli#build"],
+      "passThroughEnv": [
+        "BASTION_CALENDAR_OFFLINE",
+        "BASTION_CALENDAR_FETCH_TIMEOUT_MS",
+        "BASTION_CALENDAR_FETCH_RETRIES",
+      ],
       "outputs": [".astro/**", "dist/**"],
     },
     "build": {

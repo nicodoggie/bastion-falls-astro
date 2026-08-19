@@ -1004,25 +1004,34 @@ Add:
 
 ```json
 "calendar:resolve": "_REAL_CWD=$INIT_CWD pnpm -F @bastion-falls/cli run exec calendar resolve",
-"calendar:prepare": "pnpm -F @bastion-falls/calendar build && pnpm -F @bastion-falls/fantasy-calendar build && pnpm run calendar:resolve",
+"calendar:prepare": "if [ -n \"$TURBO_HASH\" ]; then pnpm run calendar:resolve; else pnpm -F @bastion-falls/calendar build && pnpm -F @bastion-falls/fantasy-calendar build && pnpm run calendar:resolve; fi",
 "predev": "pnpm run calendar:prepare",
 "prestart": "pnpm run calendar:prepare",
 "prebuild": "pnpm run calendar:prepare"
 ```
 
-The explicit calendar build prevents direct package-scoped Astro dev/build from racing an unbuilt
-workspace dependency. Root Turbo builds may do redundant tiny-package work, but correctness takes
-priority; measure before optimizing it away.
+The explicit calendar and Fantasy Calendar adapter builds prevent direct package-scoped Astro
+dev/build from racing unbuilt workspace dependencies. Under Turbo, `TURBO_HASH` selects the
+resolve-only branch because the Astro task explicitly depends on the CLI build, which already builds
+both workspace dependencies. This avoids nested package cleans racing concurrent Turbo tasks.
 
 Add an explicit Turbo task so a cached Astro build can never bypass live date resolution:
 
 ```json
 "@bastion-falls/astro#build": {
   "cache": false,
-  "dependsOn": ["^build"],
+  "dependsOn": ["^build", "@bastion-falls/cli#build"],
+  "passThroughEnv": [
+    "BASTION_CALENDAR_OFFLINE",
+    "BASTION_CALENDAR_FETCH_TIMEOUT_MS",
+    "BASTION_CALENDAR_FETCH_RETRIES"
+  ],
   "outputs": [".astro/**", "dist/**"]
 }
 ```
+
+Turbo's strict environment mode must pass the calendar settings through to the Astro task so an
+explicit offline root build cannot silently perform a live fetch.
 
 Disabling the site build cache is deliberate. The remote campaign date is an external input Turbo
 cannot hash before deciding whether to run `prebuild`; caching this task would silently skip the
