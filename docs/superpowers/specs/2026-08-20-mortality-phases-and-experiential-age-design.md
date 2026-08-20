@@ -217,6 +217,19 @@ a hover-only popover.
 The approved presentation is an inline disclosure directly beneath the Age row. It does not add a
 separate always-visible Mortality section and does not use a floating popover.
 
+An authored Age override receives no badge, asterisk, or other marker in the collapsed row. The
+override becomes potentially surprising only after the reader expands phase history, so its
+explanation appears inside that disclosure:
+
+- when a complete phase-derived age differs, state that the authored age overrides the calculated
+  value;
+- when it matches, state that the authored age agrees with the recorded phases;
+- when phases cannot derive a complete age, state that Age is authored because the phase history is
+  incomplete.
+
+The explanation is informational rather than an error warning. It does not describe an intentional
+override as invalid or force the phase history to agree with it.
+
 Example expanded Narmaya presentation:
 
 ```text
@@ -282,7 +295,7 @@ The migration is content-wide but mechanical for ordinary characters:
 - living/unknown with DOB: one open `birth` phase;
 - dead with DOB/DOD: one closed `birth` phase;
 - records with partial dates preserve those strings unchanged;
-- authored age remains where phase evidence is insufficient;
+- intentional authored age overrides remain whether or not phase evidence is complete;
 - flat date and mortality fields are removed once represented by the object.
 
 The four known undead/current-or-historical cases receive adjudicated migrations:
