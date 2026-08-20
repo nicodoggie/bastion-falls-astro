@@ -33,6 +33,12 @@ test("prompt marks neighbors context-only and owns only the packet window", () =
   assert.match(prompt, /context-only/iu);
   assert.match(prompt, /session_000/iu);
   assert.match(prompt, /read-only/iu);
+  assert.match(prompt, /complete output contract/iu);
+  assert.match(prompt, /materialCorrections/iu);
+  assert.match(prompt, /characterConfidence.*confirmed.*probable.*unknown/isu);
+  assert.match(prompt, /expectedCharacters.*candidate.*not.*proof/iu);
+  assert.match(prompt, /channel.*physicalSpeaker.*supplied.*evidence/isu);
+  assert.match(prompt, /do not search the repository for schemas/iu);
   assert.doesNotMatch(prompt, /emit neighboring events/iu);
 });
 
@@ -122,7 +128,9 @@ test("pending summary-safe text is persisted before fallback and exact block map
 
 test("semantic echo accepts reordered keys and hard-invalid unknown events", () => {
   const reordered = JSON.parse(JSON.stringify(response())); reordered.chunk = { end: 2, id: "session_000", start: 0 }; reordered.cacheIdentity = Object.fromEntries(Object.entries(packet.cacheIdentity).reverse());
-  assert.equal(validateReconciliationOutput(reordered, job).status, "valid"); reordered.blocks[0].sourceEventIds = ["unknown"]; assert.throws(() => validateReconciliationOutput(reordered, job), /unknown event/iu);
+  assert.equal(validateReconciliationOutput(reordered, job).status, "valid");
+  assert.throws(() => validateReconciliationOutput({ ...reordered, status: "valid" }, job));
+  reordered.blocks[0].sourceEventIds = ["unknown"]; assert.throws(() => validateReconciliationOutput(reordered, job), /unknown event/iu);
 });
 
 test("semantic hard-invalid output is diagnostic-only through the runner", async () => {

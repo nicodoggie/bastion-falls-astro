@@ -4,6 +4,7 @@ import { mkdir, readFile, rename, rm, writeFile, open } from "node:fs/promises";
 import { basename, dirname, isAbsolute, join } from "node:path";
 import {
   parseCanonicalReconciliation,
+  parseReconciliationResponse,
   validateReconciliation,
   type CanonicalReconciliation,
   type ReconciliationBlock,
@@ -38,6 +39,22 @@ const MAX_PROMPT_BYTES = 20_000_000;
 const DEFAULT_HERMES_COMMAND = "hermes";
 const HERMES_SKILLS = "bastion-transcript-evidence-workflows,bastion-note-review-corrections";
 const CHUNK_ID = /^session_\d{3}$/;
+const RECONCILIATION_OUTPUT_CONTRACT = [
+  "COMPLETE OUTPUT CONTRACT (authoritative; do not search the repository for schemas or examples):",
+  "Return one strict JSON object with exactly these top-level keys and no status key: schemaVersion, promptVersion, chunk, cacheIdentity, blocks, omissions, materialCorrections, suspicionFlags, reviewNotes, summarySafety.",
+  "Echo schemaVersion, promptVersion, chunk, and cacheIdentity exactly from packet.",
+  "blocks must be a nonempty chronological array. Each block has exactly: id, start, end, kind, text, summarySafeText, optional channel, optional physicalSpeaker, optional characterCandidate, characterConfidence, attributionBasis, sourceEventIds, reviewFlags.",
+  "block kind enum: dialogue | narration | unclear. characterConfidence enum: confirmed | probable | unknown. If unknown, omit characterCandidate; otherwise characterCandidate is required.",
+  "channel and physicalSpeaker may be emitted only when directly supported by supplied packet evidence. expectedCharacters are candidates only, not attribution proof. attributionBasis must cite only supplied packet evidence.",
+  "Each block start/end must exactly span the authoritative supported ranges of its sourceEventIds. attributionBasis has 1-8 short strings. reviewFlags enum: ambiguous-speaker | unclear-words | possible-omission | attribution-uncertain | material-correction.",
+  "omissions is an array of exact authoritative snapshots with exactly: sourceEventId, text, start, end, reason. reason enum: decoder-loop | duplicate | false-start | non-speech | unintelligible | outside-logical-window.",
+  "Every authoritativeSourceEvent must appear exactly once, either in one block.sourceEventIds array or one omission.sourceEventId, never both and never neither. Context-only events must never be accounted.",
+  "materialCorrections entries have exactly: sourceEventId, sourceForm, replacement, evidence. sourceForm must exactly equal the authoritative event text; evidence has 1-8 short strings grounded only in supplied packet fields or a specific read-only repository fact actually verified during this run.",
+  "suspicionFlags enum: high-omitted-ratio | large-compression | decoder-loop-range | expected-character-only | unsupported-proper-noun | unexplained-silence | reordered-source-events.",
+  "reviewNotes is an array of at most 8 short strings.",
+  "summarySafety has exactly: status, errors. status enum: valid | pending. errors is an array of at most 8 short strings. summarySafeText must correspond block-for-block; use pending only when a block cannot be made summary-safe faithfully.",
+  "All IDs and nonempty text fields must be bounded nonempty strings. Do not add unknown keys, Markdown, commentary, or repository-derived evidence.",
+].join("\n");
 
 export class PendingSummarySafetyError extends Error {
   readonly code = "SUMMARY_SAFETY_PENDING" as const;
@@ -63,7 +80,7 @@ function resultSize(value: InvocationResult | string | SummarySafeFallbackResult
 
 export function buildUnifiedReconciliationPrompt(job: ReconciliationChunkJob): string {
   const { packet } = job;
-  return ["You are performing read-only transcript reconciliation.", `Owned logical window: ${packet.chunk.id} ${packet.chunk.start}-${packet.chunk.end}.`, "Only authoritativeSourceEvents in this packet may be consumed, omitted, or emitted.", "Previous readable text and next alignment events are context-only; neighboring events are forbidden.", "Return exactly one JSON object matching the declared schema, with no Markdown or commentary.", "Use unknown attribution rather than inventing a character. Summary-safe text must correspond block-for-block.", "Repository retrieval, if used, is read-only.", JSON.stringify({ packet, authoritativeSourceEvents: job.authoritativeSourceEvents }, null, 2)].join("\n");
+  return ["You are performing read-only transcript reconciliation.", `Owned logical window: ${packet.chunk.id} ${packet.chunk.start}-${packet.chunk.end}.`, "Only authoritativeSourceEvents in this packet may be consumed, omitted, or emitted.", "Previous readable text and next alignment events are context-only; neighboring events are forbidden.", "Use unknown attribution rather than inventing a character. Summary-safe text must correspond block-for-block.", RECONCILIATION_OUTPUT_CONTRACT, "All required schema and ownership evidence follows. Do not search the repository for schemas or output examples. Bounded read-only repository retrieval is allowed only to verify a specific uncertain proper noun or lore claim; it cannot change evidence ownership or create support absent from the supplied packet.", JSON.stringify({ packet, authoritativeSourceEvents: job.authoritativeSourceEvents }, null, 2)].join("\n");
 }
 
 export function buildHermesReconciliationArgs(options: HermesArgsOptions): string[] {
@@ -80,8 +97,9 @@ export function parseStrictReconciliationJson(stdout: string): unknown {
 }
 
 export function validateReconciliationOutput(value: unknown, job: ReconciliationChunkJob): CanonicalReconciliation {
-  assertReconciliationEchoes(value, job);
-  return validateReconciliation(value, { authoritativeSourceEvents: job.authoritativeSourceEvents });
+  const response = parseReconciliationResponse(value);
+  assertReconciliationEchoes(response, job);
+  return validateReconciliation(response, { authoritativeSourceEvents: job.authoritativeSourceEvents });
 }
 
 function assertReconciliationEchoes(value: unknown, job: ReconciliationChunkJob): asserts value is Record<string, unknown> {
@@ -181,7 +199,7 @@ async function maybeFallback(chunk: CanonicalReconciliation, job: Reconciliation
   if (chunk.summarySafety.status !== "pending") return chunk;
   const pending = { ...chunk, summarySafety: { ...chunk.summarySafety, status: "pending" as const } }; await writeCanonicalReconciliationAtomic(path, pending);
   if (!options.sanitizeSummarySafe) { const error = new PendingSummarySafetyError(job.packet.chunk.id); await bestEffortDiagnostic(options, job.packet.chunk.id, undefined, error, maxOutputBytes); throw error; }
-  try { const result = await boundedCall((signal) => options.sanitizeSummarySafe!({ chunk: pending, blocks: pending.blocks, signal }), timeoutMs, maxOutputBytes, "summary-safe fallback"); const map = fallbackMap(result, pending.blocks); const updated: CanonicalReconciliation = { ...pending, blocks: pending.blocks.map((block) => ({ ...block, summarySafeText: map.get(block.id)! })), summarySafety: { status: "valid", errors: [] } }; const reread = validateReconciliationOutput(updated, job); await writeCanonicalReconciliationAtomic(path, reread); return reread; }
+  try { const result = await boundedCall((signal) => options.sanitizeSummarySafe!({ chunk: pending, blocks: pending.blocks, signal }), timeoutMs, maxOutputBytes, "summary-safe fallback"); const map = fallbackMap(result, pending.blocks); const updated: CanonicalReconciliation = { ...pending, blocks: pending.blocks.map((block) => ({ ...block, summarySafeText: map.get(block.id)! })), summarySafety: { status: "valid", errors: [] } }; assertReconciliationEchoes(updated, job); const reread = validateReconciliation(updated, { authoritativeSourceEvents: job.authoritativeSourceEvents }); await writeCanonicalReconciliationAtomic(path, reread); return reread; }
   catch (error) { const pendingError = new PendingSummarySafetyError(job.packet.chunk.id, { cause: error }); await bestEffortDiagnostic(options, job.packet.chunk.id, undefined, pendingError, maxOutputBytes); throw pendingError; }
 }
 
