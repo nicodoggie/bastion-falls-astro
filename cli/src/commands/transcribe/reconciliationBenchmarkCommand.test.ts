@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdir, mkdtemp, rm, truncate, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, truncate, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
@@ -69,6 +69,10 @@ test("routes baseline only to legacy and candidates only to unified layouts", as
   try {
     const executors = createBenchmarkExecutors(options(root), deps);
     await executors.baseline({ lane: "baseline", rootDir: baselineRoot, sourceDir, layout: "legacy" });
+    assert.equal(await readFile(join(baselineRoot, "summary_transcript.md"), "utf8"), "summary\n");
+    assert.equal(await readFile(join(baselineRoot, "synthetic-2026-08-20.mdx"), "utf8"), "notes\n");
+    await assert.rejects(readFile(join(root, "summary_transcript.md"), "utf8"), { code: "ENOENT" });
+    await assert.rejects(readFile(join(root, "synthetic-2026-08-20.mdx"), "utf8"), { code: "ENOENT" });
     assert.deepEqual([legacySummary, legacyNotes, unifiedStage, unifiedNotes], [1, 1, 0, 0]);
     await executors.single({ lane: "single", rootDir: singleRoot, sourceDir, layout: "single" });
     await executors["window-3"]({ lane: "window-3", rootDir: windowRoot, sourceDir, layout: "three" });

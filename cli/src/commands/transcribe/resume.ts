@@ -201,8 +201,11 @@ function validateManifest(value: unknown): Manifest {
     const end = chunk["end"] as number;
     const overlapStart = chunk["overlapStart"] as number;
     const overlapEnd = chunk["overlapEnd"] as number;
-    if (overlapStart < 0 || overlapStart > start || start >= end || end > overlapEnd ||
-        overlapEnd - durationSeconds > MANIFEST_TIME_ROUNDING_TOLERANCE_SECONDS) {
+    const overlapPastDuration = overlapEnd - durationSeconds;
+    const invalidDurationBound = index === chunks.length - 1
+      ? overlapPastDuration > MANIFEST_TIME_ROUNDING_TOLERANCE_SECONDS
+      : overlapEnd > durationSeconds;
+    if (overlapStart < 0 || overlapStart > start || start >= end || end > overlapEnd || invalidDurationBound) {
       throw new Error("invalid chunk bounds");
     }
   }

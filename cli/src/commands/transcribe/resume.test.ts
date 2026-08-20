@@ -189,6 +189,25 @@ test("accepts terminal millisecond rounding within the audio duration tolerance"
   }
 });
 
+test("rejects over-tolerance terminal and any non-terminal duration overrun", async () => {
+  const cases = [
+    ["terminal beyond tolerance", (value: Manifest) => { value.durationSeconds = 19.99949; }],
+    ["non-terminal overrun", (value: Manifest) => { value.chunks[0]!.overlapEnd = value.durationSeconds + 0.0004; }],
+  ] as const;
+  for (const [label, mutate] of cases) {
+    const dir = await mkdtemp(join(tmpdir(), "bf-resume-duration-bound-"));
+    const path = join(dir, "manifest.json");
+    try {
+      const value = manifest();
+      mutate(value);
+      await writeFile(path, JSON.stringify(value));
+      await assert.rejects(readManifest(path), /invalid chunk bounds/u, label);
+    } finally {
+      await import("node:fs/promises").then(({ rm }) => rm(dir, { recursive: true, force: true }));
+    }
+  }
+});
+
 test("merges cumulative pass completion while pruning unavailable artifacts", () => {
   assert.deepEqual(mergeCompletedByPass({
     requiredPassIds: ["stereo", "left"],
