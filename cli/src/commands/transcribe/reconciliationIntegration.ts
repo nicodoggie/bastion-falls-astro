@@ -31,15 +31,8 @@ export function buildLogicalReconciliationWindows(manifest: Manifest, layout: Lo
   if (!["single", "per-stt-chunk", "three"].includes(layout)) throw new Error(`unsupported logical layout: ${layout}`);
   if (layout === "single") { const start = 0; const end = manifest.durationSeconds; finiteWindow(start, end); return [{ id: "session_000", index: 0, start, end, chunkIndices: chunks.map((c) => c.index) }]; }
   if (layout === "per-stt-chunk") return chunks.map((c, index) => ({ id: `session_${String(index).padStart(3, "0")}`, index, start: c.start, end: c.end, chunkIndices: [c.index] }));
-  if (chunks.length < 3) throw new Error("three logical windows require at least three chunks");
-  const result: LogicalReconciliationWindow[] = [];
-  for (let group = 0; group < 3; group++) {
-    const startAt = Math.floor(group * chunks.length / 3), endAt = Math.floor((group + 1) * chunks.length / 3);
-    if (endAt <= startAt) throw new Error("three logical windows must be nonempty");
-    const part = chunks.slice(startAt, endAt); const [start, end] = finiteWindow(part[0]!.start, part.at(-1)!.end);
-    result.push({ id: `session_${String(group).padStart(3, "0")}`, index: group, start, end, chunkIndices: part.map((c) => c.index) });
-  }
-  return result;
+  if (chunks.length < 3) throw new Error("three-chunk context requires at least three chunks");
+  return chunks.map((chunk, index) => ({ id: `session_${String(index).padStart(3, "0")}`, index, start: chunk.start, end: chunk.end, chunkIndices: [chunk.index] }));
 }
 
 export interface UnifiedJobOptions {
@@ -64,10 +57,10 @@ export function prepareUnifiedReconciliationJobs(options: UnifiedJobOptions): Pr
     const lastPosition = chunks.findIndex((chunk) => chunk.index === last);
     const previous = firstPosition > 0 ? alignmentFor(options.alignments, chunks[firstPosition - 1]!.index) : undefined;
     const next = lastPosition >= 0 && lastPosition + 1 < chunks.length ? alignmentFor(options.alignments, chunks[lastPosition + 1]!.index) : undefined;
-    const neighborLimit = options.neighborLimit ?? 8;
+    const neighborLimit = options.neighborLimit ?? (options.layout === "three" ? 64 : 8);
     const derivedPreviousTail = previous?.events.slice(-neighborLimit).map((event) => event.text) ?? [];
     const alignment: AlignmentResult = { version: 1, events: owned };
-    const packet = buildEvidencePacket({ sourceHash: options.sourceHash, alignment, logicalStart: window.start, logicalEnd: window.end, chunkIndex: window.index, previousReadableTail: options.previousReadableTail ?? derivedPreviousTail, nextAlignmentHead: contextHead(next, neighborLimit), neighborLimit: options.neighborLimit, channelMap: options.channelMap, glossary: options.glossary, correctionRules: options.correctionRules, expectedCharacters: options.expectedCharacters, campaign: options.campaign, sessionDate: options.sessionDate, provider: options.provider, promptVersion: options.promptVersion, schemaVersion: options.schemaVersion, evidenceRevision: options.evidenceRevision });
+    const packet = buildEvidencePacket({ sourceHash: options.sourceHash, alignment, logicalStart: window.start, logicalEnd: window.end, chunkIndex: window.index, previousReadableTail: options.previousReadableTail ?? derivedPreviousTail, nextAlignmentHead: contextHead(next, neighborLimit), neighborLimit, channelMap: options.channelMap, glossary: options.glossary, correctionRules: options.correctionRules, expectedCharacters: options.expectedCharacters, campaign: options.campaign, sessionDate: options.sessionDate, provider: options.provider, promptVersion: options.promptVersion, schemaVersion: options.schemaVersion, evidenceRevision: options.evidenceRevision });
     const ids = packet.ownedEvents.map((event) => event.id); if (new Set(ids).size !== ids.length) throw new Error(`duplicate evidence event IDs in ${window.id}`);
     jobs.push({ packet, authoritativeSourceEvents: packet.ownedEvents.map(({ id, text, start, end, confidence, supportedRange }) => ({ id, text, start, end, ...(confidence === undefined ? {} : { confidence }), ...(supportedRange ? { supportedRange } : {}) })) });
   }
