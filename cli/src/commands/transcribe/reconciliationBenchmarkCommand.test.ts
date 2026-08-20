@@ -29,6 +29,7 @@ const options = (root: string) => ({
   sessionDate: "2026-08-20",
   contextRoot: root,
   maxTurns: 4,
+  timeoutMs: 600_000,
   promptVersion: "reconciliation.prompt.v1",
   schemaVersion: "reconciliation.v1",
   repositoryCwd: root,
@@ -59,7 +60,7 @@ test("routes baseline only to legacy and candidates only to unified layouts", as
   const deps: BenchmarkAdapterDependencies = {
     runCodexSummaryCleanup: (async (input: { cwd: string; summaryTranscriptPath: string }) => { assert.equal(input.cwd, root); legacySummary += 1; await writeFile(input.summaryTranscriptPath, "summary\n"); }) as never,
     runCodexNotes: (async (input: { cwd: string; notesPath: string }) => { assert.equal(input.cwd, root); legacyNotes += 1; await writeFile(input.notesPath, "notes\n"); }) as never,
-    runUnifiedReconciliationStage: (async (input: { layout: string; rootDir: string; channelMap: { version: number } }) => { unifiedStage += 1; layouts.push(input.layout); assert.equal(input.channelMap.version, 1); await mkdir(join(input.rootDir, "reconciliation"), { recursive: true }); await writeFile(join(input.rootDir, "reconciliation", "session_000.json"), "{}\n"); return { status: "valid", metadata: {}, chunks: [chunk], jobs: [{ packet: { chunk: { id: "session_000" } }, authoritativeSourceEvents: [{ id: "e", text: "Source", start: 0, end: 2 }] }] }; }) as never,
+    runUnifiedReconciliationStage: (async (input: { layout: string; rootDir: string; channelMap: { version: number }; timeoutMs: number }) => { unifiedStage += 1; layouts.push(input.layout); assert.equal(input.channelMap.version, 1); assert.equal(input.timeoutMs, 600_000); await mkdir(join(input.rootDir, "reconciliation"), { recursive: true }); await writeFile(join(input.rootDir, "reconciliation", "session_000.json"), "{}\n"); return { status: "valid", metadata: {}, chunks: [chunk], jobs: [{ packet: { chunk: { id: "session_000" } }, authoritativeSourceEvents: [{ id: "e", text: "Source", start: 0, end: 2 }] }] }; }) as never,
     runUnifiedStructuredNotes: (async (input: { notePath?: string }) => { unifiedNotes += 1; await writeFile(input.notePath!, "notes\n"); return {}; }) as never,
     loadCandidateInputs: (async () => ({ manifest, alignments: { "0": { version: 1, events: [] } }, channelMap: { version: 1, source: "/synthetic.wav", channels: [] } })) as never,
     loadSharedContext: (async () => ({ rules: "rule", excerpt: "context" })) as never,

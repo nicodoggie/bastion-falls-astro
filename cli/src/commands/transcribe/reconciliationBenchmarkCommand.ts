@@ -39,6 +39,7 @@ export interface BenchmarkFlags {
   corrections?: string;
   profile?: string;
   "max-turns": number;
+  "timeout-ms": number;
   "prompt-version": string;
   "schema-version": string;
 }
@@ -50,6 +51,7 @@ export interface BenchmarkAdapterContext {
   corrections?: string;
   profile?: string;
   maxTurns: number;
+  timeoutMs: number;
   promptVersion: string;
   schemaVersion: string;
   repositoryCwd: string;
@@ -80,6 +82,11 @@ const parsePositiveInteger = (value: string): number => {
   if (!Number.isInteger(parsed) || parsed <= 0 || parsed > 1_000) throw new Error("Expected a bounded positive integer");
   return parsed;
 };
+const parseTimeoutMs = (value: string): number => {
+  const parsed = Number(value);
+  if (!Number.isSafeInteger(parsed) || parsed < 1_000 || parsed > 600_000) throw new Error("Timeout must be an integer from 1000 to 600000 milliseconds");
+  return parsed;
+};
 const parseBoundedString = (value: string): string => { if (!value.trim() || value.length > 2_000) throw new Error("Expected a bounded non-empty string"); return value; };
 const parseSessionDate = (value: string): string => { if (!/^\d{4}-\d{2}-\d{2}$/u.test(value)) throw new Error("Session date must use YYYY-MM-DD"); return value; };
 
@@ -92,6 +99,7 @@ const flags: FlagParametersForType<BenchmarkFlags, LocalContext> = {
   corrections: { kind: "parsed", parse: parseBoundedString, brief: "Read-only shared correction rules YAML", optional: true },
   profile: { kind: "parsed", parse: parseBoundedString, brief: "Hermes profile for candidate lanes", optional: true },
   "max-turns": { kind: "parsed", parse: parsePositiveInteger, brief: "Bounded candidate model turns", default: "8" },
+  "timeout-ms": { kind: "parsed", parse: parseTimeoutMs, brief: "Bounded candidate inference timeout in milliseconds", default: "120000" },
   "prompt-version": { kind: "parsed", parse: parseBoundedString, brief: "Candidate prompt version", default: "reconciliation.prompt.v1" },
   "schema-version": { kind: "parsed", parse: parseBoundedString, brief: "Candidate schema version", default: "reconciliation.v1" },
 };
@@ -218,6 +226,7 @@ export function createBenchmarkExecutors(options: BenchmarkAdapterContext, deps:
       schemaVersion: options.schemaVersion,
       profile: options.profile,
       maxTurns: options.maxTurns,
+      timeoutMs: options.timeoutMs,
       repositoryCwd: options.repositoryCwd,
     };
     const result = await unifiedStage(stageOptions);
@@ -252,6 +261,7 @@ export const reconciliationBenchmarkCommand = buildCommand({
       corrections: parsedFlags.corrections ? resolve(this.currentPath, parsedFlags.corrections) : undefined,
       profile: parsedFlags.profile,
       maxTurns: parsedFlags["max-turns"],
+      timeoutMs: parsedFlags["timeout-ms"],
       promptVersion: parsedFlags["prompt-version"],
       schemaVersion: parsedFlags["schema-version"],
       repositoryCwd: this.currentPath,
