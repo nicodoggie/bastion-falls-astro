@@ -88,19 +88,6 @@ export const CharacterMortalitySchema = mortalityShape.superRefine(
 			addDateError(ctx, ["phases"], "undead status requires an undeath phase");
 		}
 
-		const last = mortality.phases.at(-1);
-		if (
-			mortality.status === "dead" &&
-			last !== undefined &&
-			last.to === undefined
-		) {
-			addDateError(
-				ctx,
-				["phases", mortality.phases.length - 1, "to"],
-				"dead history cannot end in an open phase",
-			);
-		}
-
 		let previousFrom: CalendarDate | undefined;
 		let previousTo: CalendarDate | undefined;
 		for (const [index, phase] of mortality.phases.entries()) {
@@ -139,8 +126,7 @@ export const CharacterMortalitySchema = mortalityShape.superRefine(
 			if (
 				from !== undefined &&
 				previousFrom !== undefined &&
-				from.precision === "day" &&
-				previousFrom.precision === "day" &&
+				from.precision === previousFrom.precision &&
 				CalendarDate.compare(from, previousFrom) < 0
 			) {
 				addDateError(
@@ -152,9 +138,8 @@ export const CharacterMortalitySchema = mortalityShape.superRefine(
 			if (
 				from !== undefined &&
 				previousTo !== undefined &&
-				from.precision === "day" &&
-				previousTo.precision === "day" &&
-				CalendarDate.compare(from, previousTo) <= 0
+				from.precision === previousTo.precision &&
+				CalendarDate.compare(from, previousTo) < 0
 			) {
 				addDateError(
 					ctx,

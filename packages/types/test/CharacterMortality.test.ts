@@ -76,7 +76,7 @@ test("requires an undeath phase for undead status", () => {
 	parses({ status: "dead", phases: [] });
 });
 
-test("rejects precise backward, overlapping, and obviously open dead histories", () => {
+test("rejects backward and overlapping histories at matching precision", () => {
 	rejects({
 		status: "alive",
 		phases: [{ type: "birth", from: "10-01-02 AI", to: "10-01-01 AI" }],
@@ -89,12 +89,46 @@ test("rejects precise backward, overlapping, and obviously open dead histories",
 		],
 	});
 	rejects({
-		status: "dead",
-		phases: [{ type: "birth", from: "1-01-01 AI" }],
+		status: "unknown",
+		phases: [
+			{ type: "birth", from: "1247 AI", to: "1250 AI" },
+			{ type: "revival", from: "1245 AI" },
+		],
+	});
+	rejects({
+		status: "unknown",
+		phases: [
+			{ type: "birth", from: "1247 AI", to: "1250 AI" },
+			{ type: "revival", from: "1249 AI" },
+		],
+	});
+	rejects({
+		status: "unknown",
+		phases: [
+			{ type: "birth", from: "1247-03 AI", to: "1250-06 AI" },
+			{ type: "revival", from: "1247-02 AI" },
+		],
+	});
+	rejects({
+		status: "unknown",
+		phases: [
+			{ type: "birth", from: "1247-03 AI", to: "1250-06 AI" },
+			{ type: "revival", from: "1250-05 AI" },
+		],
 	});
 	parses({
 		status: "dead",
-		phases: [{ type: "birth", from: "1-01-01 AI", to: "10-01-01 AI" }],
+		phases: [{ type: "birth", from: "1247-03-15 AI" }],
+	});
+});
+
+test("allows same-date death and revival adjacency", () => {
+	parses({
+		status: "undead",
+		phases: [
+			{ type: "birth", from: "1247-03-15 AI", to: "1250-06-01 AI" },
+			{ type: "undeath", from: "1250-06-01 AI", species: "revenant" },
+		],
 	});
 });
 
