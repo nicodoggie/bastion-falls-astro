@@ -101,6 +101,8 @@ function requireNumber(object: Record<string, unknown>, key: string): void {
   if (!finiteNumber(object[key])) throw new Error(`missing or invalid ${key}`);
 }
 
+const MANIFEST_TIME_ROUNDING_TOLERANCE_SECONDS = 0.0005;
+
 function validateManifest(value: unknown): Manifest {
   if (!isObject(value)) throw new Error("manifest must be a JSON object");
   if (value["version"] !== 2) {
@@ -199,7 +201,8 @@ function validateManifest(value: unknown): Manifest {
     const end = chunk["end"] as number;
     const overlapStart = chunk["overlapStart"] as number;
     const overlapEnd = chunk["overlapEnd"] as number;
-    if (overlapStart < 0 || overlapStart > start || start >= end || end > overlapEnd || overlapEnd > durationSeconds) {
+    if (overlapStart < 0 || overlapStart > start || start >= end || end > overlapEnd ||
+        overlapEnd - durationSeconds > MANIFEST_TIME_ROUNDING_TOLERANCE_SECONDS) {
       throw new Error("invalid chunk bounds");
     }
   }

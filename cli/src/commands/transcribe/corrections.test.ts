@@ -95,6 +95,19 @@ test("parses and filters correction rules by campaign", () => {
 	);
 });
 
+test("preserves medium correction match priority", () => {
+	const profile = parseCorrectionProfile(
+		sampleYaml.replace("priority: high", "priority: medium"),
+	);
+	const rule = filterCorrectionRules(profile, {
+		campaign: "the-vengeful",
+		sessionDate: "2026-06-21",
+	})[0];
+
+	assert.equal(rule?.match?.priority, "medium");
+	assert.match(renderCorrectionRulesMarkdown([rule!]), /Match priority: medium/);
+});
+
 test("parses non-path canonical references from rules data", () => {
 	const profile = parseCorrectionProfile(sampleYaml);
 	const rules = filterCorrectionRules(profile, {

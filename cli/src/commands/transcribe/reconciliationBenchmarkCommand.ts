@@ -111,7 +111,7 @@ async function loadCandidateInputs(sourceDir: string): Promise<{ manifest: Manif
   for (const name of names) {
     const path = join(alignmentDir, name);
     await requiredFile(path, `alignment ${name}`);
-    alignments[name.match(/^session_(\d+)/u)![1]!] = parseAlignmentResult(JSON.parse(await readFile(path, "utf8")) as unknown);
+    alignments[String(Number(name.match(/^session_(\d+)/u)![1]!))] = parseAlignmentResult(JSON.parse(await readFile(path, "utf8")) as unknown);
   }
   for (const chunk of manifest.chunks) if (!alignments[String(chunk.index)]) throw new Error(`missing alignment for STT chunk ${chunk.index}`);
   const channelMapPath = join(sourceDir, "channel-map.yml");
@@ -187,9 +187,9 @@ export function createBenchmarkExecutors(options: BenchmarkAdapterContext, deps:
     await requiredFile(laneTranscript, "lane corrected transcript snapshot");
     const context = await contextForLane(options, rootDir);
     const summaryPath = join(rootDir, "summary_transcript.md");
-    await legacySummary({ cwd: rootDir, transcriptPath: laneTranscript, summaryTranscriptPath: summaryPath, outDir: rootDir, chunkChars: 12000 });
+    await legacySummary({ cwd: options.repositoryCwd, transcriptPath: laneTranscript, summaryTranscriptPath: summaryPath, outDir: rootDir, chunkChars: 12000 });
     const notesPath = join(rootDir, `${options.campaign}-${options.sessionDate}.mdx`);
-    await legacyNotes({ cwd: rootDir, campaign: options.campaign, sessionDate: options.sessionDate, transcriptPath: summaryPath, contextExcerpt: context.excerpt, correctionRules: context.rules, notesPath, outDir: rootDir, chunkChars: 12000, sceneGroupSize: 5 });
+    await legacyNotes({ cwd: options.repositoryCwd, campaign: options.campaign, sessionDate: options.sessionDate, transcriptPath: summaryPath, contextExcerpt: context.excerpt, correctionRules: context.rules, notesPath, outDir: rootDir, chunkChars: 12000, sceneGroupSize: 5 });
     return { artifactCount: await countLaneFiles(rootDir), sourceEvents: 0, covered: 0, omitted: 0 };
   };
 

@@ -175,6 +175,20 @@ test("rejects incomplete v2 manifests with a rebuild instruction", async () => {
   }
 });
 
+test("accepts terminal millisecond rounding within the audio duration tolerance", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "bf-resume-rounded-duration-"));
+  const path = join(dir, "manifest.json");
+  try {
+    const value = manifest();
+    value.durationSeconds = 19.9996;
+    await writeFile(path, JSON.stringify(value));
+    const parsed = await readManifest(path);
+    assert.equal(parsed?.chunks.at(-1)?.overlapEnd, 20);
+  } finally {
+    await import("node:fs/promises").then(({ rm }) => rm(dir, { recursive: true, force: true }));
+  }
+});
+
 test("merges cumulative pass completion while pruning unavailable artifacts", () => {
   assert.deepEqual(mergeCompletedByPass({
     requiredPassIds: ["stereo", "left"],

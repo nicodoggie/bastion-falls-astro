@@ -9,6 +9,7 @@ export type CorrectionStatus =
 export type CorrectionMatchPriority =
 	| "always"
 	| "high"
+	| "medium"
 	| "normal"
 	| "low"
 	| "archive";
@@ -139,6 +140,7 @@ function parseMatchPriority(
 	if (
 		value === "always" ||
 		value === "high" ||
+		value === "medium" ||
 		value === "normal" ||
 		value === "low" ||
 		value === "archive"
