@@ -9,6 +9,7 @@ import type {
 	MortalityPhaseType,
 	MortalityStatus,
 } from "./CharacterMortality.js";
+import { CharacterMortalitySchema } from "./CharacterMortality.js";
 
 export type MortalityDateInput = string | CalendarDate;
 
@@ -105,6 +106,47 @@ function phaseError(value: unknown): string {
 	return "invalid mortality phase";
 }
 
+function validateMortalityInput(value: unknown): string | undefined {
+	try {
+		if (
+			!value ||
+			typeof value !== "object" ||
+			!Array.isArray((value as { phases?: unknown }).phases)
+		) {
+			return "mortality must contain a phases array";
+		}
+		const mortality = value as { phases: unknown[] };
+		const phases = mortality.phases.map((raw) => {
+			if (!raw || typeof raw !== "object") return raw;
+			const phase = { ...(raw as Record<string, unknown>) };
+			for (const key of ["from", "to"] as const) {
+				const date = phase[key];
+				if (date === undefined || typeof date === "string") continue;
+				if (
+					!(date instanceof CalendarDate) ||
+					!date.isBoundTo(bastionCalendar)
+				) {
+					throw new Error(`${key} must be a string or bound CalendarDate`);
+				}
+				phase[key] = date.toString();
+			}
+			return phase;
+		});
+		const parsed = CharacterMortalitySchema.safeParse({
+			...(value as Record<string, unknown>),
+			phases,
+		});
+		if (parsed.success) return undefined;
+		return parsed.error.issues
+			.map(
+				(issue) => `${issue.path.join(".") || "mortality"}: ${issue.message}`,
+			)
+			.join("; ");
+	} catch (error) {
+		return phaseError(error);
+	}
+}
+
 export function resolveCharacterAge(
 	input: {
 		readonly age?: unknown;
@@ -171,8 +213,23 @@ export function resolveCharacterAge(
 			: { phases, error: errors.join("; ") };
 	}
 
+	const validationError = validateMortalityInput(mortality);
+	if (validationError) {
+		errors.push(validationError);
+		return authoredAge !== undefined
+			? {
+					value: authoredAge,
+					source: "authored",
+					authoredAge,
+					phases,
+					error: errors.join("; "),
+				}
+			: { phases, error: errors.join("; ") };
+	}
+
 	let totalDays = 0;
 	let measurable = true;
+	let previousEndDay: number | undefined;
 	const rawPhases = mortality.phases as unknown[];
 	for (let index = 0; index < rawPhases.length; index += 1) {
 		const raw = rawPhases[index];
@@ -221,6 +278,11 @@ export function resolveCharacterAge(
 						atPrecision(normalizedFrom, "day").epochDay;
 			if (durationDays < 0)
 				throw new Error("phase to date cannot precede its from date");
+			const normalizedFromDay = atPrecision(normalizedFrom, "day").epochDay;
+			if (previousEndDay !== undefined && normalizedFromDay < previousEndDay)
+				throw new Error(
+					"mortality phases overlap or are out of chronological order",
+				);
 			const approximate = precision !== "day";
 			const resolved: ResolvedMortalityPhase = {
 				type,
@@ -236,6 +298,7 @@ export function resolveCharacterAge(
 			};
 			phases.push(resolved);
 			totalDays += durationDays;
+			previousEndDay = atPrecision(normalizedTo, "day").epochDay;
 		} catch (error) {
 			phases.push({
 				...base,
