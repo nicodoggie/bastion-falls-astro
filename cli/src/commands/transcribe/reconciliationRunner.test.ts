@@ -37,9 +37,10 @@ test("prompt marks neighbors context-only and owns only the packet window", () =
 });
 
 test("Hermes args use the repository chat contract", () => {
-  const args = buildHermesReconciliationArgs({ prompt: "x", profile: "p", maxTurns: 7 });
+  const args = buildHermesReconciliationArgs({ promptPath: "/tmp/reconciliation-request.json", profile: "p", maxTurns: 7 });
   assert.deepEqual(args.slice(0, 13), ["hermes", "--profile", "p", "chat", "-Q", "--source", "tool", "-t", "file", "-s", "bastion-transcript-evidence-workflows,bastion-note-review-corrections", "--max-turns", "7"]);
-  assert.equal(args.at(-2), "-q"); assert.equal(args.at(-1), "x");
+  assert.equal(args.at(-2), "-q");
+  assert.match(args.at(-1)!, /\/tmp\/reconciliation-request\.json/u);
 });
 
 test("strict JSON parser rejects trailing non-whitespace", () => {
@@ -283,6 +284,53 @@ test("bounded Hermes settles during TERM grace when the owned group exits", asyn
       /timed out/iu,
     );
     assert.ok(Date.now() - started < 250);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("bounded Hermes supplies large prompts through an owner-only temporary file and cleans it", async () => {
+  const root = await mkdtemp(join(tmpdir(), "reconciliation-hermes-prompt-file-"));
+  const command = join(root, "prompt-file-hermes.mjs");
+  const marker = join(root, "prompt-marker.json");
+  const largePrompt = "evidence:" + "x".repeat(220_000);
+  try {
+    const relativePromptDir = `relative-prompt-${process.pid}-${Date.now()}`;
+    await assert.rejects(() => boundedHermes(job, largePrompt, new AbortController().signal, {
+      timeoutMs: 2_000,
+      maxOutputBytes: 10_000,
+      hermesCommand: command,
+      maxTurns: 1,
+      repositoryCwd: root,
+      promptDir: relativePromptDir,
+    }), /absolute path/iu);
+    await assert.rejects(access(join(process.cwd(), relativePromptDir)), { code: "ENOENT" });
+    await assert.rejects(() => boundedHermes(job, largePrompt, new AbortController().signal, {
+      timeoutMs: 2_000,
+      maxOutputBytes: 10_000,
+      hermesCommand: join(root, "missing-hermes"),
+      maxTurns: 1,
+      repositoryCwd: root,
+      promptDir: root,
+    }), /ENOENT|spawn/iu);
+    assert.deepEqual((await readdir(root)).filter((name) => name.includes("reconciliation-prompt")), []);
+    await writeFile(command, `#!/usr/bin/env node\nimport { readFileSync, statSync, writeFileSync } from "node:fs";\nconst query = process.argv.at(-1);\nconst promptPath = JSON.parse(query.slice(query.lastIndexOf(": ") + 2));\nconst prompt = readFileSync(promptPath, "utf8");\nwriteFileSync(${JSON.stringify(marker)}, JSON.stringify({ query, prompt, mode: statSync(promptPath).mode & 0o777 }));\nprocess.stdout.write(${JSON.stringify(JSON.stringify(response()))});\n`);
+    await chmod(command, 0o755);
+    const result = await boundedHermes(job, largePrompt, new AbortController().signal, {
+      timeoutMs: 2_000,
+      maxOutputBytes: 10_000,
+      hermesCommand: command,
+      maxTurns: 1,
+      repositoryCwd: root,
+      promptDir: root,
+    });
+    assert.deepEqual(JSON.parse(result.stdout), response());
+    const observed = JSON.parse(await readFile(marker, "utf8")) as { query: string; prompt: string; mode: number };
+    assert.equal(observed.prompt, largePrompt);
+    assert.equal(observed.mode, 0o600);
+    assert.ok(Buffer.byteLength(observed.query, "utf8") < 4_096);
+    assert.doesNotMatch(observed.query, /evidence:x{100}/u);
+    assert.deepEqual((await readdir(root)).filter((name) => name.includes("reconciliation-prompt")), []);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
