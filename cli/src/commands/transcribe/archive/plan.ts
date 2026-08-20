@@ -14,6 +14,10 @@ export interface ArchivePlan {
   copies: ArchiveSourceFile[];
   zipPath: string;
   unpackedDir: string;
+  reconciliation: {
+    kind: "legacy" | "canonical";
+    directory?: string;
+  };
 }
 
 export interface BuildArchivePlanOptions {
@@ -21,6 +25,7 @@ export interface BuildArchivePlanOptions {
   transcribeDir: string;
   outputDir: string;
   audioExtension: string;
+  hasCanonicalReconciliation?: boolean;
 }
 
 const PROVENANCE_EXTENSIONS = new Set([".json", ".md", ".yml", ".yaml"]);
@@ -82,11 +87,16 @@ export function buildArchivePlan(
   options: BuildArchivePlanOptions,
 ): ArchivePlan {
   const sessionName = basename(options.sessionDir);
+  const correctionsCopy = {
+    sourcePath: join(options.transcribeDir, "corrections.yaml"),
+    entryName: "corrections.yaml",
+    required: false,
+  };
   return {
     sessionName,
     audioSource: join(options.sessionDir, "normalized", "session.flac"),
     audioEntryName: `session-audio.${options.audioExtension}`,
-    copies: [
+    copies: options.hasCanonicalReconciliation ? [correctionsCopy] : [
       {
         sourcePath: join(options.sessionDir, "raw_transcript.md"),
         entryName: "raw_transcript.md",
@@ -112,11 +122,7 @@ export function buildArchivePlan(
         entryName: "hermes_review_notes.md",
         required: false,
       },
-      {
-        sourcePath: join(options.transcribeDir, "corrections.yaml"),
-        entryName: "corrections.yaml",
-        required: false,
-      },
+      correctionsCopy,
       ...["manifest.json", "checkpoint.json", "channel-map.yml"].map((name) => ({
         sourcePath: join(options.sessionDir, name),
         entryName: name,
@@ -125,5 +131,8 @@ export function buildArchivePlan(
     ],
     zipPath: join(options.outputDir, `${sessionName}.zip`),
     unpackedDir: join(options.outputDir, sessionName),
+    reconciliation: options.hasCanonicalReconciliation
+      ? { kind: "canonical", directory: join(options.sessionDir, "reconciliation") }
+      : { kind: "legacy" },
   };
 }

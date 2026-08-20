@@ -22,6 +22,7 @@ test("maps a session dir to audio source, entry names, and outputs", () => {
   assert.equal(plan.audioEntryName, "session-audio.opus");
   assert.equal(plan.zipPath, "/repo/astro/.bf-archives/session-2026-05-22.zip");
   assert.equal(plan.unpackedDir, "/repo/astro/.bf-archives/session-2026-05-22");
+  assert.deepEqual(plan.reconciliation, { kind: "legacy" });
 
   const sourceNames = plan.copies.map((copy) => copy.entryName);
   assert.ok(sourceNames.every((name) => !name.startsWith("normalized/")));
@@ -107,6 +108,29 @@ test("includes transcripts and shared corrections with required flags", () => {
       required: false,
     },
   ]);
+});
+
+test("marks canonical reconciliation as a structured private source", () => {
+  const plan = buildArchivePlan({
+    sessionDir: "/t/session1",
+    transcribeDir: "/t",
+    outputDir: "/out",
+    audioExtension: "opus",
+    hasCanonicalReconciliation: true,
+  });
+  assert.deepEqual(plan.reconciliation, {
+    kind: "canonical",
+    directory: "/t/session1/reconciliation",
+  });
+  assert.deepEqual(plan.copies, [
+    {
+      sourcePath: "/t/corrections.yaml",
+      entryName: "corrections.yaml",
+      required: false,
+    },
+  ]);
+  assert.ok(!plan.copies.some((copy) => copy.entryName === "summary_transcript.md"));
+  assert.ok(!plan.copies.some((copy) => copy.entryName === "redactions.yaml"));
 });
 
 test("honors a non-opus audio extension", () => {
