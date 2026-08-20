@@ -12,7 +12,7 @@ The design must handle the concrete Bastion Falls cases that exposed the flat mo
 - Narmaya died and immediately became a vampire;
 - Oscar died and became a revenant on the same day;
 - Lord Boyle remained dead long enough to decompose before becoming a zombie;
-- Jarvid became a revenant and later returned to life through *true resurrection*;
+- Jarvid became a revenant and later returned to life through _true resurrection_;
 - future characters may be reincarnated into a different species while retaining identity.
 
 ## Scope Boundary
@@ -87,8 +87,12 @@ All phases accept:
 }
 ```
 
-Authored dates remain strings. Runtime code parses them to `BastionDate`; content schemas do not
-expose `string | BastionDate` unions.
+Authored dates remain strings. `BastionDate` is the Bastion-bound factory, and
+`BastionDate.from(...)` returns a `CalendarDate`. Content schemas therefore remain string-only,
+while programmatic resolver or CLI inputs may accept `string | CalendarDate` and normalize once at
+their boundary. A supplied `CalendarDate` must be bound to the Bastion calendar. When programmatic
+data is serialized back to authored form, `CalendarDate.toString()` provides the canonical
+precision-aware string.
 
 `species` is an open descriptive string, not an enum and not a discriminator. It may appear on every
 phase to preserve species changes across reincarnation. An `undeath` phase requires a non-empty
@@ -184,7 +188,7 @@ phase ends.
 
 ### Exact and approximate arithmetic
 
-- Day-precision boundaries use `BastionDate.epochDay`/`until()` and contribute exact elapsed days.
+- Day-precision boundaries use `CalendarDate.epochDay`/`until()` and contribute exact elapsed days.
 - Partial boundaries downgrade the phase calculation to the coarsest precision shared by its bounds,
   produce a deterministic estimate from the known calendar fields, and mark the phase approximate.
 - If any contributing phase is approximate, total Age is approximate and renders with `~`.
@@ -267,8 +271,8 @@ logic:
 ```ts
 interface ResolvedMortalityPhase {
   type: "birth" | "undeath" | "revival" | "rebirth";
-  from?: BastionDate;
-  to?: BastionDate;
+  from?: CalendarDate;
+  to?: CalendarDate;
   species?: string;
   method?: string;
   duration?: CalendarDuration;
