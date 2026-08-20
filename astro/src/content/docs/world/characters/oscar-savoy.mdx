@@ -23,11 +23,19 @@ character:
   speed:
     base: 30
   details:
-    dateOfBirth: 1241-06-13 AI
-    dateOfDeath: 1275-08-09 AI
+    mortality:
+      status: undead
+      phases:
+        - type: birth
+          from: 1241-06-13 AI
+          to: 1275-08-09 AI
+          species: human
+        - type: undeath
+          from: 1275-08-09 AI
+          species: revenant
+
     sex: Male
     pronouns: He/Him
-    mortality: undead
     species: human
     sexOrgans: []
   relationships:

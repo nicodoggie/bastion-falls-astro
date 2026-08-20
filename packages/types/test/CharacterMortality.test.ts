@@ -76,6 +76,39 @@ test("requires an undeath phase for undead status", () => {
 	parses({ status: "dead", phases: [] });
 });
 
+test("enforces status consistency for known open latest phases", () => {
+	rejects({
+		status: "alive",
+		phases: [{ type: "undeath", from: "10 AI", species: "wight" }],
+	});
+	rejects({
+		status: "undead",
+		phases: [
+			{ type: "undeath", from: "10 AI", species: "wight", to: "20 AI" },
+			{ type: "birth", from: "30 AI" },
+		],
+	});
+	parses({ status: "dead", phases: [{ type: "birth", from: "10 AI" }] });
+	parses({
+		status: "dead",
+		phases: [{ type: "birth", from: "10 AI", to: "20 AI" }],
+	});
+	rejects({
+		status: "dead",
+		phases: [
+			{ type: "birth", from: "10 AI", to: "20 AI" },
+			{ type: "revival", from: "30 AI", method: "spell" },
+		],
+	});
+	parses({
+		status: "alive",
+		phases: [
+			{ type: "undeath", from: "10 AI", species: "revenant" },
+			{ type: "revival", method: "true resurrection" },
+		],
+	});
+});
+
 test("rejects backward and overlapping histories at matching precision", () => {
 	rejects({
 		status: "alive",

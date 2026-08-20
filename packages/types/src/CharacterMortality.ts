@@ -90,6 +90,37 @@ export const CharacterMortalitySchema = mortalityShape.superRefine(
 
 		let previousFrom: CalendarDate | undefined;
 		let previousTo: CalendarDate | undefined;
+		const parsedPhases = mortality.phases.map((phase) => ({
+			from: phase.from === undefined ? undefined : parsedDate(phase.from),
+			to: phase.to === undefined ? undefined : parsedDate(phase.to),
+			phase,
+		}));
+		const latest = parsedPhases.at(-1);
+		const latestOpen =
+			latest?.from !== undefined && latest.to === undefined ? latest : undefined;
+		if (
+			latestOpen &&
+			mortality.status === "alive" &&
+			!(["birth", "revival", "rebirth"] as const).includes(
+				latestOpen.phase.type as "birth" | "revival" | "rebirth",
+			)
+		) {
+			addDateError(ctx, ["phases"], "alive status requires a living latest open phase");
+		}
+		if (
+			latestOpen &&
+			mortality.status === "undead" &&
+			latestOpen.phase.type !== "undeath"
+		) {
+			addDateError(ctx, ["phases"], "undead status requires an undeath latest open phase");
+		}
+		if (
+			mortality.status === "dead" &&
+			latestOpen &&
+			parsedPhases.slice(0, -1).some((previous) => previous.to !== undefined)
+		) {
+			addDateError(ctx, ["phases"], "dead status cannot contain a later open existence phase");
+		}
 		for (const [index, phase] of mortality.phases.entries()) {
 			const from =
 				phase.from === undefined ? undefined : parsedDate(phase.from);

@@ -57,7 +57,7 @@ export default async function character(this: LocalContext, flags: NewCharacterC
   const data: CharacterTemplate = {
     title: articleName,
     character: {
-      ddb: ddb ?? "",
+      ...(ddb ? { ddb } : {}),
       image,
       details: {
         age,
@@ -67,8 +67,18 @@ export default async function character(this: LocalContext, flags: NewCharacterC
           length: undefined,
         },
         aliases: aliases ?? [],
-        dateOfBirth,
-        dateOfDeath,
+        mortality: {
+          status: (dateOfDeath ? "dead" : "alive") as "alive" | "dead",
+          phases: dateOfBirth
+            ? [
+                {
+                  type: "birth",
+                  from: dateOfBirth,
+                  ...(dateOfDeath ? { to: dateOfDeath } : {}),
+                },
+              ]
+            : [],
+        },
         sex: undefined,
         pronouns: undefined,
         height: undefined,

@@ -225,60 +225,82 @@ export function resolveCharacterAge(
 			: { approximate: false, phases, error: errors.join("; ") };
 	}
 
+	let totalDays = 0;
+	let measurable = true;
 	const validationError = validateMortalityInput(mortality);
 	if (validationError) {
 		errors.push(validationError);
-		return authoredAge !== undefined
-			? {
-					value: authoredAge,
-					approximate: false,
-					source: "authored",
-					authoredAge,
-					phases,
-					error: errors.join("; "),
-				}
-			: { approximate: false, phases, error: errors.join("; ") };
+		measurable = false;
 	}
-
-	let totalDays = 0;
-	let measurable = true;
 	let previousEndDay: number | undefined;
 	const rawPhases = mortality.phases as unknown[];
 	for (let index = 0; index < rawPhases.length; index += 1) {
 		const raw = rawPhases[index];
+		const rawType =
+			raw && typeof raw === "object"
+				? (raw as { type?: unknown }).type
+				: undefined;
+		if (!isMortalityPhaseType(rawType)) {
+			errors.push(`phase ${index}: phase type is invalid`);
+			measurable = false;
+			continue;
+		}
+		const phase = raw as {
+			type: MortalityPhaseType;
+			from?: unknown;
+			to?: unknown;
+			species?: unknown;
+			method?: unknown;
+		};
+		let from: ParsedDate | undefined;
+		let to: ParsedDate | undefined;
+		let phaseFailure: string | undefined;
+		if (phase.from !== undefined) {
+			try {
+				from = parseDate(phase.from);
+			} catch (error) {
+				phaseFailure = phaseError(error);
+			}
+		}
+		if (phase.to !== undefined) {
+			try {
+				to = parseDate(phase.to);
+			} catch (error) {
+				phaseFailure ??= phaseError(error);
+			}
+		}
+		let open = false;
+		if (
+			to === undefined &&
+			phase.to === undefined &&
+			index === rawPhases.length - 1 &&
+			statusAllowsOpen(mortality.status, phase.type) &&
+			current !== undefined &&
+			from !== undefined
+		) {
+			to = current;
+			open = true;
+		}
+		if (from === undefined || to === undefined || phaseFailure) {
+			const error =
+				phase.from === undefined
+					? "phase is incomplete"
+					: phaseFailure ?? "phase is incomplete";
+			phases.push({
+				type: phase.type,
+				...(from ? { from: from.date } : {}),
+				...(to ? { to: to.date } : {}),
+				...(typeof phase.species === "string" ? { species: phase.species } : {}),
+				...(typeof phase.method === "string" ? { method: phase.method } : {}),
+				approximate: false,
+				open,
+				error,
+			});
+			measurable = false;
+			errors.push(`phase ${index}: ${error}`);
+			continue;
+		}
 		try {
-			if (
-				!raw ||
-				typeof raw !== "object" ||
-				typeof (raw as { type?: unknown }).type !== "string"
-			)
-				throw new Error("phase type is invalid");
-			const phase = raw as {
-				type: unknown;
-				from?: unknown;
-				to?: unknown;
-				species?: unknown;
-				method?: unknown;
-			};
-			const type = phase.type as MortalityPhaseType;
-			if (!isMortalityPhaseType(type)) throw new Error("phase type is invalid");
-			const from = parseDate(phase.from);
-			let to: ParsedDate | undefined;
-			let open = false;
-			if (phase.to !== undefined) to = parseDate(phase.to);
-			else if (
-				index === rawPhases.length - 1 &&
-				statusAllowsOpen(mortality.status, type) &&
-				current !== undefined
-			) {
-				to = current;
-				open = true;
-			} else if (
-				index === rawPhases.length - 1 &&
-				statusAllowsOpen(mortality.status, type)
-			) {
-				throw new Error("currentDate is invalid for open phase");
-			} else throw new Error("phase is incomplete");
 			const precision = coarsest(from.originalPrecision, to.originalPrecision);
 			const normalizedFrom = atPrecision(from.date, precision);
 			const normalizedTo = atPrecision(to.date, precision);
@@ -287,44 +309,37 @@ export function resolveCharacterAge(
 					? normalizedTo.epochDay - normalizedFrom.epochDay
 					: atPrecision(normalizedTo, "day").epochDay -
 						atPrecision(normalizedFrom, "day").epochDay;
-			if (durationDays < 0)
-				throw new Error("phase to date cannot precede its from date");
+			if (durationDays < 0) throw new Error("phase to date cannot precede its from date");
 			const normalizedFromDay = atPrecision(normalizedFrom, "day").epochDay;
 			if (previousEndDay !== undefined && normalizedFromDay < previousEndDay)
-				throw new Error(
-					"mortality phases overlap or are out of chronological order",
-				);
+				throw new Error("mortality phases overlap or are out of chronological order");
 			const approximate = precision !== "day";
-			const resolved: ResolvedMortalityPhase = {
-				type,
+			phases.push({
+				type: phase.type,
 				from: from.date,
 				to: to.date,
-				...(typeof phase.species === "string"
-					? { species: phase.species }
-					: {}),
+				...(typeof phase.species === "string" ? { species: phase.species } : {}),
 				...(typeof phase.method === "string" ? { method: phase.method } : {}),
 				durationDays,
 				approximate,
 				open,
-			};
-			phases.push(resolved);
+			});
 			totalDays += durationDays;
 			previousEndDay = atPrecision(normalizedTo, "day").epochDay;
 		} catch (error) {
-			const rawType =
-				raw && typeof raw === "object"
-					? (raw as { type?: unknown }).type
-					: undefined;
-			if (isMortalityPhaseType(rawType)) {
-				phases.push({
-					type: rawType,
-					approximate: false,
-					open: false,
-					error: phaseError(error),
-				});
-			}
+			const message = phaseError(error);
+			phases.push({
+				type: phase.type,
+				from: from.date,
+				to: to.date,
+				...(typeof phase.species === "string" ? { species: phase.species } : {}),
+				...(typeof phase.method === "string" ? { method: phase.method } : {}),
+				approximate: false,
+				open,
+				error: message,
+			});
 			measurable = false;
-			errors.push(`phase ${index}: ${phaseError(error)}`);
+			errors.push(`phase ${index}: ${message}`);
 		}
 	}
 

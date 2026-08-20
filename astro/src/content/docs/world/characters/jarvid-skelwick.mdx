@@ -4,7 +4,16 @@ tags:
   - characters
 character:
   details:
-    mortality: undead
+    mortality:
+      status: alive
+      phases:
+        - type: birth
+        - type: undeath
+          from: 1275-09-11 AI
+          species: revenant
+        - type: revival
+          method: true resurrection
+          species: elf
     species: elf
   relationships:
     organizations: []

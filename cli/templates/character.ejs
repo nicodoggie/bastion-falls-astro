@@ -1,31 +1,63 @@
 ---
 title: <%= title %>
 character:
+  <%_ if (character.ddb) { _%>
   ddb: <%= character.ddb %>
+  <%_ } _%>
   <%_ if (character.image) { _%>
   image:
     url: <%= character.image.url %>
     attribution: <%= character.image.attribution %>
-    attribution_url: <%= character.image.attribution_url %>
+    attribution_url: <%= character.image.attributionUrl %>
   <%_ } _%>
   details:
+    <%_ if (character.details.aliases && character.details.aliases.length) { _%>
     aliases:
       <%_ character.details.aliases.forEach(function(alias){ _%>
       - <%- alias %>
       <%_ }) _%>
+    <%_ } _%>
+    <%_ if (character.details.age !== undefined) { _%>
     age: <%= character.details.age %>
-    dateOfBirth: <%= character.details.date_of_birth %>
-    dateOfDeath: <%= character.details.date_of_death %>
+    <%_ } _%>
+    <%_ if (character.details.mortality) { _%>
+    mortality:
+      status: <%= character.details.mortality.status %>
+      phases:
+        <%_ character.details.mortality.phases.forEach(function(phase){ _%>
+        - type: <%= phase.type %>
+          <%_ if (phase.from !== undefined) { _%>
+          from: <%= phase.from %>
+          <%_ } _%>
+          <%_ if (phase.to !== undefined) { _%>
+          to: <%= phase.to %>
+          <%_ } _%>
+          <%_ if (phase.species !== undefined) { _%>
+          species: <%= phase.species %>
+          <%_ } _%>
+          <%_ if (phase.method !== undefined) { _%>
+          method: <%= phase.method %>
+          <%_ } _%>
+        <%_ }) _%>
+    <%_ } _%>
+    <%_ if (character.details.sex !== undefined) { _%>
     sex: <%= character.details.sex %>
+    <%_ } _%>
+    <%_ if (character.details.pronouns !== undefined) { _%>
     pronouns: <%= character.details.pronouns %>
+    <%_ } _%>
+    <%_ if (character.details.height !== undefined) { _%>
     height: <%= character.details.height %>
+    <%_ } _%>
+    <%_ if (character.details.weight !== undefined) { _%>
     weight: <%= character.details.weight %>
-    origin: <%= character.details.origin %>
-    mortality: <%= character.details.mortality %>
-    ethnicities: <%= character.details.ethnicities %>
-    species: <%= character.details.species %>
-    sexOrgans: <%= character.details.sexOrgans %>
-    
+    <%_ } _%>
+  relationships:
+    relatives:
+      <%_ character.relationships.relatives.forEach(function(relative){ _%>
+      - name: <%- relative.name %>
+        type: <%= relative.type %>
+      <%_ }) _%>
 tags:
   <%_ tags.forEach(function(tag){ _%>
   - <%- tag %>

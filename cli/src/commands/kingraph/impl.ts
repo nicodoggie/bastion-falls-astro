@@ -1,6 +1,11 @@
 import type { LocalContext } from '@/context.js';
 import { glob } from 'tinyglobby';
 import { resolve, join } from 'node:path';
+import type { CharacterMortalityInput } from '@bastion-falls/types/CharacterAge';
+import {
+  getCurrentDeathDate,
+  getOriginalBirthDate,
+} from '@bastion-falls/types/CharacterAge';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { remark } from 'remark';
 import remarkFrontmatter from 'remark-frontmatter';
@@ -33,8 +38,7 @@ type CharacterFrontmatter = {
   character?: {
     name?: string;
     details?: {
-      dateOfBirth?: string;
-      dateOfDeath?: string;
+      mortality?: CharacterMortalityInput;
     };
     relationships?: {
       relatives?: Relative[];
@@ -88,8 +92,13 @@ export default async function fromCharacters(
     scanned++;
 
     const fullname = fm.character.name || fm.title || '';
-    const born = fm.character.details?.dateOfBirth;
-    const died = fm.character.details?.dateOfDeath;
+    const mortality = fm.character.details?.mortality;
+    const born = mortality ? getOriginalBirthDate(mortality) : undefined;
+    const died =
+      mortality &&
+      (mortality.status === 'dead' || mortality.status === 'undead')
+        ? getCurrentDeathDate(mortality)
+        : undefined;
     const families = fm.character.relationships?.families || [];
     const relatives = fm.character.relationships?.relatives || [];
 

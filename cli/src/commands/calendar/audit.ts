@@ -1,11 +1,13 @@
 import { readFile } from "node:fs/promises";
 import { relative } from "node:path";
 import {
-	BastionDate,
 	bastionCalendar,
 	type CalendarDate,
 	parseCalendarState,
 } from "@bastion-falls/calendar";
+import type { CharacterMortalityInput } from "@bastion-falls/types/CharacterAge";
+import { resolveCharacterAge } from "@bastion-falls/types/CharacterAge";
+import { CharacterMortalitySchema } from "@bastion-falls/types/CharacterMortality";
 import { glob } from "glob";
 import type { LocalContext } from "../../context.js";
 import { parse } from "../../lib/frontmatter.js";
@@ -15,7 +17,6 @@ export const AUDIT_CATEGORIES = [
 	"derived-only",
 	"matching-override",
 	"conflicting-override",
-	"insufficient-precision",
 	"invalid",
 	"missing-date",
 ] as const;
@@ -26,10 +27,22 @@ export interface CharacterAgeRecord {
 	readonly category: AuditCategory;
 	readonly authoredAge?: number;
 	readonly derivedAge?: number;
-	readonly dateOfBirth?: string;
-	readonly dateOfDeath?: string;
-	readonly mortality?: string;
+	readonly status?: string;
+	readonly phases?: readonly NormalizedPhaseEvidence[];
+	readonly approximate?: boolean;
 	readonly reason?: string;
+}
+
+export interface NormalizedPhaseEvidence {
+	readonly type: string;
+	readonly from?: string;
+	readonly to?: string;
+	readonly species?: string;
+	readonly method?: string;
+	readonly durationDays?: number;
+	readonly approximate: boolean;
+	readonly open: boolean;
+	readonly error?: string;
 }
 
 export interface CompactCharacterRecord {
@@ -43,10 +56,6 @@ function record(
 	return Object.fromEntries(
 		Object.entries(base).filter(([, value]) => value !== undefined),
 	) as unknown as CharacterAgeRecord;
-}
-
-function text(value: unknown): value is string {
-	return typeof value === "string" && value.trim() !== "";
 }
 
 export function classifyCharacterAge(
@@ -74,15 +83,17 @@ export function classifyCharacterAge(
 		});
 	}
 	const authoredAge: unknown = details["age"];
-	const dateOfBirth: unknown = details["dateOfBirth"];
-	const dateOfDeath: unknown = details["dateOfDeath"];
 	const mortality: unknown = details["mortality"];
-	const common = {
+	const common: Omit<CharacterAgeRecord, "category"> = {
 		...base,
 		authoredAge: typeof authoredAge === "number" ? authoredAge : undefined,
-		dateOfBirth: typeof dateOfBirth === "string" ? dateOfBirth : undefined,
-		dateOfDeath: typeof dateOfDeath === "string" ? dateOfDeath : undefined,
-		mortality: typeof mortality === "string" ? mortality : undefined,
+		status:
+			mortality && typeof mortality === "object" && !Array.isArray(mortality)
+				? typeof (mortality as Record<string, unknown>)["status"] === "string"
+					? ((mortality as Record<string, unknown>)["status"] as string)
+					: undefined
+				: undefined,
+		phases: undefined,
 	};
 
 	if (
@@ -97,84 +108,79 @@ export function classifyCharacterAge(
 			reason: "age must be a non-negative safe integer",
 		});
 	}
-	if (
-		mortality !== undefined &&
-		!["alive", "dead", "undead", "unknown"].includes(String(mortality))
-	) {
-		return record({
-			...common,
-			category: "invalid",
-			reason: "mortality is invalid",
-		});
-	}
-	if (dateOfBirth !== undefined && typeof dateOfBirth !== "string") {
-		return record({
-			...common,
-			category: "invalid",
-			reason: "dateOfBirth must be a string",
-		});
-	}
-	if (dateOfDeath !== undefined && typeof dateOfDeath !== "string") {
-		return record({
-			...common,
-			category: "invalid",
-			reason: "dateOfDeath must be a string",
-		});
-	}
-	const dead = mortality === "dead";
-	if (!text(dateOfBirth) || (dead && !text(dateOfDeath))) {
+	if (!mortality || typeof mortality !== "object" || Array.isArray(mortality)) {
 		return record({
 			...common,
 			category: "missing-date",
-			reason: dead
-				? "dead character requires dateOfDeath"
-				: "dateOfBirth is missing",
+			reason: "mortality history is missing",
 		});
 	}
-
-	let birthDate: CalendarDate;
-	let deathDate: CalendarDate | undefined;
-	try {
-		birthDate = BastionDate.from(dateOfBirth);
-		if (dead) deathDate = BastionDate.from(dateOfDeath as string);
-	} catch {
+	const mortalityValidation = CharacterMortalitySchema.safeParse(mortality);
+	const resolved = resolveCharacterAge(
+		{ age: authoredAge, mortality: mortality as CharacterMortalityInput },
+		currentDate,
+	);
+	const rawPhaseInputs =
+		mortality && typeof mortality === "object" && !Array.isArray(mortality)
+			? Array.isArray((mortality as Record<string, unknown>)["phases"])
+				? ((mortality as Record<string, unknown>)["phases"] as unknown[])
+				: []
+			: [];
+	const phases = resolved.phases.map((phase, index) => {
+		const raw = rawPhaseInputs[index];
+		const rawRecord = raw && typeof raw === "object" ? (raw as Record<string, unknown>) : {};
+		return {
+			type: phase.type,
+			...(phase.from
+				? { from: phase.from.toString() }
+				: typeof rawRecord["from"] === "string" ? { from: rawRecord["from"] } : {}),
+			...(phase.to
+				? { to: phase.to.toString() }
+				: typeof rawRecord["to"] === "string" ? { to: rawRecord["to"] } : {}),
+		...(phase.species ? { species: phase.species } : {}),
+		...(phase.method ? { method: phase.method } : {}),
+		...(phase.durationDays !== undefined
+			? { durationDays: phase.durationDays }
+			: {}),
+		approximate: phase.approximate,
+		open: phase.open,
+		...(phase.error ? { error: phase.error } : {}),
+		};
+	});
+	const withEvidence = {
+		...common,
+		phases,
+		approximate: resolved.approximate,
+		derivedAge: resolved.derivedAge,
+	};
+	const hasInvalidEvidence = resolved.phases.some(
+		(phase) =>
+			phase.error !== undefined &&
+			!phase.error.includes("phase is incomplete") &&
+			!phase.error.includes("date must be a string or CalendarDate"),
+	);
+	const hasSchemaError = !mortalityValidation.success;
+	if (hasInvalidEvidence || hasSchemaError)
 		return record({
-			...common,
+			...withEvidence,
 			category: "invalid",
-			reason: "date is malformed",
+			reason: resolved.error,
 		});
-	}
-	if (
-		birthDate.precision !== "day" ||
-		(deathDate !== undefined && deathDate.precision !== "day")
-	) {
+	if (resolved.derivedAge === undefined)
 		return record({
-			...common,
-			category: "insufficient-precision",
-			reason: "age requires day-precision dates",
+			...withEvidence,
+			category: "missing-date",
+			reason: resolved.error ?? "phase history is incomplete",
 		});
-	}
-	try {
-		const reference = deathDate ?? currentDate;
-		const derivedAge = birthDate.ageOn(reference);
-		if (authoredAge === undefined)
-			return record({ ...common, category: "derived-only", derivedAge });
-		return record({
-			...common,
-			category:
-				authoredAge === derivedAge
-					? "matching-override"
-					: "conflicting-override",
-			derivedAge,
-		});
-	} catch (error) {
-		return record({
-			...common,
-			category: "invalid",
-			reason:
-				error instanceof Error ? error.message : "date relationship is invalid",
-		});
-	}
+	if (authoredAge === undefined)
+		return record({ ...withEvidence, category: "derived-only" });
+	return record({
+		...withEvidence,
+		category:
+			authoredAge === resolved.derivedAge
+				? "matching-override"
+				: "conflicting-override",
+	});
 }
 
 export interface AuditOptions {

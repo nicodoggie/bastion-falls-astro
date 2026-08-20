@@ -28,101 +28,203 @@ const current = bastionCalendar.dateFrom({
 const classify = (details: unknown) =>
 	classifyCharacterAge({ file: "character.mdx", details }, current);
 
-test("classifies age audit evidence across all categories", () => {
+test("classifies resolver-backed mortality audit evidence", () => {
 	const cases: [string, unknown, string, number | undefined][] = [
-		["derived", { dateOfBirth: "90-03-14 AI" }, "derived-only", 10],
+		[
+			"derived",
+			{
+				mortality: {
+					status: "alive",
+					phases: [{ type: "birth", from: "90-03-14 AI" }],
+				},
+			},
+			"derived-only",
+			10,
+		],
 		[
 			"matching",
-			{ age: 10, dateOfBirth: "90-03-14 AI" },
+			{
+				age: 10,
+				mortality: {
+					status: "alive",
+					phases: [{ type: "birth", from: "90-03-14 AI" }],
+				},
+			},
 			"matching-override",
 			10,
 		],
 		[
 			"conflicting",
-			{ age: 11, dateOfBirth: "90-03-14 AI" },
+			{
+				age: 11,
+				mortality: {
+					status: "alive",
+					phases: [{ type: "birth", from: "90-03-14 AI" }],
+				},
+			},
 			"conflicting-override",
 			10,
 		],
 		[
 			"partial",
-			{ dateOfBirth: "90-03 AI" },
-			"insufficient-precision",
+			{
+				mortality: {
+					status: "alive",
+					phases: [{ type: "birth", from: "90-03 AI" }],
+				},
+			},
+			"derived-only",
+			10,
+		],
+		[
+			"missing",
+			{ mortality: { status: "alive", phases: [] } },
+			"missing-date",
 			undefined,
 		],
-		["missing", { dateOfBirth: "   " }, "missing-date", undefined],
-		["invalid", { dateOfBirth: "not-a-date" }, "invalid", undefined],
-		["future", { dateOfBirth: "101-03-15 AI" }, "invalid", undefined],
+		[
+			"invalid",
+			{
+				mortality: {
+					status: "alive",
+					phases: [{ type: "birth", from: "not-a-date" }],
+				},
+			},
+			"invalid",
+			undefined,
+		],
 		[
 			"dead",
 			{
-				dateOfBirth: "90-01-01 AI",
-				dateOfDeath: "95-01-01 AI",
-				mortality: "dead",
+				mortality: {
+					status: "dead",
+					phases: [{ type: "birth", from: "90-01-01 AI", to: "95-01-01 AI" }],
+				},
 			},
 			"derived-only",
 			5,
 		],
 		[
-			"dead-missing",
-			{ dateOfBirth: "90-01-01 AI", mortality: "dead" },
-			"missing-date",
-			undefined,
-		],
-		[
-			"death-before-birth",
+			"zero",
 			{
-				dateOfBirth: "90-01-01 AI",
-				dateOfDeath: "89-01-01 AI",
-				mortality: "dead",
+				age: 0,
+				mortality: {
+					status: "alive",
+					phases: [{ type: "birth", from: "100-03-15 AI" }],
+				},
 			},
-			"invalid",
-			undefined,
+			"matching-override",
+			0,
 		],
-		["zero", { age: 0, dateOfBirth: "100-03-15 AI" }, "matching-override", 0],
-		["malformed", "bad", "invalid", undefined],
 	];
 	for (const [name, details, category, derivedAge] of cases) {
 		const result = classify(details);
 		assert.equal(result.category, category, name);
 		assert.equal(result.derivedAge, derivedAge, name);
 	}
-
-	const matching = classify({ age: 10, dateOfBirth: "90-03-14 AI" });
-	assert.deepEqual(matching, {
-		file: "character.mdx",
-		category: "matching-override",
-		authoredAge: 10,
-		derivedAge: 10,
-		dateOfBirth: "90-03-14 AI",
-	});
-	const dead = classify({
-		dateOfBirth: "90-01-01 AI",
-		dateOfDeath: "95-01-01 AI",
-		mortality: "dead",
-	});
-	assert.deepEqual(dead, {
-		file: "character.mdx",
-		category: "derived-only",
-		derivedAge: 5,
-		dateOfBirth: "90-01-01 AI",
-		dateOfDeath: "95-01-01 AI",
-		mortality: "dead",
-	});
 	assert.equal(
-		classify({ age: 20, dateOfBirth: "90-03 AI" }).reason,
-		"age requires day-precision dates",
+		classify({
+			age: 20,
+			mortality: {
+				status: "alive",
+				phases: [{ type: "birth", from: "90-03 AI" }],
+			},
+		}).category,
+		"conflicting-override",
+	);
+	assert.equal(
+		classify({
+			age: 20,
+			mortality: {
+				status: "alive",
+				phases: [{ type: "birth", from: "invalid" }],
+			},
+		}).category,
+		"invalid",
 	);
 });
 
-test("authored override never hides partial or invalid dates", () => {
+test("audit phase evidence is normalized and retains metadata", () => {
+	const result = classify({
+		mortality: {
+			status: "alive",
+			phases: [
+				{
+					type: "revival",
+					from: "95-01 AI",
+					to: "96-02 AI",
+					species: "human",
+					method: "spell",
+				},
+			],
+		},
+	});
+	assert.equal(result.category, "derived-only");
+	assert.deepEqual(result.phases, [
+		{
+			type: "revival",
+			from: "95-01 AI",
+			to: "96-02 AI",
+			species: "human",
+			method: "spell",
+			durationDays: 390,
+			approximate: true,
+			open: false,
+		},
+	]);
+});
+
+test("authored override never hides partial or invalid phase evidence", () => {
 	assert.equal(
-		classify({ age: 20, dateOfBirth: "90-03 AI" }).category,
-		"insufficient-precision",
+		classify({
+			age: 20,
+			mortality: {
+				status: "alive",
+				phases: [{ type: "birth", from: "90-03 AI" }],
+			},
+		}).category,
+		"conflicting-override",
 	);
 	assert.equal(
-		classify({ age: 20, dateOfBirth: "invalid" }).category,
+		classify({
+			age: 20,
+			mortality: {
+				status: "alive",
+				phases: [{ type: "birth", from: "invalid" }],
+			},
+		}).category,
 		"invalid",
 	);
+	assert.equal(
+		classify({
+			mortality: {
+				status: "alive",
+				phases: [
+					{ type: "undeath", from: "90 AI", species: "wight" },
+				],
+			},
+		}).category,
+		"invalid",
+	);
+});
+
+test("audit retains partial normalized evidence and categorizes missing dates", () => {
+	const result = classify({
+		mortality: {
+			status: "dead",
+			phases: [{ type: "birth", from: "90 AI" }],
+		},
+	});
+	assert.equal(result.category, "missing-date");
+	assert.deepEqual(result.phases, [
+		{
+			type: "birth",
+			from: "90 AI",
+			approximate: false,
+			open: false,
+			error: "phase is incomplete",
+		},
+	]);
 });
 
 async function snapshotFiles(
@@ -176,9 +278,9 @@ test("audit command discovers characters and performs no writes", async () => {
 			)}\n`,
 		);
 		const files: Record<string, string> = {
-			"zeta.mdx": `---\ncharacter:\n  details:\n    age: 10\n    dateOfBirth: 90-03-14 AI\n---\n# Zeta\n`,
-			"alpha.mdx": `---\ncharacter:\n  details:\n    age: 11\n    dateOfBirth: 90-03-14 AI\n---\n# Alpha\n`,
-			"mu.mdx": `---\ncharacter:\n  details:\n    dateOfBirth: 90-03 AI\n---\n# Mu\n`,
+			"zeta.mdx": `---\ncharacter:\n  details:\n    age: 10\n    mortality:\n      status: alive\n      phases:\n        - type: birth\n          from: 90-03-14 AI\n---\n# Zeta\n`,
+			"alpha.mdx": `---\ncharacter:\n  details:\n    age: 11\n    mortality:\n      status: alive\n      phases:\n        - type: birth\n          from: 90-03-14 AI\n---\n# Alpha\n`,
+			"mu.mdx": `---\ncharacter:\n  details:\n    mortality:\n      status: alive\n      phases:\n        - type: birth\n          from: 90-03 AI\n---\n# Mu\n`,
 		};
 		for (const [name, contents] of Object.entries(files))
 			await writeFile(
@@ -218,16 +320,27 @@ test("audit command discovers characters and performs no writes", async () => {
 		);
 		assert.deepEqual(
 			records.map((item: { category: string }) => item.category),
-			["conflicting-override", "insufficient-precision", "matching-override"],
+			["conflicting-override", "derived-only", "matching-override"],
 		);
 		assert.deepEqual(records[0], {
 			file: "astro/src/content/docs/world/characters/alpha.mdx",
 			category: "conflicting-override",
 			authoredAge: 11,
 			derivedAge: 10,
-			dateOfBirth: "90-03-14 AI",
+			status: "alive",
+			phases: [
+				{
+					type: "birth",
+					from: "90-03-14 AI",
+					to: "100-03-15 AI",
+					durationDays: 3601,
+					approximate: false,
+					open: true,
+				},
+			],
+			approximate: false,
 		});
-		assert.equal(records[1].reason, "age requires day-precision dates");
+		assert.equal(records[1].approximate, true);
 	} finally {
 		await rm(root, { recursive: true, force: true });
 	}

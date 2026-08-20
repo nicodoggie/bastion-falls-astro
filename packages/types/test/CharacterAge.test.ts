@@ -300,6 +300,45 @@ test("handles empty histories and authored override precedence including zero", 
 	assert.equal(resolveCharacterAge({ age: -1 }, current).approximate, false);
 });
 
+test("retains partial valid phase evidence while withholding derived age", () => {
+const fromOnly = resolveCharacterAge(
+	{ mortality: mortality("dead", [{ type: "birth", from: "80 AI" }]) },
+	current,
+);
+assert.deepEqual(fromOnly.phases[0], {
+	type: "birth",
+	from: d("80 AI"),
+	approximate: false,
+	open: false,
+	error: "phase is incomplete",
+});
+const toOnly = resolveCharacterAge(
+	{ mortality: mortality("dead", [{ type: "birth", to: "90 AI" }]) },
+	current,
+);
+assert.equal(toOnly.phases[0]?.to?.toString(), "90 AI");
+assert.equal(toOnly.value, undefined);
+const revival = resolveCharacterAge(
+	{
+		mortality: mortality("dead", [
+			{ type: "revival", from: "80 AI", species: "human", method: "spell" },
+		]),
+	},
+	current,
+);
+assert.equal(revival.phases[0]?.species, "human");
+assert.equal(revival.phases[0]?.method, "spell");
+assert.equal(revival.phases[0]?.from?.toString(), "80 AI");
+});
+
+test("does not normalize invalid phase discriminants", () => {
+const result = resolveCharacterAge(
+	{ mortality: { status: "dead", phases: [{ type: "not-a-phase", from: "80 AI" }] } as unknown as CharacterMortalityInput },
+	current,
+);
+assert.deepEqual(result.phases, []);
+});
+
 test("only matching final states infer current and mismatches stay incomplete", () => {
 	assert.equal(
 		resolveCharacterAge(
