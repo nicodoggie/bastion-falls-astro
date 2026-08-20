@@ -132,7 +132,7 @@ export const CharacterMortalitySchema = mortalityShape.superRefine(
 				addDateError(
 					ctx,
 					["phases", index, "from"],
-					"day-precision phases must be ordered",
+					"phases must be ordered at matching precision",
 				);
 			}
 			if (
@@ -144,7 +144,7 @@ export const CharacterMortalitySchema = mortalityShape.superRefine(
 				addDateError(
 					ctx,
 					["phases", index, "from"],
-					"day-precision phases must not overlap",
+					"phases must not overlap at matching precision",
 				);
 			}
 			if (from !== undefined) previousFrom = from;
