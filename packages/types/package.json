@@ -1,44 +1,46 @@
 {
-  "name": "@bastion-falls/types",
-  "version": "0.0.1",
-  "private": true,
-  "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./*": {
-      "types": "./dist/*.d.ts",
-      "import": "./dist/*.js"
-    },
-    "./legacy": {
-      "types": "./dist/legacy/index.d.ts",
-      "import": "./dist/legacy/index.js"
-    },
-    "./legacy/*": {
-      "types": "./dist/legacy/*.d.ts",
-      "import": "./dist/legacy/*.js"
-    }
-  },
-  "scripts": {
-    "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist",
-    "build": "pnpm run clean && tsc -p tsconfig.json",
-    "dev": "tsc -p tsconfig.json --watch",
-    "export:schemas": "tsx scripts/export-json-schemas.ts"
-  },
-  "dependencies": {
-    "zod": "~4.3.6"
-  },
-  "volta": {
-    "extends": "../../package.json"
-  },
-  "devDependencies": {
-    "tsx": "^4.23.1",
-    "typescript": "6.0.3",
-    "zod-to-json-schema": "^3.25.2"
-  }
+	"name": "@bastion-falls/types",
+	"version": "0.0.1",
+	"private": true,
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./*": {
+			"types": "./dist/*.d.ts",
+			"import": "./dist/*.js"
+		},
+		"./legacy": {
+			"types": "./dist/legacy/index.d.ts",
+			"import": "./dist/legacy/index.js"
+		},
+		"./legacy/*": {
+			"types": "./dist/legacy/*.d.ts",
+			"import": "./dist/legacy/*.js"
+		}
+	},
+	"scripts": {
+		"test": "node --import tsx --test test/**/*.test.ts",
+		"typecheck": "tsc --noEmit",
+		"clean": "rm -rf dist",
+		"build": "pnpm run clean && tsc -p tsconfig.json",
+		"dev": "tsc -p tsconfig.json --watch",
+		"export:schemas": "tsx scripts/export-json-schemas.ts"
+	},
+	"dependencies": {
+		"@bastion-falls/calendar": "workspace:^",
+		"zod": "~4.3.6"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	},
+	"devDependencies": {
+		"tsx": "^4.23.1",
+		"typescript": "6.0.3",
+		"zod-to-json-schema": "^3.25.2"
+	}
 }

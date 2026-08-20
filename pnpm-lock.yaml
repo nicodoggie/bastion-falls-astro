@@ -542,6 +542,9 @@ importers:
 
   packages/types:
     dependencies:
+      '@bastion-falls/calendar':
+        specifier: workspace:^
+        version: link:../calendar
       zod:
         specifier: ~4.3.6
         version: 4.3.6
