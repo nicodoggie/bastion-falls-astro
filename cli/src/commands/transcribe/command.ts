@@ -10,6 +10,7 @@ import { getTranscribeConfig } from "@/config.js";
 import type { LocalContext } from "@/context.js";
 import { applyCorrectionsCommand } from "./applyCorrections.js";
 import { archiveCommand } from "./archive/command.js";
+import { reconciliationBenchmarkCommand } from "./reconciliationBenchmarkCommand.js";
 
 import {
   deriveMonoChannels,
@@ -1279,6 +1280,7 @@ export const transcribeCommand = buildRouteMap({
     channels: channelsCommand,
     "apply-corrections": applyCorrectionsCommand,
     archive: archiveCommand,
+    benchmark: reconciliationBenchmarkCommand,
   },
   defaultCommand: "run",
   docs: {
