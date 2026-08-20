@@ -26,7 +26,7 @@ export type CharacterMortalityInput = Omit<CharacterMortality, "phases"> & {
 };
 
 export interface ResolvedMortalityPhase {
-	readonly type?: MortalityPhaseType;
+	readonly type: MortalityPhaseType;
 	readonly from?: CalendarDate;
 	readonly to?: CalendarDate;
 	readonly species?: string;
@@ -39,7 +39,7 @@ export interface ResolvedMortalityPhase {
 
 export interface ResolvedCharacterAge {
 	readonly value?: number;
-	readonly approximate?: boolean;
+	readonly approximate: boolean;
 	readonly source?: "authored" | "phases";
 	readonly authoredAge?: number;
 	readonly derivedAge?: number;
@@ -89,6 +89,12 @@ function coarsest(
 
 function isLiving(type: MortalityPhaseType): boolean {
 	return type === "birth" || type === "revival" || type === "rebirth";
+}
+
+function isMortalityPhaseType(value: unknown): value is MortalityPhaseType {
+	return ["birth", "undeath", "revival", "rebirth"].includes(
+		value as MortalityPhaseType,
+	);
 }
 
 function statusAllowsOpen(
@@ -188,12 +194,17 @@ export function resolveCharacterAge(
 		return authoredAge !== undefined
 			? {
 					value: authoredAge,
+					approximate: false,
 					source: "authored",
 					authoredAge,
 					phases: [],
 					...(errors.length ? { error: errors.join("; ") } : {}),
 				}
-			: { phases: [], ...(errors.length ? { error: errors.join("; ") } : {}) };
+			: {
+					approximate: false,
+					phases: [],
+					...(errors.length ? { error: errors.join("; ") } : {}),
+				};
 	}
 
 	if (
@@ -205,12 +216,13 @@ export function resolveCharacterAge(
 		return authoredAge !== undefined
 			? {
 					value: authoredAge,
+					approximate: false,
 					source: "authored",
 					authoredAge,
 					phases,
 					error: errors.join("; "),
 				}
-			: { phases, error: errors.join("; ") };
+			: { approximate: false, phases, error: errors.join("; ") };
 	}
 
 	const validationError = validateMortalityInput(mortality);
@@ -219,12 +231,13 @@ export function resolveCharacterAge(
 		return authoredAge !== undefined
 			? {
 					value: authoredAge,
+					approximate: false,
 					source: "authored",
 					authoredAge,
 					phases,
 					error: errors.join("; "),
 				}
-			: { phases, error: errors.join("; ") };
+			: { approximate: false, phases, error: errors.join("; ") };
 	}
 
 	let totalDays = 0;
@@ -233,7 +246,6 @@ export function resolveCharacterAge(
 	const rawPhases = mortality.phases as unknown[];
 	for (let index = 0; index < rawPhases.length; index += 1) {
 		const raw = rawPhases[index];
-		const base: ResolvedMortalityPhase = { approximate: false, open: false };
 		try {
 			if (
 				!raw ||
@@ -249,8 +261,7 @@ export function resolveCharacterAge(
 				method?: unknown;
 			};
 			const type = phase.type as MortalityPhaseType;
-			if (!["birth", "undeath", "revival", "rebirth"].includes(type))
-				throw new Error("phase type is invalid");
+			if (!isMortalityPhaseType(type)) throw new Error("phase type is invalid");
 			const from = parseDate(phase.from);
 			let to: ParsedDate | undefined;
 			let open = false;
@@ -300,15 +311,18 @@ export function resolveCharacterAge(
 			totalDays += durationDays;
 			previousEndDay = atPrecision(normalizedTo, "day").epochDay;
 		} catch (error) {
-			phases.push({
-				...base,
-				...(raw &&
-				typeof raw === "object" &&
-				typeof (raw as { type?: unknown }).type === "string"
-					? { type: (raw as { type: MortalityPhaseType }).type }
-					: {}),
-				error: phaseError(error),
-			});
+			const rawType =
+				raw && typeof raw === "object"
+					? (raw as { type?: unknown }).type
+					: undefined;
+			if (isMortalityPhaseType(rawType)) {
+				phases.push({
+					type: rawType,
+					approximate: false,
+					open: false,
+					error: phaseError(error),
+				});
+			}
 			measurable = false;
 			errors.push(`phase ${index}: ${phaseError(error)}`);
 		}
@@ -327,7 +341,7 @@ export function resolveCharacterAge(
 			: derivedAge !== undefined
 				? { value: derivedAge, source: "phases" as const }
 				: {}),
-		...(approximate ? { approximate: true } : {}),
+		approximate,
 		...(derivedAge !== undefined ? { derivedAge } : {}),
 		phases,
 		...(errors.length ? { error: errors.join("; ") } : {}),

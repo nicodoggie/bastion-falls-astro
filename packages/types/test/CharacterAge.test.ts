@@ -106,7 +106,7 @@ test("accumulates exact sub-year fragments before flooring", () => {
 		current,
 	);
 	assert.equal(result.value, 1);
-	assert.equal(result.approximate, undefined);
+	assert.equal(result.approximate, false);
 });
 
 test("accumulates approximate multi-fragment phases and propagates approximation", () => {
@@ -249,7 +249,7 @@ test("rejects missing, malformed, backward, and foreign dates without plausible 
 
 test("authored overrides win while valid derived age remains exposed", () => {
 	const mortalityInput = mortality("dead", [
-		{ type: "birth", from: "80 AI", to: "100 AI" },
+		{ type: "birth", from: "80-01-01 AI", to: "100-01-01 AI" },
 	]);
 	const matching = resolveCharacterAge(
 		{ age: 20, mortality: mortalityInput },
@@ -266,13 +266,14 @@ test("authored overrides win while valid derived age remains exposed", () => {
 	assert.equal(conflicting.value, 7);
 	assert.equal(conflicting.source, "authored");
 	assert.equal(conflicting.authoredAge, 7);
+	assert.equal(conflicting.approximate, false);
 	assert.equal(conflicting.derivedAge, 20);
 });
 
 test("handles empty histories and authored override precedence including zero", () => {
 	assert.deepEqual(
 		resolveCharacterAge({ mortality: mortality("unknown", []) }, current),
-		{ phases: [] },
+		{ approximate: false, phases: [] },
 	);
 	const result = resolveCharacterAge(
 		{ age: 0, mortality: mortality("dead", [{ type: "birth", from: "bad" }]) },
@@ -282,8 +283,21 @@ test("handles empty histories and authored override precedence including zero", 
 	assert.equal(result.source, "authored");
 	assert.equal(result.authoredAge, 0);
 	assert.ok(result.error);
+	assert.equal(result.approximate, false);
+	const invalidPhase = resolveCharacterAge(
+		{
+			age: 7,
+			mortality: {
+				status: "dead",
+				phases: [{ type: "not-a-phase", from: "80 AI", to: "81 AI" }],
+			} as CharacterMortalityInput,
+		},
+		current,
+	);
+	assert.deepEqual(invalidPhase.phases, []);
 	assert.equal(resolveCharacterAge({ age: -1 }, current).value, undefined);
 	assert.ok(resolveCharacterAge({ age: -1 }, current).error);
+	assert.equal(resolveCharacterAge({ age: -1 }, current).approximate, false);
 });
 
 test("only matching final states infer current and mismatches stay incomplete", () => {
@@ -324,15 +338,18 @@ test("only matching final states infer current and mismatches stay incomplete", 
 });
 
 test("accepts bound CalendarDate without reparsing and rejects foreign CalendarDate", () => {
+	const from = d("80 AI");
+	const to = d("90 AI");
+	const currentDate = d(current);
 	const result = resolveCharacterAge(
 		{
-			mortality: mortality("dead", [
-				{ type: "birth", from: d("80 AI"), to: d("90 AI") },
-			]),
+			mortality: mortality("dead", [{ type: "birth", from, to }]),
 		},
-		d(current),
+		currentDate,
 	);
 	assert.equal(result.value, 10);
+	assert.strictEqual(result.phases[0]?.from, from);
+	assert.strictEqual(result.phases[0]?.to, to);
 	const foreign = defineCalendar({
 		...bastionCalendar.definition,
 		id: "foreign",
@@ -350,6 +367,17 @@ test("accepts bound CalendarDate without reparsing and rejects foreign CalendarD
 		d(current),
 	);
 	assert.equal(invalid.value, undefined);
+});
+
+test("preserves bound current identity for an open phase", () => {
+	const from = d("80 AI");
+	const currentDate = d(current);
+	const result = resolveCharacterAge(
+		{ mortality: mortality("alive", [{ type: "birth", from }]) },
+		currentDate,
+	);
+	assert.strictEqual(result.phases[0]?.from, from);
+	assert.strictEqual(result.phases[0]?.to, currentDate);
 });
 
 test("exposes original birth and current death anchors", () => {
