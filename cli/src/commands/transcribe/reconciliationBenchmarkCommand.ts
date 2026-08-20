@@ -120,7 +120,7 @@ async function loadCandidateInputs(sourceDir: string): Promise<{ manifest: Manif
 }
 
 async function sharedContext(options: BenchmarkAdapterContext, laneRoot: string): Promise<{ rules: string; excerpt: string }> {
-  const files = await collectContextFiles({ contextRoot: options.contextRoot, campaign: options.campaign, outDir: laneRoot, maxFiles: 40 });
+  const files = await collectContextFiles({ contextRoot: options.contextRoot, campaign: options.campaign, outDir: laneRoot, maxFiles: 40, excludePathFragments: [options.sessionDate] });
   return {
     rules: await loadCorrectionRulesMarkdown({ cwd: options.repositoryCwd, path: options.corrections, campaign: options.campaign, sessionDate: options.sessionDate }),
     excerpt: buildContextExcerpt(files, options.contextRoot),

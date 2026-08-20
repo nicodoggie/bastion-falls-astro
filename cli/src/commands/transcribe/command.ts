@@ -951,6 +951,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
         contextRoot,
         campaign: flags.campaign,
         outDir,
+        excludePathFragments: [flags["session-date"]],
       });
       if (flags["skip-correction"]) {
         checkpoint.stages.reconciliation.status = "pending";
@@ -1045,7 +1046,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
           });
         }
         const correctionRules = await getCorrectionRules();
-        const glossaryPath = await writeGlossary({ contextRoot, campaign: flags.campaign, outDir });
+        const glossaryPath = await writeGlossary({ contextRoot, campaign: flags.campaign, outDir, excludePathFragments: [flags["session-date"]] });
         const glossary = evidenceLines(await readFile(glossaryPath, "utf8"));
         const correctionRuleLines = evidenceLines(correctionRules);
         const evidenceRevision = stableHash({
@@ -1127,6 +1128,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
         campaign: flags.campaign,
         outDir,
         maxFiles: 40,
+        excludePathFragments: [flags["session-date"]],
       });
       if (reconciliationSettings.provider === "hermes") {
         unifiedStageResult ??= await runUnifiedReconciliationStage({

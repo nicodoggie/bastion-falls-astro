@@ -13,6 +13,7 @@ export interface BuildContextOptions {
   campaign: string;
   outDir: string;
   maxFiles?: number;
+  excludePathFragments?: readonly string[];
 }
 
 function titleFromSlug(path: string): string {
@@ -89,6 +90,7 @@ export async function collectContextFiles(options: BuildContextOptions): Promise
     ignore: ["help/**"],
   });
   const ordered = matches
+    .filter((path) => !(options.excludePathFragments ?? []).some((fragment) => fragment && path.includes(fragment)))
     .sort((a, b) => contextPriority(a, options.campaign) - contextPriority(b, options.campaign) || a.localeCompare(b))
     .slice(0, options.maxFiles ?? 300);
 

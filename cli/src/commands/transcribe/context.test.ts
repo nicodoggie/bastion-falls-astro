@@ -1,7 +1,10 @@
 import assert from "node:assert/strict";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { test } from "node:test";
 
-import { extractGlossaryEntries } from "./context.js";
+import { collectContextFiles, extractGlossaryEntries } from "./context.js";
 
 test("extracts glossary entries from frontmatter, headings, filenames, and JSON names", () => {
   const entries = extractGlossaryEntries([
@@ -21,4 +24,16 @@ test("extracts glossary entries from frontmatter, headings, filenames, and JSON 
     ),
     true,
   );
+});
+
+test("excludes active-session authored context before reading", async () => {
+  const root = await mkdtemp(join(tmpdir(), "transcribe-context-exclude-"));
+  await mkdir(join(root, "world", "notes", "the-vengeful"), { recursive: true });
+  await writeFile(join(root, "world", "notes", "the-vengeful", "2026-08-15.mdx"), "CURRENT SESSION SECRET\n");
+  await writeFile(join(root, "world", "notes", "the-vengeful", "2026-08-14.mdx"), "Prior session context\n");
+  try {
+    const files = await collectContextFiles({ contextRoot: root, campaign: "the-vengeful", outDir: join(root, "out"), excludePathFragments: ["2026-08-15"] });
+    assert.deepEqual(files.map((file) => file.path), ["world/notes/the-vengeful/2026-08-14.mdx"]);
+    assert.doesNotMatch(files.map((file) => file.content).join("\n"), /CURRENT SESSION SECRET/u);
+  } finally { await rm(root, { recursive: true, force: true }); }
 });
