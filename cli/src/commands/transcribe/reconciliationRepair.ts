@@ -6,9 +6,17 @@ import {
   OmissionSchema,
   ReconciliationBlockSchema,
   ReconciliationResponseSchema,
+  SourceEventSchema,
   SummarySafetySchema,
 } from './reconciliation.js';
 import { stableHash } from './reconciliationEvidence.js';
+import type { ReconciliationEvidencePacket } from './reconciliationEvidence.js';
+import {
+  parseReconciliationResponse,
+  validateReconciliation,
+  type CanonicalReconciliation,
+  type SourceEvent,
+} from './reconciliation.js';
 
 export const REPAIR_VERSION = 1 as const;
 export const REPAIR_PROMPT_VERSION = 'reconciliation.format-repair.v1' as const;
@@ -696,4 +704,158 @@ export function assertRepairPayloadBytes(value: unknown): asserts value is Repai
     throw new RangeError('repair payload exceeds UTF-8 byte limit');
   }
   RepairPayloadSchema.parse(value);
+}
+
+export interface RepairInvocationResult { stdout: string }
+export type InvokeFormatRepair = (input: {
+  prompt: string;
+  payload: RepairPayload;
+  signal: AbortSignal;
+}) => Promise<RepairInvocationResult | string>;
+
+export interface RepairValidationInput {
+  packet: ReconciliationEvidencePacket;
+  authoritativeSourceEvents: readonly SourceEvent[];
+}
+
+export interface RepairEvaluation {
+  outcome: 'valid' | 'accepted' | 'unrepairable' | 'rejected';
+  classification: RepairClassification | 'valid';
+  metrics: { calls: number; retries: number };
+  candidate?: CanonicalReconciliation;
+  validation?: CanonicalReconciliation;
+  protection?: RepairProtection;
+  reason?: string;
+}
+
+type RepairProtection = z.infer<typeof RepairProtectionSchema>;
+
+const DEFAULT_REPAIR_TIMEOUT_MS = 30_000;
+const MAX_REPAIR_TIMEOUT_MS = 120_000;
+const REPAIR_INSTRUCTIONS = [
+  'Perform lossless format repair only.',
+  'Return exactly one strict JSON repair envelope and no prose, markdown, explanation, or framing.',
+  'Envelope contract: {"repairable":true,"repairedOutput":<strict reconciliation.v1 object>} or {"repairable":false,"reason":"incomplete-original|semantic-change-required|identity-change-required|unsupported-repair"}.',
+  'Strict reconciliation.v1 fields: root={schemaVersion,promptVersion,chunk,cacheIdentity,blocks,omissions,materialCorrections,suspicionFlags,reviewNotes,summarySafety}; chunk={id,start,end}; cacheIdentity={inputHash,contextHash,sourceHash?,alignmentHash?,neighborHash?,channelMapHash?,glossaryHash?,correctionRulesHash?,evidenceRevision?,providerIdentity?}; blocks[*]={id,start,end,kind,text,summarySafeText,channel?,physicalSpeaker?,characterCandidate?,characterConfidence,attributionBasis,sourceEventIds,reviewFlags}; omissions[*]={sourceEventId,text,start,end,reason}; materialCorrections[*]={sourceEventId,sourceForm,replacement,evidence}; summarySafety={status,errors}. No other keys.',
+  'Closed values: block kind=dialogue|narration|unclear; characterConfidence=confirmed|probable|unknown; reviewFlags=ambiguous-speaker|unclear-words|possible-omission|attribution-uncertain|material-correction; suspicionFlags=high-omitted-ratio|large-compression|decoder-loop-range|expected-character-only|unsupported-proper-noun|unexplained-silence|reordered-source-events; omission reason=decoder-loop|duplicate|false-start|non-speech|unintelligible|outside-logical-window; summarySafety.status=valid|pending.',
+  'Do not use tools, external context, repository context, memory, or credentials.',
+  'Do not rewrite readable content, identities, timestamps, attribution, accounting, or semantics.',
+].join(' ');
+
+const RepairValidationRuntimeSchema = z.object({
+  packet: z.object({
+    schemaVersion: z.literal('reconciliation.v1'),
+    promptVersion: z.string().min(1).max(160),
+    chunk: ChunkWindowSchema,
+    cacheIdentity: CacheIdentitySchema,
+  }).passthrough(),
+  authoritativeSourceEvents: z.array(SourceEventSchema).max(MAX_REPAIR_LEXICAL_TOKENS),
+}).strict();
+
+function repairResult(outcome: RepairEvaluation['outcome'], classification: RepairEvaluation['classification'], reason?: string): RepairEvaluation {
+  return { outcome, classification, metrics: { calls: 0, retries: 0 }, ...(reason === undefined ? {} : { reason }) };
+}
+
+function sameIdentity(candidate: ReturnType<typeof parseReconciliationResponse>, packet: ReconciliationEvidencePacket): boolean {
+  return candidate.schemaVersion === packet.schemaVersion
+    && candidate.promptVersion === packet.promptVersion
+    && JSON.stringify(candidate.chunk) === JSON.stringify(packet.chunk)
+    && JSON.stringify(candidate.cacheIdentity) === JSON.stringify(packet.cacheIdentity);
+}
+
+function parseEnvelope(value: RepairInvocationResult | string, maxOutputBytes: number): RepairEnvelope {
+  const output = typeof value === 'string' ? value : value.stdout;
+  if (typeof output !== 'string' || Buffer.byteLength(output, 'utf8') > maxOutputBytes) throw new Error('bounded output violation');
+  const parsed: unknown = JSON.parse(output);
+  return RepairEnvelopeSchema.parse(parsed);
+}
+
+export async function evaluateFormatRepair(options: {
+  originalOutput: string;
+  validation: RepairValidationInput;
+  invoke: InvokeFormatRepair;
+  timeoutMs?: number;
+  maxOutputBytes?: number;
+}): Promise<RepairEvaluation> {
+  if (options === null || typeof options !== 'object'
+    || typeof options.originalOutput !== 'string'
+    || Buffer.byteLength(options.originalOutput, 'utf8') > MAX_REPAIR_OUTPUT_BYTES
+    || typeof options.invoke !== 'function'
+    || !RepairValidationRuntimeSchema.safeParse(options.validation).success) {
+    return repairResult('rejected', 'unrepairable-security', 'invalid repair evaluation input');
+  }
+  const maxOutputBytes = options.maxOutputBytes ?? MAX_REPAIR_OUTPUT_BYTES;
+  const timeoutMs = options.timeoutMs ?? DEFAULT_REPAIR_TIMEOUT_MS;
+  if (!Number.isSafeInteger(timeoutMs) || timeoutMs <= 0 || timeoutMs > MAX_REPAIR_TIMEOUT_MS
+    || !Number.isSafeInteger(maxOutputBytes) || maxOutputBytes <= 0 || maxOutputBytes > MAX_REPAIR_OUTPUT_BYTES) {
+    return repairResult('rejected', 'unrepairable-security', 'invalid repair bounds');
+  }
+
+  let parsedOriginal: unknown;
+  let classification: RepairClassificationResult;
+  try {
+    parsedOriginal = JSON.parse(options.originalOutput);
+    const schema = ReconciliationResponseSchema.safeParse(parsedOriginal);
+    if (schema.success) {
+      if (!sameIdentity(schema.data, options.validation.packet)) return repairResult('rejected', 'unrepairable-identity', 'original identity mismatch');
+      try {
+        const validated = validateReconciliation(schema.data, { authoritativeSourceEvents: options.validation.authoritativeSourceEvents });
+        return { outcome: 'valid', classification: 'valid', metrics: { calls: 0, retries: 0 }, validation: validated, candidate: validated };
+      } catch {
+        return repairResult('unrepairable', 'unrepairable-semantic', 'authoritative validation failed');
+      }
+    }
+    classification = classifyRepairFailure({ originalOutput: options.originalOutput, parsedValue: parsedOriginal, zodIssues: schema.error.issues });
+  } catch (error) {
+    classification = classifyRepairFailure({ originalOutput: options.originalOutput, parseError: error });
+  }
+  if (classification.classification !== 'repairable-format') {
+    return repairResult('unrepairable', classification.classification, 'format repair is not eligible');
+  }
+  const protection = classification.protection ?? (() => {
+    try {
+      const projection = buildProtectedProjection(parsedOriginal);
+      return { kind: 'projection' as const, value: projection, digest: protectedDigest(projection) };
+    } catch {
+      return undefined;
+    }
+  })();
+  if (protection === undefined) return repairResult('unrepairable', classification.classification, 'protection could not be established');
+
+  const payload = RepairPayloadSchema.parse({
+    repairVersion: REPAIR_VERSION,
+    targetSchemaVersion: options.validation.packet.schemaVersion,
+    originalOutput: options.originalOutput,
+    classification: classification.classification,
+    issues: classification.issues,
+    protection,
+  });
+  assertRepairPayloadBytes(payload);
+  const prompt = `${REPAIR_PROMPT_VERSION}\n${REPAIR_INSTRUCTIONS}\n${JSON.stringify(payload)}`;
+  const controller = new AbortController();
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    const result = await Promise.race([
+      options.invoke({ prompt, payload, signal: controller.signal }),
+      new Promise<never>((_, reject) => { timer = setTimeout(() => { controller.abort(); reject(new Error('repair timeout')); }, timeoutMs); }),
+    ]);
+    const envelope = parseEnvelope(result, maxOutputBytes);
+    if (!envelope.repairable) return { ...repairResult('unrepairable', classification.classification, envelope.reason), metrics: { calls: 1, retries: 0 }, protection };
+    const repaired = parseReconciliationResponse(envelope.repairedOutput);
+    if (!sameIdentity(repaired, options.validation.packet)) throw new Error('repaired identity mismatch');
+    if (protection.kind === 'projection') {
+      if (protectedDigest(buildProtectedProjection(repaired)) !== protection.digest) throw new Error('protected projection mismatch');
+    } else {
+      verifyLexicalPreservation(protection.value, repaired);
+    }
+    const validated = validateReconciliation(repaired, { authoritativeSourceEvents: options.validation.authoritativeSourceEvents });
+    const candidate = structuredClone(validated);
+    candidate.status = 'needs_review';
+    return { outcome: 'accepted', classification: classification.classification, metrics: { calls: 2, retries: 1 }, candidate, validation: validated, protection };
+  } catch {
+    controller.abort();
+    return { outcome: 'rejected', classification: classification.classification, metrics: { calls: 1, retries: 0 }, protection, reason: 'repair invocation or validation failed' };
+  } finally {
+    if (timer !== undefined) clearTimeout(timer);
+  }
 }

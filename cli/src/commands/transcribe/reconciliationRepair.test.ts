@@ -19,6 +19,7 @@ import {
   classifyRepairFailure,
   inventoryInvalidJson,
   verifyLexicalPreservation,
+  evaluateFormatRepair,
 } from './reconciliationRepair.js';
 import { ReconciliationResponseSchema } from './reconciliation.js';
 
@@ -438,4 +439,124 @@ test('parse failures become repairable only with complete lexical protection', (
   const ineligible = classifyRepairFailure({ originalOutput: '{"x":1e}', parseError: new Error('bad json') });
   assert.equal(ineligible.classification, 'unrepairable-incomplete');
   assert.equal(ineligible.protection, undefined);
+});
+
+const repairPacket = {
+  schemaVersion: 'reconciliation.v1', promptVersion: 'prompt',
+  chunk: validResponse.chunk, cacheIdentity: validResponse.cacheIdentity,
+} as any;
+const repairEvents = [{ id: 'event-1', text: 'hello', start: 1, end: 2 }];
+const repairValidation = { packet: repairPacket, authoritativeSourceEvents: repairEvents };
+
+async function evaluateWith(output: string, repaired: unknown, overrides: Record<string, unknown> = {}) {
+  let calls = 0;
+  const evaluation = await evaluateFormatRepair({
+    originalOutput: output,
+    validation: repairValidation,
+    invoke: async ({ signal, prompt, payload }) => {
+      calls += 1;
+      assert.equal(signal.aborted, false);
+      assert.match(prompt, /strict JSON repair envelope/u);
+      assert.match(prompt, /Envelope contract:/u);
+      assert.match(prompt, /blocks\[\*\]=\{id,start,end,kind,text,summarySafeText,channel\?,physicalSpeaker\?,characterCandidate\?,characterConfidence,attributionBasis,sourceEventIds,reviewFlags\}/u);
+      assert.match(prompt, /materialCorrections\[\*\]=\{sourceEventId,sourceForm,replacement,evidence\}/u);
+      assert.match(prompt, /Do not use tools/u);
+      assert.match(prompt, /"targetSchemaVersion":"reconciliation\.v1"/u);
+      assert.equal(payload.originalOutput, output);
+      return typeof repaired === 'string' ? repaired : JSON.stringify(repaired);
+    },
+    ...overrides,
+  });
+  return { evaluation, calls };
+}
+
+test('evaluates valid and ineligible outputs with zero formatter calls', async () => {
+  for (const [output, expected] of [
+    [JSON.stringify(validResponse), 'valid'],
+    [JSON.stringify({ ...validResponse, untrusted: 'content' }), 'unrepairable'],
+  ] as const) {
+    let calls = 0;
+    const result = await evaluateFormatRepair({
+      originalOutput: output,
+      validation: repairValidation,
+      invoke: async () => { calls += 1; return ''; },
+    });
+    assert.equal(calls, 0);
+    assert.equal(result.outcome, expected);
+    assert.deepEqual(result.metrics, { calls: 0, retries: 0 });
+  }
+  let malformedCalls = 0;
+  const malformedValidation = await evaluateFormatRepair({
+    originalOutput: JSON.stringify({ ...validResponse, status: 'valid' }),
+    validation: null as any,
+    invoke: async () => { malformedCalls += 1; return ''; },
+  });
+  assert.equal(malformedCalls, 0);
+  assert.equal(malformedValidation.classification, 'unrepairable-security');
+  assert.equal('prompt' in malformedValidation, false);
+});
+
+test('accepts exactly one projection or lexical repair and forces review', async () => {
+  const projection = await evaluateWith(
+    JSON.stringify({ ...validResponse, status: 'valid' }),
+    { repairable: true, repairedOutput: validResponse },
+  );
+  assert.equal(projection.calls, 1);
+  assert.equal(projection.evaluation.outcome, 'accepted');
+  assert.equal(projection.evaluation.candidate?.status, 'needs_review');
+  assert.equal(projection.evaluation.validation?.status, 'valid');
+  assert.equal(projection.evaluation.protection?.kind, 'projection');
+  assert.deepEqual(projection.evaluation.metrics, { calls: 2, retries: 1 });
+  projection.evaluation.candidate!.blocks[0]!.text = 'mutated candidate';
+  assert.equal(projection.evaluation.validation!.blocks[0]!.text, 'hello');
+
+  const malformed = JSON.stringify(validResponse).replace(',"promptVersion"', ' "promptVersion"');
+  const lexical = await evaluateWith(malformed, { repairable: true, repairedOutput: validResponse });
+  assert.equal(lexical.calls, 1);
+  assert.equal(lexical.evaluation.outcome, 'accepted');
+  assert.equal(lexical.evaluation.protection?.kind, 'lexical');
+});
+
+test('rejects refusal, malformed, unsafe, timed-out, or invalid repair without retry', async () => {
+  const eligible = JSON.stringify({ ...validResponse, status: 'valid' });
+  const changedIdentity = { ...validResponse, promptVersion: 'other' };
+  const changedSemantic = { ...validResponse, blocks: [{ ...validResponse.blocks[0], text: 'changed' }] };
+  const cases: Array<{ name: string; result: unknown; expected: string; validation?: typeof repairValidation; overrides?: Record<string, unknown> }> = [
+    { name: 'refusal', result: { repairable: false, reason: 'unsupported-repair' }, expected: 'unrepairable' },
+    { name: 'malformed envelope', result: '{}', expected: 'rejected' },
+    { name: 'strict repaired schema', result: { repairable: true, repairedOutput: {} }, expected: 'rejected' },
+    { name: 'identity mismatch', result: { repairable: true, repairedOutput: changedIdentity }, expected: 'rejected' },
+    { name: 'projection mismatch', result: { repairable: true, repairedOutput: changedSemantic }, expected: 'rejected' },
+    { name: 'authoritative failure', result: { repairable: true, repairedOutput: validResponse }, expected: 'rejected', validation: { packet: repairPacket, authoritativeSourceEvents: [] } },
+    { name: 'formatter metrics injection', result: { repairable: true, repairedOutput: validResponse, metrics: { calls: 0 } }, expected: 'rejected' },
+    { name: 'overflow', result: 'x'.repeat(101), expected: 'rejected', overrides: { maxOutputBytes: 100 } },
+  ];
+  for (const item of cases) {
+    let calls = 0;
+    const evaluation = await evaluateFormatRepair({
+      originalOutput: eligible,
+      validation: item.validation ?? repairValidation,
+      invoke: async () => { calls += 1; return typeof item.result === 'string' ? item.result : JSON.stringify(item.result); },
+      ...item.overrides,
+    });
+    assert.equal(calls, 1, item.name);
+    assert.equal(evaluation.outcome, item.expected, item.name);
+    assert.deepEqual(evaluation.metrics, { calls: 1, retries: 0 }, item.name);
+  }
+
+  let timeoutCalls = 0;
+  let aborted = false;
+  const timeout = await evaluateFormatRepair({
+    originalOutput: eligible,
+    validation: repairValidation,
+    timeoutMs: 5,
+    invoke: ({ signal }) => new Promise<string>((resolve) => {
+      timeoutCalls += 1;
+      signal.addEventListener('abort', () => { aborted = true; resolve(''); }, { once: true });
+    }),
+  });
+  assert.equal(timeoutCalls, 1);
+  assert.equal(aborted, true);
+  assert.equal(timeout.outcome, 'rejected');
+  assert.deepEqual(timeout.metrics, { calls: 1, retries: 0 });
 });
