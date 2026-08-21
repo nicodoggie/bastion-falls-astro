@@ -7,8 +7,8 @@ import type {
 import { resolveCharacterAge } from "@bastion-falls/types/CharacterAge";
 import { slug } from "github-slugger";
 import { BastionNow } from "../../lib/bastion-now";
-import CharacterPcStats from "./CharacterPcStats.astro";
 import CharacterAgeDetail from "./CharacterAgeDetail.astro";
+import CharacterPcStats from "./CharacterPcStats.astro";
 import CharacterSexOrgans from "./CharacterSexOrgans.astro";
 import SidebarCard from "./SidebarCard.astro";
 import SidebarDetail from "./SidebarDetail.astro";
@@ -17,10 +17,10 @@ import SidebarMedia from "./SidebarMedia.astro";
 const { character, filePath } = Astro.props;
 
 const details = character.details;
-let resolvedAge;
-if (details !== undefined) {
-  resolvedAge = resolveCharacterAge(details, BastionNow.date());
-}
+const resolvedAge =
+  details === undefined
+    ? undefined
+    : resolveCharacterAge(details, BastionNow.date());
 
 let mortalityIcon: string;
 switch (character.details?.mortality?.status) {
