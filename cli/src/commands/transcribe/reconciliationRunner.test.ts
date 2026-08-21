@@ -6,6 +6,7 @@ import test from "node:test";
 import {
   buildHermesReconciliationArgs,
   buildUnifiedReconciliationPrompt,
+  parseHermesReconciliationJson,
   parseStrictReconciliationJson,
   boundedHermes,
   runUnifiedReconciliation,
@@ -56,6 +57,10 @@ test("Hermes args use the repository chat contract", () => {
 test("strict JSON parser rejects trailing non-whitespace", () => {
   assert.deepEqual(parseStrictReconciliationJson(JSON.stringify(response())), response());
   assert.throws(() => parseStrictReconciliationJson(`${JSON.stringify(response())}\nnot-json`));
+  const maxTurns = `\u26a0\ufe0f  Reached maximum iterations (8). Requesting summary...\r\n${JSON.stringify(response())}`;
+  assert.throws(() => parseStrictReconciliationJson(maxTurns));
+  assert.deepEqual(parseHermesReconciliationJson(maxTurns), response());
+  assert.throws(() => parseHermesReconciliationJson(`notice\n${JSON.stringify(response())}`));
 });
 
 test("one ordinary call writes canonical JSON, joined derivatives, and diagnostics", async () => {
