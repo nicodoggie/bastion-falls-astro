@@ -56,6 +56,7 @@ const RECONCILIATION_OUTPUT_CONTRACT = [
   "The suspicionFlags and reviewFlags enums are disjoint: suspicionFlags values must never appear in any block.reviewFlags array, and reviewFlags values must never appear in top-level suspicionFlags.",
   "reviewNotes is an array of at most 8 short strings.",
   "summarySafety has exactly: status, errors. status enum: valid | pending. errors is an array of at most 8 short strings. summarySafeText must correspond block-for-block; use pending only when a block cannot be made summary-safe faithfully.",
+  "Every attributionBasis string, materialCorrection evidence string, reviewNotes string, and summarySafety errors string must be at most 256 characters. Rewrite concisely rather than exceeding the limit.",
   "All IDs and nonempty text fields must be bounded nonempty strings. Do not add unknown keys, Markdown, commentary, or repository-derived evidence.",
 ].join("\n");
 

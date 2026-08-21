@@ -2,8 +2,8 @@ import { z } from "zod";
 
 const finite = z.number().finite();
 const nonEmpty = z.string().trim().min(1);
-const bounded = nonEmpty.max(160);
-const identifier = bounded;
+const bounded = nonEmpty.max(256);
+const identifier = nonEmpty.max(160);
 const identityValue = nonEmpty.max(4_096);
 const content = z.string().max(20_000);
 const nonEmptyContent = z.string().trim().min(1).max(20_000);

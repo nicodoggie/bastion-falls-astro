@@ -42,6 +42,7 @@ test("prompt marks neighbors context-only and owns only the packet window", () =
   assert.match(prompt, /suspicionFlags.*must never.*reviewFlags/iu);
   assert.match(prompt, /derive.*start.*minimum.*end.*maximum.*sourceEventIds/isu);
   assert.match(prompt, /runner.*recomputes.*start.*end.*authoritative/isu);
+  assert.match(prompt, /attributionBasis.*materialCorrection.*evidence.*reviewNotes.*summarySafety.*errors.*256/isu);
   assert.doesNotMatch(prompt, /emit neighboring events/iu);
 });
 

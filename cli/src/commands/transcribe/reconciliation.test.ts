@@ -124,6 +124,8 @@ test("model-controlled fields are bounded and validation errors do not echo iden
   assert.throws(() => parseReconciliationResponse(fixture({
     blocks: [{ ...fixture().blocks[0], text: "x".repeat(20_001) }],
   })));
+  assert.equal(parseReconciliationResponse(fixture({ reviewNotes: ["x".repeat(256)] })).reviewNotes[0]!.length, 256);
+  assert.throws(() => parseReconciliationResponse(fixture({ reviewNotes: ["x".repeat(257)] })));
 
   const sensitiveId = "sensitive-private-marker";
   assert.throws(
