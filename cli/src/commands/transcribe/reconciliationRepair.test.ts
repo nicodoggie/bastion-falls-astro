@@ -17,6 +17,8 @@ import {
   protectedDigest,
   ProtectedProjectionSchema,
   classifyRepairFailure,
+  inventoryInvalidJson,
+  verifyLexicalPreservation,
 } from './reconciliationRepair.js';
 import { ReconciliationResponseSchema } from './reconciliation.js';
 
@@ -367,4 +369,73 @@ test('keeps parse, semantic, and authoritative failures ineligible', () => {
   for (const [failureCategory, classification] of [['unknown-event', 'unrepairable-semantic'], ['missing-accounting', 'unrepairable-semantic'], ['identity-mismatch', 'unrepairable-identity'], ['timeout', 'unrepairable-incomplete'], ['empty-output', 'unrepairable-incomplete'], ['source-security', 'unrepairable-security']] as const) {
     assert.equal(classifyRepairFailure({ originalOutput: '', failureCategory }).classification, classification);
   }
+});
+
+test('inventories bounded malformed JSON content without reordering tokens', () => {
+  const result = inventoryInvalidJson('{"a":1 "b":1,"ok":true,"none":null}');
+  assert.equal(result.complete, true);
+  if (!result.complete) return;
+  assert.deepEqual(result.inventory.tokens, [
+    { kind: 'string', value: 'a' }, { kind: 'number', value: '1' },
+    { kind: 'string', value: 'b' }, { kind: 'number', value: '1' },
+    { kind: 'string', value: 'ok' }, { kind: 'boolean', value: true },
+    { kind: 'string', value: 'none' }, { kind: 'null' },
+  ]);
+  assert.doesNotThrow(() => verifyLexicalPreservation(result.inventory, { a: 1, b: 1.0, ok: true, none: null }));
+  assert.throws(() => verifyLexicalPreservation(result.inventory, { b: 1, a: 1.0, ok: true, none: null }));
+  const nullInventory = inventoryInvalidJson('{"x":null}');
+  assert.equal(nullInventory.complete, true);
+  if (nullInventory.complete) {
+    let getterReads = 0;
+    const accessor: Record<string, unknown> = {};
+    Object.defineProperty(accessor, 'x', { enumerable: true, get: () => { getterReads += 1; return null; } });
+    const accessorArray: unknown[] = [];
+    Object.defineProperty(accessorArray, '0', { enumerable: true, get: () => { getterReads += 1; return null; } });
+    Object.defineProperty(accessorArray, 'length', { value: 1 });
+    for (const repaired of [{ x: Number.NaN }, { toJSON: () => ({ x: null }) }, accessor, { x: accessorArray }]) {
+      assert.throws(() => verifyLexicalPreservation(nullInventory.inventory, repaired));
+    }
+    assert.equal(getterReads, 0);
+  }
+});
+
+test('removes only the known Hermes prefix and closed json fence', () => {
+  const framed = inventoryInvalidJson('⚠️  Reached maximum iterations (3). Requesting summary...\n```json\n{"x":"line\\n\\u2603"}\n```');
+  assert.equal(framed.complete, true);
+  if (framed.complete) assert.deepEqual(framed.inventory.tokens, [
+    { kind: 'string', value: 'x' }, { kind: 'string', value: 'line\n☃' },
+  ]);
+  assert.equal(inventoryInvalidJson('⚠️  Reached maximum iterations (3). Requesting summary...\r\n{"x":1}').complete, true);
+  assert.equal(inventoryInvalidJson('notice\n{"x":1}').complete, false);
+});
+
+test('rejects incomplete lexical tokens, arbitrary prose, and bound violations', () => {
+  for (const input of [
+    '{"x":"unterminated}', '{"x":1e}', '{"x":-}', 'prose {"x":1}',
+    '{"x":1,"y"', '{"x" 1}', '{"x":}', '{"x":1}{"y":2}', '[1,2]', '{"x":1 2}',
+    '{"x":1,}', '{"x":[1,]}', '{"x":1\u0001}',
+  ]) {
+    assert.equal(inventoryInvalidJson(input).complete, false, input);
+  }
+  assert.equal(inventoryInvalidJson('{"x":1').complete, true);
+  assert.equal(inventoryInvalidJson('{"x":[1 2]').complete, true);
+  const escaped = JSON.stringify({ x: 'quote " slash \\ newline \n unicode ☃' });
+  assert.equal(inventoryInvalidJson(escaped).complete, true);
+  assert.equal(inventoryInvalidJson('{"x":' + '['.repeat(17) + '1' + ']'.repeat(17) + '}').complete, false);
+  const exactNumbers = inventoryInvalidJson('{"x":[1,1.0,1e0]}');
+  assert.equal(exactNumbers.complete, true);
+  if (exactNumbers.complete) assert.deepEqual(exactNumbers.inventory.tokens.filter((token) => token.kind === 'number'), [
+    { kind: 'number', value: '1' }, { kind: 'number', value: '1.0' }, { kind: 'number', value: '1e0' },
+  ]);
+  assert.equal(inventoryInvalidJson(`{"x":[${Array(8_193).fill('0').join(',')}]}`).complete, false);
+  assert.equal(inventoryInvalidJson(`{"x":"${'a'.repeat(20_001)}"}`).complete, false);
+});
+
+test('parse failures become repairable only with complete lexical protection', () => {
+  const eligible = classifyRepairFailure({ originalOutput: '{"x":1 "y":true}', parseError: new Error('bad json') });
+  assert.equal(eligible.classification, 'repairable-format');
+  assert.equal(eligible.protection?.kind, 'lexical');
+  const ineligible = classifyRepairFailure({ originalOutput: '{"x":1e}', parseError: new Error('bad json') });
+  assert.equal(ineligible.classification, 'unrepairable-incomplete');
+  assert.equal(ineligible.protection, undefined);
 });

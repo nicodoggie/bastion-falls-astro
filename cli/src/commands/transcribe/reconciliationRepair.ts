@@ -249,6 +249,223 @@ export type RepairUnrepairableReason = z.infer<typeof RepairUnrepairableReasonSc
 export type LexicalToken = z.infer<typeof LexicalTokenSchema>;
 export type LexicalInventory = z.infer<typeof LexicalInventorySchema>;
 
+export type LexicalInventoryResult =
+  | { complete: true; inventory: LexicalInventory }
+  | { complete: false; reason: 'invalid-framing' | 'incomplete-token' | 'invalid-content' | 'bounds' };
+
+function scanFailure(reason: Extract<LexicalInventoryResult, { complete: false }>['reason']): LexicalInventoryResult {
+  return { complete: false, reason };
+}
+
+function framedJson(input: string): string | undefined {
+  let value = input;
+  const prefix = '⚠️  Reached maximum iterations (';
+  if (value.startsWith(prefix)) {
+    const suffix = '). Requesting summary...';
+    const close = value.indexOf(suffix, prefix.length);
+    if (close < 0 || !/^\d+$/u.test(value.slice(prefix.length, close))) return undefined;
+    const contentStart = close + suffix.length;
+    if (value.startsWith('\r\n', contentStart)) value = value.slice(contentStart + 2);
+    else if (value.startsWith('\n', contentStart)) value = value.slice(contentStart + 1);
+    else return undefined;
+  }
+  if (value.startsWith('```json')) {
+    if (!(value.startsWith('```json\n') || value.startsWith('```json\r\n')) || !value.endsWith('```')) return undefined;
+    value = value.slice(value.startsWith('```json\r\n') ? 9 : 8, -3);
+  }
+  return value;
+}
+
+function isDelimiter(value: string | undefined): boolean {
+  return value === undefined || value === ',' || value === ':' || value === '[' || value === ']' || value === '{' || value === '}' || isJsonWhitespace(value);
+}
+
+function isJsonWhitespace(value: string | undefined): boolean {
+  return value === ' ' || value === '\t' || value === '\n' || value === '\r';
+}
+
+function scanNumber(input: string, start: number): { end: number; value: string } | LexicalInventoryResult {
+  let index = start;
+  if (input[index] === '-') index += 1;
+  if (index >= input.length) return scanFailure('incomplete-token');
+  if (input[index] === '0') index += 1;
+  else if (input[index]! >= '1' && input[index]! <= '9') {
+    while (index < input.length && input[index]! >= '0' && input[index]! <= '9') index += 1;
+  } else return scanFailure('incomplete-token');
+  if (input[index] === '.') {
+    index += 1;
+    const fractionStart = index;
+    while (index < input.length && input[index]! >= '0' && input[index]! <= '9') index += 1;
+    if (index === fractionStart) return scanFailure('incomplete-token');
+  }
+  if (input[index] === 'e' || input[index] === 'E') {
+    index += 1;
+    if (input[index] === '+' || input[index] === '-') index += 1;
+    const exponentStart = index;
+    while (index < input.length && input[index]! >= '0' && input[index]! <= '9') index += 1;
+    if (index === exponentStart) return scanFailure('incomplete-token');
+  }
+  const next = input[index];
+  if (!isDelimiter(next)) return scanFailure('invalid-content');
+  return { end: index, value: input.slice(start, index) };
+}
+
+type ScanFrame =
+  | { kind: 'object'; state: 'key-or-end' | 'key-required' | 'colon' | 'value' | 'after-value' }
+  | { kind: 'array'; state: 'value-or-end' | 'value-required' | 'after-value' };
+
+function frameCanEnd(frame: ScanFrame): boolean {
+  return frame.kind === 'object'
+    ? frame.state === 'key-or-end' || frame.state === 'after-value'
+    : frame.state === 'value-or-end' || frame.state === 'after-value';
+}
+
+function consumeValue(frame: ScanFrame): boolean {
+  if (frame.kind === 'object') {
+    if (frame.state !== 'value') return false;
+    frame.state = 'after-value';
+    return true;
+  }
+  if (frame.state !== 'value-or-end' && frame.state !== 'value-required' && frame.state !== 'after-value') return false;
+  frame.state = 'after-value';
+  return true;
+}
+
+function consumeString(frame: ScanFrame): boolean {
+  if (frame.kind === 'object') {
+    if (frame.state === 'key-or-end' || frame.state === 'key-required' || frame.state === 'after-value') {
+      frame.state = 'colon';
+      return true;
+    }
+    return consumeValue(frame);
+  }
+  return consumeValue(frame);
+}
+
+export function inventoryInvalidJson(input: string): LexicalInventoryResult {
+  if (typeof input !== 'string' || Buffer.byteLength(input, 'utf8') > MAX_REPAIR_OUTPUT_BYTES) return scanFailure('bounds');
+  const source = framedJson(input);
+  if (source === undefined) return scanFailure('invalid-framing');
+  const tokens: LexicalToken[] = [];
+  const stack: ScanFrame[] = [];
+  let rootStarted = false;
+  let rootClosed = false;
+  let index = 0;
+  const add = (token: LexicalToken): LexicalInventoryResult | undefined => {
+    if (tokens.length >= MAX_REPAIR_LEXICAL_TOKENS) return scanFailure('bounds');
+    if ('value' in token && typeof token.value === 'string' && token.value.length > MAX_REPAIR_LEXICAL_TOKEN_CHARS) return scanFailure('bounds');
+    tokens.push(token);
+    return undefined;
+  };
+  while (index < source.length) {
+    const char = source[index]!;
+    if (isJsonWhitespace(char)) { index += 1; continue; }
+    if (!rootStarted) {
+      if (char !== '{') return scanFailure('invalid-content');
+      rootStarted = true;
+      stack.push({ kind: 'object', state: 'key-or-end' });
+      index += 1;
+      continue;
+    }
+    if (rootClosed || stack.length === 0) return scanFailure('invalid-content');
+    const frame = stack[stack.length - 1]!;
+    if (char === ',') {
+      if (frame.kind === 'object' && frame.state === 'after-value') frame.state = 'key-required';
+      else if (frame.kind === 'array' && frame.state === 'after-value') frame.state = 'value-required';
+      else return scanFailure('invalid-content');
+      index += 1;
+      continue;
+    }
+    if (char === ':') {
+      if (frame.kind !== 'object' || frame.state !== 'colon') return scanFailure('invalid-content');
+      frame.state = 'value';
+      index += 1;
+      continue;
+    }
+    if (char === '{' || char === '[') {
+      if (!consumeValue(frame)) return scanFailure('invalid-content');
+      if (stack.length >= MAX_REPAIR_PATH_DEPTH) return scanFailure('bounds');
+      stack.push(char === '{' ? { kind: 'object', state: 'key-or-end' } : { kind: 'array', state: 'value-or-end' });
+      index += 1;
+      continue;
+    }
+    if (char === '}' || char === ']') {
+      const expected = char === '}' ? 'object' : 'array';
+      if (frame.kind !== expected || !frameCanEnd(frame)) return scanFailure('invalid-content');
+      stack.pop();
+      if (stack.length === 0) rootClosed = true;
+      index += 1;
+      continue;
+    }
+    if (char === '"') {
+      if (!consumeString(frame)) return scanFailure('invalid-content');
+      let end = index + 1;
+      let escaped = false;
+      while (end < source.length) {
+        const current = source[end]!;
+        if (escaped) { escaped = false; end += 1; continue; }
+        if (current.charCodeAt(0) === 92) { escaped = true; end += 1; continue; }
+        if (current === '"') break;
+        if (current.charCodeAt(0) < 0x20) return scanFailure('incomplete-token');
+        end += 1;
+      }
+      if (end >= source.length || source[end] !== '"') return scanFailure('incomplete-token');
+      let value: unknown;
+      try { value = JSON.parse(source.slice(index, end + 1)); } catch { return scanFailure('incomplete-token'); }
+      const failure = add({ kind: 'string', value: value as string });
+      if (failure) return failure;
+      index = end + 1;
+      continue;
+    }
+    if (char === '-' || (char >= '0' && char <= '9')) {
+      if (!consumeValue(frame)) return scanFailure('invalid-content');
+      const result = scanNumber(source, index);
+      if ('complete' in result) return result;
+      const failure = add({ kind: 'number', value: result.value });
+      if (failure) return failure;
+      index = result.end;
+      continue;
+    }
+    if (source.startsWith('true', index) || source.startsWith('false', index)) {
+      if (!consumeValue(frame)) return scanFailure('invalid-content');
+      const value = source.startsWith('true', index);
+      const end = index + (value ? 4 : 5);
+      if (!isDelimiter(source[end])) return scanFailure('invalid-content');
+      const failure = add({ kind: 'boolean', value });
+      if (failure) return failure;
+      index = end;
+      continue;
+    }
+    if (source.startsWith('null', index)) {
+      if (!consumeValue(frame)) return scanFailure('invalid-content');
+      const end = index + 4;
+      if (!isDelimiter(source[end])) return scanFailure('invalid-content');
+      const failure = add({ kind: 'null' });
+      if (failure) return failure;
+      index = end;
+      continue;
+    }
+    return scanFailure('invalid-content');
+  }
+  if (!rootStarted || tokens.length === 0 || stack.some((frame) => !frameCanEnd(frame))) {
+    return scanFailure('incomplete-token');
+  }
+  return { complete: true, inventory: LexicalInventorySchema.parse({ tokens }) };
+}
+
+export function verifyLexicalPreservation(before: LexicalInventory, repaired: unknown): void {
+  const beforeParsed = LexicalInventorySchema.safeParse(before);
+  if (!beforeParsed.success) throw new RangeError('invalid lexical inventory');
+  if (!isBoundedJson(repaired)) throw new RangeError('repaired output is not plain finite JSON');
+  let serialized: string;
+  try { serialized = JSON.stringify(repaired); } catch { throw new RangeError('repaired output is not JSON'); }
+  if (serialized === undefined) throw new RangeError('repaired output is not JSON');
+  const after = inventoryInvalidJson(serialized);
+  if (!after.complete || JSON.stringify(after.inventory.tokens) !== JSON.stringify(beforeParsed.data.tokens)) {
+    throw new RangeError('repaired output changed ordered lexical tokens');
+  }
+}
+
 const repairFailureCategorySchema = z.enum([
   'unknown-event', 'missing-accounting', 'identity-mismatch', 'timeout', 'empty-output', 'source-security',
 ]);
@@ -257,6 +474,7 @@ export type RepairFailureCategory = z.infer<typeof repairFailureCategorySchema>;
 const RepairClassificationResultSchema = z.object({
   classification: RepairClassificationSchema,
   issues: z.array(RepairIssueSchema).max(MAX_REPAIR_ISSUES),
+  protection: RepairProtectionSchema.optional(),
 }).strict();
 export type RepairClassificationResult = z.infer<typeof RepairClassificationResultSchema>;
 
@@ -285,7 +503,14 @@ function isBoundedJson(value: unknown): boolean {
     seen.add(current.value);
     if (Array.isArray(current.value)) {
       if (current.value.length > MAX_PROTECTION_COLLECTION_SIZE) return false;
-      for (const child of current.value) pending.push({ value: child, depth: current.depth + 1 });
+      if (Object.getOwnPropertySymbols(current.value).length > 0) return false;
+      const descriptors = Object.getOwnPropertyDescriptors(current.value);
+      if (Object.keys(descriptors).length !== current.value.length + 1) return false;
+      for (let index = 0; index < current.value.length; index += 1) {
+        const descriptor = descriptors[String(index)];
+        if (!descriptor?.enumerable || !('value' in descriptor)) return false;
+        pending.push({ value: descriptor.value, depth: current.depth + 1 });
+      }
       continue;
     }
     if (Object.getPrototypeOf(current.value) !== Object.prototype && Object.getPrototypeOf(current.value) !== null) return false;
@@ -430,10 +655,15 @@ export function classifyRepairFailure(input: RepairFailureInput): RepairClassifi
   input = admitted;
   let classification: RepairClassification = 'unrepairable-incomplete';
   let issues: RepairIssue[] = [];
+  let protection: z.infer<typeof RepairProtectionSchema> | undefined;
   if (input.failureCategory) {
     classification = input.failureCategory === 'identity-mismatch' ? 'unrepairable-identity' : input.failureCategory === 'source-security' ? 'unrepairable-security' : input.failureCategory === 'unknown-event' || input.failureCategory === 'missing-accounting' ? 'unrepairable-semantic' : 'unrepairable-incomplete';
   } else if (input.parseError !== undefined) {
-    classification = 'unrepairable-incomplete';
+    const inventory = inventoryInvalidJson(input.originalOutput);
+    if (inventory.complete) {
+      classification = 'repairable-format';
+      protection = { kind: 'lexical', value: inventory.inventory, digest: stableHash(inventory.inventory) };
+    }
     issues = [{ stage: 'json', code: 'invalid-json', path: [], actualValue: null }];
   } else if (input.zodIssues && input.zodIssues.length > 0) {
     issues = input.zodIssues.map((issue) => normalizedIssue(issue, input.parsedValue)).filter((issue): issue is RepairIssue => issue !== undefined).slice(0, MAX_REPAIR_ISSUES);
@@ -444,7 +674,7 @@ export function classifyRepairFailure(input: RepairFailureInput): RepairClassifi
   } else if (input.validationError !== undefined) {
     classification = 'unrepairable-semantic';
   }
-  return RepairClassificationResultSchema.parse({ classification, issues });
+  return RepairClassificationResultSchema.parse({ classification, issues, ...(protection ? { protection } : {}) });
 }
 
 export function assertRepairPayloadBytes(value: unknown): asserts value is RepairPayload {
