@@ -40,6 +40,7 @@ test("prompt marks neighbors context-only and owns only the packet window", () =
   assert.match(prompt, /channel.*physicalSpeaker.*supplied.*evidence/isu);
   assert.match(prompt, /do not search the repository for schemas/iu);
   assert.match(prompt, /suspicionFlags.*must never.*reviewFlags/iu);
+  assert.match(prompt, /derive.*start.*minimum.*end.*maximum.*sourceEventIds/isu);
   assert.doesNotMatch(prompt, /emit neighboring events/iu);
 });
 

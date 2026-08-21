@@ -61,6 +61,8 @@ test("claimed-event-local ranges reject unsupported interior and outer extension
     { ...fixture().blocks[0], id: "b2", start: 12, end: 15, sourceEventIds: ["e2"] },
   ] });
   assert.equal(valid(overlap, overlapContext).status, "valid");
+  const floatingContext: ValidationContext = { authoritativeSourceEvents: [source("e1", "Hello", 10, 12), source("e2", "world", 12, 15.0000000000001)] };
+  assert.equal(valid(fixture(), floatingContext).status, "valid");
   assert.throws(() => valid(fixture({ blocks: [{ ...fixture().blocks[0], start: 11 }] })));
   assert.throws(() => valid(fixture({ blocks: [{ ...fixture().blocks[0], end: 16 }] })));
   assert.throws(() => valid(fixture({ blocks: [{ ...fixture().blocks[0], id: "b1", start: 10, end: 12, sourceEventIds: ["e1"] }, { ...fixture().blocks[0], id: "b2", start: 9, end: 15, sourceEventIds: ["e2"] }] })));

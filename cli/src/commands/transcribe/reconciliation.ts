@@ -8,6 +8,7 @@ const identityValue = nonEmpty.max(4_096);
 const content = z.string().max(20_000);
 const nonEmptyContent = z.string().trim().min(1).max(20_000);
 const MAX_EVENTS_PER_CHUNK = 2_048;
+const TIME_EQUIVALENCE_EPSILON = 1e-9;
 const TimeRangeSchema = z.object({ start: finite, end: finite }).strict();
 
 export const SourceEventSchema = z.object({
@@ -92,6 +93,7 @@ export const CanonicalReconciliationSchema = ReconciliationResponseSchema.extend
 export function parseReconciliationResponse(value: unknown): ReconciliationResponse { return ReconciliationResponseSchema.parse(value); }
 function invalid(message: string): never { throw new Error(`Invalid reconciliation: ${message}`); }
 function hasText(value: string): boolean { return value.trim().length > 0; }
+function sameTime(left: number, right: number): boolean { return Math.abs(left - right) <= TIME_EQUIVALENCE_EPSILON; }
 
 function withoutStatus(value: unknown): unknown {
   if (typeof value === "object" && value !== null && "status" in value) {
@@ -117,7 +119,7 @@ export function validateReconciliation(value: unknown, context: ValidationContex
   for (const block of blocks) {
     if (blockIds.has(block.id)) invalid("duplicate block id");
     blockIds.add(block.id);
-    if (!(block.end > block.start) || block.start < chunk.start || block.end > chunk.end) invalid("block outside logical window");
+    if (!(block.end > block.start) || block.start < chunk.start - TIME_EQUIVALENCE_EPSILON || block.end > chunk.end + TIME_EQUIVALENCE_EPSILON) invalid("block outside logical window");
     if (block.characterConfidence === "unknown" && block.characterCandidate !== undefined) invalid("unknown attribution fabricates a candidate");
     if (block.characterConfidence !== "unknown" && block.characterCandidate === undefined) invalid("attribution lacks a candidate");
     const claimed = block.sourceEventIds.map((id) => eventById.get(id));
@@ -125,23 +127,23 @@ export function validateReconciliation(value: unknown, context: ValidationContex
     const events = claimed as SourceEvent[];
     const supportedStart = Math.min(...events.map((event) => event.supportedRange?.start ?? event.start));
     const supportedEnd = Math.max(...events.map((event) => event.supportedRange?.end ?? event.end));
-    if (block.start !== supportedStart || block.end !== supportedEnd) invalid("block has unsupported timestamps");
+    if (!sameTime(block.start, supportedStart) || !sameTime(block.end, supportedEnd)) invalid("block has unsupported timestamps");
     for (const event of events) {
       if (ownership.has(event.id)) invalid("source event consumed more than once");
       const eventSupport = event.supportedRange ?? event;
-      if (eventSupport.start < block.start || eventSupport.end > block.end) invalid("block does not support a claimed event");
+      if (eventSupport.start < block.start - TIME_EQUIVALENCE_EPSILON || eventSupport.end > block.end + TIME_EQUIVALENCE_EPSILON) invalid("block does not support a claimed event");
       ownership.set(event.id, block.id);
     }
   }
   for (let index = 1; index < blocks.length; index += 1) {
-    if (blocks[index]!.start < blocks[index - 1]!.start) invalid("non-overlap blocks are reordered");
+    if (blocks[index]!.start < blocks[index - 1]!.start - TIME_EQUIVALENCE_EPSILON) invalid("non-overlap blocks are reordered");
   }
 
   for (const omission of omissions) {
     const event = eventById.get(omission.sourceEventId);
     if (!event) invalid("omission claims unknown event");
     if (ownership.has(omission.sourceEventId)) invalid("source event accounted twice");
-    if (omission.text !== event.text || omission.start !== event.start || omission.end !== event.end) invalid("omission snapshot mismatch");
+    if (omission.text !== event.text || !sameTime(omission.start, event.start) || !sameTime(omission.end, event.end)) invalid("omission snapshot mismatch");
     ownership.set(omission.sourceEventId, `omission:${omission.sourceEventId}`);
   }
   if (ownership.size !== authoritative.length) invalid("source event is missing accounting");
