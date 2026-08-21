@@ -1,0 +1,50 @@
+---
+import type { ResolvedCharacterAge } from "@bastion-falls/types/CharacterAge";
+import {
+  describeCharacterAge,
+  type MortalityPhaseDescription,
+} from "./characterAgeDetail.ts";
+
+interface Props {
+  age: ResolvedCharacterAge;
+}
+
+const { age } = Astro.props;
+const description = describeCharacterAge(age);
+const hasHistory = description.phases.length > 0;
+const shouldRender = description.collapsedValue !== undefined || hasHistory;
+---
+
+{shouldRender && (
+  <div class="flex flex-wrap items-start gap-x-3 gap-y-1 py-2">
+    <dt class="shrink-0 text-lg font-semibold text-gray-700 dark:text-gray-300">Age</dt>
+    <dd class="min-w-0 flex-1 text-right text-gray-600 dark:text-gray-400">
+      {hasHistory ? (
+          <details>
+            <summary class="cursor-pointer list-inside focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+              {description.collapsedValue ?? "Age history"}
+            </summary>
+            <div class="mt-2 space-y-2 text-sm text-right">
+              {description.overrideExplanation && (
+                <p>{description.overrideExplanation}</p>
+              )}
+              <ol class="space-y-2">
+                {description.phases.map((phase: MortalityPhaseDescription) => (
+                  <li class="space-y-1">
+                    <div class="font-medium">{phase.event}</div>
+                    {phase.date && <div>{phase.date}</div>}
+                    {phase.endDate && <div>Ended: {phase.endDate}</div>}
+                    {phase.species && <div>Species: {phase.species}</div>}
+                    {phase.method && <div>{phase.method}</div>}
+                    {phase.duration && <div>{phase.duration}</div>}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </details>
+        ) : description.collapsedValue !== undefined ? (
+          description.collapsedValue
+        ) : null}
+    </dd>
+  </div>
+)}

@@ -8,6 +8,7 @@ import { resolveCharacterAge } from "@bastion-falls/types/CharacterAge";
 import { slug } from "github-slugger";
 import { BastionNow } from "../../lib/bastion-now";
 import CharacterPcStats from "./CharacterPcStats.astro";
+import CharacterAgeDetail from "./CharacterAgeDetail.astro";
 import CharacterSexOrgans from "./CharacterSexOrgans.astro";
 import SidebarCard from "./SidebarCard.astro";
 import SidebarDetail from "./SidebarDetail.astro";
@@ -16,9 +17,9 @@ import SidebarMedia from "./SidebarMedia.astro";
 const { character, filePath } = Astro.props;
 
 const details = character.details;
-let displayAge = details?.age;
+let resolvedAge;
 if (details !== undefined) {
-  displayAge = resolveCharacterAge(details, BastionNow.date()).value;
+  resolvedAge = resolveCharacterAge(details, BastionNow.date());
 }
 
 let mortalityIcon: string;
@@ -155,9 +156,7 @@ if (character?.relationships?.families) {
   )}
   <CharacterPcStats character={character} />
   <dl class="divide-y divide-gray-200 dark:divide-gray-700">
-    {displayAge !== undefined && (
-          <SidebarDetail label="Age">{displayAge}</SidebarDetail>
-        )}
+    {resolvedAge && <CharacterAgeDetail age={resolvedAge} />}
     {character?.details?.sex && (
           <SidebarDetail label="Sex">
             {character.details.sex}{character.details.pronouns && ` (${character.details.pronouns})`}
