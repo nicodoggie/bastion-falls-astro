@@ -51,6 +51,7 @@ const RECONCILIATION_OUTPUT_CONTRACT = [
   "The runner recomputes each block start and end, omission text/start/end, and materialCorrection sourceForm from authoritative source events after strict parsing. These are source echoes, not model authority; sourceEventIds and omission/correction reasons remain your decisions.",
   "omissions is an array of exact authoritative snapshots with exactly: sourceEventId, text, start, end, reason. reason enum: decoder-loop | duplicate | false-start | non-speech | unintelligible | outside-logical-window.",
   "Every authoritativeSourceEvent must appear exactly once, either in one block.sourceEventIds array or one omission.sourceEventId, never both and never neither. Context-only events must never be accounted.",
+  "If a sourceEventId is duplicated, the runner keeps its first chronological block owner and removes later duplicate accounting references. A block emptied by this repair remains invalid.",
   "materialCorrections entries have exactly: sourceEventId, sourceForm, replacement, evidence. sourceForm must exactly equal the authoritative event text; evidence has 1-8 short strings grounded only in supplied packet fields or a specific read-only repository fact actually verified during this run.",
   "suspicionFlags enum: high-omitted-ratio | large-compression | decoder-loop-range | expected-character-only | unsupported-proper-noun | unexplained-silence | reordered-source-events.",
   "The suspicionFlags and reviewFlags enums are disjoint: suspicionFlags values must never appear in any block.reviewFlags array, and reviewFlags values must never appear in top-level suspicionFlags.",
@@ -108,7 +109,25 @@ export function parseHermesReconciliationJson(stdout: string): unknown {
 export function validateReconciliationOutput(value: unknown, job: ReconciliationChunkJob): CanonicalReconciliation {
   const response = parseReconciliationResponse(value);
   assertReconciliationEchoes(response, job);
-  return validateReconciliation(hydrateAuthoritativeSourceEchoes(response, job), { authoritativeSourceEvents: job.authoritativeSourceEvents });
+  return validateReconciliation(hydrateAuthoritativeSourceEchoes(normalizeDuplicateSourceAccounting(response), job), { authoritativeSourceEvents: job.authoritativeSourceEvents });
+}
+
+function normalizeDuplicateSourceAccounting(response: ReconciliationResponse): ReconciliationResponse {
+  const seen = new Set<string>();
+  const blocks = response.blocks.map((block) => ({
+    ...block,
+    sourceEventIds: block.sourceEventIds.filter((id) => {
+      if (seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    }),
+  }));
+  const omissions = response.omissions.filter((omission) => {
+    if (seen.has(omission.sourceEventId)) return false;
+    seen.add(omission.sourceEventId);
+    return true;
+  });
+  return { ...response, blocks, omissions };
 }
 
 function hydrateAuthoritativeSourceEchoes(response: ReconciliationResponse, job: ReconciliationChunkJob): ReconciliationResponse {
