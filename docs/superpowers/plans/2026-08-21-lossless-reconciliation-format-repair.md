@@ -39,8 +39,9 @@ Repeat this packet verbatim in every implementation or review delegation:
   reasons, correction replacements/evidence, attribution, identities, and summary-safe content must
   remain unchanged.
 - Attempt count is fixed at one. Do not add retry configuration.
-- No commit may claim the model bake-off passed without receipts proving the actual serving model
-  and zero available tools.
+- No commit may claim the model bake-off passed without receipts proving the actual serving model,
+  zero available tools, safe mode, an empty invocation cwd, no profile, and ignored user
+  configuration/rules.
 - If current Hermes cannot provide a proven zero-tool invocation, stop the live bake-off and report
   that blocker. Do not weaken the requirement to “no tools happened to be called.”
 - Do not commit, push, reset, checkout, clean, install dependencies, or invoke live models unless
@@ -59,6 +60,8 @@ Stop Phase A immediately and do not begin Phase B when any of these is true:
 - target response or authoritative validation fails after repair;
 - the live invocation cannot prove the requested serving model;
 - the live invocation cannot prove tools were unavailable;
+- the live invocation cannot prove profile/rules/user configuration were ignored and its cwd was an
+  empty owner-only directory;
 - no tested model passes every positive and negative fixture;
 - implementation would require modifying production reconciliation behavior.
 
@@ -282,7 +285,7 @@ git add cli/src/commands/transcribe/reconciliationRepair.ts \
 git commit -m "feat(transcribe): protect repair semantics"
 ```
 
-### Task 3: Normalize and Classify JSON/Zod Failures
+### Task 3: Normalize and Classify Parseable Zod Failures
 
 **Objective:** Convert parser and response-schema failures into compact machine-actionable issues
 without passing raw exception prose or semantic failures to a formatter.
@@ -307,6 +310,8 @@ Use real Zod 4 issue shapes produced by `ReconciliationResponseSchema.safeParse`
   empty collection;
 - optional-field presence errors map only when removal/addition preserves the protected projection;
 - overlong text maps to `unrepairable-semantic`;
+- every JSON parse failure remains `unrepairable-incomplete` in this task because lexical
+  completeness has not yet been implemented;
 - unknown event IDs, missing accounting, echoed identity mismatch, timeout, empty output, and source
   security errors are ineligible;
 - issue output is bounded and does not contain raw identifiers, source text, stack traces, paths, or
@@ -353,7 +358,7 @@ git add cli/src/commands/transcribe/reconciliationRepair.ts \
 git commit -m "feat(transcribe): classify format repair failures"
 ```
 
-### Task 4: Add Bounded Lexical Preservation for Invalid JSON
+### Task 4: Add Bounded Lexical Preservation and Invalid-JSON Eligibility
 
 **Objective:** Permit syntax-only JSON recovery only when all recoverable content tokens can be
 proven complete and unchanged.
@@ -375,8 +380,11 @@ Cover:
 - missing closing braces after complete tokens is repairable only when the token inventory is
   complete;
 - arbitrary prose mixed into output is unrepairable unless it matches a closed framing rule;
-- repaired token sequence/multiset mismatch rejects;
-- key-placement changes allowed by a normalized issue do not permit adding/removing content values;
+- repaired ordered content-token sequence mismatch rejects;
+- malformed-JSON repair may change punctuation and escaping only; it may not relocate keys or
+  values;
+- enum/key relocation is eligible only for parseable originals protected by Task 2 projections, not
+  for lexical invalid-JSON repair;
 - input bytes, token count, token length, nesting depth, and scan runtime are bounded.
 
 #### Step 2: Run focused tests and verify RED
@@ -398,9 +406,15 @@ export function inventoryInvalidJson(input: string): LexicalInventoryResult;
 export function verifyLexicalPreservation(before: LexicalInventory, repaired: unknown): void;
 ```
 
-Use a deterministic single-pass scanner. Do not use regex-only JSON token extraction. Preserve
-number lexemes so `1`, `1.0`, and `1e0` are not silently treated as identical unless the design is
-explicitly amended.
+Use a deterministic single-pass scanner. Do not use regex-only JSON token extraction. Preserve the
+exact ordered sequence of decoded string tokens and original number/boolean/null lexemes. This is
+intentionally stricter than a multiset: malformed JSON may repair syntax/escaping but may not
+reorder semantic tokens. Preserve number lexemes so `1`, `1.0`, and `1e0` are not silently treated
+as identical unless the design is explicitly amended.
+
+Extend `classifyRepairFailure` only after the scanner exists. `invalid-json` becomes
+`repairable-format` only when `inventoryInvalidJson` returns a complete bounded inventory; otherwise
+classification remains `unrepairable-incomplete` and the formatter is not called.
 
 #### Step 4: Run focused tests and verify GREEN
 
@@ -465,6 +479,8 @@ Tests must prove:
 - projection or lexical digest mismatch rejects;
 - authoritative validation runs from scratch;
 - accepted output is forced to `needs_review` in the evaluation result;
+- the evaluator returns an unpersisted candidate plus validation/protection evidence; it does not
+  publish a production canonical artifact;
 - evaluation reports `calls: 2`, `retries: 1` only for accepted repair;
 - injected formatter cannot override metrics, classification, identity, or validation status.
 
@@ -535,7 +551,7 @@ Define a strict `RepairFixtureSchema` with:
   originalOutput: string;
   expectedIssueCodes: RepairIssueCode[];
   expectedRepairedOutput?: unknown;
-  expectedUnrepairableReason?: string;
+  expectedUnrepairableReason?: z.infer<typeof RepairUnrepairableReasonSchema>;
 }
 ```
 
@@ -634,6 +650,11 @@ export interface FormatterAdapter {
 }
 ```
 
+Define strict `PhaseARepairReportSchema` and `PhaseAModelResultSchema` contracts. The report status
+is `passed | failed | blocked`; blocked results require one fixed reason such as
+`blocked-no-zero-tool-seam` or `blocked-no-context-isolation`. Reports contain fixture IDs and
+metrics only, never model output or private text.
+
 Tests prove:
 
 - canonical fixture order and identical payload per model;
@@ -652,9 +673,13 @@ Expected: harness module missing.
 
 #### Step 3: Implement injected harness and transactional reports
 
-Write owner-only per-model raw receipts under an ignored operator-selected scratch root. Publish
-only a sanitized JSON/Markdown summary after all requested models finish. Use same-parent temporary
-files, file sync, rename, and directory sync, following `reconciliationBenchmark.ts` report custody.
+Write owner-only per-model raw receipts and repaired candidate artifacts under an ignored
+operator-selected scratch root. For every accepted repair, atomically publish the isolated
+candidate, reread it, re-run target/protection/identity/authoritative validation, and only then
+record fixture success. These are Phase A candidate artifacts, never production canonicals. Publish
+a sanitized `phase-a-report.json` and `phase-a-report.md` pair after all requested models finish or
+when preflight blocks the run. Use same-parent temporary files, file sync, rename, and directory
+sync, following `reconciliationBenchmark.ts` report custody.
 
 Do not register a public `bfcli` command in Phase A. Expose a callable function and a package-local
 script entry only if needed for the live bake-off.
@@ -723,8 +748,8 @@ evidence. Do not manufacture a “real” fixture.
 ### Task 9: Prove or Reject a Zero-Tool Live Adapter
 
 **Objective:** Establish a formatter invocation that gives the model no tools, no
-rules/memory/context, an explicit model, and a durable usage receipt before spending on the
-bake-off.
+rules/memory/profile/repository context, an explicit model, and a durable usage receipt before
+spending on the bake-off.
 
 **Files:**
 
@@ -754,9 +779,21 @@ A usable adapter must produce a machine-readable receipt proving:
 - API/token usage;
 - bounded process completion.
 
+The launcher must also prove context isolation deterministically:
+
+- invoke `hermes -z` with `--safe-mode`, which implies ignored user configuration and rules;
+- pass no profile or skills;
+- run from a newly created owner-only empty cwd outside the repository and trial fixture roots;
+- pass the complete repair prompt directly, with no file/repository reference;
+- use an explicit allowlisted environment and no project-local environment variables;
+- verify the cwd remained empty except for invocation-owned usage/receipt files;
+- record these facts as strict booleans in the adapter receipt.
+
 If Hermes one-shot cannot provide that proof without profile mutation, private credential copying,
 unstable internal imports, or a custom plugin, mark the adapter `blocked-no-zero-tool-seam` and stop
-before Task 10. Do not weaken the design.
+before Task 10. If tool isolation works but context isolation cannot be proven, use
+`blocked-no-context-isolation`. Publish the strict Phase A report pair through the Task 7 report
+writer before stopping. Do not weaken the design.
 
 #### Step 3: If and only if proof is possible, add the adapter
 
@@ -767,12 +804,13 @@ parsing.
 #### Step 4: Verify with a one-token model canary
 
 Run one minimal no-content prompt. Read back the durable usage receipt and independently verify the
-serving model. Any tool availability or identity ambiguity blocks the bake-off.
+serving model, safe-mode/context flags, empty cwd custody, and zero-tool state. Any ambiguity blocks
+the bake-off and publishes a blocked report.
 
 #### Step 5: Commit only a proven adapter
 
-If blocked, commit no speculative adapter. Record the blocker in the Phase A report/session instead
-of adding dead configuration.
+If blocked, commit no speculative adapter. Publish the fixed blocker through `phase-a-report.json`
+and its matching Markdown report instead of adding dead configuration.
 
 ### Task 10: Run the Matched Luna/Terra/Sol Fixture Bake-Off
 
@@ -871,6 +909,10 @@ Search all production callers and assert:
 - CLI/config/checkpoint/pipeline files have no formatter settings;
 - no repair model is selected in production;
 - no canonical artifact contains repair provenance yet.
+- every accepted Phase A candidate artifact was atomically published, reread, and revalidated under
+  the isolated scratch root;
+- `phase-a-report.json` strictly records `passed`, `failed`, or `blocked` and its Markdown pair
+  agrees.
 
 #### Step 4: Obtain two independent reviews
 

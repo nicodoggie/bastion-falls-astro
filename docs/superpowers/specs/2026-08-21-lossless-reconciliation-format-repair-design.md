@@ -151,6 +151,7 @@ The repair input is a strict, bounded object:
   "repairVersion": 1,
   "targetSchemaVersion": "reconciliation.v1",
   "originalOutput": "<raw output>",
+  "classification": "repairable-format",
   "issues": [
     {
       "stage": "schema",
@@ -161,8 +162,11 @@ The repair input is a strict, bounded object:
       "sameValueAllowedAt": [["suspicionFlags"]]
     }
   ],
-  "protectedProjection": {},
-  "protectedDigest": "<sha256>"
+  "protection": {
+    "kind": "projection",
+    "value": {},
+    "digest": "<sha256>"
+  }
 }
 ```
 
@@ -270,10 +274,12 @@ inventory extracts recoverable JSON content tokens:
 - booleans;
 - nulls.
 
-After repair, the content-token inventory must match under explicitly allowed key-placement changes.
-Punctuation, separators, braces, escaping, and formatting may change. If the original is truncated,
-has an unterminated content token, or cannot be inventoried confidently, classification is
-`unrepairable-incomplete` and no formatter is called.
+After repair, the exact ordered content-token inventory must match. Punctuation, separators, braces,
+escaping, and formatting may change, but malformed-JSON repair may not relocate keys or values.
+Enum/key relocation is available only for parseable originals protected by the semantic projection,
+not for lexical invalid-JSON repair. If the original is truncated, has an unterminated content
+token, or cannot be inventoried confidently, classification is `unrepairable-incomplete` and no
+formatter is called.
 
 ## Formatter Runtime
 
@@ -288,6 +294,12 @@ The formatter runtime has:
 - an explicit model/provider identity recorded in diagnostics;
 - no fallback chain that silently changes the formatter model.
 
+The live launcher must prove these constraints: explicit safe mode, ignored rules/user
+configuration, no profile or skills, an empty owner-only cwd outside repository and fixture roots, a
+complete inline prompt with no file reference, an allowlisted environment, and a receipt proving
+zero tool availability. If that proof is unavailable, the live bake-off is blocked rather than
+weakened.
+
 The formatter does not receive authoritative transcript evidence. It cannot perform reconciliation.
 
 ## Post-Repair Validation
@@ -301,9 +313,10 @@ A repair is accepted only when all checks pass in order:
 1. protected projection or lexical inventory equality;
 1. deterministic source-echo compilation;
 1. authoritative event validation from scratch;
-1. canonical reread after atomic publication.
+1. isolated Phase A candidate reread after atomic publication.
 
-A formatter claim never bypasses a deterministic check.
+A formatter claim never bypasses a deterministic check. Phase A publishes and rereads candidate
+artifacts only beneath its ignored scratch root; it does not publish production canonical artifacts.
 
 ## Canonical Status and Provenance
 
@@ -321,7 +334,10 @@ Diagnostics retain:
 - final validation outcome;
 - timing, calls, retries, and token metrics when supplied.
 
-Original diagnostics remain immutable. Repaired output receives a separate diagnostic artifact.
+Original diagnostics remain immutable. Repaired output receives a separate diagnostic artifact. The
+Phase A harness always publishes a strict sanitized `phase-a-report.json` and matching Markdown
+report with status `passed`, `failed`, or `blocked`, including a fixed blocker reason when live
+model or context/tool isolation cannot be proven.
 
 ## Calls, Retries, and Stop Rules
 
