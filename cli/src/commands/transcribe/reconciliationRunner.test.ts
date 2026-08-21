@@ -41,6 +41,7 @@ test("prompt marks neighbors context-only and owns only the packet window", () =
   assert.match(prompt, /do not search the repository for schemas/iu);
   assert.match(prompt, /suspicionFlags.*must never.*reviewFlags/iu);
   assert.match(prompt, /derive.*start.*minimum.*end.*maximum.*sourceEventIds/isu);
+  assert.match(prompt, /runner.*recomputes.*start.*end.*authoritative/isu);
   assert.doesNotMatch(prompt, /emit neighboring events/iu);
 });
 
@@ -133,6 +134,16 @@ test("semantic echo accepts reordered keys and hard-invalid unknown events", () 
   assert.equal(validateReconciliationOutput(reordered, job).status, "valid");
   assert.throws(() => validateReconciliationOutput({ ...reordered, status: "valid" }, job));
   reordered.blocks[0].sourceEventIds = ["unknown"]; assert.throws(() => validateReconciliationOutput(reordered, job), /unknown event/iu);
+});
+
+test("runner derives redundant source echoes from authoritative event IDs", () => {
+  const model = response();
+  model.blocks[0]!.start = 0.25;
+  model.blocks[0]!.end = 0.75;
+  (model as any).materialCorrections = [{ sourceEventId: "e1", sourceForm: "wrong", replacement: "Hello.", evidence: ["source event"] }];
+  const canonical = validateReconciliationOutput(model, job);
+  assert.deepEqual([canonical.blocks[0]!.start, canonical.blocks[0]!.end], [0, 1]);
+  assert.equal(canonical.materialCorrections[0]!.sourceForm, "hello");
 });
 
 test("semantic hard-invalid output is diagnostic-only through the runner", async () => {

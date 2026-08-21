@@ -11,7 +11,7 @@ const base = { sourceHash: "a".repeat(64), alignment, logicalStart: 10, logicalE
 
 test("default prompt identity tracks the current reconciliation contract", () => {
   const { promptVersion: _promptVersion, ...withoutPromptVersion } = base;
-  assert.equal(buildEvidencePacket(withoutPromptVersion).promptVersion, "reconciliation.prompt.v3");
+  assert.equal(buildEvidencePacket(withoutPromptVersion).promptVersion, "reconciliation.prompt.v4");
 });
 
 test("stable IDs and hashes are deterministic without reordering alternatives", () => {

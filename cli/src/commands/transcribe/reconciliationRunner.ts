@@ -7,6 +7,7 @@ import {
   parseReconciliationResponse,
   validateReconciliation,
   type CanonicalReconciliation,
+  type ReconciliationResponse,
   type ReconciliationBlock,
   type SourceEvent,
 } from "./reconciliation.js";
@@ -47,6 +48,7 @@ const RECONCILIATION_OUTPUT_CONTRACT = [
   "block kind enum: dialogue | narration | unclear. characterConfidence enum: confirmed | probable | unknown. If unknown, omit characterCandidate; otherwise characterCandidate is required.",
   "channel and physicalSpeaker may be emitted only when directly supported by supplied packet evidence. expectedCharacters are candidates only, not attribution proof. attributionBasis must cite only supplied packet evidence.",
   "After choosing sourceEventIds, derive each block start as the minimum supported start and block end as the maximum supported end across those sourceEventIds. Never use an aesthetic prose or turn boundary that excludes claimed event support. attributionBasis has 1-8 short strings. reviewFlags enum: ambiguous-speaker | unclear-words | possible-omission | attribution-uncertain | material-correction.",
+  "The runner recomputes each block start and end, omission text/start/end, and materialCorrection sourceForm from authoritative source events after strict parsing. These are source echoes, not model authority; sourceEventIds and omission/correction reasons remain your decisions.",
   "omissions is an array of exact authoritative snapshots with exactly: sourceEventId, text, start, end, reason. reason enum: decoder-loop | duplicate | false-start | non-speech | unintelligible | outside-logical-window.",
   "Every authoritativeSourceEvent must appear exactly once, either in one block.sourceEventIds array or one omission.sourceEventId, never both and never neither. Context-only events must never be accounted.",
   "materialCorrections entries have exactly: sourceEventId, sourceForm, replacement, evidence. sourceForm must exactly equal the authoritative event text; evidence has 1-8 short strings grounded only in supplied packet fields or a specific read-only repository fact actually verified during this run.",
@@ -100,7 +102,32 @@ export function parseStrictReconciliationJson(stdout: string): unknown {
 export function validateReconciliationOutput(value: unknown, job: ReconciliationChunkJob): CanonicalReconciliation {
   const response = parseReconciliationResponse(value);
   assertReconciliationEchoes(response, job);
-  return validateReconciliation(response, { authoritativeSourceEvents: job.authoritativeSourceEvents });
+  return validateReconciliation(hydrateAuthoritativeSourceEchoes(response, job), { authoritativeSourceEvents: job.authoritativeSourceEvents });
+}
+
+function hydrateAuthoritativeSourceEchoes(response: ReconciliationResponse, job: ReconciliationChunkJob): ReconciliationResponse {
+  const eventById = new Map(job.authoritativeSourceEvents.map((event) => [event.id, event]));
+  return {
+    ...response,
+    blocks: response.blocks.map((block) => {
+      const events = block.sourceEventIds.map((id) => eventById.get(id));
+      if (events.some((event) => event === undefined)) return block;
+      const authoritative = events as SourceEvent[];
+      return {
+        ...block,
+        start: Math.min(...authoritative.map((event) => event.supportedRange?.start ?? event.start)),
+        end: Math.max(...authoritative.map((event) => event.supportedRange?.end ?? event.end)),
+      };
+    }),
+    omissions: response.omissions.map((omission) => {
+      const event = eventById.get(omission.sourceEventId);
+      return event ? { ...omission, text: event.text, start: event.start, end: event.end } : omission;
+    }),
+    materialCorrections: response.materialCorrections.map((correction) => {
+      const event = eventById.get(correction.sourceEventId);
+      return event ? { ...correction, sourceForm: event.text } : correction;
+    }),
+  };
 }
 
 function assertReconciliationEchoes(value: unknown, job: ReconciliationChunkJob): asserts value is Record<string, unknown> {
