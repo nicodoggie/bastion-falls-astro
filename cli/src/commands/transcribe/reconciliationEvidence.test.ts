@@ -9,6 +9,11 @@ const alignment = { version: 1 as const, events: [
 ] };
 const base = { sourceHash: "a".repeat(64), alignment, logicalStart: 10, logicalEnd: 20, chunkIndex: 2, previousReadableTail: ["previous"], nextAlignmentHead: [alignment.events[2]!], channelMap: { version: 1 as const, source: "audio", channels: [{ id: "left", index: 0, speakers: [{ name: "Andrew", role: "player" as const, expectedCharacters: [{ name: "Andrew", aliases: [] }] }] }] }, glossary: ["Bastion"], correctionRules: ["rule"], campaign: "Bastion", sessionDate: "2026-08-15", provider: { provider: "hermes", model: "m", profile: "p" }, promptVersion: "prompt.v1", schemaVersion: "reconciliation.v1", evidenceRevision: "r1" };
 
+test("default prompt identity tracks the current reconciliation contract", () => {
+  const { promptVersion: _promptVersion, ...withoutPromptVersion } = base;
+  assert.equal(buildEvidencePacket(withoutPromptVersion).promptVersion, "reconciliation.prompt.v2");
+});
+
 test("stable IDs and hashes are deterministic without reordering alternatives", () => {
   assert.equal(assignStableEventId(2, 0), "session_002:event_0000");
   const a = buildEvidencePacket(base);

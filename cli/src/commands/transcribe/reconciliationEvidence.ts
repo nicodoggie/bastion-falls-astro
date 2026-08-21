@@ -10,7 +10,7 @@ import { channelMapSchema, type ChannelMap } from "./channelMap.js";
 import type { SourceEvent } from "./reconciliation.js";
 
 export const RECONCILIATION_EVIDENCE_VERSION = 1 as const;
-export const RECONCILIATION_PROMPT_VERSION = "reconciliation.prompt.v1" as const;
+export const RECONCILIATION_PROMPT_VERSION = "reconciliation.prompt.v2" as const;
 
 export type ProviderIdentity = { provider: string; model: string; profile?: string };
 export type ContextOnly = {

@@ -5,7 +5,7 @@ import { basename, join, dirname } from "node:path";
 import { tmpdir } from "node:os";
 import type { Manifest, PlannedChunk } from "./types.js";
 import { AlignmentResultSchema, type AlignmentResult, type AlignmentEvent } from "./alignment.js";
-import { buildEvidencePacket, type ReconciliationEvidencePacket, type ProviderIdentity } from "./reconciliationEvidence.js";
+import { buildEvidencePacket, RECONCILIATION_PROMPT_VERSION, type ReconciliationEvidencePacket, type ProviderIdentity } from "./reconciliationEvidence.js";
 import { runUnifiedReconciliation, type ReconciliationChunkJob, type SummarySafeFallback } from "./reconciliationRunner.js";
 import { runReconciliationSummarization, renderSessionMdx, runBoundedCodexCommand, type ChunkSummary, type SessionSummary, type SceneSummary, type SummarizationOptions } from "./reconciliationSummary.js";
 import type { CanonicalReconciliation } from "./reconciliation.js";
@@ -82,7 +82,7 @@ export async function runUnifiedReconciliationStage(options: UnifiedStageOptions
   if (pending.length) throw new Error("pending summary safety cannot complete reconciliation without an explicit bypass");
   const bypass: string[] = [];
   const status = result.chunks.some((c) => c.status === "needs_review") ? "needs_review" : "valid";
-  const metadata: ReconciliationMetadata = { provider: "hermes", mode: "enabled", reconciliationDir: join(options.rootDir, "reconciliation"), reconciledTranscriptPath: join(options.rootDir, "reconciled_transcript.md"), summaryTranscriptPath: join(options.rootDir, "summary_transcript.md"), reviewQueuePath: join(options.rootDir, "reconciliation_review_queue.md"), schemaVersion: prepared.jobs[0]?.packet.schemaVersion ?? "reconciliation.v1", promptVersion: prepared.jobs[0]?.packet.promptVersion ?? "reconciliation.prompt.v1", cacheIdentityByChunk: Object.fromEntries(result.chunks.map((c) => [c.chunk.id, prepared.cacheIdentityByChunk[c.chunk.id]!])), completedChunkIds: result.chunks.map((c) => c.chunk.id), status, summarySafety: { pendingChunkIds: pending, bypassChunkIds: bypass } };
+  const metadata: ReconciliationMetadata = { provider: "hermes", mode: "enabled", reconciliationDir: join(options.rootDir, "reconciliation"), reconciledTranscriptPath: join(options.rootDir, "reconciled_transcript.md"), summaryTranscriptPath: join(options.rootDir, "summary_transcript.md"), reviewQueuePath: join(options.rootDir, "reconciliation_review_queue.md"), schemaVersion: prepared.jobs[0]?.packet.schemaVersion ?? "reconciliation.v1", promptVersion: prepared.jobs[0]?.packet.promptVersion ?? RECONCILIATION_PROMPT_VERSION, cacheIdentityByChunk: Object.fromEntries(result.chunks.map((c) => [c.chunk.id, prepared.cacheIdentityByChunk[c.chunk.id]!])), completedChunkIds: result.chunks.map((c) => c.chunk.id), status, summarySafety: { pendingChunkIds: pending, bypassChunkIds: bypass } };
   if (metadata.status === "pending" || metadata.status === "invalid") throw new Error("invalid or pending reconciliation cannot succeed");
   return { status, metadata, chunks: result.chunks, jobs: prepared.jobs };
 }

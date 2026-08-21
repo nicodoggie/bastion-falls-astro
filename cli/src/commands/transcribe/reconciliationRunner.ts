@@ -51,6 +51,7 @@ const RECONCILIATION_OUTPUT_CONTRACT = [
   "Every authoritativeSourceEvent must appear exactly once, either in one block.sourceEventIds array or one omission.sourceEventId, never both and never neither. Context-only events must never be accounted.",
   "materialCorrections entries have exactly: sourceEventId, sourceForm, replacement, evidence. sourceForm must exactly equal the authoritative event text; evidence has 1-8 short strings grounded only in supplied packet fields or a specific read-only repository fact actually verified during this run.",
   "suspicionFlags enum: high-omitted-ratio | large-compression | decoder-loop-range | expected-character-only | unsupported-proper-noun | unexplained-silence | reordered-source-events.",
+  "The suspicionFlags and reviewFlags enums are disjoint: suspicionFlags values must never appear in any block.reviewFlags array, and reviewFlags values must never appear in top-level suspicionFlags.",
   "reviewNotes is an array of at most 8 short strings.",
   "summarySafety has exactly: status, errors. status enum: valid | pending. errors is an array of at most 8 short strings. summarySafeText must correspond block-for-block; use pending only when a block cannot be made summary-safe faithfully.",
   "All IDs and nonempty text fields must be bounded nonempty strings. Do not add unknown keys, Markdown, commentary, or repository-derived evidence.",

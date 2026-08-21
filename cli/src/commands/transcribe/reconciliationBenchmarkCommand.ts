@@ -27,7 +27,7 @@ import {
   type UnifiedStageOptions,
 } from "./reconciliationIntegration.js";
 import type { Manifest } from "./types.js";
-import { stableHash } from "./reconciliationEvidence.js";
+import { RECONCILIATION_PROMPT_VERSION, stableHash } from "./reconciliationEvidence.js";
 import { loadChannelMap } from "./channelMap.js";
 
 export interface BenchmarkFlags {
@@ -100,7 +100,7 @@ const flags: FlagParametersForType<BenchmarkFlags, LocalContext> = {
   profile: { kind: "parsed", parse: parseBoundedString, brief: "Hermes profile for candidate lanes", optional: true },
   "max-turns": { kind: "parsed", parse: parsePositiveInteger, brief: "Bounded candidate model turns", default: "8" },
   "timeout-ms": { kind: "parsed", parse: parseTimeoutMs, brief: "Bounded candidate inference timeout in milliseconds", default: "120000" },
-  "prompt-version": { kind: "parsed", parse: parseBoundedString, brief: "Candidate prompt version", default: "reconciliation.prompt.v1" },
+  "prompt-version": { kind: "parsed", parse: parseBoundedString, brief: "Candidate prompt version", default: RECONCILIATION_PROMPT_VERSION },
   "schema-version": { kind: "parsed", parse: parseBoundedString, brief: "Candidate schema version", default: "reconciliation.v1" },
 };
 

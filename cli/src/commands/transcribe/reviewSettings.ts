@@ -1,3 +1,5 @@
+import { RECONCILIATION_PROMPT_VERSION } from "./reconciliationEvidence.js";
+
 export type ReviewProvider = "hermes" | "off";
 export type ReconciliationProvider = "hermes" | "legacy" | "off";
 export type LogicalChunks = "single" | "per-stt-chunk" | "three";
@@ -66,5 +68,5 @@ export function resolveReconciliationSettings(config: unknown, overrides: Reconc
     source = "legacy-alias";
     return { provider, logicalChunks: "per-stt-chunk", hermesProfile: old.hermesProfile ?? "default", hermesMaxTurns: old.hermesMaxTurns, promptVersion: "legacy.v2", schemaVersion: "legacy.v2", source };
   }
-  return { provider: overrides.provider ?? provider, logicalChunks: overrides.logicalChunks ?? (configuredLogical === undefined ? "single" : parseLogicalChunks(configuredLogical)), hermesProfile: overrides.hermesProfile ?? configProfile ?? "default", hermesMaxTurns: overrides.hermesMaxTurns ?? configMaxTurns ?? 12, promptVersion: overrides.promptVersion ?? configPrompt ?? "reconciliation.prompt.v1", schemaVersion: overrides.schemaVersion ?? configSchema ?? "reconciliation.v1", source };
+  return { provider: overrides.provider ?? provider, logicalChunks: overrides.logicalChunks ?? (configuredLogical === undefined ? "single" : parseLogicalChunks(configuredLogical)), hermesProfile: overrides.hermesProfile ?? configProfile ?? "default", hermesMaxTurns: overrides.hermesMaxTurns ?? configMaxTurns ?? 12, promptVersion: overrides.promptVersion ?? configPrompt ?? RECONCILIATION_PROMPT_VERSION, schemaVersion: overrides.schemaVersion ?? configSchema ?? "reconciliation.v1", source };
 }
