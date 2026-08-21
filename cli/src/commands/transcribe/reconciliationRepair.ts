@@ -72,7 +72,14 @@ const repairFlagSchema = z.union([
   ReconciliationBlockSchema.shape.reviewFlags.element,
   ReconciliationResponseSchema.shape.suspicionFlags.element,
 ]);
+const repairOptionalIdentifierSchema = z.preprocess(
+  (value) => value === null || value === '' ? undefined : value,
+  ReconciliationBlockSchema.shape.channel,
+);
 const projectionInputBlockSchema = ReconciliationBlockSchema.extend({
+  channel: repairOptionalIdentifierSchema,
+  physicalSpeaker: repairOptionalIdentifierSchema,
+  characterCandidate: repairOptionalIdentifierSchema,
   reviewFlags: z.array(repairFlagSchema).max(8),
 }).strict();
 const projectionInputSummarySafetySchema = SummarySafetySchema.extend({
@@ -127,6 +134,9 @@ export function buildProtectedProjection(input: unknown): ProtectedProjection {
   const flags = [...value.suspicionFlags];
   const blocks = value.blocks.map(({ start: _start, end: _end, reviewFlags, ...block }) => {
     flags.push(...reviewFlags);
+    for (const key of ['channel', 'physicalSpeaker', 'characterCandidate'] as const) {
+      if (block[key] === undefined) delete block[key];
+    }
     return block;
   });
   const omissions = value.omissions.map(({ text: _text, start: _start, end: _end, ...omission }) => omission);
@@ -238,6 +248,204 @@ export type RepairEnvelope = z.infer<typeof RepairEnvelopeSchema>;
 export type RepairUnrepairableReason = z.infer<typeof RepairUnrepairableReasonSchema>;
 export type LexicalToken = z.infer<typeof LexicalTokenSchema>;
 export type LexicalInventory = z.infer<typeof LexicalInventorySchema>;
+
+const repairFailureCategorySchema = z.enum([
+  'unknown-event', 'missing-accounting', 'identity-mismatch', 'timeout', 'empty-output', 'source-security',
+]);
+export type RepairFailureCategory = z.infer<typeof repairFailureCategorySchema>;
+
+const RepairClassificationResultSchema = z.object({
+  classification: RepairClassificationSchema,
+  issues: z.array(RepairIssueSchema).max(MAX_REPAIR_ISSUES),
+}).strict();
+export type RepairClassificationResult = z.infer<typeof RepairClassificationResultSchema>;
+
+const MAX_CLASSIFICATION_JSON_DEPTH = 16;
+const MAX_CLASSIFICATION_JSON_NODES = 65_536;
+
+function securityClassification(): RepairClassificationResult {
+  return RepairClassificationResultSchema.parse({ classification: 'unrepairable-security', issues: [] });
+}
+
+function isBoundedJson(value: unknown): boolean {
+  const pending: Array<{ value: unknown; depth: number }> = [{ value, depth: 0 }];
+  const seen = new WeakSet<object>();
+  let nodes = 0;
+  while (pending.length > 0) {
+    const current = pending.pop()!;
+    nodes += 1;
+    if (nodes > MAX_CLASSIFICATION_JSON_NODES || current.depth > MAX_CLASSIFICATION_JSON_DEPTH) return false;
+    if (current.value === null || typeof current.value === 'boolean' || typeof current.value === 'string') continue;
+    if (typeof current.value === 'number') {
+      if (!Number.isFinite(current.value)) return false;
+      continue;
+    }
+    if (typeof current.value !== 'object') return false;
+    if (seen.has(current.value)) return false;
+    seen.add(current.value);
+    if (Array.isArray(current.value)) {
+      if (current.value.length > MAX_PROTECTION_COLLECTION_SIZE) return false;
+      for (const child of current.value) pending.push({ value: child, depth: current.depth + 1 });
+      continue;
+    }
+    if (Object.getPrototypeOf(current.value) !== Object.prototype && Object.getPrototypeOf(current.value) !== null) return false;
+    if (Object.getOwnPropertySymbols(current.value).length > 0) return false;
+    const entries = Object.entries(Object.getOwnPropertyDescriptors(current.value));
+    if (entries.length > MAX_PROTECTION_COLLECTION_SIZE) return false;
+    for (const [key, descriptor] of entries) {
+      if (key.length > MAX_REPAIR_STRING_CHARS) return false;
+      if (!descriptor.enumerable || !('value' in descriptor)) return false;
+      pending.push({ value: descriptor.value, depth: current.depth + 1 });
+    }
+  }
+  try {
+    const serialized = JSON.stringify(value);
+    return serialized !== undefined && Buffer.byteLength(serialized, 'utf8') <= MAX_REPAIR_OUTPUT_BYTES;
+  } catch {
+    return false;
+  }
+}
+
+function isBoundedZodIssue(value: unknown): value is z.ZodIssue {
+  if (value === null || typeof value !== 'object' || Array.isArray(value)) return false;
+  const issue = value as Record<string, unknown>;
+  if (typeof issue['code'] !== 'string' || issue['code'].length > MAX_REPAIR_STRING_CHARS) return false;
+  if (!Array.isArray(issue['path']) || issue['path'].length > MAX_REPAIR_PATH_DEPTH) return false;
+  if (!issue['path'].every((segment) => (
+    typeof segment === 'string' ? segment.length <= MAX_REPAIR_STRING_CHARS
+      : typeof segment === 'number' && Number.isSafeInteger(segment) && segment >= 0
+  ))) return false;
+  if (issue['keys'] !== undefined && (
+    !Array.isArray(issue['keys']) || issue['keys'].length > MAX_REPAIR_ISSUES
+    || !issue['keys'].every((key) => typeof key === 'string' && key.length <= MAX_REPAIR_STRING_CHARS)
+  )) return false;
+  return true;
+}
+
+function admitRepairFailureInput(value: unknown): RepairFailureInput | undefined {
+  try {
+    if (value === null || typeof value !== 'object' || Array.isArray(value)) return undefined;
+    const input = value as Record<string, unknown>;
+    if (typeof input['originalOutput'] !== 'string'
+      || Buffer.byteLength(input['originalOutput'], 'utf8') > MAX_REPAIR_OUTPUT_BYTES) return undefined;
+    if (input['failureCategory'] !== undefined && !repairFailureCategorySchema.safeParse(input['failureCategory']).success) return undefined;
+    if (input['failureCategory'] !== undefined || input['parseError'] !== undefined) return input as unknown as RepairFailureInput;
+    if (input['zodIssues'] !== undefined) {
+      if (!Array.isArray(input['zodIssues']) || input['zodIssues'].length > MAX_REPAIR_ISSUES
+        || !input['zodIssues'].every(isBoundedZodIssue)) return undefined;
+      if (input['parsedValue'] !== undefined && !isBoundedJson(input['parsedValue'])) return undefined;
+    }
+    return input as unknown as RepairFailureInput;
+  } catch {
+    return undefined;
+  }
+}
+
+export interface RepairFailureInput {
+  originalOutput: string;
+  parsedValue?: unknown;
+  parseError?: unknown;
+  zodIssues?: readonly z.ZodIssue[];
+  validationError?: unknown;
+  failureCategory?: RepairFailureCategory;
+}
+
+const reviewFlagValues = ['ambiguous-speaker', 'unclear-words', 'possible-omission', 'attribution-uncertain', 'material-correction'] as const;
+const suspicionFlagValues = ['high-omitted-ratio', 'large-compression', 'decoder-loop-range', 'expected-character-only', 'unsupported-proper-noun', 'unexplained-silence', 'reordered-source-events'] as const;
+const emptyCollectionPaths = new Set(['reviewNotes', 'suspicionFlags', 'materialCorrections', 'omissions', 'summarySafety.errors']);
+const optionalProjectionPaths = new Set(['channel', 'physicalSpeaker', 'characterCandidate']);
+
+function valueAtPath(value: unknown, path: readonly PropertyKey[]): unknown {
+  let current = value;
+  for (const segment of path) {
+    if (current === null || typeof current !== 'object') return undefined;
+    current = (current as Record<PropertyKey, unknown>)[segment];
+  }
+  return current;
+}
+
+function safeScalar(value: unknown): z.infer<typeof scalarSchema> {
+  return scalarSchema.safeParse(value).success ? value as z.infer<typeof scalarSchema> : null;
+}
+
+function sameProtectedProjection(left: unknown, right: unknown): boolean {
+  try { return protectedDigest(buildProtectedProjection(left)) === protectedDigest(buildProtectedProjection(right)); } catch { return false; }
+}
+
+function withEmptyCollection(value: unknown, path: readonly PropertyKey[]): unknown {
+  if (value === null || typeof value !== 'object') return value;
+  const copy = structuredClone(value) as Record<string, unknown>;
+  let cursor: Record<string, unknown> = copy;
+  for (let index = 0; index < path.length - 1; index += 1) {
+    const key = String(path[index]);
+    if (cursor[key] === null || typeof cursor[key] !== 'object' || Array.isArray(cursor[key])) return value;
+    cursor[key] = { ...(cursor[key] as Record<string, unknown>) };
+    cursor = cursor[key] as Record<string, unknown>;
+  }
+  cursor[String(path[path.length - 1])] = [];
+  return copy;
+}
+
+function withoutPath(value: unknown, path: readonly PropertyKey[]): unknown {
+  if (value === null || typeof value !== 'object') return value;
+  const copy = structuredClone(value) as Record<string, unknown>;
+  let cursor: Record<string, unknown> = copy;
+  for (let index = 0; index < path.length - 1; index += 1) {
+    const key = String(path[index]);
+    if (cursor[key] === null || typeof cursor[key] !== 'object' || Array.isArray(cursor[key])) return value;
+    cursor = cursor[key] as Record<string, unknown>;
+  }
+  delete cursor[String(path[path.length - 1])];
+  return copy;
+}
+
+function normalizedIssue(issue: z.ZodIssue, parsedValue: unknown): RepairIssue | undefined {
+  const path = issue.path.filter((segment): segment is string | number => typeof segment === 'string' || (typeof segment === 'number' && Number.isInteger(segment) && segment >= 0));
+  if (path.length !== issue.path.length || path.length > MAX_REPAIR_PATH_DEPTH) return undefined;
+  if (issue.code === 'invalid_value' && path.length >= 3 && path[0] === 'blocks' && path[2] === 'reviewFlags') {
+    const actual = safeScalar(valueAtPath(parsedValue, path));
+    if (typeof actual !== 'string' || !(suspicionFlagValues as readonly string[]).includes(actual)) return undefined;
+    return { stage: 'schema', code: 'invalid-enum-location', path, actualValue: actual, allowedValues: [...reviewFlagValues], sameValueAllowedAt: [['suspicionFlags']] };
+  }
+  if (issue.code === 'unrecognized_keys' && path.length === 0 && issue.keys?.length === 1 && issue.keys[0] === 'status') {
+    const status = valueAtPath(parsedValue, ['status']);
+    const safeStatus = typeof status === 'string' && ['valid', 'pending', 'needs_review', 'invalid'].includes(status) ? status : null;
+    return { stage: 'schema', code: 'unrecognized-key', path: ['status'], actualValue: safeStatus };
+  }
+  if (issue.code === 'invalid_type' && path.length > 0) {
+    const key = path.join('.');
+    if (emptyCollectionPaths.has(key) && sameProtectedProjection(parsedValue, withEmptyCollection(parsedValue, path))) {
+      return { stage: 'schema', code: 'missing-empty-collection', path, actualValue: null, sameValueAllowedAt: [path] };
+    }
+    if (optionalProjectionPaths.has(String(path[path.length - 1])) && sameProtectedProjection(parsedValue, withoutPath(parsedValue, path))) {
+      return { stage: 'schema', code: 'optional-field-presence', path, actualValue: safeScalar(valueAtPath(parsedValue, path)) };
+    }
+  }
+  return undefined;
+}
+
+export function classifyRepairFailure(input: RepairFailureInput): RepairClassificationResult {
+  const admitted = admitRepairFailureInput(input);
+  if (!admitted) return securityClassification();
+  input = admitted;
+  let classification: RepairClassification = 'unrepairable-incomplete';
+  let issues: RepairIssue[] = [];
+  if (input.failureCategory) {
+    classification = input.failureCategory === 'identity-mismatch' ? 'unrepairable-identity' : input.failureCategory === 'source-security' ? 'unrepairable-security' : input.failureCategory === 'unknown-event' || input.failureCategory === 'missing-accounting' ? 'unrepairable-semantic' : 'unrepairable-incomplete';
+  } else if (input.parseError !== undefined) {
+    classification = 'unrepairable-incomplete';
+    issues = [{ stage: 'json', code: 'invalid-json', path: [], actualValue: null }];
+  } else if (input.zodIssues && input.zodIssues.length > 0) {
+    issues = input.zodIssues.map((issue) => normalizedIssue(issue, input.parsedValue)).filter((issue): issue is RepairIssue => issue !== undefined).slice(0, MAX_REPAIR_ISSUES);
+    const hasOverlong = input.zodIssues.some((issue) => issue.code === 'too_big' && issue.path.length > 0);
+    if (hasOverlong) classification = 'unrepairable-semantic';
+    else if (issues.length === input.zodIssues.length && issues.length > 0 && issues.every((issue) => issue.code === 'invalid-enum-location' || issue.code === 'unrecognized-key' || issue.code === 'missing-empty-collection' || issue.code === 'optional-field-presence')) classification = 'repairable-format';
+    else classification = 'unrepairable-semantic';
+  } else if (input.validationError !== undefined) {
+    classification = 'unrepairable-semantic';
+  }
+  return RepairClassificationResultSchema.parse({ classification, issues });
+}
 
 export function assertRepairPayloadBytes(value: unknown): asserts value is RepairPayload {
   let serialized: string | undefined;

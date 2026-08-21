@@ -16,7 +16,9 @@ import {
   buildProtectedProjection,
   protectedDigest,
   ProtectedProjectionSchema,
+  classifyRepairFailure,
 } from './reconciliationRepair.js';
+import { ReconciliationResponseSchema } from './reconciliation.js';
 
 const issue = {
   stage: 'schema',
@@ -249,5 +251,120 @@ test('accepts schema-approved missing/empty equivalents and rejects unknown or m
   assert.equal(ProtectedProjectionSchema.safeParse(buildProtectedProjection(protectedFixture)).success, true);
   for (const value of [null, [], 'text', 1, { ...protectedFixture, unknown: true }, { ...protectedFixture, blocks: [{ ...protectedFixture.blocks[0], unknown: true }] }, { ...protectedFixture, blocks: 'bad' }]) {
     assert.throws(() => buildProtectedProjection(value), (error: unknown) => !(error instanceof TypeError));
+  }
+});
+
+const validResponse = {
+  schemaVersion: 'reconciliation.v1', promptVersion: 'prompt',
+  chunk: { id: 'chunk-1', start: 0, end: 10 }, cacheIdentity: { inputHash: 'source', contextHash: 'context' },
+  blocks: [{ id: 'b1', start: 1, end: 2, kind: 'dialogue', text: 'hello', summarySafeText: 'safe',
+    characterConfidence: 'unknown', attributionBasis: ['explicit'], sourceEventIds: ['event-1'], reviewFlags: [] }],
+  omissions: [], materialCorrections: [], suspicionFlags: [], reviewNotes: [], summarySafety: { status: 'valid', errors: [] },
+};
+
+test('classifies a known suspicion enum misplaced in reviewFlags from real Zod issues', () => {
+  const parsedValue = { ...validResponse, blocks: [{ ...validResponse.blocks[0], reviewFlags: ['unsupported-proper-noun'] }] };
+  const parsed = ReconciliationResponseSchema.safeParse(parsedValue);
+  assert.equal(parsed.success, false);
+  if (parsed.success) return;
+  const result = classifyRepairFailure({ originalOutput: JSON.stringify(parsedValue), parsedValue, zodIssues: parsed.error.issues });
+  assert.equal(result.classification, 'repairable-format');
+  assert.deepEqual(result.issues, [{ stage: 'schema', code: 'invalid-enum-location', path: ['blocks', 0, 'reviewFlags', 0], actualValue: 'unsupported-proper-noun', allowedValues: ['ambiguous-speaker', 'unclear-words', 'possible-omission', 'attribution-uncertain', 'material-correction'], sameValueAllowedAt: [['suspicionFlags']] }]);
+});
+
+test('only status is an initially repairable top-level unrecognized key', () => {
+  for (const key of ['status', 'untrusted']) {
+    const parsedValue = { ...validResponse, [key]: 'valid' };
+    const parsed = ReconciliationResponseSchema.safeParse(parsedValue);
+    assert.equal(parsed.success, false);
+    if (parsed.success) continue;
+    const result = classifyRepairFailure({ originalOutput: JSON.stringify(parsedValue), parsedValue, zodIssues: parsed.error.issues });
+    assert.equal(result.classification, key === 'status' ? 'repairable-format' : 'unrepairable-semantic');
+    if (key === 'status') assert.deepEqual(result.issues[0], { stage: 'schema', code: 'unrecognized-key', path: ['status'], actualValue: 'valid' });
+  }
+});
+
+test('classifies only complete schema-shape repairs and never drops a blocking issue', () => {
+  for (const path of [
+    ['reviewNotes'], ['suspicionFlags'], ['materialCorrections'], ['omissions'], ['summarySafety', 'errors'],
+  ]) {
+    const parsedValue: any = JSON.parse(JSON.stringify(validResponse));
+    const owner = path.length === 1 ? parsedValue : parsedValue[path[0]!];
+    delete owner[path[path.length - 1]!];
+    const parsed = ReconciliationResponseSchema.safeParse(parsedValue);
+    assert.equal(parsed.success, false);
+    if (parsed.success) continue;
+    const result = classifyRepairFailure({ originalOutput: 'redacted', parsedValue, zodIssues: parsed.error.issues });
+    assert.equal(result.classification, 'repairable-format');
+    assert.equal(result.issues[0]?.code, 'missing-empty-collection');
+  }
+
+  const optionalValue: any = JSON.parse(JSON.stringify(validResponse));
+  optionalValue.blocks[0].channel = null;
+  const optionalParsed = ReconciliationResponseSchema.safeParse(optionalValue);
+  assert.equal(optionalParsed.success, false);
+  if (!optionalParsed.success) {
+    const result = classifyRepairFailure({ originalOutput: 'redacted', parsedValue: optionalValue, zodIssues: optionalParsed.error.issues });
+    assert.equal(result.classification, 'repairable-format');
+    assert.equal(result.issues[0]?.code, 'optional-field-presence');
+  }
+
+  const mixed = { ...validResponse, status: 'valid', untrusted: 'private-source-text' };
+  const mixedParsed = ReconciliationResponseSchema.safeParse(mixed);
+  assert.equal(mixedParsed.success, false);
+  if (!mixedParsed.success) {
+    assert.equal(classifyRepairFailure({ originalOutput: 'redacted', parsedValue: mixed, zodIssues: mixedParsed.error.issues }).classification, 'unrepairable-semantic');
+  }
+  const validation = classifyRepairFailure({ originalOutput: 'valid json', validationError: new Error('private evidence failure') });
+  assert.equal(validation.classification, 'unrepairable-semantic');
+  assert.deepEqual(validation.issues, []);
+});
+
+test('rejects malformed or oversized runtime classifier inputs without throwing native errors', () => {
+  const cyclic: Record<string, unknown> = {};
+  cyclic['self'] = cyclic;
+  const accessorValue: Record<string, unknown> = JSON.parse(JSON.stringify(validResponse));
+  delete accessorValue['reviewNotes'];
+  let accessorReads = 0;
+  Object.defineProperty(accessorValue, 'promptVersion', {
+    enumerable: true,
+    get: () => {
+      accessorReads += 1;
+      if (accessorReads > 2) throw new Error('getter must never run');
+      return 'prompt';
+    },
+  });
+  const cases: unknown[] = [
+    null,
+    { originalOutput: 1 },
+    { originalOutput: '{}', zodIssues: Array.from({ length: MAX_REPAIR_ISSUES + 1 }, () => ({ code: 'custom', path: [] })) },
+    { originalOutput: '{}', parsedValue: cyclic, zodIssues: [{ code: 'custom', path: [] }] },
+    { originalOutput: '{}', parsedValue: {}, zodIssues: [{ code: 'custom', path: [() => undefined] }] },
+    { originalOutput: '{}', parsedValue: accessorValue, zodIssues: [{ code: 'invalid_type', path: ['reviewNotes'] }] },
+  ];
+  for (const value of cases) {
+    assert.doesNotThrow(() => classifyRepairFailure(value as any));
+    assert.equal(classifyRepairFailure(value as any).classification, 'unrepairable-security');
+  }
+});
+
+test('keeps parse, semantic, and authoritative failures ineligible', () => {
+  const repairableShape = { ...validResponse, status: 'valid' };
+  const repairableShapeParse = ReconciliationResponseSchema.safeParse(repairableShape);
+  assert.equal(repairableShapeParse.success, false);
+  if (!repairableShapeParse.success) {
+    const parseDominates = classifyRepairFailure({
+      originalOutput: '{', parsedValue: repairableShape, parseError: '', zodIssues: repairableShapeParse.error.issues,
+    });
+    assert.equal(parseDominates.classification, 'unrepairable-incomplete');
+    assert.equal(parseDominates.issues[0]?.code, 'invalid-json');
+  }
+  assert.equal(classifyRepairFailure({ originalOutput: '{secret}', parseError: new Error('private stack') }).classification, 'unrepairable-incomplete');
+  const overlong = { ...validResponse, blocks: [{ ...validResponse.blocks[0], text: 'x'.repeat(20_001) }] };
+  const parsed = ReconciliationResponseSchema.safeParse(overlong);
+  assert.equal(parsed.success, false);
+  if (!parsed.success) assert.equal(classifyRepairFailure({ originalOutput: 'redacted', parsedValue: overlong, zodIssues: parsed.error.issues }).classification, 'unrepairable-semantic');
+  for (const [failureCategory, classification] of [['unknown-event', 'unrepairable-semantic'], ['missing-accounting', 'unrepairable-semantic'], ['identity-mismatch', 'unrepairable-identity'], ['timeout', 'unrepairable-incomplete'], ['empty-output', 'unrepairable-incomplete'], ['source-security', 'unrepairable-security']] as const) {
+    assert.equal(classifyRepairFailure({ originalOutput: '', failureCategory }).classification, classification);
   }
 });
