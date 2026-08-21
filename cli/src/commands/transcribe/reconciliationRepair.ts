@@ -1,4 +1,14 @@
 import { z } from 'zod';
+import {
+  CacheIdentitySchema,
+  ChunkWindowSchema,
+  MaterialCorrectionSchema,
+  OmissionSchema,
+  ReconciliationBlockSchema,
+  ReconciliationResponseSchema,
+  SummarySafetySchema,
+} from './reconciliation.js';
+import { stableHash } from './reconciliationEvidence.js';
 
 export const REPAIR_VERSION = 1 as const;
 export const REPAIR_PROMPT_VERSION = 'reconciliation.format-repair.v1' as const;
@@ -10,7 +20,7 @@ export const MAX_REPAIR_LEXICAL_TOKEN_CHARS = 20_000;
 
 const MAX_REPAIR_STRING_CHARS = 256;
 const MAX_REPAIR_ENUM_VALUES = 32;
-const MAX_PROTECTION_COLLECTION_SIZE = 256;
+const MAX_PROTECTION_COLLECTION_SIZE = 2_048;
 const MAX_PROTECTION_TOTAL_NODES = 16_384;
 
 const boundedString = z.string().max(MAX_REPAIR_STRING_CHARS);
@@ -57,6 +67,88 @@ const ProjectionProtectionSchema = z.object({
   value: protectionValueSchema,
   digest: digestSchema,
 }).strict();
+
+const repairFlagSchema = z.union([
+  ReconciliationBlockSchema.shape.reviewFlags.element,
+  ReconciliationResponseSchema.shape.suspicionFlags.element,
+]);
+const projectionInputBlockSchema = ReconciliationBlockSchema.extend({
+  reviewFlags: z.array(repairFlagSchema).max(8),
+}).strict();
+const projectionInputSummarySafetySchema = SummarySafetySchema.extend({
+  errors: SummarySafetySchema.shape.errors.optional().default([]),
+}).strict();
+const projectionInputSchema = z.object({
+  schemaVersion: ReconciliationResponseSchema.shape.schemaVersion,
+  promptVersion: ReconciliationResponseSchema.shape.promptVersion,
+  chunk: ChunkWindowSchema,
+  cacheIdentity: CacheIdentitySchema,
+  blocks: z.array(projectionInputBlockSchema).min(1).max(MAX_PROTECTION_COLLECTION_SIZE),
+  omissions: ReconciliationResponseSchema.shape.omissions.optional().default([]),
+  materialCorrections: ReconciliationResponseSchema.shape.materialCorrections.optional().default([]),
+  suspicionFlags: z.array(repairFlagSchema).max(8).optional().default([]),
+  reviewNotes: ReconciliationResponseSchema.shape.reviewNotes.optional().default([]),
+  summarySafety: projectionInputSummarySafetySchema,
+  status: z.json().optional(),
+}).strict();
+
+const protectedFlagSchema = z.object({ value: repairFlagSchema, count: z.number().int().positive() }).strict();
+const protectedBlockSchema = ReconciliationBlockSchema.omit({ start: true, end: true, reviewFlags: true });
+const protectedOmissionSchema = OmissionSchema.omit({ text: true, start: true, end: true });
+const protectedCorrectionSchema = MaterialCorrectionSchema.omit({ sourceForm: true });
+
+export const ProtectedProjectionSchema = z.object({
+  schemaVersion: ReconciliationResponseSchema.shape.schemaVersion,
+  promptVersion: ReconciliationResponseSchema.shape.promptVersion,
+  chunk: ChunkWindowSchema,
+  cacheIdentity: CacheIdentitySchema,
+  blocks: z.array(protectedBlockSchema).min(1).max(MAX_PROTECTION_COLLECTION_SIZE),
+  omissions: z.array(protectedOmissionSchema).max(MAX_PROTECTION_COLLECTION_SIZE),
+  materialCorrections: z.array(protectedCorrectionSchema).max(MAX_PROTECTION_COLLECTION_SIZE),
+  flags: z.array(protectedFlagSchema).max(MAX_PROTECTION_COLLECTION_SIZE),
+  reviewNotes: ReconciliationResponseSchema.shape.reviewNotes,
+  summarySafety: SummarySafetySchema,
+}).strict();
+
+export type ProtectedProjection = z.infer<typeof ProtectedProjectionSchema>;
+
+function projectionError(message: string): never { throw new RangeError(`invalid protected projection: ${message}`); }
+
+function flagRecords(values: string[]): Array<{ value: string; count: number }> {
+  const counts = new Map<string, number>();
+  for (const value of values) counts.set(value, (counts.get(value) ?? 0) + 1);
+  return [...counts.entries()].sort(([left], [right]) => left.localeCompare(right)).map(([value, count]) => ({ value, count }));
+}
+
+export function buildProtectedProjection(input: unknown): ProtectedProjection {
+  const parsed = projectionInputSchema.safeParse(input);
+  if (!parsed.success) projectionError('input does not match bounded reconciliation structure');
+  const value = parsed.data;
+  const flags = [...value.suspicionFlags];
+  const blocks = value.blocks.map(({ start: _start, end: _end, reviewFlags, ...block }) => {
+    flags.push(...reviewFlags);
+    return block;
+  });
+  const omissions = value.omissions.map(({ text: _text, start: _start, end: _end, ...omission }) => omission);
+  const materialCorrections = value.materialCorrections.map(({ sourceForm: _sourceForm, ...correction }) => correction);
+  const projection = {
+    schemaVersion: value.schemaVersion,
+    promptVersion: value.promptVersion,
+    chunk: value.chunk,
+    cacheIdentity: value.cacheIdentity,
+    blocks,
+    omissions,
+    materialCorrections,
+    flags: flagRecords(flags),
+    reviewNotes: value.reviewNotes,
+    summarySafety: value.summarySafety,
+  };
+  return ProtectedProjectionSchema.parse(projection);
+}
+
+export function protectedDigest(projection: ProtectedProjection): string {
+  return stableHash(ProtectedProjectionSchema.parse(projection));
+}
 
 export const LexicalTokenSchema = z.discriminatedUnion('kind', [
   z.object({
