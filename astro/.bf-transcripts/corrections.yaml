@@ -7725,6 +7725,9 @@ profiles:
           - type: note
             path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
             role: supporting
+          - type: note
+            path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            role: possible-family-relationship
         aliases:
           - Vice Admiral Donmar
           - Vice Marshal Donmar
@@ -7754,13 +7757,17 @@ profiles:
         instruction: >
           Tyrion is the officer's first name and Donmar is his surname. Keep Vice
           Marshal Tyrion Donmar distinct from the different Donmar associated with
-          the Narrows and the Great Erected One. Do not globally replace bare
-          Donmar references without resolving which person the context identifies.
+          the Narrows and the Great Erected One. They may nevertheless be relatives:
+          Tyrion mentioned having family in the Narrows. Do not globally replace
+          bare Donmar references without resolving which person the context
+          identifies, and do not promote the possible relationship to confirmed.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-01.mdx
             note: User confirmed on 2026-08-05 that the officer is Vice Marshal Tyrion Donmar.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
             note: The following session independently records Tyrion Donmar and distinguishes him from the Narrows Donmar.
+          - path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            note: User clarified on 2026-08-20 that Tyrion mentioned relatives in the Narrows, making kinship possible but unconfirmed.
 
       - id: organization.unnamed-anti-parasite-effort
         status: confirmed
@@ -8351,3 +8358,108 @@ profiles:
             note: The recruits directly identify their families' location as the small homestead called Goat's Head.
           - path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-15.mdx
             note: User promoted Goat's Head as canonical on 2026-08-20.
+
+      - id: character.leland-lotan-kethbjorn-separation
+        status: confirmed
+        kind: boundary
+        canonical: Leland, Lotan, and Kethbjorn are distinct people
+        canonicalRefs:
+          - type: note
+            path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            role: primary
+        aliases:
+          - Lotan wearing Leland's face
+          - original Leland
+          - Lotan wearing Kethbjorn's face
+          - glyph on Lotan
+        match:
+          priority: high
+          tags:
+            - leland
+            - lotan
+            - kethbjorn
+            - face-stealer
+            - glyph-of-warding
+            - mallow-puppet
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-08-16"
+          contexts:
+            - Lord's Judgment pursuit
+            - rooftop capture
+            - pursuit across the river
+            - missing Castle Rannek personnel
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Keep Leland, Lotan, and Kethbjorn distinct. Leland is the genuine missing
+          Castle Rannek soldier found altered and puppeted; the Glyph of Warding
+          was placed on him. Tracking that glyph led the party to Lotan, a separate
+          coerced Face-Stealer wearing Kethbjorn's face and voice. The real
+          Kethbjorn remained among Mallow's captives.
+        instruction: >
+          Do not describe Lotan as wearing Leland's face, do not place the glyph on
+          Lotan, and do not treat finding either altered man as proof that the real
+          Kethbjorn was rescued. Finding Leland reduced the missing-person count;
+          capturing Lotan did not.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-16/corrected_transcript.md
+            note: Later callbacks identify the first captive as Leland and the second captive as Lotan wearing Kethbjorn's face.
+          - path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            note: User settled the Leland, Lotan, Kethbjorn, and glyph sequence on 2026-08-20.
+
+      - id: family.malthrek-succession-mark
+        status: confirmed
+        kind: relationship
+        canonical: Mark Malthrek succeeds Ellington as Duke of Malthrek
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/ellington-malthrek.mdx
+            role: outgoing-duke
+          - type: article
+            path: astro/src/content/docs/world/characters/mark-malthrek.mdx
+            role: successor
+          - type: note
+            path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            role: succession-announcement
+        aliases:
+          - Duke Mark
+          - Mark will be Duke
+          - Duke Luke
+          - Malthrek abdication
+        match:
+          priority: high
+          tags:
+            - malthrek-succession
+            - ellington-malthrek
+            - mark-malthrek
+            - luke-malthrek
+            - abdication
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-08-16"
+          contexts:
+            - Ellington and Antoinette's abdication
+            - succession to the Malthrek dukedom
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Duke Ellington Malthrek and Duchess Antoinette announced their
+          abdication after helping repair the damage caused during their rule.
+          Their younger son Mark, not their eldest son Luke, was named to succeed
+          Ellington as Duke of Malthrek.
+        instruction: >
+          Do not default the succession to Luke by primogeniture. Keep the announced
+          future succession distinct from claiming that Mark had already completed
+          every legal or ceremonial step of accession during the scene.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-16/corrected_transcript.md
+            note: The council states that Mark will be Duke after Ellington and Antoinette abdicate, followed by jokes contrasting Duke Mark with Duke Luke.
+          - path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            note: User confirmed Ellington's name, abdication, and Mark's succession over Luke on 2026-08-20.
