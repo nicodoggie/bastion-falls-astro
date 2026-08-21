@@ -1,6 +1,14 @@
 {
   "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
+    "@bastion-falls/calendar#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+    },
+    "@bastion-falls/fantasy-calendar#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+    },
     "@bastion-falls/5e-schema-zod#build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/index.js", "dist/index.d.ts"],
@@ -37,6 +45,16 @@
     "@bastion-falls/zarifa-bot#build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"],
+    },
+    "@bastion-falls/astro#build": {
+      "cache": false,
+      "dependsOn": ["^build", "@bastion-falls/cli#build"],
+      "passThroughEnv": [
+        "BASTION_CALENDAR_OFFLINE",
+        "BASTION_CALENDAR_FETCH_TIMEOUT_MS",
+        "BASTION_CALENDAR_FETCH_RETRIES",
+      ],
+      "outputs": [".astro/**", "dist/**"],
     },
     "build": {
       "dependsOn": ["^build"],

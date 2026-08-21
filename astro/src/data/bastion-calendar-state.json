@@ -1,0 +1,20 @@
+{
+  "calendarId": "bastion",
+  "date": {
+    "day": 25,
+    "epochDay": 459264,
+    "era": "AI",
+    "month": 9,
+    "year": 1275
+  },
+  "metadata": {
+    "source": "live"
+  },
+  "retrievedAt": "2026-08-19T12:03:06.640Z",
+  "schemaVersion": 1,
+  "source": {
+    "endpoint": "https://app.fantasy-calendar.com/api/v1/calendar/089e518f9ea966373b1c71535c25b98a/dynamic_data",
+    "identifier": "089e518f9ea966373b1c71535c25b98a",
+    "provider": "fantasy-calendar"
+  }
+}

@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { BaseStatsSchema } from "./BaseStats.js";
+import { CharacterMortalitySchema } from "./CharacterMortality.js";
 import { ImageSchema } from "./Image.js";
 import { SpeedSchema } from "./Speed.js";
 
@@ -7,8 +8,6 @@ const AlignmentSchema = z.object({
   moral: z.enum(["lawful", "neutral", "chaotic"]),
   law: z.enum(["good", "neutral", "evil"]),
 });
-
-const MortalityEnum = z.enum(["alive", "dead", "undead", "unknown"]);
 
 const SexOrganTypeSchema = z.object({
   type: z.enum(["penis", "vagina", "breasts", "unknown"]),
@@ -122,15 +121,14 @@ const CharacterDetailsSchema = z.object({
   bodyHair: BodyHairSchema.optional(),
   eyes: EyesSchema.optional(),
   aliases: z.array(z.string()).optional(),
-  dateOfBirth: z.string().optional(),
-  dateOfDeath: z.string().optional(),
+
   sex: z.string().optional(),
   titles: CharacterTitlesSchema.optional(),
   pronouns: z.string().optional(),
   height: z.string().optional(),
   weight: z.string().optional(),
   origin: z.string().optional(),
-  mortality: MortalityEnum.optional(),
+	mortality: CharacterMortalitySchema.optional(),
   ethnicities: z.array(z.string()).optional(),
   species: z.string().or(z.array(z.string())).optional(),
   sexOrgans: z.array(SexOrganSchema).optional(),

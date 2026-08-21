@@ -1,5 +1,10 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join, relative, sep } from "node:path";
+import type { CharacterMortalityInput } from "@bastion-falls/types/CharacterAge";
+import {
+  getCurrentDeathDate,
+  getOriginalBirthDate,
+} from "@bastion-falls/types/CharacterAge";
 
 import matter from "gray-matter";
 
@@ -41,8 +46,7 @@ type Frontmatter = {
   };
   character?: {
     details?: {
-      dateOfBirth?: string;
-      dateOfDeath?: string;
+      mortality?: CharacterMortalityInput;
     };
   };
   organization?: {
@@ -112,12 +116,20 @@ function getDefaultDateField(
         : data.event?.dateEnded
           ? { date: data.event.dateEnded, type: "end" }
           : null;
-    case "characters":
-      return data.character?.details?.dateOfBirth
-        ? { date: data.character.details.dateOfBirth, type: "birth" }
-        : data.character?.details?.dateOfDeath
-          ? { date: data.character.details.dateOfDeath, type: "death" }
+    case "characters": {
+      const mortality = data.character?.details?.mortality;
+      const originalBirth = mortality
+        ? getOriginalBirthDate(mortality)
+        : undefined;
+      const currentDeath = mortality
+        ? getCurrentDeathDate(mortality)
+        : undefined;
+      return originalBirth
+        ? { date: originalBirth, type: "birth" }
+        : currentDeath
+          ? { date: currentDeath, type: "death" }
           : null;
+    }
     case "organizations":
       return data.organization?.founded
         ? { date: data.organization.founded, type: "start" }
