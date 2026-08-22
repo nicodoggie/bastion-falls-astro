@@ -1,18 +1,26 @@
-import { chmod, mkdtemp, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import { chmod, mkdtemp, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
-import assert from 'node:assert/strict';
+import { allRepairFixtures } from './reconciliationRepairFixtures.js';
 import {
+  createHermesOneShotFormatterAdapter,
+  createProcessFormatterAdapter,
+  type FormatterAdapter,
   PhaseAModelResultSchema,
   PhaseARepairReportSchema,
+  phaseAModelRepairFixtures,
   publishPhaseAReport,
   runPhaseABakeoff,
-  type FormatterAdapter,
-  createProcessFormatterAdapter,
-  createHermesOneShotFormatterAdapter,
 } from './reconciliationRepairHarness.js';
-import { allRepairFixtures } from './reconciliationRepairFixtures.js';
+
+function fixtureFromPrompt(prompt: string, fixtures = allRepairFixtures) {
+  const payload = JSON.parse(prompt.split('fixture-payload=')[1]!) as { originalOutput?: unknown };
+  const fixture = fixtures.find((item) => item.originalOutput === payload.originalOutput);
+  assert.ok(fixture);
+  return fixture;
+}
 
 test('runs canonical fixtures in order with identical prompts and publishes private metrics only', async () => {
   const root = await mkdtemp(join(tmpdir(), 'phase-a-'));
@@ -21,8 +29,7 @@ test('runs canonical fixtures in order with identical prompts and publishes priv
     identity: { provider, model },
     async invoke(input) {
       prompts.push(input.prompt);
-      const id = JSON.parse(input.prompt.split('fixture-payload=')[1]!).id as string;
-      const fixture = allRepairFixtures.find((item) => item.id === id)!;
+      const fixture = fixtureFromPrompt(input.prompt);
       const envelope = fixture.expectation === 'repair'
         ? { repairable: true, repairedOutput: fixture.expectedRepairedOutput }
         : { repairable: false, reason: fixture.expectedUnrepairableReason };
@@ -31,15 +38,21 @@ test('runs canonical fixtures in order with identical prompts and publishes priv
   });
   const result = await runPhaseABakeoff({ scratchRoot: root, adapters: [adapter('p', 'm1'), adapter('p', 'm2')] });
   assert.equal(result.report.status, 'passed');
-  assert.deepEqual(prompts.slice(0, allRepairFixtures.length), prompts.slice(allRepairFixtures.length));
-  assert.deepEqual(result.report.fixtureIds, allRepairFixtures.map((fixture) => fixture.id));
+  assert.deepEqual(prompts.slice(0, phaseAModelRepairFixtures.length), prompts.slice(phaseAModelRepairFixtures.length));
+  for (const prompt of prompts) {
+    const payload = JSON.parse(prompt.split('fixture-payload=')[1]!) as Record<string, unknown>;
+    assert.deepEqual(Object.keys(payload).sort(), ['classification', 'issueCodes', 'originalOutput']);
+    for (const forbidden of ['expectation', 'expectedRepairedOutput', 'expectedUnrepairableReason', 'fixture-wrong-', 'fixture-invented-', 'fixture-changed-']) assert.equal(prompt.includes(forbidden), false);
+  }
+  assert.deepEqual(result.report.fixtureIds, phaseAModelRepairFixtures.map((fixture) => fixture.id));
+  for (const id of ['fixture-changed-readable-text', 'fixture-changed-summary-safe-text', 'fixture-changed-correction', 'fixture-changed-attribution']) assert.equal(result.report.fixtureIds.includes(id), false);
   assert.equal(result.report.models[0]!.metrics.positiveAcceptancePercent, 100);
   assert.equal(result.report.models[0]!.metrics.negativeRefusalPercent, 100);
   const serialized = JSON.stringify(result.report);
   for (const fixture of allRepairFixtures) if (fixture.originalOutput.length > 0) assert.equal(serialized.includes(fixture.originalOutput), false);
   assert.equal(serialized.includes(root), false);
   const modelFiles = await readdir(join(root, 'model-0', 'results'));
-  assert.equal(modelFiles.filter((name) => name.startsWith('candidate-')).length, allRepairFixtures.filter((fixture) => fixture.expectation === 'repair').length);
+  assert.equal(modelFiles.filter((name) => name.startsWith('candidate-')).length, phaseAModelRepairFixtures.filter((fixture) => fixture.expectation === 'repair').length);
   const receipt = JSON.parse(await readFile(join(root, 'model-0', 'results', `receipt-${allRepairFixtures[0]!.id}.json`), 'utf8'));
   assert.equal(typeof receipt.stdout, 'string');
   assert.equal('envelope' in receipt, false);
@@ -53,6 +66,90 @@ test('runs canonical fixtures in order with identical prompts and publishes priv
   await rm(root, { recursive: true, force: true });
 });
 
+test('derives identical non-oracular classifications for identical original inputs', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'phase-a-oracle-'));
+  const pair = [
+    allRepairFixtures.find((item) => item.id === 'fixture-allowlisted-status')!,
+    allRepairFixtures.find((item) => item.id === 'fixture-changed-readable-text')!,
+  ];
+  const prompts: string[] = [];
+  const adapter: FormatterAdapter = {
+    identity: { provider: 'synthetic', model: 'oracle-check' },
+    async invoke(input) {
+      prompts.push(input.prompt);
+      return { stdout: '{}', usage: { provider: 'synthetic', model: 'oracle-check', inputTokens: 1, outputTokens: 1, apiCalls: 1, toolAvailability: 'none', toolCalls: 0, safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: 'oracle-check' } };
+    },
+  };
+  await runPhaseABakeoff({ scratchRoot: root, adapters: [adapter], fixtures: pair });
+  const payloads = prompts.map((prompt) => JSON.parse(prompt.split('fixture-payload=')[1]!) as Record<string, unknown>);
+  assert.deepEqual(payloads[0], payloads[1]);
+  assert.equal(payloads[0]?.['classification'], 'repairable-format');
+  await rm(root, { recursive: true, force: true });
+});
+
+test('uses the last valid validator argument as authoritative and ignores assistant prose', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'phase-a-validator-'));
+  const fixtures = [
+    allRepairFixtures.find((fixture) => fixture.id === 'fixture-wrong-enum-location')!,
+    allRepairFixtures.find((fixture) => fixture.id === 'fixture-invented-source-id')!,
+  ];
+  const adapter: FormatterAdapter = {
+    identity: { provider: 'synthetic', model: 'validator' },
+    async invoke(input) {
+      assert.ok(input.validateCandidate);
+      const fixture = fixtureFromPrompt(input.prompt, fixtures);
+      let toolCalls = 1;
+      if (fixture.expectation === 'repair') {
+        assert.equal((await input.validateCandidate({ repairable: true, repairedOutput: {} })).valid, false);
+        toolCalls = 2;
+        const candidate = { repairable: true as const, repairedOutput: structuredClone(fixture.expectedRepairedOutput) };
+        assert.equal((await input.validateCandidate(candidate)).valid, true);
+        (candidate.repairedOutput as Record<string, unknown>)['schemaVersion'] = 'mutated-after-validation';
+      } else {
+        assert.equal((await input.validateCandidate({ repairable: false, reason: fixture.expectedUnrepairableReason })).valid, true);
+      }
+      return {
+        stdout: '{assistant prose is deliberately ignored}',
+        usage: {
+          provider: 'synthetic', model: 'validator', inputTokens: 1, outputTokens: 1,
+          apiCalls: toolCalls + 1, toolAvailability: 'validator-only',
+          availableTools: ['validate_repair_json'], toolCalls,
+          safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none',
+          inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true,
+          sessionId: `validator-${fixture.id}`,
+        },
+      };
+    },
+  };
+  const result = await runPhaseABakeoff({ scratchRoot: root, adapters: [adapter], fixtures });
+  assert.equal(result.report.status, 'passed');
+  assert.equal(result.report.models[0]!.metrics.toolCalls, 3);
+  assert.equal(result.report.models[0]!.metrics.apiCalls, 5);
+  assert.equal(result.report.models[0]!.metrics.firstSubmissionAccepted, 1);
+  assert.equal(result.report.models[0]!.metrics.correctedSubmissionAccepted, 1);
+  await rm(root, { recursive: true, force: true });
+});
+
+test('blocks impossible API accounting for validator calls', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'phase-a-accounting-'));
+  const fixture = allRepairFixtures.find((item) => item.id === 'fixture-wrong-enum-location')!;
+  const adapter: FormatterAdapter = {
+    identity: { provider: 'synthetic', model: 'impossible-accounting' },
+    async invoke(input) {
+      assert.ok(input.validateCandidate);
+      await input.validateCandidate({ repairable: true, repairedOutput: {} });
+      await input.validateCandidate({ repairable: true, repairedOutput: fixture.expectedRepairedOutput });
+      return { stdout: '', usage: { provider: 'synthetic', model: 'impossible-accounting', inputTokens: 1, outputTokens: 1, apiCalls: 1, toolAvailability: 'validator-only', availableTools: ['validate_repair_json'], toolCalls: 2, safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: 'impossible-accounting' } };
+    },
+  };
+  const result = await runPhaseABakeoff({ scratchRoot: root, adapters: [adapter], fixtures: [fixture] });
+  assert.equal(result.report.models[0]!.status, 'blocked');
+  assert.equal(result.report.models[0]!.blockedReason, 'blocked-no-validator-tool-seam');
+  assert.equal(result.report.models[0]!.metrics.apiCalls, 1);
+  assert.equal(result.report.models[0]!.metrics.toolCalls, 0);
+  await rm(root, { recursive: true, force: true });
+});
+
 test('blocks identity and tool violations while continuing to later models', async () => {
   const root = await mkdtemp(join(tmpdir(), 'phase-a-'));
   const violating: FormatterAdapter = {
@@ -62,8 +159,7 @@ test('blocks identity and tool violations while continuing to later models', asy
   const good: FormatterAdapter = {
     identity: { provider: 'requested', model: 'good' },
     async invoke(input) {
-      const id = JSON.parse(input.prompt.split('fixture-payload=')[1]!).id as string;
-      const fixture = allRepairFixtures.find((item) => item.id === id)!;
+      const fixture = fixtureFromPrompt(input.prompt);
       return { stdout: JSON.stringify(fixture.expectation === 'repair' ? { repairable: true, repairedOutput: fixture.expectedRepairedOutput } : { repairable: false, reason: fixture.expectedUnrepairableReason }), usage: { provider: 'requested', model: 'good', inputTokens: null, outputTokens: null, apiCalls: 1, toolAvailability: 'none', toolCalls: 0, safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: 'synthetic-session' } };
     },
   };
@@ -89,16 +185,16 @@ test('blocks identity and tool violations while continuing to later models', asy
   assert.equal(result.report.models[1]!.status, 'failed');
   assert.equal(result.report.models[2]!.status, 'failed');
   assert.equal(result.report.models[3]!.status, 'failed');
-  assert.equal(result.report.models[3]!.metrics.apiCalls, allRepairFixtures.length);
+  assert.equal(result.report.models[3]!.metrics.apiCalls, phaseAModelRepairFixtures.length);
   assert.equal(getterReads, 0);
   assert.equal(result.report.models[4]!.status, 'passed');
   await rm(root, { recursive: true, force: true });
 });
 
 test('strict schemas reject output-bearing report fields and interrupted publication leaves prior report', async () => {
-  assert.equal(PhaseAModelResultSchema.safeParse({ provider: 'p', model: 'm', status: 'blocked', blockedReason: 'blocked-no-zero-tool-seam', metrics: { fixtures: 0, positives: 0, negatives: 0, positivesAccepted: 0, negativesRefused: 0, positiveAcceptancePercent: 100, negativeRefusalPercent: 100, apiCalls: 0, toolCalls: 0, safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: 'synthetic-session' }, stdout: 'secret' }).success, false);
+  assert.equal(PhaseAModelResultSchema.safeParse({ provider: 'p', model: 'm', status: 'blocked', blockedReason: 'blocked-no-zero-tool-seam', metrics: { fixtures: 0, positives: 0, negatives: 0, positivesAccepted: 0, negativesRefused: 0, firstSubmissionAccepted: 0, correctedSubmissionAccepted: 0, positiveAcceptancePercent: 100, negativeRefusalPercent: 100, apiCalls: 0, toolCalls: 0, safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: 'synthetic-session' }, stdout: 'secret' }).success, false);
   const root = await mkdtemp(join(tmpdir(), 'phase-a-'));
-  const report = { kind: 'reconciliation-phase-a-repair-report' as const, version: 1 as const, status: 'blocked' as const, models: [{ provider: 'p', model: 'm', status: 'blocked' as const, blockedReason: 'blocked-no-context-isolation' as const, metrics: { fixtures: 0, positives: 0, negatives: 0, positivesAccepted: 0, negativesRefused: 0, positiveAcceptancePercent: 100, negativeRefusalPercent: 100, apiCalls: 0, toolCalls: 0 as const } }], fixtureIds: [], positives: 0, negatives: 0 };
+  const report = { kind: 'reconciliation-phase-a-repair-report' as const, version: 1 as const, status: 'blocked' as const, models: [{ provider: 'p', model: 'm', status: 'blocked' as const, blockedReason: 'blocked-no-context-isolation' as const, metrics: { fixtures: 0, positives: 0, negatives: 0, positivesAccepted: 0, negativesRefused: 0, firstSubmissionAccepted: 0, correctedSubmissionAccepted: 0, positiveAcceptancePercent: 100, negativeRefusalPercent: 100, apiCalls: 0, toolCalls: 0 } }], fixtureIds: [], positives: 0, negatives: 0 };
   await publishPhaseAReport(root, report);
   const before = await readFile(join(root, 'phase-a-report.json'), 'utf8');
   const markdownBefore = await readFile(join(root, 'phase-a-report.md'), 'utf8');
@@ -123,6 +219,7 @@ import { writeFileSync } from 'node:fs';
 const mode = process.argv[2];
 const good = { stdout: JSON.stringify({ repairable: false, reason: 'incomplete-original' }), usage: { provider: 'synthetic', model: mode, inputTokens: null, outputTokens: null, apiCalls: 1, toolAvailability: 'none', toolCalls: 0, safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: 'synthetic-session' } };
 if (mode === 'success') { process.stdout.write(JSON.stringify(good)); process.exit(0); }
+else if (mode === 'env') { if (process.env.PROJECT_SECRET) process.exit(23); process.stdout.write(JSON.stringify(good)); process.exit(0); }
 else if (mode === 'invalid') { process.stdout.write('{not-json'); process.exit(0); }
 else if (mode === 'wrong') { process.stdout.write(JSON.stringify({ ...good, usage: { ...good.usage, provider: 'other' } })); process.exit(0); }
 else if (mode === 'tool') { process.stdout.write(JSON.stringify({ ...good, usage: { ...good.usage, toolCalls: 1 } })); process.exit(0); }
@@ -134,17 +231,26 @@ else if (mode === 'timeout') {
   writeFileSync('timeout-pids.json', JSON.stringify([process.pid, child.pid]));
   setInterval(() => {}, 1000);
 }
+else if (mode === 'leader-exits') {
+  const child = spawn(process.execPath, ['-e', "process.on('SIGTERM',()=>{});setInterval(()=>{},1000)"], { stdio: 'ignore' });
+  writeFileSync('leader-exits-pids.json', JSON.stringify([process.pid, child.pid]));
+  process.on('SIGTERM', () => process.exit(0));
+  setInterval(() => {}, 1000);
+}
 `, { mode: 0o700 });
   await chmod(executable, 0o700);
   const invoke = (mode: string, timeoutMs = 200) => createProcessFormatterAdapter({ identity: { provider: 'synthetic', model: mode }, executable, args: [mode] }).invoke({ prompt: 'fixture', timeoutMs, maxOutputBytes: 2048, scratchDir: root, signal: new AbortController().signal });
   const success = await invoke('success'); assert.equal(success.usage.apiCalls, 1);
-  for (const mode of ['invalid', 'overflow', 'usage-overflow', 'timeout']) await assert.rejects(invoke(mode));
+  const envSafe = await createProcessFormatterAdapter({ identity: { provider: 'synthetic', model: 'env' }, executable, args: ['env'], env: { ...process.env, PROJECT_SECRET: 'do-not-leak' } }).invoke({ prompt: 'fixture', timeoutMs: 200, maxOutputBytes: 2048, scratchDir: root, signal: new AbortController().signal }); assert.equal(envSafe.usage.model, 'env');
+  for (const mode of ['invalid', 'overflow', 'usage-overflow', 'timeout', 'leader-exits']) await assert.rejects(invoke(mode, mode === 'leader-exits' ? 100 : 200));
   const timeoutPids = JSON.parse(await readFile(join(root, 'timeout-pids.json'), 'utf8')) as number[];
   for (const pid of timeoutPids) assert.throws(
     () => process.kill(pid, 0),
     (error: unknown) => (error as NodeJS.ErrnoException).code === 'ESRCH',
     `process ${pid} must be gone`,
   );
+  const leaderExitPids = JSON.parse(await readFile(join(root, 'leader-exits-pids.json'), 'utf8')) as number[];
+  for (const pid of leaderExitPids) assert.throws(() => process.kill(pid, 0), (error: unknown) => (error as NodeJS.ErrnoException).code === 'ESRCH', `process ${pid} must be gone`);
   const boundedRoot = await mkdtemp(join(tmpdir(), 'phase-a-bounded-'));
   const fixture = allRepairFixtures.find((item) => item.expectedUnrepairableReason === 'incomplete-original')!;
   const make = (mode: string): FormatterAdapter => createProcessFormatterAdapter({ identity: { provider: 'synthetic', model: mode }, executable, args: [mode] });

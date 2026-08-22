@@ -404,6 +404,13 @@ Expected unrepairable:
 - cache identity mismatch;
 - overlong semantic text requiring rewriting.
 
+The changed readable text, changed summary-safe text, changed correction, and changed attribution
+cases are validator-only adversarial candidates. Their malformed `originalOutput` is intentionally
+identical to a repairable structural fixture, so sending them as separate model prompts would either
+leak the expected outcome or score identical prompts against contradictory answers. The model
+bake-off excludes those four IDs. Their safety gate is owned by the deterministic validator tests;
+the remaining positive and distinguishable negative fixtures form the non-oracular model corpus.
+
 ### Private live fixtures
 
 Private diagnostics stay under isolated ignored trial roots. They include the observed wrong-enum,
@@ -411,10 +418,12 @@ Hermes framing, and other bounded failures. They are never committed.
 
 ## Formatter Model Bake-Off
 
-The same repair payloads are run with no profile context and exactly one available validator tool.
-The actual model/provider identity and exact tool inventory are verified from durable usage/session
-receipts. The harness first compares an explicit plain-JSON-envelope control with validator-tool
-submission using Luna only.
+The same non-oracular model corpus is run with no profile context and exactly one available
+validator tool. Model-facing payloads contain only the original output, deterministic
+classification, and normalized issue codes—never fixture IDs, expectations, expected repaired
+output, or expected refusal reasons. The actual model/provider identity and exact tool inventory are
+verified from durable usage/session receipts. The harness first compares an explicit
+plain-JSON-envelope control with validator-tool submission using Luna only.
 
 Measure:
 

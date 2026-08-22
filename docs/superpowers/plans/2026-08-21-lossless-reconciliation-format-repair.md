@@ -884,6 +884,13 @@ corrected-submission acceptance counts. Keep reports sanitized. A fixture fails 
 valid submission, more than two calls, malformed tool metadata, or a final candidate that differs
 from the sealed tool argument.
 
+Build the model-facing payload only from original output, deterministic classification, and
+normalized issue codes. Never include fixture IDs or expected result fields. Keep the four
+indistinguishable semantic-drift fixtures (`changed-readable-text`, `changed-summary-safe-text`,
+`changed-correction`, and `changed-attribution`) in the deterministic validator matrix but exclude
+them from model calls; identical prompts must never be scored against contradictory expected
+answers.
+
 #### Step 5: Verify and commit
 
 ```bash

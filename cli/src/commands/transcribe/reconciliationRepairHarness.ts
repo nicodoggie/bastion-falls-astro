@@ -2,13 +2,15 @@ import { spawn } from 'node:child_process';
 import { constants } from 'node:fs';
 import { lstat, mkdir, open, readFile, readdir, realpath, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, isAbsolute, join, resolve } from 'node:path';
-import { z } from 'zod';
 import { isDeepStrictEqual } from 'node:util';
-import { evaluateFormatRepair } from './reconciliationRepair.js';
+import { z } from 'zod';
+import { ReconciliationResponseSchema, validateReconciliation } from './reconciliation.js';
+import { classifyRepairFailure, evaluateFormatRepair, type RepairEnvelope } from './reconciliationRepair.js';
 import { allRepairFixtures, RepairFixtureSchema, type RepairFixture } from './reconciliationRepairFixtures.js';
+import { createRepairValidationSession, type RepairValidationResult } from './reconciliationRepairValidatorTool.js';
 
 export const PHASE_A_VERSION = 1 as const;
-export const BLOCKED_REASONS = ['blocked-no-zero-tool-seam', 'blocked-no-context-isolation', 'model-identity-unproven'] as const;
+export const BLOCKED_REASONS = ['blocked-no-zero-tool-seam', 'blocked-no-validator-tool-seam', 'blocked-no-context-isolation', 'model-identity-unproven'] as const;
 export const BlockedReasonSchema = z.enum(BLOCKED_REASONS);
 export type BlockedReason = z.infer<typeof BlockedReasonSchema>;
 
@@ -17,7 +19,8 @@ const IdentitySchema = z.object({ provider: z.string().regex(SAFE_IDENTIFIER), m
 const UsageSchema = z.object({
   provider: z.string().regex(SAFE_IDENTIFIER), model: z.string().regex(SAFE_IDENTIFIER),
   inputTokens: z.number().int().nonnegative().nullable(), outputTokens: z.number().int().nonnegative().nullable(),
-  apiCalls: z.literal(1), toolAvailability: z.literal('none'), toolCalls: z.literal(0),
+  apiCalls: z.number().int().positive().max(3), toolAvailability: z.enum(['none', 'validator-only']),
+  availableTools: z.array(z.string().regex(SAFE_IDENTIFIER)).max(1).optional(), toolCalls: z.number().int().nonnegative().max(2),
   safeMode: z.literal(true), userConfigIgnored: z.literal(true), rulesIgnored: z.literal(true), profile: z.literal('none'),
   inlinePrompt: z.literal(true), cwdIsolated: z.literal(true), environmentAllowlisted: z.literal(true),
   sessionId: z.string().regex(SAFE_IDENTIFIER),
@@ -25,19 +28,21 @@ const UsageSchema = z.object({
 const RuntimeUsageSchema = z.object({
   provider: z.string().regex(SAFE_IDENTIFIER), model: z.string().regex(SAFE_IDENTIFIER),
   inputTokens: z.number().int().nonnegative().nullable(), outputTokens: z.number().int().nonnegative().nullable(),
-  apiCalls: z.number().int().nonnegative().max(1), toolAvailability: z.enum(['none', 'available']), toolCalls: z.number().int().nonnegative().max(100),
+  apiCalls: z.number().int().nonnegative().max(3), toolAvailability: z.enum(['none', 'available', 'validator-only']),
+  availableTools: z.array(z.string().regex(SAFE_IDENTIFIER)).max(100).optional(), toolCalls: z.number().int().nonnegative().max(100),
   safeMode: z.boolean(), userConfigIgnored: z.boolean(), rulesIgnored: z.boolean(), profile: z.string().regex(SAFE_IDENTIFIER),
   inlinePrompt: z.boolean(), cwdIsolated: z.boolean(), environmentAllowlisted: z.boolean(), sessionId: z.string().regex(SAFE_IDENTIFIER),
 }).strict();
 export interface FormatterAdapter {
   identity: z.infer<typeof IdentitySchema>;
-  invoke(input: { prompt: string; timeoutMs: number; maxOutputBytes: number; scratchDir: string; signal: AbortSignal }): Promise<{ stdout: string; usage: z.infer<typeof UsageSchema> }>;
+  invoke(input: { prompt: string; timeoutMs: number; maxOutputBytes: number; scratchDir: string; signal: AbortSignal; validateCandidate?(candidate: unknown): Promise<RepairValidationResult> }): Promise<{ stdout: string; usage: z.infer<typeof UsageSchema> }>;
 }
 const MetricsSchema = z.object({
   fixtures: z.number().int().nonnegative().max(32), positives: z.number().int().nonnegative().max(32), negatives: z.number().int().nonnegative().max(32),
   positivesAccepted: z.number().int().nonnegative().max(32), negativesRefused: z.number().int().nonnegative().max(32),
+  firstSubmissionAccepted: z.number().int().nonnegative().max(32), correctedSubmissionAccepted: z.number().int().nonnegative().max(32),
   positiveAcceptancePercent: z.number().finite().min(0).max(100), negativeRefusalPercent: z.number().finite().min(0).max(100),
-  apiCalls: z.number().int().nonnegative().max(10000), toolCalls: z.literal(0),
+  apiCalls: z.number().int().nonnegative().max(10000), toolCalls: z.number().int().nonnegative().max(10000),
 }).strict();
 const ModelResultBase = z.object({ provider: z.string().regex(SAFE_IDENTIFIER), model: z.string().regex(SAFE_IDENTIFIER), status: z.enum(['passed', 'failed', 'blocked']), metrics: MetricsSchema }).strict();
 export const PhaseAModelResultSchema = z.discriminatedUnion('status', [
@@ -60,7 +65,29 @@ export type PhaseARepairReport = z.infer<typeof PhaseARepairReportSchema>;
 export interface PhaseABakeoffOptions { scratchRoot: string; adapters: readonly FormatterAdapter[]; timeoutMs?: number; maxOutputBytes?: number; fixtures?: readonly RepairFixture[]; publish?: boolean; }
 export interface PhaseABakeoffResult { report: PhaseARepairReport; reportJsonPath: string; reportMarkdownPath: string; }
 const DEFAULT_TIMEOUT_MS = 30_000; const MAX_TIMEOUT_MS = 120_000; const DEFAULT_MAX_OUTPUT_BYTES = 2_000_000;
-const fixturePrompt = (fixture: RepairFixture) => ['Phase A isolated formatter bake-off. Return exactly one JSON repair envelope.', 'Positive fixtures must be repaired exactly; negative fixtures must be refused with their exact closed reason.', `fixture-payload=${JSON.stringify(fixture)}`].join('\n');
+function formatterFixturePayload(fixture: RepairFixture): Record<string, unknown> {
+  let parsed: unknown;
+  let classification: string;
+  try { parsed = JSON.parse(fixture.originalOutput); }
+  catch (error) { classification = classifyRepairFailure({ originalOutput: fixture.originalOutput, parseError: error }).classification; return { originalOutput: fixture.originalOutput, issueCodes: fixture.expectedIssueCodes, classification }; }
+  const schema = ReconciliationResponseSchema.safeParse(parsed);
+  if (!schema.success) classification = classifyRepairFailure({ originalOutput: fixture.originalOutput, parsedValue: parsed, zodIssues: schema.error.issues }).classification;
+  else {
+    const authorityOutput = allRepairFixtures.find((item) => item.expectation === 'repair')?.expectedRepairedOutput;
+    if (!authorityOutput) throw new Error('missing synthetic authority');
+    const authority = syntheticValidation(authorityOutput as Record<string, unknown>);
+    const identity = { schemaVersion: schema.data.schemaVersion, promptVersion: schema.data.promptVersion, chunk: schema.data.chunk, cacheIdentity: schema.data.cacheIdentity };
+    if (!isDeepStrictEqual(identity, authority.packet)) classification = classifyRepairFailure({ originalOutput: fixture.originalOutput, failureCategory: 'identity-mismatch' }).classification;
+    else {
+      try { validateReconciliation(schema.data, { authoritativeSourceEvents: authority.authoritativeSourceEvents }); classification = 'valid'; }
+      catch { classification = classifyRepairFailure({ originalOutput: fixture.originalOutput, failureCategory: 'unknown-event' }).classification; }
+    }
+  }
+  return { originalOutput: fixture.originalOutput, issueCodes: fixture.expectedIssueCodes, classification };
+}
+const fixturePrompt = (fixture: RepairFixture) => ['Phase A isolated formatter bake-off.', 'Submit exactly one of these strict envelopes: {"repairable":true,"repairedOutput":<strict reconciliation.v1 object>} or {"repairable":false,"reason":"incomplete-original|semantic-change-required|identity-change-required|unsupported-repair"}.', 'Repair representation only. If the supplied classification is unrepairable, refuse with its corresponding closed reason. Do not add, remove, paraphrase, summarize, reinterpret, correct, or reorder semantic content.', 'When validate_repair_json is available, call it with the complete envelope; its last valid argument is authoritative. Return no Markdown or commentary.', `fixture-payload=${JSON.stringify(formatterFixturePayload(fixture))}`].join('\n');
+const VALIDATOR_ONLY_FIXTURE_IDS = new Set(['fixture-changed-readable-text', 'fixture-changed-summary-safe-text', 'fixture-changed-correction', 'fixture-changed-attribution']);
+export const phaseAModelRepairFixtures = allRepairFixtures.filter((fixture) => !VALIDATOR_ONLY_FIXTURE_IDS.has(fixture.id));
 function ownerOnlyMode(mode: number): boolean { return (mode & 0o777) === 0o700; }
 async function ensureSafeScratch(input: string): Promise<string> {
   if (!isAbsolute(input)) throw new Error('scratch root must be absolute'); const root = resolve(input); let info;
@@ -85,12 +112,11 @@ async function atomicWrite(path: string, content: string, interrupted = false): 
   try { await writeFile(temp, content, { encoding: 'utf8', mode: 0o600, flag: 'wx' }); const handle = await open(temp, constants.O_RDONLY | constants.O_NOFOLLOW); try { await handle.sync(); } finally { await handle.close(); } if (interrupted) throw new Error('publication interrupted'); await rename(temp, path); const dir = await open(dirname(path), constants.O_RDONLY | constants.O_DIRECTORY); try { await dir.sync(); } finally { await dir.close(); } }
   finally { await rm(temp, { force: true }).catch(() => undefined); }
 }
-interface RepairEnvelope { repairable?: unknown; repairedOutput?: unknown; reason?: unknown }
 function parseEnvelope(stdout: string, maxBytes: number): RepairEnvelope { if (Buffer.byteLength(stdout, 'utf8') > maxBytes) throw new Error('output exceeds bound'); const parsed: unknown = JSON.parse(stdout); if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('invalid formatter receipt'); return parsed as RepairEnvelope; }
 function equalJson(left: unknown, right: unknown): boolean { return isDeepStrictEqual(left, right); }
 function percent(part: number, total: number): number { return total === 0 ? 100 : (part / total) * 100; }
-function emptyMetrics(fixtures: readonly RepairFixture[]): z.infer<typeof MetricsSchema> { const positives = fixtures.filter((f) => f.expectation === 'repair').length; return { fixtures: fixtures.length, positives, negatives: fixtures.length - positives, positivesAccepted: 0, negativesRefused: 0, positiveAcceptancePercent: 0, negativeRefusalPercent: 0, apiCalls: 0, toolCalls: 0 }; }
-function markdown(report: PhaseARepairReport): string { return [`# Phase A format-repair report`, ``, `- Status: ${report.status}`, `- Fixtures: ${report.fixtureIds.length}`, `- Positives: ${report.positives}`, `- Negatives: ${report.negatives}`, ``, `| Provider | Model | Status | Fixtures | Positive % | Negative % | API calls |`, `|---|---|---:|---:|---:|---:|---:|`, ...report.models.map((m) => `| ${m.provider} | ${m.model} | ${m.status} | ${m.metrics.fixtures} | ${m.metrics.positiveAcceptancePercent}% | ${m.metrics.negativeRefusalPercent}% | ${m.metrics.apiCalls} |`), ``].join('\n'); }
+function emptyMetrics(fixtures: readonly RepairFixture[]): z.infer<typeof MetricsSchema> { const positives = fixtures.filter((f) => f.expectation === 'repair').length; return { fixtures: fixtures.length, positives, negatives: fixtures.length - positives, positivesAccepted: 0, negativesRefused: 0, firstSubmissionAccepted: 0, correctedSubmissionAccepted: 0, positiveAcceptancePercent: 0, negativeRefusalPercent: 0, apiCalls: 0, toolCalls: 0 }; }
+function markdown(report: PhaseARepairReport): string { return [`# Phase A format-repair report`, ``, `- Status: ${report.status}`, `- Fixtures: ${report.fixtureIds.length}`, `- Positives: ${report.positives}`, `- Negatives: ${report.negatives}`, ``, `| Provider | Model | Status | Fixtures | Positive % | Negative % | First pass | Corrected | API calls | Tool calls |`, `|---|---|---:|---:|---:|---:|---:|---:|---:|---:|`, ...report.models.map((m) => `| ${m.provider} | ${m.model} | ${m.status} | ${m.metrics.fixtures} | ${m.metrics.positiveAcceptancePercent}% | ${m.metrics.negativeRefusalPercent}% | ${m.metrics.firstSubmissionAccepted} | ${m.metrics.correctedSubmissionAccepted} | ${m.metrics.apiCalls} | ${m.metrics.toolCalls} |`), ``].join('\n'); }
 
 export async function publishPhaseAReport(root: string, report: PhaseARepairReport, options: { interrupted?: boolean } = {}): Promise<{ reportJsonPath: string; reportMarkdownPath: string }> {
   const parsed = PhaseARepairReportSchema.parse(report); await ensureReportRoot(root);
@@ -103,7 +129,7 @@ function validateOptions(options: PhaseABakeoffOptions): { timeoutMs: number; ma
   for (const identity of identities) { const key = `${identity.provider}\0${identity.model}`; if (seen.has(key)) throw new Error('duplicate adapter identity'); seen.add(key); }
   const timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS; const maxOutputBytes = options.maxOutputBytes ?? DEFAULT_MAX_OUTPUT_BYTES;
   if (!Number.isSafeInteger(timeoutMs) || timeoutMs <= 0 || timeoutMs > MAX_TIMEOUT_MS || !Number.isSafeInteger(maxOutputBytes) || maxOutputBytes <= 0 || maxOutputBytes > DEFAULT_MAX_OUTPUT_BYTES) throw new Error('invalid bounds');
-  const fixtures = z.array(RepairFixtureSchema).min(1).max(32).parse(options.fixtures ?? allRepairFixtures);
+  const fixtures = z.array(RepairFixtureSchema).min(1).max(32).parse(options.fixtures ?? phaseAModelRepairFixtures);
   if (new Set(fixtures.map((f) => f.id)).size !== fixtures.length) throw new Error('duplicate fixture ID');
   return { timeoutMs, maxOutputBytes, fixtures };
 }
@@ -142,9 +168,21 @@ export async function runPhaseABakeoff(options: PhaseABakeoffOptions): Promise<P
     for (const fixture of fixtures) {
       let receipt: RepairEnvelope;
       try {
+        const authorityOutput = fixture.expectation === 'repair'
+          ? fixture.expectedRepairedOutput
+          : allRepairFixtures.find((item) => item.expectation === 'repair')?.expectedRepairedOutput;
+        if (!authorityOutput) throw new Error('missing synthetic authority');
+        const validation = syntheticValidation(authorityOutput as Record<string, unknown>);
+        const validator = createRepairValidationSession({
+          originalOutput: fixture.originalOutput,
+          validation,
+          ...(fixture.expectation === 'unrepairable' ? { expectedUnrepairableReason: fixture.expectedUnrepairableReason } : {}),
+          timeoutMs,
+          maxOutputBytes,
+        });
         metrics.apiCalls += 1;
         const controller = new AbortController();
-        const invocation = Promise.resolve(adapter.invoke({ prompt: fixturePrompt(fixture), timeoutMs, maxOutputBytes, scratchDir, signal: controller.signal }));
+        const invocation = Promise.resolve(adapter.invoke({ prompt: fixturePrompt(fixture), timeoutMs, maxOutputBytes, scratchDir, signal: controller.signal, validateCandidate: (candidate) => validator.submit(candidate) }));
         invocation.catch(() => undefined);
         let timeout: ReturnType<typeof setTimeout> | undefined;
         const result = await Promise.race([invocation, new Promise<never>((_, reject) => { timeout = setTimeout(() => { controller.abort(); reject(new Error('formatter timeout')); }, timeoutMs); })]).finally(() => { if (timeout) clearTimeout(timeout); });
@@ -153,16 +191,28 @@ export async function runPhaseABakeoff(options: PhaseABakeoffOptions): Promise<P
         const usageResult = UsageSchema.safeParse(snapshot.usage);
         if (!usageResult.success) {
           const raw = snapshot.usage as { toolAvailability?: unknown; toolCalls?: unknown };
-          if (raw?.toolAvailability !== 'none' || raw?.toolCalls !== 0) blockedReason = 'blocked-no-zero-tool-seam'; else failed = true;
+          if (raw?.toolAvailability !== 'none' || raw?.toolCalls !== 0) blockedReason = 'blocked-no-validator-tool-seam'; else failed = true;
           break;
         }
         const usage = usageResult.data;
         if (usage.provider !== adapter.identity.provider || usage.model !== adapter.identity.model) { blockedReason = 'model-identity-unproven'; break; }
-        receipt = parseEnvelope(snapshot.stdout, maxOutputBytes);
+        if (usage.toolAvailability === 'validator-only') {
+          if (!equalJson(usage.availableTools, ['validate_repair_json']) || usage.toolCalls !== validator.callCount() || usage.toolCalls < 1 || usage.toolCalls > 2 || usage.apiCalls !== usage.toolCalls + 1) { blockedReason = 'blocked-no-validator-tool-seam'; break; }
+          metrics.apiCalls += usage.apiCalls - 1;
+          metrics.toolCalls += usage.toolCalls;
+          const sealed = validator.sealedCandidate();
+          if (!sealed) { failed = true; continue; }
+          if (usage.toolCalls === 1) metrics.firstSubmissionAccepted += 1; else metrics.correctedSubmissionAccepted += 1;
+          receipt = sealed;
+        } else {
+          if (usage.availableTools !== undefined || usage.toolCalls !== 0 || validator.callCount() !== 0 || usage.apiCalls !== 1) { blockedReason = 'blocked-no-zero-tool-seam'; break; }
+          metrics.apiCalls += usage.apiCalls - 1;
+          receipt = parseEnvelope(snapshot.stdout, maxOutputBytes);
+        }
         if (fixture.expectation === 'repair') {
           if (receipt.repairable !== true || !equalJson(receipt.repairedOutput, fixture.expectedRepairedOutput)) { failed = true; continue; }
           const candidatePath = join(resultDir, `candidate-${fixture.id}.json`); await atomicWrite(candidatePath, `${JSON.stringify(receipt.repairedOutput)}\n`); const reread = JSON.parse(await readFile(candidatePath, 'utf8')) as Record<string, unknown>;
-          const evaluation = await evaluateFormatRepair({ originalOutput: fixture.originalOutput, validation: syntheticValidation(fixture.expectedRepairedOutput as Record<string, unknown>), invoke: async () => JSON.stringify({ repairable: true, repairedOutput: reread }), timeoutMs, maxOutputBytes });
+          const evaluation = await evaluateFormatRepair({ originalOutput: fixture.originalOutput, validation, invoke: async () => JSON.stringify({ repairable: true, repairedOutput: reread }), timeoutMs, maxOutputBytes });
           const expectedCandidate = { ...reread, status: 'needs_review' }; if (evaluation.outcome !== 'accepted' || !evaluation.candidate || !equalJson(evaluation.candidate, expectedCandidate)) { failed = true; continue; }
           metrics.positivesAccepted += 1;
         } else if (receipt.repairable !== false || receipt.reason !== fixture.expectedUnrepairableReason) failed = true; else metrics.negativesRefused += 1;
@@ -179,14 +229,16 @@ export interface ProcessFormatterAdapterOptions { identity: { provider: string; 
 export function createProcessFormatterAdapter(options: ProcessFormatterAdapterOptions): FormatterAdapter {
   const identity = IdentitySchema.parse(options.identity); if (!isAbsolute(options.executable) || options.executable.includes('\0')) throw new Error('invalid executable');
   return { identity, invoke: ({ prompt, timeoutMs, maxOutputBytes, scratchDir, signal }) => new Promise((resolvePromise, reject) => {
-    const child = spawn(options.executable, [...(options.args ?? [])], { cwd: scratchDir, env: options.env ?? process.env, shell: false, detached: true, stdio: ['pipe', 'pipe', 'ignore'] }); let output = ''; let bytes = 0; let settled = false; let primary: Error | undefined; let timeoutTimer: ReturnType<typeof setTimeout> | undefined; let killTimer: ReturnType<typeof setTimeout> | undefined;
+    const child = spawn(options.executable, [...(options.args ?? [])], { cwd: scratchDir, env: allowlistedEnvironment(options.env), shell: false, detached: true, stdio: ['pipe', 'pipe', 'ignore'] }); let output = ''; let bytes = 0; let settled = false; let primary: Error | undefined; let timeoutTimer: ReturnType<typeof setTimeout> | undefined; let killTimer: ReturnType<typeof setTimeout> | undefined;
     const onAbort = () => terminate(new Error('formatter aborted'));
-    const clearTimers = () => { if (timeoutTimer) clearTimeout(timeoutTimer); if (killTimer) clearTimeout(killTimer); signal.removeEventListener('abort', onAbort); };
+    const clearDeadline = () => { if (timeoutTimer) clearTimeout(timeoutTimer); signal.removeEventListener('abort', onAbort); };
+    const groupExists = () => { if (!child.pid) return false; try { process.kill(-child.pid, 0); return true; } catch (error) { return (error as NodeJS.ErrnoException).code !== 'ESRCH'; } };
     const signalGroup = (signal: NodeJS.Signals) => { if (!child.pid) return; try { process.kill(-child.pid, signal); } catch { try { child.kill(signal); } catch { /* already reaped */ } } };
     const terminate = (error: Error) => { if (primary) return; primary = error; signalGroup('SIGTERM'); killTimer = setTimeout(() => signalGroup('SIGKILL'), 250); };
+    const drainGroup = async () => { if (!groupExists()) { if (killTimer) clearTimeout(killTimer); return; } if (!primary) primary = new Error('formatter left a descendant process'); signalGroup('SIGTERM'); await new Promise((resolvePromise) => setTimeout(resolvePromise, 300)); if (killTimer) clearTimeout(killTimer); if (groupExists()) { signalGroup('SIGKILL'); await new Promise((resolvePromise) => setTimeout(resolvePromise, 50)); } if (groupExists()) primary = new Error('formatter process group did not terminate'); };
     child.stdout.on('data', (chunk: Buffer) => { if (settled) return; bytes += chunk.byteLength; if (bytes > maxOutputBytes) terminate(new Error('bounded output violation')); else output += chunk.toString('utf8'); });
     child.stdin.on('error', (error) => terminate(error)); child.on('error', (error) => { if (!primary) primary = error; });
-    child.on('close', (code) => { clearTimers(); if (settled) return; settled = true; if (primary) { reject(primary); return; } if (code !== 0) { reject(new Error('formatter process failed')); return; } try { const receipt = UsageReceiptSchema.parse(JSON.parse(output)); resolvePromise({ stdout: receipt.stdout, usage: receipt.usage as z.infer<typeof UsageSchema> }); } catch { reject(new Error('invalid formatter receipt')); } });
+    child.on('close', (code) => { void (async () => { clearDeadline(); if (settled) return; settled = true; await drainGroup(); if (primary) { reject(primary); return; } if (code !== 0) { reject(new Error('formatter process failed')); return; } try { const receipt = UsageReceiptSchema.parse(JSON.parse(output)); resolvePromise({ stdout: receipt.stdout, usage: receipt.usage as z.infer<typeof UsageSchema> }); } catch { reject(new Error('invalid formatter receipt')); } })(); });
     signal.addEventListener('abort', onAbort, { once: true });
     if (signal.aborted) onAbort();
     timeoutTimer = setTimeout(() => terminate(new Error('formatter timeout')), timeoutMs); child.stdin.end(prompt);
@@ -216,7 +268,7 @@ function allowlistedEnvironment(overrides: NodeJS.ProcessEnv = {}): NodeJS.Proce
 }
 
 async function openHermesExecutable(executable: string): Promise<Awaited<ReturnType<typeof open>>> {
-  if (!isAbsolute(executable) || executable.includes('\\0')) throw new Error('invalid Hermes executable');
+  if (!isAbsolute(executable) || executable.includes('\0')) throw new Error('invalid Hermes executable');
   const handle = await open(executable, constants.O_RDONLY | constants.O_NOFOLLOW);
   try {
     const info = await handle.stat();
