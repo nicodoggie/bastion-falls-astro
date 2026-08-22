@@ -8,13 +8,14 @@ matched model bake-off without changing production reconciliation behavior.
 **Architecture:** Add a standalone TypeScript module that converts bounded JSON/Zod failures into a
 closed repair contract, protects semantic content with canonical projections or lexical inventories,
 and verifies a single injected formatter result. Add committed synthetic fixtures and a separate
-harness that can evaluate Luna, Terra, and Sol only through a proven zero-tool invocation seam. Keep
+harness that exposes exactly one pure candidate-validator tool. Gate development on Luna, then
+freeze the passing configuration before evaluating Terra and Sol unchanged. Keep
 `runUnifiedReconciliation` untouched in Phase A; Phase B receives a separate plan only after the
 fixture safety gate passes.
 
 **Tech Stack:** TypeScript 6, Node.js test runner, Zod 4, Node crypto/fs/process APIs, existing
-`stableHash` and reconciliation schemas, Hermes one-shot model invocation only if zero tools can be
-proven.
+`stableHash` and reconciliation schemas, and an isolated Hermes invocation whose only available tool
+is the local candidate validator.
 
 ---
 
@@ -38,12 +39,14 @@ Repeat this packet verbatim in every implementation or review delegation:
 - The formatter may repair representation only. Protected text, source-event references, omission
   reasons, correction replacements/evidence, attribution, identities, and summary-safe content must
   remain unchanged.
-- Attempt count is fixed at one. Do not add retry configuration.
+- Repair-session count is fixed at one. The sole validator tool may be called at most twice: initial
+  submission plus one correction. Do not add configurable retries.
 - No commit may claim the model bake-off passed without receipts proving the actual serving model,
-  zero available tools, safe mode, an empty invocation cwd, no profile, and ignored user
-  configuration/rules.
-- If current Hermes cannot provide a proven zero-tool invocation, stop the live bake-off and report
-  that blocker. Do not weaken the requirement to “no tools happened to be called.”
+  the exact singleton validator-tool inventory, safe mode, an empty invocation cwd, no profile, and
+  ignored user configuration/rules.
+- If current Hermes cannot expose exactly the validator tool while excluding every other tool, stop
+  the live bake-off and report that blocker. Do not weaken this to “no other tools happened to be
+  called.”
 - Do not commit, push, reset, checkout, clean, install dependencies, or invoke live models unless
   the task explicitly authorizes that side effect.
 - Focused verification uses direct package-local commands when Corepack/pnpm is unreliable:
@@ -59,7 +62,7 @@ Stop Phase A immediately and do not begin Phase B when any of these is true:
 - any accepted repair changes its protected projection/digest or lexical content inventory;
 - target response or authoritative validation fails after repair;
 - the live invocation cannot prove the requested serving model;
-- the live invocation cannot prove tools were unavailable;
+- the live invocation cannot prove that the validator was the only available tool;
 - the live invocation cannot prove profile/rules/user configuration were ignored and its cwd was an
   empty owner-only directory;
 - no tested model passes every positive and negative fixture;
@@ -614,7 +617,8 @@ git commit -m "test(transcribe): add format repair fixtures"
 ### Task 7: Build the Isolated Formatter Bake-Off Harness
 
 **Objective:** Run the exact same fixtures through an injected formatter command, record sanitized
-receipts, and refuse live execution unless model identity and zero-tool custody are provable.
+receipts, and refuse live execution unless model identity and singleton-validator custody are
+provable.
 
 **Files:**
 
@@ -643,8 +647,9 @@ export interface FormatterAdapter {
       inputTokens: number | null;
       outputTokens: number | null;
       apiCalls: number;
-      toolAvailability: "none";
-      toolCalls: 0;
+      toolAvailability: "validator-only";
+      availableTools: ["validate_repair_json"];
+      toolCalls: 1 | 2;
     };
   }>;
 }
@@ -652,7 +657,7 @@ export interface FormatterAdapter {
 
 Define strict `PhaseARepairReportSchema` and `PhaseAModelResultSchema` contracts. The report status
 is `passed | failed | blocked`; blocked results require one fixed reason such as
-`blocked-no-zero-tool-seam` or `blocked-no-context-isolation`. Reports contain fixture IDs and
+`blocked-no-validator-tool-seam` or `blocked-no-context-isolation`. Reports contain fixture IDs and
 metrics only, never model output or private text.
 
 Tests prove:
@@ -661,7 +666,9 @@ Tests prove:
 - separate owner-only scratch/result roots;
 - no raw output, transcript text, errors, paths, prompts, or credentials in reports;
 - actual usage identity must equal requested identity;
-- any nonzero/unknown tool availability or tool-call count rejects the run;
+- any tool inventory other than exactly `validate_repair_json` rejects the run;
+- zero validator calls or more than two validator calls rejects the fixture;
+- the last valid tool argument, not assistant prose, is the authoritative candidate;
 - later models continue after ordinary fixture failure;
 - report statuses distinguish pass, fail, and blocked;
 - exact 100 percent positive/negative gate calculation;
@@ -745,11 +752,11 @@ Prove:
 Synthetic coverage remains valid, but do not claim private live coverage for a class without
 evidence. Do not manufacture a “real” fixture.
 
-### Task 9: Prove or Reject a Zero-Tool Live Adapter
+### Task 9: Prove or Reject a Validator-Only Live Adapter
 
-**Objective:** Establish a formatter invocation that gives the model no tools, no
-rules/memory/profile/repository context, an explicit model, and a durable usage receipt before
-spending on the bake-off.
+**Objective:** Establish a formatter invocation that gives the model exactly one pure candidate
+validator, no rules/memory/profile/repository context, an explicit model, and a durable usage
+receipt before spending on the bake-off.
 
 **Files:**
 
@@ -766,16 +773,17 @@ The installed CLI supports:
 hermes -z PROMPT -m MODEL --usage-file PATH --safe-mode
 ```
 
-but currently has no documented explicit empty-toolsets flag. `--safe-mode` disables user config,
-rules, plugins, and MCP customization but does not by itself prove the built-in tool list is empty.
+but the adapter must establish a bounded tool seam that exposes only `validate_repair_json`.
+`--safe-mode` disables user config, rules, plugins, and MCP customization but does not by itself
+prove the built-in tool list has been replaced by the singleton validator.
 
 #### Step 2: Require proof, not inference
 
 A usable adapter must produce a machine-readable receipt proving:
 
 - actual provider/model;
-- tool availability was exactly none;
-- tool calls were zero;
+- available tools were exactly `["validate_repair_json"]`;
+- validator calls were one or two for each fixture;
 - API/token usage;
 - bounded process completion.
 
@@ -789,8 +797,8 @@ The launcher must also prove context isolation deterministically:
 - verify the cwd remained empty except for invocation-owned usage/receipt files;
 - record these facts as strict booleans in the adapter receipt.
 
-If Hermes one-shot cannot provide that proof without profile mutation, private credential copying,
-unstable internal imports, or a custom plugin, mark the adapter `blocked-no-zero-tool-seam` and stop
+If Hermes cannot provide that proof without profile mutation, private credential copying, or an
+unbounded plugin/tool surface, mark the adapter `blocked-no-validator-tool-seam` and stop
 before Task 10. If tool isolation works but context isolation cannot be proven, use
 `blocked-no-context-isolation`. Publish the strict Phase A report pair through the Task 7 report
 writer before stopping. Do not weaken the design.
@@ -801,23 +809,106 @@ Use argv spawning with `shell: false`, owner-only prompt/usage files, detached p
 cleanup, explicit `-m`, no fallback model, strict timeout/output bounds, and exact usage receipt
 parsing.
 
-#### Step 4: Verify with a one-token model canary
+#### Step 4: Verify with a minimal Luna canary
 
-Run one minimal no-content prompt. Read back the durable usage receipt and independently verify the
-serving model, safe-mode/context flags, empty cwd custody, and zero-tool state. Any ambiguity blocks
-the bake-off and publishes a blocked report.
+Run one minimal synthetic prompt. Read back the durable usage receipt and independently verify Luna,
+safe-mode/context flags, empty cwd custody, the singleton validator inventory, and captured valid
+tool arguments. Any ambiguity blocks the bake-off and publishes a blocked report.
 
 #### Step 5: Commit only a proven adapter
 
 If blocked, commit no speculative adapter. Publish the fixed blocker through `phase-a-report.json`
 and its matching Markdown report instead of adding dead configuration.
 
-### Task 10: Run the Matched Luna/Terra/Sol Fixture Bake-Off
+### Task 9A: Add the Pure Candidate-Validator Script and Sealed Submission Contract
+
+**Objective:** Validate only the JSON candidate supplied by the model, return bounded compiler-style
+feedback, and make the last valid tool argument authoritative without invoking a live model.
+
+**Files:**
+
+- Create: `cli/src/commands/transcribe/reconciliationRepairValidatorTool.ts`
+- Create: `cli/src/commands/transcribe/reconciliationRepairValidatorTool.test.ts`
+- Modify: `cli/src/commands/transcribe/reconciliationRepairHarness.ts`
+- Modify: `cli/src/commands/transcribe/reconciliationRepairHarness.test.ts`
+
+#### Step 1: Write failing pure-validator tests
+
+Cover exact repaired and unrepairable envelopes, unknown keys, malformed target output, identity
+change, protected-semantic change, source-event-accounting failure, valid first submission, invalid
+first plus valid correction, two invalid submissions, a forbidden third call, and bounded issue
+paths and codes. Prove accessors, symbols, non-plain prototypes, oversized JSON, and
+non-serializable input are rejected without executing getters.
+
+The script-facing result is a strict union:
+
+```ts
+type RepairValidationResult =
+  | { valid: true; submissionNumber: 1 | 2 }
+  | {
+      valid: false;
+      submissionNumber: 1 | 2;
+      issues: readonly { code: string; path: readonly (string | number)[] }[];
+    };
+```
+
+No issue may contain raw candidate values, transcript text, paths, exception prose, or credentials.
+
+#### Step 2: Run focused tests and verify RED
+
+```bash
+cd cli
+node --import tsx --test \
+  src/commands/transcribe/reconciliationRepairValidatorTool.test.ts \
+  src/commands/transcribe/reconciliationRepairHarness.test.ts
+```
+
+Expected: FAIL because the validator-tool module and sealed-submission interface do not exist.
+
+#### Step 3: Implement the pure validator and bounded call ledger
+
+Reuse `RepairEnvelopeSchema` and `evaluateFormatRepair`; do not duplicate reconciliation validation.
+The model-visible argument is only the envelope candidate. The harness closes over the frozen
+original output and deterministic validation authority. Record a descriptor-only plain-data snapshot
+before validation. Permit at most two calls. Capture the exact last valid snapshot as the sealed
+candidate; do not accept later prose or a separately serialized copy.
+
+Expose a stdin/stdout script entry that accepts one bounded internal request, invokes the same pure
+validator, and emits only `RepairValidationResult`. The live adapter may wrap this script as the
+sole tool handler, but this task does not launch Hermes or modify a profile.
+
+#### Step 4: Update harness metrics and reports
+
+Record provider API calls separately from validator calls, plus first-submission and
+corrected-submission acceptance counts. Keep reports sanitized. A fixture fails when there is no
+valid submission, more than two calls, malformed tool metadata, or a final candidate that differs
+from the sealed tool argument.
+
+#### Step 5: Verify and commit
+
+```bash
+node --import tsx --test \
+  src/commands/transcribe/reconciliationRepair.test.ts \
+  src/commands/transcribe/reconciliationRepairFixtures.test.ts \
+  src/commands/transcribe/reconciliationRepairValidatorTool.test.ts \
+  src/commands/transcribe/reconciliationRepairHarness.test.ts
+node node_modules/typescript/bin/tsc -p src/tsconfig.json --noEmit
+node scripts/build.mjs
+git -C .. diff --check
+git add \
+  src/commands/transcribe/reconciliationRepairValidatorTool.ts \
+  src/commands/transcribe/reconciliationRepairValidatorTool.test.ts \
+  src/commands/transcribe/reconciliationRepairHarness.ts \
+  src/commands/transcribe/reconciliationRepairHarness.test.ts
+git commit -m "feat(transcribe): validate formatter tool submissions"
+```
+
+### Task 10: Pass Luna, Freeze the Seam, Then Compare Terra and Sol
 
 **Objective:** Select the cheapest safe formatter or reject model repair before production wiring.
 
-**Prerequisite:** Task 9 proved a zero-tool invocation. Otherwise this task is blocked and Phase A
-ends honestly.
+**Prerequisite:** Task 9 proved a validator-only invocation. Otherwise this task is blocked and
+Phase A ends honestly.
 
 **Files:**
 
@@ -829,18 +920,23 @@ ends honestly.
 Hash the exact synthetic fixture module/build identity and private fixture manifest. Record the
 repair prompt version and schema version.
 
-#### Step 2: Run Luna
+#### Step 2: Run Luna only until the gate passes
 
 Run every positive and negative fixture with the same bounds. Repeat a small representative subset
-to measure stability. Verify actual model identity from receipts.
+to measure stability. Verify actual model identity from receipts. Compare the explicit plain-JSON
+control with validator-tool submission. If Luna fails, inspect only Luna receipts, repair only
+generic prompt/tool/validator defects, and rerun Luna. Do not invoke Terra or Sol yet, and do not
+add fixture-specific hints or model-name branches.
 
-#### Step 3: Run Terra only if needed for quality comparison or Luna fails
+#### Step 3: Freeze the passing Luna configuration
 
-Use identical payloads, order, bounds, and repeated subset.
+Hash and record the exact prompt, tool schema/script, validator implementation, fixture corpus and
+order, and execution bounds. Make no further tuning during comparative runs.
 
-#### Step 4: Run Sol only if needed
+#### Step 4: Run Terra and Sol unchanged
 
-Use the same matched packet. Do not let a stronger model receive extra context or retries.
+Use the same frozen matched packet, order, bounds, and repeated subset. Do not let either model
+receive extra context, calls, retries, or between-model tuning.
 
 #### Step 5: Compute the gate in code
 
@@ -851,7 +947,8 @@ A passing model requires:
 - zero protected-digest/lexical mismatches;
 - zero false `repairable` outcomes;
 - target and authoritative validation pass for every accepted repair;
-- actual model and zero-tool receipts are valid.
+- actual model and singleton-validator receipts are valid;
+- every fixture uses one repair session and no more than two validator calls.
 
 #### Step 6: Inspect private live fixtures
 
@@ -920,7 +1017,7 @@ Review 1: exact design/spec compliance, classification boundaries, fixture gate,
 conditions.
 
 Review 2: code quality/security/privacy/process lifecycle, especially lexical preservation, digest
-canonicalization, report custody, and zero-tool proof.
+canonicalization, report custody, and singleton-validator proof.
 
 Both reviewers receive the Stable Boundary Packet and the approved design independently.
 

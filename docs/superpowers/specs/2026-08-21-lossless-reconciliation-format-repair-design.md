@@ -37,7 +37,7 @@ This design owns:
 - deterministic normalization of parser and Zod issues into a bounded repair payload;
 - a closed classification of formatting-repairable and unrepairable failures;
 - protected semantic projections and digests;
-- one no-tools format-repair inference;
+- one isolated format-repair session with exactly one available pure validator tool;
 - strict repair-envelope parsing;
 - post-repair semantic-equality, schema, identity, and authoritative validation;
 - original/repaired diagnostic custody and repair metrics;
@@ -48,7 +48,8 @@ This design owns:
 This design does not:
 
 - add a second reconciliation or evidence-review pass;
-- allow the formatter to read transcripts, repository context, correction rules, or external tools;
+- allow the formatter to read transcripts, repository context, correction rules, the filesystem,
+  the network, or any tool other than the candidate validator;
 - retry empty, truncated, timed-out, identity-mismatched, or evidence-invalid output as formatting;
 - make repair attempts configurable;
 - relax source-event accounting, canonical status derivation, cache identity, or filesystem custody;
@@ -87,8 +88,8 @@ raw reconciliation output
      -> success: deterministic canonical compilation
      -> eligible formatting failure:
           -> build bounded repair payload
-          -> one no-tools repair inference
-          -> strict RepairEnvelope parse
+          -> one validator-only repair session
+          -> capture and validate the authoritative tool argument
           -> protected semantic equality
           -> target schema and identity validation
           -> deterministic canonical compilation
@@ -236,6 +237,27 @@ The formatter receives a fixed instruction:
 > content. If the schema cannot be satisfied without semantic change, return the fixed unrepairable
 > envelope. Return no Markdown or commentary.
 
+The instruction includes both complete envelope examples above rather than requiring the model to
+infer a private shape from the phrase "repair envelope."
+
+### Validator-tool submission
+
+The formatter has exactly one available tool, `validate_repair_json`. Its sole argument is a
+`RepairEnvelope`. The tool is implemented by a pure local script and receives only the candidate,
+the frozen repair payload, and the deterministic validation authority already owned by the harness.
+It has no filesystem, network, shell, repository, transcript, memory, credential, or generic tool
+access.
+
+The tool validates the exact envelope union, target reconciliation schema, immutable identity,
+protected semantic equality, source-event accounting, and permitted structural repair. On failure it
+returns only bounded machine-readable issue codes and paths. The model may correct the candidate and
+call the same tool once more. Therefore one repair session permits at most two validator calls: the
+initial submission and one correction.
+
+The last valid tool argument is the authoritative repair result. Free-text assistant output is not
+copied or reparsed as the candidate, preventing the model from validating one value and emitting a
+different one afterward. A session with no valid tool submission fails.
+
 ## Protected Semantic Projection
 
 For parseable original output, deterministic code builds a projection containing:
@@ -341,12 +363,14 @@ model or context/tool isolation cannot be proven.
 
 ## Calls, Retries, and Stop Rules
 
-The repair attempt count is fixed at one and is not configurable in this version.
+The top-level repair-session count is fixed at one and is not configurable in this version. Within
+that session, the validator tool may be called at most twice: one initial submission and one bounded
+correction. Provider API calls and validator calls are recorded separately and truthfully.
 
 - ordinary success: `calls = 1`, `retries = 0`;
 - repaired success: `calls = 2`, `retries = 1`;
 - repair unavailable, unrepairable, invalid, or digest-mismatched: fail the current chunk;
-- never invoke a second formatter attempt;
+- never invoke a second formatter session or permit a third validator call;
 - never silently fall through to a full reconciliation retry.
 
 Production chunk resume remains separate: validated earlier canonical chunks are reused when their
@@ -387,8 +411,10 @@ Hermes framing, and other bounded failures. They are never committed.
 
 ## Formatter Model Bake-Off
 
-The same repair payloads are run against Luna, Terra, and Sol with tools disabled and no profile
-context. The actual model/provider identity is verified from durable usage/session receipts.
+The same repair payloads are run with no profile context and exactly one available validator tool.
+The actual model/provider identity and exact tool inventory are verified from durable usage/session
+receipts. The harness first compares an explicit plain-JSON-envelope control with validator-tool
+submission using Luna only.
 
 Measure:
 
@@ -398,7 +424,8 @@ Measure:
 - authoritative validity;
 - exact expected structural diff;
 - added/removed content-token counts;
-- runtime and token use;
+- first-submission and corrected-submission success;
+- provider API calls, validator calls, runtime, and token use;
 - stability on a small repeated subset.
 
 A model passes only with:
@@ -408,9 +435,11 @@ A model passes only with:
 - no false `repairable` result;
 - valid target output for every positive fixture.
 
-Among passing models, select the lowest-cost and lowest-latency option. A failure by Luna advances
-the same matched fixtures to Terra, then Sol. The selected model is not wired into production until
-this gate passes.
+Luna is the development gate. Until Luna passes every positive and negative fixture, Terra and Sol
+are not invoked. Once Luna passes, freeze and hash the prompt, tool schema/script, validator,
+fixtures, order, and bounds before running Terra and Sol unchanged. Do not tune between comparative
+models. Among passing models, select the lowest-cost and lowest-latency option. The selected model
+is not wired into production until this gate passes.
 
 ## Testing Strategy
 
@@ -429,7 +458,7 @@ this gate passes.
 
 Injected formatter responses prove:
 
-- one call only;
+- one repair session only and at most two validator calls;
 - no call for ineligible failures;
 - repaired schema accepted only with protected equality;
 - unrepairable envelope stops cleanly;
@@ -440,8 +469,9 @@ Injected formatter responses prove:
 
 ### Live fixture gate
 
-Run the matched no-tools model bake-off against synthetic and private fixtures. Do not use a full
-August 15 reconciliation run as the first formatter test.
+Run Luna first against synthetic and private fixtures through the exact validator-tool seam. Only
+after Luna passes and the configuration is frozen may Terra and Sol receive the same matched packet.
+Do not use a full August 15 reconciliation run as the first formatter test.
 
 ### Integration tests after Phase A approval
 
@@ -453,7 +483,8 @@ diff checks.
 
 - Private raw/repaired outputs remain owner-only in isolated diagnostics.
 - Reports contain classifications and metrics, not transcript text or raw errors.
-- The repairer cannot access tools, files, repository context, memory, or credentials.
+- The repairer can access only the pure candidate validator; it cannot access files, network,
+  repository context, memory, credentials, shell, transcript sources, or generic tools.
 - Repair output is untrusted until all deterministic checks pass.
 - Source receipt, cache identity, filesystem containment, and canonical publication rules are
   unchanged.
