@@ -14,7 +14,10 @@
       "outputs": ["dist/index.js", "dist/index.d.ts"],
     },
     "@bastion-falls/cli#build": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build",
+        "@bastion-falls/types#build"
+      ],
       "outputs": [
         "dist/bash-complete.js",
         "dist/cli.js",
@@ -48,7 +51,16 @@
     },
     "@bastion-falls/astro#build": {
       "cache": false,
-      "dependsOn": ["^build", "@bastion-falls/cli#build"],
+      "dependsOn": [
+        "^build",
+        "@bastion-falls/cli#build",
+        "@bastion-falls/types#build",
+        "@bastion-falls/astro-lexicon-integration#build",
+        "@bastion-falls/satteri-auto-import#build",
+        "@bastion-falls/satteri-markmap#build",
+        "@bastion-falls/calendar#build",
+        "@bastion-falls/fantasy-calendar#build"
+      ],
       "passThroughEnv": [
         "BASTION_CALENDAR_OFFLINE",
         "BASTION_CALENDAR_FETCH_TIMEOUT_MS",
