@@ -18,11 +18,16 @@ const UsageSchema = z.object({
   provider: z.string().regex(SAFE_IDENTIFIER), model: z.string().regex(SAFE_IDENTIFIER),
   inputTokens: z.number().int().nonnegative().nullable(), outputTokens: z.number().int().nonnegative().nullable(),
   apiCalls: z.literal(1), toolAvailability: z.literal('none'), toolCalls: z.literal(0),
+  safeMode: z.literal(true), userConfigIgnored: z.literal(true), rulesIgnored: z.literal(true), profile: z.literal('none'),
+  inlinePrompt: z.literal(true), cwdIsolated: z.literal(true), environmentAllowlisted: z.literal(true),
+  sessionId: z.string().regex(SAFE_IDENTIFIER),
 }).strict();
 const RuntimeUsageSchema = z.object({
   provider: z.string().regex(SAFE_IDENTIFIER), model: z.string().regex(SAFE_IDENTIFIER),
   inputTokens: z.number().int().nonnegative().nullable(), outputTokens: z.number().int().nonnegative().nullable(),
   apiCalls: z.number().int().nonnegative().max(1), toolAvailability: z.enum(['none', 'available']), toolCalls: z.number().int().nonnegative().max(100),
+  safeMode: z.boolean(), userConfigIgnored: z.boolean(), rulesIgnored: z.boolean(), profile: z.string().regex(SAFE_IDENTIFIER),
+  inlinePrompt: z.boolean(), cwdIsolated: z.boolean(), environmentAllowlisted: z.boolean(), sessionId: z.string().regex(SAFE_IDENTIFIER),
 }).strict();
 export interface FormatterAdapter {
   identity: z.infer<typeof IdentitySchema>;
@@ -188,3 +193,115 @@ export function createProcessFormatterAdapter(options: ProcessFormatterAdapterOp
   }) };
 }
 export const UsageReceiptSchema = z.object({ stdout: z.string().max(DEFAULT_MAX_OUTPUT_BYTES), usage: RuntimeUsageSchema }).strict();
+
+const HERMES_PROVIDER = 'openai-codex' as const;
+const HERMES_TOOLSET = 'context_engine' as const;
+const MAX_INLINE_PROMPT_BYTES = 64 * 1024;
+const MAX_USAGE_BYTES = 64 * 1024;
+const SESSION_ID = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,119}$/u;
+
+export interface HermesOneShotFormatterAdapterOptions {
+  executable: string;
+  model: string;
+  scratchDir: string;
+  env?: NodeJS.ProcessEnv;
+}
+
+function allowlistedEnvironment(overrides: NodeJS.ProcessEnv = {}): NodeJS.ProcessEnv {
+  const source = { ...process.env, ...overrides };
+  const output: NodeJS.ProcessEnv = {};
+  for (const key of ['PATH', 'HOME', 'LANG', 'SSL_CERT_FILE', 'SSL_CERT_DIR']) if (source[key] !== undefined) output[key] = source[key];
+  for (const key of Object.keys(source)) if (key.startsWith('LC_') && source[key] !== undefined) output[key] = source[key];
+  return output;
+}
+
+async function openHermesExecutable(executable: string): Promise<Awaited<ReturnType<typeof open>>> {
+  if (!isAbsolute(executable) || executable.includes('\\0')) throw new Error('invalid Hermes executable');
+  const handle = await open(executable, constants.O_RDONLY | constants.O_NOFOLLOW);
+  try {
+    const info = await handle.stat();
+    if (!info.isFile() || (info.mode & 0o111) === 0) throw new Error('Hermes executable must be a regular executable file');
+    return handle;
+  } catch (error) { await handle.close(); throw error; }
+}
+
+async function validateInvocationParent(path: string): Promise<string> {
+  if (!isAbsolute(path)) throw new Error('Hermes scratch directory must be absolute');
+  const resolved = resolve(path); const info = await lstat(resolved);
+  if (!info.isDirectory() || info.isSymbolicLink() || !ownerOnlyMode(info.mode) || await realpath(resolved) !== resolved) throw new Error('Hermes scratch directory must be owner-only and symlink-free');
+  return resolved;
+}
+
+function usageFromHermes(value: unknown, expectedModel: string, invocationCwd: string): z.infer<typeof UsageSchema> {
+  if (value === null || typeof value !== 'object' || Array.isArray(value)) throw new Error('missing or malformed Hermes usage receipt');
+  const raw = value as Record<string, unknown>;
+  const usage = UsageSchema.parse({
+    provider: raw['provider'], model: raw['model'], inputTokens: raw['input_tokens'] ?? null, outputTokens: raw['output_tokens'] ?? null,
+    apiCalls: raw['api_calls'], toolAvailability: 'none', toolCalls: 0, safeMode: true, userConfigIgnored: true,
+    rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: raw['session_id'],
+  });
+  if (usage.provider !== HERMES_PROVIDER || usage.model !== expectedModel || !SESSION_ID.test(usage.sessionId) || !invocationCwd) throw new Error('Hermes usage identity does not match invocation');
+  return usage;
+}
+
+export function createHermesOneShotFormatterAdapter(options: HermesOneShotFormatterAdapterOptions): FormatterAdapter {
+  const identity = IdentitySchema.parse({ provider: HERMES_PROVIDER, model: options.model });
+  if (options.model.length > 120) throw new Error('invalid Hermes model');
+  const invoke = async ({ prompt, timeoutMs, maxOutputBytes, scratchDir, signal }: Parameters<FormatterAdapter['invoke']>[0]): Promise<Awaited<ReturnType<FormatterAdapter['invoke']>>> => {
+    if (signal.aborted) throw new Error('formatter aborted');
+    if (Buffer.byteLength(prompt, 'utf8') > MAX_INLINE_PROMPT_BYTES) throw new Error('Hermes inline prompt exceeds bound');
+    const parent = await validateInvocationParent(scratchDir);
+    if (resolve(options.scratchDir) !== parent) throw new Error('Hermes scratch directory mismatch');
+    const invocationCwd = join(parent, `invocation-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`);
+    const usagePath = join(parent, `.usage-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}.json`);
+    let executableHandle: Awaited<ReturnType<typeof open>> | undefined; let child: ReturnType<typeof spawn> | undefined; let output = ''; let bytes = 0; let primary: Error | undefined; let settled = false; let killTimer: ReturnType<typeof setTimeout> | undefined;
+    const terminate = (error: Error) => { if (primary || !child) return; primary = error; if (child.pid) { try { process.kill(-child.pid, 'SIGTERM'); } catch { child.kill('SIGTERM'); } killTimer = setTimeout(() => { try { if (child?.pid) process.kill(-child.pid, 'SIGKILL'); } catch { /* reaped */ } }, 250); killTimer.unref(); } };
+    const groupExists = () => { if (!child?.pid) return false; try { process.kill(-child.pid, 0); return true; } catch (error) { return (error as NodeJS.ErrnoException).code !== 'ESRCH'; } };
+    const drainGroup = async () => {
+      if (!groupExists()) { if (killTimer) clearTimeout(killTimer); return; }
+      if (!primary) terminate(new Error('Hermes one-shot left a descendant process'));
+      await new Promise((resolvePromise) => setTimeout(resolvePromise, 300));
+      if (killTimer) clearTimeout(killTimer);
+      if (groupExists()) { try { if (child?.pid) process.kill(-child.pid, 'SIGKILL'); } catch { /* reaped */ } await new Promise((resolvePromise) => setTimeout(resolvePromise, 50)); }
+      if (groupExists()) throw new Error('Hermes process group did not terminate');
+    };
+    try {
+      executableHandle = await openHermesExecutable(options.executable);
+      await mkdir(invocationCwd, { mode: 0o700 });
+      if ((await readdir(invocationCwd)).length !== 0) throw new Error('Hermes invocation cwd must start empty');
+      await writeFile(usagePath, '', { mode: 0o600, flag: 'wx' });
+      if (signal.aborted) throw new Error('formatter aborted');
+      child = spawn('/proc/self/fd/3', ['-z', prompt, '-m', options.model, '--provider', HERMES_PROVIDER, '--usage-file', usagePath, '--safe-mode', '-t', HERMES_TOOLSET], { cwd: invocationCwd, env: allowlistedEnvironment(options.env), shell: false, detached: true, stdio: ['ignore', 'pipe', 'ignore', executableHandle.fd] });
+      child.stdout!.on('data', (chunk: Buffer) => { bytes += chunk.byteLength; if (bytes > maxOutputBytes) terminate(new Error('bounded output violation')); else output += chunk.toString('utf8'); });
+      child.on('error', (error) => terminate(error));
+      const abort = () => terminate(new Error('formatter aborted')); signal.addEventListener('abort', abort, { once: true });
+      if (signal.aborted) abort();
+      const timer = setTimeout(() => terminate(new Error('formatter timeout')), timeoutMs); timer.unref();
+      const closeCode = await new Promise<number | null>((resolvePromise) => child!.on('close', resolvePromise));
+      settled = true; clearTimeout(timer); signal.removeEventListener('abort', abort);
+      await drainGroup();
+      if (primary) throw primary;
+      if (closeCode !== 0) throw new Error('Hermes one-shot failed');
+      if ((await readdir(invocationCwd)).length !== 0) throw new Error('Hermes invocation cwd was modified');
+      const usageHandle = await open(usagePath, constants.O_RDONLY | constants.O_NOFOLLOW).catch(() => undefined);
+      if (!usageHandle) throw new Error('missing or malformed Hermes usage receipt');
+      let usageText: string;
+      try {
+        const before = await usageHandle.stat();
+        if (!before.isFile() || (before.mode & 0o777) !== 0o600 || before.size > MAX_USAGE_BYTES) throw new Error('missing or malformed Hermes usage receipt');
+        usageText = await usageHandle.readFile({ encoding: 'utf8' });
+        const after = await usageHandle.stat();
+        if (before.dev !== after.dev || before.ino !== after.ino || before.size !== after.size || before.mtimeMs !== after.mtimeMs) throw new Error('Hermes usage receipt changed during read');
+      } finally { await usageHandle.close(); }
+      const usage = usageFromHermes(JSON.parse(usageText), options.model, invocationCwd);
+      return { stdout: output, usage };
+    } finally {
+      if (!settled && child) terminate(new Error('Hermes invocation cleanup'));
+      if (killTimer) clearTimeout(killTimer);
+      if (executableHandle) await executableHandle.close().catch(() => undefined);
+      await rm(usagePath, { force: true }).catch(() => undefined);
+      await rm(invocationCwd, { recursive: true, force: true }).catch(() => undefined);
+    }
+  };
+  return { identity, invoke };
+}

@@ -10,6 +10,7 @@ import {
   runPhaseABakeoff,
   type FormatterAdapter,
   createProcessFormatterAdapter,
+  createHermesOneShotFormatterAdapter,
 } from './reconciliationRepairHarness.js';
 import { allRepairFixtures } from './reconciliationRepairFixtures.js';
 
@@ -25,7 +26,7 @@ test('runs canonical fixtures in order with identical prompts and publishes priv
       const envelope = fixture.expectation === 'repair'
         ? { repairable: true, repairedOutput: fixture.expectedRepairedOutput }
         : { repairable: false, reason: fixture.expectedUnrepairableReason };
-      return { stdout: JSON.stringify(envelope), usage: { provider, model, inputTokens: 1, outputTokens: 1, apiCalls: 1, toolAvailability: 'none', toolCalls: 0 } };
+      return { stdout: JSON.stringify(envelope), usage: { provider, model, inputTokens: 1, outputTokens: 1, apiCalls: 1, toolAvailability: 'none', toolCalls: 0, safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: 'synthetic-session' } };
     },
   });
   const result = await runPhaseABakeoff({ scratchRoot: root, adapters: [adapter('p', 'm1'), adapter('p', 'm2')] });
@@ -56,19 +57,19 @@ test('blocks identity and tool violations while continuing to later models', asy
   const root = await mkdtemp(join(tmpdir(), 'phase-a-'));
   const violating: FormatterAdapter = {
     identity: { provider: 'requested', model: 'bad' },
-    async invoke() { return { stdout: '{}', usage: { provider: 'actual', model: 'bad', inputTokens: null, outputTokens: null, apiCalls: 1, toolAvailability: 'none', toolCalls: 0 } }; },
+    async invoke() { return { stdout: '{}', usage: { provider: 'actual', model: 'bad', inputTokens: null, outputTokens: null, apiCalls: 1, toolAvailability: 'none', toolCalls: 0, safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: 'synthetic-session' } }; },
   };
   const good: FormatterAdapter = {
     identity: { provider: 'requested', model: 'good' },
     async invoke(input) {
       const id = JSON.parse(input.prompt.split('fixture-payload=')[1]!).id as string;
       const fixture = allRepairFixtures.find((item) => item.id === id)!;
-      return { stdout: JSON.stringify(fixture.expectation === 'repair' ? { repairable: true, repairedOutput: fixture.expectedRepairedOutput } : { repairable: false, reason: fixture.expectedUnrepairableReason }), usage: { provider: 'requested', model: 'good', inputTokens: null, outputTokens: null, apiCalls: 1, toolAvailability: 'none', toolCalls: 0 } };
+      return { stdout: JSON.stringify(fixture.expectation === 'repair' ? { repairable: true, repairedOutput: fixture.expectedRepairedOutput } : { repairable: false, reason: fixture.expectedUnrepairableReason }), usage: { provider: 'requested', model: 'good', inputTokens: null, outputTokens: null, apiCalls: 1, toolAvailability: 'none', toolCalls: 0, safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: 'synthetic-session' } };
     },
   };
   const failing: FormatterAdapter = {
     identity: { provider: 'requested', model: 'ordinary-failure' },
-    async invoke() { return { stdout: '{}', usage: { provider: 'requested', model: 'ordinary-failure', inputTokens: null, outputTokens: null, apiCalls: 1, toolAvailability: 'none', toolCalls: 0 } }; },
+    async invoke() { return { stdout: '{}', usage: { provider: 'requested', model: 'ordinary-failure', inputTokens: null, outputTokens: null, apiCalls: 1, toolAvailability: 'none', toolCalls: 0, safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: 'synthetic-session' } }; },
   };
   const hanging: FormatterAdapter = {
     identity: { provider: 'requested', model: 'hanging' },
@@ -95,7 +96,7 @@ test('blocks identity and tool violations while continuing to later models', asy
 });
 
 test('strict schemas reject output-bearing report fields and interrupted publication leaves prior report', async () => {
-  assert.equal(PhaseAModelResultSchema.safeParse({ provider: 'p', model: 'm', status: 'blocked', blockedReason: 'blocked-no-zero-tool-seam', metrics: { fixtures: 0, positives: 0, negatives: 0, positivesAccepted: 0, negativesRefused: 0, positiveAcceptancePercent: 100, negativeRefusalPercent: 100, apiCalls: 0, toolCalls: 0 }, stdout: 'secret' }).success, false);
+  assert.equal(PhaseAModelResultSchema.safeParse({ provider: 'p', model: 'm', status: 'blocked', blockedReason: 'blocked-no-zero-tool-seam', metrics: { fixtures: 0, positives: 0, negatives: 0, positivesAccepted: 0, negativesRefused: 0, positiveAcceptancePercent: 100, negativeRefusalPercent: 100, apiCalls: 0, toolCalls: 0, safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: 'synthetic-session' }, stdout: 'secret' }).success, false);
   const root = await mkdtemp(join(tmpdir(), 'phase-a-'));
   const report = { kind: 'reconciliation-phase-a-repair-report' as const, version: 1 as const, status: 'blocked' as const, models: [{ provider: 'p', model: 'm', status: 'blocked' as const, blockedReason: 'blocked-no-context-isolation' as const, metrics: { fixtures: 0, positives: 0, negatives: 0, positivesAccepted: 0, negativesRefused: 0, positiveAcceptancePercent: 100, negativeRefusalPercent: 100, apiCalls: 0, toolCalls: 0 as const } }], fixtureIds: [], positives: 0, negatives: 0 };
   await publishPhaseAReport(root, report);
@@ -120,7 +121,7 @@ test('process adapter owns a bounded executable lifecycle and receipt matrix', a
 import { spawn } from 'node:child_process';
 import { writeFileSync } from 'node:fs';
 const mode = process.argv[2];
-const good = { stdout: JSON.stringify({ repairable: false, reason: 'incomplete-original' }), usage: { provider: 'synthetic', model: mode, inputTokens: null, outputTokens: null, apiCalls: 1, toolAvailability: 'none', toolCalls: 0 } };
+const good = { stdout: JSON.stringify({ repairable: false, reason: 'incomplete-original' }), usage: { provider: 'synthetic', model: mode, inputTokens: null, outputTokens: null, apiCalls: 1, toolAvailability: 'none', toolCalls: 0, safeMode: true, userConfigIgnored: true, rulesIgnored: true, profile: 'none', inlinePrompt: true, cwdIsolated: true, environmentAllowlisted: true, sessionId: 'synthetic-session' } };
 if (mode === 'success') { process.stdout.write(JSON.stringify(good)); process.exit(0); }
 else if (mode === 'invalid') { process.stdout.write('{not-json'); process.exit(0); }
 else if (mode === 'wrong') { process.stdout.write(JSON.stringify({ ...good, usage: { ...good.usage, provider: 'other' } })); process.exit(0); }
@@ -151,4 +152,71 @@ else if (mode === 'timeout') {
   assert.equal(result.report.models[0]!.status, 'blocked'); assert.equal(result.report.models[0]!.blockedReason, 'model-identity-unproven');
   assert.equal(result.report.models[1]!.status, 'blocked'); assert.equal(result.report.models[1]!.blockedReason, 'blocked-no-zero-tool-seam'); assert.equal(result.report.models[2]!.status, 'passed');
   await rm(root, { recursive: true, force: true }); await rm(boundedRoot, { recursive: true, force: true });
+});
+
+test('Hermes one-shot adapter uses the exact zero-tool invocation and cleans its owner-only cwd', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'phase-a-hermes-'));
+  const executable = join(root, 'fake-hermes.mjs');
+  await writeFile(executable, `#!/usr/bin/env node
+import { spawn } from 'node:child_process';
+import { readdirSync, writeFileSync } from 'node:fs';
+const [promptFlag, prompt, modelFlag, model, providerFlag, provider, usageFlag, usageFile, safeMode, toolFlag, toolset] = process.argv.slice(2);
+if (promptFlag !== '-z' || modelFlag !== '-m' || providerFlag !== '--provider' || provider !== 'openai-codex' || usageFlag !== '--usage-file' || safeMode !== '--safe-mode' || toolFlag !== '-t' || toolset !== 'context_engine' || model !== 'gpt-test' || readdirSync(process.cwd()).length !== 0) process.exit(21);
+if (process.env.PROJECT_SECRET || process.env.NODE_OPTIONS !== undefined || process.env.HERMES_PROFILE !== undefined) process.exit(22);
+if (prompt === 'timeout') {
+  process.on('SIGTERM', () => {});
+  const marker = usageFile + '.descendant';
+  spawn(process.execPath, ['-e', \`const fs=require('fs');process.on('SIGTERM',()=>{});setTimeout(()=>fs.writeFileSync(\${JSON.stringify(marker)},'survived'),500);setInterval(()=>{},1000)\`], { stdio: 'ignore' });
+  setInterval(() => {}, 1000);
+}
+if (prompt === 'overflow') { process.stdout.write('x'.repeat(4096)); process.exit(0); }
+writeFileSync(usageFile, JSON.stringify({ input_tokens: 2, output_tokens: 3, api_calls: 1, model, provider, session_id: 'session-test-123' }));
+process.stdout.write(JSON.stringify({ repairable: false, reason: 'incomplete-original' }));
+`, { mode: 0o700 });
+  await chmod(executable, 0o700);
+  const adapter = createHermesOneShotFormatterAdapter({ executable, model: 'gpt-test', scratchDir: root });
+  const result = await adapter.invoke({ prompt: 'inline prompt', timeoutMs: 500, maxOutputBytes: 2048, scratchDir: root, signal: new AbortController().signal });
+  assert.equal(result.usage.provider, 'openai-codex');
+  assert.equal(result.usage.model, 'gpt-test');
+  assert.equal(result.usage.sessionId, 'session-test-123');
+  assert.equal(result.usage.toolAvailability, 'none');
+  assert.equal(result.usage.toolCalls, 0);
+  for (const key of ['safeMode', 'userConfigIgnored', 'rulesIgnored', 'inlinePrompt', 'cwdIsolated', 'environmentAllowlisted']) assert.equal(result.usage[key as keyof typeof result.usage], true, key);
+  assert.equal(result.usage.profile, 'none');
+  await assert.rejects(adapter.invoke({ prompt: 'overflow', timeoutMs: 500, maxOutputBytes: 128, scratchDir: root, signal: new AbortController().signal }));
+  await assert.rejects(adapter.invoke({ prompt: 'timeout', timeoutMs: 20, maxOutputBytes: 2048, scratchDir: root, signal: new AbortController().signal }));
+  await new Promise((resolvePromise) => setTimeout(resolvePromise, 550));
+  await assert.rejects(adapter.invoke({ prompt: 'inline prompt', timeoutMs: 500, maxOutputBytes: 2048, scratchDir: join(root, 'escaped'), signal: new AbortController().signal }), /mismatch|scratch|ENOENT/i);
+  assert.deepEqual(await readdir(root), ['fake-hermes.mjs']);
+  await rm(root, { recursive: true, force: true });
+});
+
+test('Hermes one-shot adapter rejects oversized prompts and malformed or missing usage receipts', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'phase-a-hermes-bad-'));
+  const executable = join(root, 'fake-hermes.mjs');
+  await writeFile(executable, `#!/usr/bin/env node
+import { symlinkSync, unlinkSync, writeFileSync } from 'node:fs';
+const prompt = process.argv[process.argv.indexOf('-z') + 1];
+const usageFile = process.argv[process.argv.indexOf('--usage-file') + 1];
+if (prompt === 'missing') process.stdout.write('{}');
+else if (prompt === 'symlink') { unlinkSync(usageFile); symlinkSync('/dev/null', usageFile); process.stdout.write('{}'); }
+else {
+  if (prompt === 'rogue-cwd') writeFileSync('rogue.txt', 'x');
+  writeFileSync(usageFile, prompt === 'malformed' ? '{bad' : JSON.stringify({ model: 'gpt-test' }));
+  process.stdout.write('{}');
+}
+`, { mode: 0o700 });
+  await chmod(executable, 0o700);
+  const adapter = createHermesOneShotFormatterAdapter({ executable, model: 'gpt-test', scratchDir: root });
+  const invoke = (prompt: string, signal = new AbortController().signal) => adapter.invoke({ prompt, timeoutMs: 500, maxOutputBytes: 2048, scratchDir: root, signal });
+  await assert.rejects(invoke('missing'));
+  await assert.rejects(invoke('malformed'));
+  await assert.rejects(invoke('symlink'));
+  await assert.rejects(invoke('rogue-cwd'), /cwd/i);
+  await assert.rejects(invoke('invalid-fields'), /provider|apiCalls|sessionId/i);
+  const aborted = new AbortController(); aborted.abort();
+  await assert.rejects(invoke('x', aborted.signal), /aborted/i);
+  assert.deepEqual(await readdir(root), ['fake-hermes.mjs']);
+  await assert.rejects(createHermesOneShotFormatterAdapter({ executable, model: 'gpt-test', scratchDir: root }).invoke({ prompt: 'x'.repeat(65537), timeoutMs: 500, maxOutputBytes: 2048, scratchDir: root, signal: new AbortController().signal }), /prompt/i);
+  await rm(root, { recursive: true, force: true });
 });
