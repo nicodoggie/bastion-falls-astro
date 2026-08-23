@@ -1,11 +1,15 @@
 import assert from 'node:assert/strict';
-import { chmod, mkdtemp, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
+import { execFile, spawn } from 'node:child_process';
+import { chmod, mkdtemp, mkdir, readdir, readFile, readlink, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import test from 'node:test';
+import { promisify } from 'node:util';
+import { fileURLToPath } from 'node:url';
 import { allRepairFixtures } from './reconciliationRepairFixtures.js';
 import {
   createHermesOneShotFormatterAdapter,
+  createHermesValidatorFormatterAdapter,
   createProcessFormatterAdapter,
   type FormatterAdapter,
   PhaseAModelResultSchema,
@@ -325,4 +329,145 @@ else {
   assert.deepEqual(await readdir(root), ['fake-hermes.mjs']);
   await assert.rejects(createHermesOneShotFormatterAdapter({ executable, model: 'gpt-test', scratchDir: root }).invoke({ prompt: 'x'.repeat(65537), timeoutMs: 500, maxOutputBytes: 2048, scratchDir: root, signal: new AbortController().signal }), /prompt/i);
   await rm(root, { recursive: true, force: true });
+});
+
+test('Hermes validator adapter replays the singleton tool ledger through the host validator', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'phase-a-hermes-validator-'));
+  const executable = join(root, 'fake-python.mjs');
+  const launcher = join(root, 'launcher.py');
+  const validator = join(root, 'validator.ts');
+  await writeFile(launcher, '// launcher sentinel\n', { mode: 0o600 });
+  await writeFile(validator, '// validator sentinel\n', { mode: 0o600 });
+  await writeFile(executable, `#!/usr/bin/env node
+let input = '';
+process.stdin.setEncoding('utf8');
+process.stdin.on('data', (chunk) => input += chunk);
+process.stdin.on('end', () => {
+  const request = JSON.parse(input);
+  if (process.env.PROJECT_SECRET || process.env.NODE_OPTIONS !== undefined || !request.validation) process.exit(22);
+  const candidate = { repairable: false, reason: 'incomplete-original' };
+  const result = { valid: true, submissionNumber: 1 };
+  process.stdout.write(JSON.stringify({ provider: 'openai-codex', model: 'gpt-test', input_tokens: 2, output_tokens: 3, api_calls: 2, tool_calls: 1, available_tools: ['validate_repair_json'], calls: [{ candidate, result }], final_response: 'ignored prose', session_id: 'validator-session', completed: true, failed: false, partial: false, safe_mode: true, user_config_ignored: true, rules_ignored: true, inline_prompt: true, cwd_isolated: true, environment_allowlisted: true }));
+});
+`, { mode: 0o700 });
+  await chmod(executable, 0o700);
+  let replayed = 0;
+  const adapter = createHermesValidatorFormatterAdapter({ pythonExecutable: executable, launcherPath: launcher, validatorPath: validator, nodeExecutable: process.execPath, hermesRoot: root, sitePackages: root, tsxImportPath: validator, model: 'gpt-test', scratchDir: root, env: { ...process.env, PROJECT_SECRET: 'must-not-leak' } });
+  const output = await adapter.invoke({ prompt: 'repair', timeoutMs: 500, maxOutputBytes: 2048, scratchDir: root, signal: new AbortController().signal, validationRequest: { originalOutput: '', validation: {} as never, expectedUnrepairableReason: 'incomplete-original' }, async validateCandidate(candidate) { replayed += 1; assert.deepEqual(candidate, { repairable: false, reason: 'incomplete-original' }); return { valid: true, submissionNumber: 1 }; } });
+  assert.equal(replayed, 1);
+  assert.equal(output.usage.toolAvailability, 'validator-only');
+  assert.deepEqual(output.usage.availableTools, ['validate_repair_json']);
+  assert.equal(output.usage.apiCalls, 2);
+  assert.equal(output.usage.toolCalls, 1);
+  await rm(root, { recursive: true, force: true });
+});
+
+test('Hermes launcher main constructs an agent and records the direct RepairEnvelope', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'phase-a-hermes-launcher-e2e-'));
+  const launcher = join(dirname(fileURLToPath(import.meta.url)), 'reconciliationRepairHermesLauncher.py');
+  await writeFile(join(root, 'run_agent.py'), `from agent.transports.codex import ResponsesApiTransport
+import run_agent
+class AIAgent:
+    def __init__(self, **kwargs):
+        self.session_id = 'e2e-session'; self.transport = ResponsesApiTransport(); self.tools = self.transport.build_kwargs()['tools']
+    def run_conversation(self, prompt):
+        self.transport.build_kwargs(); run_agent.handle_function_call('validate_repair_json', {'repairable': False, 'reason': 'unsupported-repair'})
+        return {'input_tokens': 7, 'output_tokens': 5, 'api_calls': 2, 'completed': True, 'failed': False, 'partial': False, 'final_response': 'ignored prose'}
+    def close(self): pass
+`, { mode: 0o600 });
+  await mkdir(join(root, 'agent', 'transports'), { recursive: true, mode: 0o700 });
+  await writeFile(join(root, 'agent', '__init__.py'), '', { mode: 0o600 }); await writeFile(join(root, 'agent', 'transports', '__init__.py'), '', { mode: 0o600 });
+  await writeFile(join(root, 'agent', 'transports', 'codex.py'), `class ResponsesApiTransport:
+    def build_kwargs(self, *args, **kwargs): return {'tools': [{'function': {'name': 'validate_repair_json'}}]}
+`, { mode: 0o600 });
+  await mkdir(join(root, 'hermes_cli'), { mode: 0o700 }); await writeFile(join(root, 'hermes_cli', '__init__.py'), '', { mode: 0o600 });
+  await writeFile(join(root, 'hermes_cli', 'runtime_provider.py'), `def resolve_runtime_provider(**kwargs): return {'provider': 'openai-codex', 'api_key': 'fake', 'base_url': 'http://fake'}
+`, { mode: 0o600 });
+  const validator = join(root, 'validator.mjs'); await writeFile(validator, `process.stdin.setEncoding('utf8'); let text=''; process.stdin.on('data', c => text += c); process.stdin.on('end', () => { const p=JSON.parse(text); process.stdout.write(JSON.stringify({valid: p.candidate.repairable === false, submissionNumber: 1})); });\n`, { mode: 0o700 });
+  const tsx = join(root, 'tsx.mjs'); await writeFile(tsx, '', { mode: 0o600 });
+  const wrapper = join(root, 'wrapper.py'); await writeFile(wrapper, `import os, sys
+paths = sys.argv[1:6]
+for target, path in zip(range(5, 10), paths):
+    source = os.open(path, os.O_RDONLY)
+    os.dup2(source, target); os.close(source)
+os.execv(sys.executable, [sys.executable, sys.argv[6], *sys.argv[7:]])
+`, { mode: 0o700 });
+  const python = (await promisify(execFile)('which', ['python3'])).stdout.trim();
+  const input = JSON.stringify({ prompt: 'repair prompt', originalOutput: '{}', validation: {}, expectedUnrepairableReason: 'unsupported-repair', nodeExecutable: process.execPath, tsxImportPath: tsx, validatorTimeoutSeconds: 2, path: process.env['PATH'] ?? '', home: process.env['HOME'] ?? '' });
+  try {
+    const childProcess = spawn(python, [wrapper, validator, process.execPath, tsx, root, root, launcher, '--model', 'gpt-test', '--provider', 'openai-codex', '--validator-fd', '5', '--node-fd', '6', '--tsx-fd', '7', '--hermes-root-fd', '8', '--site-packages-fd', '9'], { env: { ...process.env, PYTHONPATH: root }, cwd: root, stdio: ['pipe', 'pipe', 'pipe'] });
+    const stdoutPromise = new Promise<string>((resolve, reject) => { let stdout = ''; let stderr = ''; childProcess.stdout.on('data', (chunk) => { stdout += chunk; }); childProcess.stderr.on('data', (chunk) => { stderr += chunk; }); childProcess.on('error', reject); childProcess.on('close', (code) => code === 0 ? resolve(stdout) : reject(new Error(`launcher exited ${code}: ${stderr}`))); });
+    childProcess.stdin.end(input);
+    const stdout = await stdoutPromise;
+    const parsed = JSON.parse(stdout) as { calls: Array<{ candidate: unknown; result: unknown }>; available_tools: string[]; tool_calls: number; safe_mode: boolean; final_response: string };
+    assert.ok(parsed.calls, JSON.stringify(parsed));
+    assert.deepEqual(parsed.calls[0]!.candidate, { repairable: false, reason: 'unsupported-repair' }); assert.deepEqual(parsed.calls[0]!.result, { valid: true, submissionNumber: 1 });
+    assert.deepEqual(parsed.available_tools, ['validate_repair_json']); assert.equal(parsed.tool_calls, 1); assert.equal(parsed.safe_mode, true); assert.equal(parsed.final_response, 'ignored prose');
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
+test('Hermes validator adapter closes partial setup and removes no invocation cwd after late acquisition failure', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'phase-a-hermes-validator-partial-'));
+  const launcher = join(root, 'launcher.py');
+  const validator = join(root, 'validator.ts');
+  const python = join(root, 'python');
+  const tsx = join(root, 'tsx.mjs');
+  await writeFile(launcher, '# launcher\n', { mode: 0o600 });
+  await writeFile(validator, '// validator\n', { mode: 0o600 });
+  await writeFile(python, '#!/bin/sh\n', { mode: 0o700 });
+  await writeFile(tsx, '// tsx\n', { mode: 0o600 });
+  const fdTargets = async (): Promise<string[]> => {
+    const targets: string[] = [];
+    for (const fd of await readdir('/proc/self/fd')) {
+      try { targets.push(await readlink(join('/proc/self/fd', fd))); } catch { /* raced with fd closure */ }
+    }
+    return targets;
+  };
+  const before = await fdTargets();
+  const adapter = createHermesValidatorFormatterAdapter({
+    pythonExecutable: python, launcherPath: launcher, validatorPath: validator, nodeExecutable: join(root, 'missing-node'),
+    hermesRoot: root, sitePackages: root, tsxImportPath: tsx, model: 'gpt-test', scratchDir: root,
+  });
+  try {
+    await assert.rejects(adapter.invoke({
+      prompt: 'repair', timeoutMs: 500, maxOutputBytes: 2048, scratchDir: root, signal: new AbortController().signal,
+      validationRequest: { originalOutput: '', validation: {} as never }, validateCandidate: async () => ({ valid: true, submissionNumber: 1 }),
+    }), /ENOENT|no such file/i);
+    const after = await fdTargets();
+    assert.deepEqual(after.filter((target) => [python, launcher, validator, tsx].includes(target)), before.filter((target) => [python, launcher, validator, tsx].includes(target)));
+    assert.deepEqual((await readdir(root)).filter((entry) => entry.startsWith('validator-invocation-')), []);
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
+test('Hermes validator adapter cleans all custody after child spawn failure', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'phase-a-hermes-validator-spawn-failure-'));
+  const launcher = join(root, 'launcher.py');
+  const validator = join(root, 'validator.ts');
+  const brokenPython = join(root, 'python');
+  const tsx = join(root, 'tsx.mjs');
+  await writeFile(launcher, '# launcher\n', { mode: 0o600 });
+  await writeFile(validator, '// validator\n', { mode: 0o600 });
+  await writeFile(brokenPython, '#!/no/such/interpreter\n', { mode: 0o700 });
+  await writeFile(tsx, '// tsx\n', { mode: 0o600 });
+  const fdTargets = async (): Promise<string[]> => {
+    const targets: string[] = [];
+    for (const fd of await readdir('/proc/self/fd')) {
+      try { targets.push(await readlink(join('/proc/self/fd', fd))); } catch { /* raced with fd closure */ }
+    }
+    return targets;
+  };
+  const before = await fdTargets();
+  const adapter = createHermesValidatorFormatterAdapter({
+    pythonExecutable: brokenPython, launcherPath: launcher, validatorPath: validator, nodeExecutable: process.execPath,
+    hermesRoot: root, sitePackages: root, tsxImportPath: tsx, model: 'gpt-test', scratchDir: root,
+  });
+  try {
+    await assert.rejects(adapter.invoke({
+      prompt: 'repair', timeoutMs: 500, maxOutputBytes: 2048, scratchDir: root, signal: new AbortController().signal,
+      validationRequest: { originalOutput: '', validation: {} as never }, validateCandidate: async () => ({ valid: true, submissionNumber: 1 }),
+    }), /ENOENT|spawn|launcher/i);
+    const after = await fdTargets();
+    assert.deepEqual(after.filter((target) => [brokenPython, launcher, validator, tsx].includes(target)), before.filter((target) => [brokenPython, launcher, validator, tsx].includes(target)));
+    assert.deepEqual((await readdir(root)).filter((entry) => entry.startsWith('validator-invocation-')), []);
+  } finally { await rm(root, { recursive: true, force: true }); }
 });

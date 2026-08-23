@@ -742,13 +742,13 @@ const REPAIR_INSTRUCTIONS = [
   'Do not rewrite readable content, identities, timestamps, attribution, accounting, or semantics.',
 ].join(' ');
 
-const RepairValidationRuntimeSchema = z.object({
+export const RepairValidationRuntimeSchema = z.object({
   packet: z.object({
     schemaVersion: z.literal('reconciliation.v1'),
     promptVersion: z.string().min(1).max(160),
     chunk: ChunkWindowSchema,
     cacheIdentity: CacheIdentitySchema,
-  }).passthrough(),
+  }).strict(),
   authoritativeSourceEvents: z.array(SourceEventSchema).max(MAX_REPAIR_LEXICAL_TOKENS),
 }).strict();
 

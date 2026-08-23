@@ -5,7 +5,7 @@ import { dirname, isAbsolute, join, resolve } from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
 import { z } from 'zod';
 import { ReconciliationResponseSchema, validateReconciliation } from './reconciliation.js';
-import { classifyRepairFailure, evaluateFormatRepair, type RepairEnvelope } from './reconciliationRepair.js';
+import { classifyRepairFailure, evaluateFormatRepair, type RepairEnvelope, type RepairUnrepairableReason, type RepairValidationInput } from './reconciliationRepair.js';
 import { allRepairFixtures, RepairFixtureSchema, type RepairFixture } from './reconciliationRepairFixtures.js';
 import { createRepairValidationSession, type RepairValidationResult } from './reconciliationRepairValidatorTool.js';
 
@@ -35,7 +35,7 @@ const RuntimeUsageSchema = z.object({
 }).strict();
 export interface FormatterAdapter {
   identity: z.infer<typeof IdentitySchema>;
-  invoke(input: { prompt: string; timeoutMs: number; maxOutputBytes: number; scratchDir: string; signal: AbortSignal; validateCandidate?(candidate: unknown): Promise<RepairValidationResult> }): Promise<{ stdout: string; usage: z.infer<typeof UsageSchema> }>;
+  invoke(input: { prompt: string; timeoutMs: number; maxOutputBytes: number; scratchDir: string; signal: AbortSignal; validateCandidate?(candidate: unknown): Promise<RepairValidationResult>; validationRequest?: { originalOutput: string; validation: RepairValidationInput; expectedUnrepairableReason?: RepairUnrepairableReason } }): Promise<{ stdout: string; usage: z.infer<typeof UsageSchema> }>;
 }
 const MetricsSchema = z.object({
   fixtures: z.number().int().nonnegative().max(32), positives: z.number().int().nonnegative().max(32), negatives: z.number().int().nonnegative().max(32),
@@ -182,7 +182,7 @@ export async function runPhaseABakeoff(options: PhaseABakeoffOptions): Promise<P
         });
         metrics.apiCalls += 1;
         const controller = new AbortController();
-        const invocation = Promise.resolve(adapter.invoke({ prompt: fixturePrompt(fixture), timeoutMs, maxOutputBytes, scratchDir, signal: controller.signal, validateCandidate: (candidate) => validator.submit(candidate) }));
+        const invocation = Promise.resolve(adapter.invoke({ prompt: fixturePrompt(fixture), timeoutMs, maxOutputBytes, scratchDir, signal: controller.signal, validateCandidate: (candidate) => validator.submit(candidate), validationRequest: { originalOutput: fixture.originalOutput, validation, expectedUnrepairableReason: fixture.expectedUnrepairableReason } }));
         invocation.catch(() => undefined);
         let timeout: ReturnType<typeof setTimeout> | undefined;
         const result = await Promise.race([invocation, new Promise<never>((_, reject) => { timeout = setTimeout(() => { controller.abort(); reject(new Error('formatter timeout')); }, timeoutMs); })]).finally(() => { if (timeout) clearTimeout(timeout); });
@@ -356,4 +356,131 @@ export function createHermesOneShotFormatterAdapter(options: HermesOneShotFormat
     }
   };
   return { identity, invoke };
+}
+
+const HermesValidatorResultSchema = z.object({
+  provider: z.literal(HERMES_PROVIDER), model: z.string().regex(SAFE_IDENTIFIER),
+  input_tokens: z.number().int().nonnegative().nullable(), output_tokens: z.number().int().nonnegative().nullable(),
+  api_calls: z.number().int().positive().max(3), tool_calls: z.number().int().min(0).max(2),
+  available_tools: z.tuple([z.literal('validate_repair_json')]),
+  calls: z.array(z.object({ candidate: z.unknown(), result: z.unknown() }).strict()).max(2),
+  final_response: z.string().max(DEFAULT_MAX_OUTPUT_BYTES), session_id: z.string().regex(SESSION_ID),
+  completed: z.boolean(), failed: z.boolean(), partial: z.boolean(),
+  safe_mode: z.literal(true), user_config_ignored: z.literal(true), rules_ignored: z.literal(true),
+  inline_prompt: z.literal(true), cwd_isolated: z.literal(true), environment_allowlisted: z.literal(true),
+}).strict();
+
+export interface HermesValidatorFormatterAdapterOptions {
+  pythonExecutable: string;
+  launcherPath: string;
+  validatorPath: string;
+  nodeExecutable: string;
+  hermesRoot: string;
+  sitePackages: string;
+  tsxImportPath: string;
+  model: string;
+  scratchDir: string;
+  env?: NodeJS.ProcessEnv;
+}
+
+async function openRegularFile(path: string, executable: boolean): Promise<Awaited<ReturnType<typeof open>>> {
+  if (!isAbsolute(path) || path.includes('\0')) throw new Error('invalid isolated launcher path');
+  const handle = await open(path, constants.O_RDONLY | constants.O_NOFOLLOW);
+  try {
+    const info = await handle.stat();
+    if (!info.isFile() || (executable && (info.mode & 0o111) === 0)) throw new Error('isolated launcher path must be a regular file');
+    return handle;
+  } catch (error) { await handle.close(); throw error; }
+}
+
+async function openDirectoryCustody(path: string): Promise<Awaited<ReturnType<typeof open>>> {
+  if (!isAbsolute(path) || path.includes('\\0')) throw new Error('invalid isolated launcher directory');
+  const handle = await open(path, constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW);
+  try {
+    const info = await handle.stat();
+    if (!info.isDirectory() || info.isSymbolicLink()) throw new Error('isolated launcher directory must be a regular directory');
+    return handle;
+  } catch (error) { await handle.close(); throw error; }
+}
+
+export function createHermesValidatorFormatterAdapter(options: HermesValidatorFormatterAdapterOptions): FormatterAdapter {
+  const identity = IdentitySchema.parse({ provider: HERMES_PROVIDER, model: options.model });
+  if (options.model.length > 120) throw new Error('invalid Hermes model');
+  return {
+    identity,
+    async invoke(input) {
+      if (!input.validateCandidate || !input.validationRequest) throw new Error('validator-only invocation requires host validation');
+      if (input.signal.aborted) throw new Error('formatter aborted');
+      if (Buffer.byteLength(input.prompt, 'utf8') > MAX_INLINE_PROMPT_BYTES) throw new Error('Hermes inline prompt exceeds bound');
+      const parent = await validateInvocationParent(input.scratchDir);
+      if (resolve(options.scratchDir) !== parent) throw new Error('Hermes scratch directory mismatch');
+      const hermesRoot = resolve(options.hermesRoot); const hermesInfo = await lstat(hermesRoot);
+      if (!hermesInfo.isDirectory() || hermesInfo.isSymbolicLink() || await realpath(hermesRoot) !== hermesRoot) throw new Error('invalid Hermes root');
+      const sitePackages = resolve(options.sitePackages); const siteInfo = await lstat(sitePackages);
+      if (!siteInfo.isDirectory() || siteInfo.isSymbolicLink() || await realpath(sitePackages) !== sitePackages) throw new Error('invalid Hermes site-packages');
+      let python: Awaited<ReturnType<typeof open>> | undefined; let launcher: Awaited<ReturnType<typeof open>> | undefined; let validator: Awaited<ReturnType<typeof open>> | undefined; let node: Awaited<ReturnType<typeof open>> | undefined; let tsxImport: Awaited<ReturnType<typeof open>> | undefined;
+      let hermesRootHandle: Awaited<ReturnType<typeof open>> | undefined; let sitePackagesHandle: Awaited<ReturnType<typeof open>> | undefined;
+      let invocationCwd: string | undefined; let cwdCreated = false;
+      let child: ReturnType<typeof spawn> | undefined; let output = ''; let stderr = ''; let bytes = 0; let primary: Error | undefined; let killTimer: ReturnType<typeof setTimeout> | undefined;
+      const signalGroup = (signal: NodeJS.Signals) => { if (!child?.pid) return; try { process.kill(-child.pid, signal); } catch { try { child.kill(signal); } catch { /* reaped */ } } };
+      const terminate = (error: Error) => { if (primary) return; primary = error; signalGroup('SIGTERM'); killTimer = setTimeout(() => signalGroup('SIGKILL'), 250); killTimer.unref(); };
+      const groupExists = () => { if (!child?.pid) return false; try { process.kill(-child.pid, 0); return true; } catch (error) { return (error as NodeJS.ErrnoException).code !== 'ESRCH'; } };
+      try {
+        python = await openRegularFile(options.pythonExecutable, true);
+        launcher = await openRegularFile(options.launcherPath, false);
+        validator = await openRegularFile(options.validatorPath, false);
+        node = await openRegularFile(options.nodeExecutable, true);
+        tsxImport = await openRegularFile(options.tsxImportPath, false);
+        hermesRootHandle = await openDirectoryCustody(options.hermesRoot);
+        sitePackagesHandle = await openDirectoryCustody(options.sitePackages);
+        invocationCwd = join(parent, `validator-invocation-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`);
+        await mkdir(invocationCwd, { mode: 0o700 });
+        cwdCreated = true;
+        if ((await readdir(invocationCwd)).length !== 0) throw new Error('Hermes validator invocation cwd must start empty');
+        child = spawn('/proc/self/fd/3', ['/proc/self/fd/4', '--model', options.model, '--provider', HERMES_PROVIDER, '--validator-fd', String(5), '--node-fd', String(6), '--tsx-fd', String(7), '--hermes-root-fd', String(8), '--site-packages-fd', String(9)], { cwd: invocationCwd, env: allowlistedEnvironment(options.env), shell: false, detached: true, stdio: ['pipe', 'pipe', 'pipe', python.fd, launcher.fd, validator.fd, node.fd, tsxImport.fd, hermesRootHandle.fd, sitePackagesHandle.fd] });
+        child.stdout!.on('data', (chunk: Buffer) => { bytes += chunk.byteLength; if (bytes > input.maxOutputBytes) terminate(new Error('bounded output violation')); else output += chunk.toString('utf8'); });
+        child.stderr!.on('data', (chunk: Buffer) => { if (stderr.length < 4096) stderr += chunk.toString('utf8').slice(0, 4096 - stderr.length); });
+        child.on('error', terminate);
+        const abort = () => terminate(new Error('formatter aborted')); input.signal.addEventListener('abort', abort, { once: true });
+        const timer = setTimeout(() => terminate(new Error('formatter timeout')), input.timeoutMs); timer.unref();
+        child.stdin!.end(JSON.stringify({ prompt: input.prompt, ...input.validationRequest, nodeExecutable: options.nodeExecutable, tsxImportPath: options.tsxImportPath, validatorTimeoutSeconds: Math.max(1, Math.ceil(input.timeoutMs / 1000)), path: allowlistedEnvironment(options.env)['PATH'] ?? '', home: allowlistedEnvironment(options.env)['HOME'] ?? '' }));
+        const code = await new Promise<number | null>((resolvePromise) => child!.on('close', resolvePromise));
+        clearTimeout(timer); input.signal.removeEventListener('abort', abort);
+        if (killTimer) clearTimeout(killTimer);
+        if (groupExists()) { signalGroup('SIGKILL'); await new Promise((resolvePromise) => setTimeout(resolvePromise, 50)); }
+        if (primary) throw primary;
+        if (code !== 0) {
+          const errorClass = [...stderr.matchAll(/^([A-Za-z][A-Za-z0-9_.]*(?:Error|Exception)):/gmu)].at(-1)?.[1] ?? 'unknown-error';
+          throw new Error(`isolated Hermes validator launcher failed (${errorClass})`);
+        }
+        if ((await readdir(invocationCwd)).length !== 0) throw new Error('Hermes validator invocation cwd was modified');
+        const raw: unknown = JSON.parse(output);
+        if (raw && typeof raw === 'object' && 'launcher_failure' in raw) {
+          const failure = raw as Record<string, unknown>;
+          throw new Error(`isolated Hermes validator ${String(failure['launcher_failure'])} failure (${String(failure['error_type'])},toolCalls=${String(failure['tool_calls'] ?? 0)})`);
+        }
+        const parsed = HermesValidatorResultSchema.parse(raw);
+        if (parsed.tool_calls === 0) throw new Error(`isolated Hermes validator produced no tool call (completed=${parsed.completed},failed=${parsed.failed},partial=${parsed.partial})`);
+        if (parsed.model !== options.model || parsed.calls.length !== parsed.tool_calls || parsed.api_calls !== parsed.tool_calls + 1) throw new Error('isolated Hermes validator receipt mismatch');
+        for (const call of parsed.calls) {
+          const hostResult = await input.validateCandidate(call.candidate);
+          if (!isDeepStrictEqual(hostResult, call.result)) throw new Error('isolated validator replay mismatch');
+        }
+        const usage = UsageSchema.parse({
+          provider: parsed.provider, model: parsed.model, inputTokens: parsed.input_tokens, outputTokens: parsed.output_tokens,
+          apiCalls: parsed.api_calls, toolAvailability: 'validator-only', availableTools: parsed.available_tools, toolCalls: parsed.tool_calls,
+          safeMode: parsed.safe_mode, userConfigIgnored: parsed.user_config_ignored, rulesIgnored: parsed.rules_ignored,
+          profile: 'none', inlinePrompt: parsed.inline_prompt, cwdIsolated: parsed.cwd_isolated, environmentAllowlisted: parsed.environment_allowlisted, sessionId: parsed.session_id,
+        });
+        return { stdout: parsed.final_response, usage };
+      } finally {
+        if (child && groupExists()) signalGroup('SIGKILL');
+        if (killTimer) clearTimeout(killTimer);
+        if (cwdCreated && invocationCwd) await rm(invocationCwd, { recursive: true, force: true }).catch(() => undefined);
+        for (const handle of [python, launcher, validator, node, tsxImport, hermesRootHandle, sitePackagesHandle]) {
+          if (handle) await handle.close().catch(() => undefined);
+        }
+      }
+    },
+  };
 }

@@ -16,6 +16,7 @@ import {
 	type RepairUnrepairableReason,
 	RepairUnrepairableReasonSchema,
 	type RepairValidationInput,
+	RepairValidationRuntimeSchema,
 	verifyLexicalPreservation,
 } from "./reconciliationRepair.js";
 
@@ -34,6 +35,7 @@ const RepairValidationIssueCodeSchema = z.enum([
 	"protected-semantic-mismatch",
 	"authoritative-validation-failed",
 	"candidate-validation-failed",
+	"maximum-submissions-exceeded",
 ]);
 
 const RepairValidationPathSchema = z
@@ -315,13 +317,17 @@ function candidatePreflight(
 export function createRepairValidationSession(
 	options: RepairValidationSessionOptions,
 ): RepairValidationSession {
+	const frozenValidation = Object.freeze(
+		snapshotJson(RepairValidationRuntimeSchema.parse(options.validation)),
+	) as RepairValidationInput;
+	const sessionOptions = { ...options, validation: frozenValidation };
 	let calls = 0;
 	let sealed: RepairEnvelope | undefined;
 	return {
 		async submit(candidate: unknown): Promise<RepairValidationResult> {
-			if (calls >= 2) throw new Error("validator submission limit exceeded");
+			if (calls >= 2)
+				return invalidResult(2, "maximum-submissions-exceeded");
 			calls += 1;
-			sealed = undefined;
 			const submissionNumber = calls as 1 | 2;
 			let snapshot: unknown;
 			try {
@@ -333,11 +339,11 @@ export function createRepairValidationSession(
 			if (!parsed.success) return schemaFailure(submissionNumber, snapshot);
 			const envelope = parsed.data;
 			if (!envelope.repairable) {
-				if (options.expectedUnrepairableReason === undefined)
+				if (sessionOptions.expectedUnrepairableReason === undefined)
 					return invalidResult(submissionNumber, "unexpected-repairability", [
 						"repairable",
 					]);
-				if (envelope.reason !== options.expectedUnrepairableReason)
+				if (envelope.reason !== sessionOptions.expectedUnrepairableReason)
 					return invalidResult(submissionNumber, "unexpected-refusal-reason", [
 						"reason",
 					]);
@@ -347,15 +353,15 @@ export function createRepairValidationSession(
 					submissionNumber,
 				});
 			}
-			const preflight = candidatePreflight(options, envelope, submissionNumber);
+			const preflight = candidatePreflight(sessionOptions, envelope, submissionNumber);
 			if (preflight) return preflight;
-			if (options.expectedUnrepairableReason !== undefined)
+			if (sessionOptions.expectedUnrepairableReason !== undefined)
 				return invalidResult(submissionNumber, "unexpected-repairability", [
 					"repairable",
 				]);
 			const evaluation = await evaluateFormatRepair({
-				originalOutput: options.originalOutput,
-				validation: options.validation,
+				originalOutput: sessionOptions.originalOutput,
+				validation: sessionOptions.validation,
 				invoke: async () => JSON.stringify(envelope),
 				timeoutMs: options.timeoutMs,
 				maxOutputBytes: options.maxOutputBytes,

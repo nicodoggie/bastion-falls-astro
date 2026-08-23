@@ -115,11 +115,15 @@ test("permits one correction and seals only the corrected candidate", async () =
 		submissionNumber: 2,
 	});
 	assert.deepEqual(session.sealedCandidate(), corrected);
-	await assert.rejects(session.submit(corrected), /submission limit/i);
+	assert.deepEqual(await session.submit(corrected), {
+		valid: false,
+		submissionNumber: 2,
+		issues: [{ code: "maximum-submissions-exceeded", path: [] }],
+	});
 	assert.equal(session.callCount(), 2);
 });
 
-test("does not fall back to an earlier valid submission after a later invalid call", async () => {
+test("retains the most recent valid submission after an invalid call", async () => {
 	const session = createRepairValidationSession({
 		originalOutput: positive.originalOutput,
 		validation: validationFor(positive),
@@ -133,11 +137,12 @@ test("does not fall back to an earlier valid submission after a later invalid ca
 		).valid,
 		true,
 	);
-	assert.equal(
-		(await session.submit({ repairable: true, repairedOutput: {} })).valid,
-		false,
-	);
-	assert.equal(session.sealedCandidate(), undefined);
+	const invalid = await session.submit({ repairable: true, repairedOutput: {} });
+	assert.equal(invalid.valid, false);
+	assert.deepEqual(session.sealedCandidate(), {
+		repairable: true,
+		repairedOutput: positive.expectedRepairedOutput,
+	});
 });
 
 test("returns bounded deterministic compiler categories and paths", async () => {
