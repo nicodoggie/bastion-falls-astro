@@ -316,22 +316,30 @@ formatter is called.
 
 ## Formatter Runtime
 
-The formatter runtime has:
+Both formatter runtimes have:
 
-- no tools;
 - no repository context;
 - no profile memory or companion identity context;
 - no external retrieval;
-- one invocation maximum;
+- one repair session maximum;
 - a strict timeout and output-byte cap;
 - an explicit model/provider identity recorded in diagnostics;
 - no fallback chain that silently changes the formatter model.
 
-The live launcher must prove these constraints: explicit safe mode, ignored rules/user
-configuration, no profile or skills, an empty owner-only cwd outside repository and fixture roots, a
-complete inline prompt with no file reference, an allowlisted environment, and a receipt proving
-zero tool availability. If that proof is unavailable, the live bake-off is blocked rather than
-weakened.
+Their tool contracts are lane-specific:
+
+- standalone Codex emits one schema-constrained final response with zero validator calls and is
+  blocked unless the synthetic adversarial preflight proves that model-exposed capabilities cannot
+  escape its empty invocation workspace;
+- Hermes exposes exactly one pure `validate_repair_json` tool, permits one or two validator calls,
+  and exposes no generic filesystem, shell, network, repository, profile, memory, skill, plugin, or
+  MCP capability.
+
+Each live launcher must prove its adapter-specific constraints through the strict receipt union:
+ignored rules/user configuration, an empty owner-only cwd outside repository and fixture roots, a
+complete inline semantic packet with no file reference, an allowlisted environment, and the exact
+zero-validator or singleton-validator contract. If that proof is unavailable, only that lane is
+blocked rather than weakened; another independently proven lane may continue.
 
 The formatter does not receive authoritative transcript evidence. It cannot perform reconciliation.
 

@@ -62,7 +62,8 @@ Repeat this packet verbatim in every implementation or review delegation:
 
 ## Phase A Stop Conditions
 
-Stop Phase A immediately and do not begin Phase B when any of these is true:
+Block the affected adapter/model lane and exclude it from accuracy/selection when any of these is
+true:
 
 - a negative fixture is falsely classified or returned as repairable;
 - any accepted repair changes its protected projection/digest or lexical content inventory;
@@ -71,7 +72,11 @@ Stop Phase A immediately and do not begin Phase B when any of these is true:
 - Hermes cannot prove that the validator was its only available tool or used one/two calls;
 - Codex reports any validator call, cannot prove exact schema/ephemeral/ignored-config operation, or
   fails the synthetic adversarial isolation canary;
-- either lane cannot prove its adapter-specific context isolation and empty owner-only workspace;
+- that lane cannot prove its adapter-specific context isolation and empty owner-only workspace.
+
+Continue with another independently proven lane. Stop all of Phase A and do not begin Phase B only
+when any of these is true:
+
 - no tested adapter/model pair passes every positive and negative fixture;
 - implementation would require modifying production reconciliation behavior.
 
