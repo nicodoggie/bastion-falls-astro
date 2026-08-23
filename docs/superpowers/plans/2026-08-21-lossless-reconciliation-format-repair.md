@@ -7,15 +7,16 @@ matched model bake-off without changing production reconciliation behavior.
 
 **Architecture:** Add a standalone TypeScript module that converts bounded JSON/Zod failures into a
 closed repair contract, protects semantic content with canonical projections or lexical inventories,
-and verifies a single injected formatter result. Add committed synthetic fixtures and a separate
-harness that exposes exactly one pure candidate-validator tool. Gate development on Luna, then
-freeze the passing configuration before evaluating Terra and Sol unchanged. Keep
-`runUnifiedReconciliation` untouched in Phase A; Phase B receives a separate plan only after the
-fixture safety gate passes.
+and verifies an injected formatter result. Add committed synthetic fixtures and a separate harness
+with two adapter lanes: a one-response standalone Codex control and a Hermes session exposing
+exactly one pure candidate-validator tool. Prove or block each adapter independently, then freeze a
+matched Terra-first, Sol-second comparison. Keep `runUnifiedReconciliation` untouched in Phase A;
+Phase B receives a separate plan only after the fixture safety gate passes.
 
 **Tech Stack:** TypeScript 6, Node.js test runner, Zod 4, Node crypto/fs/process APIs, existing
-`stableHash` and reconciliation schemas, and an isolated Hermes invocation whose only available tool
-is the local candidate validator.
+`stableHash` and reconciliation schemas, standalone `codex exec` with existing `~/.codex` OAuth
+custody, and an isolated Hermes invocation whose only available tool is the local candidate
+validator.
 
 ---
 
@@ -39,14 +40,19 @@ Repeat this packet verbatim in every implementation or review delegation:
 - The formatter may repair representation only. Protected text, source-event references, omission
   reasons, correction replacements/evidence, attribution, identities, and summary-safe content must
   remain unchanged.
-- Repair-session count is fixed at one. The sole validator tool may be called at most twice: initial
+- Repair-session count is fixed at one per lane. Standalone Codex emits one schema-constrained final
+  response with zero validator calls. Hermes may call the sole validator at most twice: initial
   submission plus one correction. Do not add configurable retries.
-- No commit may claim the model bake-off passed without receipts proving the actual serving model,
-  the exact singleton validator-tool inventory, safe mode, an empty invocation cwd, no profile, and
-  ignored user configuration/rules.
+- No commit may claim the model bake-off passed without lane-specific receipts proving the actual
+  serving model/provider, strict receipt identity, and isolated empty invocation workspace. Codex
+  additionally proves ephemeral execution, ignored config/rules, exact schema identity, zero
+  validator calls, no additional directory grants, and a passing synthetic adversarial isolation
+  canary. Hermes proves safe mode, no profile, ignored config/rules, and the exact
+  singleton-validator inventory with one or two calls.
 - If current Hermes cannot expose exactly the validator tool while excluding every other tool, stop
-  the live bake-off and report that blocker. Do not weaken this to “no other tools happened to be
-  called.”
+  that lane and report `blocked-no-validator-tool-seam`. If Codex cannot prove that its
+  model-exposed capabilities cannot escape the empty workspace, stop that lane and report
+  `blocked-no-context-isolation`. Do not weaken either proof to observed non-use.
 - Do not commit, push, reset, checkout, clean, install dependencies, or invoke live models unless
   the task explicitly authorizes that side effect.
 - Focused verification uses direct package-local commands when Corepack/pnpm is unreliable:
@@ -61,11 +67,12 @@ Stop Phase A immediately and do not begin Phase B when any of these is true:
 - a negative fixture is falsely classified or returned as repairable;
 - any accepted repair changes its protected projection/digest or lexical content inventory;
 - target response or authoritative validation fails after repair;
-- the live invocation cannot prove the requested serving model;
-- the live invocation cannot prove that the validator was the only available tool;
-- the live invocation cannot prove profile/rules/user configuration were ignored and its cwd was an
-  empty owner-only directory;
-- no tested model passes every positive and negative fixture;
+- a lane cannot prove its requested serving model/provider;
+- Hermes cannot prove that the validator was its only available tool or used one/two calls;
+- Codex reports any validator call, cannot prove exact schema/ephemeral/ignored-config operation, or
+  fails the synthetic adversarial isolation canary;
+- either lane cannot prove its adapter-specific context isolation and empty owner-only workspace;
+- no tested adapter/model pair passes every positive and negative fixture;
 - implementation would require modifying production reconciliation behavior.
 
 ### Task 1: Define Strict Repair Contracts
@@ -616,9 +623,10 @@ git commit -m "test(transcribe): add format repair fixtures"
 
 ### Task 7: Build the Isolated Formatter Bake-Off Harness
 
-**Objective:** Run the exact same fixtures through an injected formatter command, record sanitized
-receipts, and refuse live execution unless model identity and singleton-validator custody are
-provable.
+**Objective:** Run the exact same fixtures through injected formatter adapters, record sanitized
+receipts, and refuse each live lane unless its model identity and adapter-specific custody are
+provable: zero-validator/schema custody for standalone Codex or singleton-validator custody for
+Hermes.
 
 **Files:**
 
@@ -647,18 +655,26 @@ export interface FormatterAdapter {
       inputTokens: number | null;
       outputTokens: number | null;
       apiCalls: number;
-      toolAvailability: "validator-only";
-      availableTools: ["validate_repair_json"];
-      toolCalls: 1 | 2;
+      toolAvailability: "none" | "validator-only";
+      availableTools?: [] | ["validate_repair_json"];
+      toolCalls: 0 | 1 | 2;
     };
   }>;
 }
 ```
 
-Define strict `PhaseARepairReportSchema` and `PhaseAModelResultSchema` contracts. The report status
-is `passed | failed | blocked`; blocked results require one fixed reason such as
-`blocked-no-validator-tool-seam` or `blocked-no-context-isolation`. Reports contain fixture IDs and
-metrics only, never model output or private text.
+Define strict `PhaseARepairReportSchema` and `PhaseAModelResultSchema` contracts. Each adapter/model
+result is `passed | failed | blocked`. Blocked results require exactly one of:
+
+- `blocked-no-context-isolation`;
+- `blocked-no-validator-tool-seam`;
+- `blocked-model-identity-unproven`;
+- `blocked-receipt-invalid`.
+
+The sanitized report contains only adapter/model/status, blocker code or owner-only receipt digest,
+fixture IDs, classifications, and bounded metrics. It never contains internal receipts, model
+output, raw events/errors, prompts, paths, marker values, credentials, or private text. Blocked
+lanes remain visible in aggregate status but contribute no fixture accuracy or selection result.
 
 Tests prove:
 
@@ -666,8 +682,9 @@ Tests prove:
 - separate owner-only scratch/result roots;
 - no raw output, transcript text, errors, paths, prompts, or credentials in reports;
 - actual usage identity must equal requested identity;
-- any tool inventory other than exactly `validate_repair_json` rejects the run;
-- zero validator calls or more than two validator calls rejects the fixture;
+- a validator-lane inventory other than exactly `validate_repair_json` rejects the run;
+- a standalone-control receipt with tool calls or a validator receipt with zero/more than two calls
+  rejects the fixture;
 - the last valid tool argument, not assistant prose, is the authoritative candidate;
 - later models continue after ordinary fixture failure;
 - report statuses distinguish pass, fail, and blocked;
@@ -787,9 +804,10 @@ A usable adapter must produce a machine-readable receipt proving:
 - API/token usage;
 - bounded process completion.
 
-The launcher must also prove context isolation deterministically:
+The dedicated Python launcher must also prove context isolation deterministically:
 
-- invoke `hermes -z` with `--safe-mode`, which implies ignored user configuration and rules;
+- set safe-mode/config/rules isolation before importing Hermes and emit those facts from the
+  launcher, rather than synthesizing them in TypeScript;
 - pass no profile or skills;
 - run from a newly created owner-only empty cwd outside the repository and trial fixture roots;
 - pass the complete repair prompt directly, with no file/repository reference;
@@ -798,10 +816,11 @@ The launcher must also prove context isolation deterministically:
 - record these facts as strict booleans in the adapter receipt.
 
 If Hermes cannot provide that proof without profile mutation, private credential copying, or an
-unbounded plugin/tool surface, mark the adapter `blocked-no-validator-tool-seam` and stop
-before Task 10. If tool isolation works but context isolation cannot be proven, use
-`blocked-no-context-isolation`. Publish the strict Phase A report pair through the Task 7 report
-writer before stopping. Do not weaken the design.
+unbounded plugin/tool surface, mark only the Hermes lane `blocked-no-validator-tool-seam`. If tool
+isolation works but context isolation cannot be proven, use `blocked-no-context-isolation`. Publish
+the strict Phase A report pair through the Task 7 report writer. Continue to Task 9B and Task 10 so
+a separately proven Codex lane may still be evaluated and selected. Do not weaken or silently
+substitute the blocked Hermes lane.
 
 #### Step 3: If and only if proof is possible, add the adapter
 
@@ -809,11 +828,11 @@ Use argv spawning with `shell: false`, owner-only prompt/usage files, detached p
 cleanup, explicit `-m`, no fallback model, strict timeout/output bounds, and exact usage receipt
 parsing.
 
-#### Step 4: Verify with a minimal Luna canary
+#### Step 4: Retain the completed Luna diagnostic canary
 
-Run one minimal synthetic prompt. Read back the durable usage receipt and independently verify Luna,
-safe-mode/context flags, empty cwd custody, the singleton validator inventory, and captured valid
-tool arguments. Any ambiguity blocks the bake-off and publishes a blocked report.
+The already-completed Luna synthetic canary established the validator-lane invocation and receipt
+shape. Retain it as diagnostic evidence only. It is not a comparative gate or a prerequisite for
+Terra/Sol, and this amended plan authorizes no additional Luna model calls.
 
 #### Step 5: Commit only a proven adapter
 
@@ -910,12 +929,103 @@ git add \
 git commit -m "feat(transcribe): validate formatter tool submissions"
 ```
 
-### Task 10: Pass Luna, Freeze the Seam, Then Compare Terra and Sol
+### Task 9B: Add the Standalone Codex Schema-Constrained Control
 
-**Objective:** Select the cheapest safe formatter or reject model repair before production wiring.
+**Objective:** Reuse the existing standalone Codex CLI and `~/.codex` OAuth custody as the
+low-complexity one-response control without weakening isolation or model-identity proof.
 
-**Prerequisite:** Task 9 proved a validator-only invocation. Otherwise this task is blocked and
-Phase A ends honestly.
+**Files:**
+
+- Modify: `cli/src/commands/transcribe/reconciliationRepairHarness.ts`
+- Modify: `cli/src/commands/transcribe/reconciliationRepairHarness.test.ts`
+- Reuse patterns from: `cli/src/commands/transcribe/codex.ts`
+- Reuse lifecycle patterns from: `cli/src/commands/transcribe/reconciliationSummary.ts`
+- Do not modify production reconciliation or Codex correction/summarization behavior.
+
+#### Step 1: Write failing standalone-control contract tests
+
+Use a generated fake `codex` executable and prove exact argv/environment/custody:
+
+- `exec --ephemeral --ignore-user-config --ignore-rules --sandbox read-only`;
+- explicit `--model`, `--output-schema`, `--json`, `--output-last-message`, `-C`, and stdin prompt;
+- a newly created owner-only empty temporary Git repository with no `--add-dir`;
+- owner-only exact repair-envelope schema and output files;
+- allowlisted environment with ordinary standalone Codex auth discovery but no project variables;
+- bounded JSONL/output files, timeout/abort/overflow, TERM/KILL escalation, direct-child reaping,
+  and cleanup after partial setup/spawn failure;
+- strict receipt distinguishing `adapter: "standalone-codex"`, zero validator calls, actual model,
+  CLI version/config identity, schema digest, isolation flags, tokens, and API calls;
+- the exact completed/blocked receipt union and blocker vocabulary defined by the approved design;
+- missing or ambiguous actual-model/isolation evidence blocks the control rather than trusting the
+  requested argv.
+
+#### Step 2: Run focused tests and verify RED
+
+```bash
+cd cli
+node --import tsx --test \
+  src/commands/transcribe/reconciliationRepairHarness.test.ts
+```
+
+Expected: FAIL because the standalone Codex control adapter does not exist.
+
+#### Step 3: Implement the smallest adapter
+
+Generate the strict repair-envelope JSON Schema from the same closed `RepairEnvelope` contract and
+bind its exact UTF-8 bytes/digest into the receipt. Spawn the standalone `codex` executable with
+`shell: false` and stable executable custody. Do not read or copy `~/.codex/auth.json`; the Codex
+CLI owns authentication. Parse bounded `--json` events and the output file, then feed the single
+candidate through the existing deterministic host validator. Do not provide semantic feedback or
+invoke a second model turn.
+
+Before any private fixture call, run the approved synthetic adversarial isolation canary. Create
+random-marker files only in invocation-owned test paths: one readable workspace control, one sibling
+of the workspace, and one separate credential-like decoy beneath owner-only temporary storage. Ask
+every model-exposed shell/filesystem capability to read those exact decoys and attempt a request to
+a harness-owned loopback listener. Never inspect `~/.codex`, real credentials, repository content,
+or private diagnostics. Parse the complete bounded JSONL stream and independently verify
+marker/listener results. The readable workspace marker proves the canary actually exercised the
+tool; sibling and external markers must remain unreadable, and the loopback listener must receive no
+connection.
+
+The control is experimental until this canary and authoritative receipts prove all of the following:
+
+- actual serving model and provider;
+- ignored config/rules and ephemeral execution;
+- empty read-only workspace with no additional directory grants;
+- output-schema identity;
+- no extra directory grant and no model-tool escape beyond the empty invocation workspace;
+- one response, zero validator calls, and bounded process completion.
+
+Use only these blocked codes:
+
+- `blocked-no-context-isolation`;
+- `blocked-no-validator-tool-seam`;
+- `blocked-model-identity-unproven`;
+- `blocked-receipt-invalid`.
+
+A blocked Codex lane remains in adapter/model aggregate status but contributes no fixture accuracy
+or selection result. `phase-a-report.json` contains only sanitized adapter/model/status, blocker
+code or receipt digest, fixture IDs, classifications, and metrics. Owner-only internal receipts
+retain the full strict union; neither report contains raw JSONL, prompt/candidate output, paths,
+marker values, or private text. Do not weaken the gate merely to obtain comparison numbers.
+
+#### Step 4: Verify and commit
+
+Run the focused harness suite, typecheck, build,
+`python3 -m py_compile src/commands/transcribe/reconciliationRepairHermesLauncher.py`, and
+`git diff --check`. The exact existing Python candidate launcher remains in the shared harness even
+though this task modifies only TypeScript. Obtain spec and quality/security review before
+committing.
+
+### Task 10: Compare Standalone Codex and Hermes on Terra and Sol
+
+**Objective:** Select the lowest-complexity safe adapter/model pair or reject model repair before
+production wiring.
+
+**Prerequisite:** Task 9 and Task 9B each either proved its adapter or published an explicit blocked
+result. Continue when at least one lane is proven. If both lanes are blocked, publish aggregate
+blocked status and stop without fixture calls.
 
 **Files:**
 
@@ -927,23 +1037,26 @@ Phase A ends honestly.
 Hash the exact synthetic fixture module/build identity and private fixture manifest. Record the
 repair prompt version and schema version.
 
-#### Step 2: Run Luna only until the gate passes
+#### Step 2: Run one matched Terra canary
 
-Run every positive and negative fixture with the same bounds. Repeat a small representative subset
-to measure stability. Verify actual model identity from receipts. Compare the explicit plain-JSON
-control with validator-tool submission. If Luna fails, inspect only Luna receipts, repair only
-generic prompt/tool/validator defects, and rerun Luna. Do not invoke Terra or Sol yet, and do not
-add fixture-specific hints or model-name branches.
+Run `fixture-wrong-enum-location` once through each proven lane with model `gpt-5.6-terra`. Use the
+same semantic repair packet, corpus identity, host validator, and bounds. Use and separately hash
+the adapter-specific envelopes: Codex final-response schema versus Hermes tool schema/feedback
+protocol. Verify each adapter's actual identity and isolation receipt. Repair only generic
+adapter/harness defects; do not add fixture-specific hints or model-name branches.
 
-#### Step 3: Freeze the passing Luna configuration
+#### Step 3: Freeze the matched configuration
 
-Hash and record the exact prompt, tool schema/script, validator implementation, fixture corpus and
-order, and execution bounds. Make no further tuning during comparative runs.
+Hash and record the exact prompt, output schema, tool schema/script, host validator, fixture corpus
+and order, adapter implementations, CLI/runtime versions, and execution bounds. Make no further
+tuning during comparative runs.
 
-#### Step 4: Run Terra and Sol unchanged
+#### Step 4: Run Terra and Sol serially and unchanged
 
-Use the same frozen matched packet, order, bounds, and repeated subset. Do not let either model
-receive extra context, calls, retries, or between-model tuning.
+For each model, run the standalone Codex control and Hermes validator candidate over the same frozen
+non-oracular corpus, order, bounds, and repeated subset. Run Terra first and Sol second. Do not let
+either adapter/model receive extra context, retries, or between-lane tuning. Luna is not part of
+this comparative gate; retain its earlier diagnostic receipts as model-routing evidence only.
 
 #### Step 5: Compute the gate in code
 
@@ -954,8 +1067,9 @@ A passing model requires:
 - zero protected-digest/lexical mismatches;
 - zero false `repairable` outcomes;
 - target and authoritative validation pass for every accepted repair;
-- actual model and singleton-validator receipts are valid;
-- every fixture uses one repair session and no more than two validator calls.
+- actual adapter/model/isolation receipts are valid;
+- standalone Codex uses one response and zero validator calls;
+- Hermes uses one repair session and no more than two validator calls.
 
 #### Step 6: Inspect private live fixtures
 
@@ -968,8 +1082,12 @@ aggregate accuracy only.
 
 #### Step 8: Stop at the Phase A gate
 
-- If no model passes, reject production repair and return to ordinary failed-chunk recovery.
-- If at least one passes, select the lowest-cost/latency passing model.
+- If no adapter/model pair passes, reject production repair and return to ordinary failed-chunk
+  recovery.
+- If standalone Codex and Hermes both pass, select standalone Codex.
+- If only Hermes passes, retain the validator bridge.
+- If both are safe but Hermes accepts more positive fixtures, report the exact recovery versus
+  complexity/latency/token trade-off before selection.
 - Do not begin Phase B in the same task.
 
 ### Task 11: Final Phase A Verification and Review

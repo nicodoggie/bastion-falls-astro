@@ -37,19 +37,22 @@ This design owns:
 - deterministic normalization of parser and Zod issues into a bounded repair payload;
 - a closed classification of formatting-repairable and unrepairable failures;
 - protected semantic projections and digests;
-- one isolated format-repair session with exactly one available pure validator tool;
+- a standalone Codex one-response control and an isolated Hermes session with exactly one available
+  pure validator tool;
 - strict repair-envelope parsing;
 - post-repair semantic-equality, schema, identity, and authoritative validation;
 - original/repaired diagnostic custody and repair metrics;
 - a synthetic committed fixture corpus and private live fixture bake-off;
-- matched Luna, Terra, and Sol formatter evaluation;
+- matched Terra and Sol evaluation across both adapters;
 - optional production integration only after the fixture gate passes.
 
 This design does not:
 
 - add a second reconciliation or evidence-review pass;
-- allow the formatter to read transcripts, repository context, correction rules, the filesystem,
-  the network, or any tool other than the candidate validator;
+- allow either formatter lane to read transcripts, repository context, correction rules, or private
+  host files; the Hermes lane may access no network, filesystem, shell, or tool other than the
+  candidate validator, while the Codex lane is blocked unless its sandbox demonstrably prevents
+  model tools from escaping the empty invocation workspace;
 - retry empty, truncated, timed-out, identity-mismatched, or evidence-invalid output as formatting;
 - make repair attempts configurable;
 - relax source-event accounting, canonical status derivation, cache identity, or filesystem custody;
@@ -88,8 +91,9 @@ raw reconciliation output
      -> success: deterministic canonical compilation
      -> eligible formatting failure:
           -> build bounded repair payload
-          -> one validator-only repair session
-          -> capture and validate the authoritative tool argument
+          -> one selected repair session
+             -> standalone Codex: one schema-constrained final response
+             -> Hermes: capture the authoritative validator-tool argument
           -> protected semantic equality
           -> target schema and identity validation
           -> deterministic canonical compilation
@@ -240,13 +244,20 @@ The formatter receives a fixed instruction:
 The instruction includes both complete envelope examples above rather than requiring the model to
 infer a private shape from the phrase "repair envelope."
 
-### Validator-tool submission
+### Standalone Codex submission
 
-The formatter has exactly one available tool, `validate_repair_json`. Its sole argument is a
-`RepairEnvelope`. The tool is implemented by a pure local script and receives only the candidate,
-the frozen repair payload, and the deterministic validation authority already owned by the harness.
-It has no filesystem, network, shell, repository, transcript, memory, credential, or generic tool
-access.
+The standalone Codex control receives the same semantic repair packet plus the exact final-response
+JSON Schema. It emits one response and receives no host-validation feedback. The host then parses
+and validates that candidate deterministically. Any malformed, semantically changed, or unrepairable
+candidate fails the fixture without a second response.
+
+### Hermes validator-tool submission
+
+The Hermes validator candidate has exactly one available tool, `validate_repair_json`. Its sole
+argument is a `RepairEnvelope`. The tool is implemented by a pure local script and receives only the
+candidate, the frozen repair payload, and the deterministic validation authority already owned by
+the harness. It has no filesystem, network, shell, repository, transcript, memory, credential, or
+generic tool access.
 
 The tool validates the exact envelope union, target reconciliation schema, immutable identity,
 protected semantic equality, source-event accounting, and permitted structural repair. On failure it
@@ -363,14 +374,23 @@ model or context/tool isolation cannot be proven.
 
 ## Calls, Retries, and Stop Rules
 
-The top-level repair-session count is fixed at one and is not configurable in this version. Within
-that session, the validator tool may be called at most twice: one initial submission and one bounded
-correction. Provider API calls and validator calls are recorded separately and truthfully.
+The top-level repair-session count is fixed at one and is not configurable in this version.
+Adapter-level accounting is lane-specific:
+
+- standalone Codex emits one schema-constrained response, makes one provider API call, and makes
+  zero validator calls;
+- Hermes uses one session, makes one or two provider API calls, and calls the singleton validator
+  one or two times: initial submission plus at most one bounded correction.
+
+Provider API calls and validator calls are recorded separately and truthfully. Evaluator-level
+`calls` and `retries` retain the existing aggregate contract and count the original reconciliation
+plus the single repair session, not internal provider turns:
 
 - ordinary success: `calls = 1`, `retries = 0`;
 - repaired success: `calls = 2`, `retries = 1`;
 - repair unavailable, unrepairable, invalid, or digest-mismatched: fail the current chunk;
-- never invoke a second formatter session or permit a third validator call;
+- never invoke a second formatter session, a second standalone Codex response, or a third Hermes
+  validator call;
 - never silently fall through to a full reconciliation retry.
 
 Production chunk resume remains separate: validated earlier canonical chunks are reused when their
@@ -418,12 +438,90 @@ Hermes framing, and other bounded failures. They are never committed.
 
 ## Formatter Model Bake-Off
 
-The same non-oracular model corpus is run with no profile context and exactly one available
-validator tool. Model-facing payloads contain only the original output, deterministic
-classification, and normalized issue codes—never fixture IDs, expectations, expected repaired
-output, or expected refusal reasons. The actual model/provider identity and exact tool inventory are
-verified from durable usage/session receipts. The harness first compares an explicit
-plain-JSON-envelope control with validator-tool submission using Luna only.
+The same non-oracular model corpus is run through two matched adapters:
+
+1. **Standalone Codex control.** Invoke the existing `codex exec` CLI using its ordinary `~/.codex`
+   OAuth custody, an explicit model, `--ephemeral`, `--ignore-user-config`, `--ignore-rules`,
+   `--sandbox read-only`, and an owner-only repair-envelope JSON Schema. Run from a newly created
+   empty owner-only temporary Git repository with no additional directories. The model gets one
+   schema-constrained response and deterministic host validation afterward; it gets no semantic
+   correction feedback.
+1. **Hermes validator candidate.** Run with no profile context and exactly one available pure
+   validator tool. Permit one repair session with an initial submission and at most one correction
+   after bounded deterministic feedback. The last valid tool argument is authoritative.
+
+Model-facing payloads contain only the original output, deterministic classification, and normalized
+issue codes—never fixture IDs, expectations, expected repaired output, or expected refusal reasons.
+Both adapters receive the same **semantic repair packet**: original output, normalized issues,
+corpus, order, requested model identity, and host-validation bounds. Adapter-specific transport
+bytes necessarily differ: Codex receives a final-response JSON Schema, while Hermes receives a
+singleton tool schema and may receive bounded validation feedback. Hash the shared semantic packet
+and each adapter envelope separately. Their isolation and actual model/provider identity must be
+proven independently from durable receipts.
+
+The Codex isolation preflight uses only synthetic decoys. Before any private fixture call, create
+owner-only random-marker files in three locations: a readable workspace control, a sibling
+directory, and a separate owner-only temporary directory representing a credential-like path. Invoke
+an explicit adversarial canary that attempts to read each exact decoy through every model-exposed
+filesystem or shell capability and attempts a network request to a harness-owned loopback listener.
+Never point the canary at `~/.codex`, real credentials, repository files, or private diagnostics.
+Parse the complete bounded Codex JSONL event stream and independently inspect the marker/listener
+results. The workspace marker must be returned to prove the canary exercised the tool; sibling and
+external markers must not be returned, and the loopback listener must receive no connection. If
+Codex's read-only sandbox permits arbitrary host reads, hides tool events, or cannot prove these
+properties, the control is `blocked-no-context-isolation`; do not run private fixtures through it.
+
+Every lane invocation emits an owner-only strict internal receipt. The sanitized Phase A report does
+not embed these receipts or raw events; it records only their digest and bounded status/metrics:
+
+```ts
+type AdapterReceipt =
+  | {
+      status: "completed";
+      adapter: "standalone-codex";
+      provider: string;
+      model: string;
+      apiCalls: 1;
+      validatorCalls: 0;
+      schemaDigest: string;
+      semanticPacketDigest: string;
+      adapterEnvelopeDigest: string;
+      ephemeral: true;
+      ignoredUserConfig: true;
+      ignoredRules: true;
+      emptyWorkspace: true;
+      noAdditionalDirectories: true;
+      adversarialIsolationPassed: true;
+    }
+  | {
+      status: "completed";
+      adapter: "hermes-validator";
+      provider: string;
+      model: string;
+      apiCalls: 1 | 2;
+      validatorCalls: 1 | 2;
+      semanticPacketDigest: string;
+      adapterEnvelopeDigest: string;
+      singletonValidator: true;
+      ignoredUserConfig: true;
+      ignoredRules: true;
+      emptyWorkspace: true;
+    }
+  | {
+      status: "blocked";
+      adapter: "standalone-codex" | "hermes-validator";
+      code:
+        | "blocked-no-context-isolation"
+        | "blocked-no-validator-tool-seam"
+        | "blocked-model-identity-unproven"
+        | "blocked-receipt-invalid";
+    };
+```
+
+Blocked lanes remain visible in adapter/model-level aggregate status but contribute no fixture
+accuracy or selection result. The sanitized report contains adapter/model/status, blocker code or
+receipt digest, fixture IDs, classifications, and metrics only—never prompts, raw events, candidate
+output, paths, marker values, or private text.
 
 Measure:
 
@@ -435,6 +533,7 @@ Measure:
 - added/removed content-token counts;
 - first-submission and corrected-submission success;
 - provider API calls, validator calls, runtime, and token use;
+- adapter identity and isolation regime;
 - stability on a small repeated subset.
 
 A model passes only with:
@@ -444,11 +543,22 @@ A model passes only with:
 - no false `repairable` result;
 - valid target output for every positive fixture.
 
-Luna is the development gate. Until Luna passes every positive and negative fixture, Terra and Sol
-are not invoked. Once Luna passes, freeze and hash the prompt, tool schema/script, validator,
-fixtures, order, and bounds before running Terra and Sol unchanged. Do not tune between comparative
-models. Among passing models, select the lowest-cost and lowest-latency option. The selected model
-is not wired into production until this gate passes.
+Luna is excluded from the comparative validator gate after the bounded diagnostics showed that it
+can perform a plain exact-envelope repair but is unreliable as the controller of the iterative
+validator protocol. Run Terra first, then Sol as the matched orchestration control. For each model,
+run the standalone Codex control and Hermes validator candidate against frozen bytes. Do not tune
+between adapters or models.
+
+Selection is complexity-aware:
+
+- if standalone Codex and Hermes both pass every safety gate, select standalone Codex;
+- if only Hermes passes, retain the validator bridge;
+- if both are safe but Hermes accepts materially more positive fixtures, report the exact recovery,
+  latency, token, and maintenance trade-off before selecting it;
+- if neither passes, reject automatic production repair.
+
+The selected adapter/model is not wired into production until this gate passes and Phase B receives
+a separate approved plan.
 
 ## Testing Strategy
 
@@ -478,9 +588,9 @@ Injected formatter responses prove:
 
 ### Live fixture gate
 
-Run Luna first against synthetic and private fixtures through the exact validator-tool seam. Only
-after Luna passes and the configuration is frozen may Terra and Sol receive the same matched packet.
-Do not use a full August 15 reconciliation run as the first formatter test.
+Run one Terra canary through both exact adapters, freeze and hash the complete matched packet, then
+run the synthetic and private fixture corpus through Terra followed by Sol. Do not use a full August
+15 reconciliation run as the first formatter test.
 
 ### Integration tests after Phase A approval
 
@@ -492,8 +602,12 @@ diff checks.
 
 - Private raw/repaired outputs remain owner-only in isolated diagnostics.
 - Reports contain classifications and metrics, not transcript text or raw errors.
-- The repairer can access only the pure candidate validator; it cannot access files, network,
-  repository context, memory, credentials, shell, transcript sources, or generic tools.
+- The Hermes candidate can access only the pure candidate validator; it cannot access files,
+  network, repository context, memory, credentials, shell, transcript sources, or generic tools.
+- The standalone Codex control receives no repository/transcript files beyond the inline repair
+  packet. It runs ephemerally in an empty read-only sandbox with ignored user configuration/rules
+  and an exact output schema. If its ordinary agent capability or credential custody cannot be
+  proven acceptably isolated, mark that adapter blocked.
 - Repair output is untrusted until all deterministic checks pass.
 - Source receipt, cache identity, filesystem containment, and canonical publication rules are
   unchanged.
@@ -506,8 +620,10 @@ Phase A is complete when:
 1. classifier and protected-projection logic pass focused tests;
 1. synthetic positive and negative fixtures pass deterministically;
 1. private live fixtures are inventoried without publication;
-1. Luna/Terra/Sol bake-off receipts identify the actual serving model;
-1. at least one model passes every safety gate, or the feature is honestly rejected as unsuitable;
+1. matched standalone-Codex and Hermes receipts identify the actual serving adapter and model;
+1. Terra and Sol are compared on frozen matched packets without between-lane tuning;
+1. at least one adapter/model pair passes every safety gate, or the feature is honestly rejected as
+   unsuitable;
 1. no production reconciliation path calls the formatter.
 
 Phase B is complete when:
