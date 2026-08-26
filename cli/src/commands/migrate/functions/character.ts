@@ -56,15 +56,41 @@ const migrateCharacter: MigrateMapFunction<
     ddb: ddb && ddb?.trim() !== '' ? ddb : undefined,
     image,
     details: {
-      age: Number(legacyCharacter?.age) || undefined,
-      dateOfBirth: legacyCharacter?.date_of_birth ?? undefined,
-      dateOfDeath: legacyCharacter?.date_of_death ?? undefined,
+      age:
+        legacyCharacter?.age === undefined || legacyCharacter?.age === ""
+          ? undefined
+          : Number(legacyCharacter.age),
       sex: legacyCharacter?.sex ?? undefined,
       pronouns: legacyCharacter?.pronouns ?? undefined,
       aliases: legacyCharacter?.aliases ?? undefined,
       height: legacyCharacter?.height ?? undefined,
       weight: legacyCharacter?.weight ?? undefined,
-      mortality: mortality_status?.toLowerCase() ?? 'alive',
+      mortality: (() => {
+        const status = (mortality_status?.toLowerCase() ?? "alive") as
+          | "alive"
+          | "dead"
+          | "undead"
+          | "unknown";
+        const birth = legacyCharacter?.date_of_birth || undefined;
+        const death = legacyCharacter?.date_of_death || undefined;
+        return {
+          status,
+          phases: [
+            ...(birth
+              ? [
+                  {
+                    type: "birth" as const,
+                    from: birth,
+                    ...(death ? { to: death } : {}),
+                  },
+                ]
+              : []),
+            ...(status === "undead"
+              ? [{ type: "undeath" as const, species: "unknown" }]
+              : []),
+          ],
+        };
+      })(),
       species: legacyCharacter?.species ?? 'human',
       sexOrgans,
     },

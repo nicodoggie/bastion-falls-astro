@@ -4,7 +4,10 @@ import type {
   CharacterFamily,
   CharacterOrganization,
 } from "@bastion-falls/types/Character";
+import { resolveCharacterAge } from "@bastion-falls/types/CharacterAge";
 import { slug } from "github-slugger";
+import { BastionNow } from "../../lib/bastion-now";
+import CharacterAgeDetail from "./CharacterAgeDetail.astro";
 import CharacterPcStats from "./CharacterPcStats.astro";
 import CharacterSexOrgans from "./CharacterSexOrgans.astro";
 import SidebarCard from "./SidebarCard.astro";
@@ -13,8 +16,14 @@ import SidebarMedia from "./SidebarMedia.astro";
 
 const { character, filePath } = Astro.props;
 
+const details = character.details;
+const resolvedAge =
+  details === undefined
+    ? undefined
+    : resolveCharacterAge(details, BastionNow.date());
+
 let mortalityIcon: string;
-switch (character.details.mortality) {
+switch (character.details?.mortality?.status) {
   case "dead":
     mortalityIcon = "💀";
     break;
@@ -25,7 +34,7 @@ switch (character.details.mortality) {
     mortalityIcon = "🧟";
     break;
   case "unknown":
-    mortalityIcon = "�";
+    mortalityIcon = "?";
     break;
   default:
     mortalityIcon = "";
@@ -147,25 +156,13 @@ if (character?.relationships?.families) {
   )}
   <CharacterPcStats character={character} />
   <dl class="divide-y divide-gray-200 dark:divide-gray-700">
-    {character.details?.age && (
-          <SidebarDetail label="Age">{character.details.age}</SidebarDetail>
-        )}
-    {character.details?.dateOfBirth && (
-          <SidebarDetail label="Date of Birth">
-            {character.details.dateOfBirth}
-          </SidebarDetail>
-        )}
-    {character.details?.dateOfDeath && (
-          <SidebarDetail label="Date of Death">
-            {character.details.dateOfDeath}
-          </SidebarDetail>
-        )}
-    {character?.details.sex && (
+    {resolvedAge && <CharacterAgeDetail age={resolvedAge} />}
+    {character?.details?.sex && (
           <SidebarDetail label="Sex">
             {character.details.sex}{character.details.pronouns && ` (${character.details.pronouns})`}
           </SidebarDetail>
         )}
-    {character?.details.sexOrgans && character.details.sexOrgans.length > 0 && (
+    {character?.details?.sexOrgans && character.details.sexOrgans.length > 0 && (
           <SidebarDetail label="Genitalia" layout="stacked">
               <CharacterSexOrgans sexOrgans={character.details.sexOrgans} />
           </SidebarDetail>

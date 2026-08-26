@@ -23,12 +23,19 @@ character:
   speed:
     base: 30
   details:
-    age: 33
-    dateOfBirth: 1241-06-13 AI
-    dateOfDeath: 1275-08-09 AI
+    mortality:
+      status: undead
+      phases:
+        - type: birth
+          from: 1241-06-13 AI
+          to: 1275-08-09 AI
+          species: human
+        - type: undeath
+          from: 1275-08-09 AI
+          species: revenant
+
     sex: Male
     pronouns: He/Him
-    mortality: undead
     species: human
     sexOrgans: []
   relationships:
@@ -47,6 +54,7 @@ character:
       - name: Savoy
 ---
 
-**Oscar Savoy** is an undead human druid of House Savoy. During the later Vengeful affair, he,
+**Oscar Savoy** is a revenant and an undead human druid of House Savoy. During the later Vengeful
+affair, he,
 [Minfilia Diaz](minfilia-diaz.mdx), [Fina](proserfina-prunus-subhirtella.mdx), and
 [Cotto](cotto.mdx) became trapped in a time loop in [Thrantorbury](../locations/thrantorbury.mdx).

@@ -1,0 +1,35 @@
+{
+	"name": "@bastion-falls/fantasy-calendar",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./schemas": {
+			"types": "./dist/content-schemas.d.ts",
+			"import": "./dist/content-schemas.js"
+		}
+	},
+	"scripts": {
+		"clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+		"build": "pnpm run clean && tsc -p tsconfig.json",
+		"typecheck": "tsc --noEmit",
+		"test": "node --import tsx --test test/**/*.test.ts"
+	},
+	"dependencies": {
+		"@bastion-falls/calendar": "workspace:^",
+		"zod": "~4.3.6"
+	},
+	"devDependencies": {
+		"tsx": "^4.23.1",
+		"typescript": "6.0.3"
+	},
+	"volta": {
+		"extends": "../../package.json"
+	}
+}

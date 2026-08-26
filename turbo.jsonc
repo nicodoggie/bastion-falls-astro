@@ -1,12 +1,23 @@
 {
   "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
+    "@bastion-falls/calendar#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+    },
+    "@bastion-falls/fantasy-calendar#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+    },
     "@bastion-falls/5e-schema-zod#build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/index.js", "dist/index.d.ts"],
     },
     "@bastion-falls/cli#build": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build",
+        "@bastion-falls/types#build"
+      ],
       "outputs": [
         "dist/bash-complete.js",
         "dist/cli.js",
@@ -37,6 +48,25 @@
     "@bastion-falls/zarifa-bot#build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"],
+    },
+    "@bastion-falls/astro#build": {
+      "cache": false,
+      "dependsOn": [
+        "^build",
+        "@bastion-falls/cli#build",
+        "@bastion-falls/types#build",
+        "@bastion-falls/astro-lexicon-integration#build",
+        "@bastion-falls/satteri-auto-import#build",
+        "@bastion-falls/satteri-markmap#build",
+        "@bastion-falls/calendar#build",
+        "@bastion-falls/fantasy-calendar#build"
+      ],
+      "passThroughEnv": [
+        "BASTION_CALENDAR_OFFLINE",
+        "BASTION_CALENDAR_FETCH_TIMEOUT_MS",
+        "BASTION_CALENDAR_FETCH_RETRIES",
+      ],
+      "outputs": [".astro/**", "dist/**"],
     },
     "build": {
       "dependsOn": ["^build"],

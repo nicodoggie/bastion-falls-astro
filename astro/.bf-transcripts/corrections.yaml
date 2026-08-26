@@ -7725,6 +7725,9 @@ profiles:
           - type: note
             path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
             role: supporting
+          - type: note
+            path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            role: possible-family-relationship
         aliases:
           - Vice Admiral Donmar
           - Vice Marshal Donmar
@@ -7754,13 +7757,17 @@ profiles:
         instruction: >
           Tyrion is the officer's first name and Donmar is his surname. Keep Vice
           Marshal Tyrion Donmar distinct from the different Donmar associated with
-          the Narrows and the Great Erected One. Do not globally replace bare
-          Donmar references without resolving which person the context identifies.
+          the Narrows and the Great Erected One. They may nevertheless be relatives:
+          Tyrion mentioned having family in the Narrows. Do not globally replace
+          bare Donmar references without resolving which person the context
+          identifies, and do not promote the possible relationship to confirmed.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-01.mdx
             note: User confirmed on 2026-08-05 that the officer is Vice Marshal Tyrion Donmar.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
             note: The following session independently records Tyrion Donmar and distinguishes him from the Narrows Donmar.
+          - path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            note: User clarified on 2026-08-20 that Tyrion mentioned relatives in the Narrows, making kinship possible but unconfirmed.
 
       - id: organization.unnamed-anti-parasite-effort
         status: confirmed
@@ -8203,3 +8210,256 @@ profiles:
               The opening microphone check records the participant name at
               00:00:03; the user confirmed its spelling as Eevee during this
               transcription run.
+
+      - id: mechanics.parasite-proximity-reaction
+        status: confirmed
+        kind: mechanic
+        canonical: Live host parasites react to nearby captive parasites
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            role: repeated-observation
+          - type: note
+            path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-15.mdx
+            role: current-session
+        aliases:
+          - parasite proximity reaction
+          - host spasms near captive parasite
+          - parasites seek one another
+          - parasite flask reaction
+        match:
+          priority: high
+          tags:
+            - parasites
+            - host-reaction
+            - captive-parasite
+            - proximity
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - live parasite brought near an infected host
+            - captive parasite in a flask or vial
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          A live parasite inside a host reacts to a nearby live captive parasite,
+          causing the host to spasm, writhe, or reach. Treat this repeated reaction
+          as established rather than reopening its cause or attributing it to a
+          Ring of Mind Shielding.
+        instruction: >
+          Keep the established proximity reaction separate from still-open
+          questions about parasite directives, network control, ascension claims,
+          and why moving a parasite toward a Bag of Holding incapacitates a host.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: A captive with a live parasite reached and writhed when an extracted parasite approached.
+          - path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-15.mdx
+            note: User confirmed on 2026-08-20 that the operative's spasms were the same repeatedly attested proximity reaction.
+
+      - id: character.crispin-mallow-projected-rank
+        status: confirmed
+        kind: boundary
+        canonical: Crispin Mallow's projected office and unresolved actual rank
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/crispin-mallow.mdx
+            role: primary
+          - type: note
+            path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-15.mdx
+            role: biomancy-guess
+          - type: note
+            path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            role: higher-rank-theory
+        aliases:
+          - Bearer of the Candle
+          - Candlebearer
+          - biomancer
+          - higher-ranking Reformist
+        match:
+          priority: high
+          tags:
+            - crispin-mallow
+            - bearer-of-the-candle
+            - candlebearer
+            - biomancy
+            - reformist-rank
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Crispin Mallow's nature, methods, and Reformist rank
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Biomancy is a Feywild field of magical research that uses body parts to
+          stitch together new biological forms. Hellion compared Crispin Mallow's
+          work with that field; the comparison does not establish that Mallow is
+          trained in it or that biomancer is his canonical nature or office.
+          Bearer of the Candle is the office he projects. His actual Reformist
+          rank remains unresolved and may be higher than the party first supposed.
+        instruction: >
+          Preserve biomancy as Hellion's informed Feywild analogy for Mallow's
+          methods rather than reducing it to an unsupported guess or promoting it
+          to an omniscient classification. Attribute Candlebearer rank claims to
+          their speakers and do not flatten the later higher-rank possibility into
+          a settled office. In the August 15 missing-person discussion, the man
+          referred to indirectly as exploiting the group's suffering is Mallow;
+          this does not by itself prove that he is the unnamed superior described
+          by the captured operative.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-15/corrected_transcript.md
+            note: Hellion compares Mallow's use of harvested body parts and patchwork forms with biomancy.
+          - path: astro/.bf-transcripts/session-2026-08-16/corrected_transcript.md
+            note: Angel raises the possibility that Mallow is of a higher rank than previously supposed.
+          - path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-15.mdx
+            note: User clarified the Feywild research analogy, projected office, unresolved rank, and indirect Mallow referent on 2026-08-20.
+
+      - id: place.goats-head
+        status: confirmed
+        kind: place
+        canonical: Goat's Head
+        canonicalRefs:
+          - type: note
+            path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-15.mdx
+            role: primary
+        aliases:
+          - Goats Head
+          - Goat Head
+          - the Goat's Head
+        match:
+          priority: normal
+          tags:
+            - goats-head
+            - maidens-field
+            - reformist-recruits
+            - homestead
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - homestead holding the displaced recruits' families
+            - edge of Maiden's Field
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Goat's Head is the canonical name of the small homestead at the edge of
+          Maiden's Field where the displaced recruits said their families were
+          living. Do not reopen the name as an uncertain transcription fragment.
+        instruction: >
+          Preserve the recruits' claim about their families' location without
+          treating it as proof of the families' present condition or the
+          Reformists' exact control of the homestead.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-15/corrected_transcript.md
+            note: The recruits directly identify their families' location as the small homestead called Goat's Head.
+          - path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-15.mdx
+            note: User promoted Goat's Head as canonical on 2026-08-20.
+
+      - id: character.leland-lotan-kethbjorn-separation
+        status: confirmed
+        kind: boundary
+        canonical: Leland, Lotan, and Kethbjorn are distinct people
+        canonicalRefs:
+          - type: note
+            path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            role: primary
+        aliases:
+          - Lotan wearing Leland's face
+          - original Leland
+          - Lotan wearing Kethbjorn's face
+          - glyph on Lotan
+        match:
+          priority: high
+          tags:
+            - leland
+            - lotan
+            - kethbjorn
+            - face-stealer
+            - glyph-of-warding
+            - mallow-puppet
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-08-16"
+          contexts:
+            - Lord's Judgment pursuit
+            - rooftop capture
+            - pursuit across the river
+            - missing Castle Rannek personnel
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Keep Leland, Lotan, and Kethbjorn distinct. Leland is the genuine missing
+          Castle Rannek soldier found altered and puppeted; the Glyph of Warding
+          was placed on him. Tracking that glyph led the party to Lotan, a separate
+          coerced Face-Stealer wearing Kethbjorn's face and voice. The real
+          Kethbjorn remained among Mallow's captives.
+        instruction: >
+          Do not describe Lotan as wearing Leland's face, do not place the glyph on
+          Lotan, and do not treat finding either altered man as proof that the real
+          Kethbjorn was rescued. Finding Leland reduced the missing-person count;
+          capturing Lotan did not.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-16/corrected_transcript.md
+            note: Later callbacks identify the first captive as Leland and the second captive as Lotan wearing Kethbjorn's face.
+          - path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            note: User settled the Leland, Lotan, Kethbjorn, and glyph sequence on 2026-08-20.
+
+      - id: family.malthrek-succession-mark
+        status: confirmed
+        kind: relationship
+        canonical: Mark Malthrek succeeds Ellington as Duke of Malthrek
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/ellington-malthrek.mdx
+            role: outgoing-duke
+          - type: article
+            path: astro/src/content/docs/world/characters/mark-malthrek.mdx
+            role: successor
+          - type: note
+            path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            role: succession-announcement
+        aliases:
+          - Duke Mark
+          - Mark will be Duke
+          - Duke Luke
+          - Malthrek abdication
+        match:
+          priority: high
+          tags:
+            - malthrek-succession
+            - ellington-malthrek
+            - mark-malthrek
+            - luke-malthrek
+            - abdication
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-08-16"
+          contexts:
+            - Ellington and Antoinette's abdication
+            - succession to the Malthrek dukedom
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Duke Ellington Malthrek and Duchess Antoinette announced their
+          abdication after helping repair the damage caused during their rule.
+          Their younger son Mark, not their eldest son Luke, was named to succeed
+          Ellington as Duke of Malthrek.
+        instruction: >
+          Do not default the succession to Luke by primogeniture. Keep the announced
+          future succession distinct from claiming that Mark had already completed
+          every legal or ceremonial step of accession during the scene.
+        evidence:
+          - path: astro/.bf-transcripts/session-2026-08-16/corrected_transcript.md
+            note: The council states that Mark will be Duke after Ellington and Antoinette abdicate, followed by jokes contrasting Duke Mark with Duke Luke.
+          - path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
+            note: User confirmed Ellington's name, abdication, and Mark's succession over Luke on 2026-08-20.
