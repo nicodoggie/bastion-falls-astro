@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
+import { constants } from "node:fs";
+import { open } from "node:fs/promises";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import type { RepairValidationInput } from "./reconciliationRepair.js";
@@ -251,6 +253,56 @@ test("runs as a bounded stdin/stdout validator script", async () => {
 		valid: true,
 		submissionNumber: 1,
 	});
+});
+
+test("runs through descriptor-backed Node, loader, and script paths", async () => {
+	const node = await open(
+		process.execPath,
+		constants.O_RDONLY | constants.O_NOFOLLOW,
+	);
+	const loader = await open(
+		fileURLToPath(import.meta.resolve("tsx")),
+		constants.O_RDONLY | constants.O_NOFOLLOW,
+	);
+	const validator = await open(
+		fileURLToPath(
+			new URL("./reconciliationRepairValidatorTool.ts", import.meta.url),
+		),
+		constants.O_RDONLY | constants.O_NOFOLLOW,
+	);
+	try {
+		const child = spawn(
+			`/proc/self/fd/${node.fd}`,
+			["--import", "/proc/self/fd/4", "/proc/self/fd/5"],
+			{
+				stdio: ["pipe", "pipe", "pipe", node.fd, loader.fd, validator.fd],
+			},
+		);
+		const stdout: Buffer[] = [];
+		const stderr: Buffer[] = [];
+		child.stdout?.on("data", (chunk: Buffer) => stdout.push(chunk));
+		child.stderr?.on("data", (chunk: Buffer) => stderr.push(chunk));
+		child.stdin?.end(
+			JSON.stringify({
+				originalOutput: positive.originalOutput,
+				validation: validationFor(positive),
+				candidate: {
+					repairable: true,
+					repairedOutput: positive.expectedRepairedOutput,
+				},
+			}),
+		);
+		const code = await new Promise<number | null>((resolve) =>
+			child.on("close", resolve),
+		);
+		assert.equal(code, 0, Buffer.concat(stderr).toString("utf8"));
+		assert.deepEqual(JSON.parse(Buffer.concat(stdout).toString("utf8")), {
+			valid: true,
+			submissionNumber: 1,
+		});
+	} finally {
+		await Promise.all([node.close(), loader.close(), validator.close()]);
+	}
 });
 
 test("returns sanitized bounded feedback for malformed and oversized script input", async () => {

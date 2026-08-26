@@ -365,15 +365,21 @@ process.stdin.on('end', () => {
 test('Hermes launcher main constructs an agent and records the direct RepairEnvelope', async () => {
   const root = await mkdtemp(join(tmpdir(), 'phase-a-hermes-launcher-e2e-'));
   const launcher = join(dirname(fileURLToPath(import.meta.url)), 'reconciliationRepairHermesLauncher.py');
-  await writeFile(join(root, 'run_agent.py'), `from agent.transports.codex import ResponsesApiTransport
+  await writeFile(join(root, 'run_agent.py'), `import os
+from agent.transports.codex import ResponsesApiTransport
 import run_agent
 class AIAgent:
     def __init__(self, **kwargs):
-        self.session_id = 'e2e-session'; self.transport = ResponsesApiTransport(); self.tools = self.transport.build_kwargs()['tools']
+        self.session_id = 'e2e-session'; os.environ['HERMES_SESSION_ID'] = self.session_id; os.environ['MATRIX_ACCESS_TOKEN'] = 'must-not-survive'; self.transport = ResponsesApiTransport(); self.tools = self.transport.build_kwargs()['tools']
     def run_conversation(self, prompt):
+        assert 'MATRIX_ACCESS_TOKEN' not in os.environ
+        self.transport.build_kwargs(); run_agent.handle_function_call('validate_repair_json', {'repairable': True, 'repairedOutput': {}})
         self.transport.build_kwargs(); run_agent.handle_function_call('validate_repair_json', {'repairable': False, 'reason': 'unsupported-repair'})
-        return {'input_tokens': 7, 'output_tokens': 5, 'api_calls': 2, 'completed': True, 'failed': False, 'partial': False, 'final_response': 'ignored prose'}
-    def close(self): pass
+        os.environ['TELEGRAM_BOT_TOKEN'] = 'must-also-not-survive'
+        return {'input_tokens': 7, 'output_tokens': 5, 'api_calls': 3, 'completed': True, 'failed': False, 'partial': False, 'final_response': 'ignored prose'}
+    def close(self):
+        assert 'MATRIX_ACCESS_TOKEN' not in os.environ
+        assert 'TELEGRAM_BOT_TOKEN' not in os.environ
 `, { mode: 0o600 });
   await mkdir(join(root, 'agent', 'transports'), { recursive: true, mode: 0o700 });
   await writeFile(join(root, 'agent', '__init__.py'), '', { mode: 0o600 }); await writeFile(join(root, 'agent', 'transports', '__init__.py'), '', { mode: 0o600 });
@@ -395,14 +401,15 @@ os.execv(sys.executable, [sys.executable, sys.argv[6], *sys.argv[7:]])
   const python = (await promisify(execFile)('which', ['python3'])).stdout.trim();
   const input = JSON.stringify({ prompt: 'repair prompt', originalOutput: '{}', validation: {}, expectedUnrepairableReason: 'unsupported-repair', nodeExecutable: process.execPath, tsxImportPath: tsx, validatorTimeoutSeconds: 2, path: process.env['PATH'] ?? '', home: process.env['HOME'] ?? '' });
   try {
-    const childProcess = spawn(python, [wrapper, validator, process.execPath, tsx, root, root, launcher, '--model', 'gpt-test', '--provider', 'openai-codex', '--validator-fd', '5', '--node-fd', '6', '--tsx-fd', '7', '--hermes-root-fd', '8', '--site-packages-fd', '9'], { env: { ...process.env, PYTHONPATH: root }, cwd: root, stdio: ['pipe', 'pipe', 'pipe'] });
+    const childProcess = spawn(python, [wrapper, validator, process.execPath, tsx, root, root, launcher, '--model', 'gpt-test', '--provider', 'openai-codex', '--validator-fd', '5', '--node-fd', '6', '--tsx-fd', '7', '--hermes-root-fd', '8', '--site-packages-fd', '9'], { env: { PATH: process.env['PATH'] ?? '', HOME: process.env['HOME'] ?? '', LANG: 'C.UTF-8' }, cwd: root, stdio: ['pipe', 'pipe', 'pipe'] });
     const stdoutPromise = new Promise<string>((resolve, reject) => { let stdout = ''; let stderr = ''; childProcess.stdout.on('data', (chunk) => { stdout += chunk; }); childProcess.stderr.on('data', (chunk) => { stderr += chunk; }); childProcess.on('error', reject); childProcess.on('close', (code) => code === 0 ? resolve(stdout) : reject(new Error(`launcher exited ${code}: ${stderr}`))); });
     childProcess.stdin.end(input);
     const stdout = await stdoutPromise;
-    const parsed = JSON.parse(stdout) as { calls: Array<{ candidate: unknown; result: unknown }>; available_tools: string[]; tool_calls: number; safe_mode: boolean; final_response: string };
+    const parsed = JSON.parse(stdout) as { calls: Array<{ candidate: unknown; result: unknown }>; available_tools: string[]; tool_calls: number; safe_mode: boolean; environment_allowlisted: boolean; session_id: string; final_response: string };
     assert.ok(parsed.calls, JSON.stringify(parsed));
-    assert.deepEqual(parsed.calls[0]!.candidate, { repairable: false, reason: 'unsupported-repair' }); assert.deepEqual(parsed.calls[0]!.result, { valid: true, submissionNumber: 1 });
-    assert.deepEqual(parsed.available_tools, ['validate_repair_json']); assert.equal(parsed.tool_calls, 1); assert.equal(parsed.safe_mode, true); assert.equal(parsed.final_response, 'ignored prose');
+    assert.deepEqual(parsed.calls[0]!.candidate, { repairable: true, repairedOutput: {} }); assert.deepEqual(parsed.calls[0]!.result, { valid: false, submissionNumber: 1 });
+    assert.deepEqual(parsed.calls[1]!.candidate, { repairable: false, reason: 'unsupported-repair' }); assert.deepEqual(parsed.calls[1]!.result, { valid: true, submissionNumber: 2 });
+    assert.deepEqual(parsed.available_tools, ['validate_repair_json']); assert.equal(parsed.tool_calls, 2); assert.equal(parsed.safe_mode, true); assert.equal(parsed.environment_allowlisted, true); assert.equal(parsed.session_id, 'e2e-session'); assert.equal(parsed.final_response, 'ignored prose');
   } finally { await rm(root, { recursive: true, force: true }); }
 });
 

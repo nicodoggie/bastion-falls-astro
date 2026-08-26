@@ -93,6 +93,9 @@ def _patch_singleton_tools(run_agent: Any, request: dict[str, Any], validator_fd
                 env={"PATH": request["path"], "HOME": request["home"], "LANG": "C.UTF-8"},
             )
             result = json.loads(completed.stdout)
+            if not isinstance(result, dict) or result.get("submissionNumber") != 1:
+                raise RuntimeError("invalid validator submission receipt")
+            result = {**result, "submissionNumber": len(calls) + 1}
         calls.append({"candidate": function_args, "result": result})
         return json.dumps(result, separators=(",", ":"))
 
@@ -118,10 +121,17 @@ def _agent_tools(agent: Any) -> list[str]:
     return [item["function"]["name"] for item in agent.tools]
 
 
+def _restore_isolated_environment(snapshot: dict[str, str], session_id: str) -> None:
+    os.environ.clear()
+    os.environ.update(snapshot)
+    os.environ["HERMES_SESSION_ID"] = session_id
+
+
 def main() -> int:
     os.environ["HERMES_SAFE_MODE"] = "1"
     os.environ["HERMES_IGNORE_USER_CONFIG"] = "1"
     os.environ["HERMES_IGNORE_RULES"] = "1"
+    isolated_environment = dict(os.environ)
     args = _parser().parse_args()
     hermes_root = Path(_fd_path(args.hermes_root_fd))
     site_packages = Path(_fd_path(args.site_packages_fd))
@@ -195,13 +205,17 @@ def main() -> int:
     except Exception as error:
         print(json.dumps({"launcher_failure": "agent-construction", "error_type": type(error).__name__}))
         return 0
+    _restore_isolated_environment(isolated_environment, agent.session_id)
     try:
         if _agent_tools(agent) != [TOOL_NAME]:
             raise RuntimeError("singleton tool inventory not proven")
         try:
-            with open(os.devnull, "w", encoding="utf-8") as devnull:
-                with redirect_stdout(devnull), redirect_stderr(devnull):
-                    result = agent.run_conversation(request["prompt"])
+            try:
+                with open(os.devnull, "w", encoding="utf-8") as devnull:
+                    with redirect_stdout(devnull), redirect_stderr(devnull):
+                        result = agent.run_conversation(request["prompt"])
+            finally:
+                _restore_isolated_environment(isolated_environment, agent.session_id)
         except Exception as error:
             print(json.dumps({"launcher_failure": "agent-run", "error_type": type(error).__name__, "tool_calls": len(calls)}))
             return 0
@@ -224,7 +238,7 @@ def main() -> int:
             "rules_ignored": os.environ.get("HERMES_IGNORE_RULES") == "1",
             "inline_prompt": isinstance(request.get("prompt"), str) and bool(request["prompt"]),
             "cwd_isolated": len(os.listdir(os.getcwd())) == 0,
-            "environment_allowlisted": set(os.environ).issubset({"PATH", "HOME", "LANG", "SSL_CERT_FILE", "SSL_CERT_DIR"} | {key for key in os.environ if key.startswith("LC_")}),
+            "environment_allowlisted": os.environ.get("HERMES_SESSION_ID") == agent.session_id and set(os.environ).issubset({"PATH", "HOME", "LANG", "SSL_CERT_FILE", "SSL_CERT_DIR", "HERMES_SAFE_MODE", "HERMES_IGNORE_USER_CONFIG", "HERMES_IGNORE_RULES", "HERMES_SESSION_ID"} | {key for key in os.environ if key.startswith("LC_")}),
         }
         print(json.dumps(output, separators=(",", ":")))
     finally:

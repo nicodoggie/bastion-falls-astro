@@ -1,5 +1,5 @@
 import { Buffer } from "node:buffer";
-import { resolve } from "node:path";
+import { realpath } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { z } from "zod";
 import {
@@ -409,7 +409,8 @@ export async function runRepairValidatorToolStdio(
 
 if (
 	process.argv[1] &&
-	resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url))
+	(await realpath(process.argv[1])) ===
+		(await realpath(fileURLToPath(import.meta.url)))
 ) {
 	const input = await new Promise<string | undefined>((resolveInput) => {
 		const chunks: Buffer[] = [];
