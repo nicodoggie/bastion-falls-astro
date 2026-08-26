@@ -120,3 +120,17 @@ export function buildContextExcerpt(files: ContextFile[], contextRootLabel = "as
     })
     .join("\n\n---\n\n");
 }
+
+export function buildSummaryContextExcerpt(files: ContextFile[], contextRootLabel = "astro/src/content/docs", maxChars = 4_000): string {
+  if (!Number.isSafeInteger(maxChars) || maxChars < 1 || maxChars > 4_000) throw new RangeError("invalid summary context bound");
+  let output = "";
+  for (const file of files) {
+    const section = `## ${relative(".", join(contextRootLabel, file.path))}\n\n${file.content.slice(0, 4_000)}`;
+    const separator = output ? "\n\n---\n\n" : "";
+    const remaining = maxChars - output.length;
+    if (remaining <= separator.length) break;
+    output += `${separator}${section.slice(0, remaining - separator.length)}`;
+    if (output.length === maxChars) break;
+  }
+  return output;
+}

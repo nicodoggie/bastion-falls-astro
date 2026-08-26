@@ -10,8 +10,8 @@ const alignment = (i: number) => ({ version: 1 as const, events: [{ text: `event
 const base = (layout: "single" | "per-stt-chunk" | "three" = "per-stt-chunk") => ({ manifest: manifest(), layout, alignments: [0, 1, 2, 3].map(alignment), sourceHash: "a".repeat(64), evidenceRevision: "rev-1", provider: { provider: "hermes", model: "test", profile: "default" } });
 const canonicalFor = (job: ReturnType<typeof prepareUnifiedReconciliationJobs>["jobs"][number], summaryStatus: "valid" | "pending" = "valid") => ({ chunk: job.packet.chunk, schemaVersion: job.packet.schemaVersion, promptVersion: job.packet.promptVersion, cacheIdentity: job.packet.cacheIdentity, blocks: [{ id: "b", start: job.packet.ownedEvents[0]!.start, end: job.packet.ownedEvents[0]!.end, kind: "dialogue", text: "x", summarySafeText: summaryStatus === "valid" ? "x" : "", characterConfidence: "unknown", attributionBasis: ["source"], sourceEventIds: [job.packet.ownedEvents[0]!.id], reviewFlags: [] }], omissions: [], materialCorrections: [], suspicionFlags: [], reviewNotes: [], summarySafety: { status: summaryStatus, errors: summaryStatus === "valid" ? [] : ["pending"] }, status: "valid" as const } as any);
 
-test("builds single, per-chunk, and independently owned three-chunk-context windows", () => {
-  assert.deepEqual(buildLogicalReconciliationWindows(manifest(), "single")[0], { id: "session_000", index: 0, start: 0, end: 40, chunkIndices: [0, 1, 2, 3] });
+test("builds bounded single and independently owned three-chunk-context windows", () => {
+  assert.deepEqual(buildLogicalReconciliationWindows(manifest(), "single").map((x) => x.chunkIndices), [[0], [1], [2], [3]]);
   assert.equal(buildLogicalReconciliationWindows(manifest(), "per-stt-chunk").length, 4);
   assert.deepEqual(buildLogicalReconciliationWindows(manifest(), "three").map((x) => x.chunkIndices), [[0], [1], [2], [3]]);
   assert.throws(() => buildLogicalReconciliationWindows(manifest(2), "three"));
@@ -38,9 +38,9 @@ test("three-chunk context preserves independent ownership", () => {
   assert.deepEqual(middle.context.nextAlignmentHead.map((event) => event.text), ["event 2"]);
 });
 
-test("stage invokes injected runner once and reports needs_review without blocking", async () => {
+test("stage uses the overnight timeout and reports needs_review without blocking", async () => {
   const rootDir = await mkdtemp(join(tmpdir(), "bf-integration-stage-")); let calls = 0; let observedTimeout: number | undefined;
-  const stage = await runUnifiedReconciliationStage({ ...base("three"), rootDir, timeoutMs: 600_000 }, { runUnifiedReconciliation: async ({ jobs, timeoutMs }) => { calls += jobs.length; observedTimeout = timeoutMs; return { chunks: jobs.map((job) => ({ chunk: job.packet.chunk, schemaVersion: job.packet.schemaVersion, promptVersion: job.packet.promptVersion, cacheIdentity: job.packet.cacheIdentity, blocks: [{ id: "b", start: job.packet.ownedEvents[0]!.start, end: job.packet.ownedEvents[0]!.end, kind: "dialogue", text: "x", summarySafeText: "x", characterConfidence: "unknown", attributionBasis: ["source"], sourceEventIds: [job.packet.ownedEvents[0]!.id], reviewFlags: [] }], omissions: [], materialCorrections: [], suspicionFlags: [], reviewNotes: [], summarySafety: { status: "valid", errors: [] }, status: "needs_review" as const } as any)), repairedChunkIds: [], reusedChunkIds: [], diagnosticsDir: join(rootDir, "diagnostics") }; } });
+  const stage = await runUnifiedReconciliationStage({ ...base("three"), rootDir }, { runUnifiedReconciliation: async ({ jobs, timeoutMs }) => { calls += jobs.length; observedTimeout = timeoutMs; return { chunks: jobs.map((job) => ({ chunk: job.packet.chunk, schemaVersion: job.packet.schemaVersion, promptVersion: job.packet.promptVersion, cacheIdentity: job.packet.cacheIdentity, blocks: [{ id: "b", start: job.packet.ownedEvents[0]!.start, end: job.packet.ownedEvents[0]!.end, kind: "dialogue", text: "x", summarySafeText: "x", characterConfidence: "unknown", attributionBasis: ["source"], sourceEventIds: [job.packet.ownedEvents[0]!.id], reviewFlags: [] }], omissions: [], materialCorrections: [], suspicionFlags: [], reviewNotes: [], summarySafety: { status: "valid", errors: [] }, status: "needs_review" as const } as any)), repairedChunkIds: [], reusedChunkIds: [], diagnosticsDir: join(rootDir, "diagnostics") }; } });
   assert.equal(calls, 4); assert.equal(observedTimeout, 600_000); assert.equal(stage.status, "needs_review"); assert.equal(stage.metadata.completedChunkIds.length, 4); await rm(rootDir, { recursive: true, force: true });
 });
 
@@ -52,7 +52,7 @@ test("stage rejects incomplete runner output and pending summary safety", async 
       /incomplete or unknown chunk set/iu,
     );
     await assert.rejects(
-      () => runUnifiedReconciliationStage({ ...base("single"), rootDir }, { runUnifiedReconciliation: async ({ jobs }) => ({ chunks: [canonicalFor(jobs[0]!, "pending")], repairedChunkIds: [], reusedChunkIds: [], diagnosticsDir: join(rootDir, "diagnostics") }) }),
+      () => runUnifiedReconciliationStage({ ...base("single"), rootDir }, { runUnifiedReconciliation: async ({ jobs }) => ({ chunks: jobs.map((job) => canonicalFor(job, "pending")), repairedChunkIds: [], reusedChunkIds: [], diagnosticsDir: join(rootDir, "diagnostics") }) }),
       /pending summary safety/iu,
     );
   } finally { await rm(rootDir, { recursive: true, force: true }); }

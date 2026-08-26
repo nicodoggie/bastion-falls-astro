@@ -240,7 +240,7 @@ export const BenchmarkRunMarkerSchema = z.object({
   if (new Set(marker.lanes).size !== marker.lanes.length || marker.lanes.some((lane, index) => lane !== expected[index])) ctx.addIssue({ code: "custom", path: ["lanes"], message: "run marker lanes must be distinct and canonical" });
 });
 const LaneResultSchema = z.object({
-  lane: z.enum(BENCHMARK_LANES), status: z.enum(["ok", "failed"]), startedAt: IsoDate, completedAt: IsoDate,
+  lane: z.enum(BENCHMARK_LANES), status: z.enum(["ok", "partial", "failed"]), reconciliationStatus: z.enum(["ok", "failed", "not_started"]), notesStatus: z.enum(["ok", "failed", "not_started"]), failureCode: z.enum(["summary-context-invalid", "notes-execution-failed"]).nullable(), startedAt: IsoDate, completedAt: IsoDate,
   runtimeMs: z.number().int().nonnegative().max(86_400_000), calls: NullableCount, retries: NullableCount,
   inputTokens: NullableCount, outputTokens: NullableCount, totalTokens: NullableCount,
   artifactCount: z.number().int().nonnegative().max(10_000_000), sourceEvents: z.number().int().nonnegative().max(10_000_000),
@@ -291,7 +291,7 @@ export async function readBenchmarkRunMarker(runRoot: string, expectedReceipt: B
 
 export type BenchmarkExecutor = (input: { lane: BenchmarkLane; rootDir: string; sourceDir: string; layout: "legacy" | "single" | "three" }) => Promise<unknown>;
 
-const emptyLane = (lane: BenchmarkLane, startedAt: string): BenchmarkLaneResult => ({ lane, status: "ok", startedAt, completedAt: startedAt, runtimeMs: 0, calls: null, retries: null, inputTokens: null, outputTokens: null, totalTokens: null, artifactCount: 0, sourceEvents: 0, covered: 0, omitted: 0, readableCompressionRatio: null, summaryCompressionRatio: null, overlapCount: 0, attribution: { confirmed: 0, probable: 0, unknown: 0, abstention: 0 }, reviewFlags: [], receiptEqual: true, errorClass: null, errorMessage: null });
+const emptyLane = (lane: BenchmarkLane, startedAt: string): BenchmarkLaneResult => ({ lane, status: "ok", reconciliationStatus: "not_started", notesStatus: "not_started", failureCode: null, startedAt, completedAt: startedAt, runtimeMs: 0, calls: null, retries: null, inputTokens: null, outputTokens: null, totalTokens: null, artifactCount: 0, sourceEvents: 0, covered: 0, omitted: 0, readableCompressionRatio: null, summaryCompressionRatio: null, overlapCount: 0, attribution: { confirmed: 0, probable: 0, unknown: 0, abstention: 0 }, reviewFlags: [], receiptEqual: true, errorClass: null, errorMessage: null });
 
 async function snapshotCorrectedTranscript(sourceDir: string, destination: string): Promise<void> {
   const source = join(sourceDir, "corrected_transcript.md");
@@ -350,7 +350,7 @@ export async function runBenchmark(options: { sourceDir: string; trialDir: strin
     try { after = await collectCanonicalReceipt(prepared.sourceDir); } catch { after = before; failure = "immutable-input"; }
     result.receiptEqual = failure === "immutable-input" ? false : JSON.stringify(before) === JSON.stringify(after);
     if (!result.receiptEqual) failure = "immutable-input";
-    result.status = failure ? "failed" : "ok"; result.errorClass = failure; result.errorMessage = failure === "execution" ? "lane execution failed" : failure === "immutable-input" ? "source receipt changed" : failure === "invalid-result" ? "lane result invalid" : failure === "security" ? "lane root security violation" : null; lanes.push(result);
+    result.status = failure ? "failed" : result.notesStatus === "failed" ? "partial" : "ok"; result.errorClass = failure; result.errorMessage = failure === "execution" ? "lane execution failed" : failure === "immutable-input" ? "source receipt changed" : failure === "invalid-result" ? "lane result invalid" : failure === "security" ? "lane root security violation" : null; lanes.push(result);
   }
   const report = BenchmarkReportSchema.parse({ kind: "reconciliation-benchmark-report", version: 1, benchmarkVersion: BENCHMARK_VERSION, runId: options.runId, sourceReceipt: prepared.sourceReceipt, lanes });
   await publishBenchmarkReport(run.runDir, report); return report;

@@ -30,7 +30,7 @@ export interface ReconciliationRunnerOptions {
 export interface ReconciliationRunnerResult { chunks: CanonicalReconciliation[]; repairedChunkIds: string[]; reusedChunkIds: string[]; diagnosticsDir: string }
 export interface HermesArgsOptions { promptPath: string; profile?: string; maxTurns?: number; command?: string }
 
-const DEFAULT_TIMEOUT_MS = 120_000;
+const DEFAULT_TIMEOUT_MS = 600_000;
 const DEFAULT_MAX_OUTPUT_BYTES = 2_000_000;
 const DEFAULT_MAX_TURNS = 8;
 const MAX_TIMEOUT_MS = 10 * 60_000;
@@ -85,7 +85,7 @@ function resultSize(value: InvocationResult | string | SummarySafeFallbackResult
 
 export function buildUnifiedReconciliationPrompt(job: ReconciliationChunkJob): string {
   const { packet } = job;
-  return ["You are performing read-only transcript reconciliation.", `Owned logical window: ${packet.chunk.id} ${packet.chunk.start}-${packet.chunk.end}.`, "Only authoritativeSourceEvents in this packet may be consumed, omitted, or emitted.", "Previous readable text and next alignment events are context-only; neighboring events are forbidden.", "Use unknown attribution rather than inventing a character. Summary-safe text must correspond block-for-block.", RECONCILIATION_OUTPUT_CONTRACT, "All required schema and ownership evidence follows. Do not search the repository for schemas or output examples. Bounded read-only repository retrieval is allowed only to verify a specific uncertain proper noun or lore claim; it cannot change evidence ownership or create support absent from the supplied packet.", JSON.stringify({ packet, authoritativeSourceEvents: job.authoritativeSourceEvents }, null, 2)].join("\n");
+  return ["You are performing read-only transcript reconciliation.", `Owned logical window: ${packet.chunk.id} ${packet.chunk.start}-${packet.chunk.end}.`, "Produce a readable transcript, not a narrative digest. Preserve recoverable dialogue and narration, turn structure, meaningful repetition, interruption, uncertainty, and code-switching. Merge events only when they represent the same utterance; omit only content matching an allowed omission reason.", "Only authoritativeSourceEvents in this packet may be consumed, omitted, or emitted.", "Previous readable text and next alignment events are context-only; neighboring events are forbidden.", "Use unknown attribution rather than inventing a character. Summary-safe text must correspond block-for-block.", RECONCILIATION_OUTPUT_CONTRACT, "All required schema and ownership evidence follows. Do not search the repository for schemas or output examples. Bounded read-only repository retrieval is allowed only to verify a specific uncertain proper noun or lore claim; it cannot change evidence ownership or create support absent from the supplied packet.", JSON.stringify({ packet, authoritativeSourceEvents: job.authoritativeSourceEvents }, null, 2)].join("\n");
 }
 
 export function buildHermesReconciliationArgs(options: HermesArgsOptions): string[] {

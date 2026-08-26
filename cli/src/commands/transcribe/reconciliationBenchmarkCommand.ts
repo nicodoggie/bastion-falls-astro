@@ -19,6 +19,7 @@ import {
 import {
   collectContextFiles,
   buildContextExcerpt,
+  buildSummaryContextExcerpt,
 } from "./context.js";
 import { loadCorrectionRulesMarkdown } from "./corrections.js";
 import {
@@ -99,7 +100,7 @@ const flags: FlagParametersForType<BenchmarkFlags, LocalContext> = {
   corrections: { kind: "parsed", parse: parseBoundedString, brief: "Read-only shared correction rules YAML", optional: true },
   profile: { kind: "parsed", parse: parseBoundedString, brief: "Hermes profile for candidate lanes", optional: true },
   "max-turns": { kind: "parsed", parse: parsePositiveInteger, brief: "Bounded candidate model turns", default: "8" },
-  "timeout-ms": { kind: "parsed", parse: parseTimeoutMs, brief: "Bounded candidate inference timeout in milliseconds", default: "120000" },
+  "timeout-ms": { kind: "parsed", parse: parseTimeoutMs, brief: "Bounded candidate inference timeout in milliseconds", default: "600000" },
   "prompt-version": { kind: "parsed", parse: parseBoundedString, brief: "Candidate prompt version", default: RECONCILIATION_PROMPT_VERSION },
   "schema-version": { kind: "parsed", parse: parseBoundedString, brief: "Candidate schema version", default: "reconciliation.v1" },
 };
@@ -198,7 +199,7 @@ export function createBenchmarkExecutors(options: BenchmarkAdapterContext, deps:
     await legacySummary({ cwd: options.repositoryCwd, transcriptPath: laneTranscript, summaryTranscriptPath: summaryPath, outDir: rootDir, chunkChars: 12000 });
     const notesPath = join(rootDir, `${options.campaign}-${options.sessionDate}.mdx`);
     await legacyNotes({ cwd: options.repositoryCwd, campaign: options.campaign, sessionDate: options.sessionDate, transcriptPath: summaryPath, contextExcerpt: context.excerpt, correctionRules: context.rules, notesPath, outDir: rootDir, chunkChars: 12000, sceneGroupSize: 5 });
-    return { artifactCount: await countLaneFiles(rootDir), sourceEvents: 0, covered: 0, omitted: 0 };
+    return { artifactCount: await countLaneFiles(rootDir), sourceEvents: 0, covered: 0, omitted: 0, reconciliationStatus: "not_started", notesStatus: "ok", failureCode: null };
   };
 
   const candidate = (layout: "single" | "three"): BenchmarkExecutor => async ({ rootDir, sourceDir }) => {
@@ -230,7 +231,9 @@ export function createBenchmarkExecutors(options: BenchmarkAdapterContext, deps:
       repositoryCwd: options.repositoryCwd,
     };
     const result = await unifiedStage(stageOptions);
-    await unifiedNotes({ outputRoot: rootDir, chunks: result.chunks, jobs: result.jobs, notePath: join(rootDir, `${campaign}-${sessionDate}.mdx`), summarization: { repositoryCwd: options.repositoryCwd, providerIdentity: { provider: "codex", model: "codex" }, campaignContext: context.excerpt, correctionRules: boundedEvidenceLines(context.rules), campaign, sessionDate, promptVersion: options.promptVersion, sceneGroupSize: 5 } });
+    let notesStatus: "ok" | "failed" = "ok", failureCode: "summary-context-invalid" | "notes-execution-failed" | null = null;
+    try { await unifiedNotes({ outputRoot: rootDir, chunks: result.chunks, jobs: result.jobs, notePath: join(rootDir, `${campaign}-${sessionDate}.mdx`), summarization: { repositoryCwd: options.repositoryCwd, providerIdentity: { provider: "codex", model: "codex" }, campaignContext: buildSummaryContextExcerpt([{ path: "campaign-context.md", content: context.excerpt }]), correctionRules: boundedEvidenceLines(context.rules), campaign, sessionDate, promptVersion: options.promptVersion, sceneGroupSize: 5 } }); }
+    catch (error) { notesStatus = "failed"; failureCode = /context.*bound|exceeds.*bound/iu.test(error instanceof Error ? error.message : "") ? "summary-context-invalid" : "notes-execution-failed"; }
     const sourceEvents = result.jobs.reduce((n, job) => n + job.authoritativeSourceEvents.length, 0);
     const omitted = result.chunks.reduce((n, chunk) => n + chunk.omissions.length, 0);
     const blocks = result.chunks.flatMap((chunk) => chunk.blocks);
@@ -242,7 +245,7 @@ export function createBenchmarkExecutors(options: BenchmarkAdapterContext, deps:
     const sourceChars = result.jobs.reduce((n, job) => n + job.authoritativeSourceEvents.reduce((m, event) => m + event.text.length, 0), 0);
     const readableChars = blocks.reduce((n, block) => n + block.text.length, 0);
     const summaryChars = blocks.reduce((n, block) => n + block.summarySafeText.length, 0);
-    return { ...metrics({ artifactCount: await countLaneFiles(rootDir), sourceEvents, covered: sourceEvents - omitted, omitted, overlapCount, calls: result.jobs.length, readableCompressionRatio: sourceChars > 0 ? readableChars / sourceChars : 0, summaryCompressionRatio: readableChars > 0 ? summaryChars / readableChars : 0 }), attribution, reviewFlags: [...new Set(result.chunks.flatMap((chunk) => chunk.blocks.flatMap((block) => block.reviewFlags)))].sort() };
+    return { ...metrics({ artifactCount: await countLaneFiles(rootDir), sourceEvents, covered: sourceEvents - omitted, omitted, overlapCount, calls: result.jobs.length, readableCompressionRatio: sourceChars > 0 ? readableChars / sourceChars : 0, summaryCompressionRatio: readableChars > 0 ? summaryChars / readableChars : 0 }), reconciliationStatus: "ok", notesStatus, failureCode, attribution, reviewFlags: [...new Set(result.chunks.flatMap((chunk) => chunk.blocks.flatMap((block) => block.reviewFlags)))].sort() };
   };
   return { baseline, single: candidate("single"), "window-3": candidate("three") };
 }

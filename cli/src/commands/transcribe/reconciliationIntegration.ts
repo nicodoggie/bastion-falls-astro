@@ -29,8 +29,8 @@ function orderedChunks(manifest: Manifest): PlannedChunk[] {
 export function buildLogicalReconciliationWindows(manifest: Manifest, layout: LogicalLayout): LogicalReconciliationWindow[] {
   const chunks = orderedChunks(manifest);
   if (!["single", "per-stt-chunk", "three"].includes(layout)) throw new Error(`unsupported logical layout: ${layout}`);
-  if (layout === "single") { const start = 0; const end = manifest.durationSeconds; finiteWindow(start, end); return [{ id: "session_000", index: 0, start, end, chunkIndices: chunks.map((c) => c.index) }]; }
-  if (layout === "per-stt-chunk") return chunks.map((c, index) => ({ id: `session_${String(index).padStart(3, "0")}`, index, start: c.start, end: c.end, chunkIndices: [c.index] }));
+  finiteWindow(0, manifest.durationSeconds);
+  if (layout === "single" || layout === "per-stt-chunk") return chunks.map((c, index) => ({ id: `session_${String(index).padStart(3, "0")}`, index, start: c.start, end: c.end, chunkIndices: [c.index] }));
   if (chunks.length < 3) throw new Error("three-chunk context requires at least three chunks");
   return chunks.map((chunk, index) => ({ id: `session_${String(index).padStart(3, "0")}`, index, start: chunk.start, end: chunk.end, chunkIndices: [chunk.index] }));
 }
@@ -73,7 +73,7 @@ function defaultFallback(cwd: string): SummarySafeFallback { return async ({ blo
 export async function runUnifiedReconciliationStage(options: UnifiedStageOptions, deps: UnifiedStageDeps = {}): Promise<{ status: "valid" | "needs_review"; metadata: ReconciliationMetadata; chunks: CanonicalReconciliation[]; jobs: ReconciliationChunkJob[] }> {
   const prepared = options.jobs ? { jobs: [...options.jobs], cacheIdentityByChunk: Object.fromEntries(options.jobs.map((j) => [j.packet.chunk.id, j.packet.cacheIdentity.inputHash])), windows: buildLogicalReconciliationWindows(options.manifest, options.layout) } : prepareUnifiedReconciliationJobs(options);
   const runner = deps.runUnifiedReconciliation ?? runUnifiedReconciliation;
-  const result = await runner({ rootDir: options.rootDir, jobs: prepared.jobs, profile: options.profile, maxTurns: options.maxTurns, ...(options.timeoutMs === undefined ? {} : { timeoutMs: options.timeoutMs }), repositoryCwd: options.repositoryCwd, resume: options.resume, force: options.force, sanitizeSummarySafe: deps.summarySafeFallback ?? defaultFallback(options.repositoryCwd ?? process.cwd()) });
+  const result = await runner({ rootDir: options.rootDir, jobs: prepared.jobs, profile: options.profile, maxTurns: options.maxTurns, timeoutMs: options.timeoutMs ?? 600_000, repositoryCwd: options.repositoryCwd, resume: options.resume, force: options.force, sanitizeSummarySafe: deps.summarySafeFallback ?? defaultFallback(options.repositoryCwd ?? process.cwd()) });
   const expectedIds = prepared.jobs.map((job) => job.packet.chunk.id);
   const actualIds = result.chunks.map((chunk) => chunk.chunk.id);
   if (new Set(actualIds).size !== actualIds.length || actualIds.length !== expectedIds.length || expectedIds.some((id) => !actualIds.includes(id))) throw new Error("reconciliation runner returned an incomplete or unknown chunk set");

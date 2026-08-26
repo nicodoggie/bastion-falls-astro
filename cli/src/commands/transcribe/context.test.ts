@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 
-import { collectContextFiles, extractGlossaryEntries } from "./context.js";
+import { buildSummaryContextExcerpt, collectContextFiles, extractGlossaryEntries } from "./context.js";
 
 test("extracts glossary entries from frontmatter, headings, filenames, and JSON names", () => {
   const entries = extractGlossaryEntries([
@@ -24,6 +24,13 @@ test("extracts glossary entries from frontmatter, headings, filenames, and JSON 
     ),
     true,
   );
+});
+
+test("bounds combined summary context while retaining source headings", () => {
+  const excerpt = buildSummaryContextExcerpt(Array.from({ length: 40 }, (_, index) => ({ path: `world/${index}.mdx`, content: "x".repeat(4000) })));
+  assert.equal(excerpt.length <= 4000, true);
+  assert.match(excerpt, /world\/0\.mdx/u);
+  assert.doesNotMatch(excerpt, /world\/39\.mdx/u);
 });
 
 test("excludes active-session authored context before reading", async () => {

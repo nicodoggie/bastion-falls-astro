@@ -40,6 +40,7 @@ import {
 } from "./codex.js";
 import {
   buildContextExcerpt,
+  buildSummaryContextExcerpt,
   collectContextFiles,
   writeGlossary,
 } from "./context.js";
@@ -1146,7 +1147,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
             repositoryCwd: cwd,
             providerIdentity: { provider: "codex", model: "codex" },
             promptVersion: "summary.reconciliation.v1",
-            campaignContext: buildContextExcerpt(contextFiles),
+            campaignContext: buildSummaryContextExcerpt(contextFiles),
             correctionRules: evidenceLines(correctionRules),
             campaign: flags.campaign,
             sessionDate: flags["session-date"],
