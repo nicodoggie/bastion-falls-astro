@@ -48,6 +48,8 @@ transcribe:
   reconciliation:
     provider: hermes
     logicalChunks: single
+    tailMergeThresholdRatio: 0.25
+    tailMergeMaxDurationRatio: 1.25
     hermes:
       profile: default
 

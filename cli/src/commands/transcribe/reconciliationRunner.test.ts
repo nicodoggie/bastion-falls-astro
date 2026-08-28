@@ -103,6 +103,18 @@ test("cache-identical resume makes zero calls, while stale identity repairs", as
   } finally { await rm(root, { recursive: true, force: true }); }
 });
 
+test("a changed ownership plan removes superseded canonical chunk artifacts", async () => {
+  const root = await mkdtemp(join(tmpdir(), "reconciliation-superseded-"));
+  try {
+    await writeFile(join(root, "placeholder"), "keep");
+    await runUnifiedReconciliation({ rootDir: root, jobs: [job], invokeReconciliation: async () => JSON.stringify(response()), resume: true });
+    await writeFile(join(root, "reconciliation", "session_001.json"), "superseded");
+    await runUnifiedReconciliation({ rootDir: root, jobs: [job], invokeReconciliation: async () => { throw new Error("cache-identical job must be reused"); }, resume: true });
+    assert.deepEqual(await readdir(join(root, "reconciliation")), ["session_000.json"]);
+    assert.equal(await readFile(join(root, "placeholder"), "utf8"), "keep");
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
 test("persisted invalid status is stale and receives exactly one repair", async () => {
   const root = await mkdtemp(join(tmpdir(), "reconciliation-resume-invalid-status-")); let calls = 0;
   try {
@@ -236,9 +248,13 @@ test("rejects excessive runner and prompt bounds before invocation", async () =>
     } as ReconciliationChunkJob;
     await assert.rejects(
       () => runUnifiedReconciliation({ rootDir: root, jobs: [oversized], invokeReconciliation }),
-      /prompt exceeded bound/iu,
+      /prompt exceeded.*promptBytes=.*authoritativeEvents=.*largestEventBytes=/iu,
     );
     assert.equal(calls, 0);
+    const diagnostics = await readdir(join(root, "diagnostics"));
+    assert.equal(diagnostics.length, 1);
+    const diagnostic = await readFile(join(root, "diagnostics", diagnostics[0]!), "utf8");
+    assert.doesNotMatch(diagnostic, /x{256}/u);
   } finally { await rm(root, { recursive: true, force: true }); }
 });
 

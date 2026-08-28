@@ -13,6 +13,8 @@ export interface ReconciliationOverrides {
   hermesMaxTurns?: number;
   promptVersion?: string;
   schemaVersion?: string;
+  tailMergeThresholdRatio?: number;
+  tailMergeMaxDurationRatio?: number;
 }
 export interface ResolvedReconciliationSettings {
   provider: ReconciliationProvider;
@@ -21,13 +23,16 @@ export interface ResolvedReconciliationSettings {
   hermesMaxTurns: number;
   promptVersion: string;
   schemaVersion: string;
+  tailMergeThresholdRatio: number;
+  tailMergeMaxDurationRatio: number;
   source: "default" | "config" | "cli" | "legacy-alias";
 }
-interface RawConfig { provider?: unknown; logicalChunks?: unknown; hermes?: unknown; promptVersion?: unknown; schemaVersion?: unknown; }
+interface RawConfig { provider?: unknown; logicalChunks?: unknown; hermes?: unknown; promptVersion?: unknown; schemaVersion?: unknown; tailMergeThresholdRatio?: unknown; tailMergeMaxDurationRatio?: unknown; }
 interface RawHermes { profile?: unknown; maxTurns?: unknown; }
 function isRecord(value: unknown): value is Record<string, unknown> { return typeof value === "object" && value !== null && !Array.isArray(value); }
 function stringField(value: unknown, label: string): string | undefined { if (value === undefined) return undefined; if (typeof value !== "string") throw new Error(`${label} must be a string`); if (value.trim() === "" || value.length > 2_000) throw new Error(`${label} must be a bounded non-empty string`); return value; }
 function positiveInt(value: unknown, label: string): number | undefined { if (value === undefined) return undefined; if (typeof value !== "number" || !Number.isSafeInteger(value) || value <= 0 || value > 1_000) throw new Error(`${label} must be a bounded positive integer`); return value; }
+function ratio(value: unknown, label: string, minimum: number, maximum: number): number | undefined { if (value === undefined) return undefined; if (typeof value !== "number" || !Number.isFinite(value) || value < minimum || value > maximum) throw new Error(`${label} must be between ${minimum} and ${maximum}`); return value; }
 function knownKeys(value: Record<string, unknown>, allowed: readonly string[], label: string): void { if (Object.keys(value).some((key) => !allowed.includes(key))) throw new Error(`${label} contains unsupported keys`); }
 export function parseReviewProvider(value: string): ReviewProvider { if (value === "hermes" || value === "off") return value; throw new Error(`Unsupported review provider: ${value}`); }
 export function parseReconciliationProvider(value: string): ReconciliationProvider { if (value === "hermes" || value === "legacy" || value === "off") return value; throw new Error(`Unsupported reconciliation provider: ${value}`); }
@@ -48,7 +53,7 @@ export function resolveReviewSettings(config: unknown, overrides: ReviewOverride
 export function resolveReconciliationSettings(config: unknown, overrides: ReconciliationOverrides = {}, legacyReview?: unknown): ResolvedReconciliationSettings {
   if (config !== undefined && !isRecord(config)) throw new Error("transcribe.reconciliation must be an object");
   const raw = (config ?? {}) as RawConfig;
-  knownKeys(raw as unknown as Record<string, unknown>, ["provider", "logicalChunks", "hermes", "promptVersion", "schemaVersion"], "transcribe.reconciliation");
+  knownKeys(raw as unknown as Record<string, unknown>, ["provider", "logicalChunks", "hermes", "promptVersion", "schemaVersion", "tailMergeThresholdRatio", "tailMergeMaxDurationRatio"], "transcribe.reconciliation");
   if (raw.hermes !== undefined && !isRecord(raw.hermes)) throw new Error("transcribe.reconciliation.hermes must be an object");
   const hermes = (raw.hermes ?? {}) as RawHermes;
   knownKeys(hermes as unknown as Record<string, unknown>, ["profile", "maxTurns"], "transcribe.reconciliation.hermes");
@@ -58,6 +63,8 @@ export function resolveReconciliationSettings(config: unknown, overrides: Reconc
   const configMaxTurns = positiveInt(hermes.maxTurns, "transcribe.reconciliation.hermes.maxTurns");
   const configPrompt = stringField(raw.promptVersion, "transcribe.reconciliation.promptVersion");
   const configSchema = stringField(raw.schemaVersion, "transcribe.reconciliation.schemaVersion");
+  const configTailMergeThreshold = ratio(raw.tailMergeThresholdRatio, "transcribe.reconciliation.tailMergeThresholdRatio", 0, 1);
+  const configTailMergeMaxDuration = ratio(raw.tailMergeMaxDurationRatio, "transcribe.reconciliation.tailMergeMaxDurationRatio", 1, 2);
   const hasOverrides = Object.values(overrides).some((value) => value !== undefined);
   const hasNew = config !== undefined || hasOverrides;
   let source: ResolvedReconciliationSettings["source"] = hasNew ? (hasOverrides ? "cli" : "config") : "default";
@@ -66,7 +73,9 @@ export function resolveReconciliationSettings(config: unknown, overrides: Reconc
     const old = resolveReviewSettings(legacyReview);
     provider = old.provider === "hermes" ? "legacy" : "off";
     source = "legacy-alias";
-    return { provider, logicalChunks: "per-stt-chunk", hermesProfile: old.hermesProfile ?? "default", hermesMaxTurns: old.hermesMaxTurns, promptVersion: "legacy.v2", schemaVersion: "legacy.v2", source };
+    return { provider, logicalChunks: "per-stt-chunk", hermesProfile: old.hermesProfile ?? "default", hermesMaxTurns: old.hermesMaxTurns, promptVersion: "legacy.v2", schemaVersion: "legacy.v2", tailMergeThresholdRatio: 0.25, tailMergeMaxDurationRatio: 1.25, source };
   }
-  return { provider: overrides.provider ?? provider, logicalChunks: overrides.logicalChunks ?? (configuredLogical === undefined ? "single" : parseLogicalChunks(configuredLogical)), hermesProfile: overrides.hermesProfile ?? configProfile ?? "default", hermesMaxTurns: overrides.hermesMaxTurns ?? configMaxTurns ?? 12, promptVersion: overrides.promptVersion ?? configPrompt ?? RECONCILIATION_PROMPT_VERSION, schemaVersion: overrides.schemaVersion ?? configSchema ?? "reconciliation.v1", source };
+  const overrideTailMergeThreshold = ratio(overrides.tailMergeThresholdRatio, "transcribe.reconciliation.tailMergeThresholdRatio", 0, 1);
+  const overrideTailMergeMaxDuration = ratio(overrides.tailMergeMaxDurationRatio, "transcribe.reconciliation.tailMergeMaxDurationRatio", 1, 2);
+  return { provider: overrides.provider ?? provider, logicalChunks: overrides.logicalChunks ?? (configuredLogical === undefined ? "single" : parseLogicalChunks(configuredLogical)), hermesProfile: overrides.hermesProfile ?? configProfile ?? "default", hermesMaxTurns: overrides.hermesMaxTurns ?? configMaxTurns ?? 12, promptVersion: overrides.promptVersion ?? configPrompt ?? RECONCILIATION_PROMPT_VERSION, schemaVersion: overrides.schemaVersion ?? configSchema ?? "reconciliation.v1", tailMergeThresholdRatio: overrideTailMergeThreshold ?? configTailMergeThreshold ?? 0.25, tailMergeMaxDurationRatio: overrideTailMergeMaxDuration ?? configTailMergeMaxDuration ?? 1.25, source };
 }

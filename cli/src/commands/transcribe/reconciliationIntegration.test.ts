@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { test } from "node:test";
 import { buildLogicalReconciliationWindows, prepareUnifiedReconciliationJobs, runUnifiedReconciliationStage, runUnifiedStructuredNotes, hashFileSha256 } from "./reconciliationIntegration.js";
 
-const manifest = (count = 4) => ({ version: 2, durationSeconds: count * 10, chunks: Array.from({ length: count }, (_, index) => ({ index, start: index * 10, end: (index + 1) * 10 })) }) as any;
+const manifest = (count = 4) => ({ version: 2, durationSeconds: count * 10, chunkSettings: { chunkSeconds: 10 }, chunks: Array.from({ length: count }, (_, index) => ({ index, start: index * 10, end: (index + 1) * 10, endReason: index === count - 1 ? "duration-end" : "exact-target" })) }) as any;
 const alignment = (i: number) => ({ version: 1 as const, events: [{ text: `event ${i}`, sourcePass: "stereo", globalStart: i * 10 + 1, globalEnd: i * 10 + 2, alternatives: [] }] });
 const base = (layout: "single" | "per-stt-chunk" | "three" = "per-stt-chunk") => ({ manifest: manifest(), layout, alignments: [0, 1, 2, 3].map(alignment), sourceHash: "a".repeat(64), evidenceRevision: "rev-1", provider: { provider: "hermes", model: "test", profile: "default" } });
 const canonicalFor = (job: ReturnType<typeof prepareUnifiedReconciliationJobs>["jobs"][number], summaryStatus: "valid" | "pending" = "valid") => ({ chunk: job.packet.chunk, schemaVersion: job.packet.schemaVersion, promptVersion: job.packet.promptVersion, cacheIdentity: job.packet.cacheIdentity, blocks: [{ id: "b", start: job.packet.ownedEvents[0]!.start, end: job.packet.ownedEvents[0]!.end, kind: "dialogue", text: "x", summarySafeText: summaryStatus === "valid" ? "x" : "", characterConfidence: "unknown", attributionBasis: ["source"], sourceEventIds: [job.packet.ownedEvents[0]!.id], reviewFlags: [] }], omissions: [], materialCorrections: [], suspicionFlags: [], reviewNotes: [], summarySafety: { status: summaryStatus, errors: summaryStatus === "valid" ? [] : ["pending"] }, status: "valid" as const } as any);
@@ -16,6 +16,35 @@ test("builds bounded single and independently owned three-chunk-context windows"
   assert.deepEqual(buildLogicalReconciliationWindows(manifest(), "three").map((x) => x.chunkIndices), [[0], [1], [2], [3]]);
   assert.throws(() => buildLogicalReconciliationWindows(manifest(2), "three"));
   assert.throws(() => buildLogicalReconciliationWindows({ ...manifest(), durationSeconds: Number.NaN } as any, "single"));
+});
+
+test("merges only a duration-underfilled final window within the configured cap", () => {
+  const withTail = (tailSeconds: number) => ({
+    ...manifest(2), durationSeconds: 600 + tailSeconds, chunkSettings: { chunkSeconds: 600 },
+    chunks: [
+      { index: 0, start: 0, end: 600, endReason: "exact-target" },
+      { index: 1, start: 600, end: 600 + tailSeconds, endReason: "duration-end" },
+    ],
+  }) as any;
+  const options = { tailMergeThresholdRatio: 0.25, tailMergeMaxDurationRatio: 1.25 };
+  assert.deepEqual(buildLogicalReconciliationWindows(withTail(58), "single", options).map((window) => window.chunkIndices), [[0, 1]]);
+  assert.deepEqual(buildLogicalReconciliationWindows(withTail(150), "single", options).map((window) => window.chunkIndices), [[0], [1]]);
+  assert.deepEqual(buildLogicalReconciliationWindows(withTail(599), "single", options).map((window) => window.chunkIndices), [[0], [1]]);
+  assert.deepEqual(buildLogicalReconciliationWindows(withTail(58), "single", { ...options, tailMergeThresholdRatio: 0 }).map((window) => window.chunkIndices), [[0], [1]]);
+  const overCap = withTail(58); overCap.chunks[0].end = 700; overCap.chunks[1].start = 700; overCap.chunks[1].end = 758; overCap.durationSeconds = 758;
+  assert.deepEqual(buildLogicalReconciliationWindows(overCap, "single", options).map((window) => window.chunkIndices), [[0], [1]]);
+});
+
+test("merged final window preserves exact evidence ownership", () => {
+  const mergedManifest = { ...manifest(2), durationSeconds: 12, chunkSettings: { chunkSeconds: 10 }, chunks: [
+    { index: 0, start: 0, end: 10, endReason: "exact-target" },
+    { index: 1, start: 10, end: 12, endReason: "duration-end" },
+  ] } as any;
+  const prepared = prepareUnifiedReconciliationJobs({ ...base(), manifest: mergedManifest, alignments: [alignment(0), alignment(1)], tailMergeThresholdRatio: 0.25, tailMergeMaxDurationRatio: 1.25 });
+  assert.equal(prepared.jobs.length, 1);
+  assert.deepEqual(prepared.windows[0]!.chunkIndices, [0, 1]);
+  assert.equal(prepared.jobs[0]!.authoritativeSourceEvents.length, 2);
+  assert.equal(new Set(prepared.jobs[0]!.authoritativeSourceEvents.map((event) => event.id)).size, 2);
 });
 
 test("prepares owned evidence and context without losing source fields", () => {

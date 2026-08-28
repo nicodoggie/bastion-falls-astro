@@ -1,6 +1,6 @@
 import { spawn } from "node:child_process";
 import { createHash, randomUUID } from "node:crypto";
-import { chmod, mkdir, readFile, rename, rm, writeFile, open } from "node:fs/promises";
+import { chmod, mkdir, readFile, readdir, rename, rm, writeFile, open } from "node:fs/promises";
 import { basename, dirname, isAbsolute, join } from "node:path";
 import {
   parseCanonicalReconciliation,
@@ -52,6 +52,7 @@ const MAX_PROMPT_BYTES = 20_000_000;
 const DEFAULT_HERMES_COMMAND = "hermes";
 const HERMES_SKILLS = "bastion-transcript-evidence-workflows,bastion-note-review-corrections";
 const CHUNK_ID = /^session_\d{3}$/;
+const CANONICAL_CHUNK_ARTIFACT = /^session_\d{3}\.json$/;
 const RECONCILIATION_OUTPUT_CONTRACT = [
   "COMPLETE OUTPUT CONTRACT (authoritative; do not search the repository for schemas or examples):",
   "Return one strict JSON object with exactly these top-level keys and no status key: schemaVersion, promptVersion, chunk, cacheIdentity, blocks, omissions, materialCorrections, suspicionFlags, reviewNotes, summarySafety.",
@@ -93,6 +94,11 @@ function stable(value: unknown): string {
 function semanticallyEqual(a: unknown, b: unknown): boolean { return createHash("sha256").update(stable(a)).digest("hex") === createHash("sha256").update(stable(b)).digest("hex"); }
 function resultSize(value: InvocationResult | string | SummarySafeFallbackResult): number {
   return Buffer.byteLength(typeof value === "string" ? value : JSON.stringify(value), "utf8");
+}
+
+function oversizedPromptError(job: ReconciliationChunkJob, promptBytes: number): RangeError {
+  const largestEventBytes = job.authoritativeSourceEvents.reduce((largest, event) => Math.max(largest, Buffer.byteLength(event.text, "utf8")), 0);
+  return new RangeError(`prompt exceeded 20 MB bound: promptBytes=${promptBytes} authoritativeEvents=${job.authoritativeSourceEvents.length} largestEventBytes=${largestEventBytes}`);
 }
 
 export function buildUnifiedReconciliationPrompt(job: ReconciliationChunkJob): string {
@@ -150,10 +156,15 @@ function hydrateAuthoritativeSourceEchoes(response: ReconciliationResponse, job:
       const events = block.sourceEventIds.map((id) => eventById.get(id));
       if (events.some((event) => event === undefined)) return block;
       const authoritative = events as SourceEvent[];
+      let start = Infinity, end = -Infinity;
+      for (const event of authoritative) {
+        start = Math.min(start, event.supportedRange?.start ?? event.start);
+        end = Math.max(end, event.supportedRange?.end ?? event.end);
+      }
       return {
         ...block,
-        start: Math.min(...authoritative.map((event) => event.supportedRange?.start ?? event.start)),
-        end: Math.max(...authoritative.map((event) => event.supportedRange?.end ?? event.end)),
+        start,
+        end,
       };
     }),
     omissions: response.omissions.map((omission) => {
@@ -186,7 +197,8 @@ function groupExists(child: ReturnType<typeof spawn>): boolean {
 
 export async function boundedHermes(job: ReconciliationChunkJob, prompt: string, signal: AbortSignal, options: { timeoutMs: number; maxOutputBytes: number; hermesCommand: string; profile?: string; maxTurns: number; repositoryCwd?: string; promptDir?: string }): Promise<InvocationResult> {
   if (signal.aborted) throw new Error("reconciliation aborted");
-  if (Buffer.byteLength(prompt, "utf8") > MAX_PROMPT_BYTES) throw new RangeError("prompt exceeded bound");
+  const promptBytes = Buffer.byteLength(prompt, "utf8");
+  if (promptBytes > MAX_PROMPT_BYTES) throw oversizedPromptError(job, promptBytes);
   assertChunkId(job.packet.chunk.id);
   const promptDir = options.promptDir ?? options.repositoryCwd ?? process.cwd();
   if (!isAbsolute(promptDir)) throw new Error("promptDir must be an absolute path");
@@ -275,6 +287,12 @@ export async function runUnifiedReconciliation(options: ReconciliationRunnerOpti
   assertBounds(timeoutMs, maxOutputBytes, maxTurns); for (const job of options.jobs) assertChunkId(job.packet.chunk.id);
   if (options.repositoryCwd !== undefined && typeof options.repositoryCwd !== "string") throw new TypeError("repositoryCwd must be a string");
   const canonicalDir = join(options.rootDir, "reconciliation"); await mkdir(canonicalDir, { recursive: true }); const chunks: CanonicalReconciliation[] = []; const reusedChunkIds: string[] = [], repairedChunkIds: string[] = [];
+  if (options.resume || options.force) {
+    const expectedArtifacts = new Set(options.jobs.map((job) => `${job.packet.chunk.id}.json`));
+    for (const entry of await readdir(canonicalDir, { withFileTypes: true })) {
+      if (entry.isFile() && CANONICAL_CHUNK_ARTIFACT.test(entry.name) && !expectedArtifacts.has(entry.name)) await rm(join(canonicalDir, entry.name));
+    }
+  }
   if (!options.resume && !options.force) for (const job of options.jobs) { try { await readFile(join(canonicalDir, `${job.packet.chunk.id}.json`), "utf8"); throw new Error(`canonical artifact already exists for ${job.packet.chunk.id}; use resume or force`); } catch (error) { if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error; } }
   for (const derivative of ["reconciled_transcript.md", "summary_transcript.md", "reconciliation_review_queue.md"]) await rm(join(options.rootDir, derivative), { force: true });
   for (const job of options.jobs) {
@@ -282,7 +300,7 @@ export async function runUnifiedReconciliation(options: ReconciliationRunnerOpti
     if (artifactExists && !options.resume && !options.force) throw new Error(`canonical artifact already exists for ${job.packet.chunk.id}; use resume or force`);
     let chunk: CanonicalReconciliation | undefined = options.resume && !options.force ? existing : undefined;
     if (chunk) reusedChunkIds.push(job.packet.chunk.id);
-    else { repairedChunkIds.push(job.packet.chunk.id); const prompt = buildUnifiedReconciliationPrompt(job); if (Buffer.byteLength(prompt, "utf8") > MAX_PROMPT_BYTES) throw new RangeError("prompt exceeded bound"); let invocation: InvocationResult | undefined; try { const invoked = options.invokeReconciliation ? await boundedCall((signal) => options.invokeReconciliation!(job, prompt, signal), timeoutMs, maxOutputBytes, "reconciliation") : await boundedHermes(job, prompt, new AbortController().signal, { timeoutMs, maxOutputBytes, hermesCommand: options.hermesCommand ?? DEFAULT_HERMES_COMMAND, profile: options.profile, maxTurns, repositoryCwd: options.repositoryCwd, promptDir: options.rootDir }); invocation = typeof invoked === "string" ? { stdout: invoked } : invoked; const parsed = options.invokeReconciliation ? parseStrictReconciliationJson(invocation.stdout) : parseHermesReconciliationJson(invocation.stdout); chunk = validateReconciliationOutput(parsed, job); } catch (error) { invocation ??= invocationFromError(error); await bestEffortDiagnostic(options, job.packet.chunk.id, invocation, error, maxOutputBytes); throw error; } await persistDiagnostic(options.rootDir, job.packet.chunk.id, invocation, undefined, maxOutputBytes, options.diagnosticWriter); await writeCanonicalReconciliationAtomic(path, chunk); }
+    else { repairedChunkIds.push(job.packet.chunk.id); const prompt = buildUnifiedReconciliationPrompt(job); let invocation: InvocationResult | undefined; try { const promptBytes = Buffer.byteLength(prompt, "utf8"); if (promptBytes > MAX_PROMPT_BYTES) throw oversizedPromptError(job, promptBytes); const invoked = options.invokeReconciliation ? await boundedCall((signal) => options.invokeReconciliation!(job, prompt, signal), timeoutMs, maxOutputBytes, "reconciliation") : await boundedHermes(job, prompt, new AbortController().signal, { timeoutMs, maxOutputBytes, hermesCommand: options.hermesCommand ?? DEFAULT_HERMES_COMMAND, profile: options.profile, maxTurns, repositoryCwd: options.repositoryCwd, promptDir: options.rootDir }); invocation = typeof invoked === "string" ? { stdout: invoked } : invoked; const parsed = options.invokeReconciliation ? parseStrictReconciliationJson(invocation.stdout) : parseHermesReconciliationJson(invocation.stdout); chunk = validateReconciliationOutput(parsed, job); } catch (error) { invocation ??= invocationFromError(error); await bestEffortDiagnostic(options, job.packet.chunk.id, invocation, error, maxOutputBytes); throw error; } await persistDiagnostic(options.rootDir, job.packet.chunk.id, invocation, undefined, maxOutputBytes, options.diagnosticWriter); await writeCanonicalReconciliationAtomic(path, chunk); }
     chunk = await maybeFallback(chunk!, job, options, path, timeoutMs, maxOutputBytes); const reread = await readReusable(path, job); if (!reread) throw new Error(`canonical reread failed for ${job.packet.chunk.id}`); chunk = reread; const detached = structuredClone(chunk); chunks.push(detached); await options.checkpoint?.(structuredClone(detached));
   }
   await writeReconciliationTextAtomic(join(options.rootDir, "reconciled_transcript.md"), renderPrivateReconciliation(chunks)); if (chunks.every((item) => item.summarySafety.status === "valid")) await writeReconciliationTextAtomic(join(options.rootDir, "summary_transcript.md"), renderSummaryReconciliation(chunks)); await writeReconciliationTextAtomic(join(options.rootDir, "reconciliation_review_queue.md"), renderReconciliationReviewQueue(chunks)); return { chunks: structuredClone(chunks), repairedChunkIds, reusedChunkIds, diagnosticsDir: join(options.rootDir, "diagnostics") };

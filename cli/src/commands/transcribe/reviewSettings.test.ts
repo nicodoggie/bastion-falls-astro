@@ -12,11 +12,11 @@ test("parses supported providers and layouts", () => {
 });
 
 test("new reconciliation defaults to one hermes chunk", () => {
-  assert.deepEqual(resolveReconciliationSettings(undefined), { provider: "hermes", logicalChunks: "single", hermesProfile: "default", hermesMaxTurns: 12, promptVersion: "reconciliation.prompt.v6", schemaVersion: "reconciliation.v1", source: "default" });
+  assert.deepEqual(resolveReconciliationSettings(undefined), { provider: "hermes", logicalChunks: "single", hermesProfile: "default", hermesMaxTurns: 12, promptVersion: "reconciliation.prompt.v6", schemaVersion: "reconciliation.v1", tailMergeThresholdRatio: 0.25, tailMergeMaxDurationRatio: 1.25, source: "default" });
 });
 
 test("CLI reconciliation settings override configuration", () => {
-  assert.deepEqual(resolveReconciliationSettings({ provider: "off", logicalChunks: "three", hermes: { profile: "configured", maxTurns: 4 } }, { provider: "hermes", logicalChunks: "single", hermesProfile: "cli", hermesMaxTurns: 7 }), { provider: "hermes", logicalChunks: "single", hermesProfile: "cli", hermesMaxTurns: 7, promptVersion: "reconciliation.prompt.v6", schemaVersion: "reconciliation.v1", source: "cli" });
+  assert.deepEqual(resolveReconciliationSettings({ provider: "off", logicalChunks: "three", tailMergeThresholdRatio: 0.4, tailMergeMaxDurationRatio: 1.5, hermes: { profile: "configured", maxTurns: 4 } }, { provider: "hermes", logicalChunks: "single", hermesProfile: "cli", hermesMaxTurns: 7, tailMergeThresholdRatio: 0.1, tailMergeMaxDurationRatio: 1.1 }), { provider: "hermes", logicalChunks: "single", hermesProfile: "cli", hermesMaxTurns: 7, promptVersion: "reconciliation.prompt.v6", schemaVersion: "reconciliation.v1", tailMergeThresholdRatio: 0.1, tailMergeMaxDurationRatio: 1.1, source: "cli" });
 });
 
 test("deprecated review config maps hermes to explicit legacy only when no new settings exist", () => {
@@ -45,4 +45,8 @@ test("rejects malformed review configuration", () => {
   assert.throws(() => resolveReconciliationSettings({ hermes: { maxTurns: 0 } }), /maxTurns must be a bounded positive integer/);
   assert.throws(() => resolveReconciliationSettings({ provider: "hermes", surprise: true }), /unsupported keys/);
   assert.throws(() => resolveReconciliationSettings({ provider: "hermes", hermes: { maxTurns: 1001 } }), /bounded positive integer/);
+  assert.throws(() => resolveReconciliationSettings({ tailMergeThresholdRatio: -0.01 }), /tailMergeThresholdRatio/);
+  assert.throws(() => resolveReconciliationSettings({ tailMergeThresholdRatio: 1.01 }), /tailMergeThresholdRatio/);
+  assert.throws(() => resolveReconciliationSettings({ tailMergeMaxDurationRatio: 0.99 }), /tailMergeMaxDurationRatio/);
+  assert.throws(() => resolveReconciliationSettings({ tailMergeMaxDurationRatio: 2.01 }), /tailMergeMaxDurationRatio/);
 });
