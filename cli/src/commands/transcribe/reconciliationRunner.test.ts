@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile, readdir, rm, access, writeFile, chmod } from "node:fs/promises";
+import { mkdtemp, readFile, readdir, rm, access, writeFile, chmod, stat } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import test from "node:test";
@@ -298,10 +298,16 @@ test("bounded Hermes handles an already-aborted signal and kills a TERM-ignoring
   const root = await mkdtemp(join(tmpdir(), "reconciliation-hermes-"));
   const command = join(root, "synthetic-hermes.mjs"); const marker = join(root, "cwd.txt"); const pidFile = join(root, "child.pid");
   try {
-    await writeFile(command, `#!/usr/bin/env node\nimport { spawn } from "node:child_process";\nimport { writeFileSync } from "node:fs";\nwriteFileSync(${JSON.stringify(marker)}, process.cwd());\nconst child = spawn(process.execPath, ["-e", "process.on('SIGTERM',()=>{});setInterval(()=>{},1000)"], { stdio: "ignore" });\nwriteFileSync(${JSON.stringify(pidFile)}, String(child.pid));\nsetInterval(()=>{},1000);\n`); await chmod(command, 0o755);
+    await writeFile(command, `#!/usr/bin/env node\nimport { spawn } from "node:child_process";\nimport { writeFileSync } from "node:fs";\nwriteFileSync(${JSON.stringify(marker)}, process.cwd());\nprocess.stderr.write("provider-stream-stalled-before-terminal-response\\n");\nprocess.on("SIGTERM", () => { process.stderr.write("provider-cancel-acknowledged\\n"); process.exit(0); });\nconst child = spawn(process.execPath, ["-e", "process.on('SIGTERM',()=>{});setInterval(()=>{},1000)"], { stdio: "ignore" });\nwriteFileSync(${JSON.stringify(pidFile)}, String(child.pid));\nsetInterval(()=>{},1000);\n`); await chmod(command, 0o755);
     const aborted = new AbortController(); aborted.abort();
     await assert.rejects(() => boundedHermes(job, "x", aborted.signal, { timeoutMs: 100, maxOutputBytes: 1000, hermesCommand: command, maxTurns: 1, repositoryCwd: root }), /aborted/iu);
-    const started = Date.now(); await assert.rejects(() => boundedHermes(job, "x", new AbortController().signal, { timeoutMs: 100, maxOutputBytes: 1000, hermesCommand: command, maxTurns: 1, repositoryCwd: root }), /timed out|failed/iu); assert.ok(Date.now() - started < 1000);
+    const started = Date.now(); await assert.rejects(() => runUnifiedReconciliation({ rootDir: root, jobs: [job], timeoutMs: 100, maxOutputBytes: 1000, hermesCommand: command, maxTurns: 1, repositoryCwd: root }), /timed out|failed/iu); assert.ok(Date.now() - started < 1000);
+    const diagnosticPath = join(root, "diagnostics", (await readdir(join(root, "diagnostics")))[0]!);
+    const diagnostic = JSON.parse(await readFile(diagnosticPath, "utf8")) as { stderr: string; error: string };
+    assert.match(diagnostic.stderr, /provider-stream-stalled-before-terminal-response/u);
+    assert.match(diagnostic.stderr, /provider-cancel-acknowledged/u);
+    assert.match(diagnostic.error, /timed out/iu);
+    assert.equal((await stat(diagnosticPath)).mode & 0o777, 0o600);
     const readyDeadline = Date.now() + 300; while (Date.now() < readyDeadline) { try { await access(marker); await access(pidFile); break; } catch { await new Promise((resolve) => setTimeout(resolve, 10)); } }
     assert.equal(await readFile(marker, "utf8"), root); const pid = Number(await readFile(pidFile, "utf8")); const deadline = Date.now() + 500;
     while (Date.now() < deadline) { try { process.kill(pid, 0); const stat = await readFile(`/proc/${pid}/stat`, "utf8"); if (stat.split(" ")[2] === "Z") break; await new Promise((resolve) => setTimeout(resolve, 10)); } catch { break; } } try { const stat = await readFile(`/proc/${pid}/stat`, "utf8"); assert.equal(stat.split(" ")[2], "Z"); } catch (error) { if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error; }

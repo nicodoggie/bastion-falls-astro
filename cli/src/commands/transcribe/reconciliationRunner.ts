@@ -1,6 +1,6 @@
 import { spawn } from "node:child_process";
 import { createHash, randomUUID } from "node:crypto";
-import { mkdir, readFile, rename, rm, writeFile, open } from "node:fs/promises";
+import { chmod, mkdir, readFile, rename, rm, writeFile, open } from "node:fs/promises";
 import { basename, dirname, isAbsolute, join } from "node:path";
 import {
   parseCanonicalReconciliation,
@@ -35,6 +35,18 @@ const DEFAULT_MAX_OUTPUT_BYTES = 2_000_000;
 const DEFAULT_MAX_TURNS = 8;
 const MAX_TIMEOUT_MS = 10 * 60_000;
 const MAX_OUTPUT_BYTES = 20_000_000;
+const HERMES_INVOCATION = Symbol("hermesInvocation");
+type HermesInvocationError = Error & { [HERMES_INVOCATION]: InvocationResult };
+
+function attachHermesInvocation(error: Error, invocation: InvocationResult): HermesInvocationError {
+  return Object.assign(error, { [HERMES_INVOCATION]: invocation });
+}
+
+function invocationFromError(error: unknown): InvocationResult | undefined {
+  return error instanceof Error && HERMES_INVOCATION in error
+    ? (error as HermesInvocationError)[HERMES_INVOCATION]
+    : undefined;
+}
 const MAX_TURNS = 1_000;
 const MAX_PROMPT_BYTES = 20_000_000;
 const DEFAULT_HERMES_COMMAND = "hermes";
@@ -191,13 +203,15 @@ export async function boundedHermes(job: ReconciliationChunkJob, prompt: string,
     try { child = spawn(args[0]!, args.slice(1), { stdio: ["ignore", "pipe", "pipe"], detached: true, cwd: options.repositoryCwd ?? process.cwd() }); }
     catch (error) { reject(error); return; }
     let stdout = "", stderr = "", bytes = 0, settled = false, failing = false, failureError: Error | undefined;
+    const startedAt = Date.now();
     let graceTimer: ReturnType<typeof setTimeout> | undefined, finalTimer: ReturnType<typeof setTimeout> | undefined;
     const timer = setTimeout(() => fail(new Error("Hermes timed out")), options.timeoutMs);
     const cleanup = () => { clearTimeout(timer); if (graceTimer) clearTimeout(graceTimer); if (finalTimer) clearTimeout(finalTimer); signal.removeEventListener("abort", onAbort); child.stdout?.removeListener("data", onStdout); child.stderr?.removeListener("data", onStderr); child.removeListener("error", onError); child.removeListener("close", onClose); };
-    const settle = (error?: Error) => { if (settled) return; settled = true; cleanup(); error ? reject(error) : resolve({ stdout, stderr, metadata: { exitCode: child.exitCode } }); };
+    const invocation = (): InvocationResult => ({ stdout, stderr, metadata: { exitCode: child.exitCode, durationMs: Date.now() - startedAt, ...(options.profile ? { profile: options.profile } : {}) } });
+    const settle = (error?: Error) => { if (settled) return; settled = true; cleanup(); error ? reject(attachHermesInvocation(error, invocation())) : resolve(invocation()); };
     const fail = (error: Error) => { if (settled || failing) return; failing = true; failureError = error; terminateGroup(child); graceTimer = setTimeout(() => { if (!groupExists(child)) { settle(error); return; } killGroup(child); finalTimer = setTimeout(() => { if (groupExists(child)) { promptSafeToRemove = false; settle(new Error(`${error.message}; Hermes process group survived SIGKILL`)); return; } settle(error); }, 250); }, 100); };
-    const onStdout = (chunk: Buffer) => { if (settled || failing) return; bytes += chunk.byteLength; if (bytes > options.maxOutputBytes) fail(new Error("Hermes output exceeded bound")); else stdout += chunk.toString("utf8"); };
-    const onStderr = (chunk: Buffer) => { if (settled || failing) return; bytes += chunk.byteLength; if (bytes > options.maxOutputBytes) fail(new Error("Hermes output exceeded bound")); else stderr += chunk.toString("utf8"); };
+    const onStdout = (chunk: Buffer) => { if (settled) return; bytes += chunk.byteLength; if (bytes > options.maxOutputBytes) fail(new Error("Hermes output exceeded bound")); else stdout += chunk.toString("utf8"); };
+    const onStderr = (chunk: Buffer) => { if (settled) return; bytes += chunk.byteLength; if (bytes > options.maxOutputBytes) fail(new Error("Hermes output exceeded bound")); else stderr += chunk.toString("utf8"); };
     const onError = (error: Error) => failing ? undefined : settle(error);
     const onAbort = () => fail(new Error("reconciliation aborted"));
     const onClose = (code: number | null, sig: NodeJS.Signals | null) => { if (failing) { if (!groupExists(child)) settle(failureError); return; } code === 0 ? settle() : settle(new Error(`Hermes exited ${code ?? sig}`)); };
@@ -222,7 +236,7 @@ export async function writeCanonicalReconciliationAtomic(targetPath: string, val
   await writeReconciliationTextAtomic(targetPath, `${JSON.stringify(value, null, 2)}\n`, hooks);
 }
 
-async function persistDiagnostic(root: string, chunkId: string, invocation: InvocationResult | undefined, error: unknown, maxOutputBytes: number, writer?: ReconciliationRunnerOptions["diagnosticWriter"]): Promise<void> { assertChunkId(chunkId); const dir = join(root, "diagnostics"); const clip = (value: string, limit: number) => Buffer.from(value, "utf8").subarray(0, limit).toString("utf8"); const stdout = clip(invocation?.stdout ?? "", maxOutputBytes); const remaining = Math.max(0, maxOutputBytes - Buffer.byteLength(stdout, "utf8")); const stderr = clip(invocation?.stderr ?? "", remaining); const raw = invocation?.metadata ?? {}; const metadata: Record<string, unknown> = {}; for (const key of ["exitCode", "durationMs", "model", "profile", "inputTokens", "outputTokens", "totalTokens"]) if (key in raw) metadata[key] = raw[key]; const payload = { chunkId, stdout, stderr, metadata, error: clip(error instanceof Error ? error.message : String(error), Math.min(1_024, maxOutputBytes)) }; const path = join(dir, `${chunkId}-${Date.now()}-${randomUUID()}.json`); await mkdir(dir, { recursive: true }); if (writer) await writer(path, payload); else await writeFile(path, `${JSON.stringify(payload, null, 2)}\n`, "utf8"); }
+async function persistDiagnostic(root: string, chunkId: string, invocation: InvocationResult | undefined, error: unknown, maxOutputBytes: number, writer?: ReconciliationRunnerOptions["diagnosticWriter"]): Promise<void> { assertChunkId(chunkId); const dir = join(root, "diagnostics"); const clip = (value: string, limit: number) => Buffer.from(value, "utf8").subarray(0, limit).toString("utf8"); const stdout = clip(invocation?.stdout ?? "", maxOutputBytes); const remaining = Math.max(0, maxOutputBytes - Buffer.byteLength(stdout, "utf8")); const stderr = clip(invocation?.stderr ?? "", remaining); const raw = invocation?.metadata ?? {}; const metadata: Record<string, unknown> = {}; for (const key of ["exitCode", "durationMs", "model", "profile", "inputTokens", "outputTokens", "totalTokens"]) if (key in raw) metadata[key] = raw[key]; const payload = { chunkId, stdout, stderr, metadata, error: clip(error instanceof Error ? error.message : String(error), Math.min(1_024, maxOutputBytes)) }; const path = join(dir, `${chunkId}-${Date.now()}-${randomUUID()}.json`); await mkdir(dir, { recursive: true, mode: 0o700 }); if (writer) await writer(path, payload); else { await chmod(dir, 0o700); await writeFile(path, `${JSON.stringify(payload, null, 2)}\n`, { encoding: "utf8", mode: 0o600 }); } }
 async function bestEffortDiagnostic(options: ReconciliationRunnerOptions, chunkId: string, invocation: InvocationResult | undefined, error: unknown, maxOutputBytes: number): Promise<void> {
   try { await persistDiagnostic(options.rootDir, chunkId, invocation, error, maxOutputBytes, options.diagnosticWriter); }
   catch (diagnosticError) { if (error instanceof Error) { const note = ` (diagnostic recording failed: ${diagnosticError instanceof Error ? diagnosticError.message : String(diagnosticError)})`; error.message = `${error.message}${note.slice(0, Math.max(0, 256 - error.message.length))}`; } }
@@ -268,7 +282,7 @@ export async function runUnifiedReconciliation(options: ReconciliationRunnerOpti
     if (artifactExists && !options.resume && !options.force) throw new Error(`canonical artifact already exists for ${job.packet.chunk.id}; use resume or force`);
     let chunk: CanonicalReconciliation | undefined = options.resume && !options.force ? existing : undefined;
     if (chunk) reusedChunkIds.push(job.packet.chunk.id);
-    else { repairedChunkIds.push(job.packet.chunk.id); const prompt = buildUnifiedReconciliationPrompt(job); if (Buffer.byteLength(prompt, "utf8") > MAX_PROMPT_BYTES) throw new RangeError("prompt exceeded bound"); let invocation: InvocationResult | undefined; try { const invoked = options.invokeReconciliation ? await boundedCall((signal) => options.invokeReconciliation!(job, prompt, signal), timeoutMs, maxOutputBytes, "reconciliation") : await boundedHermes(job, prompt, new AbortController().signal, { timeoutMs, maxOutputBytes, hermesCommand: options.hermesCommand ?? DEFAULT_HERMES_COMMAND, profile: options.profile, maxTurns, repositoryCwd: options.repositoryCwd, promptDir: options.rootDir }); invocation = typeof invoked === "string" ? { stdout: invoked } : invoked; const parsed = options.invokeReconciliation ? parseStrictReconciliationJson(invocation.stdout) : parseHermesReconciliationJson(invocation.stdout); chunk = validateReconciliationOutput(parsed, job); } catch (error) { await bestEffortDiagnostic(options, job.packet.chunk.id, invocation, error, maxOutputBytes); throw error; } await persistDiagnostic(options.rootDir, job.packet.chunk.id, invocation, undefined, maxOutputBytes, options.diagnosticWriter); await writeCanonicalReconciliationAtomic(path, chunk); }
+    else { repairedChunkIds.push(job.packet.chunk.id); const prompt = buildUnifiedReconciliationPrompt(job); if (Buffer.byteLength(prompt, "utf8") > MAX_PROMPT_BYTES) throw new RangeError("prompt exceeded bound"); let invocation: InvocationResult | undefined; try { const invoked = options.invokeReconciliation ? await boundedCall((signal) => options.invokeReconciliation!(job, prompt, signal), timeoutMs, maxOutputBytes, "reconciliation") : await boundedHermes(job, prompt, new AbortController().signal, { timeoutMs, maxOutputBytes, hermesCommand: options.hermesCommand ?? DEFAULT_HERMES_COMMAND, profile: options.profile, maxTurns, repositoryCwd: options.repositoryCwd, promptDir: options.rootDir }); invocation = typeof invoked === "string" ? { stdout: invoked } : invoked; const parsed = options.invokeReconciliation ? parseStrictReconciliationJson(invocation.stdout) : parseHermesReconciliationJson(invocation.stdout); chunk = validateReconciliationOutput(parsed, job); } catch (error) { invocation ??= invocationFromError(error); await bestEffortDiagnostic(options, job.packet.chunk.id, invocation, error, maxOutputBytes); throw error; } await persistDiagnostic(options.rootDir, job.packet.chunk.id, invocation, undefined, maxOutputBytes, options.diagnosticWriter); await writeCanonicalReconciliationAtomic(path, chunk); }
     chunk = await maybeFallback(chunk!, job, options, path, timeoutMs, maxOutputBytes); const reread = await readReusable(path, job); if (!reread) throw new Error(`canonical reread failed for ${job.packet.chunk.id}`); chunk = reread; const detached = structuredClone(chunk); chunks.push(detached); await options.checkpoint?.(structuredClone(detached));
   }
   await writeReconciliationTextAtomic(join(options.rootDir, "reconciled_transcript.md"), renderPrivateReconciliation(chunks)); if (chunks.every((item) => item.summarySafety.status === "valid")) await writeReconciliationTextAtomic(join(options.rootDir, "summary_transcript.md"), renderSummaryReconciliation(chunks)); await writeReconciliationTextAtomic(join(options.rootDir, "reconciliation_review_queue.md"), renderReconciliationReviewQueue(chunks)); return { chunks: structuredClone(chunks), repairedChunkIds, reusedChunkIds, diagnosticsDir: join(options.rootDir, "diagnostics") };
