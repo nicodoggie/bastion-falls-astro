@@ -49,6 +49,42 @@ test("source suspicion flags and duplicate review notes remain disposition-addre
   );
 });
 
+test("runner injects canonical source review material while the model owns dispositions", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-source-review-"));
+  const reviewedCanonical = { ...canonical, suspicionFlags: ["large-compression"], reviewNotes: ["same note"] } as any;
+  const sourceReviewTargets = [
+    { id: `suspicion:${stableHash("large-compression")}:0`, kind: "suspicion-flag", text: "large-compression", originalReviewFlags: [] },
+    { id: `review-note:${stableHash("same note")}:0`, kind: "review-note", text: "same note", originalReviewFlags: [] },
+  ] as const;
+  try {
+    const result = await runReconciliationSummarization({
+      outputRoot: root, chunks: [reviewedCanonical], provider: "test", promptVersion: "p1",
+      infer: async ({ prompt }) => {
+        for (const target of sourceReviewTargets) assert.match(prompt, new RegExp(target.id));
+        const model = response("session_000");
+        return {
+          ...model,
+          sourceSuspicionFlags: undefined,
+          reviewNotes: undefined,
+          sourceReviewTargets: undefined,
+          reviewDispositions: [
+            ...model.reviewDispositions,
+            ...sourceReviewTargets.map((target) => ({ targetId: target.id, disposition: "requires_human_review" as const, originalReviewFlags: [] })),
+          ],
+        };
+      },
+      sceneInfer: async ({ chunks }) => sceneFor(chunks),
+      sessionInfer: async ({ scenes }) => {
+        const claims = scenes.flatMap((scene) => scene.claims);
+        return { schemaVersion: "summary.session.v1", claims: claims.map((claim) => ({ id: `final-${claim.id}`, text: claim.text, sceneClaimIds: [claim.id] })), sections: [], openHooks: scenes.flatMap((scene) => scene.unresolvedHooks.map((hook) => ({ id: `open-${hook.id}`, text: hook.text, sceneHookIds: [hook.id] }))), confirmationsNeeded: [], boundaries: [], provenanceMap: Object.fromEntries(claims.map((claim) => [`final-${claim.id}`, [claim.id, ...claim.chunkClaimIds, "b0"]])), campaign: "demo", sessionDate: "2026-08-29" };
+      },
+    });
+    assert.deepEqual(result.chunks[0]!.sourceReviewTargets, sourceReviewTargets);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("canonical summary files parse directly and prompt versions invalidate all levels", async () => {
   const root = await mkdtemp(join(tmpdir(), "summary-canonical-cache-"));
   let chunkCalls = 0; let sceneCalls = 0; let sessionCalls = 0;
