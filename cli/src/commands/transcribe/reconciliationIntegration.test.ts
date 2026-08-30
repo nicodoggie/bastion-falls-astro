@@ -91,7 +91,7 @@ test("structured notes calls injected summarizer and renderer, then writes MDX",
   const rootDir = await mkdtemp(join(tmpdir(), "bf-integration-notes-")); let summaryCalls = 0;
   const chunk = { chunk: { id: "session_000", start: 0, end: 10 }, schemaVersion: "reconciliation.v1", promptVersion: "reconciliation.prompt.v1", cacheIdentity: {} , blocks: [{ id: "b", start: 1, end: 2, kind: "dialogue", text: "x", summarySafeText: "x", characterConfidence: "unknown", attributionBasis: ["source"], sourceEventIds: ["e"], reviewFlags: [] }], omissions: [], materialCorrections: [], suspicionFlags: [], reviewNotes: [], summarySafety: { status: "valid", errors: [] }, status: "valid" } as any;
   const job = prepareUnifiedReconciliationJobs(base("single")).jobs[0]!;
-  const result = await runUnifiedStructuredNotes({ outputRoot: rootDir, chunks: [chunk], jobs: [job] }, { summarizer: async () => { summaryCalls++; return { chunks: [], scenes: [], session: {} as any }; }, renderer: () => "---\ntitle: Test\n---\n", writer: async (path, content) => writeFile(path, content) });
+  const result = await runUnifiedStructuredNotes({ outputRoot: rootDir, chunks: [chunk], jobs: [job] }, { summarizer: async (options) => { summaryCalls++; assert.equal(options.timeoutMs, 600_000); return { chunks: [], scenes: [], session: {} as any }; }, renderer: () => "---\ntitle: Test\n---\n", writer: async (path, content) => writeFile(path, content) });
   assert.equal(summaryCalls, 1); assert.match(result.mdx, /title: Test/); await rm(rootDir, { recursive: true, force: true });
 });
 

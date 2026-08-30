@@ -110,7 +110,7 @@ export async function runUnifiedStructuredNotes(options: UnifiedNotesOptions, de
   if (new Set(chunkIds).size !== chunkIds.length || chunkIds.some((id) => !jobIds.includes(id))) throw new Error("canonical chunk/job identities mismatch");
   const summarize = deps.summarizer ?? runReconciliationSummarization;
   const { promptVersion = options.chunks[0]!.promptVersion, ...summaryOptions } = options.summarization ?? {};
-  const summaries = await summarize({ outputRoot: options.outputRoot, chunks: options.chunks, promptVersion, ...summaryOptions });
+  const summaries = await summarize({ outputRoot: options.outputRoot, chunks: options.chunks, promptVersion, timeoutMs: 600_000, ...summaryOptions });
   const mdx = (deps.renderer ?? renderSessionMdx)(summaries.session, summaries.scenes); const path = options.notePath ?? join(options.outputRoot, "structured-notes.mdx");
   if (deps.writer) await deps.writer(path, mdx); else {
     const parent = dirname(path); await mkdir(parent, { recursive: true }); const temp = join(parent, `.${basename(path)}.${randomUUID()}.tmp`);
