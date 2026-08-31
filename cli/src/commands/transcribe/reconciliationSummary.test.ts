@@ -189,6 +189,10 @@ if (prompt === "success") {
   writeFileSync(output, JSON.stringify({ cwd: process.cwd() }));
   process.exit(0);
 }
+if (prompt === "malformed") {
+  writeFileSync(output, "{malformed");
+  process.exit(0);
+}
 if (prompt === "overflow") {
   process.on("SIGTERM", () => {});
   process.stdout.write("x".repeat(20_000));
@@ -206,6 +210,8 @@ if (prompt === "timeout") {
 
     const success = await runBoundedCodexCommand({ prompt: "success", cwd: root, scratch: root, timeoutMs: 500, maxOutputBytes: 1_000, command });
     assert.deepEqual(success, { cwd: root });
+    const malformed = await runBoundedCodexCommand({ prompt: "malformed", cwd: root, scratch: root, timeoutMs: 500, maxOutputBytes: 1_000, command });
+    assert.equal(malformed, "{malformed");
     await assert.rejects(() => access(join(root, "response.json")));
 
     const overflowStart = Date.now();

@@ -48,3 +48,12 @@ test("repair prompt truncates UTF-8 and never exceeds aggregate byte budget", ()
   const bounded = prompt.split("<original-response-bounded>\\n")[1]?.split("\\n</original-response-bounded>")[0] ?? "null";
   assert.doesNotThrow(() => JSON.parse(bounded));
 });
+
+test("oversized non-original repair framing fails closed", () => {
+  assert.throws(
+    () => buildSummaryRepairPrompt({ level: "chunk", contract: "x".repeat(2_000_001), originalResponse: "{}", issues: [] }),
+    /framing exceeds bound/iu,
+  );
+  const multibyte = buildSummaryRepairPrompt({ level: "chunk", contract: "contract", originalResponse: "😀".repeat(1_000_000), issues: [] });
+  assert.ok(Buffer.byteLength(multibyte) <= 2_000_000);
+});

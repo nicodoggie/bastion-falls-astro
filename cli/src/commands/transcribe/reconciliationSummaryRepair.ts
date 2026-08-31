@@ -55,8 +55,11 @@ export function buildSummaryRepairPrompt(context: SummaryRepairContext): string 
     "<original-response-bounded>\n",
   ].join("\n");
   const suffix = "\n</original-response-bounded>";
+  if (Buffer.byteLength(prefix) + Buffer.byteLength(suffix) > SUMMARY_REPAIR_BOUNDS.maxPromptBytes) {
+    throw new Error("summary repair prompt framing exceeds bound");
+  }
   const original = boundedOriginal(context.originalResponse);
-  const available = Math.max(0, MAX_ORIGINAL_BYTES - Buffer.byteLength(prefix) - Buffer.byteLength(suffix));
+  const available = Math.min(MAX_ORIGINAL_BYTES, SUMMARY_REPAIR_BOUNDS.maxPromptBytes - Buffer.byteLength(prefix) - Buffer.byteLength(suffix));
   return `${prefix}${truncateUtf8(original, available)}${suffix}`;
 }
 export const SUMMARY_REPAIR_BOUNDS = { maxIssues: MAX_ISSUES, maxPathDepth: MAX_DEPTH, maxPathSegment: MAX_SEGMENT, maxMessage: MAX_MESSAGE, maxPromptBytes: 2_000_000 } as const;
