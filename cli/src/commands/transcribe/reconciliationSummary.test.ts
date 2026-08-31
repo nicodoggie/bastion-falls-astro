@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { access, chmod, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { access, chmod, mkdtemp, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { stableHash } from "./reconciliationEvidence.js";
@@ -248,4 +248,54 @@ if (prompt === "timeout") {
   } finally {
     await rm(root, { recursive: true, force: true });
   }
+});
+
+function sessionForScenes(scenes: readonly SceneSummary[]): unknown {
+  const claims = scenes.flatMap((scene) => scene.claims);
+  const hooks = scenes.flatMap((scene) => scene.unresolvedHooks);
+  return { schemaVersion: "summary.session.v1", claims: claims.map((claim) => ({ id: `final-${claim.id}`, text: claim.text, sceneClaimIds: [claim.id] })), sections: [], openHooks: hooks.map((hook) => ({ id: `open-${hook.id}`, text: hook.text, sceneHookIds: [hook.id] })), confirmationsNeeded: [], boundaries: [], provenanceMap: Object.fromEntries(claims.map((claim) => { const scene = scenes.find((candidate) => candidate.claims.some((item) => item.id === claim.id))!; return [`final-${claim.id}`, [claim.id, ...claim.chunkClaimIds, ...(scene.chunkClaimProvenance[claim.chunkClaimIds[0]!] ?? [])]]; })), campaign: "demo", sessionDate: "2026-08-19" };
+}
+
+test("runner repairs malformed scene output once and publishes a parseable scene before session inference", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-scene-repair-runner-")); let sceneCalls = 0; let sessionCalls = 0; const prompts: string[] = [];
+  try {
+    const result = await runReconciliationSummarization({ outputRoot: root, chunks: [canonical as any], promptVersion: "p1", infer: async () => response("wrong-id"), sceneInfer: async ({ prompt, chunks }) => { prompts.push(prompt); sceneCalls += 1; return sceneCalls === 1 ? { malformed: true } : { ...sceneFor(chunks), sceneId: "wrong-id" }; }, sessionInfer: async ({ scenes }) => { sessionCalls += 1; return sessionForScenes(scenes); } });
+    assert.equal(sceneCalls, 2); assert.equal(sessionCalls, 1); assert.match(prompts[1]!, /This is the only repair attempt/u); assert.equal(parseSceneSummary(JSON.parse(await readFile(join(root, "summarization/scenes/scene_000.json"), "utf8")), [result.chunks[0]!]).sceneId, "scene_000");
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
+test("runner repairs malformed session output once and publishes a parseable session", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-session-repair-runner-")); let sessionCalls = 0;
+  try {
+    const result = await runReconciliationSummarization({ outputRoot: root, chunks: [canonical as any], promptVersion: "p1", infer: async () => response("session_000"), sceneInfer: async ({ chunks }) => sceneFor(chunks), sessionInfer: async ({ scenes }) => { sessionCalls += 1; return sessionCalls === 1 ? { malformed: true } : sessionForScenes(scenes); } });
+    assert.equal(sessionCalls, 2); assert.equal(parseSessionSummary(JSON.parse(await readFile(join(root, "summarization/session.json"), "utf8")), result.scenes).schemaVersion, "summary.session.v1");
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
+test("invalid repair publishes no artifact and invalid scene repair blocks session inference", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-invalid-repair-runner-")); let calls = 0;
+  try { await assert.rejects(() => runReconciliationSummarization({ outputRoot: root, chunks: [canonical as any], promptVersion: "p1", infer: async () => { calls += 1; return {}; } })); assert.equal(calls, 2); await assert.rejects(() => access(join(root, "summarization/chunks/session_000.json"))); await assert.rejects(() => access(join(root, "summarization/session.json"))); } finally { await rm(root, { recursive: true, force: true }); }
+  const sceneRoot = await mkdtemp(join(tmpdir(), "summary-invalid-scene-repair-runner-")); let sceneCalls = 0; let sessionCalls = 0;
+  try { await assert.rejects(() => runReconciliationSummarization({ outputRoot: sceneRoot, chunks: [canonical as any], promptVersion: "p1", infer: async () => response("session_000"), sceneInfer: async () => { sceneCalls += 1; return {}; }, sessionInfer: async () => { sessionCalls += 1; return sessionForScenes([]); } })); assert.equal(sceneCalls, 2); assert.equal(sessionCalls, 0); await assert.rejects(() => access(join(sceneRoot, "summarization/scenes/scene_000.json"))); await assert.rejects(() => access(join(sceneRoot, "summarization/session.json"))); } finally { await rm(sceneRoot, { recursive: true, force: true }); }
+});
+
+test("runner does not repair stable operational failures or publish artifacts", async () => {
+  for (const category of ["timeout", "abort", "output-overflow", "identity", "custody"] as const) { const root = await mkdtemp(join(tmpdir(), `summary-${category}-runner-`)); let calls = 0; try { await assert.rejects(() => runReconciliationSummarization({ outputRoot: root, chunks: [canonical as any], promptVersion: "p1", infer: async () => { calls += 1; throw Object.assign(new Error(`private secret /home/ensu/transcript-${category}`), { repairCategory: category }); } })); assert.equal(calls, 1, category); await assert.rejects(() => access(join(root, "summarization/chunks/session_000.json")), category); await assert.rejects(() => access(join(root, "summarization/session.json")), category); } finally { await rm(root, { recursive: true, force: true }); } }
+});
+
+test("eligible runner attempts write 0600 diagnostics, while ordinary errors do not", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-diagnostics-runner-"));
+  try { let calls = 0; await assert.rejects(() => runReconciliationSummarization({ outputRoot: root, chunks: [canonical as any], promptVersion: "p1", infer: async () => { calls += 1; return calls === 1 ? "secret /home/ensu/transcript" : "still malformed"; } })); for (const name of ["chunk-session_000-initial.json", "chunk-session_000-repair.json"]) assert.equal((await stat(join(root, "summarization/diagnostics", name))).mode & 0o777, 0o600);
+    const ordinaryRoot = await mkdtemp(join(tmpdir(), "summary-ordinary-error-runner-")); let ordinaryCalls = 0; try { await assert.rejects(() => runReconciliationSummarization({ outputRoot: ordinaryRoot, chunks: [canonical as any], promptVersion: "p1", infer: async () => { ordinaryCalls += 1; throw new Error("secret /home/ensu/private transcript marker"); } })); assert.equal(ordinaryCalls, 1); await assert.rejects(() => access(join(ordinaryRoot, "summarization/diagnostics"))); } finally { await rm(ordinaryRoot, { recursive: true, force: true }); }
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
+test("runner overwrites model-owned caller IDs on both initial and repair attempts", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-caller-ids-runner-")); let calls = 0;
+  try { const result = await runReconciliationSummarization({ outputRoot: root, chunks: [canonical as any], promptVersion: "p1", infer: async () => { calls += 1; return calls === 1 ? { malformed: true, chunkId: "model-initial" } : { ...response("model-repair"), chunkId: "model-repair" }; }, sceneInfer: async ({ chunks }) => sceneFor(chunks), sessionInfer: async ({ scenes }) => sessionForScenes(scenes) }); assert.equal(calls, 2); assert.equal(result.chunks[0]!.chunkId, "session_000"); assert.equal(JSON.parse(await readFile(join(root, "summarization/chunks/session_000.json"), "utf8")).chunkId, "session_000"); } finally { await rm(root, { recursive: true, force: true }); }
+});
+
+test("unsupported model-owned provenance after repair remains rejected", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-provenance-repair-runner-")); let calls = 0;
+  try { await assert.rejects(() => runReconciliationSummarization({ outputRoot: root, chunks: [canonical as any], promptVersion: "p1", infer: async () => { calls += 1; return calls === 1 ? { malformed: true } : { ...response("session_000"), claims: [{ ...response("session_000").claims[0]!, reconciliationBlockIds: ["unsupported-model-ref"] }] }; } })); assert.equal(calls, 2); await assert.rejects(() => access(join(root, "summarization/chunks/session_000.json"))); } finally { await rm(root, { recursive: true, force: true }); }
 });
