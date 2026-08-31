@@ -27,11 +27,9 @@ const MAX_ORIGINAL_BYTES = 2_000_000;
 const forbidden = /(?:secret|token|password|credential|authorization|bearer|transcript|(?:\/[A-Za-z0-9_.-]+){2,})/iu;
 
 export function classifySummaryRepair(error: unknown): SummaryRepairDecision {
-  const message = error instanceof Error ? error.message : "unknown error";
-  const category = typeof error === "object" && error !== null && "repairCategory" in error ? String((error as { repairCategory?: unknown }).repairCategory) : "";
-  const stable = `${category}:${message}`.toLowerCase();
-  for (const [needle, reason] of [["timeout", "timeout"], ["abort", "abort"], ["empty-output", "empty-output"], ["output-overflow", "output-overflow"], ["identity", "identity"], ["custody", "custody"], ["diagnostic", "diagnostic"], ["atomic-publication", "atomic-publication"], ["process", "process"]] as const) if (category === needle || stable.startsWith(`${needle}:`)) return { eligible: false, reason };
-  if (category === "json" || category === "schema" || category === "semantic" || error instanceof z.ZodError) return { eligible: true, reason: "eligible" };
+  const category = typeof error === "object" && error !== null && "repairCategory" in error ? (error as { repairCategory?: unknown }).repairCategory : undefined;
+  if (error instanceof SyntaxError || error instanceof z.ZodError || category === "json" || category === "schema" || category === "semantic-validation") return { eligible: true, reason: "eligible" };
+  if (category === "timeout" || category === "abort" || category === "empty-output" || category === "output-overflow" || category === "identity" || category === "custody" || category === "diagnostic" || category === "atomic-publication" || category === "process") return { eligible: false, reason: category };
   return { eligible: false, reason: "unknown" };
 }
 
@@ -43,19 +41,22 @@ export function normalizeSummaryRepairIssues(error: unknown): SummaryRepairIssue
   const message = error instanceof Error ? error.message : "authoritative validation failed";
   return [{ stage: "semantic", code: "authoritative-validation", path: [], message: safeMessage(message) }];
 }
-function boundedOriginal(value: unknown): string { let text: string; try { text = JSON.stringify(value, (_key, item) => typeof item === "string" && forbidden.test(item) ? "[redacted]" : item) ?? "[unavailable]"; } catch { text = "[unavailable]"; } if (Buffer.byteLength(text) > MAX_ORIGINAL_BYTES) return text.slice(0, MAX_ORIGINAL_BYTES); return text; }
+function truncateUtf8(text: string, maxBytes: number): string { if (Buffer.byteLength(text) <= maxBytes) return text; let low = 0; let high = Math.min(text.length, maxBytes); while (low < high) { const middle = Math.ceil((low + high) / 2); if (Buffer.byteLength(text.slice(0, middle)) <= maxBytes) low = middle; else high = middle - 1; } return text.slice(0, low); }
+function boundedOriginal(value: unknown): string { let text: string; try { text = JSON.stringify(value, (_key, item) => typeof item === "string" && forbidden.test(item) ? "[redacted]" : item) ?? "[unavailable]"; } catch { text = "[unavailable]"; } return truncateUtf8(text, MAX_ORIGINAL_BYTES); }
 export function buildSummaryRepairPrompt(context: SummaryRepairContext): string {
-  const issues = context.issues.slice(0, MAX_ISSUES).map((issue) => ({ stage: issue.stage, code: issue.code, path: issue.path.slice(0, MAX_DEPTH).map((p) => p.slice(0, MAX_SEGMENT)), message: issue.message.slice(0, MAX_MESSAGE), ...(issue.allowed ? { allowed: issue.allowed.slice(0, 128) } : {}) }));
-  const prompt = [
+  const issues = context.issues.slice(0, MAX_ISSUES).map((issue) => ({ stage: issue.stage, code: issue.code, path: issue.path.slice(0, MAX_DEPTH).map((p) => p.slice(0, MAX_SEGMENT)), message: issue.message.slice(0, MAX_MESSAGE), ...(issue.allowed ? { allowed: issue.allowed.slice(0, 128).map((value) => value.slice(0, MAX_SEGMENT)) } : {}) }));
+  const prefix = [
     `Repair one ${context.level} summary using ${SUMMARY_REPAIR_VERSION}.`,
     "Return one structure-only JSON replacement; do not add, omit, merge, reinterpret, or invent evidence, claims, hooks, dispositions, or provenance.",
     "This is the only repair attempt. Do not return commentary or aliases.",
     "<contract>", context.contract, "</contract>",
-    "<authoritative-domains>", JSON.stringify(context.authoritativeDomains ?? []), "</authoritative-domains>",
+    "<authoritative-domains>", JSON.stringify((context.authoritativeDomains ?? []).slice(0, MAX_ISSUES).map((value) => value.slice(0, MAX_SEGMENT))), "</authoritative-domains>",
     "<sanitized-issues>", JSON.stringify(issues), "</sanitized-issues>",
-    "<original-response-bounded>", boundedOriginal(context.originalResponse), "</original-response-bounded>",
+    "<original-response-bounded>\n",
   ].join("\n");
-  if (Buffer.byteLength(prompt) > 2_000_000) throw Object.assign(new Error("repair prompt exceeds bound"), { repairCategory: "output-overflow" });
-  return prompt;
+  const suffix = "\n</original-response-bounded>";
+  const original = boundedOriginal(context.originalResponse);
+  const available = Math.max(0, MAX_ORIGINAL_BYTES - Buffer.byteLength(prefix) - Buffer.byteLength(suffix));
+  return `${prefix}${truncateUtf8(original, available)}${suffix}`;
 }
 export const SUMMARY_REPAIR_BOUNDS = { maxIssues: MAX_ISSUES, maxPathDepth: MAX_DEPTH, maxPathSegment: MAX_SEGMENT, maxMessage: MAX_MESSAGE, maxPromptBytes: 2_000_000 } as const;

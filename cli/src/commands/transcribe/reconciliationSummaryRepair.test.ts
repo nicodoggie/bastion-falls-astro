@@ -30,6 +30,21 @@ test("repair feedback is bounded, normalized, and private-safe", () => {
 
 test("stable categories distinguish repairable validation from operational failures", () => {
   assert.equal(classifySummaryRepair(new z.ZodError([])).eligible, true);
+  assert.equal(classifySummaryRepair(new SyntaxError("bad json")).eligible, true);
   assert.equal(classifySummaryRepair(Object.assign(new Error("timeout"), { repairCategory: "timeout" })).eligible, false);
   assert.equal(classifySummaryRepair(Object.assign(new Error("empty"), { repairCategory: "empty-output" })).eligible, false);
+  assert.equal(classifySummaryRepair(new Error("timeout: provider text")).eligible, false, "untyped text must fail closed");
+  assert.equal(classifySummaryRepair(Object.assign(new Error("anything"), { repairCategory: "semantic-validation" })).eligible, true);
+});
+
+test("repair prompt truncates UTF-8 and never exceeds aggregate byte budget", () => {
+  const prompt = buildSummaryRepairPrompt({
+    level: "chunk",
+    contract: "contract",
+    originalResponse: "😀".repeat(1_000_000),
+    issues: [],
+  });
+  assert.ok(Buffer.byteLength(prompt) <= SUMMARY_REPAIR_BOUNDS.maxPromptBytes);
+  const bounded = prompt.split("<original-response-bounded>\\n")[1]?.split("\\n</original-response-bounded>")[0] ?? "null";
+  assert.doesNotThrow(() => JSON.parse(bounded));
 });

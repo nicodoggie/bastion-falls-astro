@@ -21,6 +21,37 @@ test("long correction rules remain intact within the evidence-text bound", () =>
 test("runner writes direct canonical JSON and zero-call resume", async () => { const root = await mkdtemp(join(tmpdir(), "reconciliation-summary-")); let calls = 0; const priors: string[] = []; const options = { outputRoot: root, chunks: [canonical as any, { ...canonical, chunk: { ...canonical.chunk, id: "session_001" } } as any], provider: "test", promptVersion: "p1", campaignContext: "c", correctionRules: [], infer: async ({ priorRollingContext }: { priorRollingContext: string }) => { calls++; priors.push(priorRollingContext); return response(calls === 1 ? "session_000" : "session_001", priorRollingContext); }, sceneInfer: async ({ chunks }: { chunks: readonly ChunkSummary[] }) => sceneFor(chunks), sessionInfer: async ({ scenes }: { scenes: readonly SceneSummary[] }) => { const all = scenes.flatMap((s) => s.claims); return { schemaVersion: "summary.session.v1", claims: all.map((c) => ({ id: `final-${c.id}`, text: c.text, sceneClaimIds: [c.id] })), sections: [], openHooks: scenes.flatMap((s) => s.unresolvedHooks.map((h) => ({ id: `open-${h.id}`, text: h.text, sceneHookIds: [h.id] }))), confirmationsNeeded: [], boundaries: [], provenanceMap: Object.fromEntries(all.map((c) => [`final-${c.id}`, [c.id, ...c.chunkClaimIds, "b0"]])), campaign: "demo", sessionDate: "2026-08-19" }; } }; const first = await runReconciliationSummarization(options); assert.equal(calls, 2); assert.deepEqual(priors, ["", chunk.nextRollingContext]); const disk = JSON.parse(await readFile(join(root, "summarization", "chunks", "session_000.json"), "utf8")); assert.equal(disk.schemaVersion, "summary.chunk.v1"); assert.equal(disk.artifact, undefined); assert.equal(disk.cacheIdentity.length, 64); await runReconciliationSummarization(options); assert.equal(calls, 2); assert.equal(first.session.claims.length, 2); assert.deepEqual((await readdir(join(root, "summarization", "chunks"))).sort(), ["session_000.json", "session_001.json"]); });
 test("scene/session complete provenance and deterministic MDX", () => { const scene = sceneFor([chunk]); parseSceneSummary(scene, [chunk]); assert.throws(() => parseSceneSummary({ ...scene, claims: [] }, [chunk]), /represent every included chunk claim/iu); assert.throws(() => parseSceneSummary({ ...scene, unresolvedHooks: [] }, [chunk]), /represent every included chunk hook/iu); const session = { cacheIdentity: identity, promptVersion: "p1", schemaVersion: "summary.session.v1", claims: [{ id: "final-0", text: "Travel north continues.", sceneClaimIds: ["scene-claim-0"] }], sections: [], openHooks: [{ id: "open-0", text: "What is behind the door?", sceneHookIds: ["scene-hook-0"] }], confirmationsNeeded: [], boundaries: [], provenanceMap: { "final-0": ["scene-claim-0", "claim-0", "b0"] }, campaign: "demo", sessionDate: "2026-08-19" }; assert.match(renderSessionMdx(session, [scene]), /## Open Hooks/); assert.throws(() => parseSessionSummary({ ...session, provenanceMap: { "final-0": ["scene-claim-0"] } }, [scene])); });
 
+test("empty initial output is operational and cannot trigger repair", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-empty-output-"));
+  let calls = 0;
+  try {
+    await assert.rejects(() => runReconciliationSummarization({
+      outputRoot: root,
+      chunks: [canonical as any],
+      promptVersion: "p1",
+      infer: async () => { calls += 1; return ""; },
+    }), /empty output/iu);
+    assert.equal(calls, 1);
+    await assert.rejects(() => access(join(root, "summarization/chunks/session_000.json")));
+    await assert.rejects(() => access(join(root, "summarization/diagnostics/chunk-session_000-repair.json")));
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
+test("repair prompt receives bounded authoritative domains", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-authority-"));
+  const prompts: string[] = [];
+  try {
+    await runReconciliationSummarization({
+      outputRoot: root, chunks: [canonical as any], promptVersion: "p1",
+      infer: async ({ prompt }) => { prompts.push(prompt); if (prompts.length === 1) return { blockIds: ["b0"] }; return response("session_000"); },
+      sceneInfer: async ({ chunks }) => sceneFor(chunks),
+      sessionInfer: async ({ scenes }) => { const claims = scenes.flatMap((s) => s.claims); const hooks = scenes.flatMap((s) => s.unresolvedHooks); return { schemaVersion: "summary.session.v1", claims: claims.map((c) => ({ id: `final-${c.id}`, text: c.text, sceneClaimIds: [c.id] })), sections: [], openHooks: hooks.map((h) => ({ id: `open-${h.id}`, text: h.text, sceneHookIds: [h.id] })), confirmationsNeeded: [], boundaries: [], provenanceMap: Object.fromEntries(claims.map((c) => [`final-${c.id}`, [c.id, ...c.chunkClaimIds, "b0"]])), campaign: "demo", sessionDate: "2026-08-19" }; },
+    });
+    assert.equal(prompts.length, 2);
+    assert.match(prompts[1]!, /b0/);
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
 test("source suspicion flags and duplicate review notes remain disposition-addressable", () => {
   const reviewedCanonical = {
     ...canonical,
