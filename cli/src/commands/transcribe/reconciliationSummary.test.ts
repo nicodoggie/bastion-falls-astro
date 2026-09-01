@@ -13,13 +13,79 @@ const canonical = { chunk: { id: "session_000", start: 0, end: 10 }, blocks: [
 const identity = stableHash("fixture");
 const chunk: ChunkSummary = { cacheIdentity: identity, schemaVersion: "summary.chunk.v1", chunkId: "session_000", sourceSuspicionFlags: [], reviewNotes: [], sourceReviewTargets: [], claims: [{ id: "claim-0", text: "The party goes north.", reconciliationBlockIds: ["b0"], confidence: "high", attribution: "Ada", originalReviewFlags: ["unclear-words"] }], unresolvedHooks: [{ id: "hook-0", text: "What is behind the door?", reconciliationBlockIds: ["b1"], originalReviewFlags: [] }], reviewDispositions: [{ targetId: "claim-0", disposition: "carried_as_uncertain", originalReviewFlags: ["unclear-words"] }, { targetId: "hook-0", disposition: "resolved_for_summary", originalReviewFlags: [] }], nextRollingContext: "The party is heading north; a door opened." };
 function response(id: string, prior = ""): ChunkSummary { return { ...chunk, chunkId: id, claims: chunk.claims.map((x) => ({ ...x, id: `${id}-${x.id}` })), unresolvedHooks: chunk.unresolvedHooks.map((x) => ({ ...x, id: `${id}-${x.id}` })), reviewDispositions: chunk.reviewDispositions.map((x) => ({ ...x, targetId: `${id}-${x.targetId}` })), nextRollingContext: prior ? `${prior} next` : chunk.nextRollingContext }; }
-function sceneFor(chunks: readonly ChunkSummary[]): SceneSummary { return { cacheIdentity: identity, schemaVersion: "summary.scene.v1", sceneId: "scene_000", chunkIds: chunks.map((x) => x.chunkId), claims: chunks.flatMap((x) => x.claims.map((c) => ({ id: `scene-${c.id}`, text: c.text, chunkClaimIds: [c.id] }))), unresolvedHooks: chunks.flatMap((x) => x.unresolvedHooks.map((h) => ({ id: `scene-${h.id}`, text: h.text, chunkHookIds: [h.id] }))), chunkClaimProvenance: Object.fromEntries(chunks.flatMap((x) => x.claims.map((c) => [c.id, c.reconciliationBlockIds]))) }; }
+function localIdResponse(id: string): ChunkSummary { return { ...chunk, chunkId: id, claims: chunk.claims.map((x) => ({ ...x, id: "claim_001" })), unresolvedHooks: chunk.unresolvedHooks.map((x) => ({ ...x, id: "hook_001" })), reviewDispositions: chunk.reviewDispositions.map((x) => ({ ...x, targetId: x.targetId.startsWith("claim") ? "claim_001" : "hook_001" })) }; }
+function sceneFor(chunks: readonly ChunkSummary[]): SceneSummary {
+  const claims: SceneSummary["claims"] = [];
+  const unresolvedHooks: SceneSummary["unresolvedHooks"] = [];
+  const chunkClaimProvenance: Record<string, string[]> = {};
+  for (const candidate of chunks) {
+    candidate.claims.forEach((claim, index) => {
+      const chunkClaimId = `${candidate.chunkId}:claim:${String(index).padStart(3, "0")}`;
+      chunkClaimProvenance[chunkClaimId] = claim.reconciliationBlockIds;
+      claims.push({ id: `scene_000:claim:${String(claims.length).padStart(3, "0")}`, text: claim.text, chunkClaimIds: [chunkClaimId] });
+    });
+    candidate.unresolvedHooks.forEach((hook, index) => {
+      const chunkHookId = `${candidate.chunkId}:hook:${String(index).padStart(3, "0")}`;
+      unresolvedHooks.push({ id: `scene_000:hook:${String(unresolvedHooks.length).padStart(3, "0")}`, text: hook.text, chunkHookIds: [chunkHookId] });
+    });
+  }
+  return { cacheIdentity: identity, schemaVersion: "summary.scene.v1", sceneId: "scene_000", chunkIds: chunks.map((candidate) => candidate.chunkId), claims, unresolvedHooks, chunkClaimProvenance };
+}
 
 test("strict chunk parse validates provenance, source dispositions, and unknown blocks", () => { assert.equal(parseChunkSummary(chunk, canonical).chunkId, "session_000"); assert.throws(() => parseChunkSummary({ ...chunk, extra: true }, canonical)); assert.throws(() => parseChunkSummary({ ...chunk, claims: [{ ...chunk.claims[0]!, reconciliationBlockIds: ["missing"] }] }, canonical)); assert.throws(() => parseChunkSummary({ ...chunk, reviewDispositions: chunk.reviewDispositions.slice(0, 1) }, canonical)); });
 test("prompt is deterministic and includes evidence, prompt version, context, flags, alternatives and rules", () => { const options = { canonical, promptVersion: "p7", priorRollingContext: "Prior", campaignContext: "Campaign", correctionRules: ["Ada is a name"], flaggedAlternatives: [{ blockId: "b0", alternatives: ["We go north"] }] }; const a = buildChunkSummaryPrompt(options); assert.equal(a, buildChunkSummaryPrompt(options)); for (const value of ["summarySafeText", "p7", "Prior", "Campaign", "Ada is a name", "unclear-words", "We go north"]) assert.match(a, new RegExp(value)); });
 test("long correction rules remain intact within the evidence-text bound", () => { const rule = `Long rule: ${"evidence ".repeat(80)}`.trim(); assert.equal(rule.length > 400, true); const prompt = buildChunkSummaryPrompt({ canonical, promptVersion: "p7", correctionRules: [rule] }); assert.match(prompt, new RegExp(rule)); });
 test("runner writes direct canonical JSON and zero-call resume", async () => { const root = await mkdtemp(join(tmpdir(), "reconciliation-summary-")); let calls = 0; const priors: string[] = []; const options = { outputRoot: root, chunks: [canonical as any, { ...canonical, chunk: { ...canonical.chunk, id: "session_001" } } as any], provider: "test", promptVersion: "p1", campaignContext: "c", correctionRules: [], infer: async ({ priorRollingContext }: { priorRollingContext: string }) => { calls++; priors.push(priorRollingContext); return response(calls === 1 ? "session_000" : "session_001", priorRollingContext); }, sceneInfer: async ({ chunks }: { chunks: readonly ChunkSummary[] }) => sceneFor(chunks), sessionInfer: async ({ scenes }: { scenes: readonly SceneSummary[] }) => { const all = scenes.flatMap((s) => s.claims); return { schemaVersion: "summary.session.v1", claims: all.map((c) => ({ id: `final-${c.id}`, text: c.text, sceneClaimIds: [c.id] })), sections: [], openHooks: scenes.flatMap((s) => s.unresolvedHooks.map((h) => ({ id: `open-${h.id}`, text: h.text, sceneHookIds: [h.id] }))), confirmationsNeeded: [], boundaries: [], provenanceMap: Object.fromEntries(all.map((c) => [`final-${c.id}`, [c.id, ...c.chunkClaimIds, "b0"]])), campaign: "demo", sessionDate: "2026-08-19" }; } }; const first = await runReconciliationSummarization(options); assert.equal(calls, 2); assert.deepEqual(priors, ["", chunk.nextRollingContext]); const disk = JSON.parse(await readFile(join(root, "summarization", "chunks", "session_000.json"), "utf8")); assert.equal(disk.schemaVersion, "summary.chunk.v1"); assert.equal(disk.artifact, undefined); assert.equal(disk.cacheIdentity.length, 64); await runReconciliationSummarization(options); assert.equal(calls, 2); assert.equal(first.session.claims.length, 2); assert.deepEqual((await readdir(join(root, "summarization", "chunks"))).sort(), ["session_000.json", "session_001.json"]); });
-test("scene/session complete provenance and deterministic MDX", () => { const scene = sceneFor([chunk]); parseSceneSummary(scene, [chunk]); assert.throws(() => parseSceneSummary({ ...scene, claims: [] }, [chunk]), /represent every included chunk claim/iu); assert.throws(() => parseSceneSummary({ ...scene, unresolvedHooks: [] }, [chunk]), /represent every included chunk hook/iu); const session = { cacheIdentity: identity, promptVersion: "p1", schemaVersion: "summary.session.v1", claims: [{ id: "final-0", text: "Travel north continues.", sceneClaimIds: ["scene-claim-0"] }], sections: [], openHooks: [{ id: "open-0", text: "What is behind the door?", sceneHookIds: ["scene-hook-0"] }], confirmationsNeeded: [], boundaries: [], provenanceMap: { "final-0": ["scene-claim-0", "claim-0", "b0"] }, campaign: "demo", sessionDate: "2026-08-19" }; assert.match(renderSessionMdx(session, [scene]), /## Open Hooks/); assert.throws(() => parseSessionSummary({ ...session, provenanceMap: { "final-0": ["scene-claim-0"] } }, [scene])); });
+test("scene/session complete provenance and deterministic MDX", () => {
+  const scene = sceneFor([chunk]);
+  parseSceneSummary(scene, [chunk]);
+  assert.throws(() => parseSceneSummary({ ...scene, claims: [] }, [chunk]), /represent every included chunk claim/iu);
+  assert.throws(() => parseSceneSummary({ ...scene, unresolvedHooks: [] }, [chunk]), /represent every included chunk hook/iu);
+  const sceneClaimId = scene.claims[0]!.id;
+  const chunkClaimId = scene.claims[0]!.chunkClaimIds[0]!;
+  const sceneHookId = scene.unresolvedHooks[0]!.id;
+  const session = { cacheIdentity: identity, promptVersion: "p1", schemaVersion: "summary.session.v1", claims: [{ id: "final-0", text: "Travel north continues.", sceneClaimIds: [sceneClaimId] }], sections: [], openHooks: [{ id: "open-0", text: "What is behind the door?", sceneHookIds: [sceneHookId] }], confirmationsNeeded: [], boundaries: [], provenanceMap: { "final-0": [sceneClaimId, chunkClaimId, "b0"] }, campaign: "demo", sessionDate: "2026-08-19" };
+  assert.match(renderSessionMdx(session, [scene]), /## Open Hooks/);
+  assert.throws(() => parseSessionSummary({ ...session, provenanceMap: { "final-0": [sceneClaimId] } }, [scene]));
+});
+
+test("runner deterministically scopes repeated chunk-local claim and hook IDs before scene inference", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-scoped-chunk-ids-"));
+  const inputs = [canonical, { ...canonical, chunk: { ...canonical.chunk, id: "session_001" } }] as any[];
+  try {
+    const result = await runReconciliationSummarization({
+      outputRoot: root, chunks: inputs, promptVersion: "p1",
+      infer: async ({ canonical: inputCanonical }) => localIdResponse(inputCanonical.chunk.id),
+      sceneInfer: async ({ chunks }) => {
+        assert.deepEqual(chunks.map((candidate) => candidate.claims[0]!.id), ["session_000:claim:000", "session_001:claim:000"]);
+        assert.deepEqual(chunks.map((candidate) => candidate.unresolvedHooks[0]!.id), ["session_000:hook:000", "session_001:hook:000"]);
+        return sceneFor(chunks);
+      },
+      sessionInfer: async ({ scenes }) => sessionForScenes(scenes),
+    });
+    assert.equal(result.chunks[0]!.claims[0]!.id, "claim_001");
+    assert.equal(result.scenes[0]!.claims.length, 2);
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
+test("runner deterministically scopes repeated scene-local claim and hook IDs before session inference", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-scoped-scene-ids-"));
+  const inputs = [canonical, { ...canonical, chunk: { ...canonical.chunk, id: "session_001" } }] as any[];
+  try {
+    const result = await runReconciliationSummarization({
+      outputRoot: root, chunks: inputs, promptVersion: "p1", sceneGroupSize: 1,
+      infer: async ({ canonical: inputCanonical }) => localIdResponse(inputCanonical.chunk.id),
+      sceneInfer: async ({ chunks }) => ({ ...sceneFor(chunks), claims: sceneFor(chunks).claims.map((claim) => ({ ...claim, id: "scene_claim_001" })), unresolvedHooks: sceneFor(chunks).unresolvedHooks.map((hook) => ({ ...hook, id: "scene_hook_001" })) }),
+      sessionInfer: async ({ scenes }) => {
+        assert.deepEqual(scenes.map((scene) => scene.claims[0]!.id), ["scene_000:claim:000", "scene_001:claim:000"]);
+        assert.deepEqual(scenes.map((scene) => scene.unresolvedHooks[0]!.id), ["scene_000:hook:000", "scene_001:hook:000"]);
+        return sessionForScenes(scenes);
+      },
+    });
+    assert.equal(result.scenes.length, 2);
+    assert.equal(result.session.claims.length, 2);
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
 
 test("empty initial output is operational and cannot trigger repair", async () => {
   const root = await mkdtemp(join(tmpdir(), "summary-empty-output-"));
@@ -260,7 +326,7 @@ test("runner repairs malformed scene output once and publishes a parseable scene
   const root = await mkdtemp(join(tmpdir(), "summary-scene-repair-runner-")); let sceneCalls = 0; let sessionCalls = 0; const prompts: string[] = [];
   try {
     const result = await runReconciliationSummarization({ outputRoot: root, chunks: [canonical as any], promptVersion: "p1", infer: async () => response("wrong-id"), sceneInfer: async ({ prompt, chunks }) => { prompts.push(prompt); sceneCalls += 1; return sceneCalls === 1 ? { malformed: true } : { ...sceneFor(chunks), sceneId: "wrong-id" }; }, sessionInfer: async ({ scenes }) => { sessionCalls += 1; return sessionForScenes(scenes); } });
-    assert.equal(sceneCalls, 2); assert.equal(sessionCalls, 1); assert.match(prompts[1]!, /This is the only repair attempt/u); assert.equal(parseSceneSummary(JSON.parse(await readFile(join(root, "summarization/scenes/scene_000.json"), "utf8")), [result.chunks[0]!]).sceneId, "scene_000");
+    assert.equal(sceneCalls, 2); assert.equal(sessionCalls, 1); assert.match(prompts[1]!, /This is the only repair attempt/u); const diskScene = SceneSummarySchema.parse(JSON.parse(await readFile(join(root, "summarization/scenes/scene_000.json"), "utf8"))); assert.deepEqual(diskScene, result.scenes[0]); assert.equal(parseSceneSummary(diskScene, result.chunks).sceneId, "scene_000");
   } finally { await rm(root, { recursive: true, force: true }); }
 });
 
