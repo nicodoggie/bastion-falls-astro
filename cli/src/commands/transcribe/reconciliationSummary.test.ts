@@ -49,6 +49,42 @@ test("scene/session complete provenance and deterministic MDX", () => {
   assert.throws(() => parseSessionSummary({ ...session, provenanceMap: { "final-0": [sceneClaimId] } }, [scene]));
 });
 
+test("canonical session provenance accepts a complete derived chain above the local reference bound", () => {
+  const chunkClaims: ChunkSummary["claims"] = Array.from({ length: 200 }, (_, index) => ({
+    id: `session_000:claim:${String(index).padStart(3, "0")}`,
+    text: `Chunk claim ${index}`,
+    reconciliationBlockIds: ["b0"],
+    confidence: "high",
+    originalReviewFlags: [],
+  }));
+  const sourceChunk: ChunkSummary = { ...chunk, claims: chunkClaims, unresolvedHooks: [], reviewDispositions: [] };
+  const claims = Array.from({ length: 100 }, (_, index) => ({
+    id: `scene_000:claim:${String(index).padStart(3, "0")}`,
+    text: `Scene claim ${index}`,
+    chunkClaimIds: [chunkClaims[index * 2]!.id, chunkClaims[index * 2 + 1]!.id],
+  }));
+  const scene = parseSceneSummary({
+    cacheIdentity: identity,
+    schemaVersion: "summary.scene.v1",
+    sceneId: "scene_000",
+    chunkIds: ["session_000"],
+    claims,
+    unresolvedHooks: [],
+    chunkClaimProvenance: Object.fromEntries(chunkClaims.map((claim) => [claim.id, claim.reconciliationBlockIds])),
+  }, [sourceChunk]);
+  const provenance = [...new Set(claims.flatMap((claim) => [claim.id, ...claim.chunkClaimIds, "b0"]))];
+  const session = {
+    cacheIdentity: identity,
+    promptVersion: "p1",
+    schemaVersion: "summary.session.v1",
+    claims: [{ id: "final-0", text: "Complete summary.", sceneClaimIds: claims.map((claim) => claim.id) }],
+    sections: [], openHooks: [], confirmationsNeeded: [], boundaries: [],
+    provenanceMap: { "final-0": provenance }, campaign: "demo", sessionDate: "2026-08-19",
+  };
+  assert.equal(provenance.length, 301);
+  assert.doesNotThrow(() => parseSessionSummary(session, [scene]));
+});
+
 test("runner deterministically scopes repeated chunk-local claim and hook IDs before scene inference", async () => {
   const root = await mkdtemp(join(tmpdir(), "summary-scoped-chunk-ids-"));
   const inputs = [canonical, { ...canonical, chunk: { ...canonical.chunk, id: "session_001" } }] as any[];
@@ -335,6 +371,25 @@ test("runner repairs malformed session output once and publishes a parseable ses
   try {
     const result = await runReconciliationSummarization({ outputRoot: root, chunks: [canonical as any], promptVersion: "p1", infer: async () => response("session_000"), sceneInfer: async ({ chunks }) => sceneFor(chunks), sessionInfer: async ({ scenes }) => { sessionCalls += 1; return sessionCalls === 1 ? { malformed: true } : sessionForScenes(scenes); } });
     assert.equal(sessionCalls, 2); assert.equal(parseSessionSummary(JSON.parse(await readFile(join(root, "summarization/session.json"), "utf8")), result.scenes).schemaVersion, "summary.session.v1");
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
+test("runner injects caller-owned session provenance when model output omits it", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-session-derived-provenance-")); let sessionCalls = 0;
+  try {
+    const result = await runReconciliationSummarization({
+      outputRoot: root, chunks: [canonical as any], promptVersion: "p1",
+      infer: async () => response("session_000"),
+      sceneInfer: async ({ chunks }) => sceneFor(chunks),
+      sessionInfer: async ({ scenes }) => {
+        sessionCalls += 1;
+        const { provenanceMap: _ignored, ...modelOutput } = sessionForScenes(scenes) as any;
+        return modelOutput;
+      },
+    });
+    assert.equal(sessionCalls, 1);
+    assert.deepEqual(parseSessionSummary(result.session, result.scenes), result.session);
+    assert.ok(Object.values(result.session.provenanceMap).every((refs) => refs.length >= 3));
   } finally { await rm(root, { recursive: true, force: true }); }
 });
 
