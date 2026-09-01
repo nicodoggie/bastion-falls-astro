@@ -41,8 +41,7 @@ export function normalizeSummaryRepairIssues(error: unknown): SummaryRepairIssue
   const message = error instanceof Error ? error.message : "authoritative validation failed";
   return [{ stage: "semantic", code: "authoritative-validation", path: [], message: safeMessage(message) }];
 }
-function truncateUtf8(text: string, maxBytes: number): string { if (Buffer.byteLength(text) <= maxBytes) return text; let low = 0; let high = Math.min(text.length, maxBytes); while (low < high) { const middle = Math.ceil((low + high) / 2); if (Buffer.byteLength(text.slice(0, middle)) <= maxBytes) low = middle; else high = middle - 1; } return text.slice(0, low); }
-function boundedOriginal(value: unknown): string { let text: string; try { text = JSON.stringify(value, (_key, item) => typeof item === "string" && forbidden.test(item) ? "[redacted]" : item) ?? "[unavailable]"; } catch { text = "[unavailable]"; } return truncateUtf8(text, MAX_ORIGINAL_BYTES); }
+function boundedOriginal(value: unknown): string { let text: string; try { text = JSON.stringify(value, (_key, item) => typeof item === "string" && forbidden.test(item) ? "[redacted]" : item) ?? "[unavailable]"; } catch { text = "[unavailable]"; } return text; }
 export function buildSummaryRepairPrompt(context: SummaryRepairContext): string {
   const issues = context.issues.slice(0, MAX_ISSUES).map((issue) => ({ stage: issue.stage, code: issue.code, path: issue.path.slice(0, MAX_DEPTH).map((p) => p.slice(0, MAX_SEGMENT)), message: issue.message.slice(0, MAX_MESSAGE), ...(issue.allowed ? { allowed: issue.allowed.slice(0, 128).map((value) => value.slice(0, MAX_SEGMENT)) } : {}) }));
   const prefix = [
@@ -59,7 +58,9 @@ export function buildSummaryRepairPrompt(context: SummaryRepairContext): string 
     throw new Error("summary repair prompt framing exceeds bound");
   }
   const original = boundedOriginal(context.originalResponse);
-  const available = Math.min(MAX_ORIGINAL_BYTES, SUMMARY_REPAIR_BOUNDS.maxPromptBytes - Buffer.byteLength(prefix) - Buffer.byteLength(suffix));
-  return `${prefix}${truncateUtf8(original, available)}${suffix}`;
+  const originalBytes = Buffer.byteLength(original);
+  const available = SUMMARY_REPAIR_BOUNDS.maxPromptBytes - Buffer.byteLength(prefix) - Buffer.byteLength(suffix);
+  if (originalBytes > Math.min(MAX_ORIGINAL_BYTES, available)) throw new Error("summary repair original response exceeds bound");
+  return `${prefix}${original}${suffix}`;
 }
 export const SUMMARY_REPAIR_BOUNDS = { maxIssues: MAX_ISSUES, maxPathDepth: MAX_DEPTH, maxPathSegment: MAX_SEGMENT, maxMessage: MAX_MESSAGE, maxPromptBytes: 2_000_000 } as const;

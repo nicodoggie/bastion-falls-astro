@@ -299,3 +299,36 @@ test("unsupported model-owned provenance after repair remains rejected", async (
   const root = await mkdtemp(join(tmpdir(), "summary-provenance-repair-runner-")); let calls = 0;
   try { await assert.rejects(() => runReconciliationSummarization({ outputRoot: root, chunks: [canonical as any], promptVersion: "p1", infer: async () => { calls += 1; return calls === 1 ? { malformed: true } : { ...response("session_000"), claims: [{ ...response("session_000").claims[0]!, reconciliationBlockIds: ["unsupported-model-ref"] }] }; } })); assert.equal(calls, 2); await assert.rejects(() => access(join(root, "summarization/chunks/session_000.json"))); } finally { await rm(root, { recursive: true, force: true }); }
 });
+
+test("oversized original response is repair-ineligible while a fitting original repairs once", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-oversized-repair-runner-")); let calls = 0;
+  try {
+    await assert.rejects(() => runReconciliationSummarization({ outputRoot: root, chunks: [canonical as any], promptVersion: "p1", maxOutputBytes: 20_000_000, infer: async () => { calls += 1; return { extra: "x".repeat(2_000_000) }; } }), /original response exceeds bound/iu);
+    assert.equal(calls, 1);
+  } finally { await rm(root, { recursive: true, force: true }); }
+
+  const fittingRoot = await mkdtemp(join(tmpdir(), "summary-fitting-repair-runner-")); let fittingCalls = 0;
+  try {
+    const result = await runReconciliationSummarization({ outputRoot: fittingRoot, chunks: [canonical as any], promptVersion: "p1", maxOutputBytes: 20_000_000, infer: async () => { fittingCalls += 1; return fittingCalls === 1 ? { extra: "x".repeat(1_990_000) } : response("session_000"); }, sceneInfer: async ({ chunks }) => sceneFor(chunks), sessionInfer: async ({ scenes }) => sessionForScenes(scenes) });
+    assert.equal(fittingCalls, 2);
+    assert.equal(result.chunks[0]!.chunkId, "session_000");
+  } finally { await rm(fittingRoot, { recursive: true, force: true }); }
+});
+
+test("runner translates provider errors without exposing their raw private details", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-provider-error-runner-"));
+  const marker = "provider-secret /home/ensu/private transcript-marker";
+  try {
+    await assert.rejects(
+      () => runReconciliationSummarization({ outputRoot: root, chunks: [canonical as any], promptVersion: "p1", infer: async () => { throw new Error(marker); } }),
+      (error: unknown) => {
+        assert.ok(error instanceof Error);
+        assert.equal(error.message, "chunk summary inference failed");
+        assert.doesNotMatch(error.message, /provider-secret|\/home\/ensu\/private|transcript-marker/iu);
+        assert.equal((error as Error & { repairCategory?: string }).repairCategory, "unknown");
+        assert.equal(error.cause, undefined);
+        return true;
+      },
+    );
+  } finally { await rm(root, { recursive: true, force: true }); }
+});

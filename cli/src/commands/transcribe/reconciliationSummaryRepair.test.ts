@@ -37,16 +37,8 @@ test("stable categories distinguish repairable validation from operational failu
   assert.equal(classifySummaryRepair(Object.assign(new Error("anything"), { repairCategory: "semantic-validation" })).eligible, true);
 });
 
-test("repair prompt truncates UTF-8 and never exceeds aggregate byte budget", () => {
-  const prompt = buildSummaryRepairPrompt({
-    level: "chunk",
-    contract: "contract",
-    originalResponse: "😀".repeat(1_000_000),
-    issues: [],
-  });
-  assert.ok(Buffer.byteLength(prompt) <= SUMMARY_REPAIR_BOUNDS.maxPromptBytes);
-  const bounded = prompt.split("<original-response-bounded>\\n")[1]?.split("\\n</original-response-bounded>")[0] ?? "null";
-  assert.doesNotThrow(() => JSON.parse(bounded));
+test("repair prompt rejects oversized UTF-8 originals without truncation", () => {
+  assert.throws(() => buildSummaryRepairPrompt({ level: "chunk", contract: "contract", originalResponse: "😀".repeat(1_000_000), issues: [] }), /original response exceeds bound/iu);
 });
 
 test("oversized non-original repair framing fails closed", () => {
@@ -54,6 +46,14 @@ test("oversized non-original repair framing fails closed", () => {
     () => buildSummaryRepairPrompt({ level: "chunk", contract: "x".repeat(2_000_001), originalResponse: "{}", issues: [] }),
     /framing exceeds bound/iu,
   );
-  const multibyte = buildSummaryRepairPrompt({ level: "chunk", contract: "contract", originalResponse: "😀".repeat(1_000_000), issues: [] });
+  const multibyte = buildSummaryRepairPrompt({ level: "chunk", contract: "contract", originalResponse: "😀".repeat(400_000), issues: [] });
   assert.ok(Buffer.byteLength(multibyte) <= 2_000_000);
+});
+
+test("complete repair prompt rejects an oversized original instead of truncating it", () => {
+  assert.throws(
+    () => buildSummaryRepairPrompt({ level: "chunk", contract: "contract", originalResponse: { extra: "x".repeat(2_000_000) }, issues: [] }),
+    /original response exceeds bound/iu,
+  );
+  assert.doesNotThrow(() => buildSummaryRepairPrompt({ level: "chunk", contract: "contract", originalResponse: { extra: "x".repeat(1_990_000) }, issues: [] }));
 });

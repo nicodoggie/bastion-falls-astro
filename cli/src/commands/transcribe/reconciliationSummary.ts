@@ -111,6 +111,14 @@ export interface ProviderIdentity { provider: string; model?: string; profile?: 
 export interface SummarizationOptions { outputRoot: string; repositoryCwd?: string; chunks: readonly (CanonicalReconciliation | SummaryChunkInput)[]; provider?: string; providerIdentity?: ProviderIdentity; promptVersion: string; schemaVersion?: string; campaignContext?: string; correctionRules?: readonly string[]; infer?: (input: { prompt: string; canonical: CanonicalReconciliation; priorRollingContext: string; signal?: AbortSignal }) => Promise<unknown>; sceneInfer?: (input: { prompt: string; chunks: readonly ChunkSummary[]; signal?: AbortSignal }) => Promise<unknown>; sessionInfer?: (input: { prompt: string; scenes: readonly SceneSummary[]; signal?: AbortSignal }) => Promise<unknown>; campaign?: string; sessionDate?: string; timeoutMs?: number; maxOutputBytes?: number; resume?: boolean; force?: boolean; sceneGroupSize?: number; beforeRename?: () => void | Promise<void>; codexCommand?: BoundedCodexCommand | string }
 function boundedJsonBytes(value: unknown, maxOutputBytes: number, label: string): number { let serialized: string; try { serialized = JSON.stringify(value); } catch { throw operationalError("output-overflow", `${label} output could not be serialized`); } const bytes = Buffer.byteLength(serialized); if (bytes > maxOutputBytes) throw operationalError("output-overflow", `${label} output exceeds bound`); return bytes; }
 function operationalError(category: "timeout" | "abort" | "empty-output" | "output-overflow" | "identity" | "custody" | "diagnostic" | "atomic-publication" | "process", message: string): Error { return Object.assign(new Error(message.slice(0, 400)), { repairCategory: category }); }
+function inferenceError(error: unknown, label: string): Error {
+  const category = typeof error === "object" && error !== null && "repairCategory" in error ? (error as { repairCategory?: unknown }).repairCategory : undefined;
+  const operational = ["timeout", "abort", "empty-output", "output-overflow", "identity", "custody", "diagnostic", "atomic-publication", "process"].includes(category as string);
+  return Object.assign(new Error(`${label} inference failed`), { repairCategory: operational ? category : "unknown" });
+}
+async function callInference(fn: () => Promise<unknown>, label: string): Promise<{ value?: unknown; error?: Error }> {
+  try { return { value: await fn() }; } catch (error) { return { error: inferenceError(error, label) }; }
+}
 function semanticValidationError(error: unknown): unknown { if (error instanceof Error && !("repairCategory" in error)) Object.assign(error, { repairCategory: "semantic-validation" }); return error; }
 async function boundedCall<T>(fn: (signal: AbortSignal) => Promise<T>, timeoutMs: number, maxOutputBytes: number, label: string): Promise<T> { const controller = new AbortController(); let timer: ReturnType<typeof setTimeout> | undefined; const task = fn(controller.signal).then((v) => { boundedJsonBytes(v, maxOutputBytes, label); return v; }, (error) => { throw error; }); try { return await Promise.race([task, new Promise<T>((_, reject) => { timer = setTimeout(() => { controller.abort(); reject(operationalError("timeout", `${label} timed out`)); }, timeoutMs); })]); } finally { if (timer) clearTimeout(timer); controller.abort(); } }
 async function atomicJson(path: string, value: unknown, hook?: () => void | Promise<void>): Promise<void> { await mkdir(dirname(path), { recursive: true }); const temp = join(dirname(path), `.${randomUUID()}.tmp`); try { const h = await open(temp, "wx", 0o600); try { await h.writeFile(`${JSON.stringify(value, null, 2)}\n`, "utf8"); await h.sync(); } finally { await h.close(); } await hook?.(); await rename(temp, path); const d = await open(dirname(path), "r"); try { await d.sync(); } finally { await d.close(); } } finally { await rm(temp, { force: true }); } }
@@ -169,7 +177,9 @@ function inputOf(value: CanonicalReconciliation | SummaryChunkInput): SummaryChu
 
 async function inferWithOneRepair<T>(args: { level: SummaryLevel; prompt: string; contract: string; infer: (prompt: string) => Promise<unknown>; validate: (value: unknown) => T; diagnosticsDir: string; artifactId: string; authoritativeDomains?: readonly string[] }): Promise<T> {
   if (!/^[a-z]+_[0-9]{3}$|^session$/u.test(args.artifactId)) throw operationalError("identity", "unsafe summary artifact identity");
-  const initial = await args.infer(args.prompt);
+  const initialResult = await callInference(() => args.infer(args.prompt), `${args.level} summary`);
+  if (initialResult.error) throw initialResult.error;
+  const initial = initialResult.value;
   if (initial === undefined || initial === null || (typeof initial === "string" && initial.trim() === "")) throw operationalError("empty-output", "summary inference returned empty output");
   const validateResponse = (value: unknown): T => args.validate(typeof value === "string" ? JSON.parse(value) : value);
   try { return validateResponse(initial); } catch (error) {
@@ -177,7 +187,10 @@ async function inferWithOneRepair<T>(args: { level: SummaryLevel; prompt: string
     const decision = classifySummaryRepair(error); if (decision.eligible !== true) throw error;
     await atomicJson(join(args.diagnosticsDir, `${args.level}-${args.artifactId}-initial.json`), initial);
     const issues = normalizeSummaryRepairIssues(error);
-    const repair = await args.infer(buildSummaryRepairPrompt({ level: args.level, originalResponse: initial, issues, contract: args.contract, authoritativeDomains: args.authoritativeDomains }));
+    const repairPrompt = buildSummaryRepairPrompt({ level: args.level, originalResponse: initial, issues, contract: args.contract, authoritativeDomains: args.authoritativeDomains });
+    const repairResult = await callInference(() => args.infer(repairPrompt), `${args.level} summary repair`);
+    if (repairResult.error) throw repairResult.error;
+    const repair = repairResult.value;
     await atomicJson(join(args.diagnosticsDir, `${args.level}-${args.artifactId}-repair.json`), repair);
     try { return validateResponse(repair); } catch (repairError) { throw new Error(`${args.level} summary invalid after one repair`); }
   }
