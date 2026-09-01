@@ -1,0 +1,125 @@
+---
+title: Senera Map Scale and Travel Planning
+tags:
+  - notes
+  - Senera
+  - cartography
+---
+
+This article records out-of-world cartographic conventions and travel estimates used when planning
+Senera. The grid references, pixel measurements, and route calculations are editorial tools, not
+in-world terminology or surveyed canonical distances.
+
+## Controlling Scale
+
+The current Map of Senera is provisionally treated as a scale map. The controlling ruler is the
+[Gulf of Inespell](../locations/gulf-of-inespell.mdx), which extends approximately 125 miles inland
+and is approximately 63 miles wide at its mouth. Measuring the gulf on the map gives a working scale
+of approximately **0.135 mile per pixel**, or approximately 7.4 pixels per mile.
+
+The resulting working calibration is:
+
+- Map canvas: 4,500 by 4,500 pixels
+- Full map width: approximately 608 miles
+- Main planning-grid cell: 300 pixels, or approximately 40.5 miles per side
+- Main-cell diagonal: approximately 57 miles
+- Main-cell area: approximately 1,640 square miles
+- Three-by-three subcell: 100 pixels, or approximately 13.5 miles per side
+- Subcell diagonal: approximately 19 miles
+
+Conflicting dimensions in older regional descriptions should be reconsidered against this ruler
+rather than used as independent calibrations. The convention can be revised if the map itself is
+later redesigned.
+
+## Nested Planning Grid
+
+The planning map uses main cells labelled with an uppercase letter and a number. Each main cell can
+be divided into a three-by-three lowercase grid. Parentheses distinguish a nested subcell from a
+main cell: `B4(c3)` means subcell c3 within main cell B4, not main-grid C3.
+
+A range uses the same convention. `B3(b1-c2)` denotes the rectangular group comprising b1, c1, b2,
+and c2 within main cell B3.
+
+## Current Western Senera Placements
+
+- [Maiden's Field](../locations/rannek-marches.mdx#maidens-field) occupies `B3(b1-c2)`,
+  approximately 27 miles east to west and 27 miles north to south, or about 729 square miles.
+- [Maiden's Port](../locations/maidens-port.mdx) lies on the coast east of `B3(c1)`.
+- Maylert lies within `B4(c3)`. Use the subcell centre only as a provisional measuring point until
+  its exact location and road alignment are drawn.
+- [Rannekford](../locations/rannekford.mdx) is provisionally measured from the settlement dot at
+  approximately `(1185, 2135)` on the source map.
+- [Port Mibram](../locations/port-mibram.mdx) is provisionally measured at approximately
+  `(1250, 2010)`.
+
+The Rannekford and Port Mibram points are approximately 19 miles apart in a straight line, before
+allowing for the road's actual course.
+
+The uncertain handwritten reading previously discussed as “Wylfen Fields” should not be equated with
+Maiden's Field. The `D4-E5` region appears to be the Western Foothills.
+
+## Route Decisions
+
+- Andrew and Sapphire take the eastern road from Rannekford through Port Mibram toward Maiden's
+  Field. Their loaded brewery carriage and settlement-by-settlement investigation make travel days
+  and elapsed mission days different quantities.
+- Hellion and his group take the western road. Maylert is a possible stopping place on that
+  approach. Its placement bends a route through Maylert southward, so estimates that treated the
+  western road as a direct Rannekford-to-Field line do not apply if Maylert is a required waypoint.
+
+## Travel Assumptions
+
+Use these as sustainable daily rates rather than brief maximum speeds:
+
+- Loaded merchant or brewery carriage: approximately 15–20 effective road miles per travel day
+- Light passenger carriage or mounted group: approximately 18–24 effective road miles per travel day
+- General slow, normal, and fast overland planning bands: approximately 18, 24, and 30 miles per day
+- Sustained high-speed travel requires organized relay horses; one team cannot maintain relay speeds
+
+Raised embankments and well-maintained commercial roads can support the upper part of a band. Mud,
+flooding, a failed weir, a washed-out bridge, a closed ferry, military activity, or investigative
+stops can add detours or whole non-travel days.
+
+## Provisional Route Estimates
+
+These ranges combine straight-line geometry with allowances for plausible road curvature and delta
+crossings. Exact road polylines have not yet been drawn.
+
+### Eastern Road Through Port Mibram
+
+- Rannekford to Port Mibram: approximately 22–27 road miles
+- Rannekford through Port Mibram to the nearest part of Maiden's Field: approximately 45–55 road
+  miles, or roughly 2–4 loaded-carriage travel days
+- To a representative interior destination: approximately 65–80 road miles, or roughly 3–6
+  loaded-carriage travel days
+- A farther western or northwestern destination may be approximately 85–100 road miles away, or
+  roughly 4–7 loaded-carriage travel days
+
+Investigation and assistance in settlements should be counted separately from those travel days.
+
+### Western Road and Maylert
+
+Using the centre of `B4(c3)` only as a provisional point:
+
+- Rannekford to Maylert: approximately 39–48 road miles
+- Maylert to the nearest part of Maiden's Field: approximately 54–66 road miles
+- Maylert to a representative interior destination: approximately 70–86 road miles
+- Rannekford via Maylert to the nearest part of the Field: approximately 94–114 road miles, or
+  roughly 4–7 days for a light carriage or mounted group
+- Rannekford via Maylert to a representative interior destination: approximately 110–134 road miles,
+  or roughly 5–8 days for a light carriage or mounted group
+
+These totals supersede the earlier short western-route estimate if Maylert is on the travelled
+route. If Maylert is only an optional detour, the direct western road requires its own traced
+alignment before receiving a durable mileage.
+
+## Open Cartographic Decisions
+
+- Trace both roads and their principal bridges, ferries, causeways, and relief stations.
+- Place the Maidenfeld keep and define which destination inside Maiden's Field ordinary speech
+  means.
+- Decide whether Maylert is a mandatory western-road waypoint or an optional rest detour.
+- Reconcile older regional dimensions against the Gulf-controlled ruler.
+- Consider adding a scale bar to the Bastion Falls site's Map components.
+- Audit existing narrative phrases such as “several days away” against the geography rather than
+  using them to calibrate it.
