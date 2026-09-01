@@ -34,6 +34,15 @@ test("strict valid response parses with independently supplied evidence", () => 
   assert.equal(parseCanonicalReconciliation(parsed, context).schemaVersion, "reconciliation.v1");
 });
 
+test("duration-bounded reconciliation accepts more than 2048 authoritative events", () => {
+  const many = Array.from({ length: 2_049 }, (_, index) => source(`e${index}`, `event ${index}`, 0, 1));
+  const response = fixture({
+    chunk: { id: "chunk-many", start: 0, end: 2 },
+    blocks: [{ ...fixture().blocks[0], id: "many", start: 0, end: 1, sourceEventIds: many.map((event) => event.id) }],
+  });
+  assert.equal(validateReconciliation(response, { authoritativeSourceEvents: many }).status, "valid");
+});
+
 test("strict schema rejects unknown keys and duplicated top-level tiers", () => {
   assert.throws(() => parseReconciliationResponse({ ...fixture(), unexpected: true }));
   assert.throws(() => parseReconciliationResponse({ ...fixture(), readableText: "duplicate" }));

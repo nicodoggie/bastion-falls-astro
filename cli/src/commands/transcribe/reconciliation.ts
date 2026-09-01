@@ -7,7 +7,7 @@ const identifier = nonEmpty.max(160);
 const identityValue = nonEmpty.max(4_096);
 const content = z.string().max(20_000);
 const nonEmptyContent = z.string().trim().min(1).max(20_000);
-const MAX_EVENTS_PER_CHUNK = 2_048;
+
 const TIME_EQUIVALENCE_EPSILON = 1e-9;
 const TimeRangeSchema = z.object({ start: finite, end: finite }).strict();
 
@@ -58,7 +58,7 @@ export const ReconciliationBlockSchema = z.object({
   characterCandidate: identifier.optional(),
   characterConfidence: confidence,
   attributionBasis: z.array(bounded).min(1).max(8),
-  sourceEventIds: z.array(identifier).min(1).max(MAX_EVENTS_PER_CHUNK),
+  sourceEventIds: z.array(identifier).min(1),
   reviewFlags: z.array(reviewFlag).max(8),
 }).strict();
 
@@ -77,8 +77,8 @@ export const SummarySafetySchema = z.object({ status: z.enum(["valid", "pending"
 export const ReconciliationResponseSchema = z.object({
   schemaVersion: z.literal("reconciliation.v1"), promptVersion: identifier,
   chunk: ChunkWindowSchema, cacheIdentity: CacheIdentitySchema,
-  blocks: z.array(ReconciliationBlockSchema).min(1).max(MAX_EVENTS_PER_CHUNK), omissions: z.array(OmissionSchema).max(MAX_EVENTS_PER_CHUNK),
-  materialCorrections: z.array(MaterialCorrectionSchema).max(MAX_EVENTS_PER_CHUNK), suspicionFlags: z.array(suspicionFlag).max(8),
+  blocks: z.array(ReconciliationBlockSchema).min(1), omissions: z.array(OmissionSchema),
+  materialCorrections: z.array(MaterialCorrectionSchema), suspicionFlags: z.array(suspicionFlag).max(8),
   reviewNotes: z.array(bounded).max(8), summarySafety: SummarySafetySchema,
 }).strict();
 
@@ -94,6 +94,14 @@ export function parseReconciliationResponse(value: unknown): ReconciliationRespo
 function invalid(message: string): never { throw new Error(`Invalid reconciliation: ${message}`); }
 function hasText(value: string): boolean { return value.trim().length > 0; }
 function sameTime(left: number, right: number): boolean { return Math.abs(left - right) <= TIME_EQUIVALENCE_EPSILON; }
+function supportedBounds(events: readonly SourceEvent[]): [number, number] {
+  let start = Infinity, end = -Infinity;
+  for (const event of events) {
+    start = Math.min(start, event.supportedRange?.start ?? event.start);
+    end = Math.max(end, event.supportedRange?.end ?? event.end);
+  }
+  return [start, end];
+}
 
 function withoutStatus(value: unknown): unknown {
   if (typeof value === "object" && value !== null && "status" in value) {
@@ -108,7 +116,7 @@ export function validateReconciliation(value: unknown, context: ValidationContex
   const { chunk, blocks, omissions } = response;
   if (!(chunk.end > chunk.start)) invalid("invalid logical window");
 
-  const authoritative = z.array(SourceEventSchema).max(MAX_EVENTS_PER_CHUNK).parse(
+  const authoritative = z.array(SourceEventSchema).parse(
     context.authoritativeSourceEvents,
   );
   if (new Set(authoritative.map((event) => event.id)).size !== authoritative.length) invalid("duplicate authoritative source event id");
@@ -125,8 +133,7 @@ export function validateReconciliation(value: unknown, context: ValidationContex
     const claimed = block.sourceEventIds.map((id) => eventById.get(id));
     if (claimed.some((event) => event === undefined)) invalid("block claims unknown event");
     const events = claimed as SourceEvent[];
-    const supportedStart = Math.min(...events.map((event) => event.supportedRange?.start ?? event.start));
-    const supportedEnd = Math.max(...events.map((event) => event.supportedRange?.end ?? event.end));
+    const [supportedStart, supportedEnd] = supportedBounds(events);
     if (!sameTime(block.start, supportedStart) || !sameTime(block.end, supportedEnd)) invalid("block has unsupported timestamps");
     for (const event of events) {
       if (ownership.has(event.id)) invalid("source event consumed more than once");

@@ -40,6 +40,7 @@ import {
 } from "./codex.js";
 import {
   buildContextExcerpt,
+  buildSummaryContextExcerpt,
   collectContextFiles,
   writeGlossary,
 } from "./context.js";
@@ -132,6 +133,8 @@ interface TranscribeFlags {
   "reconciliation-hermes-max-turns"?: number;
   "reconciliation-prompt-version"?: string;
   "reconciliation-schema-version"?: string;
+  "reconciliation-tail-merge-threshold-ratio"?: number;
+  "reconciliation-tail-merge-max-duration-ratio"?: number;
   "hermes-profile"?: string;
   "hermes-max-turns"?: number;
   "notes-backend": NotesBackend;
@@ -351,6 +354,8 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
   "reconciliation-hermes-max-turns": { kind: "parsed", parse: parsePositiveInteger, brief: "Hermes reconciliation maximum turns", optional: true },
   "reconciliation-prompt-version": { kind: "parsed", parse: String, brief: "Reconciliation prompt version", optional: true },
   "reconciliation-schema-version": { kind: "parsed", parse: String, brief: "Reconciliation schema version", optional: true },
+  "reconciliation-tail-merge-threshold-ratio": { kind: "parsed", parse: parseNumber, brief: "Merge final chunks shorter than this ratio of the target duration", optional: true },
+  "reconciliation-tail-merge-max-duration-ratio": { kind: "parsed", parse: parseNumber, brief: "Maximum merged final-window duration as a ratio of the target", optional: true },
   "hermes-profile": {
     kind: "parsed",
     parse: String,
@@ -564,7 +569,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
       : { provider: flags.review, hermes: { profile: flags["hermes-profile"], maxTurns: flags["hermes-max-turns"] } };
     const reconciliationSettings = resolveReconciliationSettings(
       transcribeConfig["reconciliation"],
-      { provider: flags.reconciliation ?? flags["reconciliation-provider"], logicalChunks: flags["reconciliation-logical-chunks"], hermesProfile: flags["reconciliation-hermes-profile"] ?? flags["hermes-profile"], hermesMaxTurns: flags["reconciliation-hermes-max-turns"] ?? flags["hermes-max-turns"], promptVersion: flags["reconciliation-prompt-version"], schemaVersion: flags["reconciliation-schema-version"] },
+      { provider: flags.reconciliation ?? flags["reconciliation-provider"], logicalChunks: flags["reconciliation-logical-chunks"], hermesProfile: flags["reconciliation-hermes-profile"] ?? flags["hermes-profile"], hermesMaxTurns: flags["reconciliation-hermes-max-turns"] ?? flags["hermes-max-turns"], promptVersion: flags["reconciliation-prompt-version"], schemaVersion: flags["reconciliation-schema-version"], tailMergeThresholdRatio: flags["reconciliation-tail-merge-threshold-ratio"], tailMergeMaxDurationRatio: flags["reconciliation-tail-merge-max-duration-ratio"] },
       legacyAliasConfig,
     );
     const legacyReviewSettings = resolveReviewSettings(transcribeConfig["review"], { provider: flags.review, hermesProfile: flags["hermes-profile"], hermesMaxTurns: flags["hermes-max-turns"] });
@@ -1077,6 +1082,8 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
           sessionDate: flags["session-date"],
           promptVersion: reconciliationSettings.promptVersion,
           schemaVersion: reconciliationSettings.schemaVersion,
+          tailMergeThresholdRatio: reconciliationSettings.tailMergeThresholdRatio,
+          tailMergeMaxDurationRatio: reconciliationSettings.tailMergeMaxDurationRatio,
           resume: shouldResume,
           force: Boolean(flags.force),
         };
@@ -1146,7 +1153,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
             repositoryCwd: cwd,
             providerIdentity: { provider: "codex", model: "codex" },
             promptVersion: "summary.reconciliation.v1",
-            campaignContext: buildContextExcerpt(contextFiles),
+            campaignContext: buildSummaryContextExcerpt(contextFiles),
             correctionRules: evidenceLines(correctionRules),
             campaign: flags.campaign,
             sessionDate: flags["session-date"],

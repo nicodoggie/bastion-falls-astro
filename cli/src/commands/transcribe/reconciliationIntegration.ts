@@ -14,6 +14,7 @@ import type { ChannelMap } from "./channelMap.js";
 
 export type LogicalReconciliationWindow = { id: string; index: number; start: number; end: number; chunkIndices: number[] };
 export type LogicalLayout = "single" | "per-stt-chunk" | "three";
+export type TailMergeOptions = { tailMergeThresholdRatio?: number; tailMergeMaxDurationRatio?: number };
 
 function finiteWindow(start: unknown, end: unknown): [number, number] {
   if (typeof start !== "number" || typeof end !== "number" || !Number.isFinite(start) || !Number.isFinite(end) || end <= start) throw new Error("logical windows must be finite and increasing");
@@ -26,18 +27,30 @@ function orderedChunks(manifest: Manifest): PlannedChunk[] {
   for (const chunk of chunks) { if (!Number.isInteger(chunk.index) || chunk.index < 0 || chunk.index <= previousIndex) throw new Error("manifest chunk indices must be strictly increasing"); finiteWindow(chunk.start, chunk.end); if (chunk.start < previousStart || chunk.end < previousEnd) throw new Error("manifest chunk windows are not monotonic"); previousIndex = chunk.index; previousStart = chunk.start; previousEnd = chunk.end; }
   return chunks;
 }
-export function buildLogicalReconciliationWindows(manifest: Manifest, layout: LogicalLayout): LogicalReconciliationWindow[] {
+export function buildLogicalReconciliationWindows(manifest: Manifest, layout: LogicalLayout, options: TailMergeOptions = {}): LogicalReconciliationWindow[] {
   const chunks = orderedChunks(manifest);
   if (!["single", "per-stt-chunk", "three"].includes(layout)) throw new Error(`unsupported logical layout: ${layout}`);
-  if (layout === "single") { const start = 0; const end = manifest.durationSeconds; finiteWindow(start, end); return [{ id: "session_000", index: 0, start, end, chunkIndices: chunks.map((c) => c.index) }]; }
-  if (layout === "per-stt-chunk") return chunks.map((c, index) => ({ id: `session_${String(index).padStart(3, "0")}`, index, start: c.start, end: c.end, chunkIndices: [c.index] }));
-  if (chunks.length < 3) throw new Error("three-chunk context requires at least three chunks");
-  return chunks.map((chunk, index) => ({ id: `session_${String(index).padStart(3, "0")}`, index, start: chunk.start, end: chunk.end, chunkIndices: [chunk.index] }));
+  finiteWindow(0, manifest.durationSeconds);
+  if (layout === "three" && chunks.length < 3) throw new Error("three-chunk context requires at least three chunks");
+  const windows = chunks.map((chunk, index) => ({ id: `session_${String(index).padStart(3, "0")}`, index, start: chunk.start, end: chunk.end, chunkIndices: [chunk.index] }));
+  const threshold = options.tailMergeThresholdRatio ?? 0.25;
+  const maxDuration = options.tailMergeMaxDurationRatio ?? 1.25;
+  if (!Number.isFinite(threshold) || threshold < 0 || threshold > 1) throw new RangeError("tailMergeThresholdRatio must be between 0 and 1");
+  if (!Number.isFinite(maxDuration) || maxDuration < 1 || maxDuration > 2) throw new RangeError("tailMergeMaxDurationRatio must be between 1 and 2");
+  if (threshold > 0 && windows.length > 1) {
+    const tail = windows.at(-1)!;
+    const previous = windows.at(-2)!;
+    const target = manifest.chunkSettings.chunkSeconds;
+    if (tail.end - tail.start < target * threshold && tail.end - previous.start <= target * maxDuration) {
+      windows.splice(-2, 2, { ...previous, end: tail.end, chunkIndices: [...previous.chunkIndices, ...tail.chunkIndices] });
+    }
+  }
+  return windows;
 }
 
 export interface UnifiedJobOptions {
   manifest: Manifest; layout: LogicalLayout; alignments: readonly AlignmentResult[] | Readonly<Record<string | number, AlignmentResult>>;
-  sourceHash: string; evidenceRevision: string; provider: ProviderIdentity; correctionRules?: readonly string[]; glossary?: readonly string[]; channelMap?: ChannelMap; campaign?: string; sessionDate?: string; promptVersion?: string; schemaVersion?: string; expectedCharacters?: readonly string[]; previousReadableTail?: readonly string[]; neighborLimit?: number;
+  sourceHash: string; evidenceRevision: string; provider: ProviderIdentity; correctionRules?: readonly string[]; glossary?: readonly string[]; channelMap?: ChannelMap; campaign?: string; sessionDate?: string; promptVersion?: string; schemaVersion?: string; expectedCharacters?: readonly string[]; previousReadableTail?: readonly string[]; neighborLimit?: number; tailMergeThresholdRatio?: number; tailMergeMaxDurationRatio?: number;
 }
 export interface PreparedUnifiedJobs { jobs: ReconciliationChunkJob[]; cacheIdentityByChunk: Record<string, string>; windows: LogicalReconciliationWindow[] }
 function alignmentFor(alignments: UnifiedJobOptions["alignments"], index: number): AlignmentResult {
@@ -48,7 +61,7 @@ function alignmentFor(alignments: UnifiedJobOptions["alignments"], index: number
 function contextHead(alignment: AlignmentResult | undefined, limit: number): AlignmentEvent[] { return alignment ? alignment.events.slice(0, limit) : []; }
 export function prepareUnifiedReconciliationJobs(options: UnifiedJobOptions): PreparedUnifiedJobs {
   if (!/^[a-f0-9]{64}$/.test(options.sourceHash)) throw new Error("sourceHash must be precomputed lowercase SHA-256");
-  const windows = buildLogicalReconciliationWindows(options.manifest, options.layout); const chunks = orderedChunks(options.manifest); const jobs: ReconciliationChunkJob[] = [];
+  const windows = buildLogicalReconciliationWindows(options.manifest, options.layout, options); const chunks = orderedChunks(options.manifest); const jobs: ReconciliationChunkJob[] = [];
   for (const window of windows) {
     const owned = window.chunkIndices.flatMap((index) => alignmentFor(options.alignments, index).events);
     if (!owned.length) throw new Error(`logical window ${window.id} has an empty owned event universe`);
@@ -71,9 +84,9 @@ export interface UnifiedStageOptions extends UnifiedJobOptions { rootDir: string
 export interface UnifiedStageDeps { runUnifiedReconciliation?: typeof runUnifiedReconciliation; summarySafeFallback?: SummarySafeFallback; }
 function defaultFallback(cwd: string): SummarySafeFallback { return async ({ blocks }) => { const scratch = await mkdtemp(join(tmpdir(), "bf-summary-safe-")); try { const result = await runBoundedCodexCommand({ prompt: ["Return JSON only: an object mapping every supplied blockId exactly once to nonempty summary-safe text.", "Neutralize only wording that blocks summarization; preserve meaning and do not add claims.", JSON.stringify(blocks.map((b) => ({ blockId: b.id, readableText: b.text, priorSummarySafeText: b.summarySafeText })))].join("\n"), cwd, scratch, timeoutMs: 30_000, maxOutputBytes: 200_000 }); return result as Record<string, string>; } finally { await rm(scratch, { recursive: true, force: true }); } }; }
 export async function runUnifiedReconciliationStage(options: UnifiedStageOptions, deps: UnifiedStageDeps = {}): Promise<{ status: "valid" | "needs_review"; metadata: ReconciliationMetadata; chunks: CanonicalReconciliation[]; jobs: ReconciliationChunkJob[] }> {
-  const prepared = options.jobs ? { jobs: [...options.jobs], cacheIdentityByChunk: Object.fromEntries(options.jobs.map((j) => [j.packet.chunk.id, j.packet.cacheIdentity.inputHash])), windows: buildLogicalReconciliationWindows(options.manifest, options.layout) } : prepareUnifiedReconciliationJobs(options);
+  const prepared = options.jobs ? { jobs: [...options.jobs], cacheIdentityByChunk: Object.fromEntries(options.jobs.map((j) => [j.packet.chunk.id, j.packet.cacheIdentity.inputHash])), windows: buildLogicalReconciliationWindows(options.manifest, options.layout, options) } : prepareUnifiedReconciliationJobs(options);
   const runner = deps.runUnifiedReconciliation ?? runUnifiedReconciliation;
-  const result = await runner({ rootDir: options.rootDir, jobs: prepared.jobs, profile: options.profile, maxTurns: options.maxTurns, ...(options.timeoutMs === undefined ? {} : { timeoutMs: options.timeoutMs }), repositoryCwd: options.repositoryCwd, resume: options.resume, force: options.force, sanitizeSummarySafe: deps.summarySafeFallback ?? defaultFallback(options.repositoryCwd ?? process.cwd()) });
+  const result = await runner({ rootDir: options.rootDir, jobs: prepared.jobs, profile: options.profile, maxTurns: options.maxTurns, timeoutMs: options.timeoutMs ?? 600_000, repositoryCwd: options.repositoryCwd, resume: options.resume, force: options.force, sanitizeSummarySafe: deps.summarySafeFallback ?? defaultFallback(options.repositoryCwd ?? process.cwd()) });
   const expectedIds = prepared.jobs.map((job) => job.packet.chunk.id);
   const actualIds = result.chunks.map((chunk) => chunk.chunk.id);
   if (new Set(actualIds).size !== actualIds.length || actualIds.length !== expectedIds.length || expectedIds.some((id) => !actualIds.includes(id))) throw new Error("reconciliation runner returned an incomplete or unknown chunk set");
@@ -97,7 +110,7 @@ export async function runUnifiedStructuredNotes(options: UnifiedNotesOptions, de
   if (new Set(chunkIds).size !== chunkIds.length || chunkIds.some((id) => !jobIds.includes(id))) throw new Error("canonical chunk/job identities mismatch");
   const summarize = deps.summarizer ?? runReconciliationSummarization;
   const { promptVersion = options.chunks[0]!.promptVersion, ...summaryOptions } = options.summarization ?? {};
-  const summaries = await summarize({ outputRoot: options.outputRoot, chunks: options.chunks, promptVersion, ...summaryOptions });
+  const summaries = await summarize({ outputRoot: options.outputRoot, chunks: options.chunks, promptVersion, timeoutMs: 600_000, ...summaryOptions });
   const mdx = (deps.renderer ?? renderSessionMdx)(summaries.session, summaries.scenes); const path = options.notePath ?? join(options.outputRoot, "structured-notes.mdx");
   if (deps.writer) await deps.writer(path, mdx); else {
     const parent = dirname(path); await mkdir(parent, { recursive: true }); const temp = join(parent, `.${basename(path)}.${randomUUID()}.tmp`);

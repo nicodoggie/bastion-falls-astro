@@ -61,7 +61,7 @@ test("routes baseline only to legacy and candidates only to unified layouts", as
     runCodexSummaryCleanup: (async (input: { cwd: string; summaryTranscriptPath: string }) => { assert.equal(input.cwd, root); legacySummary += 1; await writeFile(input.summaryTranscriptPath, "summary\n"); }) as never,
     runCodexNotes: (async (input: { cwd: string; notesPath: string }) => { assert.equal(input.cwd, root); legacyNotes += 1; await writeFile(input.notesPath, "notes\n"); }) as never,
     runUnifiedReconciliationStage: (async (input: { layout: string; rootDir: string; channelMap: { version: number }; timeoutMs: number }) => { unifiedStage += 1; layouts.push(input.layout); assert.equal(input.channelMap.version, 1); assert.equal(input.timeoutMs, 600_000); await mkdir(join(input.rootDir, "reconciliation"), { recursive: true }); await writeFile(join(input.rootDir, "reconciliation", "session_000.json"), "{}\n"); return { status: "valid", metadata: {}, chunks: [chunk], jobs: [{ packet: { chunk: { id: "session_000" } }, authoritativeSourceEvents: [{ id: "e", text: "Source", start: 0, end: 2 }] }] }; }) as never,
-    runUnifiedStructuredNotes: (async (input: { notePath?: string }) => { unifiedNotes += 1; await writeFile(input.notePath!, "notes\n"); return {}; }) as never,
+    runUnifiedStructuredNotes: (async (input: { notePath?: string }) => { unifiedNotes += 1; if (input.notePath!.startsWith(windowRoot)) throw new Error("notes execution failed"); await writeFile(input.notePath!, "notes\n"); return {}; }) as never,
     loadCandidateInputs: (async () => ({ manifest, alignments: { "0": { version: 1, events: [] } }, channelMap: { version: 1, source: "/synthetic.wav", channels: [] } })) as never,
     loadSharedContext: (async () => ({ rules: "rule", excerpt: "context" })) as never,
     readCheckpoint: (async () => undefined) as never,
@@ -69,16 +69,19 @@ test("routes baseline only to legacy and candidates only to unified layouts", as
   };
   try {
     const executors = createBenchmarkExecutors(options(root), deps);
-    await executors.baseline({ lane: "baseline", rootDir: baselineRoot, sourceDir, layout: "legacy" });
+    const baseline = await executors.baseline({ lane: "baseline", rootDir: baselineRoot, sourceDir, layout: "legacy" }) as Record<string, unknown>;
     assert.equal(await readFile(join(baselineRoot, "summary_transcript.md"), "utf8"), "summary\n");
     assert.equal(await readFile(join(baselineRoot, "synthetic-2026-08-20.mdx"), "utf8"), "notes\n");
     await assert.rejects(readFile(join(root, "summary_transcript.md"), "utf8"), { code: "ENOENT" });
     await assert.rejects(readFile(join(root, "synthetic-2026-08-20.mdx"), "utf8"), { code: "ENOENT" });
     assert.deepEqual([legacySummary, legacyNotes, unifiedStage, unifiedNotes], [1, 1, 0, 0]);
-    await executors.single({ lane: "single", rootDir: singleRoot, sourceDir, layout: "single" });
-    await executors["window-3"]({ lane: "window-3", rootDir: windowRoot, sourceDir, layout: "three" });
+    assert.deepEqual([baseline["reconciliationStatus"], baseline["notesStatus"]], ["not_started", "ok"]);
+    const single = await executors.single({ lane: "single", rootDir: singleRoot, sourceDir, layout: "single" }) as Record<string, unknown>;
+    const window = await executors["window-3"]({ lane: "window-3", rootDir: windowRoot, sourceDir, layout: "three" }) as Record<string, unknown>;
     assert.deepEqual(layouts, ["single", "three"]);
     assert.deepEqual([legacySummary, legacyNotes, unifiedStage, unifiedNotes], [1, 1, 2, 2]);
+    assert.deepEqual([single["reconciliationStatus"], single["notesStatus"]], ["ok", "ok"]);
+    assert.deepEqual([window["reconciliationStatus"], window["notesStatus"], window["failureCode"], window["sourceEvents"]], ["ok", "failed", "notes-execution-failed", 1]);
   } finally { await rm(root, { recursive: true, force: true }); }
 });
 
