@@ -1,5 +1,5 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { basename, extname, join, relative } from "node:path";
+import { basename, extname, join } from "node:path";
 import { glob } from "tinyglobby";
 import yaml from "js-yaml";
 
@@ -116,7 +116,7 @@ export function buildContextExcerpt(files: ContextFile[], contextRootLabel = "as
   return files
     .map((file) => {
       const trimmed = file.content.slice(0, 4_000);
-      return `## ${relative(".", join(contextRootLabel, file.path))}\n\n${trimmed}`;
+      return `## ${join(contextRootLabel, file.path)}\n\n${trimmed}`;
     })
     .join("\n\n---\n\n");
 }
@@ -125,7 +125,7 @@ export function buildSummaryContextExcerpt(files: ContextFile[], contextRootLabe
   if (!Number.isSafeInteger(maxChars) || maxChars < 1 || maxChars > 4_000) throw new RangeError("invalid summary context bound");
   let output = "";
   for (const file of files) {
-    const section = `## ${relative(".", join(contextRootLabel, file.path))}\n\n${file.content.slice(0, 4_000)}`;
+    const section = `## ${join(contextRootLabel, file.path)}\n\n${file.content.slice(0, 4_000)}`;
     const separator = output ? "\n\n---\n\n" : "";
     const remaining = maxChars - output.length;
     if (remaining <= separator.length) break;

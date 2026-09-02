@@ -20,6 +20,7 @@ import {
   collectContextFiles,
   buildContextExcerpt,
   buildSummaryContextExcerpt,
+  extractGlossaryEntries,
 } from "./context.js";
 import { loadCorrectionRulesMarkdown } from "./corrections.js";
 import {
@@ -85,7 +86,7 @@ const parsePositiveInteger = (value: string): number => {
 };
 const parseTimeoutMs = (value: string): number => {
   const parsed = Number(value);
-  if (!Number.isSafeInteger(parsed) || parsed < 1_000 || parsed > 600_000) throw new Error("Timeout must be an integer from 1000 to 600000 milliseconds");
+  if (!Number.isSafeInteger(parsed) || parsed < 1_000 || parsed > 1_200_000) throw new Error("Timeout must be an integer from 1000 to 1200000 milliseconds");
   return parsed;
 };
 const parseBoundedString = (value: string): string => { if (!value.trim() || value.length > 2_000) throw new Error("Expected a bounded non-empty string"); return value; };
@@ -128,11 +129,12 @@ async function loadCandidateInputs(sourceDir: string): Promise<{ manifest: Manif
   return { manifest, alignments, channelMap: await loadChannelMap(channelMapPath) };
 }
 
-async function sharedContext(options: BenchmarkAdapterContext, laneRoot: string): Promise<{ rules: string; excerpt: string }> {
+async function sharedContext(options: BenchmarkAdapterContext, laneRoot: string): Promise<{ rules: string; glossary: string; excerpt: string }> {
   const files = await collectContextFiles({ contextRoot: options.contextRoot, campaign: options.campaign, outDir: laneRoot, maxFiles: 40, excludePathFragments: [options.sessionDate] });
   return {
     rules: await loadCorrectionRulesMarkdown({ cwd: options.repositoryCwd, path: options.corrections, campaign: options.campaign, sessionDate: options.sessionDate }),
-    excerpt: buildContextExcerpt(files, options.contextRoot),
+    glossary: extractGlossaryEntries(files).join("\n"),
+    excerpt: buildContextExcerpt(files),
   };
 }
 
@@ -217,10 +219,10 @@ export function createBenchmarkExecutors(options: BenchmarkAdapterContext, deps:
       channelMap,
       layout,
       sourceHash,
-      evidenceRevision: stableHash({ sourceHash, rules: context.rules, context: context.excerpt, promptVersion: options.promptVersion, schemaVersion: options.schemaVersion }),
+      evidenceRevision: stableHash({ sourceHash, rules: context.rules, glossary: context.glossary, promptVersion: options.promptVersion, schemaVersion: options.schemaVersion }),
       provider: { provider: "hermes", model: "hermes-chat", ...(options.profile ? { profile: options.profile } : {}) },
       correctionRules: boundedEvidenceLines(context.rules),
-      glossary: boundedEvidenceLines(context.excerpt),
+      glossary: boundedEvidenceLines(context.glossary),
       campaign,
       sessionDate,
       promptVersion: options.promptVersion,

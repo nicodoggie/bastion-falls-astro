@@ -33,7 +33,7 @@ export interface HermesArgsOptions { promptPath: string; profile?: string; maxTu
 const DEFAULT_TIMEOUT_MS = 600_000;
 const DEFAULT_MAX_OUTPUT_BYTES = 2_000_000;
 const DEFAULT_MAX_TURNS = 8;
-const MAX_TIMEOUT_MS = 10 * 60_000;
+const MAX_TIMEOUT_MS = 20 * 60_000;
 const MAX_OUTPUT_BYTES = 20_000_000;
 const HERMES_INVOCATION = Symbol("hermesInvocation");
 type HermesInvocationError = Error & { [HERMES_INVOCATION]: InvocationResult };
@@ -50,7 +50,7 @@ function invocationFromError(error: unknown): InvocationResult | undefined {
 const MAX_TURNS = 1_000;
 const MAX_PROMPT_BYTES = 20_000_000;
 const DEFAULT_HERMES_COMMAND = "hermes";
-const HERMES_SKILLS = "bastion-transcript-evidence-workflows,bastion-note-review-corrections";
+const HERMES_SKILLS = "bastion-transcript-evidence-workflows";
 const CHUNK_ID = /^session_\d{3}$/;
 const CANONICAL_CHUNK_ARTIFACT = /^session_\d{3}\.json$/;
 const RECONCILIATION_OUTPUT_CONTRACT = [

@@ -185,6 +185,7 @@ test("source suspicion flags and duplicate review notes remain disposition-addre
 test("runner injects canonical source review material while the model owns dispositions", async () => {
   const root = await mkdtemp(join(tmpdir(), "summary-source-review-"));
   const reviewedCanonical = { ...canonical, suspicionFlags: ["large-compression"], reviewNotes: ["same note"] } as any;
+  let chunkCalls = 0;
   const sourceReviewTargets = [
     { id: `suspicion:${stableHash("large-compression")}:0`, kind: "suspicion-flag", text: "large-compression", originalReviewFlags: [] },
     { id: `review-note:${stableHash("same note")}:0`, kind: "review-note", text: "same note", originalReviewFlags: [] },
@@ -193,15 +194,17 @@ test("runner injects canonical source review material while the model owns dispo
     const result = await runReconciliationSummarization({
       outputRoot: root, chunks: [reviewedCanonical], provider: "test", promptVersion: "p1",
       infer: async ({ prompt }) => {
+        chunkCalls += 1;
         for (const target of sourceReviewTargets) assert.match(prompt, new RegExp(target.id));
         const model = response("session_000");
         return {
           ...model,
+          claims: model.claims.map((claim) => ({ ...claim, originalReviewFlags: [] })),
           sourceSuspicionFlags: undefined,
           reviewNotes: undefined,
           sourceReviewTargets: undefined,
           reviewDispositions: [
-            ...model.reviewDispositions,
+            ...model.reviewDispositions.map((disposition) => ({ ...disposition, originalReviewFlags: [] })),
             ...sourceReviewTargets.map((target) => ({ targetId: target.id, disposition: "requires_human_review" as const, originalReviewFlags: [] })),
           ],
         };
@@ -212,6 +215,9 @@ test("runner injects canonical source review material while the model owns dispo
         return { schemaVersion: "summary.session.v1", claims: claims.map((claim) => ({ id: `final-${claim.id}`, text: claim.text, sceneClaimIds: [claim.id] })), sections: [], openHooks: scenes.flatMap((scene) => scene.unresolvedHooks.map((hook) => ({ id: `open-${hook.id}`, text: hook.text, sceneHookIds: [hook.id] }))), confirmationsNeeded: [], boundaries: [], provenanceMap: Object.fromEntries(claims.map((claim) => [`final-${claim.id}`, [claim.id, ...claim.chunkClaimIds, "b0"]])), campaign: "demo", sessionDate: "2026-08-29" };
       },
     });
+    assert.equal(chunkCalls, 1);
+    assert.deepEqual(result.chunks[0]!.claims[0]!.originalReviewFlags, ["unclear-words"]);
+    assert.deepEqual(result.chunks[0]!.reviewDispositions[0]!.originalReviewFlags, ["unclear-words"]);
     assert.deepEqual(result.chunks[0]!.sourceReviewTargets, sourceReviewTargets);
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -374,20 +380,22 @@ test("runner repairs malformed session output once and publishes a parseable ses
   } finally { await rm(root, { recursive: true, force: true }); }
 });
 
-test("runner injects caller-owned session provenance when model output omits it", async () => {
+test("runner injects caller-owned session provenance and metadata when the model omits or changes it", async () => {
   const root = await mkdtemp(join(tmpdir(), "summary-session-derived-provenance-")); let sessionCalls = 0;
   try {
     const result = await runReconciliationSummarization({
-      outputRoot: root, chunks: [canonical as any], promptVersion: "p1",
+      outputRoot: root, chunks: [canonical as any], promptVersion: "p1", campaign: "the-vengeful", sessionDate: "2026-08-15",
       infer: async () => response("session_000"),
       sceneInfer: async ({ chunks }) => sceneFor(chunks),
       sessionInfer: async ({ scenes }) => {
         sessionCalls += 1;
         const { provenanceMap: _ignored, ...modelOutput } = sessionForScenes(scenes) as any;
-        return modelOutput;
+        return { ...modelOutput, campaign: "invented", sessionDate: "2026-09-02" };
       },
     });
     assert.equal(sessionCalls, 1);
+    assert.equal(result.session.campaign, "the-vengeful");
+    assert.equal(result.session.sessionDate, "2026-08-15");
     assert.deepEqual(parseSessionSummary(result.session, result.scenes), result.session);
     assert.ok(Object.values(result.session.provenanceMap).every((refs) => refs.length >= 3));
   } finally { await rm(root, { recursive: true, force: true }); }

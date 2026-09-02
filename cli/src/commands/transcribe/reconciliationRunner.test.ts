@@ -52,7 +52,7 @@ test("prompt marks neighbors context-only and owns only the packet window", () =
 
 test("Hermes args use the repository chat contract", () => {
   const args = buildHermesReconciliationArgs({ promptPath: "/tmp/reconciliation-request.json", profile: "p", maxTurns: 7 });
-  assert.deepEqual(args.slice(0, 13), ["hermes", "--profile", "p", "chat", "-Q", "--source", "tool", "-t", "file", "-s", "bastion-transcript-evidence-workflows,bastion-note-review-corrections", "--max-turns", "7"]);
+  assert.deepEqual(args.slice(0, 13), ["hermes", "--profile", "p", "chat", "-Q", "--source", "tool", "-t", "file", "-s", "bastion-transcript-evidence-workflows", "--max-turns", "7"]);
   assert.equal(args.at(-2), "-q");
   assert.match(args.at(-1)!, /\/tmp\/reconciliation-request\.json/u);
 });
@@ -232,8 +232,9 @@ test("rejects excessive runner and prompt bounds before invocation", async () =>
   let calls = 0;
   const invokeReconciliation = async () => { calls += 1; return JSON.stringify(response()); };
   try {
+    await runUnifiedReconciliation({ rootDir: join(root, "accepted-timeout"), jobs: [job], invokeReconciliation, timeoutMs: 900_000 });
     for (const options of [
-      { timeoutMs: 600_001 },
+      { timeoutMs: 1_200_001 },
       { maxOutputBytes: 20_000_001 },
       { maxTurns: 1_001 },
     ]) {
@@ -250,7 +251,7 @@ test("rejects excessive runner and prompt bounds before invocation", async () =>
       () => runUnifiedReconciliation({ rootDir: root, jobs: [oversized], invokeReconciliation }),
       /prompt exceeded.*promptBytes=.*authoritativeEvents=.*largestEventBytes=/iu,
     );
-    assert.equal(calls, 0);
+    assert.equal(calls, 1);
     const diagnostics = await readdir(join(root, "diagnostics"));
     assert.equal(diagnostics.length, 1);
     const diagnostic = await readFile(join(root, "diagnostics", diagnostics[0]!), "utf8");

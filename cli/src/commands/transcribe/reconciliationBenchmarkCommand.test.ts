@@ -52,6 +52,9 @@ test("routes baseline only to legacy and candidates only to unified layouts", as
   await writeFile(join(baselineRoot, "corrected_transcript.md"), "approved\n");
   let legacySummary = 0, legacyNotes = 0, unifiedStage = 0, unifiedNotes = 0;
   const layouts: string[] = [];
+  const evidenceRevisions: string[] = [];
+  const reconciliationGlossaries: string[][] = [];
+  const noteContexts: string[] = [];
   const chunk = {
     chunk: { id: "session_000", start: 0, end: 10 }, schemaVersion: "reconciliation.v1", promptVersion: "reconciliation.prompt.v1", cacheIdentity: {},
     blocks: [{ id: "b", start: 0, end: 2, kind: "dialogue", text: "Readable", summarySafeText: "Safe", characterConfidence: "unknown", attributionBasis: ["source"], sourceEventIds: ["e"], reviewFlags: [] }],
@@ -60,10 +63,10 @@ test("routes baseline only to legacy and candidates only to unified layouts", as
   const deps: BenchmarkAdapterDependencies = {
     runCodexSummaryCleanup: (async (input: { cwd: string; summaryTranscriptPath: string }) => { assert.equal(input.cwd, root); legacySummary += 1; await writeFile(input.summaryTranscriptPath, "summary\n"); }) as never,
     runCodexNotes: (async (input: { cwd: string; notesPath: string }) => { assert.equal(input.cwd, root); legacyNotes += 1; await writeFile(input.notesPath, "notes\n"); }) as never,
-    runUnifiedReconciliationStage: (async (input: { layout: string; rootDir: string; channelMap: { version: number }; timeoutMs: number }) => { unifiedStage += 1; layouts.push(input.layout); assert.equal(input.channelMap.version, 1); assert.equal(input.timeoutMs, 600_000); await mkdir(join(input.rootDir, "reconciliation"), { recursive: true }); await writeFile(join(input.rootDir, "reconciliation", "session_000.json"), "{}\n"); return { status: "valid", metadata: {}, chunks: [chunk], jobs: [{ packet: { chunk: { id: "session_000" } }, authoritativeSourceEvents: [{ id: "e", text: "Source", start: 0, end: 2 }] }] }; }) as never,
-    runUnifiedStructuredNotes: (async (input: { notePath?: string }) => { unifiedNotes += 1; if (input.notePath!.startsWith(windowRoot)) throw new Error("notes execution failed"); await writeFile(input.notePath!, "notes\n"); return {}; }) as never,
+    runUnifiedReconciliationStage: (async (input: { layout: string; rootDir: string; channelMap: { version: number }; timeoutMs: number; evidenceRevision: string; glossary: string[] }) => { unifiedStage += 1; layouts.push(input.layout); evidenceRevisions.push(input.evidenceRevision); reconciliationGlossaries.push(input.glossary); assert.equal(input.channelMap.version, 1); assert.equal(input.timeoutMs, 600_000); await mkdir(join(input.rootDir, "reconciliation"), { recursive: true }); await writeFile(join(input.rootDir, "reconciliation", "session_000.json"), "{}\n"); return { status: "valid", metadata: {}, chunks: [chunk], jobs: [{ packet: { chunk: { id: "session_000" } }, authoritativeSourceEvents: [{ id: "e", text: "Source", start: 0, end: 2 }] }] }; }) as never,
+    runUnifiedStructuredNotes: (async (input: { notePath?: string; summarization: { campaignContext: string } }) => { unifiedNotes += 1; noteContexts.push(input.summarization.campaignContext); if (input.notePath!.startsWith(windowRoot)) throw new Error("notes execution failed"); await writeFile(input.notePath!, "notes\n"); return {}; }) as never,
     loadCandidateInputs: (async () => ({ manifest, alignments: { "0": { version: 1, events: [] } }, channelMap: { version: 1, source: "/synthetic.wav", channels: [] } })) as never,
-    loadSharedContext: (async () => ({ rules: "rule", excerpt: "context" })) as never,
+    loadSharedContext: (async (_options: unknown, laneRoot: string) => ({ rules: "rule", glossary: "Proper Noun", excerpt: `notes-only:${laneRoot}` })) as never,
     readCheckpoint: (async () => undefined) as never,
     collectReceipt: (async () => ({ version: 1, entries: [], receiptSha256: "a".repeat(64) })) as never,
   };
@@ -79,6 +82,9 @@ test("routes baseline only to legacy and candidates only to unified layouts", as
     const single = await executors.single({ lane: "single", rootDir: singleRoot, sourceDir, layout: "single" }) as Record<string, unknown>;
     const window = await executors["window-3"]({ lane: "window-3", rootDir: windowRoot, sourceDir, layout: "three" }) as Record<string, unknown>;
     assert.deepEqual(layouts, ["single", "three"]);
+    assert.deepEqual(evidenceRevisions, [evidenceRevisions[0], evidenceRevisions[0]]);
+    assert.deepEqual(reconciliationGlossaries, [["Proper Noun"], ["Proper Noun"]]);
+    assert.equal(noteContexts.every((context) => context.includes("notes-only:") && !context.includes("Proper Noun")), true);
     assert.deepEqual([legacySummary, legacyNotes, unifiedStage, unifiedNotes], [1, 1, 2, 2]);
     assert.deepEqual([single["reconciliationStatus"], single["notesStatus"]], ["ok", "ok"]);
     assert.deepEqual([window["reconciliationStatus"], window["notesStatus"], window["failureCode"], window["sourceEvents"]], ["ok", "failed", "notes-execution-failed", 1]);
@@ -108,7 +114,7 @@ test("candidate normalizes zero-padded alignment filenames to manifest indexes",
   let modelCalls = 0;
   try {
     const executors = createBenchmarkExecutors(options(root), {
-      loadSharedContext: (async () => ({ rules: "", excerpt: "" })) as never,
+      loadSharedContext: (async () => ({ rules: "", glossary: "", excerpt: "" })) as never,
       readCheckpoint: (async () => undefined) as never,
       collectReceipt: (async () => ({ version: 1, entries: [], receiptSha256: "a".repeat(64) })) as never,
       runUnifiedReconciliationStage: (async () => { modelCalls += 1; throw new Error("model boundary reached"); }) as never,
@@ -126,7 +132,7 @@ test("rejects oversized lane artifacts before reporting success", async () => {
   await writeFile(join(laneRoot, "corrected_transcript.md"), "approved\n");
   try {
     const executors = createBenchmarkExecutors(options(root), {
-      loadSharedContext: (async () => ({ rules: "", excerpt: "" })) as never,
+      loadSharedContext: (async () => ({ rules: "", glossary: "", excerpt: "" })) as never,
       runCodexSummaryCleanup: (async (input: { summaryTranscriptPath: string }) => { await writeFile(input.summaryTranscriptPath, "summary"); }) as never,
       runCodexNotes: (async (input: { notesPath: string }) => { await writeFile(input.notesPath, "x"); await truncate(input.notesPath, 64 * 1024 * 1024 + 1); }) as never,
     });
