@@ -124,10 +124,41 @@ export function parseHermesReconciliationJson(stdout: string): unknown {
   return parseStrictReconciliationJson(stdout.replace(HERMES_MAX_TURNS_PREFIX, ""));
 }
 
+const SUSPICION_FLAG_VALUES = new Set([
+  "high-omitted-ratio", "large-compression", "decoder-loop-range", "expected-character-only",
+  "unsupported-proper-noun", "unexplained-silence", "reordered-source-events",
+]);
+
+function normalizeMisplacedSuspicionFlags(value: unknown): unknown {
+  if (typeof value !== "object" || value === null) return value;
+  const response = value as Record<string, unknown>;
+  if (!Array.isArray(response["blocks"]) || !Array.isArray(response["suspicionFlags"])) return value;
+  const promoted: string[] = [];
+  let changed = false;
+  const blocks = response["blocks"].map((candidate) => {
+    if (typeof candidate !== "object" || candidate === null) return candidate;
+    const block = candidate as Record<string, unknown>;
+    if (!Array.isArray(block["reviewFlags"])) return candidate;
+    const reviewFlags = block["reviewFlags"].filter((flag) => {
+      if (typeof flag === "string" && SUSPICION_FLAG_VALUES.has(flag)) {
+        promoted.push(flag);
+        changed = true;
+        return false;
+      }
+      return true;
+    });
+    return changed ? { ...block, reviewFlags } : candidate;
+  });
+  if (!changed) return value;
+  return { ...response, blocks, suspicionFlags: [...new Set([...response["suspicionFlags"], ...promoted])] };
+}
+
 export function validateReconciliationOutput(value: unknown, job: ReconciliationChunkJob): CanonicalReconciliation {
-  const response = parseReconciliationResponse(value);
+  const response = parseReconciliationResponse(normalizeMisplacedSuspicionFlags(value));
   assertReconciliationEchoes(response, job);
-  return validateReconciliation(hydrateAuthoritativeSourceEchoes(normalizeDuplicateSourceAccounting(response), job), { authoritativeSourceEvents: job.authoritativeSourceEvents });
+  const hydrated = hydrateAuthoritativeSourceEchoes(normalizeDuplicateSourceAccounting(response), job);
+  hydrated.blocks.sort((left, right) => left.start - right.start);
+  return validateReconciliation(hydrated, { authoritativeSourceEvents: job.authoritativeSourceEvents });
 }
 
 function normalizeDuplicateSourceAccounting(response: ReconciliationResponse): ReconciliationResponse {

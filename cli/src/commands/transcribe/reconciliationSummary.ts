@@ -17,6 +17,7 @@ const MAX_REFS = 128;
 const MAX_TIMEOUT_MS = 10 * 60_000;
 const MAX_OUTPUT_BYTES = 20_000_000;
 const MAX_PROMPT_BYTES = 2_000_000;
+const MAX_ROLLING_CONTEXT_CHARS = 4000;
 const text = z.string().trim().min(1).max(4000);
 const boundedText = z.string().trim().min(1).max(400);
 const flag = z.enum(["ambiguous-speaker", "unclear-words", "possible-omission", "attribution-uncertain", "material-correction"]);
@@ -73,7 +74,11 @@ function reviewTargets(canonical: CanonicalReconciliation): Array<{ id: string; 
 
 function restoreChunkProvenance(value: unknown, canonical: CanonicalReconciliation): unknown {
   if (typeof value !== "object" || value === null || Array.isArray(value)) return value;
-  const record = value as Record<string, unknown>;
+  const inputRecord = value as Record<string, unknown>;
+  const context = inputRecord["nextRollingContext"];
+  const suffix = typeof context === "string" && context.length > MAX_ROLLING_CONTEXT_CHARS ? context.slice(-MAX_ROLLING_CONTEXT_CHARS) : undefined;
+  const sentenceBoundary = suffix?.search(/(?<=[.!?])\s+/u) ?? -1;
+  const record = suffix === undefined ? inputRecord : { ...inputRecord, nextRollingContext: sentenceBoundary < 0 ? suffix : suffix.slice(sentenceBoundary + 1) };
   const blocks = canonicalBlocks(canonical);
   const restoreItems = (candidate: unknown): unknown => Array.isArray(candidate) ? candidate.map((item) => {
     if (typeof item !== "object" || item === null || Array.isArray(item)) return item;

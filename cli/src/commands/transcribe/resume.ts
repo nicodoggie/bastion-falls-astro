@@ -202,8 +202,9 @@ function validateManifest(value: unknown): Manifest {
     const overlapStart = chunk["overlapStart"] as number;
     const overlapEnd = chunk["overlapEnd"] as number;
     const overlapPastDuration = overlapEnd - durationSeconds;
+    const comparisonEpsilon = Number.EPSILON * Math.max(1, Math.abs(overlapEnd), Math.abs(durationSeconds));
     const invalidDurationBound = index === chunks.length - 1
-      ? overlapPastDuration > MANIFEST_TIME_ROUNDING_TOLERANCE_SECONDS
+      ? overlapPastDuration - MANIFEST_TIME_ROUNDING_TOLERANCE_SECONDS > comparisonEpsilon
       : overlapEnd > durationSeconds;
     if (overlapStart < 0 || overlapStart > start || start >= end || end > overlapEnd || invalidDurationBound) {
       throw new Error("invalid chunk bounds");

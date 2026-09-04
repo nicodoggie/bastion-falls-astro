@@ -167,6 +167,20 @@ test("runner derives redundant source echoes from authoritative event IDs", () =
   assert.equal(canonical.materialCorrections[0]!.sourceForm, "hello");
 });
 
+test("runner chronologically orders blocks after hydrating authoritative timestamps", () => {
+  const later = { id: "e1", text: "later", start: 1, end: 2, confidence: 0.9 };
+  const earlier = { id: "e2", text: "earlier", start: 0, end: 1, confidence: 0.8 };
+  const orderedJob = { ...job, authoritativeSourceEvents: [later, earlier] };
+  const model = response();
+  (model as any).blocks = [
+    { ...model.blocks[0]!, id: "later", start: 0, end: 1, text: "Later.", summarySafeText: "Later.", sourceEventIds: ["e1"] },
+    { ...model.blocks[0]!, id: "earlier", start: 1, end: 2, text: "Earlier.", summarySafeText: "Earlier.", sourceEventIds: ["e2"] },
+  ];
+  const canonical = validateReconciliationOutput(model, orderedJob);
+  assert.deepEqual(canonical.blocks.map((block) => block.id), ["earlier", "later"]);
+  assert.deepEqual(canonical.blocks.map((block) => block.start), [0, 1]);
+});
+
 test("runner keeps the first chronological block owner for duplicate event IDs", () => {
   const second = { id: "e2", text: "world", start: 1, end: 2, confidence: 0.8 };
   const duplicateJob = { ...job, authoritativeSourceEvents: [...source, second] };
@@ -177,6 +191,15 @@ test("runner keeps the first chronological block owner for duplicate event IDs",
   ];
   const canonical = validateReconciliationOutput(model, duplicateJob);
   assert.deepEqual(canonical.blocks.map((block) => block.sourceEventIds), [["e1"], ["e2"]]);
+});
+
+test("runner promotes misplaced suspicion flags out of block review flags", () => {
+  const model = response();
+  (model.blocks[0]!.reviewFlags as string[]).push("unsupported-proper-noun");
+  const canonical = validateReconciliationOutput(model, job);
+  assert.deepEqual(canonical.blocks[0]!.reviewFlags, []);
+  assert.deepEqual(canonical.suspicionFlags, ["unsupported-proper-noun"]);
+  assert.equal(canonical.status, "needs_review");
 });
 
 test("semantic hard-invalid output is diagnostic-only through the runner", async () => {

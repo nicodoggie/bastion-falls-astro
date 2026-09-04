@@ -67,10 +67,10 @@ test("three-chunk context preserves independent ownership", () => {
   assert.deepEqual(middle.context.nextAlignmentHead.map((event) => event.text), ["event 2"]);
 });
 
-test("stage uses the overnight timeout and reports needs_review without blocking", async () => {
+test("stage allows a full twenty minutes for long reconciliation chunks", async () => {
   const rootDir = await mkdtemp(join(tmpdir(), "bf-integration-stage-")); let calls = 0; let observedTimeout: number | undefined;
   const stage = await runUnifiedReconciliationStage({ ...base("three"), rootDir }, { runUnifiedReconciliation: async ({ jobs, timeoutMs }) => { calls += jobs.length; observedTimeout = timeoutMs; return { chunks: jobs.map((job) => ({ chunk: job.packet.chunk, schemaVersion: job.packet.schemaVersion, promptVersion: job.packet.promptVersion, cacheIdentity: job.packet.cacheIdentity, blocks: [{ id: "b", start: job.packet.ownedEvents[0]!.start, end: job.packet.ownedEvents[0]!.end, kind: "dialogue", text: "x", summarySafeText: "x", characterConfidence: "unknown", attributionBasis: ["source"], sourceEventIds: [job.packet.ownedEvents[0]!.id], reviewFlags: [] }], omissions: [], materialCorrections: [], suspicionFlags: [], reviewNotes: [], summarySafety: { status: "valid", errors: [] }, status: "needs_review" as const } as any)), repairedChunkIds: [], reusedChunkIds: [], diagnosticsDir: join(rootDir, "diagnostics") }; } });
-  assert.equal(calls, 4); assert.equal(observedTimeout, 600_000); assert.equal(stage.status, "needs_review"); assert.equal(stage.metadata.completedChunkIds.length, 4); await rm(rootDir, { recursive: true, force: true });
+  assert.equal(calls, 4); assert.equal(observedTimeout, 1_200_000); assert.equal(stage.status, "needs_review"); assert.equal(stage.metadata.completedChunkIds.length, 4); await rm(rootDir, { recursive: true, force: true });
 });
 
 test("stage rejects incomplete runner output and pending summary safety", async () => {

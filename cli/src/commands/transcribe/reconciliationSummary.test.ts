@@ -36,6 +36,24 @@ test("strict chunk parse validates provenance, source dispositions, and unknown 
 test("prompt is deterministic and includes evidence, prompt version, context, flags, alternatives and rules", () => { const options = { canonical, promptVersion: "p7", priorRollingContext: "Prior", campaignContext: "Campaign", correctionRules: ["Ada is a name"], flaggedAlternatives: [{ blockId: "b0", alternatives: ["We go north"] }] }; const a = buildChunkSummaryPrompt(options); assert.equal(a, buildChunkSummaryPrompt(options)); for (const value of ["summarySafeText", "p7", "Prior", "Campaign", "Ada is a name", "unclear-words", "We go north"]) assert.match(a, new RegExp(value)); });
 test("long correction rules remain intact within the evidence-text bound", () => { const rule = `Long rule: ${"evidence ".repeat(80)}`.trim(); assert.equal(rule.length > 400, true); const prompt = buildChunkSummaryPrompt({ canonical, promptVersion: "p7", correctionRules: [rule] }); assert.match(prompt, new RegExp(rule)); });
 test("runner writes direct canonical JSON and zero-call resume", async () => { const root = await mkdtemp(join(tmpdir(), "reconciliation-summary-")); let calls = 0; const priors: string[] = []; const options = { outputRoot: root, chunks: [canonical as any, { ...canonical, chunk: { ...canonical.chunk, id: "session_001" } } as any], provider: "test", promptVersion: "p1", campaignContext: "c", correctionRules: [], infer: async ({ priorRollingContext }: { priorRollingContext: string }) => { calls++; priors.push(priorRollingContext); return response(calls === 1 ? "session_000" : "session_001", priorRollingContext); }, sceneInfer: async ({ chunks }: { chunks: readonly ChunkSummary[] }) => sceneFor(chunks), sessionInfer: async ({ scenes }: { scenes: readonly SceneSummary[] }) => { const all = scenes.flatMap((s) => s.claims); return { schemaVersion: "summary.session.v1", claims: all.map((c) => ({ id: `final-${c.id}`, text: c.text, sceneClaimIds: [c.id] })), sections: [], openHooks: scenes.flatMap((s) => s.unresolvedHooks.map((h) => ({ id: `open-${h.id}`, text: h.text, sceneHookIds: [h.id] }))), confirmationsNeeded: [], boundaries: [], provenanceMap: Object.fromEntries(all.map((c) => [`final-${c.id}`, [c.id, ...c.chunkClaimIds, "b0"]])), campaign: "demo", sessionDate: "2026-08-19" }; } }; const first = await runReconciliationSummarization(options); assert.equal(calls, 2); assert.deepEqual(priors, ["", chunk.nextRollingContext]); const disk = JSON.parse(await readFile(join(root, "summarization", "chunks", "session_000.json"), "utf8")); assert.equal(disk.schemaVersion, "summary.chunk.v1"); assert.equal(disk.artifact, undefined); assert.equal(disk.cacheIdentity.length, 64); await runReconciliationSummarization(options); assert.equal(calls, 2); assert.equal(first.session.claims.length, 2); assert.deepEqual((await readdir(join(root, "summarization", "chunks"))).sort(), ["session_000.json", "session_001.json"]); });
+
+test("runner bounds an otherwise valid oversized rolling context without repair", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-rolling-context-bound-"));
+  const oversized = Array.from({ length: 120 }, (_, index) => `Chronological fact ${index} remains available.`).join(" ");
+  assert.equal(oversized.length > 4000, true);
+  let calls = 0;
+  try {
+    const result = await runReconciliationSummarization({
+      outputRoot: root, chunks: [canonical as any], promptVersion: "p1",
+      infer: async () => { calls += 1; return { ...response("session_000"), nextRollingContext: oversized }; },
+      sceneInfer: async ({ chunks }) => sceneFor(chunks),
+      sessionInfer: async ({ scenes }) => sessionForScenes(scenes),
+    });
+    assert.equal(calls, 1);
+    assert.equal(result.chunks[0]!.nextRollingContext.length <= 4000, true);
+    assert.match(result.chunks[0]!.nextRollingContext, /Chronological fact 119 remains available\.$/u);
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
 test("scene/session complete provenance and deterministic MDX", () => {
   const scene = sceneFor([chunk]);
   parseSceneSummary(scene, [chunk]);

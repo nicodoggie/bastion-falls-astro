@@ -189,6 +189,22 @@ test("accepts terminal millisecond rounding within the audio duration tolerance"
   }
 });
 
+test("accepts an exact half-millisecond terminal rounding difference", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "bf-resume-half-ms-duration-"));
+  const path = join(dir, "manifest.json");
+  try {
+    const value = manifest();
+    value.durationSeconds = 35_987.8405;
+    value.chunks[1]!.end = 35_987.841;
+    value.chunks[1]!.overlapEnd = 35_987.841;
+    await writeFile(path, JSON.stringify(value));
+    const parsed = await readManifest(path);
+    assert.equal(parsed?.chunks.at(-1)?.overlapEnd, 35_987.841);
+  } finally {
+    await import("node:fs/promises").then(({ rm }) => rm(dir, { recursive: true, force: true }));
+  }
+});
+
 test("rejects over-tolerance terminal and any non-terminal duration overrun", async () => {
   const cases = [
     ["terminal beyond tolerance", (value: Manifest) => { value.durationSeconds = 19.99949; }],
