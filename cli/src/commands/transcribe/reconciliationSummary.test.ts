@@ -1,10 +1,10 @@
-import { test } from "node:test";
 import assert from "node:assert/strict";
-import { access, chmod, mkdtemp, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
+import { access, chmod, mkdtemp, readdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { test } from "node:test";
 import { stableHash } from "./reconciliationEvidence.js";
-import { ChunkSummarySchema, SceneSummarySchema, SessionSummarySchema, atomicJson, parseChunkSummary, parseSceneSummary, parseSessionSummary, buildChunkSummaryPrompt, runBoundedCodexCommand, runReconciliationSummarization, renderSessionMdx, type ChunkSummary, type SceneSummary } from "./reconciliationSummary.js";
+import { atomicJson, buildChunkSummaryPrompt, buildSessionSummaryPrompt, type ChunkSummary, ChunkSummarySchema, parseChunkSummary, parseSceneSummary, parseSessionSummary, renderSessionMdx, runBoundedCodexCommand, runReconciliationSummarization, type SceneSummary, SceneSummarySchema, SessionSummarySchema } from "./reconciliationSummary.js";
 
 const canonical = { chunk: { id: "session_000", start: 0, end: 10 }, blocks: [
   { id: "b0", start: 0, end: 5, kind: "dialogue", text: "We go north.", summarySafeText: "They go north.", characterConfidence: "confirmed", characterCandidate: "Ada", attributionBasis: ["explicit"], sourceEventIds: ["e0"], reviewFlags: ["unclear-words"] },
@@ -35,7 +35,13 @@ function sceneFor(chunks: readonly ChunkSummary[]): SceneSummary {
 test("strict chunk parse validates provenance, source dispositions, and unknown blocks", () => { assert.equal(parseChunkSummary(chunk, canonical).chunkId, "session_000"); assert.throws(() => parseChunkSummary({ ...chunk, extra: true }, canonical)); assert.throws(() => parseChunkSummary({ ...chunk, claims: [{ ...chunk.claims[0]!, reconciliationBlockIds: ["missing"] }] }, canonical)); assert.throws(() => parseChunkSummary({ ...chunk, reviewDispositions: chunk.reviewDispositions.slice(0, 1) }, canonical)); });
 test("prompt is deterministic and includes evidence, prompt version, context, flags, alternatives and rules", () => { const options = { canonical, promptVersion: "p7", priorRollingContext: "Prior", campaignContext: "Campaign", correctionRules: ["Ada is a name"], flaggedAlternatives: [{ blockId: "b0", alternatives: ["We go north"] }] }; const a = buildChunkSummaryPrompt(options); assert.equal(a, buildChunkSummaryPrompt(options)); for (const value of ["summarySafeText", "p7", "Prior", "Campaign", "Ada is a name", "unclear-words", "We go north"]) assert.match(a, new RegExp(value)); });
 test("long correction rules remain intact within the evidence-text bound", () => { const rule = `Long rule: ${"evidence ".repeat(80)}`.trim(); assert.equal(rule.length > 400, true); const prompt = buildChunkSummaryPrompt({ canonical, promptVersion: "p7", correctionRules: [rule] }); assert.match(prompt, new RegExp(rule)); });
-test("runner writes direct canonical JSON and zero-call resume", async () => { const root = await mkdtemp(join(tmpdir(), "reconciliation-summary-")); let calls = 0; const priors: string[] = []; const options = { outputRoot: root, chunks: [canonical as any, { ...canonical, chunk: { ...canonical.chunk, id: "session_001" } } as any], provider: "test", promptVersion: "p1", campaignContext: "c", correctionRules: [], infer: async ({ priorRollingContext }: { priorRollingContext: string }) => { calls++; priors.push(priorRollingContext); return response(calls === 1 ? "session_000" : "session_001", priorRollingContext); }, sceneInfer: async ({ chunks }: { chunks: readonly ChunkSummary[] }) => sceneFor(chunks), sessionInfer: async ({ scenes }: { scenes: readonly SceneSummary[] }) => { const all = scenes.flatMap((s) => s.claims); return { schemaVersion: "summary.session.v1", claims: all.map((c) => ({ id: `final-${c.id}`, text: c.text, sceneClaimIds: [c.id] })), sections: [], openHooks: scenes.flatMap((s) => s.unresolvedHooks.map((h) => ({ id: `open-${h.id}`, text: h.text, sceneHookIds: [h.id] }))), confirmationsNeeded: [], boundaries: [], provenanceMap: Object.fromEntries(all.map((c) => [`final-${c.id}`, [c.id, ...c.chunkClaimIds, "b0"]])), campaign: "demo", sessionDate: "2026-08-19" }; } }; const first = await runReconciliationSummarization(options); assert.equal(calls, 2); assert.deepEqual(priors, ["", chunk.nextRollingContext]); const disk = JSON.parse(await readFile(join(root, "summarization", "chunks", "session_000.json"), "utf8")); assert.equal(disk.schemaVersion, "summary.chunk.v1"); assert.equal(disk.artifact, undefined); assert.equal(disk.cacheIdentity.length, 64); await runReconciliationSummarization(options); assert.equal(calls, 2); assert.equal(first.session.claims.length, 2); assert.deepEqual((await readdir(join(root, "summarization", "chunks"))).sort(), ["session_000.json", "session_001.json"]); });
+test("session prompt asks for chronological event-rich notes rather than a digest", () => {
+  const prompt = buildSessionSummaryPrompt("p1", [sceneFor([chunk])]);
+  assert.match(prompt, /chronological, event-rich session notes/iu);
+  assert.match(prompt, /open hooks do not substitute for the narrative/iu);
+  assert.doesNotMatch(prompt, /be concise|brief digest/iu);
+});
+test("runner writes direct canonical JSON and zero-call resume", async () => { const root = await mkdtemp(join(tmpdir(), "reconciliation-summary-")); let calls = 0; const priors: string[] = []; const options = { outputRoot: root, chunks: [canonical as any, { ...canonical, chunk: { ...canonical.chunk, id: "session_001" } } as any], provider: "test", promptVersion: "p1", campaignContext: "c", correctionRules: [], infer: async ({ priorRollingContext }: { priorRollingContext: string }) => { calls++; priors.push(priorRollingContext); return response(calls === 1 ? "session_000" : "session_001", priorRollingContext); }, sceneInfer: async ({ chunks }: { chunks: readonly ChunkSummary[] }) => sceneFor(chunks), sessionInfer: async ({ scenes }: { scenes: readonly SceneSummary[] }) => sessionForScenes(scenes) }; const first = await runReconciliationSummarization(options); assert.equal(calls, 2); assert.deepEqual(priors, ["", chunk.nextRollingContext]); const disk = JSON.parse(await readFile(join(root, "summarization", "chunks", "session_000.json"), "utf8")); assert.equal(disk.schemaVersion, "summary.chunk.v1"); assert.equal(disk.artifact, undefined); assert.equal(disk.cacheIdentity.length, 64); await runReconciliationSummarization(options); assert.equal(calls, 2); assert.equal(first.session.claims.length, 2); assert.deepEqual((await readdir(join(root, "summarization", "chunks"))).sort(), ["session_000.json", "session_001.json"]); });
 
 test("runner bounds an otherwise valid oversized rolling context without repair", async () => {
   const root = await mkdtemp(join(tmpdir(), "summary-rolling-context-bound-"));
@@ -62,7 +68,7 @@ test("scene/session complete provenance and deterministic MDX", () => {
   const sceneClaimId = scene.claims[0]!.id;
   const chunkClaimId = scene.claims[0]!.chunkClaimIds[0]!;
   const sceneHookId = scene.unresolvedHooks[0]!.id;
-  const session = { cacheIdentity: identity, promptVersion: "p1", schemaVersion: "summary.session.v1", claims: [{ id: "final-0", text: "Travel north continues.", sceneClaimIds: [sceneClaimId] }], sections: [], openHooks: [{ id: "open-0", text: "What is behind the door?", sceneHookIds: [sceneHookId] }], confirmationsNeeded: [], boundaries: [], provenanceMap: { "final-0": [sceneClaimId, chunkClaimId, "b0"] }, campaign: "demo", sessionDate: "2026-08-19" };
+  const session = { cacheIdentity: identity, promptVersion: "p1", schemaVersion: "summary.session.v1", claims: [{ id: "final-0", text: "Travel north continues.", sceneClaimIds: [sceneClaimId] }], sections: [{ id: "section-0", heading: "Journey", text: "The party goes north and opens a door.", sceneClaimIds: [sceneClaimId] }], openHooks: [{ id: "open-0", text: "What is behind the door?", sceneHookIds: [sceneHookId] }], confirmationsNeeded: [], boundaries: [], provenanceMap: { "final-0": [sceneClaimId, chunkClaimId, "b0"] }, campaign: "demo", sessionDate: "2026-08-19" };
   assert.match(renderSessionMdx(session, [scene]), /## Open Hooks/);
   assert.throws(() => parseSessionSummary({ ...session, provenanceMap: { "final-0": [sceneClaimId] } }, [scene]));
 });
@@ -96,10 +102,70 @@ test("canonical session provenance accepts a complete derived chain above the lo
     promptVersion: "p1",
     schemaVersion: "summary.session.v1",
     claims: [{ id: "final-0", text: "Complete summary.", sceneClaimIds: claims.map((claim) => claim.id) }],
-    sections: [], openHooks: [], confirmationsNeeded: [], boundaries: [],
+    sections: [{ id: "section-0", heading: "Complete account", text: claims.map((claim) => claim.text).join(". "), sceneClaimIds: claims.map((claim) => claim.id) }], openHooks: [], confirmationsNeeded: [], boundaries: [],
     provenanceMap: { "final-0": provenance }, campaign: "demo", sessionDate: "2026-08-19",
   };
   assert.equal(provenance.length, 301);
+  assert.doesNotThrow(() => parseSessionSummary(session, [scene]));
+});
+
+test("session rejects provenance-complete output whose rendered narrative is pathologically compressed", () => {
+  const claims = Array.from({ length: 20 }, (_, index) => ({
+    id: `scene_000:claim:${String(index).padStart(3, "0")}`,
+    text: `The party completes material event ${index} with a distinct participant, decision, and consequence.`,
+    chunkClaimIds: [`session_000:claim:${String(index).padStart(3, "0")}`],
+  }));
+  const scene: SceneSummary = {
+    cacheIdentity: identity,
+    schemaVersion: "summary.scene.v1",
+    sceneId: "scene_000",
+    chunkIds: ["session_000"],
+    claims,
+    unresolvedHooks: [],
+    chunkClaimProvenance: Object.fromEntries(claims.map((claim) => [claim.chunkClaimIds[0]!, ["b0"]])),
+  };
+  const finalClaims = claims.map((claim) => ({
+    id: `final-${claim.id}`,
+    text: claim.text,
+    sceneClaimIds: [claim.id],
+  }));
+  const session = {
+    cacheIdentity: identity,
+    promptVersion: "p1",
+    schemaVersion: "summary.session.v1",
+    claims: finalClaims,
+    sections: [{ id: "section-0", heading: "Everything", text: "The party handles the situation.", sceneClaimIds: claims.map((claim) => claim.id) }],
+    openHooks: [], confirmationsNeeded: [], boundaries: [],
+    provenanceMap: Object.fromEntries(finalClaims.map((claim, index) => [claim.id, [claim.sceneClaimIds[0]!, claims[index]!.chunkClaimIds[0]!, "b0"]])),
+    campaign: "demo", sessionDate: "2026-08-19",
+  };
+  assert.throws(() => parseSessionSummary(session, [scene]), /rendered narrative is pathologically compressed/iu);
+});
+
+test("session requires every scene claim on the rendered section surface", () => {
+  const scene = sceneFor([chunk, { ...chunk, chunkId: "session_001" }]);
+  const [first, second] = scene.claims;
+  const session = {
+    cacheIdentity: identity,
+    promptVersion: "p1",
+    schemaVersion: "summary.session.v1",
+    claims: [first, second].map((claim) => ({ id: `final-${claim!.id}`, text: claim!.text, sceneClaimIds: [claim!.id] })),
+    sections: [{ id: "section-0", heading: "Journey", text: "The party travels north and opens a consequential door.", sceneClaimIds: [first!.id] }],
+    openHooks: scene.unresolvedHooks.map((hook) => ({ id: `open-${hook.id}`, text: hook.text, sceneHookIds: [hook.id] })),
+    confirmationsNeeded: [], boundaries: [],
+    provenanceMap: Object.fromEntries([first, second].map((claim) => [`final-${claim!.id}`, [claim!.id, ...claim!.chunkClaimIds, "b0"]])),
+    campaign: "demo", sessionDate: "2026-08-19",
+  };
+  assert.throws(() => parseSessionSummary(session, [scene]), /rendered sections omit a scene claim/iu);
+});
+
+test("session accepts a detailed rendered section above the generic text-field bound", () => {
+  const scene = sceneFor([chunk]);
+  const session = sessionForScenes([scene]) as any;
+  session.cacheIdentity = identity;
+  session.promptVersion = "p1";
+  session.sections[0].text = `${"Material chronological detail. ".repeat(180)}The party continues north.`;
+  assert.equal(session.sections[0].text.length > 4000, true);
   assert.doesNotThrow(() => parseSessionSummary(session, [scene]));
 });
 
@@ -165,7 +231,7 @@ test("repair prompt receives bounded authoritative domains", async () => {
       outputRoot: root, chunks: [canonical as any], promptVersion: "p1",
       infer: async ({ prompt }) => { prompts.push(prompt); if (prompts.length === 1) return { blockIds: ["b0"] }; return response("session_000"); },
       sceneInfer: async ({ chunks }) => sceneFor(chunks),
-      sessionInfer: async ({ scenes }) => { const claims = scenes.flatMap((s) => s.claims); const hooks = scenes.flatMap((s) => s.unresolvedHooks); return { schemaVersion: "summary.session.v1", claims: claims.map((c) => ({ id: `final-${c.id}`, text: c.text, sceneClaimIds: [c.id] })), sections: [], openHooks: hooks.map((h) => ({ id: `open-${h.id}`, text: h.text, sceneHookIds: [h.id] })), confirmationsNeeded: [], boundaries: [], provenanceMap: Object.fromEntries(claims.map((c) => [`final-${c.id}`, [c.id, ...c.chunkClaimIds, "b0"]])), campaign: "demo", sessionDate: "2026-08-19" }; },
+      sessionInfer: async ({ scenes }) => sessionForScenes(scenes),
     });
     assert.equal(prompts.length, 2);
     assert.match(prompts[1]!, /b0/);
@@ -228,10 +294,7 @@ test("runner injects canonical source review material while the model owns dispo
         };
       },
       sceneInfer: async ({ chunks }) => sceneFor(chunks),
-      sessionInfer: async ({ scenes }) => {
-        const claims = scenes.flatMap((scene) => scene.claims);
-        return { schemaVersion: "summary.session.v1", claims: claims.map((claim) => ({ id: `final-${claim.id}`, text: claim.text, sceneClaimIds: [claim.id] })), sections: [], openHooks: scenes.flatMap((scene) => scene.unresolvedHooks.map((hook) => ({ id: `open-${hook.id}`, text: hook.text, sceneHookIds: [hook.id] }))), confirmationsNeeded: [], boundaries: [], provenanceMap: Object.fromEntries(claims.map((claim) => [`final-${claim.id}`, [claim.id, ...claim.chunkClaimIds, "b0"]])), campaign: "demo", sessionDate: "2026-08-29" };
-      },
+      sessionInfer: async ({ scenes }) => sessionForScenes(scenes),
     });
     assert.equal(chunkCalls, 1);
     assert.deepEqual(result.chunks[0]!.claims[0]!.originalReviewFlags, ["unclear-words"]);
@@ -254,19 +317,7 @@ test("canonical summary files parse directly and prompt versions invalidate all 
     sessionDate: "2026-08-19",
     infer: async () => { chunkCalls += 1; return response("session_000"); },
     sceneInfer: async ({ chunks }: { chunks: readonly ChunkSummary[] }) => { sceneCalls += 1; return sceneFor(chunks); },
-    sessionInfer: async ({ scenes }: { scenes: readonly SceneSummary[] }) => {
-      sessionCalls += 1;
-      const claims = scenes.flatMap((scene) => scene.claims);
-      return {
-        schemaVersion: "summary.session.v1",
-        claims: claims.map((claim) => ({ id: `final-${claim.id}`, text: claim.text, sceneClaimIds: [claim.id] })),
-        sections: [],
-        openHooks: scenes.flatMap((scene) => scene.unresolvedHooks.map((hook) => ({ id: `open-${hook.id}`, text: hook.text, sceneHookIds: [hook.id] }))),
-        confirmationsNeeded: [], boundaries: [],
-        provenanceMap: Object.fromEntries(claims.map((claim) => [`final-${claim.id}`, [claim.id, ...claim.chunkClaimIds, "b0"]])),
-        campaign: "demo", sessionDate: "2026-08-19",
-      };
-    },
+    sessionInfer: async ({ scenes }: { scenes: readonly SceneSummary[] }) => { sessionCalls += 1; return sessionForScenes(scenes); },
   });
   try {
     await runReconciliationSummarization(makeOptions("p1"));
@@ -379,7 +430,7 @@ if (prompt === "timeout") {
 function sessionForScenes(scenes: readonly SceneSummary[]): unknown {
   const claims = scenes.flatMap((scene) => scene.claims);
   const hooks = scenes.flatMap((scene) => scene.unresolvedHooks);
-  return { schemaVersion: "summary.session.v1", claims: claims.map((claim) => ({ id: `final-${claim.id}`, text: claim.text, sceneClaimIds: [claim.id] })), sections: [], openHooks: hooks.map((hook) => ({ id: `open-${hook.id}`, text: hook.text, sceneHookIds: [hook.id] })), confirmationsNeeded: [], boundaries: [], provenanceMap: Object.fromEntries(claims.map((claim) => { const scene = scenes.find((candidate) => candidate.claims.some((item) => item.id === claim.id))!; return [`final-${claim.id}`, [claim.id, ...claim.chunkClaimIds, ...(scene.chunkClaimProvenance[claim.chunkClaimIds[0]!] ?? [])]]; })), campaign: "demo", sessionDate: "2026-08-19" };
+  return { schemaVersion: "summary.session.v1", claims: claims.map((claim) => ({ id: `final-${claim.id}`, text: claim.text, sceneClaimIds: [claim.id] })), sections: claims.map((claim, index) => ({ id: `section-${index}`, heading: `Event ${index + 1}`, text: claim.text, sceneClaimIds: [claim.id] })), openHooks: hooks.map((hook) => ({ id: `open-${hook.id}`, text: hook.text, sceneHookIds: [hook.id] })), confirmationsNeeded: [], boundaries: [], provenanceMap: Object.fromEntries(claims.map((claim) => { const scene = scenes.find((candidate) => candidate.claims.some((item) => item.id === claim.id))!; return [`final-${claim.id}`, [claim.id, ...claim.chunkClaimIds, ...(scene.chunkClaimProvenance[claim.chunkClaimIds[0]!] ?? [])]]; })), campaign: "demo", sessionDate: "2026-08-19" };
 }
 
 test("runner repairs malformed scene output once and publishes a parseable scene before session inference", async () => {
