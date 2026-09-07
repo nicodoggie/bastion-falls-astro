@@ -40,6 +40,16 @@ test("session prompt asks for chronological event-rich notes rather than a diges
   assert.match(prompt, /chronological, event-rich session notes/iu);
   assert.match(prompt, /open hooks do not substitute for the narrative/iu);
   assert.doesNotMatch(prompt, /be concise|brief digest/iu);
+  assert.match(prompt, /Markdown unordered bullets/iu);
+  assert.match(prompt, /nested bullets/iu);
+  assert.match(prompt, /not dense paragraphs/iu);
+  const chunkPrompt = buildChunkSummaryPrompt({ canonical });
+  assert.match(chunkPrompt, /Exclude performed opening recaps/iu);
+  assert.match(chunkPrompt, /current play revisits or advances/iu);
+  assert.match(chunkPrompt, /Exclude irrelevant real-life conversation/iu);
+  assert.match(chunkPrompt, /rulings, lore, character intentions, or game decisions/iu);
+  assert.match(chunkPrompt, /claims, unresolvedHooks, and nextRollingContext/iu);
+  assert.match(chunkPrompt, /not_material_to_notes/iu);
 });
 test("runner writes direct canonical JSON and zero-call resume", async () => { const root = await mkdtemp(join(tmpdir(), "reconciliation-summary-")); let calls = 0; const priors: string[] = []; const options = { outputRoot: root, chunks: [canonical as any, { ...canonical, chunk: { ...canonical.chunk, id: "session_001" } } as any], provider: "test", promptVersion: "p1", campaignContext: "c", correctionRules: [], infer: async ({ priorRollingContext }: { priorRollingContext: string }) => { calls++; priors.push(priorRollingContext); return response(calls === 1 ? "session_000" : "session_001", priorRollingContext); }, sceneInfer: async ({ chunks }: { chunks: readonly ChunkSummary[] }) => sceneFor(chunks), sessionInfer: async ({ scenes }: { scenes: readonly SceneSummary[] }) => sessionForScenes(scenes) }; const first = await runReconciliationSummarization(options); assert.equal(calls, 2); assert.deepEqual(priors, ["", chunk.nextRollingContext]); const disk = JSON.parse(await readFile(join(root, "summarization", "chunks", "session_000.json"), "utf8")); assert.equal(disk.schemaVersion, "summary.chunk.v1"); assert.equal(disk.artifact, undefined); assert.equal(disk.cacheIdentity.length, 64); await runReconciliationSummarization(options); assert.equal(calls, 2); assert.equal(first.session.claims.length, 2); assert.deepEqual((await readdir(join(root, "summarization", "chunks"))).sort(), ["session_000.json", "session_001.json"]); });
 
