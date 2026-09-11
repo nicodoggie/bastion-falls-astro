@@ -4,6 +4,744 @@ profiles:
   global:
     description: Shared correction rules for Bastion Falls transcription and note generation.
     rules:
+      - id: family.malris
+        status: confirmed
+        kind: entity
+        canonical: Malris
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/families/malris.mdx
+          role: primary
+        aliases:
+        - Maurice
+        - Morris
+        - Let us count Malris to you
+        match:
+          priority: normal
+          tags:
+          - rannek-delta
+          - rival-houses
+          - malris
+        scope:
+          campaigns:
+          - the-vengeful
+          contexts:
+          - Maidenfeld Keep council and the Malris–Risen territorial rivalry
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: In the Rannek delta-house rivalry, Maurice and Morris mean Malris, whose
+          head is Count Malris and whose lands are Reedpool. The garbled introduction means “That
+          is Count Malris to you,” not arithmetic. Do not invent his personal name or settle the
+          rival cadet-branch claims.
+        instruction: In the Rannek delta-house rivalry, Maurice and Morris mean Malris, whose head
+          is Count Malris and whose lands are Reedpool. The garbled introduction means “That is
+          Count Malris to you,” not arithmetic. Do not invent his personal name or settle the rival
+          cadet-branch claims.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Nico confirms both family names; the 05:10:13–05:10:49 exchange supplies the Count
+            Risen address.
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Nico supplies “That is Count Malris to you” for 03:47:03–03:47:17, settling the
+            title.
+
+      - id: family.risen
+        status: confirmed
+        kind: entity
+        canonical: Risen
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/families/risen.mdx
+          role: primary
+        aliases:
+        - Thereseen
+        match:
+          priority: normal
+          tags:
+          - rannek-delta
+          - rival-houses
+          - risen
+        scope:
+          campaigns:
+          - the-vengeful
+          contexts:
+          - Maidenfeld Keep council and the Malris–Risen territorial rivalry
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: In the council and delta-house rivalry, Thereseen means Risen, the house
+          holding Reedfield. The speaker addresses its head as Count Risen. Do not merge Reedfield
+          with Reedpool or treat rivalry and accusations as proof of genealogy or allegiance.
+        instruction: In the council and delta-house rivalry, Thereseen means Risen, the house holding
+          Reedfield. The speaker addresses its head as Count Risen. Do not merge Reedfield with
+          Reedpool or treat rivalry and accusations as proof of genealogy or allegiance.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Nico confirms both family names; the 05:10:13–05:10:49 exchange supplies the Count
+            Risen address.
+
+      - id: family.bellacourt
+        status: confirmed
+        kind: entity
+        canonical: Bellacourt
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/families/bellacourt.mdx
+          role: primary
+        aliases:
+        - Bellicourt
+        - Belacourt
+        - Belcourt
+        - Sibela Court
+        match:
+          priority: normal
+          tags:
+          - family-bellacourt
+          - bellacourt
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: In the Rannek peerage context, use Bellacourt for the house, not a place
+          called Sibela Court. The attending head is a baron; the demesne is Verdiflora. Name and
+          rank do not establish Reformist allegiance or free will.
+        instruction: In the Rannek peerage context, use Bellacourt for the house, not a place called
+          Sibela Court. The attending head is a baron; the demesne is Verdiflora. Name and rank
+          do not establish Reformist allegiance or free will.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: family.valeriat
+        status: confirmed
+        kind: entity
+        canonical: Valeriat
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/families/valeriat.mdx
+          role: primary
+        aliases:
+        - Valyriot
+        match:
+          priority: normal
+          tags:
+          - family-valeriat
+          - valeriat
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: Use Valeriat for the neighboring Rannek house headed by a viscount. Its
+          demesne and personal names remain unnamed; accusations do not prove allegiance.
+        instruction: Use Valeriat for the neighboring Rannek house headed by a viscount. Its demesne
+          and personal names remain unnamed; accusations do not prove allegiance.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: family.marcellan
+        status: confirmed
+        kind: entity
+        canonical: Marcellan
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/families/marcellan.mdx
+          role: primary
+        aliases:
+        - Marcelon
+        - Marcellon
+        match:
+          priority: normal
+          tags:
+          - family-marcellan
+          - marcellan
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: Use Count Marcellan in the military report. Marcellan is the house name;
+          its demesne is Mercer County, south of Reedfield. Do not substitute Mercer for the
+          family name or invent the count's personal name.
+        instruction: Use Count Marcellan in the military report. Marcellan is the house name; do
+          not invent a matching county name or a personal name. The confirmed demesne is Mercer
+          County, south of Reedfield; its seat and exact boundaries remain unspecified.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: place.verdiflora
+        status: confirmed
+        kind: place
+        canonical: Verdiflora
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/locations/verdiflora.mdx
+          role: primary
+        aliases:
+        - Vertiflora
+        match:
+          priority: normal
+          tags:
+          - place-verdiflora
+          - verdiflora
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: Use Verdiflora for House Bellacourt’s lands. Hogshead lies on its border
+          and is distinct from Goat’s Head; never replace those settlements with one another.
+        instruction: Use Verdiflora for House Bellacourt’s lands. Hogshead lies on its border and
+          is distinct from Goat’s Head; never replace those settlements with one another.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: character.bertram-dorand
+        status: confirmed
+        kind: entity
+        canonical: Bertram Dorand
+        canonicalRefs:
+        - type: note
+          path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          role: primary
+        aliases:
+        - Bertram Durand
+        - Bertram Durant
+        match:
+          priority: normal
+          tags:
+          - character-bertram-dorand
+          - bertram dorand
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: Use Bertram Dorand for the Lord’s Judgment mercenary leader. Do not replace
+          the bare surname Durant, which can name an unrelated family.
+        instruction: Use Bertram Dorand for the Lord’s Judgment mercenary leader. Do not replace
+          the bare surname Durant, which can name an unrelated family.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: place.sanery
+        status: confirmed
+        kind: place
+        canonical: Sanery
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/locations/sanery.mdx
+          role: primary
+        aliases:
+        - Sanuri
+        match:
+          priority: normal
+          tags:
+          - place-sanery
+          - sanery
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: Use Sanery for the province in the Reformist-control and Nightshift Nurses
+          rescue reports. Preserve attributed intelligence as reports; Sanery is not Senera or the
+          pirate nickname Shagnery.
+        instruction: Use Sanery for the province in the Reformist-control and Nightshift Nurses
+          rescue reports. Preserve attributed intelligence as reports; Sanery is not Senera or the
+          pirate nickname Shagnery.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: place.l-illes-apgarie
+        status: confirmed
+        kind: place
+        canonical: L'Illes Apgarie
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/locations/l-illes-apgarie.mdx
+          role: primary
+        aliases:
+        - Lahil Apgiri
+        match:
+          priority: normal
+          tags:
+          - place-l-illes-apgarie
+          - l'illes apgarie
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: Use L’Illes Apgarie for the archipelago near the reported Balimbano sighting.
+          Identifying the islands does not verify that he survived or was seen there.
+        instruction: Use L’Illes Apgarie for the archipelago near the reported Balimbano sighting.
+          Identifying the islands does not verify that he survived or was seen there.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: place.nautillon-shagnery
+        status: confirmed
+        kind: place
+        canonical: Shagnery
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/locations/nautillon.mdx
+          role: primary
+        aliases:
+        - Chagnari
+        - Shagnari
+        - Shagnary
+        match:
+          priority: normal
+          tags:
+          - place-nautillon-shagnery
+          - shagnery
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: Shagnery is the pirate nickname of Nautillon, mocking Sanery. Preserve
+          Shagnery when spoken and link authored mentions to Nautillon; do not merge the island
+          with Sanery.
+        instruction: Shagnery is the pirate nickname of Nautillon, mocking Sanery. Preserve Shagnery
+          when spoken and link authored mentions to Nautillon; do not merge the island with Sanery.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: organization.mirian-trading-company
+        status: confirmed
+        kind: organization
+        canonical: Mirian Trading Company
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/organizations/mirian-trading-company.mdx
+          role: primary
+        aliases:
+        - Merion Trading Company
+        match:
+          priority: normal
+          tags:
+          - organization-mirian-trading-company
+          - mirian trading company
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: Use Mirian Trading Company for the former Raibon liaison operation and
+          bounty reference. Identifying the company does not verify every attributed shipment claim.
+        instruction: Use Mirian Trading Company for the former Raibon liaison operation and bounty
+          reference. Identifying the company does not verify every attributed shipment claim.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: organization.free-theater
+        status: confirmed
+        kind: organization
+        canonical: Free Theater
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/organizations/free-theater.mdx
+          role: primary
+        aliases:
+        - Freize Theater
+        match:
+          priority: normal
+          tags:
+          - organization-free-theater
+          - free theater
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: Use Free Theater for the mercenary group in bounty and capture discussions,
+          not a separate theater called Freize.
+        instruction: Use Free Theater for the mercenary group in bounty and capture discussions,
+          not a separate theater called Freize.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: character.helena-cooper
+        status: confirmed
+        kind: entity
+        canonical: Helena Cooper
+        canonicalRefs:
+        - type: note
+          path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          role: primary
+        aliases:
+        - Elena Cooper
+        match:
+          priority: normal
+          tags:
+          - character-helena-cooper
+          - helena cooper
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: Use Helena Cooper for the Hicklander leader and guide, the Baron Maidenfeld’s
+          illegitimate daughter. Do not infer her non-biological father’s occupation from her surname
+          or her own cooperage.
+        instruction: Use Helena Cooper for the Hicklander leader and guide, the Baron Maidenfeld’s
+          illegitimate daughter. Do not infer her non-biological father’s occupation from her surname
+          or her own cooperage.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: character.steven-maidenfeld
+        status: confirmed
+        kind: entity
+        canonical: Steven Maidenfeld
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/characters/steven-maidenfeld.mdx
+          role: primary
+        aliases:
+        - Stephen Maidenfeld
+        - Stephen
+        match:
+          priority: normal
+          tags:
+          - character-steven-maidenfeld
+          - steven maidenfeld
+        scope:
+          campaigns:
+          - the-vengeful
+          contexts:
+          - Robert Maidenfeld’s older brother and master of the Spice Company fleet
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: Use Steven for Robert Maidenfeld’s older spellcasting brother and master
+          of the fleet. Correct bare Stephen only when that family or role context identifies him.
+        instruction: Use Steven for Robert Maidenfeld’s older spellcasting brother and master of
+          the fleet. Correct bare Stephen only when that family or role context identifies him.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: character.gwyniviere-rannek
+        status: confirmed
+        kind: entity
+        canonical: Gwyniviere Rannek
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/characters/gwyniviere-rannek.mdx
+          role: primary
+        aliases:
+        - Guinevere
+        match:
+          priority: normal
+          tags:
+          - character-gwyniviere-rannek
+          - gwyniviere rannek
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: Use Gwyniviere for Angel’s sister and the artist. Keep her distinct from
+          Laudine, Robert Maidenfeld’s wife; do not transfer Laudine’s marriage account to Gwyniviere.
+        instruction: Use Gwyniviere for Angel’s sister and the artist. Keep her distinct from Laudine,
+          Robert Maidenfeld’s wife; do not transfer Laudine’s marriage account to Gwyniviere.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: character.souveran-rothchild
+        status: confirmed
+        kind: entity
+        canonical: Souveran Rothchild
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/characters/souveran-rothchild.mdx
+          role: primary
+        aliases:
+        - Sovereign Rothschild
+        - Rothschild
+        match:
+          priority: normal
+          tags:
+          - character-souveran-rothchild
+          - souveran rothchild
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: Use Souveran Rothchild for the reported arch-lich; use Rothchild for
+          surname-only mentions in that context. Preserve reports about him and Isana’s copies as
+          attributed, not newly verified lore.
+        instruction: Use Souveran Rothchild for the reported arch-lich; use Rothchild for surname-only
+          mentions in that context. Preserve reports about him and Isana’s copies as attributed,
+          not newly verified lore.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: character.robert-maidenfeld
+        status: confirmed
+        kind: entity
+        canonical: Robert Maidenfeld
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/characters/robert-maidenfeld.mdx
+          role: primary
+        aliases:
+        - Robert Fabinho
+        match:
+          priority: normal
+          tags:
+          - character-robert-maidenfeld
+          - robert maidenfeld
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: The master of accounts introducing himself as Laudine’s husband is Robert
+          Maidenfeld, not a separate Robert Fabinho. Do not confuse him with his brother Steven.
+        instruction: The master of accounts introducing himself as Laudine’s husband is Robert Maidenfeld,
+          not a separate Robert Fabinho. Do not confuse him with his brother Steven.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: character.hellion-blanchimontt
+        status: confirmed
+        kind: entity
+        canonical: Hellion Blanchimontt
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/characters/hellion-blanchimontt.mdx
+          role: primary
+        aliases:
+        - Hellion Blanchemont
+        - Erlin
+        - Elin
+        match:
+          priority: normal
+          tags:
+          - character-hellion-blanchimontt
+          - hellion blanchimontt
+          - anna-doll
+          - crew-eladrin
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: Use Hellion Blanchimontt, usually Hellion, for the eladrin. Erlin/Elin
+          in the reassurance about tending Anna refers to him, not another helper; use he for Hellion,
+          while she/her can refer to the doll. Apply these short-name aliases only when context
+          identifies Hellion. His Feywild origin is established; listener disbelief does not negate
+          it.
+        instruction: Use Hellion Blanchimontt, usually Hellion, for the eladrin. Erlin/Elin in the
+          reassurance about tending Anna refers to him, not another helper; use he for Hellion,
+          while she/her can refer to the doll. Apply these short-name aliases only when context
+          identifies Hellion. His Feywild origin is established; listener disbelief does not negate
+          it.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Nico confirms Erlin/Elin as his pronunciation of Hellion in the 05:44:17–05:44:27
+            doll reassurance.
+
+      - id: place.maidens-port
+        status: confirmed
+        kind: place
+        canonical: Maiden's Port
+        canonicalRefs:
+        - type: article
+          path: astro/src/content/docs/world/locations/maidens-port.mdx
+          role: primary
+        aliases:
+        - Maidensport
+        match:
+          priority: normal
+          tags:
+          - place-maidens-port
+          - maiden's port
+        scope:
+          campaigns:
+          - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: true
+        promptInstruction: Use Maiden’s Port for the port settlement. Keep it distinct from Maiden’s
+          Bay and the wider Maiden’s Field territory.
+        instruction: Use Maiden’s Port for the port settlement. Keep it distinct from Maiden’s Bay
+          and the wider Maiden’s Field territory.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+      - id: character.farrah-river-hag
+        status: confirmed
+        kind: entity
+        canonical: Farrah
+        canonicalRefs:
+        - type: note
+          path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          role: primary
+        aliases:
+        - Sarah
+        match:
+          priority: normal
+          tags:
+          - character-farrah-river-hag
+          - farrah
+        scope:
+          campaigns:
+          - the-vengeful
+          contexts:
+          - Esmeralda and Georgina introducing their sister at the river sanctuary
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: In the introduction of Esmeralda’s sisters, Sarah is Farrah; the sisters
+          are Esmeralda, Farrah, and Georgina. Do not replace unrelated people named Sarah.
+        instruction: In the introduction of Esmeralda’s sisters, Sarah is Farrah; the sisters are
+          Esmeralda, Farrah, and Georgina. Do not replace unrelated people named Sarah.
+        evidence:
+        - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+          note: Campaign-maintainer name review; retained scene and recording-guide context.
+
+      - id: lore.malygos-remembered-archfey
+        status: confirmed
+        kind: disambiguation
+        canonical: Malygos
+        aliases:
+          - Malygos the Archfey of Magic
+          - Malygos is not an archfey
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Malygos, fey memory, and the monastic tradition
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          The fey who still remember Malygos think of them as the Archfey of Magic.
+          Attribute that classification to their understanding, not settled
+          ontology. A dragon-turtle description does not settle their deeper nature.
+        instruction: >
+          Preserve remembered identity separately from definitive cosmological
+          classification. Do not harden either is an archfey or is not an archfey
+          into an omniscient assertion. Keep tentative DM intentions out of
+          party knowledge and authored accounts of in-session revelations.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-29.mdx
+            note: Campaign review distinguishes fey recollection from Malygos's true nature.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-09.mdx
+            note: Earlier monastic discussion uses the Archfey of Magic description.
+
+      - id: disambiguation.rannek-mother
+        status: confirmed
+        kind: disambiguation
+        canonical: Maria Rannek
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/maria-rannek.mdx
+            role: primary
+        aliases:
+          - Mother
+          - Angel's mother
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Angel and the Rannek siblings referring to their mother
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          In authored summaries, identify Angel and the Rannek siblings' mother
+          as Marchioness Maria Rannek at first mention, then Maria, rather than
+          leaving Mother as an ambiguous referent. Do not apply this to a hag's
+          Mother or other maternal figures and titles.
+        instruction: >
+          Resolve family references through the speaker and context, not a global
+          replacement of Mother. Maria is the mother of Angel, Laudine, Gwyniviere,
+          Lance, and Merlin. Preserve literal dialogue in transcript evidence;
+          dereference the relationship in authored narrative and surviving hooks.
+          When another speaker's Mother is unidentified, attribute the term to
+          that speaker without guessing her identity.
+        evidence:
+          - path: astro/src/content/docs/world/characters/maria-rannek.mdx
+            note: Canonical article establishes Maria's title and children.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-29.mdx
+            note: Campaign review requests explicit maternal referents to avoid conflating multiple Mothers.
+
+      - id: character.laudine-maidenfeld
+        status: confirmed
+        kind: entity
+        canonical: Laudine Maidenfeld née Rannek
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/laudine-rannek.mdx
+            role: primary
+        aliases:
+          - Ladeen
+          - Lodin
+          - Lodeen
+          - Ludin
+          - Laudin
+          - Claudine
+          - Lordean
+        match:
+          priority: normal
+          tags:
+            - laudine
+            - robert-maidenfeld
+            - maidensport
+            - atelier
+            - bakery-rescue
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Angel's sister and Robert Maidenfeld's wife
+            - Maidensport apartment, spice company, and fashion business
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Use Laudine Maidenfeld née Rannek, usually Laudine, for Angel's sister
+          married to Robert Maidenfeld. In that context, Ladeen, Lodin, Lodeen,
+          Ludin, Laudin, Claudine, and Lordean are name drift, not separate people.
+        instruction: >
+          Resolve these variants only when the family or scene context identifies
+          Laudine. Her article establishes her marriage and fashion businesses;
+          the correction does not identify every unnamed woman or establish the
+          atelier's formal business name. Do not retain a resolved Laudine-name
+          confirmation in authored notes.
+        evidence:
+          - path: astro/src/content/docs/world/characters/laudine-rannek.mdx
+            note: Canonical article supplied during campaign review identifies Laudine and her family.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+            note: Nico confirms Auntie Lodin and the stiletto-boot escape both refer to Laudine, not a separate person.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-29.mdx
+            note: Campaign review confirms Ladeen as Laudine in the Maidensport visit.
+
       - id: character.sensodyne
         status: confirmed
         kind: entity
@@ -22,18 +760,26 @@ profiles:
             - sensodyne
             - sensudine
             - sensodynes
+            - crew-baker
         scope:
           campaigns:
             - the-vengeful
         apply:
           mode: prompt-first
           safeExactReplacement: true
+        promptInstruction: >
+          Sensodyne is an established crew member, also identified as the crew's
+          baker. Use that spelling for Sensudine and Sensodynes; do not reopen
+          her name as an unresolved entity. The existing rule identifies her as a
+          devil; speakers calling her Tanar'ri do not establish strict taxonomy.
         instruction: >
           Use Sensodyne for the devil/succubus crew member. Do not treat
           Sensudine as a separate character. Sensodyne is a devil; some
           Feywild-connected speakers may call beings like her Tanar'ri, but
           that does not make her a tanar'ri in strict taxonomy.
         evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+            note: The crew's baker is named Sensodyne at 05:48:50–05:48:55; the character article already establishes the spelling.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-06.mdx
             note: Clarifies Sensodyne as a devil who does not need sleep.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
@@ -1239,6 +1985,65 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-21.mdx
             note: Notes confirm Dorothy/Miya identity, age, and campaign linkage.
 
+      - id: character.hedwig-rosenkrantz
+        status: confirmed
+        kind: entity
+        canonical: Hedwig Rosenkrantz
+        aliases:
+          - Lady Edwards
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Maidenfeld discussion of other planes, Deathengel, and Isana
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          Lady Edwards in the Maidenfeld planar discussion means Lady Hedwig,
+          addressing Hedwig Rosenkrantz. Preserve Lady Hedwig in dialogue and
+          do not invent a separate Edwards character or replace unrelated namesakes.
+        instruction: >-
+          Nico identifies the Lady Edwards address as Lady Hedwig in this scene.
+          The name correction does not verify the reported claims about Isana or Deathengel.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+            note: Maintainer confirms Lady Hedwig at 08:05:15–08:06:13.
+
+      - id: character.annika-smith
+        status: confirmed
+        kind: entity
+        canonical: Annika Smith
+        aliases:
+          - Monique
+          - Monica
+        match:
+          priority: normal
+          tags:
+            - robert-maidenfeld
+            - rescued-family
+            - annika
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Robert Maidenfeld's children and their mother
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          Use Annika Smith, usually Annika, for the mother of Robert Maidenfeld's
+          children. Monique/Monica in the rescued-family reassurance refers to
+          Annika, not the separate Highbury-family Monique. Do not replace
+          unrelated Monique references or invent a renaming or alias.
+        instruction: >-
+          Nico confirms Monique is a mistranscription of Annika in the rescued-family
+          sequence. Annika Smith is the mother of Robert Maidenfeld's children.
+          Apply only in this family context; preserve the distinct Highbury Monique.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+            note: Nico resolves the introduction and reassurance as the same woman, Annika Smith.
+
       - id: character.monique-highbury
         status: confirmed
         kind: entity
@@ -1267,7 +2072,8 @@ profiles:
         promptInstruction: >
           Use Monique for the Highbury-family girl connected to Fagus's
           marriage plot and the library aftermath. Do not preserve Monica as
-          an unresolved alternate spelling in this context.
+          an unresolved alternate spelling in this context. This is not Annika Smith,
+          the mother of Robert Maidenfeld's children; do not apply this rule to her rescue.
         instruction: >
           Use Monique for the Highbury-family girl connected to Fagus's marriage
           plot and the library aftermath. Do not preserve Monica as an
@@ -4578,6 +5384,8 @@ profiles:
         aliases:
           - Trantarbury
           - Flanterbury
+          - Chanter Brewery
+          - Murkendraw Brewery
         match:
           priority: high
           tags:
@@ -4590,11 +5398,18 @@ profiles:
             - the-vengeful
         apply:
           mode: prompt-first
-          safeExactReplacement: true
+          safeExactReplacement: false
+        promptInstruction: >
+          Use Thrantorbury for matching place and university references. In the
+          Tiphanie/Crown Prince and Kelthyr/brother passages, Chanter Brewery and
+          Murkendraw Brewery mean Thrantorbury, not new breweries or a Feywild
+          journey. Do not name a brother deliberately left unnamed in dialogue.
         instruction: >
           Use Thrantorbury for the place and university references unless the
           immediate context clearly refers to another location.
         evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+            note: Nico confirms Thrantorbury for the supposed breweries; earlier Tiphanie/prince accounts corroborate the location.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-13.mdx
             note: Clarifies Thrantorbury as a place thread.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
@@ -5290,11 +6105,21 @@ profiles:
         apply:
           mode: prompt-first
           safeExactReplacement: false
+        promptInstruction: >-
+          Use Jing Shen Jiang for the Feydark city founded by changelings as a
+          haven for shapeshifters; Jingxia/Jingxian are contextual ASR drift.
+          Holt Settlement is separate and conceals its entrance. Renegade humans
+          once lived there, but none do now: changelings and doppelgangers pose as
+          humans and elves to conceal Jing Shen Jiang's existence. Distinguish
+          this GM-confirmed truth from the characters' unverified suspicion.
+          Do not invent further history or a fate for the renegades.
         instruction: >
           Use Jing Shen Jiang for the Feydark community connected to changeling,
           doppelganger, and survivor-community comparisons. Jingxia and Jingxian
           are spelling or ASR drift in this context.
         evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+            note: Nico rechecked with Eevee; humans lived at Holt formerly, not currently. This supersedes the mistaken recollection of current human residents.
           - path: astro/src/content/docs/world/locations/jing-shen-jiang.mdx
             note: Canonical location article title uses Jing Shen Jiang.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
@@ -5314,6 +6139,8 @@ profiles:
             path: astro/src/content/docs/world/characters/trajan.mdx
             role: character-reference
         aliases:
+          - Frazen
+          - Prasen
           - Trillian
           - Trajan Dupe
           - Fake Trajan
@@ -5332,8 +6159,10 @@ profiles:
           campaigns:
             - the-vengeful
           sessionDates:
+            - "2026-08-30"
             - "2026-07-05"
           contexts:
+            - Maidenfeld emotion-reading discussion
             - Philodendron and face-stealing identity
             - Trajan shapeshifter lore
             - Rachel meeting or trade-deal context
@@ -5344,8 +6173,13 @@ profiles:
         promptInstruction: >
           Use Trajan when the 2026-07-04 trade or meeting context is heard as
           Trillian. Use Trajan as well for the 2026-07-05 infected-changeling
-          contact passage heard as Raja or Preijen.
+          contact passage heard as Raja or Preijen. In the August 30 emotion-reading
+          discussion, Frazen/Prasen means Trajan. Do not infer who is impersonating
+          whom from this correction or replace unrelated names.
         instruction: >
+          Frazen/Prasen in the August 30 emotion-reading comparison with Oren
+          means Trajan; Nico confirms the referent. This does not settle identity
+          impersonation or the reason his emotions cannot be read.
           Use Trajan when the 2026-07-04 trade or meeting context is heard as
           Trillian. Nico confirmed Trillian should be Trajan in that passage.
           In the 2026-07-05 infected-changeling contact passage, correct Raja
@@ -5354,6 +6188,8 @@ profiles:
           not preserve Trillian, Raja, or Preijen as separate people, titles, or
           table-noise hooks in these contexts.
         evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+            note: Nico confirms Frazen/Prasen as Trajan at 08:59:39–09:00:05.
           - path: astro/src/content/docs/world/characters/philodendron.mdx
             note: Philodendron frontmatter lists Trajan Dupe, Trajan, and Fake Trajan as aliases.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
@@ -7652,12 +8488,16 @@ profiles:
           safeExactReplacement: false
         promptInstruction: >
           Use Magistrate Wessen for the Rannekford magistrate. Treat Wesson as
-          transcription or spelling drift, not a separate character.
+          transcription or spelling drift, not a separate character. Do not
+          resolve every unnamed magistrate to Wessen: the memory shown to Laudine
+          and Robert on August 30 is Tonon's, not hers. Neither is present there.
         instruction: >
           Magistrate Wessen is the canonical spelling for the official who
           received the party during the Castle Rannek crisis. Normalize Wesson
           only when the context identifies this character.
         evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-30.mdx
+            note: Nico identifies Tonon, not Wessen, as the source of the shared memory.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-19.mdx
             note: User confirmed Wessen as the magistrate's canonical spelling.
 
