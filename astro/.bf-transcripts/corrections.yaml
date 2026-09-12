@@ -4,6 +4,27 @@ profiles:
   global:
     description: Shared correction rules for Bastion Falls transcription and note generation.
     rules:
+      - id: character.queen-valdas
+        status: confirmed
+        kind: entity
+        canonical: Queen Valdas
+        aliases:
+          - Valda
+          - Valda, Queen of Air
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          In the Spring Court and manipulation comparison, use Queen Valdas,
+          Queen of Mirrors, not Valda or Queen of Air. She was the former Archfey
+          of Spring, killed by Somme Privatea and Rosy Conifer.
+        instruction: >-
+          Correct only context-matched references to Valdas. Her death does not
+          establish either killer as her successor. Do not insert unspoken history
+          into dialogue.
       - id: family.malris
         status: confirmed
         kind: entity
