@@ -1,13 +1,35 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { z } from "zod";
-import { SUMMARY_REPAIR_VERSION, SUMMARY_REPAIR_BOUNDS, buildSummaryRepairPrompt, classifySummaryRepair, normalizeSummaryRepairIssues } from "./reconciliationSummaryRepair.js";
-import { SUMMARY_CONTRACT_VERSION, buildChunkContract, buildSceneContract, buildSessionContract, contractFor } from "./reconciliationSummary.js";
+import {
+  SUMMARY_REPAIR_VERSION,
+  SUMMARY_REPAIR_BOUNDS,
+  buildSummaryRepairPrompt,
+  classifySummaryRepair,
+  normalizeSummaryRepairIssues,
+} from "./reconciliationSummaryRepair.js";
+import {
+  SUMMARY_CONTRACT_VERSION,
+  buildChunkContract,
+  buildSceneContract,
+  buildSessionContract,
+  contractFor,
+} from "./reconciliationSummary.js";
 
 test("contracts and repair version are deterministic and complete", () => {
   assert.equal(SUMMARY_CONTRACT_VERSION, "summary-contract.v1");
   assert.equal(SUMMARY_REPAIR_VERSION, "summary-repair.v1");
-  for (const [level, fields] of Object.entries({ chunk: ["summary.chunk.v1", "reconciliationBlockIds", "blockIds", "hooks", "sourceReviewDispositions"], scene: ["summary.scene.v1", "chunkClaimProvenance", "chunkHookIds"], session: ["summary.session.v1", "provenanceMap", "promptVersion"] })) {
+  for (const [level, fields] of Object.entries({
+    chunk: [
+      "summary.chunk.v1",
+      "reconciliationBlockIds",
+      "blockIds",
+      "hooks",
+      "sourceReviewDispositions",
+    ],
+    scene: ["summary.scene.v1", "chunkClaimProvenance", "chunkHookIds"],
+    session: ["summary.session.v1", "provenanceMap", "promptVersion"],
+  })) {
     const contract = contractFor(level as "chunk" | "scene" | "session");
     assert.equal(contract, contractFor(level as "chunk" | "scene" | "session"));
     for (const field of fields) assert.match(contract, new RegExp(field));
@@ -18,42 +40,111 @@ test("contracts and repair version are deterministic and complete", () => {
 });
 
 test("repair feedback is bounded, normalized, and private-safe", () => {
-  const error = new z.ZodError([{ code: "invalid_value", path: ["claims", "x".repeat(500)], message: "secret /home/ensu/private transcript" } as never]);
+  const error = new z.ZodError([
+    {
+      code: "invalid_value",
+      path: ["claims", "x".repeat(500)],
+      message: "secret /home/ensu/private transcript",
+    } as never,
+  ]);
   const issues = normalizeSummaryRepairIssues(error);
   assert.equal(issues.length, 1);
   assert.ok(issues[0]!.path[1]!.length <= SUMMARY_REPAIR_BOUNDS.maxPathSegment);
   assert.ok(issues[0]!.message.length <= SUMMARY_REPAIR_BOUNDS.maxMessage);
-  const prompt = buildSummaryRepairPrompt({ level: "chunk", contract: buildChunkContract(), originalResponse: "secret /home/ensu/private transcript", issues, authoritativeDomains: ["b0"] });
+  const prompt = buildSummaryRepairPrompt({
+    level: "chunk",
+    contract: buildChunkContract(),
+    originalResponse: "secret /home/ensu/private transcript",
+    issues,
+    authoritativeDomains: ["b0"],
+  });
   assert.doesNotMatch(prompt, /\/home\/ensu\/private|secret \/home/iu);
   assert.ok(Buffer.byteLength(prompt) <= SUMMARY_REPAIR_BOUNDS.maxPromptBytes);
 });
 
 test("stable categories distinguish repairable validation from operational failures", () => {
   assert.equal(classifySummaryRepair(new z.ZodError([])).eligible, true);
-  assert.equal(classifySummaryRepair(new SyntaxError("bad json")).eligible, true);
-  assert.equal(classifySummaryRepair(Object.assign(new Error("timeout"), { repairCategory: "timeout" })).eligible, false);
-  assert.equal(classifySummaryRepair(Object.assign(new Error("empty"), { repairCategory: "empty-output" })).eligible, false);
-  assert.equal(classifySummaryRepair(new Error("timeout: provider text")).eligible, false, "untyped text must fail closed");
-  assert.equal(classifySummaryRepair(Object.assign(new Error("anything"), { repairCategory: "semantic-validation" })).eligible, true);
+  assert.equal(
+    classifySummaryRepair(new SyntaxError("bad json")).eligible,
+    true,
+  );
+  assert.equal(
+    classifySummaryRepair(
+      Object.assign(new Error("timeout"), { repairCategory: "timeout" }),
+    ).eligible,
+    false,
+  );
+  assert.equal(
+    classifySummaryRepair(
+      Object.assign(new Error("empty"), { repairCategory: "empty-output" }),
+    ).eligible,
+    false,
+  );
+  assert.equal(
+    classifySummaryRepair(new Error("timeout: provider text")).eligible,
+    false,
+    "untyped text must fail closed",
+  );
+  assert.equal(
+    classifySummaryRepair(
+      Object.assign(new Error("anything"), {
+        repairCategory: "semantic-validation",
+      }),
+    ).eligible,
+    true,
+  );
 });
 
 test("repair prompt rejects oversized UTF-8 originals without truncation", () => {
-  assert.throws(() => buildSummaryRepairPrompt({ level: "chunk", contract: "contract", originalResponse: "😀".repeat(1_000_000), issues: [] }), /original response exceeds bound/iu);
+  assert.throws(
+    () =>
+      buildSummaryRepairPrompt({
+        level: "chunk",
+        contract: "contract",
+        originalResponse: "😀".repeat(1_000_000),
+        issues: [],
+      }),
+    /original response exceeds bound/iu,
+  );
 });
 
 test("oversized non-original repair framing fails closed", () => {
   assert.throws(
-    () => buildSummaryRepairPrompt({ level: "chunk", contract: "x".repeat(2_000_001), originalResponse: "{}", issues: [] }),
+    () =>
+      buildSummaryRepairPrompt({
+        level: "chunk",
+        contract: "x".repeat(2_000_001),
+        originalResponse: "{}",
+        issues: [],
+      }),
     /framing exceeds bound/iu,
   );
-  const multibyte = buildSummaryRepairPrompt({ level: "chunk", contract: "contract", originalResponse: "😀".repeat(400_000), issues: [] });
+  const multibyte = buildSummaryRepairPrompt({
+    level: "chunk",
+    contract: "contract",
+    originalResponse: "😀".repeat(400_000),
+    issues: [],
+  });
   assert.ok(Buffer.byteLength(multibyte) <= 2_000_000);
 });
 
 test("complete repair prompt rejects an oversized original instead of truncating it", () => {
   assert.throws(
-    () => buildSummaryRepairPrompt({ level: "chunk", contract: "contract", originalResponse: { extra: "x".repeat(2_000_000) }, issues: [] }),
+    () =>
+      buildSummaryRepairPrompt({
+        level: "chunk",
+        contract: "contract",
+        originalResponse: { extra: "x".repeat(2_000_000) },
+        issues: [],
+      }),
     /original response exceeds bound/iu,
   );
-  assert.doesNotThrow(() => buildSummaryRepairPrompt({ level: "chunk", contract: "contract", originalResponse: { extra: "x".repeat(1_990_000) }, issues: [] }));
+  assert.doesNotThrow(() =>
+    buildSummaryRepairPrompt({
+      level: "chunk",
+      contract: "contract",
+      originalResponse: { extra: "x".repeat(1_990_000) },
+      issues: [],
+    }),
+  );
 });

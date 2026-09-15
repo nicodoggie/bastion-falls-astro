@@ -66,6 +66,7 @@ import {
   parseLogicalChunks,
   resolveReviewSettings,
   resolveReconciliationSettings,
+  resolveSummarizationSettings,
   type ReviewProvider,
   type ReconciliationProvider,
   type LogicalChunks,
@@ -573,6 +574,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
       legacyAliasConfig,
     );
     const legacyReviewSettings = resolveReviewSettings(transcribeConfig["review"], { provider: flags.review, hermesProfile: flags["hermes-profile"], hermesMaxTurns: flags["hermes-max-turns"] });
+    const summarizationSettings = resolveSummarizationSettings(transcribeConfig["summarization"]);
     const notesPath = getNotesPath({
       contextRoot,
       campaign: flags.campaign,
@@ -1103,7 +1105,12 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
       }
       this.process.stdout.write("Running unified Hermes reconciliation\n");
       try {
-        unifiedStageResult = await runUnifiedReconciliationStage(await getUnifiedStageOptions());
+        unifiedStageResult = await runUnifiedReconciliationStage({
+          ...(await getUnifiedStageOptions()),
+          onRetry: ({ chunkId, nextAttempt, maxAttempts }) => {
+            this.process.stderr.write(`Hermes timed out for ${chunkId}; retrying attempt ${nextAttempt}/${maxAttempts}. See private diagnostics for attempt details.\n`);
+          },
+        });
         return { status: unifiedStageResult.status, metadata: unifiedStageResult.metadata };
       } catch {
         const metadata = {
@@ -1152,6 +1159,7 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
           summarization: {
             repositoryCwd: cwd,
             providerIdentity: { provider: "codex", model: "codex" },
+            model: summarizationSettings.model,
             promptVersion: "summary.reconciliation.v1",
             campaignContext: buildSummaryContextExcerpt(contextFiles),
             correctionRules: evidenceLines(correctionRules),

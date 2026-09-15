@@ -52,6 +52,8 @@ transcribe:
     tailMergeMaxDurationRatio: 1.25
     hermes:
       profile: default
+  summarization:
+    model: gpt-5.6-sol
 
 tts:
   earlyHick:

@@ -27,6 +27,8 @@ export interface ResolvedReconciliationSettings {
   tailMergeMaxDurationRatio: number;
   source: "default" | "config" | "cli" | "legacy-alias";
 }
+export interface SummarizationOverrides { model?: string; }
+export interface ResolvedSummarizationSettings { model: string; source: "default" | "config" | "cli"; }
 interface RawConfig { provider?: unknown; logicalChunks?: unknown; hermes?: unknown; promptVersion?: unknown; schemaVersion?: unknown; tailMergeThresholdRatio?: unknown; tailMergeMaxDurationRatio?: unknown; }
 interface RawHermes { profile?: unknown; maxTurns?: unknown; }
 function isRecord(value: unknown): value is Record<string, unknown> { return typeof value === "object" && value !== null && !Array.isArray(value); }
@@ -37,6 +39,14 @@ function knownKeys(value: Record<string, unknown>, allowed: readonly string[], l
 export function parseReviewProvider(value: string): ReviewProvider { if (value === "hermes" || value === "off") return value; throw new Error(`Unsupported review provider: ${value}`); }
 export function parseReconciliationProvider(value: string): ReconciliationProvider { if (value === "hermes" || value === "legacy" || value === "off") return value; throw new Error(`Unsupported reconciliation provider: ${value}`); }
 export function parseLogicalChunks(value: string): LogicalChunks { if (value === "single" || value === "per-stt-chunk" || value === "three") return value; throw new Error(`Unsupported reconciliation logicalChunks: ${value}`); }
+export function resolveSummarizationSettings(config: unknown, overrides: SummarizationOverrides = {}): ResolvedSummarizationSettings {
+  if (config !== undefined && !isRecord(config)) throw new Error("transcribe.summarization must be an object");
+  const raw = (config ?? {}) as Record<string, unknown>;
+  knownKeys(raw, ["model"], "transcribe.summarization");
+  const configuredModel = stringField(raw["model"], "transcribe.summarization.model");
+  const overrideModel = stringField(overrides.model, "transcribe.summarization.model");
+  return { model: overrideModel ?? configuredModel ?? "codex", source: overrideModel !== undefined ? "cli" : configuredModel !== undefined ? "config" : "default" };
+}
 
 /** Resolve the deprecated transcribe.review shape without enabling the unified path. */
 export function resolveReviewSettings(config: unknown, overrides: ReviewOverrides = {}): ResolvedReviewSettings {

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { parseLogicalChunks, parseReconciliationProvider, parseReviewProvider, resolveReconciliationSettings, resolveReviewSettings } from "./reviewSettings.js";
+import { parseLogicalChunks, parseReconciliationProvider, parseReviewProvider, resolveReconciliationSettings, resolveReviewSettings, resolveSummarizationSettings } from "./reviewSettings.js";
 
 test("parses supported providers and layouts", () => {
   assert.equal(parseReconciliationProvider("hermes"), "hermes");
@@ -13,6 +13,12 @@ test("parses supported providers and layouts", () => {
 
 test("new reconciliation defaults to one hermes chunk", () => {
   assert.deepEqual(resolveReconciliationSettings(undefined), { provider: "hermes", logicalChunks: "single", hermesProfile: "default", hermesMaxTurns: 12, promptVersion: "reconciliation.prompt.v6", schemaVersion: "reconciliation.v1", tailMergeThresholdRatio: 0.25, tailMergeMaxDurationRatio: 1.25, source: "default" });
+});
+
+test("resolves the final notes summarization model from config", () => {
+  assert.deepEqual(resolveSummarizationSettings(undefined), { model: "codex", source: "default" });
+  assert.deepEqual(resolveSummarizationSettings({ model: "gpt-5.6-sol" }), { model: "gpt-5.6-sol", source: "config" });
+  assert.throws(() => resolveSummarizationSettings({ profile: "default" }), /unsupported keys/);
 });
 
 test("CLI reconciliation settings override configuration", () => {

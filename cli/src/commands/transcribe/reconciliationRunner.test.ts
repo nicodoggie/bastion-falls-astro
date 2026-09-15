@@ -79,6 +79,63 @@ test("one ordinary call writes canonical JSON, joined derivatives, and diagnosti
   } finally { await rm(root, { recursive: true, force: true }); }
 });
 
+test("a timed-out Hermes chunk retries after cleanup and preserves attempt diagnostics", async () => {
+  const root = await mkdtemp(join(tmpdir(), "reconciliation-retry-"));
+  const command = join(root, "retry-hermes.mjs");
+  const counter = join(root, "attempts.txt");
+  const retries: unknown[] = [];
+  try {
+    await writeFile(command, `#!/usr/bin/env node\nimport { existsSync, readFileSync, writeFileSync } from "node:fs";\nconst path = ${JSON.stringify(counter)};\nconst count = existsSync(path) ? Number(readFileSync(path, "utf8")) + 1 : 1;\nwriteFileSync(path, String(count));\nif (count === 1) { process.stderr.write("first attempt stalled"); setInterval(() => {}, 1000); }\nelse process.stdout.write(${JSON.stringify(JSON.stringify(response()))});\n`);
+    await chmod(command, 0o755);
+    const result = await runUnifiedReconciliation({ rootDir: root, jobs: [job], hermesCommand: command, timeoutMs: 500, onRetry: (retry) => { retries.push(retry); } });
+    assert.equal(await readFile(counter, "utf8"), "2");
+    assert.deepEqual(retries, [{ chunkId: "session_000", nextAttempt: 2, maxAttempts: 3 }]);
+    assert.deepEqual(result.repairedChunkIds, ["session_000"]);
+    assert.equal(result.chunks.length, 1);
+    const diagnostics = await Promise.all((await readdir(join(root, "diagnostics"))).map(async name => JSON.parse(await readFile(join(root, "diagnostics", name), "utf8"))));
+    assert.equal(diagnostics.length, 2);
+    assert.ok(diagnostics.some(d => /timed out/.test(d.error) && d.stderr === "first attempt stalled"));
+    await runUnifiedReconciliation({ rootDir: root, jobs: [job], hermesCommand: command, timeoutMs: 500, resume: true });
+    assert.equal(await readFile(counter, "utf8"), "2");
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
+test("Hermes timeout retries stop after three attempts without publishing a chunk", async () => {
+  const root = await mkdtemp(join(tmpdir(), "reconciliation-retry-exhausted-"));
+  const command = join(root, "stalled-hermes.mjs");
+  const retries: number[] = [];
+  try {
+    await writeFile(command, '#!/usr/bin/env node\nsetInterval(() => {}, 1000);\n');
+    await chmod(command, 0o755);
+    await assert.rejects(() => runUnifiedReconciliation({ rootDir: root, jobs: [job], hermesCommand: command, timeoutMs: 100, onRetry: ({ nextAttempt }) => { retries.push(nextAttempt); } }), /Hermes timed out/);
+    assert.deepEqual(retries, [2, 3]);
+    const diagnostics = await readdir(join(root, "diagnostics"));
+    assert.equal(diagnostics.length, 3);
+    for (const name of diagnostics) assert.match(JSON.parse(await readFile(join(root, "diagnostics", name), "utf8")).error, /Hermes timed out/);
+    assert.deepEqual(await readdir(join(root, "reconciliation")), []);
+    assert.deepEqual((await readdir(root)).filter(name => name.startsWith('.reconciliation-prompt-')), []);
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
+test("Hermes validation and process failures do not retry", async () => {
+  const root = await mkdtemp(join(tmpdir(), "reconciliation-no-retry-"));
+  try {
+    for (const [name, output, exitCode] of [
+      ['identity', JSON.stringify({ ...response(), cacheIdentity: { ...packet.cacheIdentity, inputHash: 'wrong' } }), 0],
+      ['json', 'invalid JSON', 0],
+      ['process', '', 1],
+    ] as const) {
+      const dir = join(root, name);
+      const command = join(root, `${name}.mjs`);
+      await writeFile(command, `#!/usr/bin/env node\nprocess.stdout.write(${JSON.stringify(output)}); process.exit(${exitCode});\n`);
+      await chmod(command, 0o755);
+      await assert.rejects(() => runUnifiedReconciliation({ rootDir: dir, jobs: [job], hermesCommand: command, timeoutMs: 2_000, onRetry: () => { assert.fail('must not retry permanent failures'); } }));
+      assert.equal((await readdir(join(dir, 'diagnostics'))).length, 1);
+      assert.deepEqual(await readdir(join(dir, 'reconciliation')), []);
+    }
+  } finally { await rm(root, { recursive: true, force: true }); }
+});
+
 test("hard-invalid output is diagnostic-only and never creates canonical JSON", async () => {
   const root = await mkdtemp(join(tmpdir(), "reconciliation-invalid-"));
   try {
@@ -341,7 +398,7 @@ test("bounded Hermes handles an already-aborted signal and kills a TERM-ignoring
     await writeFile(command, `#!/usr/bin/env node\nimport { spawn } from "node:child_process";\nimport { writeFileSync } from "node:fs";\nwriteFileSync(${JSON.stringify(marker)}, process.cwd());\nprocess.stderr.write("provider-stream-stalled-before-terminal-response\\n");\nprocess.on("SIGTERM", () => { process.stderr.write("provider-cancel-acknowledged\\n"); process.exit(0); });\nconst child = spawn(process.execPath, ["-e", "process.on('SIGTERM',()=>{});setInterval(()=>{},1000)"], { stdio: "ignore" });\nwriteFileSync(${JSON.stringify(pidFile)}, String(child.pid));\nsetInterval(()=>{},1000);\n`); await chmod(command, 0o755);
     const aborted = new AbortController(); aborted.abort();
     await assert.rejects(() => boundedHermes(job, "x", aborted.signal, { timeoutMs: 100, maxOutputBytes: 1000, hermesCommand: command, maxTurns: 1, repositoryCwd: root }), /aborted/iu);
-    const started = Date.now(); await assert.rejects(() => runUnifiedReconciliation({ rootDir: root, jobs: [job], timeoutMs: 100, maxOutputBytes: 1000, hermesCommand: command, maxTurns: 1, repositoryCwd: root }), /timed out|failed/iu); assert.ok(Date.now() - started < 1000);
+    const started = Date.now(); await assert.rejects(() => runUnifiedReconciliation({ rootDir: root, jobs: [job], timeoutMs: 100, maxOutputBytes: 1000, hermesCommand: command, maxTurns: 1, repositoryCwd: root }), /timed out|failed/iu); assert.ok(Date.now() - started < 3000);
     const diagnosticPath = join(root, "diagnostics", (await readdir(join(root, "diagnostics")))[0]!);
     const diagnostic = JSON.parse(await readFile(diagnosticPath, "utf8")) as { stderr: string; error: string };
     assert.match(diagnostic.stderr, /provider-stream-stalled-before-terminal-response/u);

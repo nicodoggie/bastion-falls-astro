@@ -67,10 +67,12 @@ export function buildCodexExecArgs(options: {
 	cwd: string;
 	outputPath: string;
 	fast?: boolean;
+	model?: string;
 }): string[] {
 	const fast = options.fast ?? process.env["BFCLI_CODEX_FAST"] === "1";
 	return [
 		"exec",
+		...(options.model ? ["-m", options.model] : []),
 		...(fast ? ["-c", 'service_tier="priority"'] : []),
 		"--sandbox",
 		"read-only",

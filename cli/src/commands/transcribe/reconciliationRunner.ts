@@ -24,6 +24,7 @@ export interface ReconciliationRunnerOptions {
   sanitizeSummarySafe?: SummarySafeFallback; checkpoint?: (chunk: CanonicalReconciliation) => Promise<void> | void;
   hermesCommand?: string; profile?: string; maxTurns?: number; timeoutMs?: number; maxOutputBytes?: number;
   repositoryCwd?: string;
+  onRetry?: (retry: { chunkId: string; nextAttempt: number; maxAttempts: number }) => void;
   diagnosticWriter?: (path: string, payload: unknown) => Promise<void> | void;
   resume?: boolean; force?: boolean;
 }
@@ -33,6 +34,8 @@ export interface HermesArgsOptions { promptPath: string; profile?: string; maxTu
 const DEFAULT_TIMEOUT_MS = 600_000;
 const DEFAULT_MAX_OUTPUT_BYTES = 2_000_000;
 const DEFAULT_MAX_TURNS = 8;
+const MAX_CHUNK_ATTEMPTS = 3;
+class HermesTimeoutError extends Error {}
 const MAX_TIMEOUT_MS = 20 * 60_000;
 const MAX_OUTPUT_BYTES = 20_000_000;
 const HERMES_INVOCATION = Symbol("hermesInvocation");
@@ -248,7 +251,7 @@ export async function boundedHermes(job: ReconciliationChunkJob, prompt: string,
     let stdout = "", stderr = "", bytes = 0, settled = false, failing = false, failureError: Error | undefined;
     const startedAt = Date.now();
     let graceTimer: ReturnType<typeof setTimeout> | undefined, finalTimer: ReturnType<typeof setTimeout> | undefined;
-    const timer = setTimeout(() => fail(new Error("Hermes timed out")), options.timeoutMs);
+    const timer = setTimeout(() => fail(new HermesTimeoutError("Hermes timed out")), options.timeoutMs);
     const cleanup = () => { clearTimeout(timer); if (graceTimer) clearTimeout(graceTimer); if (finalTimer) clearTimeout(finalTimer); signal.removeEventListener("abort", onAbort); child.stdout?.removeListener("data", onStdout); child.stderr?.removeListener("data", onStderr); child.removeListener("error", onError); child.removeListener("close", onClose); };
     const invocation = (): InvocationResult => ({ stdout, stderr, metadata: { exitCode: child.exitCode, durationMs: Date.now() - startedAt, ...(options.profile ? { profile: options.profile } : {}) } });
     const settle = (error?: Error) => { if (settled) return; settled = true; cleanup(); error ? reject(attachHermesInvocation(error, invocation())) : resolve(invocation()); };
@@ -331,7 +334,34 @@ export async function runUnifiedReconciliation(options: ReconciliationRunnerOpti
     if (artifactExists && !options.resume && !options.force) throw new Error(`canonical artifact already exists for ${job.packet.chunk.id}; use resume or force`);
     let chunk: CanonicalReconciliation | undefined = options.resume && !options.force ? existing : undefined;
     if (chunk) reusedChunkIds.push(job.packet.chunk.id);
-    else { repairedChunkIds.push(job.packet.chunk.id); const prompt = buildUnifiedReconciliationPrompt(job); let invocation: InvocationResult | undefined; try { const promptBytes = Buffer.byteLength(prompt, "utf8"); if (promptBytes > MAX_PROMPT_BYTES) throw oversizedPromptError(job, promptBytes); const invoked = options.invokeReconciliation ? await boundedCall((signal) => options.invokeReconciliation!(job, prompt, signal), timeoutMs, maxOutputBytes, "reconciliation") : await boundedHermes(job, prompt, new AbortController().signal, { timeoutMs, maxOutputBytes, hermesCommand: options.hermesCommand ?? DEFAULT_HERMES_COMMAND, profile: options.profile, maxTurns, repositoryCwd: options.repositoryCwd, promptDir: options.rootDir }); invocation = typeof invoked === "string" ? { stdout: invoked } : invoked; const parsed = options.invokeReconciliation ? parseStrictReconciliationJson(invocation.stdout) : parseHermesReconciliationJson(invocation.stdout); chunk = validateReconciliationOutput(parsed, job); } catch (error) { invocation ??= invocationFromError(error); await bestEffortDiagnostic(options, job.packet.chunk.id, invocation, error, maxOutputBytes); throw error; } await persistDiagnostic(options.rootDir, job.packet.chunk.id, invocation, undefined, maxOutputBytes, options.diagnosticWriter); await writeCanonicalReconciliationAtomic(path, chunk); }
+    else {
+      repairedChunkIds.push(job.packet.chunk.id);
+      const prompt = buildUnifiedReconciliationPrompt(job);
+      for (let attempt = 1; attempt <= MAX_CHUNK_ATTEMPTS; attempt++) {
+        let invocation: InvocationResult | undefined;
+        try {
+          const promptBytes = Buffer.byteLength(prompt, "utf8");
+          if (promptBytes > MAX_PROMPT_BYTES) throw oversizedPromptError(job, promptBytes);
+          const invoked = options.invokeReconciliation
+            ? await boundedCall((signal) => options.invokeReconciliation!(job, prompt, signal), timeoutMs, maxOutputBytes, "reconciliation")
+            : await boundedHermes(job, prompt, new AbortController().signal, { timeoutMs, maxOutputBytes, hermesCommand: options.hermesCommand ?? DEFAULT_HERMES_COMMAND, profile: options.profile, maxTurns, repositoryCwd: options.repositoryCwd, promptDir: options.rootDir });
+          invocation = typeof invoked === "string" ? { stdout: invoked } : invoked;
+          const parsed = options.invokeReconciliation ? parseStrictReconciliationJson(invocation.stdout) : parseHermesReconciliationJson(invocation.stdout);
+          chunk = validateReconciliationOutput(parsed, job);
+        } catch (error) {
+          invocation ??= invocationFromError(error);
+          await bestEffortDiagnostic(options, job.packet.chunk.id, invocation, error, maxOutputBytes);
+          // Only the subprocess wrapper can confirm that the timed-out work was
+          // terminated. Validation errors and uncooperative callbacks fail closed.
+          if (!(error instanceof HermesTimeoutError) || attempt === MAX_CHUNK_ATTEMPTS) throw error;
+          options.onRetry?.({ chunkId: job.packet.chunk.id, nextAttempt: attempt + 1, maxAttempts: MAX_CHUNK_ATTEMPTS });
+          continue;
+        }
+        await persistDiagnostic(options.rootDir, job.packet.chunk.id, invocation, undefined, maxOutputBytes, options.diagnosticWriter);
+        await writeCanonicalReconciliationAtomic(path, chunk);
+        break;
+      }
+    }
     chunk = await maybeFallback(chunk!, job, options, path, timeoutMs, maxOutputBytes); const reread = await readReusable(path, job); if (!reread) throw new Error(`canonical reread failed for ${job.packet.chunk.id}`); chunk = reread; const detached = structuredClone(chunk); chunks.push(detached); await options.checkpoint?.(structuredClone(detached));
   }
   await writeReconciliationTextAtomic(join(options.rootDir, "reconciled_transcript.md"), renderPrivateReconciliation(chunks)); if (chunks.every((item) => item.summarySafety.status === "valid")) await writeReconciliationTextAtomic(join(options.rootDir, "summary_transcript.md"), renderSummaryReconciliation(chunks)); await writeReconciliationTextAtomic(join(options.rootDir, "reconciliation_review_queue.md"), renderReconciliationReviewQueue(chunks)); return { chunks: structuredClone(chunks), repairedChunkIds, reusedChunkIds, diagnosticsDir: join(options.rootDir, "diagnostics") };
