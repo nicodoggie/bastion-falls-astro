@@ -138,6 +138,9 @@ export function renderReconciliationReviewQueue(
 
 function publicLabel(block: ReconciliationBlock): string {
   if (block.kind === "narration") return "[GM]";
+  if (block.kind === "unclear") {
+    return "[Editorial uncertainty — not established as spoken dialogue]";
+  }
   if (block.characterConfidence === "confirmed" && block.characterCandidate) {
     return `[${block.characterCandidate}]`;
   }

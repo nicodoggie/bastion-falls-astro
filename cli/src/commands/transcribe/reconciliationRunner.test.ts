@@ -16,6 +16,7 @@ import {
   validateReconciliationOutput,
   type ReconciliationChunkJob,
 } from "./reconciliationRunner.js";
+import { renderPublicReconciliation } from "./reconciliationRender.js";
 
 const source = [{ id: "e1", text: "hello", start: 0, end: 1, confidence: .9 }];
 const owned = [{ ...source[0]!, sourcePass: "left", alternatives: [] }];
@@ -46,8 +47,88 @@ test("prompt marks neighbors context-only and owns only the packet window", () =
   assert.match(prompt, /attributionBasis.*materialCorrection.*evidence.*reviewNotes.*summarySafety.*errors.*256/isu);
   assert.match(prompt, /duplicate.*sourceEventIds.*first.*chronological.*block/isu);
   assert.match(prompt, /transcript, not a narrative digest/iu);
+  assert.match(prompt, /channel-only or isolated candidate.*not automatically speech.*unclear review-only block.*short token.*channel.*energy alone/isu);
+  assert.match(prompt, /overlapping stereo\/channel candidates.*competing hypotheses.*intelligibility and corroboration.*stereo is not an automatic winner/isu);
+  assert.match(prompt, /distinct.*sufficiently supported utterance.*ADD.*separate.*retaining the original.*never replace/isu);
+  assert.match(prompt, /weak or unsupported as speech.*unclear review-only.*not as dialogue.*clear “No”/isu);
   assert.match(prompt, /meaningful repetition/iu);
   assert.doesNotMatch(prompt, /emit neighboring events/iu);
+});
+
+function behavioralJob(events: Array<{ id: string; text: string; start: number; end: number; sourcePass: string }>): ReconciliationChunkJob {
+  const authoritative = events.map(({ sourcePass: _sourcePass, ...event }) => event);
+  const ownedEvents = events.map((event) => ({ ...event, alternatives: [] }));
+  return {
+    packet: { ...packet, ownedEvents, chunk: { ...packet.chunk, end: Math.max(...events.map((event) => event.end)) } },
+    authoritativeSourceEvents: authoritative,
+  } as ReconciliationChunkJob;
+}
+
+function behavioralResponse(job: ReconciliationChunkJob, blocks: readonly { id: string; kind: "dialogue" | "unclear"; text: string; sourceEventIds: readonly string[]; reviewFlags?: readonly string[] }[]) {
+  return {
+    schemaVersion: job.packet.schemaVersion, promptVersion: job.packet.promptVersion, chunk: job.packet.chunk, cacheIdentity: job.packet.cacheIdentity,
+    blocks: blocks.map((block) => ({ id: block.id, start: 0, end: 1, kind: block.kind, text: block.text, summarySafeText: block.text, characterConfidence: "unknown", attributionBasis: ["source-pass corroboration"], sourceEventIds: block.sourceEventIds, reviewFlags: block.reviewFlags ?? [] })),
+    omissions: [], materialCorrections: [], suspicionFlags: [], reviewNotes: [], summarySafety: { status: "valid", errors: [] },
+  };
+}
+
+test("bounded evidence selection preserves supported wording, adds supported interruptions, and retains short speech", async () => {
+  const cases = [
+    {
+      name: "stereo-clearer-than-unsupported-alternate",
+      job: behavioralJob([
+        { id: "stereo", text: "We leave now.", start: 0, end: 1, sourcePass: "stereo" },
+        { id: "alternate", text: "We leave cow.", start: 0.1, end: 0.9, sourcePass: "left" },
+      ]),
+      blocks: [
+        { id: "clear", kind: "dialogue" as const, text: "We leave now.", sourceEventIds: ["stereo"] },
+        { id: "weak", kind: "unclear" as const, text: "We leave cow.", sourceEventIds: ["alternate"], reviewFlags: ["unclear-words"] },
+      ],
+    },
+    {
+      name: "channel-clearer-than-stereo",
+      job: behavioralJob([
+        { id: "stereo", text: "Meet at ten.", start: 0, end: 1, sourcePass: "stereo" },
+        { id: "channel", text: "Meet at noon.", start: 0.1, end: 0.9, sourcePass: "right" },
+      ]),
+      blocks: [{ id: "chosen", kind: "dialogue" as const, text: "Meet at noon.", sourceEventIds: ["stereo", "channel"] }],
+    },
+    {
+      name: "corroborated-additional-interruption",
+      job: behavioralJob([
+        { id: "original", text: "I object.", start: 0, end: 1, sourcePass: "stereo" },
+        { id: "interruption", text: "Wait!", start: 0.5, end: 1.5, sourcePass: "right" },
+      ]),
+      blocks: [
+        { id: "original-block", kind: "dialogue" as const, text: "I object.", sourceEventIds: ["original"] },
+        { id: "added-block", kind: "dialogue" as const, text: "Wait!", sourceEventIds: ["interruption"] },
+      ],
+    },
+    {
+      name: "genuine-short-no",
+      job: behavioralJob([{ id: "no", text: "No", start: 0, end: 1, sourcePass: "stereo" }]),
+      blocks: [{ id: "no-block", kind: "dialogue" as const, text: "No", sourceEventIds: ["no"] }],
+    },
+  ] as const;
+
+  for (const scenario of cases) {
+    const root = await mkdtemp(join(tmpdir(), `reconciliation-selection-${scenario.name}-`));
+    try {
+      const result = await runUnifiedReconciliation({
+        rootDir: root,
+        jobs: [scenario.job],
+        invokeReconciliation: async () => JSON.stringify(behavioralResponse(scenario.job, [...scenario.blocks])),
+      });
+      const chunk = result.chunks[0]!;
+      assert.deepEqual(chunk.blocks.map((block) => [block.kind, block.text, block.sourceEventIds]), scenario.blocks.map((block) => [block.kind, block.text, block.sourceEventIds]));
+      const privateText = await readFile(join(root, "reconciled_transcript.md"), "utf8");
+      assert.ok(privateText.includes(scenario.blocks[0]!.text));
+      const publicText = renderPublicReconciliation([chunk]);
+      if (scenario.name === "stereo-clearer-than-unsupported-alternate") assert.match(publicText, /Editorial uncertainty.*We leave cow/iu);
+      if (scenario.name === "corroborated-additional-interruption") assert.match(publicText, /I object[\s\S]*Wait!/u);
+      if (scenario.name === "genuine-short-no") assert.match(publicText, /No/u);
+    } finally { await rm(root, { recursive: true, force: true }); }
+  }
 });
 
 test("Hermes args use the repository chat contract", () => {

@@ -12,7 +12,7 @@ test("parses supported providers and layouts", () => {
 });
 
 test("new reconciliation defaults to one hermes chunk", () => {
-  assert.deepEqual(resolveReconciliationSettings(undefined), { provider: "hermes", logicalChunks: "single", hermesProfile: "default", hermesMaxTurns: 12, promptVersion: "reconciliation.prompt.v6", schemaVersion: "reconciliation.v1", tailMergeThresholdRatio: 0.25, tailMergeMaxDurationRatio: 1.25, source: "default" });
+  assert.deepEqual(resolveReconciliationSettings(undefined), { provider: "hermes", logicalChunks: "single", hermesProfile: "default", hermesMaxTurns: 12, promptVersion: "reconciliation.prompt.v7", schemaVersion: "reconciliation.v1", tailMergeThresholdRatio: 0.25, tailMergeMaxDurationRatio: 1.25, source: "default" });
 });
 
 test("resolves the final notes summarization model from config", () => {
@@ -22,7 +22,7 @@ test("resolves the final notes summarization model from config", () => {
 });
 
 test("CLI reconciliation settings override configuration", () => {
-  assert.deepEqual(resolveReconciliationSettings({ provider: "off", logicalChunks: "three", tailMergeThresholdRatio: 0.4, tailMergeMaxDurationRatio: 1.5, hermes: { profile: "configured", maxTurns: 4 } }, { provider: "hermes", logicalChunks: "single", hermesProfile: "cli", hermesMaxTurns: 7, tailMergeThresholdRatio: 0.1, tailMergeMaxDurationRatio: 1.1 }), { provider: "hermes", logicalChunks: "single", hermesProfile: "cli", hermesMaxTurns: 7, promptVersion: "reconciliation.prompt.v6", schemaVersion: "reconciliation.v1", tailMergeThresholdRatio: 0.1, tailMergeMaxDurationRatio: 1.1, source: "cli" });
+  assert.deepEqual(resolveReconciliationSettings({ provider: "off", logicalChunks: "three", tailMergeThresholdRatio: 0.4, tailMergeMaxDurationRatio: 1.5, hermes: { profile: "configured", maxTurns: 4 } }, { provider: "hermes", logicalChunks: "single", hermesProfile: "cli", hermesMaxTurns: 7, tailMergeThresholdRatio: 0.1, tailMergeMaxDurationRatio: 1.1 }), { provider: "hermes", logicalChunks: "single", hermesProfile: "cli", hermesMaxTurns: 7, promptVersion: "reconciliation.prompt.v7", schemaVersion: "reconciliation.v1", tailMergeThresholdRatio: 0.1, tailMergeMaxDurationRatio: 1.1, source: "cli" });
 });
 
 test("deprecated review config maps hermes to explicit legacy only when no new settings exist", () => {

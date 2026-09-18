@@ -42,6 +42,26 @@ test("public uses visible confidence labels once and no private structure", () =
   assert.match(output, /\[GM\] Narration/);
   assert.match(output, /\[Yomi\? - probable\] Probable words/);
   assert.match(output, /\[Player \/ character unknown\] Unknown words/);
+  const unclearBase = chunk.blocks[0];
+  assert.ok(unclearBase);
+  const genuineDialogueNo = renderPublicReconciliation([{
+    ...chunk,
+    blocks: [{ ...unclearBase, id: "genuine-no", text: "No", kind: "dialogue", characterCandidate: undefined, characterConfidence: "unknown" }],
+  }]);
+  assert.match(genuineDialogueNo, /\[Player \/ character unknown\] No/);
+  const unclear = renderPublicReconciliation([{
+    ...chunk,
+    blocks: [{
+      ...unclearBase,
+      id: "unclear",
+      kind: "unclear",
+      text: "No",
+      characterCandidate: undefined,
+      characterConfidence: "unknown",
+    }],
+  }]);
+  assert.match(unclear, /\[Editorial uncertainty — not established as spoken dialogue\] No/);
+  assert.doesNotMatch(unclear, /\[Player \/ character unknown\] No/);
   assert.match(output, /Confidence legend/);
   assert.equal((output.match(/Confidence legend/g) ?? []).length, 1);
   assert.doesNotMatch(output, /Private Person|speaker:|channel:|session_000:event|Hello safe/);
