@@ -39,7 +39,15 @@
 "trait":
   - "name": "Exposed Control Knot"
     "entries":
-      - "The visible knot at the base of the puppet\u2019s neck controls its grafts. A creature within 5 feet can use its action to attempt a DC 16 Dexterity (Sleight of Hand) or Wisdom (Medicine) check to disable the knot. On a success, the puppet is incapacitated and its speed is 0 until the end of its next turn. If another such check succeeds while it is incapacitated by this trait, control ends permanently: it stops fighting and needs medical care. Failure deals no damage. A puppet reduced to 0 hit points falls unconscious and is stable unless the damage kills it outright. Ending control does not remove its grafts. These are proposed encounter-specific rules, not general rules for Mallow\u2019s needle."
+      - >-
+        The visible knot at the base of the puppet’s neck controls its grafts. A creature within 5
+        feet can use its action to attempt a DC 16 Dexterity (Sleight of Hand) or Wisdom (Medicine)
+        check to disable the knot. On a success, the puppet is incapacitated and its speed is 0
+        until the end of its next turn. If another such check succeeds while it is incapacitated by
+        this trait, control ends permanently: it stops fighting and needs medical care. Failure
+        deals no damage. A puppet reduced to 0 hit points falls unconscious and is stable unless the
+        damage kills it outright. Ending control does not remove its grafts. These are proposed
+        encounter-specific rules, not general rules for Mallow’s needle.
 
 
 "action":
@@ -50,17 +58,26 @@
 
   - "name": "Needle Fan"
     "entries":
-      - "Ranged Weapon Attack: {@hit +8} to hit, range 30/90 ft., one target. Hit: 22 ({@damage 4d8 + 4}) piercing damage."
+      - >-
+        Ranged Weapon Attack: {@hit +8} to hit, range 30/90 ft., one target. Hit: 22 ({@damage 4d8 +
+        4}) piercing damage.
 
 
   - "name": "Pinning Volley (Recharge 5\u20136)"
     "entries":
-      - "The skirmisher makes two Needle Fan attacks against different creatures. Each target hit must succeed on a {@dc 16} Strength saving throw or be tethered to its current space until the end of the skirmisher\u2019s next turn. While tethered, its speed is 0. A tethered creature or a creature within 5 feet of it can use an action to remove the tether without a check. Teleporting ends the tether."
+      - >-
+        The skirmisher makes two Needle Fan attacks against different creatures. Each target hit
+        must succeed on a {@dc 16} Strength saving throw or be tethered to its current space until
+        the end of the skirmisher’s next turn. While tethered, its speed is 0. A tethered creature
+        or a creature within 5 feet of it can use an action to remove the tether without a check.
+        Teleporting ends the tether.
 
 
 "bonus":
   - "name": "Scuttling Withdrawal"
     "entries":
-      - "The skirmisher moves up to 15 feet without provoking opportunity attacks. It cannot use this bonus action while its speed is 0."
+      - >-
+        The skirmisher moves up to 15 feet without provoking opportunity attacks. It cannot use this
+        bonus action while its speed is 0.
 
 

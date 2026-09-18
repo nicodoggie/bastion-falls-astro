@@ -39,7 +39,15 @@
 "trait":
   - "name": "Exposed Control Knot"
     "entries":
-      - "The visible knot at the base of the puppet\u2019s neck controls its grafts. A creature within 5 feet can use its action to attempt a DC 16 Dexterity (Sleight of Hand) or Wisdom (Medicine) check to disable the knot. On a success, the puppet is incapacitated and its speed is 0 until the end of its next turn. If another such check succeeds while it is incapacitated by this trait, control ends permanently: it stops fighting and needs medical care. Failure deals no damage. A puppet reduced to 0 hit points falls unconscious and is stable unless the damage kills it outright. Ending control does not remove its grafts. These are proposed encounter-specific rules, not general rules for Mallow\u2019s needle."
+      - >-
+        The visible knot at the base of the puppet’s neck controls its grafts. A creature within 5
+        feet can use its action to attempt a DC 16 Dexterity (Sleight of Hand) or Wisdom (Medicine)
+        check to disable the knot. On a success, the puppet is incapacitated and its speed is 0
+        until the end of its next turn. If another such check succeeds while it is incapacitated by
+        this trait, control ends permanently: it stops fighting and needs medical care. Failure
+        deals no damage. A puppet reduced to 0 hit points falls unconscious and is stable unless the
+        damage kills it outright. Ending control does not remove its grafts. These are proposed
+        encounter-specific rules, not general rules for Mallow’s needle.
 
 
 "action":
@@ -50,18 +58,27 @@
 
   - "name": "Seam Maul"
     "entries":
-      - "Melee Weapon Attack: {@hit +9} to hit, reach 10 ft., one target. Hit: 23 ({@damage 4d8 + 5}) bludgeoning damage."
+      - >-
+        Melee Weapon Attack: {@hit +9} to hit, reach 10 ft., one target. Hit: 23 ({@damage 4d8 + 5})
+        bludgeoning damage.
 
 
 "reaction":
   - "name": "Take the Blow"
     "entries":
-      - "When another creature the bulwark can see within 5 feet takes damage from an attack, the bulwark can reduce that damage by up to 15, taking an equal amount of damage itself. This transferred damage cannot be reduced or prevented. A single attack can be affected by only one Take the Blow reaction."
+      - >-
+        When another creature the bulwark can see within 5 feet takes damage from an attack, the
+        bulwark can reduce that damage by up to 15, taking an equal amount of damage itself. This
+        transferred damage cannot be reduced or prevented. A single attack can be affected by only
+        one Take the Blow reaction.
 
 
 "bonus":
   - "name": "Clear the Master\u2019s Space"
     "entries":
-      - "The bulwark chooses one willing creature within 5 feet. That creature can use its reaction to move up to 10 feet without provoking opportunity attacks. The bulwark does not move it through occupied spaces or obstacles."
+      - >-
+        The bulwark chooses one willing creature within 5 feet. That creature can use its reaction
+        to move up to 10 feet without provoking opportunity attacks. The bulwark does not move it
+        through occupied spaces or obstacles.
 
 
