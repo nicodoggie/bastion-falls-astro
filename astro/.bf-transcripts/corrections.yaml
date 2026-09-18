@@ -4794,6 +4794,33 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
             note: User explicitly confirmed that Queen Arcadia bears the title “Queen of Ashes.”
 
+      - id: alias.minfilia-mephilia
+        status: confirmed
+        kind: entity
+        canonical: Minfilia Diaz
+        aliases:
+          - Mephilia
+        match:
+          priority: normal
+          tags:
+            - minfilia-diaz
+            - necromancer
+            - wanted-posters
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          In necromancer and wanted-poster discussions, Mephilia is an ASR
+          rendering of Minfilia Diaz, not a separate character.
+        evidence:
+          - path: astro/src/content/docs/world/characters/minfilia-diaz.mdx
+            note: Canonical name and necromancer identity.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-09-12.mdx
+            note: User confirmed Minfilia as the subject of Uther's wanted-list proposal at 07:35.
+
       - id: continuity.minfilia-oscar-thrantorbury-loop
         status: confirmed
         kind: event
@@ -4897,23 +4924,30 @@ profiles:
           and tendons with a claw root, terminal wing digits and membrane, and
           pieces of rib, sternum, cartilage, and marrow--then incorporated the
           majority into himself. The skin grafts underlie Stacy's counterfeit
-          scales. Auraxx's body cannot be revived; his soul remains imprisoned
-          in and sustains the canary. The Legend Lore dual voice does not prove
-          literal speech, though the canary form may eventually permit
-          communication. If invoked, Auraxx remembers at least Mallow's
-          desecration; broader memory and dormant awareness remain unsettled.
+          scales. Auraxx's body cannot be revived. Continued soul-imprisonment
+          in the canary after extraction was never established in play; do not
+          claim that the soul sustains the damaged figurine. Its inability to
+          become a dragon may be a clue, not proof, that it no longer held the
+          soul. The Legend Lore dual voice does not prove literal speech.
         instruction: >
-          Keep Auraxx's extracted anatomy separate from his imprisoned soul.
+          Keep Auraxx's extracted anatomy separate from claims about his soul.
           Stacy was a deliberate testbed, not a recipient of unusable remnants.
           Most of the body went into Crispin; a smaller, intentionally selected
-          portion went into Stacy. The soul remains in the canary, which persists
-          because it still contains that prisoner. Release or communication may
-          be possible, but bodily restoration, resurrection, and reincarnation
-          are not. Do not infer from Legend Lore's dramatic voices that Auraxx
-          literally spoke through Stacy during the August 2 scene.
+          portion went into Stacy. Do not infer soul-location from the canary's
+          persistence. Bodily restoration, resurrection, and reincarnation of
+          the dismantled dragon remain unavailable. In the September 12
+          confrontation, Angel's celestial blood and prayer freed Auraxx's soul;
+          do not backdate that outcome into older
+          sessions. The exact metaphysics and the canary's remaining properties
+          are unresolved. Do not establish an Ideal as the source of the effect,
+          declare every underlying curse on Mallow cured, or settle the meaning
+          of 'a life must end'. Gwyniviere and Pira's surgery may have removed
+          Stacy's control; possible trauma responses do not prove continuing
+          magical control. Do not infer from Legend Lore's dramatic voices that
+          Auraxx literally spoke through Stacy during the August 2 scene.
         evidence:
           - path: astro/src/content/docs/world/characters/auraxx.mdx
-            note: Omniscient character article records the curse-prison, controlled manifestation, divided anatomy, non-revivability, and imprisoned soul.
+            note: Records the original curse, divided anatomy, non-revivability, and September release; continued soul-imprisonment in the canary is not established.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-02.mdx
             note: Session reconciliation separates Legend Lore presentation, party theories, and later-settled canon.
 
@@ -7026,6 +7060,44 @@ profiles:
             note: Current note settles Wheelbarrow Inn, Dickon, Gralter, Garvind, Alden, and the Branrom -> Branrum line.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: Later note continues Garvind, Alden, Wheelbarrow, and Branrum usages; user clarified Irgend and the Pleasureless line as Garvind on 2026-07-10.
+
+      - id: distinction.maltreks-malthreks-castle
+        status: confirmed
+        kind: entity-disambiguation
+        canonical: The Maltreks, the Malthrek family, and Castle Malthrek
+        aliases:
+          - Maltreks
+          - Malthreks
+          - Castle Maltrek
+          - Castle Malthrek
+        match:
+          priority: normal
+          tags:
+            - maltreks
+            - malthrek-family
+            - castle-malthrek
+            - regional-infiltration
+        scope:
+          campaigns:
+            - the-vengeful
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          The Maltreks are the mountain range/region. Malthrek is the family
+          name; Malthreks is its plural, referring collectively to members of
+          the governing ducal family, not a separate surname. Castle Malthrek is named after its
+          inhabitants, not the mountain range. Resolve each occurrence by its
+          referent; never globally replace Maltreks with Malthreks.
+        instruction: >
+          Preserve geography, family identity, and the castle name separately.
+          Regional Reformist infiltration of the Maltreks does not establish
+          an identical duration of infestation for every Malthrek family member.
+        evidence:
+          - path: astro/src/content/docs/world/locations/the-maltreks.mdx
+            note: Region article distinguishes The Maltreks and Castle Malthrek.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-09-12.mdx
+            note: User confirmed the region/family distinction and the castle's naming after its inhabitants during note review.
 
       - id: artifact.miskaso-castle-malthrek
         status: rejected-as-artifact
