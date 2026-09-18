@@ -105,6 +105,7 @@ digraph brainstorming {
 
 - Write the validated design (spec) to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
   - (User preferences for spec location override this default)
+- Structure the spec with ATX Markdown headings: one `#` title, `##` sections, and nested `###` subsections. Use emphasis for inline labels within prose, not standalone section headings. Run the repository's Markdown checks and inspect the heading hierarchy before handoff.
 - Use elements-of-style:writing-clearly-and-concisely skill if available
 - Commit the design document to git
 
