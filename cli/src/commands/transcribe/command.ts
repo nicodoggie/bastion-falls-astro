@@ -6,7 +6,7 @@ import {
   type FlagParametersForType,
 } from "@stricli/core";
 
-import { getTranscribeConfig } from "@/config.js";
+import { getConfigBaseDir, getContentDir, getTranscribeConfig } from "@/config.js";
 import type { LocalContext } from "@/context.js";
 import { applyCorrectionsCommand } from "./applyCorrections.js";
 import { archiveCommand } from "./archive/command.js";
@@ -57,6 +57,7 @@ import { resolveTranscriptionProfile } from "./settings.js";
 import { parseChunkSelection, requiredPasses, chunkAudioPathFor, passRawJsonPathFor } from "./passes.js";
 import { executeTranscriptionPipeline, parseStopAfter, transcribeStages, type TranscribeStage } from "./pipeline.js";
 import {
+  resolveContextRoot,
   resolveFromCwd,
   resolveTranscribeSessionPaths,
 } from "./sessionPaths.js";
@@ -101,7 +102,7 @@ interface TranscribeFlags {
   "session-date": string;
   out?: string;
   corrections?: string;
-  "context-root": string;
+  "context-root"?: string;
   "whisper-model": string;
   language: string;
   backend: SttBackend;
@@ -197,7 +198,7 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
     kind: "parsed",
     parse: String,
     brief: "Astro docs content root used for correction context",
-    default: "astro/src/content/docs",
+    optional: true,
   },
   "whisper-model": {
     kind: "parsed",
@@ -532,14 +533,16 @@ function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "N
     assertSessionDate(flags["session-date"]);
 
     const cwd = this.currentPath;
+    const configBaseDir = getConfigBaseDir();
     const { audioPath, outDir, channelMapPath } = resolveTranscribeSessionPaths({
       cwd,
+      pathBase: configBaseDir,
       audioFile,
       out: flags.out,
     });
-    const contextRoot = resolveFromCwd(cwd, flags["context-root"]);
+    const contextRoot = resolveContextRoot(configBaseDir, flags["context-root"], getContentDir());
     const correctionsPath = flags.corrections
-      ? resolveFromCwd(cwd, flags.corrections)
+      ? resolveFromCwd(configBaseDir, flags.corrections)
       : undefined;
     const normalizedPath = join(outDir, "normalized", "session.flac");
     const channelsDir = join(outDir, "normalized", "channels");

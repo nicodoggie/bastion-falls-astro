@@ -16,6 +16,7 @@ export function resolveFromCwd(cwd: string, path: string): string {
 
 export function resolveTranscribeSessionPaths(options: {
 	cwd: string;
+	pathBase?: string;
 	audioFile: string;
 	out?: string;
 }): {
@@ -23,9 +24,10 @@ export function resolveTranscribeSessionPaths(options: {
 	outDir: string;
 	channelMapPath: string;
 } {
-	const audioPath = resolveFromCwd(options.cwd, options.audioFile);
+	const pathBase = options.pathBase ?? options.cwd;
+	const audioPath = resolveFromCwd(pathBase, options.audioFile);
 	const outDir = resolveFromCwd(
-		options.cwd,
+		pathBase,
 		options.out ?? join(".bf-transcripts", slugifyAudioPath(audioPath)),
 	);
 	return {
@@ -33,4 +35,8 @@ export function resolveTranscribeSessionPaths(options: {
 		outDir,
 		channelMapPath: join(outDir, "channel-map.yml"),
 	};
+}
+
+export function resolveContextRoot(pathBase: string, contextRoot: string | undefined, defaultRoot: string): string {
+	return contextRoot === undefined ? defaultRoot : resolveFromCwd(pathBase, contextRoot);
 }
