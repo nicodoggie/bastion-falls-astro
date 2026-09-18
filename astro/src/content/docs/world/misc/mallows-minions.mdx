@@ -1,0 +1,124 @@
+---
+title: Mallow's Minions
+tags:
+  - misc
+creatureStats:
+  threadboundSnarer: 'misc/threadbound-snarer.creature'
+  needlehandSkirmisher: 'misc/needlehand-skirmisher.creature'
+  misstitchedBulwark: 'misc/misstitched-bulwark.creature'
+---
+
+import StatBlock from '@/components/StatBlock.astro';
+
+These thread-controlled minions support [Crispin Mallow](../characters/crispin-mallow.mdx),
+intercepting rescuers or protecting him during a confrontation. The following encounter designs
+and deployment guidance are provisional, not established appearances in play. Challenge ratings
+are estimates, not playtested ratings; party levels and available resources remain unknown.
+The control-knot weakness applies to these designs, not universally to Mallow's needle.
+
+## Roster
+
+| Creature | Target CR | AC | HP | Attack | Routine damage | Job |
+| --- | --- | --- | --- | --- | --- | --- |
+| Threadbound Snarer | 7 | 17 | 153 | +7, three hooks | 54 | Pull and obstruct |
+| Needlehand Skirmisher | 9 | 17 | 190 | +8, three needle fans | 66 | Harass and withdraw |
+| Misstitched Bulwark | 10 | 18 | 209 | +9, three mauls | 69 | Protect Mallow |
+
+Routine damage assumes all attacks hit; it is not expected damage against a particular AC.
+No minion has legendary actions, legendary resistance, regeneration, or a spell list.
+
+## Threadbound Snarer
+
+<StatBlock creature={frontmatter.creatureStats.threadboundSnarer} />
+
+Its arms unfold into hooks while its shoulders draw thread across a passage. Its job is to cost
+movement and choices, not remove whole turns. Pulling requires a save, happens only once on its
+turn, and cannot drag an entire party into a hazard through three successful hits.
+
+Stitch the Crossing costs its entire action: it deals no damage that turn. Describe the threads
+before anyone enters them. Players can cut a section, go around, fly above, teleport past, or
+interrupt the snarer. Do not fill every alternative route with another invisible trap.
+
+## Needlehand Skirmisher
+
+<StatBlock creature={frontmatter.creatureStats.needlehandSkirmisher} />
+
+Extra finger joints spread into throwing needles; its backward-stepping legs keep its face toward
+pursuers. It makes a nuisance of itself from ledges or the far side of a crossing. Its withdrawal
+is movement, not teleportation: grappling it or blocking its route matters.
+
+Pinning Volley trades one attack for two possible short-lived tethers. Tethered characters retain
+their actions, reactions, and attacks. An ally can free them without a roll. No special penalty to
+concentration is added: ordinary damage already pressures concentration.
+
+## Misstitched Bulwark
+
+<StatBlock creature={frontmatter.creatureStats.misstitchedBulwark} />
+
+Broad grafted shoulders and bracing limbs make this a living obstruction. Its protection transfers
+rather than deletes damage, so attacking Mallow still advances the fight. It must remain close to
+him and gets only one reaction per round. Forced movement can separate them.
+
+Clear the Master's Space consumes the beneficiary's reaction. Mallow must choose between accepting
+that movement and keeping his reaction available for other uses. It grants neither an attack nor
+an extra spell. The bulwark should protect Mallow, not chase the party's most vulnerable member
+around the map while somehow continuing to intercept attacks at a distance.
+
+## Living victims and the knot
+
+These drafts assume living altered humanoids, not corpse constructs or willing Reformist agents.
+Their original identities and graft sources are deliberately unspecified. Confirm that choice
+before promoting the blocks into canon.
+
+Each has a visibly exposed control knot. An adjacent character can spend an action on a DC 16
+Medicine or Sleight of Hand check. The first success interrupts the puppet through the end of its
+next turn; another success during that window ends control. That rewards coordinated rescuers
+without requiring a particular spell. Failed checks do not injure the victim. At 0 HP the victim
+is stable unless killed outright, leaving a second practical rescue route.
+
+Describe a slackening limb or the victim struggling to speak after the first success so players
+can recognize the opportunity. A disabled victim is not automatically healthy or a combat ally.
+The control-knot rule belongs to these encounter designs only; it does not establish the magical
+needle's universal mechanics. Do not silently substitute the existing replica puppet's healing
+vulnerability for these living victims.
+
+## Deployment
+
+### Approach: delay with a purpose
+
+Start with one snarer at a crossing or narrow approach. Its objective is to hold the party back,
+not fight to the last hit point. Put a skirmisher in a subsequent interception rather than stacking
+both immediately. If the party is comfortably overwhelming the encounter, the skirmisher can
+instead appear as a visible reinforcement with an approach route the party can disrupt.
+
+Give a reason to advance: Mallow is moving captives or preparing his defenses. Do not attach an
+unannounced automatic failure timer. Successful bypass, rescue, or forced retreat counts as
+beating the interception; killing every creature is not required.
+
+### Boss: one supporting turn, not a second boss
+
+Begin with one bulwark alongside Mallow. Keep any surviving interceptor offstage initially. Do
+not assume CR 17 plus a CR 10 support creature is safe merely because each block fits the requested
+range: party resources, NPC turns, and the two-form boss sequence materially change the difficulty.
+
+A second support creature is an optional escalation, not the default. If used, bring it in visibly
+and only after assessing the actual fight. Avoid overlapping pinning effects on Angel every round.
+Spread interference so several players get decisions rather than one player losing mobility all
+night. Support creatures retain their current damage and conditions across Mallow's transformation;
+no automatic healing, replacement waves, or free reactivation of freed victims.
+
+For a faster fight, deploy fewer creatures or let interception survivors withdraw. Do not secretly
+change hit points mid-fight. Choose any reduced-HP variant before initiative and mark it on
+the sheet.
+
+## Balance checks and limits
+
+The snarer favors control over damage and sacrifices its attack routine to create its obstacle.
+The skirmisher has more sustained damage but loses output when pinning, and has no defensive
+immunities. The bulwark's damage transfer accelerates its own defeat while preserving Mallow.
+Their durability and routine damage broadly target the requested tiers; mobility, interruption of
+control, terrain, and party rescue tactics can substantially alter their effective difficulty.
+
+Watch the first encounter for rounds-to-defeat, actions spent freeing allies, and whether anyone
+loses meaningful choices. Use that information when selecting the boss support, not as a reason to
+inflate the boss's minions. Schema and arithmetic checks are not playtesting.
