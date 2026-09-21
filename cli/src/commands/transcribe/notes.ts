@@ -19,7 +19,13 @@ function titleCaseCampaign(campaign: string): string {
 }
 
 export function getNotesPath(options: NotesPathOptions): string {
-  return join(options.contextRoot, "world", "notes", options.campaign, `${options.sessionDate}.mdx`);
+  return join(
+    options.contextRoot,
+    "world",
+    "notes",
+    options.campaign,
+    `${options.sessionDate}.mdx`,
+  );
 }
 
 export function buildNotesFrontmatter(options: NotesIdentity): string {
@@ -34,8 +40,24 @@ export function buildNotesFrontmatter(options: NotesIdentity): string {
   ].join("\n");
 }
 
-export async function writeNotesFile(path: string, content: string): Promise<void> {
+export function bindNotesFrontmatter(
+  body: string,
+  identity: NotesIdentity,
+): string {
+  let content = body.trim();
+  if (/^---(?:\r?\n|$)/u.test(content)) {
+    const frontmatter = /^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/u.exec(content);
+    if (!frontmatter)
+      throw new Error("Generated notes contain incomplete frontmatter");
+    content = content.slice(frontmatter[0].length).trim();
+  }
+  return `${buildNotesFrontmatter(identity)}${content}\n`;
+}
+
+export async function writeNotesFile(
+  path: string,
+  content: string,
+): Promise<void> {
   await mkdir(dirname(path), { recursive: true });
   await writeFile(path, content, "utf8");
 }
-

@@ -3,6 +3,7 @@ import { test } from "node:test";
 import {
   buildSummaryCleanupPrompt,
   classifySummaryRefusal,
+  applySummaryCleanupResponse,
   validateSummaryCleanup,
 } from "./reconciliationSummaryCleanup.js";
 
@@ -131,6 +132,65 @@ test("cleanup preserves structure, IDs, order, and provenance while allowing tex
   );
 });
 
+test("live cleanup edits prose without echoing metadata and stored cleanup remains strict", () => {
+  const source = {
+    schemaVersion: "source.v1",
+    cacheIdentity: "hash",
+    blocks: [{ id: "b0", text: "An event happened.", sourceEventIds: ["e0"] }],
+  };
+  const edits = {
+    edits: [
+      { path: ["blocks", "0", "text"], text: "The event had consequences." },
+    ],
+  };
+  const cleaned = applySummaryCleanupResponse(source, edits);
+  assert.deepEqual(cleaned, {
+    ...source,
+    blocks: [{ ...source.blocks[0], text: "The event had consequences." }],
+  });
+  assert.equal(source.blocks[0]!.text, "An event happened.");
+  for (const path of [
+    ["cacheIdentity"],
+    ["blocks", "0", "id"],
+    ["blocks", "9", "text"],
+    ["__proto__", "text"],
+  ]) {
+    assert.throws(() =>
+      applySummaryCleanupResponse(source, { edits: [{ path, text: "bad" }] }),
+    );
+  }
+  assert.throws(() =>
+    applySummaryCleanupResponse(source, {
+      edits: [...edits.edits, ...edits.edits],
+    }),
+  );
+  assert.throws(() => validateSummaryCleanup(source, edits));
+  const group = [
+    {
+      claims: [{ id: "c0", text: "Narrative." }],
+      sourceReviewTargets: [{ id: "r0", text: "Original review evidence." }],
+    },
+  ];
+  assert.throws(() =>
+    applySummaryCleanupResponse(group, {
+      edits: [
+        {
+          path: ["0", "sourceReviewTargets", "0", "text"],
+          text: "Changed evidence.",
+        },
+      ],
+    }),
+  );
+  assert.throws(() =>
+    validateSummaryCleanup(group, [
+      {
+        ...group[0],
+        sourceReviewTargets: [{ id: "r0", text: "Changed evidence." }],
+      },
+    ]),
+  );
+});
+
 test("cleanup prompt requests abstraction rather than policy bypass", () => {
   const prompt = buildSummaryCleanupPrompt("chunk", {
     blocks: [{ id: "b0", text: "source", summarySafeText: "" }],
@@ -138,6 +198,35 @@ test("cleanup prompt requests abstraction rather than policy bypass", () => {
   assert.match(prompt, /non-graphic contextual abstraction/iu);
   assert.match(prompt, /Do not bypass provider policy/iu);
   assert.match(prompt, /Return JSON only/iu);
+});
+
+test("cleanup prompt preserves literal hashes in editable narrative prose", () => {
+  const narrativeHash = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
+  const metadataHash = "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210";
+  const prompt = buildSummaryCleanupPrompt("chunk", {
+    schemaVersion: "source.v1",
+    cacheIdentity: metadataHash,
+    blocks: [
+      {
+        id: metadataHash,
+        text: `The inscription literally reads ${narrativeHash}.`,
+        sourceEventIds: [metadataHash],
+      },
+    ],
+    sourceReviewTargets: [{ id: metadataHash, text: "Review provenance." }],
+  });
+  const inputJson = prompt.match(/<input>\n([\s\S]*)\n<\/input>/u)?.[1];
+  assert.ok(inputJson);
+  const modelInput = JSON.parse(inputJson) as {
+    cacheIdentity: string;
+    blocks: [{ text: string }];
+  };
+  assert.equal(
+    modelInput.blocks[0].text,
+    `The inscription literally reads ${narrativeHash}.`,
+  );
+  assert.match(prompt, /local_ref_000/gu);
+  assert.match(modelInput.cacheIdentity, /^local_ref_\d{3}$/u);
 });
 
 test("gross compression guard counts editable text inside nested record containers", () => {
