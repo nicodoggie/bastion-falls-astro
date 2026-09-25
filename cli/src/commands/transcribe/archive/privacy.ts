@@ -19,7 +19,7 @@ const audioRuleSchema = z.object({
   id: z.string().min(1),
   ...intervalFields,
   channels: z.literal("all"),
-  reason: z.literal("physical-speaker-identity"),
+  reason: z.enum(["physical-speaker-identity", "private-conversation"]),
   fadeMilliseconds: z.number().int().min(0).max(1000).safe().default(20),
 }).strict().superRefine((rule, ctx) => {
   if (!(timestampToSeconds(rule.end) > timestampToSeconds(rule.start))) {
@@ -30,7 +30,7 @@ const audioRuleSchema = z.object({
 const transcriptRuleSchema = z.object({
   id: z.string().min(1),
   ...intervalFields,
-  replacement: z.literal("[microphone identity check redacted]"),
+  replacement: z.enum(["[microphone identity check redacted]", "[private conversation redacted]"]),
 }).strict().superRefine((rule, ctx) => {
   if (!(timestampToSeconds(rule.end) > timestampToSeconds(rule.start))) {
     ctx.addIssue({ code: "custom", path: ["end"], message: "end must be after start" });
