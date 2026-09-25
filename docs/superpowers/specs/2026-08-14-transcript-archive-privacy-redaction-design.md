@@ -13,6 +13,29 @@ archive lacks a valid receipt or violates the public archive privacy contract.
 
 ## Decisions
 
+### Archive retention clarification
+
+The archive remains a compact listening and reading reference, not a backup of the
+transcription workspace. Both structured and legacy sessions must retain redacted
+`session-audio.opus`, one redacted final readable `reconciled_transcript.md`, and
+the sanitized `privacy-review.yaml` receipt. Readable text is required, not optional.
+For legacy sessions, use the reconciled Markdown when present, otherwise corrected
+Markdown; fail if neither exists rather than silently publishing raw ASR as final text.
+
+Exclude raw/intermediate transcript stages, chunked recordings, correction/review
+notes, shared correction rules, raw ASR JSON, channel maps, checkpoints, and private
+processing metadata from the public archive. This supersedes the historical
+multi-stage transcript/provenance lists below. Apply the same public output contract
+to both legacy and structured archive paths.
+
+Source immutability below applies during archive creation and verification; it does
+not require permanent retention of regenerable working artifacts. Separately
+authorized cleanup may discard them after verifying the retained audio and readable
+text. Opus compression loss is accepted for future retranscription. Explicitly
+preserved fixtures and user-managed original recordings stay outside blanket cleanup.
+
+### Publication safeguards
+
 - Original recordings, normalized FLACs, raw ASR JSON, channel maps, alignment evidence, and private
   transcript ladders remain unchanged.
 - Each private transcript session requires an ignored `redactions.yaml` before it can be archived.

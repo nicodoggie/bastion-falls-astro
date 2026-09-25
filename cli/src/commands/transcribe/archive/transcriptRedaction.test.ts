@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { parsePrivateRedactionsYaml } from "./privacy.js";
+import { parsePrivateRedactionsYaml, privateRedactionsSchema } from "./privacy.js";
 import { findUnsafePublicSpeakerLabels, redactTranscript } from "./transcriptRedaction.js";
 
 function manifest(options?: { speakerLabels?: "preserve" | "neutralize"; transcripts?: string }): ReturnType<typeof parsePrivateRedactionsYaml> {
@@ -48,6 +48,53 @@ Source: synthetic.flac
   assert.deepEqual(result.appliedRuleIds, ["synthetic-opening"]);
   assert.equal(result.redactionCount, 1);
   assert.equal(result.neutralizedSpeakerLabelCount, 0);
+});
+
+test("redacts private conversation with an accurate label and keeps adjacent gameplay", () => {
+  const policy = parsePrivateRedactionsYaml(`version: 1
+reviewed: true
+audio:
+  - id: private-conversation
+    start: "00:00:01.000"
+    end: "00:00:03.000"
+    channels: all
+    reason: private-conversation
+transcripts:
+  - id: private-conversation
+    start: "00:00:01.000"
+    end: "00:00:03.000"
+    replacement: "[private conversation redacted]"
+speakerLabels: neutralize
+`);
+  const result = redactTranscript(
+    "[00:00:00 - 00:00:01] The party enters.\n" +
+      "[00:00:01 - 00:00:03] Synthetic household detail.\n" +
+      "[00:00:03 - 00:00:04] Roll initiative.\n",
+    policy,
+  );
+  assert.equal(policy.audio[0]?.reason, "private-conversation");
+  assert.equal(result.text,
+    "[00:00:00 - 00:00:01] The party enters.\n" +
+      "[00:00:01.000 - 00:00:03.000] [private conversation redacted]\n" +
+      "[00:00:03 - 00:00:04] Roll initiative.\n");
+  assert.deepEqual(result.appliedRuleIds, ["private-conversation"]);
+});
+
+test("redacts zero-duration transcript events at the start but not the end of a rule", () => {
+  const manifest = privateRedactionsSchema.parse({
+    version: 1,
+    reviewed: true,
+    audio: [],
+    transcripts: [{ id: "private", start: "00:00:02.000", end: "00:00:03.000", replacement: "[private conversation redacted]" }],
+    speakerLabels: "preserve",
+  });
+  const result = redactTranscript([
+    "[00:00:02 - 00:00:02] Private name",
+    "[00:00:02 - 00:00:03] Private context",
+    "[00:00:03 - 00:00:03] Gameplay resumes",
+  ].join("\n"), manifest);
+  assert.doesNotMatch(result.text, /Private name|Private context/);
+  assert.match(result.text, /Gameplay resumes/);
 });
 
 test("fails closed when a transcript rule applies to no event", () => {

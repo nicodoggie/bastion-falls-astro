@@ -26,9 +26,7 @@ import {
 } from "./bulk.js";
 import { encodeToOpus } from "./encode.js";
 import {
-  type ArchiveSourceFile,
   buildArchivePlan,
-  collectArchiveSources,
 } from "./plan.js";
 import type { ResolvedArchiveSettings } from "./settings.js";
 import { type RawArchiveConfig, resolveArchiveSettings } from "./settings.js";
@@ -122,6 +120,39 @@ async function readReviewedRedactions(sessionDir: string): Promise<PrivateRedact
   catch (error) { throw new Error(`Missing required reviewed ${PRIVATE_REDACTIONS_FILENAME}: ${errorMessage(error)}`); }
 }
 
+function isMissingPathError(error: unknown): boolean {
+  return error instanceof Error && (error as NodeJS.ErrnoException).code === "ENOENT";
+}
+
+function redactPublicTranscript(text: string, manifest: PrivateRedactions): string {
+  const redacted = redactTranscript(text, manifest);
+  const unsafeLabels = findUnsafePublicSpeakerLabels(redacted.text);
+  if (unsafeLabels.length > 0) throw new Error(`Unsafe public speaker label remains at line ${unsafeLabels[0]!.line}`);
+  if (/\[(?:channel|character|kind|block|source|review|chunk):/iu.test(redacted.text)) {
+    throw new Error("Unsafe private structural marker remains in public reconciliation");
+  }
+  return redacted.text;
+}
+
+async function readLegacyPublicTranscript(
+  sessionDir: string,
+  candidates: string[],
+  manifest: PrivateRedactions,
+): Promise<string> {
+  for (const candidate of candidates) {
+    try {
+      await lstat(candidate);
+    } catch (error) {
+      if (isMissingPathError(error)) continue;
+      throw error;
+    }
+    const text = await readSafeSessionText(sessionDir, candidate);
+    if (text.trim() === "") throw new Error("Selected final transcript is empty");
+    return redactPublicTranscript(text, manifest);
+  }
+  throw new Error("Missing required final transcript: expected reconciled_transcript.md or corrected_transcript.md");
+}
+
 function number(value: number): string { return Number(value.toFixed(6)).toString(); }
 function escaped(expression: string): string { return expression.replaceAll(",", "\\,"); }
 
@@ -135,9 +166,9 @@ export function buildAudioRedactionArgs(input: string, output: string, rules: Pr
     if (start < previousEnd) throw new Error("Audio redaction intervals must not overlap");
     previousEnd = end;
     const gain = fade === 0
-      ? `if(between(t,${number(start)},${number(end)}),0,1)`
-      : `if(lt(t,${number(Math.max(0, start - fade))}),1,if(lt(t,${number(start)}),(${number(start)}-t)/${number(fade)},if(lt(t,${number(end)}),0,if(lt(t,${number(end + fade)}),(t-${number(end)})/${number(fade)},1))))`;
-    return `volume='${escaped(gain)}':eval=frame`;
+      ? `if(between(t,${number(start)},${number(end)}),0,val(ch))`
+      : `if(lt(t,${number(Math.max(0, start - fade))}),val(ch),if(lt(t,${number(start)}),val(ch)*(${number(start)}-t)/${number(fade)},if(lt(t,${number(end)}),0,if(lt(t,${number(end + fade)}),val(ch)*(t-${number(end)})/${number(fade)},val(ch)))))`;
+    return `aeval=exprs='${escaped(gain)}':c=same`;
   });
   return ["-hide_banner", "-nostats", "-y", "-i", input, "-vn", ...(filters.length ? ["-filter:a", filters.join(",")] : []), "-c:a", "flac", output];
 }
@@ -206,14 +237,7 @@ export async function readStructuredPublicProjection(sessionDir: string, reconci
       }
 
       const manifest = reviewedManifest ?? await readReviewedRedactions(sessionDir);
-      const projected = renderPublicReconciliation(chunks);
-      const redacted = redactTranscript(projected, manifest);
-      const unsafeLabels = findUnsafePublicSpeakerLabels(redacted.text);
-      if (unsafeLabels.length > 0) throw new Error(`Unsafe public speaker label remains at line ${unsafeLabels[0]!.line}`);
-      if (/\[(?:channel|character|kind|block|source|review|chunk):/iu.test(redacted.text)) {
-        throw new Error("Unsafe private structural marker remains in public reconciliation");
-      }
-      return redacted.text;
+      return redactPublicTranscript(renderPublicReconciliation(chunks), manifest);
     } finally {
       await alignmentHandle.close();
     }
@@ -245,6 +269,18 @@ function errorMessage(error: unknown): string {
 function isContained(root: string, candidate: string): boolean {
   const fromRoot = relative(root, candidate);
   return fromRoot !== "" && !isAbsolute(fromRoot) && !fromRoot.split(/[\\/]/).includes("..");
+}
+
+async function resolveFuturePath(candidate: string): Promise<string> {
+  const absolute = resolve(candidate);
+  try {
+    return await realpath(absolute);
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+    const parent = dirname(absolute);
+    if (parent === absolute) throw error;
+    return join(await resolveFuturePath(parent), relative(parent, absolute));
+  }
 }
 
 async function snapshotRegularFile(sourcePath: string, allowedRoot: string, destinationPath: string): Promise<void> {
@@ -332,6 +368,13 @@ export async function archiveSession(options: ArchiveSessionOptions): Promise<st
     hasCanonicalReconciliation,
   });
 
+  const destination = settings.compression ? plan.zipPath : plan.unpackedDir;
+  const root = await realpath(sessionDir);
+  const resolvedDestination = await resolveFuturePath(destination);
+  if (resolvedDestination === root || isContained(root, resolvedDestination) || isContained(resolvedDestination, root)) {
+    throw new Error(`Archive destination overlaps private session: ${destination} (${sessionDir}).`);
+  }
+
   if (!(await pathExists(plan.audioSource))) {
     throw new Error(`Missing required audio at ${plan.audioSource}.`);
   }
@@ -339,27 +382,8 @@ export async function archiveSession(options: ArchiveSessionOptions): Promise<st
   const reviewedManifest = await readReviewedRedactions(sessionDir);
   const publicProjection = plan.reconciliation.kind === "canonical"
     ? await readStructuredPublicProjection(sessionDir, plan.reconciliation.directory!, reviewedManifest)
-    : undefined;
+    : await readLegacyPublicTranscript(sessionDir, plan.legacyTranscriptCandidates, reviewedManifest);
 
-  const includedCopies: ArchiveSourceFile[] = plan.reconciliation.kind === "canonical"
-    ? []
-    : await collectArchiveSources(sessionDir);
-  const validatedProvenanceNames = new Set(["manifest.json", "checkpoint.json", "channel-map.yml"]);
-  for (const copy of plan.copies) {
-    if (plan.reconciliation.kind === "canonical" && copy.entryName === "reconciled_transcript.md") continue;
-    if (validatedProvenanceNames.has(copy.entryName)) continue;
-    if (await pathExists(copy.sourcePath)) {
-      if (!includedCopies.some((source) => source.entryName === copy.entryName)) includedCopies.push(copy);
-    } else if (copy.required) {
-      throw new Error(`Missing required file ${copy.sourcePath}.`);
-    } else {
-      (context.process.stderr ?? context.process.stdout).write(
-        `Warning: Skipping missing ${copy.entryName} (${copy.sourcePath})\n`,
-      );
-    }
-  }
-
-  const destination = settings.compression ? plan.zipPath : plan.unpackedDir;
   if ((await pathExists(destination)) && !flags.force) {
     throw new Error(
       `${destination} already exists. Pass --force to overwrite it.`,
@@ -384,42 +408,25 @@ export async function archiveSession(options: ArchiveSessionOptions): Promise<st
   const generatedReceiptPath = join(tempDir, "generated", PUBLIC_PRIVACY_RECEIPT_FILENAME);
 
   try {
-    if (publicProjection !== undefined) {
-      await mkdir(dirname(generatedPublicPath), { recursive: true });
-      await writeFile(generatedPublicPath, publicProjection, "utf8");
-      await writeFile(generatedReceiptPath, serializePublicPrivacyReceipt({
-        version: 1,
-        reviewed: true,
-        policy: "transcript-archive-privacy-v1",
-        audioRedactionsApplied: reviewedManifest.audio.length,
-        transcriptRedactionsApplied: reviewedManifest.transcripts.length,
-        speakerLabels: reviewedManifest.speakerLabels === "neutralize" ? "neutralized" : "preserved",
-      }), "utf8");
-    }
+    await mkdir(dirname(generatedPublicPath), { recursive: true });
+    await writeFile(generatedPublicPath, publicProjection, "utf8");
+    await writeFile(generatedReceiptPath, serializePublicPrivacyReceipt({
+      version: 1,
+      reviewed: true,
+      policy: "transcript-archive-privacy-v1",
+      audioRedactionsApplied: reviewedManifest.audio.length,
+      transcriptRedactionsApplied: reviewedManifest.transcripts.length,
+      speakerLabels: reviewedManifest.speakerLabels === "neutralize" ? "neutralized" : "preserved",
+    }), "utf8");
     await snapshotRegularFile(plan.audioSource, sessionDir, snapshotAudio);
     const publicAudioInput = reviewedManifest.audio.length > 0 ? redactedAudio : snapshotAudio;
     if (reviewedManifest.audio.length > 0) {
       await dependencies.applyAudioRedactions(snapshotAudio, redactedAudio, reviewedManifest.audio);
     }
-    const snapshots: ArchiveSourceFile[] = publicProjection === undefined
-      ? []
-      : [
-          { sourcePath: generatedPublicPath, entryName: "reconciled_transcript.md", required: true },
-          { sourcePath: generatedReceiptPath, entryName: PUBLIC_PRIVACY_RECEIPT_FILENAME, required: true },
-        ];
-    for (const copy of includedCopies) {
-      const snapshot = join(tempDir, "copies", copy.entryName);
-      const allowedRoot = copy.entryName === "corrections.yaml" ? settings.transcribeDir : sessionDir;
-      try {
-        await snapshotRegularFile(copy.sourcePath, allowedRoot, snapshot);
-        snapshots.push({ ...copy, sourcePath: snapshot });
-      } catch (error) {
-        if (copy.required) throw error;
-        (context.process.stderr ?? context.process.stdout).write(
-          `Warning: Skipping unsafe ${copy.entryName}: ${errorMessage(error)}\n`,
-        );
-      }
-    }
+    const snapshots = [
+      { sourcePath: generatedPublicPath, entryName: "reconciled_transcript.md", required: true },
+      { sourcePath: generatedReceiptPath, entryName: PUBLIC_PRIVACY_RECEIPT_FILENAME, required: true },
+    ];
     context.process.stdout.write(
       `Encoding ${plan.audioSource} → ${plan.audioEntryName}\n`,
     );

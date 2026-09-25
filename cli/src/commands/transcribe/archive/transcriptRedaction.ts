@@ -32,6 +32,8 @@ function parseTimestampedLine(line: string): TimestampedLine | undefined {
 }
 
 function overlaps(event: TimestampedLine, start: number, end: number): boolean {
+  // Coarse legacy timestamps can collapse a spoken name to a point.
+  if (event.start === event.end) return event.start >= start && event.start < end;
   return event.start < end && event.end > start;
 }
 
