@@ -1,0 +1,6 @@
+version: 1
+reviewed: true
+policy: transcript-archive-privacy-v1
+audioRedactionsApplied: 5
+transcriptRedactionsApplied: 5
+speakerLabels: neutralized
