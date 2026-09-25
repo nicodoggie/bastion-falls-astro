@@ -11,6 +11,7 @@ import { runReconciliationSummarization, renderSessionMdx, runBoundedCodexComman
 import type { CanonicalReconciliation } from "./reconciliation.js";
 import type { ReconciliationMetadata } from "./checkpoint.js";
 import type { ChannelMap } from "./channelMap.js";
+import type { ProgressWorkUnitHook } from "./progress.js";
 
 export type LogicalReconciliationWindow = { id: string; index: number; start: number; end: number; chunkIndices: number[] };
 export type LogicalLayout = "single" | "per-stt-chunk" | "three";
@@ -80,13 +81,13 @@ export function prepareUnifiedReconciliationJobs(options: UnifiedJobOptions): Pr
   return { jobs, windows, cacheIdentityByChunk: Object.fromEntries(jobs.map((job) => [job.packet.chunk.id, job.packet.cacheIdentity.inputHash])) };
 }
 
-export interface UnifiedStageOptions extends UnifiedJobOptions { rootDir: string; profile?: string; maxTurns?: number; timeoutMs?: number; repositoryCwd?: string; resume?: boolean; force?: boolean; jobs?: readonly ReconciliationChunkJob[]; onRetry?: ReconciliationRunnerOptions["onRetry"]; }
+export interface UnifiedStageOptions extends UnifiedJobOptions { rootDir: string; profile?: string; maxTurns?: number; timeoutMs?: number; repositoryCwd?: string; resume?: boolean; force?: boolean; jobs?: readonly ReconciliationChunkJob[]; onRetry?: ReconciliationRunnerOptions["onRetry"]; onChunkProgress?: ReconciliationRunnerOptions["onChunkProgress"]; }
 export interface UnifiedStageDeps { runUnifiedReconciliation?: typeof runUnifiedReconciliation; summarySafeFallback?: SummarySafeFallback; }
 function defaultFallback(cwd: string): SummarySafeFallback { return async ({ blocks }) => { const scratch = await mkdtemp(join(tmpdir(), "bf-summary-safe-")); try { const result = await runBoundedCodexCommand({ prompt: ["Return JSON only: an object mapping every supplied blockId exactly once to nonempty summary-safe text.", "Neutralize only wording that blocks summarization; preserve meaning and do not add claims.", JSON.stringify(blocks.map((b) => ({ blockId: b.id, readableText: b.text, priorSummarySafeText: b.summarySafeText })))].join("\n"), cwd, scratch, timeoutMs: 30_000, maxOutputBytes: 200_000 }); return result as Record<string, string>; } finally { await rm(scratch, { recursive: true, force: true }); } }; }
 export async function runUnifiedReconciliationStage(options: UnifiedStageOptions, deps: UnifiedStageDeps = {}): Promise<{ status: "valid" | "needs_review"; metadata: ReconciliationMetadata; chunks: CanonicalReconciliation[]; jobs: ReconciliationChunkJob[] }> {
   const prepared = options.jobs ? { jobs: [...options.jobs], cacheIdentityByChunk: Object.fromEntries(options.jobs.map((j) => [j.packet.chunk.id, j.packet.cacheIdentity.inputHash])), windows: buildLogicalReconciliationWindows(options.manifest, options.layout, options) } : prepareUnifiedReconciliationJobs(options);
   const runner = deps.runUnifiedReconciliation ?? runUnifiedReconciliation;
-  const result = await runner({ rootDir: options.rootDir, jobs: prepared.jobs, profile: options.profile, maxTurns: options.maxTurns, timeoutMs: options.timeoutMs ?? 1_200_000, repositoryCwd: options.repositoryCwd, resume: options.resume, force: options.force, onRetry: options.onRetry, sanitizeSummarySafe: deps.summarySafeFallback ?? defaultFallback(options.repositoryCwd ?? process.cwd()) });
+  const result = await runner({ rootDir: options.rootDir, jobs: prepared.jobs, profile: options.profile, maxTurns: options.maxTurns, timeoutMs: options.timeoutMs ?? 1_200_000, repositoryCwd: options.repositoryCwd, resume: options.resume, force: options.force, onRetry: options.onRetry, onChunkProgress: options.onChunkProgress, sanitizeSummarySafe: deps.summarySafeFallback ?? defaultFallback(options.repositoryCwd ?? process.cwd()) });
   const expectedIds = prepared.jobs.map((job) => job.packet.chunk.id);
   const actualIds = result.chunks.map((chunk) => chunk.chunk.id);
   if (new Set(actualIds).size !== actualIds.length || actualIds.length !== expectedIds.length || expectedIds.some((id) => !actualIds.includes(id))) throw new Error("reconciliation runner returned an incomplete or unknown chunk set");
@@ -100,7 +101,7 @@ export async function runUnifiedReconciliationStage(options: UnifiedStageOptions
   return { status, metadata, chunks: result.chunks, jobs: prepared.jobs };
 }
 
-export interface UnifiedNotesOptions { outputRoot: string; chunks: readonly CanonicalReconciliation[]; jobs: readonly ReconciliationChunkJob[]; summarization?: Omit<SummarizationOptions, "outputRoot" | "chunks" | "promptVersion"> & { promptVersion?: string }; notePath?: string; }
+export interface UnifiedNotesOptions { outputRoot: string; chunks: readonly CanonicalReconciliation[]; jobs: readonly ReconciliationChunkJob[]; summarization?: Omit<SummarizationOptions, "outputRoot" | "chunks" | "promptVersion"> & { promptVersion?: string; onWorkUnit?: ProgressWorkUnitHook }; notePath?: string; }
 export interface UnifiedNotesDeps { summarizer?: typeof runReconciliationSummarization; renderer?: typeof renderSessionMdx; writer?: (path: string, content: string) => Promise<void>; }
 export async function runUnifiedStructuredNotes(options: UnifiedNotesOptions, deps: UnifiedNotesDeps = {}): Promise<{ mdx: string; path: string; summaries: { chunks: ChunkSummary[]; scenes: SceneSummary[]; session: SessionSummary } }> {
   if (!options.chunks.length || options.chunks.some((c) => c.status === "invalid" || c.summarySafety.status === "pending")) throw new Error("structured notes require validated canonical chunks");

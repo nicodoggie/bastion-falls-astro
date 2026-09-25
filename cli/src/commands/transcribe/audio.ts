@@ -143,7 +143,7 @@ export async function normalizeToFlac(
   outputPath: string,
   force: boolean,
   filters: AudioFilterOptions,
-  progress?: { sink: ProgressSink; totalSeconds: number },
+  progress?: { sink: ProgressSink; totalSeconds: number; render?: (seconds: number) => void },
   outputChannels?: number,
 ): Promise<void> {
   await mkdir(dirname(outputPath), { recursive: true });
@@ -183,7 +183,7 @@ export async function deriveMonoChannels(options: {
   channelsDir: string;
   channelCount: number;
   force: boolean;
-  progress?: { sink: ProgressSink };
+  progress?: { sink: ProgressSink; render?: (seconds: number) => void };
 }): Promise<PreparedChannel[]> {
   if (!Number.isInteger(options.channelCount) || options.channelCount < 1) {
     throw new Error(`Invalid channel count: ${options.channelCount}`);
@@ -237,7 +237,7 @@ export async function writeChunkFlacs(
   chunksDir: string,
   chunks: PlannedChunk[],
   force: boolean,
-  progress?: { sink: ProgressSink },
+  progress?: { sink: ProgressSink; render?: (seconds: number) => void },
   pass: TranscriptionPass = { kind: "stereo", id: "stereo" },
 ): Promise<string[]> {
   await mkdir(chunksDir, { recursive: true });

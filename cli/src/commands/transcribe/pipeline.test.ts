@@ -8,6 +8,7 @@ import { parseAlignmentResult } from "./alignment.js";
 import type { ChannelMap } from "./channelMap.js";
 import { parseTranscribeCheckpoint, type ReconciliationMetadata, type TranscribeCheckpointV2, type TranscribeCheckpointV3 } from "./checkpoint.js";
 import { executeTranscriptionPipeline, parseStopAfter, sttCacheIdentity } from "./pipeline.js";
+import { TranscriptionProgressReporter } from "./progress.js";
 import type { ResolvedTranscriptionProfile } from "./settings.js";
 import type { TranscribePassRequest } from "./sttBackend.js";
 import type { Manifest } from "./types.js";
@@ -48,6 +49,32 @@ const channelMap: ChannelMap = {
 
 function prepared(outDir: string, p: ResolvedTranscriptionProfile, map?: ChannelMap) { return { manifest, profile: p, rawChunksDir: join(outDir, "raw_chunks"), rawTranscriptionDir: join(outDir, "raw_transcription"), chunksDir: join(outDir, "chunks"), source: manifest.source, channelMap: map }; }
 
+const sleep = (milliseconds: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+function captureOutput() {
+  const values: string[] = [];
+  return {
+    values,
+    stream: {
+      write: (value: string) => {
+        values.push(value);
+        return true;
+      },
+    },
+  };
+}
+
+async function readProgressEvents(
+  path: string,
+): Promise<Array<Record<string, unknown>>> {
+  return (await readFile(path, "utf8"))
+    .trim()
+    .split("\n")
+    .filter(Boolean)
+    .map((line) => JSON.parse(line) as Record<string, unknown>);
+}
+
 function reconciliationMetadata(outDir: string, status: ReconciliationMetadata["status"], token: string): ReconciliationMetadata {
   const dir = join(outDir, "reconciliation");
   return {
@@ -71,6 +98,370 @@ test("canonicalizes reconciliation stop aliases", () => {
   assert.equal(parseStopAfter("correction-review"), "reconciliation");
   assert.equal(parseStopAfter("correction_review"), "reconciliation");
   assert.throws(() => parseStopAfter("correction"), /reconciliation/iu);
+});
+
+test("keeps composed progress open through blocked ASR and cleans up after completion", async () => {
+  const outDir = await mkdtemp(join(tmpdir(), "pipeline-progress-lifecycle-"));
+  const output = captureOutput();
+  const errors = captureOutput();
+  const reporter = new TranscriptionProgressReporter({
+    output: output.stream,
+    errorOutput: errors.stream,
+    logPath: join(outDir, "progress.jsonl"),
+    logLevel: "debug",
+    isTTY: true,
+    heartbeatMs: 60_000,
+  });
+  let releaseAsr!: () => void;
+  const asrGate = new Promise<void>((resolve) => {
+    releaseAsr = resolve;
+  });
+  let markAsrStarted!: () => void;
+  const asrStarted = new Promise<void>((resolve) => {
+    markAsrStarted = resolve;
+  });
+  let run: Promise<unknown> | undefined;
+  try {
+    await reporter.start();
+    const state = checkpoint(outDir);
+    run = executeTranscriptionPipeline({
+      checkpoint: state,
+      checkpointPath: join(outDir, "checkpoint.json"),
+      rawChunksDir: join(outDir, "raw_chunks"),
+      rawTranscriptionDir: join(outDir, "raw_transcription"),
+      chunksDir: join(outDir, "chunks"),
+      source: manifest.source,
+      language: "en",
+      selection: "0",
+      stopAfter: "transcription",
+      progress: reporter,
+      dependencies: {
+        nodejsWhisper: async () => {
+          markAsrStarted();
+          await asrGate;
+          return [{ segments: [{ start: 0, end: 1, text: "synthetic ASR" }] }];
+        },
+      },
+      normalize: async () => undefined,
+      prepareAudio: async () => prepared(outDir, profile("stereo")),
+    });
+
+    await asrStarted;
+    await sleep(2_200);
+    const blockedOutput = output.values.join("");
+    const clockLines = [
+      ...blockedOutput.matchAll(
+        /Stage 3\/6: Transcribing(?: · [^\r\n]+)? \[00:00:(\d{2})\]\[00:00:(\d{2})\]/gu,
+      ),
+    ];
+    assert.ok(clockLines.length >= 3, blockedOutput);
+    assert.ok(
+      clockLines.some(
+        (match) => Number(match[1]) >= 2 && Number(match[2]) >= 2,
+      ),
+      blockedOutput,
+    );
+    const blockedEvents = await readProgressEvents(join(outDir, "progress.jsonl"));
+    assert.ok(
+      blockedEvents.some(
+        (event) =>
+          event["stage"] === "transcription" &&
+          event["operation"] === "ASR" &&
+          event["status"] === "started",
+      ),
+      JSON.stringify(blockedEvents),
+    );
+    const asrStartedEvent = blockedEvents.find(
+      (event) =>
+        event["stage"] === "transcription" &&
+        event["operation"] === "ASR" &&
+        event["status"] === "started",
+    );
+    assert.deepEqual(asrStartedEvent?.["workUnit"], {
+      label: "left",
+      index: 0,
+      total: 2,
+    });
+    assert.match(blockedOutput, /Stage 3\/6: Transcribing · left 1\/2/u);
+
+    releaseAsr();
+    await run;
+    const completedOutput = output.values.join("");
+    assert.match(completedOutput, /Stage 3\/6: Transcribing/u);
+    const completedEvents = await readProgressEvents(join(outDir, "progress.jsonl"));
+    assert.ok(
+      completedEvents.some(
+        (event) =>
+          event["stage"] === "transcription" &&
+          event["operation"] === "ASR" &&
+          event["status"] === "completed",
+      ),
+      JSON.stringify(completedEvents),
+    );
+    const afterClose = output.values.join("");
+    await sleep(1_100);
+    assert.equal(output.values.join(""), afterClose);
+  } finally {
+    releaseAsr();
+    if (run) await run.catch(() => undefined);
+    await reporter.close();
+    await rm(outDir, { recursive: true, force: true });
+  }
+});
+
+test("closes composed progress after an ASR error without leaving timers running", async () => {
+  const outDir = await mkdtemp(join(tmpdir(), "pipeline-progress-error-"));
+  const output = captureOutput();
+  const errors = captureOutput();
+  const reporter = new TranscriptionProgressReporter({
+    output: output.stream,
+    errorOutput: errors.stream,
+    logPath: join(outDir, "progress.jsonl"),
+    logLevel: "debug",
+    isTTY: true,
+    heartbeatMs: 60_000,
+  });
+  let markAsrStarted!: () => void;
+  const asrStarted = new Promise<void>((resolve) => {
+    markAsrStarted = resolve;
+  });
+  let run: Promise<unknown> | undefined;
+  try {
+    await reporter.start();
+    const state = checkpoint(outDir);
+    run = executeTranscriptionPipeline({
+      checkpoint: state,
+      checkpointPath: join(outDir, "checkpoint.json"),
+      rawChunksDir: join(outDir, "raw_chunks"),
+      rawTranscriptionDir: join(outDir, "raw_transcription"),
+      chunksDir: join(outDir, "chunks"),
+      source: manifest.source,
+      language: "en",
+      selection: "0",
+      stopAfter: "transcription",
+      progress: reporter,
+      dependencies: {
+        nodejsWhisper: async () => {
+          markAsrStarted();
+          throw new Error("synthetic ASR failure");
+        },
+      },
+      normalize: async () => undefined,
+      prepareAudio: async () => prepared(outDir, profile("stereo")),
+    });
+
+    await asrStarted;
+    await assert.rejects(run, /synthetic ASR failure/u);
+    assert.match(errors.values.join(""), /Error: synthetic ASR failure/u);
+    const failedOutput = output.values.join("");
+    const failedEvents = await readProgressEvents(join(outDir, "progress.jsonl"));
+    assert.ok(
+      failedEvents.some(
+        (event) =>
+          event["stage"] === "transcription" &&
+          event["operation"] === "ASR" &&
+          event["status"] === "failed",
+      ),
+      JSON.stringify(failedEvents),
+    );
+    await sleep(1_100);
+    assert.equal(output.values.join(""), failedOutput);
+  } finally {
+    if (run) await run.catch(() => undefined);
+    await reporter.close();
+    await rm(outDir, { recursive: true, force: true });
+  }
+});
+
+test("composes one stage history line per terminal outcome across resume, reuse, skip, failure, and stop-after", async () => {
+  const root = await mkdtemp(join(tmpdir(), "pipeline-stage-history-"));
+  const dependencies = {
+    nodejsWhisper: async (request: { chunks: Array<{ index: number }> }) => [
+      {
+        segments: [
+          { start: 0, end: 1, text: `synthetic chunk ${request.chunks[0]!.index}` },
+        ],
+      },
+    ],
+  };
+  const stripAnsi = (value: string): string =>
+    value.replace(/\u001b\[[0-?]*[ -/]*[@-~]/gu, "");
+  const reporterFor = () => {
+    const output = captureOutput();
+    const errors = captureOutput();
+    return {
+      output,
+      errors,
+      reporter: new TranscriptionProgressReporter({
+        output: output.stream,
+        errorOutput: errors.stream,
+        logPath: join(root, "progress.jsonl"),
+        logLevel: "debug",
+        isTTY: true,
+        color: false,
+        heartbeatMs: 60_000,
+      }),
+    };
+  };
+  const run = (
+    state: TranscribeCheckpointV3,
+    reporter: TranscriptionProgressReporter,
+    options: {
+      stopAfter?: Parameters<typeof executeTranscriptionPipeline>[0]["stopAfter"];
+      selection?: string;
+      dependencies?: typeof dependencies;
+      stages?: Parameters<typeof executeTranscriptionPipeline>[0]["stages"];
+    } = {},
+  ) =>
+    executeTranscriptionPipeline({
+      checkpoint: state,
+      checkpointPath: join(state.outDir, "checkpoint.json"),
+      rawChunksDir: join(state.outDir, "raw_chunks"),
+      rawTranscriptionDir: join(state.outDir, "raw_transcription"),
+      chunksDir: join(state.outDir, "chunks"),
+      source: manifest.source,
+      language: "en",
+      selection: options.selection,
+      stopAfter: options.stopAfter,
+      dependencies: options.dependencies ?? dependencies,
+      normalize: async () => undefined,
+      prepareAudio: async () => prepared(state.outDir, profile("stereo")),
+      progress: reporter,
+      stages: options.stages,
+    });
+  const history = async (path: string) =>
+    (await readProgressEvents(path)).filter(
+      (event) => event["kind"] === "stage-completion",
+    );
+
+  try {
+    const fullState = checkpoint(join(root, "full"));
+    const full = reporterFor();
+    await run(fullState, full.reporter, {
+      stages: {
+        rawAssembly: async () => undefined,
+        reconciliation: async () => ({
+          status: "valid",
+          metadata: reconciliationMetadata(fullState.outDir, "valid", "history"),
+        }),
+        notes: async () => "complete",
+      },
+    });
+    const fullHistory = await history(join(root, "progress.jsonl"));
+    assert.deepEqual(
+      fullHistory.map((event) => [event["stage"], event["status"]]),
+      [
+        ["normalization", "complete"],
+        ["audio-chunking", "complete"],
+        ["transcription", "complete"],
+        ["raw-assembly", "complete"],
+        ["reconciliation", "complete"],
+        ["notes", "complete"],
+      ],
+    );
+    const fullDisplay = stripAnsi(full.output.values.join(""));
+    for (let index = 1; index <= 6; index += 1)
+      assert.equal((fullDisplay.match(new RegExp(`✓ Stage ${index}/6`, "gu")) ?? []).length, 1, fullDisplay);
+    assert.ok(fullDisplay.lastIndexOf("✓ Stage 6/6") > fullDisplay.lastIndexOf("✓ Stage 5/6"), fullDisplay);
+
+    const resume = reporterFor();
+    await run(fullState, resume.reporter);
+    const resumeHistory = await history(join(root, "progress.jsonl"));
+    assert.deepEqual(
+      resumeHistory.map((event) => [event["stage"], event["status"]]),
+      [
+        ["normalization", "complete"],
+        ["audio-chunking", "complete"],
+        ["transcription", "complete"],
+        ["raw-assembly", "complete"],
+        ["reconciliation", "complete"],
+        ["notes", "complete"],
+        ["normalization", "reused"],
+        ["audio-chunking", "reused"],
+        ["transcription", "reused"],
+        ["raw-assembly", "reused"],
+        ["reconciliation", "reused"],
+        ["notes", "reused"],
+      ],
+    );
+    const resumeDisplay = stripAnsi(resume.output.values.join(""));
+    assert.equal((resumeDisplay.match(/↻ Stage/gu) ?? []).length, 6, resumeDisplay);
+
+    const skippedState = checkpoint(join(root, "skipped"));
+    const skipped = reporterFor();
+    const skippedMetadata: ReconciliationMetadata = {
+      provider: "off",
+      mode: "off",
+      reconciliationDir: join(skippedState.outDir, "reconciliation"),
+      reconciledTranscriptPath: join(skippedState.outDir, "reconciled_transcript.md"),
+      summaryTranscriptPath: join(skippedState.outDir, "summary_transcript.md"),
+      reviewQueuePath: join(skippedState.outDir, "reconciliation_review_queue.md"),
+      schemaVersion: "history.v1",
+      promptVersion: "history.v1",
+      cacheIdentityByChunk: {},
+      completedChunkIds: [],
+      status: "pending",
+      summarySafety: { pendingChunkIds: [], bypassChunkIds: [] },
+    };
+    await run(skippedState, skipped.reporter, {
+      stopAfter: "reconciliation",
+      stages: {
+        rawAssembly: async () => undefined,
+        reconciliation: async () => ({ status: "skipped" as const, metadata: skippedMetadata }),
+      },
+    });
+    const skippedDisplay = stripAnsi(skipped.output.values.join(""));
+    assert.deepEqual(
+      (await history(join(root, "progress.jsonl"))).slice(-5).map((event) => [event["stage"], event["status"]]),
+      [
+        ["normalization", "complete"],
+        ["audio-chunking", "complete"],
+        ["transcription", "complete"],
+        ["raw-assembly", "complete"],
+        ["reconciliation", "skipped"],
+      ],
+    );
+    assert.equal((skippedDisplay.match(/Stage [1-5]\/6/gu) ?? []).length >= 5, true, skippedDisplay);
+    assert.match(skippedDisplay, /– Stage 5\/6: Reconciling skipped/u);
+    assert.doesNotMatch(skippedDisplay, /Stage 6\/6/u);
+
+    const failedState = checkpoint(join(root, "failed"));
+    const failed = reporterFor();
+    await assert.rejects(
+      run(failedState, failed.reporter, {
+        dependencies: {
+          nodejsWhisper: async () => {
+            throw new Error("synthetic stage failure");
+          },
+        },
+      }),
+      /synthetic stage failure/u,
+    );
+    const failedDisplay = stripAnsi(failed.output.values.join(""));
+    assert.deepEqual(
+      (await history(join(root, "progress.jsonl"))).slice(-3).map((event) => [event["stage"], event["status"]]),
+      [
+        ["normalization", "complete"],
+        ["audio-chunking", "complete"],
+        ["transcription", "failed"],
+      ],
+    );
+    assert.equal((failedDisplay.match(/× Stage 3\/6/gu) ?? []).length, 1, failedDisplay);
+    assert.doesNotMatch(failedDisplay, /Stage 4\/6/u);
+
+    const stoppedState = checkpoint(join(root, "stopped"));
+    const stopped = reporterFor();
+    await run(stoppedState, stopped.reporter, { stopAfter: "normalization" });
+    const stoppedDisplay = stripAnsi(stopped.output.values.join(""));
+    assert.deepEqual(
+      (await history(join(root, "progress.jsonl"))).slice(-1).map((event) => [event["stage"], event["status"]]),
+      [["normalization", "complete"]],
+    );
+    assert.equal((stoppedDisplay.match(/✓ Stage 1\/6/gu) ?? []).length, 1, stoppedDisplay);
+    assert.doesNotMatch(stoppedDisplay, /Stage 2\/6/u);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
 });
 
 test("routes reconciliation outcomes, compatibility, and downstream identity changes", async () => {

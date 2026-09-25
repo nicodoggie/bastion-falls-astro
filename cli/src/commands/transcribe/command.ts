@@ -1,4 +1,12 @@
-import { access, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
+import {
+  access,
+  mkdir,
+  readFile,
+  readdir,
+  rm,
+  stat,
+  writeFile,
+} from "node:fs/promises";
 import { join } from "node:path";
 import {
   buildCommand,
@@ -6,7 +14,11 @@ import {
   type FlagParametersForType,
 } from "@stricli/core";
 
-import { getConfigBaseDir, getContentDir, getTranscribeConfig } from "@/config.js";
+import {
+  getConfigBaseDir,
+  getContentDir,
+  getTranscribeConfig,
+} from "@/config.js";
 import type { LocalContext } from "@/context.js";
 import { applyCorrectionsCommand } from "./applyCorrections.js";
 import { archiveCommand } from "./archive/command.js";
@@ -22,7 +34,12 @@ import {
 } from "./audio.js";
 import { measureAudioWindowEnergy } from "./audio.js";
 import { loadChannelMap } from "./channelMap.js";
-import { buildHybridCorrectionContext, isAlignmentArtifactName, parseAlignmentResult, type AlignmentResult } from "./alignment.js";
+import {
+  buildHybridCorrectionContext,
+  isAlignmentArtifactName,
+  parseAlignmentResult,
+  type AlignmentResult,
+} from "./alignment.js";
 import {
   getCheckpointPath,
   readTranscribeCheckpoint,
@@ -54,8 +71,25 @@ import { getNotesPath } from "./notes.js";
 import { runOllamaHierarchicalNotes } from "./ollamaNotes.js";
 import { runHermesTranscriptReview } from "./hermesReview.js";
 import { resolveTranscriptionProfile } from "./settings.js";
-import { parseChunkSelection, requiredPasses, chunkAudioPathFor, passRawJsonPathFor } from "./passes.js";
-import { executeTranscriptionPipeline, parseStopAfter, transcribeStages, type TranscribeStage } from "./pipeline.js";
+import {
+  parseChunkSelection,
+  requiredPasses,
+  chunkAudioPathFor,
+  passRawJsonPathFor,
+} from "./passes.js";
+import {
+  executeTranscriptionPipeline,
+  parseStopAfter,
+  transcribeStages,
+  type TranscribeStage,
+} from "./pipeline.js";
+import {
+  parseLogLevel,
+  resolveLogLevel,
+  TranscriptionProgressReporter,
+  type LogLevel,
+  type ProgressWorkUnitEvent,
+} from "./progress.js";
 import {
   resolveContextRoot,
   resolveFromCwd,
@@ -93,7 +127,11 @@ import {
   parseSttBackend,
   type SttBackend,
 } from "./sttBackend.js";
-import { parseChunkTranscript, type ChunkTranscript, type Manifest } from "./types.js";
+import {
+  parseChunkTranscript,
+  type ChunkTranscript,
+  type Manifest,
+} from "./types.js";
 
 type NotesBackend = "codex" | "ollama";
 
@@ -146,6 +184,8 @@ interface TranscribeFlags {
   "summary-scene-size": number;
   chunks?: string;
   "stop-after"?: string;
+  "log-level"?: LogLevel;
+  verbose?: boolean;
 }
 
 const parseNumber = (value: string): number => {
@@ -349,15 +389,60 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
     brief: "Deprecated compatibility alias; use --reconciliation",
     optional: true,
   },
-  reconciliation: { kind: "parsed", parse: parseReconciliationProvider, brief: "Canonical reconciliation provider: hermes, legacy, or off", optional: true },
-  "reconciliation-provider": { kind: "parsed", parse: parseReconciliationProvider, brief: "Alias for --reconciliation", optional: true },
-  "reconciliation-logical-chunks": { kind: "parsed", parse: parseLogicalChunks, brief: "Logical layout: single, per-stt-chunk, or three", optional: true },
-  "reconciliation-hermes-profile": { kind: "parsed", parse: String, brief: "Hermes reconciliation profile", optional: true },
-  "reconciliation-hermes-max-turns": { kind: "parsed", parse: parsePositiveInteger, brief: "Hermes reconciliation maximum turns", optional: true },
-  "reconciliation-prompt-version": { kind: "parsed", parse: String, brief: "Reconciliation prompt version", optional: true },
-  "reconciliation-schema-version": { kind: "parsed", parse: String, brief: "Reconciliation schema version", optional: true },
-  "reconciliation-tail-merge-threshold-ratio": { kind: "parsed", parse: parseNumber, brief: "Merge final chunks shorter than this ratio of the target duration", optional: true },
-  "reconciliation-tail-merge-max-duration-ratio": { kind: "parsed", parse: parseNumber, brief: "Maximum merged final-window duration as a ratio of the target", optional: true },
+  reconciliation: {
+    kind: "parsed",
+    parse: parseReconciliationProvider,
+    brief: "Canonical reconciliation provider: hermes, legacy, or off",
+    optional: true,
+  },
+  "reconciliation-provider": {
+    kind: "parsed",
+    parse: parseReconciliationProvider,
+    brief: "Alias for --reconciliation",
+    optional: true,
+  },
+  "reconciliation-logical-chunks": {
+    kind: "parsed",
+    parse: parseLogicalChunks,
+    brief: "Logical layout: single, per-stt-chunk, or three",
+    optional: true,
+  },
+  "reconciliation-hermes-profile": {
+    kind: "parsed",
+    parse: String,
+    brief: "Hermes reconciliation profile",
+    optional: true,
+  },
+  "reconciliation-hermes-max-turns": {
+    kind: "parsed",
+    parse: parsePositiveInteger,
+    brief: "Hermes reconciliation maximum turns",
+    optional: true,
+  },
+  "reconciliation-prompt-version": {
+    kind: "parsed",
+    parse: String,
+    brief: "Reconciliation prompt version",
+    optional: true,
+  },
+  "reconciliation-schema-version": {
+    kind: "parsed",
+    parse: String,
+    brief: "Reconciliation schema version",
+    optional: true,
+  },
+  "reconciliation-tail-merge-threshold-ratio": {
+    kind: "parsed",
+    parse: parseNumber,
+    brief: "Merge final chunks shorter than this ratio of the target duration",
+    optional: true,
+  },
+  "reconciliation-tail-merge-max-duration-ratio": {
+    kind: "parsed",
+    parse: parseNumber,
+    brief: "Maximum merged final-window duration as a ratio of the target",
+    optional: true,
+  },
   "hermes-profile": {
     kind: "parsed",
     parse: String,
@@ -412,6 +497,17 @@ const flags: FlagParametersForType<TranscribeFlags, LocalContext> = {
     brief: `Stop after a stage: ${transcribeStages.join(", ")}`,
     optional: true,
   },
+  "log-level": {
+    kind: "parsed",
+    parse: parseLogLevel,
+    brief: "Operational log threshold: debug, info, warn, or error",
+    optional: true,
+  },
+  verbose: {
+    kind: "boolean",
+    brief: "Emit append-only timestamped progress events",
+    optional: true,
+  },
 };
 
 async function exists(path: string): Promise<boolean> {
@@ -436,12 +532,12 @@ function evidenceLines(value: string): string[] {
     if (!line) continue;
     for (let offset = 0; offset < line.length; offset += 2_000) {
       lines.push(line.slice(offset, offset + 2_000));
-      if (lines.length > 20_000) throw new Error("Evidence context exceeds reconciliation bounds.");
+      if (lines.length > 20_000)
+        throw new Error("Evidence context exceeds reconciliation bounds.");
     }
   }
   return lines;
 }
-
 
 function baseCheckpoint(options: {
   source: string;
@@ -462,7 +558,14 @@ function baseCheckpoint(options: {
   requiredPassIds: string[];
   availableByPass: Record<string, number[]>;
   selection: number[];
-  reconciliation: { provider: ReconciliationProvider; logicalChunks: LogicalChunks; hermesProfile: string; hermesMaxTurns: number; promptVersion: string; schemaVersion: string };
+  reconciliation: {
+    provider: ReconciliationProvider;
+    logicalChunks: LogicalChunks;
+    hermesProfile: string;
+    hermesMaxTurns: number;
+    promptVersion: string;
+    schemaVersion: string;
+  };
 }): TranscribeCheckpoint {
   const now = new Date().toISOString();
   return {
@@ -489,7 +592,9 @@ function baseCheckpoint(options: {
       transcribed_chunks: {
         status: "pending",
         requiredPasses: options.requiredPassIds,
-        completedByPass: Object.fromEntries(options.requiredPassIds.map((id) => [id, []])),
+        completedByPass: Object.fromEntries(
+          options.requiredPassIds.map((id) => [id, []]),
+        ),
         selection: options.selection,
         total: options.chunkCount,
         rawChunksDir: options.rawChunksDir,
@@ -503,17 +608,40 @@ function baseCheckpoint(options: {
         status: "pending",
         metadata: {
           provider: options.reconciliation.provider,
-          mode: options.reconciliation.provider === "off" ? "off" : options.reconciliation.provider === "legacy" ? "legacy" : "enabled",
+          mode:
+            options.reconciliation.provider === "off"
+              ? "off"
+              : options.reconciliation.provider === "legacy"
+                ? "legacy"
+                : "enabled",
           reconciliationDir: join(options.outDir, "reconciliation"),
-          reconciledTranscriptPath: join(options.outDir, "reconciled_transcript.md"),
+          reconciledTranscriptPath: join(
+            options.outDir,
+            "reconciled_transcript.md",
+          ),
           summaryTranscriptPath: join(options.outDir, "summary_transcript.md"),
-          reviewQueuePath: join(options.outDir, "reconciliation_review_queue.md"),
+          reviewQueuePath: join(
+            options.outDir,
+            "reconciliation_review_queue.md",
+          ),
           schemaVersion: options.reconciliation.schemaVersion,
           promptVersion: options.reconciliation.promptVersion,
-          cacheIdentityByChunk: {}, completedChunkIds: [], status: "pending",
+          cacheIdentityByChunk: {},
+          completedChunkIds: [],
+          status: "pending",
           summarySafety: { pendingChunkIds: [], bypassChunkIds: [] },
         },
-        ...(options.reconciliation.provider === "legacy" ? { compatibility: { correctionPass: { status: "pending", correctedTranscriptPath: options.correctedTranscriptPath, correctionNotesPath: options.correctionNotesPath } } } : {}),
+        ...(options.reconciliation.provider === "legacy"
+          ? {
+              compatibility: {
+                correctionPass: {
+                  status: "pending",
+                  correctedTranscriptPath: options.correctedTranscriptPath,
+                  correctionNotesPath: options.correctionNotesPath,
+                },
+              },
+            }
+          : {}),
       },
       notes_summary_pass: {
         status: "pending",
@@ -526,771 +654,1194 @@ function baseCheckpoint(options: {
   };
 }
 
-
-function buildTranscribeRunCommand(forcedStopAfter?: TranscribeStage, brief = "Normalize, chunk, transcribe, correct, and summarize campaign audio") {
+function buildTranscribeRunCommand(
+  forcedStopAfter?: TranscribeStage,
+  brief = "Normalize, chunk, transcribe, correct, and summarize campaign audio",
+) {
   return buildCommand({
-  async func(this: LocalContext, flags: TranscribeFlags, audioFile: string) {
-    assertSessionDate(flags["session-date"]);
+    async func(this: LocalContext, flags: TranscribeFlags, audioFile: string) {
+      assertSessionDate(flags["session-date"]);
 
-    const cwd = this.currentPath;
-    const configBaseDir = getConfigBaseDir();
-    const { audioPath, outDir, channelMapPath } = resolveTranscribeSessionPaths({
-      cwd,
-      pathBase: configBaseDir,
-      audioFile,
-      out: flags.out,
-    });
-    const contextRoot = resolveContextRoot(configBaseDir, flags["context-root"], getContentDir());
-    const correctionsPath = flags.corrections
-      ? resolveFromCwd(configBaseDir, flags.corrections)
-      : undefined;
-    const normalizedPath = join(outDir, "normalized", "session.flac");
-    const channelsDir = join(outDir, "normalized", "channels");
-    const chunksDir = join(outDir, "chunks");
-    const rawChunksDir = join(outDir, "raw_chunks");
-    const rawTranscriptionDir = join(outDir, "raw_transcription");
-    const manifestPath = join(outDir, "manifest.json");
-    const checkpointPath = getCheckpointPath(outDir);
-    const rawTranscriptPath = join(outDir, "raw_transcript.md");
-    const correctedTranscriptPath = join(outDir, "corrected_transcript.md");
-    const reconciledTranscriptPath = join(outDir, "reconciled_transcript.md");
-    const summaryTranscriptPath = join(outDir, "summary_transcript.md");
-    const correctionNotesPath = join(outDir, "correction_notes.md");
-    const hermesReviewNotesPath = join(outDir, "hermes_review_notes.md");
-    const transcribeConfig = getTranscribeConfig();
-    const resolvedProfile = resolveTranscriptionProfile(transcribeConfig, flags.profile);
-    const effectiveProfile = resolvedProfile.name === "legacy-local"
-      ? { ...resolvedProfile, target: { ...resolvedProfile.target, provider: flags.backend, model: flags["whisper-model"] } }
-      : resolvedProfile;
-    const authoritativeChannelMap = effectiveProfile.layout === "hybrid" && await exists(channelMapPath)
-      ? await loadChannelMap(channelMapPath)
-      : undefined;
-    if (effectiveProfile.layout === "hybrid" && !authoritativeChannelMap) {
-      throw new Error(`Hybrid transcription requires a valid session channel map at ${channelMapPath}.`);
-    }
-    const legacyAliasConfig = flags.review === undefined
-      ? transcribeConfig["review"]
-      : { provider: flags.review, hermes: { profile: flags["hermes-profile"], maxTurns: flags["hermes-max-turns"] } };
-    const reconciliationSettings = resolveReconciliationSettings(
-      transcribeConfig["reconciliation"],
-      { provider: flags.reconciliation ?? flags["reconciliation-provider"], logicalChunks: flags["reconciliation-logical-chunks"], hermesProfile: flags["reconciliation-hermes-profile"] ?? flags["hermes-profile"], hermesMaxTurns: flags["reconciliation-hermes-max-turns"] ?? flags["hermes-max-turns"], promptVersion: flags["reconciliation-prompt-version"], schemaVersion: flags["reconciliation-schema-version"], tailMergeThresholdRatio: flags["reconciliation-tail-merge-threshold-ratio"], tailMergeMaxDurationRatio: flags["reconciliation-tail-merge-max-duration-ratio"] },
-      legacyAliasConfig,
-    );
-    const legacyReviewSettings = resolveReviewSettings(transcribeConfig["review"], { provider: flags.review, hermesProfile: flags["hermes-profile"], hermesMaxTurns: flags["hermes-max-turns"] });
-    const summarizationSettings = resolveSummarizationSettings(transcribeConfig["summarization"]);
-    const notesPath = getNotesPath({
-      contextRoot,
-      campaign: flags.campaign,
-      sessionDate: flags["session-date"],
-    });
-    const shouldResume = Boolean(flags.resume) && !flags.force;
-
-    const sourceProbe = await probeAudio(audioPath);
-    const sourceStat = await stat(audioPath);
-    const sourceFingerprint = {
-      sizeBytes: sourceStat.size,
-      mtimeMs: sourceStat.mtimeMs,
-    };
-    const existingManifest = shouldResume
-      ? await readManifest(manifestPath)
-      : undefined;
-    let existingCheckpoint: TranscribeCheckpoint | undefined;
-    if (shouldResume) {
-      try {
-        existingCheckpoint = await readTranscribeCheckpoint(checkpointPath);
-      } catch (error) {
-        throw new Error(`Cannot resume checkpoint at ${checkpointPath}; rebuild with --force.`, { cause: error });
-      }
-    }
-    const audioSettings = {
-      denoise: Boolean(flags.denoise),
-      voiceBoost: Boolean(flags["voice-boost"]),
-      sampleRate: 16000,
-    };
-    const chunkSettings = {
-      chunkSeconds: flags["chunk-seconds"],
-      boundarySearchSeconds: flags["boundary-search-seconds"],
-      boundaryMaxSearchSeconds: flags["boundary-max-search-seconds"],
-      overlapSeconds: flags["overlap-seconds"],
-      keepSilence: Boolean(flags["keep-silence"]),
-      silencePaddingSeconds: flags["silence-padding-seconds"],
-      minimumSpeechSeconds: flags["minimum-speech-seconds"],
-    };
-    const preparedChannelPaths = Array.from(
-      { length: sourceProbe.channels > 1 ? sourceProbe.channels : 0 },
-      (_, index) => ({
-        id: channelId(index, sourceProbe.channels),
-        index,
-        path: join(channelsDir, `${channelId(index, sourceProbe.channels)}.flac`),
-      }),
-    );
-    if (existingManifest) {
-      const compatibilityIssues = manifestCompatibilityIssues(existingManifest, {
-        source: audioPath,
-        sourceFingerprint,
-        sourceProbe,
-        normalizedStereo: normalizedPath,
-        preparedChannels: preparedChannelPaths,
-        audioSettings,
-        chunkSettings,
+      const cwd = this.currentPath;
+      const configBaseDir = getConfigBaseDir();
+      const { audioPath, outDir, channelMapPath } =
+        resolveTranscribeSessionPaths({
+          cwd,
+          pathBase: configBaseDir,
+          audioFile,
+          out: flags.out,
+        });
+      const contextRoot = resolveContextRoot(
+        configBaseDir,
+        flags["context-root"],
+        getContentDir(),
+      );
+      const correctionsPath = flags.corrections
+        ? resolveFromCwd(configBaseDir, flags.corrections)
+        : undefined;
+      const normalizedPath = join(outDir, "normalized", "session.flac");
+      const channelsDir = join(outDir, "normalized", "channels");
+      const chunksDir = join(outDir, "chunks");
+      const rawChunksDir = join(outDir, "raw_chunks");
+      const rawTranscriptionDir = join(outDir, "raw_transcription");
+      const manifestPath = join(outDir, "manifest.json");
+      const checkpointPath = getCheckpointPath(outDir);
+      const rawTranscriptPath = join(outDir, "raw_transcript.md");
+      const correctedTranscriptPath = join(outDir, "corrected_transcript.md");
+      const reconciledTranscriptPath = join(outDir, "reconciled_transcript.md");
+      const summaryTranscriptPath = join(outDir, "summary_transcript.md");
+      const correctionNotesPath = join(outDir, "correction_notes.md");
+      const hermesReviewNotesPath = join(outDir, "hermes_review_notes.md");
+      const transcribeConfig = getTranscribeConfig();
+      const progressConfig =
+        transcribeConfig["progress"] &&
+        typeof transcribeConfig["progress"] === "object"
+          ? transcribeConfig["progress"]
+          : {};
+      const logLevel = resolveLogLevel({
+        flag: flags["log-level"],
+        verbose: Boolean(flags.verbose),
+        configured: progressConfig["logLevel"],
       });
-      if (compatibilityIssues.length > 0) {
+      const resolvedProfile = resolveTranscriptionProfile(
+        transcribeConfig,
+        flags.profile,
+      );
+      const effectiveProfile =
+        resolvedProfile.name === "legacy-local"
+          ? {
+              ...resolvedProfile,
+              target: {
+                ...resolvedProfile.target,
+                provider: flags.backend,
+                model: flags["whisper-model"],
+              },
+            }
+          : resolvedProfile;
+      const authoritativeChannelMap =
+        effectiveProfile.layout === "hybrid" && (await exists(channelMapPath))
+          ? await loadChannelMap(channelMapPath)
+          : undefined;
+      if (effectiveProfile.layout === "hybrid" && !authoritativeChannelMap) {
         throw new Error(
-          `Cannot resume stale audio preparation (${compatibilityIssues.join(", ")}); rebuild with --force.`,
+          `Hybrid transcription requires a valid session channel map at ${channelMapPath}.`,
         );
       }
-    }
-    const reusedNormalizedAudio = canReuseDependentAudio(
-      shouldResume,
-      existingManifest,
-      await exists(normalizedPath),
-    );
-    const overwritePreparedAudio = shouldOverwritePreparedAudio(
-      Boolean(flags.force),
-      shouldResume,
-      reusedNormalizedAudio,
-    );
-    if (existingCheckpoint && (existingCheckpoint.source !== audioPath ||
-        existingCheckpoint.outDir !== outDir ||
-        existingCheckpoint.sessionDate !== flags["session-date"] ||
-        existingCheckpoint.campaign !== flags.campaign)) {
-      throw new Error(`Cannot resume incompatible checkpoint at ${checkpointPath}; rebuild with --force.`);
-    }
-
-    const initialPasses = requiredPasses(effectiveProfile.layout, preparedChannelPaths);
-    const initialPassIds = initialPasses.map((pass) => pass.id);
-    const initialAvailable = existingManifest?.chunks.map((chunk) => chunk.index) ?? [];
-    const initialAvailableByPass = Object.fromEntries(
-      initialPassIds.map((id) => [id, initialAvailable]),
-    );
-    const checkpoint = baseCheckpoint({
-      source: audioPath,
-      outDir,
-      campaign: flags.campaign,
-      sessionDate: flags["session-date"],
-      normalizedPath,
-      chunksDir,
-      rawChunksDir,
-      rawTranscriptionDir,
-      rawTranscriptPath,
-      correctedTranscriptPath,
-      correctionNotesPath,
-      notesPath,
-      chunkCount: initialAvailable.length,
-      profile: effectiveProfile.name,
-      layout: effectiveProfile.layout,
-      requiredPassIds: initialPassIds,
-      availableByPass: initialAvailableByPass,
-      selection: existingManifest
-        ? parseChunkSelection(flags.chunks, initialAvailable)
-        : [],
-      reconciliation: reconciliationSettings,
-    });
-    if (existingCheckpoint && existingManifest) {
-      checkpoint.stages.transcribed_chunks.completedByPass = Object.fromEntries(
-        initialPassIds.map((id) => [
-          id,
-          existingCheckpoint.stages.transcribed_chunks.completedByPass[id] ?? [],
-        ]),
-      );
-      checkpoint.stages.transcribed_chunks.cacheIdentityByPass = existingCheckpoint.stages.transcribed_chunks.cacheIdentityByPass;
-
-      const previousRaw = existingCheckpoint.stages.joining_raw_transcription;
-      if (previousRaw.status === "complete" && previousRaw.path && await exists(previousRaw.path)) {
-        checkpoint.stages.joining_raw_transcription = previousRaw;
-      }
-      const previousReconciliation = existingCheckpoint.stages.reconciliation;
-      const expectedMode = reconciliationSettings.provider === "off" ? "off" : reconciliationSettings.provider === "legacy" ? "legacy" : "enabled";
-      const reconciliationSettingsMatch =
-        previousReconciliation.metadata.provider === reconciliationSettings.provider &&
-        previousReconciliation.metadata.mode === expectedMode &&
-        previousReconciliation.metadata.promptVersion === reconciliationSettings.promptVersion &&
-        previousReconciliation.metadata.schemaVersion === reconciliationSettings.schemaVersion;
-      const canonicalArtifactsExist = reconciliationSettingsMatch &&
-        (await Promise.all(previousReconciliation.metadata.completedChunkIds.map((id) =>
-          exists(join(previousReconciliation.metadata.reconciliationDir, `${id}.json`))))).every(Boolean);
-      const joinedArtifactsExist = (await Promise.all([
-        exists(previousReconciliation.metadata.reconciledTranscriptPath),
-        exists(previousReconciliation.metadata.reviewQueuePath),
-        previousReconciliation.metadata.summarySafety.pendingChunkIds.length === 0
-          ? exists(previousReconciliation.metadata.summaryTranscriptPath)
-          : Promise.resolve(false),
-      ])).every(Boolean);
-      const legacyFinalTranscript = previousReconciliation.compatibility?.correctionPass.finalTranscriptPath;
-      const legacyArtifactsExist = previousReconciliation.metadata.mode === "legacy" &&
-        previousReconciliation.status === "complete" &&
-        Boolean(legacyFinalTranscript) &&
-        await exists(legacyFinalTranscript!);
-      const directStageReuseAllowed = reconciliationSettings.provider !== "hermes";
-      if ((directStageReuseAllowed && reconciliationSettingsMatch && previousReconciliation.status === "skipped") ||
-          (directStageReuseAllowed && reconciliationSettingsMatch && previousReconciliation.status === "complete" && canonicalArtifactsExist && joinedArtifactsExist) ||
-          (reconciliationSettingsMatch && legacyArtifactsExist)) {
-        checkpoint.stages.reconciliation = previousReconciliation;
-      }
-      const previousNotes = existingCheckpoint.stages.notes_summary_pass;
-      if (previousNotes.status === "skipped" ||
-          (previousNotes.status === "complete" && previousNotes.notesPath && await exists(previousNotes.notesPath))) {
-        checkpoint.stages.notes_summary_pass = previousNotes;
-      }
-      if (existingCheckpoint.stages.done.status === "complete" &&
-          checkpoint.stages.joining_raw_transcription.status === "complete" &&
-          ["complete", "skipped"].includes(checkpoint.stages.reconciliation.status) &&
-          ["complete", "skipped"].includes(checkpoint.stages.notes_summary_pass.status)) {
-        checkpoint.stages.done = existingCheckpoint.stages.done;
-      }
-    }
-
-    const normalize = async (): Promise<void> => {
-      await mkdir(join(outDir, "normalized"), { recursive: true });
-      if (reusedNormalizedAudio) {
-        this.process.stdout.write(`Resuming with existing normalized audio at ${normalizedPath}\n`);
-        return;
-      }
-      this.process.stdout.write(`Normalizing audio to ${normalizedPath}\n`);
-      await normalizeToFlac(
-        audioPath,
-        normalizedPath,
-        overwritePreparedAudio,
+      const legacyAliasConfig =
+        flags.review === undefined
+          ? transcribeConfig["review"]
+          : {
+              provider: flags.review,
+              hermes: {
+                profile: flags["hermes-profile"],
+                maxTurns: flags["hermes-max-turns"],
+              },
+            };
+      const reconciliationSettings = resolveReconciliationSettings(
+        transcribeConfig["reconciliation"],
         {
+          provider: flags.reconciliation ?? flags["reconciliation-provider"],
+          logicalChunks: flags["reconciliation-logical-chunks"],
+          hermesProfile:
+            flags["reconciliation-hermes-profile"] ?? flags["hermes-profile"],
+          hermesMaxTurns:
+            flags["reconciliation-hermes-max-turns"] ??
+            flags["hermes-max-turns"],
+          promptVersion: flags["reconciliation-prompt-version"],
+          schemaVersion: flags["reconciliation-schema-version"],
+          tailMergeThresholdRatio:
+            flags["reconciliation-tail-merge-threshold-ratio"],
+          tailMergeMaxDurationRatio:
+            flags["reconciliation-tail-merge-max-duration-ratio"],
+        },
+        legacyAliasConfig,
+      );
+      const legacyReviewSettings = resolveReviewSettings(
+        transcribeConfig["review"],
+        {
+          provider: flags.review,
+          hermesProfile: flags["hermes-profile"],
+          hermesMaxTurns: flags["hermes-max-turns"],
+        },
+      );
+      const summarizationSettings = resolveSummarizationSettings(
+        transcribeConfig["summarization"],
+      );
+      const progressLogEnabled = progressConfig["log"] !== false;
+      const configuredProgressLog =
+        typeof progressConfig["logPath"] === "string"
+          ? progressConfig["logPath"]
+          : join(outDir, "transcription-progress.jsonl");
+      const progressLogPath = progressLogEnabled
+        ? resolveFromCwd(configBaseDir, configuredProgressLog)
+        : undefined;
+      const progress = new TranscriptionProgressReporter({
+        output: this.process.stdout,
+        errorOutput: this.process.stderr,
+        logPath: progressLogPath,
+        enabled: true,
+        verbose: Boolean(flags.verbose),
+        logLevel,
+        heartbeatMs:
+          typeof progressConfig["heartbeatSeconds"] === "number"
+            ? Math.max(1, progressConfig["heartbeatSeconds"] * 1000)
+            : 30_000,
+        isTTY: Boolean(this.process.stdout.isTTY ?? process.stdout.isTTY),
+        terminalWidth:
+          typeof this.process.stdout.columns === "number"
+            ? this.process.stdout.columns
+            : undefined,
+      });
+      await progress.start();
+      const reportWorkUnit = async (
+        stage: "reconciliation" | "notes",
+        event: ProgressWorkUnitEvent,
+      ): Promise<void> => {
+        await progress.event({
+          stage,
+          operation: event.operation,
+          status: event.status,
+          workUnit: event.workUnit,
+          ...(event.attempt === undefined ? {} : { attempt: event.attempt }),
+          ...(event.maxAttempts === undefined
+            ? {}
+            : { maxAttempts: event.maxAttempts }),
+        });
+      };
+      try {
+        const notesPath = getNotesPath({
+          contextRoot,
+          campaign: flags.campaign,
+          sessionDate: flags["session-date"],
+        });
+        const shouldResume = Boolean(flags.resume) && !flags.force;
+
+        const sourceProbe = await probeAudio(audioPath);
+        const sourceStat = await stat(audioPath);
+        const sourceFingerprint = {
+          sizeBytes: sourceStat.size,
+          mtimeMs: sourceStat.mtimeMs,
+        };
+        const existingManifest = shouldResume
+          ? await readManifest(manifestPath)
+          : undefined;
+        let existingCheckpoint: TranscribeCheckpoint | undefined;
+        if (shouldResume) {
+          try {
+            existingCheckpoint = await readTranscribeCheckpoint(checkpointPath);
+          } catch (error) {
+            throw new Error(
+              `Cannot resume checkpoint at ${checkpointPath}; rebuild with --force.`,
+              { cause: error },
+            );
+          }
+        }
+        const audioSettings = {
           denoise: Boolean(flags.denoise),
           voiceBoost: Boolean(flags["voice-boost"]),
-        },
-        {
-          sink: this.process.stdout,
-          totalSeconds: sourceProbe.durationSeconds,
-        },
-        sourceProbe.channels,
-      );
-    };
-
-    const prepareAudio = async (): Promise<import("./pipeline.js").PreparedPipelineContext> => {
-      await mkdir(chunksDir, { recursive: true });
-      await mkdir(rawChunksDir, { recursive: true });
-      await mkdir(rawTranscriptionDir, { recursive: true });
-
-      let preparedChannels: Manifest["preparedChannels"];
-      if (sourceProbe.channels > 1) {
-        const channelPaths = preparedChannelPaths.map((channel) => channel.path);
-        const allChannelsExist = (await Promise.all(channelPaths.map(exists))).every(Boolean);
-        if (!reusedNormalizedAudio || !allChannelsExist) {
-          preparedChannels = await deriveMonoChannels({
-            stereoPath: normalizedPath,
-            channelsDir,
-            channelCount: sourceProbe.channels,
-            force: shouldOverwritePreparedChannels(
-              overwritePreparedAudio,
-              shouldResume,
-              reusedNormalizedAudio,
-              allChannelsExist,
-            ),
-            progress: { sink: this.process.stdout },
-          });
-        } else {
-          preparedChannels = preparedChannelPaths;
-        }
-      } else {
-        preparedChannels = [];
-      }
-
-      const audioPasses = requiredPasses(effectiveProfile.layout, preparedChannels);
-      let manifest: Manifest | undefined;
-      let chunkPaths: string[] | undefined;
-      let silences = reusedNormalizedAudio ? existingManifest?.silences : undefined;
-      if (existingManifest && reusedNormalizedAudio) {
-        const reusableChunks = await canReusePassAudioChunks({
-          manifest: existingManifest,
-          chunksRoot: chunksDir,
-          passes: audioPasses,
-        });
-        manifest = existingManifest;
-        chunkPaths = reusableChunks.pathsByPass["stereo"] ?? [];
-        const missingStereo = reusableChunks.missingIndexesByPass["stereo"] ?? [];
-        if (missingStereo.length > 0) {
-          await writeChunkFlacs(
-            normalizedPath,
-            chunksDir,
-            existingManifest.chunks.filter((chunk) => missingStereo.includes(chunk.index)),
-            false,
-            { sink: this.process.stdout },
-          );
-        } else {
-          this.process.stdout.write(`Resuming with ${chunkPaths.length} existing audio chunks\n`);
-        }
-      }
-
-      if (!manifest || !chunkPaths) {
-        this.process.stdout.write("Detecting silence boundaries\n");
-        const durationSeconds = await getAudioDurationSeconds(normalizedPath);
-        silences = await detectSilences(normalizedPath);
-        const plannedChunks = planChunks({
-          durationSeconds,
+          sampleRate: 16000,
+        };
+        const chunkSettings = {
           chunkSeconds: flags["chunk-seconds"],
           boundarySearchSeconds: flags["boundary-search-seconds"],
           boundaryMaxSearchSeconds: flags["boundary-max-search-seconds"],
           overlapSeconds: flags["overlap-seconds"],
-          silences,
-        });
-        const chunks = flags["keep-silence"]
-          ? plannedChunks
-          : trimChunksToSpeech({
-              chunks: plannedChunks,
-              silences,
-              paddingSeconds: flags["silence-padding-seconds"],
-              minimumSpeechSeconds: flags["minimum-speech-seconds"],
-            });
-        manifest = {
-          version: 2,
-          source: audioPath,
-          sourceFingerprint,
-          sourceProbe,
-          normalizedStereo: normalizedPath,
-          preparedChannels,
-          audioSettings,
-          chunkSettings,
-          durationSeconds,
-          silences,
-          chunks,
+          keepSilence: Boolean(flags["keep-silence"]),
+          silencePaddingSeconds: flags["silence-padding-seconds"],
+          minimumSpeechSeconds: flags["minimum-speech-seconds"],
         };
-        await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
-        this.process.stdout.write(`Writing ${chunks.length} FLAC chunks\n`);
-        chunkPaths = await writeChunkFlacs(
-          normalizedPath,
-          chunksDir,
-          chunks,
-          overwritePreparedAudio,
-          { sink: this.process.stdout },
+        const preparedChannelPaths = Array.from(
+          { length: sourceProbe.channels > 1 ? sourceProbe.channels : 0 },
+          (_, index) => ({
+            id: channelId(index, sourceProbe.channels),
+            index,
+            path: join(
+              channelsDir,
+              `${channelId(index, sourceProbe.channels)}.flac`,
+            ),
+          }),
         );
-      }
-
-      if (!manifest || !chunkPaths) {
-        throw new Error("Audio manifest and chunk paths were not prepared.");
-      }
-      if (effectiveProfile.layout === "hybrid") {
-        for (const channel of preparedChannels) {
-          const pass = { kind: "channel" as const, id: channel.id, channelIndex: channel.index };
-          const missingChunks = [];
-          for (const chunk of manifest.chunks) {
-            if (!(await exists(chunkAudioPathFor(chunksDir, pass, chunk.index)))) missingChunks.push(chunk);
-          }
-          if (missingChunks.length > 0) {
-            this.process.stdout.write(`Writing ${missingChunks.length} ${channel.id} channel chunks\n`);
-            await writeChunkFlacs(
-              channel.path,
-              chunksDir,
-              missingChunks,
-              Boolean(flags.force),
-              { sink: this.process.stdout },
-              pass,
+        if (existingManifest) {
+          const compatibilityIssues = manifestCompatibilityIssues(
+            existingManifest,
+            {
+              source: audioPath,
+              sourceFingerprint,
+              sourceProbe,
+              normalizedStereo: normalizedPath,
+              preparedChannels: preparedChannelPaths,
+              audioSettings,
+              chunkSettings,
+            },
+          );
+          if (compatibilityIssues.length > 0) {
+            throw new Error(
+              `Cannot resume stale audio preparation (${compatibilityIssues.join(", ")}); rebuild with --force.`,
             );
           }
         }
-      }
-      if (!silences) {
-        this.process.stdout.write("Detecting silence boundaries for transcript tags\n");
-        silences = await detectSilences(normalizedPath);
-        manifest = { ...manifest, silences };
-      }
-      return {
-        manifest,
-        profile: effectiveProfile,
-        rawChunksDir,
-        rawTranscriptionDir,
-        chunksDir,
-        source: audioPath,
-        backend: effectiveProfile.target.provider,
-        model: effectiveProfile.target.model,
-        silenceTagMinimumSeconds: flags["silence-tag-seconds"],
-        channelMap: authoritativeChannelMap,
-      };
-    };
+        const reusedNormalizedAudio = canReuseDependentAudio(
+          shouldResume,
+          existingManifest,
+          await exists(normalizedPath),
+        );
+        const overwritePreparedAudio = shouldOverwritePreparedAudio(
+          Boolean(flags.force),
+          shouldResume,
+          reusedNormalizedAudio,
+        );
+        let reusedAudioChunking = false;
+        if (
+          existingCheckpoint &&
+          (existingCheckpoint.source !== audioPath ||
+            existingCheckpoint.outDir !== outDir ||
+            existingCheckpoint.sessionDate !== flags["session-date"] ||
+            existingCheckpoint.campaign !== flags.campaign)
+        ) {
+          throw new Error(
+            `Cannot resume incompatible checkpoint at ${checkpointPath}; rebuild with --force.`,
+          );
+        }
 
-    const localRunner = async (request: import("./sttBackend.js").TranscribePassRequest): Promise<ChunkTranscript[]> => {
-      const tempDir = join(outDir, ".stt-run", `${process.pid}-${Date.now()}-${Math.random().toString(36).slice(2)}`);
-      await mkdir(tempDir, { recursive: true });
-      try {
-        const paths = request.target.provider === "nodejs-whisper"
-          ? await transcribeChunksWithNodeWhisper({ chunkPaths: request.chunks.map((chunk) => chunk.path), outDir: tempDir, model: request.target.model, language: request.language, modelRootPath: flags["node-whisper-model-root"], autoDownloadModel: Boolean(flags["auto-download-model"]), device: flags.device, force: true })
-          : await transcribeChunksWithLocalWhisper({ chunkPaths: request.chunks.map((chunk) => chunk.path), outDir: tempDir, model: request.target.model, language: request.language, device: flags.device, computeType: flags["compute-type"], python: flags.python, force: true });
-        return Promise.all(paths.map(async (path) => JSON.parse(await readFile(path, "utf8")) as ChunkTranscript));
-      } finally {
-        await rm(tempDir, { recursive: true, force: true });
-      }
-    };
-    const effectiveStopAfter = forcedStopAfter ?? parseStopAfter(flags["stop-after"]);
-    let correctionRulesPromise: Promise<string> | undefined;
-    const getCorrectionRules = (): Promise<string> => {
-      correctionRulesPromise ??= (async () => {
-        const correctionRules = await loadCorrectionRulesMarkdown({
-          cwd,
-          path: correctionsPath,
-          campaign: flags.campaign,
-          sessionDate: flags["session-date"],
-        });
-        const correctionRulesContextPath = await writeCorrectionRulesContext({
+        const initialPasses = requiredPasses(
+          effectiveProfile.layout,
+          preparedChannelPaths,
+        );
+        const initialPassIds = initialPasses.map((pass) => pass.id);
+        const initialAvailable =
+          existingManifest?.chunks.map((chunk) => chunk.index) ?? [];
+        const initialAvailableByPass = Object.fromEntries(
+          initialPassIds.map((id) => [id, initialAvailable]),
+        );
+        const checkpoint = baseCheckpoint({
+          source: audioPath,
           outDir,
-          correctionRules,
-        });
-        this.process.stdout.write(`Loaded shared correction rules at ${correctionRulesContextPath}\n`);
-        return correctionRules;
-      })();
-      return correctionRulesPromise;
-    };
-
-    let transcriptForNotes = rawTranscriptPath;
-    let transcriptChunksForNotes = rawTranscriptionDir;
-    let correctionNotesForNotes: string | undefined;
-    let correctionNotesChunksForNotes: string | undefined;
-    const correctionReview = async (): Promise<"complete" | "skipped"> => {
-      const hybridContext = effectiveProfile.layout === "hybrid" && authoritativeChannelMap
-        ? await (async () => {
-            const alignmentDir = join(rawTranscriptionDir, "alignment");
-            const names = (await readdir(alignmentDir)).filter(isAlignmentArtifactName).sort();
-            const channelEvidenceByChunk = Object.fromEntries(await Promise.all(names.map(async (name) => {
-              const result = parseAlignmentResult(JSON.parse(await readFile(join(alignmentDir, name), "utf8")) as unknown);
-              return [name.replace(/\.json$/, ".md"), buildHybridCorrectionContext([result], authoritativeChannelMap).channelEvidence];
-            })));
-            return {
-              channelEvidenceByChunk,
-              channelMapContext: buildHybridCorrectionContext([], authoritativeChannelMap).channelMapContext,
-            };
-          })()
-        : undefined;
-      const correctionRules = await getCorrectionRules();
-      this.process.stdout.write("Building campaign glossary\n");
-      const glossaryPath = await writeGlossary({
-        contextRoot,
-        campaign: flags.campaign,
-        outDir,
-        excludePathFragments: [flags["session-date"]],
-      });
-      if (flags["skip-correction"]) {
-        checkpoint.stages.reconciliation.status = "pending";
-        return "skipped";
-      }
-
-      this.process.stdout.write("Running Codex correction pass\n");
-      await runCodexCorrection({
-        cwd,
-        transcriptPath: rawTranscriptPath,
-        glossaryPath,
-        correctionRules,
-        correctedTranscriptPath,
-        correctionNotesPath,
-        rawTranscriptionDir,
-        channelEvidenceByChunk: hybridContext?.channelEvidenceByChunk,
-        channelMapContext: hybridContext?.channelMapContext,
-        force: Boolean(flags.force),
-      });
-      transcriptForNotes = correctedTranscriptPath;
-      transcriptChunksForNotes = correctedTranscriptionDirFor(outDir);
-      correctionNotesForNotes = correctionNotesPath;
-      correctionNotesChunksForNotes = correctionNotesChunksDirFor(outDir);
-
-      if (legacyReviewSettings.provider === "hermes") {
-        this.process.stdout.write("Running Hermes transcript reconciliation\n");
-        const reviewPaths = await runHermesTranscriptReview({
-          cwd,
           campaign: flags.campaign,
           sessionDate: flags["session-date"],
+          normalizedPath,
+          chunksDir,
+          rawChunksDir,
           rawTranscriptionDir,
-          correctedTranscriptionDir: transcriptChunksForNotes,
-          correctionNotesChunksDir: correctionNotesChunksForNotes,
-          outDir,
-          reconciledTranscriptPath,
-          reviewNotesPath: hermesReviewNotesPath,
-          profile: legacyReviewSettings.hermesProfile,
-          maxTurns: legacyReviewSettings.hermesMaxTurns,
-          resume: shouldResume,
-          force: Boolean(flags.force),
-          onProgress: (message) => this.process.stdout.write(message),
-        });
-        transcriptForNotes = reviewPaths.reconciledTranscriptPath;
-        transcriptChunksForNotes = reviewPaths.reconciledTranscriptionDir;
-        correctionNotesForNotes = reviewPaths.reviewNotesPath;
-        correctionNotesChunksForNotes = reviewPaths.reviewNotesChunksDir;
-      }
-
-      checkpoint.stages.reconciliation.compatibility = {
-        correctionPass: {
-          status: "pending",
+          rawTranscriptPath,
           correctedTranscriptPath,
           correctionNotesPath,
-          reviewProvider: legacyReviewSettings.provider,
-          reconciledTranscriptPath: legacyReviewSettings.provider === "hermes" ? reconciledTranscriptPath : undefined,
-          hermesReviewNotesPath: legacyReviewSettings.provider === "hermes" ? hermesReviewNotesPath : undefined,
-          finalTranscriptPath: transcriptForNotes,
-          finalCorrectionNotesPath: correctionNotesForNotes,
-        },
-      };
-      return "complete";
-    };
-
-    let unifiedStageResult: Awaited<ReturnType<typeof runUnifiedReconciliationStage>> | undefined;
-    let unifiedStageOptionsPromise: Promise<UnifiedStageOptions> | undefined;
-    const getUnifiedStageOptions = (): Promise<UnifiedStageOptions> => {
-      unifiedStageOptionsPromise ??= (async () => {
-        const currentManifest = await readManifest(manifestPath);
-        if (!currentManifest) throw new Error(`Unified reconciliation requires a valid manifest at ${manifestPath}.`);
-        const alignments: Record<number, AlignmentResult> = {};
-        for (const chunk of currentManifest.chunks) {
-          const alignmentPath = join(rawTranscriptionDir, "alignment", `session_${String(chunk.index).padStart(3, "0")}.json`);
-          if (await exists(alignmentPath)) {
-            alignments[chunk.index] = parseAlignmentResult(JSON.parse(await readFile(alignmentPath, "utf8")) as unknown);
-            continue;
-          }
-          if (effectiveProfile.layout === "hybrid") {
-            throw new Error(`Unified reconciliation requires alignment evidence at ${alignmentPath}.`);
-          }
-          const stereoPass = { kind: "stereo", id: "stereo" } as const;
-          const transcript = parseChunkTranscript(JSON.parse(await readFile(passRawJsonPathFor(rawChunksDir, stereoPass, chunk.index), "utf8")) as unknown);
-          alignments[chunk.index] = parseAlignmentResult({
-            version: 1,
-            events: transcript.segments.map((segment) => ({
-              text: segment.text,
-              sourcePass: "stereo",
-              globalStart: chunk.overlapStart + segment.start,
-              globalEnd: chunk.overlapStart + segment.end,
-              ...(segment.confidence === undefined ? {} : { confidence: segment.confidence }),
-              alternatives: [],
-            })),
-          });
-        }
-        const correctionRules = await getCorrectionRules();
-        const glossaryPath = await writeGlossary({ contextRoot, campaign: flags.campaign, outDir, excludePathFragments: [flags["session-date"]] });
-        const glossary = evidenceLines(await readFile(glossaryPath, "utf8"));
-        const correctionRuleLines = evidenceLines(correctionRules);
-        const evidenceRevision = stableHash({
-          correctionRules: correctionRuleLines,
-          glossary,
-          channelMap: authoritativeChannelMap ?? null,
+          notesPath,
+          chunkCount: initialAvailable.length,
+          profile: effectiveProfile.name,
+          layout: effectiveProfile.layout,
+          requiredPassIds: initialPassIds,
+          availableByPass: initialAvailableByPass,
+          selection: existingManifest
+            ? parseChunkSelection(flags.chunks, initialAvailable)
+            : [],
           reconciliation: reconciliationSettings,
         });
-        return {
-          rootDir: outDir,
-          repositoryCwd: cwd,
-          manifest: currentManifest,
-          layout: reconciliationSettings.logicalChunks,
-          alignments,
-          sourceHash: await hashFileSha256(audioPath),
-          evidenceRevision,
-          provider: {
-            provider: "hermes",
-            model: "hermes-chat",
-            profile: reconciliationSettings.hermesProfile,
-          },
-          profile: reconciliationSettings.hermesProfile,
-          maxTurns: reconciliationSettings.hermesMaxTurns,
-          correctionRules: correctionRuleLines,
-          glossary,
-          channelMap: authoritativeChannelMap,
-          campaign: flags.campaign,
-          sessionDate: flags["session-date"],
-          promptVersion: reconciliationSettings.promptVersion,
-          schemaVersion: reconciliationSettings.schemaVersion,
-          tailMergeThresholdRatio: reconciliationSettings.tailMergeThresholdRatio,
-          tailMergeMaxDurationRatio: reconciliationSettings.tailMergeMaxDurationRatio,
-          resume: shouldResume,
-          force: Boolean(flags.force),
-        };
-      })();
-      return unifiedStageOptionsPromise;
-    };
+        if (existingCheckpoint && existingManifest) {
+          checkpoint.stages.transcribed_chunks.completedByPass =
+            Object.fromEntries(
+              initialPassIds.map((id) => [
+                id,
+                existingCheckpoint.stages.transcribed_chunks.completedByPass[
+                  id
+                ] ?? [],
+              ]),
+            );
+          checkpoint.stages.transcribed_chunks.cacheIdentityByPass =
+            existingCheckpoint.stages.transcribed_chunks.cacheIdentityByPass;
 
-    const reconciliationStage = async (): Promise<{ status: "valid" | "needs_review" | "invalid" | "skipped"; metadata: unknown }> => {
-      if (reconciliationSettings.provider === "off") {
-        checkpoint.stages.reconciliation.metadata = { ...checkpoint.stages.reconciliation.metadata, provider: "off", mode: "off", status: "pending" };
-        return { status: "skipped", metadata: checkpoint.stages.reconciliation.metadata };
-      }
-      if (reconciliationSettings.provider === "legacy") {
-        const status = await correctionReview();
-        const metadata = { ...checkpoint.stages.reconciliation.metadata, provider: "legacy" as const, mode: "legacy" as const, status: status === "complete" ? "valid" as const : "pending" as const };
-        return { status: status === "complete" ? "valid" : "skipped", metadata };
-      }
-      this.process.stdout.write("Running unified Hermes reconciliation\n");
-      try {
-        unifiedStageResult = await runUnifiedReconciliationStage({
-          ...(await getUnifiedStageOptions()),
-          onRetry: ({ chunkId, nextAttempt, maxAttempts }) => {
-            this.process.stderr.write(`Hermes timed out for ${chunkId}; retrying attempt ${nextAttempt}/${maxAttempts}. See private diagnostics for attempt details.\n`);
-          },
-        });
-        return { status: unifiedStageResult.status, metadata: unifiedStageResult.metadata };
-      } catch {
-        const metadata = {
-          ...checkpoint.stages.reconciliation.metadata,
-          provider: "hermes" as const,
-          mode: "enabled" as const,
-          status: "invalid" as const,
-          cacheIdentityByChunk: {},
-          completedChunkIds: [],
-          summarySafety: { pendingChunkIds: [], bypassChunkIds: [] },
-        };
-        this.process.stderr.write("Unified reconciliation failed; inspect private diagnostics before retrying.\n");
-        return { status: "invalid", metadata };
-      }
-    };
-
-    const notes = async (): Promise<"complete" | "skipped"> => {
-      if (flags["skip-notes"]) {
-        checkpoint.stages.notes_summary_pass = { status: "pending" };
-        return "skipped";
-      }
-      if ((await exists(notesPath)) && !flags.force && !shouldResume) {
-        throw new Error(`${notesPath} already exists. Pass --force to overwrite it.`);
-      }
-      const correctionRules = await getCorrectionRules();
-      this.process.stdout.write(`Generating Astro notes at ${notesPath}\n`);
-      const contextFiles = await collectContextFiles({
-        contextRoot,
-        campaign: flags.campaign,
-        outDir,
-        maxFiles: 40,
-        excludePathFragments: [flags["session-date"]],
-      });
-      if (reconciliationSettings.provider === "hermes") {
-        unifiedStageResult ??= await runUnifiedReconciliationStage({
-          ...(await getUnifiedStageOptions()),
-          resume: true,
-          force: false,
-        });
-        this.process.stdout.write(`Generating structured reconciliation notes at ${notesPath}\n`);
-        await runUnifiedStructuredNotes({
-          outputRoot: outDir,
-          chunks: unifiedStageResult.chunks,
-          jobs: unifiedStageResult.jobs,
-          notePath: notesPath,
-          summarization: {
-            repositoryCwd: cwd,
-            providerIdentity: { provider: "codex", model: "codex" },
-            model: summarizationSettings.model,
-            promptVersion: "summary.reconciliation.v1",
-            campaignContext: buildSummaryContextExcerpt(contextFiles),
-            correctionRules: evidenceLines(correctionRules),
-            campaign: flags.campaign,
-            sessionDate: flags["session-date"],
-            sceneGroupSize: flags["summary-scene-size"],
-            resume: shouldResume,
-            force: Boolean(flags.force),
-          },
-        });
-        return "complete";
-      }
-      if (flags["notes-backend"] === "ollama") {
-        await runOllamaHierarchicalNotes({
-          campaign: flags.campaign,
-          sessionDate: flags["session-date"],
-          transcriptPath: transcriptForNotes,
-          correctionNotesPath: correctionNotesForNotes,
-          contextExcerpt: buildContextExcerpt(contextFiles),
-          correctionRules,
-          notesPath,
-          outDir,
-          model: flags["notes-model"],
-          baseUrl: flags["ollama-url"],
-          chunkChars: flags["summary-chunk-chars"],
-          sceneGroupSize: flags["summary-scene-size"],
-          force: Boolean(flags.force),
-          resume: shouldResume,
-        });
-      } else {
-        const notesTranscriptPath = flags["skip-summary-cleanup"]
-          ? transcriptForNotes
-          : summaryTranscriptPath;
-        const notesTranscriptChunksDir = flags["skip-summary-cleanup"]
-          ? transcriptChunksForNotes
-          : summaryTranscriptionDirFor(outDir);
-        if (!flags["skip-summary-cleanup"]) {
-          this.process.stdout.write(`Preparing summary-safe transcript at ${summaryTranscriptPath}\n`);
-          await runCodexSummaryCleanup({
-            cwd,
-            transcriptPath: transcriptForNotes,
-            summaryTranscriptPath,
-            transcriptChunksDir: transcriptChunksForNotes,
-            outDir,
-            chunkChars: flags["summary-chunk-chars"],
-            onProgress: (message) => this.process.stdout.write(message),
-            force: Boolean(flags.force),
-            resume: shouldResume,
-          });
+          const previousRaw =
+            existingCheckpoint.stages.joining_raw_transcription;
+          if (
+            previousRaw.status === "complete" &&
+            previousRaw.path &&
+            (await exists(previousRaw.path))
+          ) {
+            checkpoint.stages.joining_raw_transcription = previousRaw;
+          }
+          const previousReconciliation =
+            existingCheckpoint.stages.reconciliation;
+          const expectedMode =
+            reconciliationSettings.provider === "off"
+              ? "off"
+              : reconciliationSettings.provider === "legacy"
+                ? "legacy"
+                : "enabled";
+          const reconciliationSettingsMatch =
+            previousReconciliation.metadata.provider ===
+              reconciliationSettings.provider &&
+            previousReconciliation.metadata.mode === expectedMode &&
+            previousReconciliation.metadata.promptVersion ===
+              reconciliationSettings.promptVersion &&
+            previousReconciliation.metadata.schemaVersion ===
+              reconciliationSettings.schemaVersion;
+          const canonicalArtifactsExist =
+            reconciliationSettingsMatch &&
+            (
+              await Promise.all(
+                previousReconciliation.metadata.completedChunkIds.map((id) =>
+                  exists(
+                    join(
+                      previousReconciliation.metadata.reconciliationDir,
+                      `${id}.json`,
+                    ),
+                  ),
+                ),
+              )
+            ).every(Boolean);
+          const joinedArtifactsExist = (
+            await Promise.all([
+              exists(previousReconciliation.metadata.reconciledTranscriptPath),
+              exists(previousReconciliation.metadata.reviewQueuePath),
+              previousReconciliation.metadata.summarySafety.pendingChunkIds
+                .length === 0
+                ? exists(previousReconciliation.metadata.summaryTranscriptPath)
+                : Promise.resolve(false),
+            ])
+          ).every(Boolean);
+          const legacyFinalTranscript =
+            previousReconciliation.compatibility?.correctionPass
+              .finalTranscriptPath;
+          const legacyArtifactsExist =
+            previousReconciliation.metadata.mode === "legacy" &&
+            previousReconciliation.status === "complete" &&
+            Boolean(legacyFinalTranscript) &&
+            (await exists(legacyFinalTranscript!));
+          const directStageReuseAllowed =
+            reconciliationSettings.provider !== "hermes";
+          if (
+            (directStageReuseAllowed &&
+              reconciliationSettingsMatch &&
+              previousReconciliation.status === "skipped") ||
+            (directStageReuseAllowed &&
+              reconciliationSettingsMatch &&
+              previousReconciliation.status === "complete" &&
+              canonicalArtifactsExist &&
+              joinedArtifactsExist) ||
+            (reconciliationSettingsMatch && legacyArtifactsExist)
+          ) {
+            checkpoint.stages.reconciliation = previousReconciliation;
+          }
+          const previousNotes = existingCheckpoint.stages.notes_summary_pass;
+          if (
+            previousNotes.status === "skipped" ||
+            (previousNotes.status === "complete" &&
+              previousNotes.notesPath &&
+              (await exists(previousNotes.notesPath)))
+          ) {
+            checkpoint.stages.notes_summary_pass = previousNotes;
+          }
+          if (
+            existingCheckpoint.stages.done.status === "complete" &&
+            checkpoint.stages.joining_raw_transcription.status === "complete" &&
+            ["complete", "skipped"].includes(
+              checkpoint.stages.reconciliation.status,
+            ) &&
+            ["complete", "skipped"].includes(
+              checkpoint.stages.notes_summary_pass.status,
+            )
+          ) {
+            checkpoint.stages.done = existingCheckpoint.stages.done;
+          }
         }
-        await runCodexNotes({
-          cwd,
-          campaign: flags.campaign,
-          sessionDate: flags["session-date"],
-          transcriptPath: notesTranscriptPath,
-          correctionNotesPath: correctionNotesForNotes,
-          transcriptChunksDir: notesTranscriptChunksDir,
-          correctionNotesChunksDir: correctionNotesChunksForNotes,
-          contextExcerpt: buildContextExcerpt(contextFiles),
-          correctionRules,
-          notesPath,
-          outDir,
-          chunkChars: flags["summary-chunk-chars"],
-          sceneGroupSize: flags["summary-scene-size"],
-          onProgress: (message) => this.process.stdout.write(message),
-          force: Boolean(flags.force),
-          resume: shouldResume,
-        });
-      }
-      return "complete";
-    };
 
-    const pipelineResult = await executeTranscriptionPipeline({
-      normalize,
-      prepareAudio,
-      checkpointPath,
-      checkpoint,
-      rawChunksDir,
-      rawTranscriptionDir,
-      chunksDir,
-      language: flags.language,
-      selection: flags.chunks,
-      force: Boolean(flags.force),
-      stopAfter: effectiveStopAfter,
-      source: audioPath,
-      backend: effectiveProfile.target.provider,
-      model: effectiveProfile.target.model,
-      silenceTagMinimumSeconds: flags["silence-tag-seconds"],
-      channelMap: authoritativeChannelMap,
-      measureEnergy: ({ path, start, duration }) => measureAudioWindowEnergy(path, start, duration),
-      dependencies: { nodejsWhisper: localRunner, fasterWhisper: localRunner },
-      onProgress: (message) => this.process.stdout.write(message),
-      stages: {
-        reconciliation: reconciliationStage,
-        correctionReview: reconciliationSettings.provider === "legacy" ? correctionReview : undefined,
-        notes,
-      },
-    });
-    if (effectiveStopAfter) {
-      this.process.stdout.write(`Stopped after ${effectiveStopAfter}: ${checkpointPath}\n`);
-      return;
-    }
-    if (pipelineResult.checkpoint.stages.transcribed_chunks.status !== "complete") {
-      this.process.stdout.write(`Pass transcription preparation saved; downstream stages remain pending: ${checkpointPath}\n`);
-      return;
-    }
-    this.process.stdout.write(`Transcript workflow complete: ${outDir}\n`);
-  },
-  parameters: {
-    flags,
-    positional: {
-      kind: "tuple",
-      parameters: [
-        {
-          parse: String,
-          brief: "Audio file to transcribe",
-        },
-      ],
+        const normalize = async (): Promise<void> => {
+          await mkdir(join(outDir, "normalized"), { recursive: true });
+          if (reusedNormalizedAudio) {
+            progress.info(
+              `Resuming with existing normalized audio at ${normalizedPath}\n`,
+            );
+            return;
+          }
+          progress.info(`Normalizing audio to ${normalizedPath}\n`);
+          await normalizeToFlac(
+            audioPath,
+            normalizedPath,
+            overwritePreparedAudio,
+            {
+              denoise: Boolean(flags.denoise),
+              voiceBoost: Boolean(flags["voice-boost"]),
+            },
+            {
+              sink: progress.sink,
+              totalSeconds: sourceProbe.durationSeconds,
+              render: progress.mediaReporter(
+                "Normalize audio",
+                sourceProbe.durationSeconds,
+                "normalization",
+              ).render,
+            },
+            sourceProbe.channels,
+          );
+        };
+
+        const prepareAudio = async (): Promise<
+          import("./pipeline.js").PreparedPipelineContext
+        > => {
+          await mkdir(chunksDir, { recursive: true });
+          await mkdir(rawChunksDir, { recursive: true });
+          await mkdir(rawTranscriptionDir, { recursive: true });
+
+          let preparedChannels: Manifest["preparedChannels"];
+          if (sourceProbe.channels > 1) {
+            const channelPaths = preparedChannelPaths.map(
+              (channel) => channel.path,
+            );
+            const allChannelsExist = (
+              await Promise.all(channelPaths.map(exists))
+            ).every(Boolean);
+            if (!reusedNormalizedAudio || !allChannelsExist) {
+              preparedChannels = await deriveMonoChannels({
+                stereoPath: normalizedPath,
+                channelsDir,
+                channelCount: sourceProbe.channels,
+                force: shouldOverwritePreparedChannels(
+                  overwritePreparedAudio,
+                  shouldResume,
+                  reusedNormalizedAudio,
+                  allChannelsExist,
+                ),
+                progress: {
+                  sink: progress.sink,
+                  render: progress.mediaReporter(
+                    "Derive mono channels",
+                    sourceProbe.durationSeconds,
+                    "audio-chunking",
+                  ).render,
+                },
+              });
+            } else {
+              preparedChannels = preparedChannelPaths;
+            }
+          } else {
+            preparedChannels = [];
+          }
+
+          const audioPasses = requiredPasses(
+            effectiveProfile.layout,
+            preparedChannels,
+          );
+          let manifest: Manifest | undefined;
+          let chunkPaths: string[] | undefined;
+          let silences = reusedNormalizedAudio
+            ? existingManifest?.silences
+            : undefined;
+          if (existingManifest && reusedNormalizedAudio) {
+            const reusableChunks = await canReusePassAudioChunks({
+              manifest: existingManifest,
+              chunksRoot: chunksDir,
+              passes: audioPasses,
+            });
+            manifest = existingManifest;
+            chunkPaths = reusableChunks.pathsByPass["stereo"] ?? [];
+            const missingStereo =
+              reusableChunks.missingIndexesByPass["stereo"] ?? [];
+            reusedAudioChunking = Object.values(
+              reusableChunks.missingIndexesByPass,
+            ).every((indexes) => indexes.length === 0);
+            if (missingStereo.length > 0) {
+              reusedAudioChunking = false;
+              await writeChunkFlacs(
+                normalizedPath,
+                chunksDir,
+                existingManifest.chunks.filter((chunk) =>
+                  missingStereo.includes(chunk.index),
+                ),
+                false,
+                {
+                  sink: progress.sink,
+                  render: progress.mediaReporter(
+                    "Write audio chunks",
+                    existingManifest.chunks.find((chunk) =>
+                      missingStereo.includes(chunk.index),
+                    )?.overlapEnd ?? sourceProbe.durationSeconds,
+                    "audio-chunking",
+                  ).render,
+                },
+              );
+            } else {
+              progress.info(
+                `Resuming with ${chunkPaths.length} existing audio chunks\\n`,
+              );
+            }
+          }
+
+          if (!manifest || !chunkPaths) {
+            progress.info("Detecting silence boundaries\n");
+            const durationSeconds =
+              await getAudioDurationSeconds(normalizedPath);
+            silences = await detectSilences(normalizedPath);
+            const plannedChunks = planChunks({
+              durationSeconds,
+              chunkSeconds: flags["chunk-seconds"],
+              boundarySearchSeconds: flags["boundary-search-seconds"],
+              boundaryMaxSearchSeconds: flags["boundary-max-search-seconds"],
+              overlapSeconds: flags["overlap-seconds"],
+              silences,
+            });
+            const chunks = flags["keep-silence"]
+              ? plannedChunks
+              : trimChunksToSpeech({
+                  chunks: plannedChunks,
+                  silences,
+                  paddingSeconds: flags["silence-padding-seconds"],
+                  minimumSpeechSeconds: flags["minimum-speech-seconds"],
+                });
+            manifest = {
+              version: 2,
+              source: audioPath,
+              sourceFingerprint,
+              sourceProbe,
+              normalizedStereo: normalizedPath,
+              preparedChannels,
+              audioSettings,
+              chunkSettings,
+              durationSeconds,
+              silences,
+              chunks,
+            };
+            await writeFile(
+              manifestPath,
+              `${JSON.stringify(manifest, null, 2)}\n`,
+              "utf8",
+            );
+            progress.info(`Writing ${chunks.length} FLAC chunks\n`);
+            chunkPaths = await writeChunkFlacs(
+              normalizedPath,
+              chunksDir,
+              chunks,
+              overwritePreparedAudio,
+              {
+                sink: progress.sink,
+                render: progress.mediaReporter(
+                  "Write audio chunks",
+                  chunks.at(-1)?.overlapEnd ?? sourceProbe.durationSeconds,
+                  "audio-chunking",
+                ).render,
+              },
+            );
+          }
+
+          if (!manifest || !chunkPaths) {
+            throw new Error(
+              "Audio manifest and chunk paths were not prepared.",
+            );
+          }
+          if (effectiveProfile.layout === "hybrid") {
+            for (const channel of preparedChannels) {
+              const pass = {
+                kind: "channel" as const,
+                id: channel.id,
+                channelIndex: channel.index,
+              };
+              const missingChunks = [];
+              for (const chunk of manifest.chunks) {
+                if (
+                  !(await exists(
+                    chunkAudioPathFor(chunksDir, pass, chunk.index),
+                  ))
+                )
+                  missingChunks.push(chunk);
+              }
+              if (missingChunks.length > 0) {
+                reusedAudioChunking = false;
+                progress.info(
+                  `Writing ${missingChunks.length} ${channel.id} channel chunks\n`,
+                );
+                await writeChunkFlacs(
+                  channel.path,
+                  chunksDir,
+                  missingChunks,
+                  Boolean(flags.force),
+                  {
+                    sink: progress.sink,
+                    render: progress.mediaReporter(
+                      "Write audio chunks",
+                      manifest?.chunks.at(-1)?.overlapEnd ??
+                        sourceProbe.durationSeconds,
+                      "audio-chunking",
+                    ).render,
+                  },
+                  pass,
+                );
+              }
+            }
+          }
+          if (!silences) {
+            reusedAudioChunking = false;
+            progress.info("Detecting silence boundaries for transcript tags\n");
+            silences = await detectSilences(normalizedPath);
+            manifest = { ...manifest, silences };
+          }
+          return {
+            manifest,
+            profile: effectiveProfile,
+            rawChunksDir,
+            rawTranscriptionDir,
+            chunksDir,
+            source: audioPath,
+            backend: effectiveProfile.target.provider,
+            model: effectiveProfile.target.model,
+            silenceTagMinimumSeconds: flags["silence-tag-seconds"],
+            channelMap: authoritativeChannelMap,
+            stageReuse: { audioChunking: reusedAudioChunking },
+          };
+        };
+
+        const localRunner = async (
+          request: import("./sttBackend.js").TranscribePassRequest,
+        ): Promise<ChunkTranscript[]> => {
+          const tempDir = join(
+            outDir,
+            ".stt-run",
+            `${process.pid}-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+          );
+          await mkdir(tempDir, { recursive: true });
+          try {
+            const paths =
+              request.target.provider === "nodejs-whisper"
+                ? await transcribeChunksWithNodeWhisper({
+                    chunkPaths: request.chunks.map((chunk) => chunk.path),
+                    outDir: tempDir,
+                    model: request.target.model,
+                    language: request.language,
+                    modelRootPath: flags["node-whisper-model-root"],
+                    autoDownloadModel: Boolean(flags["auto-download-model"]),
+                    device: flags.device,
+                    force: true,
+                    onLog: (message) => progress.debug(message),
+                  })
+                : await transcribeChunksWithLocalWhisper({
+                    chunkPaths: request.chunks.map((chunk) => chunk.path),
+                    outDir: tempDir,
+                    model: request.target.model,
+                    language: request.language,
+                    device: flags.device,
+                    computeType: flags["compute-type"],
+                    python: flags.python,
+                    force: true,
+                    onLog: (message) => progress.debug(message),
+                  });
+            return Promise.all(
+              paths.map(
+                async (path) =>
+                  JSON.parse(await readFile(path, "utf8")) as ChunkTranscript,
+              ),
+            );
+          } finally {
+            await rm(tempDir, { recursive: true, force: true });
+          }
+        };
+        const effectiveStopAfter =
+          forcedStopAfter ?? parseStopAfter(flags["stop-after"]);
+        let correctionRulesPromise: Promise<string> | undefined;
+        const getCorrectionRules = (): Promise<string> => {
+          correctionRulesPromise ??= (async () => {
+            const correctionRules = await loadCorrectionRulesMarkdown({
+              cwd,
+              path: correctionsPath,
+              campaign: flags.campaign,
+              sessionDate: flags["session-date"],
+            });
+            const correctionRulesContextPath =
+              await writeCorrectionRulesContext({
+                outDir,
+                correctionRules,
+              });
+            progress.info(
+              `Loaded shared correction rules at ${correctionRulesContextPath}\n`,
+            );
+            return correctionRules;
+          })();
+          return correctionRulesPromise;
+        };
+
+        let transcriptForNotes = rawTranscriptPath;
+        let transcriptChunksForNotes = rawTranscriptionDir;
+        let correctionNotesForNotes: string | undefined;
+        let correctionNotesChunksForNotes: string | undefined;
+        const correctionReview = async (): Promise<"complete" | "skipped"> => {
+          const hybridContext =
+            effectiveProfile.layout === "hybrid" && authoritativeChannelMap
+              ? await (async () => {
+                  const alignmentDir = join(rawTranscriptionDir, "alignment");
+                  const names = (await readdir(alignmentDir))
+                    .filter(isAlignmentArtifactName)
+                    .sort();
+                  const channelEvidenceByChunk = Object.fromEntries(
+                    await Promise.all(
+                      names.map(async (name) => {
+                        const result = parseAlignmentResult(
+                          JSON.parse(
+                            await readFile(join(alignmentDir, name), "utf8"),
+                          ) as unknown,
+                        );
+                        return [
+                          name.replace(/\.json$/, ".md"),
+                          buildHybridCorrectionContext(
+                            [result],
+                            authoritativeChannelMap,
+                          ).channelEvidence,
+                        ];
+                      }),
+                    ),
+                  );
+                  return {
+                    channelEvidenceByChunk,
+                    channelMapContext: buildHybridCorrectionContext(
+                      [],
+                      authoritativeChannelMap,
+                    ).channelMapContext,
+                  };
+                })()
+              : undefined;
+          const correctionRules = await getCorrectionRules();
+          progress.info("Building campaign glossary\n");
+          const glossaryPath = await writeGlossary({
+            contextRoot,
+            campaign: flags.campaign,
+            outDir,
+            excludePathFragments: [flags["session-date"]],
+          });
+          if (flags["skip-correction"]) {
+            checkpoint.stages.reconciliation.status = "pending";
+            return "skipped";
+          }
+
+          progress.info("Running Codex correction pass\n");
+          await runCodexCorrection({
+            cwd,
+            transcriptPath: rawTranscriptPath,
+            glossaryPath,
+            correctionRules,
+            correctedTranscriptPath,
+            correctionNotesPath,
+            rawTranscriptionDir,
+            channelEvidenceByChunk: hybridContext?.channelEvidenceByChunk,
+            channelMapContext: hybridContext?.channelMapContext,
+            force: Boolean(flags.force),
+          });
+          transcriptForNotes = correctedTranscriptPath;
+          transcriptChunksForNotes = correctedTranscriptionDirFor(outDir);
+          correctionNotesForNotes = correctionNotesPath;
+          correctionNotesChunksForNotes = correctionNotesChunksDirFor(outDir);
+
+          if (legacyReviewSettings.provider === "hermes") {
+            progress.info("Running Hermes transcript reconciliation\n");
+            const reviewPaths = await runHermesTranscriptReview({
+              cwd,
+              campaign: flags.campaign,
+              sessionDate: flags["session-date"],
+              rawTranscriptionDir,
+              correctedTranscriptionDir: transcriptChunksForNotes,
+              correctionNotesChunksDir: correctionNotesChunksForNotes,
+              outDir,
+              reconciledTranscriptPath,
+              reviewNotesPath: hermesReviewNotesPath,
+              profile: legacyReviewSettings.hermesProfile,
+              maxTurns: legacyReviewSettings.hermesMaxTurns,
+              resume: shouldResume,
+              force: Boolean(flags.force),
+              onProgress: (message) => progress.info(message),
+            });
+            transcriptForNotes = reviewPaths.reconciledTranscriptPath;
+            transcriptChunksForNotes = reviewPaths.reconciledTranscriptionDir;
+            correctionNotesForNotes = reviewPaths.reviewNotesPath;
+            correctionNotesChunksForNotes = reviewPaths.reviewNotesChunksDir;
+          }
+
+          checkpoint.stages.reconciliation.compatibility = {
+            correctionPass: {
+              status: "pending",
+              correctedTranscriptPath,
+              correctionNotesPath,
+              reviewProvider: legacyReviewSettings.provider,
+              reconciledTranscriptPath:
+                legacyReviewSettings.provider === "hermes"
+                  ? reconciledTranscriptPath
+                  : undefined,
+              hermesReviewNotesPath:
+                legacyReviewSettings.provider === "hermes"
+                  ? hermesReviewNotesPath
+                  : undefined,
+              finalTranscriptPath: transcriptForNotes,
+              finalCorrectionNotesPath: correctionNotesForNotes,
+            },
+          };
+          return "complete";
+        };
+
+        let unifiedStageResult:
+          | Awaited<ReturnType<typeof runUnifiedReconciliationStage>>
+          | undefined;
+        let unifiedStageOptionsPromise:
+          | Promise<UnifiedStageOptions>
+          | undefined;
+        const getUnifiedStageOptions = (): Promise<UnifiedStageOptions> => {
+          unifiedStageOptionsPromise ??= (async () => {
+            const currentManifest = await readManifest(manifestPath);
+            if (!currentManifest)
+              throw new Error(
+                `Unified reconciliation requires a valid manifest at ${manifestPath}.`,
+              );
+            const alignments: Record<number, AlignmentResult> = {};
+            for (const chunk of currentManifest.chunks) {
+              const alignmentPath = join(
+                rawTranscriptionDir,
+                "alignment",
+                `session_${String(chunk.index).padStart(3, "0")}.json`,
+              );
+              if (await exists(alignmentPath)) {
+                alignments[chunk.index] = parseAlignmentResult(
+                  JSON.parse(await readFile(alignmentPath, "utf8")) as unknown,
+                );
+                continue;
+              }
+              if (effectiveProfile.layout === "hybrid") {
+                throw new Error(
+                  `Unified reconciliation requires alignment evidence at ${alignmentPath}.`,
+                );
+              }
+              const stereoPass = { kind: "stereo", id: "stereo" } as const;
+              const transcript = parseChunkTranscript(
+                JSON.parse(
+                  await readFile(
+                    passRawJsonPathFor(rawChunksDir, stereoPass, chunk.index),
+                    "utf8",
+                  ),
+                ) as unknown,
+              );
+              alignments[chunk.index] = parseAlignmentResult({
+                version: 1,
+                events: transcript.segments.map((segment) => ({
+                  text: segment.text,
+                  sourcePass: "stereo",
+                  globalStart: chunk.overlapStart + segment.start,
+                  globalEnd: chunk.overlapStart + segment.end,
+                  ...(segment.confidence === undefined
+                    ? {}
+                    : { confidence: segment.confidence }),
+                  alternatives: [],
+                })),
+              });
+            }
+            const correctionRules = await getCorrectionRules();
+            const glossaryPath = await writeGlossary({
+              contextRoot,
+              campaign: flags.campaign,
+              outDir,
+              excludePathFragments: [flags["session-date"]],
+            });
+            const glossary = evidenceLines(
+              await readFile(glossaryPath, "utf8"),
+            );
+            const correctionRuleLines = evidenceLines(correctionRules);
+            const evidenceRevision = stableHash({
+              correctionRules: correctionRuleLines,
+              glossary,
+              channelMap: authoritativeChannelMap ?? null,
+              reconciliation: reconciliationSettings,
+            });
+            return {
+              rootDir: outDir,
+              repositoryCwd: cwd,
+              manifest: currentManifest,
+              layout: reconciliationSettings.logicalChunks,
+              alignments,
+              sourceHash: await hashFileSha256(audioPath),
+              evidenceRevision,
+              provider: {
+                provider: "hermes",
+                model: "hermes-chat",
+                profile: reconciliationSettings.hermesProfile,
+              },
+              profile: reconciliationSettings.hermesProfile,
+              maxTurns: reconciliationSettings.hermesMaxTurns,
+              correctionRules: correctionRuleLines,
+              glossary,
+              channelMap: authoritativeChannelMap,
+              campaign: flags.campaign,
+              sessionDate: flags["session-date"],
+              promptVersion: reconciliationSettings.promptVersion,
+              schemaVersion: reconciliationSettings.schemaVersion,
+              tailMergeThresholdRatio:
+                reconciliationSettings.tailMergeThresholdRatio,
+              tailMergeMaxDurationRatio:
+                reconciliationSettings.tailMergeMaxDurationRatio,
+              resume: shouldResume,
+              force: Boolean(flags.force),
+            };
+          })();
+          return unifiedStageOptionsPromise;
+        };
+
+        const reconciliationStage = async (): Promise<{
+          status: "valid" | "needs_review" | "invalid" | "skipped";
+          metadata: unknown;
+        }> => {
+          if (reconciliationSettings.provider === "off") {
+            checkpoint.stages.reconciliation.metadata = {
+              ...checkpoint.stages.reconciliation.metadata,
+              provider: "off",
+              mode: "off",
+              status: "pending",
+            };
+            return {
+              status: "skipped",
+              metadata: checkpoint.stages.reconciliation.metadata,
+            };
+          }
+          if (reconciliationSettings.provider === "legacy") {
+            const status = await correctionReview();
+            const metadata = {
+              ...checkpoint.stages.reconciliation.metadata,
+              provider: "legacy" as const,
+              mode: "legacy" as const,
+              status:
+                status === "complete"
+                  ? ("valid" as const)
+                  : ("pending" as const),
+            };
+            return {
+              status: status === "complete" ? "valid" : "skipped",
+              metadata,
+            };
+          }
+          progress.info("Running unified Hermes reconciliation\n");
+          try {
+            unifiedStageResult = await runUnifiedReconciliationStage({
+              ...(await getUnifiedStageOptions()),
+              onChunkProgress: ({ index, total, status, attempt, maxAttempts }) =>
+                reportWorkUnit("reconciliation", {
+                  operation: "Reconcile chunk",
+                  status,
+                  workUnit: { label: "chunk", index, total },
+                  attempt,
+                  maxAttempts,
+                }),
+            });
+            return {
+              status: unifiedStageResult.status,
+              metadata: unifiedStageResult.metadata,
+            };
+          } catch {
+            const metadata = {
+              ...checkpoint.stages.reconciliation.metadata,
+              provider: "hermes" as const,
+              mode: "enabled" as const,
+              status: "invalid" as const,
+              cacheIdentityByChunk: {},
+              completedChunkIds: [],
+              summarySafety: { pendingChunkIds: [], bypassChunkIds: [] },
+            };
+            progress.error(
+              "Unified reconciliation failed; inspect private diagnostics before retrying.\n",
+            );
+            return { status: "invalid", metadata };
+          }
+        };
+
+        const notes = async (): Promise<"complete" | "skipped"> => {
+          if (flags["skip-notes"]) {
+            checkpoint.stages.notes_summary_pass = { status: "pending" };
+            return "skipped";
+          }
+          if ((await exists(notesPath)) && !flags.force && !shouldResume) {
+            throw new Error(
+              `${notesPath} already exists. Pass --force to overwrite it.`,
+            );
+          }
+          const correctionRules = await getCorrectionRules();
+          progress.info(`Generating Astro notes at ${notesPath}\n`);
+          const contextFiles = await collectContextFiles({
+            contextRoot,
+            campaign: flags.campaign,
+            outDir,
+            maxFiles: 40,
+            excludePathFragments: [flags["session-date"]],
+          });
+          if (reconciliationSettings.provider === "hermes") {
+            unifiedStageResult ??= await runUnifiedReconciliationStage({
+              ...(await getUnifiedStageOptions()),
+              resume: true,
+              force: false,
+              onChunkProgress: ({ index, total, status, attempt, maxAttempts }) =>
+                reportWorkUnit("reconciliation", {
+                  operation: "Reconcile chunk",
+                  status,
+                  workUnit: { label: "chunk", index, total },
+                  attempt,
+                  maxAttempts,
+                }),
+            });
+            progress.info(
+              `Generating structured reconciliation notes at ${notesPath}\n`,
+            );
+            await runUnifiedStructuredNotes({
+              outputRoot: outDir,
+              chunks: unifiedStageResult.chunks,
+              jobs: unifiedStageResult.jobs,
+              notePath: notesPath,
+              summarization: {
+                repositoryCwd: cwd,
+                providerIdentity: { provider: "codex", model: "codex" },
+                model: summarizationSettings.model,
+                promptVersion: "summary.reconciliation.v1",
+                campaignContext: buildSummaryContextExcerpt(contextFiles),
+                correctionRules: evidenceLines(correctionRules),
+                campaign: flags.campaign,
+                sessionDate: flags["session-date"],
+                sceneGroupSize: flags["summary-scene-size"],
+                resume: shouldResume,
+                force: Boolean(flags.force),
+                onWorkUnit: (event) => reportWorkUnit("notes", event),
+              },
+            });
+            return "complete";
+          }
+          if (flags["notes-backend"] === "ollama") {
+            await runOllamaHierarchicalNotes({
+              campaign: flags.campaign,
+              sessionDate: flags["session-date"],
+              transcriptPath: transcriptForNotes,
+              correctionNotesPath: correctionNotesForNotes,
+              contextExcerpt: buildContextExcerpt(contextFiles),
+              correctionRules,
+              notesPath,
+              outDir,
+              model: flags["notes-model"],
+              baseUrl: flags["ollama-url"],
+              chunkChars: flags["summary-chunk-chars"],
+              sceneGroupSize: flags["summary-scene-size"],
+              onWorkUnit: (event) => reportWorkUnit("notes", event),
+              force: Boolean(flags.force),
+              resume: shouldResume,
+            });
+          } else {
+            const notesTranscriptPath = flags["skip-summary-cleanup"]
+              ? transcriptForNotes
+              : summaryTranscriptPath;
+            const notesTranscriptChunksDir = flags["skip-summary-cleanup"]
+              ? transcriptChunksForNotes
+              : summaryTranscriptionDirFor(outDir);
+            if (!flags["skip-summary-cleanup"]) {
+              progress.info(
+                `Preparing summary-safe transcript at ${summaryTranscriptPath}\n`,
+              );
+              await runCodexSummaryCleanup({
+                cwd,
+                transcriptPath: transcriptForNotes,
+                summaryTranscriptPath,
+                transcriptChunksDir: transcriptChunksForNotes,
+                outDir,
+                chunkChars: flags["summary-chunk-chars"],
+                onProgress: (message) => progress.info(message),
+                onWorkUnit: (event) => reportWorkUnit("notes", event),
+                force: Boolean(flags.force),
+                resume: shouldResume,
+              });
+            }
+            await runCodexNotes({
+              cwd,
+              campaign: flags.campaign,
+              sessionDate: flags["session-date"],
+              transcriptPath: notesTranscriptPath,
+              correctionNotesPath: correctionNotesForNotes,
+              transcriptChunksDir: notesTranscriptChunksDir,
+              correctionNotesChunksDir: correctionNotesChunksForNotes,
+              contextExcerpt: buildContextExcerpt(contextFiles),
+              correctionRules,
+              notesPath,
+              outDir,
+              chunkChars: flags["summary-chunk-chars"],
+              sceneGroupSize: flags["summary-scene-size"],
+              onProgress: (message) => progress.info(message),
+              onWorkUnit: (event) => reportWorkUnit("notes", event),
+              force: Boolean(flags.force),
+              resume: shouldResume,
+            });
+          }
+          return "complete";
+        };
+
+        const pipelineResult = await executeTranscriptionPipeline({
+          normalize,
+          prepareAudio,
+          checkpointPath,
+          checkpoint,
+          rawChunksDir,
+          rawTranscriptionDir,
+          chunksDir,
+          language: flags.language,
+          selection: flags.chunks,
+          force: Boolean(flags.force),
+          stopAfter: effectiveStopAfter,
+          source: audioPath,
+          backend: effectiveProfile.target.provider,
+          model: effectiveProfile.target.model,
+          silenceTagMinimumSeconds: flags["silence-tag-seconds"],
+          channelMap: authoritativeChannelMap,
+          measureEnergy: ({ path, start, duration }) =>
+            measureAudioWindowEnergy(path, start, duration),
+          dependencies: {
+            nodejsWhisper: localRunner,
+            fasterWhisper: localRunner,
+          },
+          onProgress: (message) => progress.info(message),
+          progress,
+          stageReuse: { normalization: reusedNormalizedAudio },
+          stages: {
+            reconciliation: reconciliationStage,
+            correctionReview:
+              reconciliationSettings.provider === "legacy"
+                ? correctionReview
+                : undefined,
+            notes,
+          },
+        });
+        if (effectiveStopAfter) {
+          progress.finish(`Stopped after ${effectiveStopAfter}`);
+          return;
+        }
+        if (
+          pipelineResult.checkpoint.stages.transcribed_chunks.status !==
+          "complete"
+        ) {
+          progress.finish(
+            "Pass transcription preparation saved; downstream stages remain pending",
+          );
+          return;
+        }
+        progress.finish("Transcript workflow complete");
+      } catch (error) {
+        progress.error(error instanceof Error ? error.message : String(error));
+        throw error;
+      } finally {
+        await progress.close();
+      }
     },
-  },
-  docs: {
-    brief,
-  },
+    parameters: {
+      flags,
+      positional: {
+        kind: "tuple",
+        parameters: [
+          {
+            parse: String,
+            brief: "Audio file to transcribe",
+          },
+        ],
+      },
+    },
+    docs: {
+      brief,
+    },
   });
 }
 
 export const transcribeRunCommand = buildTranscribeRunCommand();
-export const transcribePrepareCommand = buildTranscribeRunCommand("audio-chunking", "Normalize and chunk campaign audio without transcribing");
+export const transcribePrepareCommand = buildTranscribeRunCommand(
+  "audio-chunking",
+  "Normalize and chunk campaign audio without transcribing",
+);
 
 export const transcribeCommand = buildRouteMap({
   routes: {

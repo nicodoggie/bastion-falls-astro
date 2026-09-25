@@ -1,867 +1,982 @@
 import {
-	mkdir,
-	mkdtemp,
-	readdir,
-	readFile,
-	rm,
-	writeFile,
+  mkdir,
+  mkdtemp,
+  readdir,
+  readFile,
+  rm,
+  writeFile,
 } from "node:fs/promises";
 import { basename, dirname, join } from "node:path";
 import { tmpdir } from "node:os";
 
-import { buildNotesFrontmatter } from "./notes.js";
+import { bindNotesFrontmatter, buildNotesFrontmatter } from "./notes.js";
 import { splitTextByLines } from "./ollamaNotes.js";
 import { runCommand } from "./process.js";
+import type { ProgressWorkUnitHook } from "./progress.js";
 
 export interface CodexCorrectionOptions {
-	cwd: string;
-	transcriptPath: string;
-	glossaryPath: string;
-	correctionRules?: string;
-	channelEvidence?: string;
-	channelEvidenceByChunk?: Record<string, string>;
-	channelMapContext?: string;
-	correctedTranscriptPath: string;
-	correctionNotesPath: string;
-	rawTranscriptionDir?: string;
-	force?: boolean;
+  cwd: string;
+  transcriptPath: string;
+  glossaryPath: string;
+  correctionRules?: string;
+  channelEvidence?: string;
+  channelEvidenceByChunk?: Record<string, string>;
+  channelMapContext?: string;
+  correctedTranscriptPath: string;
+  correctionNotesPath: string;
+  rawTranscriptionDir?: string;
+  force?: boolean;
 }
 
 export interface CodexNotesOptions {
-	cwd: string;
-	campaign: string;
-	sessionDate: string;
-	transcriptPath: string;
-	correctionNotesPath?: string;
-	transcriptChunksDir?: string;
-	correctionNotesChunksDir?: string;
-	contextExcerpt: string;
-	correctionRules?: string;
-	notesPath: string;
-	outDir?: string;
-	chunkChars?: number;
-	sceneGroupSize?: number;
-	onProgress?: (message: string) => void;
-	force?: boolean;
-	resume?: boolean;
+  cwd: string;
+  campaign: string;
+  sessionDate: string;
+  transcriptPath: string;
+  correctionNotesPath?: string;
+  transcriptChunksDir?: string;
+  correctionNotesChunksDir?: string;
+  contextExcerpt: string;
+  correctionRules?: string;
+  notesPath: string;
+  outDir?: string;
+  chunkChars?: number;
+  sceneGroupSize?: number;
+  onProgress?: (message: string) => void;
+  onWorkUnit?: ProgressWorkUnitHook;
+  force?: boolean;
+  resume?: boolean;
 }
 
 export interface CodexSummaryCleanupOptions {
-	cwd: string;
-	transcriptPath: string;
-	summaryTranscriptPath: string;
-	transcriptChunksDir?: string;
-	outDir: string;
-	chunkChars?: number;
-	onProgress?: (message: string) => void;
-	force?: boolean;
-	resume?: boolean;
+  cwd: string;
+  transcriptPath: string;
+  summaryTranscriptPath: string;
+  transcriptChunksDir?: string;
+  outDir: string;
+  chunkChars?: number;
+  onProgress?: (message: string) => void;
+  onWorkUnit?: ProgressWorkUnitHook;
+  force?: boolean;
+  resume?: boolean;
 }
 
 interface NamedTextChunk {
-	name: string;
-	text: string;
+  name: string;
+  text: string;
 }
 
 export function buildCodexExecArgs(options: {
-	cwd: string;
-	outputPath: string;
-	fast?: boolean;
-	model?: string;
+  cwd: string;
+  outputPath: string;
+  fast?: boolean;
+  model?: string;
 }): string[] {
-	const fast = options.fast ?? process.env["BFCLI_CODEX_FAST"] === "1";
-	return [
-		"exec",
-		...(options.model ? ["-m", options.model] : []),
-		...(fast ? ["-c", 'service_tier="priority"'] : []),
-		"--sandbox",
-		"read-only",
-		"-C",
-		options.cwd,
-		"-o",
-		options.outputPath,
-		"-",
-	];
+  const fast = options.fast ?? process.env["BFCLI_CODEX_FAST"] === "1";
+  return [
+    "exec",
+    ...(options.model ? ["-m", options.model] : []),
+    ...(fast ? ["-c", 'service_tier="priority"'] : []),
+    "--sandbox",
+    "read-only",
+    "-C",
+    options.cwd,
+    "-o",
+    options.outputPath,
+    "-",
+  ];
 }
 
 async function codexExecToFile(
-	cwd: string,
-	prompt: string,
-	outputPath: string,
-	fast?: boolean,
+  cwd: string,
+  prompt: string,
+  outputPath: string,
+  fast?: boolean,
 ): Promise<void> {
-	await runCommand(
-		"codex",
-		buildCodexExecArgs({ cwd, outputPath, fast }),
-		{
-			cwd,
-			input: prompt,
-		},
-	);
+  await runCommand("codex", buildCodexExecArgs({ cwd, outputPath, fast }), {
+    cwd,
+    input: prompt,
+  });
 }
 
 async function exists(path: string): Promise<boolean> {
-	try {
-		await readFile(path, "utf8");
-		return true;
-	} catch {
-		return false;
-	}
+  try {
+    await readFile(path, "utf8");
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function transcriptChunkIndex(path: string): number {
-	const match = /session_(\d+)\.md$/.exec(basename(path));
-	return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
+  const match = /session_(\d+)\.md$/.exec(basename(path));
+  return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
 }
 
 export function naturalTranscriptChunkSort(a: string, b: string): number {
-	const indexDelta = transcriptChunkIndex(a) - transcriptChunkIndex(b);
-	return indexDelta === 0 ? a.localeCompare(b) : indexDelta;
+  const indexDelta = transcriptChunkIndex(a) - transcriptChunkIndex(b);
+  return indexDelta === 0 ? a.localeCompare(b) : indexDelta;
 }
 
 export function joinCorrectedTranscriptChunks(chunks: string[]): string {
-	return `${chunks
-		.map((chunk) => chunk.trim())
-		.filter(Boolean)
-		.join("\n")}\n`;
+  return `${chunks
+    .map((chunk) => chunk.trim())
+    .filter(Boolean)
+    .join("\n")}\n`;
 }
 
 export function correctedTranscriptionDirFor(outDir: string): string {
-	return join(outDir, "corrected_transcription");
+  return join(outDir, "corrected_transcription");
 }
 
 export function correctionNotesChunksDirFor(outDir: string): string {
-	return join(outDir, "correction_notes_chunks");
+  return join(outDir, "correction_notes_chunks");
 }
 
 export function correctionContextChunksDirFor(outDir: string): string {
-	return join(outDir, "correction_context_chunks");
+  return join(outDir, "correction_context_chunks");
 }
 
 export function correctionEvidenceForChunk(options: {
-	chunkName: string;
-	channelEvidence?: string;
-	channelEvidenceByChunk?: Record<string, string>;
+  chunkName: string;
+  channelEvidence?: string;
+  channelEvidenceByChunk?: Record<string, string>;
 }): string | undefined {
-	if (options.channelEvidenceByChunk) {
-		return options.channelEvidenceByChunk[options.chunkName];
-	}
-	return options.channelEvidence;
+  if (options.channelEvidenceByChunk) {
+    return options.channelEvidenceByChunk[options.chunkName];
+  }
+  return options.channelEvidence;
 }
 
 export function codexNotesDirFor(outDir: string): string {
-	return join(outDir, "codex_notes");
+  return join(outDir, "codex_notes");
 }
 
 export function summaryTranscriptionDirFor(outDir: string): string {
-	return join(outDir, "summary_transcription");
+  return join(outDir, "summary_transcription");
 }
 
 export function buildCodexRollingContextPrompt(options: {
-	previousContext: string;
-	latestSummary: string;
+  previousContext: string;
+  latestSummary: string;
 }): string {
-	return [
-		"Update the rolling campaign context for future D&D transcript chunks.",
-		"Keep only details likely to disambiguate later speech: active locations, NPCs, factions, goals, unresolved hooks, aliases, spell/item names, and uncertain terms.",
-		"Drop resolved minutiae and repeated phrasing. Keep the result concise and organized as bullets.",
-		"",
-		"<previous-rolling-context>",
-		options.previousContext.trim() || "None yet.",
-		"</previous-rolling-context>",
-		"",
-		"<latest-chunk-summary>",
-		options.latestSummary.trim(),
-		"</latest-chunk-summary>",
-	].join("\n");
+  return [
+    "Update the rolling campaign context for future D&D transcript chunks.",
+    "Keep only details likely to disambiguate later speech: active locations, NPCs, factions, goals, unresolved hooks, aliases, spell/item names, and uncertain terms.",
+    "Drop resolved minutiae and repeated phrasing. Keep the result concise and organized as bullets.",
+    "",
+    "<previous-rolling-context>",
+    options.previousContext.trim() || "None yet.",
+    "</previous-rolling-context>",
+    "",
+    "<latest-chunk-summary>",
+    options.latestSummary.trim(),
+    "</latest-chunk-summary>",
+  ].join("\n");
 }
 
 export function buildSummaryCleanupPrompt(options: {
-	transcriptChunk: string;
+  transcriptChunk: string;
 }): string {
-	return [
-		"Prepare this D&D transcript chunk for downstream summarization.",
-		"Preserve timestamps, line order, story meaning, speaker intent, names, and uncertainty.",
-		"Use neutral, summary-safe wording for content that could trigger a policy refusal in a later notes-generation pass.",
-		"Do not summarize, omit, moralize, or add new facts. Output only the cleaned transcript Markdown for this chunk.",
-		"",
-		"<transcript-chunk>",
-		options.transcriptChunk,
-		"</transcript-chunk>",
-	].join("\n");
+  return [
+    "Prepare this D&D transcript chunk for downstream summarization.",
+    "Preserve timestamps, line order, story meaning, speaker intent, names, and uncertainty.",
+    "Use neutral, summary-safe wording for content that could trigger a policy refusal in a later notes-generation pass.",
+    "Do not summarize, omit, moralize, or add new facts. Output only the cleaned transcript Markdown for this chunk.",
+    "",
+    "<transcript-chunk>",
+    options.transcriptChunk,
+    "</transcript-chunk>",
+  ].join("\n");
 }
 
 function correctionRulesSection(correctionRules: string | undefined): string[] {
-	return [
-		"<correction-rules>",
-		correctionRules?.trim() || "None.",
-		"</correction-rules>",
-	];
+  return [
+    "<correction-rules>",
+    correctionRules?.trim() || "None.",
+    "</correction-rules>",
+  ];
 }
 
 export function buildCodexCorrectionPrompt(options: {
-	rollingContext?: string;
-	glossary: string;
-	correctionRules?: string;
-	channelEvidence?: string;
-	channelMapContext?: string;
-	transcript: string;
+  rollingContext?: string;
+  glossary: string;
+  correctionRules?: string;
+  channelEvidence?: string;
+  channelMapContext?: string;
+  transcript: string;
 }): string {
-	return [
-		"Correct this D&D campaign transcript chunk.",
-		"Preserve timestamps, line order, original language, and conversational style.",
-		"Only fix likely speech-to-text mistakes, especially names, places, D&D rules terms, and campaign lore terms.",
-		"Apply shared correction rules when relevant. Do not summarize. Output only the corrected transcript Markdown for this chunk.",
-		"",
-		"<prior-session-context>",
-		options.rollingContext?.trim() || "None yet.",
-		"</prior-session-context>",
-		"",
-		"<campaign-glossary>",
-		options.glossary,
-		"</campaign-glossary>",
-		"",
-		...correctionRulesSection(options.correctionRules),
-		"",
-		"<physical-speaker-evidence>",
-		options.channelEvidence?.trim() || "None.",
-		"</physical-speaker-evidence>",
-		"<channel-map-context>",
-		options.channelMapContext?.trim() || "None.",
-		"</channel-map-context>",
-		"Physical speaker labels are authoritative evidence for who spoke. Expected characters are possibilities only; never assign a character from roster membership alone. Use cleaner channel alternatives for spelling while preserving meaning and chronology.",
-		"",
-		"<transcript-chunk>",
-		options.transcript,
-		"</transcript-chunk>",
-	].join("\n");
+  return [
+    "Correct this D&D campaign transcript chunk.",
+    "Preserve timestamps, line order, original language, and conversational style.",
+    "Only fix likely speech-to-text mistakes, especially names, places, D&D rules terms, and campaign lore terms.",
+    "Apply shared correction rules when relevant. Do not summarize. Output only the corrected transcript Markdown for this chunk.",
+    "",
+    "<prior-session-context>",
+    options.rollingContext?.trim() || "None yet.",
+    "</prior-session-context>",
+    "",
+    "<campaign-glossary>",
+    options.glossary,
+    "</campaign-glossary>",
+    "",
+    ...correctionRulesSection(options.correctionRules),
+    "",
+    "<physical-speaker-evidence>",
+    options.channelEvidence?.trim() || "None.",
+    "</physical-speaker-evidence>",
+    "<channel-map-context>",
+    options.channelMapContext?.trim() || "None.",
+    "</channel-map-context>",
+    "Physical speaker labels are authoritative evidence for who spoke. Expected characters are possibilities only; never assign a character from roster membership alone. Use cleaner channel alternatives for spelling while preserving meaning and chronology.",
+    "",
+    "<transcript-chunk>",
+    options.transcript,
+    "</transcript-chunk>",
+  ].join("\n");
 }
 
 export function buildCodexCorrectionNotesPrompt(options: {
-	glossary: string;
-	correctionRules?: string;
-	correctedTranscript: string;
+  glossary: string;
+  correctionRules?: string;
+  correctedTranscript: string;
 }): string {
-	return [
-		"Review this corrected D&D transcript chunk and produce concise correction notes.",
-		"List uncertain corrections, likely names/lore terms used, and any audio/transcription ambiguity worth checking.",
-		"Use shared correction rules to avoid relitigating already-settled corrections.",
-		"Do not repeat the full transcript.",
-		"",
-		"<campaign-glossary>",
-		options.glossary,
-		"</campaign-glossary>",
-		"",
-		...correctionRulesSection(options.correctionRules),
-		"",
-		"<corrected-transcript-chunk>",
-		options.correctedTranscript,
-		"</corrected-transcript-chunk>",
-	].join("\n");
+  return [
+    "Review this corrected D&D transcript chunk and produce concise correction notes.",
+    "List uncertain corrections, likely names/lore terms used, and any audio/transcription ambiguity worth checking.",
+    "Use shared correction rules to avoid relitigating already-settled corrections.",
+    "Do not repeat the full transcript.",
+    "",
+    "<campaign-glossary>",
+    options.glossary,
+    "</campaign-glossary>",
+    "",
+    ...correctionRulesSection(options.correctionRules),
+    "",
+    "<corrected-transcript-chunk>",
+    options.correctedTranscript,
+    "</corrected-transcript-chunk>",
+  ].join("\n");
 }
 
 export function buildCodexTranscriptSummaryPrompt(options: {
-	rollingContext: string;
-	contextExcerpt: string;
-	correctionNotes: string;
-	correctionRules?: string;
-	transcriptChunk: string;
+  rollingContext: string;
+  contextExcerpt: string;
+  correctionNotes: string;
+  correctionRules?: string;
+  transcriptChunk: string;
 }): string {
-	return [
-		"Compact this corrected D&D session transcript chunk for later campaign-note generation.",
-		"Preserve session events, party actions, NPCs, places, factions, lore reveals, items, spells, unresolved hooks, and uncertainty.",
-		"Treat narrated prior-session recaps as context only; exclude their events unless they recur or advance during current-session play.",
-		"Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
-		"Remove timestamps and obvious speech-to-text repetition loops. Do not invent details.",
-		"Use concise bullets grouped by topic.",
-		"",
-		"<prior-session-context>",
-		options.rollingContext || "None yet.",
-		"</prior-session-context>",
-		"",
-		"<campaign-context>",
-		options.contextExcerpt,
-		"</campaign-context>",
-		"",
-		...correctionRulesSection(options.correctionRules),
-		"",
-		"<correction-notes>",
-		options.correctionNotes,
-		"</correction-notes>",
-		"",
-		"<transcript-chunk>",
-		options.transcriptChunk,
-		"</transcript-chunk>",
-	].join("\n");
+  return [
+    "Compact this corrected D&D session transcript chunk for later campaign-note generation.",
+    "Preserve session events, party actions, NPCs, places, factions, lore reveals, items, spells, unresolved hooks, and uncertainty.",
+    "Treat narrated prior-session recaps as context only; exclude their events unless they recur or advance during current-session play.",
+    "Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
+    "Remove timestamps and obvious speech-to-text repetition loops. Do not invent details.",
+    "Use concise bullets grouped by topic.",
+    "",
+    "<prior-session-context>",
+    options.rollingContext || "None yet.",
+    "</prior-session-context>",
+    "",
+    "<campaign-context>",
+    options.contextExcerpt,
+    "</campaign-context>",
+    "",
+    ...correctionRulesSection(options.correctionRules),
+    "",
+    "<correction-notes>",
+    options.correctionNotes,
+    "</correction-notes>",
+    "",
+    "<transcript-chunk>",
+    options.transcriptChunk,
+    "</transcript-chunk>",
+  ].join("\n");
 }
 
 export function buildCodexSceneSummaryPrompt(options: {
-	correctionRules?: string;
-	chunkSummaries: string[];
+  correctionRules?: string;
+  chunkSummaries: string[];
 }): string {
-	return [
-		"Merge these compacted D&D campaign transcript summaries into a coherent scene summary.",
-		"Deduplicate repeated information. Preserve unresolved hooks and uncertainty.",
-		"Do not reintroduce events identified as prior-session recap unless current-session play revisited or advanced them.",
-		"Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
-		"Use concise bullets grouped by topic.",
-		"",
-		...correctionRulesSection(options.correctionRules),
-		"",
-		"<chunk-summaries>",
-		options.chunkSummaries.join("\n\n---\n\n"),
-		"</chunk-summaries>",
-	].join("\n");
+  return [
+    "Merge these compacted D&D campaign transcript summaries into a coherent scene summary.",
+    "Deduplicate repeated information. Preserve unresolved hooks and uncertainty.",
+    "Do not reintroduce events identified as prior-session recap unless current-session play revisited or advanced them.",
+    "Use shared correction rules to keep settled terms settled and avoid canonizing rejected transcription artifacts.",
+    "Use concise bullets grouped by topic.",
+    "",
+    ...correctionRulesSection(options.correctionRules),
+    "",
+    "<chunk-summaries>",
+    options.chunkSummaries.join("\n\n---\n\n"),
+    "</chunk-summaries>",
+  ].join("\n");
 }
 
 export function buildCodexFinalNotesPrompt(options: {
-	frontmatter: string;
-	correctionRules?: string;
-	sceneSummaries: string[];
+  frontmatter: string;
+  correctionRules?: string;
+  sceneSummaries: string[];
 }): string {
-	return [
-		"Create Astro MDX campaign notes from these D&D session scene summaries.",
-		"Write readable campaign notes, not a correction changelog.",
-		"Use this output structure after the frontmatter:",
-		"## Summary",
-		"- {summary bullet}",
-		"  - {optional nested detail}",
-		"",
-		"## Open Hooks",
-		"- {hook bullet}",
-		"",
-		"### Confirmations Needed",
-		"- {confirmation bullet}",
-		"",
-		"### Boundaries",
-		"- {boundary bullet}",
-		"",
-		"Summary contains readable events from this session's play, grouped with ordinary MDX subheadings and concise nested bullets, excluding narrated prior-session recaps unless revisited or advanced.",
-		"Hooks contains live unresolved story, lore, item, spell, faction, or consequence threads only.",
-		"Confirmations Needed contains only live checks that need future audio, canon, or human campaign review.",
-		"Boundaries contains only reader-facing interpretive constraints that remain important to future play, such as exact oath/deal wording or in-world distinctions the party should preserve.",
-		"If Open Hooks, Confirmations Needed, or Boundaries have no real entries, omit the empty heading rather than adding filler.",
-		"Do not wrap note sections in fenced markmap, mindmap, or other code blocks.",
-		"Prioritize session events, party actions, NPCs, places, factions, lore reveals, items, spells, and live unresolved hooks.",
-		"Apply settled correction rules directly in the relevant prose or bullets so the final note uses corrected names and terms.",
-		"Use an Open Hooks section only for live unresolved campaign questions or confirmations that still need future review.",
-		"Do not create Settled Clarifications, Do Not Canonize, Correction Notes, Transcription Notes, or similar cleanup-ledger sections.",
-		"Do not include rejected ASR artifacts, table chatter exclusions, alias drift, or do-not-canonize guardrails in the final note; those belong in shared correction rules.",
-		"Do not include timestamps, transcript process commentary, or a prose introduction.",
-		"Output a complete MDX file. Use exactly this frontmatter:",
-		options.frontmatter,
-		"",
-		...correctionRulesSection(options.correctionRules),
-		"",
-		"<scene-summaries>",
-		joinCodexSceneSummaries(options.sceneSummaries),
-		"</scene-summaries>",
-	].join("\n");
+  return [
+    "Create Astro MDX campaign notes from these D&D session scene summaries.",
+    "Write readable campaign notes, not a correction changelog.",
+    "Use this output structure after the frontmatter:",
+    "## Summary",
+    "- {summary bullet}",
+    "  - {optional nested detail}",
+    "",
+    "## Open Hooks",
+    "- {hook bullet}",
+    "",
+    "### Confirmations Needed",
+    "- {confirmation bullet}",
+    "",
+    "### Boundaries",
+    "- {boundary bullet}",
+    "",
+    "Summary contains readable events from this session's play, grouped with ordinary MDX subheadings and concise nested bullets, excluding narrated prior-session recaps unless revisited or advanced.",
+    "Hooks contains live unresolved story, lore, item, spell, faction, or consequence threads only.",
+    "Confirmations Needed contains only live checks that need future audio, canon, or human campaign review.",
+    "Boundaries contains only reader-facing interpretive constraints that remain important to future play, such as exact oath/deal wording or in-world distinctions the party should preserve.",
+    "If Open Hooks, Confirmations Needed, or Boundaries have no real entries, omit the empty heading rather than adding filler.",
+    "Do not wrap note sections in fenced markmap, mindmap, or other code blocks.",
+    "Prioritize session events, party actions, NPCs, places, factions, lore reveals, items, spells, and live unresolved hooks.",
+    "Apply settled correction rules directly in the relevant prose or bullets so the final note uses corrected names and terms.",
+    "Use an Open Hooks section only for live unresolved campaign questions or confirmations that still need future review.",
+    "Do not create Settled Clarifications, Do Not Canonize, Correction Notes, Transcription Notes, or similar cleanup-ledger sections.",
+    "Do not include rejected ASR artifacts, table chatter exclusions, alias drift, or do-not-canonize guardrails in the final note; those belong in shared correction rules.",
+    "Do not include timestamps, transcript process commentary, or a prose introduction.",
+    "Output only the MDX body, without YAML frontmatter. Code supplies the following caller-owned metadata; use it only as context:",
+    options.frontmatter,
+    "",
+    ...correctionRulesSection(options.correctionRules),
+    "",
+    "<scene-summaries>",
+    joinCodexSceneSummaries(options.sceneSummaries),
+    "</scene-summaries>",
+  ].join("\n");
 }
 
 export function formatSummaryCleanupProgress(options: {
-	status: "starting" | "finished" | "reusing";
-	index: number;
-	total: number;
-	name: string;
+  status: "starting" | "finished" | "reusing";
+  index: number;
+  total: number;
+  name: string;
 }): string {
-	const labels = {
-		starting: "Starting",
-		finished: "Finished",
-		reusing: "Reusing",
-	};
-	return `${labels[options.status]} summary-safe transcript chunk ${options.index + 1}/${options.total}: ${options.name}\n`;
+  const labels = {
+    starting: "Starting",
+    finished: "Finished",
+    reusing: "Reusing",
+  };
+  return `${labels[options.status]} summary-safe transcript chunk ${options.index + 1}/${options.total}: ${options.name}\n`;
 }
 
 export function formatSummaryCleanupWriteMessage(path: string): string {
-	return `Wrote summary-safe transcript: ${path}\n`;
+  return `Wrote summary-safe transcript: ${path}\n`;
 }
 
 export function formatSummaryCleanupJoinMessage(options: {
-	count: number;
-	path: string;
+  count: number;
+  path: string;
 }): string {
-	return `Joining ${options.count} summary-safe chunks into ${options.path}\n`;
+  return `Joining ${options.count} summary-safe chunks into ${options.path}\n`;
 }
 
 export function joinCorrectionNoteChunks(
-	chunks: Array<{ name: string; text: string }>,
+  chunks: Array<{ name: string; text: string }>,
 ): string {
-	return [
-		"# Correction Notes",
-		"",
-		...chunks.flatMap((chunk) => [
-			`## ${basename(chunk.name, ".md")}`,
-			"",
-			chunk.text.trim() || "None.",
-			"",
-		]),
-	].join("\n");
+  return [
+    "# Correction Notes",
+    "",
+    ...chunks.flatMap((chunk) => [
+      `## ${basename(chunk.name, ".md")}`,
+      "",
+      chunk.text.trim() || "None.",
+      "",
+    ]),
+  ].join("\n");
 }
 
 export function joinCodexSceneSummaries(summaries: string[]): string {
-	return summaries
-		.map((summary) => summary.trim())
-		.filter(Boolean)
-		.join("\n\n---\n\n");
+  return summaries
+    .map((summary) => summary.trim())
+    .filter(Boolean)
+    .join("\n\n---\n\n");
 }
 
 export function formatCodexNotesSceneProgress(options: {
-	status: "starting" | "finished" | "reusing";
-	index: number;
-	total: number;
-	chunkStart: number;
-	chunkEnd: number;
-	path: string;
+  status: "starting" | "finished" | "reusing";
+  index: number;
+  total: number;
+  chunkStart: number;
+  chunkEnd: number;
+  path: string;
 }): string {
-	const labels = {
-		starting: "Starting",
-		finished: "Finished",
-		reusing: "Reusing",
-	};
-	return `${labels[options.status]} Codex scene summary ${options.index + 1}/${options.total} from chunks ${options.chunkStart + 1}-${options.chunkEnd + 1}: ${options.path}\n`;
+  const labels = {
+    starting: "Starting",
+    finished: "Finished",
+    reusing: "Reusing",
+  };
+  return `${labels[options.status]} Codex scene summary ${options.index + 1}/${options.total} from chunks ${options.chunkStart + 1}-${options.chunkEnd + 1}: ${options.path}\n`;
 }
 
 async function listTranscriptChunks(dir: string): Promise<string[]> {
-	const entries = await readdir(dir);
-	return entries
-		.filter((entry) => /^session_\d+\.md$/.test(entry))
-		.map((entry) => join(dir, entry))
-		.sort(naturalTranscriptChunkSort);
+  const entries = await readdir(dir);
+  return entries
+    .filter((entry) => /^session_\d+\.md$/.test(entry))
+    .map((entry) => join(dir, entry))
+    .sort(naturalTranscriptChunkSort);
 }
 
 async function listRawTranscriptChunks(
-	rawTranscriptionDir: string,
+  rawTranscriptionDir: string,
 ): Promise<string[]> {
-	return listTranscriptChunks(rawTranscriptionDir);
+  return listTranscriptChunks(rawTranscriptionDir);
 }
 
 async function runCodexCorrectionChunked(
-	options: CodexCorrectionOptions & { rawTranscriptionDir: string },
+  options: CodexCorrectionOptions & { rawTranscriptionDir: string },
 ): Promise<void> {
-	const glossary = await readFile(options.glossaryPath, "utf8");
-	const chunkPaths = await listRawTranscriptChunks(options.rawTranscriptionDir);
-	const correctedChunksDir = correctedTranscriptionDirFor(
-		dirname(options.correctedTranscriptPath),
-	);
-	const correctionNotesChunksDir = correctionNotesChunksDirFor(
-		dirname(options.correctionNotesPath),
-	);
-	const correctionContextChunksDir = correctionContextChunksDirFor(
-		dirname(options.correctedTranscriptPath),
-	);
-	await mkdir(correctedChunksDir, { recursive: true });
-	await mkdir(correctionNotesChunksDir, { recursive: true });
+  const glossary = await readFile(options.glossaryPath, "utf8");
+  const chunkPaths = await listRawTranscriptChunks(options.rawTranscriptionDir);
+  const correctedChunksDir = correctedTranscriptionDirFor(
+    dirname(options.correctedTranscriptPath),
+  );
+  const correctionNotesChunksDir = correctionNotesChunksDirFor(
+    dirname(options.correctionNotesPath),
+  );
+  const correctionContextChunksDir = correctionContextChunksDirFor(
+    dirname(options.correctedTranscriptPath),
+  );
+  await mkdir(correctedChunksDir, { recursive: true });
+  await mkdir(correctionNotesChunksDir, { recursive: true });
 
-	let rollingContext = "";
-	for (const chunkPath of chunkPaths) {
-		const chunkName = basename(chunkPath);
-		const outputPath = join(correctedChunksDir, basename(chunkPath));
-		const contextPath = join(correctionContextChunksDir, basename(chunkPath));
+  let rollingContext = "";
+  for (const chunkPath of chunkPaths) {
+    const chunkName = basename(chunkPath);
+    const outputPath = join(correctedChunksDir, basename(chunkPath));
+    const contextPath = join(correctionContextChunksDir, basename(chunkPath));
 
-		const correctedChunk = await writeGeneratedFile(
-			{
-				path: outputPath,
-				force: Boolean(options.force),
-				resume: true,
-				generate: async () => {
-					await codexExecToFile(
-						options.cwd,
-						buildCodexCorrectionPrompt({
-							rollingContext,
-							glossary,
-							correctionRules: options.correctionRules,
-							channelEvidence: correctionEvidenceForChunk({
-								chunkName,
-								channelEvidence: options.channelEvidence,
-								channelEvidenceByChunk: options.channelEvidenceByChunk,
-							}),
-							channelMapContext: options.channelMapContext,
-							transcript: await readFile(chunkPath, "utf8"),
-						}),
-						outputPath,
-					);
-					return readFile(outputPath, "utf8");
-				},
-			},
-		);
-		rollingContext = await writeGeneratedFile({
-			path: contextPath,
-			force: Boolean(options.force),
-			resume: true,
-			generate: async () => {
-				await codexExecToFile(
-					options.cwd,
-					buildCodexRollingContextPrompt({
-						previousContext: rollingContext,
-						latestSummary: correctedChunk,
-					}),
-					contextPath,
-				);
-				return readFile(contextPath, "utf8");
-			},
-		});
-	}
+    const correctedChunk = await writeGeneratedFile({
+      path: outputPath,
+      force: Boolean(options.force),
+      resume: true,
+      generate: async () => {
+        await codexExecToFile(
+          options.cwd,
+          buildCodexCorrectionPrompt({
+            rollingContext,
+            glossary,
+            correctionRules: options.correctionRules,
+            channelEvidence: correctionEvidenceForChunk({
+              chunkName,
+              channelEvidence: options.channelEvidence,
+              channelEvidenceByChunk: options.channelEvidenceByChunk,
+            }),
+            channelMapContext: options.channelMapContext,
+            transcript: await readFile(chunkPath, "utf8"),
+          }),
+          outputPath,
+        );
+        return readFile(outputPath, "utf8");
+      },
+    });
+    rollingContext = await writeGeneratedFile({
+      path: contextPath,
+      force: Boolean(options.force),
+      resume: true,
+      generate: async () => {
+        await codexExecToFile(
+          options.cwd,
+          buildCodexRollingContextPrompt({
+            previousContext: rollingContext,
+            latestSummary: correctedChunk,
+          }),
+          contextPath,
+        );
+        return readFile(contextPath, "utf8");
+      },
+    });
+  }
 
-	const correctedChunks = await Promise.all(
-		chunkPaths.map((chunkPath) =>
-			readFile(join(correctedChunksDir, basename(chunkPath)), "utf8"),
-		),
-	);
-	await writeFile(
-		options.correctedTranscriptPath,
-		joinCorrectedTranscriptChunks(correctedChunks),
-		"utf8",
-	);
+  const correctedChunks = await Promise.all(
+    chunkPaths.map((chunkPath) =>
+      readFile(join(correctedChunksDir, basename(chunkPath)), "utf8"),
+    ),
+  );
+  await writeFile(
+    options.correctedTranscriptPath,
+    joinCorrectedTranscriptChunks(correctedChunks),
+    "utf8",
+  );
 
-	for (const chunkPath of chunkPaths) {
-		const chunkName = basename(chunkPath);
-		const outputPath = join(correctionNotesChunksDir, chunkName);
-		if (!options.force && (await exists(outputPath))) {
-			continue;
-		}
+  for (const chunkPath of chunkPaths) {
+    const chunkName = basename(chunkPath);
+    const outputPath = join(correctionNotesChunksDir, chunkName);
+    if (!options.force && (await exists(outputPath))) {
+      continue;
+    }
 
-		await codexExecToFile(
-			options.cwd,
-			buildCodexCorrectionNotesPrompt({
-				glossary,
-				correctionRules: options.correctionRules,
-				correctedTranscript: await readFile(join(correctedChunksDir, chunkName), "utf8"),
-			}),
-			outputPath,
-		);
-	}
+    await codexExecToFile(
+      options.cwd,
+      buildCodexCorrectionNotesPrompt({
+        glossary,
+        correctionRules: options.correctionRules,
+        correctedTranscript: await readFile(
+          join(correctedChunksDir, chunkName),
+          "utf8",
+        ),
+      }),
+      outputPath,
+    );
+  }
 
-	const correctionNoteChunks = await Promise.all(
-		chunkPaths.map(async (chunkPath) => {
-			const name = basename(chunkPath);
-			return {
-				name,
-				text: await readFile(join(correctionNotesChunksDir, name), "utf8"),
-			};
-		}),
-	);
-	await writeFile(
-		options.correctionNotesPath,
-		joinCorrectionNoteChunks(correctionNoteChunks),
-		"utf8",
-	);
+  const correctionNoteChunks = await Promise.all(
+    chunkPaths.map(async (chunkPath) => {
+      const name = basename(chunkPath);
+      return {
+        name,
+        text: await readFile(join(correctionNotesChunksDir, name), "utf8"),
+      };
+    }),
+  );
+  await writeFile(
+    options.correctionNotesPath,
+    joinCorrectionNoteChunks(correctionNoteChunks),
+    "utf8",
+  );
 }
 
 export async function runCodexCorrection(
-	options: CodexCorrectionOptions,
+  options: CodexCorrectionOptions,
 ): Promise<void> {
-	if (options.rawTranscriptionDir) {
-		await runCodexCorrectionChunked({
-			...options,
-			rawTranscriptionDir: options.rawTranscriptionDir,
-		});
-		return;
-	}
+  if (options.rawTranscriptionDir) {
+    await runCodexCorrectionChunked({
+      ...options,
+      rawTranscriptionDir: options.rawTranscriptionDir,
+    });
+    return;
+  }
 
-	const transcript = await readFile(options.transcriptPath, "utf8");
-	const glossary = await readFile(options.glossaryPath, "utf8");
+  const transcript = await readFile(options.transcriptPath, "utf8");
+  const glossary = await readFile(options.glossaryPath, "utf8");
 
-	await codexExecToFile(
-		options.cwd,
-		buildCodexCorrectionPrompt({
-			glossary,
-			correctionRules: options.correctionRules,
-			channelEvidence: options.channelEvidence,
-			channelMapContext: options.channelMapContext,
-			transcript,
-		}),
-		options.correctedTranscriptPath,
-	);
+  await codexExecToFile(
+    options.cwd,
+    buildCodexCorrectionPrompt({
+      glossary,
+      correctionRules: options.correctionRules,
+      channelEvidence: options.channelEvidence,
+      channelMapContext: options.channelMapContext,
+      transcript,
+    }),
+    options.correctedTranscriptPath,
+  );
 
-	await codexExecToFile(
-		options.cwd,
-		buildCodexCorrectionNotesPrompt({
-			glossary,
-			correctionRules: options.correctionRules,
-			correctedTranscript: await readFile(options.correctedTranscriptPath, "utf8"),
-		}),
-		options.correctionNotesPath,
-	);
+  await codexExecToFile(
+    options.cwd,
+    buildCodexCorrectionNotesPrompt({
+      glossary,
+      correctionRules: options.correctionRules,
+      correctedTranscript: await readFile(
+        options.correctedTranscriptPath,
+        "utf8",
+      ),
+    }),
+    options.correctionNotesPath,
+  );
 }
 
 function stripMarkdownFence(content: string): string {
-	const trimmed = content.trim();
-	const match = /^```(?:mdx|markdown|md)?\n([\s\S]*?)\n```$/.exec(trimmed);
-	return match?.[1]?.trim() ?? trimmed;
+  const trimmed = content.trim();
+  const match = /^```(?:mdx|markdown|md)?\n([\s\S]*?)\n```$/.exec(trimmed);
+  return match?.[1]?.trim() ?? trimmed;
 }
 
 export async function writeGeneratedFile(options: {
-	path: string;
-	force: boolean;
-	resume: boolean;
-	generate: () => Promise<string>;
+  path: string;
+  force: boolean;
+  resume: boolean;
+  generate: () => Promise<string>;
 }): Promise<string> {
-	if (options.resume && !options.force && await exists(options.path)) {
-		return readFile(options.path, "utf8");
-	}
+  if (options.resume && !options.force && (await exists(options.path))) {
+    return readFile(options.path, "utf8");
+  }
 
-	await mkdir(dirname(options.path), { recursive: true });
-	const generated = await options.generate();
-	await writeFile(options.path, `${generated.trim()}\n`, "utf8");
-	return generated;
+  await mkdir(dirname(options.path), { recursive: true });
+  const generated = await options.generate();
+  await writeFile(options.path, `${generated.trim()}\n`, "utf8");
+  return generated;
 }
 
 async function readTranscriptChunks(options: {
-	transcriptPath: string;
-	transcriptChunksDir?: string;
-	chunkChars: number;
+  transcriptPath: string;
+  transcriptChunksDir?: string;
+  chunkChars: number;
 }): Promise<NamedTextChunk[]> {
-	if (options.transcriptChunksDir) {
-		const paths = await listTranscriptChunks(options.transcriptChunksDir);
-		if (paths.length > 0) {
-			return Promise.all(paths.map(async (path) => ({
-				name: basename(path),
-				text: await readFile(path, "utf8"),
-			})));
-		}
-	}
+  if (options.transcriptChunksDir) {
+    const paths = await listTranscriptChunks(options.transcriptChunksDir);
+    if (paths.length > 0) {
+      return Promise.all(
+        paths.map(async (path) => ({
+          name: basename(path),
+          text: await readFile(path, "utf8"),
+        })),
+      );
+    }
+  }
 
-	const transcript = await readFile(options.transcriptPath, "utf8");
-	return splitTextByLines(transcript, options.chunkChars).map((text, index) => ({
-		name: `chunk_${String(index).padStart(3, "0")}.md`,
-		text,
-	}));
+  const transcript = await readFile(options.transcriptPath, "utf8");
+  return splitTextByLines(transcript, options.chunkChars).map(
+    (text, index) => ({
+      name: `chunk_${String(index).padStart(3, "0")}.md`,
+      text,
+    }),
+  );
 }
 
 export async function runCodexSummaryCleanup(
-	options: CodexSummaryCleanupOptions,
+  options: CodexSummaryCleanupOptions,
 ): Promise<void> {
-	const chunkChars = options.chunkChars ?? 12000;
-	const force = Boolean(options.force);
-	const resume = Boolean(options.resume);
-	const transcriptChunks = await readTranscriptChunks({
-		transcriptPath: options.transcriptPath,
-		transcriptChunksDir: options.transcriptChunksDir,
-		chunkChars,
-	});
-	const summaryChunksDir = summaryTranscriptionDirFor(options.outDir);
-	const summaryChunkPaths: string[] = [];
+  const chunkChars = options.chunkChars ?? 12000;
+  const force = Boolean(options.force);
+  const resume = Boolean(options.resume);
+  const transcriptChunks = await readTranscriptChunks({
+    transcriptPath: options.transcriptPath,
+    transcriptChunksDir: options.transcriptChunksDir,
+    chunkChars,
+  });
+  const summaryChunksDir = summaryTranscriptionDirFor(options.outDir);
+  const summaryChunkPaths: string[] = [];
 
-	for (const [index, chunk] of transcriptChunks.entries()) {
-		const outputPath = join(summaryChunksDir, chunk.name);
-		summaryChunkPaths.push(outputPath);
-		if (resume && !force && await exists(outputPath)) {
-			options.onProgress?.(formatSummaryCleanupProgress({
-				status: "reusing",
-				index,
-				total: transcriptChunks.length,
-				name: chunk.name,
-			}));
-			continue;
-		}
-		options.onProgress?.(formatSummaryCleanupProgress({
-			status: "starting",
-			index,
-			total: transcriptChunks.length,
-			name: chunk.name,
-		}));
-		await writeGeneratedFile({
-			path: outputPath,
-			force,
-			resume,
-			generate: async () => {
-				await codexExecToFile(
-					options.cwd,
-					buildSummaryCleanupPrompt({
-						transcriptChunk: chunk.text,
-					}),
-					outputPath,
-				);
-				return readFile(outputPath, "utf8");
-				},
-			});
-		options.onProgress?.(formatSummaryCleanupProgress({
-			status: "finished",
-			index,
-			total: transcriptChunks.length,
-			name: chunk.name,
-		}));
-	}
+  for (const [index, chunk] of transcriptChunks.entries()) {
+    const outputPath = join(summaryChunksDir, chunk.name);
+    summaryChunkPaths.push(outputPath);
+    if (resume && !force && (await exists(outputPath))) {
+      await options.onWorkUnit?.({
+        operation: "Clean summary chunk",
+        workUnit: { label: "chunk", index, total: transcriptChunks.length },
+        status: "reused",
+      });
+      options.onProgress?.(
+        formatSummaryCleanupProgress({
+          status: "reusing",
+          index,
+          total: transcriptChunks.length,
+          name: chunk.name,
+        }),
+      );
+      await options.onWorkUnit?.({
+        operation: "Clean summary chunk",
+        workUnit: { label: "chunk", index, total: transcriptChunks.length },
+        status: "completed",
+      });
+      continue;
+    }
+    await options.onWorkUnit?.({
+      operation: "Clean summary chunk",
+      workUnit: { label: "chunk", index, total: transcriptChunks.length },
+      status: "started",
+    });
+    options.onProgress?.(
+      formatSummaryCleanupProgress({
+        status: "starting",
+        index,
+        total: transcriptChunks.length,
+        name: chunk.name,
+      }),
+    );
+    await writeGeneratedFile({
+      path: outputPath,
+      force,
+      resume,
+      generate: async () => {
+        await codexExecToFile(
+          options.cwd,
+          buildSummaryCleanupPrompt({
+            transcriptChunk: chunk.text,
+          }),
+          outputPath,
+        );
+        return readFile(outputPath, "utf8");
+      },
+    });
+    options.onProgress?.(
+      formatSummaryCleanupProgress({
+        status: "finished",
+        index,
+        total: transcriptChunks.length,
+        name: chunk.name,
+      }),
+    );
+    await options.onWorkUnit?.({
+      operation: "Clean summary chunk",
+      workUnit: { label: "chunk", index, total: transcriptChunks.length },
+      status: "completed",
+    });
+  }
 
-	const summaryChunks = await Promise.all(
-		summaryChunkPaths.map((path) => readFile(path, "utf8")),
-	);
-	options.onProgress?.(formatSummaryCleanupJoinMessage({
-		count: summaryChunks.length,
-		path: options.summaryTranscriptPath,
-	}));
-	await writeFile(
-		options.summaryTranscriptPath,
-		joinCorrectedTranscriptChunks(summaryChunks),
-		"utf8",
-	);
-	options.onProgress?.(formatSummaryCleanupWriteMessage(options.summaryTranscriptPath));
+  const summaryChunks = await Promise.all(
+    summaryChunkPaths.map((path) => readFile(path, "utf8")),
+  );
+  options.onProgress?.(
+    formatSummaryCleanupJoinMessage({
+      count: summaryChunks.length,
+      path: options.summaryTranscriptPath,
+    }),
+  );
+  await writeFile(
+    options.summaryTranscriptPath,
+    joinCorrectedTranscriptChunks(summaryChunks),
+    "utf8",
+  );
+  options.onProgress?.(
+    formatSummaryCleanupWriteMessage(options.summaryTranscriptPath),
+  );
 }
 
 async function readCorrectionNoteChunks(options: {
-	correctionNotesPath?: string;
-	correctionNotesChunksDir?: string;
+  correctionNotesPath?: string;
+  correctionNotesChunksDir?: string;
 }): Promise<Map<string, string>> {
-	const notesByName = new Map<string, string>();
-	if (options.correctionNotesChunksDir) {
-		const paths = await listTranscriptChunks(options.correctionNotesChunksDir);
-		await Promise.all(paths.map(async (path) => {
-			notesByName.set(basename(path), await readFile(path, "utf8"));
-		}));
-	}
-	if (notesByName.size === 0 && options.correctionNotesPath) {
-		notesByName.set("*", await readFile(options.correctionNotesPath, "utf8"));
-	}
-	return notesByName;
+  const notesByName = new Map<string, string>();
+  if (options.correctionNotesChunksDir) {
+    const paths = await listTranscriptChunks(options.correctionNotesChunksDir);
+    await Promise.all(
+      paths.map(async (path) => {
+        notesByName.set(basename(path), await readFile(path, "utf8"));
+      }),
+    );
+  }
+  if (notesByName.size === 0 && options.correctionNotesPath) {
+    notesByName.set("*", await readFile(options.correctionNotesPath, "utf8"));
+  }
+  return notesByName;
 }
 
 export async function runCodexNotes(options: CodexNotesOptions): Promise<void> {
-	const chunkChars = options.chunkChars ?? 12000;
-	const sceneGroupSize = options.sceneGroupSize ?? 5;
-	const force = Boolean(options.force);
-	const resume = Boolean(options.resume);
-	const frontmatter = buildNotesFrontmatter({
-		campaign: options.campaign,
-		sessionDate: options.sessionDate,
-	});
-	const transcriptChunks = await readTranscriptChunks({
-		transcriptPath: options.transcriptPath,
-		transcriptChunksDir: options.transcriptChunksDir,
-		chunkChars,
-	});
-	const correctionNotes = await readCorrectionNoteChunks({
-		correctionNotesPath: options.correctionNotesPath,
-		correctionNotesChunksDir: options.correctionNotesChunksDir,
-	});
-	const workspaceDir = options.outDir
-		? codexNotesDirFor(options.outDir)
-		: await mkdtemp(join(tmpdir(), "bf-transcribe-notes-"));
-	const chunkDir = join(workspaceDir, "chunks");
-	const rollingContextDir = join(workspaceDir, "rolling_context");
-	const sceneDir = join(workspaceDir, "scenes");
-	const finalDraftPath = join(workspaceDir, "notes.mdx");
+  const chunkChars = options.chunkChars ?? 12000;
+  const sceneGroupSize = options.sceneGroupSize ?? 5;
+  const force = Boolean(options.force);
+  const resume = Boolean(options.resume);
+  const frontmatter = buildNotesFrontmatter({
+    campaign: options.campaign,
+    sessionDate: options.sessionDate,
+  });
+  const transcriptChunks = await readTranscriptChunks({
+    transcriptPath: options.transcriptPath,
+    transcriptChunksDir: options.transcriptChunksDir,
+    chunkChars,
+  });
+  const correctionNotes = await readCorrectionNoteChunks({
+    correctionNotesPath: options.correctionNotesPath,
+    correctionNotesChunksDir: options.correctionNotesChunksDir,
+  });
+  const workspaceDir = options.outDir
+    ? codexNotesDirFor(options.outDir)
+    : await mkdtemp(join(tmpdir(), "bf-transcribe-notes-"));
+  const chunkDir = join(workspaceDir, "chunks");
+  const rollingContextDir = join(workspaceDir, "rolling_context");
+  const sceneDir = join(workspaceDir, "scenes");
+  const finalDraftPath = join(workspaceDir, "notes.mdx");
 
-	try {
-		const chunkSummaryPaths: string[] = [];
-		let rollingContext = "";
-		for (const [index, chunk] of transcriptChunks.entries()) {
-			const path = join(chunkDir, `chunk_${String(index).padStart(3, "0")}.md`);
-			const rollingContextPath = join(rollingContextDir, `context_${String(index).padStart(3, "0")}.md`);
-			chunkSummaryPaths.push(path);
-			const chunkCorrectionNotes = correctionNotes.get(chunk.name) ?? correctionNotes.get("*") ?? "";
-			const chunkSummary = await writeGeneratedFile({
-				path,
-				force,
-				resume,
-				generate: async () => {
-					await codexExecToFile(
-						options.cwd,
-						buildCodexTranscriptSummaryPrompt({
-							rollingContext,
-							contextExcerpt: options.contextExcerpt,
-							correctionRules: options.correctionRules,
-							correctionNotes: chunkCorrectionNotes,
-							transcriptChunk: chunk.text,
-						}),
-						path,
-					);
-					return readFile(path, "utf8");
-				},
-			});
-			rollingContext = await writeGeneratedFile({
-				path: rollingContextPath,
-				force,
-				resume,
-				generate: async () => {
-					await codexExecToFile(
-						options.cwd,
-						buildCodexRollingContextPrompt({
-							previousContext: rollingContext,
-							latestSummary: chunkSummary,
-						}),
-						rollingContextPath,
-					);
-					return readFile(rollingContextPath, "utf8");
-				},
-			});
-		}
+  try {
+    const chunkSummaryPaths: string[] = [];
+    let rollingContext = "";
+    for (const [index, chunk] of transcriptChunks.entries()) {
+      const path = join(chunkDir, `chunk_${String(index).padStart(3, "0")}.md`);
+      const rollingContextPath = join(
+        rollingContextDir,
+        `context_${String(index).padStart(3, "0")}.md`,
+      );
+      chunkSummaryPaths.push(path);
+      const chunkCorrectionNotes =
+        correctionNotes.get(chunk.name) ?? correctionNotes.get("*") ?? "";
+      const chunkUnit = {
+        label: "chunk",
+        index,
+        total: transcriptChunks.length,
+      } as const;
+      const reusedChunk =
+        resume &&
+        !force &&
+        (await exists(path)) &&
+        (await exists(rollingContextPath));
+      await options.onWorkUnit?.({
+        operation: "Summarize chunk",
+        workUnit: chunkUnit,
+        status: reusedChunk ? "reused" : "started",
+      });
+      const chunkSummary = await writeGeneratedFile({
+        path,
+        force,
+        resume,
+        generate: async () => {
+          await codexExecToFile(
+            options.cwd,
+            buildCodexTranscriptSummaryPrompt({
+              rollingContext,
+              contextExcerpt: options.contextExcerpt,
+              correctionRules: options.correctionRules,
+              correctionNotes: chunkCorrectionNotes,
+              transcriptChunk: chunk.text,
+            }),
+            path,
+          );
+          return readFile(path, "utf8");
+        },
+      });
+      rollingContext = await writeGeneratedFile({
+        path: rollingContextPath,
+        force,
+        resume,
+        generate: async () => {
+          await codexExecToFile(
+            options.cwd,
+            buildCodexRollingContextPrompt({
+              previousContext: rollingContext,
+              latestSummary: chunkSummary,
+            }),
+            rollingContextPath,
+          );
+          return readFile(rollingContextPath, "utf8");
+        },
+      });
+      await options.onWorkUnit?.({
+        operation: "Summarize chunk",
+        workUnit: chunkUnit,
+        status: "completed",
+      });
+    }
 
-		const chunkSummaries = await Promise.all(chunkSummaryPaths.map((path) => readFile(path, "utf8")));
-		const sceneSummaryPaths: string[] = [];
-		const sceneCount = Math.ceil(chunkSummaries.length / sceneGroupSize);
-		for (let index = 0; index < chunkSummaries.length; index += sceneGroupSize) {
-			const groupIndex = index / sceneGroupSize;
-			const path = join(sceneDir, `scene_${String(groupIndex).padStart(3, "0")}.md`);
-			sceneSummaryPaths.push(path);
-			const group = chunkSummaries.slice(index, index + sceneGroupSize);
-			const progress = {
-				index: groupIndex,
-				total: sceneCount,
-				chunkStart: index,
-				chunkEnd: index + group.length - 1,
-				path,
-			};
-			if (resume && !force && await exists(path)) {
-				options.onProgress?.(formatCodexNotesSceneProgress({
-					status: "reusing",
-					...progress,
-				}));
-				continue;
-			}
-			options.onProgress?.(formatCodexNotesSceneProgress({
-				status: "starting",
-				...progress,
-			}));
-			await writeGeneratedFile({
-				path,
-				force,
-				resume,
-				generate: async () => {
-					await codexExecToFile(
-						options.cwd,
-						buildCodexSceneSummaryPrompt({
-							correctionRules: options.correctionRules,
-							chunkSummaries: group,
-						}),
-						path,
-					);
-					return readFile(path, "utf8");
-				},
-			});
-			options.onProgress?.(formatCodexNotesSceneProgress({
-				status: "finished",
-				...progress,
-			}));
-		}
+    const chunkSummaries = await Promise.all(
+      chunkSummaryPaths.map((path) => readFile(path, "utf8")),
+    );
+    const sceneSummaryPaths: string[] = [];
+    const sceneCount = Math.ceil(chunkSummaries.length / sceneGroupSize);
+    for (
+      let index = 0;
+      index < chunkSummaries.length;
+      index += sceneGroupSize
+    ) {
+      const groupIndex = index / sceneGroupSize;
+      const path = join(
+        sceneDir,
+        `scene_${String(groupIndex).padStart(3, "0")}.md`,
+      );
+      sceneSummaryPaths.push(path);
+      const group = chunkSummaries.slice(index, index + sceneGroupSize);
+      const sceneUnit = {
+        label: "scene",
+        index: groupIndex,
+        total: sceneCount,
+      } as const;
+      const progress = {
+        index: groupIndex,
+        total: sceneCount,
+        chunkStart: index,
+        chunkEnd: index + group.length - 1,
+        path,
+      };
+      if (resume && !force && (await exists(path))) {
+        await options.onWorkUnit?.({
+          operation: "Summarize scene",
+          workUnit: sceneUnit,
+          status: "reused",
+        });
+        options.onProgress?.(
+          formatCodexNotesSceneProgress({
+            status: "reusing",
+            ...progress,
+          }),
+        );
+        await options.onWorkUnit?.({
+          operation: "Summarize scene",
+          workUnit: sceneUnit,
+          status: "completed",
+        });
+        continue;
+      }
+      await options.onWorkUnit?.({
+        operation: "Summarize scene",
+        workUnit: sceneUnit,
+        status: "started",
+      });
+      options.onProgress?.(
+        formatCodexNotesSceneProgress({
+          status: "starting",
+          ...progress,
+        }),
+      );
+      await writeGeneratedFile({
+        path,
+        force,
+        resume,
+        generate: async () => {
+          await codexExecToFile(
+            options.cwd,
+            buildCodexSceneSummaryPrompt({
+              correctionRules: options.correctionRules,
+              chunkSummaries: group,
+            }),
+            path,
+          );
+          return readFile(path, "utf8");
+        },
+      });
+      options.onProgress?.(
+        formatCodexNotesSceneProgress({
+          status: "finished",
+          ...progress,
+        }),
+      );
+      await options.onWorkUnit?.({
+        operation: "Summarize scene",
+        workUnit: sceneUnit,
+        status: "completed",
+      });
+    }
 
-		const sceneSummaries = await Promise.all(sceneSummaryPaths.map((path) => readFile(path, "utf8")));
-		const generated = await writeGeneratedFile({
-			path: finalDraftPath,
-			force,
-			resume,
-			generate: async () => {
-				await codexExecToFile(
-					options.cwd,
-					buildCodexFinalNotesPrompt({
-						frontmatter,
-						correctionRules: options.correctionRules,
-						sceneSummaries,
-					}),
-					finalDraftPath,
-				);
-				return readFile(finalDraftPath, "utf8");
-			},
-		});
-		const stripped = stripMarkdownFence(generated);
-		const mdx = stripped.startsWith("---")
-			? `${stripped.trim()}\n`
-			: `${frontmatter}${stripped.trim()}\n`;
-		await mkdir(dirname(options.notesPath), { recursive: true });
-		await writeFile(options.notesPath, mdx, "utf8");
-	} finally {
-		if (!options.outDir) {
-			await rm(workspaceDir, { recursive: true, force: true });
-		}
-	}
+    const sceneSummaries = await Promise.all(
+      sceneSummaryPaths.map((path) => readFile(path, "utf8")),
+    );
+    const finalUnit = { label: "final summary", index: 0, total: 1 } as const;
+    const reusedFinal = resume && !force && (await exists(finalDraftPath));
+    await options.onWorkUnit?.({
+      operation: "Write final summary",
+      workUnit: finalUnit,
+      status: reusedFinal ? "reused" : "started",
+    });
+    const generated = await writeGeneratedFile({
+      path: finalDraftPath,
+      force,
+      resume,
+      generate: async () => {
+        await codexExecToFile(
+          options.cwd,
+          buildCodexFinalNotesPrompt({
+            frontmatter,
+            correctionRules: options.correctionRules,
+            sceneSummaries,
+          }),
+          finalDraftPath,
+        );
+        return readFile(finalDraftPath, "utf8");
+      },
+    });
+    const stripped = stripMarkdownFence(generated);
+    const mdx = bindNotesFrontmatter(stripped, options);
+    await mkdir(dirname(options.notesPath), { recursive: true });
+    await writeFile(options.notesPath, mdx, "utf8");
+    await options.onWorkUnit?.({
+      operation: "Write final summary",
+      workUnit: finalUnit,
+      status: "completed",
+    });
+  } finally {
+    if (!options.outDir) {
+      await rm(workspaceDir, { recursive: true, force: true });
+    }
+  }
 }

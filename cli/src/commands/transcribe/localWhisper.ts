@@ -12,6 +12,7 @@ export interface LocalWhisperOptions {
   computeType: string;
   python: string;
   force: boolean;
+  onLog?: (message: string) => void;
 }
 
 const prompt = [
@@ -100,27 +101,37 @@ if __name__ == "__main__":
     raise SystemExit(main())
 `;
 
-export async function transcribeChunksWithLocalWhisper(options: LocalWhisperOptions): Promise<string[]> {
+export async function transcribeChunksWithLocalWhisper(
+  options: LocalWhisperOptions,
+): Promise<string[]> {
   await mkdir(options.outDir, { recursive: true });
-  await runCommand(options.python, [
-    "-c",
-    pythonScript,
-    "--chunks-json",
-    JSON.stringify(options.chunkPaths),
-    "--out-dir",
-    options.outDir,
-    "--model",
-    options.model,
-    "--language",
-    options.language,
-    "--device",
-    options.device,
-    "--compute-type",
-    options.computeType,
-    "--prompt",
-    prompt,
-    ...(options.force ? ["--force"] : []),
-  ]);
+  await runCommand(
+    options.python,
+    [
+      "-c",
+      pythonScript,
+      "--chunks-json",
+      JSON.stringify(options.chunkPaths),
+      "--out-dir",
+      options.outDir,
+      "--model",
+      options.model,
+      "--language",
+      options.language,
+      "--device",
+      options.device,
+      "--compute-type",
+      options.computeType,
+      "--prompt",
+      prompt,
+      ...(options.force ? ["--force"] : []),
+    ],
+    {
+      onStdout: (text) => options.onLog?.(text),
+    },
+  );
 
-  return options.chunkPaths.map((chunkPath) => join(options.outDir, `${basename(chunkPath, ".flac")}.json`));
+  return options.chunkPaths.map((chunkPath) =>
+    join(options.outDir, `${basename(chunkPath, ".flac")}.json`),
+  );
 }

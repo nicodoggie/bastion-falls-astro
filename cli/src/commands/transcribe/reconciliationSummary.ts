@@ -7,8 +7,10 @@ import { z } from "zod";
 import { buildCodexExecArgs } from "./codex.js";
 import { buildNotesFrontmatter } from "./notes.js";
 import type { CanonicalReconciliation } from "./reconciliation.js";
+import type { ProgressWorkUnitHook } from "./progress.js";
 import { stableHash } from "./reconciliationEvidence.js";
 import {
+  applySummaryCleanupResponse,
   buildSummaryCleanupPrompt,
   classifySummaryRefusal,
   validateSummaryCleanup,
@@ -205,6 +207,7 @@ const CONTRACTS: Record<SummaryLevel, string> = {
     forbiddenAliases: ["blockIds", "hooks", "sourceReviewDispositions"],
     ownership: {
       caller: [
+        "schemaVersion",
         "cacheIdentity",
         "chunkId",
         "sourceSuspicionFlags",
@@ -227,11 +230,11 @@ const CONTRACTS: Record<SummaryLevel, string> = {
       sourceReviewTargets:
         "{id,kind:suspicion-flag|review-note,text,originalReviewFlags}[]",
       claims:
-        "{id,text,reconciliationBlockIds:string[],confidence:high|medium|low,attribution?,originalReviewFlags:string[]}[]",
+        "{id,text,reconciliationBlockIds:string[],confidence:high|medium|low,attribution?}[]; originalReviewFlags are derived by code",
       unresolvedHooks:
-        "{id,text,reconciliationBlockIds:string[],originalReviewFlags:string[]}[]",
+        "{id,text,reconciliationBlockIds:string[]}[]; originalReviewFlags are derived by code",
       reviewDispositions:
-        "{targetId,disposition:carried_as_uncertain|not_material_to_notes|resolved_for_summary|requires_human_review,originalReviewFlags:string[]}[]",
+        "{targetId,disposition:carried_as_uncertain|not_material_to_notes|resolved_for_summary|requires_human_review}[]; originalReviewFlags are derived by code",
       nextRollingContext: "string",
     },
     example: {
@@ -256,7 +259,13 @@ const CONTRACTS: Record<SummaryLevel, string> = {
     unknownKeys: "forbidden",
     forbiddenAliases: ["blockIds", "hooks", "sourceReviewDispositions"],
     ownership: {
-      caller: ["cacheIdentity", "sceneId", "chunkIds", "chunkClaimProvenance"],
+      caller: [
+        "schemaVersion",
+        "cacheIdentity",
+        "sceneId",
+        "chunkIds",
+        "chunkClaimProvenance",
+      ],
       model: ["claims", "unresolvedHooks"],
     },
     fields: {
@@ -291,6 +300,7 @@ const CONTRACTS: Record<SummaryLevel, string> = {
     forbiddenAliases: ["blockIds", "hooks", "sourceReviewDispositions"],
     ownership: {
       caller: [
+        "schemaVersion",
         "cacheIdentity",
         "promptVersion",
         "provenanceMap",
@@ -337,7 +347,15 @@ const CONTRACTS: Record<SummaryLevel, string> = {
   }),
 };
 export function contractFor(level: SummaryLevel): string {
-  return CONTRACTS[level];
+  const contract = JSON.parse(CONTRACTS[level]);
+  // Show only model-owned output fields; canonical storage retains all metadata.
+  for (const field of contract.ownership.caller) {
+    delete contract.fields[field];
+    delete contract.example[field];
+  }
+  contract.outputGuidance =
+    "Omit caller-owned fields and derived originalReviewFlags. Code supplies them before validation. Campaign and sessionDate may be supplied only when the caller has not supplied them.";
+  return JSON.stringify(contract);
 }
 export function buildChunkContract(): string {
   return contractFor("chunk");
@@ -457,6 +475,33 @@ function reviewTargets(canonical: CanonicalReconciliation): Array<{
   return [...flags, ...notes];
 }
 
+type ModelReviewTarget = Omit<
+  ReturnType<typeof reviewTargets>[number],
+  "id"
+> & {
+  id: string;
+};
+
+function modelReviewTargets(
+  canonical: CanonicalReconciliation,
+): ModelReviewTarget[] {
+  return reviewTargets(canonical).map((target, index) => ({
+    ...target,
+    id: `review_target_${String(index).padStart(3, "0")}`,
+  }));
+}
+
+function reviewTargetAliases(
+  canonical: CanonicalReconciliation,
+): Map<string, string> {
+  return new Map(
+    modelReviewTargets(canonical).map((target, index) => [
+      target.id,
+      reviewTargets(canonical)[index]!.id,
+    ]),
+  );
+}
+
 function restoreChunkProvenance(
   value: unknown,
   canonical: CanonicalReconciliation,
@@ -512,16 +557,23 @@ function restoreChunkProvenance(
       }
   for (const target of reviewTargets(canonical))
     flagsByTarget.set(target.id, target.originalReviewFlags);
+  const aliases = reviewTargetAliases(canonical);
   const reviewDispositions = Array.isArray(record["reviewDispositions"])
     ? record["reviewDispositions"].map((item) => {
         if (typeof item !== "object" || item === null || Array.isArray(item))
           return item;
         const entry = item as Record<string, unknown>;
-        const restored =
+        const targetId =
           typeof entry["targetId"] === "string"
-            ? flagsByTarget.get(entry["targetId"])
+            ? (aliases.get(entry["targetId"]) ?? entry["targetId"])
             : undefined;
-        return restored ? { ...entry, originalReviewFlags: restored } : item;
+        const restored =
+          targetId !== undefined ? flagsByTarget.get(targetId) : undefined;
+        return restored
+          ? { ...entry, targetId, originalReviewFlags: restored }
+          : targetId !== undefined && targetId !== entry["targetId"]
+            ? { ...entry, targetId }
+            : item;
       })
     : record["reviewDispositions"];
   return { ...record, claims, unresolvedHooks, reviewDispositions };
@@ -801,7 +853,7 @@ export function buildChunkSummaryPrompt(options: PromptOptions): string {
   const blocks = canonicalBlocks(options.canonical as never);
   const blockIds = new Set(blocks.map((b) => b.id));
   const alternatives = options.flaggedAlternatives ?? [];
-  const sourceReviewTargets = reviewTargets(
+  const sourceReviewTargets = modelReviewTargets(
     options.canonical as CanonicalReconciliation,
   );
   for (const x of alternatives) {
@@ -812,7 +864,7 @@ export function buildChunkSummaryPrompt(options: PromptOptions): string {
     "Return JSON only.",
     buildChunkContract(),
     `promptVersion: ${options.promptVersion ?? "unspecified"}.`,
-    "Cite every claim and hook to supplied reconciliation block IDs; emit one durable disposition for every claim, hook, and supplied source-review target. Canonical source review material is injected by the caller.",
+    "Cite every claim and hook to supplied reconciliation block IDs; emit one disposition for every claim, hook, and supplied source-review target. Source-review target IDs are invocation-local aliases; code maps them to durable provenance IDs before validation.",
     "<chunk>",
     JSON.stringify((options.canonical as { chunk: unknown }).chunk),
     JSON.stringify(
@@ -858,24 +910,44 @@ export function buildSceneSummaryPrompt(
   sceneId: string,
   chunks: readonly ChunkSummary[],
 ): string {
+  const modelChunks = chunks.map((chunk) => ({
+    chunkId: chunk.chunkId,
+    claims: chunk.claims.map((claim, index) => ({
+      id: `${chunk.chunkId}:claim:${String(index).padStart(3, "0")}`,
+      text: claim.text,
+      chunkClaimIds: [
+        `${chunk.chunkId}:claim:${String(index).padStart(3, "0")}`,
+      ],
+    })),
+    unresolvedHooks: chunk.unresolvedHooks.map((hook, index) => ({
+      id: `${chunk.chunkId}:hook:${String(index).padStart(3, "0")}`,
+      text: hook.text,
+      chunkHookIds: [`${chunk.chunkId}:hook:${String(index).padStart(3, "0")}`],
+    })),
+  }));
   return [
     "Return JSON only.",
     buildSceneContract(),
     `Use authoritative sceneId ${sceneId}; represent every included chunk claim and hook.`,
-    JSON.stringify(chunks),
+    JSON.stringify(modelChunks),
   ].join("\n");
 }
 export function buildSessionSummaryPrompt(
   promptVersion: string,
   scenes: readonly SceneSummary[],
 ): string {
+  const modelScenes = scenes.map((scene) => ({
+    sceneId: scene.sceneId,
+    claims: scene.claims,
+    unresolvedHooks: scene.unresolvedHooks,
+  }));
   return [
     "Return JSON only.",
     buildSessionContract(),
     `promptVersion: ${promptVersion}.`,
     "Write chronological, event-rich session notes. Use readable sections to preserve material actions, participants, discoveries, decisions, and consequences; related details may be grouped, but do not replace distinct scenes with generic thematic blurbs. Represent the game-relevant meaning of every scene claim; multiple claims may be represented by one non-graphic statement with their references retained. Open hooks do not substitute for the narrative. Represent every scene hook, and include each final→scene→chunk→reconciliation-block chain in provenanceMap.",
     "Retain the story with the usual tone and event detail. When needed for safety, related claims may be combined into supported non-graphic event statements while preserving game-relevant meaning and all provenance references; do not let that permission erase ordinary scene detail or alter uncertainty.",
-    JSON.stringify(scenes),
+    JSON.stringify(modelScenes),
   ].join("\n");
 }
 
@@ -939,6 +1011,7 @@ export interface SummarizationOptions {
   force?: boolean;
   sceneGroupSize?: number;
   beforeRename?: () => void | Promise<void>;
+  onWorkUnit?: ProgressWorkUnitHook;
   codexCommand?: BoundedCodexCommand | string;
 }
 function boundedJsonBytes(
@@ -1130,7 +1203,11 @@ export async function runBoundedCodexCommand(
     throw operationalError("process", "Codex path exceeds bound");
   const child = spawn(
     input.command ?? "codex",
-    buildCodexExecArgs({ cwd: input.cwd, outputPath: output, model: input.model }),
+    buildCodexExecArgs({
+      cwd: input.cwd,
+      outputPath: output,
+      model: input.model,
+    }),
     { cwd: input.cwd, detached: true, stdio: ["pipe", "pipe", "pipe"] },
   );
   const pid = child.pid;
@@ -1262,6 +1339,13 @@ function inputOf(
   return { canonical: value as CanonicalReconciliation };
 }
 
+function validationDiagnostic(error: unknown): string {
+  const issue = normalizeSummaryRepairIssues(error)[0];
+  return issue
+    ? `${issue.code}: ${issue.message}`.slice(0, 240)
+    : "validation failed";
+}
+
 async function inferWithOneRepair<T>(args: {
   level: SummaryLevel;
   prompt: string;
@@ -1281,6 +1365,7 @@ async function inferWithOneRepair<T>(args: {
     input: unknown;
     validate: (value: unknown) => T;
   };
+  onRetry?: () => void | Promise<void>;
 }): Promise<T> {
   if (!/^[a-z]+_[0-9]{3}$|^session$/u.test(args.artifactId))
     throw operationalError("identity", "unsafe summary artifact identity");
@@ -1346,6 +1431,7 @@ async function inferWithOneRepair<T>(args: {
       classifySummaryRefusal(initial).eligible
     ) {
       try {
+        await args.onRetry?.();
         if (!durableRetry && durableInitial === undefined)
           await atomicJson(cleanupPath, {
             cleanupIdentity: stableHash(args.cleanupIdentity),
@@ -1389,7 +1475,7 @@ async function inferWithOneRepair<T>(args: {
             typeof cleanupResult.value === "string"
               ? JSON.parse(cleanupResult.value)
               : cleanupResult.value;
-          cleaned = validateSummaryCleanup(args.cleanupInput, candidate);
+          cleaned = applySummaryCleanupResponse(args.cleanupInput, candidate);
           await atomicJson(cleanupPath, {
             cleanupIdentity: stableHash(args.cleanupIdentity),
             sourceHash: stableHash(args.cleanupInput),
@@ -1413,9 +1499,9 @@ async function inferWithOneRepair<T>(args: {
         );
         try {
           return validateResponse(retryResult.value, retry.validate);
-        } catch {
+        } catch (error) {
           throw new Error(
-            `${args.level} summary invalid after refusal cleanup`,
+            `${args.level} summary invalid after refusal cleanup: ${validationDiagnostic(error)}`,
           );
         }
       } catch (failure) {
@@ -1425,7 +1511,7 @@ async function inferWithOneRepair<T>(args: {
             : "semantic-validation";
         throw Object.assign(
           new Error(
-            `${args.level} refusal recovery failed; diagnostics: ${cleanupPath}; ${args.diagnosticsDir}`,
+            `${args.level} refusal recovery failed; diagnostics: ${cleanupPath}; ${args.diagnosticsDir}; ${validationDiagnostic(failure)}`,
           ),
           { repairCategory: category },
         );
@@ -1460,8 +1546,10 @@ async function inferWithOneRepair<T>(args: {
     );
     try {
       return validateResponse(repair);
-    } catch {
-      throw new Error(`${args.level} summary invalid after one repair`);
+    } catch (error) {
+      throw new Error(
+        `${args.level} summary invalid after one repair: ${validationDiagnostic(error)}`,
+      );
     }
   }
 }
@@ -1572,6 +1660,12 @@ export async function runReconciliationSummarization(
         });
   try {
     for (const raw of options.chunks) {
+      const chunkIndex = chunks.length;
+      const workUnit = {
+        label: "chunk",
+        index: chunkIndex,
+        total: options.chunks.length,
+      } as const;
       const input = inputOf(raw);
       const canonical = input.canonical as CanonicalReconciliation;
       const id = canonicalId(canonical);
@@ -1613,13 +1707,18 @@ export async function runReconciliationSummarization(
         }
       }
       if (!parsed) {
+        await options.onWorkUnit?.({
+          operation: "Summarize chunk",
+          workUnit,
+          status: "started",
+        });
         parsed = await inferWithOneRepair({
           level: "chunk",
           prompt,
           contract: buildChunkContract(),
           authoritativeDomains: [
             ...canonicalBlocks(canonical).map((block) => block.id),
-            ...reviewTargets(canonical).map((target) => target.id),
+            ...modelReviewTargets(canonical).map((target) => target.id),
           ],
           infer: async (request, retryInput) =>
             options.infer
@@ -1650,6 +1749,12 @@ export async function runReconciliationSummarization(
           },
           cleanupResume: options.resume !== false,
           cleanupForce: options.force === true,
+          onRetry: () =>
+            options.onWorkUnit?.({
+              operation: "Summarize chunk",
+              workUnit,
+              status: "retry",
+            }),
           retryForCleanedInput: (cleaned) => {
             const safeCanonical = cleaned as CanonicalReconciliation;
             return {
@@ -1666,6 +1771,7 @@ export async function runReconciliationSummarization(
                 parseChunkSummary(
                   {
                     ...(restoreChunkProvenance(value, canonical) as object),
+                    schemaVersion: "summary.chunk.v1",
                     cacheIdentity,
                     chunkId: id,
                     sourceSuspicionFlags: canonical.suspicionFlags,
@@ -1680,6 +1786,7 @@ export async function runReconciliationSummarization(
             parseChunkSummary(
               {
                 ...(restoreChunkProvenance(value, canonical) as object),
+                schemaVersion: "summary.chunk.v1",
                 cacheIdentity,
                 chunkId: id,
                 sourceSuspicionFlags: canonical.suspicionFlags,
@@ -1690,14 +1797,32 @@ export async function runReconciliationSummarization(
             ),
         });
         await atomicJson(path, parsed, options.beforeRename);
+      } else {
+        await options.onWorkUnit?.({
+          operation: "Summarize chunk",
+          workUnit,
+          status: "reused",
+        });
       }
       chunks.push(parsed);
+      await options.onWorkUnit?.({
+        operation: "Summarize chunk",
+        workUnit,
+        status: "completed",
+      });
       prior = parsed.nextRollingContext;
     }
     const scenes: SceneSummary[] = [];
+    const sceneTotal = Math.ceil(chunks.length / groupSize);
     for (let i = 0; i < chunks.length; i += groupSize) {
+      const sceneIndex = i / groupSize;
+      const workUnit = {
+        label: "scene",
+        index: sceneIndex,
+        total: sceneTotal,
+      } as const;
       const group = chunks.slice(i, i + groupSize).map(scopeChunkForScene),
-        sceneId = `scene_${String(i / groupSize).padStart(3, "0")}`;
+        sceneId = `scene_${String(sceneIndex).padStart(3, "0")}`;
       const prompt = buildSceneSummaryPrompt(sceneId, group);
       const identity = {
         type: "scene",
@@ -1718,13 +1843,26 @@ export async function runReconciliationSummarization(
       if (!options.force && options.resume !== false) {
         try {
           const disk = JSON.parse(await readFile(path, "utf8"));
-          if (disk.cacheIdentity === cacheIdentity)
+          if (
+            disk.cacheIdentity === cacheIdentity &&
+            disk.sceneId === sceneId &&
+            Array.isArray(disk.chunkIds) &&
+            sameSequence(
+              disk.chunkIds,
+              group.map((chunk) => chunk.chunkId),
+            )
+          )
             scene = scopeSceneForSession(parseSceneSummary(disk, group));
         } catch {
           /* repair */
         }
       }
       if (!scene) {
+        await options.onWorkUnit?.({
+          operation: "Summarize scene",
+          workUnit,
+          status: "started",
+        });
         scene = scopeSceneForSession(
           await inferWithOneRepair({
             level: "scene",
@@ -1767,6 +1905,12 @@ export async function runReconciliationSummarization(
             },
             cleanupResume: options.resume !== false,
             cleanupForce: options.force === true,
+            onRetry: () =>
+              options.onWorkUnit?.({
+                operation: "Summarize scene",
+                workUnit,
+                status: "retry",
+              }),
             retryForCleanedInput: (cleaned) => {
               const safeGroup = cleaned as ChunkSummary[];
               return {
@@ -1776,6 +1920,7 @@ export async function runReconciliationSummarization(
                   parseSceneSummary(
                     {
                       ...(value as object),
+                      schemaVersion: "summary.scene.v1",
                       cacheIdentity,
                       sceneId,
                       chunkIds: group.map((chunk) => chunk.chunkId),
@@ -1796,6 +1941,7 @@ export async function runReconciliationSummarization(
               parseSceneSummary(
                 {
                   ...(value as object),
+                  schemaVersion: "summary.scene.v1",
                   cacheIdentity,
                   sceneId,
                   chunkIds: group.map((chunk) => chunk.chunkId),
@@ -1813,8 +1959,19 @@ export async function runReconciliationSummarization(
           }),
         );
         await atomicJson(path, scene, options.beforeRename);
+      } else {
+        await options.onWorkUnit?.({
+          operation: "Summarize scene",
+          workUnit,
+          status: "reused",
+        });
       }
       scenes.push(scene);
+      await options.onWorkUnit?.({
+        operation: "Summarize scene",
+        workUnit,
+        status: "completed",
+      });
     }
     const sessionPrompt = buildSessionSummaryPrompt(
       options.promptVersion,
@@ -1834,11 +1991,19 @@ export async function runReconciliationSummarization(
     };
     const sessionCacheIdentity = stableHash(sessionIdentity),
       sessionPath = join(root, "session.json");
+    const sessionWorkUnit = {
+      label: "final summary",
+      index: 0,
+      total: 1,
+    } as const;
     let session: SessionSummary | undefined;
     if (!options.force && options.resume !== false) {
       try {
         const disk = JSON.parse(await readFile(sessionPath, "utf8"));
-        if (disk.cacheIdentity === sessionCacheIdentity) {
+        if (
+          disk.cacheIdentity === sessionCacheIdentity &&
+          disk.promptVersion === options.promptVersion
+        ) {
           const candidate = parseSessionSummary(disk, scenes);
           if (
             (options.campaign === undefined ||
@@ -1853,6 +2018,11 @@ export async function runReconciliationSummarization(
       }
     }
     if (!session) {
+      await options.onWorkUnit?.({
+        operation: "Write final summary",
+        workUnit: sessionWorkUnit,
+        status: "started",
+      });
       session = await inferWithOneRepair({
         level: "session",
         prompt: sessionPrompt,
@@ -1889,6 +2059,12 @@ export async function runReconciliationSummarization(
         },
         cleanupResume: options.resume !== false,
         cleanupForce: options.force === true,
+        onRetry: () =>
+          options.onWorkUnit?.({
+            operation: "Write final summary",
+            workUnit: sessionWorkUnit,
+            status: "retry",
+          }),
         retryForCleanedInput: (cleaned) => {
           const safeScenes = cleaned as SceneSummary[];
           const safePrompt = buildSessionSummaryPrompt(
@@ -1903,6 +2079,7 @@ export async function runReconciliationSummarization(
               return parseSessionSummary(
                 {
                   ...(value as object),
+                  schemaVersion: "summary.session.v1",
                   cacheIdentity: sessionCacheIdentity,
                   promptVersion: options.promptVersion,
                   provenanceMap: deriveSessionProvenanceMap(claims, scenes),
@@ -1923,6 +2100,7 @@ export async function runReconciliationSummarization(
           return parseSessionSummary(
             {
               ...(value as object),
+              schemaVersion: "summary.session.v1",
               cacheIdentity: sessionCacheIdentity,
               promptVersion: options.promptVersion,
               provenanceMap: deriveSessionProvenanceMap(claims, scenes),
@@ -1938,7 +2116,18 @@ export async function runReconciliationSummarization(
         },
       });
       await atomicJson(sessionPath, session, options.beforeRename);
+    } else {
+      await options.onWorkUnit?.({
+        operation: "Write final summary",
+        workUnit: sessionWorkUnit,
+        status: "reused",
+      });
     }
+    await options.onWorkUnit?.({
+      operation: "Write final summary",
+      workUnit: sessionWorkUnit,
+      status: "completed",
+    });
     return { chunks, scenes, session };
   } finally {
     await rm(scratch, { recursive: true, force: true });

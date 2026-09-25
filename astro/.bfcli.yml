@@ -52,6 +52,12 @@ transcribe:
     tailMergeMaxDurationRatio: 1.25
     hermes:
       profile: default
+  # Progress is compact/plain-text by default and detailed with --verbose.
+  # The session-local log records metadata and diagnostic paths only.
+  progress:
+    log: true
+    logLevel: info
+    heartbeatSeconds: 30
   summarization:
     model: gpt-5.6-sol
 

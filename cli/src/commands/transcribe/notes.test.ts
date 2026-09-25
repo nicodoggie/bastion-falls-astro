@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { buildNotesFrontmatter, getNotesPath } from "./notes.js";
+import {
+  bindNotesFrontmatter,
+  buildNotesFrontmatter,
+  getNotesPath,
+} from "./notes.js";
 
 test("builds campaign notes path and frontmatter", () => {
   assert.equal(
@@ -14,7 +18,24 @@ test("builds campaign notes path and frontmatter", () => {
   );
 
   assert.equal(
-    buildNotesFrontmatter({ campaign: "the-vengeful", sessionDate: "2026-05-22" }),
+    buildNotesFrontmatter({
+      campaign: "the-vengeful",
+      sessionDate: "2026-05-22",
+    }),
     "---\ntitle: 'The Vengeful Notes 2026-05-22'\ntags:\n  - notes\n  - the-vengeful\n---\n",
+  );
+  const identity = { campaign: "the-vengeful", sessionDate: "2026-05-22" };
+  for (const body of [
+    "## Summary\n\n- Event.",
+    "---\ntitle: Invented date\ntags: [wrong]\n---\n## Summary\n\n- Event.",
+  ]) {
+    assert.equal(
+      bindNotesFrontmatter(body, identity),
+      `${buildNotesFrontmatter(identity)}## Summary\n\n- Event.\n`,
+    );
+  }
+  assert.throws(
+    () => bindNotesFrontmatter("---\ntitle: incomplete", identity),
+    /frontmatter/,
   );
 });

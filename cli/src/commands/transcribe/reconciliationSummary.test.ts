@@ -16,6 +16,7 @@ import { stableHash } from "./reconciliationEvidence.js";
 import {
   atomicJson,
   buildChunkSummaryPrompt,
+  buildSceneSummaryPrompt,
   buildSessionSummaryPrompt,
   type ChunkSummary,
   ChunkSummarySchema,
@@ -29,6 +30,7 @@ import {
   SceneSummarySchema,
   SessionSummarySchema,
 } from "./reconciliationSummary.js";
+import { buildSummaryCleanupPrompt } from "./reconciliationSummaryCleanup.js";
 import { buildCodexExecArgs } from "./codex.js";
 
 const canonical = {
@@ -65,7 +67,25 @@ const canonical = {
 };
 const identity = stableHash("fixture");
 test("passes the configured model to Codex exec", () => {
-  assert.deepEqual(buildCodexExecArgs({ cwd: "/repo", outputPath: "/tmp/out", model: "gpt-5.6-sol" }), ["exec", "-m", "gpt-5.6-sol", "--sandbox", "read-only", "-C", "/repo", "-o", "/tmp/out", "-"]);
+  assert.deepEqual(
+    buildCodexExecArgs({
+      cwd: "/repo",
+      outputPath: "/tmp/out",
+      model: "gpt-5.6-sol",
+    }),
+    [
+      "exec",
+      "-m",
+      "gpt-5.6-sol",
+      "--sandbox",
+      "read-only",
+      "-C",
+      "/repo",
+      "-o",
+      "/tmp/out",
+      "-",
+    ],
+  );
 });
 const chunk: ChunkSummary = {
   cacheIdentity: identity,
@@ -171,6 +191,33 @@ function sceneFor(chunks: readonly ChunkSummary[]): SceneSummary {
   };
 }
 
+test("model-facing review targets use local aliases while persisted IDs remain hash-bearing", () => {
+  const flaggedCanonical = {
+    ...canonical,
+    suspicionFlags: ["large-compression"],
+    reviewNotes: ["inspect this span"],
+  };
+  const prompt = buildChunkSummaryPrompt({
+    canonical: flaggedCanonical,
+    promptVersion: "p1",
+  });
+  assert.match(prompt, /review_target_000/u);
+  assert.match(prompt, /review_target_001/u);
+  assert.doesNotMatch(prompt, new RegExp(stableHash("large-compression"), "u"));
+  const cleanupPrompt = buildSummaryCleanupPrompt("chunk", {
+    cacheIdentity: stableHash("cleanup-source"),
+    text: "A safe sentence.",
+  });
+  assert.match(cleanupPrompt, /local_ref_000/u);
+  assert.doesNotMatch(
+    cleanupPrompt,
+    new RegExp(stableHash("cleanup-source"), "u"),
+  );
+  const scenePrompt = buildSceneSummaryPrompt("scene_000", [chunk]);
+  assert.doesNotMatch(scenePrompt, new RegExp(identity, "u"));
+  const sessionPrompt = buildSessionSummaryPrompt("p1", [sceneFor([chunk])]);
+  assert.doesNotMatch(sessionPrompt, new RegExp(identity, "u"));
+});
 test("strict chunk parse validates provenance, source dispositions, and unknown blocks", () => {
   assert.equal(parseChunkSummary(chunk, canonical).chunkId, "session_000");
   assert.throws(() => parseChunkSummary({ ...chunk, extra: true }, canonical));
@@ -295,7 +342,7 @@ test("session prompt asks for chronological event-rich notes rather than a diges
     assert.match(generatedPrompt, /hooks, confirmations, and boundaries/iu);
   }
 });
-test("runner writes direct canonical JSON and zero-call resume", async () => {
+test("runner binds omitted or malformed caller metadata and preserves strict zero-call resume", async () => {
   const root = await mkdtemp(join(tmpdir(), "reconciliation-summary-"));
   let calls = 0;
   const priors: string[] = [];
@@ -308,19 +355,35 @@ test("runner writes direct canonical JSON and zero-call resume", async () => {
     provider: "test",
     promptVersion: "p1",
     campaignContext: "c",
+    campaign: "demo",
+    sessionDate: "2026-08-19",
     correctionRules: [],
     infer: async ({ priorRollingContext }: { priorRollingContext: string }) => {
       calls++;
       priors.push(priorRollingContext);
-      return response(
-        calls === 1 ? "session_000" : "session_001",
-        priorRollingContext,
-      );
+      return {
+        ...response(
+          calls === 1 ? "session_000" : "session_001",
+          priorRollingContext,
+        ),
+        schemaVersion: undefined,
+        cacheIdentity: null,
+        chunkId: null,
+      };
     },
-    sceneInfer: async ({ chunks }: { chunks: readonly ChunkSummary[] }) =>
-      sceneFor(chunks),
-    sessionInfer: async ({ scenes }: { scenes: readonly SceneSummary[] }) =>
-      sessionForScenes(scenes),
+    sceneInfer: async ({ chunks }: { chunks: readonly ChunkSummary[] }) => ({
+      ...sceneFor(chunks),
+      schemaVersion: "wrong",
+      cacheIdentity: null,
+      sceneId: null,
+    }),
+    sessionInfer: async ({ scenes }: { scenes: readonly SceneSummary[] }) => ({
+      ...(sessionForScenes(scenes) as object),
+      schemaVersion: undefined,
+      cacheIdentity: null,
+      campaign: null,
+      sessionDate: null,
+    }),
   };
   const first = await runReconciliationSummarization(options);
   assert.equal(calls, 2);
@@ -341,6 +404,16 @@ test("runner writes direct canonical JSON and zero-call resume", async () => {
     (await readdir(join(root, "summarization", "chunks"))).sort(),
     ["session_000.json", "session_001.json"],
   );
+  for (const [file, key, wrong, expected] of [
+    ["scenes/scene_000.json", "sceneId", "scene_999", "scene_000"],
+    ["session.json", "promptVersion", "wrong", "p1"],
+  ]) {
+    const path = join(root, "summarization", file!);
+    const persisted = JSON.parse(await readFile(path, "utf8"));
+    await writeFile(path, JSON.stringify({ ...persisted, [key!]: wrong }));
+    await runReconciliationSummarization(options);
+    assert.equal(JSON.parse(await readFile(path, "utf8"))[key!], expected);
+  }
 });
 
 test("empty optional campaign context is valid in prompts and the full summary runner", async () => {
@@ -364,6 +437,47 @@ test("empty optional campaign context is valid in prompts and the full summary r
     });
     assert.equal(result.chunks.length, 1);
     assert.equal(result.session.claims.length, 1);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("summary lifecycle hooks distinguish chunk, scene, final summary, and resume", async () => {
+  const root = await mkdtemp(join(tmpdir(), "summary-progress-hooks-"));
+  const events: Array<{ label: string; status: string }> = [];
+  const options = {
+    outputRoot: root,
+    chunks: [canonical as any],
+    promptVersion: "p1",
+    infer: async () => response("session_000"),
+    sceneInfer: async ({ chunks }: { chunks: readonly ChunkSummary[] }) =>
+      sceneFor(chunks),
+    sessionInfer: async ({ scenes }: { scenes: readonly SceneSummary[] }) =>
+      sessionForScenes(scenes),
+    onWorkUnit: ({ workUnit, status }: { workUnit: { label: string }; status: string }) => {
+      events.push({ label: workUnit.label, status });
+    },
+  };
+  try {
+    await runReconciliationSummarization(options);
+    assert.deepEqual(events, [
+      { label: "chunk", status: "started" },
+      { label: "chunk", status: "completed" },
+      { label: "scene", status: "started" },
+      { label: "scene", status: "completed" },
+      { label: "final summary", status: "started" },
+      { label: "final summary", status: "completed" },
+    ]);
+    events.length = 0;
+    await runReconciliationSummarization(options);
+    assert.deepEqual(events, [
+      { label: "chunk", status: "reused" },
+      { label: "chunk", status: "completed" },
+      { label: "scene", status: "reused" },
+      { label: "scene", status: "completed" },
+      { label: "final summary", status: "reused" },
+      { label: "final summary", status: "completed" },
+    ]);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -742,6 +856,7 @@ test("content refusal cleans failed input once, retries only with derivative, an
   const root = await mkdtemp(join(tmpdir(), "summary-refusal-cleanup-"));
   let calls = 0;
   const prompts: string[] = [];
+  const lifecycle: string[] = [];
   try {
     const cleaned = {
       ...canonical,
@@ -764,14 +879,35 @@ test("content refusal cleans failed input once, retries only with derivative, an
         calls += 1;
         prompts.push(prompt);
         if (calls === 1) return "I cannot provide that content.";
-        if (calls === 2) return cleaned;
+        if (calls === 2)
+          return {
+            edits: [
+              { path: ["blocks", "0", "text"], text: cleaned.blocks[0]!.text },
+              {
+                path: ["blocks", "0", "summarySafeText"],
+                text: cleaned.blocks[0]!.summarySafeText,
+              },
+            ],
+          };
         return response("session_000");
       },
       sceneInfer: async ({ chunks }) => sceneFor(chunks),
       sessionInfer: async ({ scenes }) => sessionForScenes(scenes),
+      onWorkUnit: ({ status }: { status: string }) => {
+        lifecycle.push(status);
+      },
     });
     assert.equal(result.chunks.length, 1);
     assert.equal(calls, 3);
+    assert.deepEqual(lifecycle, [
+      "started",
+      "retry",
+      "completed",
+      "started",
+      "completed",
+      "started",
+      "completed",
+    ]);
     assert.match(prompts[1]!, /non-graphic contextual abstraction/iu);
     assert.doesNotMatch(prompts[2]!, /GRAPHIC ORIGINAL/u);
     const cleanupPath = join(
@@ -781,6 +917,10 @@ test("content refusal cleans failed input once, retries only with derivative, an
     assert.equal(
       JSON.parse(await readFile(cleanupPath, "utf8")).cleanupVersion,
       "summary-cleanup.v1",
+    );
+    assert.deepEqual(
+      JSON.parse(await readFile(cleanupPath, "utf8")).cleaned,
+      cleaned,
     );
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -1015,6 +1155,7 @@ test("runner injects canonical source review material while the model owns dispo
       originalReviewFlags: [],
     },
   ] as const;
+  const modelReviewTargets = ["review_target_000", "review_target_001"];
   try {
     const result = await runReconciliationSummarization({
       outputRoot: root,
@@ -1023,8 +1164,8 @@ test("runner injects canonical source review material while the model owns dispo
       promptVersion: "p1",
       infer: async ({ prompt }) => {
         chunkCalls += 1;
-        for (const target of sourceReviewTargets)
-          assert.match(prompt, new RegExp(target.id));
+        for (const target of modelReviewTargets)
+          assert.match(prompt, new RegExp(target));
         const model = response("session_000");
         return {
           ...model,
@@ -1040,8 +1181,8 @@ test("runner injects canonical source review material while the model owns dispo
               ...disposition,
               originalReviewFlags: [],
             })),
-            ...sourceReviewTargets.map((target) => ({
-              targetId: target.id,
+            ...modelReviewTargets.map((target) => ({
+              targetId: target,
               disposition: "requires_human_review" as const,
               originalReviewFlags: [],
             })),
