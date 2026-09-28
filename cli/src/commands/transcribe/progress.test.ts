@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdtemp, readFile, rm, stat } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
@@ -86,7 +86,10 @@ test("keeps exactly one permanent line per terminal stage and leaves the final l
   assert.equal((rendered.match(/✓ Stage 1\/6/gu) ?? []).length, 1, rendered);
   assert.equal((rendered.match(/– Stage 2\/6/gu) ?? []).length, 1, rendered);
   assert.equal((rendered.match(/× Stage 6\/6/gu) ?? []).length, 1, rendered);
-  assert.match(rendered, /✓ Stage 1\/6: Normalizing audio complete \[00:00:02\]\[00:00:02\]/u);
+  assert.match(
+    rendered,
+    /✓ Stage 1\/6: Normalizing audio complete \[00:00:02\]\[00:00:02\]/u,
+  );
   assert.match(rendered, /× Stage 6\/6: Generating notes failed/u);
   assert.doesNotMatch(rendered, /reused.*Stage 1\/6|Stage 1\/6.*reused/u);
 });
@@ -154,10 +157,7 @@ test("keeps the stage clock through same-stage work and resets it on transition"
     rendered,
     /Stage 1\/6: Normalizing audio \[00:00:05\]\[00:00:05\]/u,
   );
-  assert.match(
-    rendered,
-    /Stage 3\/6: Transcribing \[00:00:00\]\[00:00:07\]/u,
-  );
+  assert.match(rendered, /Stage 3\/6: Transcribing \[00:00:00\]\[00:00:07\]/u);
   assert.doesNotMatch(rendered, /short operation/u);
 });
 
@@ -367,6 +367,115 @@ test("applies log-level precedence and severity filtering independently of the U
       (line) => line["operation"] === "visible warning",
     );
     assert.equal(warning?.["severity"], "warn");
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("records contextual exception details privately and emits them to stderr only when verbose", async () => {
+  const root = await mkdtemp(join(tmpdir(), "transcription-error-details-"));
+  const output = capture();
+  const errors = capture();
+  const reporter = new TranscriptionProgressReporter({
+    output: output.stream,
+    errorOutput: errors.stream,
+    logPath: join(root, "progress.jsonl"),
+    logLevel: "debug",
+  });
+  const cause = new Error(
+    "Bearer private-token-value api_key=private-key-value Authorization: Bearer safe-sentinel password: private-password Basic dXNlcjpwYXNz",
+  );
+  const original = new Error("setup failed", { cause });
+  try {
+    await reporter.start();
+    reporter.error("Reconciliation failed", original);
+    await reporter.close();
+
+    const log = await readFile(join(root, "progress.jsonl"), "utf8");
+    assert.match(log, /setup failed/u);
+    assert.match(log, /Bearer \[REDACTED\]/u);
+    assert.doesNotMatch(
+      log,
+      /private-token-value|private-key-value|safe-sentinel|private-password|dXNlcjpwYXNz/u,
+    );
+    assert.equal(
+      (await stat(join(root, "progress.jsonl"))).mode & 0o777,
+      0o600,
+    );
+    assert.match(errors.values.join(""), /Reconciliation failed/u);
+    assert.match(errors.values.join(""), /progress\.jsonl/u);
+    assert.doesNotMatch(errors.values.join(""), /setup failed/u);
+    assert.doesNotMatch(
+      errors.values.join(""),
+      /setup failed|private-token-value|private-key-value|auth-value|private-password/u,
+    );
+    assert.equal(output.values.length, 0);
+    await reporter.close();
+
+    const verboseErrors = capture();
+    const verboseReporter = new TranscriptionProgressReporter({
+      output: output.stream,
+      errorOutput: verboseErrors.stream,
+      logPath: join(root, "verbose-progress.jsonl"),
+      verbose: true,
+      logLevel: "debug",
+    });
+    await verboseReporter.start();
+    verboseReporter.error("Reconciliation failed", original);
+    await verboseReporter.close();
+    assert.match(verboseErrors.values.join(""), /setup failed/u);
+    assert.match(verboseErrors.values.join(""), /verbose-progress\.jsonl/u);
+    assert.doesNotMatch(verboseErrors.values.join(""), /private-token-value/u);
+  } finally {
+    await reporter.close();
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("adds exception details without repeating an already reported failure", async () => {
+  const root = await mkdtemp(join(tmpdir(), "transcription-error-dedup-"));
+  const output = capture();
+  const errors = capture();
+  const logPath = join(root, "progress.jsonl");
+  const reporter = new TranscriptionProgressReporter({
+    output: output.stream,
+    errorOutput: errors.stream,
+    logPath,
+  });
+  try {
+    await reporter.start();
+    reporter.error("Failure already reported");
+    reporter.error("Transcription failed", new Error("original failure"));
+    await reporter.close();
+
+    const renderedErrors = errors.values.join("");
+    assert.equal((renderedErrors.match(/Error:/gu) ?? []).length, 1);
+    assert.match(renderedErrors, /Details: .*progress\.jsonl/u);
+    const log = await readFile(logPath, "utf8");
+    assert.match(log, /original failure/u);
+  } finally {
+    await reporter.close();
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("does not advertise a detail file when its error log write fails", async () => {
+  const root = await mkdtemp(
+    join(tmpdir(), "transcription-error-log-failure-"),
+  );
+  const output = capture();
+  const errors = capture();
+  const reporter = new TranscriptionProgressReporter({
+    output: output.stream,
+    errorOutput: errors.stream,
+    logPath: root,
+  });
+  try {
+    await reporter.start();
+    reporter.error("Reconciliation failed", new Error("credential error"));
+    assert.doesNotMatch(errors.values.join(""), /Details:/u);
+    await assert.rejects(reporter.close());
+    assert.doesNotMatch(errors.values.join(""), /Details:/u);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

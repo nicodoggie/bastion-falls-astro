@@ -80,6 +80,7 @@ import {
 import {
   executeTranscriptionPipeline,
   parseStopAfter,
+  runReconciliationStage,
   transcribeStages,
   type TranscribeStage,
 } from "./pipeline.js";
@@ -87,6 +88,7 @@ import {
   parseLogLevel,
   resolveLogLevel,
   TranscriptionProgressReporter,
+  sanitizeProgressText,
   type LogLevel,
   type ProgressWorkUnitEvent,
 } from "./progress.js";
@@ -132,6 +134,38 @@ import {
   type ChunkTranscript,
   type Manifest,
 } from "./types.js";
+
+function writeProgressFallback(
+  message: string,
+  primaryError: unknown,
+  loggingError: unknown,
+): void {
+  const describe = (error: unknown, depth = 0): string => {
+    if (depth >= 4) return "[error chain truncated]";
+    if (error instanceof AggregateError)
+      return error.errors.map((item) => describe(item, depth + 1)).join("; ");
+    if (error instanceof Error) {
+      const cause =
+        error.cause === undefined
+          ? ""
+          : ` Caused by: ${describe(error.cause, depth + 1)}`;
+      return sanitizeProgressText(`${error.message}${cause}`);
+    }
+    return sanitizeProgressText(String(error));
+  };
+  const primary =
+    primaryError === undefined
+      ? ""
+      : ` Primary failure: ${describe(primaryError)}.`;
+  const logging = ` Logging failure: ${describe(loggingError)}.`;
+  try {
+    process.stderr.write(
+      `${sanitizeProgressText(message)}.${primary}${logging}\n`,
+    );
+  } catch {
+    // Best-effort fallback if stderr itself is unavailable.
+  }
+}
 
 type NotesBackend = "codex" | "ollama";
 
@@ -808,6 +842,8 @@ function buildTranscribeRunCommand(
             : { maxAttempts: event.maxAttempts }),
         });
       };
+      let commandFailed = false;
+      let commandError: unknown;
       try {
         const notesPath = getNotesPath({
           contextRoot,
@@ -1607,37 +1643,32 @@ function buildTranscribeRunCommand(
             };
           }
           progress.info("Running unified Hermes reconciliation\n");
-          try {
-            unifiedStageResult = await runUnifiedReconciliationStage({
-              ...(await getUnifiedStageOptions()),
-              onChunkProgress: ({ index, total, status, attempt, maxAttempts }) =>
-                reportWorkUnit("reconciliation", {
-                  operation: "Reconcile chunk",
+          unifiedStageResult = await runReconciliationStage(
+            async () =>
+              runUnifiedReconciliationStage({
+                ...(await getUnifiedStageOptions()),
+                onChunkProgress: ({
+                  index,
+                  total,
                   status,
-                  workUnit: { label: "chunk", index, total },
                   attempt,
                   maxAttempts,
-                }),
-            });
-            return {
-              status: unifiedStageResult.status,
-              metadata: unifiedStageResult.metadata,
-            };
-          } catch {
-            const metadata = {
-              ...checkpoint.stages.reconciliation.metadata,
-              provider: "hermes" as const,
-              mode: "enabled" as const,
-              status: "invalid" as const,
-              cacheIdentityByChunk: {},
-              completedChunkIds: [],
-              summarySafety: { pendingChunkIds: [], bypassChunkIds: [] },
-            };
-            progress.error(
-              "Unified reconciliation failed; inspect private diagnostics before retrying.\n",
-            );
-            return { status: "invalid", metadata };
-          }
+                }) =>
+                  reportWorkUnit("reconciliation", {
+                    operation: "Reconcile chunk",
+                    status,
+                    workUnit: { label: "chunk", index, total },
+                    attempt,
+                    maxAttempts,
+                  }),
+              }),
+            (error) =>
+              progress.error("Hermes reconciliation execution failed", error),
+          );
+          return {
+            status: unifiedStageResult.status,
+            metadata: unifiedStageResult.metadata,
+          };
         };
 
         const notes = async (): Promise<"complete" | "skipped"> => {
@@ -1660,19 +1691,30 @@ function buildTranscribeRunCommand(
             excludePathFragments: [flags["session-date"]],
           });
           if (reconciliationSettings.provider === "hermes") {
-            unifiedStageResult ??= await runUnifiedReconciliationStage({
-              ...(await getUnifiedStageOptions()),
-              resume: true,
-              force: false,
-              onChunkProgress: ({ index, total, status, attempt, maxAttempts }) =>
-                reportWorkUnit("reconciliation", {
-                  operation: "Reconcile chunk",
-                  status,
-                  workUnit: { label: "chunk", index, total },
-                  attempt,
-                  maxAttempts,
+            unifiedStageResult ??= await runReconciliationStage(
+              async () =>
+                runUnifiedReconciliationStage({
+                  ...(await getUnifiedStageOptions()),
+                  resume: true,
+                  force: false,
+                  onChunkProgress: ({
+                    index,
+                    total,
+                    status,
+                    attempt,
+                    maxAttempts,
+                  }) =>
+                    reportWorkUnit("reconciliation", {
+                      operation: "Reconcile chunk",
+                      status,
+                      workUnit: { label: "chunk", index, total },
+                      attempt,
+                      maxAttempts,
+                    }),
                 }),
-            });
+              (error) =>
+                progress.error("Hermes reconciliation execution failed", error),
+            );
             progress.info(
               `Generating structured reconciliation notes at ${notesPath}\n`,
             );
@@ -1813,10 +1855,36 @@ function buildTranscribeRunCommand(
         }
         progress.finish("Transcript workflow complete");
       } catch (error) {
-        progress.error(error instanceof Error ? error.message : String(error));
+        commandFailed = true;
+        commandError = error;
+        try {
+          progress.error("Transcription failed", error);
+        } catch (reportingError) {
+          writeProgressFallback(
+            "Transcription failed and progress reporting also failed",
+            error,
+            reportingError,
+          );
+        }
         throw error;
       } finally {
-        await progress.close();
+        try {
+          await progress.close();
+        } catch (closeError) {
+          writeProgressFallback(
+            commandFailed
+              ? "Transcription and progress logging both failed"
+              : "Transcription progress logging failed",
+            commandError,
+            closeError,
+          );
+          if (commandFailed)
+            throw new AggregateError(
+              [commandError, closeError],
+              "Transcription failed and progress logging failed.",
+            );
+          throw closeError;
+        }
       }
     },
     parameters: {

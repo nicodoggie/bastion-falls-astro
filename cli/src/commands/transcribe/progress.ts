@@ -1,4 +1,4 @@
-import { appendFile, mkdir } from "node:fs/promises";
+import { mkdir, open } from "node:fs/promises";
 import { dirname } from "node:path";
 import { formatTimestamp } from "./assembly.js";
 
@@ -185,13 +185,7 @@ export interface ProgressEvent {
   stageIndex: number;
   stageTotal: number;
   operation: string;
-  status:
-    | "started"
-    | "heartbeat"
-    | "reused"
-    | "retry"
-    | "completed"
-    | "failed";
+  status: "started" | "heartbeat" | "reused" | "retry" | "completed" | "failed";
   severity: LogLevel;
   chunkIndex?: number;
   chunkCount?: number;
@@ -240,9 +234,31 @@ function shouldLog(level: LogLevel, threshold: LogLevel): boolean {
 
 export function sanitizeProgressText(value: string): string {
   return value
+    .replace(
+      /\b((?:authorization|auth)\s*[=:]\s*)Bearer\s+\S+/giu,
+      "$1[REDACTED]",
+    )
+    .replace(/\b(Bearer\s+)\S+/giu, "$1[REDACTED]")
+    .replace(/\b(Basic\s+)[A-Za-z0-9+/=]+/giu, "$1[REDACTED]")
+    .replace(
+      /\b((?:x-)?(?:api[_-]?key|access[_-]?token|auth(?:orization)?|password|secret|token)\s*[=:]\s*)(?:["']?)[^\s,;"']+/giu,
+      "$1[REDACTED]",
+    )
     .replace(/[\u0000-\u001f\u007f-\u009f]/gu, " ")
     .replace(/\s+/gu, " ")
     .trim();
+}
+
+function describeError(error: unknown, depth = 0): string {
+  if (depth >= 5) return "[cause chain truncated]";
+  if (error instanceof Error) {
+    const detail = error.stack ?? `${error.name}: ${error.message}`;
+    const cause = "cause" in error ? describeError(error.cause, depth + 1) : "";
+    return sanitizeProgressText(
+      cause ? `${detail}\nCaused by: ${cause}` : detail,
+    );
+  }
+  return sanitizeProgressText(String(error));
 }
 
 const ANSI_SEQUENCE = /\u001b\[[0-?]*[ -/]*[@-~]/gu;
@@ -350,8 +366,15 @@ export function formatStageCompletion(
     : "";
   const plainPrefix = `${stageMarker(completion.status, false)} Stage ${completion.stageIndex}/${completion.stageTotal}: `;
   const availableDescription =
-    width - displayWidth(plainPrefix) - displayWidth(suffix) - status.length - displayWidth(error);
-  const fittedDescription = truncateText(description, Math.max(0, availableDescription));
+    width -
+    displayWidth(plainPrefix) -
+    displayWidth(suffix) -
+    status.length -
+    displayWidth(error);
+  const fittedDescription = truncateText(
+    description,
+    Math.max(0, availableDescription),
+  );
   const descriptionSeparator = fittedDescription ? " " : "";
   const line = `${prefix}${fittedDescription}${descriptionSeparator}${status}${error}${suffix}`;
   if (displayWidth(line) <= width) return line;
@@ -396,7 +419,10 @@ export function formatInteractiveProgress(options: {
       : "";
   const unitSuffix = unit ? ` · ${unit}` : "";
   const availableDescription =
-    width - displayWidth(prefix) - displayWidth(unitSuffix) - displayWidth(suffix);
+    width -
+    displayWidth(prefix) -
+    displayWidth(unitSuffix) -
+    displayWidth(suffix);
   if (availableDescription >= 0) {
     return `${prefix}${truncateText(description, availableDescription)}${unitSuffix}${suffix}`;
   }
@@ -423,11 +449,15 @@ export class TranscriptionProgressReporter {
   private currentStage: ProgressStage | undefined;
   private readonly timers = new Set<ReturnType<typeof setInterval>>();
   private logReady: Promise<void> | undefined;
+  private logWriteTail: Promise<void> = Promise.resolve();
   private readonly pendingLogs = new Set<Promise<void>>();
   private readonly logLevel: LogLevel;
   private readonly terminalWidth: number;
   private readonly colorEnabled: boolean;
-  private readonly completedStages = new Map<ProgressStage, ProgressStageCompletion>();
+  private readonly completedStages = new Map<
+    ProgressStage,
+    ProgressStageCompletion
+  >();
   private displayedInteractiveLine = false;
   private currentDisplayStage: ProgressStage | undefined;
   private currentWorkUnit: ProgressWorkUnit | undefined;
@@ -450,7 +480,8 @@ export class TranscriptionProgressReporter {
         process.env["NO_COLOR"] === undefined &&
         process.env["TERM"] !== "dumb",
     );
-    this.colorEnabled = Boolean(options.color ?? terminalAllowsColor) && terminalAllowsColor;
+    this.colorEnabled =
+      Boolean(options.color ?? terminalAllowsColor) && terminalAllowsColor;
   }
 
   public async start(): Promise<void> {
@@ -483,8 +514,8 @@ export class TranscriptionProgressReporter {
     this.routeMessage("warn", message);
   }
 
-  public error(message: string): void {
-    this.reportError(message, true);
+  public error(message: string, error?: unknown): void {
+    this.reportError(message, true, error);
   }
 
   /** Records one terminal outcome for a real pipeline stage, never for a work unit. */
@@ -512,9 +543,7 @@ export class TranscriptionProgressReporter {
       status,
       stageElapsedMs: Math.max(0, now - this.stageStartedAt.value),
       elapsedMs: Math.max(0, now - this.startedAt),
-      ...(details.error
-        ? { error: sanitizeProgressText(details.error) }
-        : {}),
+      ...(details.error ? { error: sanitizeProgressText(details.error) } : {}),
     };
     this.completedStages.set(stage, completion);
     this.currentWorkUnit = undefined;
@@ -670,9 +699,7 @@ export class TranscriptionProgressReporter {
       return;
     }
     this.clearInteractiveLine();
-    const active = this.colorEnabled
-      ? colorize(compact, "36", true)
-      : compact;
+    const active = this.colorEnabled ? colorize(compact, "36", true) : compact;
     this.options.output.write(`\r${active}`);
     this.displayedInteractiveLine = true;
   }
@@ -685,7 +712,8 @@ export class TranscriptionProgressReporter {
       terminalWidth: this.terminalWidth,
       color: this.colorEnabled,
     });
-    if (this.options.isTTY && !this.options.verbose) this.clearInteractiveLine();
+    if (this.options.isTTY && !this.options.verbose)
+      this.clearInteractiveLine();
     this.options.output.write(`${line}\n`);
     this.displayedInteractiveLine = false;
     this.currentDisplayStage = completion.stage;
@@ -725,9 +753,24 @@ export class TranscriptionProgressReporter {
     }
   }
 
-  private reportError(message: string, record: boolean): void {
+  private reportError(message: string, record: boolean, error?: unknown): void {
     const clean = sanitizeProgressText(message) || "Transcription failed";
-    if (clean === this.lastReportedError) return;
+    if (this.lastReportedError) {
+      if (error !== undefined) {
+        const details = describeError(error);
+        const event = this.buildEvent({
+          stage: this.currentStage ?? "normalization",
+          operation: clean,
+          status: "failed",
+          error: details,
+        });
+        this.queueEventLog(event, () =>
+          this.writeError(`Details: ${this.options.logPath}\n`),
+        );
+        if (this.options.verbose) this.writeError(`${details}\n`);
+      }
+      return;
+    }
     this.interactiveSuppressed = true;
     this.stopAllTimers();
     if (record) {
@@ -735,12 +778,20 @@ export class TranscriptionProgressReporter {
         stage: this.currentStage ?? "normalization",
         operation: clean,
         status: "failed",
-        error: clean,
+        error: error === undefined ? clean : describeError(error),
       });
-      this.queueEventLog(event);
+      const logPath = this.options.logPath;
+      this.queueEventLog(
+        event,
+        error !== undefined && logPath
+          ? () => this.writeError(`Details: ${logPath}\n`)
+          : undefined,
+      );
     }
     this.clearInteractiveLine();
-    this.writeError(`Error: ${clean}\n`);
+    this.writeError(`Error: ${clean}.\n`);
+    if (error !== undefined && this.options.verbose)
+      this.writeError(`${describeError(error)}\n`);
     this.lastReportedError = clean;
     this.displayedInteractiveLine = false;
   }
@@ -811,9 +862,7 @@ export class TranscriptionProgressReporter {
       workUnit: this.currentWorkUnit,
     });
     this.clearInteractiveLine();
-    const active = this.colorEnabled
-      ? colorize(compact, "36", true)
-      : compact;
+    const active = this.colorEnabled ? colorize(compact, "36", true) : compact;
     this.options.output.write(`\r${active}`);
     this.displayedInteractiveLine = true;
   }
@@ -822,34 +871,35 @@ export class TranscriptionProgressReporter {
     if (!this.options.logPath || !shouldLog(event.severity, this.logLevel))
       return;
     await this.start();
-    await appendFile(
-      this.options.logPath,
-      `${JSON.stringify(event)}\n`,
-      "utf8",
-    );
+    await this.appendPrivateLog(JSON.stringify(event));
   }
 
-  private queueEventLog(event: ProgressEvent): void {
+  private queueEventLog(event: ProgressEvent, onWritten?: () => void): void {
     if (!this.options.logPath || !shouldLog(event.severity, this.logLevel))
       return;
     const pending = this.writeEventLog(event);
     this.pendingLogs.add(pending);
     void pending.then(
-      () => this.pendingLogs.delete(pending),
-      () => this.pendingLogs.delete(pending),
+      () => {
+        this.pendingLogs.delete(pending);
+        try {
+          onWritten?.();
+        } catch {
+          // Terminal output is best-effort after the private log was written.
+        }
+      },
+      () => undefined,
     );
   }
 
-  private queueStageCompletionLog(
-    completion: ProgressStageCompletion,
-  ): void {
+  private queueStageCompletionLog(completion: ProgressStageCompletion): void {
     const severity = completion.status === "failed" ? "error" : "info";
     if (!this.options.logPath || !shouldLog(severity, this.logLevel)) return;
     const pending = this.writeStageCompletionLog(completion);
     this.pendingLogs.add(pending);
     void pending.then(
       () => this.pendingLogs.delete(pending),
-      () => this.pendingLogs.delete(pending),
+      () => undefined,
     );
   }
 
@@ -858,16 +908,31 @@ export class TranscriptionProgressReporter {
   ): Promise<void> {
     if (!this.options.logPath) return;
     await this.start();
-    await appendFile(
-      this.options.logPath,
-      `${JSON.stringify({
+    await this.appendPrivateLog(
+      JSON.stringify({
         kind: "stage-completion",
         ...completion,
         timestamp: new Date().toISOString(),
         severity: completion.status === "failed" ? "error" : "info",
-      })}\n`,
-      "utf8",
+      }),
     );
+  }
+
+  private appendPrivateLog(line: string): Promise<void> {
+    const path = this.options.logPath;
+    if (!path) return Promise.resolve();
+    // Preserve event order across asynchronous open/chmod/write operations.
+    const pending = this.logWriteTail.then(async () => {
+      const handle = await open(path, "a", 0o600);
+      try {
+        await handle.chmod(0o600);
+        await handle.writeFile(`${line}\n`, "utf8");
+      } finally {
+        await handle.close();
+      }
+    });
+    this.logWriteTail = pending.catch(() => undefined);
+    return pending;
   }
 
   private formatDetailed(event: ProgressEvent): string {

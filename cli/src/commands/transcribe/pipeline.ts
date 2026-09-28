@@ -160,6 +160,29 @@ export function parseStopAfter(
   );
 }
 
+export async function runReconciliationStage<T>(
+  operation: () => Promise<T>,
+  reportFailure: (error: unknown) => void,
+): Promise<T> {
+  try {
+    return await operation();
+  } catch (error) {
+    const executionError = new Error("Unified reconciliation stage failed.", {
+      cause: error,
+    });
+    try {
+      reportFailure(error);
+    } catch (reportingError) {
+      throw new AggregateError(
+        [executionError, reportingError],
+        "Unified reconciliation stage failed and reporting failed.",
+        { cause: executionError },
+      );
+    }
+    throw executionError;
+  }
+}
+
 async function exists(path: string): Promise<boolean> {
   try {
     await access(path);
@@ -290,647 +313,690 @@ export async function executePreparedTranscription(
   let activeStage: ProgressStage | undefined;
   try {
     ensureV3Checkpoint(options.checkpoint);
-  if (
-    options.stopAfter === "correction-review" ||
-    options.stopAfter === "correction_review"
-  )
-    options.stopAfter = "reconciliation";
-  if (options.profile.layout === "hybrid" && !options.channelMap) {
-    throw new Error(
-      "Hybrid transcription requires a valid session channel map.",
-    );
-  }
-  if (options.profile.layout === "hybrid") {
-    const issues = channelMapCompatibilityIssues(options.channelMap!, {
-      source: options.manifest.source,
-      channels: options.manifest.preparedChannels.map(({ id, index }) => ({
-        id,
-        index,
-      })),
-    });
-    if (issues.length > 0)
+    if (
+      options.stopAfter === "correction-review" ||
+      options.stopAfter === "correction_review"
+    )
+      options.stopAfter = "reconciliation";
+    if (options.profile.layout === "hybrid" && !options.channelMap) {
       throw new Error(
-        `Hybrid channel map is incompatible: ${issues.join("; ")}`,
+        "Hybrid transcription requires a valid session channel map.",
       );
-  }
-  const passes = requiredPasses(
-    options.profile.layout,
-    options.manifest.preparedChannels,
-  );
-  const prompt = options.prompt ?? options.profile.prompt;
-  options.checkpoint.profile = options.profile.name;
-  options.checkpoint.layout = options.profile.layout;
-  const available = options.manifest.chunks.map((chunk) => chunk.index);
-  const selected = parseChunkSelection(options.selection, available);
-  const stage = options.checkpoint.stages.transcribed_chunks;
-  const availableByPass = Object.fromEntries(
-    passes.map((pass) => [pass.id, available]),
-  );
-  const identityByPass = Object.fromEntries(
-    passes.map((pass) => [
-      pass.id,
-      sttCacheIdentity({
-        manifest: options.manifest,
-        pass,
-        target: options.profile.target,
-        language: options.language,
-        prompt,
-      }),
-    ]),
-  );
-  const previousIdentity =
-    (stage as typeof stage & { cacheIdentityByPass?: Record<string, string> })
-      .cacheIdentityByPass ?? {};
-  const identityChanged =
-    passes.some(
-      (pass) => previousIdentity[pass.id] !== identityByPass[pass.id],
-    ) ||
-    JSON.stringify(Object.keys(previousIdentity).sort()) !==
-      JSON.stringify(passes.map((pass) => pass.id).sort());
-  const retained = stage.completedByPass;
-  const completedByPass: Record<string, number[]> = Object.fromEntries(
-    passes.map((pass) => [pass.id, []]),
-  );
-  for (const pass of passes) {
-    if (previousIdentity[pass.id] !== identityByPass[pass.id]) continue;
-    for (const index of retained[pass.id] ?? []) {
-      if (
-        await validPair(
-          passRawJsonPathFor(options.rawChunksDir, pass, index),
-          passRawMarkdownPathFor(options.rawTranscriptionDir, pass, index),
-        )
-      )
-        completedByPass[pass.id]!.push(index);
     }
-  }
-  const completionChanged = passes.some(
-    (pass) =>
-      JSON.stringify(retained[pass.id] ?? []) !==
-      JSON.stringify(completedByPass[pass.id] ?? []),
-  );
-  stage.requiredPasses = passes.map((pass) => pass.id);
-  stage.completedByPass = completedByPass;
-  stage.selection = selected;
-  stage.total = options.manifest.chunks.length;
-  stage.rawChunksDir = options.rawChunksDir;
-  stage.rawTranscriptionDir = options.rawTranscriptionDir;
-  (
-    stage as typeof stage & { cacheIdentityByPass?: Record<string, string> }
-  ).cacheIdentityByPass = identityByPass;
-  options.checkpoint.stages.audio_chunking.requiredPasses = passes.map(
-    (pass) => pass.id,
-  );
-  options.checkpoint.stages.audio_chunking.availableByPass = availableByPass;
-  options.checkpoint.stages.transcribed_chunks.status = transcriptionStatus(
-    completedByPass,
-    availableByPass,
-  );
-  let downstreamInvalidated = identityChanged || completionChanged;
-  const invalidateDownstream = (): void => {
-    downstreamInvalidated = true;
-    options.checkpoint.stages.joining_raw_transcription.status = "pending";
-    options.checkpoint.stages.joining_raw_transcription.completedAt = undefined;
-    options.checkpoint.stages.reconciliation.status = "pending";
-    options.checkpoint.stages.reconciliation.completedAt = undefined;
-    options.checkpoint.stages.notes_summary_pass.status = "pending";
-    options.checkpoint.stages.notes_summary_pass.completedAt = undefined;
-    options.checkpoint.stages.done.status = "pending";
-    options.checkpoint.stages.done.completedAt = undefined;
-  };
-  if (downstreamInvalidated) invalidateDownstream();
-  options.checkpoint.updatedAt = new Date().toISOString();
-  await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
-
-  if (options.stopAfter === "audio-chunking")
-    return { checkpoint: options.checkpoint, selected, passes };
-
-  activeStage = "transcription";
-  let transcriptionHadNewWork = false;
-  for (const pass of passes) {
-    for (const index of selected) {
-      if (completedByPass[pass.id]!.includes(index) && !options.force) {
-        await options.progress?.event({
-          stage: "transcription",
-          operation: "ASR",
-          status: "reused",
-          chunkIndex: index,
-          chunkCount: available.length,
-          pass: pass.id,
-          workUnit: {
-            label: "left",
-            index: available.indexOf(index),
-            total: available.length,
-          },
-          diagnosticPath: options.rawChunksDir,
-        });
-        continue;
-      }
-      if (!downstreamInvalidated) invalidateDownstream();
-      transcriptionHadNewWork = true;
-      const chunk = options.manifest.chunks.find(
-        (candidate) => candidate.index === index,
-      )!;
-      options.onProgress?.(`Transcribing ${pass.id} chunk ${index}\n`);
-      const [transcript] = await progressOperation(
-        options.progress,
-        "transcription",
-        "ASR",
-        () =>
-          transcribePass(
-            {
-              target: options.profile.target,
-              pass,
-              chunks: [
-                {
-                  index,
-                  path: chunkAudioPathFor(options.chunksDir, pass, index),
-                },
-              ],
-              outDir: options.rawChunksDir,
-              language: options.language,
-              prompt,
-              force: Boolean(options.force),
-              onProgress: options.onProgress,
-            },
-            options.dependencies,
-          ),
-        {
-          chunkIndex: index,
-          chunkCount: available.length,
-          pass: pass.id,
-          workUnit: {
-            label: "left",
-            index: available.indexOf(index),
-            total: available.length,
-          },
-          diagnosticPath: options.rawChunksDir,
-        },
-      );
-      if (!transcript)
-        throw new Error(
-          `STT returned an invalid transcript for ${pass.id} chunk ${index}`,
-        );
-      const parsedTranscript = parseChunkTranscript(transcript);
-      const rawJsonPath = passRawJsonPathFor(options.rawChunksDir, pass, index);
-      await atomicText(
-        rawJsonPath,
-        `${JSON.stringify(parsedTranscript, null, 2)}\n`,
-      );
-      options.onProgress?.(
-        `Saved raw JSON for ${pass.id} chunk ${index}: ${rawJsonPath}\n`,
-      );
-      const markdown = formatChunkTranscript({
-        ...chunk,
-        transcript: parsedTranscript,
+    if (options.profile.layout === "hybrid") {
+      const issues = channelMapCompatibilityIssues(options.channelMap!, {
+        source: options.manifest.source,
+        channels: options.manifest.preparedChannels.map(({ id, index }) => ({
+          id,
+          index,
+        })),
       });
-      if (!markdown.trim())
+      if (issues.length > 0)
         throw new Error(
-          `STT produced no renderable markdown for ${pass.id} chunk ${index}`,
+          `Hybrid channel map is incompatible: ${issues.join("; ")}`,
         );
-      const rawMarkdownPath = passRawMarkdownPathFor(
-        options.rawTranscriptionDir,
-        pass,
-        index,
-      );
-      await atomicText(rawMarkdownPath, markdown);
-      options.onProgress?.(
-        `Saved raw Markdown for ${pass.id} chunk ${index}: ${rawMarkdownPath}\n`,
-      );
-      completedByPass[pass.id] = [
-        ...new Set([...completedByPass[pass.id]!, index]),
-      ].sort((a, b) => a - b);
-      stage.completedByPass = completedByPass;
-      options.checkpoint.updatedAt = new Date().toISOString();
-      await writeTranscribeCheckpoint(
-        options.checkpointPath,
-        options.checkpoint,
-      );
-      options.onProgress?.(
-        `Checkpoint advanced through ${pass.id} chunk ${index}\n`,
-      );
-      try {
-        await cleanupOpenAiChunk(transcript);
-        options.onProgress?.(
-          `Remote cleanup completed for ${pass.id} chunk ${index}\n`,
-        );
-      } catch {
-        options.onProgress?.(
-          `Remote cleanup deferred to the server TTL for ${pass.id} chunk ${index}\n`,
-        );
+    }
+    const passes = requiredPasses(
+      options.profile.layout,
+      options.manifest.preparedChannels,
+    );
+    const prompt = options.prompt ?? options.profile.prompt;
+    options.checkpoint.profile = options.profile.name;
+    options.checkpoint.layout = options.profile.layout;
+    const available = options.manifest.chunks.map((chunk) => chunk.index);
+    const selected = parseChunkSelection(options.selection, available);
+    const stage = options.checkpoint.stages.transcribed_chunks;
+    const availableByPass = Object.fromEntries(
+      passes.map((pass) => [pass.id, available]),
+    );
+    const identityByPass = Object.fromEntries(
+      passes.map((pass) => [
+        pass.id,
+        sttCacheIdentity({
+          manifest: options.manifest,
+          pass,
+          target: options.profile.target,
+          language: options.language,
+          prompt,
+        }),
+      ]),
+    );
+    const previousIdentity =
+      (stage as typeof stage & { cacheIdentityByPass?: Record<string, string> })
+        .cacheIdentityByPass ?? {};
+    const identityChanged =
+      passes.some(
+        (pass) => previousIdentity[pass.id] !== identityByPass[pass.id],
+      ) ||
+      JSON.stringify(Object.keys(previousIdentity).sort()) !==
+        JSON.stringify(passes.map((pass) => pass.id).sort());
+    const retained = stage.completedByPass;
+    const completedByPass: Record<string, number[]> = Object.fromEntries(
+      passes.map((pass) => [pass.id, []]),
+    );
+    for (const pass of passes) {
+      if (previousIdentity[pass.id] !== identityByPass[pass.id]) continue;
+      for (const index of retained[pass.id] ?? []) {
+        if (
+          await validPair(
+            passRawJsonPathFor(options.rawChunksDir, pass, index),
+            passRawMarkdownPathFor(options.rawTranscriptionDir, pass, index),
+          )
+        )
+          completedByPass[pass.id]!.push(index);
       }
     }
-  }
-  const transcriptionComplete = passes.every(
-    (pass) => completedByPass[pass.id]!.length === available.length,
-  );
-  stage.status = transcriptionComplete ? "complete" : "in_progress";
-  options.checkpoint.updatedAt = new Date().toISOString();
-  stage.completedAt = transcriptionComplete
-    ? options.checkpoint.updatedAt
-    : undefined;
-  await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
-  if (!transcriptionComplete) {
+    const completionChanged = passes.some(
+      (pass) =>
+        JSON.stringify(retained[pass.id] ?? []) !==
+        JSON.stringify(completedByPass[pass.id] ?? []),
+    );
+    stage.requiredPasses = passes.map((pass) => pass.id);
+    stage.completedByPass = completedByPass;
+    stage.selection = selected;
+    stage.total = options.manifest.chunks.length;
+    stage.rawChunksDir = options.rawChunksDir;
+    stage.rawTranscriptionDir = options.rawTranscriptionDir;
+    (
+      stage as typeof stage & { cacheIdentityByPass?: Record<string, string> }
+    ).cacheIdentityByPass = identityByPass;
+    options.checkpoint.stages.audio_chunking.requiredPasses = passes.map(
+      (pass) => pass.id,
+    );
+    options.checkpoint.stages.audio_chunking.availableByPass = availableByPass;
+    options.checkpoint.stages.transcribed_chunks.status = transcriptionStatus(
+      completedByPass,
+      availableByPass,
+    );
+    let downstreamInvalidated = identityChanged || completionChanged;
+    const invalidateDownstream = (): void => {
+      downstreamInvalidated = true;
+      options.checkpoint.stages.joining_raw_transcription.status = "pending";
+      options.checkpoint.stages.joining_raw_transcription.completedAt =
+        undefined;
+      options.checkpoint.stages.reconciliation.status = "pending";
+      options.checkpoint.stages.reconciliation.completedAt = undefined;
+      options.checkpoint.stages.notes_summary_pass.status = "pending";
+      options.checkpoint.stages.notes_summary_pass.completedAt = undefined;
+      options.checkpoint.stages.done.status = "pending";
+      options.checkpoint.stages.done.completedAt = undefined;
+    };
+    if (downstreamInvalidated) invalidateDownstream();
+    options.checkpoint.updatedAt = new Date().toISOString();
+    await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
+
+    if (options.stopAfter === "audio-chunking")
+      return { checkpoint: options.checkpoint, selected, passes };
+
+    activeStage = "transcription";
+    let transcriptionHadNewWork = false;
+    for (const pass of passes) {
+      for (const index of selected) {
+        if (completedByPass[pass.id]!.includes(index) && !options.force) {
+          await options.progress?.event({
+            stage: "transcription",
+            operation: "ASR",
+            status: "reused",
+            chunkIndex: index,
+            chunkCount: available.length,
+            pass: pass.id,
+            workUnit: {
+              label: "left",
+              index: available.indexOf(index),
+              total: available.length,
+            },
+            diagnosticPath: options.rawChunksDir,
+          });
+          continue;
+        }
+        if (!downstreamInvalidated) invalidateDownstream();
+        transcriptionHadNewWork = true;
+        const chunk = options.manifest.chunks.find(
+          (candidate) => candidate.index === index,
+        )!;
+        options.onProgress?.(`Transcribing ${pass.id} chunk ${index}\n`);
+        const [transcript] = await progressOperation(
+          options.progress,
+          "transcription",
+          "ASR",
+          () =>
+            transcribePass(
+              {
+                target: options.profile.target,
+                pass,
+                chunks: [
+                  {
+                    index,
+                    path: chunkAudioPathFor(options.chunksDir, pass, index),
+                  },
+                ],
+                outDir: options.rawChunksDir,
+                language: options.language,
+                prompt,
+                force: Boolean(options.force),
+                onProgress: options.onProgress,
+              },
+              options.dependencies,
+            ),
+          {
+            chunkIndex: index,
+            chunkCount: available.length,
+            pass: pass.id,
+            workUnit: {
+              label: "left",
+              index: available.indexOf(index),
+              total: available.length,
+            },
+            diagnosticPath: options.rawChunksDir,
+          },
+        );
+        if (!transcript)
+          throw new Error(
+            `STT returned an invalid transcript for ${pass.id} chunk ${index}`,
+          );
+        const parsedTranscript = parseChunkTranscript(transcript);
+        const rawJsonPath = passRawJsonPathFor(
+          options.rawChunksDir,
+          pass,
+          index,
+        );
+        await atomicText(
+          rawJsonPath,
+          `${JSON.stringify(parsedTranscript, null, 2)}\n`,
+        );
+        options.onProgress?.(
+          `Saved raw JSON for ${pass.id} chunk ${index}: ${rawJsonPath}\n`,
+        );
+        const markdown = formatChunkTranscript({
+          ...chunk,
+          transcript: parsedTranscript,
+        });
+        if (!markdown.trim())
+          throw new Error(
+            `STT produced no renderable markdown for ${pass.id} chunk ${index}`,
+          );
+        const rawMarkdownPath = passRawMarkdownPathFor(
+          options.rawTranscriptionDir,
+          pass,
+          index,
+        );
+        await atomicText(rawMarkdownPath, markdown);
+        options.onProgress?.(
+          `Saved raw Markdown for ${pass.id} chunk ${index}: ${rawMarkdownPath}\n`,
+        );
+        completedByPass[pass.id] = [
+          ...new Set([...completedByPass[pass.id]!, index]),
+        ].sort((a, b) => a - b);
+        stage.completedByPass = completedByPass;
+        options.checkpoint.updatedAt = new Date().toISOString();
+        await writeTranscribeCheckpoint(
+          options.checkpointPath,
+          options.checkpoint,
+        );
+        options.onProgress?.(
+          `Checkpoint advanced through ${pass.id} chunk ${index}\n`,
+        );
+        try {
+          await cleanupOpenAiChunk(transcript);
+          options.onProgress?.(
+            `Remote cleanup completed for ${pass.id} chunk ${index}\n`,
+          );
+        } catch {
+          options.onProgress?.(
+            `Remote cleanup deferred to the server TTL for ${pass.id} chunk ${index}\n`,
+          );
+        }
+      }
+    }
+    const transcriptionComplete = passes.every(
+      (pass) => completedByPass[pass.id]!.length === available.length,
+    );
+    stage.status = transcriptionComplete ? "complete" : "in_progress";
+    options.checkpoint.updatedAt = new Date().toISOString();
+    stage.completedAt = transcriptionComplete
+      ? options.checkpoint.updatedAt
+      : undefined;
+    await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
+    if (!transcriptionComplete) {
+      if (options.stopAfter === "transcription")
+        return { checkpoint: options.checkpoint, selected, passes };
+      return { checkpoint: options.checkpoint, selected, passes };
+    }
+    options.progress?.completeStage(
+      "transcription",
+      transcriptionHadNewWork ? "complete" : "reused",
+    );
+    activeStage = undefined;
     if (options.stopAfter === "transcription")
       return { checkpoint: options.checkpoint, selected, passes };
-    return { checkpoint: options.checkpoint, selected, passes };
-  }
-  options.progress?.completeStage(
-    "transcription",
-    transcriptionHadNewWork ? "complete" : "reused",
-  );
-  activeStage = undefined;
 
-  activeStage = "raw-assembly";
-  let rawAssemblyHadNewWork = false;
-  const alignmentDir = join(options.rawTranscriptionDir, "alignment");
-  const alignmentIdentity = stable({
-    version: 1,
-    channelMap: options.channelMap ?? null,
-    passes: identityByPass,
-  });
-  const joining = options.checkpoint.stages.joining_raw_transcription;
-  const alignmentPaths = options.manifest.chunks.map((chunk) =>
-    join(alignmentDir, `session_${String(chunk.index).padStart(3, "0")}.json`),
-  );
-  const cachedAlignments: AlignmentResult[] = [];
-  let alignmentReusable =
-    options.profile.layout === "hybrid" &&
-    joining.alignmentIdentity === alignmentIdentity &&
-    joining.alignmentDir === alignmentDir;
-  if (alignmentReusable) {
-    try {
-      for (const path of alignmentPaths)
-        cachedAlignments.push(
-          parseAlignmentResult(
-            JSON.parse(await readFile(path, "utf8")) as unknown,
-          ),
-        );
-      if (!joining.path) throw new Error("Missing raw transcript path");
-      const rawTranscript = await readFile(joining.path, "utf8");
-      if (options.stages?.rawAssembly) {
-        if (!rawTranscript.trim()) throw new Error("Empty raw transcript");
-      } else {
-        const expected = assembleAlignedTranscript({
-          source: options.source,
-          backend: options.backend,
-          model: options.model ?? options.profile.target.model,
-          chunks: cachedAlignments,
-        });
-        if (rawTranscript !== expected)
-          throw new Error("Raw transcript does not match cached alignment");
-      }
-    } catch {
-      alignmentReusable = false;
-    }
-  }
-  if (options.profile.layout === "hybrid" && !alignmentReusable) {
-    rawAssemblyHadNewWork = true;
-    invalidateDownstream();
-    const stereo = passes.find((pass) => pass.kind === "stereo")!;
-    const channelPasses = passes.filter(
-      (pass): pass is Extract<TranscriptionPass, { kind: "channel" }> =>
-        pass.kind === "channel",
+    activeStage = "raw-assembly";
+    let rawAssemblyHadNewWork = false;
+    const alignmentDir = join(options.rawTranscriptionDir, "alignment");
+    const alignmentIdentity = stable({
+      version: 1,
+      channelMap: options.channelMap ?? null,
+      passes: identityByPass,
+    });
+    const joining = options.checkpoint.stages.joining_raw_transcription;
+    const alignmentPaths = options.manifest.chunks.map((chunk) =>
+      join(
+        alignmentDir,
+        `session_${String(chunk.index).padStart(3, "0")}.json`,
+      ),
     );
-    const alignments: AlignmentResult[] = [];
-    for (const chunk of options.manifest.chunks) {
-      const stereoTranscript = parseChunkTranscript(
-        JSON.parse(
-          await readFile(
-            passRawJsonPathFor(options.rawChunksDir, stereo, chunk.index),
-            "utf8",
-          ),
-        ) as unknown,
-      );
-      const channels = await Promise.all(
-        channelPasses.map(async (pass, passIndex) => {
-          const transcript = parseChunkTranscript(
-            JSON.parse(
-              await readFile(
-                passRawJsonPathFor(options.rawChunksDir, pass, chunk.index),
-                "utf8",
-              ),
-            ) as unknown,
+    const cachedAlignments: AlignmentResult[] = [];
+    let alignmentReusable =
+      options.profile.layout === "hybrid" &&
+      joining.alignmentIdentity === alignmentIdentity &&
+      joining.alignmentDir === alignmentDir;
+    if (alignmentReusable) {
+      try {
+        for (const path of alignmentPaths)
+          cachedAlignments.push(
+            parseAlignmentResult(
+              JSON.parse(await readFile(path, "utf8")) as unknown,
+            ),
           );
-          const energies = await Promise.all(
-            transcript.segments.map(async (segment) => {
-              const windowEnergies = await Promise.all(
-                channelPasses.map((candidatePass) =>
-                  (
-                    options.measureEnergy ??
-                    ((request) =>
-                      measureAudioWindowEnergy(
-                        request.path,
-                        request.start,
-                        request.duration,
-                      ))
-                  )({
-                    path: chunkAudioPathFor(
-                      options.chunksDir,
-                      candidatePass,
-                      chunk.index,
-                    ),
-                    start: segment.start,
-                    duration: segment.end - segment.start,
-                  }),
-                ),
-              );
-              return normalizeRelativeEnergies(windowEnergies)[passIndex];
-            }),
-          );
-          return {
-            passId: pass.id,
-            channelId: pass.id,
-            segments: transcript.segments,
-            segmentEnergies: energies,
-          };
-        }),
-      );
-      const result = alignHybridChunk({
-        chunkStart: chunk.overlapStart,
-        logicalStart: chunk.start,
-        logicalEnd: chunk.end,
-        stereo: stereoTranscript.segments,
-        channels,
-        channelMap: options.channelMap,
-      });
-      alignments.push(result);
-      await atomicText(
-        join(
-          alignmentDir,
-          `session_${String(chunk.index).padStart(3, "0")}.json`,
-        ),
-        `${JSON.stringify(parseAlignmentResult(result), null, 2)}\n`,
-      );
+        if (!joining.path) throw new Error("Missing raw transcript path");
+        const rawTranscript = await readFile(joining.path, "utf8");
+        if (options.stages?.rawAssembly) {
+          if (!rawTranscript.trim()) throw new Error("Empty raw transcript");
+        } else {
+          const expected = assembleAlignedTranscript({
+            source: options.source,
+            backend: options.backend,
+            model: options.model ?? options.profile.target.model,
+            chunks: cachedAlignments,
+          });
+          if (rawTranscript !== expected)
+            throw new Error("Raw transcript does not match cached alignment");
+        }
+      } catch {
+        alignmentReusable = false;
+      }
     }
-    joining.alignmentDir = alignmentDir;
-    joining.alignmentIdentity = alignmentIdentity;
-    if (options.stages?.rawAssembly)
-      await progressOperation(
-        options.progress,
-        "raw-assembly",
-        "Assemble raw transcript",
-        options.stages.rawAssembly,
-        { diagnosticPath: joining.path },
+    if (options.profile.layout === "hybrid" && !alignmentReusable) {
+      rawAssemblyHadNewWork = true;
+      invalidateDownstream();
+      const stereo = passes.find((pass) => pass.kind === "stereo")!;
+      const channelPasses = passes.filter(
+        (pass): pass is Extract<TranscriptionPass, { kind: "channel" }> =>
+          pass.kind === "channel",
       );
-    else
-      await atomicText(
-        joining.path!,
-        assembleAlignedTranscript({
-          source: options.source,
-          backend: options.backend,
-          model: options.model ?? options.profile.target.model,
-          chunks: alignments,
-        }),
-      );
-  } else if (
-    options.profile.layout === "hybrid" &&
-    joining.status !== "complete"
-  ) {
-    rawAssemblyHadNewWork = true;
-    if (options.stages?.rawAssembly)
-      await progressOperation(
-        options.progress,
-        "raw-assembly",
-        "Assemble raw transcript",
-        options.stages.rawAssembly,
-        { diagnosticPath: joining.path },
-      );
-    else
-      await atomicText(
-        joining.path!,
-        assembleAlignedTranscript({
-          source: options.source,
-          backend: options.backend,
-          model: options.model ?? options.profile.target.model,
-          chunks: cachedAlignments,
-        }),
-      );
-  }
-  if (options.profile.layout === "hybrid") {
-    options.checkpoint.updatedAt = new Date().toISOString();
-    options.checkpoint.stages.joining_raw_transcription = {
-      ...joining,
-      status: "complete",
-      completedAt: options.checkpoint.updatedAt,
-      path: joining.path,
-      alignmentDir,
-      alignmentIdentity,
-    };
-    await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
-  }
-  if (options.profile.layout !== "hybrid" && joining.status !== "complete") {
-    rawAssemblyHadNewWork = true;
-    const stereo = passes.find((pass) => pass.kind === "stereo")!;
-    const transcripts = await Promise.all(
-      options.manifest.chunks.map(async (chunk) => ({
-        ...chunk,
-        transcript: parseChunkTranscript(
+      const alignments: AlignmentResult[] = [];
+      for (const chunk of options.manifest.chunks) {
+        const stereoTranscript = parseChunkTranscript(
           JSON.parse(
             await readFile(
               passRawJsonPathFor(options.rawChunksDir, stereo, chunk.index),
               "utf8",
             ),
           ) as unknown,
-        ),
-      })),
-    );
-    if (options.stages?.rawAssembly)
-      await progressOperation(
-        options.progress,
-        "raw-assembly",
-        "Assemble raw transcript",
-        options.stages.rawAssembly,
-        {
-          diagnosticPath:
-            options.checkpoint.stages.joining_raw_transcription.path,
-        },
-      );
-    else
-      await atomicText(
-        options.checkpoint.stages.joining_raw_transcription.path!,
-        assembleTranscript({
-          source: options.source,
-          backend: options.backend,
-          model: options.model ?? options.profile.target.model,
-          chunks: transcripts,
-          silences: options.manifest.silences,
-          silenceTagMinimumSeconds: options.silenceTagMinimumSeconds,
-        }),
-      );
-    options.checkpoint.updatedAt = new Date().toISOString();
-    options.checkpoint.stages.joining_raw_transcription = {
-      status: "complete",
-      completedAt: options.checkpoint.updatedAt,
-      path: options.checkpoint.stages.joining_raw_transcription.path,
-    };
-    await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
-  }
-  options.progress?.completeStage(
-    "raw-assembly",
-    rawAssemblyHadNewWork ? "complete" : "reused",
-  );
-  activeStage = undefined;
-  if (options.stopAfter === "raw-assembly")
-    return { checkpoint: options.checkpoint, selected, passes };
-  activeStage = "reconciliation";
-  let reconciliationHadNewWork = false;
-  if (options.checkpoint.stages.reconciliation.status === "pending") {
-    let result = options.stages?.reconciliation
-      ? await progressOperation(
+        );
+        const channels = await Promise.all(
+          channelPasses.map(async (pass, passIndex) => {
+            const transcript = parseChunkTranscript(
+              JSON.parse(
+                await readFile(
+                  passRawJsonPathFor(options.rawChunksDir, pass, chunk.index),
+                  "utf8",
+                ),
+              ) as unknown,
+            );
+            const energies = await Promise.all(
+              transcript.segments.map(async (segment) => {
+                const windowEnergies = await Promise.all(
+                  channelPasses.map((candidatePass) =>
+                    (
+                      options.measureEnergy ??
+                      ((request) =>
+                        measureAudioWindowEnergy(
+                          request.path,
+                          request.start,
+                          request.duration,
+                        ))
+                    )({
+                      path: chunkAudioPathFor(
+                        options.chunksDir,
+                        candidatePass,
+                        chunk.index,
+                      ),
+                      start: segment.start,
+                      duration: segment.end - segment.start,
+                    }),
+                  ),
+                );
+                return normalizeRelativeEnergies(windowEnergies)[passIndex];
+              }),
+            );
+            return {
+              passId: pass.id,
+              channelId: pass.id,
+              segments: transcript.segments,
+              segmentEnergies: energies,
+            };
+          }),
+        );
+        const result = alignHybridChunk({
+          chunkStart: chunk.overlapStart,
+          logicalStart: chunk.start,
+          logicalEnd: chunk.end,
+          stereo: stereoTranscript.segments,
+          channels,
+          channelMap: options.channelMap,
+        });
+        alignments.push(result);
+        await atomicText(
+          join(
+            alignmentDir,
+            `session_${String(chunk.index).padStart(3, "0")}.json`,
+          ),
+          `${JSON.stringify(parseAlignmentResult(result), null, 2)}\n`,
+        );
+      }
+      joining.alignmentDir = alignmentDir;
+      joining.alignmentIdentity = alignmentIdentity;
+      if (options.stages?.rawAssembly)
+        await progressOperation(
           options.progress,
-          "reconciliation",
-          "Reconcile transcript",
-          options.stages.reconciliation,
+          "raw-assembly",
+          "Assemble raw transcript",
+          options.stages.rawAssembly,
+          { diagnosticPath: joining.path },
+        );
+      else
+        await atomicText(
+          joining.path!,
+          assembleAlignedTranscript({
+            source: options.source,
+            backend: options.backend,
+            model: options.model ?? options.profile.target.model,
+            chunks: alignments,
+          }),
+        );
+    } else if (
+      options.profile.layout === "hybrid" &&
+      joining.status !== "complete"
+    ) {
+      rawAssemblyHadNewWork = true;
+      if (options.stages?.rawAssembly)
+        await progressOperation(
+          options.progress,
+          "raw-assembly",
+          "Assemble raw transcript",
+          options.stages.rawAssembly,
+          { diagnosticPath: joining.path },
+        );
+      else
+        await atomicText(
+          joining.path!,
+          assembleAlignedTranscript({
+            source: options.source,
+            backend: options.backend,
+            model: options.model ?? options.profile.target.model,
+            chunks: cachedAlignments,
+          }),
+        );
+    }
+    if (options.profile.layout === "hybrid") {
+      options.checkpoint.updatedAt = new Date().toISOString();
+      options.checkpoint.stages.joining_raw_transcription = {
+        ...joining,
+        status: "complete",
+        completedAt: options.checkpoint.updatedAt,
+        path: joining.path,
+        alignmentDir,
+        alignmentIdentity,
+      };
+      await writeTranscribeCheckpoint(
+        options.checkpointPath,
+        options.checkpoint,
+      );
+    }
+    if (options.profile.layout !== "hybrid" && joining.status !== "complete") {
+      rawAssemblyHadNewWork = true;
+      const stereo = passes.find((pass) => pass.kind === "stereo")!;
+      const transcripts = await Promise.all(
+        options.manifest.chunks.map(async (chunk) => ({
+          ...chunk,
+          transcript: parseChunkTranscript(
+            JSON.parse(
+              await readFile(
+                passRawJsonPathFor(options.rawChunksDir, stereo, chunk.index),
+                "utf8",
+              ),
+            ) as unknown,
+          ),
+        })),
+      );
+      if (options.stages?.rawAssembly)
+        await progressOperation(
+          options.progress,
+          "raw-assembly",
+          "Assemble raw transcript",
+          options.stages.rawAssembly,
           {
             diagnosticPath:
-              options.checkpoint.stages.reconciliation.metadata
-                .reconciliationDir,
+              options.checkpoint.stages.joining_raw_transcription.path,
           },
-        )
-      : undefined;
-    if (!result && options.stages?.correctionReview) {
-      const legacyStatus = await options.stages.correctionReview();
-      result = {
-        status:
-          legacyStatus === "complete"
-            ? ("valid" as const)
-            : ("skipped" as const),
-        metadata: legacyReconciliationMetadata(
-          options.checkpoint.outDir,
-          legacyStatus === "skipped",
-        ),
-      };
-    }
-    if (!result)
-      throw new Error(
-        "Missing required stages.reconciliation hook for reconciliation stage.",
-      );
-    reconciliationHadNewWork = result.status !== "skipped";
-    const metadata = ReconciliationMetadataSchema.parse(result.metadata);
-    if (result.status === "skipped") {
-      if (
-        metadata.status !== "pending" ||
-        !["off", "legacy"].includes(metadata.mode)
-      )
-        throw new Error(
-          "Skipped reconciliation requires pending off/legacy metadata.",
         );
-    } else if (metadata.status !== result.status) {
-      throw new Error(
-        "Reconciliation result status disagrees with metadata status.",
+      else
+        await atomicText(
+          options.checkpoint.stages.joining_raw_transcription.path!,
+          assembleTranscript({
+            source: options.source,
+            backend: options.backend,
+            model: options.model ?? options.profile.target.model,
+            chunks: transcripts,
+            silences: options.manifest.silences,
+            silenceTagMinimumSeconds: options.silenceTagMinimumSeconds,
+          }),
+        );
+      options.checkpoint.updatedAt = new Date().toISOString();
+      options.checkpoint.stages.joining_raw_transcription = {
+        status: "complete",
+        completedAt: options.checkpoint.updatedAt,
+        path: options.checkpoint.stages.joining_raw_transcription.path,
+      };
+      await writeTranscribeCheckpoint(
+        options.checkpointPath,
+        options.checkpoint,
       );
     }
-    const previousMetadata = stable(
-      options.checkpoint.stages.reconciliation.metadata,
+    options.progress?.completeStage(
+      "raw-assembly",
+      rawAssemblyHadNewWork ? "complete" : "reused",
     );
-    options.checkpoint.updatedAt = new Date().toISOString();
-    options.checkpoint.stages.reconciliation.metadata = metadata;
-    if (result.status === "invalid") {
-      options.checkpoint.stages.reconciliation.status = "failed";
-      options.checkpoint.stages.reconciliation.error =
-        "Canonical reconciliation validation failed.";
-      options.checkpoint.stages.reconciliation.completedAt = undefined;
-    } else {
-      options.checkpoint.stages.reconciliation.status =
-        result.status === "skipped" ? "skipped" : "complete";
-      options.checkpoint.stages.reconciliation.error = undefined;
-      options.checkpoint.stages.reconciliation.completedAt =
-        options.checkpoint.updatedAt;
+    activeStage = undefined;
+    if (options.stopAfter === "raw-assembly")
+      return { checkpoint: options.checkpoint, selected, passes };
+    activeStage = "reconciliation";
+    let reconciliationHadNewWork = false;
+    if (options.checkpoint.stages.reconciliation.status === "pending") {
+      let result = options.stages?.reconciliation
+        ? await progressOperation(
+            options.progress,
+            "reconciliation",
+            "Reconcile transcript",
+            options.stages.reconciliation,
+            {
+              diagnosticPath:
+                options.checkpoint.stages.reconciliation.metadata
+                  .reconciliationDir,
+            },
+          )
+        : undefined;
+      if (!result && options.stages?.correctionReview) {
+        const legacyStatus = await options.stages.correctionReview();
+        result = {
+          status:
+            legacyStatus === "complete"
+              ? ("valid" as const)
+              : ("skipped" as const),
+          metadata: legacyReconciliationMetadata(
+            options.checkpoint.outDir,
+            legacyStatus === "skipped",
+          ),
+        };
+      }
+      if (!result)
+        throw new Error(
+          "Missing required stages.reconciliation hook for reconciliation stage.",
+        );
+      reconciliationHadNewWork = result.status !== "skipped";
+      const metadata = ReconciliationMetadataSchema.parse(result.metadata);
+      if (result.status === "skipped") {
+        if (
+          metadata.status !== "pending" ||
+          !["off", "legacy"].includes(metadata.mode)
+        )
+          throw new Error(
+            "Skipped reconciliation requires pending off/legacy metadata.",
+          );
+      } else if (metadata.status !== result.status) {
+        throw new Error(
+          "Reconciliation result status disagrees with metadata status.",
+        );
+      }
+      const previousMetadata = stable(
+        options.checkpoint.stages.reconciliation.metadata,
+      );
+      options.checkpoint.updatedAt = new Date().toISOString();
+      options.checkpoint.stages.reconciliation.metadata = metadata;
+      if (result.status === "invalid") {
+        options.checkpoint.stages.reconciliation.status = "failed";
+        options.checkpoint.stages.reconciliation.error =
+          "Canonical reconciliation validation failed.";
+        options.checkpoint.stages.reconciliation.completedAt = undefined;
+      } else {
+        options.checkpoint.stages.reconciliation.status =
+          result.status === "skipped" ? "skipped" : "complete";
+        options.checkpoint.stages.reconciliation.error = undefined;
+        options.checkpoint.stages.reconciliation.completedAt =
+          options.checkpoint.updatedAt;
+      }
+      if (
+        previousMetadata !==
+        stable(options.checkpoint.stages.reconciliation.metadata)
+      ) {
+        options.checkpoint.stages.notes_summary_pass.status = "pending";
+        options.checkpoint.stages.notes_summary_pass.completedAt = undefined;
+        options.checkpoint.stages.done.status = "pending";
+        options.checkpoint.stages.done.completedAt = undefined;
+      }
+      await writeTranscribeCheckpoint(
+        options.checkpointPath,
+        options.checkpoint,
+      );
+      if (result.status === "invalid")
+        throw new Error("Reconciliation failed; notes were not run.");
     }
-    if (
-      previousMetadata !==
-      stable(options.checkpoint.stages.reconciliation.metadata)
-    ) {
-      options.checkpoint.stages.notes_summary_pass.status = "pending";
-      options.checkpoint.stages.notes_summary_pass.completedAt = undefined;
-      options.checkpoint.stages.done.status = "pending";
-      options.checkpoint.stages.done.completedAt = undefined;
-    }
-    await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
-    if (result.status === "invalid")
-      throw new Error("Reconciliation failed; notes were not run.");
-  }
-  if (options.checkpoint.stages.reconciliation.status === "failed") {
-    options.progress?.completeStage("reconciliation", "failed", {
-      error:
+    if (options.checkpoint.stages.reconciliation.status === "failed") {
+      options.progress?.completeStage("reconciliation", "failed", {
+        error:
+          options.checkpoint.stages.reconciliation.error ??
+          "Reconciliation failed",
+      });
+      activeStage = undefined;
+      throw new Error(
         options.checkpoint.stages.reconciliation.error ??
-        "Reconciliation failed",
-    });
-    activeStage = undefined;
-    throw new Error(
-      options.checkpoint.stages.reconciliation.error ??
-        "Reconciliation failed; notes were not run.",
-    );
-  }
-  options.progress?.completeStage(
-    "reconciliation",
-    options.checkpoint.stages.reconciliation.status === "skipped"
-      ? "skipped"
-      : options.checkpoint.stages.reconciliation.status === "complete"
-        ? reconciliationHadNewWork
-          ? "complete"
-          : "reused"
-        : "failed",
-  );
-  activeStage = undefined;
-  if (options.stopAfter === "reconciliation")
-    return { checkpoint: options.checkpoint, selected, passes };
-  activeStage = "notes";
-  let notesHadNewWork = false;
-  if (options.checkpoint.stages.notes_summary_pass.status === "pending") {
-    if (!options.stages?.notes) {
-      throw new Error(
-        "Missing required stages.notes hook for stereo notes stage.",
+          "Reconciliation failed; notes were not run.",
       );
     }
-    const notesStatus = await progressOperation(
-      options.progress,
-      "notes",
-      "Generate session summary",
-      options.stages.notes,
-      {
-        diagnosticPath: options.checkpoint.stages.notes_summary_pass.notesPath,
-      },
+    options.progress?.completeStage(
+      "reconciliation",
+      options.checkpoint.stages.reconciliation.status === "skipped"
+        ? "skipped"
+        : options.checkpoint.stages.reconciliation.status === "complete"
+          ? reconciliationHadNewWork
+            ? "complete"
+            : "reused"
+          : "failed",
     );
-    notesHadNewWork = notesStatus !== "skipped";
-    options.checkpoint.updatedAt = new Date().toISOString();
-    options.checkpoint.stages.notes_summary_pass.status = notesStatus;
-    options.checkpoint.stages.notes_summary_pass.completedAt =
-      options.checkpoint.updatedAt;
-    await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
-  }
-  if (options.checkpoint.stages.notes_summary_pass.status === "failed") {
-    options.progress?.completeStage("notes", "failed", {
-      error: "Notes stage failed",
-    });
     activeStage = undefined;
-    throw new Error("Notes stage failed");
-  }
-  options.progress?.completeStage(
-    "notes",
-    options.checkpoint.stages.notes_summary_pass.status === "skipped"
-      ? "skipped"
-      : options.checkpoint.stages.notes_summary_pass.status === "complete"
-        ? notesHadNewWork
-          ? "complete"
-          : "reused"
-        : "failed",
-  );
-  activeStage = undefined;
-  if (options.stopAfter === "notes")
+    if (options.stopAfter === "reconciliation")
+      return { checkpoint: options.checkpoint, selected, passes };
+    activeStage = "notes";
+    let notesHadNewWork = false;
+    if (options.checkpoint.stages.notes_summary_pass.status === "pending") {
+      if (!options.stages?.notes) {
+        throw new Error(
+          "Missing required stages.notes hook for stereo notes stage.",
+        );
+      }
+      const notesStatus = await progressOperation(
+        options.progress,
+        "notes",
+        "Generate session summary",
+        options.stages.notes,
+        {
+          diagnosticPath:
+            options.checkpoint.stages.notes_summary_pass.notesPath,
+        },
+      );
+      notesHadNewWork = notesStatus !== "skipped";
+      options.checkpoint.updatedAt = new Date().toISOString();
+      options.checkpoint.stages.notes_summary_pass.status = notesStatus;
+      options.checkpoint.stages.notes_summary_pass.completedAt =
+        options.checkpoint.updatedAt;
+      await writeTranscribeCheckpoint(
+        options.checkpointPath,
+        options.checkpoint,
+      );
+    }
+    if (options.checkpoint.stages.notes_summary_pass.status === "failed") {
+      options.progress?.completeStage("notes", "failed", {
+        error: "Notes stage failed",
+      });
+      activeStage = undefined;
+      throw new Error("Notes stage failed");
+    }
+    options.progress?.completeStage(
+      "notes",
+      options.checkpoint.stages.notes_summary_pass.status === "skipped"
+        ? "skipped"
+        : options.checkpoint.stages.notes_summary_pass.status === "complete"
+          ? notesHadNewWork
+            ? "complete"
+            : "reused"
+          : "failed",
+    );
+    activeStage = undefined;
+    if (options.stopAfter === "notes")
+      return { checkpoint: options.checkpoint, selected, passes };
+    if (options.checkpoint.stages.done.status !== "complete") {
+      options.checkpoint.updatedAt = new Date().toISOString();
+      options.checkpoint.stages.done.status = "complete";
+      options.checkpoint.stages.done.completedAt = options.checkpoint.updatedAt;
+      await writeTranscribeCheckpoint(
+        options.checkpointPath,
+        options.checkpoint,
+      );
+    }
     return { checkpoint: options.checkpoint, selected, passes };
-  if (options.checkpoint.stages.done.status !== "complete") {
-    options.checkpoint.updatedAt = new Date().toISOString();
-    options.checkpoint.stages.done.status = "complete";
-    options.checkpoint.stages.done.completedAt = options.checkpoint.updatedAt;
-    await writeTranscribeCheckpoint(options.checkpointPath, options.checkpoint);
-  }
-  return { checkpoint: options.checkpoint, selected, passes };
   } catch (error) {
     if (activeStage) {
       options.progress?.completeStage(activeStage, "failed", {
         error: error instanceof Error ? error.message : String(error),
       });
+    }
+    if (
+      activeStage === "reconciliation" &&
+      error instanceof Error &&
+      (error.message === "Unified reconciliation stage failed." ||
+        error.message ===
+          "Unified reconciliation stage failed and reporting failed.")
+    ) {
+      const stage = options.checkpoint.stages.reconciliation;
+      options.checkpoint.updatedAt = new Date().toISOString();
+      stage.status = "failed";
+      stage.error = "Reconciliation execution failed.";
+      stage.completedAt = undefined;
+      await writeTranscribeCheckpoint(
+        options.checkpointPath,
+        options.checkpoint,
+      );
     }
     throw error;
   }
@@ -951,6 +1017,7 @@ export async function executeTranscriptionPipeline(
   options: TranscriptionLifecycleOptions,
 ): Promise<TranscriptionPipelineResult> {
   let activeStage: ProgressStage | undefined;
+  let pipelineFailed = false;
   try {
     ensureV3Checkpoint(options.checkpoint);
     const normalizationWasComplete =
@@ -1036,6 +1103,7 @@ export async function executeTranscriptionPipeline(
       stages: options.stages,
     });
   } catch (error) {
+    pipelineFailed = true;
     if (activeStage) {
       options.progress?.completeStage(activeStage, "failed", {
         error: error instanceof Error ? error.message : String(error),
@@ -1043,6 +1111,10 @@ export async function executeTranscriptionPipeline(
     }
     throw error;
   } finally {
-    await options.progress?.close();
+    try {
+      await options.progress?.close();
+    } catch (closeError) {
+      if (!pipelineFailed) throw closeError;
+    }
   }
 }
