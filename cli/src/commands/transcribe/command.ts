@@ -1548,16 +1548,19 @@ function buildTranscribeRunCommand(
               );
               alignments[chunk.index] = parseAlignmentResult({
                 version: 1,
-                events: transcript.segments.map((segment) => ({
-                  text: segment.text,
-                  sourcePass: "stereo",
-                  globalStart: chunk.overlapStart + segment.start,
-                  globalEnd: chunk.overlapStart + segment.end,
-                  ...(segment.confidence === undefined
-                    ? {}
-                    : { confidence: segment.confidence }),
-                  alternatives: [],
-                })),
+                // Match hybrid alignment's blank-segment policy without changing raw ASR.
+                events: transcript.segments
+                  .filter((segment) => segment.text.trim())
+                  .map((segment) => ({
+                    text: segment.text,
+                    sourcePass: "stereo",
+                    globalStart: chunk.overlapStart + segment.start,
+                    globalEnd: chunk.overlapStart + segment.end,
+                    ...(segment.confidence === undefined
+                      ? {}
+                      : { confidence: segment.confidence }),
+                    alternatives: [],
+                  })),
               });
             }
             const correctionRules = await getCorrectionRules();
