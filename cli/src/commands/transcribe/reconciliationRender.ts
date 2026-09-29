@@ -1,21 +1,29 @@
-import type { CanonicalReconciliation, ReconciliationBlock } from "./reconciliation.js";
+import type {
+  CanonicalReconciliation,
+  ReconciliationBlock,
+} from "./reconciliation.js";
 
 function timestamp(seconds: number): string {
   const total = Math.floor(seconds);
-  return [
-    Math.floor(total / 3600),
-    Math.floor((total % 3600) / 60),
-    total % 60,
-  ].map((part) => String(part).padStart(2, "0")).join(":");
+  return [Math.floor(total / 3600), Math.floor((total % 3600) / 60), total % 60]
+    .map((part) => String(part).padStart(2, "0"))
+    .join(":");
 }
 
-function line(block: ReconciliationBlock, text: string, privateLabels: boolean): string {
+function line(
+  block: ReconciliationBlock,
+  text: string,
+  privateLabels: boolean,
+): string {
   const labels = [`[${timestamp(block.start)} - ${timestamp(block.end)}]`];
   if (privateLabels) {
     if (block.channel) labels.push(`[channel:${block.channel}]`);
-    if (block.physicalSpeaker) labels.push(`[speaker:${block.physicalSpeaker}]`);
+    if (block.physicalSpeaker)
+      labels.push(`[speaker:${block.physicalSpeaker}]`);
     if (block.characterCandidate) {
-      labels.push(`[character:${block.characterCandidate} - ${block.characterConfidence}]`);
+      labels.push(
+        `[character:${block.characterCandidate} - ${block.characterConfidence}]`,
+      );
     }
     labels.push(
       `[kind:${block.kind}]`,
@@ -37,7 +45,9 @@ function orderedChunks(
   );
 }
 
-function orderedBlocks(blocks: readonly ReconciliationBlock[]): ReconciliationBlock[] {
+function orderedBlocks(
+  blocks: readonly ReconciliationBlock[],
+): ReconciliationBlock[] {
   return [...blocks].sort(
     (left, right) =>
       left.start - right.start ||
@@ -59,7 +69,24 @@ function finish(lines: string[]): string {
 export function renderPrivateReconciliation(
   chunks: readonly CanonicalReconciliation[],
 ): string {
-  return finish(chunksBlocks(chunks).map((block) => line(block, block.text, true)));
+  const lines = orderedChunks(chunks).flatMap((chunk) => {
+    const refusalRecovery = chunk.reviewNotes.some((note) =>
+      note.startsWith(
+        "Explicit refusal recovery is an unreconciled non-graphic derivative",
+      ),
+    );
+    return [
+      ...(refusalRecovery
+        ? [
+            `[chunk:${chunk.chunk.id}] [UNRECONCILED SAFE DERIVATIVE — HUMAN REVIEW REQUIRED]`,
+          ]
+        : []),
+      ...orderedBlocks(chunk.blocks).map((block) =>
+        line(block, block.text, true),
+      ),
+    ];
+  });
+  return finish(lines);
 }
 
 export function renderSummaryReconciliation(
@@ -88,7 +115,8 @@ export function renderSummaryReconciliation(
     }
     lines.push(
       ...orderedBlocks(chunk.blocks).map((block) =>
-        line(block, block.summarySafeText, true)),
+        line(block, block.summarySafeText, true),
+      ),
     );
   }
   return finish(lines);
@@ -168,11 +196,15 @@ function assertPublicCharacterLabel(candidate: string | undefined): void {
   }
 }
 
-function assertCharacterIsNotPhysicalIdentity(block: ReconciliationBlock): void {
+function assertCharacterIsNotPhysicalIdentity(
+  block: ReconciliationBlock,
+): void {
   if (!block.characterCandidate || !block.physicalSpeaker) return;
   const normalize = (value: string) =>
     value.normalize("NFKC").trim().toLocaleLowerCase();
-  if (normalize(block.characterCandidate) === normalize(block.physicalSpeaker)) {
+  if (
+    normalize(block.characterCandidate) === normalize(block.physicalSpeaker)
+  ) {
     throw new Error(
       "Cannot render public reconciliation: character label matches a private physical identity",
     );

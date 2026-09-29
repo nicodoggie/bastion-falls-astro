@@ -11,9 +11,11 @@ import {
   open,
 } from "node:fs/promises";
 import { basename, dirname, isAbsolute, join } from "node:path";
+import { z } from "zod";
 import {
   parseCanonicalReconciliation,
   parseReconciliationResponse,
+  ReconciliationResponseSchema,
   validateReconciliation,
   type CanonicalReconciliation,
   type ReconciliationResponse,
@@ -21,6 +23,7 @@ import {
   type SourceEvent,
 } from "./reconciliation.js";
 import type { ReconciliationEvidencePacket } from "./reconciliationEvidence.js";
+import { classifySummaryRefusal } from "./reconciliationSummaryCleanup.js";
 import {
   renderPrivateReconciliation,
   renderSummaryReconciliation,
@@ -49,6 +52,17 @@ export type SummarySafeFallback = (input: {
 export type SummarySafeFallbackResult =
   | Record<string, string>
   | readonly { blockId: string; text: string }[];
+export type ExplicitRefusalRecovery = (input: {
+  job: ReconciliationChunkJob;
+  signal: AbortSignal;
+}) => Promise<unknown>;
+export type ExplicitRefusalReview = (input: {
+  blocks: readonly Pick<
+    RefusalRecoveryBlock,
+    "sourceEventId" | "kind" | "text"
+  >[];
+  signal: AbortSignal;
+}) => Promise<unknown>;
 export type ReconciliationChunkProgress = {
   chunkId: string;
   index: number;
@@ -62,6 +76,8 @@ export interface ReconciliationRunnerOptions {
   jobs: readonly ReconciliationChunkJob[];
   invokeReconciliation?: InvokeReconciliation;
   sanitizeSummarySafe?: SummarySafeFallback;
+  recoverExplicitRefusal?: ExplicitRefusalRecovery;
+  reviewExplicitRefusalRecovery?: ExplicitRefusalReview;
   checkpoint?: (chunk: CanonicalReconciliation) => Promise<void> | void;
   hermesCommand?: string;
   profile?: string;
@@ -948,6 +964,234 @@ async function maybeFallback(
   }
 }
 
+const REFUSAL_RECOVERY_VERSION = "reconciliation-refusal.v2";
+const ExplicitRefusalResponseSchema = ReconciliationResponseSchema.extend({
+  blocks: z.array(ReconciliationResponseSchema.shape.blocks.element),
+});
+type RefusalRecoveryBlock = {
+  sourceEventId: string;
+  kind: "dialogue" | "narration" | "unclear";
+  text: string;
+};
+type RefusalRecoveryMarker = {
+  version: typeof REFUSAL_RECOVERY_VERSION;
+  inputHash: string;
+  providerIdentity: string;
+};
+function refusalCachePaths(root: string, chunkId: string) {
+  const dir = join(root, "reconciliation", "refusal-recovery");
+  return {
+    marker: join(dir, `${chunkId}.refusal.json`),
+    derivative: join(dir, `${chunkId}.safe.json`),
+  };
+}
+function refusalMarker(job: ReconciliationChunkJob): RefusalRecoveryMarker {
+  return {
+    version: REFUSAL_RECOVERY_VERSION,
+    inputHash: job.packet.cacheIdentity.inputHash,
+    providerIdentity: job.packet.cacheIdentity.providerIdentity ?? "",
+  };
+}
+function isExplicitReconciliationRefusal(
+  value: unknown,
+  job: ReconciliationChunkJob,
+): boolean {
+  const parsed = ExplicitRefusalResponseSchema.safeParse(
+    bindInvocationFields(value, job),
+  );
+  return (
+    parsed.success &&
+    parsed.data.blocks.length === 0 &&
+    parsed.data.reviewNotes.some(
+      (note) => classifySummaryRefusal(note).eligible,
+    )
+  );
+}
+function parseRefusalRecoveryBlocks(value: unknown): RefusalRecoveryBlock[] {
+  const parsed =
+    typeof value === "string" ? parseStrictReconciliationJson(value) : value;
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed))
+    throw new Error("refusal recovery must return an object");
+  const record = parsed as Record<string, unknown>;
+  if (Object.keys(record).length !== 1 || !Array.isArray(record["blocks"]))
+    throw new Error("refusal recovery must return only a blocks array");
+  return record["blocks"].map((item) => {
+    if (!item || typeof item !== "object" || Array.isArray(item))
+      throw new Error("refusal recovery block must be an object");
+    const block = item as Record<string, unknown>;
+    if (
+      Object.keys(block).sort().join(",") !== "kind,sourceEventId,text" ||
+      typeof block["sourceEventId"] !== "string" ||
+      !["dialogue", "narration", "unclear"].includes(String(block["kind"])) ||
+      typeof block["text"] !== "string" ||
+      !block["text"].trim()
+    )
+      throw new Error("refusal recovery block has an invalid shape");
+    return block as RefusalRecoveryBlock;
+  });
+}
+function buildRefusalCanonical(
+  job: ReconciliationChunkJob,
+  recovered: readonly RefusalRecoveryBlock[],
+): CanonicalReconciliation {
+  const sourceIds = job.authoritativeSourceEvents.map((event) => event.id);
+  if (
+    recovered.length !== sourceIds.length ||
+    new Set(recovered.map((block) => block.sourceEventId)).size !==
+      sourceIds.length ||
+    sourceIds.some(
+      (id) => !recovered.some((block) => block.sourceEventId === id),
+    )
+  )
+    throw new Error(
+      "refusal recovery must account for each source event exactly once",
+    );
+  const sourceById = new Map(
+    job.authoritativeSourceEvents.map((event) => [event.id, event]),
+  );
+  for (const item of recovered) {
+    const source = sourceById.get(item.sourceEventId);
+    if (!source)
+      throw new Error("refusal recovery claimed an unknown source event");
+  }
+  const evidenceById = new Map(
+    job.packet.ownedEvents.map((event) => [event.id, event]),
+  );
+  const response = {
+    schemaVersion: job.packet.schemaVersion,
+    promptVersion: job.packet.promptVersion,
+    chunk: structuredClone(job.packet.chunk),
+    cacheIdentity: structuredClone(job.packet.cacheIdentity),
+    blocks: recovered.map((item) => {
+      const evidence = evidenceById.get(item.sourceEventId);
+      return {
+        id: `refusal-${createHash("sha256").update(item.sourceEventId).digest("hex").slice(0, 24)}`,
+        start: 0,
+        end: 1,
+        kind: item.kind,
+        text: item.text,
+        summarySafeText: "",
+        ...(evidence?.channel ? { channel: evidence.channel } : {}),
+        ...(evidence?.physicalSpeaker
+          ? { physicalSpeaker: evidence.physicalSpeaker }
+          : {}),
+        characterConfidence: "unknown" as const,
+        attributionBasis: [`source-event:${item.sourceEventId}`],
+        sourceEventIds: [item.sourceEventId],
+        reviewFlags: [
+          item.kind === "unclear"
+            ? ("unclear-words" as const)
+            : ("material-correction" as const),
+        ],
+      };
+    }),
+    omissions: [],
+    materialCorrections: [],
+    suspicionFlags: [],
+    reviewNotes: [
+      "Explicit refusal recovery is an unreconciled non-graphic derivative; human review required.",
+    ],
+    summarySafety: {
+      status: "pending" as const,
+      errors: ["refusal derivative requires summary-safe validation"],
+    },
+  };
+  return validateReconciliationOutput(response, job);
+}
+async function readRefusalMarker(
+  path: string,
+  expected: RefusalRecoveryMarker,
+): Promise<boolean> {
+  try {
+    const saved = JSON.parse(await readFile(path, "utf8")) as unknown;
+    return Boolean(
+      saved &&
+        typeof saved === "object" &&
+        !Array.isArray(saved) &&
+        semanticallyEqual(saved, expected),
+    );
+  } catch {
+    return false;
+  }
+}
+async function hasRefusalMarker(path: string): Promise<boolean> {
+  try {
+    await readFile(path, "utf8");
+    return true;
+  } catch {
+    return false;
+  }
+}
+async function readRefusalDerivative(
+  path: string,
+  expected: RefusalRecoveryMarker,
+  job: ReconciliationChunkJob,
+): Promise<CanonicalReconciliation | undefined> {
+  try {
+    const saved = JSON.parse(await readFile(path, "utf8")) as unknown;
+    if (!saved || typeof saved !== "object" || Array.isArray(saved))
+      return undefined;
+    const record = saved as Record<string, unknown>;
+    if (!semanticallyEqual(record["identity"], expected)) return undefined;
+    return buildRefusalCanonical(
+      job,
+      parseRefusalRecoveryBlocks({ blocks: record["blocks"] }),
+    );
+  } catch {
+    return undefined;
+  }
+}
+
+async function runExplicitRefusalRecovery(
+  job: ReconciliationChunkJob,
+  options: ReconciliationRunnerOptions,
+  paths: ReturnType<typeof refusalCachePaths>,
+  identity: RefusalRecoveryMarker,
+  timeoutMs: number,
+  maxOutputBytes: number,
+): Promise<CanonicalReconciliation> {
+  if (!options.recoverExplicitRefusal)
+    throw new Error(
+      `explicit refusal requires a configured non-graphic recovery for ${job.packet.chunk.id}`,
+    );
+  const raw = await boundedCall(
+    (signal) => options.recoverExplicitRefusal!({ job, signal }),
+    timeoutMs,
+    maxOutputBytes,
+    "explicit refusal recovery",
+  );
+  const recovered = parseRefusalRecoveryBlocks(raw);
+  const canonical = buildRefusalCanonical(job, recovered);
+  if (!options.reviewExplicitRefusalRecovery)
+    throw new Error(
+      `explicit refusal requires non-graphic review for ${job.packet.chunk.id}`,
+    );
+  const review = await boundedCall(
+    (signal) =>
+      options.reviewExplicitRefusalRecovery!({
+        blocks: recovered,
+        signal,
+      }),
+    timeoutMs,
+    maxOutputBytes,
+    "explicit refusal review",
+  );
+  if (
+    !review ||
+    typeof review !== "object" ||
+    Array.isArray(review) ||
+    Object.keys(review).length !== 1 ||
+    typeof (review as Record<string, unknown>)["approved"] !== "boolean" ||
+    (review as Record<string, unknown>)["approved"] !== true
+  )
+    throw new Error("explicit refusal review did not approve the candidate");
+  await writeReconciliationTextAtomic(
+    paths.derivative,
+    `${JSON.stringify({ identity, blocks: recovered }, null, 2)}\n`,
+  );
+  return canonical;
+}
+
 export async function runUnifiedReconciliation(
   options: ReconciliationRunnerOptions,
 ): Promise<ReconciliationRunnerResult> {
@@ -1001,7 +1245,18 @@ export async function runUnifiedReconciliation(
     await rm(join(options.rootDir, derivative), { force: true });
   for (const [jobIndex, job] of options.jobs.entries()) {
     const path = join(canonicalDir, `${job.packet.chunk.id}.json`);
-    const existing = await readReusable(path, job);
+    const existingRefusalPaths = refusalCachePaths(
+      options.rootDir,
+      job.packet.chunk.id,
+    );
+    const expectedRefusal = refusalMarker(job);
+    const hasRefusal = await hasRefusalMarker(existingRefusalPaths.marker);
+    let existing = await readReusable(path, job);
+    if (
+      hasRefusal &&
+      !(await readRefusalMarker(existingRefusalPaths.marker, expectedRefusal))
+    )
+      existing = undefined;
     let artifactExists = false;
     try {
       await readFile(path, "utf8");
@@ -1032,76 +1287,125 @@ export async function runUnifiedReconciliation(
         maxAttempts: MAX_CHUNK_ATTEMPTS,
       });
       const prompt = buildUnifiedReconciliationPrompt(job);
-      for (let attempt = 1; attempt <= MAX_CHUNK_ATTEMPTS; attempt++) {
-        let invocation: InvocationResult | undefined;
-        try {
-          const promptBytes = Buffer.byteLength(prompt, "utf8");
-          if (promptBytes > MAX_PROMPT_BYTES)
-            throw oversizedPromptError(job, promptBytes);
-          const invoked = options.invokeReconciliation
-            ? await boundedCall(
-                (signal) => options.invokeReconciliation!(job, prompt, signal),
-                timeoutMs,
-                maxOutputBytes,
-                "reconciliation",
-              )
-            : await boundedHermes(job, prompt, new AbortController().signal, {
-                timeoutMs,
-                maxOutputBytes,
-                hermesCommand: options.hermesCommand ?? DEFAULT_HERMES_COMMAND,
-                profile: options.profile,
-                maxTurns,
-                repositoryCwd: options.repositoryCwd,
-                promptDir: options.rootDir,
-              });
-          invocation =
-            typeof invoked === "string" ? { stdout: invoked } : invoked;
-          const parsed = options.invokeReconciliation
-            ? parseStrictReconciliationJson(invocation.stdout)
-            : parseHermesReconciliationJson(invocation.stdout);
-          chunk = validateReconciliationOutput(parsed, job);
-        } catch (error) {
-          invocation ??= invocationFromError(error);
-          await bestEffortDiagnostic(
+      const refusalPaths = refusalCachePaths(
+        options.rootDir,
+        job.packet.chunk.id,
+      );
+      const refusalIdentity = refusalMarker(job);
+      if (options.force) {
+        await rm(refusalPaths.marker, { force: true });
+        await rm(refusalPaths.derivative, { force: true });
+      }
+      const hasSavedRefusal =
+        options.resume &&
+        !options.force &&
+        (await readRefusalMarker(refusalPaths.marker, refusalIdentity));
+      if (hasSavedRefusal) {
+        chunk =
+          (await readRefusalDerivative(
+            refusalPaths.derivative,
+            refusalIdentity,
+            job,
+          )) ??
+          (await runExplicitRefusalRecovery(
+            job,
             options,
+            refusalPaths,
+            refusalIdentity,
+            timeoutMs,
+            maxOutputBytes,
+          ));
+        await writeCanonicalReconciliationAtomic(path, chunk);
+      } else
+        for (let attempt = 1; attempt <= MAX_CHUNK_ATTEMPTS; attempt++) {
+          let invocation: InvocationResult | undefined;
+          try {
+            const promptBytes = Buffer.byteLength(prompt, "utf8");
+            if (promptBytes > MAX_PROMPT_BYTES)
+              throw oversizedPromptError(job, promptBytes);
+            const invoked = options.invokeReconciliation
+              ? await boundedCall(
+                  (signal) =>
+                    options.invokeReconciliation!(job, prompt, signal),
+                  timeoutMs,
+                  maxOutputBytes,
+                  "reconciliation",
+                )
+              : await boundedHermes(job, prompt, new AbortController().signal, {
+                  timeoutMs,
+                  maxOutputBytes,
+                  hermesCommand:
+                    options.hermesCommand ?? DEFAULT_HERMES_COMMAND,
+                  profile: options.profile,
+                  maxTurns,
+                  repositoryCwd: options.repositoryCwd,
+                  promptDir: options.rootDir,
+                });
+            invocation =
+              typeof invoked === "string" ? { stdout: invoked } : invoked;
+            const parsed = options.invokeReconciliation
+              ? parseStrictReconciliationJson(invocation.stdout)
+              : parseHermesReconciliationJson(invocation.stdout);
+            if (isExplicitReconciliationRefusal(parsed, job)) {
+              await writeReconciliationTextAtomic(
+                refusalPaths.marker,
+                `${JSON.stringify(refusalIdentity)}\n`,
+              );
+              chunk = await runExplicitRefusalRecovery(
+                job,
+                options,
+                refusalPaths,
+                refusalIdentity,
+                timeoutMs,
+                maxOutputBytes,
+              );
+            } else {
+              await rm(refusalPaths.marker, { force: true });
+              await rm(refusalPaths.derivative, { force: true });
+              chunk = validateReconciliationOutput(parsed, job);
+            }
+          } catch (error) {
+            invocation ??= invocationFromError(error);
+            await bestEffortDiagnostic(
+              options,
+              job.packet.chunk.id,
+              invocation,
+              error,
+              maxOutputBytes,
+            );
+            // Only the subprocess wrapper can confirm that the timed-out work was
+            // terminated. Validation errors and uncooperative callbacks fail closed.
+            if (
+              !(error instanceof HermesTimeoutError) ||
+              attempt === MAX_CHUNK_ATTEMPTS
+            )
+              throw error;
+            options.onRetry?.({
+              chunkId: job.packet.chunk.id,
+              nextAttempt: attempt + 1,
+              maxAttempts: MAX_CHUNK_ATTEMPTS,
+            });
+            await options.onChunkProgress?.({
+              chunkId: job.packet.chunk.id,
+              index: jobIndex,
+              total: options.jobs.length,
+              status: "retry",
+              attempt: attempt + 1,
+              maxAttempts: MAX_CHUNK_ATTEMPTS,
+            });
+            continue;
+          }
+          await persistDiagnostic(
+            options.rootDir,
             job.packet.chunk.id,
             invocation,
-            error,
+            undefined,
             maxOutputBytes,
+            options.diagnosticWriter,
           );
-          // Only the subprocess wrapper can confirm that the timed-out work was
-          // terminated. Validation errors and uncooperative callbacks fail closed.
-          if (
-            !(error instanceof HermesTimeoutError) ||
-            attempt === MAX_CHUNK_ATTEMPTS
-          )
-            throw error;
-          options.onRetry?.({
-            chunkId: job.packet.chunk.id,
-            nextAttempt: attempt + 1,
-            maxAttempts: MAX_CHUNK_ATTEMPTS,
-          });
-          await options.onChunkProgress?.({
-            chunkId: job.packet.chunk.id,
-            index: jobIndex,
-            total: options.jobs.length,
-            status: "retry",
-            attempt: attempt + 1,
-            maxAttempts: MAX_CHUNK_ATTEMPTS,
-          });
-          continue;
+          await writeCanonicalReconciliationAtomic(path, chunk);
+          break;
         }
-        await persistDiagnostic(
-          options.rootDir,
-          job.packet.chunk.id,
-          invocation,
-          undefined,
-          maxOutputBytes,
-          options.diagnosticWriter,
-        );
-        await writeCanonicalReconciliationAtomic(path, chunk);
-        break;
-      }
     }
     chunk = await maybeFallback(
       chunk!,
