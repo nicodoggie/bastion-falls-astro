@@ -911,12 +911,175 @@ test("empty or malformed reconciliation output does not qualify for refusal reco
   }
 });
 
-test("refusal recovery is not published without explicit successful non-graphic review", async () => {
-  for (const review of ["absent", "rejected", "malformed"] as const) {
-    const root = await mkdtemp(join(tmpdir(), `refusal-review-${review}-`));
+test("only exact semantic rejection continues with source-linked editorial placeholders", async () => {
+  const root = await mkdtemp(join(tmpdir(), "refusal-review-rejected-"));
+  const twoEventJob = behavioralJob([
+    {
+      id: "first",
+      text: "hello",
+      start: 3_601,
+      end: 3_602,
+      sourcePass: "left",
+    },
+    {
+      id: "second",
+      text: "there",
+      start: 3_603,
+      end: 3_604,
+      sourcePass: "right",
+    },
+  ]);
+  twoEventJob.packet.ownedEvents[0]!.channel = "left";
+  twoEventJob.packet.ownedEvents[0]!.physicalSpeaker = "participant-7";
+  let sanitizerCalls = 0;
+  let inferenceCalls = 0;
+  let recoveryCalls = 0;
+  let reviewCalls = 0;
+  const options: Parameters<typeof runUnifiedReconciliation>[0] = {
+    rootDir: root,
+    jobs: [twoEventJob],
+    resume: true,
+    invokeReconciliation: async () => {
+      inferenceCalls += 1;
+      return JSON.stringify({
+        ...behavioralResponse(twoEventJob, []),
+        reviewNotes: [
+          "I cannot reproduce content involving a fictional child.",
+        ],
+      });
+    },
+    recoverExplicitRefusal: async () => {
+      recoveryCalls += 1;
+      return {
+        blocks: [
+          { sourceEventId: "first", kind: "dialogue", text: "candidate one" },
+          { sourceEventId: "second", kind: "narration", text: "candidate two" },
+        ],
+      };
+    },
+    reviewExplicitRefusalRecovery: async () => {
+      reviewCalls += 1;
+      return { approved: false };
+    },
+    sanitizeSummarySafe: async () => {
+      sanitizerCalls += 1;
+      return {};
+    },
+  };
+  try {
+    const result = await runUnifiedReconciliation(options);
+    const chunk = result.chunks[0]!;
+    const placeholder =
+      "Source event not reconciled automatically; inspect original evidence during final notes correction.";
+    assert.equal(chunk.status, "needs_review");
+    assert.equal(chunk.summarySafety.status, "valid");
+    assert.deepEqual(
+      chunk.blocks.map((block) => [
+        block.sourceEventIds,
+        block.kind,
+        block.text,
+        block.summarySafeText,
+        block.start,
+        block.end,
+        block.characterConfidence,
+        block.characterCandidate,
+      ]),
+      [
+        [
+          ["first"],
+          "unclear",
+          placeholder,
+          placeholder,
+          3_601,
+          3_602,
+          "unknown",
+          undefined,
+        ],
+        [
+          ["second"],
+          "unclear",
+          placeholder,
+          placeholder,
+          3_603,
+          3_604,
+          "unknown",
+          undefined,
+        ],
+      ],
+    );
+    assert.equal(chunk.blocks[0]!.channel, "left");
+    assert.equal(chunk.blocks[0]!.physicalSpeaker, "participant-7");
+    assert.equal(chunk.blocks[1]!.channel, undefined);
+    assert.equal(chunk.blocks[1]!.physicalSpeaker, undefined);
+    assert.match(
+      chunk.reviewNotes.join(" "),
+      /model rejected.*safe editorial gap.*final notes correction/iu,
+    );
+    assert.doesNotMatch(
+      JSON.stringify(chunk),
+      /candidate one|candidate two|cannot reproduce content/i,
+    );
+    assert.equal(sanitizerCalls, 0);
+    const saved = JSON.parse(
+      await readFile(
+        join(root, "reconciliation/refusal-recovery/session_000.safe.json"),
+        "utf8",
+      ),
+    );
+    assert.equal(saved.identity.version, "reconciliation-refusal.v2");
+    assert.deepEqual(
+      saved.blocks.map((block: { text: string }) => block.text),
+      [placeholder, placeholder],
+    );
+    const resumed = await runUnifiedReconciliation({
+      ...options,
+      invokeReconciliation: async () => {
+        inferenceCalls += 1;
+        throw new Error("must reuse placeholder artifact");
+      },
+      recoverExplicitRefusal: async () => {
+        recoveryCalls += 1;
+        throw new Error("must reuse placeholder artifact");
+      },
+      reviewExplicitRefusalRecovery: async () => {
+        reviewCalls += 1;
+        throw new Error("must reuse placeholder artifact");
+      },
+    });
+    assert.equal(resumed.chunks[0]!.status, "needs_review");
+    assert.equal(resumed.reusedChunkIds.length, 1);
+    assert.deepEqual(
+      [inferenceCalls, recoveryCalls, reviewCalls, sanitizerCalls],
+      [1, 1, 1, 0],
+    );
+    await rm(join(root, "reconciliation/session_000.json"));
+    for (const invalidFlag of [false, "true"]) {
+      await writeFile(
+        join(root, "reconciliation/refusal-recovery/session_000.safe.json"),
+        JSON.stringify({ ...saved, modelRejected: invalidFlag }),
+      );
+      await assert.rejects(
+        () =>
+          runUnifiedReconciliation({
+            ...options,
+            recoverExplicitRefusal: async () => {
+              throw new Error("invalid derivative must regenerate");
+            },
+          }),
+        /invalid derivative must regenerate/u,
+      );
+    }
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+
+  for (const review of ["absent", "malformed"] as const) {
+    const failedRoot = await mkdtemp(
+      join(tmpdir(), `refusal-review-${review}-`),
+    );
     try {
-      const options: Parameters<typeof runUnifiedReconciliation>[0] = {
-        rootDir: root,
+      const failedOptions: Parameters<typeof runUnifiedReconciliation>[0] = {
+        rootDir: failedRoot,
         jobs: [job],
         invokeReconciliation: async () =>
           JSON.stringify({
@@ -930,23 +1093,23 @@ test("refusal recovery is not published without explicit successful non-graphic 
           blocks: [{ sourceEventId: "e1", kind: "dialogue", text: "hello" }],
         }),
       };
-      if (review !== "absent") {
-        options.reviewExplicitRefusalRecovery = async () =>
-          review === "rejected"
-            ? { approved: false }
-            : { approved: true, extra: true };
-      }
-      await assert.rejects(() => runUnifiedReconciliation(options));
+      if (review === "malformed")
+        failedOptions.reviewExplicitRefusalRecovery = async () =>
+          ({ approved: true, extra: true }) as unknown;
+      await assert.rejects(() => runUnifiedReconciliation(failedOptions));
       await assert.rejects(() =>
-        access(join(root, "reconciliation/session_000.json")),
+        access(join(failedRoot, "reconciliation/session_000.json")),
       );
       await assert.rejects(() =>
         access(
-          join(root, "reconciliation/refusal-recovery/session_000.safe.json"),
+          join(
+            failedRoot,
+            "reconciliation/refusal-recovery/session_000.safe.json",
+          ),
         ),
       );
     } finally {
-      await rm(root, { recursive: true, force: true });
+      await rm(failedRoot, { recursive: true, force: true });
     }
   }
 });

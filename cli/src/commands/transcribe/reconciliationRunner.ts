@@ -964,6 +964,8 @@ async function maybeFallback(
   }
 }
 
+const REFUSAL_EDITORIAL_PLACEHOLDER =
+  "Source event not reconciled automatically; inspect original evidence during final notes correction.";
 const REFUSAL_RECOVERY_VERSION = "reconciliation-refusal.v2";
 const ExplicitRefusalResponseSchema = ReconciliationResponseSchema.extend({
   blocks: z.array(ReconciliationResponseSchema.shape.blocks.element),
@@ -1033,6 +1035,7 @@ function parseRefusalRecoveryBlocks(value: unknown): RefusalRecoveryBlock[] {
 function buildRefusalCanonical(
   job: ReconciliationChunkJob,
   recovered: readonly RefusalRecoveryBlock[],
+  modelRejected = false,
 ): CanonicalReconciliation {
   const sourceIds = job.authoritativeSourceEvents.map((event) => event.id);
   if (
@@ -1068,9 +1071,9 @@ function buildRefusalCanonical(
         id: `refusal-${createHash("sha256").update(item.sourceEventId).digest("hex").slice(0, 24)}`,
         start: 0,
         end: 1,
-        kind: item.kind,
-        text: item.text,
-        summarySafeText: "",
+        kind: modelRejected ? "unclear" : item.kind,
+        text: modelRejected ? REFUSAL_EDITORIAL_PLACEHOLDER : item.text,
+        summarySafeText: modelRejected ? REFUSAL_EDITORIAL_PLACEHOLDER : "",
         ...(evidence?.channel ? { channel: evidence.channel } : {}),
         ...(evidence?.physicalSpeaker
           ? { physicalSpeaker: evidence.physicalSpeaker }
@@ -1079,7 +1082,7 @@ function buildRefusalCanonical(
         attributionBasis: [`source-event:${item.sourceEventId}`],
         sourceEventIds: [item.sourceEventId],
         reviewFlags: [
-          item.kind === "unclear"
+          modelRejected || item.kind === "unclear"
             ? ("unclear-words" as const)
             : ("material-correction" as const),
         ],
@@ -1090,11 +1093,18 @@ function buildRefusalCanonical(
     suspicionFlags: [],
     reviewNotes: [
       "Explicit refusal recovery is an unreconciled non-graphic derivative; human review required.",
+      ...(modelRejected
+        ? [
+            "Model rejected the non-graphic candidate; a safe editorial gap was used, and final notes correction is required.",
+          ]
+        : []),
     ],
-    summarySafety: {
-      status: "pending" as const,
-      errors: ["refusal derivative requires summary-safe validation"],
-    },
+    summarySafety: modelRejected
+      ? { status: "valid" as const, errors: [] }
+      : {
+          status: "pending" as const,
+          errors: ["refusal derivative requires summary-safe validation"],
+        },
   };
   return validateReconciliationOutput(response, job);
 }
@@ -1133,10 +1143,23 @@ async function readRefusalDerivative(
       return undefined;
     const record = saved as Record<string, unknown>;
     if (!semanticallyEqual(record["identity"], expected)) return undefined;
-    return buildRefusalCanonical(
-      job,
-      parseRefusalRecoveryBlocks({ blocks: record["blocks"] }),
-    );
+    if (
+      Object.hasOwn(record, "modelRejected") &&
+      record["modelRejected"] !== true
+    )
+      return undefined;
+    const modelRejected = record["modelRejected"] === true;
+    const blocks = parseRefusalRecoveryBlocks({ blocks: record["blocks"] });
+    if (
+      modelRejected &&
+      blocks.some(
+        (block) =>
+          block.kind !== "unclear" ||
+          block.text !== REFUSAL_EDITORIAL_PLACEHOLDER,
+      )
+    )
+      return undefined;
+    return buildRefusalCanonical(job, blocks, modelRejected);
   } catch {
     return undefined;
   }
@@ -1176,15 +1199,35 @@ async function runExplicitRefusalRecovery(
     maxOutputBytes,
     "explicit refusal review",
   );
-  if (
-    !review ||
-    typeof review !== "object" ||
-    Array.isArray(review) ||
-    Object.keys(review).length !== 1 ||
-    typeof (review as Record<string, unknown>)["approved"] !== "boolean" ||
-    (review as Record<string, unknown>)["approved"] !== true
-  )
-    throw new Error("explicit refusal review did not approve the candidate");
+  const reviewRecord =
+    review !== null &&
+    typeof review === "object" &&
+    !Array.isArray(review) &&
+    Object.keys(review).length === 1 &&
+    typeof (review as Record<string, unknown>)["approved"] === "boolean"
+      ? (review as { approved: boolean })
+      : undefined;
+  if (!reviewRecord)
+    throw new Error(
+      "explicit refusal review did not return exact {approved:boolean}",
+    );
+  if (reviewRecord.approved === false) {
+    const placeholders = job.authoritativeSourceEvents.map((event) => ({
+      sourceEventId: event.id,
+      kind: "unclear" as const,
+      text: REFUSAL_EDITORIAL_PLACEHOLDER,
+    }));
+    const rejectedCanonical = buildRefusalCanonical(job, placeholders, true);
+    await writeReconciliationTextAtomic(
+      paths.derivative,
+      `${JSON.stringify(
+        { identity, modelRejected: true, blocks: placeholders },
+        null,
+        2,
+      )}\n`,
+    );
+    return rejectedCanonical;
+  }
   await writeReconciliationTextAtomic(
     paths.derivative,
     `${JSON.stringify({ identity, blocks: recovered }, null, 2)}\n`,
