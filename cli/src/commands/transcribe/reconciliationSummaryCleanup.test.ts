@@ -8,6 +8,27 @@ import {
 } from "./reconciliationSummaryCleanup.js";
 
 test("classifies plain and empty structured refusals, not schema errors", () => {
+  for (const [text, eligible] of [
+    [
+      "I read the complete request. I cannot reproduce the graphic content.",
+      true,
+    ],
+    ["Request reviewed. I cannot reproduce that content.", true],
+    [
+      'The guard replied: "I read the request. I cannot reproduce that content."',
+      false,
+    ],
+    [
+      '"I read the request. I cannot reproduce that content," said the guard.',
+      false,
+    ],
+    [
+      "The request was discussed. The guard cannot provide the material.",
+      false,
+    ],
+  ] as const) {
+    assert.equal(classifySummaryRefusal(text).eligible, eligible, text);
+  }
   assert.equal(
     classifySummaryRefusal("I can't help with that content").eligible,
     true,
@@ -201,8 +222,10 @@ test("cleanup prompt requests abstraction rather than policy bypass", () => {
 });
 
 test("cleanup prompt preserves literal hashes in editable narrative prose", () => {
-  const narrativeHash = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
-  const metadataHash = "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210";
+  const narrativeHash =
+    "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
+  const metadataHash =
+    "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210";
   const prompt = buildSummaryCleanupPrompt("chunk", {
     schemaVersion: "source.v1",
     cacheIdentity: metadataHash,

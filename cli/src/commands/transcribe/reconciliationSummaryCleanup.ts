@@ -76,11 +76,18 @@ export function classifySummaryRefusal(value: unknown): SummaryRefusalDecision {
 }
 
 function isPlainRefusal(value: string): boolean {
-  const text = value.trim();
-  if (!plainRefusal.test(text)) return false;
-  // Quoted in-world dialogue is narrative data, not an assistant refusal.
-  if (/^["“].*["”](?:\s*,|\s+said\b|\s+replied\b)/isu.test(text)) return false;
-  return true;
+  // Quoted dialogue is evidence, even when a refusal is its second sentence.
+  const text = value
+    .trim()
+    .replace(/"[^"]*"|“[^”]*”|‘[^’]*’|(?<!\w)'[\s\S]*?'(?!\w)/gu, "");
+  if (plainRefusal.test(text)) return true;
+  // A neutral introductory sentence must not hide an explicit first-person refusal.
+  return text
+    .split(/[.!?]\s+|\n+/u)
+    .some(
+      (sentence) =>
+        /^I\s+/iu.test(sentence.trim()) && plainRefusal.test(sentence.trim()),
+    );
 }
 
 function textSize(value: unknown, path: string[] = []): number {
@@ -253,7 +260,9 @@ function modelFacingCleanupInput(value: unknown): unknown {
     if (typeof candidate === "string")
       return isEditableProsePath(path) ? candidate : redact(candidate);
     if (Array.isArray(candidate))
-      return candidate.map((item, index) => visit(item, [...path, String(index)]));
+      return candidate.map((item, index) =>
+        visit(item, [...path, String(index)]),
+      );
     if (candidate && typeof candidate === "object")
       return Object.fromEntries(
         Object.entries(candidate).map(([key, item]) => [
