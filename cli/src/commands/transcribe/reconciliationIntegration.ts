@@ -291,7 +291,8 @@ function defaultRefusalRecovery(cwd: string): ExplicitRefusalRecovery {
         ].join("\n"),
         cwd,
         scratch,
-        timeoutMs: 30_000,
+        // Full-chunk abstraction can take as long as structured summarization.
+        timeoutMs: 900_000,
         maxOutputBytes: 200_000,
         signal,
       });
