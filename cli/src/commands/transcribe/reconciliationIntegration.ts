@@ -313,8 +313,9 @@ function defaultRefusalReview(cwd: string): ExplicitRefusalReview {
         ].join("\n"),
         cwd,
         scratch,
-        timeoutMs: 30_000,
-        maxOutputBytes: 16_384,
+        timeoutMs: 900_000,
+        // The wrapper counts stdout/stderr as well as the final approval JSON.
+        maxOutputBytes: 200_000,
         signal,
       });
     } finally {
@@ -340,7 +341,7 @@ function defaultFallback(cwd: string): SummarySafeFallback {
         ].join("\n"),
         cwd,
         scratch,
-        timeoutMs: 30_000,
+        timeoutMs: 900_000,
         maxOutputBytes: 200_000,
       });
       return result as Record<string, string>;
