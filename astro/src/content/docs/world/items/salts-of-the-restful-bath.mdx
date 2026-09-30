@@ -1,0 +1,23 @@
+---
+title: Salts of the Restful Bath
+tags:
+  - items
+item:
+  name: Salts of the Restful Bath
+  details:
+    type: wondrous item
+    rarity: rare
+itemDataStats:
+  rules: items/salts-of-the-restful-bath.item
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+**Salts of the Restful Bath** turn an ordinary pool into a restorative bath. One dose grants
+bathers the benefits of a long rest after an hour in the treated water.
+
+The bath's capacity depends on whether everyone could fully submerge together, not on a fixed
+number of bathers. They need not actually submerge or hold a rigid bathing posture: the magic
+requires an hour in the water, not an hour underwater.
+
+<ItemBlock item={frontmatter.itemDataStats.rules} />
