@@ -1,4 +1,4 @@
-import { dirname, join } from "node:path";
+import { basename, dirname, join, normalize } from "node:path";
 import { mkdir, writeFile } from "node:fs/promises";
 
 export interface NotesIdentity {
@@ -19,9 +19,13 @@ function titleCaseCampaign(campaign: string): string {
 }
 
 export function getNotesPath(options: NotesPathOptions): string {
+  const contextRoot = normalize(options.contextRoot);
+  // Scaffolding config uses the world root; explicit context can use the docs root.
+  const worldRoot = basename(contextRoot) === "world"
+    ? contextRoot
+    : join(contextRoot, "world");
   return join(
-    options.contextRoot,
-    "world",
+    worldRoot,
     "notes",
     options.campaign,
     `${options.sessionDate}.mdx`,

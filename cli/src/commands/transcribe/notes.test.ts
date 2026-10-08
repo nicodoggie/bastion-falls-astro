@@ -7,6 +7,17 @@ import {
   getNotesPath,
 } from "./notes.js";
 
+test("writes notes under an already configured world content root", () => {
+  assert.equal(
+    getNotesPath({
+      contextRoot: "/repo/astro/src/content/docs/world",
+      campaign: "the-vengeful",
+      sessionDate: "2026-09-20",
+    }),
+    "/repo/astro/src/content/docs/world/notes/the-vengeful/2026-09-20.mdx",
+  );
+});
+
 test("builds campaign notes path and frontmatter", () => {
   assert.equal(
     getNotesPath({
