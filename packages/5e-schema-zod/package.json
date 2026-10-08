@@ -23,8 +23,8 @@
     "generate": "tsx scripts/generate.ts"
   },
   "dependencies": {
-    "5etools-utils": "latest",
-    "zod": "~4.3.6"
+    "5etools-utils": "0.17.19",
+    "zod": "~4.6.5"
   },
   "devDependencies": {
     "@types/node": "~24.7.2",
