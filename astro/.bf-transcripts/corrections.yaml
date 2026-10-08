@@ -697,7 +697,11 @@ profiles:
         promptInstruction: >
           In authored summaries, identify Angel and the Rannek siblings' mother
           as Marchioness Maria Rannek at first mention, then Maria, rather than
-          leaving Mother as an ambiguous referent. Do not apply this to a hag's
+          leaving Mother as an ambiguous referent. Standardize Maria's designation
+          as Marchioness, not Marquise, matching established in-game usage. Resolve
+          the speaker before normalizing a title; do not turn Uther into Maria
+          merely because a generated summary calls him Marquise.
+          Do not apply this to a hag's
           Mother or other maternal figures and titles.
         instruction: >
           Resolve family references through the speaker and context, not a global
@@ -708,7 +712,7 @@ profiles:
           that speaker without guessing her identity.
         evidence:
           - path: astro/src/content/docs/world/characters/maria-rannek.mdx
-            note: Canonical article establishes Maria's title and children.
+            note: Canonical article establishes Maria's title and children; Nico explicitly confirms Marchioness as the in-game designation.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-08-29.mdx
             note: Campaign review requests explicit maternal referents to avoid conflating multiple Mothers.
 
