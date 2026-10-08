@@ -1727,7 +1727,12 @@ profiles:
           alias connected to Oberon or the Green Lord is Oran. Do not state
           that Oren itself is a known avatar name; keep Oren Bell as the
           person's name and Oran as the alias that makes the resemblance
-          notable.
+          notable. Hellion also deliberately addresses Oren Bell as Oran in
+          allusion to that avatar name. In this usage the referent is Oren Bell,
+          not another person, and the spoken form need not be an ASR error.
+          Preserve intentional Oran wording in dialogue while identifying the
+          person as Oren Bell in summaries. This usage does not establish that
+          Oren Bell is an avatar of the Green Lord.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: User clarified the avatar discussion arose because Oran is a known alias.
@@ -1749,27 +1754,32 @@ profiles:
             - liana
             - eliana
             - rebeccas-wonderland-story
-            - vessel-and-seeds-of-wonderland
+            - vassal-and-seeds-of-wonderland
         scope:
           campaigns:
             - the-vengeful
           contexts:
             - Rebecca's Wonderland story
-            - vessel and seeds of Wonderland
+            - vassal and seeds of Wonderland
             - unique doll discussion
         apply:
           mode: prompt-first
           safeExactReplacement: false
         instruction: >
           In the Vengeful Rebecca/Wonderland thread, use Liana rather than
-          Eliana for Rebecca's vessel and the figure tied to spreading the seeds
-          of Wonderland. Do not globally rewrite Eliana outside this context
-          without checking the surrounding note.
+          Eliana. Liana is a hamadryad, a subspecies of dryad, not an eladrin;
+          eladrin was a D&D sheet placeholder. Rebecca calls Liana her vassal
+          within Rebecca's Wonderland, not her vessel; this does not describe
+          magical hosting or possession.
+          Do not globally replace vessel or Eliana outside this context.
+          Rebecca describes Liana as spreading Wonderland's seeds within her
+          fantasy. Attribute that role to Rebecca's fantasy, not an independently
+          established magical purpose or ability of Liana or hamadryads.
         evidence:
           - path: astro/src/content/docs/world/characters/liana.mdx
             note: Canonical character article for Liana.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
-            note: User clarified Eliana should be Liana in the dryad/vessel line.
+            note: User confirmed Liana is a hamadryad and Rebecca's vassal within Wonderland; eladrin was a sheet placeholder, vessel was a mistranscription, and seed-spreading describes Rebecca's fantasy.
 
       - id: character.lady-maribel-veyne
         status: confirmed
@@ -4815,6 +4825,9 @@ profiles:
         promptInstruction: >
           In necromancer and wanted-poster discussions, Mephilia is an ASR
           rendering of Minfilia Diaz, not a separate character.
+        instruction: >
+          In necromancer and wanted-poster discussions, Mephilia is an ASR
+          rendering of Minfilia Diaz, not a separate character.
         evidence:
           - path: astro/src/content/docs/world/characters/minfilia-diaz.mdx
             note: Canonical name and necromancer identity.
@@ -5307,6 +5320,44 @@ profiles:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-07-04.mdx
             note: Current note treats Dream Brew / Essence of Sleep as related or confused labels and explicitly rejects Elixir of Dreams.
 
+      - id: mechanic.hag-yielding
+        status: confirmed
+        kind: disambiguation
+        canonical: Yielding
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/species/hag.mdx
+            role: defensive-feature
+        aliases:
+          - Yielding
+          - Yield
+        match:
+          priority: low
+          tags:
+            - hag-yielding
+            - life-energy-shield
+            - skelwick-hags
+            - brooch-of-winter
+        scope:
+          contexts:
+            - hag defensive features
+            - Yielding during the Skelwick Brooch discussion
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        instruction: >
+          In hag defensive-feature contexts, Yielding uses life energy as a
+          protective shield. Once per long rest, the hag can use a reaction to
+          prevent physical or magical damage being dealt to her, reducing her
+          HP to 1. It is not established as sacrifice powering the Brooch of
+          Winter, destructive release, or a mechanism involving babies.
+          Do not rewrite ordinary uses of yield outside this context.
+        evidence:
+          - path: astro/src/content/docs/world/species/hag.mdx
+            note: Nico confirmed the defensive feature with Eevee during the June 14 comparison review.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: Yielding was raised at 02:45:27-02:45:39; the later clarification settles the term, not the adjacent sacrifice theory.
+
       - id: item.winter-ring-brooch
         status: confirmed
         kind: disambiguation
@@ -5441,6 +5492,8 @@ profiles:
           - Flanterbury
           - Chanter Brewery
           - Murkendraw Brewery
+          - Sranderbury
+          - Tantabury
         match:
           priority: high
           tags:
@@ -5458,7 +5511,9 @@ profiles:
           Use Thrantorbury for matching place and university references. In the
           Tiphanie/Crown Prince and Kelthyr/brother passages, Chanter Brewery and
           Murkendraw Brewery mean Thrantorbury, not new breweries or a Feywild
-          journey. Do not name a brother deliberately left unnamed in dialogue.
+          journey. In the June 14 Garward/Matthew-rescue passages, Sranderbury
+          and Tantabury also mean Thrantorbury. Do not name a brother deliberately
+          left unnamed in dialogue.
         instruction: >
           Use Thrantorbury for the place and university references unless the
           immediate context clearly refers to another location.
@@ -5469,6 +5524,8 @@ profiles:
             note: Clarifies Thrantorbury as a place thread.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
             note: Corrects Trantarbury drift to Thrantorbury.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: Nico confirmed Sranderbury at 09:04:14–09:04:20 and Tantabury at 09:05:52–09:05:57 as Thrantorbury during retranscription review.
 
       - id: place.tantra-bureau
         status: provisional
@@ -6739,12 +6796,14 @@ profiles:
             note: User clarified on 2026-07-10 that Iron area/Iron Age should be stricken; Day Court was the in-table correction.
 
       - id: place.skelwick
+        # Bellwick in the June 14 coven/destination discussion is Skelwick, not a separate place.
         status: confirmed
         kind: place
         canonical: Skelwick
         canonicalRefs: []
         aliases:
           - Belwick
+          - Bellwick
           - Scalic
           - Scalewit
         match:
@@ -6769,7 +6828,7 @@ profiles:
           safeExactReplacement: false
         instruction: >
           In Vengeful Brooch of Winter and frozen Children of the Crone
-          contexts, use Skelwick. Do not preserve Belwick, Scalic, or Scalewit as
+          contexts, use Skelwick. Do not preserve Belwick, Bellwick, Scalic, or Scalewit as
           separate places in those passages unless later context clearly
           establishes a different location.
         evidence:
@@ -7070,6 +7129,7 @@ profiles:
           - Malthreks
           - Castle Maltrek
           - Castle Malthrek
+          - Montfort Castle
         match:
           priority: normal
           tags:
@@ -7088,7 +7148,9 @@ profiles:
           name; Malthreks is its plural, referring collectively to members of
           the governing ducal family, not a separate surname. Castle Malthrek is named after its
           inhabitants, not the mountain range. Resolve each occurrence by its
-          referent; never globally replace Maltreks with Malthreks.
+          referent; never globally replace Maltreks with Malthreks. In the
+          June 14 ally-seeking passage, Montfort Castle means Castle Malthrek;
+          do not apply this correction to unrelated uses of the Montfort surname.
         instruction: >
           Preserve geography, family identity, and the castle name separately.
           Regional Reformist infiltration of the Maltreks does not establish
@@ -7098,6 +7160,8 @@ profiles:
             note: Region article distinguishes The Maltreks and Castle Malthrek.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-09-12.mdx
             note: User confirmed the region/family distinction and the castle's naming after its inhabitants during note review.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx
+            note: Nico confirmed Montfort Castle at 04:25:31–04:25:41 as Castle Malthrek during retranscription review.
 
       - id: artifact.miskaso-castle-malthrek
         status: rejected-as-artifact
