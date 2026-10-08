@@ -23,7 +23,7 @@
 	},
 	"dependencies": {
 		"@bastion-falls/calendar": "workspace:^",
-		"zod": "~4.3.6"
+		"zod": "~4.6.5"
 	},
 	"devDependencies": {
 		"tsx": "^4.23.1",

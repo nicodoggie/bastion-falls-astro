@@ -24,12 +24,12 @@
     "jsonld": "^9.0.0"
   },
   "peerDependencies": {
-    "astro": "^4.0.0 || ^5.0.0 || ^6.0.0"
+    "astro": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0"
   },
   "devDependencies": {
     "@types/jsonld": "^1.5.15",
     "@types/node": "~24.7.2",
-    "astro": "^6.4.8",
+    "astro": "^7.3.6",
     "typescript": "6.0.3",
     "vitest": "^4.1.10"
   },

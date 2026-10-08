@@ -9,16 +9,16 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "astro": "^6.4.8",
+    "astro": "^7.3.6",
     "tsx": "^4.23.1",
     "typescript": "6.0.3"
   },
   "peerDependencies": {
     "@astrojs/starlight": ">=0.30.0",
-    "astro": "^4.0.0 || ^5.0.0 || ^6.0.0"
+    "astro": "^7.2.10"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.39.3",
+    "@astrojs/starlight": "^0.42.5",
     "@bastion-falls/types": "workspace:^"
   },
   "exports": {
