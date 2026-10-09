@@ -82,6 +82,9 @@ human judgment.
      `--user-data-dir=/tmp/bfcli-ddb-auth-<port>` or another non-default profile
      directory along with `--remote-debugging-port=<port>`.
 1. Inspect the JSON artifact.
+   - For `importMode: rendered-sheet-fallback`, inspect the captured background and notes tabs as well as the main sheet text. An API 403 can still yield a useful rendered import, but report it as a fallback rather than a full API payload.
+   - Verify fallback `mechanics.stats` against the displayed Ability Scores block before merging. The scraper can capture modifiers or saving throws instead of scores; preserve the artifact and use the explicitly displayed scores, never derive scores from modifiers.
+   - Keep actual personal names as article titles and `character.name`; place shared identities or presentation names in aliases. Sheet headings that combine an alias and a parenthesized personal name are not automatically the canonical name.
    - Read `/tmp/ddb-character-<id>.json`.
    - Use `.character` as the raw DDB payload.
    - Preserve `.importedFrom` as evidence/source metadata if useful in notes.
