@@ -22,6 +22,50 @@
   },
   "@graph": [
     {
+      "@id": "ehk:thrakran",
+      "@type": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θrak.ran",
+        "writtenRep": "thrakran"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "thrak-ran",
+        "etymon:gloss": "yellow-stream",
+        "etymon:note": "Yellow-stream expression behind lexicalized rakran 'urine'. In sacred or jocular usage, the th- associated with divinity is retained or restored. This does not establish a productive sacred prefix on all colour or bodily vocabulary."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "yellow stream; golden flow"
+          },
+          "lexinfo:semanticField": [
+            "Color Terms",
+            "Water Features"
+          ],
+          "usage": "Descriptive compound."
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "urine in a sacred or mock-sacred register"
+          },
+          "lexinfo:semanticField": [
+            "Bodily Functions",
+            "Sacred Terms"
+          ],
+          "usage": "Used sincerely in a sacred register by some Reformists, and in irreverent jokes or mock-sacred imitation by other speakers. Not universal Reformist terminology, and its use does not imply worship of Thrakel. Contrasts with decorous rakran and blunt sus; neither sincere nor humorous usage establishes that a particular divine encounter or ritual occurred."
+        }
+      ]
+    },
+    {
       "@id": "ehk:tag",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
@@ -1601,6 +1645,109 @@
             "@value": "summer"
           },
           "lexinfo:semanticField": ["Time Terms"]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thrak",
+      "@type": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Adjective"
+      ],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θrak",
+        "writtenRep": "thrak"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:note": "Back-formed through verbal reanalysis of inherited thraker 'Sun’s Blood', associated with jaundice. Analogical remodeling as thrak'er supplies the apparent base thrak; the general colour sense extends beyond bodily yellowing. This is morphological reanalysis, not a direct sound change from thraker to thrak."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "yellow"
+          },
+          "lexinfo:semanticField": [
+            "Color Terms"
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thrak'er",
+      "@type": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Verb"
+      ],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θrak.ʔer",
+        "writtenRep": "thrak'er"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "thrak-'er",
+        "etymon:gloss": "yellow-VERB",
+        "etymon:note": "Synchronically associated with thrak 'yellow' and the verbalizer -'er. Historically an analogical remodeling of inherited thraker after its association with bodily yellowing and jaundice; the extracted colour base is a back-formation, not the original first component. The glottal stop belongs to the remodeled verbal form."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "to become jaundiced"
+          },
+          "lexinfo:semanticField": [
+            "Bodily Functions",
+            "Medical Terms"
+          ],
+          "usage": "Associated with a mainland Hick folk diagnosis of retained solar or magical power. This records a cultural explanation, not the cause of jaundice."
+        },
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "to yellow; to become yellow"
+          },
+          "lexinfo:semanticField": [
+            "Color Terms",
+            "Process Terms"
+          ],
+          "usage": "Extended beyond the bodily sense."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:thraker",
+      "@type": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "θra.ker",
+        "writtenRep": "thraker"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:gloss": "sun-blood",
+        "etymon:note": "Inherited contraction of a compound of the ancestors of thrakel 'sun' and mar 'blood', understood in mainland solar tradition as 'Blood of Thrakel'. Exact early component forms and dating remain open. Its association with bile and jaundice motivated later verbal reanalysis as thrak'er and back-formation of thrak 'yellow'. The inherited form has no glottal stop before its final syllable."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "Sun’s Blood; Blood of Thrakel"
+          },
+          "lexinfo:semanticField": [
+            "Sacred Terms",
+            "Magic Terms"
+          ],
+          "usage": "Mainland ancestral solar expression associating magical power with the sun god. Associated with the liver, bile, and bodily yellowing; not an assertion that bile is magical energy. In the associated folk practice, a patient's released processed magic can reinforce a healer's magic and healing intent, without validating retained magic as the cause of illness."
         }
       ]
     },

@@ -22,6 +22,67 @@
   },
   "@graph": [
     {
+      "@id": "ehk:sus",
+      "@type": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "sus",
+        "writtenRep": "sus"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:protoform": "Proto-Hick *susu",
+        "etymon:note": "Expressive formation associated with the sound of a stream. Contrasts in register with decorous or medical rakran 'urine'."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "piss; urine"
+          },
+          "lexinfo:semanticField": [
+            "Bodily Functions"
+          ],
+          "usage": "Blunt everyday term. Hickic speakers exploit its resemblance to -sus sequences in Kalassarian names and titles to mock oppressive officials; this is bilingual wordplay, not the etymology of those names or titles."
+        }
+      ]
+    },
+    {
+      "@id": "ehk:sus'er",
+      "@type": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Verb"
+      ],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "sus.ʔer",
+        "writtenRep": "sus'er"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:compound": "sus-'er",
+        "etymon:gloss": "piss-VERB",
+        "etymon:note": "Formed with the productive verbalizer from sus 'piss'."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "to piss; to urinate"
+          },
+          "lexinfo:semanticField": [
+            "Bodily Functions"
+          ],
+          "usage": "Blunt everyday register."
+        }
+      ]
+    },
+    {
       "@id": "ehk:sai",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {

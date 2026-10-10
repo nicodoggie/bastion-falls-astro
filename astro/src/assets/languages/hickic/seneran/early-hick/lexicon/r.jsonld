@@ -22,6 +22,38 @@
   },
   "@graph": [
     {
+      "@id": "ehk:rakran",
+      "@type": [
+        "ontolex:LexicalEntry",
+        "lexinfo:Noun"
+      ],
+      "canonicalForm": {
+        "@type": "ontolex:Form",
+        "phoneticRep": "rak.ran",
+        "writtenRep": "rakran"
+      },
+      "etymology": {
+        "@type": "etymon:Etymology",
+        "etymon:source": "Early Hick thrak-ran",
+        "etymon:gloss": "yellow-stream",
+        "etymon:note": "Lexicalized from the yellow-stream expression thrak-ran. Speakers removed th- because of its perceived divine or sacred connotation when naming ordinary urine. This is word-specific analogical subtraction, not a general sound law or evidence for an independently inherited colour root rak. Any earlier descriptive ka- and the dating of lexicalization remain unresolved."
+      },
+      "sense": [
+        {
+          "@type": "ontolex:LexicalSense",
+          "definition": {
+            "@language": "en",
+            "@value": "urine"
+          },
+          "lexinfo:semanticField": [
+            "Bodily Functions",
+            "Medical Terms"
+          ],
+          "usage": "Decorous or medical register, contrasting with blunt sus. Names the substance regardless of its actual colour; the yellow-stream ancestry is not a restriction on usage."
+        }
+      ]
+    },
+    {
       "@id": "ehk:rad",
       "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
