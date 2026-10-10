@@ -6,6 +6,16 @@ import { blogSchema } from "./blog-schema.ts";
 
 const schema = blogSchema(() => z.string());
 
+test("blog schema preserves the supplied banner image type", () => {
+  const post = schema.parse({
+    title: "Banner type regression",
+    draft: true,
+    banner: { url: "banner.png" },
+  });
+  const url: string | undefined = post.banner?.url;
+  assert.equal(url, "banner.png");
+});
+
 test("blog schema accepts published posts without draft and keeps published required", () => {
   const published = {
     title: "A published post",

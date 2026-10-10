@@ -1,6 +1,8 @@
 import { z } from "astro/zod";
 
-export const blogSchema = (image: () => z.ZodType) => {
+export const blogSchema = <ImageSchema extends z.ZodType>(
+  image: () => ImageSchema,
+) => {
   const baseBlogSchema = z.object({
     title: z.string(),
     draft: z.boolean().optional(),

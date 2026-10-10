@@ -23,10 +23,7 @@
   "@graph": [
     {
       "@id": "ehk:rakran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "rak.ran",
@@ -45,10 +42,7 @@
             "@language": "en",
             "@value": "urine"
           },
-          "lexinfo:semanticField": [
-            "Bodily Functions",
-            "Medical Terms"
-          ],
+          "lexinfo:semanticField": ["Bodily Functions", "Medical Terms"],
           "usage": "Decorous or medical register, contrasting with blunt sus. Names the substance regardless of its actual colour; the yellow-stream ancestry is not a restriction on usage."
         }
       ]

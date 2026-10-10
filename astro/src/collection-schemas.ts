@@ -169,13 +169,18 @@ const TimelineFieldSchema = z.union([
 ]);
 
 export const docsExtension = z
-  .object(
-    Object.fromEntries(
-      Object.values(collectionExtensions).flatMap(({ schema }) =>
-        Object.entries(schema.shape as Record<string, z.ZodTypeAny>),
-      ),
-    ),
-  )
+  .object({
+    ...collectionExtensions.character.schema.shape,
+    ...collectionExtensions.concept.schema.shape,
+    ...collectionExtensions.event.schema.shape,
+    ...collectionExtensions.family.schema.shape,
+    ...collectionExtensions.item.schema.shape,
+    ...collectionExtensions.location.schema.shape,
+    ...collectionExtensions.organization.schema.shape,
+    ...collectionExtensions.religion.schema.shape,
+    ...collectionExtensions.species.schema.shape,
+    ...collectionExtensions.vehicle.schema.shape,
+  })
   .extend({
     timeline: TimelineFieldSchema.optional(),
     creatureStats: CreatureStatsSchema.optional(),

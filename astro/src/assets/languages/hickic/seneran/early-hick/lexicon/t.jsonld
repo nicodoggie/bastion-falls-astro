@@ -23,10 +23,7 @@
   "@graph": [
     {
       "@id": "ehk:thrakran",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "θrak.ran",
@@ -45,10 +42,7 @@
             "@language": "en",
             "@value": "yellow stream; golden flow"
           },
-          "lexinfo:semanticField": [
-            "Color Terms",
-            "Water Features"
-          ],
+          "lexinfo:semanticField": ["Color Terms", "Water Features"],
           "usage": "Descriptive compound."
         },
         {
@@ -57,10 +51,7 @@
             "@language": "en",
             "@value": "urine in a sacred or mock-sacred register"
           },
-          "lexinfo:semanticField": [
-            "Bodily Functions",
-            "Sacred Terms"
-          ],
+          "lexinfo:semanticField": ["Bodily Functions", "Sacred Terms"],
           "usage": "Used sincerely in a sacred register by some Reformists, and in irreverent jokes or mock-sacred imitation by other speakers. Not universal Reformist terminology, and its use does not imply worship of Thrakel. Contrasts with decorous rakran and blunt sus; neither sincere nor humorous usage establishes that a particular divine encounter or ritual occurred."
         }
       ]
@@ -1650,10 +1641,7 @@
     },
     {
       "@id": "ehk:thrak",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Adjective"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Adjective"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "θrak",
@@ -1670,18 +1658,13 @@
             "@language": "en",
             "@value": "yellow"
           },
-          "lexinfo:semanticField": [
-            "Color Terms"
-          ]
+          "lexinfo:semanticField": ["Color Terms"]
         }
       ]
     },
     {
       "@id": "ehk:thrak'er",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "θrak.ʔer",
@@ -1700,10 +1683,7 @@
             "@language": "en",
             "@value": "to become jaundiced"
           },
-          "lexinfo:semanticField": [
-            "Bodily Functions",
-            "Medical Terms"
-          ],
+          "lexinfo:semanticField": ["Bodily Functions", "Medical Terms"],
           "usage": "Associated with a mainland Hick folk diagnosis of retained solar or magical power. This records a cultural explanation, not the cause of jaundice."
         },
         {
@@ -1712,20 +1692,14 @@
             "@language": "en",
             "@value": "to yellow; to become yellow"
           },
-          "lexinfo:semanticField": [
-            "Color Terms",
-            "Process Terms"
-          ],
+          "lexinfo:semanticField": ["Color Terms", "Process Terms"],
           "usage": "Extended beyond the bodily sense."
         }
       ]
     },
     {
       "@id": "ehk:thraker",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "θra.ker",
@@ -1743,10 +1717,7 @@
             "@language": "en",
             "@value": "Sun’s Blood; Blood of Thrakel"
           },
-          "lexinfo:semanticField": [
-            "Sacred Terms",
-            "Magic Terms"
-          ],
+          "lexinfo:semanticField": ["Sacred Terms", "Magic Terms"],
           "usage": "Mainland ancestral solar expression associating magical power with the sun god. Associated with the liver, bile, and bodily yellowing; not an assertion that bile is magical energy. In the associated folk practice, a patient's released processed magic can reinforce a healer's magic and healing intent, without validating retained magic as the cause of illness."
         }
       ]

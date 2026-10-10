@@ -23,10 +23,7 @@
   "@graph": [
     {
       "@id": "ehk:sus",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Noun"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Noun"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sus",
@@ -44,19 +41,14 @@
             "@language": "en",
             "@value": "piss; urine"
           },
-          "lexinfo:semanticField": [
-            "Bodily Functions"
-          ],
+          "lexinfo:semanticField": ["Bodily Functions"],
           "usage": "Blunt everyday term. Hickic speakers exploit its resemblance to -sus sequences in Kalassarian names and titles to mock oppressive officials; this is bilingual wordplay, not the etymology of those names or titles."
         }
       ]
     },
     {
       "@id": "ehk:sus'er",
-      "@type": [
-        "ontolex:LexicalEntry",
-        "lexinfo:Verb"
-      ],
+      "@type": ["ontolex:LexicalEntry", "lexinfo:Verb"],
       "canonicalForm": {
         "@type": "ontolex:Form",
         "phoneticRep": "sus.ʔer",
@@ -75,9 +67,7 @@
             "@language": "en",
             "@value": "to piss; to urinate"
           },
-          "lexinfo:semanticField": [
-            "Bodily Functions"
-          ],
+          "lexinfo:semanticField": ["Bodily Functions"],
           "usage": "Blunt everyday register."
         }
       ]
