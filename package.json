@@ -29,7 +29,7 @@
     "mdsf-cli": "^0.12.1",
     "rimraf": "^6.1.3",
     "rumdl": "^0.2.33",
-    "turbo": "^2.10.5",
+    "turbo": "^2.11.7",
     "wrangler": "^4.148.0"
   },
   "dependencies": {
