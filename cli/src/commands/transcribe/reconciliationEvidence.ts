@@ -10,9 +10,14 @@ import { channelMapSchema, type ChannelMap } from "./channelMap.js";
 import type { SourceEvent } from "./reconciliation.js";
 
 export const RECONCILIATION_EVIDENCE_VERSION = 1 as const;
-export const RECONCILIATION_PROMPT_VERSION = "reconciliation.prompt.v7" as const;
+export const RECONCILIATION_PROMPT_VERSION =
+  "reconciliation.prompt.v7" as const;
 
-export type ProviderIdentity = { provider: string; model: string; profile?: string };
+export type ProviderIdentity = {
+  provider: string;
+  model: string;
+  profile?: string;
+};
 export type ContextOnly = {
   contextOnly: true;
   previousReadableTail: readonly string[];
@@ -39,7 +44,10 @@ export interface ReconciliationEvidenceInput {
   evidenceRevision: string;
 }
 export type EvidenceSourceEvent = SourceEvent &
-  Pick<AlignmentEvent, "sourcePass" | "channel" | "physicalSpeaker" | "alternatives">;
+  Pick<
+    AlignmentEvent,
+    "sourcePass" | "channel" | "physicalSpeaker" | "alternatives"
+  >;
 export interface ReconciliationEvidencePacket {
   evidenceVersion: 1;
   promptVersion: string;
@@ -87,7 +95,10 @@ const evidenceInputSchema = z
     correctionRules: z.array(boundedString).max(20_000).optional(),
     expectedCharacters: z.array(boundedString).max(1_000).optional(),
     campaign: boundedString.optional(),
-    sessionDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/u).optional(),
+    sessionDate: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/u)
+      .optional(),
     provider: z
       .object({
         provider: boundedString,
@@ -152,33 +163,62 @@ function canonical(value: unknown, seen = new WeakSet<object>()): unknown {
 }
 
 export function stableHash(value: unknown): string {
-  return createHash("sha256").update(JSON.stringify(canonical(value))).digest("hex");
+  return createHash("sha256")
+    .update(JSON.stringify(canonical(value)))
+    .digest("hex");
 }
 
-export function assignStableEventId(chunkIndex: number, ordinal: number): string {
-  const parsedChunkIndex = z.number().int().nonnegative().max(1_000_000).parse(chunkIndex);
-  const parsedOrdinal = z.number().int().nonnegative().max(1_000_000).parse(ordinal);
+export function assignStableEventId(
+  chunkIndex: number,
+  ordinal: number,
+): string {
+  const parsedChunkIndex = z
+    .number()
+    .int()
+    .nonnegative()
+    .max(1_000_000)
+    .parse(chunkIndex);
+  const parsedOrdinal = z
+    .number()
+    .int()
+    .nonnegative()
+    .max(1_000_000)
+    .parse(ordinal);
   return `session_${String(parsedChunkIndex).padStart(3, "0")}:event_${String(parsedOrdinal).padStart(4, "0")}`;
 }
 
 function eventTieKey(event: AlignmentEvent): string {
-  const alternatives = event.alternatives.map((alternative) => stableHash(alternative)).sort();
+  const alternatives = event.alternatives
+    .map((alternative) => stableHash(alternative))
+    .sort();
   return stableHash({ ...event, alternatives });
 }
 
-function ordered(alignment: AlignmentResult): Array<{ event: AlignmentEvent; ordinal: number; tieKey: string }> {
-  const entries = alignment.events
-    .map((event, ordinal) => ({ event, ordinal, tieKey: eventTieKey(event) }));
-  if (new Set(entries.map((entry) => entry.tieKey)).size !== entries.length) {
-    throw new Error("duplicate alignment event lacks a stable source identity");
-  }
+function ordered(
+  alignment: AlignmentResult,
+): Array<{ event: AlignmentEvent; ordinal: number; tieKey: string }> {
+  const entries = alignment.events.map((event, ordinal) => ({
+    event,
+    ordinal,
+    tieKey: eventTieKey(event),
+    identityKey: stableHash(event),
+  }));
+  // Repeated ASR rows can produce indistinguishable alignment records. Coalesce
+  // only the full evidence identity; differing speech or alternatives stay separate.
+  const seen = new Set<string>();
   return entries
+    .filter(({ identityKey }) => {
+      if (seen.has(identityKey)) return false;
+      seen.add(identityKey);
+      return true;
+    })
     .sort(
       (left, right) =>
         left.event.globalStart - right.event.globalStart ||
         left.event.globalEnd - right.event.globalEnd ||
         left.event.sourcePass.localeCompare(right.event.sourcePass) ||
         left.tieKey.localeCompare(right.tieKey) ||
+        left.identityKey.localeCompare(right.identityKey) ||
         left.ordinal - right.ordinal,
     );
 }
@@ -190,7 +230,12 @@ export function selectOwnedAlignmentEvents(
   logicalEnd: number,
 ): EvidenceSourceEvent[] {
   const parsedAlignment = AlignmentResultSchema.parse(alignment);
-  const parsedChunkIndex = z.number().int().nonnegative().max(1_000_000).parse(chunkIndex);
+  const parsedChunkIndex = z
+    .number()
+    .int()
+    .nonnegative()
+    .max(1_000_000)
+    .parse(chunkIndex);
   const parsedStart = z.number().finite().nonnegative().parse(logicalStart);
   const parsedEnd = z.number().finite().nonnegative().parse(logicalEnd);
   if (parsedEnd <= parsedStart) {
@@ -200,14 +245,17 @@ export function selectOwnedAlignmentEvents(
   return ordered(parsedAlignment).flatMap(({ event }, ordinal) => {
     const midpoint = (event.globalStart + event.globalEnd) / 2;
     if (!(midpoint >= parsedStart && midpoint < parsedEnd)) return [];
-    const crossing = event.globalStart < parsedStart || event.globalEnd > parsedEnd;
+    const crossing =
+      event.globalStart < parsedStart || event.globalEnd > parsedEnd;
     return [
       {
         id: assignStableEventId(parsedChunkIndex, ordinal),
         text: event.text,
         start: event.globalStart,
         end: event.globalEnd,
-        ...(event.confidence === undefined ? {} : { confidence: event.confidence }),
+        ...(event.confidence === undefined
+          ? {}
+          : { confidence: event.confidence }),
         ...(crossing
           ? {
               supportedRange: {
@@ -225,7 +273,9 @@ export function selectOwnedAlignmentEvents(
   });
 }
 
-function normalizeOwned(input: ReconciliationEvidenceInput): EvidenceSourceEvent[] {
+function normalizeOwned(
+  input: ReconciliationEvidenceInput,
+): EvidenceSourceEvent[] {
   return selectOwnedAlignmentEvents(
     input.alignment,
     input.chunkIndex,
@@ -255,7 +305,10 @@ function head<T>(values: readonly T[] | undefined, limit: number): T[] {
 function identityParts(input: ReconciliationEvidenceInput) {
   const owned = normalizeOwned(input);
   const neighbors = {
-    previousReadableTail: bounded(input.previousReadableTail, input.neighborLimit ?? 8),
+    previousReadableTail: bounded(
+      input.previousReadableTail,
+      input.neighborLimit ?? 8,
+    ),
     nextAlignmentHead: head(input.nextAlignmentHead, input.neighborLimit ?? 8),
   };
   const provider = {
