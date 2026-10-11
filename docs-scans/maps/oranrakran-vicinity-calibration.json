@@ -1,0 +1,23 @@
+{
+  "source": "docs-scans/maps/oranrakran-vicinity.pdf",
+  "source_sha256": "32e0b6a688e8e958ad7f49a571f66f603325838f2e19cf731d898f3e63a976c9",
+  "source_master": "senera-master-white.svg",
+  "source_bounds": [2500, 550, 2900, 900],
+  "source_frame_miles": [54, 47.25],
+  "master_miles_per_pixel": 0.135,
+  "pdf_points_per_master_pixel": 1.22,
+  "upright_scan_dimensions": [3017, 2253],
+  "display_crop_bounds": [620, 320, 2530, 1990],
+  "display_dimensions": [1910, 1670],
+  "resampled_after_extraction": false,
+  "measurement": {
+    "method": "Dark-pixel vertical tick peaks in the upright scan, x 2165..2505, y 2058..2087, grayscale threshold 160",
+    "tick_x_pixels": [2182, 2334, 2491],
+    "tick_miles": [0, 5, 10],
+    "pixels": 309,
+    "distance": 10,
+    "unit": "mile",
+    "status": "provisional",
+    "limitation": "Approximate scalar calibration from the printed bar. Unequal tick spacing and scan distortion limit precision; no full geometric rectification is claimed. Frame coverage describes the original print registration, not the tighter annotated display crop."
+  }
+}

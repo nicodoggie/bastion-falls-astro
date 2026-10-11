@@ -1,5 +1,7 @@
 import { ImagePromptSchema, ImageAttributionSchema } from "./Image.js";
 import { type Location, LocationSchema } from "./Location.js";
+export { MapSchema, MapScaleSchema } from "./Map.js";
+export type { Map, MapScale } from "./Map.js";
 import { type Character, CharacterSchema } from "./Character.js";
 import { type Item, ItemSchema } from "./Item.js";
 import { type Event, EventSchema } from "./Event.js";
