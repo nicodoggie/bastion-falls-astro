@@ -8,7 +8,7 @@ const { href, title } = Astro.props;
 ---
 
 <div
-  class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
+  class="sidebar-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 w-full max-w-full"
 >
   {title && (
     <div class="mb-2">
@@ -38,3 +38,9 @@ const { href, title } = Astro.props;
     <slot />
   </div>
 </div>
+
+<style>
+:global(:root[data-theme="light"]) .sidebar-card {
+  background-color: var(--sl-color-bg);
+}
+</style>

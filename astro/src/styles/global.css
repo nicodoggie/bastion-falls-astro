@@ -2,6 +2,28 @@
 @plugin "@tailwindcss/typography";
 @import 'flowbite/src/themes/default';
 
+/* Starlight reverses its neutral scale in light mode: “white” is heading ink. */
+:root[data-theme="light"],
+[data-theme="light"] ::backdrop {
+  --sl-color-white: #302637;
+  --sl-color-gray-1: #3d3343;
+  --sl-color-gray-2: #4f4555;
+  --sl-color-gray-3: #6b6070;
+  --sl-color-gray-4: #8f8393;
+  --sl-color-gray-5: #d3c9d6;
+  --sl-color-gray-6: #e5dce4;
+  --sl-color-gray-7: #f1eae1;
+  --sl-color-black: #eee8dc;
+
+  --sl-color-accent-low: #eee3f2;
+  --sl-color-accent: #704486;
+  --sl-color-accent-high: #4c285e;
+  --sl-color-bg-nav: #e7e0d5;
+  --sl-color-bg-sidebar: #eae3d8;
+  --sl-color-hairline: #ded4dc;
+  --sl-color-hairline-light: #e7dfe5;
+}
+
 hr {
   margin: 1rem 0 1rem 0;
 }
@@ -243,7 +265,7 @@ body {
   position: relative;
 }
 
-body::before {
+:root[data-theme="dark"] body::before {
   content: '';
   position: fixed;
   top: 0;
