@@ -17,8 +17,12 @@ minimumReleaseAgeExclude:
   - "@expressive-code/plugin-shiki@0.44.0"
   - "@expressive-code/plugin-text-markers@0.44.0"
   - astro-expressive-code@0.44.0
-  - astro@7.0.3
+  - astro@7.0.3 || 7.4.0
   - expressive-code@0.44.0
   - rehype-expressive-code@0.44.0
+  - "@astrojs/internal-helpers@0.13.0"
+  - "@astrojs/markdown-satteri@0.4.4"
+  - "@astrojs/prism@4.1.0"
+  - "@astrojs/telemetry@3.4.0"
 
 nodeLinker: isolated

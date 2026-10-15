@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "astro": "^7.3.6",
+    "astro": "^7.4.0",
     "tsx": "^4.23.1",
     "typescript": "6.0.3"
   },
@@ -18,7 +18,7 @@
     "astro": "^7.2.10"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.42.5",
+    "@astrojs/starlight": "^0.42.6",
     "@bastion-falls/types": "workspace:^"
   },
   "exports": {
