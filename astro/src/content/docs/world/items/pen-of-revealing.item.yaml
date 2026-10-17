@@ -1,0 +1,23 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Pen of Revealing
+source: BF
+type: wondrous item
+rarity: common
+wondrous: true
+reqAttune: false
+curse: false
+entries:
+  - >-
+    This magical pen functions as an ordinary writing pen when supplied with ink. As an action, you
+    can cause its tip to shed magical bright light in a 10-foot cone or extinguish that light. The
+    light remains until you extinguish it.
+  - >-
+    Hidden writing on an illuminated surface becomes visible within this cone, including writing
+    concealed by invisible ink or magic. Anyone able to see and read the writing can examine the
+    actual message. Once the light is removed, the writing returns to its previous visibility unless
+    another effect keeps it visible.
+  - >-
+    The pen does not reveal invisible creatures or unrelated illusions, see through opaque
+    coverings, restore erased or destroyed text, translate languages, or decipher codes. It reveals
+    the writing but does not dispel the magic concealing it. This pen is not cursed.

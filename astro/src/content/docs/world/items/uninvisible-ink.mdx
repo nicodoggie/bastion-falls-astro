@@ -1,0 +1,33 @@
+---
+title: Uninvisible Ink
+draft: true
+tags:
+  - items
+  - cursed items
+item:
+  name: Uninvisible Ink
+  details:
+    type: wondrous item
+    rarity: uncommon
+    attunement: false
+itemDataStats:
+  rules: items/uninvisible-ink.item
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+**Uninvisible Ink** behaves like invisible ink and can be read with a
+[Pen of Revealing](pen-of-revealing.mdx). The pen's magical light reliably reveals the actual
+message; the pen itself is not cursed.
+
+The ink's defect is unreliable secrecy rather than false information. At unpredictable moments
+it reveals what was written without any revealing light, potentially exposing an otherwise
+authentic private message.
+
+<ItemBlock item={frontmatter.itemDataStats.rules} />
+
+## Drafting Notes
+
+Invisible writing, reliable revelation by the non-cursed pen's magical light, and random
+spontaneous disclosure are established. Bottle capacity, drying behavior, the hourly d20
+trigger, one-minute disclosure, uncommon rarity, and no attunement are provisional.

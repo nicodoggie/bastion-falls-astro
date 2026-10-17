@@ -1,0 +1,28 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Handkerchief of Candid Courtesy
+source: BF
+type: wondrous item
+rarity: uncommon
+wondrous: true
+reqAttune: false
+curse: true
+entries:
+  - >-
+    As an action, you can use this embroidered handkerchief to remove ordinary dirt, dust, and
+    stains from a willing creature or one object you can touch. A single use cleans clothing,
+    exposed skin, or an object no larger than a suit of clothing. The handkerchief remains clean and
+    can be used repeatedly. It does not remove poison, disease, magic, damage, or an inscription
+    deliberately applied to a surface.
+  - >-
+    Curse: A Necessary Qualification. After you use the handkerchief, the next spoken compliment you
+    deliberately offer within 1 hour is immediately followed by one truthful reservation about its
+    subject that you were consciously withholding. You speak the qualification in your own voice,
+    audible to the same listeners as the compliment. If you are withholding no such reservation,
+    nothing additional is spoken. The player chooses an appropriate genuinely held qualification;
+    the curse does not invent beliefs or reveal knowledge the speaker does not possess.
+  - >-
+    The curse does not force you to begin a conversation or offer a compliment. The effect ends
+    after that compliment or after 1 hour, whichever comes first. Further cleaning during that hour
+    does not stack additional disclosures, but a later use can start a new effect. An Identify spell
+    reveals the cleaning property but does not disclose the curse.

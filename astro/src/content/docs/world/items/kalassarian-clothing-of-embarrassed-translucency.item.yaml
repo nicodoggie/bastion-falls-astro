@@ -1,0 +1,26 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Kalassarian Clothing of Embarrassed Translucency
+source: BF
+type: wondrous item
+rarity: uncommon
+wondrous: true
+reqAttune: false
+curse: true
+entries:
+  - >-
+    This Kalassarian garment resembles ordinary clothing. It automatically adjusts to fit whoever
+    wears it, regardless of the garment's original size or style. It is clothing, not armor, and
+    provides no Armor Class bonus.
+  - >-
+    Curse: Embarrassed Translucency. While you wear the garment, its fabric becomes progressively
+    more translucent as your embarrassment increases. Slight embarrassment produces a faint
+    sheerness; profound embarrassment can make the fabric almost transparent. The GM and player
+    judge the degree from the character's actual embarrassment, not from a required saving throw or
+    an observer's opinion. The garment does not itself force you to become embarrassed.
+  - >-
+    The fabric returns toward its ordinary opacity as you regain your composure. You can remove the
+    garment normally. Its transparency does not affect other clothing worn beneath it, and the curse
+    imposes no additional numerical penalty.
+  - >-
+    An Identify spell reveals the garment's self-fitting property but does not disclose its curse.

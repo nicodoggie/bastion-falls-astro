@@ -1,0 +1,33 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Gum of Satiety
+source: BF
+type: wondrous item
+rarity: uncommon
+wondrous: true
+reqAttune: false
+curse: true
+entries:
+  - >-
+    You can begin chewing this reusable piece of gum as an action. After 10 minutes of chewing, it
+    leaves you as full and nourished as a substantial meal. Continued chewing continues to supply
+    food rather than stopping when your nutritional needs are met. It provides no water.
+  - >-
+    Curse: One More Chew. Once you begin chewing, voluntarily stopping or spitting out the gum
+    requires a DC 20 Wisdom saving throw, made as an action. On a success, you can stop and remove
+    it. On a failure, you continue chewing and cannot willingly remove or swallow it; you can
+    attempt this saving throw again after 1 hour. Beginning to chew it again starts the compulsion
+    anew.
+  - >-
+    A creature you allow to help can remove the gum from your mouth as an action without making this
+    saving throw. The compulsion does not force you to retrieve gum that has been removed. You stop
+    chewing if you fall unconscious, and the gum can then be removed normally. The gum does not
+    prevent breathing or speaking.
+  - >-
+    Excess Nourishment. Repeated or prolonged chewing after you have eaten enough gradually causes
+    weight gain as if you were overeating. Track the change over days and longer periods according
+    to the creature's body and circumstances. This item imposes no automatic speed, ability score,
+    or other statistical penalty for weight gain.
+  - >-
+    The gum retains its magic after removal. An Identify spell reveals its nourishing property but
+    does not disclose the compulsion or the continued excess nourishment.

@@ -1,0 +1,29 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Satisfying Rappelling Gear
+source: BF
+type: wondrous item
+rarity: uncommon
+wondrous: true
+reqAttune: false
+curse: true
+entries:
+  - >-
+    This enchanted harness and its accompanying ropes and fittings function as ordinary rappelling
+    equipment. While wearing the secured harness and using appropriate anchors and rope, you have
+    advantage on Strength (Athletics) and Dexterity (Acrobatics) checks made to traverse difficult
+    cliffside terrain, including climbing, rappelling, and negotiating narrow ledges.
+  - >-
+    The gear does not create anchors, supply unlimited rope, grant a climbing speed, remove the
+    extra movement cost of difficult terrain, or automatically arrest a fall when it is not properly
+    secured. Ordinary equipment limits and safety procedures still apply.
+  - >-
+    Curse: Satisfying Descent. While you wear the harness, it produces pleasurable vibrations as you
+    approach a place from which you could begin a descent. The sensation grows stronger as you get
+    closer to that descent and recedes as you move away. The GM describes the intensity in relation
+    to the terrain, without a fixed detection radius.
+  - >-
+    The sensation does not negate the gear's advantage, compel movement toward a cliff, or
+    automatically impose disadvantage, a condition, or loss of actions. You can remove the harness
+    normally when circumstances permit. An Identify spell reveals the traversal benefit but does not
+    disclose the curse.

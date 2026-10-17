@@ -1,0 +1,28 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Pillow of Public Dreams
+source: BF
+type: wondrous item
+rarity: uncommon
+wondrous: true
+reqAttune: false
+curse: true
+entries:
+  - >-
+    While resting your head on this pillow, you can sleep comfortably on a hard or uneven surface,
+    and ordinary nonmagical background noise does not prevent you from satisfying a rest's sleep
+    requirements. You still need the normal time for the rest, can awaken voluntarily, and awaken
+    normally if someone rouses you. Danger, injury, strenuous activity, and other interruptions
+    affect the rest normally. The pillow does not put you to sleep or change whether your species
+    needs sleep.
+  - >-
+    Curse: Public Dreams. At the end of each hour you spend asleep on the pillow, a silent,
+    translucent moving image of your current dream appears in the air above it for 1 minute.
+    Creatures within 10 feet that can see the pillow can see the image, even in darkness. The image
+    is plainly a dream projection, not a real creature or object, and provides no illumination for
+    reading or seeing other things.
+  - >-
+    The player describes the dream image; it need not concern a secret or a real event. The pillow
+    does not extract forgotten knowledge, establish the truth of a memory, or create dreams in a
+    creature that does not dream. Lifting your head from the pillow or waking ends the projection.
+    An Identify spell reveals the comfortable-sleep property but does not disclose the curse.

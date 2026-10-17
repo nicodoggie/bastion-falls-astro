@@ -1,0 +1,30 @@
+---
+title: Pen of Revealing
+draft: true
+tags:
+  - items
+item:
+  name: Pen of Revealing
+  details:
+    type: wondrous item
+    rarity: common
+    attunement: false
+itemDataStats:
+  rules: items/pen-of-revealing.item
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+A **Pen of Revealing** functions as an ordinary writing pen and produces magical light that
+reveals hidden writing. Invisible inks and magically concealed text become readable under its
+light without changing the message itself.
+
+The pen is not cursed. It reveals writing, but does not translate unfamiliar languages, decipher
+codes, or restore text that has been destroyed.
+
+<ItemBlock item={frontmatter.itemDataStats.rules} />
+
+## Drafting Notes
+
+Its revealing magical light and absence of a curse are established. Common rarity, no
+attunement, the action cost, and a 10-foot cone are provisional.

@@ -1,0 +1,43 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Gas Light
+source: BF
+type: wondrous item
+rarity: uncommon
+wondrous: true
+reqAttune: false
+curse: true
+entries:
+  - >-
+    As an action, you can light or extinguish this lamp. While lit inside a room, it sheds bright
+    light throughout that room, regardless of the room's size. Its light does not extend through
+    opaque walls or closed doors and does not dispel magical darkness. Outdoors, it sheds bright
+    light for 30 feet and dim light for an additional 30 feet.
+  - >-
+    Curse: One False Detail. When a creature first observes a room illuminated by the lamp during a
+    lighting, the GM secretly rolls a d20 for that room and perceiver and chooses one visible detail
+    to falsify. On a roll of 1-10, the false detail is minor, such as a changed color or an
+    apparently open drawer. On 11-17, it is substantial, such as a changed emblem, account entry, or
+    signature. On 18-20, it concerns something very important to that perceiver, such as the profile
+    of a key they seek or the name and photograph on a most-wanted notice. One coherent identifying
+    detail can include both a name and its associated image. This roll determines significance, not
+    whether a distortion occurs.
+  - >-
+    The distortion applies only while the perceiver observes the lamp's current room under its
+    illumination. Moving the lit lamp to another room ends the previous room's visible distortion
+    and establishes a separate result for the new room and each perceiver. Returning the lamp or
+    perceiver to a previously observed room during the same lighting restores that room's original
+    result rather than rerolling it. Only one detail per perceiver is false in the currently
+    illuminated room. The lamp alters perception, not objects, memories, or knowledge acquired
+    outside the illuminated scene. It cannot make a false key operate a lock or change the actual
+    words on a page.
+  - >-
+    Piercing the Illusion. A creature that deliberately examines a suspect detail can use an action
+    to make a DC 20 Wisdom (Perception) check. On a success, it sees that detail as it really is for
+    the remainder of that lighting whenever it observes that room. This does not pierce distortions
+    in other rooms, and other observers do not automatically share the result. A failed check can be
+    repeated if the creature obtains new contradictory evidence. Knowing that the lamp is cursed
+    does not by itself identify the false detail.
+  - >-
+    Extinguishing the lamp ends its distortions. Each new lighting can produce a new result. An
+    Identify spell reveals its illumination property but does not disclose its curse.

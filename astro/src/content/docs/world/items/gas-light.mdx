@@ -1,0 +1,35 @@
+---
+title: Gas Light
+draft: true
+tags:
+  - items
+  - cursed items
+item:
+  name: Gas Light
+  details:
+    type: wondrous item
+    rarity: uncommon
+    attunement: false
+itemDataStats:
+  rules: items/gas-light.item
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+The **Gas Light** illuminates an entire room regardless of its size. Its curse makes a single
+visible detail appear subtly false, with the most consequential distortions concerning whatever
+the perceiver is trying to establish.
+
+An altered key profile might seem to match a sought-after lock. A name and photograph on a
+most-wanted notice might appear to identify someone entirely different. The physical key,
+document, or person does not actually change.
+
+<ItemBlock item={frontmatter.itemDataStats.rules} />
+
+## Drafting Notes
+
+The room-wide illumination, DC 20 Perception check, and d20 bands 1-10 / 11-17 / 18-20 are
+established. This draft uses a distortion on every lighting, rolled separately for each
+perceiver; an additional chance of entirely truthful illumination remains unsettled.
+The per-room persistence and current-illumination requirement, action costs, outdoor range,
+uncommon rarity, no attunement, and the treatment of magical darkness are provisional.

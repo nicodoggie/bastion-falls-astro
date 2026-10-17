@@ -1,0 +1,32 @@
+---
+title: Gum of Satiety
+draft: true
+tags:
+  - items
+  - cursed items
+item:
+  name: Gum of Satiety
+  details:
+    type: wondrous item
+    rarity: uncommon
+    attunement: false
+itemDataStats:
+  rules: items/gum-of-satiety.item
+---
+
+import ItemBlock from '../../../../components/ItemBlock.astro';
+
+**Gum of Satiety** genuinely supplies nourishment rather than merely suppressing hunger. Its
+apparent convenience conceals a compulsion to keep chewing after the wearer is already full.
+
+Prolonged chewing continues to provide nourishment, so repeated excess gradually causes weight
+gain as ordinary overeating would. It does not cause instantaneous swelling, and becoming fuller
+does not make the gum easier to discard.
+
+<ItemBlock item={frontmatter.itemDataStats.rules} />
+
+## Drafting Notes
+
+The DC 20 Wisdom save, real nourishment, and gradual weight gain are established. Meal timing,
+hourly retries, assistance, unconsciousness, reusability, uncommon rarity, and no attunement are
+provisional. No fixed weight-gain rate has been settled.

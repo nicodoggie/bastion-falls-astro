@@ -16,10 +16,10 @@ Claiming work is complete without verification is dishonesty, not efficiency.
 ## The Iron Law
 
 ```
-NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
+NO COMPLETION CLAIMS WITHOUT VERIFIED EVIDENCE FOR THE EXACT ARTIFACT AND CLAIMED SCOPE
 ```
 
-If you haven't run the verification command in this message, you cannot claim it passes.
+Run the relevant verification before claiming success and bind its output to the exact candidate and execution conditions. Before reusing saved evidence, check that the covered bytes, metadata and relevant environment assumptions still match; otherwise rerun the affected checks. A new message, delayed result notification or identical-byte commit does not alone require replaying an unchanged expensive build. State whether evidence is freshly executed or reused, and never describe a scoped pass as whole-product acceptance.
 
 ## The Gate Function
 
@@ -27,9 +27,9 @@ If you haven't run the verification command in this message, you cannot claim it
 BEFORE claiming any status or expressing satisfaction:
 
 1. IDENTIFY: What command proves this claim?
-2. RUN: Execute the FULL command (fresh, complete)
-3. READ: Full output, check exit code, count failures
-4. VERIFY: Does output confirm the claim?
+2. ESTABLISH: Execute the full relevant command, or verify the identity and applicability of complete saved execution evidence
+3. READ: Inspect actual output and recorded exit status; count distinct tests, failures, errors and skips
+4. VERIFY: Does the evidence cover the exact artifact and stated claim?
    - If NO: State actual status with evidence
    - If YES: State claim WITH evidence
 5. ONLY THEN: Make the claim
@@ -37,12 +37,19 @@ BEFORE claiming any status or expressing satisfaction:
 Skip any step = lying, not verifying
 ```
 
+## Verification Accounting
+
+1. **Separate test identities from exercised scenarios.** Deduplicate runner-reported test IDs across retries; report failures and skips separately. For looped or parameterized process fixtures, count executed scenarios from the recorded run and inspect the fixture's case construction before quoting a total. Report methods and scenarios as separate quantities, because one method can cover many subprocess cases and repeated runs do not add distinct coverage.
+2. **Parse runner results, not the log's last line.** For saved unittest evidence, require the recorded command, exit status, test count and standalone `OK` result to agree; allow ordinary application output after that result. A trailing diagnostic print must not turn a successful run into a false failure, and an isolated success marker must not override a nonzero exit.
+3. **Verify lint scope before calling it clean.** Check how many supplied files were actually included; configuration may exclude an imported document. Report excluded-file checks separately. When comparing baseline diagnostics, match rule and offending source rather than shifted line numbers, and preserve relative-path context for link checks; relocating a baseline document can manufacture broken-link warnings.
+
 ## Common Failures
 
 | Claim | Requires | Not Sufficient |
 |-------|----------|----------------|
-| Tests pass | Test command output: 0 failures | Previous run, "should pass" |
+| Tests pass | Actual successful test output and exit, bound to the candidate; skips stated separately | Unbound previous run, "should pass" |
 | Linter clean | Linter output: 0 errors | Partial check, extrapolation |
+| No new lint findings | Same-tool current-versus-base diagnostics, matched by file, rule and offending source; existing findings disclosed | Calling a nonzero lint run clean or silently ignoring its diagnostics |
 | Build succeeds | Build command: exit 0 | Linter passing, logs look good |
 | Bug fixed | Test original symptom: passes | Code changed, assumed fixed |
 | Regression test works | Red-green cycle verified | Test passes once |
@@ -55,7 +62,7 @@ Skip any step = lying, not verifying
 - Expressing satisfaction before verification ("Great!", "Perfect!", "Done!", etc.)
 - About to commit/push/PR without verification
 - Trusting agent success reports
-- Relying on partial verification
+- Using narrow verification to imply broader acceptance
 - Thinking "just this once"
 - Tired and wanting work over
 - **ANY wording implying success without having run verification**
@@ -70,7 +77,7 @@ Skip any step = lying, not verifying
 | "Linter passed" | Linter ≠ compiler |
 | "Agent said success" | Verify independently |
 | "I'm tired" | Exhaustion ≠ excuse |
-| "Partial check is enough" | Partial proves nothing |
+| "This narrow pass completes the whole feature" | A focused check proves its stated boundary only; reconcile every remaining acceptance criterion |
 | "Different words so rule doesn't apply" | Spirit over letter |
 
 ## Key Patterns
@@ -83,7 +90,7 @@ Skip any step = lying, not verifying
 
 **Regression tests (TDD Red-Green):**
 ```
-✅ Write → Run (pass) → Revert fix → Run (MUST FAIL) → Restore → Run (pass)
+✅ Write regression → Run against the unfixed boundary (MUST FAIL for the intended cause) → Apply fix → Run the same regression (PASS)
 ❌ "I've written a regression test" (without red-green verification)
 ```
 
@@ -134,6 +141,6 @@ From 24 failure memories:
 
 **No shortcuts for verification.**
 
-Run the command. Read the output. THEN claim the result.
+Establish applicable execution evidence. Read the output and actual exit. Confirm artifact identity and acceptance scope. THEN claim only the result that evidence supports.
 
 This is non-negotiable.

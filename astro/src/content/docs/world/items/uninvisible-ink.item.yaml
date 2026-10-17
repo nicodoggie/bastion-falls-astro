@@ -1,0 +1,31 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Uninvisible Ink
+source: BF
+type: wondrous item
+rarity: uncommon
+wondrous: true
+reqAttune: false
+curse: true
+entries:
+  - >-
+    This bottle contains enough magical ink to write 10 ordinary pages. Writing with it takes the
+    same time and implements as writing with ordinary ink. Once dry, the writing is invisible in
+    ordinary light. A Pen of Revealing's magical light makes the true writing readable while it is
+    illuminated; the writing becomes invisible again when that light is removed, unless a
+    spontaneous disclosure is still active.
+  - >-
+    Curse: Uninvited Disclosure. At the end of each hour, the GM secretly rolls a d20 for each page
+    or other separate inscription bearing this ink. On a 1, all writing in this ink on that page or
+    inscription becomes visible for 1 minute, even without magical light. Afterward it becomes
+    invisible again unless illuminated by a Pen of Revealing. No saving throw is required for an
+    observer to read spontaneously revealed writing.
+  - >-
+    The curse reveals the actual text, not an altered message. It does not read the writer's
+    thoughts, create new words, translate the writing, or enable someone who cannot otherwise read
+    it to do so. Destroying the writing surface or physically removing the ink removes that
+    inscription normally.
+  - >-
+    The ink is expended as it is used; written inscriptions retain their magic. An Identify spell
+    reveals the intended invisibility and revealing-light interaction but does not disclose
+    spontaneous disclosure. The accompanying pen has no curse.

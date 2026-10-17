@@ -1,0 +1,25 @@
+$schema: >-
+  https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew/items.json#/$defs/itemData
+name: Boots of Courteous Passage
+source: BF
+type: wondrous item
+rarity: uncommon
+wondrous: true
+reqAttune: false
+curse: true
+entries:
+  - >-
+    While you wear these boots, your footfalls make no sound, and you have advantage on Dexterity
+    (Stealth) checks that depend on moving quietly. The boots do not silence your voice, equipment,
+    falling objects, or other sources of noise, and they do not conceal you from sight or erase
+    tracks.
+  - >-
+    Curse: Excuse Me. Whenever your movement brings you within 5 feet of another creature you can
+    see, the boots audibly say, 'Excuse me, coming through.' Their voice can be heard clearly within
+    30 feet unless blocked or masked normally. The greeting occurs even if you are trying to remain
+    hidden; it can reveal your presence despite your silent footfalls.
+  - >-
+    The boots greet a particular creature at most once per minute. They do not detect creatures you
+    cannot see, reveal invisible creatures, or greet objects merely because they resemble people.
+    Removing the boots ends their effects. An Identify spell reveals their quiet movement but does
+    not disclose the curse.
