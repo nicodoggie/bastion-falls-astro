@@ -7,22 +7,52 @@ allowBuilds:
   esbuild: true
   lefthook: true
   mdsf-cli: true
-  phantomjs-prebuilt: true
   sharp: true
   workerd: true
+# Give new releases a week to surface supply-chain incidents before resolution.
+minimumReleaseAge: 10080
+minimumReleaseAgeIgnoreMissingTime: false
+trustPolicy: no-downgrade
+# Existing exact baseline releases lack provenance after earlier signed releases.
+# Retain only these legacy versions, not package-wide or age-based exemptions;
+# remove entries when their parents no longer require them. This is not an
+# assertion of provenance or a compromise assessment for these packages.
+trustPolicyExclude:
+  - chokidar@4.0.3 # Flowbite pins this version; also pnpm's documented example.
+  - semver@6.3.1 # Babel still requires this legacy backport.
+  - tailwind-merge@2.6.1 # Flowbite pins this legacy compatibility alias.
+  - undici-types@6.21.0 # Required by the existing Node 22 declaration branch.
+trustLockfile: false
+blockExoticSubdeps: true
+strictDepBuilds: true
 minimumReleaseAgeExclude:
-  - "@astrojs/starlight@0.41.1"
-  - "@expressive-code/core@0.44.0"
-  - "@expressive-code/plugin-frames@0.44.0"
-  - "@expressive-code/plugin-shiki@0.44.0"
-  - "@expressive-code/plugin-text-markers@0.44.0"
-  - astro-expressive-code@0.44.0
-  - astro@7.0.3 || 7.4.0
-  - expressive-code@0.44.0
-  - rehype-expressive-code@0.44.0
-  - "@astrojs/internal-helpers@0.13.0"
-  - "@astrojs/markdown-satteri@0.4.4"
-  - "@astrojs/prism@4.1.0"
-  - "@astrojs/telemetry@3.4.0"
+  # First-party fork: explicitly adopted release replaces the legacy Kingraph stack.
+  - "@nicodoggie/kingraph@0.5.0"
+  # Security fix: the maintained Expressive Code parent moves off selector-parser 6.
+  - "@expressive-code/core@0.44.3"
+  - "@expressive-code/plugin-frames@0.44.3"
+  - "@expressive-code/plugin-shiki@0.44.3"
+  - "@expressive-code/plugin-text-markers@0.44.3"
+  - astro-expressive-code@0.44.3
+  - expressive-code@0.44.3
+  - rehype-expressive-code@0.44.3
+  # Security fix: AJV accepts this patched URI parser, published October 19.
+  - fast-uri@3.1.9
+
+# Remove each exception once its parent accepts the patched dependency branch.
+overrides:
+  # flowbite-react 0.12.17 still pins deepmerge-ts 7.1.5.
+  "flowbite-react>deepmerge-ts": ^8.0.2
+  # Even 5etools-utils 0.17.24 excludes simple-git 4; we consume its schema files.
+  "5etools-utils>simple-git": ^4.0.2
+  # Current Wrangler/Miniflare releases pin the vulnerable Undici 7.29.1.
+  "miniflare>undici": ^7.30.1
+  # Typography 0.5.20 still pins selector-parser 6.0.10.
+  "@tailwindcss/typography>postcss-selector-parser": ^7.1.6
+  # These parents constrain KaTeX to vulnerable 0.16.x; upstream recommends
+  # 0.19.0 instead of the accidentally breaking, deprecated 0.18.11 release.
+  "mermaid>katex": ^0.19.0
+  "markmap-lib>katex": ^0.19.0
+  "@vscode/markdown-it-katex>katex": ^0.19.0
 
 nodeLinker: isolated

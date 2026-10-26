@@ -9,6 +9,7 @@ import starlight from "@astrojs/starlight";
 import { lexiconIntegration } from "@bastion-falls/astro-lexicon-integration";
 import satteriAutoImport from "@bastion-falls/satteri-auto-import";
 import satteriMarkmap from "@bastion-falls/satteri-markmap";
+import kingraph from "@nicodoggie/kingraph/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import expressiveCode from "astro-expressive-code";
@@ -192,7 +193,10 @@ export default defineConfig({
     }),
   ],
   vite: {
-    plugins: [tailwindcss(), flowbiteReact()],
+    plugins: [tailwindcss(), flowbiteReact(), kingraph()],
+    build: {
+      ssrEmitAssets: true,
+    },
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),

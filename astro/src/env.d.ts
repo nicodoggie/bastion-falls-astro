@@ -1,4 +1,5 @@
 /// <reference types="astro/client" />
+/// <reference types="@nicodoggie/kingraph/vite/client" />
 /// <reference path="../../node_modules/starlight-auto-sidebar/virtual.d.ts" />
 
 declare module "@bastion-falls/lexicon-components/*.astro" {

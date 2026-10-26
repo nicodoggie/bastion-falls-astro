@@ -6,10 +6,7 @@ tags:
   - strandiz
 ---
 
-import * as path from 'node:path';
-import { getImage } from 'astro:assets';
-import familyMap from './family.svg';
-export const image = await getImage({ src: familyMap });
+import familyUrl, { width, height } from './family.yaml?kingraph';
 
 The Strandiz family is an [Anasaian](../../locations/anasai.mdx) family well-known for their long
 military tradition. Their progenitor, [Matthew I Strandiz](../../characters/matthew-i-strandiz.mdx),
@@ -17,7 +14,7 @@ came to prominence by saving the life of then crown prince Hudor of Anasai. Sinc
 men have served in various militaries throughout Apgarian history.
 
 <FamilyTree client:only="react"
-  src={image.src}
-  width={image.options.width}
-  height={image.options.height}
+  src={familyUrl}
+  width={width}
+  height={height}
 alt="Strandiz Family Tree" />

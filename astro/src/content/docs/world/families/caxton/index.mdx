@@ -6,13 +6,10 @@ tags:
   - caxton
 ---
 
-import * as path from 'node:path';
-import { getImage } from 'astro:assets';
-import familyMap from './family.svg';
-export const image = await getImage({ src: familyMap });
+import familyUrl, { width, height } from './family.yaml?kingraph';
 
 <FamilyTree client:only="react"
-  src={image.src}
-  width={image.options.width}
-  height={image.options.height}
+  src={familyUrl}
+  width={width}
+  height={height}
 alt="Caxton Family Tree" />

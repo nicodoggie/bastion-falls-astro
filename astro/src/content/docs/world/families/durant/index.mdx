@@ -6,10 +6,7 @@ tags:
   - durant
 ---
 
-import * as path from 'node:path';
-import { getImage } from 'astro:assets';
-import familyMap from './family.svg';
-export const image = await getImage({ src: familyMap });
+import familyUrl, { width, height } from './family.yaml?kingraph';
 
 The Durant family originally hail from mainland [Sanery](../../locations/sanery.mdx) and were
 staunch anti-Masochist. During the
@@ -25,7 +22,7 @@ being a branch who had married into the [McFarland](../mcfarland/index.mdx) fami
 [Northern Paganist](../../religions/paganism/northern/index.mdx) traditions.
 
 <FamilyTree client:only="react"
-  src={image.src}
-  width={image.options.width}
-  height={image.options.height}
+  src={familyUrl}
+  width={width}
+  height={height}
 alt="Durant Family Tree" />

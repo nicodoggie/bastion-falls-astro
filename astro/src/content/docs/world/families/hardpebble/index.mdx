@@ -6,10 +6,7 @@ tags:
   - hardpebble
 ---
 
-import * as path from 'node:path';
-import { getImage } from 'astro:assets';
-import familyMap from './family.svg';
-export const image = await getImage({ src: familyMap });
+import familyUrl, { width, height } from './family.yaml?kingraph';
 
 The Hardpebble family is a prominent mercantile family in Northwestern Poasah. They are known to
 have a trade network that stretches down to Southern Poasah and Kolha Ahuria to Western Tanduaria.
@@ -23,7 +20,7 @@ In recent years, they have been linked to the
 illegal trafficking of magically-capable persons.
 
 <FamilyTree client:only="react"
-  src={image.src}
-  width={image.options.width}
-  height={image.options.height}
+  src={familyUrl}
+  width={width}
+  height={height}
 alt="Hardpebble Family Tree" />

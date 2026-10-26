@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "packageManager": "pnpm@12.15.0+sha512.b3951d6d6ff4a9f13dc7cf56cd28d2b8eb37dbcc9c68e52e1e1191873ea9f82a017287ab50baadc5ccc494f036c67c0e47eb13608c2fa36f47711b61ea128e61",
   "scripts": {
     "dev": "turbo dev",
     "fmt": "turbo fmt",
@@ -17,23 +18,22 @@
   "author": "",
   "license": "ISC",
   "volta": {
-    "node": "24.15.0",
-    "pnpm": "11.13.0"
+    "node": "24.22.1",
+    "pnpm": "12.15.0"
   },
-  "packageManager": "pnpm@11.5.3+sha512.7ac1c919341c213a34dc0d02afb7143c5c26ac26ee8c4782deea821b8ac64d2134a081fd8941dae6e29bbb48f58dfc2b7fbceeccc07cb2f09d219d342a4969ed",
   "devDependencies": {
-    "@biomejs/biome": "^2.5.3",
-    "concurrently": "^10.0.0",
+    "@biomejs/biome": "^2.5.15",
+    "concurrently": "^10.0.6",
     "cross-env": "^10.1.0",
-    "lefthook": "^2.1.10",
+    "lefthook": "2.2.1",
     "mdsf-cli": "^0.12.1",
     "rimraf": "^6.1.3",
-    "rumdl": "^0.2.33",
-    "turbo": "^2.11.7",
-    "wrangler": "^4.148.0"
+    "rumdl": "^0.2.79",
+    "turbo": "^2.11.9",
+    "wrangler": "^4.151.1"
   },
   "dependencies": {
-    "micromark": "^4.0.2",
+    "micromark": "^4.0.3",
     "turborepo": "^0.0.1"
   }
 }

@@ -31,7 +31,7 @@
     "@types/node": "~24.7.2",
     "astro": "^7.4.0",
     "typescript": "6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.12"
   },
   "volta": {
     "extends": "../../package.json"

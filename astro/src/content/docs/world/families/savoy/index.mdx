@@ -6,10 +6,7 @@ tags:
   - savoy
 ---
 
-import * as path from 'node:path';
-import { getImage } from 'astro:assets';
-import familyMap from './family.svg';
-export const image = await getImage({ src: familyMap });
+import familyUrl, { width, height } from './family.yaml?kingraph';
 
 _The House of Savoy of Rainoso_ are a family of soldiers, support staff and crew, who mostly serve
 at the pleasure of the [Bouillard](../bouillard/index.mdx) Family. The family itself were rooted
@@ -17,9 +14,9 @@ from original settlers from [Estrega](../../locations/estrega.mdx) when they fir
 [Raibon Island](../../locations/raibon-island.mdx).
 
 <FamilyTree client:only="react"
-  src={image.src}
-  width={image.options.width}
-  height={image.options.height}
+  src={familyUrl}
+  width={width}
+  height={height}
 alt="Savoy Family Tree" />
 
 ## Pater Familius
