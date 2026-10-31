@@ -53,32 +53,28 @@ if (familySlug) {
   )}
   <dl class="divide-y divide-gray-200 dark:divide-gray-700">
     {family.founded && (
-          <SidebarDetail label="Founded">{family.founded}</SidebarDetail>
-        )}
+      <SidebarDetail label="Founded">{family.founded}</SidebarDetail>
+    )}
     {family.dissolved && (
-          <SidebarDetail label="Dissolved">{family.dissolved}</SidebarDetail>
-        )}
-    {family.seat && (
-          <SidebarDetail label="Seat">{family.seat}</SidebarDetail>
-        )}
+      <SidebarDetail label="Dissolved">{family.dissolved}</SidebarDetail>
+    )}
+    {family.seat && <SidebarDetail label="Seat">{family.seat}</SidebarDetail>}
     {family.motto && (
-          <SidebarDetail label="Motto">{family.motto}</SidebarDetail>
-        )}
+      <SidebarDetail label="Motto">{family.motto}</SidebarDetail>
+    )}
     {members.length > 0 && (
-          <SidebarDetail label="Members" layout="stacked">
-              <ul class="space-y-1 text-right">
-                {members.map((member) => {
-                  const md = member.data as CharacterDocData;
-                  return (
-                    <li>
-                      <a href={`/world/characters/${member.id}`}>
-                        {md.title}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Members" layout="stacked">
+        <ul class="space-y-1 text-right">
+          {members.map((member) => {
+            const md = member.data as CharacterDocData;
+            return (
+              <li>
+                <a href={`/world/characters/${member.id}`}>{md.title}</a>
+              </li>
+            );
+          })}
+        </ul>
+      </SidebarDetail>
+    )}
   </dl>
 </SidebarCard>

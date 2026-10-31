@@ -46,39 +46,39 @@ if (organization?.members) {
   )}
   <dl class="divide-y divide-gray-200 dark:divide-gray-700">
     {organization?.type && (
-          <SidebarDetail label="Type">
-              {organization.type.charAt(0).toUpperCase() + organization.type.slice(1)}
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Type">
+        {organization.type.charAt(0).toUpperCase() + organization.type.slice(1)}
+      </SidebarDetail>
+    )}
 
     {organization?.founded && (
-          <SidebarDetail label="Founded">{organization.founded}</SidebarDetail>
-        )}
+      <SidebarDetail label="Founded">{organization.founded}</SidebarDetail>
+    )}
 
     {organization?.dissolved && (
-          <SidebarDetail label="Dissolved">{organization.dissolved}</SidebarDetail>
-        )}
+      <SidebarDetail label="Dissolved">{organization.dissolved}</SidebarDetail>
+    )}
 
     {organization?.headquarters && (
-          <SidebarDetail label="Headquarters">
-            {organization.headquarters}
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Headquarters">
+        {organization.headquarters}
+      </SidebarDetail>
+    )}
 
     {members && members.length > 0 && (
-          <SidebarDetail label="Members" layout="stacked">
-            <ul class="space-y-1 text-right text-gray-600 dark:text-gray-400">
-              {members.map((member: MemberData) => (
-                <li>
-                  <a href={`/world/characters/${member.entry?.id}`}>
-                    {(member.entry?.data as { title?: string } | undefined)?.title ||
-                      member.name}
-                    {member.type && ` (${member.type})`}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Members" layout="stacked">
+        <ul class="space-y-1 text-right text-gray-600 dark:text-gray-400">
+          {members.map((member: MemberData) => (
+            <li>
+              <a href={`/world/characters/${member.entry?.id}`}>
+                {(member.entry?.data as { title?: string } | undefined)
+                  ?.title || member.name}
+                {member.type && ` (${member.type})`}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </SidebarDetail>
+    )}
   </dl>
 </SidebarCard>

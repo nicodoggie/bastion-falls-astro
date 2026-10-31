@@ -133,14 +133,18 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
 <div class="vc not-content">
   <!-- Name bar -->
   <div class="vc__header">
-    {link
-      ? <a href={link} class="vc__name-link"><h2 class="vc__name">{displayName}</h2></a>
-      : <h2 class="vc__name">{displayName}</h2>}
+    {link ? (
+      <a href={link} class="vc__name-link">
+        <h2 class="vc__name">{displayName}</h2>
+      </a>
+    ) : (
+      <h2 class="vc__name">{displayName}</h2>
+    )}
     <p class="vc__meta">
       {formatSize(vehicle.size)}
       vehicle
-      {vehicle.terrain?.length ? ` · ${formatTerrain(vehicle.terrain)}` : ''}
-      {vehicle.dimensions?.length ? ` · ${vehicle.dimensions.join(', ')}` : ''}
+      {vehicle.terrain?.length ? ` · ${formatTerrain(vehicle.terrain)}` : ""}
+      {vehicle.dimensions?.length ? ` · ${vehicle.dimensions.join(", ")}` : ""}
     </p>
   </div>
 
@@ -157,7 +161,7 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
       <div class="vc__stat-card">
         <div class="vc__stat-card-label">Crew / Passengers</div>
         <div class="vc__stat-card-value">
-          {vehicle.capCrew ?? '—'} / {vehicle.capPassenger ?? '—'}
+          {vehicle.capCrew ?? "—"} / {vehicle.capPassenger ?? "—"}
         </div>
       </div>
     )}
@@ -171,8 +175,14 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
     {vehicle.hull && (
       <div class="vc__stat-card">
         <div class="vc__stat-card-label">Hull AC / HP</div>
-        <div class="vc__stat-card-value">{vehicle.hull.ac} / {vehicle.hull.hp}</div>
-        {vehicle.hull.dt && <div class="vc__stat-card-note">Damage threshold {vehicle.hull.dt}</div>}
+        <div class="vc__stat-card-value">
+          {vehicle.hull.ac} / {vehicle.hull.hp}
+        </div>
+        {vehicle.hull.dt && (
+          <div class="vc__stat-card-note">
+            Damage threshold {vehicle.hull.dt}
+          </div>
+        )}
       </div>
     )}
   </div>
@@ -196,151 +206,195 @@ const abilityDisplays = ABILITIES.map(({ key, label }) => {
 
   <!-- Resist / vulnerable / condition / damage (5etools shapes) -->
   {(() => {
-    const resistStr = formatDamageList(vehicle.resist)
-    const vulnStr = formatDamageList(vehicle.vulnerable)
-    const ciStr = formatConditionList(vehicle.conditionImmune)
-    const diStr = formatDamageList(vehicle.immune)
-    if (!resistStr && !vulnStr && !ciStr && !diStr) return null
+    const resistStr = formatDamageList(vehicle.resist);
+    const vulnStr = formatDamageList(vehicle.vulnerable);
+    const ciStr = formatConditionList(vehicle.conditionImmune);
+    const diStr = formatDamageList(vehicle.immune);
+    if (!resistStr && !vulnStr && !ciStr && !diStr) return null;
     return (
-  <div class="vc__properties">
-    {resistStr && (
+      <div class="vc__properties">
+        {resistStr && (
           <div class="vc__prop">
             <span class="vc__prop-name">Damage Resistances</span>
             <span class="vc__prop-value">{resistStr}</span>
           </div>
         )}
-    {vulnStr && (
+        {vulnStr && (
           <div class="vc__prop">
             <span class="vc__prop-name">Damage Vulnerabilities</span>
             <span class="vc__prop-value">{vulnStr}</span>
           </div>
         )}
-    {ciStr && (
+        {ciStr && (
           <div class="vc__prop">
             <span class="vc__prop-name">Condition Immunities</span>
             <span class="vc__prop-value">{ciStr}</span>
           </div>
         )}
-    {diStr && (
+        {diStr && (
           <div class="vc__prop">
             <span class="vc__prop-name">Damage Immunities</span>
             <span class="vc__prop-value">{diStr}</span>
           </div>
         )}
-  </div>
-  ) } )()}
+      </div>
+    );
+  })()}
 
   <!-- Traits -->
   {Array.isArray(vehicle.trait) && vehicle.trait.length > 0 && (
-  <div class="vc__features">
-    {(vehicle.trait as { name: string; entries: unknown[] }[]).map(t => (
+    <div class="vc__features">
+      {(vehicle.trait as { name: string; entries: unknown[] }[]).map((t) => (
         <p class="vc__feature">
-          <em><strong>{t.name}.</strong></em>
-          {' '}{formatEntries(t.entries)}
+          <em>
+            <strong>{t.name}.</strong>
+          </em>{" "}
+          {formatEntries(t.entries)}
         </p>
       ))}
-  </div>
+    </div>
   )}
 
   <!-- Control -->
   {vehicle.control?.length && (
-  <div class="vc__section">
-    <h3 class="vc__section-title">Control</h3>
-    <div class="vc__components">
-      {vehicle.control.map((c) => (
+    <div class="vc__section">
+      <h3 class="vc__section-title">Control</h3>
+      <div class="vc__components">
+        {vehicle.control.map((c) => (
           <div class="vc__component">
             {c.name && <div class="vc__component-name">{c.name}</div>}
             <div class="vc__component-stats">
-              <span><strong>AC</strong> {c.ac}</span>
-              <span><strong>HP</strong> {c.hp}</span>
-              {c.dt && <span><strong>Damage Threshold</strong> {c.dt}</span>}
+              <span>
+                <strong>AC</strong> {c.ac}
+              </span>
+              <span>
+                <strong>HP</strong> {c.hp}
+              </span>
+              {c.dt && (
+                <span>
+                  <strong>Damage Threshold</strong> {c.dt}
+                </span>
+              )}
             </div>
             {Array.isArray(c.entries) && c.entries.length > 0 && (
-              <p class="vc__component-desc">{formatEntries(c.entries as unknown[])}</p>
+              <p class="vc__component-desc">
+                {formatEntries(c.entries as unknown[])}
+              </p>
             )}
           </div>
         ))}
+      </div>
     </div>
-  </div>
   )}
 
   <!-- Movement -->
   {vehicle.movement?.length && (
-  <div class="vc__section">
-    <h3 class="vc__section-title">Movement</h3>
-    <div class="vc__components">
-      {vehicle.movement.map((m) => (
+    <div class="vc__section">
+      <h3 class="vc__section-title">Movement</h3>
+      <div class="vc__components">
+        {vehicle.movement.map((m) => (
           <div class="vc__component">
             {m.name && <div class="vc__component-name">{m.name}</div>}
             <div class="vc__component-stats">
-              <span><strong>AC</strong> {m.ac}</span>
-              <span><strong>HP</strong> {m.hp}</span>
-              {m.dt != null && <span><strong>Damage Threshold</strong> {m.dt}</span>}
+              <span>
+                <strong>AC</strong> {m.ac}
+              </span>
+              <span>
+                <strong>HP</strong> {m.hp}
+              </span>
+              {m.dt != null && (
+                <span>
+                  <strong>Damage Threshold</strong> {m.dt}
+                </span>
+              )}
             </div>
             {m.speed?.map((s) => (
               <p class="vc__component-desc">
-                <strong>{s.mode}:</strong>{' '}
-                {Array.isArray(s.entries) ? formatEntries(s.entries as unknown[]) : ''}
+                <strong>{s.mode}:</strong>{" "}
+                {Array.isArray(s.entries)
+                  ? formatEntries(s.entries as unknown[])
+                  : ""}
               </p>
             ))}
           </div>
         ))}
+      </div>
     </div>
-  </div>
   )}
 
   <!-- Weapons -->
   {vehicle.weapon?.length && (
-  <div class="vc__section">
-    <h3 class="vc__section-title">Weapons</h3>
-    <div class="vc__components">
-      {vehicle.weapon.map((w) => (
+    <div class="vc__section">
+      <h3 class="vc__section-title">Weapons</h3>
+      <div class="vc__components">
+        {vehicle.weapon.map((w) => (
           <div class="vc__component">
             <div class="vc__component-name">
-              {w.name}{w.count && w.count > 1 ? ` (×${w.count})` : ''}
+              {w.name}
+              {w.count && w.count > 1 ? ` (×${w.count})` : ""}
             </div>
             <div class="vc__component-stats">
-              <span><strong>AC</strong> {w.ac}</span>
-              <span><strong>HP</strong> {w.hp}</span>
-              {w.dt && <span><strong>Damage Threshold</strong> {w.dt}</span>}
+              <span>
+                <strong>AC</strong> {w.ac}
+              </span>
+              <span>
+                <strong>HP</strong> {w.hp}
+              </span>
+              {w.dt && (
+                <span>
+                  <strong>Damage Threshold</strong> {w.dt}
+                </span>
+              )}
             </div>
             {Array.isArray(w.entries) && w.entries.length > 0 && (
-              <p class="vc__component-desc">{formatEntries(w.entries as unknown[])}</p>
+              <p class="vc__component-desc">
+                {formatEntries(w.entries as unknown[])}
+              </p>
             )}
           </div>
         ))}
+      </div>
     </div>
-  </div>
   )}
 
   <!-- Other -->
   {vehicle.other?.length && (
-  <div class="vc__section">
-    <h3 class="vc__section-title">Other Components</h3>
-    <div class="vc__features">
-      {vehicle.other.map((o) => (
+    <div class="vc__section">
+      <h3 class="vc__section-title">Other Components</h3>
+      <div class="vc__features">
+        {vehicle.other.map((o) => (
           <p class="vc__feature">
-            <em><strong>{o.name}.</strong></em>
-            {' '}{Array.isArray(o.entries) ? formatEntries(o.entries as unknown[]) : ''}
+            <em>
+              <strong>{o.name}.</strong>
+            </em>{" "}
+            {Array.isArray(o.entries)
+              ? formatEntries(o.entries as unknown[])
+              : ""}
           </p>
         ))}
+      </div>
     </div>
-  </div>
   )}
 
   <!-- Actions -->
   {Array.isArray(vehicle.action) && vehicle.action.length > 0 && (
-  <div class="vc__section">
-    <h3 class="vc__section-title">Actions</h3>
-    <div class="vc__features">
-      {(vehicle.action as { name?: string; entries: unknown[] }[]).map((a) => (
-          <p class="vc__feature">
-            {a.name && <em><strong>{a.name}.</strong></em>}
-            {' '}{Array.isArray(a.entries) ? formatEntries(a.entries) : ''}
-          </p>
-        ))}
+    <div class="vc__section">
+      <h3 class="vc__section-title">Actions</h3>
+      <div class="vc__features">
+        {(vehicle.action as { name?: string; entries: unknown[] }[]).map(
+          (a) => (
+            <p class="vc__feature">
+              {a.name && (
+                <em>
+                  <strong>{a.name}.</strong>
+                </em>
+              )}{" "}
+              {Array.isArray(a.entries) ? formatEntries(a.entries) : ""}
+            </p>
+          ),
+        )}
+      </div>
     </div>
-  </div>
   )}
 </div>
 

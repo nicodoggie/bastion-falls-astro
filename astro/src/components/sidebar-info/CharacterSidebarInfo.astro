@@ -152,150 +152,162 @@ if (character?.relationships?.families) {
 <SidebarCard title={character.name} href={character.ddb}>
   <span slot="title-suffix" class="mortality-icon p-1">{mortalityIcon}</span>
   {character.image && (
-    <SidebarMedia slot="image" image={character.image} entryFilePath={filePath} />
+    <SidebarMedia
+      slot="image"
+      image={character.image}
+      entryFilePath={filePath}
+    />
   )}
   <CharacterPcStats character={character} />
   <dl class="divide-y divide-gray-200 dark:divide-gray-700">
     {resolvedAge && <CharacterAgeDetail age={resolvedAge} />}
     {character?.details?.sex && (
-          <SidebarDetail label="Sex">
-            {character.details.sex}{character.details.pronouns && ` (${character.details.pronouns})`}
-          </SidebarDetail>
-        )}
-    {character?.details?.sexOrgans && character.details.sexOrgans.length > 0 && (
-          <SidebarDetail label="Genitalia" layout="stacked">
-              <CharacterSexOrgans sexOrgans={character.details.sexOrgans} />
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Sex">
+        {character.details.sex}
+        {character.details.pronouns && ` (${character.details.pronouns})`}
+      </SidebarDetail>
+    )}
+    {character?.details?.sexOrgans &&
+      character.details.sexOrgans.length > 0 && (
+        <SidebarDetail label="Genitalia" layout="stacked">
+          <CharacterSexOrgans sexOrgans={character.details.sexOrgans} />
+        </SidebarDetail>
+      )}
     {character.details?.origin && (
-          <SidebarDetail label="Origin">
-            {character.details.origin}
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Origin">{character.details.origin}</SidebarDetail>
+    )}
     {character.background?.alignment && (
-          <SidebarDetail label="Alignment">
-            {character.background.alignment.moral}{' '}
-            {character.background.alignment.law}
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Alignment">
+        {character.background.alignment.moral}{" "}
+        {character.background.alignment.law}
+      </SidebarDetail>
+    )}
     {character.details?.aliases && (
-          <SidebarDetail label="Known Aliases">
-            { 
-              character.details.aliases.length > 0 && character.details.aliases.map((alias: string) => {
-                return (
-                  <div>
-                    <span data-pagefind-meta="alias">{alias}</span>
-                  </div>
-                )
-              })
-            }
-          </SidebarDetail>
-        )}
-    {organizations && (
-          <SidebarDetail label="Organizations" layout="stacked">
-              <div class="space-y-3 text-right">
-                {organizations.map(
-                  ({ positionsHeld, entry, name }) => (
-                    <div class="space-y-1">
-                    <a class="text-gray-600 dark:text-gray-400" href={entry?.id != null ? `/organizations/${entry.id}` : "#"}>{name}</a>
-                    <ul class="space-y-1 text-xs text-gray-500 dark:text-gray-400">
-                      {positionsHeld?.map((position) => (
-                        <li>{position.name} {position.from && `(${position.from}`} {position.to && ` - ${position.to})`}</li>
-                      ))}
-                    </ul>
-                    </div>
-                  )
-                )}
+      <SidebarDetail label="Known Aliases">
+        {character.details.aliases.length > 0 &&
+          character.details.aliases.map((alias: string) => {
+            return (
+              <div>
+                <span data-pagefind-meta="alias">{alias}</span>
               </div>
-          </SidebarDetail>
-        )}
+            );
+          })}
+      </SidebarDetail>
+    )}
+    {organizations && (
+      <SidebarDetail label="Organizations" layout="stacked">
+        <div class="space-y-3 text-right">
+          {organizations.map(({ positionsHeld, entry, name }) => (
+            <div class="space-y-1">
+              <a
+                class="text-gray-600 dark:text-gray-400"
+                href={entry?.id != null ? `/organizations/${entry.id}` : "#"}
+              >
+                {name}
+              </a>
+              <ul class="space-y-1 text-xs text-gray-500 dark:text-gray-400">
+                {positionsHeld?.map((position) => (
+                  <li>
+                    {position.name} {position.from && `(${position.from}`}{" "}
+                    {position.to && ` - ${position.to})`}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </SidebarDetail>
+    )}
     {relatives && (
-          <SidebarDetail label="Relatives" layout="stacked">
-              <dl class="space-y-2">
-                {relatives.map((relative: Relative) => {
-                  return (
-                  <div class="flex flex-wrap items-start justify-end gap-x-3 gap-y-1">
-                    <dt class="shrink-0 text-sm text-gray-500 dark:text-gray-400">
-                      {relative.type}
-                    </dt>
-                    <dd class="min-w-0 text-right">
-                    <a href={relative.entry ? `/world/characters/${relative.entry.id}` : undefined}>
-                      {(relative.entry?.data as { title?: string } | undefined)
-                        ?.title || relative.name}
-                    </a>
-                    </dd>
-                  </div>
-                  );
-                })}
-              </dl>
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Relatives" layout="stacked">
+        <dl class="space-y-2">
+          {relatives.map((relative: Relative) => {
+            return (
+              <div class="flex flex-wrap items-start justify-end gap-x-3 gap-y-1">
+                <dt class="shrink-0 text-sm text-gray-500 dark:text-gray-400">
+                  {relative.type}
+                </dt>
+                <dd class="min-w-0 text-right">
+                  <a
+                    href={
+                      relative.entry
+                        ? `/world/characters/${relative.entry.id}`
+                        : undefined
+                    }
+                  >
+                    {(relative.entry?.data as { title?: string } | undefined)
+                      ?.title || relative.name}
+                  </a>
+                </dd>
+              </div>
+            );
+          })}
+        </dl>
+      </SidebarDetail>
+    )}
     {character.relationships?.other &&
-        character.relationships.other.length > 0 && (
-          <SidebarDetail label="Other relationships">
-              <ul>
-                {character.relationships.other.map(
-                  (rel: { name: string; type: string }) => (
-                  <li>
-                    {rel.name}
-                    {rel.type && ` (${rel.type})`}
-                  </li>
-                ))}
-              </ul>
-          </SidebarDetail>
-        )}
+      character.relationships.other.length > 0 && (
+        <SidebarDetail label="Other relationships">
+          <ul>
+            {character.relationships.other.map(
+              (rel: { name: string; type: string }) => (
+                <li>
+                  {rel.name}
+                  {rel.type && ` (${rel.type})`}
+                </li>
+              ),
+            )}
+          </ul>
+        </SidebarDetail>
+      )}
     {families && (
-          <SidebarDetail label="Families" layout="stacked">
-              <ul class="space-y-1 text-right">
-                {families.map((family: {name: string, entry: CollectionEntry<"family">}) => (
-                  <li>
-                    <a href={family.entry && `/world/families/${family.entry?.id}`}>{family.name}</a>
-                  </li>
-                ))}
-              </ul>
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Families" layout="stacked">
+        <ul class="space-y-1 text-right">
+          {families.map(
+            (family: { name: string; entry: CollectionEntry<"family"> }) => (
+              <li>
+                <a href={family.entry && `/world/families/${family.entry?.id}`}>
+                  {family.name}
+                </a>
+              </li>
+            ),
+          )}
+        </ul>
+      </SidebarDetail>
+    )}
     {character.details?.species && species && (
-          <SidebarDetail label="Species">
-              <ul>
-                {species.map((s: SpeciesData) => (
-                  <li>
-                    {s.entry ? (
-                      <a href={`/world/species/${s.entry.id}`}>
-                        {(s.entry.data as { title: string }).title}
-                      </a>
-                    ) : (
-                      s.name
-                    )}
-                  </li>
-                ))}
-              </ul>
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Species">
+        <ul>
+          {species.map((s: SpeciesData) => (
+            <li>
+              {s.entry ? (
+                <a href={`/world/species/${s.entry.id}`}>
+                  {(s.entry.data as { title: string }).title}
+                </a>
+              ) : (
+                s.name
+              )}
+            </li>
+          ))}
+        </ul>
+      </SidebarDetail>
+    )}
     {character.details?.height && (
-          <SidebarDetail label="Height">
-            {character.details.height}
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Height">{character.details.height}</SidebarDetail>
+    )}
     {character.details?.weight && (
-          <SidebarDetail label="Weight">
-            {character.details.weight}
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Weight">{character.details.weight}</SidebarDetail>
+    )}
     {character.background?.goals && (
-          <SidebarDetail label="Goals">
-            {character.background.goals}
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Goals">{character.background.goals}</SidebarDetail>
+    )}
     {character.background?.flaws && (
-          <SidebarDetail label="Flaws">
-            {character.background.flaws}
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Flaws">{character.background.flaws}</SidebarDetail>
+    )}
     {character.background?.backstory && (
-          <SidebarDetail label="Backstory">
-            {character.background.backstory}
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Backstory">
+        {character.background.backstory}
+      </SidebarDetail>
+    )}
   </dl>
 </SidebarCard>

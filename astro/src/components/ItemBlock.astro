@@ -91,31 +91,31 @@ const moreParagraphs = entriesToDisplayParagraphs(
   </div>
 
   {statBits.length > 0 && (
-      <div class="sb__facts">
-        {statBits.map((line) => (
-          <span class="sb__fact">{line}</span>
-        ))}
-      </div>
-    )}
+    <div class="sb__facts">
+      {statBits.map((line) => (
+        <span class="sb__fact">{line}</span>
+      ))}
+    </div>
+  )}
 
   {paragraphs.length > 0 && (
+    <div class="sb__features">
+      {paragraphs.map((p) => (
+        <p class="sb__feature" set:html={p} />
+      ))}
+    </div>
+  )}
+
+  {moreParagraphs.length > 0 && (
+    <div class="sb__section">
+      <h3 class="sb__section-title">Additional</h3>
       <div class="sb__features">
-        {paragraphs.map((p) => (
+        {moreParagraphs.map((p) => (
           <p class="sb__feature" set:html={p} />
         ))}
       </div>
-    )}
-
-  {moreParagraphs.length > 0 && (
-      <div class="sb__section">
-        <h3 class="sb__section-title">Additional</h3>
-        <div class="sb__features">
-          {moreParagraphs.map((p) => (
-            <p class="sb__feature" set:html={p} />
-          ))}
-        </div>
-      </div>
-    )}
+    </div>
+  )}
 </div>
 
 <style>

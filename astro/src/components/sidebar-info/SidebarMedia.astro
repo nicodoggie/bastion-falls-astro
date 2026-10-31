@@ -62,193 +62,191 @@ const hasMultiple = slides.length > 1;
 ---
 
 {slides.length > 0 && (
+  <div
+    class="mb-4 w-full character-image-container bg-black"
+    data-sidebar-media
+  >
     <div
-      class="mb-4 w-full character-image-container bg-black"
-      data-sidebar-media
+      class="sidebar-media-stage group/sidebar-media relative rounded-lg"
+      data-sidebar-media-stage
+      data-controls-visible={hasMultiple ? "false" : undefined}
+      tabindex={hasMultiple ? 0 : undefined}
     >
-      <div
-        class="sidebar-media-stage group/sidebar-media relative rounded-lg"
-        data-sidebar-media-stage
-        data-controls-visible={hasMultiple ? "false" : undefined}
-        tabindex={hasMultiple ? 0 : undefined}
-      >
-        {slides.map((slide, index) => (
-          <figure
-            class:list={["sidebar-media-slide", index !== 0 && "hidden"]}
-            data-sidebar-media-slide
-            aria-hidden={index === 0 ? "false" : "true"}
-          >
-            <button
-              type="button"
-              class="sidebar-media-image-button"
-              data-sidebar-media-open
-              data-sidebar-media-open-index={index}
-              aria-label="Expand image"
-            >
-              <Image
-                src={slide.image}
-                alt={slide.alt}
-                class="w-full h-full max-h-48 rounded-lg object-scale-down block mx-auto"
-              />
-            </button>
-            {slide.attributionUrl && slide.title && (
-              <a
-                class="absolute top-2 right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-gray-900/72 text-white opacity-0 pointer-events-none transition-opacity duration-150 invisible group-hover/sidebar-media:opacity-100 group-hover/sidebar-media:pointer-events-auto group-hover/sidebar-media:visible"
-                href={slide.attributionUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={slide.title}
-                aria-label={`Open image attribution: ${slide.title}`}
-              >
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M7 17 17 7" />
-                  <path d="M8 7h9v9" />
-                </svg>
-                <span class="sr-only">
-                  Open image attribution: {slide.title}
-                </span>
-              </a>
-            )}
-          </figure>
-        ))}
-
-        {hasMultiple && (
-          <>
-            <button
-              type="button"
-              class="sidebar-media-nav sidebar-media-nav-prev"
-              data-sidebar-media-prev
-              aria-label="Previous image"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              class="sidebar-media-nav sidebar-media-nav-next"
-              data-sidebar-media-next
-              aria-label="Next image"
-            >
-              ›
-            </button>
-            <div class="sidebar-media-dots">
-              <div class="sidebar-media-dots-inner">
-                {slides.map((_, index) => (
-                  <button
-                    type="button"
-                    class:list={[
-                      "sidebar-media-dot",
-                      index === 0 && "sidebar-media-dot-active",
-                    ]}
-                    data-sidebar-media-dot
-                    data-sidebar-media-index={index}
-                    aria-label={`Go to image ${index + 1}`}
-                    aria-current={index === 0 ? "true" : "false"}
-                  />
-                ))}
-              </div>
-            </div>
-          </>
-        )}
-      </div>
-
-      <div
-        class="sidebar-media-modal"
-        data-sidebar-media-dialog
-        role="dialog"
-        aria-modal="true"
-        aria-label="Expanded image"
-        hidden
-      >
-        <div class="sidebar-media-modal-panel" data-sidebar-media-modal-panel>
+      {slides.map((slide, index) => (
+        <figure
+          class:list={["sidebar-media-slide", index !== 0 && "hidden"]}
+          data-sidebar-media-slide
+          aria-hidden={index === 0 ? "false" : "true"}
+        >
           <button
             type="button"
-            class="sidebar-media-modal-close"
-            data-sidebar-media-close
-            aria-label="Close expanded image"
+            class="sidebar-media-image-button"
+            data-sidebar-media-open
+            data-sidebar-media-open-index={index}
+            aria-label="Expand image"
           >
-            ×
+            <Image
+              src={slide.image}
+              alt={slide.alt}
+              class="w-full h-full max-h-48 rounded-lg object-scale-down block mx-auto"
+            />
           </button>
+          {slide.attributionUrl && slide.title && (
+            <a
+              class="absolute top-2 right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-gray-900/72 text-white opacity-0 pointer-events-none transition-opacity duration-150 invisible group-hover/sidebar-media:opacity-100 group-hover/sidebar-media:pointer-events-auto group-hover/sidebar-media:visible"
+              href={slide.attributionUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={slide.title}
+              aria-label={`Open image attribution: ${slide.title}`}
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 17 17 7" />
+                <path d="M8 7h9v9" />
+              </svg>
+              <span class="sr-only">Open image attribution: {slide.title}</span>
+            </a>
+          )}
+        </figure>
+      ))}
 
-          <div class="sidebar-media-modal-stage">
-            <div class="sidebar-media-modal-viewer">
-              {hasMultiple && (
+      {hasMultiple && (
+        <>
+          <button
+            type="button"
+            class="sidebar-media-nav sidebar-media-nav-prev"
+            data-sidebar-media-prev
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            class="sidebar-media-nav sidebar-media-nav-next"
+            data-sidebar-media-next
+            aria-label="Next image"
+          >
+            ›
+          </button>
+          <div class="sidebar-media-dots">
+            <div class="sidebar-media-dots-inner">
+              {slides.map((_, index) => (
                 <button
                   type="button"
-                  class="sidebar-media-nav sidebar-media-modal-nav sidebar-media-modal-nav-prev"
-                  data-sidebar-media-modal-prev
-                  aria-label="Previous image"
-                >
-                  ‹
-                </button>
-              )}
-
-              {slides.map((slide, index) => (
-                <figure
                   class:list={[
-                    "sidebar-media-modal-slide",
-                    index !== 0 && "hidden",
+                    "sidebar-media-dot",
+                    index === 0 && "sidebar-media-dot-active",
                   ]}
-                  data-sidebar-media-modal-slide
-                  aria-hidden={index === 0 ? "false" : "true"}
-                >
-                  <Image
-                    src={slide.image}
-                    alt={slide.alt}
-                    class="sidebar-media-modal-image"
-                  />
-                </figure>
+                  data-sidebar-media-dot
+                  data-sidebar-media-index={index}
+                  aria-label={`Go to image ${index + 1}`}
+                  aria-current={index === 0 ? "true" : "false"}
+                />
               ))}
-
-              {hasMultiple && (
-                <button
-                  type="button"
-                  class="sidebar-media-nav sidebar-media-modal-nav sidebar-media-modal-nav-next"
-                  data-sidebar-media-modal-next
-                  aria-label="Next image"
-                >
-                  ›
-                </button>
-              )}
             </div>
+          </div>
+        </>
+      )}
+    </div>
+
+    <div
+      class="sidebar-media-modal"
+      data-sidebar-media-dialog
+      role="dialog"
+      aria-modal="true"
+      aria-label="Expanded image"
+      hidden
+    >
+      <div class="sidebar-media-modal-panel" data-sidebar-media-modal-panel>
+        <button
+          type="button"
+          class="sidebar-media-modal-close"
+          data-sidebar-media-close
+          aria-label="Close expanded image"
+        >
+          ×
+        </button>
+
+        <div class="sidebar-media-modal-stage">
+          <div class="sidebar-media-modal-viewer">
+            {hasMultiple && (
+              <button
+                type="button"
+                class="sidebar-media-nav sidebar-media-modal-nav sidebar-media-modal-nav-prev"
+                data-sidebar-media-modal-prev
+                aria-label="Previous image"
+              >
+                ‹
+              </button>
+            )}
 
             {slides.map((slide, index) => (
-              <p
+              <figure
                 class:list={[
-                  "sidebar-media-modal-caption",
-                  (index !== 0 || !(slide.attributionUrl && slide.title)) &&
-                    "hidden",
+                  "sidebar-media-modal-slide",
+                  index !== 0 && "hidden",
                 ]}
-                data-sidebar-media-modal-caption
-                aria-hidden={
-                  index === 0 && slide.attributionUrl && slide.title
-                    ? "false"
-                    : "true"
-                }
+                data-sidebar-media-modal-slide
+                aria-hidden={index === 0 ? "false" : "true"}
               >
-                {slide.attributionUrl && slide.title ? (
-                  <a
-                    href={slide.attributionUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {slide.title}
-                  </a>
-                ) : null}
-              </p>
+                <Image
+                  src={slide.image}
+                  alt={slide.alt}
+                  class="sidebar-media-modal-image"
+                />
+              </figure>
             ))}
+
+            {hasMultiple && (
+              <button
+                type="button"
+                class="sidebar-media-nav sidebar-media-modal-nav sidebar-media-modal-nav-next"
+                data-sidebar-media-modal-next
+                aria-label="Next image"
+              >
+                ›
+              </button>
+            )}
           </div>
+
+          {slides.map((slide, index) => (
+            <p
+              class:list={[
+                "sidebar-media-modal-caption",
+                (index !== 0 || !(slide.attributionUrl && slide.title)) &&
+                  "hidden",
+              ]}
+              data-sidebar-media-modal-caption
+              aria-hidden={
+                index === 0 && slide.attributionUrl && slide.title
+                  ? "false"
+                  : "true"
+              }
+            >
+              {slide.attributionUrl && slide.title ? (
+                <a
+                  href={slide.attributionUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {slide.title}
+                </a>
+              ) : null}
+            </p>
+          ))}
         </div>
       </div>
     </div>
-  )}
+  </div>
+)}
 
 <script is:inline>
 function initSidebarMedia(root) {
@@ -504,6 +502,13 @@ for (const root of document.querySelectorAll("[data-sidebar-media]")) {
   width: 0.95rem;
 }
 
+.sidebar-media-nav,
+.sidebar-media-dots {
+  transition:
+    opacity 150ms ease,
+    visibility 150ms ease;
+}
+
 .sidebar-media-stage[data-controls-visible="false"] .sidebar-media-nav,
 .sidebar-media-stage[data-controls-visible="false"] .sidebar-media-dots {
   opacity: 0;
@@ -516,13 +521,6 @@ for (const root of document.querySelectorAll("[data-sidebar-media]")) {
   opacity: 1;
   pointer-events: auto;
   visibility: visible;
-}
-
-.sidebar-media-nav,
-.sidebar-media-dots {
-  transition:
-    opacity 150ms ease,
-    visibility 150ms ease;
 }
 
 .sidebar-media-modal {

@@ -18,62 +18,60 @@ const hasPcStats = characterSpeed != null || stats != null;
 ---
 
 {hasPcStats && (
-    <section class="my-4 border-y border-red-900/25 py-3 dark:border-red-300/25">
-      <h3 class="mb-2 text-center text-sm font-semibold uppercase tracking-wide text-red-900 dark:text-red-200">
-        PC Stats
-      </h3>
-      {stats && (
-        <dl class="pc-ability-grid text-center">
-          {ABILITY_SCORES.map(({ key, label }) => {
-            const ability = formatAbilityScoreDisplay(stats[key]);
-            return (
-              <div class="pc-ability-score">
-                <dt>{label}</dt>
-                <dd>
-                  <span class="pc-ability-score-value">{ability.score}</span>
-                  <span class="pc-ability-score-modifier">
-                    {ability.modifier}
-                  </span>
-                </dd>
-              </div>
-            );
-          })}
-        </dl>
-      )}
-      {(stats?.ac != null || characterSpeed || stats?.size) && (
-        <dl class="mb-3 grid grid-cols-2 gap-x-3 gap-y-1 text-sm">
-          {stats?.ac != null && (
-            <>
-              <dt class="font-semibold text-gray-700 dark:text-gray-300">AC</dt>
-              <dd class="text-right text-gray-600 dark:text-gray-400">
-                {stats?.ac}
+  <section class="my-4 border-y border-red-900/25 py-3 dark:border-red-300/25">
+    <h3 class="mb-2 text-center text-sm font-semibold uppercase tracking-wide text-red-900 dark:text-red-200">
+      PC Stats
+    </h3>
+    {stats && (
+      <dl class="pc-ability-grid text-center">
+        {ABILITY_SCORES.map(({ key, label }) => {
+          const ability = formatAbilityScoreDisplay(stats[key]);
+          return (
+            <div class="pc-ability-score">
+              <dt>{label}</dt>
+              <dd>
+                <span class="pc-ability-score-value">{ability.score}</span>
+                <span class="pc-ability-score-modifier">
+                  {ability.modifier}
+                </span>
               </dd>
-            </>
-          )}
-          {characterSpeed && (
-            <>
-              <dt class="font-semibold text-gray-700 dark:text-gray-300">
-                Speed
-              </dt>
-              <dd class="text-right text-gray-600 dark:text-gray-400">
-                {characterSpeed}
-              </dd>
-            </>
-          )}
-          {stats?.size && (
-            <>
-              <dt class="font-semibold text-gray-700 dark:text-gray-300">
-                Size
-              </dt>
-              <dd class="text-right text-gray-600 dark:text-gray-400">
-                {formatSize(stats.size)}
-              </dd>
-            </>
-          )}
-        </dl>
-      )}
-    </section>
-  )}
+            </div>
+          );
+        })}
+      </dl>
+    )}
+    {(stats?.ac != null || characterSpeed || stats?.size) && (
+      <dl class="mb-3 grid grid-cols-2 gap-x-3 gap-y-1 text-sm">
+        {stats?.ac != null && (
+          <>
+            <dt class="font-semibold text-gray-700 dark:text-gray-300">AC</dt>
+            <dd class="text-right text-gray-600 dark:text-gray-400">
+              {stats?.ac}
+            </dd>
+          </>
+        )}
+        {characterSpeed && (
+          <>
+            <dt class="font-semibold text-gray-700 dark:text-gray-300">
+              Speed
+            </dt>
+            <dd class="text-right text-gray-600 dark:text-gray-400">
+              {characterSpeed}
+            </dd>
+          </>
+        )}
+        {stats?.size && (
+          <>
+            <dt class="font-semibold text-gray-700 dark:text-gray-300">Size</dt>
+            <dd class="text-right text-gray-600 dark:text-gray-400">
+              {formatSize(stats.size)}
+            </dd>
+          </>
+        )}
+      </dl>
+    )}
+  </section>
+)}
 
 <style>
 .pc-ability-grid {
