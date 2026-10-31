@@ -6,11 +6,118 @@ tags:
   - city
 location:
   type: city
+  parents:
+    - Mt Thraltor
+    - Senera
+  image:
+    url: ../../../../assets/locations/thrantorbury-early-modern.png
+    alt: >-
+      Thrantorbury and Castle Dragonheart on Mt Thraltor, with the university lagoon,
+      switchback Crown Road, guarded castle tunnel, and auxiliary Royal Guard complex.
+    attribution: >-
+      Terrain and worldbuilding by Nico; campus layout by Yomi; elevation illustration by Ran.
 ---
 
+import ElevationImage from '../../../../assets/locations/thrantorbury-early-modern.png';
+import { getImage } from 'astro:assets';
+export const processedElevation = await getImage({ src: ElevationImage });
+
 _Thrantorbury_ is the capital city of the [Kingdom of Senera](senera/index.mdx) and the seat of the
-[Royal House of Dragonheart](../families/dragonheart.mdx). It lies at the base of
-[Mt Thraltor](mt-thraltor.mdx), the highest peak in Senera.
+[Royal House of Dragonheart](../families/dragonheart.mdx). The city occupies a magically carved
+shelf on the lower flanks of [Mt Thraltor](mt-thraltor.mdx), beneath the separate, higher shelf
+of [Castle Dragonheart](castle-dragonheart.mdx).
+
+## Illustrated Elevation
+
+<MapViewer client:only="react"
+  src={processedElevation.src}
+  width={processedElevation.options.width}
+  height={processedElevation.options.height}
+  inlineHeight="600px"
+  alt="Thrantorbury and Castle Dragonheart: mountain shelves, university lagoon, Crown Road, and guarded tunnel"
+/>
+
+_An early-modern-style prospect of Thrantorbury. Terrain and worldbuilding by Nico, campus layout
+by Yomi, and elevation illustration by Ran. The drawing establishes the broad geographic
+relationships, not surveyed distances, a compass bearing, or a room-by-room castle plan;
+individual building forms and the exact road alignment are illustrative._
+
+## Mountain Shelves
+
+Mt Thraltor has three peaks, regarded as a single mountain within the
+[Ranterg Mountains](ranterg-mountains.mdx). Its highest summit rises behind Castle Dragonheart;
+the castle does not occupy the mountain's summit.
+
+The two inhabited shelves have different origins. The lower plateau, where Thrantorbury stands,
+was magically carved by the local _mathrantorgralok_. The higher castle shelf was carved by the
+[Kalassarians](../organizations/kalassarian-empire.mdx). The town and university district are near
+the royal seat, but neither shares its terrace.
+
+## The Crown Road and Town Defenses
+
+The **Crown Road** approaches from below, climbing the exposed mountainside in broad switchbacks
+before entering Thrantorbury through the **Crown Gate**. It connects the mountain capital with
+[Surrey-on-the-Brams](surrey-on-the-brams.mdx).
+
+Retaining walls support the road where needed. These are distinct from the raised defensive
+walls and crenellated wall-walks commanding the final ascent and flanking the gate. The defenses
+concentrate on the accessible approach rather than enclosing the entire plateau in a continuous
+curtain wall; the cliffs themselves provide much of its protection.
+
+Magical shaping may have been used in the supporting works, but their construction is not tied
+to a particular spell. A wall made through magic need not depend on a continuing enchantment
+to hold up the road.
+
+### Royal Guard Presence
+
+Town buildings gather near the approach to the castle tunnel. A controlled buffer separates
+civilian streets from its mouth, with Royal Guard facilities inspecting castle-bound goods,
+services, and visitors. Passing through the town gate does not grant access to the royal seat.
+
+An **auxiliary Royal Guard military complex**, including a lookout tower, stands on the
+Thrantorbury plateau. It is separate both from the tunnel's inspection facilities and from the
+main Royal Guard complex within Castle Dragonheart.
+
+## Castle Dragonheart
+
+Castle Dragonheart occupies the higher shelf beneath Thraltor's greatest summit. Its site
+overlooks Thrantorbury and the approaches through the mountains. The royal seat is distinct
+from the Haven on Senera's western coast.
+
+### Imperial Residence and Royal Seat
+
+The Kalassarian predecessor of the present royal complex housed the governor of **Seneria**,
+the imperial name for Senera, and was intended to accommodate the Emperor should he visit.
+It was a palatial seat of government as well as a defensible residence, not simply a fortress
+made habitable afterward.
+
+Its architecture favors substantial wings, smaller internal courts, sheltered galleries,
+and protected entrances rather than an uninterrupted skyline of battlements. The established
+royal complex includes the **High Keep**, associated with the Maidenfeld period and housing the
+Dragon Throne Room; the **Crown Cathedral**, built in the early Dragonheart reign and connected
+to the keep by a covered bridge; the **Court Quarter**, with chambers, archives, treasury vaults,
+and administrative offices; and the **Royal Ward**, with residences, diplomatic quarters,
+guard barracks, and service buildings.
+
+Kalassarian engineering allowed for magical spectacle and magical fallbacks alongside durable
+physical works. The defensive problem included teleporting intruders, magically flying casters,
+and mounted air cavalry: a high cliff or tall perimeter wall was not sufficient by itself.
+Sheltered circulation and internal divisions therefore mattered alongside guards and magical
+protection. The particular wards and their workings remain unspecified.
+
+### The Castle Tunnel
+
+A large arch in the mountain face opens onto the magically created tunnel that is the primary
+route from Thrantorbury toward Castle Dragonheart. This passage is distinct from the exposed
+road bringing travelers up to the town.
+
+The tunnel is neither dank nor stifling. Numerous small air passages cut by the **Kalassarian
+magical engineering corps** provide ventilation through ordinary airflow. Non-magical lamps can
+burn steadily inside without their flames dimming for lack of air. Magic made the excavation
+possible; the ventilation does not require a continuously active enchantment.
+
+The route through the mountain, its upper exit, and the positions of its ventilation passages
+are not shown in the elevation.
 
 ## University of Thrantorbury
 
@@ -18,3 +125,8 @@ The city is home to the prestigious
 [University of Thrantorbury](../organizations/university-of-thrantorbury.mdx), particularly known
 for cartography. Its campus plan, colleges, and student facilities are described in the university
 article.
+
+The college-town area occupies part of the lower plateau, separate from the castle grounds.
+Within the university, the Grounds descend toward a **lagoon** used for maritime practical
+studies. The College of Maritime Studies stands near the lagoon and the College of Evocation;
+the latter also uses the lower grounds for practice away from the academic core.

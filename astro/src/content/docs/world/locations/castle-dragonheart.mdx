@@ -1,0 +1,177 @@
+---
+title: Castle Dragonheart
+description: Senera's palatial royal seat, above Thrantorbury on a Kalassarian-carved shelf of Mt Thraltor.
+tags:
+  - locations
+  - palace
+location:
+  type: palace
+  parents:
+    - Thrantorbury
+    - Mt Thraltor
+    - Senera
+  image:
+    url: ../../../../assets/maps/castle-dragonheart.png
+    alt: >-
+      Schematic plan of Castle Dragonheart, showing its royal precinct, two dedicated
+      towers, signalling works, and 15-foot-radius teleportation circle.
+    attribution: >-
+      Worldbuilding by Nico; plan and illustration by Ran.
+---
+
+import CastlePlanImage from '../../../../assets/maps/castle-dragonheart.png';
+import CastlePlanUrl from '../../../../assets/maps/castle-dragonheart.svg?url';
+import { getImage } from 'astro:assets';
+export const processedCastlePlan = await getImage({ src: CastlePlanImage });
+
+**Castle Dragonheart** is the palatial royal seat of the
+[Kingdom of Senera](senera/index.mdx) and its reigning
+[House Dragonheart](../families/dragonheart.mdx). It stands above
+[Thrantorbury](thrantorbury.mdx) on a magically carved mountain shelf. Its site previously
+served as the residence of the Kalassarian governor of Seneria and was intended to receive
+the Emperor as well as accommodate the provincial government.
+
+## Site Plan
+
+<MapViewer client:only="react"
+  src={processedCastlePlan.src}
+  width={processedCastlePlan.options.width}
+  height={processedCastlePlan.options.height}
+  inlineHeight="700px"
+  alt="Castle Dragonheart: High Keep, Crown Cathedral, Court Quarter, Royal Ward, garrison, wizard's tower, signalling tower, and teleportation court"
+/>
+
+_Worldbuilding by Nico; plan and illustration by Ran. The site plan and signalling diagrams
+are schematic, not a measured survey or room-by-room floor plan. The teleportation circle's
+15-foot radius is established; other footprints, bearings, and exact underground routes are
+illustrative or unestablished. Its smaller diamond-powered opening is centred for comparison,
+not as a fixed equipment position. The original source orb and hidden conduit route are not shown._
+<a href={CastlePlanUrl}>Open the editable SVG master</a>.
+
+## Site and Approaches
+
+The castle occupies the higher of two inhabited shelves on
+[Mt Thraltor](mt-thraltor.mdx). The mountain's highest summit rises behind the royal seat;
+the castle itself does not stand at the summit. The Kalassarians carved its terrace, while
+the local _mathrantorgralok_ carved the separate, lower plateau occupied by the town and
+university district.
+
+The **Crown Road** climbs the exposed mountainside from the direction of
+[Surrey-on-the-Brams](surrey-on-the-brams.mdx), entering Thrantorbury through the **Crown Gate**.
+The principal onward approach to the castle is a tunnel through the mountain, not a
+continuation of that exposed ascent. The Crown Gate and the castle-access checkpoint are
+separate thresholds.
+
+The royal seat is distinct from the **Haven** on Senera's western coast.
+
+## History
+
+### Kalassarian Residence
+
+Under the [Kalassarian Empire](../organizations/kalassarian-empire.mdx), Senera was known as
+**Seneria**. The predecessor of the present castle complex housed its governor and provided
+for the Emperor's accommodation should he visit. Imperial residence, provincial administration,
+and defense were therefore part of its purpose, rather than comforts added to a purely
+military fortress.
+
+The Kalassarian design combined magical spectacle and magical fallbacks with durable physical
+engineering. Its tunnel and carved terrace express this combination: magic made substantial
+works possible, while their ordinary operation need not depend entirely on an uninterrupted
+enchantment.
+
+### The Royal Complex
+
+The royal complex includes structures associated with both the
+[Maidenfeld](../families/maidenfeld.mdx) and Dragonheart periods. The High Keep predates
+Dragonheart rule, while the Crown Cathedral belongs to the dynasty's early reign. These
+later royal elements form part of a site whose use as a seat of government reaches back to
+the imperial residence.
+
+## Principal Divisions
+
+### High Keep
+
+The **High Keep** is the ancient stone fortress associated with the Maidenfeld period. It
+houses the **Dragon Throne Room** and remains a distinct part of the larger palatial complex.
+
+### Crown Cathedral
+
+The **Crown Cathedral** was built during the early Dragonheart reign in the architectural
+tradition of the
+[Orthodox Church of the Divine Masochist](../organizations/orthodox-church-of-the-divine-masochist.mdx).
+A covered bridge connects it to the keep.
+
+### Court Quarter
+
+The **Court Quarter** contains the **Small Court chambers**, royal archives, treasury vaults,
+and administrative offices. It serves the business of the royal government as well as the
+residential and ceremonial functions of the site.
+
+### Royal Ward
+
+The **Royal Ward** contains noble residences, diplomatic quarters, guard barracks, and
+service buildings.
+
+### Wizard's and Signalling Towers
+
+The complex includes a **wizard's tower** and a separate **signalling tower**.
+
+The signalling tower uses **flags** for short-range communication and **beacons** for signals
+across the [Ranterg Mountains](ranterg-mountains.mdx). Its flagstaffs communicate with the
+lookout at Thrantorbury's auxiliary Royal Guard base. They carry general orders for the castle
+garrison and relay orders to the Guard below; acknowledgements and reports return from the
+auxiliary lookout. This avoids sending every message through the castle tunnel.
+
+Flags and beacons serve in place of a Kalassarian signalling system that was probably magical
+and has not yet been rediscovered. The local flag link and the beacons' longer-range outlook
+have different sightline requirements; the diagrams do not establish surveyed bearings or
+the locations of relay stations.
+
+## The Castle Tunnel
+
+A large arch in the mountain face at Thrantorbury opens onto the magically created tunnel
+that provides the principal route toward Castle Dragonheart. Civilian streets gather near
+its approach, but a controlled Royal Guard buffer separates them from the tunnel mouth.
+Facilities there inspect castle-bound goods, services, and visitors.
+
+The tunnel is neither dank nor stifling. The **Kalassarian magical engineering corps** cut
+numerous small air passages to provide ventilation through ordinary airflow. Non-magical
+lamps can burn steadily inside without their flames dimming for lack of air. The excavation
+is a magical engineering work; its ventilation is not a continuously maintained enchantment.
+
+## Teleportation Court
+
+The castle's large **teleportation circle** has a **15-foot radius**, spanning **30 feet** across.
+Its full transfer area accommodates multiple squads or troops accompanied by supplies, rather
+than only a small group packed closely together.
+
+The imperial installation was originally fed through conduits connected to a large
+[Orb of Enhancement](../misc/orbs-of-power/orb-of-enhancement.mdx). It has since been adapted
+to consume diamonds as a substitute power source. The retrofit does not restore the full
+imperial transfer area: diamond-fed operation is limited to the ordinary
+<Spell name="teleportation circle" src="phb" /> spell's **5-foot-radius** opening and brief
+portal window. The full circle has nine times that opening's area.
+
+Creatures already standing within the active area are transported when the circle activates.
+Additional travellers can enter before the opening closes. Capacity depends on the active
+area, the load, and the opportunity to enter, rather than a fixed passenger count.
+
+## Architecture and Defense
+
+Castle Dragonheart is a defensible seat of government and a palatial residence, not simply
+a ring of high curtain walls. Substantial wings, smaller internal courts, sheltered galleries,
+and protected entrances divide its functions and circulation.
+
+The imperial defensive problem included teleporting intruders, magically flying casters,
+and mounted air cavalry. A cliff or tall perimeter wall could not by itself keep such
+opponents outside. Protected movement between buildings and internal divisions mattered
+alongside guards and magical protection.
+
+The castle's main Royal Guard complex is separate from the auxiliary military compound and
+lookout on the town plateau below. The town's military base, the tunnel checkpoint, and the
+castle garrison have distinct locations rather than forming a single gatehouse establishment.
+
+Structural support, ordinary enclosure, and military defenses serve different purposes.
+Retaining works support raised terraces or made ground where needed; the carved bedrock
+itself need not be faced everywhere with a retaining wall. Parapets and enclosures also
+serve safety, privacy, and access control without making every terrace edge a battlement.
