@@ -19,12 +19,14 @@ const { href, title } = Astro.props;
               class="text-xl text-center font-bold text-gray-900 dark:text-white"
               style="display: inline-block;"
             >
-              {title}<slot name="title-suffix" />
+              {title}
+              <slot name="title-suffix" />
             </h2>
           </a>
         ) : (
           <h2 class="text-xl text-center font-bold text-gray-900 dark:text-white">
-            {title}<slot name="title-suffix" />
+            {title}
+            <slot name="title-suffix" />
           </h2>
         )}
       </div>

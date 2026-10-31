@@ -12,21 +12,21 @@ const { item, filePath } = Astro.props;
   )}
   <dl class="divide-y divide-gray-200 dark:divide-gray-700">
     {item.details?.attunement !== undefined && (
-          <SidebarDetail label="Attunement">
-            {item.details.attunement ? 'Yes' : 'No'}
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Attunement">
+        {item.details.attunement ? "Yes" : "No"}
+      </SidebarDetail>
+    )}
     {item.details?.type !== undefined && (
-          <SidebarDetail label="Type">{item.details.type}</SidebarDetail>
-        )}
+      <SidebarDetail label="Type">{item.details.type}</SidebarDetail>
+    )}
     {item.details?.rarity !== undefined && (
-          <SidebarDetail label="Rarity">{item.details.rarity}</SidebarDetail>
-        )}
+      <SidebarDetail label="Rarity">{item.details.rarity}</SidebarDetail>
+    )}
     {item.details?.weight !== undefined && (
-          <SidebarDetail label="Weight">{item.details.weight}</SidebarDetail>
-        )}
+      <SidebarDetail label="Weight">{item.details.weight}</SidebarDetail>
+    )}
     {item.details?.value !== undefined && (
-          <SidebarDetail label="Value">{item.details.value}</SidebarDetail>
-        )}
+      <SidebarDetail label="Value">{item.details.value}</SidebarDetail>
+    )}
   </dl>
 </SidebarCard>

@@ -39,72 +39,74 @@ if (location?.related) {
 
 <SidebarCard title={displayName}>
   {location.image && (
-    <SidebarMedia slot="image" image={location.image} entryFilePath={filePath} />
+    <SidebarMedia
+      slot="image"
+      image={location.image}
+      entryFilePath={filePath}
+    />
   )}
   <dl class="divide-y divide-gray-200 dark:divide-gray-700">
     {location?.type && (
-          <SidebarDetail label="Type">
-              {location.type.charAt(0).toUpperCase() + location.type.slice(1)}
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Type">
+        {location.type.charAt(0).toUpperCase() + location.type.slice(1)}
+      </SidebarDetail>
+    )}
 
     {location.details?.population && (
-          <SidebarDetail label="Population">
-            {location.details.population}
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Population">
+        {location.details.population}
+      </SidebarDetail>
+    )}
 
     {location.details?.area && (
-          <SidebarDetail label="Area">{location.details.area}</SidebarDetail>
-        )}
+      <SidebarDetail label="Area">{location.details.area}</SidebarDetail>
+    )}
 
     {parents && parents.length > 0 && (
-          <SidebarDetail label="Parent Locations" layout="stacked">
-            <ul class="space-y-1 text-right text-gray-600 dark:text-gray-400">
-                {parents.map((parent: CollectionEntry<"location">) => (
-                <li>
-                  <a href={`/world/locations/${parent.id}`}>
-                    {(parent.data as { title: string }).title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Parent Locations" layout="stacked">
+        <ul class="space-y-1 text-right text-gray-600 dark:text-gray-400">
+          {parents.map((parent: CollectionEntry<"location">) => (
+            <li>
+              <a href={`/world/locations/${parent.id}`}>
+                {(parent.data as { title: string }).title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </SidebarDetail>
+    )}
 
     {related && related.length > 0 && (
-          <SidebarDetail label="Related Locations" layout="stacked">
-            <ul class="space-y-1 text-right text-gray-600 dark:text-gray-400">
-              {related.map((relatedLocation: CollectionEntry<"location">) => (
-                <li>
-                  <a href={`/world/locations/${relatedLocation.id}`}>
-                    {(relatedLocation.data as { title: string }).title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Related Locations" layout="stacked">
+        <ul class="space-y-1 text-right text-gray-600 dark:text-gray-400">
+          {related.map((relatedLocation: CollectionEntry<"location">) => (
+            <li>
+              <a href={`/world/locations/${relatedLocation.id}`}>
+                {(relatedLocation.data as { title: string }).title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </SidebarDetail>
+    )}
 
     {location.sections && location.sections.length > 0 && (
-          <SidebarDetail label="Sections" layout="stacked">
-            <ul class="space-y-3 text-right text-gray-600 dark:text-gray-400">
-              {location.sections.map((section: PoliticalLocationSection) => (
-                <li>
-                  <strong>{section.name}</strong>
-                  {section.description && (
-                    <div class="text-sm mt-1">{section.description}</div>
-                  )}
-                  {section.population && (
-                    <div class="text-sm">Population: {section.population}</div>
-                  )}
-                  {section.area && (
-                    <div class="text-sm">Area: {section.area}</div>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </SidebarDetail>
-        )}
+      <SidebarDetail label="Sections" layout="stacked">
+        <ul class="space-y-3 text-right text-gray-600 dark:text-gray-400">
+          {location.sections.map((section: PoliticalLocationSection) => (
+            <li>
+              <strong>{section.name}</strong>
+              {section.description && (
+                <div class="text-sm mt-1">{section.description}</div>
+              )}
+              {section.population && (
+                <div class="text-sm">Population: {section.population}</div>
+              )}
+              {section.area && <div class="text-sm">Area: {section.area}</div>}
+            </li>
+          ))}
+        </ul>
+      </SidebarDetail>
+    )}
   </dl>
 </SidebarCard>

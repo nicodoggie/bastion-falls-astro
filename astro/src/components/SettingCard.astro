@@ -185,11 +185,11 @@ function getLocationData(entry: LocationEntry): LocationEntryData {
       </div>
     )}
     {details.map(({ label, value }) => (
-        <div class="setting-card__detail">
-          <dt>{label}</dt>
-          <dd>{value}</dd>
-        </div>
-      ))}
+      <div class="setting-card__detail">
+        <dt>{label}</dt>
+        <dd>{value}</dd>
+      </div>
+    ))}
     {resolvedCharacters.length > 0 && (
       <div class="setting-card__detail setting-card__detail--wide">
         <dt>Characters</dt>

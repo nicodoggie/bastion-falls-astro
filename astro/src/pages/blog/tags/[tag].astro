@@ -34,11 +34,11 @@ const allTags = Array.from(tagSet).sort((a, b) => a.localeCompare(b));
   postsForTagCounts={posts}
   title={`Tag: #${tag}`}
   breadcrumb={[
-    { label: 'Blog', href: '/blog' },
+    { label: "Blog", href: "/blog" },
     { label: `#${tag}`, href: `/blog/tags/${slug(tag)}` },
   ]}
   allTags={allTags}
   currentTag={tag}
   showDraftToggle={true}
-  backLink={{ href: '/blog', text: '← Back to Blog' }}
+  backLink={{ href: "/blog", text: "← Back to Blog" }}
 />

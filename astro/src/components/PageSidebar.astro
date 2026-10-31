@@ -9,20 +9,20 @@ const { toc } = Astro.locals.starlightRoute;
 ---
 
 {toc && (
-    <>
-      <div class="lg:sl-hidden">
-        <MobilePageSidebarInfo />
-        <MobileTableOfContents />
+  <>
+    <div class="lg:sl-hidden">
+      <MobilePageSidebarInfo />
+      <MobileTableOfContents />
+    </div>
+    <div class="right-sidebar-panel sl-hidden lg:sl-block">
+      <div class="sl-container">
+        <FantasyCalendar />
+        <PageSidebarInfo />
+        <TableOfContents />
       </div>
-      <div class="right-sidebar-panel sl-hidden lg:sl-block">
-        <div class="sl-container">
-          <FantasyCalendar />
-          <PageSidebarInfo />
-          <TableOfContents />
-        </div>
-      </div>
-    </>
-  )}
+    </div>
+  </>
+)}
 
 <style>
 @layer starlight.core {

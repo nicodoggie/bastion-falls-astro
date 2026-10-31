@@ -14,10 +14,10 @@ const { items } = Astro.props;
 <aside class="stats">
   <dl>
     {items.map(({ label, value }) => (
-        <>
-          <dt>{label}</dt>
-          <dd>{value}</dd>
-        </>
-      ))}
+      <>
+        <dt>{label}</dt>
+        <dd>{value}</dd>
+      </>
+    ))}
   </dl>
 </aside>

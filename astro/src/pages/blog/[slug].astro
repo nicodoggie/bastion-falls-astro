@@ -58,17 +58,17 @@ const { Content } = await render(post);
       <div class="relative z-10">
         <article>
           {post.data.banner && (
-          <div class="relative -mx-6 md:mx-0 mb-8">
-            <Image
-              src={post.data.banner.url}
-              alt={post.data.banner.alt || post.data.title}
-              class="w-full h-64 md:h-96 object-cover"
-              widths={[640, 896, 1280, 1600]}
-              sizes="(min-width: 896px) 896px, 100vw"
-              loading="eager"
-            />
-          </div>
-        )}
+            <div class="relative -mx-6 md:mx-0 mb-8">
+              <Image
+                src={post.data.banner.url}
+                alt={post.data.banner.alt || post.data.title}
+                class="w-full h-64 md:h-96 object-cover"
+                widths={[640, 896, 1280, 1600]}
+                sizes="(min-width: 896px) 896px, 100vw"
+                loading="eager"
+              />
+            </div>
+          )}
           <nav class="not-content mb-6 text-sm text-gray-400">
             <a
               href="/blog/"
@@ -103,23 +103,18 @@ const { Content } = await render(post);
               class="flex flex-wrap gap-3 items-center text-sm text-gray-400"
             >
               {!post.data.draft && (
-            <time datetime={post.data.published.toISOString()}>
-              {
-                post.data.published.toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })
-              }
-            </time>
-            )}
+                <time datetime={post.data.published.toISOString()}>
+                  {post.data.published.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+              )}
               {post.data.tags && post.data.tags.length > 0 && (
                 <div class="flex flex-wrap gap-2">
                   {post.data.tags.map((tag: string) => (
-                    <span
-                     
-                      class="px-2.5 py-1 rounded-md text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700"
-                    >
+                    <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700">
                       {tag}
                     </span>
                   ))}

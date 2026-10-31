@@ -20,11 +20,7 @@ const rows = buildGenericSidebarRows(subject.data);
 
 <SidebarCard title={subject.title}>
   {image && (
-    <SidebarMedia
-      slot="image"
-      image={image}
-      entryFilePath={entryFilePath}
-    />
+    <SidebarMedia slot="image" image={image} entryFilePath={entryFilePath} />
   )}
   <dl class="divide-y divide-gray-200 dark:divide-gray-700">
     {rows.map((row) =>
