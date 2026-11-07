@@ -1,241 +1,83 @@
 ---
 name: finishing-a-development-branch
-description: Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup
+description: Use when finishing verified work and choosing integration or cleanup.
 ---
 
 # Finishing a Development Branch
 
-## Overview
+Finish the requested integration with evidence, without silently discarding the workspace that produced it.
 
-Guide completion of development work by presenting clear options and handling chosen workflow.
+**Sequence:** recover the approved destination → verify the exact candidate → inspect integration policy → execute the chosen action → verify the landing → propose separately scoped cleanup.
 
-**Core principle:** Verify tests → Detect environment → Present options → Execute choice → Clean up.
+## 1. Recover the requested action
 
-**Announce at start:** "I'm using the finishing-a-development-branch skill to complete this work."
+Read the latest user decision and repository guidance before offering choices. If Nico has already asked to push and merge, carry out that selection; do not require another menu or interpret a missing cleanup decision as missing merge authorization. Distinguish local commits, branch publication, remote merge, release/deployment and deletion as separate side-effect classes.
 
-## The Process
+When no destination/action has been chosen, offer concise options appropriate to the actual state: integrate locally, publish a PR, keep the work, or explicitly discard it. Do not offer local merge from an unmanaged detached HEAD without first preserving its exact revision on an authorized ref.
 
-### Step 1: Verify Tests
+## 2. Freeze identity and verification
 
-**Before presenting options, verify tests pass:**
+Record the absolute working directory, repository top level, Git common directory, branch, HEAD, dirty/index state and destination remote. Inspect `git worktree list --porcelain` before changing branches; the primary checkout or target branch can belong to another session.
 
-```bash
-# Run project's test suite
-npm test / cargo test / pytest / go test ./...
-```
+Use the repository's declared environment and the personalized `tdd-review-workflow` to choose proportionate verification. Preserve valid earlier receipts on unchanged source; do not replace a missing independent review or real consumer qualification with a broad unrelated test count.
 
-**If tests fail:**
-```
-Tests failing (<N> failures). Must fix before completing:
+When Nico explicitly accepts a completed build as the merge gate, apply that task-local decision immediately:
 
-[Show failures]
+1. Update the existing PR's disposition: identify the accepted build/source, the current publication head, and deferred runtime checks. Replace obsolete draft/QA holds rather than leaving contradictory current instructions.
+2. Inspect any intervening source delta and run the cheapest meaningful merge-resolution checks. Do not automatically restart an expensive full installer pipeline for a bounded version/metadata resolution when the retained build evidence is explicitly accepted. Keep older build receipts bound to their tested SHA; focused checks do not become a claimed full build of the refreshed combination.
+3. Execute the already-authorized push/merge without reopening the deferred QA decision. Pause for a newly failing applicable gate, material source risk or unresolved authority—not merely an unchecked test the operator has accepted deferring.
 
-Cannot proceed with merge/PR until tests pass.
-```
+An accepted/deferred limitation remains documented, not silently fixed or falsely described as passing. Treat build-only acceptance as task-local, not a standing waiver for future runtime or release work.
 
-Stop. Don't proceed to Step 2.
+Inspect the exact candidate range against the fetched destination, then inventory tracked edits and untracked authored files separately. An already-merged branch can still carry substantial uncommitted follow-up work; classify that work into explicit commit allowlists rather than declaring integration complete from ancestry alone. Name excluded drafts and unrelated changes instead of sweeping them into “all changes.” Check each named PR's live state before publication; an already-merged PR requires readback, not another merge attempt.
 
-**If tests pass:** Continue to Step 2.
+## 3. Execute the selected integration
 
-### Step 2: Detect Environment
+### Remote PR
 
-**Determine workspace state before presenting options:**
+Use `github-pr-workflow` for policy discovery, exact-head publication, review/check gates and merge readback. A generic merge request does not authorize bypassing a newly discovered review rule. Once Nico explicitly approves the scoped bypass, execute it against the unchanged reviewed head without asking again.
 
-```bash
-GIT_DIR=$(cd "$(git rev-parse --git-dir)" 2>/dev/null && pwd -P)
-GIT_COMMON=$(cd "$(git rev-parse --git-common-dir)" 2>/dev/null && pwd -P)
-```
+A successful push establishes publication, not merge. A requested auto-merge may be unavailable or rejected; read back its actual state before reporting it queued.
 
-This determines which menu to show and how cleanup works:
+### Local integration
 
-| State | Menu | Cleanup |
-|-------|------|---------|
-| `GIT_DIR == GIT_COMMON` (normal repo) | Standard 4 options | No worktree to clean up |
-| `GIT_DIR != GIT_COMMON`, named branch | Standard 4 options | Provenance-based (see Step 6) |
-| `GIT_DIR != GIT_COMMON`, detached HEAD | Reduced 3 options (no merge) | No cleanup (externally managed) |
+Resolve the actual destination branch and its current remote ref. Do not switch or pull a busy/dirty primary checkout merely because it contains the common Git directory. Use an authorized clean integration worktree when necessary, preserve the feature checkout and prefer fast-forward integration when supported by ancestry.
 
-### Step 3: Determine Base Branch
+When a concurrent owner is separating unfinished work from the shared checkout:
 
-```bash
-# Try common base branches
-git merge-base HEAD main 2>/dev/null || git merge-base HEAD master 2>/dev/null
-```
+1. Agree on the exact paths and a pinned committed base before either session changes refs; a moving `HEAD` can silently change the handoff's contents.
+2. Have that owner verify copied authored files and useful ignored evidence by hashes. Retain canonical private originals in the primary checkout when custody requires it; branch separation does not require moving the only transcript copy.
+3. Require the owner's explicit ready-for-primary-switch acknowledgement after destination verification and removal of only the hash-identical shared draft. A new worktree registration alone does not establish completed custody. Until acknowledgement, perform only independent checks and agreed scoped commits; do not switch the shared branch.
 
-Or ask: "This branch split from main - is that correct?"
+Before each scoped commit, compare `git diff --cached --name-status` with its allowlist and verify staged content against the checked candidate. After a failed multi-path `git add`, inspect the index before retrying: eligible paths may already be staged despite the nonzero exit. Do not force-add an ignored evidence directory to repair a parent-path warning.
 
-### Step 4: Present Options
+Verify the composed result before an authorized destination push, then compare the remote ref with the expected commit. If reconciliation introduces source changes, rerun the smallest affected gates before publication.
 
-**Normal repo and named-branch worktree — present exactly these 4 options:**
+### Keep or discard
 
-```
-Implementation complete. What would you like to do?
+For keep, report the retained absolute worktree path, branch and exact revision.
 
-1. Merge back to <base-branch> locally
-2. Push and create a Pull Request
-3. Keep the branch as-is (I'll handle it later)
-4. Discard this work
+For discard, enumerate the exact checkout, branch refs, unique commits, dirty/untracked content and evidence at risk. Obtain explicit destructive approval before removal. A user's question about whether cleanup is ready is read-only discovery, not discard authorization.
 
-Which option?
-```
+## 4. Verify completion
 
-**Detached HEAD — present exactly these 3 options:**
+Read back the exact external target after every publication or merge. For a squash merge, verify the PR's merged state and merge commit, fetch the destination and compare the reviewed tree with the merge commit. Preserve tests on identical trees despite changed commit metadata. Investigate unexpected differences; if the destination advanced concurrently, prove the merge is contained and report later changes separately.
 
-```
-Implementation complete. You're on a detached HEAD (externally managed workspace).
+After verified landing, close an explicitly authorized integration issue as completed integration and synchronize its owning Project status. Distinguish the issue's delivery scope from broader product QA: retain the existing QA tracker and deferred checks without marking them passed or keeping completed integration indefinitely open. Read back both issue state and board status; a merge or an already-closed response does not establish both.
 
-1. Push as new branch and create a Pull Request
-2. Keep as-is (I'll handle it later)
-3. Discard this work
+Report what actually completed, the authoritative commit/URL, remaining holds and the actual worktree used. Keep implementation, qualification, release and cleanup states distinct.
 
-Which option?
-```
+## 5. Audit cleanup separately
 
-**Don't add explanation** - keep options concise.
+Load `auditing-development-disk-cleanup` for readiness discovery and `git-change-grouping` for preservation/reconciliation of dirty leftovers.
 
-### Step 5: Execute Choice
+- Never infer ownership or deletion authority from a `.worktrees/` directory name; harnesses, users and other agents use the same convention.
+- Separate branch integration from checkout disposability. An integrated branch may have a dirty worktree, and a clean worktree may contain useful ignored evidence or an installed environment used elsewhere.
+- Inventory ancestry, patch equivalence, dirty/untracked/ignored content, retained refs, runtime dependencies and harness ownership before recommending retirement. Preserve unresolved or unique content.
+- Do not remove a feature worktree or delete a branch merely because its merge succeeded. Carry explicit cleanup approval only through its named allowlist. Treat “clean up on closeout” as an ordering constraint: finish authorized integration first; if publication authority is still unresolved, retain the implementation workspace and branch. A verified patch archive preserves bytes but is not integration or a reason to advance closeout.
+- When removal is authorized, recheck candidate identity/status, move the shell outside the target and use ordinary `git worktree remove`; do not use force removal to hide a dirty-tree failure. Verify directory and registry absence afterward.
+- Treat branch deletion and registry pruning as separate scoped mutations. Do not run a blanket prune or delete unrelated local/remote refs as automatic closeout.
 
-#### Option 1: Merge Locally
+## Stop conditions
 
-```bash
-# Get main repo root for CWD safety
-MAIN_ROOT=$(git -C "$(git rev-parse --git-common-dir)/.." rev-parse --show-toplevel)
-cd "$MAIN_ROOT"
-
-# Merge first — verify success before removing anything
-git checkout <base-branch>
-git pull
-git merge <feature-branch>
-
-# Verify tests on merged result
-<test command>
-
-# Only after merge succeeds: cleanup worktree (Step 6), then delete branch
-```
-
-Then: Cleanup worktree (Step 6), then delete branch:
-
-```bash
-git branch -d <feature-branch>
-```
-
-#### Option 2: Push and Create PR
-
-```bash
-# Push branch
-git push -u origin <feature-branch>
-```
-
-**Do NOT clean up worktree** — user needs it alive to iterate on PR feedback.
-
-#### Option 3: Keep As-Is
-
-Report: "Keeping branch <name>. Worktree preserved at <path>."
-
-**Don't cleanup worktree.**
-
-#### Option 4: Discard
-
-**Confirm first:**
-```
-This will permanently delete:
-- Branch <name>
-- All commits: <commit-list>
-- Worktree at <path>
-
-Type 'discard' to confirm.
-```
-
-Wait for exact confirmation.
-
-If confirmed:
-```bash
-MAIN_ROOT=$(git -C "$(git rev-parse --git-common-dir)/.." rev-parse --show-toplevel)
-cd "$MAIN_ROOT"
-```
-
-Then: Cleanup worktree (Step 6), then force-delete branch:
-```bash
-git branch -D <feature-branch>
-```
-
-### Step 6: Cleanup Workspace
-
-**Only runs for Options 1 and 4.** Options 2 and 3 always preserve the worktree.
-
-```bash
-GIT_DIR=$(cd "$(git rev-parse --git-dir)" 2>/dev/null && pwd -P)
-GIT_COMMON=$(cd "$(git rev-parse --git-common-dir)" 2>/dev/null && pwd -P)
-WORKTREE_PATH=$(git rev-parse --show-toplevel)
-```
-
-**If `GIT_DIR == GIT_COMMON`:** Normal repo, no worktree to clean up. Done.
-
-**If worktree path is under `.worktrees/` or `worktrees/`:** Superpowers created this worktree — we own cleanup.
-
-```bash
-MAIN_ROOT=$(git -C "$(git rev-parse --git-common-dir)/.." rev-parse --show-toplevel)
-cd "$MAIN_ROOT"
-git worktree remove "$WORKTREE_PATH"
-git worktree prune  # Self-healing: clean up any stale registrations
-```
-
-**Otherwise:** The host environment (harness) owns this workspace. Do NOT remove it. If your platform provides a workspace-exit tool, use it. Otherwise, leave the workspace in place.
-
-## Quick Reference
-
-| Option | Merge | Push | Keep Worktree | Cleanup Branch |
-|--------|-------|------|---------------|----------------|
-| 1. Merge locally | yes | - | - | yes |
-| 2. Create PR | - | yes | yes | - |
-| 3. Keep as-is | - | - | yes | - |
-| 4. Discard | - | - | - | yes (force) |
-
-## Common Mistakes
-
-**Skipping test verification**
-- **Problem:** Merge broken code, create failing PR
-- **Fix:** Always verify tests before offering options
-
-**Open-ended questions**
-- **Problem:** "What should I do next?" is ambiguous
-- **Fix:** Present exactly 4 structured options (or 3 for detached HEAD)
-
-**Cleaning up worktree for Option 2**
-- **Problem:** Remove worktree user needs for PR iteration
-- **Fix:** Only cleanup for Options 1 and 4
-
-**Deleting branch before removing worktree**
-- **Problem:** `git branch -d` fails because worktree still references the branch
-- **Fix:** Merge first, remove worktree, then delete branch
-
-**Running git worktree remove from inside the worktree**
-- **Problem:** Command fails silently when CWD is inside the worktree being removed
-- **Fix:** Always `cd` to main repo root before `git worktree remove`
-
-**Cleaning up harness-owned worktrees**
-- **Problem:** Removing a worktree the harness created causes phantom state
-- **Fix:** Only clean up worktrees under `.worktrees/` or `worktrees/`
-
-**No confirmation for discard**
-- **Problem:** Accidentally delete work
-- **Fix:** Require typed "discard" confirmation
-
-## Red Flags
-
-**Never:**
-- Proceed with failing tests
-- Merge without verifying tests on result
-- Delete work without confirmation
-- Force-push without explicit request
-- Remove a worktree before confirming merge success
-- Clean up worktrees you didn't create (provenance check)
-- Run `git worktree remove` from inside the worktree
-
-**Always:**
-- Verify tests before offering options
-- Detect environment before presenting menu
-- Present exactly 4 options (or 3 for detached HEAD)
-- Get typed confirmation for Option 4
-- Clean up worktree for Options 1 & 4 only
-- `cd` to main repo root before worktree removal
-- Run `git worktree prune` after removal
+Stop for a changed reviewed head, a newly failing relevant gate, an unresolved policy requirement, conflicting concurrent ownership or unapproved destructive scope. Preserve completed work and state the smallest missing decision. Do not keep asking for an approval already granted, or claim that a retained worktree means an otherwise verified merge is unfinished.

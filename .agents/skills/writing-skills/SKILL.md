@@ -9,7 +9,7 @@ description: Use when creating new skills, editing existing skills, or verifying
 
 **Writing skills IS Test-Driven Development applied to process documentation.**
 
-**Personal skills live in your runtime's skills directory** 
+**Locate the maintained skill before editing.** Skills may live in the runtime library or in a repository. Use repository guidance and the exact checkout/revision to distinguish maintained copies from older imported or sibling-worktree copies; a missing runtime catalog entry does not establish that a repository skill is absent.
 
 You write test cases (pressure scenarios with subagents), watch them fail (baseline behavior), write the skill (documentation), watch tests pass (agents comply), and refactor (close loopholes).
 
@@ -44,6 +44,14 @@ A **skill** is a reference guide for proven techniques, patterns, or tools. Skil
 
 The entire skill creation process follows RED-GREEN-REFACTOR.
 
+## Adapt an Existing Skill Without Changing Its Purpose
+
+1. **Read the maintained skill and its template before judging fit.** When the user asks whether an adaptation matches the existing intent, answer that comparison first; proposing a replacement workflow does not answer it.
+2. **Separate purpose, literal task and mechanics.** State what the skill currently promises, which underlying responsibility the proposed adaptation preserves, and which mechanics change. An issue-based checklist can become a grooming-PR checklist without becoming either mere branch setup or independent certification that all release gates passed.
+3. **Map responsibilities to their new owners and actual consumers.** Distinguish end-user release delivery from build-dependency distribution before deciding whether an upload skill survives; sharing a bucket/CDN transport does not make them the same responsibility. When CI takes over generation, preserve necessary inputs and validation requirements in the pipeline contract rather than retaining a parallel agent assembly procedure. Distinguish intended automation from capabilities actually exercised; record uncovered generation as integration work, not an implicit manual prerequisite.
+4. **Apply the approved disposition and naming scheme.** Remove a superseded skill and its incoming references when removal is approved; do not preserve a deprecated fallback merely from discomfort with deletion. Keep an explicitly requested independent/emergency route distinct from the normal automated route, with no silent fallback. An independent route must work from accessible approved artifacts and retained evidence during an orchestration-service outage, recording results locally for later reconciliation rather than requiring that unavailable service. Group related skills with a shared task-family prefix and descriptive responsibility/route suffixes when that is the user's chosen discovery scheme. Update frontmatter, templates, index and incoming references together. Keep preparation, external publication and verification as distinct authority/evidence boundaries.
+5. **Verify at the changed boundary.** For procedural Markdown, check native lint, frontmatter, local links and stale references, then inspect representative paths for semantic contradictions. Report document validation separately from exercising the real workflow; do not claim release or CI readiness from a skill edit.
+
 ## When to Create a Skill
 
 **Create when:**
@@ -71,24 +79,20 @@ API docs, syntax guides, tool documentation (office docs)
 
 ## Directory Structure
 
-
-```
+```text
 skills/
-  skill-name/
-    SKILL.md              # Main reference (required)
-    supporting-file.*     # Only if needed
+  task-class/
+    SKILL.md      # Ordered procedure, always-on preferences and gates
+    references/   # Optional topical depth
+    scripts/      # Directly runnable reusable actions
+    templates/    # Copy-and-adapt starting artifacts
 ```
 
-**Flat namespace** - all skills in one searchable namespace
+**Organize by task class, not by session or individual failure.** First reload the skill used during the task and inspect its relevant references. Strengthen an existing rule when the lesson is already present. Extend another existing class-level skill only when the loaded skill does not fit; create a new class-level skill only when neither fits.
 
-**Separate files for:**
-1. **Heavy reference** (100+ lines) - API docs, comprehensive syntax
-2. **Reusable tools** - Scripts, utilities, templates
+**Keep in SKILL.md:** the procedure in execution order, standing user preferences, universal gates and concise imperative pitfalls with their mechanism. Put a newly expressed workflow or presentation preference here, not only in memory or an optional reference.
 
-**Keep inline:**
-- Principles and concepts
-- Code patterns (< 50 lines)
-- Everything else
+**Separate only conditional depth:** extend an existing topical reference before adding another, and add a one-line pointer from SKILL.md. Use references for decision tables, detailed recipes and domain notes; scripts for runnable actions; templates for starters. Do not create a reference per incident or use the main skill as an index of session logs. Remove dates, task IDs and issue/PR numbers from reusable guidance.
 
 ## SKILL.md Structure
 
