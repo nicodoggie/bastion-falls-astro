@@ -1,0 +1,87 @@
+name: Children of the Crone, Knotkeeper
+source: BF
+size:
+  - M
+type:
+  type: fey
+  tags:
+    - hag
+alignment:
+  - N
+  - E
+ac:
+  - ac: 16
+    from:
+      - natural armor
+hp:
+  average: 182
+  formula: 28d8 + 56
+speed:
+  walk: 30
+str: 14
+dex: 14
+con: 14
+int: 16
+wis: 18
+cha: 18
+save:
+  con: "+5"
+  wis: "+7"
+  cha: "+7"
+skill:
+  arcana: "+6"
+  perception: "+7"
+senses:
+  - darkvision 120 ft.
+passive: 17
+languages:
+  - Common
+  - Sylvan
+cr: "8"
+trait:
+  - name: Magic Resistance
+    entries:
+      - The hag has advantage on saving throws against spells and other magical effects.
+  - name: Innate Spellcasting
+    entries:
+      - >-
+        The hag's spellcasting ability is Charisma (spell save {@dc 15}). She requires no material
+        components for these spells, but uses their normal verbal and somatic components.
+      - "At will: {@spell detect magic}, {@spell disguise self}"
+      - "1/day each: {@spell silence}, {@spell web}, {@spell dispel magic}"
+action:
+  - name: Multiattack
+    entries:
+      - The hag makes two Threadbite attacks.
+  - name: Threadbite
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +7} to hit, range 90 ft., one target. Hit: 23 ({@damage 4d8 + 5})
+        force damage. This magical attack is not a spell.
+  - name: Tie the Living Knot (Recharge 5-6)
+    entries:
+      - >-
+        One creature the hag can see within 60 feet must succeed on a {@dc 15} Strength saving throw
+        or be {@condition restrained} by visible magical cords for up to 1 minute. The hag must
+        concentrate as if on a spell. The target repeats the save at the end of each of its turns,
+        ending the effect on a success. Either the target or an adjacent creature can also use an
+        action to cut the cords with a successful {@dc 15} Strength (Athletics) check.
+      - >-
+        If both other members of her triad are conscious and within 30 feet of her when she uses
+        this action, she can choose a second target in range. All knots from this use share her
+        concentration. The knots count as a 3rd-level spell for {@spell dispel magic}; each target's
+        knot is a separate effect for dispelling. This ability itself is not a spell.
+bonus:
+  - name: Coven Step
+    entries:
+      - >-
+        While another conscious allied hag is within 30 feet of her, the hag magically moves up to
+        10 feet without provoking opportunity attacks. She must end on a surface that can support
+        her. This is movement, not teleportation, and cannot cross a solid barrier.
+reaction:
+  - name: Yielding (1/Long Rest)
+    entries:
+      - >-
+        When the hag would take an instance of physical or magical damage, she can prevent that
+        instance of damage to herself. Her hit points then become 1. This does not protect an ally,
+        restore spell uses, or end conditions.

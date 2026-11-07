@@ -1,0 +1,98 @@
+name: Children of the Crone, Red-Scissor
+source: BF
+size:
+  - M
+type:
+  type: fey
+  tags:
+    - hag
+alignment:
+  - N
+  - E
+ac:
+  - ac: 18
+    from:
+      - natural armor
+hp:
+  average: 255
+  formula: 30d8 + 120
+speed:
+  walk: 40
+str: 22
+dex: 16
+con: 18
+int: 16
+wis: 20
+cha: 20
+save:
+  str: "+11"
+  con: "+9"
+  wis: "+10"
+  cha: "+10"
+skill:
+  athletics: "+11"
+  perception: "+10"
+conditionImmune:
+  - charmed
+senses:
+  - darkvision 120 ft.
+passive: 20
+languages:
+  - Common
+  - Infernal
+  - Sylvan
+cr: "15"
+trait:
+  - name: Magic Resistance
+    entries:
+      - The hag has advantage on saving throws against spells and other magical effects.
+  - name: Innate Spellcasting
+    entries:
+      - >-
+        The hag's spellcasting ability is Charisma (spell save {@dc 18}). She requires no material
+        components for these spells, but uses their normal verbal and somatic components.
+      - "At will: {@spell detect magic}, {@spell disguise self}"
+      - "1/day each: {@spell dispel magic}, {@spell fear}, {@spell misty step}"
+action:
+  - name: Multiattack
+    entries:
+      - >-
+        The hag makes three attacks, choosing from Great Shears and Severing Glance. She can replace
+        one Great Shears attack with Take Hold.
+  - name: Great Shears
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +11} to hit, reach 10 ft., one target. Hit: 32 ({@damage 4d12 +
+        6}) slashing damage. The shears are magical.
+  - name: Severing Glance
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +10} to hit, range 90 ft., one target. Hit: 32 ({@damage 6d8 +
+        5}) necrotic damage. This magical attack is not a spell.
+  - name: Take Hold
+    entries:
+      - >-
+        One Large or smaller creature within 10 feet must succeed on a {@dc 19} Strength saving
+        throw or be {@condition grappled} (escape {@dc 19}) by the hag's free hand. She can grapple
+        only one creature at a time and cannot use Great Shears while doing so, but can use Severing
+        Glance. This action deals no damage and does not restrain the target.
+bonus:
+  - name: Coven Step
+    entries:
+      - >-
+        While another conscious allied hag is within 30 feet of her, the hag magically moves up to
+        10 feet without provoking opportunity attacks. She must end on a surface that can support
+        her. This is movement, not teleportation, and cannot cross a solid barrier.
+reaction:
+  - name: Pursue the Loose Thread
+    entries:
+      - >-
+        When a creature the hag can see within 30 feet becomes restrained by another member of her
+        triad, she can move up to half her speed toward it without provoking opportunity attacks.
+        This grants no attack and cannot move her through a solid barrier.
+  - name: Yielding (1/Long Rest)
+    entries:
+      - >-
+        When the hag would take an instance of physical or magical damage, she can prevent that
+        instance of damage to herself. Her hit points then become 1. This does not protect an ally,
+        restore spell uses, or end conditions.

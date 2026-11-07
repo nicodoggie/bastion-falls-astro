@@ -1,0 +1,148 @@
+---
+title: Thrantorbury Time-Loop Casters
+description: Draft CR 10 stat blocks for the Abjurer and Conjurer at the University of Thrantorbury.
+draft: true
+tags:
+  - misc
+creatureStats:
+  abjurer: misc/thrantorbury-abjurer.creature
+  conjurer: misc/thrantorbury-conjurer.creature
+---
+
+import StatBlock from '../../../../components/StatBlock.astro';
+
+These are provisional encounter statistics for the unnamed **Abjurer** and **Conjurer** at the
+[University of Thrantorbury](../organizations/university-of-thrantorbury.mdx). Their names,
+ancestries, genders, ages, and individual histories remain unset. Medium humanoids, language
+choices, abilities, and all combat features below are design assumptions, not additional canon.
+The alignment field remains unrestricted rather than assigning a moral identity.
+
+The established context is that both belonged to the radicalized part of an underground research
+community. They discovered a power source in the Kalassarian ruins beneath the Library and used
+it for experiments directed by Reformists toward taking over Senera's religious institutions.
+Their religious beliefs and grievances are genuine; those facts do not settle their individual
+motives, relationship, or willingness to negotiate.
+
+## Encounter scope
+
+The requested target is **CR 10 each**, with **four allied participants inside the time loop** and
+**three outside** seeking to reinforce once it comes down. The outside group is not counted as
+present from the start. Their arrival timing is unresolved, not an automatic extra wave on a
+particular round. Party levels, current resources, and the exact encounter sequence are unknown,
+so these are CR estimates, not playtested encounter ratings.
+
+Both blocks use short daily-use spell lists and original combat abilities rather than full
+player-character spell-slot progression. Spell references use the 2014 rules, particularly for
+Counterspell. Neither caster has legendary actions, legendary resistance, or automatic regeneration.
+
+## The Abjurer
+
+<StatBlock creature={frontmatter.creatureStats.abjurer} />
+
+**Role:** hold a defensible position, keep the Conjurer working, and spend limited protection
+carefully. The Arcane Ward is one shared pool: protecting an ally consumes the same protection
+that would otherwise absorb damage to the Abjurer. Dim its visible sigils as it runs out.
+
+Projected Ward and Counterspell compete for the same reaction. Baiting one opens a window for
+other attacks or spells. Projected Ward does not protect concentration automatically: any damage
+that gets through still requires the recipient's normal saving throw. Counterspell should be
+used for a concrete priority, not to repeatedly deny one player's every attempt to participate.
+
+Raise Partition costs the whole attack action. The panel blocks the Abjurer's side too; it is
+not a transparent firing loophole. Describe its edges and give its AC and damage feedback when
+attacked. Going around, climbing, teleporting, breaking it, or waiting out its short duration are
+all real answers. There is no invisible second wall closing every alternative route.
+
+## The Conjurer
+
+<StatBlock creature={frontmatter.creatureStats.conjurer} />
+
+**Role:** create one tangible obstruction, move around it, and maintain pressure while protecting
+concentration. The sentinel is the Conjurer's principal combat summon, not another CR 10 enemy.
+All of its statistics and turn rules are in the block; it requires no additional creature sheet.
+
+The sentinel adds one short turn after the Conjurer, not a swarm of independent initiatives. Its
+arrival and tether are visible. Attacking it, dispelling it, breaking concentration, moving it
+beyond the tether's range, or incapacitating its caster can all remove it. It cannot make
+opportunity attacks, pin someone without a check, summon reinforcements, or act after vanishing.
+
+If combat begins with no sentinel present, summoning costs the Conjurer's first action. A sentinel
+already present must have been cast within its actual one-minute duration; it does not receive a
+free attack before initiative. Track one shared concentration slot across the sentinel, Web, and
+Fog Cloud. Casting either of the latter spells ends an existing sentinel rather than layering
+another control effect over it.
+
+Spatial Deflection is one reaction, not an answer to every hit. Apply the remaining damage and
+resolve concentration before moving. Misty Step and Dimension Door obey the established loop
+boundaries and other teleportation restrictions; neither grants a new way out of the loop.
+
+## Running them together
+
+Start with the pair and at most the Conjurer's single sentinel. Do not add unbudgeted aberrations
+or research assistants merely because a summoning specialist is present. Existing creatures from
+prior scenes require their own accounting if they remain in this encounter.
+
+The Abjurer can protect the Conjurer's concentration, but only within 30 feet and at the cost of
+its own finite ward. The Conjurer can reposition without automatically moving its partner. Forced
+movement, separation, breaking sight lines, and drawing out reactions therefore matter. Neither
+caster supplies the other with permanent invulnerability or immunity to a character's abilities.
+
+Arcane Bolt, Rift Bolt, Raise Partition, and Spatial Deflection are magical abilities, not spells.
+Conjure Sentinel and the named spells are spellcasting and can be interrupted when Counterspell's
+normal requirements are met. Dispel Magic has the explicitly stated interaction with the panel;
+it is not a general off switch for all of either caster's features.
+
+## Reasoning with them
+
+Their objections to Orthodox restrictions do not have to be fraudulent for their current actions
+to be harmful. Characters can take their work and convictions seriously while challenging the
+Reformists' use of it. Stopping immediate harm, agreeing to a pause, and abandoning a religious
+or political commitment are different outcomes; one conversation need not accomplish all three.
+
+Do not assign a single automatic persuasion DC that converts both researchers. Their individual
+stakes and relationship remain for development. They may disagree, accept different terms, or
+choose differently without one being secretly insincere. Neither block grants immunity to
+ordinary conversation or forces a fight to the death.
+
+## The loop and the ruins
+
+These blocks do not define the power source, how the loop is sustained, the reset's timing, what
+resets restore, or which act ends it. Defeating either caster does not automatically settle those
+questions. Do not add a personal reset, free revival, or immunity to death to either sheet merely
+because the encounter takes place in a loop.
+
+Likewise, the arrival of the outside group does not by itself heal anyone, restore daily uses, or
+start a new combat phase. Apply any actual reset rules separately when those rules are established.
+No unrestricted power-source recharge or special weakness has been assumed.
+
+## Provisional balance notes
+
+Both casters have **150 HP** from **20d8 + 60**, a **+9 spell attack**, and **DC 17** spell saves.
+The Abjurer has **AC 17** and a **60-point ward**. Its three bolts deal **54 damage** if all hit.
+The Conjurer has **AC 16**, two bolts for **36 damage**, and one sentinel strike for **23 damage**:
+**59 damage** per round if everything hits and the summon remains active. These are raw averages,
+not expected damage against a particular AC.
+
+A rough three-round durability budget gives the Abjurer **210 effective HP** if its ward is used
+on itself. The Conjurer's upper planning budget is also **210**: 150 personal HP, 30 damage
+prevented by three successful uses of Spatial Deflection, and 30 sentinel HP if opponents spend
+damage destroying the summon. That is not 210 personal HP. Attacking the caster directly or
+breaking concentration can bypass the sentinel's durability; save-based damage bypasses Spatial
+Deflection. The Abjurer cannot spend its ward on itself and count those same points again as
+additional protection for its ally.
+
+Using 2014-style monster benchmarks, the Abjurer's defense is roughly CR 10 and its offense
+roughly CR 9 after attack-bonus adjustment, giving a rounded CR 10 estimate. The Conjurer's
+upper-budget defense and established-summon offense are roughly CR 10. A cold start lowers its
+first three rounds to **47 raw damage per round**; losing concentration lowers output further.
+These estimates do not fully price cover, mobility, spell interruption, or the synergy of the pair.
+
+The pair's base XP is **11,800**. Under the 2014 two-enemy multiplier, the nominal adjusted value
+is **17,700** before terrain or other participants. The sentinel's contribution is already inside
+the Conjurer's estimate, not a separate XP award or another monster multiplier. No safe difficulty
+verdict follows without the four insiders' levels and resources. Reinforcements, an already
+weakened research team, or other active enemies can substantially change the result.
+
+Track rounds to defeat, ward consumption, sentinel uptime, and how many actions the party spends
+on obstacles. Choose any changes before play; do not secretly refill wards or inflate HP because
+the group finds an effective tactic. Spell lists, defenses, and CR remain open to revision.

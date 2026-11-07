@@ -1,0 +1,103 @@
+name: The Conjurer
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - any race
+alignment:
+  - A
+ac:
+  - ac: 16
+    from:
+      - conjured armor
+hp:
+  average: 150
+  formula: 20d8 + 60
+speed:
+  walk: 30
+str: 8
+dex: 16
+con: 16
+int: 20
+wis: 14
+cha: 12
+save:
+  con: "+7"
+  int: "+9"
+skill:
+  arcana: "+9"
+  history: "+9"
+  insight: "+6"
+passive: 12
+languages:
+  - Common
+  - Seneran
+  - one other language of the GM's choice
+cr: "10"
+trait:
+  - name: Spellcasting
+    entries:
+      - >-
+        The conjurer casts the following spells, using Intelligence as its spellcasting ability
+        (spell save {@dc 17}, {@hit +9} to hit with spell attacks). Each spell uses its normal
+        casting time, components, and concentration requirements. These spells use their lowest
+        level and the 2014 rules; daily uses replace spell slots. The conjurer cannot concentrate on
+        one of these spells while maintaining Conjure Sentinel.
+      - "At will: {@spell detect magic|phb}, {@spell mage hand|phb}, {@spell minor illusion|phb}"
+      - "3/day: {@spell dimension door|phb}"
+      - "1/day each: {@spell fog cloud|phb}, {@spell web|phb}"
+action:
+  - name: Multiattack
+    entries:
+      - The conjurer makes two Rift Bolt attacks.
+  - name: Rift Bolt
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +9} to hit, range 90 ft., one target. Hit: 18 ({@damage 4d8})
+        force damage. This is a magical attack, not the casting of a spell.
+  - name: Conjure Sentinel (1/Day)
+    entries:
+      - >-
+        The conjurer casts a 4th-level conjuration spell with verbal and somatic components,
+        creating one Medium construct of visible force in an unoccupied space it can see within 30
+        feet. The spell lasts for up to 1 minute and requires concentration as normal. It can be
+        interrupted by {@spell counterspell|phb} and ended by {@spell dispel magic|phb}, treating it
+        as a 4th-level spell. This action replaces the conjurer's attack routine for the turn.
+      - >-
+        The sentinel has AC 15, 30 hit points, a walking speed of 30 feet, and immunity to poison
+        and psychic damage. Its ability scores are Strength 18, Dexterity 10, Constitution 14,
+        Intelligence 3, Wisdom 10, and Charisma 3. It has no saving throw or skill proficiencies. It
+        occupies its space normally, cannot pass through creatures or objects, and cannot make
+        opportunity attacks or take other reactions or bonus actions.
+      - >-
+        The sentinel takes its turn immediately after the conjurer, including on the turn it is
+        summoned, and obeys the conjurer's verbal commands, which require no action. It can move and
+        take the Dash, Disengage, Dodge, or Strike action. Strike is a Melee Spell Attack: {@hit +9}
+        to hit, reach 5 ft., one target. Hit: 23 ({@damage 4d8 + 5}) force damage. If it receives no
+        command, it takes the Dodge action and does not move.
+      - >-
+        The sentinel vanishes when reduced to 0 hit points, when it is more than 60 feet from the
+        conjurer, or when the spell ends. The conjurer can dismiss it at any time without an action.
+        Breaking concentration ends it immediately; it has no independent spellcasting, summoning,
+        or healing abilities. The conjurer cannot create another sentinel before finishing a long
+        rest.
+bonus:
+  - name: Misty Step (3/Day)
+    entries:
+      - >-
+        The conjurer casts {@spell misty step|phb}, teleporting up to 30 feet to an unoccupied space
+        it can see. The spell requires its normal verbal component. This does not end concentration
+        on Conjure Sentinel, but moving more than 60 feet from the sentinel ends that spell as
+        described above.
+reaction:
+  - name: Spatial Deflection
+    entries:
+      - >-
+        When an attack hits the conjurer and the conjurer can see the attacker, it reduces the
+        attack's damage by 10, to a minimum of 0. Resolve the remaining damage and any required
+        concentration saving throw first. The conjurer can then teleport up to 15 feet to an
+        unoccupied space it can see. The teleportation does not negate the triggering hit or its
+        other effects, does not reverse a failed concentration save, and cannot move the conjurer if
+        it is {@condition incapacitated} after the hit. Moving beyond the sentinel's range ends
+        Conjure Sentinel normally.

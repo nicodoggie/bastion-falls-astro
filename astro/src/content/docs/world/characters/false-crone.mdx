@@ -21,7 +21,12 @@ character:
           length: none
 tags:
   - characters
+creatureStats:
+  elvenVessel: characters/false-crone-elven-vessel.creature
+  madelineVessel: characters/false-crone-madeline-vessel.creature
 ---
+
+import StatBlock from '../../../../components/StatBlock.astro';
 
 <Stub />
 
@@ -34,3 +39,46 @@ defeated and almost died in the process.
 She used the confusion of the [Draco-Giant War](../events/draco-giant-war.mdx) to escape the
 Feywild, and brought her followers to [Thera](../locations/thera.mdx), hidden among the refugees
 from the war.
+
+## Borrowed Bodies
+
+The Crone currently inhabits an elven body. She can survive the defeat of a vessel by emerging
+as a spirit and attempting to escape. Defeating or killing the body does not permanently kill
+or capture her: keeping her requires magic that binds her spirit or a hag's Soul Bag.
+
+[Madeline](madeline.mdx) is a prospective vessel, not an established completed possession.
+An encounter in her body would be weaker than one in the Crone's current elven vessel. Those
+two situations are alternatives, not a predetermined transfer during combat. Neither the
+Crone's alignment nor her possessing abilities establish Madeline's allegiance or change her
+underlying identity.
+
+## Encounter Statistics
+
+These are provisional homebrew statistics. The **elven vessel is CR 20**; the **Madeline vessel
+is CR 15** and is used only if that possession occurs. Personal histories, the means of the
+transfer, and other proposed parts of the Ascension project are not settled by these blocks.
+Neither form automatically has the Sapphire Brooch of Winter or coven reinforcements.
+
+### Current Elven Vessel
+
+<StatBlock creature={frontmatter.creatureStats.elvenVessel} />
+
+### Prospective Madeline Vessel
+
+<StatBlock creature={frontmatter.creatureStats.madelineVessel} />
+
+### Defeat, Rescue, and Capture
+
+The blocks distinguish an occupied vessel's defeat from the Crone's escape. They give a visible
+spirit, a normal initiative window, and an explicit Soul Bag capture attempt. The bag check,
+spirit statistics, and host death-saving-throw procedure are encounter-design choices, not a
+claim that these exact mechanics were already demonstrated in play.
+
+Bindings retain their own spell requirements. The spirit gains neither an immediate free turn
+nor another attacking phase, and ordinary damage cannot secure lasting captivity. Madeline can
+be stabilized or healed after the Crone is expelled; defeating the possessor does not make her
+an automatic monster casualty. Effects of excess damage and deliberate nonlethal melee attacks
+still apply normally.
+
+See [Three Hag Triads](../misc/children-of-the-crone-triads.mdx) for her followers, disruption
+tactics, advance clues, and the separate objectives of saving a host and capturing a spirit.

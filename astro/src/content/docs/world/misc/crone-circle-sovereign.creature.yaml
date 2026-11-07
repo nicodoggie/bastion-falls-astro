@@ -1,0 +1,99 @@
+name: Children of the Crone, Circle-Sovereign
+source: BF
+size:
+  - M
+type:
+  type: fey
+  tags:
+    - hag
+alignment:
+  - N
+  - E
+ac:
+  - ac: 18
+    from:
+      - natural armor
+hp:
+  average: 255
+  formula: 30d8 + 120
+speed:
+  walk: 30
+str: 16
+dex: 16
+con: 18
+int: 20
+wis: 20
+cha: 20
+save:
+  con: "+9"
+  int: "+10"
+  wis: "+10"
+  cha: "+10"
+skill:
+  arcana: "+10"
+  perception: "+10"
+conditionImmune:
+  - charmed
+senses:
+  - truesight 60 ft.
+  - darkvision 120 ft.
+passive: 20
+languages:
+  - Common
+  - Infernal
+  - Sylvan
+cr: "15"
+trait:
+  - name: Magic Resistance
+    entries:
+      - The hag has advantage on saving throws against spells and other magical effects.
+  - name: Innate Spellcasting
+    entries:
+      - >-
+        The hag's spellcasting ability is Charisma (spell save {@dc 18}). She requires no material
+        components for these spells, but uses their normal verbal and somatic components.
+      - "At will: {@spell detect magic}, {@spell disguise self}, {@spell minor illusion}"
+      - "1/day each: {@spell counterspell}, {@spell dispel magic}, {@spell dimension door}"
+action:
+  - name: Multiattack
+    entries:
+      - The hag makes three Boundary Thorn attacks.
+  - name: Boundary Thorn
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +10} to hit, range 120 ft., one target. Hit: 32 ({@damage 6d8 +
+        5}) force damage. This magical attack is not a spell.
+  - name: Closed Circle (Recharge 5-6)
+    entries:
+      - >-
+        The hag traces a visible 15-foot-radius circle on a supporting surface within 60 feet. Each
+        creature of her choice in the circle must succeed on a {@dc 18} Strength saving throw or be
+        {@condition restrained}. The circle lasts for up to 1 minute while the hag concentrates as
+        if on a spell. A restrained creature repeats the save at the end of each of its turns,
+        ending the effect on itself on a success. It can instead use an action to make the save.
+        Entering the circle later does not subject a creature to this effect.
+      - >-
+        The circle counts as a 5th-level spell for {@spell dispel magic}. If both other members of
+        her triad are conscious and within 30 feet of her when she creates it, the radius can be 20
+        feet. The circle does not block movement by unaffected creatures, line of sight, ranged
+        attacks, or teleportation. This ability is not a spell.
+  - name: Sweep the Boundary (1/Day)
+    entries:
+      - >-
+        Each creature in a 30-foot cone must make a {@dc 18} Dexterity saving throw, taking 49
+        ({@damage 14d6}) force damage on a failed save, or half as much on a success. A creature
+        that fails is pushed 15 feet away from the hag. This ability is not a spell.
+bonus:
+  - name: Coven Step
+    entries:
+      - >-
+        While another conscious allied hag is within 30 feet of her, the hag magically moves up to
+        10 feet without provoking opportunity attacks. She must end on a surface that can support
+        her. This is movement, not teleportation, and cannot cross a solid barrier.
+reaction:
+  - name: Yielding (1/Long Rest)
+    entries:
+      - >-
+        When the hag would take an instance of physical or magical damage, she can prevent that
+        instance of damage to herself. Her hit points then become 1. This does not protect an ally,
+        restore spell uses, or end conditions.

@@ -1,0 +1,148 @@
+name: False Crone, Elven Vessel
+source: BF
+size:
+  - M
+type:
+  type: fey
+  tags:
+    - hag
+alignment:
+  - N
+  - E
+ac:
+  - ac: 19
+    from:
+      - woven spirit ward
+hp:
+  average: 285
+  formula: 30d8 + 150
+speed:
+  walk: 30
+str: 16
+dex: 18
+con: 20
+int: 22
+wis: 20
+cha: 22
+save:
+  con: "+11"
+  int: "+12"
+  wis: "+11"
+  cha: "+12"
+skill:
+  arcana: "+12"
+  deception: "+12"
+  insight: "+11"
+  perception: "+11"
+conditionImmune:
+  - charmed
+  - frightened
+senses:
+  - truesight 60 ft.
+  - darkvision 120 ft.
+passive: 21
+languages:
+  - Common
+  - Infernal
+  - Sylvan
+  - telepathy 120 ft.
+cr: "20"
+trait:
+  - name: Occupied Vessel
+    entries:
+      - >-
+        This block represents the Crone in the elven body she currently inhabits. It is not her
+        original body, an Elder Brain, or the Baba Yaga. Her prospective Madeline vessel uses a
+        separate CR 15 block; changing bodies is not a combat action or an automatic second phase.
+  - name: Magic Resistance
+    entries:
+      - The Crone has advantage on saving throws against spells and other magical effects.
+  - name: Legendary Resistance (2/Day)
+    entries:
+      - If the Crone fails a saving throw while embodied, she can choose to succeed instead.
+  - name: Innate Spellcasting
+    entries:
+      - >-
+        The Crone's spellcasting ability is Charisma (spell save {@dc 20}, {@hit +12} to hit with
+        spell attacks). She requires no material components for these spells, but uses their normal
+        verbal and somatic components. These daily uses belong to the Crone, not the body.
+      - "At will: {@spell detect magic}, {@spell disguise self}, {@spell minor illusion}"
+      - "3/day: {@spell misty step}"
+      - >-
+        1/day each: {@spell counterspell}, {@spell dispel magic}, {@spell dominate person}, {@spell
+        dimension door}
+  - name: Unhoused Spirit
+    entries:
+      - >-
+        When the vessel reaches 0 hit points, the Crone emerges as a visible spirit in the nearest
+        unoccupied space. The vessel falls unconscious at 0 hit points and uses normal death saving
+        throws, healing, nonlethal melee damage, and instant-death rules. This transition grants no
+        immediate movement or action. A spell or effect that specifically binds her spirit persists;
+        an effect confined to the abandoned body does not transfer.
+      - >-
+        Her escaping spirit is a Medium fey with AC 17, 60 hit points, a flying speed of 60 feet
+        (hover), and the ability to pass through creatures and objects as difficult terrain. It
+        cannot end a turn inside an object. Use Intelligence 22, Wisdom 20, Charisma 22, saving
+        throws Int +12, Wis +11, Cha +12, and Magic Resistance; other ability scores are 10. It is
+        immune to being grappled or knocked prone. It retains her initiative but has no attacks,
+        spellcasting, possession action, legendary actions, Legendary Resistance, or Yielding. It
+        can Dash, Disengage, Dodge, or otherwise move to escape. It gains no free teleportation or
+        replacement vessel.
+      - >-
+        Reducing the spirit to 0 hit points disperses it beyond this encounter, not into permanent
+        death or captivity. Only magic that expressly binds or imprisons her spirit, or capture in a
+        hag's Soul Bag, can keep her. Ordinary damage, a grapple, killing the vessel, or simply
+        holding its corpse cannot do so. Other barriers and conditions can delay escape according to
+        their rules, but do not become permanent soul bindings.
+      - >-
+        A creature holding an empty hag's Soul Bag within 10 feet when the spirit emerges can use
+        its reaction to attempt a {@dc 20} Intelligence (Arcana) check. On a success, the spirit is
+        captured inside the bag. A holder within 5 feet of the spirit can also attempt this check as
+        an action on a later turn. A failure leaves it free. Capture lasts until the bag is opened
+        or destroyed. This is a specific Soul Bag interaction for the Crone, not a new ability of
+        ordinary sacks. Binding spells retain their own targeting, casting time, saves, duration,
+        and release conditions.
+action:
+  - name: Multiattack
+    entries:
+      - The Crone makes three Unravelling Touch attacks.
+  - name: Unravelling Touch
+    entries:
+      - >-
+        Melee or Ranged Spell Attack: {@hit +12} to hit, reach 10 ft. or range 120 ft., one target.
+        Hit: 24 ({@damage 4d8 + 6}) necrotic damage. This magical attack is not a spell.
+  - name: Cast Off Their Names (Recharge 5-6)
+    entries:
+      - >-
+        Up to two creatures the Crone can see within 60 feet must each make a {@dc 20} Wisdom saving
+        throw, taking 36 ({@damage 8d8}) psychic damage on a failed save, or half as much on a
+        success. A creature that fails is also {@condition frightened} of her until the end of its
+        next turn. This does not remove its identity or memories and is not a spell.
+reaction:
+  - name: Yielding (1/Long Rest)
+    entries:
+      - >-
+        When the embodied Crone would take an instance of physical or magical damage, she can
+        prevent that instance of damage to herself. Her hit points then become 1. This does not
+        protect another creature, reset resources, or operate after she has left the vessel.
+legendaryActions: 3
+legendaryHeader:
+  - >-
+    The Crone can take 3 legendary actions, choosing from the options below, only one at a time and
+    only at the end of another creature's turn. She regains them at the start of her turn. She
+    cannot take legendary actions while incapacitated or in her escaping spirit state.
+legendary:
+  - name: Needle of Dread
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +12} to hit, range 90 ft., one target. Hit: 16 ({@damage 3d6 +
+        6}) psychic damage. This magical attack is not a spell.
+  - name: Gather the Hem
+    entries:
+      - The Crone moves up to half her speed without provoking opportunity attacks.
+  - name: Call a Debt (Costs 2 Actions)
+    entries:
+      - >-
+        One creature she can see within 60 feet must succeed on a {@dc 20} Charisma saving throw or
+        be pulled up to 20 feet toward her. This magical ability deals no damage, cannot pull
+        through a solid barrier, and does not prove that the target owes an actual bargain.
