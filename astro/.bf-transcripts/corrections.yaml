@@ -9464,3 +9464,267 @@ profiles:
             note: The council states that Mark will be Duke after Ellington and Antoinette abdicate, followed by jokes contrasting Duke Mark with Duke Luke.
           - path: astro/astro/src/content/docs/world/notes/the-vengeful/2026-08-16.mdx
             note: User confirmed Ellington's name, abdication, and Mark's succession over Luke on 2026-08-20.
+
+      - id: character.eskabeth-kilsward
+        status: confirmed
+        kind: entity
+        canonical: Eskabeth Kilsward
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/ev-notes.mdx
+            role: earlier-name-record
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
+            role: confirmed-contact-and-arrival
+        aliases:
+          - Escobet
+          - Scebeth
+          - Escobeth
+          - Skabeth
+        match:
+          priority: normal
+          tags:
+            - eskabeth-kilsward
+            - minfilia-hag-contact
+            - kilsward-forest
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Kilsward hag and Minfilia's allied-hag contacts
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          In Kilsward and Minfilia's allied-hag contact scenes, Escobet, Scebeth,
+          Escobeth, and Skabeth refer to Eskabeth Kilsward. Her identity as the
+          contacted hag who later arrives is confirmed; do not reopen the name.
+        instruction: >-
+          Normalize only context-matched references to Eskabeth Kilsward. Her
+          identification does not settle the identities of Agatha or other hags,
+          or independently verify every claim made during the gathering.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/ev-notes.mdx
+            note: Earlier notes name Eskabeth Kilsward and an Auntie's Skabeth.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
+            note: Campaign review on 2026-11-04 confirms the proposed match for Minfilia's contact and the arriving hag.
+
+      - id: character.sarwen
+        status: confirmed
+        kind: entity
+        canonical: Sarwen
+        aliases:
+          - Sarwin
+        match:
+          priority: normal
+          tags:
+            - sarwen
+            - resurrected-royal-guard-healers
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Thrantorbury Royal Guard healers and the missing-eye cleric
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          The female Royal Guard cleric resurrected at Thrantorbury is Sarwen,
+          not Sarwin. She is distinct from Serge, the field-promoted colonel.
+        instruction: >-
+          Use Sarwen for this healer. Preserve Sarwin only as a transcription
+          alias; do not invent the names of the other two resurrected healers.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
+            note: Campaign review on 2026-11-04 corrects the initially accepted Sarwin spelling to Sarwen.
+
+      - id: character.serge
+        status: confirmed
+        kind: entity
+        canonical: Serge
+        aliases:
+          - Sergeant Serge
+          - Colonel Serge
+        match:
+          priority: normal
+          tags:
+            - serge-royal-guard
+            - thrantorbury-field-promotion
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Thrantorbury Royal Guard command and Crown Prince's field promotion
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          Serge is the Royal Guard sergeant field-promoted to Colonel Serge by
+          the Crown Prince. Matisse is a separate captive Reformist conjurer.
+        instruction: >-
+          The previously unnamed sergeant was named Serge in campaign review.
+          Do not assign the later colonel-name recollection of Matis to Serge;
+          Matis resolves to Matisse, the conjurer. Sarwen is a separate healer.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
+            note: Follow-up campaign review on 2026-11-04 supersedes the Matis identification and names the previously unnamed sergeant Serge.
+
+      - id: character.matisse-reformist-conjurer
+        status: confirmed
+        kind: entity
+        canonical: Matisse
+        aliases:
+          - Matis
+        match:
+          priority: normal
+          tags:
+            - reformist-conjurer
+            - thrantorbury-captive
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Captive Reformist conjurer questioned about the Children of the Crone
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          Matis is Matisse, the captive Reformist conjurer. He is not Colonel
+          Serge, the previously unnamed Royal Guard sergeant.
+        instruction: >-
+          Use Matisse for the conjurer. The later colonel-name recall does not
+          establish that he commands the Royal Guard; campaign review separates
+          him from Serge. Do not infer whether the mix-up originated in ASR or
+          at the table.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
+            note: Follow-up campaign review on 2026-11-04 confirms Matisse and separately names the sergeant Serge.
+
+      - id: place.senera-matisse-veil-report
+        status: confirmed
+        kind: entity
+        canonical: Senera
+        aliases:
+          - Syndra
+          - Zendro
+        match:
+          priority: normal
+          tags:
+            - matisse-interrogation
+            - elves-leaving-senera
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Matisse's report about taking the queen and other elves out through the Veil
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          In Matisse's queen-and-Veil report, Syndra or Zendro means Senera.
+          Do not apply this substitution globally or invent a new region from
+          that report.
+        instruction: >-
+          The campaign maintainer confirms Senera in this exchange. A separate
+          conversational idea about using Zendro for a region east of Bastion
+          does not place that region in this recorded scene.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
+            note: Campaign review on 2026-11-04 explicitly confirms Senera.
+
+      - id: place.port-torters
+        status: confirmed
+        kind: entity
+        canonical: Port Torters
+        aliases:
+          - Fort Tortoise
+          - Port Tortoise
+        match:
+          priority: normal
+          tags:
+            - brams-headwaters
+            - matisse-dock-report
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Port or dock discussion during Matisse's interrogation
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          The dock or port rendered Fort Tortoise is Port Torters, near the
+          headwaters of the Brams River. Keep Port Torters distinct from the
+          nearby discussion of Mount Torters; do not invent Fort Tortoise.
+        instruction: >-
+          Use Port Torters for the port reference. Its position near the Brams
+          headwaters is maintainer-confirmed geography, not proof of a party
+          visit, a completed evacuation, or a precisely established route.
+        evidence:
+          - path: astro/src/content/docs/world/locations/brams-river.mdx
+            note: Campaign review on 2026-11-04 identifies Port Torters and its headwaters proximity.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
+
+      - id: identity.torters-hag-not-agatha-thralvig
+        status: confirmed
+        kind: disambiguation
+        canonical: null
+        aliases:
+          - Agatha
+          - Sister Agatha
+        match:
+          priority: normal
+          tags:
+            - torters-hag
+            - crown-hag-bargain
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Hag associated with Torters and the hags' sister consulted about Crown bargains
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          The Torters hag referred to as Agatha is not Sister Agatha Thralvig.
+          Her exact name remains unverified; the confirmed distinction does
+          not confirm the Agatha spelling or identity.
+        instruction: >-
+          Keep the hag separate from the Tidemark temple representative.
+          The maintainer confirmed their distinction conditionally while
+          requesting a check of the personal Narrows notes for her name.
+          Do not use church-related Agatha references as proof of a hag identity.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
+            note: Campaign review on 2026-11-04 confirms nonidentity but leaves the hag's name conditional.
+
+      - id: organization.torters-coven
+        status: confirmed
+        kind: entity
+        canonical: Torters coven
+        aliases:
+          - torture coven
+        match:
+          priority: normal
+          tags:
+            - tiphanie-hag-deal
+            - torters-hags
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Tiphanie's powerful deal with the Torters hags and their willingness to help
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          In Tiphanie's hag-deal callback, torture coven is ASR drift for
+          Torters coven. Do not invent a torture-themed faction or infer
+          additional bargain terms or a personal name for its members.
+        instruction: >-
+          The campaign maintainer explicitly identifies Torters coven in the
+          November 1 callback at 04:14:46–04:15:17. Apply this contextual
+          proper-name recovery without replacing unrelated uses of torture.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
+            note: Campaign review on 2026-11-07 confirms Torters coven, not torture coven.
