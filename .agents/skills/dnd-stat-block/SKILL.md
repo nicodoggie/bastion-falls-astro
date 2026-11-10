@@ -142,6 +142,15 @@ reference.
 
 ### 5. Validate and wire
 
+1. **Directly parse every new or changed YAML block with `CreatureDataSchema`.**
+   Inspect the live `creatures` collection: it can use a permissive record schema,
+   so content sync and string references alone do not prove creature-data validity.
+   Import the real workspace schema and the installed YAML parser from the Astro
+   workspace; do not substitute a handwritten schema or weaken production types.
+   For multi-creature requests, enumerate the expected files, verify their count,
+   and check each CR, HP dice mean (ceiling), Constitution contribution, displayed
+   damage dice, and rendered reference. Use a disposable arithmetic probe, not a
+   permanent test suite freezing creative stat values.
 1. **`pnpm astro sync`** from **`astro/`** — fixes types and validates docs
    frontmatter against **`docsExtension`** (includes **`creatureStats`**).
 1. If the creature is only referenced from MDX as a **string id**, the
@@ -165,6 +174,21 @@ reference.
 - Encounter prose (**tactics**, **composition**) lives in **MDX**, not in the
   creature data, unless you are storing pure narrative in a trait (usually
   avoid).
+- Distinguish individual CR from whole-group difficulty before building covens.
+  Budget finite wards once across recipients and include legendary damage in the
+  same creature's round output; control that replaces attacks is not free damage.
+  Describe ratings as estimates, not playtesting or party-specific safety claims.
+- Keep alternative possessed-body blocks separate from automatic consecutive
+  phases. State the host's fate, spirit initiative, escape actions, and actual
+  capture procedure; defeating a vessel need not kill its host or capture its
+  occupant. Label invented bag checks and spirit profiles as encounter mechanics,
+  and retain real binding spells' targets, casting times, saves, and durations.
+- Verify built HTML contains every requested StatBlock, not just a successful
+  build receipt. A `draft: true` encounter guide can disappear from production
+  while a public character page still links to it; decide publication intent
+  explicitly and keep provisional-design labeling separate from route visibility.
+  When browser automation was not requested in T3, inspect generated HTML rather
+  than using preview tools to verify an agent's own edits.
 
 ## Pitfalls (project-specific)
 

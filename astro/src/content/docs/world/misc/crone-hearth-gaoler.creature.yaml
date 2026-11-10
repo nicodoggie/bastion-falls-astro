@@ -1,0 +1,95 @@
+name: Children of the Crone, Hearth-Gaoler
+source: BF
+size:
+  - M
+type:
+  type: fey
+  tags:
+    - hag
+alignment:
+  - N
+  - E
+ac:
+  - ac: 17
+    from:
+      - natural armor
+hp:
+  average: 162
+  formula: 19d8 + 76
+speed:
+  walk: 30
+str: 18
+dex: 14
+con: 18
+int: 16
+wis: 18
+cha: 18
+save:
+  con: "+8"
+  wis: "+8"
+  cha: "+8"
+skill:
+  arcana: "+7"
+  perception: "+8"
+senses:
+  - darkvision 120 ft.
+passive: 18
+languages:
+  - Common
+  - Infernal
+  - Sylvan
+cr: "10"
+trait:
+  - name: Magic Resistance
+    entries:
+      - The hag has advantage on saving throws against spells and other magical effects.
+  - name: Innate Spellcasting
+    entries:
+      - >-
+        The hag's spellcasting ability is Charisma (spell save {@dc 16}). She requires no material
+        components for these spells, but uses their normal verbal and somatic components.
+      - "At will: {@spell detect magic}, {@spell disguise self}"
+      - "1/day each: {@spell counterspell}, {@spell dispel magic}, {@spell hold person}"
+action:
+  - name: Multiattack
+    entries:
+      - The hag makes three Hearth Nail attacks.
+  - name: Hearth Nail
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +8} to hit, range 120 ft., one target. Hit: 22 ({@damage 4d8 +
+        4}) necrotic damage. This magical attack is not a spell.
+  - name: Shut the Hearth (Recharge 5-6)
+    entries:
+      - >-
+        The hag raises a visible wall of iron bars within 60 feet, up to 20 feet long, 10 feet high,
+        and 1 foot thick, on a supporting surface. It lasts for up to 1 minute while she
+        concentrates as if on a spell. It cannot appear in an occupied space. It has AC 17, 30 hit
+        points, and immunity to poison and psychic damage. A creature can see and make ranged
+        attacks through it with half cover. A creature can climb over it or squeeze through gaps if
+        its size permits. It counts as a 3rd-level spell for {@spell dispel magic}.
+      - >-
+        If both other members of her triad are conscious and within 30 feet of her when she uses
+        this action, the wall can be up to 30 feet long. She can have only one such wall at a time.
+        This ability is not a spell and does not prevent teleportation.
+bonus:
+  - name: Coven Step
+    entries:
+      - >-
+        While another conscious allied hag is within 30 feet of her, the hag magically moves up to
+        10 feet without provoking opportunity attacks. She must end on a surface that can support
+        her. This is movement, not teleportation, and cannot cross a solid barrier.
+reaction:
+  - name: Stitched Ward (3/Day)
+    entries:
+      - >-
+        When the hag or a creature she can see within 30 feet takes damage, she reduces that
+        instance of damage to that creature by 12. Her ward can prevent at most 36 damage across all
+        creatures before she finishes a long rest. Using this reaction prevents her from using
+        Counterspell or Yielding until her reaction is available again.
+  - name: Yielding (1/Long Rest)
+    entries:
+      - >-
+        When the hag would take an instance of physical or magical damage, she can prevent that
+        instance of damage to herself. Her hit points then become 1. This does not protect an ally,
+        restore spell uses, or end conditions.

@@ -1,0 +1,141 @@
+name: False Crone, Madeline Vessel
+source: BF
+size:
+  - M
+type:
+  type: fey
+  tags:
+    - hag
+alignment:
+  - N
+  - E
+ac:
+  - ac: 17
+    from:
+      - woven spirit ward
+hp:
+  average: 255
+  formula: 30d8 + 120
+speed:
+  walk: 30
+str: 12
+dex: 14
+con: 18
+int: 20
+wis: 20
+cha: 20
+save:
+  con: "+9"
+  int: "+10"
+  wis: "+10"
+  cha: "+10"
+skill:
+  arcana: "+10"
+  deception: "+10"
+  insight: "+10"
+conditionImmune:
+  - charmed
+  - frightened
+senses:
+  - truesight 30 ft.
+  - darkvision 120 ft.
+passive: 15
+languages:
+  - Common
+  - Infernal
+  - Sylvan
+  - telepathy 60 ft.
+cr: "15"
+trait:
+  - name: Prospective Occupied Vessel
+    entries:
+      - >-
+        Use this block only if the Crone has actually taken Madeline's body. Its existence does not
+        establish that the possession has occurred. The fey type, evil alignment, statistics, and
+        abilities describe the possessing Crone, not Madeline's own nature or allegiance. Reaching 0
+        hit points ejects the Crone; Madeline is not automatically killed. The 255 hit points are
+        this encounter's occupied-vessel pool, not a permanent addition to Madeline's ordinary
+        statistics. Changing bodies is not a combat action or an automatic second phase.
+  - name: Magic Resistance
+    entries:
+      - The Crone has advantage on saving throws against spells and other magical effects.
+  - name: Legendary Resistance (1/Day)
+    entries:
+      - If the Crone fails a saving throw while embodied, she can choose to succeed instead.
+  - name: Innate Spellcasting
+    entries:
+      - >-
+        The Crone's spellcasting ability is Charisma (spell save {@dc 18}, {@hit +10} to hit with
+        spell attacks). She requires no material components for these spells, but uses their normal
+        verbal and somatic components. These daily uses belong to the Crone, not the body.
+      - "At will: {@spell detect magic}, {@spell disguise self}, {@spell minor illusion}"
+      - "1/day each: {@spell bestow curse}, {@spell dispel magic}, {@spell dimension door}"
+  - name: Unhoused Spirit
+    entries:
+      - >-
+        When the vessel reaches 0 hit points, the Crone emerges as a visible spirit in the nearest
+        unoccupied space. Madeline falls unconscious at 0 hit points and uses normal death saving
+        throws, healing, nonlethal melee damage, and instant-death rules. This transition grants no
+        immediate movement or action. A spell or effect that specifically binds the Crone's spirit
+        persists; an effect confined to Madeline's body does not transfer.
+      - >-
+        Her escaping spirit is a Medium fey with AC 17, 60 hit points, a flying speed of 60 feet
+        (hover), and the ability to pass through creatures and objects as difficult terrain. It
+        cannot end a turn inside an object. Use Intelligence 22, Wisdom 20, Charisma 22, saving
+        throws Int +12, Wis +11, Cha +12, and Magic Resistance; other ability scores are 10. It is
+        immune to being grappled or knocked prone. It retains her initiative but has no attacks,
+        spellcasting, possession action, legendary actions, Legendary Resistance, or Yielding. It
+        can Dash, Disengage, Dodge, or otherwise move to escape. It gains no free teleportation or
+        replacement vessel.
+      - >-
+        Reducing the spirit to 0 hit points disperses it beyond this encounter, not into permanent
+        death or captivity. Only magic that expressly binds or imprisons her spirit, or capture in a
+        hag's Soul Bag, can keep her. Ordinary damage, a grapple, killing Madeline, or simply
+        holding her body cannot do so. Other barriers and conditions can delay escape according to
+        their rules, but do not become permanent soul bindings.
+      - >-
+        A creature holding an empty hag's Soul Bag within 10 feet when the spirit emerges can use
+        its reaction to attempt a {@dc 20} Intelligence (Arcana) check. On a success, the spirit is
+        captured inside the bag. A holder within 5 feet of the spirit can also attempt this check as
+        an action on a later turn. A failure leaves it free. Capture lasts until the bag is opened
+        or destroyed. This is a specific Soul Bag interaction for the Crone, not a new ability of
+        ordinary sacks. Binding spells retain their own targeting, casting time, saves, duration,
+        and release conditions.
+action:
+  - name: Multiattack
+    entries:
+      - The Crone makes two Borrowed Hand attacks.
+  - name: Borrowed Hand
+    entries:
+      - >-
+        Melee or Ranged Spell Attack: {@hit +10} to hit, reach 5 ft. or range 90 ft., one target.
+        Hit: 27 ({@damage 4d10 + 5}) necrotic damage. This magical attack is not a spell.
+  - name: Borrowed Command (Recharge 5-6)
+    entries:
+      - >-
+        Up to two creatures within 60 feet that can hear the Crone must each succeed on a {@dc 18}
+        Wisdom saving throw or be {@condition frightened} of her and unable to take reactions until
+        the end of their next turn. This ability deals no damage, does not create a bargain, and is
+        not a spell.
+reaction:
+  - name: Yielding (1/Long Rest)
+    entries:
+      - >-
+        When the embodied Crone would take an instance of physical or magical damage, she can
+        prevent that instance of damage to herself. Her hit points then become 1. This does not
+        protect another creature, reset resources, or operate after she has left the vessel.
+legendaryActions: 2
+legendaryHeader:
+  - >-
+    The Crone can take 2 legendary actions, choosing from the options below, only one at a time and
+    only at the end of another creature's turn. She regains them at the start of her turn. She
+    cannot take legendary actions while incapacitated or in her escaping spirit state.
+legendary:
+  - name: Splinter of Spite
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +10} to hit, range 90 ft., one target. Hit: 15 ({@damage 3d6 +
+        5}) psychic damage. This magical attack is not a spell.
+  - name: Gather the Hem
+    entries:
+      - The Crone moves up to half her speed without provoking opportunity attacks.

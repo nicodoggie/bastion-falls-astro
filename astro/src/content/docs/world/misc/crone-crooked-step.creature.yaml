@@ -1,0 +1,92 @@
+name: Children of the Crone, Crooked-Step
+source: BF
+size:
+  - M
+type:
+  type: fey
+  tags:
+    - hag
+alignment:
+  - N
+  - E
+ac:
+  - ac: 17
+    from:
+      - natural armor
+hp:
+  average: 204
+  formula: 24d8 + 96
+speed:
+  walk: 40
+str: 14
+dex: 18
+con: 18
+int: 18
+wis: 16
+cha: 18
+save:
+  dex: "+8"
+  con: "+8"
+  cha: "+8"
+skill:
+  acrobatics: "+8"
+  stealth: "+8"
+senses:
+  - darkvision 120 ft.
+passive: 13
+languages:
+  - Common
+  - Infernal
+  - Sylvan
+cr: "10"
+trait:
+  - name: Magic Resistance
+    entries:
+      - The hag has advantage on saving throws against spells and other magical effects.
+  - name: Innate Spellcasting
+    entries:
+      - >-
+        The hag's spellcasting ability is Charisma (spell save {@dc 16}). She requires no material
+        components for these spells, but uses their normal verbal and somatic components.
+      - "At will: {@spell detect magic}, {@spell disguise self}, {@spell minor illusion}"
+      - "1/day each: {@spell dimension door}, {@spell dispel magic}, {@spell silence}"
+action:
+  - name: Multiattack
+    entries:
+      - The hag makes three Bent Pin attacks.
+  - name: Bent Pin
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +8} to hit, range 120 ft., one target. Hit: 22 ({@damage 4d8 +
+        4}) force damage. This magical attack is not a spell.
+  - name: Fold the Threshold (Recharge 5-6)
+    entries:
+      - >-
+        The hag and one willing creature within 5 feet of her teleport up to 60 feet to separate
+        unoccupied spaces she can see. Each destination must be on a surface that can support its
+        traveller. If both other members of her triad are conscious and within 30 feet of her, she
+        can bring two willing creatures within 5 feet instead of one. Teleportation wards apply
+        normally. This is a magical ability, not a spell.
+bonus:
+  - name: Sister Exchange
+    entries:
+      - >-
+        The hag offers to exchange places with a conscious allied hag she can see within 30 feet. If
+        that ally spends its reaction and consents, they magically teleport into each other's
+        spaces. Both spaces must accommodate their new occupants. The exchange cannot occur through
+        a ward that prevents either creature from teleporting.
+reaction:
+  - name: Wrong Door (3/Day)
+    entries:
+      - >-
+        When a creature the hag can see ends its movement within 5 feet of her, she can force it to
+        make a {@dc 16} Charisma saving throw. On a failure, it teleports to an unoccupied space she
+        can see within 20 feet of her. The destination must be on solid ground and cannot itself
+        cause immediate damage. The creature retains any movement it has left. Teleportation wards
+        apply normally. This magical ability is not a spell.
+  - name: Yielding (1/Long Rest)
+    entries:
+      - >-
+        When the hag would take an instance of physical or magical damage, she can prevent that
+        instance of damage to herself. Her hit points then become 1. This does not protect an ally,
+        restore spell uses, or end conditions.

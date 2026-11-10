@@ -1,0 +1,90 @@
+name: Children of the Crone, Spite-Matron
+source: BF
+size:
+  - M
+type:
+  type: fey
+  tags:
+    - hag
+alignment:
+  - N
+  - E
+ac:
+  - ac: 17
+    from:
+      - natural armor
+hp:
+  average: 204
+  formula: 24d8 + 96
+speed:
+  walk: 30
+str: 14
+dex: 16
+con: 18
+int: 18
+wis: 18
+cha: 18
+save:
+  con: "+8"
+  wis: "+8"
+  cha: "+8"
+skill:
+  deception: "+8"
+  insight: "+8"
+senses:
+  - darkvision 120 ft.
+passive: 14
+languages:
+  - Common
+  - Infernal
+  - Sylvan
+cr: "10"
+trait:
+  - name: Magic Resistance
+    entries:
+      - The hag has advantage on saving throws against spells and other magical effects.
+  - name: Innate Spellcasting
+    entries:
+      - >-
+        The hag's spellcasting ability is Charisma (spell save {@dc 16}). She requires no material
+        components for these spells, but uses their normal verbal and somatic components.
+      - "At will: {@spell detect magic}, {@spell disguise self}, {@spell minor illusion}"
+      - "1/day each: {@spell bestow curse}, {@spell dispel magic}, {@spell fear}"
+action:
+  - name: Multiattack
+    entries:
+      - >-
+        The hag makes three Bitter Needle attacks. She can replace one attack with Speak Spite.
+  - name: Bitter Needle
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +8} to hit, range 120 ft., one target. Hit: 22 ({@damage 4d8 +
+        4}) psychic damage. This magical attack is not a spell.
+  - name: Speak Spite (3/Day)
+    entries:
+      - >-
+        One creature within 60 feet that can hear the hag must succeed on a {@dc 16} Wisdom saving
+        throw or have disadvantage on the next saving throw it makes before the end of the hag's
+        next turn. Multiple uses do not stack or affect more than one saving throw. This is a
+        magical curse, not a spell; {@spell remove curse} ends it.
+  - name: Chorus of Accusation (1/Day)
+    entries:
+      - >-
+        Each creature in a 30-foot cone must make a {@dc 16} Wisdom saving throw, taking 36
+        ({@damage 8d8}) psychic damage on a failed save, or half as much on a success. If both other
+        members of her triad are conscious and within 30 feet of her, a creature that fails also
+        cannot take reactions until the end of its next turn. This ability is not a spell.
+bonus:
+  - name: Coven Step
+    entries:
+      - >-
+        While another conscious allied hag is within 30 feet of her, the hag magically moves up to
+        10 feet without provoking opportunity attacks. She must end on a surface that can support
+        her. This is movement, not teleportation, and cannot cross a solid barrier.
+reaction:
+  - name: Yielding (1/Long Rest)
+    entries:
+      - >-
+        When the hag would take an instance of physical or magical damage, she can prevent that
+        instance of damage to herself. Her hit points then become 1. This does not protect an ally,
+        restore spell uses, or end conditions.

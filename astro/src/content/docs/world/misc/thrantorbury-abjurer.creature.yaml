@@ -1,0 +1,100 @@
+name: The Abjurer
+size:
+  - M
+type:
+  type: humanoid
+  tags:
+    - any race
+alignment:
+  - A
+ac:
+  - ac: 17
+    from:
+      - protective sigils
+hp:
+  average: 150
+  formula: 20d8 + 60
+speed:
+  walk: 30
+str: 10
+dex: 14
+con: 16
+int: 20
+wis: 14
+cha: 12
+save:
+  int: "+9"
+  wis: "+6"
+skill:
+  arcana: "+9"
+  insight: "+6"
+  religion: "+9"
+passive: 12
+languages:
+  - Common
+  - Seneran
+  - one other language of the GM's choice
+cr: "10"
+trait:
+  - name: Arcane Ward
+    entries:
+      - >-
+        The abjurer has a visible magical ward with 60 hit points, separate from its own hit points.
+        While the abjurer is not {@condition incapacitated}, damage it takes is deducted from the
+        ward first, after applying any resistance or vulnerability. Any remaining damage is dealt to
+        the abjurer. Damage absorbed entirely by the ward does not require a concentration saving
+        throw. The ward grants no resistance or condition immunity and cannot prevent an effect that
+        deals no damage.
+      - >-
+        The ward cannot be healed or replenished during combat. It returns to 60 hit points when the
+        abjurer finishes a long rest. Projected Ward draws from this same pool, not a second ward.
+        Describe the protective sigils dimming as the pool is depleted.
+  - name: Spellcasting
+    entries:
+      - >-
+        The abjurer casts the following spells, using Intelligence as its spellcasting ability
+        (spell save {@dc 17}, {@hit +9} to hit with spell attacks). Each spell uses its normal
+        casting time, components, and concentration requirements. These spells use their lowest
+        level and the 2014 rules; daily uses replace spell slots.
+      - >-
+        At will: {@spell detect magic|phb}, {@spell mage hand|phb}, {@spell prestidigitation|phb}
+      - "3/day: {@spell dispel magic|phb}"
+      - "1/day each: {@spell magic circle|phb}, {@spell protection from energy|phb}"
+action:
+  - name: Multiattack
+    entries:
+      - The abjurer makes three Arcane Bolt attacks.
+  - name: Arcane Bolt
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +9} to hit, range 90 ft., one target. Hit: 18 ({@damage 4d8})
+        force damage. This is a magical attack, not the casting of a spell.
+  - name: Raise Partition ({@recharge 5})
+    entries:
+      - >-
+        The abjurer creates one visible, upright panel of force in an unoccupied space it can see
+        within 60 feet. The panel is up to 10 feet long, 10 feet high, and 1 inch thick. It lasts
+        until the end of the abjurer's next turn, until the abjurer is {@condition incapacitated},
+        or until the abjurer creates another panel. It blocks physical passage and provides total
+        cover; neither side can attack or cast through it merely because it is transparent.
+      - >-
+        The panel has AC 15, 20 hit points, and immunity to poison and psychic damage. It vanishes
+        at 0 hit points. Creatures can go around it, climb or fly over it, teleport past it, or
+        destroy it. {@spell dispel magic|phb} ends the panel as if it were a 3rd-level spell.
+        Raising the panel is a magical ability, not casting a spell, and replaces the abjurer's
+        entire attack routine for that turn.
+reaction:
+  - name: Projected Ward
+    entries:
+      - >-
+        When another creature the abjurer can see within 30 feet takes damage, the abjurer expends
+        up to 25 of its remaining Arcane Ward hit points to reduce that damage by the same amount,
+        after applying the target's resistance or vulnerability. It cannot expend more ward hit
+        points than the triggering damage. Any remaining damage is dealt to the target normally.
+  - name: Counterspell (3/Day)
+    entries:
+      - >-
+        When the abjurer sees a creature within 60 feet casting a spell, it casts {@spell
+        counterspell|phb} at 3rd level, using Intelligence for any spellcasting ability check (+5).
+        This uses the abjurer's reaction and cannot be combined with Projected Ward against the same
+        triggering spell. The spell requires its normal somatic component.

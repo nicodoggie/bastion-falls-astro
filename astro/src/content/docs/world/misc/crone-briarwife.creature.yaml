@@ -1,0 +1,88 @@
+name: Children of the Crone, Briarwife
+source: BF
+size:
+  - M
+type:
+  type: fey
+  tags:
+    - hag
+alignment:
+  - N
+  - E
+ac:
+  - ac: 15
+    from:
+      - natural armor
+hp:
+  average: 156
+  formula: 24d8 + 48
+speed:
+  walk: 40
+str: 16
+dex: 16
+con: 14
+int: 13
+wis: 16
+cha: 16
+save:
+  dex: "+6"
+  wis: "+6"
+skill:
+  perception: "+6"
+  stealth: "+6"
+  survival: "+6"
+senses:
+  - darkvision 120 ft.
+passive: 16
+languages:
+  - Common
+  - Sylvan
+cr: "6"
+trait:
+  - name: Magic Resistance
+    entries:
+      - The hag has advantage on saving throws against spells and other magical effects.
+  - name: Innate Spellcasting
+    entries:
+      - >-
+        The hag's spellcasting ability is Charisma (spell save {@dc 14}). She requires no material
+        components for these spells, but uses their normal verbal and somatic components.
+      - "At will: {@spell detect magic}, {@spell disguise self}"
+      - "1/day each: {@spell fog cloud}, {@spell pass without trace}"
+  - name: Thorn-Scent
+    entries:
+      - >-
+        The hag has advantage on Wisdom (Survival) checks to track a creature she has damaged within
+        the past hour. This does not reveal the creature's location or defeat magical concealment
+        automatically.
+action:
+  - name: Multiattack
+    entries:
+      - The hag makes two Briar Shears attacks.
+  - name: Briar Shears
+    entries:
+      - >-
+        Melee Weapon Attack: {@hit +6} to hit, reach 10 ft., one target. Hit: 12 ({@damage 2d8 + 3})
+        slashing damage plus 5 ({@damage 1d10}) necrotic damage.
+  - name: Barbed Invitation (Recharge 5-6)
+    entries:
+      - >-
+        One creature the hag can see within 60 feet must make a {@dc 14} Strength saving throw. On a
+        failed save, it takes 21 ({@damage 6d6}) piercing damage and is pulled up to 20 feet toward
+        the hag. On a successful save, it takes half as much damage and is not pulled. If both other
+        members of her triad are conscious and within 30 feet of her, the hag can choose a second
+        target in range. This is a magical ability, not a spell.
+bonus:
+  - name: Coven Step
+    entries:
+      - >-
+        While another conscious allied hag is within 30 feet of her, the hag magically moves up to
+        10 feet without provoking opportunity attacks. She must end on a surface that can support
+        her. This is movement, not teleportation, and cannot cross a solid barrier.
+reaction:
+  - name: Yielding (1/Long Rest)
+    entries:
+      - >-
+        When the hag would take an instance of physical or magical damage, she can prevent that
+        instance of damage to herself. Her hit points then become 1. This does not protect an ally,
+        restore spell uses, or end conditions.

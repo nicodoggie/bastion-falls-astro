@@ -1,0 +1,88 @@
+name: Children of the Crone, Ash-Tongue
+source: BF
+size:
+  - M
+type:
+  type: fey
+  tags:
+    - hag
+alignment:
+  - N
+  - E
+ac:
+  - ac: 15
+    from:
+      - natural armor
+hp:
+  average: 169
+  formula: 26d8 + 52
+speed:
+  walk: 30
+str: 12
+dex: 14
+con: 14
+int: 16
+wis: 16
+cha: 18
+save:
+  con: "+5"
+  wis: "+6"
+  cha: "+7"
+skill:
+  deception: "+7"
+  insight: "+6"
+senses:
+  - darkvision 120 ft.
+passive: 13
+languages:
+  - Common
+  - Sylvan
+cr: "7"
+trait:
+  - name: Magic Resistance
+    entries:
+      - The hag has advantage on saving throws against spells and other magical effects.
+  - name: Innate Spellcasting
+    entries:
+      - >-
+        The hag's spellcasting ability is Charisma (spell save {@dc 15}). She requires no material
+        components for these spells, but uses their normal verbal and somatic components.
+      - "At will: {@spell detect magic}, {@spell disguise self}, {@spell minor illusion}"
+      - "1/day each: {@spell suggestion}, {@spell dispel magic}"
+action:
+  - name: Multiattack
+    entries:
+      - The hag makes two Ashen Word attacks.
+  - name: Ashen Word
+    entries:
+      - >-
+        Ranged Spell Attack: {@hit +7} to hit, range 90 ft., one target. Hit: 20 ({@damage 3d10 +
+        4}) psychic damage. This magical attack is not a spell.
+  - name: Smothering Reproach (Recharge 5-6)
+    entries:
+      - >-
+        Each creature in a 15-foot cone must make a {@dc 15} Wisdom saving throw, taking 18
+        ({@damage 4d8}) psychic damage on a failed save, or half as much on a success. A creature
+        that fails is also {@condition frightened} of the hag until the end of its next turn. This
+        is a magical ability, not a spell.
+bonus:
+  - name: Bad Word (3/Day)
+    entries:
+      - >-
+        One creature within 60 feet that can hear the hag must succeed on a {@dc 15} Wisdom saving
+        throw or lose its reactions and have disadvantage on its next attack roll before the start
+        of the hag's next turn. A creature can be affected by only one Bad Word at a time. This is a
+        magical curse, not a spell; {@spell remove curse} ends it.
+  - name: Coven Step
+    entries:
+      - >-
+        While another conscious allied hag is within 30 feet of her, the hag magically moves up to
+        10 feet without provoking opportunity attacks. She must end on a surface that can support
+        her. This is movement, not teleportation, and cannot cross a solid barrier.
+reaction:
+  - name: Yielding (1/Long Rest)
+    entries:
+      - >-
+        When the hag would take an instance of physical or magical damage, she can prevent that
+        instance of damage to herself. Her hit points then become 1. This does not protect an ally,
+        restore spell uses, or end conditions.
