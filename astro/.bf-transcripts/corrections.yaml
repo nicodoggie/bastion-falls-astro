@@ -9474,6 +9474,9 @@ profiles:
             path: astro/src/content/docs/world/notes/the-vengeful/ev-notes.mdx
             role: earlier-name-record
           - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-05-23.mdx
+            role: book-club-invitee
+          - type: note
             path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
             role: confirmed-contact-and-arrival
         aliases:
@@ -9481,33 +9484,42 @@ profiles:
           - Scebeth
           - Escobeth
           - Skabeth
+          - Skabet
+          - Eskabet
         match:
           priority: normal
           tags:
             - eskabeth-kilsward
             - minfilia-hag-contact
             - kilsward-forest
+            - hags-of-hama
+            - book-club
         scope:
           campaigns:
             - the-vengeful
           contexts:
-            - Kilsward hag and Minfilia's allied-hag contacts
+            - Kilsward hag and allied-hag contacts
         apply:
           mode: prompt-first
           safeExactReplacement: false
         promptInstruction: >-
-          In Kilsward and Minfilia's allied-hag contact scenes, Escobet, Scebeth,
-          Escobeth, and Skabeth refer to Eskabeth Kilsward. Her identity as the
-          contacted hag who later arrives is confirmed; do not reopen the name.
+          In Kilsward and allied-hag contact scenes, Escobet, Scebeth, Escobeth,
+          Skabeth, Skabet, and Eskabet refer to Eskabeth Kilsward. Her identity as
+          Minfilia's contacted hag who later arrives is confirmed; do not reopen
+          the name or add later events to earlier dialogue.
         instruction: >-
           Normalize only context-matched references to Eskabeth Kilsward. Her
-          identification does not settle the identities of Agatha or other hags,
-          or independently verify every claim made during the gathering.
+          identification does not settle other hags' identities or independently
+          verify every claim made during the gathering. Do not conflate her with
+          Agnes, the resort hag, Sister Agatha Thralvig, or the hag killed at
+          Tumult's Landing, or add bargain terms from her name alone.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/ev-notes.mdx
             note: Earlier notes name Eskabeth Kilsward and an Auntie's Skabeth.
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
             note: Campaign review on 2026-11-04 confirms the proposed match for Minfilia's contact and the arriving hag.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-05-23.mdx
+            note: Campaign review on 2026-11-09 reaffirms Eskabeth for Skabet; the current transcript also renders the invitee as Eskabet.
 
       - id: character.sarwen
         status: confirmed
@@ -9728,3 +9740,93 @@ profiles:
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
             note: Campaign review on 2026-11-07 confirms Torters coven, not torture coven.
+
+      - id: character.agnes-ski-resort-hag
+        status: confirmed
+        kind: entity
+        canonical: Agnes
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-05-23.mdx
+            role: maintainer-identified-resort-hag
+        aliases:
+          - Agatha
+          - Agata
+        match:
+          priority: normal
+          tags:
+            - ski-resort-hags
+            - pre-tumults-landing-deal
+            - resort-hag-agnes
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - earlier deal with the hags at the ski resort before Tumult's Landing
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          The ski-resort hag associated with the earlier deal before Tumult's
+          Landing is Agnes, the name already settled after Agatha/Agata alternatives.
+          A callback that omits her name does not reopen her identity. Do not
+          replace Sister Agatha Thralvig or merge Agnes with Eskabeth.
+        instruction: >-
+          Use Agnes only for this resort hag. Agatha and Agata are rejected
+          candidate names in this specific context, not global replacements.
+          Carry the settled identity without claiming her name was spoken in
+          the May 23 callback. Do not identify every resort sister, add a surname
+          or bargain terms, or confirm the tentative Mount Torters location.
+          Do not merge her with Agnes Anatto or the Faltir contact without
+          separate evidence. The hag killed at Tumult's Landing is a separate
+          encounter, not a sister-counterparty correction.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-05-23.mdx
+            note: On 2026-11-09 the maintainer recalled the earlier name discussion and reaffirmed that Agnes, not Agatha or Agata, was settled for the ski-resort sister.
+
+      - id: place.senera
+        status: confirmed
+        kind: entity
+        canonical: Senera
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/locations/senera/index.mdx
+            role: primary-island-kingdom
+          - type: article
+            path: astro/src/content/docs/world/locations/sanery.mdx
+            role: distinct-apgarian-state
+        aliases:
+          - Seneira
+        match:
+          priority: normal
+          tags:
+            - senera
+            - seneira
+            - island-kingdom
+            - sanery-distinction
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Geographic references to the island kingdom of Senera
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          In geographic references to the island kingdom, Seneira is ASR drift
+          for Senera. Keep Sanery distinct: it is a province/state within the
+          Apgarian Confederacy, not an alternate spelling of Senera.
+        instruction: >-
+          Normalize Seneira to Senera only when the context identifies the island
+          kingdom. Do not replace genuine references to Sanery, the Apgarian
+          state, or erase the attested historical name Seneria. The names Senera
+          and Sanery are deliberately similar; resemblance does not merge their
+          geography. This name correction alone establishes neither a political
+          restriction on the Crown Prince's travel nor a completed itinerary.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-05-23.mdx
+            note: May 23 review on 2026-11-09 confirms Senera for Seneira at 09:54:33–09:55:02 and requests a reusable correction rule.
+          - path: astro/src/content/docs/world/locations/senera/index.mdx
+            note: Senera is an island kingdom; Seneria is also preserved as its historical founding name.
+          - path: astro/src/content/docs/world/locations/sanery.mdx
+            note: Sanery is a state in the Apgarian Confederacy. The maintainer confirms the deliberately similar pair by analogy with Brittany/Britain.
