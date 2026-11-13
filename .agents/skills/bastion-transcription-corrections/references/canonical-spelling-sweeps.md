@@ -1,29 +1,27 @@
 # Canonical Spelling Sweeps
 
-Use this when Nico corrects a proper-name spelling that appears in generated notes and corrected transcripts, e.g. `Timahel` -> `Timael`.
+Use when a proper-name correction must propagate across authored references and reusable transcription rules without rewriting historical evidence.
 
-## Pattern
+## Ordered procedure
 
-1. Search the repo for the rejected spelling.
-2. Patch authored notes and public corrected transcripts that preserve the same misspelling.
-   - Do not edit `raw_transcript.md`; it is source evidence, not corrected output.
-3. Check nearby context before using `replace_all` if the old spelling could be a different real entity.
-4. For unambiguous spelling drift, add or update a narrow shared correction rule:
-   - `status: confirmed`
-   - `kind: entity` or the relevant class, e.g. `celestial`
-   - rejected spelling in `aliases`
-   - `safeExactReplacement: true` only if the spelling cannot plausibly refer to anything else.
-5. Run `rumdl check` on edited MDX notes and `git diff --check` on all edited files. If the shared correction YAML changed, run the CLI tests that validate correction rule loading.
+1. **Establish entity and write scope.** Read the active passage, canonical introduction/aliases, and existing correction rule. Bind the name to its role and context before replacing it; neighboring entries in flat notes do not establish common ownership or kinship.
+2. **Check branch freshness.** If the task branch lacks a reportedly settled spelling, inspect the maintained newer store read-only. Reuse its stable entity ID and confirmed lexical layer. A later spelling confirmation can repair an older note; later arrivals, affiliations or outcomes must not leak backward.
+3. **Inventory by artifact class.** Search the canonical form and bounded, attested variants. Separate authored matches, explicitly writable non-raw transcript layers, and immutable evidence. Do not count expected raw/audit hits as failed propagation.
+4. **Apply the smallest coherent edit.** Correct every authorized authored occurrence of the same entity, including old shorthand entries. Extend one shared rule with observed aliases and contextual limits; do not invent a new rule per spelling or replace the whole newer store. Keep another unnamed person unnamed rather than assigning the newly normalized name by proximity.
+5. **Preserve review provenance.** Record a human-accepted note correction in the session ledger. Distinguish reaffirming an already confirmed spelling from creating new canon. Keep earlier failed searches or rejected spellings only as historical provenance, not active uncertainty.
+6. **Validate data and consumers.** Parse the edited store natively, require unique IDs, verify the intended aliases and references, and compare untouched rules with the before-copy. Run the native correction-loader tests, scoped note formatting and whitespace checks. Report authored propagation separately from transcript synchronization and publication.
 
-## Example
+## Artifact decision table
 
-Nico clarified `Timahel should be Timael` while reviewing the 2026-06-27 Vengeful note.
-The durable fix touched:
+| Layer | Default during authored-note spelling review |
+| --- | --- |
+| Authorized authored notes/articles | Normalize context-matched references and remove stale spelling questions. |
+| Shared correction store | Extend the existing entity rule; preserve unrelated rules. |
+| Session human-review ledger | Record the accepted reading, source interval and authority. |
+| Raw ASR and historical audit copies | Preserve original bytes and rejected forms as evidence. |
+| Accepted reconciliation/summary caches | Preserve unless transcript synchronization is explicitly included; do not force old cache identities to match new rules. |
+| Public transcript/archive assets | Respect the separate publication/write contract; a spelling request is not permission to republish them. |
 
-- `astro/src/content/docs/world/notes/the-vengeful/2026-06-27.mdx`
-- `astro/src/content/docs/world/notes/the-vengeful/2026-06-14.mdx`
-- `astro/src/assets/transcripts/session-2026-06-27/corrected_transcript.md`
-- `astro/src/assets/transcripts/session-2026-06-14/corrected_transcript.md`
-- `astro/.bf-transcripts/corrections.yaml`
+## Cross-branch integration
 
-The raw transcript still contained the old spelling and was left unchanged.
+When both branches contain the same entity ID, reconcile aliases and compatible evidence into one rule at integration rather than keeping duplicate IDs. Preserve confirmed identity without importing later scene details into earlier dialogue. State whether the result is local, committed or published; a corrected task branch does not mean every consumer checkout has received it.

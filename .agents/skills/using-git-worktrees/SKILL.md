@@ -33,7 +33,9 @@ Choose an explicit base revision. Do not silently fetch or substitute the remote
 
 Before implementation edits, ask whether to create a separate worktree unless the operator has already chosen or the repository explicitly requires isolation. Recommend a named task branch in the existing checkout for available serial work, and a separate worktree for concurrent work or conflicting unfinished changes. Read-only investigation needs neither. A default recommendation does not replace the operator's choice.
 
-Apply the same repository branch-naming guidance in either case. Declining a worktree does not mean editing on `main`: create the task branch at the agreed base with `git switch -c <branch> <base>`, or resume the branch already owning the task. Do not invent issue numbers or duplicate tracking to obtain a branch name.
+When moving an owned draft off a concurrently owned primary checkout, separate only that draft and its approved evidence closure; a new task branch is not permission to switch the shared primary branch or carry everyone else's dirty files. Use `references/owned-draft-isolation.md` for the staged transfer and release acknowledgement.
+
+Apply the same repository branch-naming guidance in either case. Name the branch for the actual change category: use `infra/` for new infrastructure or deployment policy where the repository permits it; reserve `fix/` for correcting an established defect. A configuration change is not automatically a bug fix. If the user corrects an unpublished branch's category, verify the current branch and target-name availability, rename it with `git branch -m`, and confirm HEAD and dirty files are preserved; do not recreate the checkout, reset files or rewrite commits merely to change the label. Declining a worktree does not mean editing on `main`: create the task branch at the agreed base with `git switch -c <branch> <base>`, or resume the branch already owning the task. Do not invent issue numbers or duplicate tracking to obtain a branch name.
 
 A branch switch retains ignored checkout-local directories such as `.conan`; no cache copy is needed. Preserve useful compiler intermediates too, but let the native dependency/build tools decide whether retained state still matches the new inputs. Do not promise warm builds merely because the directory survived.
 
@@ -47,7 +49,7 @@ For an approved separate worktree, inspect the native tool's current status, des
 - If it cannot express a repository-mandated destination, use an authorized Git worktree operation at that destination. Do not invent unsupported parameters or alter global host preferences merely to force placement.
 - If the harness explicitly requires its native isolation route, report a placement conflict rather than bypassing that requirement.
 - Disable optional setup for read-only research or documentation work; creation should not accidentally run installs, builds or account operations.
-- If a native handoff ends the session, retain the brief and provide the supported continuation so approved work resumes without another planning-only stop.
+- If a native handoff ends the session, prepare the transfer inventory and executable continuation before invoking it. On resumption, inspect actual files and receipts: a recorded branch move or queued continuation proves neither that the continuation ran nor that the draft/evidence transfer completed. Finish and verify the owned transfer before claiming isolation complete or releasing another owner's primary checkout.
 
 A shell-created worktree does not move the user's editor or rebind a host-managed thread. Report that distinction and use the absolute target path for subsequent tools.
 

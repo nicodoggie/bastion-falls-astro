@@ -1,9 +1,13 @@
 ---
 name: bastion-transcription-corrections
-description: Maintain Bastion Falls shared transcription correction rules. Use when the user corrects recurring mistranscriptions, asks to update bfcli transcribe corrections, wants a note-cleanup conversation converted into durable correction rules, or needs astro/.bf-transcripts/corrections.yaml updated from campaign notes, transcripts, or codex_notes.
+description: Use when maintaining Bastion transcription corrections.
 ---
 
 # Bastion Transcription Corrections
+
+## When to Use
+
+Use for recurring ASR/name drift and shared correction-rule maintenance. Route one-off semantic repairs to the session ledger and note-cleanup workflow rather than creating a global replacement rule.
 
 ## Purpose
 
@@ -26,6 +30,7 @@ casual, curious, and lightly playful while still being precise about canon and f
 1. Read the target correction store first:
    - `astro/.bf-transcripts/corrections.yaml`
    - If it does not exist, create it with `version: 1` and `profiles.global.rules`.
+   - When an older task branch lacks a reportedly settled name, inspect the current maintained store and canonical reference read-only before reopening the spelling. Reuse the established entity ID and extend its observed aliases; carry only the spelling/identity layer into the older note, not later plot or unrelated rule changes. Do not replace the branch's whole store merely to import one rule.
 1. Gather evidence from the current task:
    - Current conversation corrections.
    - The active note under `astro/src/content/docs/world/notes/...`.
@@ -210,11 +215,7 @@ See these compact references for worked patterns:
 - `references/disguise-cover-identity-corrections.md` — named people that are actually disguises,
   cover identities, alternate forms, or personas of existing characters.
 
-- Canonical spelling sweep: when Nico says `X should be Y` for a proper name, search authored notes
-  and public `corrected_transcript.md` assets for the rejected spelling, patch each occurrence that
-  is the same entity, leave `raw_transcript.md` untouched as source evidence, and add or update a
-  narrow shared correction rule. Use `safeExactReplacement: true` only for unambiguous spelling
-  drift; otherwise prefer a prompt-first contextual rule.
+- Canonical spelling sweep: when Nico settles a proper-name spelling, inventory authored and transcript occurrences separately, bind each to the same entity, and patch the authorized authored trail plus the existing shared entity rule. In authored-note review, an across-the-board spelling request does not by itself authorize rewriting immutable raw ASR, accepted pipeline caches or public archives; synchronize non-raw transcript layers only when the artifact write contract includes them. Keep historical evidence spellings intact and report that boundary. Use `safeExactReplacement: true` only for unambiguous drift; otherwise retain a contextual prompt-first rule. See `references/canonical-spelling-sweeps.md` for cross-branch reconciliation.
 - Disguise / cover identity correction: when Nico clarifies that a named person is actually a
   disguise, cover identity, alternate form, or persona of an existing character, rewrite the active
   note to introduce that relationship directly, sweep out `X or Y` ambiguity, update any unresolved
@@ -354,14 +355,14 @@ See these compact references for worked patterns:
 
 ## Validation
 
-After editing:
+1. Parse the actual edited store with `parseCorrectionProfile` from `cli/src/commands/transcribe/corrections.ts`. Require globally unique rule IDs, the intended canonical/status/aliases/scope, and valid local canonical references. Compare against the before-copy so unrelated rules remain unchanged; passing fixture tests alone does not validate the edited YAML.
+2. For data-only rule changes, run the native correction-loader tests from `cli/`:
 
-```bash
-pnpm -F @bastion-falls/cli test
-python3 /home/ensu/.codex/skills/.system/skill-creator/scripts/quick_validate.py .agents/skills/bastion-transcription-corrections
-```
+   ```bash
+   node --import tsx --test src/commands/transcribe/corrections.test.ts
+   ```
 
-If the user is actively correcting a note, also run the relevant `rumdl check` for that note after
-any note edits. Do not stage per-session `.bf-transcripts/session-*` artifacts; the shared
-`astro/.bf-transcripts/corrections.yaml` rule store is source-like and may be committed when it is
-part of the requested durable correction.
+   Run `pnpm -F @bastion-falls/cli test` when correction tooling behavior or a broader consumer contract changes. If reusing installed tooling from a sibling checkout, first verify that the implementation, tests and dependency manifest match; parse the edited store through its explicit owned path and report where tests actually ran. This proves that narrow boundary, not a build of the new checkout.
+3. Run scoped `rumdl check`, `mdsf verify` and `git diff --check` for changed authored notes. Scan the authorized authored trail for rejected name forms, excluding immutable source evidence and historical audit copies. Validate session-ledger topic uniqueness and relative evidence links when human review updated the ledger.
+
+Do not stage per-session `.bf-transcripts/session-*` artifacts. The shared correction store is source-like and may be committed only within the requested commit scope; changing its data does not require validating or editing a skill package.
