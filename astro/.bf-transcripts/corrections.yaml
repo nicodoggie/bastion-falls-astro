@@ -4,6 +4,90 @@ profiles:
   global:
     description: Shared correction rules for Bastion Falls transcription and note generation.
     rules:
+      - id: character.matheson
+        status: confirmed
+        kind: entity
+        canonical: Matheson
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/matheson.mdx
+            role: primary
+        aliases:
+          - Matheson or something similar
+          - someone he trusts at court
+        match:
+          priority: normal
+          tags:
+            - matheson
+            - marlion-court-contact
+            - royal-court-wizard
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Marlion's trusted court contact and Matheson's survival in the Thrantorbury crisis
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          Matheson is a Royal Court Wizard trusted by King Alitar and the trusted
+          court contact Marlion communicated with in earlier accounts. Do not
+          reopen his spelling or office from the damaged November 8 wording.
+        instruction: >-
+          This name and office were settled by the campaign maintainer. Resolve
+          earlier generic court-contact references only when they concern Marlion's
+          established contact; do not identify every unnamed courtier as Matheson.
+          Keep him distinct from Matthew and Matisse, and invent no surname,
+          ancestry, age, or detailed duties.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-08.mdx
+            note: Campaign review on 2026-11-13 names Matheson and establishes his office and earlier court-contact identity.
+
+      - id: interpretation.garward-missing-soul-fragment
+        status: confirmed
+        kind: lore-boundary
+        canonical: Garward's missing soul fragment
+        canonicalRefs:
+          - type: article
+            path: astro/src/content/docs/world/characters/garward-eastonton.mdx
+            role: primary
+        aliases:
+          - damaged soul bag
+          - missing fragment of the soul bag
+        match:
+          priority: normal
+          tags:
+            - garward
+            - ma-eastonton
+            - fragmented-soul
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-11-08"
+          contexts:
+            - Ma Eastonton's soul-bag and fragmented-soul teaching exchange
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          The missing fragment is part of Garward's soul, not a piece of Ma
+          Eastonton's bag. Its absence contributes to his recklessness at Castle
+          Dragonheart; a connection to his Crone-hag deal remains possible, not
+          confirmed. Specific allocation of guilt and fear remains a party theory.
+          Soul-rending requires unconscionable acts, even in a hag deal; do not
+          make the missing fragment an excuse for the acts required to rend it.
+        instruction: >-
+          Preserve settled soul incompleteness separately from the party's proof,
+          its proposed explanation of remorse, and the still-uncertain bargain
+          terms. Do not insert later maintainer intent as newly spoken dialogue
+          or infer that replacing the fragment guarantees remorse or redemption.
+          The prerequisite acts precede the rending; leave their exact identity
+          unspecified rather than inventing a crime or ritual payment.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-08.mdx
+            note: The maintainer's two-part answer on 2026-11-13 resolves the fragment's referent and describes its causal role while leaving the deal connection tentative.
+
       - id: character.queen-valdas
         status: confirmed
         kind: entity
@@ -855,6 +939,41 @@ profiles:
             note: Authored Paladinate note now carries the user-confirmed Sir Essen spelling.
           - path: astro/src/assets/transcripts/session-2026-05-29/corrected_transcript.md
             note: Corrected transcript identifies and spells Sir Essen in the head-of-staff discussion.
+
+      - id: character.marquez-vampire
+        status: confirmed
+        kind: entity
+        canonical: Marquez
+        canonicalRefs:
+          - type: note
+            path: astro/src/content/docs/world/notes/the-vengeful/2026-11-08.mdx
+            role: primary
+        aliases:
+          - Marques
+        match:
+          priority: normal
+          tags:
+            - narmaya
+            - vampire-son
+            - dimensional-shackles
+        scope:
+          campaigns:
+            - the-vengeful
+          contexts:
+            - Narmaya's turned vampire and former Parvèse slaver
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >
+          Use Marquez for the former Parvèse slaver Narmaya turned and regards as
+          her son. Marques is spelling drift in this context, not a separate person.
+        instruction: >
+          The campaign maintainer confirmed Marquez in November 8 session review.
+          Apply this only to Narmaya's vampire son; do not change noble titles or
+          unrelated names, including older Marquez-like readings for Mark Malthrek.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-08.mdx
+            note: Campaign review confirms Marquez; the source exchange is at 00:18:36–00:20:28.
 
       - id: character.narmaya
         status: confirmed
@@ -9668,7 +9787,7 @@ profiles:
       - id: identity.torters-hag-not-agatha-thralvig
         status: confirmed
         kind: disambiguation
-        canonical: null
+        canonical: Agnes
         aliases:
           - Agatha
           - Sister Agatha
@@ -9686,17 +9805,59 @@ profiles:
           mode: prompt-first
           safeExactReplacement: false
         promptInstruction: >-
-          The Torters hag referred to as Agatha is not Sister Agatha Thralvig.
-          Her exact name remains unverified; the confirmed distinction does
-          not confirm the Agatha spelling or identity.
+          Use Agnes for the Torters hag previously tentatively called Agatha.
+          She is distinct from Sister Agatha Thralvig and Agnes Anatto. Her
+          name was settled by campaign-maintainer fiat, not recovered audio.
         instruction: >-
-          Keep the hag separate from the Tidemark temple representative.
-          The maintainer confirmed their distinction conditionally while
-          requesting a check of the personal Narrows notes for her name.
-          Do not use church-related Agatha references as proof of a hag identity.
+          November 8 session review canonizes Agnes and supersedes the previous
+          pending-name check. Apply the name to the same hag in the November 1
+          note without pretending that its earlier dialogue used the settled
+          name. Keep her separate from the Tidemark temple representative and
+          the Strandiz family member. Do not reopen the name from old ASR or
+          the unsuccessful historical Narrows lookup.
         evidence:
           - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-01.mdx
-            note: Campaign review on 2026-11-04 confirms nonidentity but leaves the hag's name conditional.
+            note: Earlier nonidentity confirmation is retained; the pending name is superseded by the later Agnes ruling.
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-08.mdx
+            note: Campaign review on 2026-11-11 canonizes Agnes by fiat for the 01:20:30–01:20:49 recollection.
+
+      - id: mechanics.minfilia-gem-anchored-hallow
+        status: confirmed
+        kind: mechanics-note
+        canonical: Gem-anchored Hallow
+        aliases:
+          - Hallow on three gems
+        match:
+          priority: normal
+          tags:
+            - minfilia
+            - anti-teleportation
+            - gem-anchored-hallow
+        scope:
+          campaigns:
+            - the-vengeful
+          sessionDates:
+            - "2026-11-08"
+          contexts:
+            - Minfilia preparing three gems before confronting Garward
+        apply:
+          mode: prompt-first
+          safeExactReplacement: false
+        promptInstruction: >-
+          Minfilia anchored Hallow to each of three gems, then used the gems as
+          power sources to maintain the effects, intending to stop Garward
+          teleporting. These were not stored spells awaiting release. They had
+          not yet been deployed around Garward when he used Misty Step.
+        instruction: >-
+          Preserve the campaign-maintainer-confirmed innovation rather than
+          normalizing it to standard casting or spell storage. The exchange
+          does not supply costs, capacity, duration, radius, or a universal
+          guarantee against every kind of teleportation; leave those unspecified.
+          His observed Misty Step was before deployment around him, not evidence
+          that the wards failed or allowed short-range teleportation.
+        evidence:
+          - path: astro/src/content/docs/world/notes/the-vengeful/2026-11-08.mdx
+            note: Campaign review on 2026-11-11 confirms anchoring and power; follow-up on 2026-11-13 confirms the gems were not deployed around Garward at 03:02:49–03:03:09.
 
       - id: organization.torters-coven
         status: confirmed
